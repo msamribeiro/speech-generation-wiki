@@ -1,7 +1,7 @@
 # Wiki Log
 
 Append-only chronological log of all operations.
-First token of each entry must be: `ingest` | `filter` | `review` | `query` | `lint` | `discover` | `parse`
+First token of each entry must be: `ingest` | `integrate` | `filter` | `review` | `query` | `lint` | `discover` | `parse`
 
 ---
 
