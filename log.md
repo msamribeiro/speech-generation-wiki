@@ -79,3 +79,4 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest-batch | 5 ingested, 0 failed
 - parse | batch 24 (queue batch 4) | 40 papers (2602.23266 … 2603.14032) | 40/40 done | RapidOCR: 2602.23765, 2603.08574, 2603.08823, 2603.09120, 2603.11589 (non-fatal) | total parsed: 571/798
 - integrate | 10 papers | 14 concepts updated | 12 cross-links added
+- integrate | 15 papers | 16 concepts updated | 3 cross-links added

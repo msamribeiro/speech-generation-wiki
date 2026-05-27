@@ -1,43 +1,81 @@
 # Overview: State of the Art in Speech Synthesis
 
-*Updated after every 10 ingests or after a significant query. Populate after first papers are ingested.*
+*Updated after every ~25 ingests or after a significant query that reveals a new pattern.*
 
-Last updated: 2026-05-11 | Papers ingested: 0
+Last updated: 2026-05-27 | Papers ingested: 25
 
 ---
 
 ## 1. Dominant Paradigms
 
-<!-- What architectural approaches dominate each task today (TTS, VC, SCA). -->
+**Text-to-Speech (TTS).** Two paradigms dominate open-weight zero-shot TTS as of mid-2025:
 
-# TODO: expand after first papers are ingested
+- **Pure flow-matching** ([[2025.acl-long.313]], F5-TTS; [[2025.acl-long.1043]], OZSpeech): Flow matching over mel-spectrograms with text and reference audio concatenation. F5-TTS (336M, 95K hours EN+ZH) is the reference open-weight system. OZSpeech demonstrates that replacing the Gaussian source distribution with a learned prior enables single-step inference (NFE=1) trained on only 500 hours.
+- **LLM + flow matching** (CosyVoice 2, [[2510.00981]] FlexiCodec-TTS): Autoregressive LM predicts semantic tokens from text; a flow-matching or continuous-token acoustic model synthesizes mel/waveform conditioned on those tokens. This hybrid achieves better text adherence at the cost of AR latency. The low-frame-rate direction ([[2510.00981]]: 6.25 Hz AR) makes this practical for streaming.
+
+The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conceptual anchor, with active work on improving its codec ([[2025.acl-long.1498]] DRI consistency), decoding ([[2025.emnlp-main.989]] MTP), and post-training alignment ([[2025.acl-long.598]] INTP/DPO).
+
+**Voice Conversion (VC).** Real-time zero-shot VC is the dominant research direction. Two systems define the 2025 frontier: [[2507.14534]] (Conan, SSL-distillation content extraction, 37–140 ms GPU latency, 85.71% SPK-SIM) and [[2025.acl-demo.37]] (RT-VC, articulatory coding, 61.4 ms CPU latency). The gap between streaming and offline VC quality has effectively closed.
+
+**Spoken Conversational Agents (SCA).** Aligned multimodal LLMs (speech encoder + text LLM + speech decoder) dominate over pure end-to-end speech LMs. GPT-4o voice mode, Moshi, Qwen2.5-Omni, and VocalNet ([[2025.emnlp-main.989]]) represent this paradigm. Key advances: cross-modal distillation without instruction data ([[2025.acl-long.388]] DiVA), empathetic response generation ([[2025.emnlp-demos.70]] OpenS2S), and the first interaction-annotation corpus for duplex modeling ([[2025.findings-emnlp.424]] InteractSpeech). A systematic diagnosis of why pure SLMs underperform text LLMs ([[2412.17048]]) reveals paralinguistic variability in tokens (Factor C) as the dominant bottleneck.
 
 ## 2. Emerging Trends
 
-<!-- What is gaining traction in the most recent papers. -->
+**Preference alignment as standard post-training for TTS.** [[2025.acl-long.598]] (INTP) demonstrates that DPO fine-tuning on ~250K paired samples reduces WER by 31–52% relative across five diverse architectures without degrading speaker similarity. DPO has now been extended beyond AR models to flow-matching (DPO-FM) and masked generative models (DPO-MGM), making preference alignment architecture-general. This positions RLHF-style alignment as a standard post-training step analogous to RLHF in text LLMs.
 
-# TODO: expand after first papers are ingested
+**Codec reliability as a first-class design criterion.** [[2025.acl-long.1498]] formalizes Discrete Representation Inconsistency (DRI) — the same audio produces different codec token sequences depending on context — and shows that training-time consistency constraints reduce downstream VALL-E WER by 1.98% absolute at no reconstruction quality cost. Combined with [[2412.17048]]'s Factor C analysis, the field is converging on the view that codec design quality directly determines SLM/TTS quality, not just audio reconstruction fidelity.
+
+**Dialogue-native TTS.** [[2509.02020]] (FireRedTTS-2) and [[interspeech-2025-0253]] (long-context TTS) demonstrate that TTS systems are being designed for multi-turn conversational scenarios rather than isolated utterance generation. The interleaved text-speech format, context-aware prosody, and implicit emotion inference from chat history are becoming design requirements.
+
+**Social and dialect-aware evaluation.** [[2025.acl-long.1252]] demonstrates that prosodic/acoustic persona (voice accent) substantially outperforms lexical-syntactic style matching (dialect text) for user acceptance in AAE-speaking populations. This introduces socially-grounded subjective evaluation — measuring warmth, trustworthiness, and engagement — as a dimension absent from standard WER/MOS/SPK-SIM evaluations.
+
+**Low-resource tonal language TTS.** [[2025.acl-industry.42]] provides a complete practical framework for Thai TTS, demonstrating that domain-specific acoustic modeling (Phoneme-Tone BERT, LLM-supervised pause prediction) combined with data-efficient pipeline design can achieve competitive results against Google TTS and Microsoft TTS.
 
 ## 3. Points of Tension
 
-<!-- Where the literature actively disagrees. -->
+**Open-weight vs. closed-source gap in zero-shot TTS.** There is a persistent 5–7 SIM-point gap between the best open-weight systems (F5-TTS: SIM-o 0.67 on Seed-TTS test-en) and closed-source SOTA (Seed-TTS: 0.790, Minimax-Speech: 0.738). The root causes — data scale, model scale, or training recipe — are not yet clear. [[2509.19668]] shows that inference-time CFG tuning alone cannot close this gap.
 
-# TODO: expand after first papers are ingested
+**Intelligibility vs. naturalness trade-off.** OZSpeech ([[2025.acl-long.1043]]) achieves WER 0.05% (best in corpus on LibriSpeech test-clean) at UTMOS 3.15, while F5-TTS ([[2025.acl-long.313]]) achieves UTMOS 3.89 at WER 2.42%. There is no consensus on the right trade-off for practical applications, and no composite metric standardizes this balance.
+
+**SSL vs. ASR-supervised representations for codec design.** [[2510.00981]] shows that ASR features dramatically outperform SSL features for dynamic frame merging at ultra-low rates. Yet SSL features remain widely used in SSL distillation codecs (Mimi, DualCodec). The question of when to use which foundation model representation type for codec semantic extraction is not yet resolved.
+
+**DPO alignment vs. pre-training scale.** [[2025.acl-long.598]] shows diminishing returns in iterative preference alignment, suggesting base model capability is the ceiling. It remains unclear whether training on more diverse data, larger models, or better preference data construction would break through this ceiling — or whether the base model's inherent expressiveness limits what post-training can achieve.
+
+**Cascade vs. end-to-end SCA.** Pure speech-to-speech LMs ([[2412.17048]] characterizes their coherence failures) remain far below cascade systems on semantic tasks. Commercial systems (GPT-4o, Qwen2.5-Omni) use cascade or hybrid approaches. [[2025.acl-long.388]] (DiVA) demonstrates that distillation from a text LLM narrows the gap using only ASR data, but cannot capture paralinguistic information that has no textual correlate.
 
 ## 4. Gaps
 
-<!-- What is underexplored relative to adjacent fields. -->
-
-# TODO: expand after first papers are ingested
+- **Multilingual coverage beyond EN+ZH.** The dominant training datasets (Emilia, 95K hours EN+ZH) and evaluation benchmarks (SeedTTS-eval) center on English and Mandarin. Japanese, Korean, European languages, and especially low-resource tonal languages remain underrepresented. [[2025.acl-long.598]] shows INTP alignment generalizes to JA/KO/DE/FR from EN+ZH training, but this is not validated at pre-training scale.
+- **Standardized spoken dialogue evaluation.** Turn-taking, interruption handling, backchannel timing, and empathy response are not captured by standard TTS metrics (WER, SPK-SIM, MOS). [[2025.findings-emnlp.424]] provides a starting point but end-to-end duplex evaluation remains standardization-free.
+- **Causal/streaming zero-shot TTS.** Streaming VC is solved ([[2507.14534]], [[2025.acl-demo.37]]), but streaming zero-shot TTS with comparable quality to non-streaming systems at <100 ms latency remains undemonstrated.
+- **Anti-spoofing robustness under preference alignment.** [[2025.acl-long.598]] notes that intelligibility-focused DPO may inadvertently reduce anti-spoofing resilience. This interaction has not been evaluated.
+- **Prosody modeling for non-English, non-CJK languages.** [[2025.acl-long.1471]]'s context-length analysis is validated only on English audiobooks. Duration/pause behavior and prosody prediction requirements for tonal, agglutinative, or non-configurational languages are unstudied in the corpus.
 
 ## 5. Key Concept Hubs
 
-<!-- The most-linked concept pages — update as cross-references accumulate. -->
+By paper count (as of this update):
 
-# TODO: expand after first papers are ingested
+| Concept | Paper count | Key papers |
+|---------|------------|-----------|
+| [[self-supervised-speech]] | 11 | WavLM for SPK-SIM, HuBERT for VC content, Whisper for SLM encoding |
+| [[zero-shot-tts]] | 8 | F5-TTS, VALL-E, INTP, OZSpeech, ControlSpeech, Conan |
+| [[autoregressive-codec-tts]] | 9 | VALL-E, FlexiCodec, VocalNet, DRI, FireRedTTS-2 |
+| [[neural-codec]] | 9 | EnCodec, FlexiCodec, DRI, Cont-SPT, ControlSpeech, VocalNet |
+| [[spoken-language-model]] | 9 | SpeechLM survey, DiVA, VocalNet, OpenS2S, InteractSpeech, 2412.17048 |
+| [[evaluation-metrics]] | 7 | InteractSpeech, DRI, INTP, SpeechLM survey, Thai TTS, prosody MI |
+| [[flow-matching]] | 4 | F5-TTS, OZSpeech, INTP, Selective CFG |
+| [[streaming-tts]] | 6 | Conan, RT-VC, FlexiCodec, VocalNet, OpenS2S, FireRedTTS-2 |
+
+The heaviest hub — [[self-supervised-speech]] — reflects the foundational role of SSL models as content extractors, speaker encoders, evaluation tools (WavLM for SPK-SIM), and codec distillation targets across all three tasks.
 
 ## 6. Year-on-Year Perspective
 
-<!-- Trajectory summary. Populate once papers from multiple years are ingested. -->
+The corpus currently spans 2023 ([[2301.02111]] VALL-E) through 2026 ([[2412.17048]] ICASSP 2026 paper, published 2026-01). The primary year cluster is 2025 (ACL 2025, EMNLP 2025, Interspeech 2025, arXiv preprints).
 
-# TODO: expand after multiple years of papers are ingested
+**2023:** VALL-E establishes codec LM paradigm. 60K hours of training, 3-second enrollment at inference. EnCodec at 75 Hz. Demonstrates zero-shot speaker generalization via scale.
+
+**2024 (pre-corpus, referenced):** Voicebox, E2-TTS lay the groundwork for flow-matching TTS. Moshi achieves real-time duplex SLM. CosyVoice introduces LLM+flow-matching hybrid. Emilia dataset (100K hours EN+ZH) enables F5-TTS training.
+
+**2025:** The dominant trend is post-training refinement and production deployment. F5-TTS (open-weight), preference alignment (INTP/DPO), codec consistency training (DRI), and streaming adaptation (Conan, RT-VC) all represent refinements of paradigms established in 2023–2024. The field shifts from "can we build a zero-shot TTS system?" to "how do we make it robust, efficient, multilingual, and conversational?" Key technical differentiators: Sway Sampling for inference-time flow improvements, DPO-FM/DPO-MGM extending alignment beyond AR models, DRI consistency training for codecs, and Factor C analysis providing a theoretical framing for SLM limitations.
+
+The emerging 2025→2026 direction is dialogue-native TTS (FireRedTTS-2, InteractSpeech) and rigorous analysis of what limits current systems (DRI, Factor C, context-length constraints for prosody from [[2025.acl-long.1471]]). The field is maturing from empirical advances toward theoretical grounding.

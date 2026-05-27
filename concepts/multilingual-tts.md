@@ -3,7 +3,7 @@ slug: multilingual-tts
 title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Multilingual TTS
@@ -52,3 +52,4 @@ Monolingual TTS with language-specific models achieves higher ceiling quality pe
 | [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Trains on 95K hours EN+ZH Emilia dataset; uses joint pinyin+character vocabulary for code-switching; evaluates on Seed-TTS test-zh as well as English benchmarks |
 | [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL | 2025 | Framework for Thai TTS with data curation and acoustic modeling for under-resourced language |
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Targets code-switching (EN+ZH mixed text) and cross-lingual synthesis (zh2en, en2zh) as primary evaluation domains; shows preference alignment on INTP generalizes to unseen languages (JA, KO, DE, FR) |
+| [[2025.acl-long.388]] | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Demonstrates that cross-modal distillation from a text LLM using only ASR-paired English data generalizes to multilingual speech translation (CoVoST 2) — multilingual coverage from monolingual training without explicit multilingual instruction data |

@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Subjective Evaluation
@@ -58,3 +58,4 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Runs CMOS and SMOS with 20 native evaluators per language (EN + ZH); advocates for evaluator count transparency and sample release; reports CMOS +0.31 / SMOS 3.89 (EN) and CMOS +0.21 / SMOS 3.83 (ZH) for F5-TTS 32 NFE |
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Uses Prolific side-by-side preference study (53 participants, 522 judgments) instead of MOS; reports 72% win rate vs. Qwen 2 Audio; demonstrates preference-based evaluation as holistic SCA quality measure |
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Uses N-CMOS (naturalness comparative MOS, -2 to +2 scale), reading accuracy (binary intelligibility judgment by 20 participants, 400 total pairs × 5 systems), and A/B testing for speaker similarity; runs subjective evaluation across all four domain types (regular, articulatory, code-switching, cross-lingual) |
+| [[2025.acl-long.1252]] | Finding A Voice: Exploring the Potential of African American Dialect and Voice Generation for Chatbots | ACL | 2025 | Uses 15-metric 5-point Likert scale evaluation by 8–12 AAE-speaking university participants; demonstrates multi-dimensional socially-grounded subjective evaluation for spoken chatbot quality beyond standard naturalness/similarity metrics |

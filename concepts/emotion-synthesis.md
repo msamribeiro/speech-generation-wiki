@@ -45,7 +45,7 @@ A limitation is that all empathetic responses in the SFT dataset use a fixed you
 
 ## Year-on-year trajectory
 
-2024: FillerSpeech [[2025.emnlp-main.1730]] (in corpus) addresses filler word insertion as a paralinguistic naturalness feature adjacent to emotion synthesis. 2025: OpenS2S [[2025.emnlp-demos.70]] is the first fully open-source empathetic SLM in corpus; its automated data construction pipeline represents a new approach to scaling emotional training data.
+2024: FillerSpeech [[2025.emnlp-main.1730]] (in corpus) addresses filler word insertion as a paralinguistic naturalness feature adjacent to emotion synthesis. 2025: OpenS2S [[2025.emnlp-demos.70]] is the first fully open-source empathetic SLM in corpus; its automated data construction pipeline represents a new approach to scaling emotional training data. FireRedTTS-2 ([[2509.02020]]) demonstrates implicit emotion inference from conversational context in an autoregressive TTS model — the system infers emotion from the chat history without explicit emotion labels, achieving 76.7–93.3% accuracy across 6 emotions after SFT on a curated 15-hour emotion corpus. This positions implicit emotion inference as a practical alternative to explicit emotion label conditioning.
 
 ## Open questions
 
@@ -58,3 +58,4 @@ A limitation is that all empathetic responses in the SFT dataset use a fixed you
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | First fully open-source empathetic speech-to-speech LLM; automated pipeline synthesizes 100K empathetic bilingual dialogues; multi-stage training for emotion detection and empathetic response generation |
+| [[2509.02020]] | FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot | arXiv | 2025 | Demonstrates implicit emotion inference from chat context history (no explicit emotion labels); achieves 76.7–93.3% accuracy across 6 emotions (surprise, sadness, happiness, concern, apology, anger) via SFT on a 15-hour curated emotion corpus |

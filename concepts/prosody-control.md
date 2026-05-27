@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Prosody Control
@@ -26,9 +26,13 @@ Prosody control is also the dominant axis of variation captured by style-control
 
 Pitch accuracy remains the weakest controlled attribute (0.833), attributed to interference between simultaneous timbre and style conditioning. This represents an open challenge in fine-grained prosody control under multi-factor conditioning.
 
+Complementary theoretical grounding for prosody modeling is provided by [[2025.acl-long.1471]], which establishes that pitch, loudness, and prominence are redundant with 3–8 past words but only 1–2 future words of linguistic context (measured via mutual information). This asymmetry has direct implications for prosody predictor design in TTS: adequate past-context window is ~8 words; future context adds little beyond the immediately following word. Duration and pause behave differently — they are better predicted from future context, due to sentence-boundary effects.
+
+[[2025.acl-industry.42]] demonstrates tonal prosody control for Thai via a Phoneme-Tone BERT trained on 1M Thai sentences. The five-tone system requires explicit tone marker representation in the phoneme sequence, and contextual BERT modeling of tone-consonant interactions is the key to accurate Thai prosody generation.
+
 ## Key variants and sub-approaches
 
-**Parametric prosody control.** FastSpeech 2 (Ren et al., 2020) introduces explicit variance adaptors for pitch, duration, and energy prediction from text, enabling direct parameter-level manipulation. Simple, interpretable, but stylistically limited.
+**Parametric prosody control.** FastSpeech 2 (Ren et al., 2020) introduces explicit variance adaptors for pitch, duration, and energy prediction from text, enabling direct parameter-level manipulation. Simple, interpretable, but stylistically limited. [[2025.acl-industry.42]] extends this for tonal languages by training a Phoneme-Tone BERT to provide contextual prosody representations that capture tone-consonant interactions in Thai.
 
 **Reference audio prosody transfer.** GST (Global Style Tokens) and GMVAE models extract a style embedding from a reference audio and condition the TTS backbone. More expressive than parametric but requires a reference recording.
 
@@ -42,16 +46,20 @@ Speaker-conditioned TTS (with reference audio) implicitly conditions on the refe
 
 ## Year-on-year trajectory
 
-2020–2022: FastSpeech 2 established parametric duration/pitch control as standard. GST-based approaches extended this to reference audio style transfer. 2023: PromptTTS and InstructTTS introduced natural language style conditioning; first attempts at open-vocabulary prosody control. 2025: [[2025.acl-long.346]] (ControlSpeech) integrates natural language prosody control with zero-shot speaker cloning, and introduces mixture density modeling to capture probabilistic prosody distributions from text descriptions.
+2020–2022: FastSpeech 2 established parametric duration/pitch control as standard. GST-based approaches extended this to reference audio style transfer. 2023: PromptTTS and InstructTTS introduced natural language style conditioning; first attempts at open-vocabulary prosody control. 2025: [[2025.acl-long.346]] (ControlSpeech) integrates natural language prosody control with zero-shot speaker cloning, and introduces mixture density modeling to capture probabilistic prosody distributions from text descriptions. [[2025.acl-long.1471]] provides quantitative empirical grounding for how many words of linguistic context are needed for prosody prediction, establishing a design principle applicable to all TTS prosody models. [[2025.acl-industry.42]] demonstrates that tonal languages require dedicated prosody modeling components (Phoneme-Tone BERT) beyond standard pitch/duration predictors.
 
 ## Open questions
 
 - Can natural language prosody control generalize to fine-grained instructions beyond the 5 attribute dimensions (pitch, speed, volume, emotion, gender) in datasets like VccmDataset?
 - Is pitch the most difficult attribute to independently control under multi-factor conditioning, as suggested by [[2025.acl-long.346]]? What architectural changes would resolve this?
 - Can prosody control from natural language descriptions be evaluated objectively (beyond classifier accuracy) to capture human-perceived nuance?
+- [[2025.acl-long.1471]] establishes 3–8 past words as the prosody MI saturation point for English audiobooks; does this generalize to other speech styles (conversational, spontaneous) and languages?
+- Duration and pause require more future context than past context per [[2025.acl-long.1471]]; how should TTS prosody predictors handle these features differently from pitch and energy?
 
 ## Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2025.acl-long.346]] | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL | 2025 | Simultaneously controls pitch, speed, volume, and emotion from natural language descriptions via SMSD module; uses FACodec prosody codes as factorized control target; introduces MOS-SA and MOS-SD evaluation metrics |
+| [[2025.acl-long.1471]] | The time scale of redundancy between prosody and linguistic context | ACL | 2025 | Establishes via mutual information estimation that pitch, loudness, and prominence are redundant with 3–8 past words and 1–2 future words; provides empirical design constraints for TTS prosody predictors |
+| [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL | 2025 | Trains a Phoneme-Tone BERT on 1M Thai sentences to capture tonal prosody context for five-tone language TTS; demonstrates domain-specific prosody modeling for tonal languages |
