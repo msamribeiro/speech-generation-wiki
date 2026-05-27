@@ -1,0 +1,63 @@
+---
+slug: flow-matching
+title: Flow Matching
+aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
+related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
+last_updated: 2026-05-26
+---
+
+# Flow Matching
+
+## What it is
+
+Flow matching is a method for training continuous normalizing flows (CNFs) by directly regressing a vector field that transports samples from a source distribution (typically Gaussian noise) to a target distribution (e.g., mel-spectrograms or waveforms). Optimal-transport (OT) flow matching constructs the straightest possible path between source and target, minimizing the curvature of the learned trajectory. This allows fewer inference steps than diffusion models while maintaining fidelity.
+
+The training loss is: given a random timestep t ∈ [0,1], interpolate x_t = x_0 + t(x_1 − x_0) between noise x_0 and data x_1, then train the model to predict the derivative x_1 − x_0 with L2 loss. Inference integrates the predicted vector field from t=0 to t=1 using an ODE solver.
+
+In speech synthesis, flow matching models typically operate on mel-spectrograms, with text and/or speaker conditioning applied via cross-attention or concatenation. A vocoder (HiFi-GAN, Vocos, BigVGAN) then converts the predicted mel to waveform.
+
+## Why it matters
+
+Flow matching has emerged as the dominant architecture for zero-shot TTS in 2024–2025, largely displacing diffusion and GAN-based approaches. Its advantages over diffusion are: (1) fewer inference steps needed due to straighter transport paths, (2) simpler training objective (direct flow regression vs. score matching), and (3) compatibility with conditional ODE solvers. Its advantage over autoregressive methods is inference parallelism (all frames generated jointly, not token-by-token).
+
+Classifier-free guidance (CFG) is essential for conditional flow matching in speech, and the strategy for applying CFG affects the speaker similarity / text adherence trade-off — an active research area ([[2509.19668]]). Inference-time flow step scheduling (Sway Sampling in [[2025.acl-long.313]]) is another lever: biasing ODE integration toward early timesteps improves text-speech alignment robustness without retraining.
+
+## Current state of the art
+
+As of late 2025, the leading open-weight flow-matching TTS systems are F5-TTS ([[2025.acl-long.313]], 336M, WER 1.83% / SIM-o 0.67 on Seed-TTS test-en with Sway Sampling) and CosyVoice 2 (71M flow model + LLM). Closed-source frontier models include Minimax-Speech, Seed-TTS, and CosyVoice 3-1.5B. The gap between open and closed systems is approximately 5–7 SIM points on Seed-TTS-eval.
+
+The two dominant paradigms are:
+- **Pure flow matching** (F5-TTS, E2-TTS, Voicebox): flow matching directly on mel-spectrograms conditioned on full text + reference audio concatenation.
+- **LLM + flow matching** (CosyVoice family): LLM generates semantic tokens autoregressively; flow matching predicts acoustic mel conditioned on semantic tokens and speaker embedding.
+
+## Key variants and sub-approaches
+
+**Pure non-autoregressive flow matching.** F5-TTS ([[2025.acl-long.313]]) and E2-TTS jointly model the reference audio and target speech in a single sequence, using the reference audio mel as the acoustic prompt. The full sequence is denoised together. F5-TTS improves on E2-TTS by adding ConvNeXt V2 text refinement blocks before concatenating text and speech, resolving E2-TTS's alignment failures. Sway Sampling at inference further boosts robustness by concentrating ODE steps near t=0 (early speech silhouette formation). The model is jointly conditioned on reference text + target text (concatenated). CFG is applied over the combined conditioning.
+
+**LLM-conditioned flow matching.** CosyVoice 2 uses Qwen2.5-0.5B to autoregressively generate supervised semantic tokens, which are then used to condition a 71M flow-matching acoustic model. The LLM's strong language modeling provides text adherence without heavy CFG weight, which explains why selective CFG has less impact on this architecture ([[2509.19668]]).
+
+**Classifier-free guidance strategies.** Standard CFG amplifies the conditioned vs. unconditioned prediction. Separated-condition CFG (DualSpeech, MegaTTS 3, [[2509.19668]]) uses separate weights for text and speaker conditioning. The def text strategy ([[2509.19668]]) applies standard CFG during early timesteps and switches to speaker-emphasized CFG for later timesteps, improving SIM without proportional WER increase.
+
+## Comparison to alternatives
+
+Diffusion models (DDPM, score-based) require more inference steps and have higher curvature in their transport paths than OT flow matching. Flow matching has largely superseded diffusion in TTS applications. Autoregressive codec LMs (VALL-E family) produce strong speaker similarity by conditioning on long acoustic prompts but have higher inference latency due to sequential token generation.
+
+## Year-on-year trajectory
+
+2023: Voicebox introduced flow matching to TTS at scale. 2024: E2-TTS, F5-TTS ([[2025.acl-long.313]]) established pure flow matching as competitive with autoregressive methods on speaker similarity and WER benchmarks; F5-TTS identified and fixed E2-TTS's alignment failure mode via ConvNeXt text refinement. 2025: CFG strategies for flow matching TTS are now studied in depth [[2509.19668]]; image-generation CFG tricks do not directly transfer; language-specific behavior of CFG is reported; inference-time flow step scheduling (Sway Sampling) shown to universally improve CFM TTS without retraining. Trend: flow matching is now the default architecture for new zero-shot TTS systems.
+
+## Open questions
+
+- Why do image-generation CFG improvements (weight schedules, perpendicular re-weighting, zero-init) fail to improve flow-matching TTS? Is it the output modality, the conditioning structure, or the different role of early vs. late timesteps in mel generation?
+- Can the language-specific CFG behavior ([[2509.19668]]: F5-TTS works for English but not Mandarin) be attributed specifically to the ConvNeXt text encoder's capacity?
+- How should inference-time CFG strength be automatically determined based on the reference and target text, rather than requiring manual hyperparameter sweep?
+- Can Sway Sampling ([[2025.acl-long.313]]) be combined with training-time noise schedulers or distillation to further reduce NFE without quality loss?
+- Can the mel-frame padding overhead of E2/F5-TTS style models be reduced by using more compact continuous speech representations?
+
+## Papers
+
+| ID | Title | Venue | Year | Key use of this concept |
+|----|-------|-------|------|------------------------|
+| [[2509.19668]] | Selective Classifier-free Guidance for Zero-shot Text-to-speech | arXiv | 2025 | Systematic evaluation of CFG strategies for flow-matching zero-shot TTS; proposes timestep-selective CFG; finds image CFG tricks do not transfer to speech |
+| [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Proposes ConvNeXt text refinement to fix E2-TTS alignment failures and Sway Sampling for inference-time flow step scheduling; 335.8M DiT model trained on 95K h EN+ZH |
+| [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Derives DPO-FM: a DPO objective for OT flow-matching models expressed in velocity space; applied to F5-TTS to reduce code-switching WER 33.99 → 15.98 and cross-lingual WER 16.86 → 7.13 |

@@ -1,0 +1,56 @@
+---
+slug: streaming-tts
+title: Streaming TTS
+aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
+related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
+last_updated: 2026-05-26
+---
+
+# Streaming TTS
+
+## What it is
+
+Streaming (or real-time) TTS refers to speech synthesis systems that produce output audio incrementally as input arrives, without waiting for the full input to be processed. The key properties are low latency (typically measured as time-to-first-audio or chunk processing time relative to chunk duration) and real-time factor (RTF < 1 meaning the system processes audio faster than it is played). In streaming TTS, the model must operate causally — it cannot access future input frames when generating current output frames.
+
+The same principles apply to streaming voice conversion (online VC), where source speech is processed chunk-by-chunk and converted to a target speaker in real time. All components of the pipeline — content extractor, style encoder alignment, decoder, and vocoder — must be redesigned or modified to enforce causality.
+
+## Why it matters
+
+Streaming operation is essential for real-time communication applications (teleconferencing, gaming avatars, virtual humans), interactive voice assistants, live broadcasting, and real-time speech privacy. Systems that cannot stream produce unacceptable latency for any interactive use case. As autoregressive TTS systems become more powerful (e.g., VALL-E family, CosyVoice), adapting them for streaming without quality loss is a central engineering challenge.
+
+## Current state of the art
+
+For streaming VC, [[2507.14534]] (Conan, 2025) is the current corpus state of the art, achieving 37 ms latency (fast setting) and 140 ms (full setting) with RTF of 0.74 and 0.25 respectively on a single A100 GPU. It uses Emformer for streaming content extraction (distilled from HuBERT), a causal mel decoder, and the Causal Shuffle Vocoder (pixel-shuffle based causal HiFi-GAN). Speaker similarity (85.71%) exceeds prior offline baselines.
+
+For streaming TTS (text-to-speech), FlexiCodec-TTS ([[2510.00981]]) demonstrates that very low AR frame rate (6.25 Hz) enables a 7.3× speedup in the AR stage (RTF 0.07) while maintaining competitive quality (WER 3.2%, NMOS 3.32), pointing to codec frame rate as a key lever for streaming TTS efficiency.
+
+## Key variants and sub-approaches
+
+**Chunk-based streaming.** Source audio is buffered into fixed-size chunks (20–80 ms for VC; similar for TTS) and processed one chunk at a time. Each output chunk is generated before the next input chunk arrives (RTF < 1 ensures this). A sliding context window provides temporal continuity across chunk boundaries.
+
+**Causal convolutions.** Standard convolutions are replaced with left-padded causal convolutions throughout the synthesis pipeline. GAN vocoders like HiFi-GAN require full replacement of transposed convolutions to avoid spectral artifacts from zero-padding ([[2507.14534]] resolves this with pixel shuffle instead).
+
+**Autoregressive streaming.** VALL-E-family models generate tokens autoregressively and are inherently streaming at the token level; the bottleneck is token generation speed (AR RTF). Lower frame rate codecs ([[2510.00981]]) reduce sequence length and thus AR RTF.
+
+**Causal attention masking.** Transformer-based decoders use causal attention masks to prevent attending to future positions. Emformer ([[2507.14534]]) caches previous chunk keys/values and summary vectors as a memory bank.
+
+## Comparison to alternatives
+
+Non-streaming TTS achieves higher quality (access to full context) but cannot be used interactively. The quality gap has narrowed substantially: [[2507.14534]] shows streaming VC can match or exceed offline quality in speaker similarity. The primary remaining cost of streaming is in content accuracy (WER slightly higher for streaming systems due to limited right context).
+
+## Year-on-year trajectory
+
+2022–2024: Early streaming VC systems used zero-padding causal vocoders (quality degradation), frame-by-frame autoregressive decoders (slow), and distillation-based causal content encoders (insufficient accuracy). 2025: Conan ([[2507.14534]]) eliminates all three failure modes with Emformer distillation, chunk-level parallel generation, and Causal Shuffle Vocoder. On the TTS side, FlexiCodec-TTS ([[2510.00981]]) demonstrates that sub-10 Hz codec tokens allow AR stages fast enough for near-streaming deployment.
+
+## Open questions
+
+- Can streaming zero-shot TTS (not just VC) achieve comparable quality to non-streaming SOTA at < 100 ms latency?
+- How do streaming systems behave under network jitter (variable chunk arrival timing)?
+- Is 37 ms latency (Conan fast) perceptually transparent to users in real-time communication? No user study on this threshold is reported.
+- Causal vocoders still trade some quality for causality; is pixel shuffle the optimal approach, or are there better alternatives?
+
+## Papers
+
+| ID | Title | Venue | Year | Key use of this concept |
+|----|-------|-------|------|------------------------|
+| [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Streaming zero-shot VC at 37–140 ms latency using Emformer content extraction and Causal Shuffle Vocoder; demonstrates streaming can match offline VC quality |
