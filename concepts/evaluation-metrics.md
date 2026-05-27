@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Evaluation Metrics
@@ -66,5 +66,6 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2025.findings-emnlp.424]] | InteractSpeech: A Speech Dialogue Interaction Corpus for Spoken Dialogue Model | EMNLP 2025 | 2025 | Introduces interaction event classification (backchannel/interruption/gap/pause binary accuracy) as a new evaluation paradigm for spoken dialogue models |
-| [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL 2025 | 2025 | Introduces consistency accuracy — a novel codec-level metric measuring token agreement between context-free and context-inclusive encodings of the same audio segment — used alongside PESQ, ViSQOL, WER, SPK-SIM, and UTMOS |
+| [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL | 2025 | Introduces consistency accuracy — a novel codec-level metric measuring token agreement between context-free and context-inclusive encodings of the same audio segment — used alongside PESQ, ViSQOL, WER, SPK-SIM, and UTMOS |
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Uses WER (Whisper-large-v3 for EN, Paraformer-zh for ZH/code-switching), SPK-SIM (WavLM TDNN cosine), UTMOS, N-CMOS, and reading accuracy (binary human intelligibility judgment) across four domain types; introduces reading accuracy as a targeted intelligibility evaluation complementary to WER |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys evaluation across six categories: representation, linguistic, paralinguistic, generation quality/diversity, real-time interaction, and downstream benchmarks (SUPERB, VoiceBench, OpenAudioBench, VoxEval); provides the most comprehensive taxonomy of SpeechLM evaluation in the corpus |

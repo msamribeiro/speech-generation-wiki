@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Self-Supervised Speech Representations and Foundation Models
@@ -69,3 +69,6 @@ Text-supervised ASR features encode more concentrated semantic information but r
 | [[2509.19668]] | Selective CFG for Zero-shot TTS | arXiv | 2025 | WavLM-Large used for SPK-SIM speaker similarity evaluation |
 | [[2025.findings-emnlp.424]] | InteractSpeech | EMNLP 2025 | 2025 | SSL-based pyannote.audio for speaker diarization and vocal consistency in dataset construction pipeline |
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Whisper-Large-v3 encoder used as frozen audio feature extractor; Whisper decoder weights repurposed to initialize Q-Former connector, dramatically improving training efficiency vs. random init |
+| [[2025.findings-naacl.184]] | Continuous Speech Tokenizer in Text To Speech | NAACL | 2025 | CTC loss on ASR task used during tokenizer pre-training to ensure continuous speech tokens carry phonetic content; draws on self-supervised learning ideas for representation quality |
+| [[2025.emnlp-main.989]] | VocalNet | EMNLP | 2025 | Whisper-large-v3 used as frozen speech encoder; its representations are downsampled 5× by an adaptor and fed to LLaMA backbone; demonstrates that SSL/supervised encoder choice interacts with the MTP training objective |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Comprehensive taxonomy of SSL models (Wav2vec 2.0, HuBERT, WavLM, USM) and their roles as speech tokenizers; surveys how SSL objectives shape the semantic vs. acoustic content of speech representations |

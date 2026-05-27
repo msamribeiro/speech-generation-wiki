@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Neural Audio Codec
@@ -31,7 +31,7 @@ Previous state-of-the-art at 12.5 Hz was DualCodec (RVQ-1 WER 5.93% at 12.5 Hz).
 
 ## Key variants and sub-approaches
 
-**Fixed-rate high-quality codecs (EnCodec, DAC).** Operate at 50–75 Hz, prioritizing reconstruction quality over downstream LM efficiency. DAC uses periodic activations and codebook utilization improvements. Not designed for LM use.
+**Fixed-rate high-quality codecs (EnCodec, DAC).** Operate at 50–75 Hz, prioritizing reconstruction quality over downstream LM efficiency. DAC uses periodic activations and codebook utilization improvements. EnCodec (75 Hz, 8 RVQ layers) is the original codec used in VALL-E [[2301.02111]] and remains a widely cited baseline.
 
 **SSL-distillation semantic codecs (SpeechTokenizer, Mimi, DualCodec).** Distill self-supervised representations (HuBERT, WavLM, w2v-bert-2) into the RVQ-1 stream to ensure it carries semantic content. Mimi and DualCodec operate at 12.5 Hz by using higher encoder downsampling rates. Adequate for 12.5 Hz but struggle below that.
 
@@ -40,6 +40,8 @@ Previous state-of-the-art at 12.5 Hz was DualCodec (RVQ-1 WER 5.93% at 12.5 Hz).
 **Text-assisted codecs (TaDiCodec, TASTE).** Use text transcription to assist ultra-low-rate coding. Achieve ≤ 6.25 Hz but require ground-truth text, limiting applicability in non-TTS settings.
 
 **Single-codebook codecs (WavTokenizer, SemantiCodec).** Use a single FSQ/VQ codebook for simplicity, operating at 40–75 Hz. More suitable for non-LM applications.
+
+**Continuous tokenizers.** [[2025.findings-naacl.184]] (Cont-SPT) challenges whether discrete quantization is necessary at all: the encoder output is retained as continuous speech tokens (no RVQ), and the AR LM predicts these via MSE regression. This eliminates quantization-induced information loss (especially at high frequencies: 0.55 vs. 0.34 retention at 8 kHz), improving WER and speaker similarity in downstream TTS. The tradeoff is that the training objective changes from classification to regression, and generation requires a flow-matching acoustic decoder rather than simple codebook lookup.
 
 ## Comparison to alternatives
 
@@ -57,11 +59,17 @@ Continuous mel-spectrograms remain the dominant representation for non-autoregre
 - Streaming/causal encoding is not addressed by FlexiCodec; is dynamic frame merging compatible with online TTS pipelines?
 - Multilingual semantic tokens require language-specific fine-tuning; can the ASR-guided merging generalize cross-lingually?
 - DRI ([[2025.acl-long.1498]]) is shown to worsen with deeper RVQ layers; does this suggest the deeper-layer representation design needs fundamentally different treatment (e.g. non-contextual sub-quantizers)?
+- [[2025.findings-naacl.184]] shows continuous tokens outperform RVQ on a single English benchmark; will continuous-token AR LMs scale to larger data and multilingual settings, or does the MSE regression objective become unstable?
+- VocalNet [[2025.emnlp-main.989]] and other speech LLMs now use CosyVoice2 semantic tokens (25 Hz) rather than traditional RVQ codecs; does this represent a shift toward hybrid supervised-semantic tokenization as the default?
 
 ## Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
+| [[2301.02111]] | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (VALL-E) | arXiv | 2023 | First TTS system built on top of a neural audio codec (EnCodec 75 Hz, 8 RVQ layers); demonstrates that codec tokens enable large-scale language model pre-training for zero-shot TTS |
 | [[2510.00981]] | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv (ICLR 2026) | 2025 | Proposes ASR-feature-guided dynamic frame merging to achieve 3–12.5 Hz controllable codec with near-GT semantic preservation at 6.25 Hz; enables TTS AR speedup of 7.3× over CosyVoice |
-| [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL 2025 | 2025 | Introduces consistency accuracy metric and DRI (Discrete Representation Inconsistency) phenomenon; proposes slice-consistency and perturbation-consistency losses that increase RVQ consistency by up to 36% and reduce downstream VALL-E WER by 1.98% |
+| [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL | 2025 | Introduces consistency accuracy metric and DRI (Discrete Representation Inconsistency) phenomenon; proposes slice-consistency and perturbation-consistency losses that increase RVQ consistency by up to 36% and reduce downstream VALL-E WER by 1.98% |
+| [[2025.findings-naacl.184]] | Continuous Speech Tokenizer in Text To Speech | NAACL | 2025 | Replaces RVQ with a continuous speech tokenizer; retains encoder output directly, avoiding high-frequency quantization loss; shows information retention advantage at 8 kHz (0.55 vs. 0.34 for discrete) and improved downstream TTS quality |
 | [[2025.acl-long.346]] | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL | 2025 | Uses frozen FACodec (NaturalSpeech 3 factorized codec) as disentanglement backbone; content, prosody, acoustic detail, and timbre codes are separately controlled — demonstrating that a pre-trained factorized codec can serve as the control interface for simultaneous multi-factor TTS |
+| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Uses CosyVoice2 semantic speech tokens (25 Hz) as the codec for speech generation; the codec choice enables compatibility with flow-matching acoustic decoder and HiFi-GAN vocoder in a full speech LLM pipeline |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys all major neural codec architectures (SoundStream, EnCodec, DAC, SpeechTokenizer, Mimi) and their roles as speech tokenizers; classifies by objective (semantic understanding, acoustic generation, mixed) and discusses discrete vs. continuous representations |

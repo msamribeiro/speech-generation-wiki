@@ -3,7 +3,7 @@ slug: rlhf-speech
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # RLHF for Speech
@@ -63,3 +63,4 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Introduces INTP dataset (250K pairs) and DPO extensions for AR, flow-matching, and masked generative TTS; demonstrates weak-to-strong generalization and iterative alignment; 31–46% relative WER reduction across five systems |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys post-alignment methods for SpeechLMs including AlignSLM (DPO for semantic consistency) and SpeechAlign (token distribution correction); situates RLHF within the broader SpeechLM training pipeline |

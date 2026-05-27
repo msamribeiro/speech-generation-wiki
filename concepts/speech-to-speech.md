@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Speech-to-Speech Systems
@@ -75,3 +75,5 @@ The Factor C problem ([[2412.17048]]) — paralinguistic variability inflating t
 | [[2025.findings-emnlp.424]] | InteractSpeech | EMNLP 2025 | 2025 | Interaction corpus for training S2S dialogue models on turn-taking, backchannels, interruptions |
 | [[2509.02020]] | FireRedTTS-2 | arXiv | 2025 | Cascade S2S dialogue (TTS + dialogue planning); sentence-by-sentence streaming multi-speaker generation |
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | E2E speech-in text-out voice assistant trained via cross-modal distillation; demonstrates that cascade-style capability forgetting in SFT can be avoided by distilling from text LLM responses to transcripts |
+| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Full end-to-end speech-in speech-out system with empathetic response generation; streaming interleaved decoding; open-source training data and code; competitive on VoiceBench and URO-Bench |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Survey covering all three S2S sub-paradigms (E2E, direct translation, cascade); taxonomizes full-duplex systems (Moshi, Parrot, LSLM) and evaluates their latency, paralinguistic continuity, and training complexity |

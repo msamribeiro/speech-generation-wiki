@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Spoken Language Model
@@ -26,9 +26,13 @@ For interactive applications, SLMs must also handle fine-grained turn-taking dyn
 
 Real-time dialogue SLMs as of 2025: GPT-4o voice mode, Moshi (first fully duplex open-source system), Mini-Omni, and Qwen2.5-Omni represent the frontier. These systems largely use hybrid architectures with text LLM components rather than pure SLMs.
 
-Pure SLMs (no text guidance): GSLM, AudioLM, TWIST, SpiritLM, and Align-SLM. These systems still underperform cascade systems on semantic coherence by a large margin. [[2412.17048]] provides a systematic analysis showing that paralinguistic variability in speech tokens (Factor C, primarily) and sequence length (Factor B) are the main causes, not the phonetic vs. semantic nature of speech tokens (Factor A).
+Pure SLMs (no text guidance): GSLM, AudioLM, TWIST, SpiritLM, and Align-SLM. These systems still underperform cascade systems on semantic coherence by a large margin. [[2412.17048]] provides a systematic analysis showing that paralinguistic variability in speech tokens (Factor C, primarily) and sequence length (Factor B) are the main causes, not the phonetic vs. semantic nature of speech tokens (Factor A). [[2025.acl-long.682]] surveys the full landscape of SpeechLM architectures, training recipes (pretraining, instruction tuning, RLHF), and evaluation benchmarks as of mid-2025 — the most comprehensive taxonomic reference in the corpus.
 
 For training paradigm, [[2025.acl-long.388]] (DiVA) demonstrates that cross-modal context distillation from a frozen text LLM — using only ASR-paired data and without annotated instruction responses — can match or outperform SFT-trained speech LLMs. DiVA achieves a 72% user preference win rate against Qwen 2 Audio (trained with >100× more compute), establishing that instruction following can be transferred from text to speech via distillation rather than SFT annotation.
+
+For data efficiency, [[2025.emnlp-main.989]] (VocalNet) demonstrates that multi-token prediction (MTP) for speech generation, combined with a simplified two-stage training (no ASR/TTS pre-training), matches or beats SLMs trained on 100–200× more data. VocalNet-8B achieves WER 3.56% and UTMOS 4.49 with ~6K hours training vs. competitors using 887K–1.4M hours.
+
+For empathetic speech interaction, [[2025.emnlp-demos.70]] (OpenS2S) provides a fully open-source SLM with empathy modeling via an automated data construction pipeline and streaming interleaved decoding. It demonstrates competitive performance on URO-Bench emotion understanding tasks without requiring the large-scale pre-training data of closed-source competitors.
 
 For interaction modeling, [[2025.findings-emnlp.424]] shows that with targeted fine-tuning on InteractSpeech, a model can achieve 73.4% accuracy on interactional event classification (vs. 54.2% for zero-shot GPT-4o), demonstrating that data quality matters significantly for interaction capabilities.
 
@@ -38,9 +42,13 @@ For codec efficiency, [[2510.00981]] (FlexiCodec) shows that 6.25 Hz AR tokens c
 
 **Pure speech-to-speech LMs.** Models trained without text supervision: GSLM uses de-duplicated HuBERT tokens; AudioLM uses hierarchical semantic (SoundStream RVQ-1) and acoustic (RVQ-rest) tokens. These achieve naturalness but limited semantic coherence.
 
-**Interleaved speech-text LMs.** SpiritLM interleaves speech and text tokens at word level; SpeechGPT uses speech-text-paired fine-tuning; TWIST initializes from text LLM weights. These leverage text LLM capabilities while partially retaining speech-level modeling.
+**Interleaved speech-text LMs.** SpiritLM interleaves speech and text tokens at word level; SpeechGPT uses speech-text-paired fine-tuning; TWIST initializes from text LLM weights. These leverage text LLM capabilities while partially retaining speech-level modeling. [[2025.acl-long.682]] surveys this full spectrum.
 
 **Duplex systems.** Moshi uses a multi-stream transformer to simultaneously process and generate speech in real time. This requires low-latency codec tokens and streaming architecture.
+
+**Aligned multimodal LLMs (speech encoder + text LLM + speech decoder).** Systems like VocalNet [[2025.emnlp-main.989]], LLaMA-Omni, Mini-Omni, and Qwen2.5-Omni use a frozen speech encoder, an adaptor, and a large text LLM backbone with a dedicated speech decoder. The LLM's text capabilities are preserved while adding speech I/O. MTP [[2025.emnlp-main.989]] improves the speech decoder's output quality without changing the LLM.
+
+**Empathetic SLMs.** [[2025.emnlp-demos.70]] (OpenS2S) extends the aligned multimodal paradigm with empathy modeling via multi-stage training (speech understanding, speech generation, empathetic instruction tuning) and an automated pipeline for constructing empathetic speech dialogue data. Streaming interleaved decoding (M=4 LLM states → N=8 speech tokens per step) enables low-latency generation.
 
 **Interaction-capable systems.** [[2025.findings-emnlp.424]] fine-tunes Qwen-2.5-Omni with GRPO on InteractSpeech to classify turn-taking events (backchannels, interruptions, gaps, pauses). LLaMA 3-8B fine-tuned on InteractSpeech text achieves 86% human agreement on interactive dialogue generation.
 
@@ -52,7 +60,7 @@ For codec efficiency, [[2510.00981]] (FlexiCodec) shows that 6.25 Hz AR tokens c
 
 ## Year-on-year trajectory
 
-2021: GSLM establishes that de-duplicated HuBERT tokens allow rudimentary speech language modeling. 2022: AudioLM adds acoustic conditioning for naturalness. 2023: TWIST, SpeechGPT bring text LLM initialization and fine-tuning. 2024: Moshi achieves real-time duplex operation; GPT-4o voice mode demonstrates commercial-scale capability. 2025: Systematic analysis ([[2412.17048]]) reveals Factor C (paralinguistic variability) as the dominant bottleneck, more important than token semanticity. InteractSpeech ([[2025.findings-emnlp.424]]) provides targeted training data for interaction dynamics. FlexiCodec ([[2510.00981]]) demonstrates sub-10 Hz codecs that could reduce SLM sequence lengths substantially. DiVA ([[2025.acl-long.388]]) establishes that cross-modal context distillation from text LLMs using only ASR data can match or outperform SFT-trained speech LLMs, challenging the assumption that instruction annotation is a prerequisite for capable speech understanding models.
+2021: GSLM establishes that de-duplicated HuBERT tokens allow rudimentary speech language modeling. 2022: AudioLM adds acoustic conditioning for naturalness. 2023: TWIST, SpeechGPT bring text LLM initialization and fine-tuning. 2024: Moshi achieves real-time duplex operation; GPT-4o voice mode demonstrates commercial-scale capability. 2025: Systematic analysis ([[2412.17048]]) reveals Factor C (paralinguistic variability) as the dominant bottleneck, more important than token semanticity. InteractSpeech ([[2025.findings-emnlp.424]]) provides targeted training data for interaction dynamics. FlexiCodec ([[2510.00981]]) demonstrates sub-10 Hz codecs that could reduce SLM sequence lengths substantially. DiVA ([[2025.acl-long.388]]) establishes that cross-modal context distillation from text LLMs using only ASR data can match or outperform SFT-trained speech LLMs. VocalNet ([[2025.emnlp-main.989]]) shows that MTP halves WER vs. NTP with the same model architecture, and that ASR/TTS pretraining stages add cost without benefit — simplifying training pipelines is now an active optimization axis. OpenS2S ([[2025.emnlp-demos.70]]) demonstrates that fully open-source empathetic SLMs are achievable with automated data construction pipelines, closing the reproducibility gap. [[2025.acl-long.682]] provides the first comprehensive survey of the field as of mid-2025, covering all sub-paradigms from pure SLMs to aligned multimodal LLMs.
 
 ## Open questions
 
@@ -61,6 +69,8 @@ For codec efficiency, [[2510.00981]] (FlexiCodec) shows that 6.25 Hz AR tokens c
 - What level of interaction modeling is needed for practical applications? The InteractSpeech ([[2025.findings-emnlp.424]]) classification benchmark provides a starting point but end-to-end duplex evaluation remains standardization-free.
 - How much of the semantic coherence gap can be closed by scaling the SLM vs. improving the tokenization?
 - Are pure end-to-end SLMs a necessary intermediate step, or will cascade architectures continue to dominate commercial systems?
+- VocalNet [[2025.emnlp-main.989]] shows MTP improves speech decoding quality significantly; can MTP also improve paralinguistic modeling (prosody, emotion), or does it only help intelligibility?
+- OpenS2S [[2025.emnlp-demos.70]] uses automated LLM+TTS data construction for empathy; what is the quality ceiling for this approach compared to human-annotated empathetic data?
 
 ## Papers
 
@@ -70,3 +80,6 @@ For codec efficiency, [[2510.00981]] (FlexiCodec) shows that 6.25 Hz AR tokens c
 | [[2025.findings-emnlp.424]] | InteractSpeech: A Speech Dialogue Interaction Corpus for Spoken Dialogue Model | EMNLP 2025 | 2025 | Provides 150h interaction-annotated dialogue corpus; demonstrates fine-grained turn-taking training and evaluation for duplex SDMs |
 | [[2510.00981]] | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv (ICLR 2026) | 2025 | Shows 6.25 Hz codec tokens with near-GT semantic preservation, enabling substantially shorter SLM input sequences while maintaining downstream TTS quality |
 | [[2025.acl-long.388]] | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Proposes cross-modal context distillation from text LLM to speech using only ASR data; 72% user preference win rate vs. Qwen 2 Audio at >100× less training compute |
+| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Introduces MTP for speech LLMs; eliminates ASR/TTS pretraining stages; VocalNet-8B matches Qwen2.5-Omni-class systems using ~6K hours vs. 887K–1.4M hours in competitors |
+| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Fully open-source empathetic SLM; automated LLM+TTS data synthesis pipeline; streaming interleaved decoding for low-latency response; competitive on URO-Bench emotion understanding |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Comprehensive survey of SpeechLM taxonomy: tokenizer families, LM architectures, vocoders, training paradigms (pretraining, instruction tuning, RLHF), and evaluation benchmarks |

@@ -3,7 +3,7 @@ slug: streaming-tts
 title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Streaming TTS
@@ -24,6 +24,8 @@ For streaming VC, [[2507.14534]] (Conan, 2025) is the current corpus state of th
 
 For streaming TTS (text-to-speech), FlexiCodec-TTS ([[2510.00981]]) demonstrates that very low AR frame rate (6.25 Hz) enables a 7.3× speedup in the AR stage (RTF 0.07) while maintaining competitive quality (WER 3.2%, NMOS 3.32), pointing to codec frame rate as a key lever for streaming TTS efficiency.
 
+For streaming speech LLM generation, VocalNet [[2025.emnlp-main.989]] achieves first-chunk latency of 319 ms (1B) and 428 ms (8B) on a single L20 GPU, with more than half of latency attributable to the flow-matching vocoder. OpenS2S [[2025.emnlp-demos.70]] uses streaming interleaved decoding where every 4 LLM hidden states trigger generation of 8 speech tokens, enabling real-time empathetic response streaming.
+
 ## Key variants and sub-approaches
 
 **Chunk-based streaming.** Source audio is buffered into fixed-size chunks (20–80 ms for VC; similar for TTS) and processed one chunk at a time. Each output chunk is generated before the next input chunk arrives (RTF < 1 ensures this). A sliding context window provides temporal continuity across chunk boundaries.
@@ -40,7 +42,7 @@ Non-streaming TTS achieves higher quality (access to full context) but cannot be
 
 ## Year-on-year trajectory
 
-2022–2024: Early streaming VC systems used zero-padding causal vocoders (quality degradation), frame-by-frame autoregressive decoders (slow), and distillation-based causal content encoders (insufficient accuracy). 2025: Conan ([[2507.14534]]) eliminates all three failure modes with Emformer distillation, chunk-level parallel generation, and Causal Shuffle Vocoder. On the TTS side, FlexiCodec-TTS ([[2510.00981]]) demonstrates that sub-10 Hz codec tokens allow AR stages fast enough for near-streaming deployment.
+2022–2024: Early streaming VC systems used zero-padding causal vocoders (quality degradation), frame-by-frame autoregressive decoders (slow), and distillation-based causal content encoders (insufficient accuracy). 2025: Conan ([[2507.14534]]) eliminates all three failure modes with Emformer distillation, chunk-level parallel generation, and Causal Shuffle Vocoder. On the TTS side, FlexiCodec-TTS ([[2510.00981]]) demonstrates that sub-10 Hz codec tokens allow AR stages fast enough for near-streaming deployment. For speech LLMs, VocalNet [[2025.emnlp-main.989]] and OpenS2S [[2025.emnlp-demos.70]] establish streaming speech generation architectures with first-chunk latencies of 300–430 ms; the bottleneck has shifted from AR decoding to the acoustic vocoder.
 
 ## Open questions
 
@@ -54,3 +56,6 @@ Non-streaming TTS achieves higher quality (access to full context) but cannot be
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Streaming zero-shot VC at 37–140 ms latency using Emformer content extraction and Causal Shuffle Vocoder; demonstrates streaming can match offline VC quality |
+| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Chunk-based streaming attention masking for speech LLM; first-chunk latency 319–428 ms on L20 GPU; identifies flow-matching vocoder as dominant latency bottleneck |
+| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Streaming interleaved decoding (4 LLM states → 8 speech tokens per step); chunk-aware causal flow matching + HiFi-GAN vocoder for real-time empathetic speech response generation |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys full-duplex and real-time SpeechLM architectures; covers streaming tokenizers, simultaneous bidirectional communication, and systems like Moshi and LSLM |

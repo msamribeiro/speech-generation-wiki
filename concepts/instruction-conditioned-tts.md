@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Instruction-Conditioned TTS
@@ -57,3 +57,4 @@ Prosody-conditioned TTS (reference audio style transfer) copies style from a ref
 |----|-------|-------|------|------------------------|
 | [[2025.acl-long.346]] | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL | 2025 | Proposes SMSD mixture density module for many-to-many style control; first joint zero-shot cloning + zero-shot style control system; defines and evaluates MOS-SA and MOS-SD metrics |
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Shows that instruction-following capability can be transferred from a text LLM to the speech modality via cross-modal distillation without any speech instruction annotations, demonstrating that instruction adherence in speech models does not require explicit speech instruction data |
+| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Conditions speech response generation on empathetic instructions (emotion label + response style) synthesized by a large LLM; uses CosyVoice2 as the controllable TTS backend for empathetic dialogue data construction |

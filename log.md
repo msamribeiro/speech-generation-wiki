@@ -66,3 +66,16 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 ## 2026-05-27
 
 - ingest | session-14 verification | Confirmed batch 3 (2025.acl-long.1498, .313, .346, .388, .598) fully ingested — no data loss. STATUS.md updated: 16 ingested, ~515 ready.
+- ingest | interspeech-2025-0253 | Long-Context Speech Synthesis with Context-Aware Memory | Interspeech 2025
+- ingest | 2025.emnlp-main.1730 | FillerSpeech: Towards Human-Like Text-to-Speech Synthesis with Filler Insertion and Filler Style Control | EMNLP 2025
+- ingest | 2025.findings-naacl.184 | Continuous Speech Tokenizer in Text To Speech | NAACL 2025
+- ingest | 2025.emnlp-demos.70 | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP 2025
+- ingest-batch | 4 ingested, 0 failed
+- ingest | 2301.02111 | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers | arXiv 2023
+- ingest | interspeech-2025-0902 | VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech | Interspeech 2025
+- ingest | 2025.emnlp-main.989 | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP 2025
+- ingest | 2025.acl-long.682 | Recent Advances in Speech Language Models: A Survey | ACL 2025
+- ingest | 2025.americasnlp-1.1 | Text-to-speech system for low-resource languages: A case study in Shipibo-Konibo | workshop 2025
+- ingest-batch | 5 ingested, 0 failed
+- parse | batch 24 (queue batch 4) | 40 papers (2602.23266 … 2603.14032) | 40/40 done | RapidOCR: 2602.23765, 2603.08574, 2603.08823, 2603.09120, 2603.11589 (non-fatal) | total parsed: 571/798
+- integrate | 10 papers | 14 concepts updated | 12 cross-links added

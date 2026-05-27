@@ -3,7 +3,7 @@ slug: disentanglement
 title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # Disentanglement
@@ -50,3 +50,4 @@ End-to-end systems without explicit disentanglement (e.g., direct speaker condit
 |----|-------|-------|------|------------------------|
 | [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Three-way disentanglement of content (Emformer HuBERT distillation), global timbre (convolutional encoder), and local style/emotion (CVQ Adaptive Style Encoder) for streaming zero-shot VC |
 | [[2025.acl-long.346]] | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL | 2025 | Leverages frozen FACodec (NaturalSpeech 3) to separately address content (text), style (natural language via SMSD), and timbre (reference audio) in discrete disentangled codec space; ablation shows decoupling is essential — without it, pitch/speed/emotion accuracy collapses |
+| [[2025.acl-long.1043]] | OZSpeech: One-step Zero-shot Speech Synthesis with Learned-Prior-Conditioned Flow Matching | ACL | 2025 | Uses FACodec's factorized tokens (prosody, content, acoustic detail, timbre) as the foundation for disentangled prior code generation; the Prior Codes Generator operates on these separately controlled codes, enabling zero-shot synthesis with explicit content/speaker/acoustic disentanglement |

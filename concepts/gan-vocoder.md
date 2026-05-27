@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-05-26
+last_updated: 2026-05-27
 ---
 
 # GAN Vocoder
@@ -51,3 +51,5 @@ Diffusion vocoders (DiffWave, WaveGrad) achieve high quality but require many in
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Introduces Causal Shuffle Vocoder: pixel-shuffle-based causal HiFi-GAN that eliminates checkerboard artifacts while maintaining strict causality for streaming VC |
+| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Uses HiFi-GAN vocoder (via CosyVoice2's pipeline) as the final stage; identifies the GAN vocoder (combined with flow-matching) as the dominant latency component in streaming speech LLMs |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys GAN-based vocoders (MelGAN, HiFi-GAN, Fre-GAN, BigVGAN) and their role as token-to-speech synthesizers; distinguishes direct synthesis (HiFi-GAN on tokens) from input-enhanced synthesis (flow-matching → mel → HiFi-GAN as in CosyVoice) |
