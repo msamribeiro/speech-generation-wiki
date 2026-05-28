@@ -1,6 +1,6 @@
 # Wiki Index
 
-Last updated: 2026-05-27 | Papers: 25 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-28 | Papers: 34 | Concepts: 21 | Trends: 0
 
 ## Papers
 
@@ -31,6 +31,15 @@ Last updated: 2026-05-27 | Papers: 25 | Concepts: 21 | Trends: 0
 | [[2025.emnlp-main.1730]] | [FillerSpeech: Towards Human-Like Text-to-Speech Synthesis with Filler Insertion and Filler Style Control](papers/2025.emnlp-main.1730.md) | Korea University / Samsung Research | EMNLP | 2025 | TTS | flow-matching, transformer-enc-dec | 2026-05-27 |
 | [[2025.findings-naacl.184]] | [Continuous Speech Tokenizer in Text To Speech](papers/2025.findings-naacl.184.md) | CUHK / Tencent | NAACL | 2025 | TTS, codec | autoregressive-LM, VAE, flow-matching | 2026-05-27 |
 | [[2025.emnlp-demos.70]] | [OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model](papers/2025.emnlp-demos.70.md) | Institute of Automation, Chinese Academy of Sciences | EMNLP | 2025 | SCA | autoregressive-LM, hybrid | 2026-05-27 |
+| [[2406.02430]] | [Seed-TTS: A Family of High-Quality Versatile Speech Generation Models](papers/2406.02430.md) | ByteDance | arXiv | 2024 | TTS, VC | autoregressive-LM, diffusion, hybrid | 2026-05-28 |
+| [[2407.05407]] | [CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens](papers/2407.05407.md) | Alibaba Group | arXiv | 2024 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-05-28 |
+| [[2025.acl-long.65]] | [Autoregressive Speech Synthesis without Vector Quantization](papers/2025.acl-long.65.md) | Microsoft / CUHK | ACL | 2025 | TTS | autoregressive-LM, VAE, hybrid | 2026-05-28 |
+| [[2412.10117]] | [CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models](papers/2412.10117.md) | Alibaba Group | arXiv | 2024 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-05-28 |
+| [[2601.15621]] | [Qwen3-TTS Technical Report](papers/2601.15621.md) | Alibaba / Qwen Team | arXiv | 2026 | TTS | autoregressive-LM, hybrid | 2026-05-28 |
+| [[2512.14291]] | [GLM-TTS Technical Report](papers/2512.14291.md) | Zhipu AI / Tsinghua University | arXiv | 2025 | TTS | autoregressive-LM, diffusion, GAN, hybrid | 2026-05-28 |
+| [[2508.06262]] | [Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis](papers/2508.06262.md) | Northwestern Polytechnical University / HKUST | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-28 |
+| [[2502.03930]] | [DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation](papers/2502.03930.md) | ByteDance Seed | arXiv | 2025 | TTS | autoregressive-LM, diffusion, hybrid | 2026-05-28 |
+| [[2504.10352]] | [Pseudo-Autoregressive Neural Codec Language Models for Efficient Zero-Shot Text-to-Speech Synthesis](papers/2504.10352.md) | Microsoft / SJTU | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-28 |
 
 ## Concepts
 
@@ -72,8 +81,10 @@ Last updated: 2026-05-27 | Papers: 25 | Concepts: 21 | Trends: 0
 
 | Page | Venue | Year | Papers ingested |
 |------|-------|------|----------------|
-| [[arxiv-2025]] | arXiv | 2025 | 6 |
-| [[acl-2025]] | ACL | 2025 | 11 |
+| [[arxiv-2024]] | arXiv | 2024 | 3 |
+| [[arxiv-2025]] | arXiv | 2025 | 10 |
+| [[arxiv-2026]] | arXiv | 2026 | 1 |
+| [[acl-2025]] | ACL | 2025 | 13 |
 | [[emnlp-2025]] | EMNLP | 2025 | 4 |
 | [[naacl-2025]] | NAACL | 2025 | 1 |
 | [[interspeech-2025]] | Interspeech | 2025 | 2 |

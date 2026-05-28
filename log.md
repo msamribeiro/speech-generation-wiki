@@ -80,3 +80,22 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - parse | batch 24 (queue batch 4) | 40 papers (2602.23266 … 2603.14032) | 40/40 done | RapidOCR: 2602.23765, 2603.08574, 2603.08823, 2603.09120, 2603.11589 (non-fatal) | total parsed: 571/798
 - integrate | 10 papers | 14 concepts updated | 12 cross-links added
 - integrate | 15 papers | 16 concepts updated | 3 cross-links added
+
+## 2026-05-28
+
+- ingest | 2406.02430 | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv 2024
+- ingest | 2407.05407 | CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens | arXiv 2024
+- ingest | 2025.acl-long.65 | Autoregressive Speech Synthesis without Vector Quantization | ACL 2025
+- ingest | 2412.10117 | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv 2024
+- ingest | 2410.06885 | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL 2025
+- ingest-batch | 5 ingested, 0 failed
+- lint | duplicate detected: 2410.06885 is arXiv preprint of 2025.acl-long.313 (ACL canonical) — wiki page and index entry removed, metadata set to rejected
+- lint | full corpus duplicate scan — 14 arXiv/proceedings pairs resolved; arXiv IDs rejected, proceedings IDs canonical; 6 parsed output directories remapped from arXiv to proceedings IDs; corpus: 754 accepted, 29 ingested, 217 rejected
+- parse | batch 25 (queue batch 5) | 40 papers (2603.14035 … 2604.06356) | 40/40 done | RapidOCR: 2603.14853, 2603.22252, 2603.23938, 2603.24144 (non-fatal) | total parsed: 611/783
+- ingest | 2601.15621 | Qwen3-TTS Technical Report | arXiv 2026
+- ingest | 2512.14291 | GLM-TTS Technical Report | arXiv 2025
+- ingest | 2508.06262 | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv 2025
+- ingest | 2502.03930 | DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation | arXiv 2025
+- ingest | 2504.10352 | Pseudo-Autoregressive Neural Codec Language Models for Efficient Zero-Shot Text-to-Speech Synthesis | arXiv 2025
+- ingest-batch | 5 ingested, 0 failed
+- ingest-batch | 5 ingested, 0 failed
