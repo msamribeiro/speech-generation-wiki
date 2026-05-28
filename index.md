@@ -1,6 +1,6 @@
 # Wiki Index
 
-Last updated: 2026-05-28 | Papers: 34 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-28 | Papers: 39 | Concepts: 21 | Trends: 0
 
 ## Papers
 
@@ -40,6 +40,11 @@ Last updated: 2026-05-28 | Papers: 34 | Concepts: 21 | Trends: 0
 | [[2508.06262]] | [Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis](papers/2508.06262.md) | Northwestern Polytechnical University / HKUST | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-28 |
 | [[2502.03930]] | [DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation](papers/2502.03930.md) | ByteDance Seed | arXiv | 2025 | TTS | autoregressive-LM, diffusion, hybrid | 2026-05-28 |
 | [[2504.10352]] | [Pseudo-Autoregressive Neural Codec Language Models for Efficient Zero-Shot Text-to-Speech Synthesis](papers/2504.10352.md) | Microsoft / SJTU | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-28 |
+| [[2508.16332]] | [Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation](papers/2508.16332.md) | CUHK Shenzhen / ByteDance Seed | arXiv | 2025 | TTS, VC, singing | autoregressive-LM, flow-matching, hybrid | 2026-05-28 |
+| [[2508.02038]] | [Marco-Voice Technical Report](papers/2508.02038.md) | Alibaba International Digital Commerce | arXiv | 2025 | TTS, VC | autoregressive-LM, flow-matching, hybrid | 2026-05-28 |
+| [[2604.00688]] | [OmniVoice: Towards Omnilingual Zero-Shot Text-to-Speech with Diffusion Language Models](papers/2604.00688.md) | Xiaomi Corp. | arXiv | 2026 | TTS | diffusion, hybrid | 2026-05-28 |
+| [[2508.03543]] | [EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering](papers/2508.03543.md) | HKUST (Guangzhou) / Tencent AI Lab | arXiv | 2025 | TTS | flow-matching | 2026-05-28 |
+| [[2510.02848]] | [Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech](papers/2510.02848.md) | FPT Software AI Center | arXiv | 2025 | TTS | flow-matching, hybrid | 2026-05-28 |
 
 ## Concepts
 
@@ -82,8 +87,8 @@ Last updated: 2026-05-28 | Papers: 34 | Concepts: 21 | Trends: 0
 | Page | Venue | Year | Papers ingested |
 |------|-------|------|----------------|
 | [[arxiv-2024]] | arXiv | 2024 | 3 |
-| [[arxiv-2025]] | arXiv | 2025 | 10 |
-| [[arxiv-2026]] | arXiv | 2026 | 1 |
+| [[arxiv-2025]] | arXiv | 2025 | 14 |
+| [[arxiv-2026]] | arXiv | 2026 | 2 |
 | [[acl-2025]] | ACL | 2025 | 13 |
 | [[emnlp-2025]] | EMNLP | 2025 | 4 |
 | [[naacl-2025]] | NAACL | 2025 | 1 |

@@ -99,3 +99,9 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2504.10352 | Pseudo-Autoregressive Neural Codec Language Models for Efficient Zero-Shot Text-to-Speech Synthesis | arXiv 2025
 - ingest-batch | 5 ingested, 0 failed
 - ingest-batch | 5 ingested, 0 failed
+- ingest | 2508.16332 | Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation | arXiv 2025
+- ingest | 2508.02038 | Marco-Voice Technical Report | arXiv 2025
+- ingest | 2604.00688 | OmniVoice: Towards Omnilingual Zero-Shot Text-to-Speech with Diffusion Language Models | arXiv 2026
+- ingest | 2508.03543 | EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering | arXiv 2025
+- ingest | 2510.02848 | Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech | arXiv 2025
+- ingest-batch | 5 ingested, 0 failed
