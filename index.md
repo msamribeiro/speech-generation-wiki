@@ -1,6 +1,6 @@
 # Wiki Index
 
-Last updated: 2026-05-28 | Papers: 39 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-29 | Papers: 70 | Concepts: 21 | Trends: 0
 
 ## Papers
 
@@ -45,6 +45,38 @@ Last updated: 2026-05-28 | Papers: 39 | Concepts: 21 | Trends: 0
 | [[2604.00688]] | [OmniVoice: Towards Omnilingual Zero-Shot Text-to-Speech with Diffusion Language Models](papers/2604.00688.md) | Xiaomi Corp. | arXiv | 2026 | TTS | diffusion, hybrid | 2026-05-28 |
 | [[2508.03543]] | [EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering](papers/2508.03543.md) | HKUST (Guangzhou) / Tencent AI Lab | arXiv | 2025 | TTS | flow-matching | 2026-05-28 |
 | [[2510.02848]] | [Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech](papers/2510.02848.md) | FPT Software AI Center | arXiv | 2025 | TTS | flow-matching, hybrid | 2026-05-28 |
+| [[2506.21619]] | [IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot Text-to-Speech](papers/2506.21619.md) | bilibili | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, GAN, hybrid | 2026-05-28 |
+| [[2025.naacl-long.242]] | [StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion](papers/2025.naacl-long.242.md) | Columbia University | NAACL | 2025 | TTS | diffusion, GAN, VAE, hybrid | 2026-05-28 |
+| [[2510.12210]] | [DiSTAR: Diffusion over a Scalable Token Autoregressive Representation for Speech Generation](papers/2510.12210.md) | SJTU / ByteDance | arXiv | 2025 | TTS | autoregressive-LM, diffusion, hybrid | 2026-05-28 |
+| [[2025.emnlp-main.40]] | [Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey](papers/2025.emnlp-main.40.md) | HKUST-GZ / University of Surrey | EMNLP | 2025 | TTS, evaluation | autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec, hybrid | 2026-05-28 |
+| [[2603.08823]] | [Fish Audio S2 Technical Report](papers/2603.08823.md) | Fish Audio | arXiv | 2026 | TTS | autoregressive-LM, GAN, hybrid | 2026-05-28 |
+| [[2509.00685]] | [MPO: Multidimensional Preference Optimization for Language Model-based Text-to-Speech](papers/2509.00685.md) | Northwestern Polytechnical University | arXiv | 2025 | TTS | autoregressive-LM | 2026-05-29 |
+| [[2511.12347]] | [VoiceCraft-X: Unifying Multilingual, Voice-Cloning Speech Synthesis and Speech Editing](papers/2511.12347.md) | University of Texas at Austin / Amazon | EMNLP | 2025 | TTS | autoregressive-LM | 2026-05-29 |
+| [[2512.13251]] | [DisCo-Speech: Controllable Zero-Shot Speech Generation](papers/2512.13251.md) | China Mobile Nineverse AI / Peking University | arXiv | 2025 | TTS, VC, codec | autoregressive-LM, GAN | 2026-05-29 |
+| [[2509.09631]] | [DiFlow-TTS: Compact and Low-Latency Zero-Shot TTS with Factorized Discrete Flow Matching](papers/2509.09631.md) | FPT Software AI Center | arXiv | 2025 | TTS | flow-matching, transformer-enc-dec | 2026-05-29 |
+
+| [[2512.04720]] | [M3-TTS: Multi-modal DiT Alignment & Mel-latent for Zero-shot High-fidelity Speech](papers/2512.04720.md) |  | arXiv | 2025 | TTS | diffusion, VAE | 2026-05-29 |
+| [[2603.29339]] | [LongCat-AudioDiT: High-Fidelity Diffusion Text-to-Speech in the Waveform Latent Space](papers/2603.29339.md) | Meituan | arXiv | 2026 | TTS | flow-matching, VAE | 2026-05-29 |
+| [[2508.11273]] | [EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens](papers/2508.11273.md) |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-05-29 |
+| [[2604.12438]] | [An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding](papers/2604.12438.md) |  | arXiv | 2026 | TTS | transformer-enc-dec | 2026-05-29 |
+| [[2604.01760]] | [T5Gemma-TTS Technical Report](papers/2604.01760.md) |  | arXiv | 2026 | TTS | autoregressive-LM | 2026-05-29 |
+| [[2508.15442]] | [Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment Using GFlowNets](papers/2508.15442.md) |  | EMNLP | 2025 | TTS | autoregressive-LM | 2026-05-29 |
+| [[2025.acl-long.654]] | [Language-Codec: Bridging Discrete Codec Representations and Speech Language Models](papers/2025.acl-long.654.md) | Zhejiang University | ACL | 2025 | TTS, codec | GAN, VAE | 2026-05-29 |
+| [[2603.18090]] | [MOSS-TTS Technical Report](papers/2603.18090.md) | Shanghai Innovation Institute / Fudan University | arXiv | 2026 | TTS | autoregressive-LM, hybrid | 2026-05-29 |
+| [[2508.04141]] | [Parallel GPT: Harmonizing the Independence and Interdependence of Acoustic and Semantic Information for Zero-Shot TTS](papers/2508.04141.md) | South China University of Technology | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-29 |
+| [[2502.11128]] | [FELLE: Autoregressive Speech Synthesis with Token-Wise Coarse-to-Fine Flow Matching](papers/2502.11128.md) |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-05-29 |
+| [[2603.26364]] | [LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Diffusion Modeling](papers/2603.26364.md) | Bairong, Inc. | arXiv | 2026 | TTS | diffusion | 2026-05-29 |
+| [[2508.19098]] | [CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Low-latency Speech Synthesis](papers/2508.19098.md) |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, VAE | 2026-05-29 |
+| [[2508.12001]] | [FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts](papers/2508.12001.md) | Megatronix | arXiv | 2025 | TTS | VAE, GAN, hybrid | 2026-05-29 |
+| [[2510.05758]] | [EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in LLM-based TTS](papers/2510.05758.md) | Hangzhou Institute for Advanced Study, UCAS | ICASSP | 2026 | TTS | autoregressive-LM | 2026-05-29 |
+| [[2601.03888]] | [IndexTTS 2.5 Technical Report](papers/2601.03888.md) | Bilibili | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-05-29 |
+| [[2509.15969]] | [VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency](papers/2509.15969.md) | KTH Royal Institute of Technology | arXiv | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-29 |
+| [[2510.07979]] | [IntMeanFlow: Few-step Speech Generation with Integral Velocity Distillation](papers/2510.07979.md) | ByteDance | arXiv | 2025 | TTS | flow-matching | 2026-05-29 |
+| [[2025.ccl-1.80]] | [Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling](papers/2025.ccl-1.80.md) | Kunming University of Science and Technology | workshop | 2025 | TTS | autoregressive-LM, hybrid | 2026-05-29 |
+| [[2025.coling-main.352]] | [DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles](papers/2025.coling-main.352.md) | University of Science and Technology of China | workshop | 2025 | TTS | diffusion, transformer-enc-dec | 2026-05-29 |
+| [[2025.acl-long.911]] | [DNASpeech: A Contextualized and Situated Text-to-Speech Dataset with Dialogues, Narratives and Actions](papers/2025.acl-long.911.md) | Renmin University of China | ACL | 2025 | TTS, evaluation | transformer-enc-dec | 2026-05-29 |
+| [[2025.acl-short.81]] | [Zero-Shot Text-to-Speech for Vietnamese](papers/2025.acl-short.81.md) | Movian AI | ACL | 2025 | TTS, evaluation | autoregressive-LM, transformer-enc-dec | 2026-05-29 |
+| [[2025.acl-long.912]] | [LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis](papers/2025.acl-long.912.md) | Chinese Academy of Sciences | ACL | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-05-29 |
 
 ## Concepts
 
@@ -87,10 +119,11 @@ Last updated: 2026-05-28 | Papers: 39 | Concepts: 21 | Trends: 0
 | Page | Venue | Year | Papers ingested |
 |------|-------|------|----------------|
 | [[arxiv-2024]] | arXiv | 2024 | 3 |
-| [[arxiv-2025]] | arXiv | 2025 | 14 |
-| [[arxiv-2026]] | arXiv | 2026 | 2 |
-| [[acl-2025]] | ACL | 2025 | 13 |
-| [[emnlp-2025]] | EMNLP | 2025 | 4 |
+| [[arxiv-2025]] | arXiv | 2025 | 28 |
+| [[arxiv-2026]] | arXiv | 2026 | 9 |
+| [[acl-2025]] | ACL | 2025 | 14 |
+| [[emnlp-2025]] | EMNLP | 2025 | 7 |
 | [[naacl-2025]] | NAACL | 2025 | 1 |
 | [[interspeech-2025]] | Interspeech | 2025 | 2 |
+| [[icassp-2026]] | ICASSP | 2026 | 1 |
 | [[workshop-2025]] | workshop | 2025 | 1 |

@@ -1,8 +1,8 @@
 ---
 venue: arXiv
 year: 2025
-papers_ingested: 14
-last_updated: 2026-05-28
+papers_ingested: 28
+last_updated: 2026-05-29
 ---
 
 # arXiv 2025
@@ -31,3 +31,16 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2510.00981 | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates |
 | 2510.02848 | Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech |
 | 2512.14291 | GLM-TTS Technical Report |
+| 2506.21619 | IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot TTS |
+| 2510.12210 | DiSTAR: Diffusion over a Scalable Token Autoregressive Representation for Speech Generation |
+| 2509.00685 | MPO: Multidimensional Preference Optimization for Language Model-based Text-to-Speech |
+| 2512.13251 | DisCo-Speech: Controllable Zero-Shot Speech Generation with A Disentangled Speech Codec |
+| 2512.04720 | M3-TTS: Multi-modal DiT Alignment & Mel-latent for Zero-shot High-fidelity Speech Synthesis |
+| 2509.09631 | DiFlow-TTS: Compact and Low-Latency Zero-Shot Text-to-Speech with Factorized Discrete Flow Matching |
+| 2508.11273 | EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens |
+| 2508.04141 | Parallel GPT: Harmonizing the Independence and Interdependence of Acoustic and Semantic Information for Zero-Shot Text-to-Speech |
+| 2502.11128 | FELLE: Autoregressive Speech Synthesis with Token-Wise Coarse-to-Fine Flow Matching |
+| 2508.19098 | CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Low-latency Speech Synthesis |
+| 2508.12001 | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts |
+| 2509.15969 | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency |
+| 2510.07979 | IntMeanFlow: Few-step Speech Generation with Integral Velocity Distillation |

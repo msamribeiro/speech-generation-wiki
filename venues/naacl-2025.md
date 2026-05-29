@@ -1,7 +1,7 @@
 ---
 venue: NAACL
 year: 2025
-papers_ingested: 1
+papers_ingested: 2
 last_updated: 2026-05-27
 ---
 
@@ -16,3 +16,4 @@ NAACL 2025 is represented by one paper in the corpus: [[2025.findings-naacl.184]
 | ID | Title |
 |----|-------|
 | 2025.findings-naacl.184 | Continuous Speech Tokenizer in Text To Speech |
+| 2025.naacl-long.242 | StyleTTS-ZS: Efficient High-Quality Zero-Shot TTS with Distilled Time-Varying Style Diffusion |

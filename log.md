@@ -105,3 +105,41 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2508.03543 | EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering | arXiv 2025
 - ingest | 2510.02848 | Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech | arXiv 2025
 - ingest-batch | 5 ingested, 0 failed
+- ingest | 2506.21619 | IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot Text-to-Speech | arXiv 2025
+- ingest | 2025.naacl-long.242 | StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion | NAACL 2025
+- ingest | 2510.12210 | DiSTAR: Diffusion over a Scalable Token Autoregressive Representation for Speech Generation | arXiv 2025
+- ingest | 2025.emnlp-main.40 | Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey | EMNLP 2025
+- ingest | 2603.08823 | Fish Audio S2 Technical Report | arXiv 2026
+- ingest-batch | primary-session sequential experiment | 5 ingested (2506.21619, 2025.naacl-long.242, 2510.12210, 2025.emnlp-main.40, 2603.08823) | 0 failed | no subagents used
+- parse | batch 26 (queue batch 6) | 40 papers (2604.06871 … 2604.22821) | 40/40 done | RapidOCR: 2604.11424 (×4, non-fatal) | 0 refs: 2604.13288 (no References header, refs in body text, non-blocking) | total parsed: 651/783
+
+## 2026-05-29
+
+- ingest | 2512.04720 | M3-TTS: Multi-modal DiT Alignment & Mel-latent for Zero-shot High-fidelity Speech Synthesis | arXiv 2025
+- ingest | 2511.12347 | VoiceCraft-X: Unifying Multilingual, Voice-Cloning Speech Synthesis and Speech Editing | EMNLP 2025
+- ingest | 2509.00685 | MPO: Multidimensional Preference Optimization for Language Model-based Text-to-Speech | arXiv 2025
+- ingest | 2512.13251 | DisCo-Speech: Controllable Zero-Shot Speech Generation with A Disentangled Speech Codec | arXiv 2025
+- ingest | 2509.09631 | DiFlow-TTS: Compact and Low-Latency Zero-Shot Text-to-Speech with Factorized Discrete Flow Matching | arXiv 2025
+- ingest | 2603.29339 | LongCat-AudioDiT: High-Fidelity Diffusion Text-to-Speech in the Waveform Latent Space | arXiv 2026
+- ingest | 2508.11273 | EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens | arXiv 2025
+- ingest | 2604.12438 | An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding | arXiv 2026
+- ingest | 2604.01760 | T5Gemma-TTS Technical Report | arXiv 2026
+- ingest | 2508.15442 | Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment Using GFlowNets | EMNLP 2025
+- ingest | 2025.acl-long.654 | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL 2025
+- ingest | 2603.18090 | MOSS-TTS Technical Report | arXiv 2026
+- ingest | 2508.04141 | Parallel GPT: Harmonizing the Independence and Interdependence of Acoustic and Semantic Information for Zero-Shot Text-to-Speech | arXiv 2025
+- ingest | 2502.11128 | FELLE: Autoregressive Speech Synthesis with Token-Wise Coarse-to-Fine Flow Matching | arXiv 2025
+- ingest | 2603.26364 | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Diffusion Modeling | arXiv 2026
+- ingest | 2508.19098 | CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Low-latency Speech Synthesis | arXiv 2025
+- ingest | 2508.12001 | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts | arXiv 2025
+- ingest | 2510.05758 | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in LLM-based TTS | ICASSP 2026
+- ingest | 2601.03888 | IndexTTS 2.5 Technical Report | arXiv 2026
+- ingest | 2509.15969 | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv 2025
+- ingest | 2510.07979 | IntMeanFlow: Few-step Speech Generation with Integral Velocity Distillation | arXiv 2025
+- ingest-experiment | Mitigation B parallel direct subagents validated — workers write paper page only; main session does batch cleanup pass; ~187–281k tokens/5-paper batch, zero shared-file conflicts, ~2 min wall time; adopted as standard ingest workflow
+- ingest | 2025.ccl-1.80 | Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling | workshop 2025
+- ingest | 2025.coling-main.352 | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles | workshop 2025
+- ingest | 2025.acl-long.911 | DNASpeech: A Contextualized and Situated Text-to-Speech Dataset with Dialogues, Narratives and Actions | ACL 2025
+- ingest | 2025.acl-short.81 | Zero-Shot Text-to-Speech for Vietnamese | ACL 2025
+- ingest | 2025.acl-long.912 | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B; Write/Edit subagent permissions added to settings.local.json

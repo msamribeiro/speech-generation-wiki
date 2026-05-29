@@ -1,7 +1,7 @@
 ---
 venue: arXiv
 year: 2026
-papers_ingested: 2
+papers_ingested: 9
 last_updated: 2026-05-28
 ---
 
@@ -21,3 +21,10 @@ This page tracks arXiv preprints first published in 2026. Two papers are current
 |----|-------|
 | 2601.15621 | Qwen3-TTS Technical Report |
 | 2604.00688 | OmniVoice: Towards Omnilingual Zero-Shot Text-to-Speech with Diffusion Language Models |
+| 2603.08823 | Fish Audio S2 Technical Report |
+| 2603.29339 | LongCat-AudioDiT: High-Fidelity Diffusion Text-to-Speech in the Waveform Latent Space |
+| 2604.12438 | An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding |
+| 2604.01760 | T5Gemma-TTS Technical Report |
+| 2603.18090 | MOSS-TTS Technical Report |
+| 2603.26364 | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Diffusion Modeling |
+| 2601.03888 | IndexTTS 2.5 Technical Report |
