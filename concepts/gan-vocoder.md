@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-05-27
+last_updated: 2026-05-29
 ---
 
 # GAN Vocoder
@@ -55,3 +55,5 @@ Diffusion vocoders (DiffWave, WaveGrad) achieve high quality but require many in
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys GAN-based vocoders (MelGAN, HiFi-GAN, Fre-GAN, BigVGAN) and their role as token-to-speech synthesizers; distinguishes direct synthesis (HiFi-GAN on tokens) from input-enhanced synthesis (flow-matching → mel → HiFi-GAN as in CosyVoice) |
 | [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL | 2025 | Uses a GAN-based waveform decoder (L1 + mel spectrogram + GAN perceptual losses) as the acoustic synthesis stage; demonstrates GAN vocoder in a low-resource production TTS system for a tonal language |
 | [[2025.acl-demo.37]] | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL | 2025 | Uses a DDSP (Differentiable Digital Signal Processing) harmonic-plus-noise vocoder instead of HiFi-GAN for waveform synthesis; the DDSP vocoder conditioned on articulatory features and speaker embedding via FiLM layers — an alternative to GAN vocoders for interpretable streaming VC |
+| [[2025.acl-long.654]] | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL | 2025 | Uses a Vocos-style Fourier-based decoder (Conv1d ResBlocks + ConvNeXt + ISTFT) and a multi-discriminator GAN training setup (MPD, MRD, MSD, complex STFT discriminator); demonstrates that GAN training with multiple discriminators is essential for high-fidelity codec reconstruction |
+| [[2508.12001]] | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System | arXiv | 2025 | Replaces VITS's HiFi-GAN vocoder with VOCOS (Fourier-based) and adds two advanced multi-scale discriminators; MOS 4.48 on LJSpeech (highest among evaluated systems); demonstrates GAN vocoder replacement as a practical quality improvement for VITS-based systems |

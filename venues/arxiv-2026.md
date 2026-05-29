@@ -2,18 +2,18 @@
 venue: arXiv
 year: 2026
 papers_ingested: 9
-last_updated: 2026-05-28
+last_updated: 2026-05-29
 ---
 
 # arXiv 2026
 
 ## Overview
 
-This page tracks arXiv preprints first published in 2026. Two papers are currently ingested.
+This page tracks arXiv preprints first published in 2026. Nine integrated papers are currently represented.
 
-[[2601.15621]] (Qwen3-TTS) is a major multilingual TTS technical report from Alibaba's Qwen Team, published January 2026. It introduces a dual-tokenizer family (25 Hz single-codebook and 12.5 Hz 16-layer RVQ) with 0.6B and 1.7B model variants, achieving 97 ms first-packet streaming latency, state-of-the-art zero-shot voice cloning on Seed-TTS, and top speaker similarity across 10 languages against MiniMax and ElevenLabs commercial baselines. Trained on 5M hours of proprietary multilingual data.
+The 2026 arXiv TTS papers in this corpus represent the emerging frontier of large-scale multilingual and production-grade speech synthesis. The dominant themes are: (1) ultra-scale multilingual coverage — OmniVoice [[2604.00688]] covers 600+ languages from 581K hours of open-source data; Qwen3-TTS [[2601.15621]] covers 10 languages from 5M hours of proprietary data; Fish Audio S2 [[2603.08823]] covers 80+ languages from 10M+ hours with production-grade streaming; MOSS-TTS [[2603.18090]] offers a fully open-source large-scale alternative with millions of hours of training; T5Gemma-TTS [[2604.01760]] proposes encoder-decoder conditioning to address text dilution in multilingual decoder-only AR TTS; IndexTTS 2.5 [[2601.03888]] extends IndexTTS 2 to four languages with 2.28x faster inference; (2) waveform-latent flow matching — LongCat-AudioDiT [[2603.29339]] bypasses mel-spectrogram intermediates entirely, achieving the best diffusion NAR speaker similarity in the corpus on Seed-ZH (SIM 0.818); (3) GRPO multi-dimensional RL alignment as the standard post-training approach, used by Fish Audio S2 and Qwen3-TTS (with DPO+GRPO in sequence); (4) architectural diversity in codec utilization — LLaDA-TTS [[2603.26364]] replaces the AR LM stage with masked discrete diffusion achieving CER 0.98% (zh); a novel streaming architecture [[2604.12438]] achieves 303× real-time synthesis with 48.99 ms latency using depth-wise sequential codec decoding.
 
-[[2604.00688]] (OmniVoice) is from Xiaomi Corp., published April 2026. It introduces a single-stage discrete NAR TTS model covering 600+ languages, using full-codebook random masking and Qwen3-0.6B LLM initialization to resolve the intelligibility bottleneck of prior NAR TTS systems. Trained on 581K hours of open-source multilingual data, it achieves state-of-the-art speaker similarity and competitive WER on English/Chinese benchmarks while outperforming MiniMax-Speech and ElevenLabs Multilingual v2 on a 24-language evaluation.
+Standout papers: [[2603.08823]] (Fish Audio S2) achieves best open-source WER (0.54% zh / 0.99% en) and 81.88% win rate on EmergentTTS-Eval against GPT-4o-audio — the strongest publicly available instruction-following TTS result; [[2603.29339]] (LongCat-AudioDiT) identifies a previously unreported training-inference mismatch in all Voicebox/F5-TTS-style models and achieves SOTA diffusion NAR speaker similarity on Seed-ZH. MOSS-TTS [[2603.18090]] closes the quality gap with closed-source systems while being fully open-source at 2.04% WER (EN) and 2.07% CER (ZH) on Seed-TTS-Eval.
 
 ## Papers
 

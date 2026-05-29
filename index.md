@@ -82,27 +82,27 @@ Last updated: 2026-05-29 | Papers: 70 | Concepts: 21 | Trends: 0
 
 | Slug | Title | Paper count | Last updated |
 |------|-------|-------------|-------------|
-| [[flow-matching]] | Flow Matching | 4 | 2026-05-27|
-| [[diffusion-tts]] | Diffusion Models for TTS | 1 | 2026-05-26|
-| [[autoregressive-codec-tts]] | Autoregressive Codec TTS | 9 | 2026-05-27|
-| [[transformer-enc-dec-tts]] | Transformer Encoder-Decoder TTS | 0 | 2026-05-11 |
-| [[gan-vocoder]] | GAN Vocoder | 5 | 2026-05-27|
-| [[zero-shot-tts]] | Zero-Shot TTS | 8 | 2026-05-27|
+| [[flow-matching]] | Flow Matching | 20 | 2026-05-29|
+| [[diffusion-tts]] | Diffusion Models for TTS | 10 | 2026-05-29|
+| [[autoregressive-codec-tts]] | Autoregressive Codec TTS | 40 | 2026-05-29|
+| [[transformer-enc-dec-tts]] | Transformer Encoder-Decoder TTS | 7 | 2026-05-29|
+| [[gan-vocoder]] | GAN Vocoder | 7 | 2026-05-29|
+| [[zero-shot-tts]] | Zero-Shot TTS | 40 | 2026-05-29|
 | [[voice-conversion]] | Voice Conversion | 2 | 2026-05-27|
-| [[multilingual-tts]] | Multilingual TTS | 4 | 2026-05-27|
-| [[emotion-synthesis]] | Emotion Synthesis | 2 | 2026-05-27|
-| [[prosody-control]] | Prosody Control | 3 | 2026-05-27|
-| [[streaming-tts]] | Streaming TTS | 6 | 2026-05-27|
-| [[spoken-language-model]] | Spoken Language Model | 9 | 2026-05-27|
+| [[multilingual-tts]] | Multilingual TTS | 17 | 2026-05-29|
+| [[emotion-synthesis]] | Emotion Synthesis | 13 | 2026-05-29|
+| [[prosody-control]] | Prosody Control | 15 | 2026-05-29|
+| [[streaming-tts]] | Streaming TTS | 14 | 2026-05-29|
+| [[spoken-language-model]] | Spoken Language Model | 12 | 2026-05-29|
 | [[speech-to-speech]] | Speech-to-Speech Systems | 7 | 2026-05-27|
-| [[instruction-conditioned-tts]] | Instruction-Conditioned TTS | 3 | 2026-05-27|
-| [[neural-codec]] | Neural Audio Codec | 9 | 2026-05-27|
+| [[instruction-conditioned-tts]] | Instruction-Conditioned TTS | 10 | 2026-05-29|
+| [[neural-codec]] | Neural Audio Codec | 31 | 2026-05-29|
 | [[self-supervised-speech]] | Self-Supervised Speech Representations | 11 | 2026-05-27|
-| [[disentanglement]] | Disentanglement | 4 | 2026-05-27|
+| [[disentanglement]] | Disentanglement | 15 | 2026-05-29|
 | [[speaker-adaptation]] | Speaker Adaptation | 1 | 2026-05-27|
-| [[rlhf-speech]] | RLHF for Speech | 3 | 2026-05-27|
-| [[evaluation-metrics]] | Evaluation Metrics | 7 | 2026-05-27|
-| [[subjective-evaluation]] | Subjective Evaluation | 4 | 2026-05-27|
+| [[rlhf-speech]] | RLHF for Speech | 13 | 2026-05-29|
+| [[evaluation-metrics]] | Evaluation Metrics | 20 | 2026-05-29|
+| [[subjective-evaluation]] | Subjective Evaluation | 7 | 2026-05-29|
 
 ## Comparisons
 

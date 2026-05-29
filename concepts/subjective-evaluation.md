@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-05-27
+last_updated: 2026-05-29
 ---
 
 # Subjective Evaluation
@@ -59,3 +59,6 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Uses Prolific side-by-side preference study (53 participants, 522 judgments) instead of MOS; reports 72% win rate vs. Qwen 2 Audio; demonstrates preference-based evaluation as holistic SCA quality measure |
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Uses N-CMOS (naturalness comparative MOS, -2 to +2 scale), reading accuracy (binary intelligibility judgment by 20 participants, 400 total pairs × 5 systems), and A/B testing for speaker similarity; runs subjective evaluation across all four domain types (regular, articulatory, code-switching, cross-lingual) |
 | [[2025.acl-long.1252]] | Finding A Voice: Exploring the Potential of African American Dialect and Voice Generation for Chatbots | ACL | 2025 | Uses 15-metric 5-point Likert scale evaluation by 8–12 AAE-speaking university participants; demonstrates multi-dimensional socially-grounded subjective evaluation for spoken chatbot quality beyond standard naturalness/similarity metrics |
+| [[2025.coling-main.352]] | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for TTS | workshop | 2025 | Uses MOS listening tests (14 raters, 18 utterances per model) on a private Mandarin dataset; demonstrates that hierarchical prosody diffusion outperforms Grad-TTS, Guided-TTS, and DiffProsody on naturalness (MOS 4.18 vs. 4.08–4.15) |
+| [[2509.00685]] | MPO: Multidimensional Preference Optimization for LM-based TTS | arXiv | 2025 | Uses ABX preference test alongside objective metrics for validating multidimensional RL alignment; provides methodological example of combining objective and subjective evaluation for RL-aligned TTS |
+| [[2511.12347]] | VoiceCraft-X: Unifying Multilingual Voice-Cloning Speech Synthesis and Editing | EMNLP | 2025 | Uses CMOS as primary naturalness metric (CMOS 0.63 — highest among all compared systems on Seed-TTS test-en); demonstrates preference of CMOS over MOS for capturing naturalness differences in multilingual zero-shot TTS |

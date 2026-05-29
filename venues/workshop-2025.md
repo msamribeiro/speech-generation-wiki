@@ -9,7 +9,7 @@ last_updated: 2026-05-29
 
 ## Overview
 
-_Accumulates as papers are ingested. Includes papers from co-located workshops at major NLP and speech venues._
+Workshop papers 2025 currently includes 3 papers from diverse venues. Key themes: (1) low-resource and under-resourced language TTS — [[2025.americasnlp-1.1]] targets Shipibo-Konibo (a Peruvian Panoan language) and [[2025.ccl-1.80]] extends VALL-E X to Lao-English code-switching without bilingual training data; (2) diffusion-based prosody control — DiffStyleTTS ([[2025.coling-main.352]]) replaces the FastSpeech2 variance adaptor with a hierarchical conditional diffusion module, achieving MOS 4.18 on Mandarin. The workshop collection highlights the breadth of speech synthesis research beyond mainstream English TTS.
 
 ## Papers
 

@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-05-27
+last_updated: 2026-05-29
 ---
 
 # Neural Audio Codec
@@ -22,12 +22,15 @@ Beyond frame rate, [[2025.acl-long.1498]] identifies a distinct structural probl
 
 ## Current state of the art
 
-As of late 2025, the frontier for low-frame-rate codecs is [[2510.00981]] (FlexiCodec, ICLR 2026), which achieves:
-- 4.15% WER (RVQ-1 reconstruction) at 6.25 Hz average frame rate, vs. 31.5% for retrained DualCodec at the same rate.
-- Controllable frame rates from 3 to 12.5 Hz from a single trained model via inference-time threshold adjustment.
-- UTMOS 4.18 and PESQ 2.76 at 6.25 Hz (competitive with higher-rate systems at similar bitrate).
+As of early 2026, the frontier spans both discrete codec design and the move toward waveform-latent continuous representations:
 
-Previous state-of-the-art at 12.5 Hz was DualCodec (RVQ-1 WER 5.93% at 12.5 Hz). FlexiCodec matches this at 12.5 Hz (2.76% WER, benefiting from ASR features) while extending meaningfully below it.
+**Low-frame-rate discrete codecs:** [[2510.00981]] (FlexiCodec, ICLR 2026) achieves 4.15% RVQ-1 WER at 6.25 Hz. Qwen3-TTS [[2601.15621]] introduces the Qwen-TTS-Tokenizer-12Hz — a fully causal 12.5 Hz 16-layer RVQ tokenizer with w2v-BERT 2.0 semantic distillation and GAN-based training — achieving PESQ-WB 3.21, PESQ-NB 3.68, STOI 0.96, UTMOS 4.16, SPK-SIM 0.95 on LibriSpeech test-clean, outperforming Mimi and FireRedTTS2 tokenizer. Fish Audio S2 [[2603.08823]] introduces a streaming 21 Hz DAC-based codec with causal convolutions, SemantiCodec-style first-codebook semantic distillation from w2v-BERT 2.0, and ConvNeXt V2 extensions.
+
+**FSQ (Finite Scalar Quantization):** CosyVoice 2 [[2412.10117]] demonstrated that replacing VQ with FSQ achieves 100% codebook utilization (vs. 23% for VQ) and halves ASR error rate on CommonVoice EN (10.67% vs. 18.26%), establishing FSQ as a preferred alternative to VQ for supervised semantic tokenizers. DisCodec [[2512.13251]] extends FSQ to disentangled factorized speech representation with per-attribute FSQ modules.
+
+**Continuous waveform VAE:** LongCat-AudioDiT [[2603.29339]] demonstrates that a Wav-VAE at 11.72 Hz / 64-dim achieves PESQ 3.237 and STOI 0.967 on LibriTTS test-clean, outperforming most discrete codecs at similar bitrate. M3-TTS [[2512.04720]] uses a Mel-VAE at 43 Hz / 40-dim for a 3x training speedup at modest SIM cost.
+
+**Full-codebook masking for NAR:** OmniVoice [[2604.00688]] demonstrates that jointly masking all codebook layers per position (vs. per-layer masking in SoundStorm/MaskGCT) provides 3x denser training signal and substantially better downstream WER from a frozen Higgs-audio 8-codebook tokenizer.
 
 ## Key variants and sub-approaches
 
@@ -39,9 +42,13 @@ Previous state-of-the-art at 12.5 Hz was DualCodec (RVQ-1 WER 5.93% at 12.5 Hz).
 
 **Text-assisted codecs (TaDiCodec, TASTE).** Use text transcription to assist ultra-low-rate coding. Achieve ≤ 6.25 Hz but require ground-truth text, limiting applicability in non-TTS settings.
 
-**Single-codebook codecs (WavTokenizer, SemantiCodec).** Use a single FSQ/VQ codebook for simplicity, operating at 40–75 Hz. More suitable for non-LM applications.
+**Single-codebook codecs (WavTokenizer, SemantiCodec, X-Codec2/XCodec2-S).** Use a single FSQ/VQ codebook for simplicity, operating at 40–75 Hz. Llasa+ [[2508.06262]] uses XCodec2-S, a causal streaming adaptation of XCodec2 trained by freezing encoder+VQ and fine-tuning only the causal decoder.
 
-**Continuous tokenizers.** [[2025.findings-naacl.184]] (Cont-SPT) challenges whether discrete quantization is necessary at all: the encoder output is retained as continuous speech tokens (no RVQ), and the AR LM predicts these via MSE regression. This eliminates quantization-induced information loss (especially at high frequencies: 0.55 vs. 0.34 retention at 8 kHz), improving WER and speaker similarity in downstream TTS. The tradeoff is that the training objective changes from classification to regression, and generation requires a flow-matching acoustic decoder rather than simple codebook lookup.
+**Continuous tokenizers.** [[2025.findings-naacl.184]] (Cont-SPT) challenges whether discrete quantization is necessary: continuous AR mel prediction (MELLE [[2025.acl-long.65]]) achieves human-parity quality without any codec. DiTAR [[2502.03930]] uses a continuous VAE at 40 Hz/64-dim as the generation target. LongCat-AudioDiT [[2603.29339]] uses a Wav-VAE at 11.72 Hz/64-dim, achieving PESQ 3.237 and STOI 0.967 while outperforming most discrete codecs at similar bitrate.
+
+**Disentangled/factorized codecs (DisCodec, FACodec).** DisCodec [[2512.13251]] uses two-stage FSQ training with graduated soft orthogonality constraints to factorize content, prosody, and timbre while maintaining reconstruction fidelity. The key innovation is summing content+prosody embeddings before re-quantizing into a unified stream for LM training, enabling standard AR LM inference without multi-codebook complexity.
+
+**Streaming causal codecs.** Qwen3-TTS [[2601.15621]] (12Hz, fully causal, 16-layer RVQ), Fish Audio S2 [[2603.08823]] (21 Hz, causal sliding-window transformer, DAC-based), and XCodec2-S [[2508.06262]] (single VQ, partial lookahead) all demonstrate that high-quality streaming codecs are achievable while maintaining semantic preservation and reconstruction quality.
 
 ## Comparison to alternatives
 
@@ -49,7 +56,7 @@ Continuous mel-spectrograms remain the dominant representation for non-autoregre
 
 ## Year-on-year trajectory
 
-2021–2022: SoundStream, EnCodec established neural audio codecs as the standard compression tool at 50–75 Hz. 2023: SpeechTokenizer introduced semantic distillation for RVQ-1; first purpose-built TTS codecs. 2024: Mimi and DualCodec reached 12.5 Hz while maintaining semantic quality. 2025: FlexiCodec ([[2510.00981]]) breaks the 12.5 Hz floor, achieving 6.25 Hz (and 3 Hz dynamically) with near-ground-truth semantic preservation — a major step toward text-rate (~4.5 Hz) speech tokens.
+2021–2022: SoundStream, EnCodec established neural audio codecs as the standard compression tool at 50–75 Hz. 2023: SpeechTokenizer introduced semantic distillation for RVQ-1; first purpose-built TTS codecs. 2024: Mimi and DualCodec reached 12.5 Hz while maintaining semantic quality; CosyVoice 2 [[2412.10117]] demonstrated FSQ achieves 100% codebook utilization vs. 23% for VQ — establishing FSQ as the preferred quantization method for supervised semantic tokenizers. 2025: FlexiCodec ([[2510.00981]]) breaks the 12.5 Hz floor to 6.25 Hz; DisCodec [[2512.13251]] introduces two-stage disentangled FSQ for independent prosody/timbre control; XCodec2-S [[2508.06262]] demonstrates streaming single-codebook causal adaptation; MELLE [[2025.acl-long.65]] and DiTAR [[2502.03930]] challenge whether discrete codecs are necessary at all. 2026: Qwen3-TTS [[2601.15621]] demonstrates a 12.5 Hz 16-layer RVQ achieving PESQ-WB 3.21 — outperforming Mimi and FireRedTTS2 tokenizer while enabling fully causal streaming; Fish Audio S2 [[2603.08823]] demonstrates a 21 Hz streaming DAC-based codec with w2v-BERT semantic distillation and ConvNeXt V2 extensions; LongCat-AudioDiT [[2603.29339]] establishes waveform VAE at 11.72 Hz as competitive with discrete codecs for diffusion TTS, revealing that higher VAE fidelity counterintuitively does not improve downstream generation quality. The field is now tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
 
 ## Open questions
 
@@ -61,6 +68,9 @@ Continuous mel-spectrograms remain the dominant representation for non-autoregre
 - DRI ([[2025.acl-long.1498]]) is shown to worsen with deeper RVQ layers; does this suggest the deeper-layer representation design needs fundamentally different treatment (e.g. non-contextual sub-quantizers)?
 - [[2025.findings-naacl.184]] shows continuous tokens outperform RVQ on a single English benchmark; will continuous-token AR LMs scale to larger data and multilingual settings, or does the MSE regression objective become unstable?
 - VocalNet [[2025.emnlp-main.989]] and other speech LLMs now use CosyVoice2 semantic tokens (25 Hz) rather than traditional RVQ codecs; does this represent a shift toward hybrid supervised-semantic tokenization as the default?
+- LongCat-AudioDiT [[2603.29339]] shows higher VAE reconstruction fidelity does not improve TTS quality; what is the optimal VAE bottleneck dimension and frame rate for diffusion-based TTS?
+- DisCodec [[2512.13251]] shows that content-prosody FSQ can be fused back into a single stream for LM training; does this generalize to timbre as well, enabling a single-stream codec with full factorization?
+- Fish Audio S2 [[2603.08823]] uses a 21 Hz causal codec; Qwen3-TTS [[2601.15621]] uses 12.5 Hz — which frame rate offers the optimal latency/quality trade-off for production streaming?
 
 ## Papers
 
@@ -75,3 +85,25 @@ Continuous mel-spectrograms remain the dominant representation for non-autoregre
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys all major neural codec architectures (SoundStream, EnCodec, DAC, SpeechTokenizer, Mimi) and their roles as speech tokenizers; classifies by objective (semantic understanding, acoustic generation, mixed) and discusses discrete vs. continuous representations |
 | [[2412.17048]] | Why Do Speech Language Models Fail to Generate Semantically Coherent Outputs? | arXiv | 2026 | Uses HuBERT-Large discrete clusters as codec tokens in a controlled study; identifies paralinguistic variability in speech tokens (Factor C) as the dominant cause of SLM coherence failure — motivating codec designs that suppress paralinguistic variation |
 | [[2025.acl-long.1043]] | OZSpeech: One-step Zero-shot Speech Synthesis with Learned-Prior-Conditioned Flow Matching | ACL | 2025 | Uses FACodec (NaturalSpeech 3 factorized codec) as the speech representation for learned-prior OT-CFM; demonstrates that factorized codec tokens enable a prior codes generator to separately predict prosody, content, acoustic detail, and timbre for single-step inference |
+| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Introduces FSQ for speech tokenization: 100% codebook utilization vs. 23% for VQ; ASR error 10.67% vs. 18.26% — establishes FSQ as the preferred quantization method for semantic tokenizers |
+| [[2406.02430]] | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv | 2024 | Investigates both continuous and discrete tokenizers for TTS; argues tokenizer design is critical to system quality; custom speech tokenizer with consistency distillation for streaming deployment |
+| [[2407.05407]] | CosyVoice: A Scalable Multilingual Zero-shot TTS based on Supervised Semantic Tokens | arXiv | 2024 | Supervised S3 tokenizer: inserts VQ into ASR encoder (SenseVoice-Large) to produce tokens with strong text-semantic alignment; single codebook (4096 codes), 25 Hz |
+| [[2510.12210]] | DiSTAR: Diffusion over a Scalable Token Autoregressive Representation | arXiv | 2025 | Custom MAGICODEC-based 9-layer RVQ at 64 Hz; test-time bitrate control via stochastic layer truncation; top RVQ layers encode acoustic detail (WER stable when removed, SIM drops) |
+| [[2502.03930]] | DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation | arXiv | 2025 | Custom VAE-based continuous tokenizer (40 Hz, 64-dim latent) replacing discrete codec; adversarial training via BigVGAN decoder; achieves high reconstruction quality without RVQ |
+| [[2512.14291]] | GLM-TTS Technical Report | arXiv | 2025 | Whisper-VQ tokenizer at 25 Hz with 32k codebook, pitch estimator module, and non-causal architecture; outperforms Mimi on PESQ/UTMOS/MOS metrics |
+| [[2508.06262]] | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv | 2025 | XCodec2-S: streaming causal adaptation of XCodec2 (freeze encoder+VQ, fine-tune decoder only); achieves 95% of XCodec2 performance while enabling streaming waveform reconstruction |
+| [[2512.13251]] | DisCo-Speech: Controllable Zero-Shot Speech Generation with A Disentangled Speech Codec | arXiv | 2025 | DisCodec: two-stage FSQ disentanglement with per-attribute quantization (content, prosody, timbre); fuses content+prosody before re-quantization for LM training; superior VC disentanglement vs. MSR-Codec and FACodec |
+| [[2604.00688]] | OmniVoice: Towards Omnilingual Zero-Shot TTS with Diffusion Language Models | arXiv | 2026 | Higgs-audio 8-codebook tokenizer; full-codebook random masking provides 3x denser training signal than per-layer masking; resolves NAR intelligibility gap with LLM initialization |
+| [[2508.16332]] | Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation | arXiv | 2025 | VQ-VAE prosody tokenizer (6.25 Hz, chromagram-based) + content-style tokenizer (12.5 Hz) bridging speech and singing prosody distributions without MIDI annotation |
+| [[2510.02848]] | Flamed-TTS: Flow Matching Attention-Free Models for Efficient Zero-shot TTS | arXiv | 2025 | FACodec (NaturalSpeech 3) used as the prior distribution for flow matching; 6 disentangled code streams (prosody, content, acoustic) enable attention-free denoiser |
+| [[2512.04720]] | M3-TTS: Multi-modal DiT Alignment and Mel-latent for Zero-shot TTS | arXiv | 2025 | Mel-VAE (43 Hz, 40-dim) vs. standard 100-dim mel-spectrogram: 3x training speedup with similar WER; reveals SIM cost of latent bottleneck for voice cloning |
+| [[2603.29339]] | LongCat-AudioDiT: High-Fidelity Diffusion TTS in the Waveform Latent Space | arXiv | 2026 | Wav-VAE (11.72 Hz, 64-dim): PESQ 3.237, STOI 0.967 on LibriTTS test-clean; higher fidelity VAE counterintuitively does not improve downstream TTS quality |
+| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Qwen-TTS-Tokenizer-12Hz: fully causal 12.5 Hz 16-layer RVQ with w2v-BERT semantic distillation and GAN training; PESQ-WB 3.21, UTMOS 4.16, SPK-SIM 0.95 — outperforms Mimi and FireRedTTS2 tokenizer |
+| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | Streaming DAC-based codec: 21 Hz, 10-layer RVQ, causal sliding-window transformer, w2v-BERT semantic distillation, ConvNeXt V2 extensions, EVA-GAN decoder |
+| [[2025.ccl-1.80]] | Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling | workshop | 2025 | Uses EnCodec (inherited from VALL-E X) for low-resource Lao-English code-switching; demonstrates that phoneme alignment extensions compensate for semantic limitations of VALL-E X's EnCodec tokens |
+| [[2509.09631]] | DiFlow-TTS: Compact and Low-Latency Zero-Shot TTS with Factorized Discrete Flow Matching | arXiv | 2025 | FACodec (NaturalSpeech 3) used as the factorized discrete target space for discrete flow matching; prosody and acoustic tokens as separate DFM targets |
+| [[2025.acl-long.654]] | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL | 2025 | Introduces MCRVQ (Masked Channel RVQ) that redistributes information load across early codebook channels, lowering prediction entropy for downstream AR LMs; downstream VALL-E SPK-SIM improves from 0.612 to 0.700 (+14%) and MobileSpeech SPK-SIM to 0.771 |
+| [[2502.11128]] | FELLE: Autoregressive Speech Synthesis with Token-Wise Coarse-to-Fine Flow Matching | arXiv | 2025 | Uses mel-spectrogram as generation target (codec-free AR), with a per-token flow-matching head using the previous mel frame as informed prior rather than Gaussian noise; achieves higher WER/MOS on LibriSpeech than MELLE |
+| [[2508.19098]] | CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Efficient TTS | arXiv | 2025 | Replaces discrete RVQ tokens with continuous VAE latents decoded per-token via MLP rectified-flow head; WER 1.88%, UTMOS 4.22 on LibriSpeech-PC test-clean, outperforming DiTAR with lower latency |
+| [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | MOSS-Audio-Tokenizer: causal Transformer-based tokenizer at 1000–4000 bps achieving PESQ-WB 3.69 (EN) and SIM 0.88 on LibriSpeech, outperforming Mimi and XY-Tokenizer at the same bitrate |
+| [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Uses depth-wise sequential decoding over 32 Mimi codec RVQ layers in a non-autoregressive transformer, achieving RTF ~0.0033 (303× real-time) and 48.99 ms first-byte latency |

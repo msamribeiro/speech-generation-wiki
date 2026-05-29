@@ -144,3 +144,4 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2025.acl-long.912 | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B; Write/Edit subagent permissions added to settings.local.json
 - parse | batch 27 (queue batch 7) | 40 papers (2604.25441 … interspeech-2025-0355) | 40/40 done | RapidOCR: 2605.05611 (×1), 2605.20946 (×2), interspeech-2025-0115 (×2) (non-fatal) | total in-corpus parsed: 681/783
+- integrate | 45 papers | concepts updated: autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, flow-matching, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, spoken-language-model, streaming-tts, zero-shot-tts, subjective-evaluation, transformer-enc-dec-tts, gan-vocoder | cross-links: 23 added

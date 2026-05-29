@@ -3,7 +3,7 @@ slug: rlhf-speech
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
-last_updated: 2026-05-27
+last_updated: 2026-05-29
 ---
 
 # RLHF for Speech
@@ -39,9 +39,11 @@ As of mid-2025, the leading system for preference-aligned TTS intelligibility is
 
 **DPO for masked generative models (DPO-MGM).** Also introduced by [[2025.acl-long.598]], extending DPO to non-autoregressive masked prediction models (MaskGCT, NaturalSpeech 3). The policy probability is the sum of log-probabilities over masked token positions.
 
-**RLHF via reward model (PPO-style).** CosyVoice 2 and Seed-TTS use WER-based reward models with reinforcement learning rather than DPO. Not yet represented in this wiki by a dedicated paper page.
+**RLHF via GRPO (Group Relative Policy Optimization).** Multiple 2025–2026 systems use GRPO instead of PPO or DPO. GLM-TTS [[2512.14291]] applies 4-reward GRPO (CER, SIM, emotion, laughter) with dynamic sampling for reward hacking prevention. Fish Audio S2 [[2603.08823]] uses Dr.GRPO (no value network) with a composite reward (intelligibility + quality + speaker similarity) where reward models are reused from the data pipeline. Qwen3-TTS [[2601.15621]] combines DPO for intelligibility with GRPO for stability and instruction-following capability. Vevo2 [[2508.16332]] uses multi-objective GRPO with intelligibility and prosody similarity rewards for unified speech+singing alignment.
 
-**Emotion DPO.** Emo-DPO (Gao et al., 2024) extends preference alignment to emotional speech controllability. Not yet in corpus.
+**Dual-purpose data pipeline for RL.** Fish Audio S2 [[2603.08823]] addresses the distribution shift problem in RL reward design by using the same quality and ASR models as both data filters during pretraining and reward signals during RL post-training — by construction, the reward models never penalize outputs that are reasonable under the pretraining distribution.
+
+**Emotion DPO / Emotion reward in GRPO.** GLM-TTS [[2512.14291]] includes an emotion reward in its GRPO framework; Seed-TTS [[2406.02430]] uses a separate RL-SER variant with speech emotion recognition accuracy as the reward signal. These reveal a pronunciation/emotion trade-off: optimizing emotion reward degrades CER and SIM, requiring careful reward weighting.
 
 ## Comparison to alternatives
 
@@ -49,14 +51,17 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 
 ## Year-on-year trajectory
 
-2023–2024: RLHF via reward model (PPO-style) first applied to TTS intelligibility in Seed-TTS and CosyVoice 2. DPO first applied to TTS by SpeechAlign (NeurIPS 2024), using a single AR model and WER-based pairs. 2025: [[2025.acl-long.598]] introduces multi-model cross-comparison pairs, human-guided perturbation, and architecture-general DPO (FM + MGM extensions); demonstrates weak-to-strong generalization and iterative alignment. Intelligibility improvements now clearly extend to code-switching and cross-lingual synthesis — domains not addressed by earlier work.
+2023–2024: RLHF via reward model (PPO-style) first applied to TTS intelligibility in Seed-TTS [[2406.02430]] and CosyVoice 2 [[2412.10117]]. DPO first applied to TTS by SpeechAlign (NeurIPS 2024). 2025: [[2025.acl-long.598]] introduces multi-model cross-comparison pairs and architecture-general DPO (FM + MGM extensions); weak-to-strong generalization; intelligibility improvements extend to code-switching. GLM-TTS [[2512.14291]] demonstrates multi-reward GRPO with laughter modeling; reveals pronunciation/emotion trade-off. Vevo2 [[2508.16332]] extends GRPO to multi-objective alignment spanning intelligibility and prosody. 2026: Fish Audio S2 [[2603.08823]] introduces the dual-purpose pipeline concept (same models filter data and serve as RL rewards), addressing distribution shift. Qwen3-TTS [[2601.15621]] combines DPO + GRPO in a sequential post-training pipeline at 5M-hour scale. The post-training paradigm for TTS has converged on GRPO with multi-dimensional rewards as the standard; DPO is now used primarily for targeted intelligibility alignment.
 
 ## Open questions
 
 - Does the diminishing return in iterative alignment saturate at the base model's inherent capability, or can curriculum design break through the ceiling?
-- How well do WER-ranked synthetic pairs correlate with human intelligibility preferences for code-switching and cross-lingual synthesis? (The paper only verifies alignment for regular domain intra-pairs.)
+- How well do WER-ranked synthetic pairs correlate with human intelligibility preferences for code-switching and cross-lingual synthesis?
 - Can DPO-FM and DPO-MGM be extended to diffusion-based TTS (NaturalSpeech 2, DiTTo-TTS)?
-- Is there a risk of anti-spoofing degradation from intelligibility alignment — more natural pronunciation patterns are easier for speaker verification but may also be easier to spoof?
+- Is there a risk of anti-spoofing degradation from intelligibility alignment?
+- GLM-TTS [[2512.14291]] shows emotion reward trades off against CER in GRPO; is this trade-off universal, and can reward scheduling or curriculum resolve it?
+- Fish Audio S2 [[2603.08823]] uses the same models for data filtering and RL rewards; does this introduce a self-reinforcing bias, or does the distributional overlap actually help generalization?
+- Vevo2 [[2508.16332]] shows that single-objective RL degrades the complementary dimension (intelligibility-only training drops melody from 65% to 50%); is multi-objective RL the general solution, or are there tasks where objectives are genuinely incompatible?
 
 ## Papers
 
@@ -65,3 +70,13 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 | [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Introduces INTP dataset (250K pairs) and DPO extensions for AR, flow-matching, and masked generative TTS; demonstrates weak-to-strong generalization and iterative alignment; 31–46% relative WER reduction across five systems |
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys post-alignment methods for SpeechLMs including AlignSLM (DPO for semantic consistency) and SpeechAlign (token distribution correction); situates RLHF within the broader SpeechLM training pipeline |
 | [[2025.findings-emnlp.424]] | InteractSpeech: A Speech Dialogue Interaction Corpus for Spoken Dialogue Model | EMNLP | 2025 | Uses GRPO (Group Relative Policy Optimization) reinforcement learning to fine-tune Qwen-2.5-Omni for binary interaction event classification (backchannel/interruption/gap/pause); 19 pp improvement over zero-shot GPT-4o, demonstrating RL-from-AI-feedback as a viable route for interaction capability alignment |
+| [[2406.02430]] | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv | 2024 | RL-SIM-WER reduces EN WER from 2.249 to 1.945; RL-SER improves emotion control from 0.13–0.53 to 0.78–0.91; demonstrates reward hacking (over-slow, over-articulated speech) in TTS RL |
+| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Differentiable ASR reward for RL: Gumbel-softmax sampling through FSQ indices enables differentiable WER reward without iterative DPO overhead; shows RL+DPO combination achieves best results |
+| [[2512.14291]] | GLM-TTS Technical Report | arXiv | 2025 | 4-reward GRPO (CER, SIM, emotion, laughter) with dynamic sampling, hierarchical regularization, and asymmetric gradient clipping; demonstrates pronunciation/emotion reward trade-off |
+| [[2508.16332]] | Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation | arXiv | 2025 | Multi-objective GRPO post-training with intelligibility reward (Bradley-Terry on INTP corpus) and prosody similarity reward (chromagram cosine); single-objective optimization degrades complementary dimension |
+| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Sequential DPO + GRPO post-training: DPO on multilingual preference pairs for intelligibility, GRPO with rule-based rewards for stability and instruction-following at 5M-hour scale |
+| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | Dr.GRPO (no value network) with composite multi-dimensional reward (intelligibility + quality + SIM); dual-purpose pipeline where pretraining data filters double as RL reward models, eliminating distribution shift |
+| [[2508.15442]] | Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment | EMNLP | 2025 | First application of GFlowNets to AR TTS; reformulates hallucination reduction as trajectory flow optimization; >50% CER reduction on Seed-TTS-Eval hard subset; no paired preference data required |
+| [[2509.00685]] | MPO: Multidimensional Preference Optimization for LM-based TTS | arXiv | 2025 | Multidimensional preference set construction (intelligibility, speaker similarity, prosody) with cross-entropy regularization; simultaneously improves all three alignment dimensions — addresses the single-objective trade-off problem |
+| [[2510.05758]] | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in TTS | ICASSP | 2026 | GRPO applied to frozen LLM-based TTS for emotion intensity control; dual reward (emotion recognition accuracy + naturalness); demonstrates RL-based fine-grained emotional expressiveness beyond SFT alone |
+| [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | RLAIF emotional alignment fine-tuning as one of three optimization stages; demonstrates RL-based emotion alignment is transferable to a multilingual setting |
