@@ -181,3 +181,9 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | interspeech-2025-0989 | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech 2025
 - ingest | interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
+- ingest | 2025.naacl-long.110 | WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching | NAACL 2025
+- ingest | 2025.findings-acl.1051 | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL 2025
+- ingest | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP 2025
+- ingest | 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv 2026
+- ingest | 2025.coling-main.518 | ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models | workshop 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents | corpus milestone: 100 papers ingested

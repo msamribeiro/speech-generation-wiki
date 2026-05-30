@@ -1,8 +1,8 @@
 ---
 venue: NAACL
 year: 2025
-papers_ingested: 2
-last_updated: 2026-05-27
+papers_ingested: 3
+last_updated: 2026-05-30
 ---
 
 # NAACL 2025
@@ -23,3 +23,4 @@ Together, the NAACL 2025 TTS papers represent a methodological split: continuous
 |----|-------|
 | 2025.findings-naacl.184 | Continuous Speech Tokenizer in Text To Speech |
 | 2025.naacl-long.242 | StyleTTS-ZS: Efficient High-Quality Zero-Shot TTS with Distilled Time-Varying Style Diffusion |
+| 2025.naacl-long.110 | WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching |

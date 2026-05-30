@@ -1,8 +1,8 @@
 ---
 venue: arXiv
 year: 2026
-papers_ingested: 9
-last_updated: 2026-05-29
+papers_ingested: 10
+last_updated: 2026-05-30
 ---
 
 # arXiv 2026
@@ -28,3 +28,4 @@ Standout papers: [[2603.08823]] (Fish Audio S2) achieves best open-source WER (0
 | 2603.18090 | MOSS-TTS Technical Report |
 | 2603.26364 | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Diffusion Modeling |
 | 2601.03888 | IndexTTS 2.5 Technical Report |
+| 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching |

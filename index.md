@@ -1,11 +1,16 @@
 # Wiki Index
 
-Last updated: 2026-05-30 | Papers: 95 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-30 | Papers: 100 | Concepts: 21 | Trends: 0
 
 ## Papers
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[2025.naacl-long.110]] | [WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching](papers/2025.naacl-long.110.md) | Tsinghua University | NAACL | 2025 | TTS | flow-matching | 2026-05-30 |
+| [[2025.findings-acl.1051]] | [LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM](papers/2025.findings-acl.1051.md) | MBZUAI | ACL | 2025 | TTS, SCA | autoregressive-LM | 2026-05-30 |
+| [[2025.emnlp-main.180]] | [Scaling Rich Style-Prompted Text-to-Speech Datasets](papers/2025.emnlp-main.180.md) | UT Austin / NYU | EMNLP | 2025 | TTS, evaluation | autoregressive-LM | 2026-05-30 |
+| [[2507.09318]] | [ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching](papers/2507.09318.md) | Xiaomi Corp. | arXiv | 2026 | TTS, SCA | flow-matching | 2026-05-30 |
+| [[2025.coling-main.518]] | [ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models](papers/2025.coling-main.518.md) | Zhejiang University | workshop | 2025 | TTS | flow-matching, hybrid | 2026-05-30 |
 | [[interspeech-2025-0469]] | [Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models](papers/interspeech-2025-0469.md) | University of Engineering and Technology, Lahore | Interspeech | 2025 | TTS, evaluation | transformer-enc-dec | 2026-05-30 |
 | [[interspeech-2025-0854]] | [Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers](papers/interspeech-2025-0854.md) | Fraunhofer IIS | Interspeech | 2025 | TTS | GAN, flow-matching, transformer-enc-dec | 2026-05-30 |
 | [[interspeech-2025-0973]] | [A Dataset for Automatic Assessment of TTS Quality in Spanish](papers/interspeech-2025-0973.md) |  | Interspeech | 2025 | TTS, evaluation |  | 2026-05-30 |
