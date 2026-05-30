@@ -1,7 +1,7 @@
 ---
 venue: Interspeech
 year: 2025
-papers_ingested: 22
+papers_ingested: 27
 last_updated: 2026-05-30
 ---
 
@@ -37,3 +37,8 @@ _Accumulates as papers are ingested._
 | interspeech-2025-0762 | Intrasentential English in Swedish TTS: perceived English-accentedness |
 | interspeech-2025-0779 | Intelligibility of Text-to-Speech Systems for Mathematical Expressions |
 | interspeech-2025-0787 | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model |
+| interspeech-2025-0469 | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models |
+| interspeech-2025-0854 | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers |
+| interspeech-2025-0973 | A Dataset for Automatic Assessment of TTS Quality in Spanish |
+| interspeech-2025-0989 | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset |
+| interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer |

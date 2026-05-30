@@ -1,11 +1,16 @@
 # Wiki Index
 
-Last updated: 2026-05-30 | Papers: 90 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-30 | Papers: 95 | Concepts: 21 | Trends: 0
 
 ## Papers
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[interspeech-2025-0469]] | [Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models](papers/interspeech-2025-0469.md) | University of Engineering and Technology, Lahore | Interspeech | 2025 | TTS, evaluation | transformer-enc-dec | 2026-05-30 |
+| [[interspeech-2025-0854]] | [Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers](papers/interspeech-2025-0854.md) | Fraunhofer IIS | Interspeech | 2025 | TTS | GAN, flow-matching, transformer-enc-dec | 2026-05-30 |
+| [[interspeech-2025-0973]] | [A Dataset for Automatic Assessment of TTS Quality in Spanish](papers/interspeech-2025-0973.md) |  | Interspeech | 2025 | TTS, evaluation |  | 2026-05-30 |
+| [[interspeech-2025-0989]] | [HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset](papers/interspeech-2025-0989.md) | NVIDIA | Interspeech | 2025 | TTS, evaluation | autoregressive-LM | 2026-05-30 |
+| [[interspeech-2025-1034]] | [Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer](papers/interspeech-2025-1034.md) | University of Edinburgh | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-05-30 |
 | [[interspeech-2025-0723]] | [Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models](papers/interspeech-2025-0723.md) | KAIST / Samsung Electronics | Interspeech | 2025 | TTS | transformer-enc-dec, VAE | 2026-05-30 |
 | [[interspeech-2025-0754]] | [EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis](papers/interspeech-2025-0754.md) | UCAS Hangzhou | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-05-30 |
 | [[interspeech-2025-0762]] | [Intrasentential English in Swedish TTS: perceived English-accentedness](papers/interspeech-2025-0762.md) | KTH / MTM | Interspeech | 2025 | TTS | flow-matching | 2026-05-30 |

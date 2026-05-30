@@ -175,3 +175,9 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
 - parse | batch 9 | 38 Interspeech 2025 papers (interspeech-2025-1084 … interspeech-2025-2031) | 38 done, 0 failed | RapidOCR warnings: 1531, 1595, 1641, 1684 (non-fatal) | parsed total: 759/783
 - parse | batch 10 | 24 Interspeech 2025 papers (interspeech-2025-2032 … interspeech-2025-raju25_interspeech) | 24 done, 0 failed | RapidOCR warnings: 2032, 2586, 2739, 2815, cho25c, raju25 (non-fatal) | 4 slug-named papers are 2-page demos (short/few-refs expected) | parsed total: 783/783 — parse pipeline complete
+- ingest | interspeech-2025-0469 | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech 2025
+- ingest | interspeech-2025-0854 | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech 2025
+- ingest | interspeech-2025-0973 | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech 2025
+- ingest | interspeech-2025-0989 | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech 2025
+- ingest | interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
