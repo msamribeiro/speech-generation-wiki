@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Autoregressive Codec TTS
@@ -123,3 +123,8 @@ Flow-matching non-autoregressive TTS (F5-TTS, Voicebox) is faster per utterance 
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Drops AR LM stage of a CosyVoice-style pipeline and replaces with masked discrete diffusion; achieves CER 0.98% (zh) on Seed-TTS-Eval while enabling parallel generation and step-count-independent inference cost |
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning; resolves text dilution problem of decoder-only AR TTS; achieves best WER among compared systems on English, Italian, Portuguese, and Chinese |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time) with 48.99 ms first-byte latency — fastest in corpus |
+| [[interspeech-2025-0551]] | Monotonic Attention for Robust TTS Synthesis in Large Language Model Frameworks | Interspeech | 2025 | Stepwise monotonic attention (SMA) fine-tuning of selected alignment heads in decoder-only LLM TTS reduces deletion/insertion errors without external aligners; CER 8.53% vs. 10.42% on Seed-ZH-Hard at 300M/150K-hour scale |
+| [[interspeech-2025-0704]] | Differentiable Reward Optimization for LLM based TTS system | Interspeech | 2025 | DiffRO applies RLHF to codec LM TTS via Gumbel-Softmax differentiable token sampling and a multi-task reward model (ASR, emotion, MOS) that operates directly on codec tokens; WER 0.78% zh on seed-tts-eval |
+| [[interspeech-2025-0787]] | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech | 2025 | Applies embedding-space manipulation to Metavoice 1B (autoregressive codec LM) to generate speaker-style-modified (Lombard) speech via spherical interpolation |
+| [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps fine-tunes Parler-TTS (880M DAC-token autoregressive LM) on 2709 hours of rich style-annotated data, improving intrinsic tag recall from 33% to 69.5% |
+| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | 30M autoregressive transformer decoder predicts WavTokenizer speech tokens from phoneme embeddings for streaming LLM-to-speech conversion; WER 3.70% at 475ms latency, decoupled from base LLM |

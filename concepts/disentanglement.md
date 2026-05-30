@@ -3,7 +3,7 @@ slug: disentanglement
 title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Disentanglement
@@ -69,3 +69,6 @@ End-to-end systems without explicit disentanglement (e.g., direct speaker condit
 | [[2025.acl-long.654]] | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL | 2025 | MCRVQ redistributes information load across early codebook channels to equalize entropy per channel; while not a traditional disentanglement approach, this architectural choice improves downstream AR LM performance by reducing per-channel information density |
 | [[2508.04141]] | Parallel GPT: Harmonizing the Independence and Interdependence of Acoustic Tokens | arXiv | 2025 | Parallel Tokenizer extracts semantically independent tokens (semantic stream) and acoustically dependent tokens (acoustic stream) simultaneously; AR+NAR coupling leverages both independent and interdependent token representations |
 | [[2508.11273]] | EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical VAE | arXiv | 2025 | Spherical AVD emotion space (azimuth/elevation/radius for valence/arousal/dominance) combined with HuBERT-derived prosody tokens; emotion and speaker conditioning are kept orthogonal to prevent cross-contamination in multilingual synthesis |
+| [[interspeech-2025-0575]] | VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents | Interspeech | 2025 | Leverages SpeechTokenizer RVQ disentanglement (VQ-1 content, VQ-2-8 speaker) to embed watermarks in speaker-specific latents that survive zero-shot VC; speaker-specific vs. content-agnostic embedding is essential for VC-resistance |
+| [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | Teacher-student speaker encoder implicitly disentangles timbre from articulation quality; teacher provides clean speaker representation while student learns robust extraction from distorted (dysarthric) audio |
+| [[interspeech-2025-0723]] | Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction | Interspeech | 2025 | Beta-VAE latent space separates prosody from pronunciation for targeted activation edits; VQ-VAE prototype anchoring prevents large latent shifts from altering unintended speech properties |

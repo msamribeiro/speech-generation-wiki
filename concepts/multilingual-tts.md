@@ -3,7 +3,7 @@ slug: multilingual-tts
 title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Multilingual TTS
@@ -73,3 +73,7 @@ Monolingual TTS with language-specific models achieves higher ceiling quality pe
 | [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | Extends IndexTTS 2 to Chinese, English, Japanese, and Spanish; evaluates three multilingual strategy variants (language-specific, token concatenation, text transliteration); token-level concatenation provides best naturalness |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Multilingual AR TTS trained on millions of hours; achieves WER 2.04% (EN) and CER 2.07% (ZH) on Seed-TTS-Eval; causal tokenizer for unified multilingual speech representation |
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning evaluated on 6 languages (English, Chinese, Italian, German, Portuguese, Spanish); best WER for EN, IT, PT, ZH among compared systems |
+| [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Demonstrates that dedicated phoneme-based Tacotron pipelines with language-specific lexicons substantially outperform Meta's MMS for Punjabi Shahmukhi and Urdu; WER 16.1% vs. 31.4% for MMS on Punjabi |
+| [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent neural Seq2Seq frontend reduces pronunciation data for a new non-standard English accent by 95% (from 20k to 1k sentences) via cross-accent knowledge transfer; accent similarity weakly mediates transfer strength |
+| [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Matcha-TTS extended with per-phoneme accentedness parameter and psychometric calibration; demonstrates listener preferences for intrasentential English vary by insertion type; no single accentedness level universally preferred |
+| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Evaluates multilingual sentence mode prediction for TTS prosody across Italian, French, and German; cross-lingual transfer (German model applied to French) achieves UAR 63.62%, supporting multilingual prosody modeling via shared SSL representations |

@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Spoken Language Model
@@ -88,3 +88,6 @@ For codec efficiency, [[2510.00981]] (FlexiCodec) shows that 6.25 Hz AR tokens c
 | [[2025.acl-long.912]] | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL | 2025 | Modular SpeechLM (0.5B–14B) coupling a Qwen2.5 LLM with a streaming AR TTS LM; gate-fused LLM hidden states + text embeddings; 582 ms latency; surpasses GLM-4-Voice and LLaMA-Omni on spoken QA, instruction following, and naturalness while training on only 200K synthetic samples |
 | [[2025.acl-long.654]] | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL | 2025 | Designs a codec specifically to improve speech language model training: MCRVQ redistribution reduces per-channel information entropy, improving downstream AR LM SPK-SIM by 14%; demonstrates the direct impact of codec design on SLM performance |
 | [[2511.12347]] | VoiceCraft-X: Unifying Multilingual Voice-Cloning Speech Synthesis and Editing | EMNLP | 2025 | AR neural codec language model extended to 11 languages via Qwen3 LLM backbone; demonstrates that pretrained text LLM initialization enables multilingual in-context learning for both speech generation and editing |
+| [[interspeech-2025-0310]] | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech LMs | Interspeech | 2025 | Systematic 64-configuration grid search over HuBERT K-means segmentation × vocabulary; N=80ms + K=16384 beats original GSLM-style tokenization on 5 SLU benchmarks with 50% data reduction |
+| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | 30M AR transformer decoupled from any base LLM; multi-queue streaming scheduler processes LLM text tokens concurrently with speech token decoding; achieves 475ms end-to-end latency and WER 3.70% |
+| [[2507.09318]] | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv | 2026 | Extends FM TTS to spoken dialogue with learnable speaker-turn embeddings; 15× faster than AR baselines (Dia 1.61B), demonstrating NAR architecture's advantage for the dialogue SCA use case |

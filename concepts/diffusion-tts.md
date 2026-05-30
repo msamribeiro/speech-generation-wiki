@@ -3,7 +3,7 @@ slug: diffusion-tts
 title: Diffusion Models for TTS
 aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, score-matching TTS]
 related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Diffusion Models for TTS
@@ -70,3 +70,4 @@ Flow matching (a deterministic ODE variant using the same DiT backbone) has larg
 | [[2025.emnlp-main.40]] | Towards Controllable Speech Synthesis in the Era of LLMs: A Systematic Survey | EMNLP | 2025 | Surveys diffusion-based controllable TTS methods (NaturalSpeech 2/3, PromptTTS 2) alongside AR and flow-matching systems; provides historical taxonomy from DDPM to flow matching |
 | [[2025.coling-main.352]] | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech | workshop | 2025 | Replaces variance adaptor in FastSpeech2 with a conditional diffusion module modeling coarse-grained implicit style and fine-grained explicit attributes; MOS 4.18 on Mandarin outperforming Grad-TTS, Guided-TTS, and DiffProsody |
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Replaces the AR LM stage of a CosyVoice-style TTS pipeline with a masked discrete diffusion model (LLaDA-based); achieves CER 0.98% (zh) on Seed-TTS-Eval while enabling parallel generation with step-count-independent cost |
+| [[interspeech-2025-0063]] | Fine-Tuning TTS Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech | 2025 | DLPO: first RLHF framework specifically designed for non-autoregressive diffusion TTS; original DDPM noise-prediction loss used as reward penalty to maintain temporal coherence; UTMOS 3.65 vs. 2.90 base, preferred 67% of pairwise comparisons |

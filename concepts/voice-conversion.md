@@ -3,7 +3,7 @@ slug: voice-conversion
 title: Voice Conversion
 aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conversion]
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
-last_updated: 2026-05-27
+last_updated: 2026-05-30
 ---
 
 # Voice Conversion
@@ -59,3 +59,4 @@ Through 2022–2024, the field progressed from parallel/non-parallel offline met
 |----|-------|-------|------|------------------------|
 | [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Introduces a streaming zero-shot VC system achieving state-of-the-art speaker similarity at 37–140 ms latency via Emformer content extraction, CVQ style encoding, and Causal Shuffle Vocoder |
 | [[2025.acl-demo.37]] | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL | 2025 | Achieves 61.4 ms CPU latency for zero-shot VC using articulatory coding (SPARC EMA inverter + WavLM speaker encoder + DDSP vocoder); 13.3% faster than StreamVC; best pitch tracking (PCC 0.865) in corpus |
+| [[interspeech-2025-0575]] | VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents | Interspeech | 2025 | Embeds watermarks in the speaker-specific latents of a SpeechTokenizer RVQ codec that survive zero-shot VC because zero-shot models must transfer those latents; ACC >95% where prior methods fall to ~50% |

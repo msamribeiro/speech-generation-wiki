@@ -9,7 +9,17 @@ last_updated: 2026-05-30
 
 ## Overview
 
-_Accumulates as papers are ingested._
+Interspeech 2025 is the largest single venue in the corpus with 27 ingested papers, spanning TTS, VC, SCA, codec design, and evaluation. The batch reveals five dominant themes.
+
+**Flow-matching acceleration** is the most concentrated technical cluster: APTTS ([[interspeech-2025-0455]]) introduces adversarial post-training in a latent FM framework (4-step inference, RTF 0.052), while RapFlow-TTS ([[interspeech-2025-0554]]) applies consistency flow matching to Matcha-TTS (2-NFE, MOS 4.01). Together they confirm that few-step FM synthesis is now practical without quality collapse, using adversarial and consistency mechanisms respectively. The Swedish accentedness paper ([[interspeech-2025-0762]]) also uses Matcha-TTS as a backbone, extending FM to code-switching acoustic control.
+
+**RLHF for TTS** expands beyond the established DPO/GRPO paradigm: DiffRO ([[interspeech-2025-0704]]) introduces differentiable token-level reward optimization for codec LMs (Gumbel-Softmax bypassing FM+vocoder, achieving WER 0.78% on seed-tts-eval zh), while DLPO ([[interspeech-2025-0063]]) demonstrates RLHF for diffusion TTS via task-specific loss regularization. These two papers together establish that RLHF is viable across both the codec LM and the diffusion paradigm.
+
+**Robustness and reliability** is a recurring practical theme: NR-LauraTTS ([[interspeech-2025-0319]]) introduces codec-domain speech denoising (1.10G FLOPs vs. 38.93G for waveform SE); the monotonic attention paper ([[interspeech-2025-0551]]) addresses repetition/omission failures in LLM-based TTS without external aligners; and the dysarthric speaker TTS paper ([[interspeech-2025-0596]]) extends zero-shot TTS to pathological speech.
+
+**Evaluation and dataset contributions** are unusually numerous: HiFiTTS-2 ([[interspeech-2025-0989]], 36.7k hours 22kHz), MIKU-PAL ([[interspeech-2025-0648]], 131.2h emotion-labeled), math TTS evaluation ([[interspeech-2025-0779]]), Spanish MOS corpus ([[interspeech-2025-0973]]), and low-resource Punjabi/Urdu corpora ([[interspeech-2025-0469]]).
+
+**Hybrid codec and tokenization** includes two notable contributions: PAST ([[interspeech-2025-0669]]) challenges the need for SSL pseudo-label distillation in hybrid tokenizers by using supervised CTC + phoneme classification directly on RVQ-1, while the speech tokenization grid search ([[interspeech-2025-0310]]) demonstrates that N=80ms + K=16384 HuBERT K-means tokenization beats original-resolution GSLM tokenization with 50% data reduction.
 
 ## Papers
 

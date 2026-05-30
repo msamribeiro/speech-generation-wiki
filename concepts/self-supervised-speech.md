@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-05-27
+last_updated: 2026-05-30
 ---
 
 # Self-Supervised Speech Representations and Foundation Models
@@ -74,3 +74,7 @@ Text-supervised ASR features encode more concentrated semantic information but r
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Comprehensive taxonomy of SSL models (Wav2vec 2.0, HuBERT, WavLM, USM) and their roles as speech tokenizers; surveys how SSL objectives shape the semantic vs. acoustic content of speech representations |
 | [[2025.acl-long.1471]] | The time scale of redundancy between prosody and linguistic context | ACL | 2025 | Uses BERT-large/RoBERTa-large (fine-tuned linear heads) to predict prosodic features from context windows; shows that 3–8 past words and 1–2 future words provide most prosodic MI — empirical characterization of how contextual SSL models relate linguistic and prosodic information |
 | [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL | 2025 | Motivates DRI: convolutional SSL-like encoders in RVQ codecs have wide receptive fields causing context-dependent tokenization; proposes consistency constraints to reduce this variability |
+| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | WavLM Large embeddings outperform knowledge-based acoustic features and phoneme-level XPhoneBERT for sentence mode prediction; early fusion with XLM-RoBERTa word-level embeddings achieves best UAR 74.22% German |
+| [[interspeech-2025-0669]] | PAST: Phonetic-Acoustic Speech Tokenizer | Interspeech | 2025 | Challenges the assumption that SSL pseudo-label distillation is needed for hybrid tokenization; supervised CTC + phoneme classification directly on RVQ-1 achieves better phonetic metrics than SpeechTokenizer without any external SSL teacher |
+| [[interspeech-2025-0973]] | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech | 2025 | DenseMOS uses wav2vec 2.0 base representations; finds CNN encoder output (local features) more predictive of MOS than deep transformer layers (contextual features); PCC 0.62 for MOS prediction on Spanish TTS |
+| [[2025.coling-main.518]] | ProsodyFlow: High-fidelity TTS through Conditional Flow Matching and Prosody Modeling | workshop | 2025 | Frozen WavLM-Base-plus (12 transformer layers, averaged) extracts prosody vectors as FM training targets; component ablation shows WavLM removal causes -0.18 CMOS loss |

@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Instruction-Conditioned TTS
@@ -65,3 +65,5 @@ Prosody-conditioned TTS (reference audio style transfer) copies style from a ref
 | [[2025.emnlp-main.40]] | Towards Controllable Speech Synthesis in the Era of LLMs: A Systematic Survey | EMNLP | 2025 | Four-strategy taxonomy (style tagging, reference speech, natural language description, instruction-guided); identifies instruction-guided control as the frontier with no standardized evaluation; surveys ~80 systems with multi-attribute controllability checkmarks |
 | [[2025.acl-long.911]] | DNASpeech: A Contextualized and Situated TTS Dataset with Dialogue, Narrative, and Action Prompts | ACL | 2025 | Introduces DNA (Dialogue, Narrative, Action) situated prompts as a new instruction-conditioning paradigm for contextualized TTS; 12-hour dataset with human-annotated situational prompts from movies; defines a leaderboard for instruction-conditioned TTS in context-aware settings |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Instruction fine-tuning with natural language style instructions (speaking rate, emotion, timbre) alongside zero-shot voice cloning; large-scale training demonstrates scalability of instruction conditioning |
+| [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps: first large-scale open-source dataset (2709h) with 59 rich paralinguistic style tags (intrinsic speaker-level + situational utterance-level); automatic scaling via perceptual speaker similarity and Gemini audio LLM; improves Parler-TTS intrinsic tag recall from 33% to 69.5% |
+| [[interspeech-2025-0047]] | Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis | Interspeech | 2025 | RV-TTS generates speech from face images while allowing fine-grained speech characteristic control via descriptive text; demonstrates instruction-conditioned voice generation from visual face prompt |

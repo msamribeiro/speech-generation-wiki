@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Evaluation Metrics
@@ -87,3 +87,8 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[2509.15969]] | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv | 2025 | Uses WER, SPK-SIM, UTMOS, and GPU first-packet latency to evaluate streaming TTS at different model scales; introduces throughput (tokens/second) as a relevant production metric |
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Uses CER/WER, SIM-o, and UTMOS on Seed-TTS-Eval for both TTS and zero-shot editing evaluation; demonstrates that edit quality can be measured with the same metrics as generation quality |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Uses RTF, average first-byte latency, WER, UTMOS, and PESQ for streaming TTS evaluation; demonstrates that streaming codec-based NAR TTS achieves 303× real-time speed at competitive quality |
+| [[interspeech-2025-0779]] | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech | 2025 | Introduces LaTeX CER (LCER) and TeXBLEU for mathematical expression TTS evaluation; shows standard ASR-based metrics (TTS-ASR cascade CER=0.10) correlate <0.15 with human intelligibility for mathematical content |
+| [[interspeech-2025-0973]] | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech | 2025 | First Spanish MOS corpus (4326 samples, 52 systems); validates that NISQA fine-tuned on Spanish improves PCC 0.71→0.73; finds CNN-based wav2vec 2.0 features more predictive of MOS than contextual transformer layers |
+| [[interspeech-2025-0648]] | MIKU-PAL: Automated Multimodal Method for Speech Paralinguistic and Affect Labeling | Interspeech | 2025 | Demonstrates that annotation consistency (Fleiss κ=0.93) matters more than accuracy (68.5%) for downstream TTS training; introduces 26-category emotion taxonomy beyond Ekman's basic emotions |
+| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Shows WHISPER fails on exclamatory sentences (near-chance recall), demonstrating that current ASR punctuation-based prosody labels are unreliable for exclamatory TTS prosody; early fusion of WavLM+XLM-RoBERTa achieves UAR 74.22% for German sentence mode |
+| [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu | Interspeech | 2025 | Comprehensive phoneme-level evaluation (DRT, MRT, SUS) for low-resource South Asian language TTS; demonstrates that phoneme-based models substantially outperform MMS character-level approach |

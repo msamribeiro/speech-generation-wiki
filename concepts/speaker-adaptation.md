@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts]
-last_updated: 2026-05-27
+last_updated: 2026-05-30
 ---
 
 # Speaker Adaptation
@@ -53,3 +53,7 @@ Zero-shot TTS achieves speaker generalization without any adaptation but may los
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
 | [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL | 2025 | Cross-lingual language adaptation via fine-tuning multilingual pre-trained feature extractors on 540 hours of Thai; style encoder provides zero-shot voice cloning on top of the adapted model |
+| [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | Teacher-student speaker encoder with progressive curriculum learning adapts zero-shot TTS for dysarthric reference audio; >50% relative PER reduction; MOS-Spk 3.909 vs. 3.731 for best baseline |
+| [[interspeech-2025-0787]] | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech | 2025 | Feedforward embedding transform maps plain to Lombard speaker embeddings; spherical interpolation calibrated to physical noise levels; plausibility MOS 3.31 vs. 2.19 for level-only baseline from only ~250s Lombard data |
+| [[interspeech-2025-0854]] | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech | 2025 | Simulates low-resource acoustic model artifacts from high-resource subsampled speakers for training postprocessor; GAN MUSHRA 74.8, CFM MUSHRA 79.8 on low-resource PTDB-TUG speakers |
+| [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent multi-accent frontend reduces pronunciation data for new accent by 95% via cross-accent knowledge transfer; accent similarity weakly mediates transfer; applicable to any non-standard accent variety |

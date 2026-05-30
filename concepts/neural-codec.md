@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Neural Audio Codec
@@ -107,3 +107,8 @@ Continuous mel-spectrograms remain the dominant representation for non-autoregre
 | [[2508.19098]] | CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Efficient TTS | arXiv | 2025 | Replaces discrete RVQ tokens with continuous VAE latents decoded per-token via MLP rectified-flow head; WER 1.88%, UTMOS 4.22 on LibriSpeech-PC test-clean, outperforming DiTAR with lower latency |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | MOSS-Audio-Tokenizer: causal Transformer-based tokenizer at 1000–4000 bps achieving PESQ-WB 3.69 (EN) and SIM 0.88 on LibriSpeech, outperforming Mimi and XY-Tokenizer at the same bitrate |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Uses depth-wise sequential decoding over 32 Mimi codec RVQ layers in a non-autoregressive transformer, achieving RTF ~0.0033 (303× real-time) and 48.99 ms first-byte latency |
+| [[interspeech-2025-0669]] | PAST: Phonetic-Acoustic Speech Tokenizer | Interspeech | 2025 | Hybrid tokenizer replacing SSL pseudo-label distillation with supervised CTC + phoneme classification losses directly on RVQ-1; state-of-the-art phonetic metrics (PNMI 0.75, WER 15.7%) while maintaining reconstruction (PESQ 3.55) without external SSL teacher |
+| [[interspeech-2025-0319]] | Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising | Interspeech | 2025 | Operates speech enhancement in the discrete acoustic token domain; two-stage Conformer denoiser (token predictor + embedding refiner) removes noise from RVQ-encoded prompts at 1.10G FLOPs vs. 38.93G for waveform-domain SE |
+| [[interspeech-2025-0310]] | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech LMs | Interspeech | 2025 | Systematic 64-configuration grid search over HuBERT K-means segmentation width (20–280ms) and vocabulary size (128–16384); finds N=80ms + K=16384 beats original-resolution tokenization with 50% data and 70% runtime reduction |
+| [[interspeech-2025-0989]] | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech | 2025 | Bandwidth estimation pipeline for 22kHz/44.1kHz dataset construction; empirical finding that speaker diversity rather than audio quality alone drives zero-shot codec LM performance |
+| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Uses WavTokenizer (single-layer RVQ, 4096-vocab, 40-75 tokens/sec) for streaming speech synthesis; demonstrates that a single-codebook discrete tokenizer is sufficient for high-quality streaming TTS when the sequence is manageable |

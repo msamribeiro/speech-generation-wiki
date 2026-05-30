@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Prosody Control
@@ -75,3 +75,9 @@ Speaker-conditioned TTS (with reference audio) implicitly conditions on the refe
 | [[2509.00685]] | MPO: Multidimensional Preference Optimization for LM-based TTS | arXiv | 2025 | RL-based prosody alignment via multidimensional preference optimization; improves log F0 RMSE from 0.337 to 0.279 simultaneously with CER and SPK-SIM improvements |
 | [[2510.05758]] | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in TTS | ICASSP | 2026 | Intensity-conditional emotion tokens in a codec LM, fine-tuned with GRPO using dual reward (recognition accuracy + naturalness); enables continuous intensity control through token representation |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with rich prosody modeling; instruct fine-tuning controls speaking rate, emotion, and timbre via natural language; WER 2.04% (EN) on Seed-TTS-Eval |
+| [[interspeech-2025-0723]] | Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction | Interspeech | 2025 | CAE enables retraining-free prosody and pronunciation control in a frozen Tacotron 2 encoder via gradient-ascent in a manifold-preserving beta-VAE latent space; WER drops 0.151→0.056, CMOS +0.764 |
+| [[interspeech-2025-0754]] | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech | 2025 | Variance-based emphasis features (pitch/duration deviation) with EPE block attention modulation prevent emotional prosody from distorting word-level emphasis; emphasis recognition 0.78 vs. 0.73 without EPE |
+| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Early fusion of WavLM acoustic and XLM-RoBERTa linguistic features for multilingual sentence mode (declarative/interrogative/exclamatory) prediction; UAR 74.22% German; cross-lingual transfer up to 63.62% |
+| [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Psychometric calibration maps a per-phoneme accentedness conditioning parameter to perceptually distinguishable accentedness levels (≥9 significant distinctions); listener preference varies by type of English insertion |
+| [[2025.coling-main.518]] | ProsodyFlow: High-fidelity TTS through Conditional Flow Matching and Prosody Modeling | workshop | 2025 | CFM over WavLM-extracted prosody latent enables inference-time prosody diversity without reference audio; MOS 4.23 on LJSpeech approaching ground truth (4.25); RTF faster than VITS |
+| [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps taxonomy: 33 intrinsic (speaker-level) + 26 situational (utterance-level) style tags; scaling via acoustic matching with Gemini 2.0 Flash audio LLM substantially improves style-prompted prosody control |

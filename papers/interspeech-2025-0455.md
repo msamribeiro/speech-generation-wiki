@@ -87,4 +87,6 @@ SIM-o scores lag behind large-scale trained models, suggesting prompt fidelity w
 
 ## Wiki Connections
 
-APTTS directly advances [[flow-matching]] by introducing latent-domain FM and adversarial acceleration, and [[zero-shot-tts]] by demonstrating competitive zero-shot quality with only 918 hours. The VAE component connects to [[disentanglement]] (pitch separation). The adversarial training at inference time connects to patterns from [[gan-vocoder]] literature. No in-corpus references identified; primary comparisons are to F5-TTS, Voicebox, VALL-E, FlashSpeech, and Matcha-TTS (all out-of-corpus).
+APTTS directly advances [[flow-matching]] by introducing latent-domain FM and adversarial acceleration, and [[zero-shot-tts]] by demonstrating competitive zero-shot quality with only 918 hours. The VAE component connects to [[disentanglement]] (pitch separation). The adversarial training at inference time connects to patterns from [[gan-vocoder]] literature.
+
+Related few-step FM acceleration work from Interspeech 2025: [[interspeech-2025-0554]] (RapFlow-TTS) takes a complementary approach via consistency flow matching on straight ODE trajectories, achieving 2-NFE synthesis on mel-spectrograms where APTTS uses 4-step adversarial post-training in latent space. Both papers converge on the conclusion that flow-matching's straight trajectories enable aggressive inference step reduction, but via different mechanisms: consistency constraints (RapFlow-TTS) vs. adversarial discrimination (APTTS).

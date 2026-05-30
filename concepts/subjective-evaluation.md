@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Subjective Evaluation
@@ -62,3 +62,7 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2025.coling-main.352]] | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for TTS | workshop | 2025 | Uses MOS listening tests (14 raters, 18 utterances per model) on a private Mandarin dataset; demonstrates that hierarchical prosody diffusion outperforms Grad-TTS, Guided-TTS, and DiffProsody on naturalness (MOS 4.18 vs. 4.08–4.15) |
 | [[2509.00685]] | MPO: Multidimensional Preference Optimization for LM-based TTS | arXiv | 2025 | Uses ABX preference test alongside objective metrics for validating multidimensional RL alignment; provides methodological example of combining objective and subjective evaluation for RL-aligned TTS |
 | [[2511.12347]] | VoiceCraft-X: Unifying Multilingual Voice-Cloning Speech Synthesis and Editing | EMNLP | 2025 | Uses CMOS as primary naturalness metric (CMOS 0.63 — highest among all compared systems on Seed-TTS test-en); demonstrates preference of CMOS over MOS for capturing naturalness differences in multilingual zero-shot TTS |
+| [[interspeech-2025-0779]] | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech | 2025 | Two-tier evaluation: L1 MOS+transcription (49 listeners, 600 samples) and MUSHRA-inspired L2 comparison against human expert reference; demonstrates that TTS-ASR cascade metrics do not capture human comprehension of mathematical speech |
+| [[interspeech-2025-0406]] | Zero-Shot Mono-to-Binaural Speech Synthesis | Interspeech | 2025 | MOS + MUSHRA for binaural TTS quality; MUSHRA shows no significant preference between ZeroBAS and supervised methods on in-distribution BSD; significant preference for ZeroBAS on out-of-distribution TMB |
+| [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | Consistency MOS and Tag Recall as new evaluation metrics for style-prompted TTS; AMT evaluation reveals that style consistency requires both intrinsic (speaker-level) and situational (utterance-level) annotation for reliable training signal |
+| [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Psychometric calibration via recursive binary-search sigmoid estimation for mapping engineering parameter to perceived accentedness; Best-Worst experimental design for preference evaluation across 32 listeners |

@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Zero-Shot TTS
@@ -110,3 +110,8 @@ Prompt-conditioned TTS (using reference audio as a style prompt but not specific
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Open-source large-scale zero-shot TTS with WER 2.04% (EN) and CER 2.07% (ZH) on Seed-TTS-Eval, close to Qwen3-TTS and CosyVoice 3 |
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Zero-shot TTS and editing via masked discrete diffusion; CER 0.98% (zh) on Seed-TTS-Eval, enabling zero-shot editing without AR generation |
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder zero-shot TTS; resolves text-conditioning dilution in decoder-only AR TTS via cross-attention; best WER for multiple languages among compared systems |
+| [[interspeech-2025-0319]] | Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising | Interspeech | 2025 | NR-LauraTTS: codec-domain speech denoiser (two-stage Conformer) replaces waveform-domain SE; recovers clean-prompt zero-shot quality from noisy prompts at only 1.10G additional FLOPs vs. 38.93G for waveform SE |
+| [[interspeech-2025-0455]] | APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity TTS | Interspeech | 2025 | Latent flow-matching TTS with adversarial post-training reduces inference to 4 steps; competitive zero-shot quality with 918h training (WER 1.73%) — data-efficient zero-shot via adversarial acceleration |
+| [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | Extends zero-shot TTS to pathological speakers via teacher-student knowledge anchoring and progressive curriculum learning on short dysarthric reference audio; >50% relative PER reduction vs. baselines |
+| [[interspeech-2025-0989]] | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech | 2025 | 36.7k-hour English dataset at 22 kHz enabling high-bandwidth zero-shot TTS; Koel-TTS trained on HiFiTTS-2 achieves SSIM 0.731 vs. 0.494 for LibriTTS-trained model on unseen speakers |
+| [[2507.09318]] | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv | 2026 | Zero-shot two-speaker dialogue generation via FM with learnable speaker-turn embeddings; cpSIM 0.437 and WER 3.25% at RTF 0.063 — zero-shot voice conditioning for dialogue |

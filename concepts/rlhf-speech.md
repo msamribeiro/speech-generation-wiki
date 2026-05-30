@@ -3,7 +3,7 @@ slug: rlhf-speech
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # RLHF for Speech
@@ -22,6 +22,8 @@ Preference alignment is computationally efficient relative to pre-training: a si
 
 ## Current state of the art
 
+Two new RLHF approaches for TTS were presented at Interspeech 2025. DiffRO ([[interspeech-2025-0704]]) applies differentiable reward optimization to neural codec LM-based TTS (CosyVoice 2.0) by predicting rewards directly from codec tokens (bypassing FM+vocoder) and using Gumbel-Softmax to make token sampling differentiable. This achieves SOTA WER on seed-tts-eval zh (0.78%), and a multi-task reward model (MTR) enables emotion and quality control via differentiable rewards. DLPO ([[interspeech-2025-0063]]) applies RLHF to diffusion TTS (WaveGrad 2) with a novel penalty term: the original DDPM loss is added as a reward regularizer, preventing temporal incoherence and mode collapse. DLPO achieves UTMOS 3.65 vs. 2.90 for the base model, preferred in 67% of pairwise comparisons.
+
 As of mid-2025, the leading system for preference-aligned TTS intelligibility is the INTP framework from [[2025.acl-long.598]]. Key findings from that paper:
 
 - **INTP dataset:** ~251K preference pairs (>2K hours, EN+ZH) targeting regular, repeated, code-switching, pronunciation-perturbed, and punctuation-perturbed text domains. Pairs are constructed via intra-model sampling (WER-ranked), cross-model comparison (inter-pairs), and human-guided perturbation (perturbed pairs).
@@ -34,6 +36,10 @@ As of mid-2025, the leading system for preference-aligned TTS intelligibility is
 ## Key variants and sub-approaches
 
 **DPO for autoregressive TTS (vanilla DPO).** The standard DPO loss applied to AR codec language models (VALL-E family, ARS). Log-probability of the entire codec token sequence is used. Prior work: SpeechAlign (Zhang et al., 2024), Koel-TTS (Hussain et al., 2025), and [[2025.acl-long.598]] (ARS).
+
+**Differentiable reward optimization for codec LMs (DiffRO).** [[interspeech-2025-0704]] addresses two problems unique to codec LM-based TTS: (1) decoding codec tokens to audio for reward computation is expensive; (2) audio diversity from the same text is low, making pair construction hard. DiffRO trains a multi-task reward model (MTR) that predicts rewards directly from codec token sequences, bypassing the FM+vocoder stages entirely. Gumbel-Softmax makes the discrete token sampling differentiable, enabling direct backpropagation without policy gradient loops. The MTR model is jointly trained on ASR (WER), SER (emotion), SQA (MOS), and audio events, enabling multi-dimensional reward signals. ASR-reward DiffRO achieves WER 0.78% on seed-tts-eval zh (halving the CosyVoice 2.0 baseline of 1.56%), and MTR-reward DiffRO enables controllable emotion generation and multilingual WER improvement (Japanese WER: 9.13% → 6.36%) without explicit multilingual RL data.
+
+**RLHF for diffusion TTS (DLPO).** [[interspeech-2025-0063]] is the first RLHF framework specifically designed for non-autoregressive diffusion TTS. The key insight is that existing image-domain RL methods (DDPO, DPOK, KLinR) fail for audio because they either use score-function estimators (which cannot handle audio's sequential complexity) or KL regularizers (which limit task-specific improvements). DLPO adds the original DDPM noise-prediction loss as a reward penalty: J_DLPO = E[-α·r(x₀,c) - β·||ε̃-εθ||²]. This prevents temporal incoherence and maintains the base model's probabilistic structure. Applied to WaveGrad 2R, DLPO achieves UTMOS 3.65 vs. 2.90 baseline, approaching ground-truth NISQA (4.02 vs. 4.37), while maintaining intelligibility (WER 1.2%).
 
 **DPO for flow-matching models (DPO-FM).** Introduced by [[2025.acl-long.598]], derived by expressing the DPO log-ratio in terms of predicted vs. reference velocity fields at sampled timesteps t. The loss penalizes the model for predicting velocities that push the preferred sample further from the target than the reference policy, relative to the dispreferred sample. Applied to F5-TTS ([[2025.acl-long.313]]).
 
@@ -51,7 +57,7 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 
 ## Year-on-year trajectory
 
-2023–2024: RLHF via reward model (PPO-style) first applied to TTS intelligibility in Seed-TTS [[2406.02430]] and CosyVoice 2 [[2412.10117]]. DPO first applied to TTS by SpeechAlign (NeurIPS 2024). 2025: [[2025.acl-long.598]] introduces multi-model cross-comparison pairs and architecture-general DPO (FM + MGM extensions); weak-to-strong generalization; intelligibility improvements extend to code-switching. GLM-TTS [[2512.14291]] demonstrates multi-reward GRPO with laughter modeling; reveals pronunciation/emotion trade-off. Vevo2 [[2508.16332]] extends GRPO to multi-objective alignment spanning intelligibility and prosody. 2026: Fish Audio S2 [[2603.08823]] introduces the dual-purpose pipeline concept (same models filter data and serve as RL rewards), addressing distribution shift. Qwen3-TTS [[2601.15621]] combines DPO + GRPO in a sequential post-training pipeline at 5M-hour scale. The post-training paradigm for TTS has converged on GRPO with multi-dimensional rewards as the standard; DPO is now used primarily for targeted intelligibility alignment.
+2023–2024: RLHF via reward model (PPO-style) first applied to TTS intelligibility in Seed-TTS [[2406.02430]] and CosyVoice 2 [[2412.10117]]. DPO first applied to TTS by SpeechAlign (NeurIPS 2024). 2025: [[2025.acl-long.598]] introduces multi-model cross-comparison pairs and architecture-general DPO (FM + MGM extensions); weak-to-strong generalization; intelligibility improvements extend to code-switching. GLM-TTS [[2512.14291]] demonstrates multi-reward GRPO with laughter modeling; reveals pronunciation/emotion trade-off. Vevo2 [[2508.16332]] extends GRPO to multi-objective alignment spanning intelligibility and prosody. 2026: Fish Audio S2 [[2603.08823]] introduces the dual-purpose pipeline concept (same models filter data and serve as RL rewards), addressing distribution shift. Qwen3-TTS [[2601.15621]] combines DPO + GRPO in a sequential post-training pipeline at 5M-hour scale. The post-training paradigm for TTS has converged on GRPO with multi-dimensional rewards as the standard; DPO is now used primarily for targeted intelligibility alignment. Interspeech 2025: DiffRO [[interspeech-2025-0704]] introduces differentiable token-level reward computation (Gumbel-Softmax), bypassing audio decoding for reward evaluation; DLPO [[interspeech-2025-0063]] demonstrates that RLHF is viable for diffusion-domain TTS via task-specific loss regularization — expanding the RLHF paradigm beyond codec LM-based systems.
 
 ## Open questions
 
@@ -62,6 +68,8 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 - GLM-TTS [[2512.14291]] shows emotion reward trades off against CER in GRPO; is this trade-off universal, and can reward scheduling or curriculum resolve it?
 - Fish Audio S2 [[2603.08823]] uses the same models for data filtering and RL rewards; does this introduce a self-reinforcing bias, or does the distributional overlap actually help generalization?
 - Vevo2 [[2508.16332]] shows that single-objective RL degrades the complementary dimension (intelligibility-only training drops melody from 65% to 50%); is multi-objective RL the general solution, or are there tasks where objectives are genuinely incompatible?
+- DiffRO [[interspeech-2025-0704]] shows that codec-level reward prediction (MTR model) improves WER but has limited impact on audio MOS because FM+vocoder largely denoise the output; can reward models be designed to operate on the FM's target space rather than the LM's codec space?
+- DLPO [[interspeech-2025-0063]] is validated only on single-speaker LJSpeech; does the diffusion-loss penalty scale to multi-speaker and zero-shot diffusion TTS systems?
 
 ## Papers
 
@@ -80,3 +88,5 @@ Supervised fine-tuning (SFT) on positive samples only is simpler but consistentl
 | [[2509.00685]] | MPO: Multidimensional Preference Optimization for LM-based TTS | arXiv | 2025 | Multidimensional preference set construction (intelligibility, speaker similarity, prosody) with cross-entropy regularization; simultaneously improves all three alignment dimensions — addresses the single-objective trade-off problem |
 | [[2510.05758]] | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in TTS | ICASSP | 2026 | GRPO applied to frozen LLM-based TTS for emotion intensity control; dual reward (emotion recognition accuracy + naturalness); demonstrates RL-based fine-grained emotional expressiveness beyond SFT alone |
 | [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | RLAIF emotional alignment fine-tuning as one of three optimization stages; demonstrates RL-based emotion alignment is transferable to a multilingual setting |
+| [[interspeech-2025-0704]] | Differentiable Reward Optimization for LLM based TTS system | Interspeech | 2025 | DiffRO: Gumbel-Softmax differentiable token sampling enables end-to-end reward backpropagation in codec LM TTS; MTR model provides multi-task rewards (ASR, emotion, MOS) directly from codec tokens, achieving WER 0.78% on seed-tts-eval zh |
+| [[interspeech-2025-0063]] | Fine-Tuning TTS Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech | 2025 | DLPO: first RLHF framework for diffusion TTS; original DDPM noise-prediction loss used as reward penalty to maintain temporal coherence; UTMOS 3.65 vs. 2.90 baseline, preferred in 67% of pairwise comparisons |

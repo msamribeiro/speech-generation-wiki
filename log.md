@@ -187,3 +187,4 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv 2026
 - ingest | 2025.coling-main.518 | ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models | workshop 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents | corpus milestone: 100 papers ingested
+- integrate | 30 papers | 18 concepts updated | 12 cross-links added

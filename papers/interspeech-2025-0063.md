@@ -95,3 +95,5 @@ The specific mechanism — using the original training loss as a reward penalty 
 ## Wiki Connections
 
 This paper is a direct contribution to [[rlhf-speech]], demonstrating RLHF applied to [[diffusion-tts]] rather than the more commonly studied autoregressive codec models. The choice of UTMOS as reward model connects to [[evaluation-metrics]] and the VoiceMOS challenge literature. The problem of temporal coherence in sequential diffusion generation is structurally related to challenges discussed in [[autoregressive-codec-tts]] papers. The DLPO objective's penalty term is analogous in spirit to KL regularization used in DPOK but derived from task structure rather than distributional divergence.
+
+Related RLHF-for-TTS work from Interspeech 2025: [[interspeech-2025-0704]] (DiffRO) applies RLHF to codec LM-based TTS (CosyVoice 2.0) using Gumbel-Softmax differentiable token sampling and a multi-task reward model that operates directly on codec tokens. DiffRO addresses the AR+FM paradigm while DLPO addresses the diffusion paradigm — together they demonstrate that RLHF is applicable across the major TTS architectures of 2025.

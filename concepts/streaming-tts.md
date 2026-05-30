@@ -3,7 +3,7 @@ slug: streaming-tts
 title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Streaming TTS
@@ -69,3 +69,4 @@ Non-streaming TTS achieves higher quality (access to full context) but cannot be
 | [[2509.15969]] | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv | 2025 | Fully AR streaming zero-shot TTS that begins from the first received word; GPU first-packet latency 102 ms — among the lowest reported for AR zero-shot streaming TTS; 441M model, 9K hours training |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with causal Transformer tokenizer enabling streaming synthesis; natural language instruction control for speaking rate and style at production scale |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive end-to-end streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time), 48.99 ms average first-byte latency — fastest streaming TTS in corpus |
+| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Multi-queue streaming scheduler runs two LLMVoX instances concurrently on sentence-partitioned queues; 475ms end-to-end latency vs. 4200ms for XTTS; WER 3.70%; plug-and-play with any LLM backbone |

@@ -3,7 +3,7 @@ slug: transformer-enc-dec-tts
 title: Transformer Encoder-Decoder TTS
 aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
-last_updated: 2026-05-29
+last_updated: 2026-05-30
 ---
 
 # Transformer Encoder-Decoder TTS
@@ -47,3 +47,7 @@ last_updated: 2026-05-29
 | [[2508.12001]] | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System | arXiv | 2025 | VITS-based enc-dec TTS with MoE duration predictor (16 experts) and VOCOS vocoder replacement; MOS 4.48 on LJSpeech — highest naturalness among evaluated systems including StyleTTS2 and F5-TTS |
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec language model using T5 text encoder with cross-attention to Gemma decoder; solves text dilution in decoder-only AR TTS; best WER across multiple languages |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive FastSpeech2-style enc-dec with depth-wise sequential codec decoding over 32 Mimi RVQ layers; demonstrates that enc-dec architecture with codec output enables 303× real-time streaming synthesis |
+| [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | FastSpeech2 + HiFi-GAN backbone with teacher-student speaker encoder for dysarthric TTS; demonstrates enc-dec TTS with specialized speaker adaptation curriculum for pathological reference audio |
+| [[interspeech-2025-0754]] | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech | 2025 | FastSpeech2-style backbone with EPE (Emphasis Perception Enhancement) block adding attention modulation for joint emphasis-emotion control; variance-based emphasis features alongside standard duration/energy predictors |
+| [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Tacotron 1 and Tacotron 2+WaveGlow applied to low-resource South Asian languages with phoneme-based lexicons; demonstrates phoneme-level enc-dec TTS outperforms MMS character-based approach |
+| [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | LSTM encoder-decoder Seq2Seq frontend for 14-accent pronunciation knowledge transfer; demonstrates that Tacotron-era architecture components remain relevant for low-resource accent TTS frontends |

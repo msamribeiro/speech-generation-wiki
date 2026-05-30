@@ -2,7 +2,7 @@
 
 *Updated after every ~25 ingests or after a significant query that reveals a new pattern.*
 
-Last updated: 2026-05-27 | Papers ingested: 25
+Last updated: 2026-05-30 | Papers ingested: 120
 
 ---
 
@@ -21,11 +21,15 @@ The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conce
 
 ## 2. Emerging Trends
 
-**Preference alignment as standard post-training for TTS.** [[2025.acl-long.598]] (INTP) demonstrates that DPO fine-tuning on ~250K paired samples reduces WER by 31–52% relative across five diverse architectures without degrading speaker similarity. DPO has now been extended beyond AR models to flow-matching (DPO-FM) and masked generative models (DPO-MGM), making preference alignment architecture-general. This positions RLHF-style alignment as a standard post-training step analogous to RLHF in text LLMs.
+**Preference alignment as standard post-training for TTS.** [[2025.acl-long.598]] (INTP) demonstrates that DPO fine-tuning on ~250K paired samples reduces WER by 31–52% relative across five diverse architectures without degrading speaker similarity. DPO has now been extended beyond AR models to flow-matching (DPO-FM) and masked generative models (DPO-MGM), making preference alignment architecture-general. Interspeech 2025 adds two new RLHF approaches: DiffRO ([[interspeech-2025-0704]]) introduces Gumbel-Softmax differentiable token sampling to bypass audio decoding for reward computation (WER 0.78% zh on seed-tts-eval); DLPO ([[interspeech-2025-0063]]) demonstrates RLHF for diffusion TTS via task-specific loss regularization. Together, these papers establish RLHF as applicable across AR codec LMs, flow-matching, and diffusion TTS — no longer limited to any single paradigm.
 
-**Codec reliability as a first-class design criterion.** [[2025.acl-long.1498]] formalizes Discrete Representation Inconsistency (DRI) — the same audio produces different codec token sequences depending on context — and shows that training-time consistency constraints reduce downstream VALL-E WER by 1.98% absolute at no reconstruction quality cost. Combined with [[2412.17048]]'s Factor C analysis, the field is converging on the view that codec design quality directly determines SLM/TTS quality, not just audio reconstruction fidelity.
+**Few-step flow-matching inference as a dedicated research area.** Two Interspeech 2025 papers both tackle FM TTS acceleration: APTTS ([[interspeech-2025-0455]]) via adversarial post-training in latent space (4 Euler steps, RTF 0.052), and RapFlow-TTS ([[interspeech-2025-0554]]) via consistency flow matching on straight ODE trajectories (2 NFE, MOS 4.01). WaveFM ([[2025.naacl-long.110]]) extends this to the vocoder stage. This confirms that FM inference acceleration is now a distinct sub-field with multiple competing approaches (consistency, adversarial, distillation).
 
-**Dialogue-native TTS.** [[2509.02020]] (FireRedTTS-2) and [[interspeech-2025-0253]] (long-context TTS) demonstrate that TTS systems are being designed for multi-turn conversational scenarios rather than isolated utterance generation. The interleaved text-speech format, context-aware prosody, and implicit emotion inference from chat history are becoming design requirements.
+**Codec reliability as a first-class design criterion.** [[2025.acl-long.1498]] formalizes Discrete Representation Inconsistency (DRI) — the same audio produces different codec token sequences depending on context — and shows that training-time consistency constraints reduce downstream VALL-E WER by 1.98% absolute at no reconstruction quality cost. Combined with [[2412.17048]]'s Factor C analysis, the field is converging on the view that codec design quality directly determines SLM/TTS quality, not just audio reconstruction fidelity. PAST ([[interspeech-2025-0669]]) challenges SSL distillation as the mechanism, demonstrating that supervised CTC losses on RVQ-1 outperform SSL pseudo-label distillation for phonetic content preservation.
+
+**Dialogue-native TTS and spoken dialogue generation.** [[2509.02020]] (FireRedTTS-2), ZipVoice-Dialog ([[2507.09318]]), and long-context papers demonstrate that TTS systems are being designed for multi-turn conversational scenarios. ZipVoice-Dialog's curriculum learning + speaker-turn embeddings achieves 15× faster inference than AR dialogue baselines (Dia 1.61B), showing that NAR flow-matching is now competitive for the dialogue generation task.
+
+**Large-scale evaluation and annotation infrastructure.** MIKU-PAL ([[interspeech-2025-0648]]) demonstrates automated multimodal emotion labeling at Fleiss κ=0.93 (vs. human 0.43) using Gemini 2.0 Flash, enabling the 131.2h MIKU-EmoBench dataset with 26 emotion categories. ParaSpeechCaps ([[2025.emnlp-main.180]]) provides 2709h of rich style-annotated data using perceptual speaker similarity and audio LLM quality filters. HiFiTTS-2 ([[interspeech-2025-0989]]) provides 36.7k hours at 22kHz from LibriVox. The field is building scalable annotation infrastructure rather than relying on small hand-labeled datasets.
 
 **Social and dialect-aware evaluation.** [[2025.acl-long.1252]] demonstrates that prosodic/acoustic persona (voice accent) substantially outperforms lexical-syntactic style matching (dialect text) for user acceptance in AAE-speaking populations. This introduces socially-grounded subjective evaluation — measuring warmth, trustworthiness, and engagement — as a dimension absent from standard WER/MOS/SPK-SIM evaluations.
 
@@ -42,6 +46,10 @@ The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conce
 **DPO alignment vs. pre-training scale.** [[2025.acl-long.598]] shows diminishing returns in iterative preference alignment, suggesting base model capability is the ceiling. It remains unclear whether training on more diverse data, larger models, or better preference data construction would break through this ceiling — or whether the base model's inherent expressiveness limits what post-training can achieve.
 
 **Cascade vs. end-to-end SCA.** Pure speech-to-speech LMs ([[2412.17048]] characterizes their coherence failures) remain far below cascade systems on semantic tasks. Commercial systems (GPT-4o, Qwen2.5-Omni) use cascade or hybrid approaches. [[2025.acl-long.388]] (DiVA) demonstrates that distillation from a text LLM narrows the gap using only ASR data, but cannot capture paralinguistic information that has no textual correlate.
+
+**Reward model scope vs. downstream audio quality in RLHF.** DiffRO ([[interspeech-2025-0704]]) shows that codec-token-level reward prediction improves pronunciation WER substantially but has limited impact on final audio MOS, because the FM+vocoder stages largely denoise codec imperfections. This reveals a fundamental scope problem: optimizing the codec LM stage alone cannot improve quality dimensions controlled by the FM and vocoder stages.
+
+**Consistency vs. adversarial acceleration for FM TTS.** RapFlow-TTS ([[interspeech-2025-0554]]) and APTTS ([[interspeech-2025-0455]]) both reduce FM TTS inference to 2–4 steps but via different mechanisms; APTTS achieves better intelligibility (WER 1.73%) at the cost of a 3-stage training pipeline, while RapFlow-TTS achieves simpler training but remains slightly below human-level MOS. There is no consensus on which acceleration mechanism is preferred for production deployment.
 
 ## 4. Gaps
 
