@@ -173,3 +173,4 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | interspeech-2025-0779 | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech 2025
 - ingest | interspeech-2025-0787 | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
+- parse | batch 9 | 38 Interspeech 2025 papers (interspeech-2025-1084 … interspeech-2025-2031) | 38 done, 0 failed | RapidOCR warnings: 1531, 1595, 1641, 1684 (non-fatal) | parsed total: 759/783
