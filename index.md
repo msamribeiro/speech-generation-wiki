@@ -1,11 +1,31 @@
 # Wiki Index
 
-Last updated: 2026-05-29 | Papers: 70 | Concepts: 21 | Trends: 0
+Last updated: 2026-05-30 | Papers: 90 | Concepts: 21 | Trends: 0
 
 ## Papers
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[interspeech-2025-0723]] | [Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models](papers/interspeech-2025-0723.md) | KAIST / Samsung Electronics | Interspeech | 2025 | TTS | transformer-enc-dec, VAE | 2026-05-30 |
+| [[interspeech-2025-0754]] | [EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis](papers/interspeech-2025-0754.md) | UCAS Hangzhou | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-05-30 |
+| [[interspeech-2025-0762]] | [Intrasentential English in Swedish TTS: perceived English-accentedness](papers/interspeech-2025-0762.md) | KTH / MTM | Interspeech | 2025 | TTS | flow-matching | 2026-05-30 |
+| [[interspeech-2025-0779]] | [Intelligibility of Text-to-Speech Systems for Mathematical Expressions](papers/interspeech-2025-0779.md) | Ericsson R&D | Interspeech | 2025 | TTS, evaluation |  | 2026-05-30 |
+| [[interspeech-2025-0787]] | [Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model](papers/interspeech-2025-0787.md) | HEAD acoustics | Interspeech | 2025 | TTS | autoregressive-LM | 2026-05-30 |
+| [[interspeech-2025-0575]] | [VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents](papers/interspeech-2025-0575.md) | Tsinghua University | Interspeech | 2025 | VC, TTS | VAE | 2026-05-30 |
+| [[interspeech-2025-0596]] | [Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning](papers/interspeech-2025-0596.md) | POSTECH | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-05-30 |
+| [[interspeech-2025-0648]] | [MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling](papers/interspeech-2025-0648.md) | Fish Audio | Interspeech | 2025 | TTS, evaluation |  | 2026-05-30 |
+| [[interspeech-2025-0669]] | [PAST: Phonetic-Acoustic Speech Tokenizer](papers/interspeech-2025-0669.md) | Hebrew University of Jerusalem | Interspeech | 2025 | codec, TTS | hybrid | 2026-05-30 |
+| [[interspeech-2025-0704]] | [Differentiable Reward Optimization for LLM based TTS system](papers/interspeech-2025-0704.md) | Alibaba Group | Interspeech | 2025 | TTS | autoregressive-LM, flow-matching | 2026-05-30 |
+| [[interspeech-2025-0406]] | [Zero-Shot Mono-to-Binaural Speech Synthesis](papers/interspeech-2025-0406.md) | Google | Interspeech | 2025 | TTS | GAN | 2026-05-30 |
+| [[interspeech-2025-0408]] | [Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy](papers/interspeech-2025-0408.md) | Tohoku University | Interspeech | 2025 | SCA, TTS | transformer-enc-dec, GAN | 2026-05-30 |
+| [[interspeech-2025-0455]] | [APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity Text-to-Speech](papers/interspeech-2025-0455.md) | LG AI Research | Interspeech | 2025 | TTS | flow-matching, VAE, hybrid | 2026-05-30 |
+| [[interspeech-2025-0554]] | [RapFlow-TTS: Rapid and High-Fidelity Text-to-Speech with Improved Consistency Flow Matching](papers/interspeech-2025-0554.md) | NAVER Cloud | Interspeech | 2025 | TTS | flow-matching, GAN | 2026-05-30 |
+| [[interspeech-2025-0551]] | [Monotonic Attention for Robust Text-to-Speech Synthesis in Large Language Model Frameworks](papers/interspeech-2025-0551.md) | Tencent | Interspeech | 2025 | TTS | autoregressive-LM | 2026-05-30 |
+| [[interspeech-2025-0047]] | [Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis](papers/interspeech-2025-0047.md) | Meta AI | Interspeech | 2025 | TTS | autoregressive-LM | 2026-05-30 |
+| [[interspeech-2025-0063]] | [Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback](papers/interspeech-2025-0063.md) |  | Interspeech | 2025 | TTS | diffusion | 2026-05-30 |
+| [[interspeech-2025-0143]] | [Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction](papers/interspeech-2025-0143.md) | Idiap Research Institute | Interspeech | 2025 | TTS, evaluation |  | 2026-05-30 |
+| [[interspeech-2025-0310]] | [Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech Language Models](papers/interspeech-2025-0310.md) |  | Interspeech | 2025 | TTS, codec | autoregressive-LM | 2026-05-30 |
+| [[interspeech-2025-0319]] | [Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising](papers/interspeech-2025-0319.md) | USTC | Interspeech | 2025 | TTS | autoregressive-LM | 2026-05-30 |
 | [[2509.02020]] | [FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot](papers/2509.02020.md) |  | arXiv | 2025 | TTS, SCA | autoregressive-LM | 2026-05-26 |
 | [[2507.14534]] | [Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion](papers/2507.14534.md) |  | arXiv | 2025 | VC | GAN, hybrid | 2026-05-26 |
 | [[2509.19668]] | [Selective Classifier-free Guidance for Zero-shot Text-to-speech](papers/2509.19668.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-05-26 |
@@ -124,6 +144,6 @@ Last updated: 2026-05-29 | Papers: 70 | Concepts: 21 | Trends: 0
 | [[acl-2025]] | ACL | 2025 | 14 |
 | [[emnlp-2025]] | EMNLP | 2025 | 7 |
 | [[naacl-2025]] | NAACL | 2025 | 1 |
-| [[interspeech-2025]] | Interspeech | 2025 | 2 |
+| [[interspeech-2025]] | Interspeech | 2025 | 7 |
 | [[icassp-2026]] | ICASSP | 2026 | 1 |
 | [[workshop-2025]] | workshop | 2025 | 1 |

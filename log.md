@@ -146,3 +146,30 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - parse | batch 27 (queue batch 7) | 40 papers (2604.25441 … interspeech-2025-0355) | 40/40 done | RapidOCR: 2605.05611 (×1), 2605.20946 (×2), interspeech-2025-0115 (×2) (non-fatal) | total in-corpus parsed: 681/783
 - integrate | 45 papers | concepts updated: autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, flow-matching, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, spoken-language-model, streaming-tts, zero-shot-tts, subjective-evaluation, transformer-enc-dec-tts, gan-vocoder | cross-links: 23 added
 - parse | batch 28 (queue batch 8) | 40 papers (interspeech-2025-0383 … interspeech-2025-1081) | 40/40 done | RapidOCR: 0408, 0433, 0669, 0756 (non-fatal) | total in-corpus parsed: 721/783
+
+## 2026-05-30
+
+- ingest | interspeech-2025-0047 | Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-0063 | Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech 2025
+- ingest | interspeech-2025-0143 | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech 2025
+- ingest | interspeech-2025-0310 | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech Language Models | Interspeech 2025
+- ingest | interspeech-2025-0319 | Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising | Interspeech 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
+- ingest | interspeech-2025-0406 | Zero-Shot Mono-to-Binaural Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-0408 | Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy | Interspeech 2025
+- ingest | interspeech-2025-0455 | APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity Text-to-Speech | Interspeech 2025
+- ingest | interspeech-2025-0554 | RapFlow-TTS: Rapid and High-Fidelity Text-to-Speech with Improved Consistency Flow Matching | Interspeech 2025
+- ingest | interspeech-2025-0551 | Monotonic Attention for Robust Text-to-Speech Synthesis in Large Language Model Frameworks | Interspeech 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
+- ingest | interspeech-2025-0575 | VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents | Interspeech 2025
+- ingest | interspeech-2025-0596 | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech 2025
+- ingest | interspeech-2025-0648 | MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling | Interspeech 2025
+- ingest | interspeech-2025-0669 | PAST: Phonetic-Acoustic Speech Tokenizer | Interspeech 2025
+- ingest | interspeech-2025-0704 | Differentiable Reward Optimization for LLM based TTS system | Interspeech 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
+- ingest | interspeech-2025-0723 | Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models | Interspeech 2025
+- ingest | interspeech-2025-0754 | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-0762 | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech 2025
+- ingest | interspeech-2025-0779 | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech 2025
+- ingest | interspeech-2025-0787 | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech 2025
+- ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
