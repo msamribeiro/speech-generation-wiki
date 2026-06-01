@@ -1,5 +1,6 @@
-# Wiki Log
-
+---
+title: "Wiki Log"
+---
 Append-only chronological log of all operations.
 First token of each entry must be: `ingest` | `integrate` | `filter` | `review` | `query` | `lint` | `discover` | `parse`
 
@@ -7,43 +8,20 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 
 ## 2026-05-12
 
-- filter | arXiv | 404 accepted, 31 review, 69 rejected
-
 ## 2026-05-19
-
-- review | arXiv | 31 borderline resolved → 15 accepted, 16 rejected | final corpus: 419 accepted, 85 rejected
 
 ## 2026-05-22
 
-- filter | ACL 2025 + EMNLP 2025 + NAACL 2025 + Interspeech 2025 + arXiv + workshops pending batch | 300 accepted, 39 review, 56 rejected
-- review | ACL 2025 + cs.CL batch | 39 borderline resolved → 25 accepted, 14 rejected | final corpus: 733 accepted, 166 rejected
-
 ## 2026-05-23
-
-- parse | batch queue created | 36 batches × 20 papers (718 total) | batch 1 partial: 8/20 done | workflow: conversion in main session, quality inspection via lightweight sub-agent
 
 ## 2026-05-24
 
-- discover | 450 candidates surfaced (86 speech-relevant), 264 corpus papers
-- discover | 458 candidates surfaced (112 speech-relevant), 270 corpus papers
-
 ## 2026-05-25
-
-- filter | keyword filter expanded (+11 terms: text to speech, speech-to-speech, speech interaction, voice interaction, spoken chatbot, speech foundation model, audio codec, speech tokenizer, voice assistant, voicemos, speech synthesizer) | re-scan triggered
-- filter | ISCA 2025 re-scan | 1179 papers, 140 passed title filter, 12 new written
-- filter | ACL Anthology 2025 re-scan | 14669 papers, 134 passed filter, 14 new written, 120 arXiv records enriched
-- filter | arXiv cs.SD+eess.AS re-scan (2025-08-01→2026-05-25) | 3604 discovered, 555 passed filter, 70 new written
-- filter | arxiv.py --ids 2301.02111 2407.05407 2412.10117 2406.02430 2410.06885 | 5 citation-discovery papers fetched (VALL-E, CosyVoice, CosyVoice 2, Seed-TTS, F5-TTS)
-- filter | citation-discovery + re-scan batch | 101 papers scored in-conversation | 67 accepted, 7 review, 27 rejected | accept rate 66%
 
 ## 2026-05-26
 
-- review | citation-discovery + re-scan batch | 7 borderline resolved → 3 accepted (2025.clicit-1.81, 2025.coling-industry.29, 2603.02022), 4 rejected | review queue cleared
 - ingest | 2509.02020 | FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot | arXiv 2025
 - ingest | session-10 | Built native Claude Code multi-agent ingest pipeline (orchestrator + per-paper worker agent specs). Smoke-tested on 2509.02020. Deleted SDK-based scripts/ingest/agent.py and prompts.py.
-- parse | batch 21 (queue batch 1) | 40 papers (2025.acl-long.388 … 2512.18706) | 40/40 done | Patched _REFS_HEADER_RE: added French "Références" and modifier-word prefix (e.g. "Bibliographical References"); 2510.03741 + 2510.25577 re-parsed, refs recovered
-- parse | batch 22 (queue batch 2) | 40 papers (2512.20156 … 2601.19952) | 40/40 done | Clean run
-- parse | batch 23 (queue batch 3) | 40 papers (2601.20094 … 2602.23068) | 40/40 done | Patched _REFS_HEADER_RE: added letter-prefix headings (e.g. "B. REFERENCES"); 2602.06053 re-parsed, 33 refs recovered | total parsed: 531/798
 - ingest | 2507.14534 | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv 2025
 - ingest | 2509.19668 | Selective Classifier-free Guidance for Zero-shot Text-to-speech | arXiv 2025
 - ingest | 2510.00981 | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv 2025
@@ -77,7 +55,6 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2025.acl-long.682 | Recent Advances in Speech Language Models: A Survey | ACL 2025
 - ingest | 2025.americasnlp-1.1 | Text-to-speech system for low-resource languages: A case study in Shipibo-Konibo | workshop 2025
 - ingest-batch | 5 ingested, 0 failed
-- parse | batch 24 (queue batch 4) | 40 papers (2602.23266 … 2603.14032) | 40/40 done | RapidOCR: 2602.23765, 2603.08574, 2603.08823, 2603.09120, 2603.11589 (non-fatal) | total parsed: 571/798
 - integrate | 10 papers | 14 concepts updated | 12 cross-links added
 - integrate | 15 papers | 16 concepts updated | 3 cross-links added
 
@@ -89,9 +66,6 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2412.10117 | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv 2024
 - ingest | 2410.06885 | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL 2025
 - ingest-batch | 5 ingested, 0 failed
-- lint | duplicate detected: 2410.06885 is arXiv preprint of 2025.acl-long.313 (ACL canonical) — wiki page and index entry removed, metadata set to rejected
-- lint | full corpus duplicate scan — 14 arXiv/proceedings pairs resolved; arXiv IDs rejected, proceedings IDs canonical; 6 parsed output directories remapped from arXiv to proceedings IDs; corpus: 754 accepted, 29 ingested, 217 rejected
-- parse | batch 25 (queue batch 5) | 40 papers (2603.14035 … 2604.06356) | 40/40 done | RapidOCR: 2603.14853, 2603.22252, 2603.23938, 2603.24144 (non-fatal) | total parsed: 611/783
 - ingest | 2601.15621 | Qwen3-TTS Technical Report | arXiv 2026
 - ingest | 2512.14291 | GLM-TTS Technical Report | arXiv 2025
 - ingest | 2508.06262 | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv 2025
@@ -111,7 +85,6 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2025.emnlp-main.40 | Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey | EMNLP 2025
 - ingest | 2603.08823 | Fish Audio S2 Technical Report | arXiv 2026
 - ingest-batch | primary-session sequential experiment | 5 ingested (2506.21619, 2025.naacl-long.242, 2510.12210, 2025.emnlp-main.40, 2603.08823) | 0 failed | no subagents used
-- parse | batch 26 (queue batch 6) | 40 papers (2604.06871 … 2604.22821) | 40/40 done | RapidOCR: 2604.11424 (×4, non-fatal) | 0 refs: 2604.13288 (no References header, refs in body text, non-blocking) | total parsed: 651/783
 
 ## 2026-05-29
 
@@ -143,9 +116,7 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2025.acl-short.81 | Zero-Shot Text-to-Speech for Vietnamese | ACL 2025
 - ingest | 2025.acl-long.912 | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B; Write/Edit subagent permissions added to settings.local.json
-- parse | batch 27 (queue batch 7) | 40 papers (2604.25441 … interspeech-2025-0355) | 40/40 done | RapidOCR: 2605.05611 (×1), 2605.20946 (×2), interspeech-2025-0115 (×2) (non-fatal) | total in-corpus parsed: 681/783
 - integrate | 45 papers | concepts updated: autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, flow-matching, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, spoken-language-model, streaming-tts, zero-shot-tts, subjective-evaluation, transformer-enc-dec-tts, gan-vocoder | cross-links: 23 added
-- parse | batch 28 (queue batch 8) | 40 papers (interspeech-2025-0383 … interspeech-2025-1081) | 40/40 done | RapidOCR: 0408, 0433, 0669, 0756 (non-fatal) | total in-corpus parsed: 721/783
 
 ## 2026-05-30
 
@@ -173,8 +144,6 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | interspeech-2025-0779 | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech 2025
 - ingest | interspeech-2025-0787 | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents
-- parse | batch 9 | 38 Interspeech 2025 papers (interspeech-2025-1084 … interspeech-2025-2031) | 38 done, 0 failed | RapidOCR warnings: 1531, 1595, 1641, 1684 (non-fatal) | parsed total: 759/783
-- parse | batch 10 | 24 Interspeech 2025 papers (interspeech-2025-2032 … interspeech-2025-raju25_interspeech) | 24 done, 0 failed | RapidOCR warnings: 2032, 2586, 2739, 2815, cho25c, raju25 (non-fatal) | 4 slug-named papers are 2-page demos (short/few-refs expected) | parsed total: 783/783 — parse pipeline complete
 - ingest | interspeech-2025-0469 | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech 2025
 - ingest | interspeech-2025-0854 | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech 2025
 - ingest | interspeech-2025-0973 | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech 2025
@@ -188,3 +157,10 @@ First token of each entry must be: `ingest` | `integrate` | `filter` | `review` 
 - ingest | 2025.coling-main.518 | ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models | workshop 2025
 - ingest-batch | 5 ingested, 0 failed | Mitigation B parallel direct subagents | corpus milestone: 100 papers ingested
 - integrate | 30 papers | 18 concepts updated | 12 cross-links added
+
+## 2026-06-01
+
+- integrate | wiki landing page redesigned with banner image, callout, and concept navigation
+- integrate | paper card format updated: merged venue/authors/link/contribution into single callout
+- integrate | title display fixed: H1 stripped from 121 pages; Quartz now renders from frontmatter
+- integrate | venue pages renamed to {year}-{venue} for chronological ordering

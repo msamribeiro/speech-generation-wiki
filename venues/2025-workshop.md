@@ -1,4 +1,5 @@
 ---
+title: "Workshop 2025"
 venue: workshop
 year: 2025
 papers_ingested: 4

@@ -1,4 +1,5 @@
 ---
+title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
 papers_ingested: 27

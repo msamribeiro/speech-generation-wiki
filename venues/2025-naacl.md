@@ -1,4 +1,5 @@
 ---
+title: "NAACL 2025"
 venue: NAACL
 year: 2025
 papers_ingested: 3

@@ -1,5 +1,6 @@
-# Overview: State of the Art in Speech Synthesis
-
+---
+title: "Overview"
+---
 *Updated after every ~25 ingests or after a significant query that reveals a new pattern.*
 
 Last updated: 2026-05-30 | Papers ingested: 120

@@ -1,4 +1,5 @@
 ---
+title: "EMNLP 2025"
 venue: EMNLP
 year: 2025
 papers_ingested: 8

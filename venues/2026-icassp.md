@@ -1,4 +1,5 @@
 ---
+title: "ICASSP 2026"
 venue: ICASSP
 year: 2026
 papers_ingested: 1

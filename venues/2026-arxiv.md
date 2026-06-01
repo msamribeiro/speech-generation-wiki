@@ -1,4 +1,5 @@
 ---
+title: "arXiv 2026"
 venue: arXiv
 year: 2026
 papers_ingested: 10
