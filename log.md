@@ -10,6 +10,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 - integrate | concept page migration: all 21 concept pages rewritten to new research-briefing template (Executive Summary, Current Status, Major Claims, Representative Papers, Relationship to Other Concepts, status vocab)
 - integrate | wiki redesign: landing page, folder navigation, venue naming, unified paper card format
+- ingest | 2604.12438 | An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding | arXiv 2026
+- ingest | 2025.acl-long.682 | Recent Advances in Speech Language Models: A Survey | ACL 2025
+- ingest | 2301.02111 | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers | arXiv 2023
+- ingest | 2025.acl-long.313 | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL 2025 (re-ingest)
 
 ## 2026-05-30
 
@@ -131,3 +135,4 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2025.acl-long.346 | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL 2025
 - ingest | 2025.acl-long.388 | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL 2025
 - ingest | 2025.acl-long.598 | Advancing Zero-shot Text-to-Speech Intelligibility across Diverse Domains via Preference Alignment | ACL 2025
+- ingest | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP 2025
