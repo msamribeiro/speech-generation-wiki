@@ -2,68 +2,140 @@
 slug: streaming-tts
 title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
+status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
 ---
-## What it is
 
-Streaming (or real-time) TTS refers to speech synthesis systems that produce output audio incrementally as input arrives, without waiting for the full input to be processed. The key properties are low latency (typically measured as time-to-first-audio or chunk processing time relative to chunk duration) and real-time factor (RTF < 1 meaning the system processes audio faster than it is played). In streaming TTS, the model must operate causally — it cannot access future input frames when generating current output frames.
+## Executive Summary
 
-The same principles apply to streaming voice conversion (online VC), where source speech is processed chunk-by-chunk and converted to a target speaker in real time. All components of the pipeline — content extractor, style encoder alignment, decoder, and vocoder — must be redesigned or modified to enforce causality.
+> [!abstract]
+> Streaming (or real-time) TTS produces output audio incrementally as input arrives, operating causally without accessing future input frames. The key metrics are time-to-first-audio (TTFA), real-time factor (RTF < 1), and quality degradation relative to non-streaming baselines. As of 2026, streaming operation has been demonstrated across all major TTS paradigms — autoregressive codec LMs, flow-matching decoders, and streaming VC — with leading systems achieving TTFA under 100 ms. The bottleneck has shifted from token generation speed to acoustic vocoder latency, and the quality gap between streaming and non-streaming has largely closed for speaker similarity; small WER penalties from limited right context remain.
 
-## Why it matters
+## Current Status
 
-Streaming operation is essential for real-time communication applications (teleconferencing, gaming avatars, virtual humans), interactive voice assistants, live broadcasting, and real-time speech privacy. Systems that cannot stream produce unacceptable latency for any interactive use case. As autoregressive TTS systems become more powerful (e.g., VALL-E family, CosyVoice), adapting them for streaming without quality loss is a central engineering challenge.
+established — Streaming TTS is now a standard deployment requirement, not a research novelty. Multiple production systems (Qwen3-TTS [[2601.15621]], Fish Audio S2 [[2603.08823]], CosyVoice 2 [[2412.10117]]) ship streaming as a core feature. The primary remaining research challenges are sub-20 ms latency, quality under network jitter, and the vocoder latency floor. An end-to-end non-AR streaming system ([[2604.12438]]) has demonstrated RTF 0.0033 and TTFA 48.99 ms — approaching the perceptual transparency threshold.
 
-## Current state of the art
+## Why This Matters
 
-For streaming VC, [[2507.14534]] (Conan, 2025) achieves 37 ms latency (fast setting) and 140 ms (full setting) with RTF of 0.74 and 0.25 respectively on a single A100 GPU, using Emformer for streaming content extraction (distilled from HuBERT), a causal mel decoder, and the Causal Shuffle Vocoder. Speaker similarity (85.71%) exceeds prior offline baselines. [[2025.acl-demo.37]] (RT-VC, 2025) achieves 61.4 ms CPU latency — 13.3% faster than StreamVC — using articulatory coding (SPARC-based EMA inverter) and a DDSP vocoder without requiring GPU hardware. The two systems represent complementary designs: Conan maximizes speaker similarity on GPU; RT-VC prioritizes CPU deployment and interpretability.
+Streaming operation is essential for real-time communication applications (teleconferencing, gaming avatars, virtual humans), interactive voice assistants, live broadcasting, and real-time speech privacy. Systems that cannot stream produce unacceptable latency for any interactive use case. As autoregressive TTS systems become more powerful (VALL-E family, CosyVoice), adapting them for streaming without quality loss is a central engineering challenge.
 
-For streaming TTS (text-to-speech), FlexiCodec-TTS ([[2510.00981]]) demonstrates that very low AR frame rate (6.25 Hz) enables a 7.3× speedup in the AR stage (RTF 0.07) while maintaining competitive quality. Qwen3-TTS [[2601.15621]] demonstrates 97 ms first-packet streaming TTS with a 12.5 Hz fully causal RVQ codec and MTP module, across 10 languages at production scale. Llasa+ [[2508.06262]] adds plug-and-play MTP acceleration to a frozen Llasa backbone via a token verification algorithm, achieving 1.48x speedup without quality degradation and streaming via XCodec2-S causal adapter. Fish Audio S2 [[2603.08823]] achieves RTF 0.195 and TTFA <100ms via a Dual-AR architecture on NVIDIA H200.
+## Core Idea
 
-For streaming speech LLM generation, LLaMA-Omni 2 [[2025.acl-long.912]] achieves 582 ms latency on a single L40 GPU for a 7B spoken chatbot by coupling a read/write-scheduled streaming TTS LM with CosyVoice 2 chunk-aware causal flow matching. VocalNet [[2025.emnlp-main.989]] achieves first-chunk latency of 319–428 ms; OpenS2S [[2025.emnlp-demos.70]] uses streaming interleaved decoding where every 4 LLM states trigger 8 speech tokens.
+A streaming TTS system enforces causality throughout every stage of the pipeline: the content extractor or text encoder, the acoustic model, and the vocoder must all operate on bounded input windows without accessing future frames. Two key constraints: (1) RTF < 1 — the system must process audio faster than it is played; (2) latency — from receipt of first input tokens to first audio output, measured in milliseconds.
 
-## Key variants and sub-approaches
+For streaming VC, the same principles apply to the content extractor, style encoder, and vocoder. For streaming TTS from text, autoregressive models are inherently streaming at the token level; the bottleneck is the acoustic decoder and vocoder latency.
 
-**Chunk-based streaming.** Source audio is buffered into fixed-size chunks (20–80 ms for VC; similar for TTS) and processed one chunk at a time. Each output chunk is generated before the next input chunk arrives (RTF < 1 ensures this). A sliding context window provides temporal continuity across chunk boundaries.
+## Methods and Variants
 
-**Causal convolutions.** Standard convolutions are replaced with left-padded causal convolutions throughout the synthesis pipeline. GAN vocoders like HiFi-GAN require full replacement of transposed convolutions to avoid spectral artifacts from zero-padding ([[2507.14534]] resolves this with pixel shuffle instead).
+**Chunk-based streaming.** Source audio or tokens are buffered into fixed-size chunks and processed one chunk at a time. Each output chunk is generated before the next input chunk arrives. A sliding context window provides temporal continuity across chunk boundaries.
 
-**Autoregressive streaming.** VALL-E-family models generate tokens autoregressively and are inherently streaming at the token level; the bottleneck is token generation speed (AR RTF). Lower frame rate codecs ([[2510.00981]]) reduce sequence length and thus AR RTF.
+**Causal convolutions.** Standard convolutions are replaced with left-padded causal convolutions throughout the pipeline. GAN vocoders like HiFi-GAN require full replacement of transposed convolutions to avoid spectral artifacts from zero-padding; Conan [[2507.14534]] resolves this with pixel shuffle (Causal Shuffle Vocoder) instead.
 
-**Causal attention masking.** Transformer-based decoders use causal attention masks to prevent attending to future positions. Emformer ([[2507.14534]]) caches previous chunk keys/values and summary vectors as a memory bank.
+**Autoregressive streaming.** VALL-E-family models generate tokens autoregressively and are inherently streaming at the token level. The bottleneck is token generation speed (AR RTF). Lower frame rate codecs ([[2510.00981]]) reduce sequence length and thus AR RTF. FlexiCodec-TTS [[2510.00981]] demonstrates that 6.25 Hz AR frame rate achieves RTF 0.07 with competitive quality.
 
-## Comparison to alternatives
+**Causal attention masking.** Transformer-based decoders use causal attention masks to prevent attending to future positions. Emformer [[2507.14534]] caches previous chunk keys/values and summary vectors as a memory bank for streaming. Read/write scheduling (LLaMA-Omni 2 [[2025.acl-long.912]]: R=3, W=10) controls lookahead for spoken chatbot generation.
 
-Non-streaming TTS achieves higher quality (access to full context) but cannot be used interactively. The quality gap has narrowed substantially: [[2507.14534]] shows streaming VC can match or exceed offline quality in speaker similarity. The primary remaining cost of streaming is in content accuracy (WER slightly higher for streaming systems due to limited right context).
+**Multi-token prediction (MTP).** MTP modules that predict multiple future tokens per step reduce the number of AR decode steps. Qwen3-TTS [[2601.15621]] uses MTP with a fully causal 12.5 Hz RVQ tokenizer for 97 ms first-packet latency. Llasa+ [[2508.06262]] adds frozen MTP modules with token verification to an existing Llasa backbone for 1.48× speedup without quality degradation.
 
-## Year-on-year trajectory
+**Chunk-aware causal flow matching.** CosyVoice 2 [[2412.10117]] trains a single FM model with four masking patterns (offline, full-causal, chunk-M, chunk-2M), enabling simultaneous streaming/non-streaming deployment with virtually lossless streaming on standard test sets.
 
-2022–2024: Early streaming VC systems used zero-padding causal vocoders (quality degradation), frame-by-frame autoregressive decoders (slow), and distillation-based causal content encoders (insufficient accuracy). 2025: Conan ([[2507.14534]]) eliminates all three failure modes with Emformer distillation, chunk-level parallel generation, and Causal Shuffle Vocoder. RT-VC ([[2025.acl-demo.37]]) provides an alternative CPU-deployable articulatory-coding route. FireRedTTS-2 ([[2509.02020]]) extends streaming to multi-speaker dialogue TTS with <100 ms first-packet latency. FlexiCodec-TTS ([[2510.00981]]) demonstrates that sub-10 Hz codec tokens allow near-streaming AR deployment. VocalNet [[2025.emnlp-main.989]] and OpenS2S [[2025.emnlp-demos.70]] establish streaming speech LLM architectures with first-chunk latencies of 300–430 ms. Llasa+ [[2508.06262]] demonstrates plug-and-play MTP acceleration with token verification for 1.48x speedup without quality degradation. LLaMA-Omni 2 [[2025.acl-long.912]] achieves 582 ms latency for a 7B spoken chatbot via read/write-scheduled streaming AR TTS. 2026: Qwen3-TTS [[2601.15621]] achieves 97 ms first-packet latency with a fully causal 12.5 Hz RVQ tokenizer — the best reported streaming latency in the corpus for a production-grade multilingual system. Fish Audio S2 [[2603.08823]] achieves RTF 0.195 and TTFA <100ms via Dual-AR with streaming DAC-based codec. The bottleneck has shifted from token generation speed to acoustic vocoder latency; the gap between fully causal (100 ms) and non-streaming (<60 ms RTF) systems has largely closed.
+**Non-AR depth-wise streaming.** [[2604.12438]] applies depth-wise sequential decoding over 32 Mimi RVQ layers in a non-autoregressive architecture, achieving RTF 0.0033 (303× real-time) and 48.99 ms average first-byte latency — the fastest streaming TTS in the corpus.
 
-## Open questions
+**Multi-queue AR scheduling.** LLMVoX [[2025.findings-acl.1051]] runs two LLMVoX instances concurrently on sentence-partitioned queues for 475 ms end-to-end latency vs. 4200 ms for XTTS — demonstrating that pipeline parallelism at the sentence level provides large latency gains independent of model speed.
 
-- Can streaming zero-shot TTS (not just VC) achieve comparable quality to non-streaming SOTA at < 100 ms latency?
+## Major Claims
+
+Claims are generalised propositions aggregated from paper evidence.
+
+### Strongly Supported
+
+- Streaming zero-shot VC can match or exceed offline VC quality in speaker similarity, eliminating the quality penalty previously assumed to accompany real-time constraints.
+  Supporting: [[2507.14534]]
+
+- Lower AR frame rate codecs (6–12.5 Hz) substantially reduce streaming TTS latency without proportional quality loss, because shorter token sequences require fewer decode steps.
+  Supporting: [[2510.00981]], [[2601.15621]], [[2509.02020]]
+
+- Chunk-aware causal flow matching with multiple masking patterns can be trained once and deployed in both streaming and non-streaming modes with virtually lossless streaming quality.
+  Supporting: [[2412.10117]]
+
+### Emerging
+
+- Depth-wise sequential decoding over RVQ layers (non-AR) can achieve an order-of-magnitude lower RTF than AR streaming TTS while maintaining competitive quality.
+  Supporting: [[2604.12438]]
+
+- Multi-token prediction modules can be added to existing frozen AR TTS models as plug-and-play acceleration without quality degradation, removing the need to retrain for streaming.
+  Supporting: [[2508.06262]], [[2601.15621]]
+
+- The primary remaining latency bottleneck in streaming TTS is the acoustic vocoder, not the token generation stage; improvements to the AR stage yield diminishing returns once RTF < 0.1.
+  Supporting: [[2025.emnlp-main.989]], [[2507.14534]]
+
+### Contested
+
+> [!warning]
+> Whether 37 ms latency (Conan fast setting) is perceptually transparent in real-time communication is not established — no user study on this threshold is reported in the corpus. The perceptual threshold for streaming TTS vs. interactive conversation likely differs by application context.
+> Latency reported: [[2507.14534]] / User study: not available
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[autoregressive-codec-tts]] — AR codec LMs are inherently streaming at the token level; streaming TTS engineering adapts their inference loop and vocoder for causal operation
+- [[neural-codec]] — lower-frame-rate codecs directly enable streaming by reducing sequence length; causal codec decoders eliminate the waveform reconstruction bottleneck
+
+### Commonly Paired With
+- [[voice-conversion]] — streaming VC shares all design constraints with streaming TTS; many systems address both (Conan, RT-VC)
+- [[spoken-language-model]] — streaming speech LLMs (LLaMA-Omni 2, VocalNet, OpenS2S) require streaming TTS as their output module
+- [[flow-matching]] — chunk-aware causal flow matching (CosyVoice 2) is the dominant approach for streaming in LLM+FM hybrid systems
+
+### Competes With
+- Non-streaming (offline) TTS — achieves higher quality (full context) but cannot be used interactively; quality gap has narrowed substantially
+
+## Representative Papers
+
+### Foundational
+- [[2412.10117]] — CosyVoice 2: introduced chunk-aware causal flow matching with four masking patterns; virtually lossless streaming — first production-grade streaming FM TTS
+
+### Influential
+- [[2507.14534]] — Conan: streaming VC exceeding offline quality; Causal Shuffle Vocoder resolves the GAN vocoder causality problem
+- [[2601.15621]] — Qwen3-TTS: 97 ms first-packet latency at production scale across 10 languages; fully causal 12.5 Hz RVQ tokenizer
+
+### Recent Highlights
+- [[2604.12438]] — fastest streaming TTS in corpus (RTF 0.0033, TTFA 48.99 ms) via depth-wise sequential non-AR decoding over Mimi RVQ layers
+- [[2603.08823]] — Fish Audio S2: RTF 0.195 and TTFA <100 ms via Dual-AR at production scale
+- [[2508.06262]] — Llasa+: plug-and-play 1.48× speedup via frozen MTP + token verification without retraining
+
+### Cautionary / Negative Evidence
+- [[2025.emnlp-main.989]] — VocalNet identifies the flow-matching vocoder as the dominant latency bottleneck, not the AR LM, suggesting that further AR acceleration has diminishing returns at current streaming speeds
+
+## Open Questions
+
+- Can streaming zero-shot TTS (text-to-speech, not just VC) achieve comparable quality to non-streaming SOTA at under 100 ms latency on diverse speakers?
 - How do streaming systems behave under network jitter (variable chunk arrival timing)?
 - Is 37 ms latency (Conan fast) perceptually transparent to users in real-time communication? No user study on this threshold is reported.
 - Causal vocoders still trade some quality for causality; is pixel shuffle the optimal approach, or are there better alternatives?
+- Does depth-wise sequential non-AR decoding ([[2604.12438]]) scale to zero-shot multi-speaker synthesis, or does the RTF advantage diminish with speaker conditioning complexity?
 
-## Papers
+## Trend Summary
 
-| ID | Title | Venue | Year | Key use of this concept |
-|----|-------|-------|------|------------------------|
-| [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Streaming zero-shot VC at 37–140 ms latency using Emformer content extraction and Causal Shuffle Vocoder; demonstrates streaming can match offline VC quality |
-| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Chunk-based streaming attention masking for speech LLM; first-chunk latency 319–428 ms on L20 GPU; identifies flow-matching vocoder as dominant latency bottleneck |
-| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Streaming interleaved decoding (4 LLM states → 8 speech tokens per step); chunk-aware causal flow matching + HiFi-GAN vocoder for real-time empathetic speech response generation |
-| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys full-duplex and real-time SpeechLM architectures; covers streaming tokenizers, simultaneous bidirectional communication, and systems like Moshi and LSLM |
-| [[2509.02020]] | FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot | arXiv | 2025 | Extends streaming TTS to multi-speaker dialogue via dual-transformer architecture and 12.5 Hz RVQ tokenizer; achieves <100 ms first-packet latency with sentence-by-sentence generation |
-| [[2025.acl-demo.37]] | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL | 2025 | Achieves 61.4 ms CPU latency via articulatory-space (SPARC EMA inverter) content extraction and causal DDSP vocoder — demonstrates that streaming VC is achievable without GPU hardware |
-| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Fully causal 12.5 Hz 16-layer RVQ tokenizer + MTP enables 97 ms first-packet latency for production-grade multilingual streaming TTS (10 languages) |
-| [[2508.06262]] | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv | 2025 | Adds frozen MTP modules + token verification to existing Llasa model for 1.48x speedup; XCodec2-S causal adapter enables streaming waveform reconstruction |
-| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | Dual-AR (slow semantic + fast acoustic) with 21 Hz streaming DAC codec; RTF 0.195, TTFA <100ms at production scale; SGLang-based serving with 86.4% prefix cache hit rate |
-| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Chunk-aware causal flow matching with 4 mask types in one model; streaming LM via text-speech interleaved tokens; virtually lossless streaming on standard test sets |
-| [[2025.acl-long.912]] | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL | 2025 | 582 ms latency for 7B spoken chatbot via read/write-scheduled streaming TTS LM (R=3, W=10) with CosyVoice 2 chunk-aware causal FM decoder |
-| [[2509.15969]] | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv | 2025 | Fully AR streaming zero-shot TTS that begins from the first received word; GPU first-packet latency 102 ms — among the lowest reported for AR zero-shot streaming TTS; 441M model, 9K hours training |
-| [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with causal Transformer tokenizer enabling streaming synthesis; natural language instruction control for speaking rate and style at production scale |
-| [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive end-to-end streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time), 48.99 ms average first-byte latency — fastest streaming TTS in corpus |
-| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Multi-queue streaming scheduler runs two LLMVoX instances concurrently on sentence-partitioned queues; 475ms end-to-end latency vs. 4200ms for XTTS; WER 3.70%; plug-and-play with any LLM backbone |
+2022–2024: Early streaming VC systems used zero-padding causal vocoders (quality degradation), frame-by-frame AR decoders (slow), and distillation-based causal content encoders (insufficient accuracy). 2025: Conan [[2507.14534]] eliminated all three failure modes. RT-VC [[2025.acl-demo.37]] demonstrated a CPU-deployable articulatory-coding route. FireRedTTS-2 [[2509.02020]] extended streaming to multi-speaker dialogue TTS with <100 ms first-packet latency. FlexiCodec-TTS [[2510.00981]] demonstrated that sub-10 Hz codec tokens allow near-streaming AR deployment. VocalNet [[2025.emnlp-main.989]] and OpenS2S [[2025.emnlp-demos.70]] established streaming speech LLM architectures with first-chunk latencies of 300–430 ms. Llasa+ [[2508.06262]] demonstrated plug-and-play MTP acceleration with 1.48× speedup without quality degradation. LLaMA-Omni 2 [[2025.acl-long.912]] achieved 582 ms latency for a 7B spoken chatbot. 2026: Qwen3-TTS [[2601.15621]] achieved 97 ms first-packet latency with a fully causal 12.5 Hz RVQ tokenizer — the best reported streaming latency for a production-grade multilingual system. Fish Audio S2 [[2603.08823]] achieved RTF 0.195 via Dual-AR with streaming DAC codec. [[2604.12438]] demonstrated RTF 0.0033 via non-AR depth-wise streaming — 303× real-time. The bottleneck has shifted from token generation speed to acoustic vocoder latency; the gap between fully causal and non-streaming systems has largely closed.
+
+## All Papers
+
+| ID | Title | Venue | Year | Role in this concept |
+|----|-------|-------|------|---------------------|
+| [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Streaming zero-shot VC at 37–140 ms; Emformer content extraction + Causal Shuffle Vocoder |
+| [[2025.emnlp-main.989]] | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP | 2025 | Chunk-based streaming speech LLM; first-chunk latency 319–428 ms; FM vocoder identified as dominant bottleneck |
+| [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Streaming interleaved decoding (4 LLM states → 8 speech tokens); chunk-aware causal FM + HiFi-GAN |
+| [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Surveys full-duplex and real-time SpeechLM architectures; streaming tokenizers and simultaneous communication |
+| [[2509.02020]] | FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot | arXiv | 2025 | Streaming multi-speaker dialogue TTS; dual-transformer + 12.5 Hz RVQ; <100 ms first-packet latency |
+| [[2025.acl-demo.37]] | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL | 2025 | 61.4 ms CPU latency; articulatory-space content extraction + causal DDSP vocoder |
+| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Fully causal 12.5 Hz 16-layer RVQ + MTP; 97 ms first-packet latency; 10-language production |
+| [[2508.06262]] | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv | 2025 | Frozen MTP + token verification; 1.48× speedup; XCodec2-S causal adapter for streaming |
+| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | Dual-AR (slow semantic + fast acoustic); RTF 0.195, TTFA <100 ms; SGLang serving at production scale |
+| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Chunk-aware causal FM with 4 mask types; streaming LM via text-speech interleaved tokens; virtually lossless streaming |
+| [[2025.acl-long.912]] | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL | 2025 | 582 ms latency for 7B spoken chatbot; read/write-scheduled streaming TTS LM (R=3, W=10) |
+| [[2509.15969]] | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv | 2025 | Fully AR streaming zero-shot TTS; 102 ms GPU first-packet latency — among lowest for AR zero-shot streaming TTS |
+| [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with causal Transformer tokenizer; streaming synthesis at production scale |
+| [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Depth-wise sequential decoding over 32 Mimi RVQ layers; RTF 0.0033 (303× real-time), TTFA 48.99 ms — fastest in corpus |
+| [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Multi-queue scheduler with two concurrent LLMVoX instances; 475 ms vs. 4200 ms for XTTS; plug-and-play with any LLM |
+| [[2510.00981]] | FlexiCodec-TTS: Flexible Frame-Rate Neural Codec for Efficient Streaming TTS | arXiv | 2025 | 6.25 Hz AR frame rate; 7.3× AR speedup (RTF 0.07); competitive quality at very low token rate |

@@ -3,17 +3,20 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: mature-infrastructure
 ---
-## What it is
 
-Self-supervised speech representations are learned feature extractors trained on large corpora of unlabeled speech using objectives that do not require human annotation. The dominant approaches use masked prediction (HuBERT, WavLM) or contrastive learning (wav2vec 2.0) to extract representations that capture phonetic, semantic, and speaker-level information in learned embeddings.
+## Executive Summary
 
-**Speech foundation models** are a broader, overlapping category: large pre-trained speech models (100k+ hours, often multi-task) that serve as general-purpose backbones for downstream tasks including TTS, VC, codec design, and evaluation. They may be trained with purely self-supervised objectives (HuBERT, WavLM) or with supervised objectives at scale (Whisper, SenseVoice), or both. The defining characteristic is scale and task-agnostic pre-training — the model is trained once and then used as a frozen feature extractor or fine-tuning base across many downstream tasks.
+> [!abstract]
+> Self-supervised speech representations are learned feature extractors trained on large unlabeled speech corpora without human annotation; the dominant models (HuBERT, WavLM, wav2vec 2.0) are now stable infrastructure components rather than active research frontiers in the TTS/VC space. As of 2026, the field's attention has shifted from developing better SSL models toward comparing SSL against large-scale supervised foundation models (Whisper, SenseVoice) as codec semantic targets and content extractors, with emerging evidence that ASR-supervised features substantially outperform SSL for ultra-low-frame-rate codec design. The unresolved question is whether the SSL vs. supervised distinction will collapse as multi-task foundation models subsume both paradigms.
 
-Key SSL models: wav2vec 2.0 (contrastive + masked prediction, 95M/317M params), HuBERT (masked prediction over K-means cluster targets, up to 300M params), WavLM (masked prediction + denoising, up to 600M params). Key supervised foundation models: Whisper (ASR-supervised, multilingual, up to 1.5B params), SenseVoice-Small (ASR + emotion + language ID, 230M params). HuBERT and WavLM are the most widely used in speech synthesis research; SenseVoice is emerging as a preferred backbone for codec semantic extraction.
+## Current Status
 
-## Why it matters
+mature-infrastructure — HuBERT-Large and WavLM-Large are ubiquitous, stable components in TTS evaluation pipelines (WavLM-Large for SPK-SIM), codec semantic distillation (WavLM in Mimi), and VC content extraction (HuBERT in disentanglement systems); they are not actively being improved within the speech synthesis research community, which has shifted attention to supervised foundation models (SenseVoice, Whisper) as superior alternatives for downstream codec and SLM tasks. New SSL model development is largely happening outside the TTS corpus.
+
+## Why This Matters
 
 SSL representations provide rich phonetic and speaker information without requiring labeled data. In the TTS/VC/SCA context, they serve multiple roles:
 - **Content extraction for VC:** [[2507.14534]] (Conan) distills HuBERT-Large to create a streaming content extractor; HuBERT is widely used as the phonetic "content" signal in disentanglement-based VC systems.
@@ -22,13 +25,15 @@ SSL representations provide rich phonetic and speaker information without requir
 - **Speech token baseline for SLMs:** [[2412.17048]] uses HuBERT-Large discrete clusters (2048 units at 50 Hz) as the speech modality in its modality-evolving study.
 - **Speech understanding/diarization:** [[2025.findings-emnlp.424]] uses pyannote.audio (which builds on SSL embeddings) for speaker diarization and vocal consistency checking in the InteractSpeech pipeline.
 
-## Current state of the art
+## Core Idea
 
-For speech synthesis research, HuBERT-Large and WavLM-Large remain the standard SSL models used for content extraction (VC), phonetic analysis, and speaker similarity measurement. SenseVoice-Small (an ASR model rather than SSL in the traditional sense) is shown to be superior to SSL for codec dynamic frame merging in [[2510.00981]].
+Self-supervised speech representations are learned feature extractors trained on large corpora of unlabeled speech using objectives that do not require human annotation. The dominant approaches use masked prediction (HuBERT, WavLM) or contrastive learning (wav2vec 2.0) to extract representations that capture phonetic, semantic, and speaker-level information in learned embeddings.
 
-The field has begun distinguishing SSL representations (trained with reconstruction/self-prediction objectives, retaining acoustic/paralinguistic information) from ASR-supervised representations (trained with text targets, more semantically concentrated). [[2510.00981]] provides compelling ablation evidence that for low-frame-rate codec design, ASR-supervised features produce dramatically better semantic preservation (6% WER vs. 27% WER for DualCodec's SSL approach at 6.25 Hz).
+**Speech foundation models** are a broader, overlapping category: large pre-trained speech models (100k+ hours, often multi-task) that serve as general-purpose backbones for downstream tasks including TTS, VC, codec design, and evaluation. They may be trained with purely self-supervised objectives (HuBERT, WavLM) or with supervised objectives at scale (Whisper, SenseVoice), or both. The defining characteristic is scale and task-agnostic pre-training — the model is trained once and then used as a frozen feature extractor or fine-tuning base across many downstream tasks.
 
-## Key variants and sub-approaches
+Key SSL models: wav2vec 2.0 (contrastive + masked prediction, 95M/317M params), HuBERT (masked prediction over K-means cluster targets, up to 300M params), WavLM (masked prediction + denoising, up to 600M params). Key supervised foundation models: Whisper (ASR-supervised, multilingual, up to 1.5B params), SenseVoice-Small (ASR + emotion + language ID, 230M params). HuBERT and WavLM are the most widely used in speech synthesis research; SenseVoice is emerging as a preferred backbone for codec semantic extraction.
+
+## Methods and Variants
 
 **Masked prediction (HuBERT).** Offline cluster assignment creates pseudo-labels; model predicts cluster IDs for masked frames. Multiple iterations refine the cluster quality. Widely used as content extractor in VC [[2507.14534]] and as speech tokenizer for SLMs [[2412.17048]].
 
@@ -40,15 +45,65 @@ The field has begun distinguishing SSL representations (trained with reconstruct
 
 **Multi-task / universal speech encoders.** A newer generation that combines SSL and supervised objectives (e.g. data2vec 2.0, SONAR). Aim for universal representations that generalise across speech tasks. Underrepresented in current corpus; expected to grow as the field consolidates around foundation model paradigm.
 
-## Comparison to alternatives
+## Major Claims
 
-Text-supervised ASR features encode more concentrated semantic information but require labeled data. SSL features are more universal (can encode prosody, speaker, emotion) but this breadth is a disadvantage when only semantic content is needed (as in low-frame-rate codecs). For VC content extraction, HuBERT is preferred because it captures phonetic (not speaker) content when its discrete clusters are used. For speaker verification, WavLM-Large embeddings are the standard.
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/self-supervised-speech.yaml`.
 
-## Year-on-year trajectory
+### Strongly Supported
 
-2020–2022: wav2vec 2.0, HuBERT, WavLM established SSL as the standard for downstream speech tasks. 2023–2024: SSL features became the semantic distillation target for low-frame-rate codecs (SpeechTokenizer, Mimi, DualCodec); supervised Whisper became the ASR backbone for most evaluation pipelines. 2025: Corpus papers reveal the limits of SSL for codec design — ASR features substantially outperform SSL features for dynamic frame merging at ultra-low rates ([[2510.00981]]), and SSL-based HuBERT tokens in SLMs exhibit a combinatorial lexical explosion problem ([[2412.17048]]) driven by retained paralinguistic variability. The field is shifting from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures. SenseVoice-Small's strong performance in [[2510.00981]] is an early signal of this shift.
+- WavLM-Large is the de facto standard backbone for automatic speaker similarity (SPK-SIM) evaluation in zero-shot TTS, and conclusions about speaker similarity in the literature are implicitly conditioned on this choice.
+  Supporting: [[2509.19668]], [[2025.acl-long.682]], [[2507.14534]]
 
-## Open questions
+- HuBERT discrete cluster representations in speech language models retain paralinguistic variability that causes a combinatorial lexical explosion, substantially degrading semantic coherence relative to text LMs operating at equivalent sequence lengths.
+  Supporting: [[2412.17048]], [[2025.acl-long.682]]
+
+### Emerging
+
+- ASR-supervised representations (SenseVoice, Whisper) produce more semantically concentrated features than SSL representations for low-frame-rate codec design, enabling dramatically better WER preservation at ultra-low rates where SSL-guided approaches collapse.
+  Supporting: [[2510.00981]], [[2412.17048]]
+
+- Supervised CTC training objectives directly on codec RVQ-1 achieve better phonetic tokenization metrics than SSL pseudo-label distillation, without requiring an external SSL teacher model.
+  Supporting: [[interspeech-2025-0669]]
+
+- Convolutional SSL-like encoders in RVQ codecs have wide receptive fields that cause context-dependent tokenization of identical audio segments (DRI), degrading downstream language model training.
+  Supporting: [[2025.acl-long.1498]]
+
+### Contested
+
+> [!warning]
+> Whether SSL representations remain necessary for any codec or TTS component once supervised foundation models (SenseVoice, Whisper) are available is unresolved; the corpus contains evidence that supervised models outperform SSL for semantic codec targets but that SSL retains advantages for prosodic and acoustic richness.
+> Supporting: [[2510.00981]] (supervised better for semantic) / Contradicting: [[2507.14534]], [[2025.coling-main.518]] (SSL preferred for content/prosody extraction)
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[neural-codec]] — SSL models are distilled into RVQ-1 codec tokens to ensure semantic content; the shift from SSL to supervised foundation models (SenseVoice) as distillation targets is actively redefining this relationship
+
+### Competes With
+- [[neural-codec]] — text-supervised ASR features encode more concentrated semantic information but require labeled data. SSL features are more universal (can encode prosody, speaker, emotion) but this breadth is a disadvantage when only semantic content is needed (as in low-frame-rate codecs). For VC content extraction, HuBERT is preferred because it captures phonetic (not speaker) content when its discrete clusters are used. For speaker verification, WavLM-Large embeddings are the standard.
+
+### Commonly Paired With
+- [[disentanglement]] — HuBERT discrete clusters are the standard content representation in disentanglement-based VC, providing phonetic content without speaker identity; WavLM-Large provides speaker embeddings; SSL models supply both poles of the content-speaker disentanglement
+- [[voice-conversion]] — SSL content extractors (HuBERT) and speaker encoders (WavLM) are the two dominant feature sources for VC systems that operate without parallel training data
+- [[spoken-language-model]] — SSL discrete tokens (HuBERT K-means) served as the first-generation speech modality for SLMs before neural codecs became dominant; SSL encoder outputs are still used as speaker verification and quality metrics throughout SLM evaluation pipelines
+
+## Representative Papers
+
+### Foundational
+- [[2025.acl-long.682]] — comprehensive survey situating SSL models (Wav2vec 2.0, HuBERT, WavLM) within the SpeechLM training pipeline; taxonomizes SSL by objective type and downstream role
+
+### Influential
+- [[2412.17048]] — controlled study identifying paralinguistic variability in HuBERT tokens (Factor C) as the dominant cause of SLM coherence failure, providing the strongest evidence for why SSL tokens are a problematic SLM modality
+- [[2510.00981]] — FlexiCodec ablations demonstrating that ASR-supervised features (SenseVoice) substantially outperform SSL (w2v-bert-2) for dynamic frame merging at ultra-low codec rates; key inflection point for the SSL vs. supervised question
+- [[2507.14534]] — Conan: distills HuBERT-Large into a streaming content extractor for VC, demonstrating SSL's continued value for content-only feature extraction despite its limitations as a semantic codec target
+
+### Recent Highlights
+- [[interspeech-2025-0669]] — PAST: supervised CTC training on RVQ-1 outperforms SSL pseudo-label distillation on phonetic metrics without any external SSL teacher, challenging the assumption that SSL is necessary for hybrid tokenization
+
+### Cautionary / Negative Evidence
+- [[2025.acl-long.1498]] — shows that the convolutional encoder architecture underlying SSL-inspired codec encoders introduces DRI (Discrete Representation Inconsistency), a structural failure mode that degrades downstream LM training; not fixable by SSL pre-training alone
+
+## Open Questions
 
 - Can SSL models be explicitly trained to suppress paralinguistic variability (Factor C from [[2412.17048]]) while retaining phonetic content, making them better codec targets?
 - Is there a sweet spot between ASR-supervised (semantically concentrated) and SSL features (acoustically rich) for low-frame-rate codec design?
@@ -56,7 +111,11 @@ Text-supervised ASR features encode more concentrated semantic information but r
 - As supervised foundation models (SenseVoice, Whisper) increasingly replace SSL in codec design, does the field still need SSL-specific pre-training, or will the SSL vs. supervised distinction collapse?
 - Do multi-lingual supervised foundation models (Whisper-large-v3, MMS) generalise better as codec semantic targets across languages than English-centric SSL models?
 
-## Papers
+## Trend Summary
+
+2020–2022: wav2vec 2.0, HuBERT, WavLM established SSL as the standard for downstream speech tasks. 2023–2024: SSL features became the semantic distillation target for low-frame-rate codecs (SpeechTokenizer, Mimi, DualCodec); supervised Whisper became the ASR backbone for most evaluation pipelines. 2025: Corpus papers reveal the limits of SSL for codec design — ASR features substantially outperform SSL features for dynamic frame merging at ultra-low rates ([[2510.00981]]), and SSL-based HuBERT tokens in SLMs exhibit a combinatorial lexical explosion problem ([[2412.17048]]) driven by retained paralinguistic variability. The field is shifting from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures. SenseVoice-Small's strong performance in [[2510.00981]] is an early signal of this shift.
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|

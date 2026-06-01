@@ -3,17 +3,25 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: established
 ---
-## What it is
+## Executive Summary
 
-Evaluation metrics for speech synthesis quantify system performance along several orthogonal dimensions: naturalness (how human-like the speech sounds), intelligibility (whether the content can be understood), speaker similarity (how closely the voice matches a reference), prosody accuracy, and overall quality. Metrics divide into subjective (requiring human listeners) and objective (computed automatically). Objective metrics are preferred for reproducibility and cost, but their correlation with human perception is imperfect.
+> [!abstract]
+> Evaluation metrics for speech synthesis quantify performance along orthogonal dimensions — naturalness, intelligibility, speaker similarity, prosody accuracy, and overall quality — using both subjective listening tests and objective automatic measures. As of 2025, WER (via Whisper), SPK-SIM (via WavLM-Large), and UTMOS dominate the TTS evaluation landscape, but benchmark fragmentation is a persistent problem: no single public benchmark unifies all relevant dimensions. New interaction-specific and paralinguistic evaluation paradigms are emerging alongside traditional metrics.
 
-## Why it matters
+## Current Status
+
+established — The core metric vocabulary (MOS, WER, SPK-SIM, UTMOS) is widely adopted across TTS, VC, and codec papers, but evaluation practice remains fragmented: different papers use different test sets, ASR models, and speaker verification backbones, making cross-paper comparisons unreliable. New benchmarks (EmergentTTS-Eval, Audio Turing Test, CV3-Eval) are gaining traction but have not yet consolidated.
+
+## Why This Matters
 
 Consistent use of evaluation metrics allows fair comparison across systems. However, the field faces persistent issues: different papers use different test sets, different ASR models for WER, and different speaker verification models for SPK-SIM, making comparisons across papers unreliable. [[2025.findings-emnlp.424]] introduces a novel interaction dynamics evaluation task (binary classification of backchannel/interruption/gap/pause events) with its own benchmark, extending the field beyond standard TTS metrics toward dialogue-specific evaluation.
 
-## Current state of the art
+## Core Idea
+
+Evaluation metrics for speech synthesis quantify system performance along several orthogonal dimensions: naturalness (how human-like the speech sounds), intelligibility (whether the content can be understood), speaker similarity (how closely the voice matches a reference), prosody accuracy, and overall quality. Metrics divide into subjective (requiring human listeners) and objective (computed automatically). Objective metrics are preferred for reproducibility and cost, but their correlation with human perception is imperfect.
 
 **Dominant metrics in 2025 TTS:**
 - WER (using HuBERT-Large-LS960-ft or Whisper ASR): primary intelligibility metric in flow-matching TTS papers [[2509.19668]], VC papers [[2507.14534]], and codec papers [[2510.00981]].
@@ -25,7 +33,7 @@ Consistent use of evaluation metrics allows fair comparison across systems. Howe
 **Dialogue / interaction metrics:**
 - [[2025.findings-emnlp.424]] establishes binary classification accuracy on 4 interaction event types (backchannel, interruption, gap, pause) as an evaluation framework for spoken dialogue models. GPT-4o scores 54.2% (near-random for a binary task), highlighting that current models lack fine-grained interaction understanding.
 
-## Key variants and sub-approaches
+## Methods and Variants
 
 Canonical metrics tracked in this wiki:
 
@@ -44,15 +52,59 @@ Canonical metrics tracked in this wiki:
 | STOI | Short-Time Objective Intelligibility | Intelligibility | higher is better |
 | F0-RMSE | Pitch tracking error | Prosody accuracy | lower is better |
 
-## Comparison to alternatives
+## Major Claims
 
-Human listening studies (MOS, MUSHRA) remain the gold standard but are expensive and slow. Automatic metrics (UTMOS, DNSMOS) predict human scores and enable rapid iteration. SPK-SIM via WavLM-Large is now accepted as a proxy for speaker similarity MOS (SMOS), though the two do not perfectly correlate. WER via ASR is a reliable intelligibility proxy for English; cross-lingual WER requires language-specific ASR models, complicating multilingual evaluation ([[2509.19668]] uses the same F5-TTS model for English and Mandarin but observes language-specific CFG behavior).
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/evaluation-metrics.yaml`.
 
-## Year-on-year trajectory
+### Strongly Supported
 
-Pre-2023: MOS and WER were the standard; speaker verification cosine similarity emerged as a faster alternative to SMOS. 2024–2025: UTMOS becomes standard in codec evaluation [[2510.00981]]; Seed-TTS-eval (English and Mandarin cross-sentence prompts) becomes the reference benchmark for zero-shot TTS. 2025: Interaction-specific evaluation emerges [[2025.findings-emnlp.424]]; the controllable TTS survey [[2025.emnlp-main.40]] documents that no benchmark unifies naturalness, intelligibility, similarity, and controllability accuracy in a single protocol; DiFlow-TTS [[2509.09631]] reports a concrete divergence between automatic SIM-O ranking and perceptual similarity MOS ranking, demonstrating that WavLM-based cosine similarity is insufficient for capturing perceptual voice identity. 2026: EmergentTTS-Eval (instruction-following paralinguistic tasks) and Audio Turing Test emerge as new evaluation benchmarks used in Fish Audio S2 [[2603.08823]]; LongCat-AudioDiT [[2603.29339]] uses DNSMOS 3.40 as an alternative naturalness proxy; CV3-Eval for multilingual voice cloning across 9 languages is used by both [[2601.15621]] and [[2603.08823]]. F0-RMSE is used by DiFlow-TTS [[2509.09631]] and Vevo2 [[2508.16332]] as a prosody accuracy metric. The diversity of benchmarks (Seed-TTS-Eval, LibriSpeech-PC, FLEURS-102, MiniMax-Multilingual-24, EmergentTTS-Eval) remains a persistent problem: no single public benchmark adequately captures all dimensions of modern TTS capability.
+- WER via automatic ASR (Whisper or HuBERT-based) is the dominant intelligibility metric in TTS evaluation, but cross-lingual application requires language-specific ASR models and introduces comparability issues.
+  Supporting: [[2025.acl-long.598]], [[2025.acl-industry.42]], [[2025.acl-short.81]]
 
-## Open questions
+- Automatic speaker similarity metrics (WavLM-Large cosine SPK-SIM) do not perfectly correlate with perceptual speaker similarity MOS, and can rank systems in opposite order from human listeners.
+  Supporting: [[2509.09631]], [[2025.naacl-long.242]]
+
+- No single public benchmark unifies naturalness, intelligibility, speaker similarity, and controllability accuracy in a single evaluation protocol; benchmark fragmentation is a persistent obstacle to fair cross-paper comparison.
+  Supporting: [[2025.emnlp-main.40]], [[2025.acl-long.682]], [[interspeech-2025-0779]]
+
+### Emerging
+
+- Domain-specific and language-specific evaluation paradigms (phoneme-level metrics for low-resource TTS, interaction event classification for dialogue systems, mathematical expression intelligibility) are necessary complements to standard MOS/WER for capturing task-relevant quality.
+  Supporting: [[interspeech-2025-0469]], [[2025.findings-emnlp.424]], [[interspeech-2025-0779]]
+
+- Automatic naturalness predictors (UTMOS, DNSMOS) are now standard for rapid iteration in codec and TTS evaluation, though their correlation with human MOS degrades outside their training distribution.
+  Supporting: [[2510.00981]], [[2603.29339]], [[interspeech-2025-0973]]
+
+### Contested
+
+> [!warning]
+> Whether WavLM-Large-based SPK-SIM is a sufficient proxy for human speaker similarity MOS remains contested. [[2509.09631]] shows automatic SIM-O and perceptual MOS can rank systems in opposite order, but SPK-SIM remains the de facto standard in most zero-shot TTS papers due to cost.
+> Challenging sufficiency: [[2509.09631]] / Using as standard: [[2509.19668]], [[2510.00981]]
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[subjective-evaluation]] — objective metrics (UTMOS, SPK-SIM, WER) were developed as cheaper proxies for subjective listening tests; their validity is validated against subjective scores
+
+### Commonly Paired With
+- [[rlhf-speech]] — preference optimization and RLHF in speech directly depend on evaluation metrics as reward signals; the choice of metric shapes what the reward model optimizes
+- [[spoken-language-model]] — SLM evaluation requires both standard TTS metrics and new interaction-specific metrics; the two domains are converging on a shared evaluation vocabulary
+
+## Representative Papers
+
+### Foundational
+- [[2025.emnlp-main.40]] — provides the most comprehensive taxonomy of evaluation metrics for controllable TTS, identifying fragmentation as a fundamental field-level problem
+
+### Influential
+- [[2025.acl-long.682]] — surveys SpeechLM evaluation across six categories (representation, linguistic, paralinguistic, generation quality/diversity, real-time interaction, downstream benchmarks), the broadest coverage in the corpus
+- [[2509.09631]] — documents a concrete case where automatic SPK-SIM and perceptual similarity MOS rank systems in opposite order, challenging the proxy assumption
+
+### Recent Highlights
+- [[2603.08823]] — introduces EmergentTTS-Eval and Audio Turing Test as new paralinguistic instruction-following benchmarks for 2026 evaluation
+- [[interspeech-2025-0779]] — demonstrates that standard ASR-based CER correlates below 0.15 with human intelligibility for mathematical TTS, motivating domain-specific metrics
+- [[interspeech-2025-0973]] — first Spanish MOS corpus; validates CNN-based wav2vec 2.0 features as more predictive than contextual transformer layers for cross-lingual MOS prediction
+
+## Open Questions
 
 - Is WavLM-Large-based SPK-SIM a sufficient proxy for human speaker similarity MOS? DiFlow-TTS [[2509.09631]] shows that automatic SIM-O and perceptual similarity MOS can rank systems in opposite order.
 - How should the WER/SIM trade-off be optimally balanced for zero-shot TTS? Both metrics are reported independently; no composite metric is standardized.
@@ -60,7 +112,11 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 - EmergentTTS-Eval (used by [[2603.08823]]) and Audio Turing Test are newer benchmarks gaining traction for paralinguistic instruction-following evaluation; what is their relationship to standard MOS and WER, and do they capture meaningfully different aspects of system capability?
 - The controllable TTS survey [[2025.emnlp-main.40]] identifies no standardized evaluation combining naturalness, intelligibility, similarity, and controllability accuracy; what would such a benchmark look like?
 
-## Papers
+## Trend Summary
+
+Pre-2023: MOS and WER were the standard; speaker verification cosine similarity emerged as a faster alternative to SMOS. 2024–2025: UTMOS becomes standard in codec evaluation [[2510.00981]]; Seed-TTS-eval (English and Mandarin cross-sentence prompts) becomes the reference benchmark for zero-shot TTS. 2025: Interaction-specific evaluation emerges [[2025.findings-emnlp.424]]; the controllable TTS survey [[2025.emnlp-main.40]] documents that no benchmark unifies naturalness, intelligibility, similarity, and controllability accuracy in a single protocol; DiFlow-TTS [[2509.09631]] reports a concrete divergence between automatic SIM-O ranking and perceptual similarity MOS ranking, demonstrating that WavLM-based cosine similarity is insufficient for capturing perceptual voice identity. 2026: EmergentTTS-Eval (instruction-following paralinguistic tasks) and Audio Turing Test emerge as new evaluation benchmarks used in Fish Audio S2 [[2603.08823]]; LongCat-AudioDiT [[2603.29339]] uses DNSMOS 3.40 as an alternative naturalness proxy; CV3-Eval for multilingual voice cloning across 9 languages is used by both [[2601.15621]] and [[2603.08823]]. F0-RMSE is used by DiFlow-TTS [[2509.09631]] and Vevo2 [[2508.16332]] as a prosody accuracy metric. The diversity of benchmarks (Seed-TTS-Eval, LibriSpeech-PC, FLEURS-102, MiniMax-Multilingual-24, EmergentTTS-Eval) remains a persistent problem: no single public benchmark adequately captures all dimensions of modern TTS capability.
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|

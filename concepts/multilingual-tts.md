@@ -2,27 +2,31 @@
 slug: multilingual-tts
 title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
+status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
 ---
-## What it is
 
-Multilingual TTS systems can synthesize speech in two or more languages from a single model, typically sharing parameters across languages. They may require explicit language conditioning or rely on shared phoneme/character inventories and shared acoustic representations. A subset of multilingual TTS also supports code-switching — generating speech that seamlessly alternates between languages within a single utterance.
+## Executive Summary
 
-## Why it matters
+> [!abstract]
+> Multilingual TTS systems synthesize speech in two or more languages from a single model, sharing parameters and acoustic representations across languages. As of 2026, the frontier has shifted from tens of languages with English/Chinese focus to systems claiming full FLEURS coverage (600+ languages), driven by LLM initialization, shared subword tokenizers, and massive data curation pipelines. Multilingual TTS is now a dominant paradigm in production TTS — any new large-scale system is expected to cover at least 5–10 major languages.
 
-Monolingual TTS systems require separate model training for each language, which is expensive and impractical for low-resource languages. Multilingual TTS enables knowledge transfer across languages (especially helpful for under-resourced ones), supports multilingual speakers and code-switching scenarios, and allows zero-shot cross-lingual voice cloning where a speaker's voice in one language is used to synthesize speech in another.
+## Current Status
 
-## Current state of the art
+dominant — Multilingual capability is now table stakes for production-grade TTS systems. The gap between monolingual and multilingual quality has narrowed substantially: leading open-source multilingual systems (OmniVoice [[2604.00688]], Fish Audio S2 [[2603.08823]], Qwen3-TTS [[2601.15621]]) match or exceed the quality of dedicated monolingual systems on widely-studied languages. Coverage breadth has expanded qualitatively, with OmniVoice [[2604.00688]] claiming 600+ languages from a single 0.8B model trained on 581K hours of open-source data.
 
-As of early 2026, the multilingual frontier has expanded dramatically. The key systems:
-- OmniVoice [[2604.00688]]: 600+ languages from a single 0.8B NAR model trained on 581K hours of open-source data. Achieves average WER 2.85 on MiniMax-Multilingual-24 benchmark, outperforming MiniMax-Speech (3.77) and ElevenLabs Multilingual v2 (10.95). WER ≤5% for 82/102 FLEURS languages with only upsampling for low-resource. LLM initialization and full-codebook masking are key enablers.
-- Qwen3-TTS [[2601.15621]]: 10 languages with best SPK-SIM in all evaluated languages; trained on 5M hours proprietary. Cross-lingual voice cloning (CV3-Eval) achieves 4.82 zh-to-ko WER vs. 14.4 for CosyVoice 3.
-- Fish Audio S2 [[2603.08823]]: 80+ languages on 10M+ hours. Best open-source multilingual zero-shot WER on CV3-Eval (3.01 average, 23.9% relative improvement over Fish Audio S1).
-- CosyVoice [[2407.05407]] / CosyVoice 2 [[2412.10117]]: established AR+FM multilingual baseline at 170K/170K hours with Japanese, Korean, Mandarin, English, Cantonese coverage.
-- Lao-English code-switching [[2025.ccl-1.80]]: extends VALL-E X to extremely low-resource cross-lingual synthesis without bilingual training data.
+## Why This Matters
 
-## Key variants and sub-approaches
+Monolingual TTS requires separate model training for each language, which is expensive and impractical for low-resource languages. Multilingual TTS enables knowledge transfer across languages (especially helpful for under-resourced ones), supports multilingual speakers and code-switching scenarios, and allows zero-shot cross-lingual voice cloning where a speaker's voice in one language is used to synthesize speech in another.
+
+Cross-lingual zero-shot voice cloning — synthesizing in language B with a speaker enrolled in language A — is a capability unavailable in monolingual systems and is now actively evaluated as a standard benchmark (CV3-Eval cross-lingual protocol).
+
+## Core Idea
+
+A multilingual TTS model is trained on speech data from multiple languages simultaneously, learning a shared acoustic space and language-aware text front-end. Language conditioning may be explicit (language ID embeddings, per-language g2p) or implicit (shared subword tokenizers, LLM initialization with multilingual pre-training). The key challenge is preventing language leakage — where the model synthesizes target text in the wrong accent or prosodic pattern from the reference speaker's language — while maintaining cross-lingual voice identity.
+
+## Methods and Variants
 
 **Character/phoneme-unified models.** F5-TTS ([[2025.acl-long.313]]) uses a joint character vocabulary (2546 tokens covering English alphabets, Chinese pinyin, and all language characters in Emilia) with filler token padding, enabling seamless code-switching without explicit language IDs.
 
@@ -34,43 +38,107 @@ As of early 2026, the multilingual frontier has expanded dramatically. The key s
 
 **Under-resourced language adaptation.** For languages with limited data, frameworks such as [[2025.acl-industry.42]] (Thai) emphasize data curation, normalization, and leveraging cross-lingual transfer from high-resource languages.
 
-## Comparison to alternatives
+**Multilingual LLM backbone.** VoiceCraft-X [[2511.12347]] and CosyVoice 2 [[2412.10117]] use Qwen3/Qwen2.5 LLM backbones whose pre-trained multilingual knowledge reduces the data requirement per language. T5Gemma-TTS [[2604.01760]] demonstrates that encoder-decoder cross-attention for text conditioning provides better multilingual WER than decoder-only AR TTS.
 
-Monolingual TTS with language-specific models achieves higher ceiling quality per language but at much higher total cost. Multilingual models trade some per-language quality for breadth, though the gap is narrowing as training data scales up. Cross-lingual zero-shot voice cloning (synthesizing in language B with a speaker from language A) remains harder than same-language zero-shot, and is an open research challenge not fully solved by any current system.
+## Major Claims
 
-## Year-on-year trajectory
+Claims are generalised propositions aggregated from paper evidence.
 
-2024: Emilia dataset (100K hours EN+ZH) enabled high-quality open-weight multilingual TTS. CosyVoice [[2407.05407]] demonstrated multilingual at 170K hours; CosyVoice 2 [[2412.10117]] added streaming. 2025: F5-TTS ([[2025.acl-long.313]]) demonstrated EN+ZH code-switching; preference alignment on code-switching pairs ([[2025.acl-long.598]]) emerged; under-resourced language TTS ([[2025.acl-industry.42]] for Thai, [[2025.ccl-1.80]] for Lao) received attention; LongCat-AudioDiT [[2603.29339]] used UMT5 to support 107 languages. 2026: OmniVoice [[2604.00688]] crossed 600 languages from a single open-source model — a qualitative step change in scope; Qwen3-TTS [[2601.15621]] achieved top SPK-SIM across 10 languages with 5M hours of proprietary training; Fish Audio S2 [[2603.08823]] achieved best multilingual WER with 80+ languages on 10M hours. The multilingual frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage, driven by LLM initialization, shared subword tokenizers, and massive data curation pipelines.
+### Strongly Supported
 
-## Open questions
+- LLM initialization substantially reduces the data requirement for multilingual TTS and enables coverage of hundreds of languages that would otherwise require language-specific data curation.
+  Supporting: [[2604.00688]], [[2511.12347]], [[2412.10117]]
+
+- Supervised semantic tokens derived from multilingual ASR encoders improve zero-shot cross-lingual voice cloning quality compared to unsupervised alternatives.
+  Supporting: [[2407.05407]], [[2412.10117]], [[2603.08823]]
+
+- Cross-lingual zero-shot voice cloning (reference in language A, synthesis in language B) is consistently harder than same-language zero-shot synthesis; speaker similarity and intelligibility both degrade.
+  Supporting: [[2601.15621]], [[2603.08823]], [[2025.acl-long.598]]
+
+### Emerging
+
+- Preference alignment on English/Chinese pairs generalizes intelligibility improvements to other languages not seen during alignment training, suggesting that DPO targets fundamental articulation capabilities rather than language-specific patterns.
+  Supporting: [[2025.acl-long.598]]
+
+- Shared subword tokenization from a multilingual LLM can eliminate per-language g2p preprocessing, and the quality is competitive with phoneme-based front-ends for high-resource languages.
+  Supporting: [[2604.00688]], [[2603.18090]]
+
+- Dedicated phoneme-based pipelines with language-specific lexicons still outperform large multilingual models for very low-resource languages with non-Latin scripts.
+  Supporting: [[interspeech-2025-0469]]
+
+### Contested
+
+> [!warning]
+> Whether scale (more data, more languages) or architectural choice (LLM initialization, semantic tokens) is the primary driver of multilingual quality improvements is not resolved. Large-scale industrial systems trained on millions of hours ([[2601.15621]], [[2603.08823]]) cannot be cleanly compared to smaller open-source systems trained on hundreds of thousands of hours.
+> Supporting large-scale data: [[2601.15621]], [[2603.08823]] / Supporting architectural innovation: [[2604.00688]], [[2025.ccl-1.80]]
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[zero-shot-tts]] — cross-lingual voice cloning is zero-shot TTS applied across language boundaries; the same speaker similarity / intelligibility trade-off applies
+- [[self-supervised-speech]] — multilingual SSL representations (w2v-BERT 2.0, WavLM) are the primary source of language-agnostic content features
+- [[neural-codec]] — shared codec vocabularies (RVQ, FSQ) over multilingual data are the acoustic backbone of most multilingual systems
+
+### Competes With
+- Monolingual model ensembles — higher per-language ceiling quality but much higher total training and deployment cost
+
+### Commonly Paired With
+- [[flow-matching]] — FM acoustic decoder conditioned on multilingual semantic tokens is the dominant hybrid architecture
+- [[speaker-adaptation]] — cross-lingual voice cloning requires speaker identity to generalize across language boundaries
+
+## Representative Papers
+
+### Foundational
+- [[2407.05407]] — CosyVoice established supervised semantic token conditioning as the dominant multilingual paradigm, covering 5 languages at 170K hours
+
+### Influential
+- [[2412.10117]] — CosyVoice 2 extended multilingual coverage with an LLM backbone and streaming; documented Japanese CER degradation as a concrete failure mode
+- [[2025.acl-long.313]] — F5-TTS demonstrated joint EN+ZH training with a unified pinyin+character vocabulary, enabling implicit code-switching
+
+### Recent Highlights
+- [[2604.00688]] — OmniVoice: 600+ languages from 581K hours of open-source data via LLM initialization; qualitative step-change in scope
+- [[2601.15621]] — Qwen3-TTS: best multilingual SPK-SIM across 10 languages; 5M hours proprietary training
+- [[2603.08823]] — Fish Audio S2: best average multilingual WER on CV3-Eval (3.01), 80+ languages, 10M hours
+
+### Cautionary / Negative Evidence
+- [[interspeech-2025-0469]] — Punjabi/Urdu: dedicated phoneme-based Tacotron pipelines (WER 16.1%) substantially outperform Meta's MMS (31.4%) for very low-resource non-Latin-script languages, suggesting multilingual scale does not yet solve the long tail
+- [[2412.10117]] — CosyVoice 2 reports CER 18.79% for Japanese due to character-set overlap with Chinese, illustrating a specific failure mode of shared subword tokenization
+
+## Open Questions
 
 - Can the Emilia/Pinyin approach be extended to non-CJK, non-Latin scripts (e.g., Arabic, Devanagari) without explicit phoneme alignment?
 - What is the minimum data per language needed to achieve acceptable zero-shot quality in a multilingual model?
 - How can code-switching models handle intra-word switches and phonological interference at language boundaries?
-- Does preference alignment on EN+ZH preference pairs generalize to other languages? [[2025.acl-long.598]] shows WER improvements for Japanese, Korean, German, and French after INTP alignment trained only on EN+ZH, suggesting that intelligibility-focused DPO enhances fundamental articulation capabilities across languages.
+- Does preference alignment on EN+ZH pairs generalize to languages beyond the ones tested in [[2025.acl-long.598]] (JA, KO, DE, FR)? And does it hold for tonal or morphologically complex languages?
+- Is cross-lingual zero-shot voice cloning fundamentally limited by the absence of shared phoneme inventory, or is it a training data problem?
+- Does shared subword tokenization reliably handle tonal languages (Mandarin, Cantonese, Thai, Vietnamese) where tone is phonemically contrastive?
 
-## Papers
+## Trend Summary
 
-| ID | Title | Venue | Year | Key use of this concept |
-|----|-------|-------|------|------------------------|
-| [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Trains on 95K hours EN+ZH Emilia dataset; uses joint pinyin+character vocabulary for code-switching; evaluates on Seed-TTS test-zh as well as English benchmarks |
-| [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL | 2025 | Framework for Thai TTS with data curation and acoustic modeling for under-resourced language |
-| [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | Targets code-switching (EN+ZH mixed text) and cross-lingual synthesis (zh2en, en2zh) as primary evaluation domains; shows preference alignment on INTP generalizes to unseen languages (JA, KO, DE, FR) |
-| [[2025.acl-long.388]] | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Demonstrates that cross-modal distillation from a text LLM using only ASR-paired English data generalizes to multilingual speech translation (CoVoST 2) — multilingual coverage from monolingual training without explicit multilingual instruction data |
-| [[2407.05407]] | CosyVoice: A Scalable Multilingual Zero-shot TTS based on Supervised Semantic Tokens | arXiv | 2024 | Supervised semantic tokens from a multilingual ASR encoder enable joint coverage of ZH, EN, Yue, JP, KO; cross-lingual cloning drops prompt prosody to prevent language leakage |
-| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Extends multilingual coverage with Qwen2.5-0.5B backbone + instruction fine-tuning; reports degradation on Japanese (CER 18.79%) due to character-set overlap with Chinese |
-| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | 80+ languages on 10M+ hours with rich-transcription ASR annotation pipeline; best average WER on CV3-Eval multilingual voice cloning (3.01 vs. 3.96 for Fish Audio S1) |
-| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Best SPK-SIM across 10 languages vs. MiniMax-Speech and ElevenLabs; cross-lingual voice cloning (CV3-Eval) zh-to-ko WER 4.82 vs. 14.4 for CosyVoice 3 |
-| [[2604.00688]] | OmniVoice: Towards Omnilingual Zero-Shot TTS with Diffusion Language Models | arXiv | 2026 | 600+ languages from 581K hours of open-source data; LLM initialization resolves NAR intelligibility gap; WER ≤5% for 82/102 FLEURS languages; shared LLM subword tokenizer eliminates per-language g2p |
-| [[2603.29339]] | LongCat-AudioDiT: High-Fidelity Diffusion TTS in the Waveform Latent Space | arXiv | 2026 | Uses UMT5-base text encoder (107 languages) with dual embedding (final hidden state + raw word embeddings) for multilingual support; Chinese+English primary evaluation on Seed benchmark |
-| [[2512.04720]] | M3-TTS: Multi-modal DiT Alignment and Mel-latent for Zero-shot High-fidelity Speech Synthesis | arXiv | 2025 | Bilingual (EN+ZH) flow-matching NAR TTS trained on 95K hours Emilia; MMDiT cross-modal attention for alignment-free synthesis |
-| [[2025.ccl-1.80]] | Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling | workshop | 2025 | Extends VALL-E X to Lao-English code-switching without bilingual training data via shared phoneme latent space and language ID embeddings |
-| [[2025.acl-short.81]] | Zero-Shot Text-to-Speech for Vietnamese | ACL | 2025 | Creates PhoAudiobook, a 941-hour Vietnamese dataset, and benchmarks three zero-shot TTS systems; highlights challenges of adapting English-trained codec LMs to a tonal low-resource language |
-| [[2511.12347]] | VoiceCraft-X: Unifying Multilingual Voice-Cloning Speech Synthesis and Editing | EMNLP | 2025 | Extends VoiceCraft to 11 languages via Qwen3 LLM backbone and text-speech token reordering; joint TTS and speech editing across Chinese, English, French, German, Japanese, Korean, Portuguese, Russian, Spanish, Ukrainian |
-| [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | Extends IndexTTS 2 to Chinese, English, Japanese, and Spanish; evaluates three multilingual strategy variants (language-specific, token concatenation, text transliteration); token-level concatenation provides best naturalness |
-| [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Multilingual AR TTS trained on millions of hours; achieves WER 2.04% (EN) and CER 2.07% (ZH) on Seed-TTS-Eval; causal tokenizer for unified multilingual speech representation |
-| [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning evaluated on 6 languages (English, Chinese, Italian, German, Portuguese, Spanish); best WER for EN, IT, PT, ZH among compared systems |
-| [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Demonstrates that dedicated phoneme-based Tacotron pipelines with language-specific lexicons substantially outperform Meta's MMS for Punjabi Shahmukhi and Urdu; WER 16.1% vs. 31.4% for MMS on Punjabi |
-| [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent neural Seq2Seq frontend reduces pronunciation data for a new non-standard English accent by 95% (from 20k to 1k sentences) via cross-accent knowledge transfer; accent similarity weakly mediates transfer strength |
-| [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Matcha-TTS extended with per-phoneme accentedness parameter and psychometric calibration; demonstrates listener preferences for intrasentential English vary by insertion type; no single accentedness level universally preferred |
-| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Evaluates multilingual sentence mode prediction for TTS prosody across Italian, French, and German; cross-lingual transfer (German model applied to French) achieves UAR 63.62%, supporting multilingual prosody modeling via shared SSL representations |
+2024: Emilia dataset (100K hours EN+ZH) enabled high-quality open-weight multilingual TTS. CosyVoice [[2407.05407]] demonstrated multilingual at 170K hours; CosyVoice 2 [[2412.10117]] added streaming and an LLM backbone. 2025: F5-TTS ([[2025.acl-long.313]]) showed EN+ZH code-switching; preference alignment ([[2025.acl-long.598]]) extended to cross-lingual domains; under-resourced language TTS ([[2025.acl-industry.42]], [[2025.ccl-1.80]]) attracted attention at NLP venues; LongCat-AudioDiT [[2603.29339]] used UMT5 to support 107 languages. 2026: OmniVoice [[2604.00688]] crossed 600 languages from a single open-source model — a qualitative step change in scope; Qwen3-TTS [[2601.15621]] achieved top SPK-SIM across 10 languages with 5M hours; Fish Audio S2 [[2603.08823]] achieved best multilingual WER across 80+ languages on 10M hours. The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage, driven by LLM initialization, shared subword tokenizers, and massive data curation pipelines.
+
+## All Papers
+
+| ID | Title | Venue | Year | Role in this concept |
+|----|-------|-------|------|---------------------|
+| [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Joint EN+ZH training with unified pinyin+character vocabulary; EN+ZH code-switching |
+| [[2025.acl-industry.42]] | Scaling Under-Resourced TTS: A Data-Optimized Framework for Thai | ACL | 2025 | Under-resourced language TTS via data curation and cross-lingual transfer |
+| [[2025.acl-long.598]] | Advancing Zero-shot TTS Intelligibility across Diverse Domains via Preference Alignment | ACL | 2025 | DPO alignment on EN+ZH pairs generalizes to unseen languages (JA, KO, DE, FR) |
+| [[2025.acl-long.388]] | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | Cross-modal distillation from text LLM generalizes to multilingual speech translation |
+| [[2407.05407]] | CosyVoice: A Scalable Multilingual Zero-shot TTS based on Supervised Semantic Tokens | arXiv | 2024 | Foundational multilingual zero-shot TTS; supervised semantic tokens from multilingual ASR encoder |
+| [[2412.10117]] | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv | 2024 | Extended multilingual coverage with Qwen2.5-0.5B backbone; documents Japanese CER failure mode |
+| [[2603.08823]] | Fish Audio S2 Technical Report | arXiv | 2026 | 80+ languages on 10M+ hours; best average WER on CV3-Eval multilingual voice cloning |
+| [[2601.15621]] | Qwen3-TTS Technical Report | arXiv | 2026 | Best SPK-SIM across 10 languages; top cross-lingual voice cloning on CV3-Eval |
+| [[2604.00688]] | OmniVoice: Towards Omnilingual Zero-Shot TTS with Diffusion Language Models | arXiv | 2026 | 600+ languages from open-source data; LLM initialization resolves NAR intelligibility gap |
+| [[2603.29339]] | LongCat-AudioDiT: High-Fidelity Diffusion TTS in the Waveform Latent Space | arXiv | 2026 | UMT5-base text encoder supporting 107 languages |
+| [[2512.04720]] | M3-TTS: Multi-modal DiT Alignment and Mel-latent for Zero-shot TTS | arXiv | 2025 | Bilingual EN+ZH flow-matching NAR trained on 95K hours Emilia |
+| [[2025.ccl-1.80]] | Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling | workshop | 2025 | Extends VALL-E X to Lao-English code-switching without bilingual training data |
+| [[2025.acl-short.81]] | Zero-Shot Text-to-Speech for Vietnamese | ACL | 2025 | PhoAudiobook dataset; challenges of adapting English-trained codec LMs to a tonal low-resource language |
+| [[2511.12347]] | VoiceCraft-X: Unifying Multilingual Voice-Cloning Speech Synthesis and Editing | EMNLP | 2025 | 11-language TTS and editing via Qwen3 LLM backbone |
+| [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | 4-language zero-shot TTS; token-level concatenation for multilingual voice cloning |
+| [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS; causal tokenizer for unified multilingual speech representation |
+| [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM; best WER for EN, IT, PT, ZH among compared systems |
+| [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Dedicated phoneme-based pipelines outperform Meta MMS for very low-resource non-Latin scripts |
+| [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent neural Seq2Seq frontend; 95% data reduction for new accent via cross-accent transfer |
+| [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Per-phoneme accentedness parameter for intrasentential code-switching in Swedish TTS |
+| [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Cross-lingual transfer for sentence mode prediction across Italian, French, and German |

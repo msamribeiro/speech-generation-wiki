@@ -3,37 +3,32 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: dominant
 ---
-## What it is
 
-Zero-shot TTS is the ability to synthesize speech in the voice of an unseen speaker — one not seen during training — given only a short reference audio clip (typically 3–10 seconds) at inference time, without any fine-tuning. The system must generalize the speaker's timbre, speaking style, and vocal quality from the reference clip and apply it to arbitrary target text. This is distinct from speaker-conditioned TTS (which uses a fixed speaker embedding from a closed training set) and from fine-tuning approaches (which update model weights for each new speaker).
+## Executive Summary
 
-Zero-shot TTS systems typically learn a disentangled representation space where speaker characteristics and content are separated, allowing the speaker conditioning from one utterance to be combined with text content to generate new speech.
+> [!abstract]
+> Zero-shot TTS is the ability to synthesize speech in the voice of an unseen speaker given only a short reference audio clip at inference time, without any fine-tuning — enabling personalized voice synthesis for any speaker at inference time. It is the dominant paradigm in modern TTS research, having largely displaced speaker-ID-conditioned models, and as of early 2026 the frontier is characterized by large-scale open-source systems (Fish Audio S2, Qwen3-TTS, OmniVoice) that are rapidly narrowing the gap to closed-source SOTA on intelligibility, speaker similarity, and multilingual breadth. The central research challenge is balancing speaker similarity, intelligibility, and naturalness — objectives that remain in tension and are governed by training methodology, codec design, and inference-time CFG strategy.
 
-## Why it matters
+## Current Status
+
+dominant — Zero-shot TTS is the dominant paradigm in TTS research as of early 2026, with open-source systems achieving best-reported WER below 1% and spanning 600+ languages. The gap between open-source and closed-source SOTA has materially narrowed.
+
+## Why This Matters
 
 Zero-shot TTS eliminates the need for per-speaker data collection and training, making personalized voice synthesis accessible for any speaker at inference time. This unlocks applications including personalized voice assistants, audiobook production, dubbing and localization, accessibility tools, and — with appropriate safeguards — voice conversion for entertainment. It is the dominant paradigm in modern TTS research, having largely displaced speaker-ID-conditioned models.
 
 The challenge is balancing three objectives: speaker similarity to the reference (measured by SPK-SIM), intelligibility of the output (measured by WER/CER), and naturalness (MOS). These objectives are in tension, and the CFG trade-off is a key current research area.
 
-## Current state of the art
+## Core Idea
 
-As of early 2026, the frontier has expanded substantially with new large-scale open-source systems narrowing the gap to closed-source SOTA. On the Seed-TTS-Eval benchmark:
-- Fish Audio S2 [[2603.08823]]: WER 0.54% (zh) / 0.99% (en) — best open-source WER; achieves 81.88% win rate on EmergentTTS-Eval against GPT-4o-audio and Gemini 2.5 Flash TTS.
-- Qwen3-TTS [[2601.15621]]: WER 0.77% (zh) / 1.24% (en), top multilingual speaker similarity across 10 languages.
-- OmniVoice [[2604.00688]]: WER 1.30% on LibriSpeech-PC (multilingual), SIM-o 0.741 (en) / 0.777 (zh) on Seed-TTS; subjective CMOS +0.44 (best reported in corpus).
-- LongCat-AudioDiT [[2603.29339]]: SIM 0.818 on Seed-ZH (best diffusion NAR in corpus), WER 1.50% on Seed-EN from a 3.5B waveform-latent flow-matching model.
-- IndexTTS2 [[2506.21619]]: WER 1.008% (zh) / 1.521% (en), best emotional expressiveness among evaluated open systems (EMOS 4.22).
-- M3-TTS [[2512.04720]]: WER 1.36% on Seed-TTS test-en (VAE variant) — best WER among NAR systems evaluated against Seed benchmark including AR baselines.
+Zero-shot TTS is the ability to synthesize speech in the voice of an unseen speaker — one not seen during training — given only a short reference audio clip (typically 3–10 seconds) at inference time, without any fine-tuning. The system must generalize the speaker's timbre, speaking style, and vocal quality from the reference clip and apply it to arbitrary target text. This is distinct from speaker-conditioned TTS (which uses a fixed speaker embedding from a closed training set) and from fine-tuning approaches (which update model weights for each new speaker).
 
-Established SOTA from prior integration pass: F5-TTS ([[2025.acl-long.313]], SIM-o 0.67, WER 1.83%), CosyVoice 2 [[2412.10117]] (SIM 0.745, WER 2.47%), Seed-TTS [[2406.02430]] (CMOS -0.07 vs. human).
+Zero-shot TTS systems typically learn a disentangled representation space where speaker characteristics and content are separated, allowing the speaker conditioning from one utterance to be combined with text content to generate new speech.
 
-For intelligibility, OZSpeech [[2025.acl-long.1043]] and Flamed-TTS [[2510.02848]] and DiFlow-TTS [[2509.09631]] all achieve WER ~0.04-0.05% on LibriSpeech test-clean, trading UTMOS for near-perfect intelligibility on this specific benchmark.
-
-The paradigm was established by VALL-E [[2301.02111]] in 2023. StyleTTS-ZS [[2025.naacl-long.242]] provides a notable codec-free alternative via distilled time-varying style diffusion, achieving CMOS -0.032 vs. ground truth on LibriSpeech with 10-20x faster inference than prior diffusion SOTA.
-
-## Key variants and sub-approaches
+## Methods and Variants
 
 **Flow-matching non-autoregressive (F5-TTS paradigm).** Pure flow matching over mel-spectrograms with text and reference audio as joint conditioning. Inference is non-autoregressive in the temporal sense (all frames generated in parallel via ODE integration). F5-TTS ([[2025.acl-long.313]]) and E2-TTS are the main representatives. F5-TTS introduces ConvNeXt V2 text refinement to resolve E2-TTS's 7% unrecoverable alignment failure rate (Mandarin), and Sway Sampling (biasing ODE steps toward early timesteps) to further improve robustness at inference. Classifier-free guidance (CFG) is critical and [[2509.19668]] shows that the CFG strategy significantly affects the SIM/WER trade-off.
 
@@ -45,17 +40,75 @@ The paradigm was established by VALL-E [[2301.02111]] in 2023. StyleTTS-ZS [[202
 
 **Zero-shot VC (content-preserving).** Rather than text input, source speech is used. [[2507.14534]] (Conan) uses Emformer-distilled HuBERT content + CVQ style encoder for zero-shot VC at low latency.
 
-## Comparison to alternatives
+## Major Claims
 
-Speaker-adapted TTS (fine-tuning on target speaker data) achieves higher speaker similarity at the cost of requiring enrollment data and training time. Zero-shot TTS trades some speaker fidelity for generalization without enrollment. The gap between the two is narrowing; recent zero-shot systems are approaching fine-tuned quality on many speakers.
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/zero-shot-tts.yaml`.
 
-Prompt-conditioned TTS (using reference audio as a style prompt but not specifically for voice cloning) is overlapping with zero-shot TTS but focuses more on prosody/style matching than speaker identity.
+### Strongly Supported
 
-## Year-on-year trajectory
+- Zero-shot TTS quality scales with training data size and model parameters, with systems trained on millions of hours and billions of parameters achieving best-in-class intelligibility and speaker similarity.
+  Supporting: [[2603.08823]], [[2601.15621]], [[2604.00688]], [[2406.02430]]
 
-2023: VALL-E [[2301.02111]] established the codec LM paradigm with 60K hours of LibriLight training and 3-second enrollment at inference. 2024: F5-TTS ([[2025.acl-long.313]]) and E2-TTS established pure flow matching as competitive; CosyVoice [[2407.05407]] introduced supervised semantic token conditioning; Seed-TTS [[2406.02430]] reached human-parity synthesis (CMOS -0.07) with RL post-training; CosyVoice 2 [[2412.10117]] added streaming and FSQ tokenizer. 2025: StyleTTS-ZS [[2025.naacl-long.242]] demonstrated codec-free distilled diffusion TTS with 10-20× faster inference; Flamed-TTS [[2510.02848]] and DiFlow-TTS [[2509.09631]] pushed WER to 0.04-0.05% on LibriSpeech test-clean; Marco-Voice [[2508.02038]] and EmoSteer-TTS [[2508.03543]] extended zero-shot to emotional expressiveness; PALLE [[2504.10352]] introduced PAR for 10x faster inference than AR; IndexTTS2 [[2506.21619]] solved AR duration control; M3-TTS [[2512.04720]] demonstrated MMDiT-style joint attention for alignment-free NAR TTS; DisCo-Speech [[2512.13251]] enabled independent prosody/timbre control via disentangled codec; DiSTAR [[2510.12210]] coupled AR drafting with discrete masked diffusion; DiTAR [[2502.03930]] demonstrated patch-based continuous AR+diffusion. 2026: Fish Audio S2 [[2603.08823]] and Qwen3-TTS [[2601.15621]] achieved best open-source WER while adding streaming and multilingual breadth; OmniVoice [[2604.00688]] scaled NAR TTS to 600+ languages; LongCat-AudioDiT [[2603.29339]] achieved SOTA speaker similarity for diffusion NAR on Seed-ZH (SIM 0.818); Vevo2 [[2508.16332]] extended zero-shot TTS to unified singing synthesis. The gap between open-source and closed-source SOTA has materially narrowed.
+- Post-training alignment (RLHF, DPO, GRPO) reliably improves zero-shot TTS intelligibility, speaker similarity, and expressiveness without degrading naturalness.
+  Supporting: [[2406.02430]], [[2512.14291]], [[2025.acl-long.598]], [[2603.08823]]
 
-## Open questions
+- Classifier-free guidance strategy — which conditioning dimensions to apply CFG to and at which timesteps — significantly governs the speaker similarity / intelligibility trade-off in flow-matching zero-shot TTS.
+  Supporting: [[2509.19668]], [[2025.acl-long.313]], [[2412.10117]]
+
+### Emerging
+
+- Cross-lingual zero-shot TTS (reference speaker in language A, synthesis in language B) can be substantially improved by preference alignment on cross-lingual preference pairs, even with small alignment datasets.
+  Supporting: [[2025.acl-long.598]]
+
+- Zero-shot TTS can be extended to 600+ languages with a single model without per-language adaptation, via full-codebook random masking and LLM initialization in a NAR framework.
+  Supporting: [[2604.00688]]
+
+- Zero-shot TTS can be reliably improved for pathological speakers (dysarthria) via teacher-student knowledge anchoring and curriculum learning, without modifying the zero-shot architecture.
+  Supporting: [[interspeech-2025-0596]]
+
+### Contested
+
+> [!warning]
+> There is a fundamental tension between intelligibility (WER) and naturalness (MOS/UTMOS) in zero-shot TTS: systems optimized for near-zero WER (OZSpeech, Flamed-TTS, DiFlow-TTS on LibriSpeech) achieve this at the cost of UTMOS, while systems achieving high UTMOS scores show higher WER. Whether this trade-off is fundamental to the learned-prior approach or addressable with better codec choice remains unclear.
+> Supporting: [[2025.acl-long.1043]], [[2510.02848]], [[2509.09631]] / Contradicting: [[2603.08823]] (high WER and SIM simultaneously at scale)
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[neural-codec]] — Zero-shot TTS systems based on AR codec LMs or flow matching depend on neural audio codecs for both tokenization and waveform reconstruction; codec design (frame rate, codebook size, RVQ layers) directly affects zero-shot quality and speaker generalization.
+- [[disentanglement]] — Zero-shot TTS requires learning a disentangled representation space where speaker characteristics and content are separated; disentanglement quality is a fundamental bottleneck for speaker similarity.
+
+### Competes With
+- [[speaker-adaptation]] — Speaker-adapted TTS (fine-tuning on target speaker data) achieves higher speaker similarity at the cost of requiring enrollment data and training time. Zero-shot TTS trades some speaker fidelity for generalization without enrollment. The gap between the two is narrowing; recent zero-shot systems are approaching fine-tuned quality on many speakers.
+
+### Commonly Paired With
+- [[flow-matching]] — Flow matching is the dominant non-autoregressive method for zero-shot TTS, used in nearly all state-of-the-art zero-shot systems as either the primary model or the acoustic decoder.
+- [[autoregressive-codec-tts]] — AR codec LMs are the other dominant paradigm for zero-shot TTS; the AR LM's in-context learning from a short reference clip is the primary mechanism for speaker generalization in this family.
+- [[voice-conversion]] — Zero-shot TTS and zero-shot VC share the core challenge of generalizing to unseen speakers at inference; many zero-shot TTS systems also support VC as a secondary capability via content-preserving synthesis from source audio rather than text.
+
+## Representative Papers
+
+### Foundational
+- [[2301.02111]] — VALL-E established the zero-shot TTS paradigm via conditional codec language modeling, demonstrating 3-second enrollment without per-speaker fine-tuning and achieving SPK-SIM 0.580 vs. prior SOTA 0.337 on LibriSpeech.
+- [[2406.02430]] — Seed-TTS achieved human-parity synthesis (CMOS -0.07) at foundation-model scale, introduced RL post-training for robustness, and defined Seed-TTS-Eval as the standard benchmark for subsequent work.
+
+### Influential
+- [[2025.acl-long.313]] — F5-TTS established pure non-autoregressive flow matching as a competitive zero-shot TTS paradigm, resolving E2-TTS alignment failures and introducing Sway Sampling for inference-time robustness.
+- [[2407.05407]] — CosyVoice demonstrated that supervised semantic tokens substantially improve zero-shot WER and speaker similarity, establishing LLM+FM as a dominant hybrid paradigm.
+- [[2509.19668]] — First systematic study of CFG strategies for zero-shot flow-matching TTS, revealing that language-specific behavior and image-domain CFG improvements do not transfer to speech.
+- [[2025.acl-long.598]] — DPO alignment across five zero-shot TTS systems demonstrated 31–52% relative WER reduction on challenging domains (code-switching, cross-lingual) while preserving speaker similarity.
+
+### Recent Highlights
+- [[2603.08823]] — Fish Audio S2 achieved best open-source WER on Seed-TTS-Eval (0.54% zh / 0.99% en) with 81.88% win rate against GPT-4o-audio on EmergentTTS-Eval.
+- [[2601.15621]] — Qwen3-TTS demonstrated sub-100 ms streaming with best open-source SPK-SIM across 10 languages and DPO+GRPO alignment at scale.
+- [[2604.00688]] — OmniVoice extended zero-shot TTS to 600+ languages with a single NAR model, achieving CMOS +0.44 (best in corpus) and WER ≤5% for 82/102 languages on FLEURS.
+- [[2603.29339]] — LongCat-AudioDiT achieved SOTA speaker similarity for diffusion NAR systems on Seed-ZH (SIM 0.818) by shifting flow matching to waveform VAE latent space.
+
+### Cautionary / Negative Evidence
+- [[2025.acl-long.1043]] — OZSpeech demonstrates an extreme intelligibility/naturalness trade-off point: near-zero WER at the cost of UTMOS, raising questions about whether the intelligibility/naturalness frontier is fundamental to the learned-prior approach.
+- [[interspeech-2025-0596]] — Highlights that standard zero-shot TTS systems fail significantly on pathological speakers (dysarthric), showing that generalization claims do not extend to all speaker populations without architectural modification.
+
+## Open Questions
 
 - Can inference-time CFG improvements [[2509.19668]] fully close the gap to closed-source SOTA, or is training-time methodology the bottleneck?
 - Why does the CFG strategy effectiveness vary by language (English vs. Mandarin for F5-TTS)? Is it the text encoder architecture, training data, or something else?
@@ -63,7 +116,11 @@ Prompt-conditioned TTS (using reference audio as a style prompt but not specific
 - Cross-lingual zero-shot TTS (reference speaker speaks language A, synthesis in language B) remains an open challenge, though [[2025.acl-long.598]] shows DPO alignment on cross-lingual preference pairs (500 zh2en + 500 en2zh samples) reduces cross-lingual WER by 50%+ for multiple systems.
 - [[2025.acl-long.1043]] shows near-perfect WER on LibriSpeech at the cost of UTMOS; is the intelligibility/naturalness trade-off fundamental to the learned-prior approach, or addressable with better codec choice (FACodec is acknowledged as limiting)?
 
-## Papers
+## Trend Summary
+
+2023: VALL-E [[2301.02111]] established the codec LM paradigm with 60K hours of LibriLight training and 3-second enrollment at inference. 2024: F5-TTS ([[2025.acl-long.313]]) and E2-TTS established pure flow matching as competitive; CosyVoice [[2407.05407]] introduced supervised semantic token conditioning; Seed-TTS [[2406.02430]] reached human-parity synthesis (CMOS -0.07) with RL post-training; CosyVoice 2 [[2412.10117]] added streaming and FSQ tokenizer. 2025: StyleTTS-ZS [[2025.naacl-long.242]] demonstrated codec-free distilled diffusion TTS with 10-20× faster inference; Flamed-TTS [[2510.02848]] and DiFlow-TTS [[2509.09631]] pushed WER to 0.04-0.05% on LibriSpeech test-clean; Marco-Voice [[2508.02038]] and EmoSteer-TTS [[2508.03543]] extended zero-shot to emotional expressiveness; PALLE [[2504.10352]] introduced PAR for 10x faster inference than AR; IndexTTS2 [[2506.21619]] solved AR duration control; M3-TTS [[2512.04720]] demonstrated MMDiT-style joint attention for alignment-free NAR TTS; DisCo-Speech [[2512.13251]] enabled independent prosody/timbre control via disentangled codec; DiSTAR [[2510.12210]] coupled AR drafting with discrete masked diffusion; DiTAR [[2502.03930]] demonstrated patch-based continuous AR+diffusion. 2026: Fish Audio S2 [[2603.08823]] and Qwen3-TTS [[2601.15621]] achieved best open-source WER while adding streaming and multilingual breadth; OmniVoice [[2604.00688]] scaled NAR TTS to 600+ languages; LongCat-AudioDiT [[2603.29339]] achieved SOTA speaker similarity for diffusion NAR on Seed-ZH (SIM 0.818); Vevo2 [[2508.16332]] extended zero-shot TTS to unified singing synthesis. The gap between open-source and closed-source SOTA has materially narrowed.
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|

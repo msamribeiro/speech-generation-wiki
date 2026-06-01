@@ -8,6 +8,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-01
 
+- integrate | concept page migration: all 21 concept pages rewritten to new research-briefing template (Executive Summary, Current Status, Major Claims, Representative Papers, Relationship to Other Concepts, status vocab)
 - integrate | wiki redesign: landing page, folder navigation, venue naming, unified paper card format
 
 ## 2026-05-30

@@ -3,9 +3,26 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: dominant
 ---
-## What it is
+
+## Executive Summary
+
+> [!abstract]
+> Flow matching is a method for training continuous normalizing flows that transports samples from noise to speech via a directly regressed vector field, enabling fewer inference steps than diffusion while maintaining high fidelity. It has become the dominant architecture for zero-shot TTS in 2024–2025, largely displacing diffusion and GAN-based approaches. Its advantage of non-autoregressive inference parallelism combined with a simple training objective makes it the leading non-autoregressive paradigm and the acoustic decoder of choice in hybrid LLM+FM pipelines.
+
+## Current Status
+
+dominant — Flow matching is the leading non-autoregressive TTS paradigm as of early 2026, appearing in both pure NAR systems (F5-TTS, E2-TTS) and as the acoustic decoder in hybrid LLM+FM architectures (CosyVoice 2, IndexTTS2, LLaMA-Omni 2). It is the primary competitor to autoregressive codec LMs for zero-shot TTS.
+
+## Why This Matters
+
+Flow matching has emerged as the dominant architecture for zero-shot TTS in 2024–2025, largely displacing diffusion and GAN-based approaches. Its advantages over diffusion are: (1) fewer inference steps needed due to straighter transport paths, (2) simpler training objective (direct flow regression vs. score matching), and (3) compatibility with conditional ODE solvers. Its advantage over autoregressive methods is inference parallelism (all frames generated jointly, not token-by-token).
+
+Classifier-free guidance (CFG) is essential for conditional flow matching in speech, and the strategy for applying CFG affects the speaker similarity / text adherence trade-off — an active research area ([[2509.19668]]). Inference-time flow step scheduling (Sway Sampling in [[2025.acl-long.313]]) is another lever: biasing ODE integration toward early timesteps improves text-speech alignment robustness without retraining.
+
+## Core Idea
 
 Flow matching is a method for training continuous normalizing flows (CNFs) by directly regressing a vector field that transports samples from a source distribution (typically Gaussian noise) to a target distribution (e.g., mel-spectrograms or waveforms). Optimal-transport (OT) flow matching constructs the straightest possible path between source and target, minimizing the curvature of the learned trajectory. This allows fewer inference steps than diffusion models while maintaining fidelity.
 
@@ -13,24 +30,7 @@ The training loss is: given a random timestep t ∈ [0,1], interpolate x_t = x_0
 
 In speech synthesis, flow matching models typically operate on mel-spectrograms, with text and/or speaker conditioning applied via cross-attention or concatenation. A vocoder (HiFi-GAN, Vocos, BigVGAN) then converts the predicted mel to waveform.
 
-## Why it matters
-
-Flow matching has emerged as the dominant architecture for zero-shot TTS in 2024–2025, largely displacing diffusion and GAN-based approaches. Its advantages over diffusion are: (1) fewer inference steps needed due to straighter transport paths, (2) simpler training objective (direct flow regression vs. score matching), and (3) compatibility with conditional ODE solvers. Its advantage over autoregressive methods is inference parallelism (all frames generated jointly, not token-by-token).
-
-Classifier-free guidance (CFG) is essential for conditional flow matching in speech, and the strategy for applying CFG affects the speaker similarity / text adherence trade-off — an active research area ([[2509.19668]]). Inference-time flow step scheduling (Sway Sampling in [[2025.acl-long.313]]) is another lever: biasing ODE integration toward early timesteps improves text-speech alignment robustness without retraining.
-
-## Current state of the art
-
-As of early 2026, flow matching remains the dominant paradigm for zero-shot TTS. The leading open-weight flow-matching TTS systems include F5-TTS ([[2025.acl-long.313]], 336M, WER 1.83% / SIM-o 0.67 on Seed-TTS test-en), CosyVoice 2 [[2412.10117]] (chunk-aware causal FM for streaming), Vevo2 [[2508.16332]] (AR+FM with chromagram prosody tokenizer for speech+singing), and LongCat-AudioDiT [[2603.29339]] (waveform-latent FM at 3.5B scale, SIM 0.818 on Seed-ZH). New systems have extended flow matching into waveform latent space (LongCat-AudioDiT), attention-free architectures (Flamed-TTS [[2510.02848]]), and discrete probability space (DiFlow-TTS [[2509.09631]]).
-
-The three dominant paradigms are:
-- **Pure flow matching on mel-spectrograms** (F5-TTS, E2-TTS, Voicebox, Flamed-TTS [[2510.02848]]): flow matching directly conditioned on full text + reference audio concatenation.
-- **LLM + flow matching** (CosyVoice [[2407.05407]], CosyVoice 2 [[2412.10117]], IndexTTS2 [[2506.21619]], Marco-Voice [[2508.02038]], Vevo2 [[2508.16332]], LLaMA-Omni 2 [[2025.acl-long.912]]): LLM generates semantic tokens autoregressively; flow matching predicts acoustic mel conditioned on semantic tokens and speaker embedding.
-- **Waveform-latent flow matching** (LongCat-AudioDiT [[2603.29339]]): flow matching in a continuous VAE latent space of the waveform, bypassing mel-spectrogram as intermediate and achieving superior zero-shot speaker similarity.
-
-Acceleration via few-step sampling is an active sub-theme. APTTS ([[interspeech-2025-0455]]) introduces adversarial post-training (AP) on a latent flow-matching TTS with a prompt-conditioned JCU discriminator, cutting inference to 4 Euler steps (RTF 0.052) with competitive WER and intelligibility. RapFlow-TTS ([[interspeech-2025-0554]]) applies consistency flow matching on Matcha-TTS's architecture, enforcing velocity-field self-consistency along straight ODE trajectories for 2-function-evaluation synthesis at FastSpeech2 speed while exceeding Matcha-TTS quality. Flow matching is also being applied to the vocoder stage: WaveFM ([[2025.naacl-long.110]]) is a flow-matching vocoder using a mel-conditioned prior, reparameterized waveform-prediction objective, and adapted consistency distillation, achieving SMOS 4.19 in 6 steps and matching BigVGAN quality in 1 distilled step. Multi-speaker dialogue generation is a new application domain: ZipVoice-Dialog ([[2507.09318]]) extends a flow-matching monologue TTS to two-speaker dialogue via curriculum learning and speaker-turn embeddings, achieving 15× faster inference than AR baselines.
-
-## Key variants and sub-approaches
+## Methods and Variants
 
 **Pure non-autoregressive flow matching.** F5-TTS ([[2025.acl-long.313]]) and E2-TTS jointly model the reference audio and target speech in a single sequence, using the reference audio mel as the acoustic prompt. The full sequence is denoised together. F5-TTS improves on E2-TTS by adding ConvNeXt V2 text refinement blocks before concatenating text and speech, resolving E2-TTS's alignment failures. Sway Sampling at inference further boosts robustness by concentrating ODE steps near t=0 (early speech silhouette formation). The model is jointly conditioned on reference text + target text (concatenated). CFG is applied over the combined conditioning.
 
@@ -56,15 +56,75 @@ Acceleration via few-step sampling is an active sub-theme. APTTS ([[interspeech-
 
 **Flow matching for prosody latent space (ProsodyFlow paradigm).** [[2025.coling-main.518]] applies CFM specifically to the prosody latent space of a StyleTTS-2-based model, using WavLM-extracted prosody vectors as targets. The CFM generates diverse prosody at inference without reference audio, achieving MOS 4.23 on LJSpeech (near ground-truth 4.25) while running faster than VITS.
 
-## Comparison to alternatives
+## Major Claims
 
-Diffusion models (DDPM, score-based) require more inference steps and have higher curvature in their transport paths than OT flow matching. Flow matching has largely superseded diffusion in TTS applications. Autoregressive codec LMs (VALL-E family) produce strong speaker similarity by conditioning on long acoustic prompts but have higher inference latency due to sequential token generation.
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/flow-matching.yaml`.
 
-## Year-on-year trajectory
+### Strongly Supported
 
-2023: Voicebox introduced flow matching to TTS at scale. 2024: F5-TTS ([[2025.acl-long.313]]) established pure flow matching as competitive with autoregressive methods; CosyVoice [[2407.05407]] and CosyVoice 2 [[2412.10117]] established the LLM+flow-matching hybrid as a competing paradigm. 2025: CFG strategies studied in depth [[2509.19668]]; OZSpeech [[2025.acl-long.1043]] demonstrates single-step flow matching via learned prior; Flamed-TTS [[2510.02848]] pushes WER to 0.04% with an attention-free denoiser and probabilistic silence generator; DiFlow-TTS [[2509.09631]] establishes discrete flow matching as a new family achieving best naturalness among evaluated systems; M3-TTS [[2512.04720]] replaces padding-based pseudo-alignment with MMDiT joint attention; IndexTTS2 [[2506.21619]] extends the LLM+FM paradigm with emotion control and AR duration control; Vevo2 [[2508.16332]] unifies TTS and singing via FM with chromagram prosody tokenizer; EmoSteer-TTS [[2508.03543]] demonstrates training-free emotion control via activation steering in FM DiT layers; LLaMA-Omni 2 [[2025.acl-long.912]] integrates FM as the acoustic decoder in a streaming spoken chatbot. 2026: LongCat-AudioDiT [[2603.29339]] shifts flow matching from mel-spectrogram to waveform VAE latent space, achieving SOTA speaker similarity for diffusion NAR systems — and reveals an unaddressed training-inference mismatch in all prior Voicebox/F5-TTS-style models. Interspeech 2025 (published 2026): RapFlow-TTS [[interspeech-2025-0554]] and APTTS [[interspeech-2025-0455]] both tackle few-step inference acceleration — RapFlow-TTS via consistency FM, APTTS via adversarial post-training — confirming acceleration as a primary practical concern. WaveFM [[2025.naacl-long.110]] extends FM from TTS to the vocoder stage. ZipVoice-Dialog [[2507.09318]] extends FM to two-speaker dialogue generation, demonstrating that the NAR architecture's parallelism provides a 15× latency advantage over AR dialogue systems.
+- Flow matching requires fewer inference steps than diffusion models for equivalent speech quality, due to the straighter transport paths enabled by optimal-transport conditioning.
+  Supporting: [[2025.acl-long.313]], [[2025.acl-long.1043]], [[interspeech-2025-0554]], [[interspeech-2025-0455]]
 
-## Open questions
+- Flow matching is compatible with hybrid LLM+FM pipelines, where an AR LM provides semantic tokens and the FM model handles acoustic synthesis, combining the LM's language modeling strength with FM's inference parallelism.
+  Supporting: [[2407.05407]], [[2412.10117]], [[2506.21619]], [[2025.acl-long.912]]
+
+- Classifier-free guidance strategy (which timesteps and which conditioning dimensions to apply CFG to) significantly affects the speaker similarity / intelligibility trade-off in zero-shot flow-matching TTS.
+  Supporting: [[2509.19668]], [[2025.acl-long.313]], [[2412.10117]]
+
+### Emerging
+
+- Flow matching can be applied directly in waveform VAE latent space rather than mel-spectrogram space, eliminating vocoder compounding errors and improving speaker similarity.
+  Supporting: [[2603.29339]]
+
+- Replacing the Gaussian noise prior in OT-CFM with a learned prior distribution closely approximating the target enables single-step inference (NFE=1) without distillation.
+  Supporting: [[2025.acl-long.1043]], [[2510.02848]]
+
+- Pre-trained flow-matching DiT models implicitly encode emotional information in intermediate activations, which can be steered at inference without retraining.
+  Supporting: [[2508.03543]]
+
+### Contested
+
+> [!warning]
+> CFG techniques proven effective in image generation do not straightforwardly transfer to flow-matching TTS — F5-TTS with standard image CFG strategies shows degraded WER without proportional SIM improvement, and behavior differs across languages (English vs. Mandarin).
+> Supporting: [[2509.19668]] / Contradicting: implicit in image-generation literature referenced in [[2509.19668]]
+
+## Relationship to Other Concepts
+
+### Replaces or Supersedes
+- [[diffusion-tts]] — Flow matching has largely superseded diffusion-based TTS systems; OT flow matching produces straighter transport paths, requiring fewer inference steps and achieving comparable or better quality with a simpler training objective.
+
+### Extends or Builds On
+- [[neural-codec]] — Many flow-matching TTS systems operate on mel-spectrograms and use neural codecs for waveform reconstruction; hybrid LLM+FM systems (CosyVoice family) condition the FM model on semantic tokens derived from codec-based tokenizers.
+
+### Competes With
+- [[autoregressive-codec-tts]] — Autoregressive codec LMs provide stronger in-context learning and speaker consistency but have higher latency due to sequential token generation; flow matching provides inference parallelism and lower latency but relies on CFG-based conditioning rather than an AR LM's natural in-context learning. The trend (CosyVoice 2, FlexiCodec-TTS) is hybrid: an AR stage for semantic/speaker coherence + flow matching for acoustic quality.
+- [[transformer-enc-dec-tts]] — Earlier non-autoregressive TTS systems (FastSpeech family) used deterministic encoder-decoder architectures; flow matching replaces these with a stochastic generative model over the same output space, achieving higher naturalness and zero-shot speaker generalization.
+
+### Commonly Paired With
+- [[zero-shot-tts]] — Flow matching is the dominant method for zero-shot TTS, used in nearly all state-of-the-art zero-shot systems as either the primary model or the acoustic decoder.
+- [[neural-codec]] — Flow matching systems typically use a vocoder (HiFi-GAN, Vocos, BigVGAN) to convert predicted mel-spectrograms to waveforms, and hybrid systems use codec-derived semantic tokens as conditioning.
+
+## Representative Papers
+
+### Foundational
+- [[2025.acl-long.313]] — F5-TTS established pure non-autoregressive flow matching as competitive with autoregressive methods for zero-shot TTS, and introduced Sway Sampling as the standard inference-time flow step scheduling technique.
+- [[2407.05407]] — CosyVoice established the LLM+flow-matching hybrid as a dominant paradigm, combining supervised semantic tokens with OT-CFM acoustic synthesis.
+
+### Influential
+- [[2412.10117]] — CosyVoice 2 introduced chunk-aware causal flow matching, enabling a single FM model to support both streaming and non-streaming deployment simultaneously.
+- [[2509.19668]] — Provides the first systematic study of CFG strategies for flow-matching zero-shot TTS, revealing that image-generation CFG improvements do not transfer and that language-specific behavior requires separate investigation.
+- [[2025.acl-long.1043]] — OZSpeech demonstrated single-step inference via learned-prior OT-CFM, and exceptional noise robustness compared to AR systems.
+- [[2603.29339]] — LongCat-AudioDiT shifted flow matching from mel-spectrogram to waveform VAE latent space, revealing and correcting a training-inference mismatch present in all prior Voicebox/F5-TTS-style models.
+
+### Recent Highlights
+- [[interspeech-2025-0554]] — RapFlow-TTS first applied consistency flow matching to TTS, enabling 2-NFE synthesis at FastSpeech2 speed while exceeding Matcha-TTS quality.
+- [[2507.09318]] — ZipVoice-Dialog extended flow matching to two-speaker dialogue generation, demonstrating 15× faster inference than AR dialogue baselines.
+- [[2025.naacl-long.110]] — WaveFM applied flow matching to the vocoder stage with consistency distillation, achieving BigVGAN-quality synthesis in a single distilled step.
+
+### Cautionary / Negative Evidence
+- [[2603.29339]] — Reveals that all prior Voicebox/F5-TTS-style flow-matching training contains an unaddressed training-inference mismatch (the conditioning prompt region is never supervised), and that higher VAE reconstruction fidelity does not improve downstream TTS quality — two counterintuitive findings that complicate straightforward scaling.
+
+## Open Questions
 
 - Why do image-generation CFG improvements fail to improve flow-matching TTS? Is it the output modality, conditioning structure, or the different role of early vs. late timesteps?
 - Can the language-specific CFG behavior ([[2509.19668]]: F5-TTS works for English but not Mandarin) be attributed specifically to the ConvNeXt text encoder's capacity?
@@ -79,7 +139,11 @@ Diffusion models (DDPM, score-based) require more inference steps and have highe
 - ZipVoice-Dialog [[2507.09318]] limited to 2 speakers; can curriculum learning + speaker-turn embeddings scale to N-speaker dialogue?
 - WaveFM [[2025.naacl-long.110]] shows mel-conditioned prior is the highest-impact component; can similar priors improve full TTS (text-to-mel) flow matching by initializing the noise from a phoneme-derived estimate?
 
-## Papers
+## Trend Summary
+
+2023: Voicebox introduced flow matching to TTS at scale. 2024: F5-TTS ([[2025.acl-long.313]]) established pure flow matching as competitive with autoregressive methods; CosyVoice [[2407.05407]] and CosyVoice 2 [[2412.10117]] established the LLM+flow-matching hybrid as a competing paradigm. 2025: CFG strategies studied in depth [[2509.19668]]; OZSpeech [[2025.acl-long.1043]] demonstrates single-step flow matching via learned prior; Flamed-TTS [[2510.02848]] pushes WER to 0.04% with an attention-free denoiser and probabilistic silence generator; DiFlow-TTS [[2509.09631]] establishes discrete flow matching as a new family achieving best naturalness among evaluated systems; M3-TTS [[2512.04720]] replaces padding-based pseudo-alignment with MMDiT joint attention; IndexTTS2 [[2506.21619]] extends the LLM+FM paradigm with emotion control and AR duration control; Vevo2 [[2508.16332]] unifies TTS and singing via FM with chromagram prosody tokenizer; EmoSteer-TTS [[2508.03543]] demonstrates training-free emotion control via activation steering in FM DiT layers; LLaMA-Omni 2 [[2025.acl-long.912]] integrates FM as the acoustic decoder in a streaming spoken chatbot. 2026: LongCat-AudioDiT [[2603.29339]] shifts flow matching from mel-spectrogram to waveform VAE latent space, achieving SOTA speaker similarity for diffusion NAR systems — and reveals an unaddressed training-inference mismatch in all prior Voicebox/F5-TTS-style models. Interspeech 2025 (published 2026): RapFlow-TTS [[interspeech-2025-0554]] and APTTS [[interspeech-2025-0455]] both tackle few-step inference acceleration — RapFlow-TTS via consistency FM, APTTS via adversarial post-training — confirming acceleration as a primary practical concern. WaveFM [[2025.naacl-long.110]] extends FM from TTS to the vocoder stage. ZipVoice-Dialog [[2507.09318]] extends FM to two-speaker dialogue generation, demonstrating that the NAR architecture's parallelism provides a 15× latency advantage over AR dialogue systems.
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|

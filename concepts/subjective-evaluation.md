@@ -3,9 +3,24 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: established
 ---
-## What it is
+
+## Executive Summary
+
+> [!abstract]
+> Subjective evaluation collects human perceptual judgments about synthesized speech naturalness, quality, and speaker similarity, and remains the gold standard for TTS/VC assessment despite the availability of automatic proxies. The field lacks a uniform evaluation protocol — evaluator counts, sample sets, and test conditions vary substantially across papers, making cross-paper CMOS/SMOS comparisons unreliable. A trend toward releasing evaluation prompts and model checkpoints is improving reproducibility.
+
+## Current Status
+
+established — Subjective evaluation (MOS, CMOS, SMOS, MUSHRA) is required for publication at most speech and NLP venues and is universally reported in TTS papers. However, methodology is unstandardized: evaluator counts range from 6 to 53, sample counts vary widely, and test sets differ across papers, limiting the interpretability of reported scores.
+
+## Why This Matters
+
+Objective metrics are proxies for human perception but do not always correlate well with it. UTMOS and DNSMOS are trained to predict MOS but can fail on out-of-distribution systems. WER measures intelligibility but not prosody or naturalness. Subjective evaluation remains the gold standard for assessing naturalness and speaker identity. It is required for publication at most speech and NLP venues.
+
+## Core Idea
 
 Subjective evaluation in TTS refers to the collection of human perceptual judgments about synthesized speech quality, naturalness, and speaker similarity. Unlike objective metrics (WER, SPK-SIM, UTMOS), subjective evaluation directly measures how listeners perceive the output. The most common forms are:
 
@@ -14,19 +29,7 @@ Subjective evaluation in TTS refers to the collection of human perceptual judgme
 - **SMOS (Similarity MOS):** Listeners rate how similar a synthesized sample sounds to a given reference speaker, on a 1–5 scale with 0.5 intervals.
 - **MUSHRA:** Multiple stimuli with hidden reference and anchor; used for codec and bandwidth extension evaluation.
 
-## Why it matters
-
-Objective metrics are proxies for human perception but do not always correlate well with it. UTMOS and DNSMOS are trained to predict MOS but can fail on out-of-distribution systems. WER measures intelligibility but not prosody or naturalness. Subjective evaluation remains the gold standard for assessing naturalness and speaker identity. It is required for publication at most speech and NLP venues.
-
-## Current state of the art
-
-Standards for subjective evaluation in TTS are not yet uniform, making cross-paper comparison difficult. Key methodological issues include:
-
-- **Number of evaluators:** DiTTo-TTS used 6 and 12 raters for SMOS and CMOS; NaturalSpeech 3 used 12 natives evaluating 20/10 samples. F5-TTS ([[2025.acl-long.313]]) used 20 native evaluators for both English and Mandarin, rating 30 rounds of randomly selected utterances — a more comprehensive setup.
-- **Prompt set release:** Without releasing prompts and generated samples, CMOS/SMOS scores cannot be reproduced or directly compared. F5-TTS advocates for prompt release and open-sourcing model checkpoints for reproducibility.
-- **Cross-lingual evaluation:** Evaluating Mandarin speech requires Mandarin-native listeners. F5-TTS ran separate evaluations for EN and ZH with native evaluators for each.
-
-## Key variants and sub-approaches
+## Methods and Variants
 
 **CMOS.** Differential scoring relative to ground truth. Ground truth is always 0.00; positive scores indicate better-than-reference quality, negative scores indicate lower quality. Well-suited for comparing multiple systems without absolute calibration. Used in F5-TTS ([[2025.acl-long.313]]) with 20 evaluators per language and 30 rounds per evaluator.
 
@@ -34,21 +37,64 @@ Standards for subjective evaluation in TTS are not yet uniform, making cross-pap
 
 **MOS.** Absolute naturalness score. Less commonly used in recent zero-shot TTS papers because it is harder to calibrate across evaluator pools; CMOS is preferred for comparisons.
 
-## Comparison to alternatives
+## Major Claims
 
-Automatic metrics (UTMOS, DNSMOS) are faster and reproducible but can be gamed by systems that overfit to the predictor. WER via Whisper or Paraformer is a strong intelligibility proxy but does not capture naturalness. SPK-SIM via WavLM captures speaker identity but not prosodic naturalness. Subjective evaluation captures holistic quality but is slow, costly, and difficult to reproduce without sample release.
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/subjective-evaluation.yaml`.
 
-## Year-on-year trajectory
+### Strongly Supported
 
-The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility.
+- Subjective evaluation methodology varies substantially across papers in evaluator count, sample count, and test set, making direct cross-paper CMOS/SMOS comparisons unreliable without shared evaluation infrastructure.
+  Supporting: [[2025.acl-long.313]], [[2511.12347]], [[2025.coling-main.352]]
 
-## Open questions
+- CMOS is preferred over absolute MOS in recent zero-shot TTS papers because it reduces listener calibration effects and is more robust to evaluator pool variation.
+  Supporting: [[2025.acl-long.313]], [[2511.12347]], [[2025.acl-long.598]]
+
+### Emerging
+
+- Preference-based evaluation (side-by-side, ABX, win-rate) is gaining traction as an alternative to MOS for capturing holistic system quality in conversational and style-prompted settings.
+  Supporting: [[2025.acl-long.388]], [[2509.00685]]
+
+- Releasing evaluation prompts, generated samples, and model checkpoints is necessary for subjective scores to be reproducible and comparable across papers.
+  Supporting: [[2025.acl-long.313]]
+
+- Domain-specific and socially-grounded subjective evaluation (multi-dimensional Likert scales, expert evaluators) is required when evaluating speech beyond standard naturalness and speaker similarity.
+  Supporting: [[2025.acl-long.1252]], [[interspeech-2025-0779]]
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[evaluation-metrics]] — subjective evaluation is the ground-truth reference against which automatic objective metrics (UTMOS, DNSMOS, SPK-SIM) are validated and calibrated.
+
+### Competes With
+- [[evaluation-metrics]] — automatic metrics (UTMOS, DNSMOS, WER via Whisper) are faster and reproducible but can be gamed by systems that overfit to the predictor and do not always correlate with human judgments on out-of-distribution systems.
+
+### Commonly Paired With
+- [[rlhf-speech]] — subjective preference judgments (ABX, win-rate, N-CMOS) are used as the reward signal or evaluation criterion in RLHF-aligned TTS systems.
+
+## Representative Papers
+
+### Foundational
+- [[2025.acl-long.313]] — establishes a high-standard subjective evaluation protocol for zero-shot TTS (20 native evaluators per language, 30 rounds, CMOS + SMOS for EN and ZH) and advocates for prompt and checkpoint release.
+
+### Influential
+- [[2025.acl-long.388]] — demonstrates preference-based evaluation (Prolific, 53 participants, 522 judgments, win-rate) as an alternative to MOS for holistic SCA quality assessment.
+- [[2025.acl-long.598]] — uses N-CMOS, binary reading accuracy, and A/B speaker similarity across four domain types, showing multi-faceted subjective evaluation for preference-aligned TTS.
+
+### Recent Highlights
+- [[2025.emnlp-main.180]] — introduces Consistency MOS and Tag Recall as new subjective metrics for style-prompted TTS, revealing that style consistency requires both intrinsic and situational annotation.
+- [[interspeech-2025-0762]] — applies psychometric calibration (recursive binary-search sigmoid estimation) and Best-Worst experimental design across 32 listeners, demonstrating rigorous evaluation for accentedness perception.
+
+## Open Questions
 
 - Should the community adopt a shared subjective evaluation benchmark (fixed test set, fixed reference samples, centralized annotation)?
 - How well do UTMOS and DNSMOS correlate with human CMOS as systems move beyond LJSpeech/LibriSpeech distribution?
 - What is the minimum number of evaluators needed for a statistically reliable CMOS comparison at the 0.1-point level?
 
-## Papers
+## Trend Summary
+
+The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility.
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|

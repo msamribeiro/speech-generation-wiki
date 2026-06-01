@@ -3,15 +3,20 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-05-30
+last_updated: 2026-06-01
+status: dominant
 ---
-## What it is
 
-Autoregressive codec TTS is a family of speech synthesis systems that generate speech by autoregressively predicting discrete neural audio codec tokens using a language model (LM). The paradigm was established by VALL-E (Wang et al., 2023): an AR LM generates the first RVQ layer tokens (RVQ-1, semantic/content tokens) from text and a speaker prompt; a non-autoregressive (NAR) model then predicts the remaining RVQ layers in parallel to produce the full acoustic representation; a codec decoder synthesizes the waveform.
+## Executive Summary
 
-This paradigm treats TTS as a sequence-to-sequence language modeling problem, analogous to how text LLMs predict next tokens, and benefits directly from advances in LLM architectures, training techniques, and scale.
+> [!abstract]
+> Autoregressive codec TTS treats speech synthesis as a language modeling problem: a large language model generates discrete neural audio codec tokens sequentially, enabling strong in-context speaker generalization and prosodic naturalness that scales reliably with data and model size. Established by VALL-E in 2023, it is co-dominant with flow-matching-based systems in zero-shot TTS as of 2026. The field is actively bifurcating between scaling AR LMs with better tokenizers and RL alignment versus challenging whether sequential AR decoding is necessary at all.
 
-## Why it matters
+## Current Status
+
+dominant — Autoregressive codec TTS is co-dominant with flow-matching-based systems for zero-shot TTS as of early 2026. Leading industrial systems (Fish Audio S2, Qwen3-TTS) use Dual-AR architectures at multi-billion-parameter scale, while academic systems are exploring pseudo-autoregressive and codec-free alternatives that match or exceed AR quality with dramatically lower latency.
+
+## Why This Matters
 
 Autoregressive codec TTS achieves strong zero-shot speaker generalization (any speaker can be synthesized from a short prompt), prosodic naturalness (the LM captures phrase-level rhythm patterns), and scalability (more data and larger models reliably improve quality). The AR+NAR framework (or AR+flow matching) is the dominant TTS paradigm as of 2025.
 
@@ -19,24 +24,13 @@ The central efficiency challenge is the codec frame rate: the AR LM must generat
 
 The semantic coherence challenge from [[2412.17048]] is equally important: even when codec tokens have reasonable semantic content, the paralinguistic variability (Factor C) and sequence length (Factor B) of speech tokens make LM training substantially harder than for text LMs.
 
-## Current state of the art
+## Core Idea
 
-As of early 2026, the leading AR codec TTS systems in the corpus:
-- Fish Audio S2 [[2603.08823]]: WER 0.54% (zh) and 0.99% (en) on Seed-TTS-Eval — the best among compared open-source systems. Uses a Dual-AR architecture (4B Qwen3 slow AR + lightweight 4-layer fast AR) with a 21 Hz streaming DAC-based codec and GRPO multi-dimensional RL post-training.
-- Qwen3-TTS [[2601.15621]]: WER 1.24% (en) and 0.77% (zh) on Seed-TTS. Dual-tokenizer (25 Hz and 12.5 Hz variants) with DPO + GRPO post-training, 97 ms first-packet latency.
-- OmniVoice [[2604.00688]]: WER 1.30% on LibriSpeech-PC with SIM-o 0.729, UTMOS 4.28. Single-stage discrete NAR covering 600+ languages; LLM initialization resolves prior NAR intelligibility gap.
-- DiSTAR [[2510.12210]]: WER 1.32% on SeedTTS test-en (0.3B medium), UTMOS 4.27. Combines AR drafting with discrete masked diffusion intra-patch refinement; test-time bitrate control via RVQ layer pruning.
-- GLM-TTS [[2512.14291]]: CER 0.89% on Seed-TTS-eval test-zh after GRPO RL (1.5B). Whisper-VQ tokenizer, 4-reward GRPO framework (CER, SIM, Emotion, Laughter).
-- FlexiCodec-TTS [[2510.00981]]: WER 3.2%, NMOS 3.32, AR RTF 0.07 (6.25 Hz).
-- VocalNet [[2025.emnlp-main.989]]: WER 3.56%, UTMOS 4.49 (8B) on OpenAudioBench with ~6K hours training.
+Autoregressive codec TTS is a family of speech synthesis systems that generate speech by autoregressively predicting discrete neural audio codec tokens using a language model (LM). The paradigm was established by VALL-E (Wang et al., 2023): an AR LM generates the first RVQ layer tokens (RVQ-1, semantic/content tokens) from text and a speaker prompt; a non-autoregressive (NAR) model then predicts the remaining RVQ layers in parallel to produce the full acoustic representation; a codec decoder synthesizes the waveform.
 
-Earlier systems remain important baselines: CosyVoice [[2407.05407]] (WER 2.89% LibriTTS), CosyVoice 2 [[2412.10117]] (WER 2.47% LibriSpeech), Seed-TTS [[2406.02430]] (CMOS -0.07 vs. human).
+This paradigm treats TTS as a sequence-to-sequence language modeling problem, analogous to how text LLMs predict next tokens, and benefits directly from advances in LLM architectures, training techniques, and scale.
 
-The finding from [[2510.00981]] that lower AR frame rate does not degrade quality (while higher NAR frame rate does improve quality) is an important design principle. A complementary finding from [[2025.emnlp-main.989]] is that MTP halves WER relative to NTP. The continuous-mel AR approach in MELLE [[2025.acl-long.65]] (CMOS -0.032 vs. ground truth) challenges the necessity of codec discretization entirely. The pseudo-autoregressive (PAR) paradigm from PALLE [[2504.10352]] demonstrates a third alternative — span-level causal commitment with bidirectional intra-span generation — achieving 10x faster inference than AR systems while outperforming them on WER with only 580h training data.
-
-The foundational paradigm for this concept was established by VALL-E [[2301.02111]], which first treated TTS as conditional codec language modeling using EnCodec at 75 Hz.
-
-## Key variants and sub-approaches
+## Methods and Variants
 
 **Standard AR+NAR (VALL-E style).** AR LM predicts RVQ-1 tokens; NAR model predicts RVQ-rest in parallel. The AR bottleneck limits speed proportionally to codec frame rate. Established by [[2301.02111]].
 
@@ -56,15 +50,72 @@ The foundational paradigm for this concept was established by VALL-E [[2301.0211
 
 **Continuous token AR.** [[2025.findings-naacl.184]] (Cont-SPT) replaces RVQ with a continuous speech tokenizer; [[2502.03930]] (DiTAR) uses a patch-based continuous AR+bidirectional-diffusion architecture. These challenge the necessity of discrete tokenization.
 
-## Comparison to alternatives
+## Major Claims
 
-Flow-matching non-autoregressive TTS (F5-TTS, Voicebox) is faster per utterance (no sequential decoding) but relies on CFG-based conditioning rather than an AR LM's natural in-context learning. AR codec TTS provides stronger in-context learning and speaker consistency but has higher latency. The trend (CosyVoice 2, FlexiCodec-TTS) is hybrid: an AR stage for semantic/speaker coherence + flow matching for acoustic quality.
+Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/autoregressive-codec-tts.yaml`.
 
-## Year-on-year trajectory
+### Strongly Supported
 
-2023: VALL-E [[2301.02111]] established the paradigm at 75 Hz with a hierarchical AR+NAR architecture on 60K hours of LibriLight data. 2024: Systems pushed to 25–50 Hz (CosyVoice [[2407.05407]], SoundStorm). Seed-TTS [[2406.02430]] achieved human-parity synthesis (CMOS -0.07) at scale with RL post-training. CosyVoice 2 [[2412.10117]] introduced FSQ tokenization, LLM backbone, and chunk-aware causal flow matching for streaming. 2025: [[2510.00981]] demonstrates 6.25 Hz AR is viable and competitive. [[2025.acl-long.65]] (MELLE) achieves human-parity quality without any codec. DiTAR [[2502.03930]] demonstrates patch-based continuous AR+diffusion at 3-43x lower compute than competing NAR diffusion systems. GLM-TTS [[2512.14291]] introduces 4-reward GRPO for TTS. PALLE [[2504.10352]] introduces the PAR paradigm for O(1)-step inference. IndexTTS2 [[2506.21619]] solves the AR duration control problem via positional embedding tying. 2026: Fish Audio S2 [[2603.08823]] achieves best open-source WER on Seed-TTS-Eval with a Dual-AR architecture trained on 10M hours across 80+ languages. Qwen3-TTS [[2601.15621]] demonstrates sub-100 ms streaming with DPO+GRPO post-training at scale. DiSTAR [[2510.12210]] unifies AR temporal modeling with discrete masked diffusion intra-patch refinement. OmniVoice [[2604.00688]] covers 600+ languages with a single NAR model via full-codebook masking and LLM initialization. The field has bifurcated: one track scales AR LMs with better tokenizers and RL alignment; the other challenges whether AR decoding is necessary at all (MELLE, PALLE, OmniVoice).
+- Autoregressive codec TTS scales reliably with data and model size, and benefits directly from advances in LLM architectures and training techniques developed for text LMs.
+  Supporting: [[2301.02111]], [[2406.02430]], [[2603.08823]], [[2601.15621]]
 
-## Open questions
+- Lowering the AR codec frame rate does not degrade final speech quality as long as the NAR or vocoder stage can compensate, and substantially reduces AR inference latency.
+  Supporting: [[2510.00981]], [[2601.15621]], [[2603.08823]]
+
+- Post-training alignment (RLHF, DPO, GRPO) reliably improves intelligibility, speaker similarity, and expressiveness in AR codec TTS systems without sacrificing naturalness.
+  Supporting: [[2406.02430]], [[2512.14291]], [[2603.08823]], [[2601.15621]]
+
+### Emerging
+
+- Pseudo-autoregressive inference (PAR) — span-level causal commitment with bidirectional intra-span generation — can match or exceed AR TTS quality at dramatically lower latency, challenging the necessity of token-by-token decoding.
+  Supporting: [[2504.10352]]
+
+- Codec-free continuous mel AR achieves human-parity speech quality, demonstrating that discrete tokenization is not necessary for competitive zero-shot TTS.
+  Supporting: [[2025.acl-long.65]], [[2502.03930]]
+
+- The Dual-AR decoupling (separate large slow semantic model and lightweight fast acoustic model) is emerging as the dominant industrial architecture for high-quality low-latency AR TTS.
+  Supporting: [[2603.08823]], [[2601.15621]]
+
+### Contested
+
+> [!warning]
+> Paralinguistic variability (Factor C) in speech codec tokens makes LM training substantially harder than for text LMs, and it is unclear whether this can be addressed within the AR+NAR framework or requires fundamentally different architectures.
+> Supporting: [[2412.17048]] / Partial mitigation: [[2025.acl-long.1498]]
+
+## Relationship to Other Concepts
+
+### Extends or Builds On
+- [[neural-codec]] — AR codec TTS depends entirely on neural audio codecs (EnCodec, DAC, FACodec, etc.) for tokenization; codec design choices (frame rate, codebook size, RVQ layers) directly affect AR LM training difficulty and inference speed.
+- [[spoken-language-model]] — AR codec TTS shares architectural foundations with spoken language models; the AR codec LM is the speech-domain analog of a text LM, and advances in LLM architecture (Transformer scaling, MTP, RL alignment) transfer directly.
+
+### Competes With
+- [[flow-matching]] — Flow-matching non-autoregressive TTS is faster per utterance (no sequential decoding) but relies on CFG-based conditioning rather than an AR LM's natural in-context learning. AR codec TTS provides stronger in-context learning and speaker consistency but has higher latency. The trend (CosyVoice 2, FlexiCodec-TTS) is hybrid: an AR stage for semantic/speaker coherence + flow matching for acoustic quality.
+
+### Commonly Paired With
+- [[zero-shot-tts]] — AR codec TTS is one of the two dominant paradigms for zero-shot TTS (alongside flow matching); the AR LM's in-context learning from a short reference clip is the primary mechanism for speaker generalization.
+- [[neural-codec]] — Every AR codec TTS system depends on a neural audio codec for both tokenization (AR input/output) and waveform reconstruction (codec decoder).
+
+## Representative Papers
+
+### Foundational
+- [[2301.02111]] — VALL-E established the codec language modeling paradigm for TTS, demonstrating that an AR LM conditioned on a 3-second speaker prompt could achieve strong zero-shot speaker generalization without per-speaker fine-tuning.
+
+### Influential
+- [[2406.02430]] — Seed-TTS achieved human-parity synthesis (CMOS -0.07) at foundation-model scale with RL post-training, and introduced Seed-TTS-Eval as the standard zero-shot TTS benchmark for subsequent work.
+- [[2407.05407]] — CosyVoice established the LLM+flow-matching hybrid as a dominant paradigm, combining supervised semantic tokens with OT-CFM acoustic synthesis.
+- [[2510.00981]] — FlexiCodec demonstrated that 6.25 Hz AR tokens are viable, providing an important design principle: lower AR frame rate does not degrade quality while higher NAR frame rate improves naturalness.
+- [[2412.17048]] — Identified the root causes of AR LM failures on speech tokens (sequence length and paralinguistic variability), providing a theoretical framework for understanding the codec LM bottleneck.
+
+### Recent Highlights
+- [[2603.08823]] — Fish Audio S2 achieved the best open-source WER on Seed-TTS-Eval with a Dual-AR architecture and GRPO multi-dimensional RL, trained on 10M hours across 80+ languages.
+- [[2601.15621]] — Qwen3-TTS demonstrated sub-100 ms streaming first-packet latency with DPO+GRPO post-training at scale across 10 languages.
+- [[2504.10352]] — PALLE introduced the PAR paradigm achieving 10x RTF speedup over AR with best WER among LibriTTS-trained models, demonstrating that sequential token generation is not necessary.
+- [[2604.00688]] — OmniVoice covered 600+ languages with a single discrete NAR model, demonstrating that LLM initialization resolves the prior NAR intelligibility gap.
+
+### Cautionary / Negative Evidence
+- [[2412.17048]] — Documents that speech codec tokens are substantially harder to model than text tokens due to paralinguistic variability and sequence length, raising fundamental questions about whether AR LMs are the right inductive bias for speech.
+
+## Open Questions
 
 - At what AR frame rate does performance degrade irreversibly for a given codec design?
 - Can semantic speech tokens approach text-rate (~4.5 Hz) without quality loss?
@@ -76,7 +127,11 @@ Flow-matching non-autoregressive TTS (F5-TTS, Voicebox) is faster per utterance 
 - The Dual-AR decoupling in Fish Audio S2 [[2603.08823]] and Qwen3-TTS [[2601.15621]] seems to be a new industrial standard; what is the optimal split between slow (semantic) and fast (acoustic) model capacity?
 - Does the full-codebook masking in OmniVoice [[2604.00688]] generalize to multilingual settings beyond Chinese/English, and can it eliminate the need for a separate AR stage in production systems?
 
-## Papers
+## Trend Summary
+
+2023: VALL-E [[2301.02111]] established the paradigm at 75 Hz with a hierarchical AR+NAR architecture on 60K hours of LibriLight data. 2024: Systems pushed to 25–50 Hz (CosyVoice [[2407.05407]], SoundStorm). Seed-TTS [[2406.02430]] achieved human-parity synthesis (CMOS -0.07) at scale with RL post-training. CosyVoice 2 [[2412.10117]] introduced FSQ tokenization, LLM backbone, and chunk-aware causal flow matching for streaming. 2025: [[2510.00981]] demonstrates 6.25 Hz AR is viable and competitive. [[2025.acl-long.65]] (MELLE) achieves human-parity quality without any codec. DiTAR [[2502.03930]] demonstrates patch-based continuous AR+diffusion at 3-43x lower compute than competing NAR diffusion systems. GLM-TTS [[2512.14291]] introduces 4-reward GRPO for TTS. PALLE [[2504.10352]] introduces the PAR paradigm for O(1)-step inference. IndexTTS2 [[2506.21619]] solves the AR duration control problem via positional embedding tying. 2026: Fish Audio S2 [[2603.08823]] achieves best open-source WER on Seed-TTS-Eval with a Dual-AR architecture trained on 10M hours across 80+ languages. Qwen3-TTS [[2601.15621]] demonstrates sub-100 ms streaming with DPO+GRPO post-training at scale. DiSTAR [[2510.12210]] unifies AR temporal modeling with discrete masked diffusion intra-patch refinement. OmniVoice [[2604.00688]] covers 600+ languages with a single NAR model via full-codebook masking and LLM initialization. The field has bifurcated: one track scales AR LMs with better tokenizers and RL alignment; the other challenges whether AR decoding is necessary at all (MELLE, PALLE, OmniVoice).
+
+## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
