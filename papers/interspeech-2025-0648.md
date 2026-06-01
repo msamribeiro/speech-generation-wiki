@@ -36,12 +36,10 @@ url: https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html
 related_concepts: [emotion-synthesis, evaluation-metrics, subjective-evaluation]
 related_papers: [2412.10117, 2406.02430, 2301.02111]
 ---
-
-# MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html](https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html)
-
-**One-sentence contribution:** MIKU-PAL is a fully automated multimodal pipeline using Gemini 2.0 Flash for zero-shot emotion labeling of video-sourced speech that achieves human-level accuracy (68.5% on MELD) with near-perfect consistency (Fleiss κ=0.93) at ~50 cents/hour, enabling the MIKU-EmoBench dataset (131.2h, 26 emotion categories).
+> [!abstract] Interspeech · 2025 · Conference
+> **Yifan Cheng et al.** (Fish Audio) · [→ Paper](https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html) · Demo: ? · Code: ✓
+>
+> MIKU-PAL is a fully automated multimodal pipeline using Gemini 2.0 Flash for zero-shot emotion labeling of video-sourced speech that achieves human-level accuracy (68.5% on MELD) with near-perfect consistency (Fleiss κ=0.93) at ~50 cents/hour, enabling the MIKU-EmoBench dataset (131.2h, 26 emotion categories).
 
 ## Problem
 

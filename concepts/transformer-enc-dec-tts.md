@@ -5,9 +5,6 @@ aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
 last_updated: 2026-05-30
 ---
-
-# Transformer Encoder-Decoder TTS
-
 ## What it is
 
 # TODO: expand

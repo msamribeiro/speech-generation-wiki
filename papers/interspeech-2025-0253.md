@@ -48,12 +48,10 @@ url: https://www.isca-archive.org/interspeech_2025/li25b_interspeech.html
 related_concepts: [autoregressive-codec-tts, prosody-control, neural-codec]
 related_papers: []
 ---
-
-# Long-Context Speech Synthesis with Context-Aware Memory
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/li25b_interspeech.html](https://www.isca-archive.org/interspeech_2025/li25b_interspeech.html)
-
-**One-sentence contribution:** A Context-Aware Memory (CAM) block for autoregressive LM-based TTS that compresses, retrieves, and dynamically updates both speech and text memory across paragraph-length sequences, enabling more coherent and expressive long-form synthesis at lower inference cost than prior methods.
+> [!abstract] Interspeech · 2025 · Conference
+> **Zhipeng Li et al.** (South China University of Technology / Alibaba Group) · [→ Paper](https://www.isca-archive.org/interspeech_2025/li25b_interspeech.html) · Demo: ✓ · Code: ✗
+>
+> A Context-Aware Memory (CAM) block for autoregressive LM-based TTS that compresses, retrieves, and dynamically updates both speech and text memory across paragraph-length sequences, enabling more coherent and expressive long-form synthesis at lower inference cost than prior methods.
 
 ## Problem
 

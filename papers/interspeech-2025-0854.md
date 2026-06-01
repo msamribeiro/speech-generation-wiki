@@ -44,12 +44,10 @@ url: "https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html"
 related_concepts: [gan-vocoder, flow-matching, speaker-adaptation, evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html](https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html)
-
-**One-sentence contribution:** A data augmentation strategy for training generative spectrogram postprocessing models that simulates low-resource acoustic model artifacts using subsampled high-resource speakers, consistently improving naturalness for low-resource TTS speakers across both GAN and flow-matching postprocessors.
+> [!abstract] Interspeech · 2025 · Conference
+> **Frank Zalkow et al.** (Fraunhofer IIS) · [→ Paper](https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html) · Demo: ? · Code: ?
+>
+> A data augmentation strategy for training generative spectrogram postprocessing models that simulates low-resource acoustic model artifacts using subsampled high-resource speakers, consistently improving naturalness for low-resource TTS speakers across both GAN and flow-matching postprocessors.
 
 ## Problem
 

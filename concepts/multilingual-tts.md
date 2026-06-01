@@ -5,9 +5,6 @@ aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
 last_updated: 2026-05-30
 ---
-
-# Multilingual TTS
-
 ## What it is
 
 Multilingual TTS systems can synthesize speech in two or more languages from a single model, typically sharing parameters across languages. They may require explicit language conditioning or rely on shared phoneme/character inventories and shared acoustic representations. A subset of multilingual TTS also supports code-switching — generating speech that seamlessly alternates between languages within a single utterance.

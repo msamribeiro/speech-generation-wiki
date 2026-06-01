@@ -48,12 +48,10 @@ url: "https://www.isca-archive.org/interspeech_2025/park25b_interspeech.html"
 related_concepts: [flow-matching, diffusion-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# RapFlow-TTS: Rapid and High-Fidelity Text-to-Speech with Improved Consistency Flow Matching
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/park25b_interspeech.html](https://www.isca-archive.org/interspeech_2025/park25b_interspeech.html)
-
-**One-sentence contribution:** RapFlow-TTS is the first TTS system based on consistency flow matching, enforcing velocity-field self-consistency along straight ODE trajectories to achieve high-fidelity synthesis in just 2 function evaluations — matching the speed of FastSpeech2 while substantially exceeding its naturalness.
+> [!abstract] Interspeech · 2025 · Conference
+> **Hyun Joon Park et al.** (NAVER Cloud) · [→ Paper](https://www.isca-archive.org/interspeech_2025/park25b_interspeech.html) · Demo: ✓ · Code: ✓
+>
+> RapFlow-TTS is the first TTS system based on consistency flow matching, enforcing velocity-field self-consistency along straight ODE trajectories to achieve high-fidelity synthesis in just 2 function evaluations — matching the speed of FastSpeech2 while substantially exceeding its naturalness.
 
 ## Problem
 

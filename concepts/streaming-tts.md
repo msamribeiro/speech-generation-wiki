@@ -5,9 +5,6 @@ aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
 last_updated: 2026-05-30
 ---
-
-# Streaming TTS
-
 ## What it is
 
 Streaming (or real-time) TTS refers to speech synthesis systems that produce output audio incrementally as input arrives, without waiting for the full input to be processed. The key properties are low latency (typically measured as time-to-first-audio or chunk processing time relative to chunk duration) and real-time factor (RTF < 1 meaning the system processes audio faster than it is played). In streaming TTS, the model must operate causally — it cannot access future input frames when generating current output frames.

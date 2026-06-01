@@ -60,12 +60,10 @@ url: "https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html"
 related_concepts: [zero-shot-tts, neural-codec, autoregressive-codec-tts, self-supervised-speech]
 related_papers: []
 ---
-
-# Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html](https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html)
-
-**One-sentence contribution:** NR-LauraTTS integrates a lightweight codec-domain speech denoiser — operating on discrete acoustic tokens rather than waveforms — into an LLM-based zero-shot TTS system, recovering near-clean-prompt synthesis quality from noisy audio prompts at only 1.10G additional FLOPs vs. 38.93G for a comparable waveform-domain SE model.
+> [!abstract] Interspeech · 2025 · Conference
+> **Ye-Xin Lu et al.** (University of Science and Technology of China) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html) · Demo: ✗ · Code: ✗
+>
+> NR-LauraTTS integrates a lightweight codec-domain speech denoiser — operating on discrete acoustic tokens rather than waveforms — into an LLM-based zero-shot TTS system, recovering near-clean-prompt synthesis quality from noisy audio prompts at only 1.10G additional FLOPs vs. 38.93G for a comparable waveform-domain SE model.
 
 ## Problem
 

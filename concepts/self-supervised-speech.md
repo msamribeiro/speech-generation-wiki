@@ -5,9 +5,6 @@ aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
 last_updated: 2026-05-30
 ---
-
-# Self-Supervised Speech Representations and Foundation Models
-
 ## What it is
 
 Self-supervised speech representations are learned feature extractors trained on large corpora of unlabeled speech using objectives that do not require human annotation. The dominant approaches use masked prediction (HuBERT, WavLM) or contrastive learning (wav2vec 2.0) to extract representations that capture phonetic, semantic, and speaker-level information in learned embeddings.

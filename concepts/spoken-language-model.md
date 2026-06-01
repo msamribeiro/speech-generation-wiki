@@ -5,9 +5,6 @@ aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation m
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
 last_updated: 2026-05-30
 ---
-
-# Spoken Language Model
-
 ## What it is
 
 A spoken language model (SLM) is a language model that operates directly on discrete speech tokens rather than text tokens, enabling speech-to-speech generation (or speech understanding) without text as an intermediate representation. SLMs process audio input and produce speech output without a TTS bridge, allowing them to model paralinguistic information (prosody, emotion, speaking style, non-verbal cues) that is lost when passing through text.

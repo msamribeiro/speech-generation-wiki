@@ -5,9 +5,6 @@ aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning 
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
 last_updated: 2026-05-30
 ---
-
-# RLHF for Speech
-
 ## What it is
 
 Reinforcement learning from human feedback (RLHF) for speech synthesis refers to post-training techniques that align a pre-trained speech generation model with human preferences, rather than maximizing a fixed supervised loss on reference audio. The most common practical variant is Direct Preference Optimization (DPO; Rafailov et al., 2023), which sidesteps explicit reward model training by reformulating the preference alignment objective in terms of log-likelihood ratios between a trained policy and a frozen reference policy. RLAIF (AI feedback) variants replace human annotations with automatic metrics (WER, automatic MOS predictors) or LLM-generated judgments to scale data collection.

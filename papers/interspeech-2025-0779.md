@@ -36,12 +36,10 @@ url: https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.ht
 related_concepts: [evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# Intelligibility of Text-to-Speech Systems for Mathematical Expressions
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.html](https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.html)
-
-**One-sentence contribution:** A listener study evaluating five commercial TTS systems on 120 mathematical expressions across 8 categories reveals that TTS intelligibility for mathematical content varies strongly by category and model, and falls significantly below expert human rendition for most categories — establishing a benchmark for future math-aware TTS development.
+> [!abstract] Interspeech · 2025 · Conference
+> **Sujoy Roychowdhury et al.** (Ericsson R&D) · [→ Paper](https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.html) · Demo: ? · Code: ?
+>
+> A listener study evaluating five commercial TTS systems on 120 mathematical expressions across 8 categories reveals that TTS intelligibility for mathematical content varies strongly by category and model, and falls significantly below expert human rendition for most categories — establishing a benchmark for future math-aware TTS development.
 
 ## Problem
 

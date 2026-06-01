@@ -40,12 +40,10 @@ url: https://www.isca-archive.org/interspeech_2025/jeon25_interspeech.html
 related_concepts: [zero-shot-tts, speaker-adaptation, disentanglement]
 related_papers: []
 ---
-
-# Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/jeon25_interspeech.html](https://www.isca-archive.org/interspeech_2025/jeon25_interspeech.html)
-
-**One-sentence contribution:** A teacher-student knowledge anchoring framework with curriculum learning enables zero-shot multi-speaker TTS to generate intelligible, speaker-consistent speech from short dysarthric reference audio, achieving a 50+ point reduction in phoneme error rate over previous baselines.
+> [!abstract] Interspeech · 2025 · Conference
+> **Yejin Jeon et al.** (POSTECH) · [→ Paper](https://www.isca-archive.org/interspeech_2025/jeon25_interspeech.html) · Demo: ? · Code: ?
+>
+> A teacher-student knowledge anchoring framework with curriculum learning enables zero-shot multi-speaker TTS to generate intelligible, speaker-consistent speech from short dysarthric reference audio, achieving a 50+ point reduction in phoneme error rate over previous baselines.
 
 ## Problem
 

@@ -36,12 +36,10 @@ url: "https://www.isca-archive.org/interspeech_2025/berger25_interspeech.html"
 related_concepts: [multilingual-tts, speaker-adaptation, prosody-control]
 related_papers: []
 ---
-
-# Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/berger25_interspeech.html](https://www.isca-archive.org/interspeech_2025/berger25_interspeech.html)
-
-**One-sentence contribution:** A large (14-accent) multi-accent neural frontend model reduces the pronunciation transcription data needed to support a new non-standard English accent by 95% — from 20k to just 1k sentences — by enabling cross-accent pronunciation knowledge transfer, with the transfer strength weakly mediated by accent pair similarity.
+> [!abstract] Interspeech · 2025 · Conference
+> **Noe Berger et al.** (University of Edinburgh) · [→ Paper](https://www.isca-archive.org/interspeech_2025/berger25_interspeech.html) · Demo: ? · Code: ?
+>
+> A large (14-accent) multi-accent neural frontend model reduces the pronunciation transcription data needed to support a new non-standard English accent by 95% — from 20k to just 1k sentences — by enabling cross-accent pronunciation knowledge transfer, with the transfer strength weakly mediated by accent pair similarity.
 
 ## Problem
 

@@ -5,9 +5,6 @@ aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conv
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
 last_updated: 2026-05-30
 ---
-
-# Voice Conversion
-
 ## What it is
 
 Voice conversion (VC) is the task of transforming speech produced by one speaker so that it sounds as though it was produced by a different target speaker, while preserving the linguistic content. The source utterance's phonetic content is extracted and then rendered using the target speaker's vocal characteristics — timbre, prosody, speaking style, and potentially emotion. VC is distinct from TTS in that the content is derived from existing speech rather than from text, and the output preserves the timing, rhythm, and paralinguistic attributes of the original utterance (unless deliberately altered).

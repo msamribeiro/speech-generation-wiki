@@ -5,9 +5,6 @@ aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
 last_updated: 2026-05-30
 ---
-
-# Autoregressive Codec TTS
-
 ## What it is
 
 Autoregressive codec TTS is a family of speech synthesis systems that generate speech by autoregressively predicting discrete neural audio codec tokens using a language model (LM). The paradigm was established by VALL-E (Wang et al., 2023): an AR LM generates the first RVQ layer tokens (RVQ-1, semantic/content tokens) from text and a speaker prompt; a non-autoregressive (NAR) model then predicts the remaining RVQ layers in parallel to produce the full acoustic representation; a codec decoder synthesizes the waveform.

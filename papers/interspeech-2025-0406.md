@@ -48,12 +48,10 @@ url: "https://www.isca-archive.org/interspeech_2025/levkovitch25_interspeech.htm
 related_concepts: [zero-shot-tts, gan-vocoder, evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# Zero-Shot Mono-to-Binaural Speech Synthesis
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/levkovitch25_interspeech.html](https://www.isca-archive.org/interspeech_2025/levkovitch25_interspeech.html)
-
-**One-sentence contribution:** ZeroBAS is the first zero-shot neural method to synthesize binaural speech from monaural audio and 3D positional information without any binaural training data, achieving perceptual quality on par with or exceeding supervised methods.
+> [!abstract] Interspeech · 2025 · Conference
+> **Alon Levkovitch et al.** (Google) · [→ Paper](https://www.isca-archive.org/interspeech_2025/levkovitch25_interspeech.html) · Demo: ✓ · Code: ?
+>
+> ZeroBAS is the first zero-shot neural method to synthesize binaural speech from monaural audio and 3D positional information without any binaural training data, achieving perceptual quality on par with or exceeding supervised methods.
 
 ## Problem
 

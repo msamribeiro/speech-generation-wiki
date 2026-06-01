@@ -5,9 +5,6 @@ aliases: [content-speaker disentanglement, style disentanglement, speech factori
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
 last_updated: 2026-05-30
 ---
-
-# Disentanglement
-
 ## What it is
 
 Disentanglement in speech refers to the separation of the speech signal into independently controllable factors: primarily content (what is said — phonemes, words), speaker identity (who is speaking — timbre, vocal tract characteristics), speaking style (how it is said — prosody, rhythm, energy envelope), and optionally emotion and language. A well-disentangled representation allows each factor to be manipulated independently: e.g., changing the speaker while preserving content, or transferring the speaking style of one speaker to another's voice.

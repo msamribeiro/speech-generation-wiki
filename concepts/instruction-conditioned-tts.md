@@ -5,9 +5,6 @@ aliases: [controllable TTS, natural language style control, prompt-based TTS, te
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement]
 last_updated: 2026-05-30
 ---
-
-# Instruction-Conditioned TTS
-
 ## What it is
 
 Instruction-conditioned TTS (also called natural language style control or text-prompted TTS) is the ability to shape the speaking style of synthesized speech using free-form natural language descriptions as conditioning, rather than explicit scalar parameters (pitch value, speed factor) or discrete style labels. A typical input might be: "The woman speaks in a joyful, fast-paced manner." The system must interpret the semantic content of the instruction and generate speech whose prosody, emotion, pace, energy, and overall expressive quality matches the description.

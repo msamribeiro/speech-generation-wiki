@@ -36,12 +36,10 @@ url: "https://www.isca-archive.org/interspeech_2025/kim25b_interspeech.html"
 related_concepts: [zero-shot-tts, instruction-conditioned-tts, prosody-control, speaker-adaptation]
 related_papers: []
 ---
-
-# Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/kim25b_interspeech.html](https://www.isca-archive.org/interspeech_2025/kim25b_interspeech.html)
-
-**One-sentence contribution:** RV-TTS generates speech whose voice is inferred from a face image (including artistic portraits) while allowing fine-grained control of speech characteristics via natural descriptive text, addressing the triple gap of low audio quality, domain mismatch between real faces and artwork, and inconsistent voice generation.
+> [!abstract] Interspeech · 2025 · Conference
+> **Minsu Kim et al.** (Meta AI) · [→ Paper](https://www.isca-archive.org/interspeech_2025/kim25b_interspeech.html) · Demo: ? · Code: ?
+>
+> RV-TTS generates speech whose voice is inferred from a face image (including artistic portraits) while allowing fine-grained control of speech characteristics via natural descriptive text, addressing the triple gap of low audio quality, domain mismatch between real faces and artwork, and inconsistent voice generation.
 
 ## Problem
 

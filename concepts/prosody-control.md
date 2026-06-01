@@ -5,9 +5,6 @@ aliases: [pitch control, rhythm control, intonation modelling, duration modellin
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement]
 last_updated: 2026-05-30
 ---
-
-# Prosody Control
-
 ## What it is
 
 Prosody control refers to the ability of a TTS or voice synthesis system to shape suprasegmental features of speech — primarily pitch (F0 contour), duration (speaking rate, rhythm), and energy (loudness/volume) — independently of the phoneme content. Prosody is the primary carrier of speaker affect, emphasis, sentence modality (statement vs. question), and naturalness. Controlling prosody is distinct from speaker identity control (timbre), though the two are often entangled in practice.

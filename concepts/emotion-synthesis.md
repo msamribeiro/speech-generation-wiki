@@ -5,9 +5,6 @@ aliases: [expressive TTS, affective speech synthesis, emotional TTS, style trans
 related_concepts: [prosody-control, instruction-conditioned-tts, disentanglement, subjective-evaluation, spoken-language-model]
 last_updated: 2026-05-30
 ---
-
-# Emotion Synthesis
-
 ## What it is
 
 Emotion synthesis in speech refers to the generation of speech that conveys a target emotional state — such as happiness, sadness, anger, surprise, or empathy — through appropriate paralinguistic cues: pitch contour, speaking rate, energy, voice quality, and temporal patterning. It is a sub-problem of expressive TTS and a core capability for empathetic spoken dialogue systems.

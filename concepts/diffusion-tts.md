@@ -5,9 +5,6 @@ aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, 
 related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts]
 last_updated: 2026-05-30
 ---
-
-# Diffusion Models for TTS
-
 ## What it is
 
 Diffusion models for TTS are generative models that learn to synthesize speech by reversing a stochastic noising process. They include score-based models (estimating the score of the data distribution), DDPM-style models (predicting the denoising residual), and more recently, flow-matching variants (which share the DiT backbone and iterative refinement but use deterministic ODE integration). In the TTS context, diffusion/flow models typically operate on mel-spectrograms, continuous codec latents, or waveform VAE latents, conditioned on text, speaker embeddings, or other conditioning signals.

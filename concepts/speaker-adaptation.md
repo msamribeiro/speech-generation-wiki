@@ -5,9 +5,6 @@ aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, ta
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts]
 last_updated: 2026-05-30
 ---
-
-# Speaker Adaptation
-
 ## What it is
 
 Speaker adaptation in TTS refers to techniques that customize a pre-trained multi-speaker model to generate speech in a specific target speaker's voice. This is distinct from zero-shot TTS (which uses only a reference clip at inference without any weight updates) and from training a speaker-specific model from scratch. Speaker adaptation occupies a middle ground: a small amount of speaker-specific data (a few minutes to a few hours) is used to update model parameters or adapt a speaker embedding so that the model reproduces the target speaker's vocal characteristics more accurately than zero-shot inference alone.

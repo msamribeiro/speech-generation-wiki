@@ -28,12 +28,10 @@ url: https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html
 related_concepts: [multilingual-tts, prosody-control, evaluation-metrics]
 related_papers: []
 ---
-
-# Intrasentential English in Swedish TTS: perceived English-accentedness
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html](https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html)
-
-**One-sentence contribution:** A Swedish TTS voice built on Matcha-TTS with a continuous English-accentedness conditioning parameter (EA) is mapped to a perceptually calibrated scale (PEA) via psychometric function estimation, and listener preference tests show that preferred accentedness for intrasentential English insertions varies with the type of insertion.
+> [!abstract] Interspeech · 2025 · Conference
+> **Christina Tannander et al.** (KTH Royal Institute of Technology / Swedish Agency for Accessible Media (MTM)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html) · Demo: ? · Code: ?
+>
+> A Swedish TTS voice built on Matcha-TTS with a continuous English-accentedness conditioning parameter (EA) is mapped to a perceptually calibrated scale (PEA) via psychometric function estimation, and listener preference tests show that preferred accentedness for intrasentential English insertions varies with the type of insertion.
 
 ## Problem
 

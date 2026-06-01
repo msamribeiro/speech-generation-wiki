@@ -40,12 +40,10 @@ url: https://www.isca-archive.org/interspeech_2025/lobato25_interspeech.html
 related_concepts: [speaker-adaptation, voice-conversion, zero-shot-tts]
 related_papers: []
 ---
-
-# Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/lobato25_interspeech.html](https://www.isca-archive.org/interspeech_2025/lobato25_interspeech.html)
-
-**One-sentence contribution:** A feedforward network trained on the Lombard Grid Corpus learns to transform plain speaker embeddings into Lombard variants, which are fed to Metavoice 1B to generate scalable Lombard speech; spherical interpolation between plain and Lombard embeddings enables gradual noise-level-calibrated Lombard intensity control.
+> [!abstract] Interspeech · 2025 · Conference
+> **Thiago Henrique Gomes Lobato et al.** (HEAD acoustics GmbH) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lobato25_interspeech.html) · Demo: ✓ · Code: ✓
+>
+> A feedforward network trained on the Lombard Grid Corpus learns to transform plain speaker embeddings into Lombard variants, which are fed to Metavoice 1B to generate scalable Lombard speech; spherical interpolation between plain and Lombard embeddings enables gradual noise-level-calibrated Lombard intensity control.
 
 ## Problem
 

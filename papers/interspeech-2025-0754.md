@@ -36,12 +36,10 @@ url: https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html
 related_concepts: [emotion-synthesis, prosody-control]
 related_papers: []
 ---
-
-# EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html](https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html)
-
-**One-sentence contribution:** EME-TTS jointly models emphasis and emotion in a FastSpeech2-style TTS system, introducing variance-based emphasis features with weakly supervised pseudo-labels and an Emphasis Perception Enhancement (EPE) block that prevents emotional prosody from suppressing or distorting word-level emphasis.
+> [!abstract] Interspeech · 2025 · Conference
+> **Haoxun Li et al.** (Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences) · [→ Paper](https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html) · Demo: ✓ · Code: ?
+>
+> EME-TTS jointly models emphasis and emotion in a FastSpeech2-style TTS system, introducing variance-based emphasis features with weakly supervised pseudo-labels and an Emphasis Perception Enhancement (EPE) block that prevents emotional prosody from suppressing or distorting word-level emphasis.
 
 ## Problem
 

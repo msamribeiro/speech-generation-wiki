@@ -48,12 +48,10 @@ url: "https://www.isca-archive.org/interspeech_2025/yoon25_interspeech.html"
 related_concepts: [flow-matching, zero-shot-tts, gan-vocoder, evaluation-metrics]
 related_papers: []
 ---
-
-# APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity Text-to-Speech
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/yoon25_interspeech.html](https://www.isca-archive.org/interspeech_2025/yoon25_interspeech.html)
-
-**One-sentence contribution:** APTTS introduces adversarial post-training (AP) on a latent flow matching TTS framework that reduces inference to 4 ODE steps while achieving state-of-the-art intelligibility (WER 1.73%) and real-time synthesis (RTF 0.052) on zero-shot TTS, using only ~900 hours of training data.
+> [!abstract] Interspeech · 2025 · Conference
+> **Hyungchan Yoon et al.** (LG AI Research) · [→ Paper](https://www.isca-archive.org/interspeech_2025/yoon25_interspeech.html) · Demo: ? · Code: ?
+>
+> APTTS introduces adversarial post-training (AP) on a latent flow matching TTS framework that reduces inference to 4 ODE steps while achieving state-of-the-art intelligibility (WER 1.73%) and real-time synthesis (RTF 0.052) on zero-shot TTS, using only ~900 hours of training data.
 
 ## Problem
 

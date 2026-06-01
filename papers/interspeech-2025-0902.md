@@ -32,12 +32,10 @@ url: https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html
 related_concepts: [voice-conversion, prosody-control, disentanglement, evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html](https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html)
-
-**One-sentence contribution:** VoiceQualityVC is an open-source voice conversion tool that explicitly conditions on five acoustic voice quality features (creakiness, CPPS, H1-H2, H1-A3, pitch) to produce controlled modal, creaky, and breathy phonation, enabling perceptual studies of voice quality's paralinguistic effects.
+> [!abstract] Interspeech · 2025 · Conference
+> **Harm Lameris et al.** (KTH Royal Institute of Technology) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html) · Demo: ✗ · Code: ✓
+>
+> VoiceQualityVC is an open-source voice conversion tool that explicitly conditions on five acoustic voice quality features (creakiness, CPPS, H1-H2, H1-A3, pitch) to produce controlled modal, creaky, and breathy phonation, enabling perceptual studies of voice quality's paralinguistic effects.
 
 ## Problem
 

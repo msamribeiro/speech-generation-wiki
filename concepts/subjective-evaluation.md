@@ -5,9 +5,6 @@ aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced eval
 related_concepts: [evaluation-metrics, rlhf-speech]
 last_updated: 2026-05-30
 ---
-
-# Subjective Evaluation
-
 ## What it is
 
 Subjective evaluation in TTS refers to the collection of human perceptual judgments about synthesized speech quality, naturalness, and speaker similarity. Unlike objective metrics (WER, SPK-SIM, UTMOS), subjective evaluation directly measures how listeners perceive the output. The most common forms are:

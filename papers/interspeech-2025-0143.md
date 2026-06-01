@@ -36,12 +36,10 @@ url: "https://www.isca-archive.org/interspeech_2025/vlasenko25_interspeech.html"
 related_concepts: [prosody-control, multilingual-tts, self-supervised-speech, evaluation-metrics]
 related_papers: []
 ---
-
-# Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/vlasenko25_interspeech.html](https://www.isca-archive.org/interspeech_2025/vlasenko25_interspeech.html)
-
-**One-sentence contribution:** An empirical study showing that early fusion of multilingual SSL acoustic embeddings (WavLM Large) with word-level multilingual text embeddings (XLM-RoBERTa) significantly outperforms unimodal and knowledge-based features for sentence mode prediction (declarative/interrogative/exclamatory) across Italian, French, and German, with implications for multilingual prosody modeling in TTS.
+> [!abstract] Interspeech · 2025 · Conference
+> **Bogdan Vlasenko et al.** (Idiap Research Institute) · [→ Paper](https://www.isca-archive.org/interspeech_2025/vlasenko25_interspeech.html) · Demo: ✗ · Code: ✓
+>
+> An empirical study showing that early fusion of multilingual SSL acoustic embeddings (WavLM Large) with word-level multilingual text embeddings (XLM-RoBERTa) significantly outperforms unimodal and knowledge-based features for sentence mode prediction (declarative/interrogative/exclamatory) across Italian, French, and German, with implications for multilingual prosody modeling in TTS.
 
 ## Problem
 

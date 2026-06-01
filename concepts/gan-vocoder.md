@@ -5,9 +5,6 @@ aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based wavef
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
 last_updated: 2026-05-30
 ---
-
-# GAN Vocoder
-
 ## What it is
 
 A GAN vocoder is a generative adversarial network that converts a low-level acoustic representation (typically a mel-spectrogram) into a full-resolution waveform. The generator synthesizes the waveform from the conditioning spectrogram; the discriminator distinguishes real from generated audio and provides adversarial training signal. GAN vocoders are used as the final stage in most TTS and VC pipelines, converting the system's mel-spectrogram output into audio.

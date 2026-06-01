@@ -48,12 +48,10 @@ url: https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html
 related_concepts: [voice-conversion, zero-shot-tts, neural-codec, disentanglement]
 related_papers: [2407.05407, 2410.06885]
 ---
-
-# VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html](https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html)
-
-**One-sentence contribution:** VoiceMark is the first watermarking method that survives zero-shot voice cloning by embedding watermarks into speaker-specific latents of a neural codec rather than into raw audio, achieving over 95% detection accuracy where prior methods fall to ~50%.
+> [!abstract] Interspeech · 2025 · Conference
+> **Haiyun Li et al.** (Tsinghua University) · [→ Paper](https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html) · Demo: ✓ · Code: ✓
+>
+> VoiceMark is the first watermarking method that survives zero-shot voice cloning by embedding watermarks into speaker-specific latents of a neural codec rather than into raw audio, achieving over 95% detection accuracy where prior methods fall to ~50%.
 
 ## Problem
 

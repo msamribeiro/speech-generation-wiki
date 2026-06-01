@@ -48,12 +48,10 @@ url: "https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html"
 related_concepts: [multilingual-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 ---
-
-# Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html](https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html)
-
-**One-sentence contribution:** This paper develops dedicated Tacotron-based TTS systems for Punjabi Shahmukhi and Urdu, including new speech corpora and phonetic lexicons, and demonstrates they substantially outperform Meta's MMS models in intelligibility, naturalness, and phonetic accuracy.
+> [!abstract] Interspeech · 2025 · Conference
+> **Fatima Naseem et al.** (University of Engineering and Technology, Lahore (KICS)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html) · Demo: ? · Code: ?
+>
+> This paper develops dedicated Tacotron-based TTS systems for Punjabi Shahmukhi and Urdu, including new speech corpora and phonetic lexicons, and demonstrates they substantially outperform Meta's MMS models in intelligibility, naturalness, and phonetic accuracy.
 
 ## Problem
 

@@ -48,12 +48,10 @@ url: https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html
 related_concepts: [rlhf-speech, autoregressive-codec-tts, evaluation-metrics, emotion-synthesis]
 related_papers: [2406.02430, 2412.10117, 2410.06885]
 ---
-
-# Differentiable Reward Optimization for LLM based TTS system
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html](https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html)
-
-**One-sentence contribution:** DiffRO applies RLHF to neural codec LM-based TTS by predicting rewards directly from codec tokens (bypassing the FM + vocoder), using Gumbel-Softmax to make the reward differentiable for direct backpropagation, achieving SOTA WER on seed-tts-eval and enabling zero-shot emotion/quality control via a multi-task reward model.
+> [!abstract] Interspeech · 2025 · Conference
+> **Changfeng Gao et al.** (Alibaba Group (Tongyi Lab)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html) · Demo: ? · Code: ?
+>
+> DiffRO applies RLHF to neural codec LM-based TTS by predicting rewards directly from codec tokens (bypassing the FM + vocoder), using Gumbel-Softmax to make the reward differentiable for direct backpropagation, achieving SOTA WER on seed-tts-eval and enabling zero-shot emotion/quality control via a multi-task reward model.
 
 ## Problem
 

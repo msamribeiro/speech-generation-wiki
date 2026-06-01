@@ -40,12 +40,10 @@ url: "https://www.isca-archive.org/interspeech_2025/chen25b_interspeech.html"
 related_concepts: [rlhf-speech, diffusion-tts, evaluation-metrics]
 related_papers: []
 ---
-
-# Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/chen25b_interspeech.html](https://www.isca-archive.org/interspeech_2025/chen25b_interspeech.html)
-
-**One-sentence contribution:** DLPO (Diffusion Loss-Guided Policy Optimization) is an RLHF framework that improves TTS diffusion model quality by incorporating the original diffusion training loss directly into the RL reward function, outperforming four competing RL fine-tuning strategies on a WaveGrad 2 baseline.
+> [!abstract] Interspeech · 2025 · Conference
+> **Jingyi Chen et al.** · [→ Paper](https://www.isca-archive.org/interspeech_2025/chen25b_interspeech.html) · Demo: ✓ · Code: ✓
+>
+> DLPO (Diffusion Loss-Guided Policy Optimization) is an RLHF framework that improves TTS diffusion model quality by incorporating the original diffusion training loss directly into the RL reward function, outperforming four competing RL fine-tuning strategies on a WaveGrad 2 baseline.
 
 ## Problem
 

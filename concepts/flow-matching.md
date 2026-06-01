@@ -5,9 +5,6 @@ aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, fl
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
 last_updated: 2026-05-30
 ---
-
-# Flow Matching
-
 ## What it is
 
 Flow matching is a method for training continuous normalizing flows (CNFs) by directly regressing a vector field that transports samples from a source distribution (typically Gaussian noise) to a target distribution (e.g., mel-spectrograms or waveforms). Optimal-transport (OT) flow matching constructs the straightest possible path between source and target, minimizing the curvature of the learned trajectory. This allows fewer inference steps than diffusion models while maintaining fidelity.

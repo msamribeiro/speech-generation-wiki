@@ -40,12 +40,10 @@ url: "https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.ht
 related_concepts: [evaluation-metrics, subjective-evaluation, self-supervised-speech]
 related_papers: []
 ---
-
-# A Dataset for Automatic Assessment of TTS Quality in Spanish
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.html](https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.html)
-
-**One-sentence contribution:** This paper introduces the first Spanish-language TTS quality evaluation dataset (4,326 samples from 52 systems and speakers), collected with a standardized subjective listening test, and validates it by training automatic MOS predictors that improve on out-of-the-box NISQA.
+> [!abstract] Interspeech · 2025 · Conference
+> **Alejandro Sosa Welford et al.** · [→ Paper](https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.html) · Demo: ? · Code: ✓
+>
+> This paper introduces the first Spanish-language TTS quality evaluation dataset (4,326 samples from 52 systems and speakers), collected with a standardized subjective listening test, and validates it by training automatic MOS predictors that improve on out-of-the-box NISQA.
 
 ## Problem
 

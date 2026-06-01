@@ -48,12 +48,10 @@ url: https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html
 related_concepts: [neural-codec, self-supervised-speech, autoregressive-codec-tts, streaming-tts]
 related_papers: []
 ---
-
-# PAST: Phonetic-Acoustic Speech Tokenizer
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html](https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html)
-
-**One-sentence contribution:** PAST is an end-to-end speech tokenizer that achieves state-of-the-art phonetic representation and speech reconstruction without relying on any external SSL model, by integrating supervised phoneme and character-level CTC losses directly into an EnCodec-based RVQ architecture augmented with a transformer encoder.
+> [!abstract] Interspeech · 2025 · Conference
+> **Nadav Har-Tuv et al.** (Hebrew University of Jerusalem) · [→ Paper](https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html) · Demo: ✓ · Code: ✓
+>
+> PAST is an end-to-end speech tokenizer that achieves state-of-the-art phonetic representation and speech reconstruction without relying on any external SSL model, by integrating supervised phoneme and character-level CTC losses directly into an EnCodec-based RVQ architecture augmented with a transformer encoder.
 
 ## Problem
 

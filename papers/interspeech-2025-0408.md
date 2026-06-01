@@ -28,12 +28,10 @@ url: "https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html
 related_concepts: [spoken-language-model, prosody-control, emotion-synthesis, subjective-evaluation]
 related_papers: []
 ---
-
-# Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html](https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html)
-
-**One-sentence contribution:** A spoken dialogue system that progressively adapts both linguistic style and paralinguistic (prosodic) expression from formal to intimate as interactions accumulate, improving user satisfaction over three-day dialogue experiments compared to fixed-style baselines.
+> [!abstract] Interspeech · 2025 · Conference
+> **Shoki Kawanishi et al.** (Tohoku University) · [→ Paper](https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html) · Demo: ? · Code: ?
+>
+> A spoken dialogue system that progressively adapts both linguistic style and paralinguistic (prosodic) expression from formal to intimate as interactions accumulate, improving user satisfaction over three-day dialogue experiments compared to fixed-style baselines.
 
 ## Problem
 

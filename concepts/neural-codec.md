@@ -5,9 +5,6 @@ aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
 last_updated: 2026-05-30
 ---
-
-# Neural Audio Codec
-
 ## What it is
 
 A neural audio codec is a learned compression system that converts raw audio waveforms into sequences of discrete tokens and reconstructs audio from those tokens. The standard architecture is encoder–quantizer–decoder. The encoder downsamples the waveform to a sequence of latent vectors at a fixed frame rate; a Residual Vector Quantization (RVQ) module converts these to discrete indices across multiple codebook layers (codebook levels); and a convolutional decoder synthesizes the waveform from the quantized representations.

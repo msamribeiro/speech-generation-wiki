@@ -32,12 +32,10 @@ url: "https://www.isca-archive.org/interspeech_2025/kando25_interspeech.html"
 related_concepts: [neural-codec, self-supervised-speech, spoken-language-model, autoregressive-codec-tts]
 related_papers: []
 ---
-
-# Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech Language Models
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/kando25_interspeech.html](https://www.isca-archive.org/interspeech_2025/kando25_interspeech.html)
-
-**One-sentence contribution:** A systematic 64-configuration grid search over segmentation width (N ∈ {20,…,280} ms) and K-means vocabulary size (K ∈ {128,…,16384}) for HuBERT-based speech tokenization demonstrates that moderately coarse segmentation (N=80 ms) paired with large vocabulary (K=16384) outperforms GSLM-style original-resolution tokenization while reducing training data by 50% and training runtime by 70%.
+> [!abstract] Interspeech · 2025 · Conference
+> **Shunsuke Kando et al.** · [→ Paper](https://www.isca-archive.org/interspeech_2025/kando25_interspeech.html) · Demo: ✗ · Code: ✓
+>
+> A systematic 64-configuration grid search over segmentation width (N ∈ {20,…,280} ms) and K-means vocabulary size (K ∈ {128,…,16384}) for HuBERT-based speech tokenization demonstrates that moderately coarse segmentation (N=80 ms) paired with large vocabulary (K=16384) outperforms GSLM-style original-resolution tokenization while reducing training data by 50% and training runtime by 70%.
 
 ## Problem
 

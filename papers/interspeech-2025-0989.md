@@ -48,12 +48,10 @@ url: "https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html"
 related_concepts: [zero-shot-tts, autoregressive-codec-tts, neural-codec, evaluation-metrics]
 related_papers: []
 ---
-
-# HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html](https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html)
-
-**One-sentence contribution:** HiFiTTS-2 is a large-scale, commercially usable English speech dataset of 36.7k hours at 22.05 kHz (31.7k hours at 44.1 kHz) derived from LibriVox, enabling high-bandwidth zero-shot TTS training with substantially improved speaker similarity compared to prior datasets of comparable or larger scale.
+> [!abstract] Interspeech · 2025 · Conference
+> **Ryan Langman et al.** (NVIDIA) · [→ Paper](https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html) · Demo: ? · Code: ?
+>
+> HiFiTTS-2 is a large-scale, commercially usable English speech dataset of 36.7k hours at 22.05 kHz (31.7k hours at 44.1 kHz) derived from LibriVox, enabling high-bandwidth zero-shot TTS training with substantially improved speaker similarity compared to prior datasets of comparable or larger scale.
 
 ## Problem
 

@@ -5,9 +5,6 @@ aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, 
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
 last_updated: 2026-05-30
 ---
-
-# Evaluation Metrics
-
 ## What it is
 
 Evaluation metrics for speech synthesis quantify system performance along several orthogonal dimensions: naturalness (how human-like the speech sounds), intelligibility (whether the content can be understood), speaker similarity (how closely the voice matches a reference), prosody accuracy, and overall quality. Metrics divide into subjective (requiring human listeners) and objective (computed automatically). Objective metrics are preferred for reproducibility and cost, but their correlation with human perception is imperfect.

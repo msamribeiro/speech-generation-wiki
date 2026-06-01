@@ -5,9 +5,6 @@ aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in 
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
 last_updated: 2026-05-27
 ---
-
-# Speech-to-Speech Systems
-
 ## What it is
 
 Speech-to-speech (S2S) systems take speech as input and produce speech as output, without necessarily passing through an explicit text representation. This distinguishes them from standard TTS (text in, speech out) and from cascade dialogue systems (speech → ASR → LM → TTS). The defining characteristic is that the audio signal is the primary carrier of both the input signal and the output, preserving paralinguistic information — tone, emotion, speaking rate, accents — that would be lost in an ASR/TTS pipeline.

@@ -36,12 +36,10 @@ url: https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html
 related_concepts: [prosody-control, disentanglement, self-supervised-speech]
 related_papers: []
 ---
-
-# Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html](https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html)
-
-**One-sentence contribution:** Counterfactual Activation Editing (CAE) enables post-hoc control of prosody and mispronunciation correction in a frozen pre-trained TTS encoder by performing gradient-ascent edits in a manifold-preserving VAE latent space, without any retraining.
+> [!abstract] Interspeech · 2025 · Conference
+> **Kyowoon Lee et al.** (KAIST / Samsung Electronics) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html) · Demo: ✓ · Code: ?
+>
+> Counterfactual Activation Editing (CAE) enables post-hoc control of prosody and mispronunciation correction in a frozen pre-trained TTS encoder by performing gradient-ascent edits in a manifold-preserving VAE latent space, without any retraining.
 
 ## Problem
 

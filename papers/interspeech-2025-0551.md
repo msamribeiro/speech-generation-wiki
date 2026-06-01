@@ -52,12 +52,10 @@ url: "https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html"
 related_concepts: [autoregressive-codec-tts, zero-shot-tts, evaluation-metrics]
 related_papers: []
 ---
-
-# Monotonic Attention for Robust Text-to-Speech Synthesis in Large Language Model Frameworks
-
-**Paper:** [https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html](https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html)
-
-**One-sentence contribution:** A stepwise monotonic attention algorithm applied selectively to automatically identified alignment heads in decoder-only LLM-based TTS, reducing word repetitions and omissions without requiring external forced aligners, and scaling to 300M parameters and 150k hours of training data.
+> [!abstract] Interspeech · 2025 · Conference
+> **Yike Zhang et al.** (Tencent) · [→ Paper](https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html) · Demo: ✓ · Code: ?
+>
+> A stepwise monotonic attention algorithm applied selectively to automatically identified alignment heads in decoder-only LLM-based TTS, reducing word repetitions and omissions without requiring external forced aligners, and scaling to 300M parameters and 150k hours of training data.
 
 ## Problem
 
