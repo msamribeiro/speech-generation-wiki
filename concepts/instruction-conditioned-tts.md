@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: emerging
 ---
 ## Executive Summary
@@ -61,6 +61,18 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Cross-modal distillation from a text LLM can transfer instruction-following capability to the speech modality without any speech instruction annotations, enabling instruction-conditioned behavior in speech models trained on unannotated ASR data.
   Supporting: [[2025.acl-long.388]]
 
+- Instruction-conditioned TTS systems trained on tag-derived description datasets exhibit significant performance degradation when faced with figurative or metaphorical natural language descriptions at inference time.
+  Supporting: [[2508.11326]]
+
+- Modality-based MoE routing (frozen text experts, trained speech experts) preserves pre-trained LLM text understanding during speech fine-tuning, reducing catastrophic forgetting.
+  Supporting: [[2508.11326]]
+
+- Parallel phoneme token prediction as a secondary LLM output head reduces intelligibility errors in LLM-based instruction-conditioned TTS, particularly on challenging inputs.
+  Supporting: [[2504.12867]]
+
+- Natural language emotion prompts can drive emotional voice conversion at parity with reference speech for the majority of listeners when a contrastive alignment model bridges speech and text emotional representations.
+  Supporting: [[interspeech-2025-0203]]
+
 - Adding a "thinking pattern" (LLM reasoning about the style description before generating) substantially improves instruction interpretation for complex style descriptions compared to direct conditioning.
   Supporting: [[2601.15621]]
 
@@ -104,6 +116,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - The many-to-many problem is formally characterized but not fully solved: SMSD improves diversity but still shows lower MOS-SA than style-only baselines on pitch accuracy ([[2025.acl-long.346]]).
 - How many hours of style-annotated data are needed for robust generalization? ControlSpeech notes that tens of thousands of hours may be necessary.
 - Can RLHF or preference optimization be used to better align generated style with human intent, complementing the MDN training objective?
+- EmoVoice [[2504.12867]] demonstrates freestyle emotion prompting near GPT-4o-mini-tts quality; does the approach generalise to languages and speaker styles beyond the GPT-4o-audio synthetic training distribution?
+- MoE-TTS [[2508.11326]] targets out-of-domain description generalisation but evaluates on 20–40 samples; what sample size and description diversity are needed to reliably benchmark this capability?
+- The modality-based MoE approach in [[2508.11326]] prevents catastrophic forgetting; does this benefit persist across all LLM backbone sizes, or is it most important for smaller models?
 
 ## Trend Summary
 
@@ -125,3 +140,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Instruction fine-tuning with natural language style instructions (speaking rate, emotion, timbre) alongside zero-shot voice cloning; large-scale training demonstrates scalability of instruction conditioning |
 | [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps: first large-scale open-source dataset (2709h) with 59 rich paralinguistic style tags (intrinsic speaker-level + situational utterance-level); automatic scaling via perceptual speaker similarity and Gemini audio LLM; improves Parler-TTS intrinsic tag recall from 33% to 69.5% |
 | [[interspeech-2025-0047]] | Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis | Interspeech | 2025 | RV-TTS generates speech from face images while allowing fine-grained speech characteristic control via descriptive text; demonstrates instruction-conditioned voice generation from visual face prompt |
+| [[2504.12867]] | EmoVoice | arXiv | 2025 | Freestyle natural language emotion prompting on Qwen2.5-based AR codec LM; parallel phoneme-boost decoding head for intelligibility; emotion recall 0.424 approaching GPT-4o-mini-tts (0.456) |
+| [[2508.11326]] | MoE-TTS | arXiv | 2025 | Modality-based MoE with frozen text experts; evaluates out-of-domain figurative descriptions; MoE-TTS outperforms ElevenLabs and MiniMax on OOD description alignment |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP dual-mode conditioning (NL prompt or reference speech) for emotional VC; 57.4% no-preference between modes; instruction-conditioned VC without categorical labels |

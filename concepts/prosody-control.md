@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: established
 ---
 ## Executive Summary
@@ -71,6 +71,18 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Probabilistic duration generation (via flow matching) produces substantially more natural temporal pauses than deterministic NAR baselines, partially closing the AR/NAR naturalness gap in pacing.
   Supporting: [[2510.02848]]
 
+- Explicit word-level prosody token design in speech LMs enables prosody understanding and generation as emergent capabilities through pre-training, without task-specific fine-tuning.
+  Supporting: [[2507.20091]]
+
+- Conventional codec-token speech LMs do not develop prosodic understanding or generation as emergent capabilities through pre-training; the tokenisation design, not data scale, is the binding constraint.
+  Supporting: [[2507.20091]]
+
+- Training-time prosody augmentation (temporal shifting and piecewise time warping of reference prosody) improves robustness to prosody-mismatched reference conditions in emotional voice conversion without sacrificing naturalness.
+  Supporting: [[2508.06890]]
+
+- Explicit F0 and energy conditioning from a reference utterance transfers temporal prosody dynamics more faithfully than implicit prediction from latent codes in emotional VC.
+  Supporting: [[2508.06890]], [[interspeech-2025-0203]]
+
 ### Contested
 
 > [!warning]
@@ -112,10 +124,14 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Can prosody control from natural language descriptions be evaluated objectively (beyond classifier accuracy) to capture human-perceived nuance?
 - [[2025.acl-long.1471]] establishes 3–8 past words as the prosody MI saturation point for English audiobooks; does this generalize to other speech styles (conversational, spontaneous) and languages?
 - Duration and pause require more future context than past context per [[2025.acl-long.1471]]; how should TTS prosody predictors handle these features differently from pitch and energy?
+- ProsodyLM [[2507.20091]] is trained on audiobooks only; does explicit word-level prosody tokenisation generalise to conversational or spontaneous speech where prosody patterns differ fundamentally?
+- Maestro-EVC [[2508.06890]] conditions on smoothed prosody from a reference utterance; how should prosody conditioning adapt when the target content requires fundamentally different duration patterns than the reference?
+- REF-VC [[2508.04996]] preserves source prosody via ABX evaluation but users may prefer target speaker style transfer; how can the prosody preservation vs. style transfer trade-off be made explicit and controllable?
+- LoRA-based pitch accent correction (UtterTune [[2508.09767]]) requires user-supplied phonemic transcription; what is the minimal phonological expertise burden that makes this practical for end users?
 
 ## Trend Summary
 
-2020–2022: FastSpeech 2 established parametric duration/pitch control as standard. GST-based approaches extended this to reference audio style transfer. 2023: PromptTTS and InstructTTS introduced natural language style conditioning. 2025: [[2025.acl-long.346]] (ControlSpeech) integrates natural language prosody control with zero-shot speaker cloning, introduces mixture density modeling for probabilistic style distributions. [[2025.acl-long.1471]] provides empirical grounding for context requirements. [[2025.acl-industry.42]] addresses tonal language prosody. StyleTTS-ZS [[2025.naacl-long.242]] introduces fixed-length RVQ prosody latent as an efficient compact representation for the time-varying style dimension. Flamed-TTS [[2510.02848]] introduces probabilistic duration and silence generation via flow matching, enabling 4-5x more natural temporal pauses than deterministic NAR baselines — addressing the NAR/AR naturalness gap in pacing. IndexTTS2 [[2506.21619]] introduces positional embedding tying (W_sem = W_num) for precise AR duration control without sequence-level supervision — the first principled solution to duration control in autoregressive TTS. DisCodec [[2512.13251]] enables independent prosody control via disentangled FSQ codec factorization. Vevo2 [[2508.16332]] introduces chromagram-based prosody tokenization bridging speech and singing prosody spaces. EmoSteer-TTS [[2508.03543]] demonstrates that prosody (as captured in emotion dimensions) can be steered post-hoc in pre-trained models without any retraining.
+2020–2022: FastSpeech 2 established parametric duration/pitch control as standard. GST-based approaches extended this to reference audio style transfer. 2023: PromptTTS and InstructTTS introduced natural language style conditioning. 2025: [[2025.acl-long.346]] (ControlSpeech) integrates natural language prosody control with zero-shot speaker cloning, introduces mixture density modeling for probabilistic style distributions. [[2025.acl-long.1471]] provides empirical grounding for context requirements. [[2025.acl-industry.42]] addresses tonal language prosody. StyleTTS-ZS [[2025.naacl-long.242]] introduces fixed-length RVQ prosody latent as an efficient compact representation for the time-varying style dimension. Flamed-TTS [[2510.02848]] introduces probabilistic duration and silence generation via flow matching, enabling 4-5x more natural temporal pauses than deterministic NAR baselines — addressing the NAR/AR naturalness gap in pacing. IndexTTS2 [[2506.21619]] introduces positional embedding tying (W_sem = W_num) for precise AR duration control without sequence-level supervision — the first principled solution to duration control in autoregressive TTS. DisCodec [[2512.13251]] enables independent prosody control via disentangled FSQ codec factorization. Vevo2 [[2508.16332]] introduces chromagram-based prosody tokenization bridging speech and singing prosody spaces. EmoSteer-TTS [[2508.03543]] demonstrates that prosody (as captured in emotion dimensions) can be steered post-hoc in pre-trained models without any retraining. ProsodyLM [[2507.20091]] provides a conceptually distinct approach: rather than manipulating prosody in existing models, it argues that replacing codec tokens with explicit word-level five-dimensional prosody annotations enables prosody as an emergent pre-training capability in a text LLM, achieving contrastive focus, emotion recognition, and style continuity without task-specific fine-tuning. The tradeoff is audio quality fidelity for prosodic expressiveness. UtterTune [[2508.09767]] demonstrates the practical utility of parameter-efficient LoRA for pitch accent correction in BPE-based multilingual TTS — a lightweight corrective layer that compensates for the absence of explicit G2P front-ends. Maestro-EVC [[2508.06890]] advances temporal prosody transfer in emotional VC through frame-level emotion alignment and prosody augmentation, with explicit energy alongside F0 conditioning as a differentiator from prior work.
 
 ## All Papers
 
@@ -142,3 +158,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Psychometric calibration maps a per-phoneme accentedness conditioning parameter to perceptually distinguishable accentedness levels (≥9 significant distinctions); listener preference varies by type of English insertion |
 | [[2025.coling-main.518]] | ProsodyFlow: High-fidelity TTS through Conditional Flow Matching and Prosody Modeling | workshop | 2025 | CFM over WavLM-extracted prosody latent enables inference-time prosody diversity without reference audio; MOS 4.23 on LJSpeech approaching ground truth (4.25); RTF faster than VITS |
 | [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps taxonomy: 33 intrinsic (speaker-level) + 26 situational (utterance-level) style tags; scaling via acoustic matching with Gemini 2.0 Flash audio LLM substantially improves style-prompted prosody control |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | Replaces codec tokens with word-level prosody tokens (F0 range/median/slope, duration, energy); enables prosody understanding (contrastive focus, emotion recognition) as emergent pre-training capabilities |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | Prosodic Consistency (PC) and Emotion Appropriateness (EA) as dedicated evaluation dimensions for speech role-playing; cascaded systems outperform E2E on prosody consistency |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Emotion-guided CFM renderer with predicted emotion labels as explicit conditioning improves emotional expressiveness in conversational speech synthesis |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | Multi-scale pitch encoder (PBTC modules) provides F0 conditioning; ABX prosody preference tests confirm source prosody and non-verbal element preservation |
+| [[2508.05385]] | Non-Verbal Speech Generation | arXiv | 2025 | Temporal-semantic alignment (TSA) for accurate positioning of non-verbal vocalizations; tag positional accuracy more important than dataset scale for NV controllability |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | Temporal content-aware emotion module (TCEM) with cross-attention; explicit energy+F0 from Savitzky-Golay smoothed reference; prosody augmentation (shift + piecewise warp) for mismatch robustness |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | Accent conditioning via accent token replacement for language token; geolocation-based data filtering improves accent-prosody conditioning |
+| [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | Prosody as the time-variant residual after instance normalization; UMAP shows quantized prosody vectors align with speaker-normalized F0 deviation |
+| [[2508.09767]] | UtterTune | arXiv | 2025 | LoRA with phoneme-tag tokens for pitch accent control in Japanese; accent correctness 0.498 → 0.899; demonstrates parameter-efficient G2P-free prosody correction |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | Adaptive intensity gate (AIG) for scalar emotion strength control; flow-matching decoder produces richer prosodic variation than GAN baselines |

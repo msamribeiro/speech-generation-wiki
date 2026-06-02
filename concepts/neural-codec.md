@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: mature-infrastructure
 ---
 
@@ -42,9 +42,9 @@ In the context of speech language models and TTS, the first RVQ layer (RVQ-1, "s
 
 **Continuous tokenizers.** [[2025.findings-naacl.184]] (Cont-SPT) challenges whether discrete quantization is necessary: continuous AR mel prediction (MELLE [[2025.acl-long.65]]) achieves human-parity quality without any codec. DiTAR [[2502.03930]] uses a continuous VAE at 40 Hz/64-dim as the generation target. LongCat-AudioDiT [[2603.29339]] uses a Wav-VAE at 11.72 Hz/64-dim, achieving PESQ 3.237 and STOI 0.967 while outperforming most discrete codecs at similar bitrate.
 
-**Disentangled/factorized codecs (DisCodec, FACodec).** DisCodec [[2512.13251]] uses two-stage FSQ training with graduated soft orthogonality constraints to factorize content, prosody, and timbre while maintaining reconstruction fidelity. The key innovation is summing content+prosody embeddings before re-quantizing into a unified stream for LM training, enabling standard AR LM inference without multi-codebook complexity.
+**Disentangled/factorized codecs (DisCodec, FACodec, SecoustiCodec).** DisCodec [[2512.13251]] uses two-stage FSQ training with graduated soft orthogonality constraints to factorize content, prosody, and timbre while maintaining reconstruction fidelity. SecoustiCodec [[2508.02849]] proposes a single-codebook streaming codec combining VAE+FSQ quantisation with frame-level cross-modal contrastive learning between phoneme and speech representations, achieving explicit semantic-paralinguistic separation without SSL distillation or phoneme labels at inference. The core claim is that frame-level contrastive learning outperforms HuBERT/WavLM distillation for removing residual paralinguistic content from the semantic stream. SPCODEC [[interspeech-2025-0196]] introduces spectral-supervised disentanglement within the quantization stage: the codec embedding is explicitly split into low- and high-frequency groups, and an attention-based prediction module uses quantized low-frequency features to remove predictable high-frequency redundancy, improving codec efficiency at higher bitrates.
 
-**Streaming causal codecs.** Qwen3-TTS [[2601.15621]] (12Hz, fully causal, 16-layer RVQ), Fish Audio S2 [[2603.08823]] (21 Hz, causal sliding-window transformer, DAC-based), and XCodec2-S [[2508.06262]] (single VQ, partial lookahead) all demonstrate that high-quality streaming codecs are achievable while maintaining semantic preservation and reconstruction quality.
+**Streaming causal codecs.** Qwen3-TTS [[2601.15621]] (12Hz, fully causal, 16-layer RVQ), Fish Audio S2 [[2603.08823]] (21 Hz, causal sliding-window transformer, DAC-based), and XCodec2-S [[2508.06262]] (single VQ, partial lookahead) all demonstrate that high-quality streaming codecs are achievable while maintaining semantic preservation and reconstruction quality. SpectroStream [[2508.05207]] demonstrates that operating in the 2D time-frequency domain rather than the waveform domain substantially improves perceptual quality for full-band stereo audio at low bitrates (2.7 kbps), with delayed-fusion cross-channel processing as the key enabling design for stereo phase coherence. Dragon-FM [[2507.22746]] introduces chunk-level FSQ quantisation at 12.5 Hz where chunk-wise AR generation across blocks is combined with within-block flow-matching denoising over continuous FSQ embeddings — a design that achieves KV-cache efficiency and bidirectional intra-chunk context simultaneously.
 
 ## Major Claims
 
@@ -71,6 +71,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Jointly masking all codebook layers per position (full-codebook masking) provides denser training signal for NAR models than per-layer masking strategies.
   Supporting: [[2604.00688]]
+
+- Frame-level cross-modal contrastive learning between phoneme and speech representations achieves cleaner semantic-paralinguistic separation in single-codebook codecs than distillation from HuBERT or WavLM, which retain residual paralinguistic content.
+  Supporting: [[2508.02849]]
+
+- VAE-augmented finite scalar quantisation (VAE+FSQ) achieves substantially higher codebook utilisation than VQ-VAE in single-codebook speech codecs, reducing long-tail token distributions that impair downstream LM training.
+  Supporting: [[2508.02849]]
+
+- Imposing spectral structure on codec latent embeddings via supervised low/high frequency disentanglement improves codec efficiency at higher bitrates where predictable cross-band redundancy is largest.
+  Supporting: [[interspeech-2025-0196]]
+
+- Operating neural codecs in the 2D time-frequency domain instead of the waveform domain yields substantially better perceptual quality for full-band audio at low bitrates where waveform-domain architectures suffer.
+  Supporting: [[2508.05207]]
+
+- Matching codec token rates across modalities (speech and visual) enables frame-level synchronisation in joint audiovisual generation without post-hoc alignment.
+  Supporting: [[2508.04585]]
 
 ### Contested
 
@@ -111,6 +126,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Open Questions
 
+- SecoustiCodec [[2508.02849]] requires duration-aligned phoneme labels for contrastive training; can frame-level cross-modal contrastive learning be extended to an unsupervised setting without text-speech alignment?
 - Can dynamic frame merging be extended to sub-3 Hz without catastrophic quality loss?
 - Is there a natural lower bound on frame rate below which semantic content cannot be preserved in discrete tokens?
 - How does FlexiCodec's dynamic merging interact with prosodic information? [[2412.17048]] identifies paralinguistic variability (Factor C) as the main bottleneck — do dynamic tokens help with this?
@@ -125,7 +141,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Trend Summary
 
-2021–2022: SoundStream, EnCodec established neural audio codecs as the standard compression tool at 50–75 Hz. 2023: SpeechTokenizer introduced semantic distillation for RVQ-1; first purpose-built TTS codecs. 2024: Mimi and DualCodec reached 12.5 Hz while maintaining semantic quality; CosyVoice 2 [[2412.10117]] demonstrated FSQ achieves 100% codebook utilization vs. 23% for VQ — establishing FSQ as the preferred quantization method for supervised semantic tokenizers. 2025: FlexiCodec ([[2510.00981]]) breaks the 12.5 Hz floor to 6.25 Hz; DisCodec [[2512.13251]] introduces two-stage disentangled FSQ for independent prosody/timbre control; XCodec2-S [[2508.06262]] demonstrates streaming single-codebook causal adaptation; MELLE [[2025.acl-long.65]] and DiTAR [[2502.03930]] challenge whether discrete codecs are necessary at all. 2026: Qwen3-TTS [[2601.15621]] demonstrates a 12.5 Hz 16-layer RVQ achieving PESQ-WB 3.21 — outperforming Mimi and FireRedTTS2 tokenizer while enabling fully causal streaming; Fish Audio S2 [[2603.08823]] demonstrates a 21 Hz streaming DAC-based codec with w2v-BERT semantic distillation and ConvNeXt V2 extensions; LongCat-AudioDiT [[2603.29339]] establishes waveform VAE at 11.72 Hz as competitive with discrete codecs for diffusion TTS, revealing that higher VAE fidelity counterintuitively does not improve downstream generation quality. The field is now tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
+2021–2022: SoundStream, EnCodec established neural audio codecs as the standard compression tool at 50–75 Hz. 2023: SpeechTokenizer introduced semantic distillation for RVQ-1; first purpose-built TTS codecs. 2024: Mimi and DualCodec reached 12.5 Hz while maintaining semantic quality; CosyVoice 2 [[2412.10117]] demonstrated FSQ achieves 100% codebook utilization vs. 23% for VQ — establishing FSQ as the preferred quantization method for supervised semantic tokenizers. 2025: FlexiCodec ([[2510.00981]]) breaks the 12.5 Hz floor to 6.25 Hz; DisCodec [[2512.13251]] introduces two-stage disentangled FSQ for independent prosody/timbre control; XCodec2-S [[2508.06262]] demonstrates streaming single-codebook causal adaptation; MELLE [[2025.acl-long.65]] and DiTAR [[2502.03930]] challenge whether discrete codecs are necessary at all. SecoustiCodec [[2508.02849]] proposes that frame-level cross-modal contrastive learning outperforms SSL distillation for semantic disentanglement in single-codebook streaming codecs, and that VAE+FSQ nearly eliminates codebook underutilisation. SPCODEC [[interspeech-2025-0196]] demonstrates that spectral supervision of codec embeddings and inter-group cross-frequency prediction reduce bitstream redundancy and improve POLQA at standard bitrates. SpectroStream [[2508.05207]] establishes a time-frequency domain baseline for general audio (music, 48 kHz stereo) showing large ViSQOL gains over waveform-domain DAC at low bitrates. Dragon-FM [[2507.22746]] introduces a hybrid chunk-AR+flow-matching design using FSQ at 12.5 Hz, demonstrating that continuous denoising of discrete token embeddings is a viable target representation. 2026: Qwen3-TTS [[2601.15621]] demonstrates a 12.5 Hz 16-layer RVQ achieving PESQ-WB 3.21 — outperforming Mimi and FireRedTTS2 tokenizer while enabling fully causal streaming; Fish Audio S2 [[2603.08823]] demonstrates a 21 Hz streaming DAC-based codec with w2v-BERT semantic distillation and ConvNeXt V2 extensions; LongCat-AudioDiT [[2603.29339]] establishes waveform VAE at 11.72 Hz as competitive with discrete codecs for diffusion TTS, revealing that higher VAE fidelity counterintuitively does not improve downstream generation quality. The field is now tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
 
 ## All Papers
 
@@ -167,3 +183,11 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0310]] | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech LMs | Interspeech | 2025 | Systematic 64-configuration grid search over HuBERT K-means segmentation width (20–280ms) and vocabulary size (128–16384); finds N=80ms + K=16384 beats original-resolution tokenization with 50% data and 70% runtime reduction |
 | [[interspeech-2025-0989]] | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech | 2025 | Bandwidth estimation pipeline for 22kHz/44.1kHz dataset construction; empirical finding that speaker diversity rather than audio quality alone drives zero-shot codec LM performance |
 | [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Uses WavTokenizer (single-layer RVQ, 4096-vocab, 40-75 tokens/sec) for streaming speech synthesis; demonstrates that a single-codebook discrete tokenizer is sufficient for high-quality streaming TTS when the sequence is manageable |
+| [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Custom FSQ codec at 12.5 Hz, 48 kHz; chunk-wise AR generation with within-chunk flow-matching denoising over continuous FSQ embeddings; causal decoder enables streaming |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Single-codebook streaming codec with VAE+FSQ and frame-level cross-modal contrastive learning; 98% codebook utilisation; 12.08 ms initial latency; proposes contrastive learning outperforms SSL distillation for semantic disentanglement |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Custom FSQ-based speech codec (SenseVoice-Large + FSQ, 25 Hz) and LmkCodec for facial landmarks at matching rate; demonstrates matching token rates enable joint audiovisual synchronisation |
+| [[2508.05207]] | SpectroStream | arXiv | 2025 | Time-frequency domain neural codec for 48 kHz stereo; 2D convolutional encoder with delayed-fusion stereo; ViSQOL 3.21 vs. DAC 1.47 at 2.7 kbps; establishes TF domain as superior for full-band low-bitrate audio |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Uses X-Codec2 as the backbone codec for cross-lingual emotion TTS; flow-matching alignment bridges discrete codec tokens and mel-spectrograms for speaker identity preservation |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | Proposes Understanding-driven Speech Tokenizer (USTokenizer) trained with LLM next-token prediction loss; 250 bps understanding-oriented codec separate from WavTokenizer output codec |
+| [[2508.11326]] | MoE-TTS | arXiv | 2025 | Uses CosyVoice2 speech tokenizer at 25 Hz for description-based TTS; 6,561-token vocabulary appended to LLM for speech generation |
+| [[interspeech-2025-0196]] | SPCODEC | Interspeech | 2025 | Split-and-prediction codec: spectral supervision of low/high frequency embeddings with inter-group prediction; POLQA 4.5 at 10.66 kbps; demonstrates performance advantage scales with bitrate |

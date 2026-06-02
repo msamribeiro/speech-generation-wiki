@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: emerging
 ---
 
@@ -95,10 +95,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex models suffice?
 - How do S2S systems handle code-switching and multilingual input, where the ASR-intermediate approach has a natural advantage?
 - What evaluation benchmarks best capture the interactive quality of S2S systems? [[2025.findings-emnlp.424]] provides interaction annotations but no end-to-end S2S benchmark yet exists for open evaluation.
+- Full-Duplex-Bench [[2503.04721]] reveals that all current full-duplex models show a consistent tension between aggressiveness and caution in turn-taking; is this fundamental to the E2E paradigm or addressable by training regime?
+- SpeechRole [[2508.02013]] shows that speech role-playing quality is bottlenecked by text LM reasoning even in cascaded systems; does this bottleneck affect open-ended S2S dialogue in the same way?
 
 ## Trend Summary
 
-2022–2023: S2S translation matured (Translatotron, SeamlessM4T). Spoken dialogue remained cascade-dominated. 2024: Moshi, LLaMA-omni, and GLM-4-Voice demonstrated real-time E2E spoken dialogue for the first time, catalysing the field. 2025: Corpus papers begin studying the fundamental bottlenecks (Factor C, [[2412.17048]]), building enabling infrastructure (low-frame-rate codecs [[2510.00981]], interaction corpora [[2025.findings-emnlp.424]]), and streaming VC building blocks ([[2507.14534]]). The gap between cascade and E2E on semantic quality remains open.
+2022–2023: S2S translation matured (Translatotron, SeamlessM4T). Spoken dialogue remained cascade-dominated. 2024: Moshi, LLaMA-omni, and GLM-4-Voice demonstrated real-time E2E spoken dialogue for the first time, catalysing the field. 2025: Corpus papers begin studying the fundamental bottlenecks (Factor C, [[2412.17048]]), building enabling infrastructure (low-frame-rate codecs [[2510.00981]], interaction corpora [[2025.findings-emnlp.424]]), and streaming VC building blocks ([[2507.14534]]). The gap between cascade and E2E on semantic quality remains open. Integration pass 5 adds: Full-Duplex-Bench [[2503.04721]] — the first automated benchmark for full-duplex turn-taking behaviour, revealing that all current systems show a consistent aggressiveness-caution tension; SpeechRole [[2508.02013]] — the first large-scale speech-to-speech role-playing benchmark, providing evidence that interaction quality is text-LM bottlenecked regardless of architecture.
 
 ## All Papers
 
@@ -111,3 +113,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2025.acl-long.388]] | DiVA: Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL | 2025 | E2E speech-in text-out voice assistant trained via cross-modal distillation; demonstrates that cascade-style capability forgetting in SFT can be avoided by distilling from text LLM responses to transcripts |
 | [[2025.emnlp-demos.70]] | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP | 2025 | Full end-to-end speech-in speech-out system with empathetic response generation; streaming interleaved decoding; open-source training data and code; competitive on VoiceBench and URO-Bench |
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Survey covering all three S2S sub-paradigms (E2E, direct translation, cascade); taxonomizes full-duplex systems (Moshi, Parrot, LSLM) and evaluates their latency, paralinguistic continuity, and training complexity |
+| [[2503.04721]] | Full-Duplex-Bench | arXiv | 2025 | First automated benchmark for full-duplex S2S dialogue systems; four turn-taking scenarios; reveals aggressiveness-caution trade-off across all tested models; finds commercial systems better calibrated than open-source |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | First large-scale S2S speech role-playing benchmark (111K dialogues, 98 roles); text LM quality is the primary bottleneck for both cascaded and E2E systems |

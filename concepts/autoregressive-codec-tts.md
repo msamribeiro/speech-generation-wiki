@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: dominant
 ---
 
@@ -82,6 +82,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 > Paralinguistic variability (Factor C) in speech codec tokens makes LM training substantially harder than for text LMs, and it is unclear whether this can be addressed within the AR+NAR framework or requires fundamentally different architectures.
 > Supporting: [[2412.17048]] / Partial mitigation: [[2025.acl-long.1498]]
 
+> [!warning]
+> Whether separating LLM input tokens from output tokens (the DualSpeechLM [[2508.08961]] dual-token approach) is a viable solution to the understanding-generation tension in unified AR speech LMs, or whether it introduces new problems (tokenizer training cost, modality gap), is unresolved.
+> Supporting as useful: [[2508.08961]] / No contradicting evidence yet
+
 ## Relationship to Other Concepts
 
 ### Extends or Builds On
@@ -126,6 +130,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - PALLE [[2504.10352]] achieves 10x speedup over AR via PAR at 580h; does this advantage persist at 100k-hour scale?
 - The Dual-AR decoupling in Fish Audio S2 [[2603.08823]] and Qwen3-TTS [[2601.15621]] seems to be a new industrial standard; what is the optimal split between slow (semantic) and fast (acoustic) model capacity?
 - Does the full-codebook masking in OmniVoice [[2604.00688]] generalize to multilingual settings beyond Chinese/English, and can it eliminate the need for a separate AR stage in production systems?
+- MoE-TTS [[2508.11326]] shows that instruction-conditioned AR TTS systems fail to generalise to figurative or metaphorical descriptions; can LLM-aligned AR models overcome this with better tokenizer design or training data?
+- Modality-based MoE routing (frozen text experts, trained speech experts) preserves LLM capabilities during speech fine-tuning in [[2508.11326]]; is this approach necessary for all LLM-backbone AR TTS, or only for instruction-conditioned variants?
+- DualSpeechLM [[2508.08961]] demonstrates competitive understanding and generation at 4.5K hours; does the dual-token advantage persist at 100K+ hour scale where the modality gap may narrow?
 
 ## Trend Summary
 
@@ -176,6 +183,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning; resolves text dilution problem of decoder-only AR TTS; achieves best WER among compared systems on English, Italian, Portuguese, and Chinese |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time) with 48.99 ms first-byte latency — fastest in corpus |
 | [[interspeech-2025-0551]] | Monotonic Attention for Robust TTS Synthesis in Large Language Model Frameworks | Interspeech | 2025 | Stepwise monotonic attention (SMA) fine-tuning of selected alignment heads in decoder-only LLM TTS reduces deletion/insertion errors without external aligners; CER 8.53% vs. 10.42% on Seed-ZH-Hard at 300M/150K-hour scale |
+| [[2504.12867]] | EmoVoice | arXiv | 2025 | Extends Qwen2.5-based AR codec LM with parallel phoneme-boost decoding head; parallel phoneme output reduces WER; LLM pretraining initialisation essential for emotion-controllable TTS |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | Proposes replacing codec tokens with explicit prosody-text dual tokens in a Llama 3.1 backbone; demonstrates that prosody emergence requires tokenisation design, not data scale |
+| [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Hybrid chunk-wise AR + within-chunk flow-matching in a unified model; KV-cache compatible AR backbone with bidirectional intra-chunk denoising; FSQ codec at 12.5 Hz |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Qwen2.5-0.5B backbone predicts interleaved speech and facial landmark tokens from multimodal dialogue context; joint AR prediction of two synchronised token streams at matching rate |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | Fine-tunes CosyVoice-300M AR codec LM for child-friendly speech in three low-resource Southeast Asian languages; x-vector speaker conditioning steers age-appropriate vocal characteristics |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | Separates understanding-oriented (USTokenizer) and acoustic (WavTokenizer) token streams in a single unified architecture; understanding-driven tokenizer training against LLM objectives reduces modality gap |
+| [[2508.09767]] | UtterTune | arXiv | 2025 | LoRA on CosyVoice2 AR codec LM with phoneme-tag tokens for Japanese pitch accent correction; <0.5% parameters; raises accent correctness from 0.498 to 0.899 |
+| [[2508.11326]] | MoE-TTS | arXiv | 2025 | Modality-based MoE routing with frozen text experts and trained speech experts; preserves LLM text understanding during speech fine-tuning; out-of-domain description generalisation |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | Gemma-based 0.5B AR LM for text-to-semantic generation; conditional flow matching for acoustics; 22-language Indic TTS from 20K hours of open-source data |
 | [[interspeech-2025-0704]] | Differentiable Reward Optimization for LLM based TTS system | Interspeech | 2025 | DiffRO applies RLHF to codec LM TTS via Gumbel-Softmax differentiable token sampling and a multi-task reward model (ASR, emotion, MOS) that operates directly on codec tokens; WER 0.78% zh on seed-tts-eval |
 | [[interspeech-2025-0787]] | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech | 2025 | Applies embedding-space manipulation to Metavoice 1B (autoregressive codec LM) to generate speaker-style-modified (Lombard) speech via spherical interpolation |
 | [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps fine-tunes Parler-TTS (880M DAC-token autoregressive LM) on 2709 hours of rich style-annotated data, improving intrinsic tag recall from 33% to 69.5% |

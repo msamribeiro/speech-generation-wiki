@@ -1,0 +1,96 @@
+concept: streaming-tts
+last_updated: 2026-06-02
+paper_count: 19
+
+papers:
+  - id: 2507.22746
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Chunk-wise AR generation combined with within-chunk bidirectional FM denoising is KV-cache compatible and enables streaming at 2 NFE per chunk.
+    evidence:
+      - Dragon-FM: causal FSQ codec decoder at 12.5 Hz; chunk-AR generation with KV-cache; within-chunk FM at 2 NFE; SPK-SIM 0.916 and WER 2.74 on internal podcast data.
+    limitations:
+      - Internal podcast evaluation only; no standardized benchmark comparison.
+
+  - id: 2508.02849
+    year: 2025
+    task: [codec]
+    architecture: [VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Fully causal single-codebook streaming codec with 12.08 ms initial latency is achievable with VAE+FSQ quantisation and frame-level contrastive learning.
+    evidence:
+      - SecoustiCodec: 12.08 ms initial latency; encoder RTF 0.002; 20 tokens/s; designed for voice-dialogue downstream tasks.
+    limitations:
+      - Downstream streaming TTS pipeline integration not demonstrated end-to-end.
+
+  - id: 2508.05207
+    year: 2025
+    task: [codec]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - 2D time-frequency domain codec architecture achieves 80 ms architectural latency for stereo audio with 1-embedding look-ahead in decoder.
+    evidence:
+      - SpectroStream: 80 ms architectural latency; real-time CPU inference; causal 2D-TF codec for 48 kHz stereo.
+    limitations:
+      - Music/general audio focus; speech-specific streaming TTS quality not evaluated.
+
+claim_clusters:
+  - claim: Streaming zero-shot VC can match or exceed offline quality in speaker similarity.
+    status: strongly_supported
+    supporting_papers: [2507.14534]
+    contradicting_papers: []
+
+  - claim: Lower AR frame rate codecs substantially reduce streaming TTS latency without proportional quality loss.
+    status: strongly_supported
+    supporting_papers: [2510.00981, 2601.15621, 2509.02020]
+    contradicting_papers: []
+
+  - claim: Chunk-aware causal FM with multiple masking patterns can be deployed in both streaming and non-streaming modes with virtually lossless streaming quality.
+    status: strongly_supported
+    supporting_papers: [2412.10117]
+    contradicting_papers: []
+
+  - claim: Depth-wise sequential decoding over RVQ layers (non-AR) achieves an order-of-magnitude lower RTF than AR streaming TTS.
+    status: emerging
+    supporting_papers: [2604.12438]
+    contradicting_papers: []
+
+  - claim: MTP modules can be added to frozen AR TTS models as plug-and-play acceleration without quality degradation.
+    status: emerging
+    supporting_papers: [2508.06262, 2601.15621]
+    contradicting_papers: []
+
+  - claim: The primary remaining latency bottleneck in streaming TTS is the acoustic vocoder, not the token generation stage.
+    status: emerging
+    supporting_papers: [2025.emnlp-main.989, 2507.14534]
+    contradicting_papers: []
+
+  - claim: Chunk-wise AR + within-chunk FM denoising is KV-cache compatible and enables 2 NFE streaming synthesis.
+    status: emerging
+    supporting_papers: [2507.22746]
+    contradicting_papers: []
+
+  - claim: Whether 37 ms latency is perceptually transparent in real-time communication is not established.
+    status: contested
+    supporting_papers: [2507.14534]
+    contradicting_papers: []
+    notes: No user study on this perceptual threshold exists in the corpus.
+
+open_questions:
+  - Can streaming zero-shot TTS achieve comparable quality to non-streaming SOTA at under 100 ms on diverse speakers?
+  - Does depth-wise sequential non-AR decoding scale to zero-shot multi-speaker synthesis?
+  - Can Dragon-FM's hybrid design achieve first-byte latency under 100 ms on standardized benchmarks?
+  - Is pixel shuffle the optimal approach for causal upsampling, or are better artifact-free alternatives possible?
+
+trend_notes:
+  - 2026: The bottleneck has shifted from token generation speed to acoustic vocoder latency; the gap between streaming and non-streaming systems has largely closed.
+  - Leading systems in 2026: Qwen3-TTS (97 ms), Fish Audio S2 (TTFA <100 ms), 2604.12438 (48.99 ms RTF 0.0033).
+  - Dragon-FM introduces a hybrid chunk-AR+FM approach as a new streaming paradigm beyond pure AR or pure NAR streaming.

@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: mature-infrastructure
 ---
 
@@ -68,6 +68,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Convolutional SSL-like encoders in RVQ codecs have wide receptive fields that cause context-dependent tokenization of identical audio segments (DRI), degrading downstream language model training.
   Supporting: [[2025.acl-long.1498]]
 
+- WavLM-based SSL features improve paralinguistic expressiveness in voice conversion but introduce timbre leakage and noise sensitivity that require explicit mitigation; random feature erasure during training is an effective lightweight regulariser.
+  Supporting: [[2508.04996]]
+
+- HuBERT discrete tokens provide strong content-speaker disentanglement for voice conversion because K-means clustering naturally suppresses speaker-specific variation; this remains valuable even as supervised foundation models outperform SSL for codec semantic targets.
+  Supporting: [[2508.06890]], [[2508.08399]]
+
 ### Contested
 
 > [!warning]
@@ -113,7 +119,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Trend Summary
 
-2020–2022: wav2vec 2.0, HuBERT, WavLM established SSL as the standard for downstream speech tasks. 2023–2024: SSL features became the semantic distillation target for low-frame-rate codecs (SpeechTokenizer, Mimi, DualCodec); supervised Whisper became the ASR backbone for most evaluation pipelines. 2025: Corpus papers reveal the limits of SSL for codec design — ASR features substantially outperform SSL features for dynamic frame merging at ultra-low rates ([[2510.00981]]), and SSL-based HuBERT tokens in SLMs exhibit a combinatorial lexical explosion problem ([[2412.17048]]) driven by retained paralinguistic variability. The field is shifting from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures. SenseVoice-Small's strong performance in [[2510.00981]] is an early signal of this shift.
+2020–2022: wav2vec 2.0, HuBERT, WavLM established SSL as the standard for downstream speech tasks. 2023–2024: SSL features became the semantic distillation target for low-frame-rate codecs (SpeechTokenizer, Mimi, DualCodec); supervised Whisper became the ASR backbone for most evaluation pipelines. 2025: Corpus papers reveal the limits of SSL for codec design — ASR features substantially outperform SSL features for dynamic frame merging at ultra-low rates ([[2510.00981]]), and SSL-based HuBERT tokens in SLMs exhibit a combinatorial lexical explosion problem ([[2412.17048]]) driven by retained paralinguistic variability. The field is shifting from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures. SenseVoice-Small's strong performance in [[2510.00981]] is an early signal of this shift. Wave-level cross-modal contrastive learning (SecoustiCodec [[2508.02849]]) proposes eliminating SSL distillation entirely in favour of frame-level phoneme-speech contrastive alignment, arguing that SSL representations inherently retain paralinguistic content that prevents clean disentanglement. REF-VC [[2508.04996]] demonstrates that SSL (WavLM) features combined with ASR bottleneck features are complementary for voice conversion, with SSL providing paralinguistic expressiveness and ASR providing noise-robust phonetic content. DualSpeechLM [[2508.08961]] trains a new speech tokenizer optimised against text LLM objectives rather than reconstruction, representing a departure from both SSL distillation and ASR supervision paradigms toward a directly LLM-aligned tokenisation approach. MahaTTS-v2 [[2508.14049]] uses XLS-R (multilingual wav2vec 2.0, 1B params) k-means tokens as its semantic layer, demonstrating SSL's continued practical value for multilingual low-resource TTS in a production setting. ProsodyLM [[2507.20091]] replaces codec tokens entirely with explicit word-level prosody annotations derived from Whisper transcription, showing that prosody emergence requires token design rather than data scale.
 
 ## All Papers
 
@@ -134,3 +140,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0669]] | PAST: Phonetic-Acoustic Speech Tokenizer | Interspeech | 2025 | Challenges the assumption that SSL pseudo-label distillation is needed for hybrid tokenization; supervised CTC + phoneme classification directly on RVQ-1 achieves better phonetic metrics than SpeechTokenizer without any external SSL teacher |
 | [[interspeech-2025-0973]] | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech | 2025 | DenseMOS uses wav2vec 2.0 base representations; finds CNN encoder output (local features) more predictive of MOS than deep transformer layers (contextual features); PCC 0.62 for MOS prediction on Spanish TTS |
 | [[2025.coling-main.518]] | ProsodyFlow: High-fidelity TTS through Conditional Flow Matching and Prosody Modeling | workshop | 2025 | Frozen WavLM-Base-plus (12 transformer layers, averaged) extracts prosody vectors as FM training targets; component ablation shows WavLM removal causes -0.18 CMOS loss |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | Uses Whisper for ASR and StyleTTS2 aligner for extracting word-level prosody features; argues that prosody emergence in LLMs requires explicit prosody token design rather than data scale |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Proposes frame-level cross-modal contrastive learning between phoneme and speech representations as alternative to SSL distillation; argues SSL retains residual paralinguistic content that contrastive training removes |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | Combines WavLM SSL features (paralinguistic expressiveness) with Wenet ASR bottleneck features (phonetic content) in a flow-matching DiT; random erasing regularisation balances the two-stream trade-off |
+| [[2508.05385]] | Non-Verbal Speech Generation Pipeline | arXiv | 2025 | wav2vec-bert 2.0 with learnable weighted layer fusion as the backbone for frame-level NV event detection; shows cross-lingual generalisation to Chinese without retraining |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | HuBERT-base K-means (500 clusters) for phonetic content extraction; gradient reversal layer on content suppresses residual emotional leakage into content tokens |
+| [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | WavLM-Large (6th layer) as frozen encoder; k-means VQ on raw hidden vectors provides speaker-independent phonetic content; instance normalization separates time-invariant speaker statistics from time-variant prosody |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | Whisper-medium encoder as basis for USTokenizer; understanding-driven tokenizer trained against LLM next-token prediction objective rather than SSL reconstruction |
+| [[2508.11326]] | MoE-TTS | arXiv | 2025 | CosyVoice2 supervised semantic tokenizer (25 Hz) as speech representation; relies on SSL-adjacent architecture for token extraction in description-based TTS |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | XLS-R wav2vec2.0 1B-param multilingual model with k-means clustering as semantic token front-end for 22-language Indic TTS; demonstrates SSL cross-lingual generalisation for low-resource language coverage |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | HuBERT as audio encoder for EVC-CLAP contrastive pretraining; aligns speech and text emotional representations in a shared latent space |

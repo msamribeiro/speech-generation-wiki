@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: dominant
 ---
 
@@ -174,3 +174,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Adds a per-phoneme accentedness conditioning parameter to Matcha-TTS flow-matching architecture; psychometric calibration maps the engineering parameter to perceptually distinguishable accentedness levels |
 | [[interspeech-2025-0854]] | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech | 2025 | CFM Transformer U-Net postprocessor trained with simulated low-resource artifacts from high-resource speakers; MUSHRA 79.8 on PTDB-TUG combined — CFM postprocessor outperforms GAN postprocessor |
 | [[2025.coling-main.518]] | ProsodyFlow: High-fidelity TTS through Conditional Flow Matching and Prosody Modeling | workshop | 2025 | Applies CFM specifically to the prosody latent space extracted by a frozen WavLM encoder; enables inference-time prosody diversity without reference audio; MOS 4.23 on LJSpeech, near human-level |
+| [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Hybrid: chunk-wise AR across 2-second blocks + within-block FM denoising over continuous FSQ embeddings with bidirectional attention; mean flow optimisation for 2 NFE |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | DiT-based FM decoder for voice conversion; Shortcut Models reduce FM inference from 32 to 4 steps at marginal quality cost |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Transformer-based 1D U-Net FM alignment module for cross-lingual emotion TTS; maps discrete codec tokens to mel-spectrograms via ODE solver with 1.6:1 upsampling alignment |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | Inherits CosyVoice-300M FM acoustic decoder; demonstrates fine-tuning preserves FM-based quality for child-friendly low-resource language TTS |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | Conditional flow matching acoustic model (Matcha-TTS-inspired) for semantic-to-mel stage; OT-CFM with flat alternating attention and convolution layers; RelativePositionBias for long-context generation |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | CFM decoder (AdaFM-VC) with 6 ResNet+FiLM blocks for emotional voice conversion; Gaussian-to-mel transport conditioned on PPGs and CLAP emotional embeddings; OT-CFM |

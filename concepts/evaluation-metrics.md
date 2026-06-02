@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: established
 ---
 ## Executive Summary
@@ -75,6 +75,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Automatic naturalness predictors (UTMOS, DNSMOS) are now standard for rapid iteration in codec and TTS evaluation, though their correlation with human MOS degrades outside their training distribution.
   Supporting: [[2510.00981]], [[2603.29339]], [[interspeech-2025-0973]]
 
+- Automatic MOS predictors consistently fail to discriminate among high-quality speech generation systems whose naturalness approaches human levels, indicating a ceiling effect in current SQA methodology.
+  Supporting: [[2508.00317]], [[2508.07711]]
+
+- Emotion similarity metrics correlate poorly at the utterance level with human perceptual judgements of emotional expressiveness, limiting their utility for fine-grained emotion TTS evaluation.
+  Supporting: [[2504.12867]]
+
 ### Contested
 
 > [!warning]
@@ -111,10 +117,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - What are the right metrics for evaluating spoken dialogue system naturalness beyond event classification accuracy [[2025.findings-emnlp.424]]?
 - EmergentTTS-Eval (used by [[2603.08823]]) and Audio Turing Test are newer benchmarks gaining traction for paralinguistic instruction-following evaluation; what is their relationship to standard MOS and WER, and do they capture meaningfully different aspects of system capability?
 - The controllable TTS survey [[2025.emnlp-main.40]] identifies no standardized evaluation combining naturalness, intelligibility, similarity, and controllability accuracy; what would such a benchmark look like?
+- Full-duplex spoken dialogue systems need evaluation frameworks beyond standard TTS metrics; [[2503.04721]] (Full-Duplex-Bench) introduces TOR, backchannel frequency, and response latency across four turn-taking scenarios — how should these integrate with standard evaluation practice?
+- For turn-taking and interaction benchmarks, human naturalistic conversation (as in [[2503.04721]]) and synthetic stimuli (GPT-4o + ChatTTS) differ in prosodic properties; does this gap affect benchmark validity?
 
 ## Trend Summary
 
-Pre-2023: MOS and WER were the standard; speaker verification cosine similarity emerged as a faster alternative to SMOS. 2024–2025: UTMOS becomes standard in codec evaluation [[2510.00981]]; Seed-TTS-eval (English and Mandarin cross-sentence prompts) becomes the reference benchmark for zero-shot TTS. 2025: Interaction-specific evaluation emerges [[2025.findings-emnlp.424]]; the controllable TTS survey [[2025.emnlp-main.40]] documents that no benchmark unifies naturalness, intelligibility, similarity, and controllability accuracy in a single protocol; DiFlow-TTS [[2509.09631]] reports a concrete divergence between automatic SIM-O ranking and perceptual similarity MOS ranking, demonstrating that WavLM-based cosine similarity is insufficient for capturing perceptual voice identity. 2026: EmergentTTS-Eval (instruction-following paralinguistic tasks) and Audio Turing Test emerge as new evaluation benchmarks used in Fish Audio S2 [[2603.08823]]; LongCat-AudioDiT [[2603.29339]] uses DNSMOS 3.40 as an alternative naturalness proxy; CV3-Eval for multilingual voice cloning across 9 languages is used by both [[2601.15621]] and [[2603.08823]]. F0-RMSE is used by DiFlow-TTS [[2509.09631]] and Vevo2 [[2508.16332]] as a prosody accuracy metric. The diversity of benchmarks (Seed-TTS-Eval, LibriSpeech-PC, FLEURS-102, MiniMax-Multilingual-24, EmergentTTS-Eval) remains a persistent problem: no single public benchmark adequately captures all dimensions of modern TTS capability.
+Pre-2023: MOS and WER were the standard; speaker verification cosine similarity emerged as a faster alternative to SMOS. 2024–2025: UTMOS becomes standard in codec evaluation [[2510.00981]]; Seed-TTS-eval (English and Mandarin cross-sentence prompts) becomes the reference benchmark for zero-shot TTS. 2025: Interaction-specific evaluation emerges [[2025.findings-emnlp.424]]; the controllable TTS survey [[2025.emnlp-main.40]] documents that no benchmark unifies naturalness, intelligibility, similarity, and controllability accuracy in a single protocol; DiFlow-TTS [[2509.09631]] reports a concrete divergence between automatic SIM-O ranking and perceptual similarity MOS ranking, demonstrating that WavLM-based cosine similarity is insufficient for capturing perceptual voice identity. New frontiers emerging in 2025: Full-Duplex-Bench [[2503.04721]] introduces automated turn-taking metrics (TOR, backchannel frequency, response latency) for full-duplex dialogue evaluation; VoiceMOS/AudioMOS Challenge survey [[2508.00317]] documents that multi-track challenge infrastructure is the strongest accelerant for SQA method development, and that near-human-quality systems elude discrimination by current predictors; FreeGAN [[2508.07711]] provides concrete evidence that UTMOS and subjective MOS rank vocoders differently, adding to accumulated evidence that automatic predictors are insufficient surrogates. SpeechRole [[2508.02013]] introduces a nine-dimension evaluation framework for speech role-playing agents (Instruction Adherence, Conversational Coherence, Speech Fluency/Naturalness, Prosodic Consistency, Emotion Appropriateness, Personality/Knowledge Consistency). The non-verbal speech pipeline [[2508.05385]] introduces CLAP-based tag accuracy and IMOS as evaluation dimensions for non-verbal vocalization synthesis. 2026: EmergentTTS-Eval (instruction-following paralinguistic tasks) and Audio Turing Test emerge as new evaluation benchmarks used in Fish Audio S2 [[2603.08823]]; LongCat-AudioDiT [[2603.29339]] uses DNSMOS 3.40 as an alternative naturalness proxy; CV3-Eval for multilingual voice cloning across 9 languages is used by both [[2601.15621]] and [[2603.08823]]. F0-RMSE is used by DiFlow-TTS [[2509.09631]] and Vevo2 [[2508.16332]] as a prosody accuracy metric. The diversity of benchmarks remains a persistent problem: no single public benchmark adequately captures all dimensions of modern TTS capability.
 
 ## All Papers
 
@@ -145,3 +153,15 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[interspeech-2025-0648]] | MIKU-PAL: Automated Multimodal Method for Speech Paralinguistic and Affect Labeling | Interspeech | 2025 | Demonstrates that annotation consistency (Fleiss κ=0.93) matters more than accuracy (68.5%) for downstream TTS training; introduces 26-category emotion taxonomy beyond Ekman's basic emotions |
 | [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Shows WHISPER fails on exclamatory sentences (near-chance recall), demonstrating that current ASR punctuation-based prosody labels are unreliable for exclamatory TTS prosody; early fusion of WavLM+XLM-RoBERTa achieves UAR 74.22% for German sentence mode |
 | [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu | Interspeech | 2025 | Comprehensive phoneme-level evaluation (DRT, MRT, SUS) for low-resource South Asian language TTS; demonstrates that phoneme-based models substantially outperform MMS character-level approach |
+| [[2503.04721]] | Full-Duplex-Bench | arXiv | 2025 | First automated benchmark for full-duplex dialogue systems across four turn-taking scenarios; introduces TOR, backchannel JSD, and response latency as reproducible metrics without human annotation |
+| [[2504.12867]] | EmoVoice | arXiv | 2025 | Demonstrates that sentence-level emotion similarity (emotion2vec cosine) has only ~40% Spearman correlation with human MOS; multimodal LLMs fail as emotion judges |
+| [[2508.00317]] | Advancing Speech Quality Assessment through Challenges | arXiv | 2025 | Retrospective on four VoiceMOS/AudioMOS Challenge editions; documents that near-human-quality systems defeat current SQA predictors and that cross-domain generalisation remains unsolved |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | Nine-dimension evaluation framework for speech role-playing agents; LLM-as-judge (Gemini-2.5-Pro) achieves Spearman ρ 0.67–0.98 with human experts |
+| [[2508.05385]] | Non-Verbal Speech Generation Pipeline | arXiv | 2025 | Introduces CLAP-based semantic score and IMOS for NV vocalization synthesis evaluation; TSA annotation quality drives controllability more than dataset scale |
+| [[2508.06870]] | Text to Speech for Meitei Mayek Script | arXiv | 2025 | Native-speaker MOS evaluation with no automated metric baseline for a new script; illustrates the limits of evaluation in zero-comparison scenarios |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | Comprehensive VC evaluation: WER, CER, F0-PCC, EECS, and four-dimension subjective MOS across seen and unseen speakers and emotions |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Uses custom EMOS metric for cross-lingual emotion transfer evaluation; demonstrates divergence between emotion and naturalness MOS under cross-lingual transfer |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | DCF metric for accent similarity alongside naturalness MOS; identifies divergence between automatic accent identification and human perceptual accent evaluation |
+| [[2508.07711]] | Is GAN Necessary for Neural Vocoder? | arXiv | 2025 | Provides controlled comparison showing UTMOS and subjective MOS rank vocoders in different order; contributes to evidence that UTMOS is unreliable for fine-grained vocoder comparison |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | MOS + CER evaluation for three low-resource Southeast Asian languages; small-scale evaluation (30 samples, 10 listeners) highlights statistical limitations of low-resource TTS evaluation |
+| [[interspeech-2025-0196]] | SPCODEC | Interspeech | 2025 | POLQA objective MOS alongside 7-listener subjective MOS for speech codec evaluation at 16 kHz and 32 kHz |

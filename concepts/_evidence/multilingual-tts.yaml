@@ -1,0 +1,157 @@
+concept: multilingual-tts
+last_updated: 2026-06-02
+paper_count: 26
+
+papers:
+  - id: 2508.05385
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: low
+    contribution_type: dataset-contribution
+    claims:
+      - Non-verbal vocalizations show cross-lingual acoustic generalisability; NV detection models trained on English perform comparably on Chinese without retraining.
+    evidence:
+      - Non-verbal speech pipeline shows bilingual (EN/ZH) NV detection generalisation with wav2vec-bert 2.0; cross-lingual transfer without retraining.
+    limitations:
+      - NV synthesis cross-lingual generalisation not tested; detection and synthesis generalisability may differ.
+
+  - id: 2508.06870
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Phoneme mapping development remains a prerequisite for any standard TTS pipeline applied to indigenous writing systems with non-Latin scripts.
+    evidence:
+      - First TTS for Manipuri (Meitei Mayek script) via ARPAbet phoneme mapping; demonstrates existence proof for indigenous script TTS.
+    limitations:
+      - Native-speaker MOS on only 10 samples per condition; statistical reliability is low.
+
+  - id: 2508.07302
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Cross-lingual emotion transfer from a high-resource to a low-resource tonal language can be enabled by retrieval-augmented prosody prompting without parallel bilingual emotional data.
+    evidence:
+      - XEmoRAG achieves EMOS 4.65 on Thai using Emo2Vec retrieval from Chinese emotional data without parallel bilingual emotional data.
+    limitations:
+      - Thai-only; 60 hours emotional training data; typologically restricted experiment.
+
+  - id: 2508.07426
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Geolocation-based accent label filtering consistently outperforms raw self-reported labels for accented TTS.
+    evidence:
+      - XTTS-v2 with geolocation-filtered CommonVoice labels achieves better objective accent similarity than raw labels across 11 English accent varieties.
+    limitations:
+      - kNN-VC augmentation objective improvement unclear in human evaluation.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Fine-tuning a multilingual foundation model for child-friendly speech in three low-resource Southeast Asian languages is effective from as few as 1,400 utterances.
+    evidence:
+      - MultiGen achieves MOS 4.05 on Tamil and 3.97 on Singaporean-accented Mandarin; MOS 4.32 on Malay using CosyVoice-300M fine-tuning.
+    limitations:
+      - Small-scale evaluation (10 listeners); no comparison to dedicated low-resource TTS systems.
+
+  - id: 2508.09767
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - BPE-based multilingual TTS systematically underperforms on phonologically complex languages with pitch accent; LoRA with phoneme-tag tokens corrects this.
+    evidence:
+      - UtterTune raises Japanese accent correctness from 0.499 to 0.899 with rank-16 LoRA at <0.5% trainable parameters on CosyVoice2.
+    limitations:
+      - Requires user-supplied phonemic transcription; practical burden for end users.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Two-stage semantic-acoustic decoupling simplifies new language addition to a multilingual system at approximately 200 hours per language.
+      - Intelligibility in low-resource languages within the same multilingual system remains markedly worse than high-resource languages.
+    evidence:
+      - MahaTTS achieves competitive WER across 17 Indic languages from 20K hours open-source data with 200 hours per new language as the stated threshold.
+    limitations:
+      - English dominates (58%) the training data; genuine cross-lingual transfer vs. data dominance is unclear.
+
+claim_clusters:
+  - claim: LLM initialization substantially reduces data requirements for multilingual TTS and enables hundreds-of-language coverage.
+    status: strongly_supported
+    supporting_papers: [2604.00688, 2511.12347, 2412.10117, 2508.14049]
+    contradicting_papers: []
+
+  - claim: Supervised semantic tokens from multilingual ASR encoders improve zero-shot cross-lingual voice cloning quality.
+    status: strongly_supported
+    supporting_papers: [2407.05407, 2412.10117, 2603.08823]
+    contradicting_papers: []
+
+  - claim: Cross-lingual zero-shot voice cloning is consistently harder than same-language synthesis in speaker similarity and intelligibility.
+    status: strongly_supported
+    supporting_papers: [2601.15621, 2603.08823, 2025.acl-long.598]
+    contradicting_papers: []
+
+  - claim: Dedicated phoneme-based pipelines still outperform large multilingual models for very low-resource non-Latin-script languages.
+    status: emerging
+    supporting_papers: [interspeech-2025-0469]
+    contradicting_papers: []
+
+  - claim: Two-stage semantic-acoustic decoupling allows new language addition at approximately 200 hours without retraining the acoustic model.
+    status: emerging
+    supporting_papers: [2508.14049]
+    contradicting_papers: []
+
+  - claim: LoRA with phoneme-tag tokens corrects pitch accent errors in BPE-based multilingual TTS at less than 0.5% parameter overhead.
+    status: emerging
+    supporting_papers: [2508.09767]
+    contradicting_papers: []
+
+  - claim: Large multilingual LLM-TTS models fine-tuned with language-specific conditioning substantially outperform conventional models for low-resource languages from as few as 1,400 utterances.
+    status: emerging
+    supporting_papers: [2508.08715]
+    contradicting_papers: []
+
+  - claim: Cross-lingual emotion transfer without parallel bilingual data is achievable via retrieval-based prosody prompting.
+    status: emerging
+    supporting_papers: [2508.07302]
+    contradicting_papers: []
+
+  - claim: Non-verbal vocalizations show cross-lingual acoustic generalisability without retraining.
+    status: emerging
+    supporting_papers: [2508.05385]
+    contradicting_papers: []
+
+  - claim: Whether scale or architectural choice is the primary driver of multilingual quality improvements is unresolved.
+    status: contested
+    supporting_papers: [2601.15621, 2603.08823]
+    contradicting_papers: [2604.00688, 2025.ccl-1.80]
+
+open_questions:
+  - What is the minimum data per language for acceptable zero-shot quality in a multilingual model?
+  - Does LoRA pitch accent correction generalise to other tonally complex languages beyond Japanese?
+  - Does shared subword tokenization reliably handle tonal languages where tone is phonemically contrastive?
+
+trend_notes:
+  - 2026: OmniVoice crossed 600 languages from a single open-source model — qualitative step change in scope.
+  - Integration pass 5 adds five new multilingual perspectives: MahaTTS (22 Indic languages), MultiGen (child-friendly SEA), UtterTune (Japanese pitch accent), XEmoRAG (cross-lingual emotion transfer), and NV pipeline (bilingual NV detection).
+  - The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage.

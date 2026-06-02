@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: established
 ---
 
@@ -46,6 +46,18 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Specialized adaptation curricula with teacher-student speaker encoders substantially improve speaker similarity for pathological reference audio that standard zero-shot models fail on.
   Supporting: [[interspeech-2025-0596]]
 
+- LoRA-based fine-tuning with phoneme-tag tokens can restore user-controllable pitch accent correction to BPE-input multilingual LLM-TTS systems at less than 0.5% of model parameters.
+  Supporting: [[2508.09767]]
+
+- Foundation TTS models adapted to child-friendly speech with appropriate x-vector speaker conditioning substantially outperform conventional models on low-resource Southeast Asian languages with as few as 1,400 training utterances.
+  Supporting: [[2508.08715]]
+
+- Voice conversion-based timbre augmentation (kNN-VC) for low-resource accent data improves objective accent similarity but shows unclear benefit in human perceptual evaluation of accent plausibility.
+  Supporting: [[2508.07426]]
+
+- Decoupling the text-to-semantic and acoustic generation stages in a two-stage TTS pipeline allows new language addition via approximately 200 hours of target language data without retraining the acoustic model.
+  Supporting: [[2508.14049]]
+
 ### Emerging
 
 - Embedding-space adaptation (transforming speaker embeddings without weight updates) can synthesize gradual speaking-condition variations (e.g., Lombard effect) from minimal adaptation data.
@@ -81,12 +93,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - At what data scale does full fine-tuning outperform parameter-efficient adaptation (LoRA, adapters) for TTS?
 - Can speaker adaptation methods generalize across languages — e.g., adapt a speaker's voice from English recordings to Thai synthesis?
 - How does speaker adaptation interact with prosody and emotion control — does adapting to a speaker's voice also adapt their emotional range?
+- UtterTune [[2508.09767]] demonstrates LoRA-based pitch accent correction at <0.5% of parameter count; does this approach extend effectively to other prosodically complex languages beyond Japanese?
+- MultiGen [[2508.08715]] adapts a multilingual foundation model to child-friendly speech with as few as 1,400 utterances; what is the minimum data floor for reliable domain adaptation to a new speaker type?
+- kNN-VC augmentation in [[2508.07426]] improves objective accent similarity but shows mixed human evaluation; does voice conversion-based timbre augmentation reliably improve perceived accent quality, or only automatic metrics?
 
 ## Trend Summary
 
 # TODO: expand — dedicated speaker adaptation papers not yet represented in corpus.
 
-2025: Language-level adaptation is demonstrated for tonal low-resource languages ([[2025.acl-industry.42]]). The practical trend is toward zero-shot cloning reducing the need for adaptation in high-resource scenarios, while adaptation remains essential for low-resource and domain-specific applications.
+2025: Language-level adaptation is demonstrated for tonal low-resource languages ([[2025.acl-industry.42]]). The practical trend is toward zero-shot cloning reducing the need for adaptation in high-resource scenarios, while adaptation remains essential for low-resource and domain-specific applications. Integration pass 5 adds four new adaptation approaches: LoRA-based pronunciation correction (UtterTune [[2508.09767]]) for Japanese pitch accent at <0.5% parameter overhead; foundation model fine-tuning for child-friendly speech in three low-resource Southeast Asian languages (MultiGen [[2508.08715]]) demonstrating effectiveness from as few as 1,400 utterances; kNN-VC timbre augmentation for low-resource accented TTS [[2508.07426]] providing data diversity at the cost of acoustic degradation; and two-stage semantic-acoustic decoupling for 22-language Indic TTS (MahaTTS [[2508.14049]]) requiring only 200 hours per new language addition. The batch confirms that parameter-efficient adaptation (LoRA, fine-tuning) is increasingly the practical default, with adaptation scope ranging from pronunciaton-specific (UtterTune) to full domain transfer (MultiGen).
 
 ## All Papers
 
@@ -97,3 +112,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0787]] | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech | 2025 | Feedforward embedding transform maps plain to Lombard speaker embeddings; spherical interpolation calibrated to physical noise levels; plausibility MOS 3.31 vs. 2.19 for level-only baseline from only ~250s Lombard data |
 | [[interspeech-2025-0854]] | Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech | 2025 | Simulates low-resource acoustic model artifacts from high-resource subsampled speakers for training postprocessor; GAN MUSHRA 74.8, CFM MUSHRA 79.8 on low-resource PTDB-TUG speakers |
 | [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent multi-accent frontend reduces pronunciation data for new accent by 95% via cross-accent knowledge transfer; accent similarity weakly mediates transfer; applicable to any non-standard accent variety |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | Geolocation-based accent label discovery; kNN-VC timbre augmentation for data diversity; XTTS-v2 backbone fine-tuned for 11 accent varieties from CommonVoice |
+| [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | Fully-discrete speaker adaptation via speaker code swap in codec-level VC; quantifies trade-off between speaker code discretization and speaker fidelity |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | CosyVoice-300M fine-tuning for child-friendly Southeast Asian TTS; x-vector speaker conditioning; effective from 1,400 utterances for Singaporean-accented Mandarin |
+| [[2508.09767]] | UtterTune | arXiv | 2025 | Rank-16 LoRA on CosyVoice2 AR LM with two phoneme-tag tokens for Japanese pitch accent; <0.5% trainable parameters; raises accent correctness from 0.499 to 0.899 |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | Two-stage semantic-acoustic pipeline for 22-language Indic TTS; ~200 hours per new language addition; Gemma-based LM fine-tuning for text-to-semantic stage |

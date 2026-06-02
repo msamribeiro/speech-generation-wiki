@@ -1,0 +1,175 @@
+concept: self-supervised-speech
+last_updated: 2026-06-02
+paper_count: 26
+
+papers:
+  - id: 2508.02849
+    year: 2025
+    task: [codec]
+    architecture: [VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Frame-level cross-modal contrastive learning between phoneme and speech representations removes paralinguistic content from the semantic stream more effectively than SSL distillation.
+      - SSL representations inherently retain residual paralinguistic content that prevents clean disentanglement in single-codebook codecs.
+    evidence:
+      - SecoustiCodec achieves 98% codebook utilisation with VAE+FSQ; proposes contrastive learning outperforms HuBERT/WavLM distillation for semantic disentanglement with explicit three-way separation.
+    limitations:
+      - Requires duration-aligned phoneme labels; not applicable to unsupervised settings.
+
+  - id: 2508.04996
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - WavLM SSL features improve paralinguistic expressiveness in VC but introduce timbre leakage and noise sensitivity; random feature erasure during training mitigates this.
+      - ASR bottleneck features and SSL features are complementary; ASR provides noise-robust phonetic content while SSL adds paralinguistic expressiveness.
+    evidence:
+      - REF-VC: random erasing of SSL features for noise robustness; CER 8.03% vs. 12.45% for Seed-VC on noisy test; ABX prosody confirmation of source prosody preservation.
+    limitations:
+      - Evaluated on 10 unseen speakers; limited generalization test.
+
+  - id: 2508.05385
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - wav2vec-bert 2.0 with learnable weighted layer fusion enables cross-lingual NV detection without retraining.
+    evidence:
+      - Non-verbal speech pipeline: cross-lingual generalisation to Chinese without retraining; wav2vec-bert 2.0 with layer fusion as detection backbone.
+    limitations:
+      - Detection model only; NV synthesis cross-lingual generalisation not tested.
+
+  - id: 2508.06890
+    year: 2025
+    task: [VC]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - HuBERT-base K-means clusters provide strong content-speaker disentanglement for emotional VC because K-means clustering naturally suppresses speaker-specific variation.
+    evidence:
+      - Maestro-EVC uses HuBERT-base K-means (500 clusters) for phonetic content extraction with GRL to suppress residual emotional leakage into content tokens.
+    limitations:
+      - Standard use of HuBERT; no novel SSL contribution beyond applying it as content encoder.
+
+  - id: 2508.08399
+    year: 2025
+    task: [VC]
+    architecture: [VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - WavLM-Large (6th layer) as frozen encoder with k-means VQ provides speaker-independent phonetic content; instance normalization separates time-invariant speaker statistics from time-variant prosody.
+    evidence:
+      - WavLM residual after instance normalization separates speaker statistics from prosody; GRVQ quantises speaker component; discrete speaker codes introduce a measurable speaker fidelity trade-off.
+    limitations:
+      - Ablation on small held-out set; not compared to leading disentanglement systems.
+
+  - id: 2508.08961
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Whisper-medium encoder as basis for understanding-driven tokenizer trained against LLM next-token prediction objectives represents departure from both SSL distillation and ASR supervision.
+    evidence:
+      - DualSpeechLM USTokenizer (250 bps) trained against LLM objectives; competitive at 4.5K hours on multiple downstream tasks.
+    limitations:
+      - USTokenizer training cost substantially higher than standard codec or SSL-based tokenizer training.
+
+  - id: 2508.11326
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - CosyVoice2 supervised semantic tokenizer at 25 Hz uses SSL-adjacent architecture for token extraction.
+    evidence:
+      - MoE-TTS uses CosyVoice2 semantic tokenizer (SSL-adjacent architecture); no novel SSL contribution.
+    limitations:
+      - Inherits tokenizer from CosyVoice2; not an SSL contribution.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - XLS-R wav2vec2.0 1B-param multilingual model with k-means clustering demonstrates SSL cross-lingual generalisation for low-resource Indic TTS coverage.
+    evidence:
+      - MahaTTS uses XLS-R (multilingual wav2vec2.0, 1B) k-means tokens as semantic layer for 22-language Indic TTS from 20K hours.
+    limitations:
+      - SSL semantic layer not ablated against supervised alternatives; trade-off unclear.
+
+  - id: interspeech-2025-0203
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - HuBERT as audio encoder for CLAP-style contrastive pretraining aligns speech and text emotional representations in a shared latent space.
+    evidence:
+      - ClapFM-EVC uses HuBERT for EVC-CLAP audio encoding; soft-label contrastive training with both categorical and prompt labels improves emotion embedding quality.
+    limitations:
+      - Standard HuBERT use; no novel SSL contribution beyond applying it as audio encoder.
+
+claim_clusters:
+  - claim: WavLM-Large is the de facto standard backbone for automatic SPK-SIM evaluation in zero-shot TTS.
+    status: strongly_supported
+    supporting_papers: [2509.19668, 2025.acl-long.682, 2507.14534]
+    contradicting_papers: []
+
+  - claim: HuBERT discrete cluster representations in SLMs retain paralinguistic variability causing a combinatorial lexical explosion relative to text LMs.
+    status: strongly_supported
+    supporting_papers: [2412.17048, 2025.acl-long.682]
+    contradicting_papers: []
+
+  - claim: ASR-supervised features produce more semantically concentrated codec tokens than SSL for low-frame-rate codec design.
+    status: emerging
+    supporting_papers: [2510.00981, 2412.17048]
+    contradicting_papers: []
+
+  - claim: Supervised CTC training objectives directly on codec RVQ-1 achieve better phonetic tokenization metrics than SSL pseudo-label distillation.
+    status: emerging
+    supporting_papers: [interspeech-2025-0669]
+    contradicting_papers: []
+
+  - claim: SSL representations inherently retain residual paralinguistic content; frame-level contrastive learning removes this more effectively than SSL distillation.
+    status: emerging
+    supporting_papers: [2508.02849]
+    contradicting_papers: []
+
+  - claim: WavLM SSL features improve paralinguistic expressiveness in VC but introduce timbre leakage; random feature erasure is an effective lightweight regulariser.
+    status: emerging
+    supporting_papers: [2508.04996]
+    contradicting_papers: []
+
+  - claim: HuBERT discrete tokens retain strong content-speaker disentanglement for VC despite limitations as semantic codec targets.
+    status: emerging
+    supporting_papers: [2508.06890, 2508.08399]
+    contradicting_papers: []
+
+  - claim: Whether SSL models remain necessary for any codec or TTS component once supervised foundation models are available is unresolved.
+    status: contested
+    supporting_papers: [2510.00981]
+    contradicting_papers: [2507.14534, 2025.coling-main.518, 2508.14049]
+
+open_questions:
+  - Can SSL models be explicitly trained to suppress paralinguistic variability (Factor C) while retaining phonetic content?
+  - Is there a sweet spot between ASR-supervised (semantically concentrated) and SSL features (acoustically rich) for low-frame-rate codec design?
+  - As supervised foundation models increasingly replace SSL in codec design, will the SSL vs. supervised distinction collapse?
+  - Does XLS-R-based multilingual SSL generalise better as semantic targets across low-resource languages than English-centric SSL models?
+
+trend_notes:
+  - The field has shifted from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures.
+  - 2025: SecoustiCodec proposes eliminating SSL distillation in favour of frame-level contrastive learning; DualSpeechLM trains a tokenizer against LLM objectives — departing from both SSL distillation and ASR supervision.
+  - SSL retains strong practical value for VC content extraction and low-resource multilingual TTS (MahaTTS-v2 with XLS-R).

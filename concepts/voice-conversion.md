@@ -4,7 +4,7 @@ title: Voice Conversion
 aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conversion]
 status: established
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 ---
 
 ## Executive Summary
@@ -60,6 +60,21 @@ Claims are generalised propositions aggregated from paper evidence.
 - Chunk-level style encoding (capturing local prosody and emotion) is necessary for full speaking style transfer; global timbre encoding alone is insufficient for voice identity.
   Supporting: [[2507.14534]]
 
+- SSL features improve paralinguistic expressiveness in VC but introduce timbre leakage and noise sensitivity; random feature erasure during training can mitigate this without information bottleneck machinery.
+  Supporting: [[2508.04996]]
+
+- Three independent reference inputs (content, speaker, emotion) with dedicated encoders provide finer-grained emotional voice conversion than single-reference methods, particularly for temporal prosody transfer.
+  Supporting: [[2508.06890]]
+
+- Natural language prompts can control emotional voice conversion at parity with reference speech for the majority of listeners when a contrastive alignment model bridges speech and text emotional representations.
+  Supporting: [[interspeech-2025-0203]]
+
+- Fully discrete disentanglement of phonetic, prosodic, and speaker information in a neural codec enables voice conversion via codebook-level operations without an explicit VC training objective.
+  Supporting: [[2508.08399]]
+
+- Unsupervised frame-level cross-modal contrastive learning between phoneme and speech representations removes paralinguistic content from the semantic codec stream more effectively than SSL distillation, improving voice conversion quality.
+  Supporting: [[2508.02849]]
+
 ### Contested
 
 > [!warning]
@@ -100,10 +115,13 @@ Claims are generalised propositions aggregated from paper evidence.
 - Emotional style transfer in zero-shot online settings is demonstrated by Conan [[2507.14534]] but not independently evaluated — how well does the CVQ style encoder actually capture emotion vs. timbre?
 - Evaluation standards are fragmented: WER, SPK-SIM, and MOS are measured with different models and test sets across papers; a standard benchmark is needed.
 - Can articulatory-space VC (RT-VC approach) reach the speaker similarity levels of SSL-distillation approaches with a better speaker encoder?
+- REF-VC [[2508.04996]] shows better noise robustness than Seed-VC on a noisy test set; can this advantage be reproduced in diverse noise conditions and on standardized benchmarks?
+- Maestro-EVC [[2508.06890]] is evaluated only on the ESD corpus (350 utterances, 10 speakers); do the three-reference framework and temporal emotion alignment generalise to spontaneous or cross-domain speech?
+- The VoiceMOS/AudioMOS Challenge [[2508.00317]] identifies VC quality assessment as an active track with no generalised predictor; what evaluation framework would serve the growing VC field adequately?
 
 ## Trend Summary
 
-Through 2022–2024, the field progressed from parallel/non-parallel offline methods to online streaming approaches. The gap between online and offline quality has narrowed substantially. Conan [[2507.14534]] (2025) demonstrates that streaming VC can now exceed offline baselines in speaker similarity (85.71% vs. Diff-VCTK offline 81.47%), marking a qualitative shift. In the same year, RT-VC [[2025.acl-demo.37]] demonstrated that interpretable articulatory-space disentanglement can be made real-time on CPU. Two distinct streaming VC paradigms now exist: SSL-distillation content extraction (Conan) and articulatory-space content extraction (RT-VC), each with different trade-offs in speaker similarity, latency, interpretability, and hardware requirements. The security implications of VC pipelines are also receiving attention, as demonstrated by VoiceMark [[interspeech-2025-0575]].
+Through 2022–2024, the field progressed from parallel/non-parallel offline methods to online streaming approaches. The gap between online and offline quality has narrowed substantially. Conan [[2507.14534]] (2025) demonstrates that streaming VC can now exceed offline baselines in speaker similarity (85.71% vs. Diff-VCTK offline 81.47%), marking a qualitative shift. In the same year, RT-VC [[2025.acl-demo.37]] demonstrated that interpretable articulatory-space disentanglement can be made real-time on CPU. Two distinct streaming VC paradigms now exist: SSL-distillation content extraction (Conan) and articulatory-space content extraction (RT-VC), each with different trade-offs in speaker similarity, latency, interpretability, and hardware requirements. Integration pass 5 adds four distinct new directions for offline zero-shot VC: REF-VC [[2508.04996]] combining ASR+SSL features with random erasing regularisation for noise robustness; Maestro-EVC [[2508.06890]] with three-reference inputs and frame-level temporal emotion alignment; ClapFM-EVC [[interspeech-2025-0203]] with dual natural-language+reference conditioning and scalar intensity control; and [[2508.08399]] with fully-discrete three-factor codec disentanglement from WavLM without phoneme labels. VoiceMOS/AudioMOS [[2508.00317]] documents VC quality assessment as an active evaluation track. SecoustiCodec [[2508.02849]] proposes frame-level contrastive learning as a more effective alternative to SSL distillation for VC-oriented codec disentanglement.
 
 ## All Papers
 
@@ -112,3 +130,10 @@ Through 2022–2024, the field progressed from parallel/non-parallel offline met
 | [[2507.14534]] | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv (ASRU 2025) | 2025 | Streaming zero-shot VC at 37–140 ms latency; Emformer content extraction + CVQ style encoding + Causal Shuffle Vocoder |
 | [[2025.acl-demo.37]] | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL | 2025 | 61.4 ms CPU latency; articulatory coding (SPARC EMA inverter) + DDSP vocoder; best pitch tracking in corpus |
 | [[interspeech-2025-0575]] | VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents | Interspeech | 2025 | VC-resistant watermarking exploiting SpeechTokenizer RVQ disentanglement |
+| [[2508.00317]] | Advancing Speech Quality Assessment through Challenges | arXiv | 2025 | VC quality assessment as an active VoiceMOS challenge track; no general-purpose VC quality predictor exists |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Streaming codec with explicit semantic-paralinguistic separation; VC via reference speaker embedding at decoder; frame-level contrastive learning for cleaner disentanglement than SSL distillation |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | DiT flow-matching VC; random erasing of SSL features for noise robustness; ASR+SSL complementary fusion; Shortcut Models for 4-step inference; CER 8.03% vs. 12.45% for Seed-VC on noisy set |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | Three-reference EVC (content/speaker/emotion); TCEM frame-level temporal emotion alignment; GRL on content classifier; EEPT explicit F0+energy transfer; prosody augmentation for mismatch |
+| [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | Fully-discrete three-factor codec disentanglement from WavLM without phoneme labels; VC via speaker code swap; quantifies fidelity cost of speaker code discretization |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | VC as a downstream task for the dual-token architecture; speaker embedding from 3D-Speaker conditions WavTokenizer acoustic generation |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP contrastive alignment for dual-mode (reference speech or NL prompt) EVC; AIG intensity gate; any-to-one with flow-matching decoder; MOS 4.09 vs. MixEmo 2.98 |

@@ -1,0 +1,143 @@
+concept: flow-matching
+last_updated: 2026-06-02
+paper_count: 33
+
+papers:
+  - id: 2507.22746
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Hybrid chunk-wise AR + within-chunk bidirectional FM in a unified model is KV-cache compatible and achieves 2-NFE synthesis.
+      - Combining AR temporal backbone with FM intra-chunk denoising bridges the latency and quality trade-offs of pure AR and pure NAR systems.
+    evidence:
+      - Dragon-FM achieves SPK-SIM 0.916 and WER 2.74 on internal podcast data; 2-step mean-flow denoising; KV-cache compatible streaming design at 12.5 Hz FSQ.
+    limitations:
+      - Evaluated on internal podcast data only; no standardized benchmark comparison.
+
+  - id: 2508.04996
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - DiT-based FM decoder with Shortcut Models reduces FM inference from 32 to 4 steps at marginal quality cost.
+      - Random feature erasure during training provides noise-robust SSL/ASR fusion in voice conversion without information bottleneck machinery.
+    evidence:
+      - REF-VC achieves CER 8.03% vs. 12.45% for Seed-VC on noisy test set; Shortcut Models enable 4-step inference with competitive quality.
+    limitations:
+      - Evaluated on 10 unseen speakers from Seed-TTS-Eval; generalization to out-of-domain speakers untested.
+
+  - id: 2508.07302
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - OT-CFM with 1.6:1 upsampling alignment bridges discrete codec tokens to mel-spectrograms for cross-lingual emotion transfer.
+    evidence:
+      - XEmoRAG achieves EMOS 4.65 vs. DelightfulTTS 3.89 on Thai using retrieval-based cross-lingual emotion prompting with FM alignment.
+    limitations:
+      - Thai-only evaluation; limited to 1K hours non-emotional + 60 hours emotional data.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Fine-tuning a pre-trained FM-based TTS for child-friendly speech preserves FM-based quality for low-resource language TTS.
+    evidence:
+      - MultiGen achieves MOS 3.97 on Singaporean-accented Mandarin via CosyVoice-300M FM fine-tuning.
+    limitations:
+      - Inherits CosyVoice-300M FM; no novel FM contribution.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Matcha-TTS-inspired OT-CFM with flat alternating attention and RelativePositionBias is effective for long-context multilingual semantic-to-mel generation.
+    evidence:
+      - MahaTTS achieves competitive WER across 17 Indic languages with a conditional FM acoustic model as the second stage.
+    limitations:
+      - FM stage not independently ablated from text-to-semantic LM stage.
+
+  - id: interspeech-2025-0203
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - CFM decoder with OT conditioning for EVC produces richer prosodic variation than GAN-based baselines.
+      - Gaussian-to-mel transport conditioned on PPGs and CLAP emotional embeddings achieves dual-mode (reference or NL prompt) emotion control.
+    evidence:
+      - ClapFM-EVC achieves MOS 4.09 vs. MixEmo 2.98; 57.4% listeners show no preference between reference speech and NL prompt modes.
+    limitations:
+      - Any-to-one evaluation only; any-to-any EVC with unseen target speakers not tested.
+
+claim_clusters:
+  - claim: Flow matching requires fewer inference steps than diffusion for equivalent speech quality, due to straighter OT transport paths.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.313, 2025.acl-long.1043, interspeech-2025-0554, interspeech-2025-0455]
+    contradicting_papers: []
+
+  - claim: FM is compatible with hybrid LLM+FM pipelines combining AR semantic tokens with FM acoustic synthesis.
+    status: strongly_supported
+    supporting_papers: [2407.05407, 2412.10117, 2506.21619, 2025.acl-long.912, 2508.14049]
+    contradicting_papers: []
+
+  - claim: CFG strategy significantly affects the speaker similarity / intelligibility trade-off in zero-shot FM TTS.
+    status: strongly_supported
+    supporting_papers: [2509.19668, 2025.acl-long.313, 2412.10117]
+    contradicting_papers: []
+
+  - claim: FM can be applied in waveform VAE latent space, eliminating vocoder compounding errors and improving speaker similarity.
+    status: emerging
+    supporting_papers: [2603.29339]
+    contradicting_papers: []
+
+  - claim: Replacing Gaussian prior with a learned prior in OT-CFM enables single-step inference without distillation.
+    status: emerging
+    supporting_papers: [2025.acl-long.1043, 2510.02848]
+    contradicting_papers: []
+
+  - claim: Pre-trained FM DiT models implicitly encode emotional information in intermediate activations, accessible at inference without retraining.
+    status: emerging
+    supporting_papers: [2508.03543]
+    contradicting_papers: []
+
+  - claim: Hybrid chunk-wise AR + within-chunk FM denoising is KV-cache compatible and achieves 2-NFE synthesis for streaming.
+    status: emerging
+    supporting_papers: [2507.22746]
+    contradicting_papers: []
+
+  - claim: CFM with OT conditioning for emotional VC produces richer prosodic variation than GAN-based baselines, and enables dual reference/text conditioning modes.
+    status: emerging
+    supporting_papers: [interspeech-2025-0203]
+    contradicting_papers: []
+
+  - claim: Image-domain CFG improvements fail to improve FM TTS, and behavior differs across languages.
+    status: contested
+    supporting_papers: [2509.19668]
+    contradicting_papers: []
+    notes: Image generation literature implicitly contradicts this finding.
+
+open_questions:
+  - Why do image CFG improvements fail for FM TTS? Is it output modality or conditioning structure?
+  - Can discrete FM (DiFlow-TTS) be accelerated to the 1-2 NFE range of continuous FM?
+  - Does Dragon-FM's hybrid AR+FM design scale to standardized benchmarks like Seed-TTS-Eval?
+  - Can REF-VC's 4-step Shortcut Models approach be generalized to TTS systems beyond VC?
+
+trend_notes:
+  - 2025: FM acceleration via consistency (RapFlow-TTS), adversarial post-training (APTTS), Shortcut Models (REF-VC), and learned prior (OZSpeech) all demonstrated simultaneously — convergence on sub-5 NFE as practical target.
+  - 2026: LongCat-AudioDiT shifted FM from mel-spectrogram to waveform VAE latent, revealing training-inference mismatch in all prior Voicebox/F5-TTS style training.
+  - Dual-mode reference/text conditioning for FM emotional VC (ClapFM-EVC) is an emerging direction for instruction-conditioned voice conversion.

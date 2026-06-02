@@ -1,0 +1,108 @@
+concept: instruction-conditioned-tts
+last_updated: 2026-06-02
+paper_count: 14
+
+papers:
+  - id: 2504.12867
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Freestyle natural language emotion prompting can control emotional expressiveness in AR codec LM TTS without a fixed taxonomy.
+      - Parallel phoneme token prediction as a secondary LLM output head reduces intelligibility errors in LLM-based instruction-conditioned TTS.
+    evidence:
+      - EmoVoice achieves emotion recall 0.424 on EmoVoice-DB approaching GPT-4o-mini-tts (0.456); phoneme-boost parallel decoding head reduces WER.
+    limitations:
+      - Training circularity from GPT-4o-audio synthetic emotional data.
+
+  - id: 2508.11326
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Instruction-conditioned TTS systems trained on tag-derived datasets fail to generalise to figurative or metaphorical descriptions at inference.
+      - Modality-based MoE routing with frozen text experts reduces catastrophic forgetting during speech fine-tuning.
+    evidence:
+      - MoE-TTS outperforms ElevenLabs and MiniMax on OOD figurative description alignment; modality routing preserves LLM text understanding.
+    limitations:
+      - 20–40 samples per condition; small-scale evaluation.
+
+  - id: interspeech-2025-0203
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Natural language prompts can drive emotional VC at parity with reference speech when contrastive alignment bridges speech and text emotional representations.
+    evidence:
+      - ClapFM-EVC: 57.4% listeners show no preference between reference and NL prompt modes; MOS 4.09 vs. MixEmo 2.98.
+    limitations:
+      - Any-to-one EVC only; unseen target speaker generalization not tested.
+
+claim_clusters:
+  - claim: Mixture density modeling substantially improves style accuracy and diversity vs. single-embedding conditioning, addressing the many-to-many ambiguity.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.346]
+    contradicting_papers: []
+
+  - claim: Inline positional vocal tag injection learned from rich-transcription ASR annotations is a scalable approach for fine-grained paralinguistic control.
+    status: strongly_supported
+    supporting_papers: [2603.08823, 2412.10117]
+    contradicting_papers: []
+
+  - claim: Large-scale style-annotated datasets substantially improve style-prompted TTS control compared to small-scale baselines.
+    status: strongly_supported
+    supporting_papers: [2025.emnlp-main.180, 2603.08823]
+    contradicting_papers: []
+
+  - claim: Cross-modal distillation from a text LLM can transfer instruction-following capability to speech without explicit speech instruction annotations.
+    status: emerging
+    supporting_papers: [2025.acl-long.388]
+    contradicting_papers: []
+
+  - claim: Instruction-conditioned TTS trained on tag-derived datasets fails significantly on figurative or metaphorical descriptions.
+    status: emerging
+    supporting_papers: [2508.11326]
+    contradicting_papers: []
+
+  - claim: Modality-based MoE routing preserves pre-trained LLM text understanding during speech fine-tuning.
+    status: emerging
+    supporting_papers: [2508.11326]
+    contradicting_papers: []
+
+  - claim: Parallel phoneme prediction as a secondary LLM output head reduces intelligibility in instruction-conditioned LLM-TTS.
+    status: emerging
+    supporting_papers: [2504.12867]
+    contradicting_papers: []
+
+  - claim: Natural language prompts can control emotional VC at parity with reference speech for the majority of listeners via contrastive alignment.
+    status: emerging
+    supporting_papers: [interspeech-2025-0203]
+    contradicting_papers: []
+
+  - claim: Adding a "thinking pattern" (LLM reasoning about the style description) substantially improves instruction interpretation for complex descriptions.
+    status: emerging
+    supporting_papers: [2601.15621]
+    contradicting_papers: []
+
+  - claim: Whether standardized benchmarks (EmergentTTS-Eval, Fish Audio Instruction Benchmark) capture meaningfully different capabilities than standard MOS and WER is contested.
+    status: contested
+    supporting_papers: [2603.08823, 2601.15621]
+    contradicting_papers: []
+    notes: No cross-benchmark correlation study available.
+
+open_questions:
+  - Can instruction-conditioned TTS generalise to instructions in languages other than the synthesis language?
+  - How many hours of style-annotated data are needed for robust generalisation to novel description phrasings?
+  - Does the MoE approach benefit persist across all LLM backbone sizes?
+  - Does EmoVoice's freestyle emotion prompting generalise to languages and speaker styles beyond the GPT-4o-audio training distribution?
+
+trend_notes:
+  - 2026: Open-source instruction-conditioned TTS (Fish Audio S2, Qwen3-TTS) has surpassed frontier closed-source systems on expressive paralinguistic tasks.
+  - Integration pass 5 adds: EmoVoice (freestyle emotion prompting with phoneme-boost head), MoE-TTS (OOD figurative description evaluation), ClapFM-EVC (dual-mode reference/NL prompt EVC).
+  - The "thinking pattern" paradigm (Qwen3-TTS) represents a qualitative shift: LLM reasoning applied to style description interpretation before generation.

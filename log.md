@@ -33,6 +33,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2508.01796 | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder | arXiv 2025
 - ingest | 2508.02013 | SpeechRole: A Large-Scale Dataset and Benchmark for Evaluating Speech Role-Playing Agents | arXiv 2025
 - ingest | 2508.02849 | SecoustiCodec: Cross-Modal Aligned Streaming Single-Codebook Speech Codec | arXiv 2025
+- integrate | 25 papers | 20 concepts updated | 18 digests created | 8 cross-links added
 
 ## 2026-06-01
 

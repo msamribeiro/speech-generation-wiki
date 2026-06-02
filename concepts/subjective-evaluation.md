@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: established
 ---
 
@@ -60,6 +60,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Domain-specific and socially-grounded subjective evaluation (multi-dimensional Likert scales, expert evaluators) is required when evaluating speech beyond standard naturalness and speaker similarity.
   Supporting: [[2025.acl-long.1252]], [[interspeech-2025-0779]]
 
+- Multi-reference normalisation in LLM-as-judge evaluation (scoring candidates relative to multiple TTS-synthesised references) achieves high rank correlation with human expert judgements, making automated speech role-playing benchmarking feasible at scale.
+  Supporting: [[2508.02013]]
+
+- Small-scale MOS panels (10–30 listeners, 30 samples per condition) are pervasive in low-resource and domain-specific TTS evaluation, but lack the statistical power to support fine-grained system comparisons.
+  Supporting: [[2508.08715]], [[2508.06870]]
+
 ## Relationship to Other Concepts
 
 ### Extends or Builds On
@@ -89,10 +95,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Should the community adopt a shared subjective evaluation benchmark (fixed test set, fixed reference samples, centralized annotation)?
 - How well do UTMOS and DNSMOS correlate with human CMOS as systems move beyond LJSpeech/LibriSpeech distribution?
 - What is the minimum number of evaluators needed for a statistically reliable CMOS comparison at the 0.1-point level?
+- For emotion-conditioned TTS, [[2504.12867]] shows sentence-level emotion similarity correlates only ~40% with human MOS; what evaluation paradigm captures utterance-level emotional appropriateness reliably?
+- SpeechRole [[2508.02013]] uses TTS-synthesised references rather than human recordings as benchmarks; does this create a quality ceiling that masks genuine capability differences?
+- The VoiceMOS/AudioMOS Challenge survey [[2508.00317]] confirms that current SQA models cannot discriminate among near-human-quality systems; should the community define a dedicated benchmark targeting this regime specifically?
 
 ## Trend Summary
 
-The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility.
+The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility. 2025: New multi-dimensional evaluation frameworks are emerging for richer subjective assessment: SpeechRole [[2508.02013]] introduces a nine-dimension role-playing evaluation with LLM-as-judge; Maestro-EVC [[2508.06890]] uses four-dimension MOS (naturalness, emotion similarity, speaker similarity, prosody similarity) for VC evaluation. The VoiceMOS/AudioMOS Challenge series [[2508.00317]] provides a four-year view showing that: (1) community infrastructure accelerates progress more than individual modelling advances, and (2) near-human-quality systems defeat all current SQA predictors — a ceiling effect that will require new benchmark design. Small-scale evaluations (30 samples, 10 listeners) remain prevalent in low-resource settings [[2508.08715]], [[2508.06870]], and represent a known weakness in statistical reliability that the field has not systematically addressed.
 
 ## All Papers
 
@@ -108,4 +117,13 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[interspeech-2025-0779]] | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech | 2025 | Two-tier evaluation: L1 MOS+transcription (49 listeners, 600 samples) and MUSHRA-inspired L2 comparison against human expert reference; demonstrates that TTS-ASR cascade metrics do not capture human comprehension of mathematical speech |
 | [[interspeech-2025-0406]] | Zero-Shot Mono-to-Binaural Speech Synthesis | Interspeech | 2025 | MOS + MUSHRA for binaural TTS quality; MUSHRA shows no significant preference between ZeroBAS and supervised methods on in-distribution BSD; significant preference for ZeroBAS on out-of-distribution TMB |
 | [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | Consistency MOS and Tag Recall as new evaluation metrics for style-prompted TTS; AMT evaluation reveals that style consistency requires both intrinsic (speaker-level) and situational (utterance-level) annotation for reliable training signal |
+| [[2503.04721]] | Full-Duplex-Bench | arXiv | 2025 | Automated turn-taking evaluation without human raters; argues that descriptive, reproducible metrics can substitute for subjective judgement in dialogue system benchmarking |
+| [[2504.12867]] | EmoVoice | arXiv | 2025 | 30-rater MOS for emotional expressiveness; sentence-level emotion similarity correlates ~40% with human MOS, demonstrating limits of automatic proxies for fine-grained emotion assessment |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | MOS on 36 audiobook excerpts with separate prosody quality and naturalness dimensions; controlled comparison of codec-token vs. prosody-token LM architectures |
+| [[2508.00317]] | Advancing Speech Quality Assessment through Challenges | arXiv | 2025 | Retrospective on VoiceMOS/AudioMOS Challenge series; near-human-quality systems defeat current SQA predictors; community infrastructure drives progress more than individual model contributions |
+| [[2508.01796]] | Enhancing Spectrogram Realism in Singing Voice Synthesis | arXiv | 2025 | Combines human visual spectrogram realism judgment with standard audio MOS; dual-axis evaluation captures distinct quality dimensions not jointly addressable by MOS alone |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | Nine-dimension LLM-as-judge evaluation with multi-reference normalisation; Spearman ρ 0.67–0.98 with human experts across English and Chinese |
+| [[2508.06870]] | TTS for Meitei Mayek Script | arXiv | 2025 | Native-speaker MOS on 10 samples per condition with no baseline; representative of evaluation constraints in zero-resource script contexts |
+| [[2508.07711]] | Is GAN Necessary for Neural Vocoder? | arXiv | 2025 | 100-listener MOS shows no significant difference between GAN and GAN-free vocoder; UTMOS ranking diverges from subjective ranking, adding to evidence of predictor unreliability |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | 10-listener 30-sample MOS per language for three low-resource Southeast Asian languages; exemplifies statistical limitations of small-scale evaluation |
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Psychometric calibration via recursive binary-search sigmoid estimation for mapping engineering parameter to perceived accentedness; Best-Worst experimental design for preference evaluation across 32 listeners |

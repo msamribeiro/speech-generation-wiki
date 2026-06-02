@@ -1,0 +1,156 @@
+concept: subjective-evaluation
+last_updated: 2026-06-02
+paper_count: 20
+
+papers:
+  - id: 2503.04721
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Automated turn-taking evaluation without human raters can serve as a substitute for subjective judgement in dialogue system benchmarking.
+    evidence:
+      - Full-Duplex-Bench: automated benchmark for full-duplex SLM turn-taking across four scenarios; descriptive reproducible metrics proposed as alternative to subjective MOS.
+    limitations:
+      - Human validation of automated metrics not provided.
+
+  - id: 2507.20091
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - MOS on 36 audiobook excerpts with separate prosody quality and naturalness dimensions provides controlled comparison of codec-token vs. prosody-token LM architectures.
+    evidence:
+      - ProsodyLM: separate prosody quality and naturalness MOS dimensions reveal architecture differences masked by single-dimension MOS.
+    limitations:
+      - 36 audiobook excerpts only; small scale limits statistical reliability.
+
+  - id: 2508.00317
+    year: 2025
+    task: [evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Near-human-quality speech systems defeat all current SQA predictors; community infrastructure drives progress more than individual modelling advances.
+    evidence:
+      - VoiceMOS/AudioMOS Challenge series (four years): near-human-quality systems defeat all current SQA predictors; community infrastructure accelerates progress more than individual model contributions.
+    limitations:
+      - Retrospective analysis; no new evaluation method proposed.
+
+  - id: 2508.01796
+    year: 2025
+    task: [singing]
+    architecture: [diffusion, GAN]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Combining human visual spectrogram realism judgment with standard audio MOS captures distinct quality dimensions not jointly addressable by MOS alone.
+    evidence:
+      - LSE+Vocos2D evaluation: dual-axis MOS (audio quality + visual spectrogram realism); captures bandwidth extension quality dimensions missed by standard audio MOS.
+    limitations:
+      - Novel evaluation dimension; not validated against established standards.
+
+  - id: 2508.02013
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Multi-reference normalisation in LLM-as-judge evaluation achieves high rank correlation with human expert judgements for speech role-playing benchmarking.
+    evidence:
+      - SpeechRole: nine-dimension LLM-as-judge with multi-reference normalisation; Spearman ρ 0.67–0.98 with human experts across English and Chinese.
+    limitations:
+      - TTS-synthesised references as benchmark; quality ceiling risk if TTS systems are compared within a similar quality range.
+
+  - id: 2508.06870
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Native-speaker MOS on 10 samples per condition without baseline is the only feasible evaluation approach in zero-resource script contexts.
+    evidence:
+      - Meitei Mayek TTS: native-speaker MOS on 10 samples; no baseline available for comparison; confirms statistical limitations in zero-resource settings.
+    limitations:
+      - Statistical reliability extremely low; no baseline comparison; no crowdsourced validation.
+
+  - id: 2508.07711
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: negative-result
+    claims:
+      - UTMOS ranking diverges from subjective ranking for GAN-free vocoders; UTMOS is an unreliable proxy for subjective MOS in this setting.
+    evidence:
+      - FreeGAN: 100-listener MOS shows no significant difference between GAN and GAN-free vocoder; UTMOS ranking diverges from human ranking.
+    limitations:
+      - Evaluated on VCTK 16 kHz only; UTMOS unreliability may be context-specific.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Small-scale MOS panels (10 listeners, 30 samples per condition) are the prevalent but statistically unreliable evaluation approach for low-resource TTS.
+    evidence:
+      - MultiGen: 10-listener 30-sample MOS per language for three low-resource Southeast Asian languages; exemplifies statistical limitations.
+    limitations:
+      - Statistical limitations acknowledged but no alternative proposed.
+
+claim_clusters:
+  - claim: Subjective evaluation methodology varies substantially across papers, making direct cross-paper CMOS/SMOS comparisons unreliable without shared infrastructure.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.313, 2511.12347, 2025.coling-main.352, 2508.08715, 2508.06870]
+    contradicting_papers: []
+
+  - claim: CMOS is preferred over absolute MOS in recent zero-shot TTS papers because it reduces listener calibration effects.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.313, 2511.12347, 2025.acl-long.598]
+    contradicting_papers: []
+
+  - claim: Preference-based evaluation is gaining traction as an alternative to MOS for holistic system quality.
+    status: emerging
+    supporting_papers: [2025.acl-long.388, 2509.00685]
+    contradicting_papers: []
+
+  - claim: Multi-reference normalisation in LLM-as-judge evaluation achieves high rank correlation with human expert judgements at scale.
+    status: emerging
+    supporting_papers: [2508.02013]
+    contradicting_papers: []
+
+  - claim: Near-human-quality systems defeat all current SQA predictors; community infrastructure drives progress more than individual model contributions.
+    status: emerging
+    supporting_papers: [2508.00317]
+    contradicting_papers: []
+
+  - claim: UTMOS ranking diverges from subjective MOS for systems with architectural novelty in phase modelling; UTMOS is not a reliable proxy in this setting.
+    status: emerging
+    supporting_papers: [2508.07711]
+    contradicting_papers: []
+
+  - claim: Small-scale MOS panels (10–30 listeners, 30 samples) lack statistical power to support fine-grained system comparisons.
+    status: emerging
+    supporting_papers: [2508.08715, 2508.06870]
+    contradicting_papers: []
+
+open_questions:
+  - Should the community adopt a shared subjective evaluation benchmark (fixed test set, fixed reference samples, centralized annotation)?
+  - What is the minimum number of evaluators for statistically reliable CMOS comparison at the 0.1-point level?
+  - For emotion-conditioned TTS, what evaluation paradigm captures utterance-level emotional appropriateness reliably beyond ~40% correlation?
+  - Does multi-reference normalisation in LLM-as-judge create a quality ceiling when TTS-synthesised references are used?
+
+trend_notes:
+  - VoiceMOS/AudioMOS challenge retrospective (2508.00317) confirms that near-human-quality systems defeat all current SQA predictors — a quality ceiling problem requiring new benchmark design.
+  - FreeGAN (2508.07711) adds to the growing evidence of UTMOS vs. subjective MOS divergence, reinforcing that UTMOS is unreliable for systems with architectural novelty.
+  - SpeechRole demonstrates LLM-as-judge with multi-reference normalisation as a scalable alternative to human evaluation for role-playing benchmarking.
+  - The trend toward automated reproducible benchmarks (Full-Duplex-Bench, SpeechRole, VoiceMOS) reduces reliance on costly subjective listening tests for specific evaluation dimensions.

@@ -1,0 +1,121 @@
+concept: speaker-adaptation
+last_updated: 2026-06-02
+paper_count: 10
+
+papers:
+  - id: 2508.07426
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Voice conversion-based timbre augmentation (kNN-VC) for low-resource accent data improves objective accent similarity but shows unclear benefit in human perceptual evaluation.
+    evidence:
+      - Scalable Controllable Accented TTS: kNN-VC augmentation improves objective accent similarity; human evaluation benefit is unclear; geolocation-based filtering outperforms raw labels.
+    limitations:
+      - Human perceptual evaluation of accent quality shows mixed results for kNN-VC augmentation.
+
+  - id: 2508.08399
+    year: 2025
+    task: [VC]
+    architecture: [VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Fully-discrete speaker adaptation via speaker code swap in codec-level VC quantifies the trade-off between speaker code discretization and speaker fidelity.
+    evidence:
+      - Discrete speaker codes introduce a measurable speaker identity fidelity cost; quantified via SPK-SIM vs. codebook size ablation.
+    limitations:
+      - Evaluated on small held-out set; not benchmarked against leading speaker adaptation systems.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Foundation TTS models adapted to child-friendly speech with x-vector conditioning substantially outperform conventional models on low-resource Southeast Asian languages from as few as 1,400 utterances.
+    evidence:
+      - MultiGen achieves MOS 4.05 on Tamil and 3.97 on Singaporean-accented Mandarin; effective from 1,400 utterances for CosyVoice-300M fine-tuning.
+    limitations:
+      - Small-scale evaluation (10 listeners, 30 samples); no comparison to dedicated low-resource systems.
+
+  - id: 2508.09767
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - LoRA-based fine-tuning with phoneme-tag tokens can restore user-controllable pitch accent correction to BPE-input multilingual LLM-TTS at less than 0.5% of model parameters.
+    evidence:
+      - UtterTune raises Japanese accent correctness from 0.499 to 0.899 with rank-16 LoRA on CosyVoice2 at <0.5% trainable parameters.
+    limitations:
+      - Requires user-supplied phonemic transcription; not self-contained adaptation.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Two-stage semantic-acoustic decoupling allows new language addition at approximately 200 hours without retraining the acoustic model.
+    evidence:
+      - MahaTTS: 200 hours per new language addition; Gemma-based LM fine-tuning for text-to-semantic stage.
+    limitations:
+      - English-dominated training data; genuine cross-lingual transfer disentanglement unclear.
+
+claim_clusters:
+  - claim: Parameter-efficient adaptation (fine-tuning multilingual models on target-language data) enables high-quality TTS for tonal low-resource languages.
+    status: strongly_supported
+    supporting_papers: [2025.acl-industry.42, 2508.14049]
+    contradicting_papers: []
+
+  - claim: Specialized adaptation curricula with teacher-student speaker encoders substantially improve speaker similarity for pathological reference audio.
+    status: strongly_supported
+    supporting_papers: [interspeech-2025-0596]
+    contradicting_papers: []
+
+  - claim: LoRA-based fine-tuning with phoneme-tag tokens restores pitch accent correction to BPE-input multilingual LLM-TTS at less than 0.5% of model parameters.
+    status: strongly_supported
+    supporting_papers: [2508.09767]
+    contradicting_papers: []
+
+  - claim: Foundation TTS models adapted to child-friendly speech with appropriate conditioning substantially outperform conventional models from as few as 1,400 utterances.
+    status: strongly_supported
+    supporting_papers: [2508.08715]
+    contradicting_papers: []
+
+  - claim: Voice conversion-based timbre augmentation improves objective accent similarity but shows unclear benefit in human perceptual evaluation.
+    status: emerging
+    supporting_papers: [2508.07426]
+    contradicting_papers: []
+
+  - claim: Embedding-space adaptation can synthesize gradual speaking-condition variations from minimal adaptation data.
+    status: emerging
+    supporting_papers: [interspeech-2025-0787]
+    contradicting_papers: []
+
+  - claim: Cross-accent knowledge transfer from a large multi-accent frontend reduces pronunciation data for a new accent by over 90%.
+    status: emerging
+    supporting_papers: [interspeech-2025-1034]
+    contradicting_papers: []
+
+  - claim: Decoupling text-to-semantic and acoustic generation stages allows new language addition at approximately 200 hours without retraining the acoustic model.
+    status: emerging
+    supporting_papers: [2508.14049]
+    contradicting_papers: []
+
+open_questions:
+  - At what data scale does full fine-tuning outperform parameter-efficient adaptation (LoRA, adapters) for TTS?
+  - Can LoRA-based pitch accent correction generalise to other tonally complex languages beyond Japanese?
+  - What is the minimum data floor for reliable domain adaptation to a new speaker type?
+  - Does kNN-VC timbre augmentation reliably improve perceived accent quality, or only automatic metrics?
+
+trend_notes:
+  - Integration pass 5 confirms that parameter-efficient adaptation (LoRA, fine-tuning) is increasingly the practical default, with adaptation scope ranging from pronunciation-specific (UtterTune) to full domain transfer (MultiGen).
+  - Two-stage semantic-acoustic decoupling (MahaTTS) establishes 200 hours as a practical threshold for new language addition without acoustic model retraining.
+  - The gap between zero-shot and adapted quality is narrowing in high-resource settings; adaptation remains essential for specialized populations and low-resource languages.

@@ -1,0 +1,182 @@
+concept: neural-codec
+last_updated: 2026-06-02
+paper_count: 40
+
+papers:
+  - id: 2507.22746
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Custom FSQ codec at 12.5 Hz with causal decoder enables chunk-wise AR + within-chunk FM denoising over continuous FSQ embeddings.
+    evidence:
+      - Dragon-FM's custom FSQ codec at 12.5 Hz supports streaming with causal decoder and enables bidirectional intra-chunk flow matching.
+    limitations:
+      - Codec not independently benchmarked against standardized reconstruction metrics.
+
+  - id: 2508.02849
+    year: 2025
+    task: [codec]
+    architecture: [VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Frame-level cross-modal contrastive learning between phoneme and speech representations achieves cleaner semantic-paralinguistic separation than SSL distillation in single-codebook codecs.
+      - VAE+FSQ achieves substantially higher codebook utilisation than VQ-VAE in single-codebook speech codecs.
+    evidence:
+      - SecoustiCodec achieves 98% codebook utilisation with VAE+FSQ; 12.08 ms initial latency; proposes contrastive learning outperforms SSL distillation for semantic disentanglement.
+    limitations:
+      - Requires duration-aligned phoneme labels for contrastive training; not applicable to unsupervised settings.
+
+  - id: 2508.04585
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Matching codec token rates across modalities enables frame-level synchronisation in joint audiovisual generation without post-hoc alignment.
+    evidence:
+      - UniTalker uses custom FSQ-based speech codec (25 Hz) and LmkCodec at matching rate for joint audiovisual synchronisation.
+    limitations:
+      - Only evaluated on acted emotional speech (IEMOCAP).
+
+  - id: 2508.05207
+    year: 2025
+    task: [codec]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Operating neural codecs in the 2D time-frequency domain yields substantially better perceptual quality for full-band audio at low bitrates compared to waveform-domain architectures.
+    evidence:
+      - SpectroStream achieves ViSQOL 3.21 vs. DAC 1.47 at 2.7 kbps; 76.3% preference over DAC for full-band 48 kHz stereo audio.
+    limitations:
+      - Evaluated only for music/general audio; speech-specific downstream TTS quality not tested.
+
+  - id: 2508.07302
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - X-Codec2 as backbone codec enables cross-lingual emotion TTS with flow-matching alignment from discrete tokens to mel.
+    evidence:
+      - XEmoRAG uses X-Codec2 codec with FM alignment for Thai emotion TTS; codec enables speaker identity preservation.
+    limitations:
+      - X-Codec2 codec choice not independently ablated.
+
+  - id: 2508.08961
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Understanding-driven tokenizer trained against LLM objectives (USTokenizer) provides better LLM-speech alignment than reconstruction-trained codecs.
+    evidence:
+      - DualSpeechLM achieves competitive understanding and generation performance at 4.5K hours with USTokenizer (250 bps) + WavTokenizer output codec.
+    limitations:
+      - USTokenizer training cost is substantially higher than standard codec training.
+
+  - id: 2508.11326
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - CosyVoice2 semantic tokenizer at 25 Hz with 6,561-token vocabulary is effective for instruction-conditioned AR TTS.
+    evidence:
+      - MoE-TTS uses CosyVoice2 semantic tokenizer; 6,561-token speech vocabulary appended to LLM for generation.
+    limitations:
+      - No novel codec contribution; tokenizer inherited from CosyVoice2.
+
+  - id: interspeech-2025-0196
+    year: 2025
+    task: [codec]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Imposing spectral structure on codec latent embeddings via supervised low/high frequency disentanglement improves codec efficiency at higher bitrates.
+      - Performance advantage of spectral supervision scales with bitrate, where cross-band redundancy is largest.
+    evidence:
+      - SPCODEC achieves POLQA 4.5 at 10.66 kbps; performance advantage increases with bitrate, confirming cross-band redundancy reduction.
+    limitations:
+      - Evaluated only at standard bitrates; ultra-low frame rate downstream TTS quality not tested.
+
+claim_clusters:
+  - claim: Reducing codec frame rate below 75 Hz substantially lowers AR TTS cost without degrading quality, provided semantic content is preserved.
+    status: strongly_supported
+    supporting_papers: [2510.00981, 2412.10117, 2601.15621, 2603.08823, 2507.22746]
+    contradicting_papers: []
+
+  - claim: FSQ achieves near-100% codebook utilization versus ~23% for VQ, improving downstream ASR error rates.
+    status: strongly_supported
+    supporting_papers: [2412.10117, 2512.13251, 2508.02849]
+    contradicting_papers: []
+
+  - claim: DRI in RVQ codecs degrades downstream LM training by producing context-dependent tokenizations of identical audio.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.1498]
+    contradicting_papers: []
+
+  - claim: ASR-supervised features produce more semantically concentrated codec tokens than SSL features at ultra-low frame rates.
+    status: strongly_supported
+    supporting_papers: [2510.00981, 2412.17048]
+    contradicting_papers: []
+
+  - claim: Continuous waveform VAE representations at low frame rates can match or outperform discrete codecs for diffusion TTS quality.
+    status: emerging
+    supporting_papers: [2603.29339, 2502.03930]
+    contradicting_papers: []
+
+  - claim: Full-codebook masking provides denser training signal for NAR models than per-layer masking.
+    status: emerging
+    supporting_papers: [2604.00688]
+    contradicting_papers: []
+
+  - claim: Frame-level cross-modal contrastive learning between phoneme and speech representations achieves cleaner semantic-paralinguistic separation than SSL distillation.
+    status: emerging
+    supporting_papers: [2508.02849]
+    contradicting_papers: []
+
+  - claim: VAE+FSQ achieves substantially higher codebook utilisation than VQ-VAE in single-codebook speech codecs.
+    status: emerging
+    supporting_papers: [2508.02849]
+    contradicting_papers: []
+
+  - claim: Spectral supervision of codec embeddings improves codec efficiency at higher bitrates where cross-band redundancy is largest.
+    status: emerging
+    supporting_papers: [interspeech-2025-0196]
+    contradicting_papers: []
+
+  - claim: Operating neural codecs in the 2D time-frequency domain yields better perceptual quality for full-band audio at low bitrates.
+    status: emerging
+    supporting_papers: [2508.05207]
+    contradicting_papers: []
+
+  - claim: Matching codec token rates across modalities enables frame-level synchronisation in joint audiovisual generation.
+    status: emerging
+    supporting_papers: [2508.04585]
+    contradicting_papers: []
+
+  - claim: Whether discrete codec tokens or continuous representations are superior for AR speech LMs remains unresolved.
+    status: contested
+    supporting_papers: [2025.findings-naacl.184, 2508.19098, 2502.03930]
+    contradicting_papers: [2301.02111, 2407.05407, 2601.15621]
+
+open_questions:
+  - Can dynamic frame merging be extended to sub-3 Hz without catastrophic quality loss?
+  - Does FlexiCodec's dynamic merging interact well with prosodic information (Factor C from 2412.17048)?
+  - Is there a natural lower bound on frame rate below which semantic content cannot be preserved in discrete tokens?
+  - Can SecoustiCodec's contrastive training be extended to a fully unsupervised setting without phoneme labels?
+
+trend_notes:
+  - The field is tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
+  - 2025: SecoustiCodec proposes cross-modal contrastive learning as an alternative to SSL distillation; SPCODEC introduces spectral supervision; SpectroStream establishes TF-domain codec for full-band audio.
+  - 2026: Codec frame rate competition continues with Fish Audio S2 (21 Hz streaming) vs. Qwen3-TTS (12.5 Hz).

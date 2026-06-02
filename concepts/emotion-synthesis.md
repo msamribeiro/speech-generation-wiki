@@ -3,7 +3,7 @@ slug: emotion-synthesis
 title: Emotion Synthesis
 aliases: [expressive TTS, affective speech synthesis, emotional TTS, style transfer]
 related_concepts: [prosody-control, instruction-conditioned-tts, disentanglement, subjective-evaluation, spoken-language-model]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: emerging
 ---
 ## Executive Summary
@@ -49,6 +49,16 @@ As of 2025, multiple approaches to emotion synthesis have been integrated into t
 
 **End-to-end empathetic SLM.** [[2025.emnlp-demos.70]] (OpenS2S) trains a full speech-in speech-out model to detect and respond to user emotion through multi-stage training and automated empathetic data synthesis.
 
+**Freestyle natural language emotion prompting.** EmoVoice [[2504.12867]] extends a Qwen2.5-based LLM-TTS backbone with freestyle text emotion prompting, demonstrating that open-vocabulary descriptions can control emotional expressiveness without a fixed taxonomy. The phoneme-boost parallel prediction head (EmoVoice-PP) additionally reduces intelligibility errors by outputting phoneme tokens as secondary supervision alongside audio tokens. The key negative finding is that automatic emotion similarity metrics correlate only ~40% with human MOS at the sentence level, and that multimodal LLMs are not yet reliable emotion judges.
+
+**Cross-lingual emotion transfer via retrieval.** XEmoRAG [[2508.07302]] uses language-agnostic Emo2Vec embeddings to retrieve emotionally matched target-language prompts from a pool, bypassing the need for parallel bilingual emotional data and avoiding foreign-accent artefacts from direct prosody transfer between typologically distant languages.
+
+**Reference and prompt dual-mode EVC.** ClapFM-EVC [[interspeech-2025-0203]] trains a CLAP-style model (EVC-CLAP) to align speech and text emotional representations, enabling emotional voice conversion from either a reference clip or a free-form natural language prompt. Soft-label contrastive training with both categorical and prompt labels improves emotion embedding quality over single-source training.
+
+**Temporal emotion alignment for EVC.** Maestro-EVC [[2508.06890]] uses a cross-attention mechanism in which content representations query frame-level emotion embeddings from a speech diarisation model, producing temporally aligned, content-aware emotion features. The adaptive intensity gate in ClapFM-EVC provides scalar control analogous to Maestro-EVC's explicit prosody conditioning.
+
+**ProsodyLM as a dialogue prosody-emotion system.** [[2507.20091]] demonstrates that replacing codec tokens with word-level prosody tokens enables emotion recognition as an emergent LLM capability, with the model correctly identifying sadness and excitement categories through probability shifts without any emotion-specific supervision.
+
 ## Major Claims
 
 Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/emotion-synthesis.yaml`.
@@ -71,6 +81,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Pre-trained flow-matching DiT models implicitly encode emotional information in their intermediate activations, making training-free post-hoc emotion control possible for any such model.
   Supporting: [[2508.03543]]
+
+- Fine-grained natural language emotion descriptions provide richer control over expressive speech synthesis than coarse categorical labels, at the cost of requiring emotion-specific training data and introducing a training-evaluation circularity risk.
+  Supporting: [[2504.12867]]
+
+- Multimodal LLMs are not yet reliable judges of emotional speech quality, exhibiting both low correlation with human ratings and inter-run instability.
+  Supporting: [[2504.12867]]
+
+- Natural language prompts can control emotional voice conversion at parity with reference speech for the majority of listeners when contrastive alignment bridges speech and text emotional representations.
+  Supporting: [[interspeech-2025-0203]]
+
+- Combining categorical emotion labels with free-form prompt labels through soft-label contrastive training (symKL loss) improves emotion embedding quality over single-source training.
+  Supporting: [[interspeech-2025-0203]]
+
+- LLM-based TTS systems fine-tuned with appropriate speaker conditioning substantially outperform conventional non-autoregressive models on emotion naturalness for low-resource languages.
+  Supporting: [[2508.08715]]
 
 ### Contested
 
@@ -112,10 +137,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - GLM-TTS [[2512.14291]] shows emotion reward trades off against pronunciation accuracy in RL; is this fundamental, or can a better reward weighting or curriculum resolve it?
 - IndexTTS2 [[2506.21619]] uses 7 basic emotion categories; how can continuous or compositional emotion control be achieved in AR systems without an exponential growth in reference data?
 - Vevo2 [[2508.16332]] extends emotion expressiveness to singing via chromagram prosody; does this prosody space generalize to spoken emotion as well?
+- EmoVoice [[2504.12867]] is trained and evaluated on synthetic emotional data from GPT-4o-audio; how does this circularity affect claims about emotional naturalness compared to systems trained on human emotional speech?
+- ClapFM-EVC [[interspeech-2025-0203]] evaluates in an any-to-one setting; does the emotion control quality degrade in any-to-any EVC, and how does it interact with unseen target speakers?
+- Cross-lingual emotion transfer (XEmoRAG [[2508.07302]]) relies on language-agnostic emotion embeddings; how well do these embeddings capture culture-specific emotional expression conventions?
+- SpeechRole [[2508.02013]] shows that emotion appropriateness in spoken role-playing lags naturalness and coherence, with cascaded systems outperforming end-to-end models; is this a training data or architecture limitation?
+- The non-verbal speech synthesis pipeline [[2508.05385]] targets non-verbal vocalizations as a prosodic expressiveness mechanism; how does NV synthesis interact with emotional TTS quality in a unified framework?
 
 ## Trend Summary
 
-2024: FillerSpeech [[2025.emnlp-main.1730]] (in corpus) addresses filler word insertion as a paralinguistic naturalness feature adjacent to emotion synthesis. Interspeech 2025 adds three contributions: MIKU-PAL ([[interspeech-2025-0648]]) provides the largest open-source emotionally labeled speech dataset (131.2h, 26 emotion categories using Gemini 2.0 Flash for automated labeling at Fleiss κ=0.93 vs. human κ=0.43); EME-TTS ([[interspeech-2025-0754]]) jointly models emphasis and emotion via an Emphasis Perception Enhancement (EPE) block preventing emotional prosody from distorting word-level emphasis; DiffRO ([[interspeech-2025-0704]]) demonstrates that RL-based emotion control via a differentiable multi-task reward model can teach a codec LM to generate laughter, sobs, and breaths without any emotion-labeled RL training data. 2025: OpenS2S [[2025.emnlp-demos.70]] is the first fully open-source empathetic SLM in corpus. FireRedTTS-2 ([[2509.02020]]) demonstrates implicit emotion inference from chat context without explicit emotion labels. IndexTTS2 [[2506.21619]] introduces a three-stage training curriculum for robust emotion conditioning with GRL-based disentanglement, showing the strongest emotional expressiveness for a zero-shot system; its T2E module (LLM distillation for soft emotion routing) provides a scalable path to natural language emotion control. Marco-Voice [[2508.02038]] demonstrates that difference-in-means emotion embeddings combined with cross-orthogonal disentanglement substantially improve both speaker similarity and emotional naturalness simultaneously. EmoSteer-TTS [[2508.03543]] reveals that training-free activation steering can provide emotion control for any DiT-based flow-matching model, suggesting that emotional information is implicitly encoded in pre-trained models. GLM-TTS [[2512.14291]] shows that multi-reward RL can include emotion as a trainable objective, revealing a pronunciation/emotion trade-off. The 2025 trajectory reveals two parallel directions: (1) better supervision for explicit emotion conditioning during training (IndexTTS2, Marco-Voice, GLM-TTS); (2) post-hoc control for pre-trained models without labeled emotional data (EmoSteer-TTS).
+2024: FillerSpeech [[2025.emnlp-main.1730]] (in corpus) addresses filler word insertion as a paralinguistic naturalness feature adjacent to emotion synthesis. Interspeech 2025 adds three contributions: MIKU-PAL ([[interspeech-2025-0648]]) provides the largest open-source emotionally labeled speech dataset (131.2h, 26 emotion categories using Gemini 2.0 Flash for automated labeling at Fleiss κ=0.93 vs. human κ=0.43); EME-TTS ([[interspeech-2025-0754]]) jointly models emphasis and emotion via an Emphasis Perception Enhancement (EPE) block preventing emotional prosody from distorting word-level emphasis; DiffRO ([[interspeech-2025-0704]]) demonstrates that RL-based emotion control via a differentiable multi-task reward model can teach a codec LM to generate laughter, sobs, and breaths without any emotion-labeled RL training data. 2025: OpenS2S [[2025.emnlp-demos.70]] is the first fully open-source empathetic SLM in corpus. FireRedTTS-2 ([[2509.02020]]) demonstrates implicit emotion inference from chat context without explicit emotion labels. IndexTTS2 [[2506.21619]] introduces a three-stage training curriculum for robust emotion conditioning with GRL-based disentanglement, showing the strongest emotional expressiveness for a zero-shot system; its T2E module (LLM distillation for soft emotion routing) provides a scalable path to natural language emotion control. Marco-Voice [[2508.02038]] demonstrates that difference-in-means emotion embeddings combined with cross-orthogonal disentanglement substantially improve both speaker similarity and emotional naturalness simultaneously. EmoSteer-TTS [[2508.03543]] reveals that training-free activation steering can provide emotion control for any DiT-based flow-matching model, suggesting that emotional information is implicitly encoded in pre-trained models. GLM-TTS [[2512.14291]] shows that multi-reward RL can include emotion as a trainable objective, revealing a pronunciation/emotion trade-off. The 2025 trajectory reveals two parallel directions: (1) better supervision for explicit emotion conditioning during training (IndexTTS2, Marco-Voice, GLM-TTS); (2) post-hoc control for pre-trained models without labeled emotional data (EmoSteer-TTS). Integration pass 5 adds four new approaches: freestyle natural language emotion prompting with parallel phoneme guidance (EmoVoice [[2504.12867]]), cross-lingual retrieval-based emotion transfer without parallel data (XEmoRAG [[2508.07302]]), dual-mode reference+prompt EVC with contrastive soft-label training and scalar intensity control (ClapFM-EVC [[interspeech-2025-0203]]), and frame-level temporal emotion alignment for EVC (Maestro-EVC [[2508.06890]]). The SpeechRole benchmark [[2508.02013]] reveals that emotion appropriateness is among the hardest evaluation dimensions for current spoken role-playing agents, with cascaded systems outperforming E2E models. EmoVoice [[2504.12867]] provides the clearest negative finding in this pass: sentence-level automatic emotion similarity metrics correlate only ~40% with human MOS, and multimodal LLMs fail as emotion judges — with practical implications for the evaluation infrastructure the field relies on.
 
 ## All Papers
 
@@ -137,3 +167,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0648]] | MIKU-PAL: Automated Multimodal Method for Speech Paralinguistic and Affect Labeling | Interspeech | 2025 | Automated pipeline using Gemini 2.0 Flash for zero-shot emotion labeling at Fleiss κ=0.93 (vs. human 0.43); releases 131.2h MIKU-EmoBench covering 26 emotion categories; fine-tuned Fish-Speech achieves MOS 4.12 and emotion similarity 0.92 |
 | [[interspeech-2025-0754]] | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech | 2025 | First joint modeling of emphasis and emotion in TTS; EPE block prevents emotional prosody from distorting word-level emphasis; MOS 4.22 vs. EmoSpeech 4.14; emphasis recognition accuracy 0.78 vs. 0.73 without EPE |
 | [[interspeech-2025-0704]] | Differentiable Reward Optimization for LLM based TTS system | Interspeech | 2025 | MTR-based DiffRO teaches a codec LM to generate laughter, sobs, and breaths for emotion via RL reward without emotion-labeled RL data; emotion accuracy Happy zh/en 1.00/0.92, outperforming F5-TTS |
+| [[2504.12867]] | EmoVoice | arXiv | 2025 | Freestyle text emotion prompting on a Qwen2.5-based AR codec LM; parallel phoneme-boost decoding head; emotion recall 0.424 on EmoVoice-DB; negative finding that automatic emotion similarity correlates ~40% with human MOS |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | Explicit word-level prosody tokens enable emotion recognition as emergent LM capability; codec-token baselines show near-zero emotion sensitivity |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | Emotion Appropriateness dimension of speech role-playing benchmark; cascaded systems outperform E2E models on EA; dataset covers 98 roles across 111K dialogues |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Emotion-guided flow-matching renderer in conversational speech-visual synthesis; predicted emotion tokens explicitly condition speech acoustics |
+| [[2508.05385]] | Non-Verbal Speech Generation Pipeline | arXiv | 2025 | NV vocalizations (laughter, sighs, coughs) as a complementary expressiveness layer; automated NVS pipeline with emotion category annotations across 10 non-verbal categories |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | Frame-level TCEM with content-aware cross-attention; explicit F0+energy conditioning; prosody augmentation for mismatch robustness; ESD evaluation with 25 listeners |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Language-agnostic Emo2Vec retrieval for cross-lingual emotion transfer; EMOS 4.65 vs. DelightfulTTS 3.89; no parallel bilingual emotional data required |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | Child-friendly speech with x-vector conditioning achieves MOS 4.05 on Tamil and 3.97 on Mandarin; emotional prosody primarily from foundation model fine-tuning |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP contrastive model with symKL soft-label training; AIG for scalar intensity control; 57.4% of listeners show no preference between reference and prompt modes |

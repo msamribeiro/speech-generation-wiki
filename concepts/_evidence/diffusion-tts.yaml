@@ -1,0 +1,66 @@
+concept: diffusion-tts
+last_updated: 2026-06-02
+paper_count: 12
+
+papers:
+  - id: 2508.01796
+    year: 2025
+    task: [singing]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Inserting an explicit bandwidth extension step via a diffusion model prior to vocoding improves perceived audio quality in singing voice synthesis.
+      - 2D-convolution DiT-based vocoder redesigned to handle higher-resolution intermediate spectrograms is necessary for the bandwidth extension gains to transfer to audio output.
+    evidence:
+      - LSE+Vocos2D pipeline improves singing MOS from 3.576 to 4.176 over the Vocos baseline; explicit spectrogram super-resolution via 32-step diffusion is the key step.
+    limitations:
+      - 32-step diffusion is slow; no flow-matching or consistency distillation acceleration provided.
+      - Evaluated only on singing voice synthesis, not conversational TTS.
+
+claim_clusters:
+  - claim: The DiT backbone with AdaLN conditioning is more compute-efficient than U-Net-based diffusion for TTS at equivalent parameter count.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.313, 2502.03930, 2603.29339]
+    contradicting_papers: []
+
+  - claim: Flow matching has largely superseded DDPM/score-based objectives for TTS within the same DiT architecture.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.313, 2603.29339, 2406.02430]
+    contradicting_papers: []
+
+  - claim: Waveform-latent flow-matching TTS can match AR codec LM speaker similarity on standard benchmarks.
+    status: emerging
+    supporting_papers: [2603.29339]
+    contradicting_papers: []
+
+  - claim: Higher VAE reconstruction fidelity does not necessarily improve downstream diffusion TTS quality.
+    status: emerging
+    supporting_papers: [2603.29339, 2502.03930]
+    contradicting_papers: []
+
+  - claim: Training-inference mismatch in Voicebox/F5-TTS style training is a systematic but correctable degradation.
+    status: emerging
+    supporting_papers: [2603.29339]
+    contradicting_papers: []
+
+  - claim: Inserting an explicit spectrogram bandwidth extension step prior to vocoding improves singing synthesis quality but requires vocoder redesign.
+    status: emerging
+    supporting_papers: [2508.01796]
+    contradicting_papers: []
+
+  - claim: Pure NAR diffusion/flow models vs. AR+diffusion hybrid architectures — neither has established a clear quality-efficiency dominance at scale.
+    status: contested
+    supporting_papers: [2603.29339]
+    contradicting_papers: [2502.03930, 2510.12210]
+    notes: LongCat-AudioDiT shows pure NAR competitive; DiTAR and DiSTAR argue hybrid advantage.
+
+open_questions:
+  - Can discrete masked diffusion be accelerated to the 1-2 NFE range of continuous flow matching?
+  - Does training-inference mismatch correction in LongCat-AudioDiT apply to existing pre-trained models post-hoc?
+  - Can the LSE+Vocos2D pipeline be accelerated via flow matching without losing spectrogram realism gains?
+
+trend_notes:
+  - 2025: DiTAR patch-based continuous AR+diffusion established hybrid paradigm; DiSTAR extended to discrete token space.
+  - 2026: LongCat-AudioDiT shifted the representation from mel-spectrogram to waveform VAE latent, achieving SOTA SIM for diffusion NAR.
+  - The SIM gap between diffusion NAR and AR systems has largely closed as of 2026.

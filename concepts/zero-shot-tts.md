@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: dominant
 ---
 
@@ -65,6 +65,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Zero-shot TTS can be reliably improved for pathological speakers (dysarthria) via teacher-student knowledge anchoring and curriculum learning, without modifying the zero-shot architecture.
   Supporting: [[interspeech-2025-0596]]
+
+- Zero-shot accented TTS benefits from accent label quality more than raw data quantity; geolocation-based filtering consistently outperforms raw self-reported labels.
+  Supporting: [[2508.07426]]
+
+- Zero-shot cross-lingual voice conversion with noise robustness is achievable by combining ASR bottleneck features (for noise-robust phonetic content) with SSL features (for paralinguistic expressiveness), regularised through random feature erasure.
+  Supporting: [[2508.04996]]
 
 ### Contested
 
@@ -169,3 +175,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | Extends zero-shot TTS to pathological speakers via teacher-student knowledge anchoring and progressive curriculum learning on short dysarthric reference audio; >50% relative PER reduction vs. baselines |
 | [[interspeech-2025-0989]] | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech | 2025 | 36.7k-hour English dataset at 22 kHz enabling high-bandwidth zero-shot TTS; Koel-TTS trained on HiFiTTS-2 achieves SSIM 0.731 vs. 0.494 for LibriTTS-trained model on unseen speakers |
 | [[2507.09318]] | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv | 2026 | Zero-shot two-speaker dialogue generation via FM with learnable speaker-turn embeddings; cpSIM 0.437 and WER 3.25% at RTF 0.063 — zero-shot voice conditioning for dialogue |
+| [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Zero-shot voice prompting using same-paragraph speaker reference; chunk-wise AR+FM hybrid; SPK-SIM 0.916 and WER 2.74 on internal podcast data |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Zero-shot speaker generalisation (SIM_SPK 0.702 on IEMOCAP unseen speakers) in conversational speech-visual synthesis |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | Zero-shot VC from a single reference utterance; noise robustness via random feature erasure; 10 unseen speakers from seed-tts-eval |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Zero-shot cross-lingual emotion TTS for Thai; retrieval-based emotion transfer without speaker fine-tuning |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | Zero-shot accented TTS via XTTS-v2 zero-shot cloning; accent conditioning from geolocation-filtered data |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | Zero-shot speaker conditioning via nearest three reference clips; Indic multilingual coverage |

@@ -4,7 +4,7 @@ title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 status: established
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 ---
 
 ## Executive Summary
@@ -44,6 +44,14 @@ A disentangled speech model learns separate representations for each speech fact
 
 **Articulatory coding.** RT-VC [[2025.acl-demo.37]] uses SPARC articulatory coding for physically grounded content-speaker disentanglement: content is extracted as pseudo-EMA articulatory features (causal EMA inverter), speaker as WavLM embeddings, F0/periodicity separately. This interpretable disentanglement operates in a real-time pipeline on CPU.
 
+**Instance normalization for speaker-prosody separation.** [[2508.08399]] uses instance normalization on WavLM hidden residuals to separate time-invariant speaker statistics (µ, σ) from time-variant prosodic content, providing a label-free mechanism that does not require external supervision. Group-residual VQ (GRVQ) quantises the speaker component; a trade-off between LLM compatibility (discrete speaker codes) and speaker fidelity is empirically quantified.
+
+**Frame-level cross-modal contrastive learning.** SecoustiCodec [[2508.02849]] trains a speech codec with a frame-level contrastive objective that aligns phoneme embeddings and speech frame embeddings in a shared space, forcing speech tokens to cluster by phoneme rather than speaker. This approach achieves better semantic-paralinguistic separation than SSL distillation without requiring external phoneme labels at inference.
+
+**Temporal emotion alignment with content-aware attention.** Maestro-EVC [[2508.06890]] uses a cross-attention mechanism in which content representations query frame-level emotion embeddings, producing temporally aligned emotion features that vary with phoneme context rather than remaining utterance-uniform. A gradient reversal layer on a content classifier then suppresses residual phonetic leakage from the emotion representation.
+
+**Spectral disentanglement in codec embeddings.** SPCODEC [[interspeech-2025-0196]] explicitly separates low-frequency and high-frequency content within the codec's quantization stage through supervised reconstruction objectives on each frequency partition, then uses the quantized low-frequency representation to predict and remove redundancy in the high-frequency stream. This is a form of spectral-semantic disentanglement that reduces cross-band information leakage.
+
 ## Major Claims
 
 Claims are generalised propositions aggregated from paper evidence.
@@ -59,6 +67,12 @@ Claims are generalised propositions aggregated from paper evidence.
 - Factorized codec codebooks (separate RVQ groups for content, prosody, timbre) enable independent downstream control of each speech factor without modifying the generation architecture.
   Supporting: [[2512.13251]], [[2025.acl-long.346]], [[2025.acl-long.1043]]
 
+- Fully discrete disentanglement of phonetic, prosodic, and speaker information in a speech codec is achievable without phoneme labels or F0 supervision, at the cost of a small reconstruction quality degradation.
+  Supporting: [[2508.08399]]
+
+- Quantizing speaker vectors into discrete codes introduces a measurable trade-off between LLM compatibility and speaker identity fidelity; continuous speaker representations preserve speaker identity better.
+  Supporting: [[2508.08399]]
+
 ### Emerging
 
 - Difference-in-means direction vectors in pre-trained model activations capture semantic emotion factors while suppressing speaker-specific variation, enabling training-free emotion-speaker disentanglement.
@@ -66,6 +80,12 @@ Claims are generalised propositions aggregated from paper evidence.
 
 - Chunk-level style encoding (prosody, emotion) rather than global timbre encoding enables fine-grained speaking style transfer in streaming contexts, not just voice identity.
   Supporting: [[2507.14534]]
+
+- Frame-level emotion representations derived from speech emotion diarisation models improve prosody transfer fidelity and intelligibility in emotional voice conversion over utterance-level representations.
+  Supporting: [[2508.06890]]
+
+- Random feature erasure during training reduces a model's over-reliance on noise-sensitive SSL representations without requiring information bottleneck machinery, providing a lightweight disentanglement regulariser.
+  Supporting: [[2508.04996]]
 
 - Chromagram-based prosody tokenization, being octave-free and notation-free, is a more universal prosody representation across speech and singing domains than F0-based alternatives.
   Supporting: [[2508.16332]]
@@ -117,10 +137,13 @@ Claims are generalised propositions aggregated from paper evidence.
 - Is there a fundamental trade-off between disentanglement quality and reconstruction quality in continuous latent spaces, or is this a training objective design problem?
 - Does activation-space direction arithmetic (difference-in-means) scale to more complex multi-factor disentanglement (simultaneous emotion + prosody + speaker control)?
 - Can factorized codecs disentangle language from speaker in multilingual settings, enabling true cross-lingual voice identity transfer?
+- SecoustiCodec [[2508.02849]] requires duration-aligned phoneme labels for training; can frame-level contrastive learning be extended to a fully unsupervised setting?
+- [[2508.08399]] shows a measurable trade-off between speaker code discretization and speaker identity fidelity; what codebook design mitigates this while preserving LLM compatibility?
+- How does XEmoRAG's [[2508.07302]] retrieval-based emotion transfer compare to explicit disentanglement in terms of accent artefacts and naturalness in cross-lingual settings?
 
 ## Trend Summary
 
-2021–2023: VQMIVC and NANSY established unsupervised disentanglement using VQ and mutual information. 2024–2025: Streaming systems ([[2507.14534]]) demonstrated chunk-level disentanglement with CVQ. ControlSpeech [[2025.acl-long.346]] used frozen FACodec for simultaneous multi-factor control. 2025: DisCodec [[2512.13251]] introduced graduated soft orthogonality constraints — a principled resolution of the disentanglement-reconstruction trade-off in discrete codecs. Vevo2 [[2508.16332]] bridged speech and singing prosody through chromagram-based tokenization. Marco-Voice [[2508.02038]] and EmoSteer-TTS [[2508.03543]] applied difference-in-means direction arithmetic to emotion-speaker disentanglement, connecting speech research to LLM activation engineering. StyleTTS-ZS [[2025.naacl-long.242]] achieved efficient disentanglement via fixed-length RVQ latents for global timbre and time-varying prosody. The field is converging on multiple complementary approaches: codec-level factorization (DisCodec, FACodec), activation-space direction arithmetic (Marco-Voice, EmoSteer-TTS), and latent-space compression (StyleTTS-ZS, M3-TTS). The primary open frontier has shifted to multi-factor simultaneous disentanglement (content + timbre + prosody + emotion) and cross-domain transfer (speech-singing, cross-lingual).
+2021–2023: VQMIVC and NANSY established unsupervised disentanglement using VQ and mutual information. 2024–2025: Streaming systems ([[2507.14534]]) demonstrated chunk-level disentanglement with CVQ. ControlSpeech [[2025.acl-long.346]] used frozen FACodec for simultaneous multi-factor control. 2025: DisCodec [[2512.13251]] introduced graduated soft orthogonality constraints — a principled resolution of the disentanglement-reconstruction trade-off in discrete codecs. Vevo2 [[2508.16332]] bridged speech and singing prosody through chromagram-based tokenization. Marco-Voice [[2508.02038]] and EmoSteer-TTS [[2508.03543]] applied difference-in-means direction arithmetic to emotion-speaker disentanglement, connecting speech research to LLM activation engineering. StyleTTS-ZS [[2025.naacl-long.242]] achieved efficient disentanglement via fixed-length RVQ latents for global timbre and time-varying prosody. REF-VC [[2508.04996]] demonstrated random feature erasure as a lightweight training-time regulariser that prevents timbre leakage from SSL streams without information bottleneck machinery. SecoustiCodec [[2508.02849]] proposed frame-level cross-modal contrastive learning as an alternative to SSL distillation, with explicit three-way modelling of acoustic, semantic, and paralinguistic representations. Maestro-EVC [[2508.06890]] demonstrated frame-level temporal emotion alignment with content-aware cross-attention and prosody augmentation for mismatched reference conditions in emotional VC. [[2508.08399]] provided the first systematic ablation of fully-discrete codec disentanglement from WavLM features, quantifying the trade-off between speaker code discretization and speaker identity fidelity. The field is converging on multiple complementary approaches: codec-level factorization (DisCodec, FACodec, SecoustiCodec, SPCODEC), activation-space direction arithmetic (Marco-Voice, EmoSteer-TTS), latent-space compression (StyleTTS-ZS, M3-TTS), and regularisation-based approaches (REF-VC). The primary open frontier has shifted to multi-factor simultaneous disentanglement (content + timbre + prosody + emotion) and cross-domain transfer (speech-singing, cross-lingual).
 
 ## All Papers
 
@@ -145,3 +168,13 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[interspeech-2025-0596]] | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech | 2025 | Teacher-student speaker encoder implicitly disentangles timbre from articulation quality |
 | [[interspeech-2025-0723]] | Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction | Interspeech | 2025 | Beta-VAE latent space separates prosody from pronunciation; VQ-VAE prototype anchoring prevents unintended shifts |
 | [[2603.29339]] | LongCat-AudioDiT: High-Fidelity Diffusion TTS in the Waveform Latent Space | arXiv | 2026 | Higher VAE reconstruction fidelity does not improve TTS quality; fundamental disentanglement-tractability tension |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Frame-level cross-modal contrastive learning between phonemes and speech frames; explicit three-way separation of semantic, acoustic, and paralinguistic representations; VAE+FSQ quantisation |
+| [[2508.04996]] | REF-VC | arXiv | 2025 | Random feature erasure regularises SSL/ASR fusion to prevent timbre leakage; implicit alignment suppresses noise-carrying frame reconstruction |
+| [[2508.06890]] | Maestro-EVC | ASRU | 2025 | Frame-level emotion diarisation model for temporally aligned emotion embeddings; GRL on content classifier; prosody augmentation for mismatched reference conditions |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Language-agnostic Emo2Vec embeddings as cross-lingual retrieval signal; retrieval-based emotion transfer avoids direct prosody disentanglement across typologically distant languages |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | kNN-VC timbre augmentation for speaker-accent disentanglement in low-resource accent synthesis; geolocation-based accent label discovery |
+| [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | Systematic ablation of fully-discrete three-factor codec disentanglement from WavLM; instance normalization for time-invariant speaker separation; GRVQ for speaker discretization; quantifies fidelity cost of discrete speaker codes |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | Decouples understanding-oriented (USToken) and acoustic-generation (WavTokenizer) speech token streams to resolve the semantic-acoustic tension in unified speech LLMs |
+| [[2508.11326]] | MoE-TTS | arXiv | 2025 | Modality-based MoE routing separates text and speech parameter spaces; frozen text experts prevent catastrophic forgetting of language understanding during speech fine-tuning |
+| [[interspeech-2025-0196]] | SPCODEC | Interspeech | 2025 | Spectral disentanglement in codec quantization stage; supervised low/high frequency partition with cross-band prediction; reduces high-frequency redundancy without separate subband codec |
+| [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | CLAP-style contrastive alignment separates emotional from non-emotional content; adaptive intensity gate (AIG) provides scalar control of emotion strength; any-to-one EVC with three inference modes |

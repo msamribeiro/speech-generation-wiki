@@ -1,0 +1,217 @@
+concept: evaluation-metrics
+last_updated: 2026-06-02
+paper_count: 37
+
+papers:
+  - id: 2503.04721
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Automatic metrics for full-duplex dialogue can be made reproducible without human raters.
+      - Explicit turn-state prediction modules reduce unwanted interruptions more effectively than end-to-end architectures.
+    evidence:
+      - Full-Duplex-Bench provides four automated scenario types (TOR, backchannel JSD, response latency) without human annotation.
+    limitations:
+      - Limited to four models and English only; metrics are descriptive rather than prescriptive.
+
+  - id: 2504.12867
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Sentence-level emotion similarity metrics correlate only ~40% with human MOS, limiting utility for fine-grained model comparison.
+      - Multimodal LLMs are not yet reliable emotion judges.
+    evidence:
+      - Spearman correlation between emotion2vec cosine similarity and human MOS is approximately 0.40 on EmoVoice-DB.
+    limitations:
+      - Dataset is GPT-4o-audio synthetic; circularity with training distribution.
+
+  - id: 2508.00317
+    year: 2025
+    task: [evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Automatic MOS predictors fail to discriminate among high-quality systems near human naturalness.
+      - Community challenges accelerate evaluation methodology more than individual model contributions.
+    evidence:
+      - VMC 2024 zoomed-in track (near-human-quality systems) was hardest across all editions.
+    limitations:
+      - Central argument supported by citation trends rather than controlled experiment.
+
+  - id: 2508.01796
+    year: 2025
+    task: [singing, TTS]
+    architecture: [diffusion, GAN]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Spectrogram visual realism and waveform perceptual quality are partially independent dimensions.
+    evidence:
+      - LSE+Vocos2D classified as real by humans 46.9% vs. 24.3% for baseline Vocos; MOS 4.176 vs. 3.576.
+    limitations:
+      - Proprietary singing corpus; no standard benchmark comparison.
+
+  - id: 2508.02013
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - LLM-based pairwise evaluation can achieve high rank correlation with human experts when using multi-reference normalisation.
+    evidence:
+      - Spearman ρ 0.67–0.98 across nine evaluation dimensions with Gemini-2.5-Pro as judge.
+    limitations:
+      - References are TTS-synthesised; benchmark scores relative to synthetic ceiling.
+
+  - id: 2508.05385
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Positional accuracy of non-verbal annotations is more important than dataset size for NV controllability.
+    evidence:
+      - TSA variant achieves +0.07 CLAP score and +0.2–0.3 IMOS over TBO across both languages.
+    limitations:
+      - Detection model evaluated on simulated test data.
+
+  - id: 2508.06870
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec, GAN]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Standard neural TTS can produce intelligible speech for previously unsupported tonal scripts from 40 minutes of data.
+    evidence:
+      - MOS 3.43 overall with no baseline for comparison; first system for Meitei Mayek.
+    limitations:
+      - Single speaker, proprietary corpus, no baseline comparison possible.
+
+  - id: 2508.06890
+    year: 2025
+    task: [VC]
+    architecture: [GAN, transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Frame-level emotion representations improve emotion transfer fidelity over utterance-level representations.
+    evidence:
+      - Maestro-EVC: EECS 0.819 vs. 0.779 for ZEST; F0-PCC 0.551 vs. 0.432.
+    limitations:
+      - ESD corpus (350 utterances, 10 speakers, 5 emotions) is narrow in scope.
+
+  - id: 2508.07302
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Custom EMOS metric for cross-lingual emotion transfer evaluation diverges from naturalness MOS.
+    evidence:
+      - EMOS 4.65 vs. NMOS 4.38; emotion and naturalness evaluations can diverge under cross-lingual transfer.
+    limitations:
+      - Internal proprietary datasets only; 15 listeners.
+
+  - id: 2508.07426
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec, GAN, VAE]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Automatic accent identification metrics and human perceptual evaluations of accent plausibility frequently diverge.
+    evidence:
+      - DCF and human evaluation rankings diverge across all four evaluated accents.
+    limitations:
+      - Human evaluation covers only 4 of 11+ accent varieties; radio-trained geolocation model creates domain mismatch.
+
+  - id: 2508.07711
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - UTMOS and subjective MOS can rank vocoder systems differently, making UTMOS unreliable as a sole naturalness proxy.
+    evidence:
+      - BigVGAN has higher UTMOS (3.97) than FreeGAN (3.92) yet MOS is statistically indistinguishable (4.14 vs. 4.12).
+    limitations:
+      - VCTK at 16 kHz only; limited to English multi-speaker setting.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, GAN]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Intelligibility gains in low-resource TTS are more consistently captured by ASR-based CER than by small-scale subjective listener ratings.
+    evidence:
+      - CER improvements (9.60%→2.10% for Tamil) are large and significant; MOS differences at 30 samples/10 listeners are statistically limited.
+    limitations:
+      - Proprietary data; no released corpus or model.
+
+  - id: interspeech-2025-0196
+    year: 2025
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - POLQA objective MOS and subjective MOS can diverge in codec evaluation; subjective evaluation with professional audio engineers is not a sufficient benchmark.
+    evidence:
+      - SPCODEC achieves POLQA 4.5 and MOS 4.63 with only 7 listeners; small panel raises reliability concerns.
+    limitations:
+      - Only 7 professional evaluators; test set of 30 samples.
+
+claim_clusters:
+  - claim: No single automatic MOS predictor generalises well across all audio domains and quality levels; near-human-quality systems evade current SQA discrimination.
+    status: strongly_supported
+    supporting_papers: [2508.00317, 2508.07711, 2504.12867]
+    contradicting_papers: []
+    notes: Documented across multiple papers and the VoiceMOS/AudioMOS Challenge retrospective.
+
+  - claim: Sentence-level automatic emotion similarity metrics correlate poorly with human perceptual judgements at the utterance level.
+    status: emerging
+    supporting_papers: [2504.12867]
+    contradicting_papers: []
+    notes: Only one paper in this batch; needs replication.
+
+  - claim: Benchmark fragmentation across test sets, ASR models, and speaker verification models makes cross-paper evaluation comparisons unreliable.
+    status: strongly_supported
+    supporting_papers: [2508.07426, 2508.07711, 2508.06890]
+    contradicting_papers: []
+    notes: Consistent finding across VC, accent, and vocoder evaluation papers.
+
+  - claim: Automated evaluation frameworks for full-duplex dialogue (TOR, backchannel metrics) can substitute for subjective user studies.
+    status: emerging
+    supporting_papers: [2503.04721]
+    contradicting_papers: []
+    notes: No validation against user study outcomes yet; asserted as design choice.
+
+  - claim: Multi-reference LLM-as-judge evaluation achieves high rank correlation with human experts when normalisation reduces reference-specific variance.
+    status: emerging
+    supporting_papers: [2508.02013]
+    contradicting_papers: []
+    notes: Single implementation; validation in English and Chinese only.
+
+open_questions:
+  - Can a shared evaluation infrastructure for full-duplex SCA be established that integrates TOR-style automated metrics with user preference measures?
+  - What sample size and panel size are required to establish statistical reliability for fine-grained vocoder or emotion TTS evaluation?
+  - Should the community develop a dedicated high-quality discrimination benchmark for SQA since near-human-quality systems defeat current predictors?
+
+trend_notes:
+  - Community challenge infrastructure (VoiceMOS/AudioMOS) is the dominant driver of evaluation method progress as of 2025.
+  - Multi-dimensional evaluation (9 dimensions for role-playing, 4 for VC) is expanding beyond standard MOS/WER.
+  - UTMOS vs. subjective MOS divergence is now documented in multiple evaluation contexts, raising systematic concern about its use as the sole proxy.

@@ -1,0 +1,127 @@
+concept: spoken-language-model
+last_updated: 2026-06-02
+paper_count: 18
+
+papers:
+  - id: 2503.04721
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Full-duplex spoken dialogue models that rely on end-to-end architectures interrupt user pauses at high rates; explicit turn-state prediction substantially reduces unwanted interruptions.
+      - Backchannel generation remains a largely unsolved capability in current full-duplex systems; most open-source models produce near-zero backchannel frequency.
+    evidence:
+      - Full-Duplex-Bench: first automated benchmark for full-duplex SLM turn-taking across four scenarios; reveals consistent aggressiveness-caution tension across all tested models; commercial systems better calibrated than open-source.
+    limitations:
+      - Automated evaluation without human validation of turn-taking naturalness.
+
+  - id: 2507.20091
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Prosody emergence in LLMs requires explicit prosody token design rather than data scale.
+    evidence:
+      - ProsodyLM achieves contrastive focus, emotion recognition, and style continuity without task-specific fine-tuning by replacing codec tokens with explicit word-level prosody annotations.
+    limitations:
+      - Audiobooks only; spontaneous conversational speech not tested.
+
+  - id: 2508.02013
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - The quality of spoken role-playing is more strongly determined by the underlying text LM's reasoning ability than by the speech synthesis architecture.
+    evidence:
+      - SpeechRole benchmark (111K dialogues, 98 roles): text-LM quality is the primary bottleneck for both cascaded and E2E systems; LLM-as-judge rank correlation ρ 0.67–0.98 with human experts.
+    limitations:
+      - TTS-synthesised references as benchmark; quality ceiling risk.
+
+  - id: 2508.04585
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - LLM joint prediction of interleaved speech and visual tokens from multimodal dialogue context is feasible and outperforms cascaded speech-then-video generation on emotion consistency.
+    evidence:
+      - UniTalker achieves SIM_SPK 0.702 on IEMOCAP unseen speakers; joint speech-visual prediction from Qwen2.5-based SLM.
+    limitations:
+      - IEMOCAP acted emotional speech only.
+
+  - id: 2508.08961
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Separating the token used for LLM input from the token used for generation output resolves the understanding-generation tension in unified speech LLMs while reducing data requirements.
+    evidence:
+      - DualSpeechLM: competitive at 4.5K hours on ASR, S2TT, SER, TTS, VC with USTokenizer (understanding) + WavTokenizer (acoustic); reduces modality gap.
+    limitations:
+      - Advantage may diminish at larger data scales.
+
+claim_clusters:
+  - claim: Paralinguistic variability in speech tokens is the dominant bottleneck preventing SLMs from achieving text-LLM-level semantic coherence.
+    status: strongly_supported
+    supporting_papers: [2412.17048, 2025.acl-long.682, interspeech-2025-0310]
+    contradicting_papers: []
+
+  - claim: Cross-modal distillation from a frozen text LLM can match or outperform SFT-trained speech LLMs at substantially lower compute cost.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.388, 2025.acl-long.912]
+    contradicting_papers: []
+
+  - claim: Multi-token prediction (MTP) for speech decoding improves quality and reduces data requirements without requiring ASR/TTS pretraining stages.
+    status: strongly_supported
+    supporting_papers: [2025.emnlp-main.989]
+    contradicting_papers: []
+
+  - claim: Full-duplex SLMs show consistent aggressiveness-caution tension in turn-taking; backchannel generation remains near-zero in most open-source models.
+    status: emerging
+    supporting_papers: [2503.04721]
+    contradicting_papers: []
+
+  - claim: Spoken role-playing quality is more strongly determined by text LM reasoning than by speech synthesis architecture.
+    status: emerging
+    supporting_papers: [2508.02013]
+    contradicting_papers: []
+
+  - claim: Separating understanding and generation tokens in unified speech LMs resolves the understanding-generation tension.
+    status: emerging
+    supporting_papers: [2508.08961]
+    contradicting_papers: []
+
+  - claim: LLM joint prediction of interleaved speech and visual tokens from multimodal dialogue context is feasible.
+    status: emerging
+    supporting_papers: [2508.04585]
+    contradicting_papers: []
+
+  - claim: NAR flow-matching dialogue generation can match AR SLMs on quality while being 15× faster.
+    status: emerging
+    supporting_papers: [2507.09318]
+    contradicting_papers: []
+
+  - claim: Whether pure E2E SLMs are necessary or whether hybrid architectures will permanently dominate is unresolved.
+    status: contested
+    supporting_papers: [2025.acl-long.912, 2025.emnlp-main.989, 2025.acl-long.388]
+    contradicting_papers: [2412.17048, interspeech-2025-0310]
+
+open_questions:
+  - Can the Factor C problem (paralinguistic variability) be solved by better codecs alone, or does it require architectural changes?
+  - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex suffice?
+  - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
+  - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm or addressable by training regime?
+
+trend_notes:
+  - 2025: Full-Duplex-Bench provides the first automated benchmark for turn-taking in full-duplex systems; SpeechRole provides the first large-scale S2S role-playing benchmark.
+  - Integration pass 5 adds: Full-Duplex-Bench (aggressiveness-caution tension), SpeechRole (text-LM bottleneck), UniTalker (speech-visual joint prediction), DualSpeechLM (dual-token decoupling).
+  - The convergence toward hybrid architectures (text LLM + speech I/O) is accelerating with systems like VocalNet, LLaMA-Omni 2, and DualSpeechLM.

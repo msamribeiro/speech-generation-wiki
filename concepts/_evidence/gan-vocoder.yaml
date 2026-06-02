@@ -1,0 +1,125 @@
+concept: gan-vocoder
+last_updated: 2026-06-02
+paper_count: 15
+
+papers:
+  - id: 2508.01796
+    year: 2025
+    task: [singing]
+    architecture: [diffusion, GAN]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Inserting an explicit bandwidth extension step via diffusion prior to vocoding can improve both spectrogram visual realism and perceived audio quality in singing synthesis.
+      - A 2D-convolution vocoder redesign with discriminator augmentation is necessary for the bandwidth extension gains to transfer to audio output.
+    evidence:
+      - LSE+Vocos2D pipeline improves singing MOS from 3.576 to 4.176 over Vocos baseline; shortcut conditioning and discriminator augmentation are key.
+    limitations:
+      - 32-step diffusion is slow; no acceleration provided; only for singing synthesis.
+
+  - id: 2508.05207
+    year: 2025
+    task: [codec]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Multi-scale STFT discriminators in the time-frequency domain are effective GAN training components for neural codecs targeting general audio at low bitrates.
+    evidence:
+      - SpectroStream: multi-scale STFT discriminator at 6 window lengths for TF-domain codec GAN training; 76.3% preference over DAC at 2.7 kbps.
+    limitations:
+      - Music/general audio focus; speech-specific quality not evaluated.
+
+  - id: 2508.06870
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - HiFi-GAN remains the default waveform synthesis backend in new low-resource applied TTS pipelines.
+    evidence:
+      - Meitei Mayek TTS uses HiFi-GAN as standard vocoder in first TTS for Manipuri script; confirms continued role as default.
+    limitations:
+      - No novel vocoder contribution; HiFi-GAN inherited from standard pipelines.
+
+  - id: 2508.07711
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: negative-result
+    claims:
+      - Adversarial training is not necessary for high-quality mel-spectrogram vocoders that explicitly predict the phase spectrum.
+      - GAN discriminators are dispensable only for explicit-phase architectures; removing GAN without explicit phase modelling causes a quality gap.
+    evidence:
+      - FreeGAN matches BigVGAN MOS on VCTK 16 kHz with 100-listener evaluation; GAN-free explicit-phase vocoder; UTMOS vs. subjective MOS divergence documented.
+    limitations:
+      - Evaluated on VCTK 16 kHz only; generalization to 24 kHz or 44.1 kHz and zero-shot conditions untested.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [GAN]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - HiFi-GAN remains the default waveform synthesis backend in applied low-resource TTS pipelines for child-friendly speech.
+    evidence:
+      - MultiGen: HiFi-GAN used as standard vocoder for child-friendly Southeast Asian TTS; no novel vocoder contribution.
+    limitations:
+      - Inherited HiFi-GAN; no vocoder ablation.
+
+claim_clusters:
+  - claim: GAN vocoders offer the best quality-to-speed trade-off for waveform synthesis and are the dominant choice in 2025 TTS and VC systems.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.682, 2025.acl-industry.42, 2025.acl-long.654, 2508.12001, 2508.06870, 2508.08715]
+    contradicting_papers: []
+
+  - claim: Adversarial training with multiple discriminators is essential for high-fidelity waveform and codec reconstruction.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.654, interspeech-2025-0554, 2025.naacl-long.110]
+    contradicting_papers: [2508.07711]
+    notes: FreeGAN shows GAN is dispensable for explicit-phase architectures specifically.
+
+  - claim: Zero-padding transposed convolutions in causal HiFi-GAN introduce checkerboard artifacts; pixel-shuffle upsampling eliminates this while preserving causality.
+    status: strongly_supported
+    supporting_papers: [2507.14534]
+    contradicting_papers: []
+
+  - claim: Adversarial training is not necessary for mel-spectrogram vocoders that explicitly predict the phase spectrum.
+    status: emerging
+    supporting_papers: [2508.07711]
+    contradicting_papers: []
+    notes: Only validated on VCTK 16 kHz; generalization unclear.
+
+  - claim: GAN-style adversarial post-training can accelerate flow-matching TTS inference without a dedicated vocoder stage.
+    status: emerging
+    supporting_papers: [interspeech-2025-0455]
+    contradicting_papers: []
+
+  - claim: Flow-matching vocoders using GAN-style auxiliary losses can match or exceed BigVGAN/HiFi-GAN quality with faster inference.
+    status: emerging
+    supporting_papers: [2025.naacl-long.110]
+    contradicting_papers: []
+
+  - claim: Multi-scale STFT discriminators are effective for full-band general audio codec GAN training at low bitrates.
+    status: emerging
+    supporting_papers: [2508.05207]
+    contradicting_papers: []
+
+  - claim: Inserting a spectrogram bandwidth extension step prior to vocoding improves singing synthesis quality but requires vocoder redesign.
+    status: emerging
+    supporting_papers: [2508.01796]
+    contradicting_papers: []
+
+open_questions:
+  - Is pixel shuffle the optimal approach for causal upsampling, or are better artifact-free alternatives possible?
+  - Does the FreeGAN GAN-free result generalise to 24 kHz or 44.1 kHz targets, or to zero-shot conditions with out-of-domain speakers?
+  - Can the LSE+Vocos2D pipeline be accelerated via flow matching without losing spectrogram realism gains?
+  - Can causal GAN vocoders achieve quality parity with non-causal systems on perceptual evaluation?
+
+trend_notes:
+  - 2025: FreeGAN provides clearest empirical evidence that GAN discriminators are dispensable for vocoders with explicit phase prediction — isolating phase modelling as the active ingredient rather than adversarial training itself.
+  - Integration pass 5 adds: FreeGAN (GAN-free explicit-phase vocoder), LSE+Vocos2D (bandwidth extension step for singing), SpectroStream (TF-domain STFT discriminators), Meitei Mayek TTS and MultiGen confirming HiFi-GAN as default in low-resource pipelines.
+  - Flow-matching vocoders (WaveFM) represent the strongest emerging alternative to GAN vocoders.

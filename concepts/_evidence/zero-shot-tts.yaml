@@ -1,0 +1,134 @@
+concept: zero-shot-tts
+last_updated: 2026-06-02
+paper_count: 48
+
+papers:
+  - id: 2507.22746
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Zero-shot voice prompting using same-paragraph speaker reference is achievable in a hybrid chunk-AR+FM model.
+    evidence:
+      - Dragon-FM achieves SPK-SIM 0.916 and WER 2.74 on internal podcast data with same-paragraph speaker reference.
+    limitations:
+      - Internal podcast data only; no comparison on Seed-TTS-Eval.
+
+  - id: 2508.04585
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Zero-shot speaker generalization is achievable in joint audiovisual synthesis with SIM_SPK 0.702 on IEMOCAP unseen speakers.
+    evidence:
+      - UniTalker achieves SIM_SPK 0.702 on IEMOCAP unseen speakers using Qwen2.5-0.5B backbone.
+    limitations:
+      - Only evaluated on acted emotional speech (IEMOCAP).
+
+  - id: 2508.04996
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Zero-shot cross-lingual VC with noise robustness is achievable via ASR bottleneck + SSL fusion with random feature erasure.
+    evidence:
+      - REF-VC achieves CER 8.03% vs. 12.45% for Seed-VC on noisy test set; ABX prosody tests confirm source prosody preservation.
+    limitations:
+      - 10 unseen speakers from Seed-TTS-Eval; limited speaker diversity.
+
+  - id: 2508.07302
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Zero-shot cross-lingual emotion TTS for Thai is achievable by retrieval-based emotion transfer without parallel bilingual emotional data.
+    evidence:
+      - XEmoRAG achieves EMOS 4.65 using Emo2Vec retrieval without parallel bilingual emotional data.
+    limitations:
+      - Thai-only; 60 hours emotional data; limited to non-parallel retrieval scenario.
+
+  - id: 2508.07426
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Zero-shot accented TTS benefits from accent label quality more than raw data quantity; geolocation-based filtering consistently outperforms raw self-reported labels.
+    evidence:
+      - XTTS-v2 with geolocation-filtered accent labels achieves better objective accent similarity than with raw CommonVoice labels across 11 accent varieties.
+    limitations:
+      - kNN-VC augmentation improves objective accent similarity but shows unclear benefit in human evaluation.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Zero-shot speaker conditioning via nearest reference clips enables multilingual Indic TTS coverage from 20K hours open-source data.
+    evidence:
+      - MahaTTS achieves competitive WER across 17 Indic languages with nearest-3 reference clip zero-shot speaker conditioning.
+    limitations:
+      - English-dominated training data (58%); cross-lingual transfer disentanglement is unclear.
+
+claim_clusters:
+  - claim: Zero-shot TTS quality scales with training data and model parameters.
+    status: strongly_supported
+    supporting_papers: [2603.08823, 2601.15621, 2604.00688, 2406.02430, 2508.14049]
+    contradicting_papers: []
+
+  - claim: Post-training alignment reliably improves zero-shot TTS intelligibility, speaker similarity, and expressiveness without degrading naturalness.
+    status: strongly_supported
+    supporting_papers: [2406.02430, 2512.14291, 2025.acl-long.598, 2603.08823]
+    contradicting_papers: []
+
+  - claim: CFG strategy governs the speaker similarity / intelligibility trade-off in FM zero-shot TTS.
+    status: strongly_supported
+    supporting_papers: [2509.19668, 2025.acl-long.313, 2412.10117]
+    contradicting_papers: []
+
+  - claim: Cross-lingual zero-shot TTS can be substantially improved by preference alignment even with small alignment datasets.
+    status: emerging
+    supporting_papers: [2025.acl-long.598]
+    contradicting_papers: []
+
+  - claim: Zero-shot TTS can be extended to 600+ languages with a single NAR model via full-codebook masking and LLM initialization.
+    status: emerging
+    supporting_papers: [2604.00688]
+    contradicting_papers: []
+
+  - claim: Zero-shot accented TTS benefits from accent label quality more than raw data quantity.
+    status: emerging
+    supporting_papers: [2508.07426]
+    contradicting_papers: []
+
+  - claim: Zero-shot cross-lingual VC with noise robustness is achievable by combining ASR bottleneck and SSL features with random feature erasure.
+    status: emerging
+    supporting_papers: [2508.04996]
+    contradicting_papers: []
+
+  - claim: There is a fundamental tension between intelligibility and naturalness in zero-shot TTS; systems optimized for near-zero WER trade off UTMOS.
+    status: contested
+    supporting_papers: [2025.acl-long.1043, 2510.02848, 2509.09631]
+    contradicting_papers: [2603.08823]
+    notes: At very large scale (Fish Audio S2), both high WER and SIM are achieved simultaneously.
+
+open_questions:
+  - Can CFG improvements fully close the gap to closed-source SOTA, or is training-time methodology the bottleneck?
+  - Is the intelligibility/naturalness trade-off fundamental to the learned-prior approach?
+  - What is the minimum data per language for acceptable zero-shot quality in a multilingual model?
+
+trend_notes:
+  - The gap between open-source and closed-source SOTA has materially narrowed in 2026 (Fish Audio S2, Qwen3-TTS, OmniVoice).
+  - Zero-shot VC is increasingly integrated as a secondary capability in TTS systems (REF-VC, DisCo-Speech).
+  - Cross-lingual zero-shot remains consistently harder than same-language zero-shot synthesis.

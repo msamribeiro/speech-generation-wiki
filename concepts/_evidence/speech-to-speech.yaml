@@ -1,0 +1,73 @@
+concept: speech-to-speech
+last_updated: 2026-06-02
+paper_count: 9
+
+papers:
+  - id: 2503.04721
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Full-duplex SLMs show a consistent aggressiveness-caution tension in turn-taking across all tested architectures.
+      - Backchannel generation remains near-zero for most current full-duplex open-source models.
+      - Commercial full-duplex systems are better calibrated on turn-taking than open-source counterparts.
+    evidence:
+      - Full-Duplex-Bench: automated benchmark for four turn-taking scenarios; aggressiveness-caution tension consistent across all models; commercial systems better calibrated; open-source models produce near-zero backchannel frequency.
+    limitations:
+      - Automated evaluation without human validation of turn-taking naturalness; no end-to-end S2S benchmark yet.
+
+  - id: 2508.02013
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Spoken role-playing quality is more strongly determined by text LM reasoning than by speech synthesis architecture in both cascaded and E2E systems.
+    evidence:
+      - SpeechRole (111K dialogues, 98 roles): text-LM quality is the primary bottleneck for both cascaded and E2E systems; LLM-as-judge ρ 0.67–0.98 with human experts.
+    limitations:
+      - TTS-synthesised references as benchmark; quality ceiling risk.
+
+claim_clusters:
+  - claim: Paralinguistic variability in speech tokens is the primary bottleneck limiting E2E speech LM semantic coherence regardless of model scale.
+    status: strongly_supported
+    supporting_papers: [2412.17048]
+    contradicting_papers: []
+
+  - claim: Low-frame-rate codecs with semantically rich tokens are necessary infrastructure for tractable AR generation in full-duplex S2S dialogue.
+    status: strongly_supported
+    supporting_papers: [2510.00981]
+    contradicting_papers: []
+
+  - claim: Full-duplex SLMs show a consistent aggressiveness-caution tension; backchannel generation is near-zero in most open-source models.
+    status: emerging
+    supporting_papers: [2503.04721]
+    contradicting_papers: []
+
+  - claim: Spoken role-playing quality is more strongly determined by text LM reasoning than speech synthesis architecture.
+    status: emerging
+    supporting_papers: [2508.02013]
+    contradicting_papers: []
+
+  - claim: Empathetic and open-source E2E S2S systems can achieve competitive performance on spoken dialogue benchmarks.
+    status: emerging
+    supporting_papers: [2025.emnlp-demos.70]
+    contradicting_papers: []
+
+  - claim: Fine-grained interaction annotations are necessary training signal for E2E S2S models; no open corpus covered these before 2025.
+    status: emerging
+    supporting_papers: [2025.findings-emnlp.424]
+    contradicting_papers: []
+
+open_questions:
+  - Can the Factor C problem be solved by better codecs alone, or does it require architectural changes to the LM?
+  - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex models suffice?
+  - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm?
+  - SpeechRole shows interaction quality is text-LM bottlenecked; does this bottleneck affect open-ended S2S dialogue in the same way as role-playing?
+
+trend_notes:
+  - Integration pass 5 adds: Full-Duplex-Bench (first automated benchmark for turn-taking, revealing aggressiveness-caution tension), SpeechRole (text-LM bottleneck in S2S role-playing).
+  - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (Factor C) and text reasoning, not synthesis architecture.

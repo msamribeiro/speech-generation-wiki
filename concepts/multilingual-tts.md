@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 ---
 
 ## Executive Summary
@@ -66,6 +66,24 @@ Claims are generalised propositions aggregated from paper evidence.
 - Dedicated phoneme-based pipelines with language-specific lexicons still outperform large multilingual models for very low-resource languages with non-Latin scripts.
   Supporting: [[interspeech-2025-0469]]
 
+- Large multilingual LLM-TTS systems fine-tuned with language-specific data and speaker conditioning substantially outperform conventional non-autoregressive models on naturalness for low-resource languages.
+  Supporting: [[2508.08715]]
+
+- BPE-based multilingual TTS models systematically underperform on phonologically complex languages where reading ambiguity is high and pitch accent is lexically contrastive; parameter-efficient LoRA with phoneme-tag injection can restore user-controllable pronunciation correction.
+  Supporting: [[2508.09767]]
+
+- Two-stage semantic-acoustic decoupling (text-to-semantic LM + conditional flow matching acoustic model) enables independent training and simplifies new language addition to a multilingual system at approximately 200 hours per language.
+  Supporting: [[2508.14049]]
+
+- Intelligibility in low-resource languages with limited training data remains markedly worse than high-resource languages within the same multilingual system.
+  Supporting: [[2508.14049]]
+
+- Cross-lingual emotion transfer from a high-resource to a low-resource tonal language can be enabled by retrieval-augmented prosody prompting without parallel bilingual emotional data.
+  Supporting: [[2508.07302]]
+
+- Non-verbal vocalizations (laughter, sighs) show cross-lingual acoustic generalisability: NV detection models trained on English speech perform comparably on Chinese test sets.
+  Supporting: [[2508.05385]]
+
 ### Contested
 
 > [!warning]
@@ -112,10 +130,13 @@ Claims are generalised propositions aggregated from paper evidence.
 - Does preference alignment on EN+ZH pairs generalize to languages beyond the ones tested in [[2025.acl-long.598]] (JA, KO, DE, FR)? And does it hold for tonal or morphologically complex languages?
 - Is cross-lingual zero-shot voice cloning fundamentally limited by the absence of shared phoneme inventory, or is it a training data problem?
 - Does shared subword tokenization reliably handle tonal languages (Mandarin, Cantonese, Thai, Vietnamese) where tone is phonemically contrastive?
+- UtterTune [[2508.09767]] provides targeted pitch accent correction for Japanese via LoRA; can this approach generalise to other tonally complex languages (Mandarin tones, Scandinavian pitch accent) without language-specific phonemic transcription?
+- MahaTTS-v2 [[2508.14049]] achieves competitive results on 22 Indic languages but English dominates (58%) the training data; how much of the cross-language quality is genuine transfer vs. data dominance?
+- The non-verbal speech pipeline [[2508.05385]] generalises across language in its NV detection model without retraining; does this hold for synthesis, where NV vocalizations may have culture-specific acoustic realizations?
 
 ## Trend Summary
 
-2024: Emilia dataset (100K hours EN+ZH) enabled high-quality open-weight multilingual TTS. CosyVoice [[2407.05407]] demonstrated multilingual at 170K hours; CosyVoice 2 [[2412.10117]] added streaming and an LLM backbone. 2025: F5-TTS ([[2025.acl-long.313]]) showed EN+ZH code-switching; preference alignment ([[2025.acl-long.598]]) extended to cross-lingual domains; under-resourced language TTS ([[2025.acl-industry.42]], [[2025.ccl-1.80]]) attracted attention at NLP venues; LongCat-AudioDiT [[2603.29339]] used UMT5 to support 107 languages. 2026: OmniVoice [[2604.00688]] crossed 600 languages from a single open-source model — a qualitative step change in scope; Qwen3-TTS [[2601.15621]] achieved top SPK-SIM across 10 languages with 5M hours; Fish Audio S2 [[2603.08823]] achieved best multilingual WER across 80+ languages on 10M hours. The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage, driven by LLM initialization, shared subword tokenizers, and massive data curation pipelines.
+2024: Emilia dataset (100K hours EN+ZH) enabled high-quality open-weight multilingual TTS. CosyVoice [[2407.05407]] demonstrated multilingual at 170K hours; CosyVoice 2 [[2412.10117]] added streaming and an LLM backbone. 2025: F5-TTS ([[2025.acl-long.313]]) showed EN+ZH code-switching; preference alignment ([[2025.acl-long.598]]) extended to cross-lingual domains; under-resourced language TTS ([[2025.acl-industry.42]], [[2025.ccl-1.80]]) attracted attention at NLP venues; LongCat-AudioDiT [[2603.29339]] used UMT5 to support 107 languages. Integration pass 5 adds five new multilingual perspectives: MahaTTS-v2 [[2508.14049]] demonstrates a two-stage semantic-acoustic pipeline for 22 Indic languages from 20K hours of open-source data, with 200 hours sufficient to add a new language; MultiGen [[2508.08715]] demonstrates fine-tuning a multilingual foundation model (CosyVoice-300M) for child-friendly speech in three low-resource Southeast Asian languages with as few as 1,400 utterances; UtterTune [[2508.09767]] demonstrates LoRA-based pitch accent correction for Japanese as a lightweight language-specific corrective layer; XEmoRAG [[2508.07302]] demonstrates retrieval-augmented cross-lingual emotion transfer from Chinese to Thai without parallel bilingual emotional data; the non-verbal speech pipeline [[2508.05385]] provides a bilingual (EN/ZH) NV corpus showing cross-lingual generalisation in NV detection without retraining. The Meitei Mayek TTS paper [[2508.06870]] adds the first existence proof for a TTS system in the Manipuri script, reaffirming that phoneme mapping development remains a prerequisite for any standard pipeline applied to indigenous writing systems. 2026: OmniVoice [[2604.00688]] crossed 600 languages from a single open-source model — a qualitative step change in scope; Qwen3-TTS [[2601.15621]] achieved top SPK-SIM across 10 languages with 5M hours; Fish Audio S2 [[2603.08823]] achieved best multilingual WER across 80+ languages on 10M hours. The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage, driven by LLM initialization, shared subword tokenizers, and massive data curation pipelines.
 
 ## All Papers
 
@@ -142,3 +163,10 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent neural Seq2Seq frontend; 95% data reduction for new accent via cross-accent transfer |
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Per-phoneme accentedness parameter for intrasentential code-switching in Swedish TTS |
 | [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Cross-lingual transfer for sentence mode prediction across Italian, French, and German |
+| [[2508.05385]] | Non-Verbal Speech Generation Pipeline | arXiv | 2025 | Bilingual EN/ZH NV dataset; cross-lingual NV detection generalisation without retraining; demonstrates language-agnostic acoustic features of non-verbal sounds |
+| [[2508.06870]] | TTS for Meitei Mayek Script | arXiv | 2025 | First TTS system for Manipuri (Meitei Mayek script); ARPAbet phoneme mapping for novel script; demonstrates existence proof for standard pipeline on indigenous writing system |
+| [[2508.07302]] | XEmoRAG | arXiv | 2025 | Cross-lingual emotion transfer from Chinese to Thai via Emo2Vec retrieval; two-stage fine-tuning on 1K hours non-emotional + 60 hours emotional Thai data; no parallel bilingual emotional data required |
+| [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | Geolocation-based accent label discovery from CommonVoice; kNN-VC timbre augmentation; 11-accent English coverage including underrepresented varieties |
+| [[2508.08715]] | MultiGen | arXiv | 2025 | CosyVoice-300M fine-tuning for child-friendly speech in Singaporean-accented Mandarin, Malay, and Tamil; x-vector conditioning; effective from 1,400 utterances |
+| [[2508.09767]] | UtterTune | arXiv | 2025 | LoRA pitch accent correction for Japanese on CosyVoice 2; phoneme-tag tokens; accent correctness 0.499→0.899; language-specific corrective layer for BPE-input multilingual TTS |
+| [[2508.14049]] | MahaTTS | arXiv | 2025 | 22-language Indic TTS from 20K hours; Gemma-based two-stage pipeline; 200 hours per new language; WER-based evaluation across 17 languages |

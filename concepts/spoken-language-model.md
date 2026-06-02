@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 status: emerging
 ---
 ## Executive Summary
@@ -69,6 +69,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Non-autoregressive flow-matching architectures can match AR SLMs on dialogue generation quality while being 15× faster, suggesting AR is not required for the spoken dialogue use case.
   Supporting: [[2507.09318]]
 
+- Full-duplex spoken dialogue models that rely on end-to-end architectures interrupt user pauses at high rates; explicit turn-state prediction modules substantially reduce unwanted interruptions.
+  Supporting: [[2503.04721]]
+
+- Backchannel generation remains a largely unsolved capability in current full-duplex systems; most open-source models produce near-zero backchannel frequency.
+  Supporting: [[2503.04721]]
+
+- LLM joint prediction of interleaved speech and visual tokens from a multimodal dialogue context is feasible and outperforms cascaded speech-then-video generation on emotion consistency and lip synchronisation.
+  Supporting: [[2508.04585]]
+
+- The quality of spoken role-playing in both cascaded and end-to-end systems is more strongly determined by the underlying language model's text reasoning ability than by the speech synthesis architecture.
+  Supporting: [[2508.02013]]
+
+- Separating the token used for LLM input from the token used for generation output resolves the understanding-generation tension in unified speech LLMs while reducing data requirements substantially.
+  Supporting: [[2508.08961]]
+
 ### Contested
 
 > [!warning]
@@ -115,10 +130,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Are pure end-to-end SLMs a necessary intermediate step, or will cascade architectures continue to dominate commercial systems?
 - VocalNet [[2025.emnlp-main.989]] shows MTP improves speech decoding quality significantly; can MTP also improve paralinguistic modeling (prosody, emotion), or does it only help intelligibility?
 - OpenS2S [[2025.emnlp-demos.70]] uses automated LLM+TTS data construction for empathy; what is the quality ceiling for this approach compared to human-annotated empathetic data?
+- Full-Duplex-Bench [[2503.04721]] reveals a consistent tension: models that take the turn aggressively miss backchannels, while cautious models miss turn-end cues; is this a fundamental trade-off or addressable by training?
+- ProsodyLM [[2507.20091]] achieves prosody emergence without codec tokens by using explicit prosody annotations; can this approach scale to spontaneous conversational speech where prosody structure is less predictable?
+- DualSpeechLM [[2508.08961]] demonstrates competitive quality at 4.5K hours; does the dual-token advantage persist at larger data scales where the understanding-generation tension may naturally resolve?
+- SpeechRole [[2508.02013]] shows interaction quality is text-LM bottlenecked; how much of the gap between cascaded and E2E systems is paralinguistic modelling vs. text understanding quality?
+- SecoustiCodec [[2508.02849]] is designed explicitly for voice-dialogue streaming; can its explicit three-way semantic/acoustic/paralinguistic decomposition help address Factor C from [[2412.17048]]?
 
 ## Trend Summary
 
-2021: GSLM establishes that de-duplicated HuBERT tokens allow rudimentary speech language modeling. 2022: AudioLM adds acoustic conditioning for naturalness. 2023: TWIST, SpeechGPT bring text LLM initialization and fine-tuning. 2024: Moshi achieves real-time duplex operation; GPT-4o voice mode demonstrates commercial-scale capability. 2025: Systematic analysis ([[2412.17048]]) reveals Factor C (paralinguistic variability) as the dominant bottleneck. InteractSpeech ([[2025.findings-emnlp.424]]) provides targeted training data for interaction dynamics. DiVA ([[2025.acl-long.388]]) establishes cross-modal distillation as a data-efficient alternative to SFT. VocalNet ([[2025.emnlp-main.989]]) shows that MTP halves WER vs. NTP and ASR/TTS pretraining stages add cost without benefit. OpenS2S ([[2025.emnlp-demos.70]]) demonstrates fully open-source empathetic SLMs with automated data construction. LLaMA-Omni 2 [[2025.acl-long.912]] demonstrates that modular SpeechLMs can match native SpeechLMs at 200K synthetic samples vs. millions of hours — establishing a new data efficiency benchmark for real-time spoken chatbots, with the key insight that integrating a high-quality autoregressive streaming TTS module (CosyVoice 2 chunk-aware FM) closes the naturalness gap of prior NAR-based modular systems. [[2025.acl-long.682]] provides the first comprehensive survey of the field as of mid-2025.
+2021: GSLM establishes that de-duplicated HuBERT tokens allow rudimentary speech language modeling. 2022: AudioLM adds acoustic conditioning for naturalness. 2023: TWIST, SpeechGPT bring text LLM initialization and fine-tuning. 2024: Moshi achieves real-time duplex operation; GPT-4o voice mode demonstrates commercial-scale capability. 2025: Systematic analysis ([[2412.17048]]) reveals Factor C (paralinguistic variability) as the dominant bottleneck. InteractSpeech ([[2025.findings-emnlp.424]]) provides targeted training data for interaction dynamics. DiVA ([[2025.acl-long.388]]) establishes cross-modal distillation as a data-efficient alternative to SFT. VocalNet ([[2025.emnlp-main.989]]) shows that MTP halves WER vs. NTP and ASR/TTS pretraining stages add cost without benefit. OpenS2S ([[2025.emnlp-demos.70]]) demonstrates fully open-source empathetic SLMs with automated data construction. LLaMA-Omni 2 [[2025.acl-long.912]] demonstrates that modular SpeechLMs can match native SpeechLMs at 200K synthetic samples vs. millions of hours — establishing a new data efficiency benchmark for real-time spoken chatbots, with the key insight that integrating a high-quality autoregressive streaming TTS module (CosyVoice 2 chunk-aware FM) closes the naturalness gap of prior NAR-based modular systems. [[2025.acl-long.682]] provides the first comprehensive survey of the field as of mid-2025. Integration pass 5 adds: ProsodyLM [[2507.20091]] demonstrating prosody emergence via explicit token design; Full-Duplex-Bench [[2503.04721]] providing the first automated benchmark for turn-taking in full-duplex systems; SpeechRole [[2508.02013]] providing the first large-scale speech-to-speech role-playing benchmark (111K dialogues, 98 roles), finding that text-LM quality bottlenecks interaction; SecoustiCodec [[2508.02849]] providing a streaming single-codebook codec explicitly targeting voice-dialogue downstream tasks; UniTalker [[2508.04585]] extending multimodal SLM generation to joint speech-visual outputs; DualSpeechLM [[2508.08961]] proposing dual-token understanding-generation decoupling as a solution to the shared-token bottleneck in unified speech LLMs.
 
 ## All Papers
 
@@ -139,3 +159,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0310]] | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech LMs | Interspeech | 2025 | Systematic 64-configuration grid search over HuBERT K-means segmentation × vocabulary; N=80ms + K=16384 beats original GSLM-style tokenization on 5 SLU benchmarks with 50% data reduction |
 | [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | 30M AR transformer decoupled from any base LLM; multi-queue streaming scheduler processes LLM text tokens concurrently with speech token decoding; achieves 475ms end-to-end latency and WER 3.70% |
 | [[2507.09318]] | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv | 2026 | Extends FM TTS to spoken dialogue with learnable speaker-turn embeddings; 15× faster than AR baselines (Dia 1.61B), demonstrating NAR architecture's advantage for the dialogue SCA use case |
+| [[2503.04721]] | Full-Duplex-Bench | arXiv | 2025 | First automated benchmark for full-duplex SLM turn-taking across four scenarios (pause handling, backchanneling, smooth turn-taking, interruption management); reveals consistent aggressiveness-caution tension across all tested models |
+| [[2507.20091]] | ProsodyLM | arXiv | 2025 | Demonstrates prosody emergence in LLMs via word-level prosody token design; contrastive focus, emotion recognition, and style continuity without task-specific fine-tuning |
+| [[2508.02013]] | SpeechRole | arXiv | 2025 | First large-scale S2S speech role-playing benchmark (111K dialogues, 98 roles); finds text-LM quality is the primary determinant of role-playing fidelity and interaction quality |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Single-codebook streaming codec with explicit semantic-acoustic-paralinguistic decomposition; designed for voice-dialogue downstream tasks; 12.08 ms initial latency |
+| [[2508.04585]] | UniTalker | arXiv | 2025 | Joint prediction of interleaved speech and facial landmark tokens from multimodal dialogue context in a Qwen2.5-based SLM; frame-level bimodal alignment for synchronised audiovisual output |
+| [[2508.08961]] | DualSpeechLM | arXiv | 2025 | Dual-token architecture: USTokenizer (understanding-driven LLM-aligned input tokens) + WavTokenizer (acoustic output tokens); competitive at 4.5K hours on ASR, S2TT, SER, TTS, VC |

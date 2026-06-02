@@ -1,0 +1,194 @@
+concept: prosody-control
+last_updated: 2026-06-02
+paper_count: 28
+
+papers:
+  - id: 2507.20091
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit word-level prosody token design in speech LMs enables prosody understanding and generation as emergent capabilities through pre-training.
+      - Conventional codec-token speech LMs do not develop prosodic understanding as emergent capabilities; tokenisation design is the binding constraint, not data scale.
+    evidence:
+      - ProsodyLM achieves contrastive focus accuracy 82%, emotion recognition, and style continuity without task-specific fine-tuning; codec-token baselines show near-zero prosody sensitivity.
+    limitations:
+      - Trained on audiobooks only; prosody patterns in conversational speech may differ fundamentally.
+
+  - id: 2508.02013
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Prosodic consistency and emotion appropriateness are among the hardest evaluation dimensions for current spoken role-playing agents.
+      - Cascaded systems outperform end-to-end models on prosody consistency in role-playing evaluation.
+    evidence:
+      - SpeechRole benchmark nine-dimension evaluation shows PC and EA dimensions score lower than naturalness across all evaluated systems.
+    limitations:
+      - TTS-synthesised references as benchmark; quality ceiling risk.
+
+  - id: 2508.04585
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Emotion-guided flow-matching renderer with predicted emotion tokens explicitly improves emotional expressiveness in conversational speech synthesis.
+    evidence:
+      - UniTalker uses predicted emotion labels as explicit conditioning for the CFM speech renderer; improves emotional expressiveness on IEMOCAP.
+    limitations:
+      - Evaluated only on acted emotional speech (IEMOCAP).
+
+  - id: 2508.04996
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Multi-scale pitch encoder (PBTC modules) provides F0 conditioning that confirms source prosody preservation in VC via ABX evaluation.
+    evidence:
+      - REF-VC ABX prosody preference tests confirm source prosody and non-verbal element preservation; PBTC multi-scale pitch encoder as F0 conditioning component.
+    limitations:
+      - ABX test on limited samples; no large-scale prosody evaluation.
+
+  - id: 2508.05385
+    year: 2025
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - Temporal-semantic alignment is more important than dataset scale for accurate NV vocalization positioning in prosody control.
+    evidence:
+      - NV pipeline shows tag positional accuracy is the primary controllability driver rather than dataset size.
+    limitations:
+      - NV synthesis integrated into broader TTS pipeline not separately benchmarked on naturalness.
+
+  - id: 2508.06890
+    year: 2025
+    task: [VC]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Training-time prosody augmentation (temporal shifting and piecewise time warping) improves robustness to prosody-mismatched reference conditions in EVC.
+      - Explicit F0 and energy conditioning from reference transfers temporal prosody dynamics more faithfully than implicit prediction.
+    evidence:
+      - Maestro-EVC: prosody augmentation (shift + piecewise warp) improves robustness to mismatch; explicit F0+energy conditioning via EEPT module for temporal prosody fidelity.
+    limitations:
+      - Evaluated on ESD corpus only; spontaneous/cross-domain prosody not tested.
+
+  - id: 2508.07426
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Accent conditioning via accent token replacement for the language token in a multilingual AR TTS system; geolocation-based data filtering improves accent-prosody conditioning.
+    evidence:
+      - Scalable Controllable Accented TTS: geolocation-based filtering improves objective accent similarity; kNN-VC augmentation provides speaker diversity.
+    limitations:
+      - Human perceptual evaluation of accent quality shows unclear benefit from kNN-VC augmentation.
+
+  - id: 2508.08399
+    year: 2025
+    task: [VC]
+    architecture: [VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Prosody as time-variant residual after instance normalization provides a label-free mechanism for speaker-prosody separation.
+    evidence:
+      - WavLM residual after instance normalization captures prosody (F0 deviation); UMAP shows quantized prosody vectors align with speaker-normalized F0 deviation.
+    limitations:
+      - Ablation on small held-out set; not benchmarked for controllability.
+
+  - id: 2508.09767
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - LoRA with phoneme-tag tokens provides targeted pitch accent correction for BPE-input multilingual LLM-TTS at less than 0.5% parameter overhead.
+    evidence:
+      - UtterTune raises Japanese accent correctness from 0.498 to 0.899 with rank-16 LoRA on CosyVoice2; <0.5% trainable parameters.
+    limitations:
+      - Requires user-supplied phonemic transcription; not applicable without G2P preprocessing.
+
+  - id: interspeech-2025-0203
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Adaptive intensity gate provides scalar control of emotion strength in FM EVC; CFM decoder produces richer prosodic variation than GAN baselines.
+    evidence:
+      - ClapFM-EVC AIG provides scalar emotion intensity control; flow-matching decoder outperforms GAN baseline on prosodic variation (MOS 4.09 vs. 2.98).
+    limitations:
+      - Any-to-one setting; any-to-any prosody transfer not tested.
+
+claim_clusters:
+  - claim: Pitch, loudness, and prominence are redundant with 3–8 past words and only 1–2 future words; duration is better predicted from future context.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.1471]
+    contradicting_papers: []
+
+  - claim: Natural language instruction conditioning achieves competitive accuracy across multiple prosody attributes simultaneously when combined with mixture density modeling.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.346, 2025.emnlp-main.180]
+    contradicting_papers: []
+
+  - claim: Factorized prosody disentanglement enables independent prosody control without reference audio, compatible with zero-shot speaker cloning.
+    status: strongly_supported
+    supporting_papers: [2025.acl-long.346, 2512.13251, 2025.naacl-long.242]
+    contradicting_papers: []
+
+  - claim: Training-free post-hoc prosody steering via activation difference-in-means in pre-trained DiT FM models is effective without labeled training data.
+    status: emerging
+    supporting_papers: [2508.03543]
+    contradicting_papers: []
+
+  - claim: RL-based prosody alignment can improve prosody accuracy simultaneously with intelligibility and speaker similarity, but multi-reward trade-offs exist.
+    status: emerging
+    supporting_papers: [2509.00685, 2510.05758]
+    contradicting_papers: []
+
+  - claim: Explicit word-level prosody token design in LMs enables prosody as emergent capability; tokenisation design, not data scale, is the binding constraint.
+    status: emerging
+    supporting_papers: [2507.20091]
+    contradicting_papers: []
+
+  - claim: Training-time prosody augmentation (temporal shifting and piecewise time warping) improves robustness to prosody-mismatched reference conditions.
+    status: emerging
+    supporting_papers: [2508.06890]
+    contradicting_papers: []
+
+  - claim: Explicit F0 and energy conditioning transfers temporal prosody dynamics more faithfully than implicit prediction from latent codes.
+    status: emerging
+    supporting_papers: [2508.06890, interspeech-2025-0203]
+    contradicting_papers: []
+
+  - claim: Whether pitch is fundamentally harder to control than speed/volume under multi-factor conditioning is unresolved.
+    status: contested
+    supporting_papers: [2025.acl-long.346]
+    contradicting_papers: []
+
+open_questions:
+  - Can natural language prosody control generalise to fine-grained instructions beyond standard attributes (pitch, speed, volume, emotion, gender)?
+  - Does explicit word-level prosody tokenisation (ProsodyLM) generalise to conversational or spontaneous speech?
+  - Is acoustic pitch the most difficult attribute to independently control under multi-factor conditioning?
+  - What is the minimal phonological expertise burden for LoRA pitch accent correction to be practical for end users?
+
+trend_notes:
+  - 2025: ProsodyLM demonstrates that prosody emergence requires tokenisation design rather than data scale — a conceptually novel finding that reframes the prosody control problem.
+  - Integration pass 5 adds: UtterTune (LoRA-based pitch accent correction for Japanese), Maestro-EVC (frame-level temporal emotion/prosody alignment), REF-VC (multi-scale pitch encoder for source prosody preservation), NV pipeline (temporal-semantic alignment for NV positioning).
+  - The SpeechRole benchmark confirms prosodic consistency is the hardest evaluation dimension for spoken role-playing agents.

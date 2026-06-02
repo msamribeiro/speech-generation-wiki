@@ -1,0 +1,196 @@
+concept: autoregressive-codec-tts
+last_updated: 2026-06-02
+paper_count: 47
+
+papers:
+  - id: 2504.12867
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Parallel phoneme prediction as a secondary LLM output head reduces intelligibility errors in LLM-based TTS.
+      - Freestyle natural language emotion prompting can control expressiveness in AR codec LM TTS without a fixed taxonomy.
+      - Automatic emotion similarity metrics correlate only ~40% with human MOS at the sentence level.
+    evidence:
+      - EmoVoice's parallel phoneme-boost head reduces WER relative to the Qwen2.5 AR baseline; emotion recall 0.424 on EmoVoice-DB approaching GPT-4o-mini-tts (0.456).
+    limitations:
+      - Trained and evaluated on GPT-4o-audio synthetic emotional data, introducing circularity in emotional naturalness claims.
+      - Evaluated only on English with in-distribution emotional descriptions.
+
+  - id: 2507.20091
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Replacing codec tokens with explicit prosody-text dual tokens enables prosody emergence in AR LMs without data scale.
+      - Conventional codec-token AR LMs show near-zero sensitivity to prosody cues as emergent capabilities.
+    evidence:
+      - ProsodyLM achieves contrastive focus accuracy 82%, emotion recognition across sadness and excitement categories, and style continuity without task-specific fine-tuning; codec-token baseline shows near-zero emotion sensitivity.
+    limitations:
+      - Trained on audiobooks only; generalisability to conversational speech is untested.
+      - Audio quality fidelity is lower than codec-based AR LMs due to prosody-token compression.
+
+  - id: 2507.22746
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Chunk-wise AR combined with within-chunk bidirectional flow-matching denoising is KV-cache compatible and enables streaming operation.
+      - Hybrid AR+FM with FSQ codec at 12.5 Hz achieves competitive zero-shot quality and streaming-friendly design.
+    evidence:
+      - Dragon-FM achieves SPK-SIM 0.916 and WER 2.74 on internal podcast data; KV-cache compatible chunk-AR backbone with mean-flow 2-NFE within-block denoising.
+    limitations:
+      - Evaluated on internal podcast data only; no standardized benchmark comparison against Seed-TTS-Eval.
+      - Custom FSQ codec at 12.5 Hz not independently benchmarked.
+
+  - id: 2508.04585
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Joint AR prediction of interleaved speech and visual tokens from a multimodal dialogue context is feasible at matching token rates.
+    evidence:
+      - UniTalker achieves SIM_SPK 0.702 on IEMOCAP unseen speakers with Qwen2.5-0.5B backbone predicting speech and facial landmark tokens.
+    limitations:
+      - Evaluated only on acted emotional speech (IEMOCAP); spontaneous speech not tested.
+
+  - id: 2508.08715
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Foundation TTS models adapted to child-friendly speech with x-vector conditioning substantially outperform conventional models on low-resource Southeast Asian languages from as few as 1,400 utterances.
+    evidence:
+      - MultiGen achieves MOS 4.05 on Tamil and 3.97 on Singaporean-accented Mandarin via CosyVoice-300M fine-tuning with x-vector speaker conditioning.
+    limitations:
+      - Small-scale evaluation (10 listeners, 30 samples per language) limits statistical reliability.
+
+  - id: 2508.08961
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Separating the token used for LLM input from the token used for generation output resolves the understanding-generation tension in unified speech LLMs.
+      - Understanding-driven tokenizer trained against LLM objectives reduces modality gap at low data scales.
+    evidence:
+      - DualSpeechLM achieves competitive performance at 4.5K hours on ASR, S2TT, SER, TTS, and VC tasks; understanding-driven USTokenizer reduces modality gap.
+    limitations:
+      - Evaluated only at 4.5K hours; advantage over shared-token systems may diminish at larger data scales.
+
+  - id: 2508.09767
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - LoRA-based fine-tuning with phoneme-tag tokens can restore pitch accent correction to BPE-input AR TTS at less than 0.5% of model parameters.
+    evidence:
+      - UtterTune raises accent correctness from 0.498 to 0.899 on Japanese with rank-16 LoRA on CosyVoice2; <0.5% trainable parameters.
+    limitations:
+      - Requires user-supplied phoneme transcription; not applicable without explicit G2P preprocessing.
+
+  - id: 2508.11326
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Modality-based MoE routing with frozen text experts preserves LLM text understanding during speech fine-tuning.
+      - Instruction-conditioned TTS systems trained on tag-derived datasets fail to generalise to figurative descriptions at inference.
+    evidence:
+      - MoE-TTS outperforms ElevenLabs and MiniMax on out-of-domain figurative description alignment; modality routing prevents catastrophic forgetting.
+    limitations:
+      - Evaluated on only 20–40 samples per condition; small scale limits reliability.
+
+  - id: 2508.14049
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Two-stage semantic-acoustic decoupling allows new language addition to a multilingual system at approximately 200 hours of target language data.
+      - Intelligibility in low-resource languages remains markedly worse than high-resource languages within the same multilingual system.
+    evidence:
+      - MahaTTS achieves competitive WER across 17 Indic languages from 20K hours open-source data with Gemma-based LM and Matcha-TTS acoustic model.
+    limitations:
+      - English dominates (58%) the training data; cross-lingual transfer vs. data dominance not disentangled.
+
+claim_clusters:
+  - claim: Autoregressive codec TTS scales reliably with data and model size, benefiting directly from LLM architecture advances.
+    status: strongly_supported
+    supporting_papers: [2301.02111, 2406.02430, 2603.08823, 2601.15621, 2508.14049]
+    contradicting_papers: []
+    notes: Consistent across foundational, industrial, and low-resource papers.
+
+  - claim: Lowering the AR codec frame rate does not degrade final speech quality when NAR/vocoder compensates, and substantially reduces latency.
+    status: strongly_supported
+    supporting_papers: [2510.00981, 2601.15621, 2603.08823, 2507.22746]
+    contradicting_papers: []
+
+  - claim: Post-training alignment (RLHF, DPO, GRPO) reliably improves intelligibility, speaker similarity, and expressiveness in AR codec TTS.
+    status: strongly_supported
+    supporting_papers: [2406.02430, 2512.14291, 2603.08823, 2601.15621, 2508.16332, 2504.12867]
+    contradicting_papers: []
+
+  - claim: Pseudo-autoregressive inference can match or exceed AR quality at dramatically lower latency.
+    status: emerging
+    supporting_papers: [2504.10352]
+    contradicting_papers: []
+
+  - claim: Codec-free continuous mel AR achieves human-parity quality without discrete tokenization.
+    status: emerging
+    supporting_papers: [2025.acl-long.65, 2502.03930]
+    contradicting_papers: []
+
+  - claim: Dual-AR decoupling is emerging as the dominant industrial architecture for high-quality low-latency AR TTS.
+    status: emerging
+    supporting_papers: [2603.08823, 2601.15621]
+    contradicting_papers: []
+
+  - claim: Conventional codec-token AR LMs do not develop prosodic understanding as emergent capabilities; token design is the binding constraint.
+    status: emerging
+    supporting_papers: [2507.20091]
+    contradicting_papers: []
+
+  - claim: Modality-based MoE routing preserves LLM text understanding during speech fine-tuning.
+    status: emerging
+    supporting_papers: [2508.11326]
+    contradicting_papers: []
+
+  - claim: Separating understanding and generation tokens in unified speech LMs resolves the understanding-generation tension.
+    status: emerging
+    supporting_papers: [2508.08961]
+    contradicting_papers: []
+
+  - claim: Paralinguistic variability in speech codec tokens makes LM training substantially harder than for text LMs.
+    status: contested
+    supporting_papers: [2412.17048]
+    contradicting_papers: [2025.acl-long.1498]
+    notes: DRI mitigation at codec training time partially addresses Factor C.
+
+open_questions:
+  - At what AR frame rate does performance degrade irreversibly for a given codec design?
+  - Is the Factor C problem addressable within the AR+NAR framework, or does it require fundamentally different architectures?
+  - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
+  - Can MTP improve speaker similarity as well as intelligibility in AR speech LMs?
+  - Does modality-based MoE routing benefit all LLM backbone sizes equally?
+
+trend_notes:
+  - AR TTS has bifurcated by 2026 into two tracks: scaling AR LMs with better tokenizers/RL alignment, and challenging whether AR decoding is necessary at all.
+  - Dual-AR (slow semantic + fast acoustic) is emerging as the dominant industrial architecture in 2026.
+  - Hybrid AR+FM (CosyVoice 2, Dragon-FM) is now the standard for production streaming systems.

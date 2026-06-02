@@ -4,7 +4,7 @@ title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
-last_updated: 2026-06-01
+last_updated: 2026-06-02
 ---
 
 ## Executive Summary
@@ -114,6 +114,9 @@ Claims are generalised propositions aggregated from paper evidence.
 - Is 37 ms latency (Conan fast) perceptually transparent to users in real-time communication? No user study on this threshold is reported.
 - Causal vocoders still trade some quality for causality; is pixel shuffle the optimal approach, or are there better alternatives?
 - Does depth-wise sequential non-AR decoding ([[2604.12438]]) scale to zero-shot multi-speaker synthesis, or does the RTF advantage diminish with speaker conditioning complexity?
+- Dragon-FM [[2507.22746]] demonstrates that chunk-wise AR + within-chunk flow-matching is KV-cache compatible; can this design serve as the basis for a production streaming system with first-byte latency under 100 ms?
+- SecoustiCodec [[2508.02849]] is designed for voice-dialogue streaming and achieves 12.08 ms initial latency; how does this compare in practice to other streaming codecs when embedded in a full TTS or VC pipeline?
+- SpectroStream [[2508.05207]] demonstrates 80 ms architectural latency for stereo audio codec; is this compatible with real-time streaming requirements for music applications?
 
 ## Trend Summary
 
@@ -137,5 +140,8 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2509.15969]] | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv | 2025 | Fully AR streaming zero-shot TTS; 102 ms GPU first-packet latency — among lowest for AR zero-shot streaming TTS |
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with causal Transformer tokenizer; streaming synthesis at production scale |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Depth-wise sequential decoding over 32 Mimi RVQ layers; RTF 0.0033 (303× real-time), TTFA 48.99 ms — fastest in corpus |
+| [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Causal FSQ codec decoder (12.5 Hz) with chunk-wise AR generation; within-chunk FM denoising at 2 NFE; KV-cache compatible streaming design |
+| [[2508.02849]] | SecoustiCodec | arXiv | 2025 | Fully causal single-codebook streaming codec (20 tokens/s); initial latency 12.08 ms; encoder RTF 0.002; designed for voice-dialogue downstream tasks |
+| [[2508.05207]] | SpectroStream | arXiv | 2025 | Causal 2D-TF neural codec for 48 kHz stereo general audio; 80 ms architectural latency (1-embedding look-ahead in decoder); real-time CPU inference via KWS streaming framework |
 | [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Multi-queue scheduler with two concurrent LLMVoX instances; 475 ms vs. 4200 ms for XTTS; plug-and-play with any LLM |
 | [[2510.00981]] | FlexiCodec-TTS: Flexible Frame-Rate Neural Codec for Efficient Streaming TTS | arXiv | 2025 | 6.25 Hz AR frame rate; 7.3× AR speedup (RTF 0.07); competitive quality at very low token rate |

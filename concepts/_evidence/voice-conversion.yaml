@@ -1,0 +1,150 @@
+concept: voice-conversion
+last_updated: 2026-06-02
+paper_count: 10
+
+papers:
+  - id: 2508.00317
+    year: 2025
+    task: [evaluation]
+    architecture: []
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - No general-purpose VC quality predictor exists; VoiceMOS/AudioMOS Challenge confirms near-human-quality systems defeat all current SQA predictors.
+    evidence:
+      - VoiceMOS/AudioMOS Challenge series (four years) shows community infrastructure drives progress more than individual modelling; VC quality assessment remains an active unsolved track.
+    limitations:
+      - Retrospective analysis only; no new VC system proposed.
+
+  - id: 2508.02849
+    year: 2025
+    task: [codec]
+    architecture: [VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Unsupervised frame-level cross-modal contrastive learning removes paralinguistic content from the semantic codec stream more effectively than SSL distillation, improving VC quality.
+    evidence:
+      - SecoustiCodec achieves cleaner semantic-paralinguistic separation than SSL distillation approaches; VC via reference speaker embedding at decoder.
+    limitations:
+      - Requires duration-aligned phoneme labels for contrastive training.
+
+  - id: 2508.04996
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - ASR bottleneck features and SSL features are complementary for VC; ASR provides noise-robust phonetic content while SSL adds paralinguistic expressiveness.
+      - Random feature erasure during training mitigates SSL timbre leakage and noise sensitivity without information bottleneck machinery.
+    evidence:
+      - REF-VC achieves CER 8.03% vs. 12.45% for Seed-VC on noisy test; Shortcut Models reduce inference from 32 to 4 steps.
+    limitations:
+      - Evaluated on 10 unseen speakers only; limited diversity.
+
+  - id: 2508.06890
+    year: 2025
+    task: [VC]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Three independent reference inputs (content, speaker, emotion) with dedicated encoders provide finer-grained emotional VC than single-reference methods.
+      - Frame-level temporal emotion alignment improves prosody transfer fidelity in emotional VC over utterance-level representations.
+    evidence:
+      - Maestro-EVC demonstrates TCEM frame-level emotion alignment; explicit F0+energy conditioning from reference; prosody augmentation for mismatch robustness on ESD corpus.
+    limitations:
+      - Evaluated only on ESD corpus (350 utterances, 10 speakers); spontaneous or cross-domain speech not tested.
+
+  - id: 2508.08399
+    year: 2025
+    task: [VC]
+    architecture: [VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Fully discrete disentanglement of phonetic, prosodic, and speaker information in a neural codec enables VC via codebook-level operations without explicit VC training objective.
+    evidence:
+      - Discrete three-factor codec disentanglement from WavLM features achieves VC via speaker code swap; quantifies fidelity cost of speaker code discretization.
+    limitations:
+      - Quality evaluation on small held-out set; no comparison against leading zero-shot VC systems.
+
+  - id: 2508.08961
+    year: 2025
+    task: [SCA, TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Dual-token architecture enables VC as a downstream task competitive with dedicated VC systems at 4.5K hours training.
+    evidence:
+      - DualSpeechLM uses speaker embedding from 3D-Speaker to condition WavTokenizer acoustic generation for VC; competitive VC quality at 4.5K hours.
+    limitations:
+      - VC quality not benchmarked against SOTA dedicated VC systems.
+
+  - id: interspeech-2025-0203
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Natural language prompts can control emotional VC at parity with reference speech when contrastive alignment bridges speech and text emotional representations.
+    evidence:
+      - ClapFM-EVC achieves MOS 4.09 vs. MixEmo 2.98; 57.4% listeners show no preference between reference and NL prompt modes.
+    limitations:
+      - Any-to-one EVC; any-to-any with unseen speakers not tested.
+
+claim_clusters:
+  - claim: Streaming zero-shot VC can match or exceed offline quality in speaker similarity.
+    status: strongly_supported
+    supporting_papers: [2507.14534]
+    contradicting_papers: []
+
+  - claim: SSL-derived discrete content tokens are effective for zero-shot VC due to K-means clustering removing speaker information.
+    status: strongly_supported
+    supporting_papers: [2507.14534, 2025.acl-demo.37]
+    contradicting_papers: []
+
+  - claim: SSL features improve paralinguistic expressiveness in VC but introduce timbre leakage and noise sensitivity; random feature erasure mitigates this.
+    status: emerging
+    supporting_papers: [2508.04996]
+    contradicting_papers: []
+
+  - claim: Three independent reference inputs with dedicated encoders provide finer-grained emotional VC than single-reference methods.
+    status: emerging
+    supporting_papers: [2508.06890]
+    contradicting_papers: []
+
+  - claim: Natural language prompts can control emotional VC at parity with reference speech via contrastive alignment.
+    status: emerging
+    supporting_papers: [interspeech-2025-0203]
+    contradicting_papers: []
+
+  - claim: Fully discrete three-factor codec disentanglement enables VC via codebook-level operations without explicit VC training.
+    status: emerging
+    supporting_papers: [2508.08399]
+    contradicting_papers: []
+
+  - claim: Unsupervised frame-level cross-modal contrastive learning removes paralinguistic content from codec semantic stream more effectively than SSL distillation.
+    status: emerging
+    supporting_papers: [2508.02849]
+    contradicting_papers: []
+
+  - claim: The evaluation protocol for VC quality is fragmented; no general-purpose VC quality predictor exists.
+    status: strongly_supported
+    supporting_papers: [2508.00317]
+    contradicting_papers: []
+    notes: VoiceMOS challenge four-year retrospective confirms this.
+
+open_questions:
+  - Can streaming VC achieve sub-20 ms latency without quality loss on commodity hardware?
+  - Does the three-reference framework (Maestro-EVC) generalise to spontaneous or cross-domain speech?
+  - Can articulatory-space VC (RT-VC) reach SSL-distillation levels of speaker similarity with a better speaker encoder?
+  - Does contrastive learning in SecoustiCodec generalise to fully unsupervised settings without phoneme labels?
+
+trend_notes:
+  - Integration pass 5 (2026): Four new offline zero-shot VC directions: noise-robust REF-VC, frame-level emotional Maestro-EVC, dual-mode language/reference ClapFM-EVC, and discrete-factor codec VC (2508.08399).
+  - VoiceMOS challenge retrospective confirms near-human-quality systems defeat all current SQA predictors — a quality ceiling problem for automated VC evaluation.
+  - SecoustiCodec proposes eliminating SSL distillation in favour of contrastive learning — early signal of a deeper design shift.
