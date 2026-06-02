@@ -6,6 +6,34 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-02
+
+- ingest | interspeech-2025-0203 | ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control | Interspeech 2025
+- ingest | interspeech-2025-0196 | SPCODEC: Split and Prediction for Neural Speech Codec | Interspeech 2025
+- ingest | 2503.04721 | Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models | arXiv 2025
+- ingest | 2508.08715 | MultiGen: Child-Friendly Multilingual Speech Generator with LLMs | arXiv 2025
+- ingest | 2508.09767 | UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual TTS | arXiv 2025
+- ingest | 2508.11326 | MoE-TTS: Enhancing Out-of-Domain Text Understanding for Description-based TTS via Mixture-of-Experts | arXiv 2025
+- ingest | 2504.12867 | EmoVoice: LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting | arXiv 2025
+- ingest | 2508.08961 | DualSpeechLM: Towards Unified Speech Understanding and Generation via Dual Speech Token Modeling | arXiv 2025
+- ingest | 2508.08399 | Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations | arXiv 2025
+- ingest | 2508.07711 | Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder? | arXiv 2025
+- ingest | 2508.07426 | Scalable Controllable Accented TTS | ASRU 2025
+- ingest | 2508.07302 | XEmoRAG: Cross-Lingual Emotion Transfer with Controllable Intensity Using Retrieval-Augmented Generation | arXiv 2025
+- ingest | 2508.06890 | Maestro-EVC: Controllable Emotional Voice Conversion Guided by References and Explicit Prosody | arXiv 2025
+- ingest | 2508.06870 | Text to Speech System for Meitei Mayek Script | arXiv 2025
+- ingest | 2508.05385 | A Scalable Pipeline for Enabling Non-Verbal Speech Generation and Understanding | arXiv 2025
+- ingest | 2508.14049 | MahaTTS: A Unified Framework for Multilingual Text-to-Speech Synthesis | arXiv 2025
+- ingest | 2508.04585 | UniTalker: Conversational Speech-Visual Synthesis | arXiv 2025
+- ingest | 2508.04996 | REF-VC: Robust, Expressive and Fast Zero-Shot Voice Conversion with Diffusion Transformers | arXiv 2025
+- ingest | 2508.05207 | SpectroStream: A Versatile Neural Codec for General Audio | arXiv 2025
+- ingest | 2507.20091 | ProsodyLM: Uncovering the Emerging Prosody Processing Capabilities in Speech Language Models | arXiv 2025
+- ingest | 2508.00317 | Advancing Speech Quality Assessment Through Scientific Challenges and Open-source Activities | arXiv 2025
+- ingest | 2507.22746 | Next Tokens Denoising for Speech Synthesis | arXiv 2025
+- ingest | 2508.01796 | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder | arXiv 2025
+- ingest | 2508.02013 | SpeechRole: A Large-Scale Dataset and Benchmark for Evaluating Speech Role-Playing Agents | arXiv 2025
+- ingest | 2508.02849 | SecoustiCodec: Cross-Modal Aligned Streaming Single-Codebook Speech Codec | arXiv 2025
+
 ## 2026-06-01
 
 - integrate | concept page migration: all 21 concept pages rewritten to new research-briefing template (Executive Summary, Current Status, Major Claims, Representative Papers, Relationship to Other Concepts, status vocab)

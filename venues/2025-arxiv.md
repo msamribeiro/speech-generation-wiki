@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 28
-last_updated: 2026-05-29
+papers_ingested: 49
+last_updated: 2026-06-02
 ---
 
 # arXiv 2025
@@ -45,3 +45,25 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2508.12001 | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts |
 | 2509.15969 | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency |
 | 2510.07979 | IntMeanFlow: Few-step Speech Generation with Integral Velocity Distillation |
+| 2508.00317 | Advancing Speech Quality Assessment Through Scientific Challenges and Open-source Activities |
+| 2507.22746 | Next Tokens Denoising for Speech Synthesis |
+| 2508.01796 | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder |
+| 2508.02013 | SpeechRole: A Large-Scale Dataset and Benchmark for Evaluating Speech Role-Playing Agents |
+| 2508.02849 | SecoustiCodec: Cross-Modal Aligned Streaming Single-Codebook Speech Codec |
+| 2508.14049 | MahaTTS: A Unified Framework for Multilingual Text-to-Speech Synthesis |
+| 2508.04585 | UniTalker: Conversational Speech-Visual Synthesis |
+| 2508.04996 | REF-VC: Robust, Expressive and Fast Zero-Shot Voice Conversion with Diffusion Transformers |
+| 2508.05207 | SpectroStream: A Versatile Neural Codec for General Audio |
+| 2507.20091 | ProsodyLM: Uncovering the Emerging Prosody Processing Capabilities in Speech Language Models |
+| 2508.05385 | A Scalable Pipeline for Enabling Non-Verbal Speech Generation and Understanding |
+| 2508.06870 | Text to Speech System for Meitei Mayek Script |
+| 2508.06890 | Maestro-EVC: Controllable Emotional Voice Conversion Guided by References and Explicit Prosody |
+| 2508.07302 | XEmoRAG: Cross-Lingual Emotion Transfer with Controllable Intensity Using Retrieval-Augmented Generation |
+| 2508.07711 | Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder? |
+| 2508.08399 | Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations |
+| 2508.08961 | DualSpeechLM: Towards Unified Speech Understanding and Generation via Dual Speech Token Modeling |
+| 2504.12867 | EmoVoice: LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting |
+| 2508.11326 | MoE-TTS: Enhancing Out-of-Domain Text Understanding for Description-based TTS via Mixture-of-Experts |
+| 2508.09767 | UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual TTS |
+| 2508.08715 | MultiGen: Child-Friendly Multilingual Speech Generator with LLMs |
+| 2503.04721 | Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models on Turn-taking Capabilities |

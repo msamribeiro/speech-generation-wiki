@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 27
-last_updated: 2026-05-30
+papers_ingested: 29
+last_updated: 2026-06-02
 ---
 
 # Interspeech 2025
@@ -53,3 +53,5 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-0973 | A Dataset for Automatic Assessment of TTS Quality in Spanish |
 | interspeech-2025-0989 | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset |
 | interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer |
+| interspeech-2025-0196 | SPCODEC: Split and Prediction for Neural Speech Codec |
+| interspeech-2025-0203 | ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech |

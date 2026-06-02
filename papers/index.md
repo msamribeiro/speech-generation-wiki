@@ -6,6 +6,31 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[interspeech-2025-0203]] | [ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech](papers/interspeech-2025-0203.md) | Kyushu University / University of Tokyo / EverestAI Ximalaya | Interspeech | 2025 | VC | flow-matching, transformer-enc-dec | 2026-06-02 |
+| [[interspeech-2025-0196]] | [SPCODEC: Split and Prediction for Neural Speech Codec](papers/interspeech-2025-0196.md) | Samsung | Interspeech | 2025 | codec | GAN | 2026-06-02 |
+| [[2503.04721]] | [Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models on Turn-taking Capabilities](papers/2503.04721.md) | — | arXiv | 2025 | SCA, evaluation |  | 2026-06-02 |
+| [[2508.08715]] | [MultiGen: Child-Friendly Multilingual Speech Generator with LLMs](papers/2508.08715.md) | A*STAR Institute for Infocomm Research | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, GAN | 2026-06-02 |
+| [[2508.09767]] | [UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual TTS](papers/2508.09767.md) | — | arXiv | 2025 | TTS | autoregressive-LM | 2026-06-02 |
+| [[2508.11326]] | [MoE-TTS: Enhancing Out-of-Domain Text Understanding for Description-based TTS via Mixture-of-Experts](papers/2508.11326.md) | Kunlun Inc. | arXiv | 2025 | TTS | autoregressive-LM, diffusion | 2026-06-02 |
+| [[2504.12867]] | [EmoVoice: LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting](papers/2504.12867.md) | Shanghai Jiao Tong University / Tongyi Speech Lab | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-02 |
+| [[2508.08961]] | [DualSpeechLM: Towards Unified Speech Understanding and Generation via Dual Speech Token Modeling](papers/2508.08961.md) | — | arXiv | 2025 | TTS, SCA, VC | autoregressive-LM | 2026-06-02 |
+| [[2508.08399]] | [Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations](papers/2508.08399.md) | MERL / Mitsubishi Electric | arXiv | 2025 | codec, VC | VAE | 2026-06-02 |
+| [[2508.07711]] | [Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder?](papers/2508.07711.md) | — | arXiv | 2025 | TTS | GAN | 2026-06-02 |
+| [[2508.07426]] | [Scalable Controllable Accented TTS](papers/2508.07426.md) | Johns Hopkins University | ASRU | 2025 | TTS | transformer-enc-dec, GAN, VAE | 2026-06-02 |
+| [[2508.07302]] | [XEmoRAG: Cross-Lingual Emotion Transfer with Controllable Intensity Using Retrieval-Augmented Generation](papers/2508.07302.md) | Northwestern Polytechnical University | arXiv | 2025 | TTS, VC | autoregressive-LM, flow-matching | 2026-06-02 |
+| [[2508.06890]] | [Maestro-EVC: Controllable Emotional Voice Conversion Guided by References and Explicit Prosody](papers/2508.06890.md) | POSTECH | arXiv | 2025 | VC | GAN, transformer-enc-dec | 2026-06-02 |
+| [[2508.06870]] | [Text to Speech System for Meitei Mayek Script](papers/2508.06870.md) | — | arXiv | 2025 | TTS | transformer-enc-dec, GAN | 2026-06-02 |
+| [[2508.05385]] | [A Scalable Pipeline for Enabling Non-Verbal Speech Generation and Understanding](papers/2508.05385.md) | Tsinghua University | arXiv | 2025 | TTS, SCA | transformer-enc-dec | 2026-06-02 |
+| [[2508.14049]] | [MahaTTS: A Unified Framework for Multilingual Text-to-Speech Synthesis](papers/2508.14049.md) | Dubverse AI | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-02 |
+| [[2508.04585]] | [UniTalker: Conversational Speech-Visual Synthesis](papers/2508.04585.md) | Inner Mongolia University | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching | 2026-06-02 |
+| [[2508.04996]] | [REF-VC: Robust, Expressive and Fast Zero-Shot Voice Conversion with Diffusion Transformers](papers/2508.04996.md) | Northwestern Polytechnical University | arXiv | 2025 | VC | flow-matching | 2026-06-02 |
+| [[2508.05207]] | [SpectroStream: A Versatile Neural Codec for General Audio](papers/2508.05207.md) | Google DeepMind | arXiv | 2025 | codec | GAN | 2026-06-02 |
+| [[2507.20091]] | [ProsodyLM: Uncovering the Emerging Prosody Processing Capabilities in Speech Language Models](papers/2507.20091.md) | — | arXiv | 2025 | SCA, TTS | autoregressive-LM | 2026-06-02 |
+| [[2508.00317]] | [Advancing Speech Quality Assessment Through Scientific Challenges and Open-source Activities](papers/2508.00317.md) | Nagoya University | arXiv | 2025 | evaluation |  | 2026-06-02 |
+| [[2507.22746]] | [Next Tokens Denoising for Speech Synthesis](papers/2507.22746.md) | Microsoft | arXiv | 2025 | TTS | hybrid | 2026-06-02 |
+| [[2508.01796]] | [Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder](papers/2508.01796.md) | Tsinghua University | arXiv | 2025 | singing, TTS | diffusion, GAN | 2026-06-02 |
+| [[2508.02013]] | [SpeechRole: A Large-Scale Dataset and Benchmark for Evaluating Speech Role-Playing Agents](papers/2508.02013.md) | Fudan University | arXiv | 2025 | SCA, evaluation |  | 2026-06-02 |
+| [[2508.02849]] | [SecoustiCodec: Cross-Modal Aligned Streaming Single-Codebook Speech Codec](papers/2508.02849.md) | — | arXiv | 2025 | codec | VAE, transformer-enc-dec | 2026-06-02 |
 | [[2025.naacl-long.110]] | [WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching](papers/2025.naacl-long.110.md) | Tsinghua University | NAACL | 2025 | TTS | flow-matching | 2026-05-30 |
 | [[2025.findings-acl.1051]] | [LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM](papers/2025.findings-acl.1051.md) | MBZUAI | ACL | 2025 | TTS, SCA | autoregressive-LM | 2026-05-30 |
 | [[2025.emnlp-main.180]] | [Scaling Rich Style-Prompted Text-to-Speech Datasets](papers/2025.emnlp-main.180.md) | UT Austin / NYU | EMNLP | 2025 | TTS, evaluation | autoregressive-LM | 2026-06-01 |
