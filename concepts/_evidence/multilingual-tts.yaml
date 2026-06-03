@@ -1,6 +1,6 @@
 concept: multilingual-tts
-last_updated: 2026-06-02
-paper_count: 26
+last_updated: 2026-06-03
+paper_count: 30
 
 papers:
   - id: 2508.05385
@@ -155,3 +155,4 @@ trend_notes:
   - 2026: OmniVoice crossed 600 languages from a single open-source model — qualitative step change in scope.
   - Integration pass 5 adds five new multilingual perspectives: MahaTTS (22 Indic languages), MultiGen (child-friendly SEA), UtterTune (Japanese pitch accent), XEmoRAG (cross-lingual emotion transfer), and NV pipeline (bilingual NV detection).
   - The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage.
+  - Integration pass 6: interspeech-2025-1344 (Korean PEFT adaptation), interspeech-2025-1595 (S2ST LLM with scheduled interleaved training), and 2508.20660 (CodecBench for multilingual codec evaluation) add evidence that cross-lingual PEFT is the practical adapter method for extending multilingual FM TTS to new languages.

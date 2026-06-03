@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 status: dominant
 ---
 
@@ -72,6 +72,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Zero-shot cross-lingual voice conversion with noise robustness is achievable by combining ASR bottleneck features (for noise-robust phonetic content) with SSL features (for paralinguistic expressiveness), regularised through random feature erasure.
   Supporting: [[2508.04996]]
 
+- Flow-matching-based zero-shot TTS models can be efficiently adapted to new languages with fewer than 15 hours of single-speaker data via PEFT, preserving zero-shot capability that full fine-tuning destroys.
+  Supporting: [[interspeech-2025-1344]]
+
+- Commercial zero-shot TTS systems approach human-level deception rates on expressive speech, while leading open-source systems remain substantially below this threshold despite reporting competitive CMOS/MUSHRA scores.
+  Supporting: [[interspeech-2025-2765]]
+
+- Embedding watermark detection directly into codec encoder training is a viable access-control mechanism for zero-shot TTS systems, creating a structural barrier to voice cloning even in open-source deployments.
+  Supporting: [[interspeech-2025-1993]]
+
 ### Contested
 
 > [!warning]
@@ -121,6 +130,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - What is the right trade-off between SIM and WER for practical applications? Current evaluation focuses on maximizing both independently. OZSpeech [[2025.acl-long.1043]] demonstrates an extreme point (near-zero WER, lower UTMOS) in this trade-off space.
 - Cross-lingual zero-shot TTS (reference speaker speaks language A, synthesis in language B) remains an open challenge, though [[2025.acl-long.598]] shows DPO alignment on cross-lingual preference pairs (500 zh2en + 500 en2zh samples) reduces cross-lingual WER by 50%+ for multiple systems.
 - [[2025.acl-long.1043]] shows near-perfect WER on LibriSpeech at the cost of UTMOS; is the intelligibility/naturalness trade-off fundamental to the learned-prior approach, or addressable with better codec choice (FACodec is acknowledged as limiting)?
+- The HFR evaluation [[interspeech-2025-2765]] reveals a 20+ point gap between commercial and open-source systems on expressive speech; which component (architecture, data, training procedure) is the primary bottleneck?
+- PEFT-TTS [[interspeech-2025-1344]] fine-tunes F5-TTS on a single female Korean speaker; how does PEFT-based cross-lingual adaptation perform when the target language is phonologically more distant from the pre-training language, or when multi-speaker target data is available?
+- MKL-VC [[interspeech-2025-2043]] achieves near-FACodec quality with no training from 5 seconds of reference; can training-free OT approaches close the remaining gap on naturalness and be evaluated in streaming scenarios?
 
 ## Trend Summary
 
@@ -181,3 +193,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.07302]] | XEmoRAG | arXiv | 2025 | Zero-shot cross-lingual emotion TTS for Thai; retrieval-based emotion transfer without speaker fine-tuning |
 | [[2508.07426]] | Scalable Controllable Accented TTS | ASRU | 2025 | Zero-shot accented TTS via XTTS-v2 zero-shot cloning; accent conditioning from geolocation-filtered data |
 | [[2508.14049]] | MahaTTS | arXiv | 2025 | Zero-shot speaker conditioning via nearest three reference clips; Indic multilingual coverage |
+| [[interspeech-2025-2447]] | Accelerating Autoregressive Speech Synthesis Inference with SSD | Interspeech | 2025 | Zero-shot CosyVoice 2 evaluated at multiple tolerance factors; 1.4× LM-RTF speedup while maintaining SIM/MOS at β=0.4 |
+| [[interspeech-2025-1641]] | Robust Neural Codec LM with Phoneme Position Prediction | Interspeech | 2025 | Zero-shot Mandarin TTS with 52.7% relative CER reduction on Seed-TTS test-zh via position supervision; 67.2% improvement on hard cases |
+| [[interspeech-2025-1779]] | ReFlow-VC: Zero-shot VC via Rectified Flow | Interspeech | 2025 | Zero-shot VC on LibriTTS; SECS 0.843 vs. 0.781 for Diff-VC with fewer inference steps |
+| [[interspeech-2025-0815]] | Non-AR Zero-Shot Expressive VC Disentanglement | Interspeech | 2025 | Zero-shot zero-shot expressive VC on RAVDESS/Expresso/ESD; substantially improved emotion transfer via discrete units and mix-style LN |
+| [[interspeech-2025-1101]] | ZSDEVC: Zero-Shot Diffusion-based Emotional VC | Interspeech | 2025 | Zero-shot EVC with MI disentanglement; ECA 0.53 in zero-shot setting vs. 0.256 for EMOCONV-DIFF in seen-speaker |
+| [[interspeech-2025-2043]] | MKL-VC: Training-Free VC via Factorized OT | Interspeech | 2025 | Training-free zero-shot VC matching FACodec from 5–10 s reference; fixes kNN-VC cross-lingual failure |
+| [[interspeech-2025-1344]] | PEFT-TTS: Cross-Lingual Continual Learning | Interspeech | 2025 | Zero-shot multi-speaker Korean TTS via PEFT adapter; full fine-tuning destroys zero-shot while PEFT preserves it |
+| [[interspeech-2025-2449]] | Accelerating Flow-Matching TTS via EPSS | Interspeech | 2025 | Zero-shot F5-TTS with 4× inference speedup at 7 NFE; WER 1.74%, SPK-SIM 0.68 maintained |
+| [[interspeech-2025-1993]] | Watermark-Aware Codecs | Interspeech | 2025 | Zero-shot voice cloning protection; MOS 3.64 on clean prompts collapses to 1.27 on watermarked prompts — codec-level access control |
+| [[interspeech-2025-2765]] | The State of TTS: HFR Case Study | Interspeech | 2025 | Systematic HFR evaluation of 10 zero-shot TTS systems; commercial systems approach human level, open-source systems remain 20+ points behind |

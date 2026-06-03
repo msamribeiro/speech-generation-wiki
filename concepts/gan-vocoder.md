@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 status: mature-infrastructure
 ---
 
@@ -71,6 +71,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Multi-scale STFT discriminators in the time-frequency domain are effective GAN training components for neural codecs targeting general audio, achieving large ViSQOL advantages over waveform-domain baselines at low bitrates.
   Supporting: [[2508.05207]]
 
+- 1.58-bit quantisation-aware training applied selectively to GAN vocoder convolutional layers is more effective than naive channel reduction at equivalent model sizes, achieving 83% model compression with reasonable quality retention.
+  Supporting: [[interspeech-2025-1122]]
+
 ## Relationship to Other Concepts
 
 ### Competes With
@@ -103,10 +106,11 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - How sensitive is causal vocoder quality to the right-context size in partially-causal settings?
 - FreeGAN [[2508.07711]] shows GAN is unnecessary for explicit-phase vocoders on VCTK 16 kHz; does this finding generalise to 24 kHz or 44.1 kHz targets, or to zero-shot conditions with out-of-domain speakers?
 - The LSE+Vocos2D pipeline [[2508.01796]] inserts a 32-step diffusion model prior to vocoding; can this be accelerated (e.g. via flow matching or consistency distillation) without losing the spectrogram realism gains?
+- [[interspeech-2025-1122]] shows the GAN vocoder stage is more sensitive to aggressive quantisation than the acoustic model in a lightweight JETS system; does this pattern hold for larger-scale or transformer-heavy vocoders?
 
 ## Trend Summary
 
-2020: HiFi-GAN established GAN vocoders as the standard. 2022–2024: BigVGAN and Vocos improved quality further. 2025: Streaming/causal adaptation is the active frontier for VC applications. [[2507.14534]] demonstrates a pixel-shuffle-based solution that eliminates zero-padding artifacts in causal streaming vocoders. Integration pass 5 adds: FreeGAN [[2508.07711]] provides the clearest empirical evidence that GAN discriminators are dispensable for vocoders with explicit phase prediction — isolating the phase modelling capability as the active ingredient rather than adversarial training itself; this also documents a concrete UTMOS/subjective MOS divergence for vocoder evaluation. The LSE+Vocos2D pipeline [[2508.01796]] proposes bandwidth extension as an intermediate spectrogram super-resolution step for singing synthesis, with a 2D-convolution vocoder redesign handling the expanded frequency resolution. SpectroStream [[2508.05207]] establishes multi-scale STFT discriminators as effective for full-band general audio codec training, outperforming waveform-domain DAC baselines at low bitrates. Meitei Mayek TTS [[2508.06870]] and MultiGen [[2508.08715]] confirm that HiFi-GAN remains the default waveform synthesis backend in applied low-resource TTS pipelines.
+2020: HiFi-GAN established GAN vocoders as the standard. 2022–2024: BigVGAN and Vocos improved quality further. 2025: Streaming/causal adaptation is the active frontier for VC applications. [[2507.14534]] demonstrates a pixel-shuffle-based solution that eliminates zero-padding artifacts in causal streaming vocoders. Integration pass 5 adds: FreeGAN [[2508.07711]] provides the clearest empirical evidence that GAN discriminators are dispensable for vocoders with explicit phase prediction — isolating the phase modelling capability as the active ingredient rather than adversarial training itself; this also documents a concrete UTMOS/subjective MOS divergence for vocoder evaluation. The LSE+Vocos2D pipeline [[2508.01796]] proposes bandwidth extension as an intermediate spectrogram super-resolution step for singing synthesis, with a 2D-convolution vocoder redesign handling the expanded frequency resolution. SpectroStream [[2508.05207]] establishes multi-scale STFT discriminators as effective for full-band general audio codec training, outperforming waveform-domain DAC baselines at low bitrates. Meitei Mayek TTS [[2508.06870]] and MultiGen [[2508.08715]] confirm that HiFi-GAN remains the default waveform synthesis backend in applied low-resource TTS pipelines. Integration pass 6 adds BitTTS [[interspeech-2025-1122]], which demonstrates 1.58-bit QAT for on-device TTS, finding that the GAN vocoder (HiFi-GAN) is consistently more sensitive to aggressive quantisation than the acoustic model — a practical data point for model compression in the TTS vocoder space.
 
 ## All Papers
 
@@ -128,3 +132,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.05207]] | SpectroStream | arXiv | 2025 | Multi-scale STFT discriminator at 6 window lengths for GAN training of a general audio codec; operates on time-frequency domain; 76.3% preference over DAC at 2.7 kbps |
 | [[2508.06870]] | TTS for Meitei Mayek Script | arXiv | 2025 | HiFi-GAN as standard vocoder in first TTS for Manipuri script; confirms GAN vocoder remains the default in new low-resource applied TTS pipelines |
 | [[2508.07711]] | Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder? | arXiv | 2025 | FreeGAN: GAN-free explicit-phase vocoder matches BigVGAN MOS on VCTK; GAN dispensable only for explicit-phase architectures; documents UTMOS vs. subjective MOS divergence |
+| [[interspeech-2025-1122]] | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech | 2025 | HiFi-GAN vocoder in a JETS-based system; demonstrates GAN vocoder's disproportionate sensitivity to aggressive quantisation; 83% model compression via 1.58-bit QAT with weight indexing |

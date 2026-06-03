@@ -1,6 +1,6 @@
 concept: voice-conversion
-last_updated: 2026-06-02
-paper_count: 10
+last_updated: 2026-06-03
+paper_count: 16
 
 papers:
   - id: 2508.00317
@@ -138,13 +138,101 @@ claim_clusters:
     contradicting_papers: []
     notes: VoiceMOS challenge four-year retrospective confirms this.
 
+  - id: interspeech-2025-0815
+    year: 2025
+    task: [VC]
+    architecture: [VAE, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Discrete speech unit representations reduce source leakage in VC but introduce pronunciation artefacts degrading intelligibility.
+      - Mix-style layer normalisation mitigates train-inference content-style mismatch, improving zero-shot generalisation.
+      - Enriching style embeddings with explicit pitch and energy features improves emotion transfer beyond mel-only encoding.
+    evidence:
+      - ECA 78.9% vs. Hierspeech++ 37.0%; eMOS 3.72 vs. 2.94; WER 7.98% vs. 5.01% on ESD.
+    limitations:
+      - WER substantially higher than baselines; 15-listener subjective panel; cross-lingual limited to English-German.
+
+  - id: interspeech-2025-0816
+    year: 2025
+    task: [VC, singing]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Speech-to-singing VC requires cross-modal speaker embedding alignment; standard singer identity conditioning generalises poorly across the speech-singing boundary.
+      - Cycle training strategies compensate for scarcity of matched speech-singing corpora.
+    evidence:
+      - SSANSVC-stage2: SIM 0.506 vs. CoMoSVC 0.448; SingMOS 3.871 vs. 3.820; CER 36.56 vs. 40.43.
+    limitations:
+      - Small listener panel (10 volunteers); marginal statistical significance.
+
+  - id: interspeech-2025-1101
+    year: 2025
+    task: [VC]
+    architecture: [diffusion]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Diffusion-based zero-shot EVC with MI disentanglement and expressive guidance achieves substantially higher emotion controllability than seen-speaker diffusion baselines (ECA 0.53 vs. 0.256).
+      - Expressive guidance at inference provides a direct lever for trading naturalness against emotion controllability.
+    evidence:
+      - ZSDEVC on ESD: ECA 0.53 vs. 0.256; MOS 4.342 vs. 4.709 (but EMOCONV-DIFF is seen-speaker, comparison not fair).
+    limitations:
+      - Seen-speaker vs. zero-shot asymmetry in primary comparison; intensity control within emotion category not provided.
+
+  - id: interspeech-2025-1779
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Rectified flow achieves comparable or better sample quality to diffusion for VC at substantially fewer inference steps.
+      - Single-step ODE solver matches the quality of dozens of diffusion steps when flow trajectories are sufficiently linear.
+    evidence:
+      - ReFlow-VC: competitive quality at fewer inference steps vs. diffusion baselines; speaker feature optimisation improves SIM.
+    limitations:
+      - Paper details limited in available summary; benchmark comparison scope unclear.
+
+  - id: interspeech-2025-1993
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Neural codec architectures are a natural intervention point for access-control in speaker-conditioned TTS.
+      - Embedding watermark detection into codec encoder training is a viable alternative to post-hoc watermark gates.
+    evidence:
+      - Watermark-aware codec prevents unauthorised voice cloning via training-time augmentation; evaluated on VALL-E-style system.
+    limitations:
+      - Adversarial robustness not thoroughly evaluated.
+
+  - id: interspeech-2025-2043
+    year: 2025
+    task: [VC]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Training-free VC based on distribution matching in SSL embedding subspaces achieves comparable speaker similarity and content preservation to trained systems on short references.
+      - kNN-style VC degrades significantly cross-lingually because phoneme-level proximity in SSL spaces does not transfer across languages.
+    evidence:
+      - Factorized optimal transport VC achieves competitive speaker similarity with a few seconds of reference without training.
+    limitations:
+      - Cross-lingual degradation acknowledged; comparison scope limited.
+
 open_questions:
   - Can streaming VC achieve sub-20 ms latency without quality loss on commodity hardware?
   - Does the three-reference framework (Maestro-EVC) generalise to spontaneous or cross-domain speech?
   - Can articulatory-space VC (RT-VC) reach SSL-distillation levels of speaker similarity with a better speaker encoder?
   - Does contrastive learning in SecoustiCodec generalise to fully unsupervised settings without phoneme labels?
+  - Can ReFlow-VC single-step inference quality be maintained when speaker diversity substantially increases?
+  - Does training-free OT-based VC (interspeech-2025-2043) scale to multi-speaker scenarios with longer reference audio?
 
 trend_notes:
-  - Integration pass 5 (2026): Four new offline zero-shot VC directions: noise-robust REF-VC, frame-level emotional Maestro-EVC, dual-mode language/reference ClapFM-EVC, and discrete-factor codec VC (2508.08399).
+  - "Integration pass 5 (2026): Four new offline zero-shot VC directions: noise-robust REF-VC, frame-level emotional Maestro-EVC, dual-mode language/reference ClapFM-EVC, and discrete-factor codec VC (2508.08399)."
   - VoiceMOS challenge retrospective confirms near-human-quality systems defeat all current SQA predictors — a quality ceiling problem for automated VC evaluation.
   - SecoustiCodec proposes eliminating SSL distillation in favour of contrastive learning — early signal of a deeper design shift.
+  - "Integration pass 6 (2026): Interspeech 2025 adds six new VC papers spanning zero-shot EVC (ZSDEVC, interspeech-2025-1101), expressive disentanglement VC (interspeech-2025-0815), speech-prompted singing VC (interspeech-2025-0816), rectified flow VC (ReFlow-VC, interspeech-2025-1779), training-free OT VC (interspeech-2025-2043), and watermark-aware codec for VC access control (interspeech-2025-1993). The diffusion and flow-matching paradigms continue to dominate new VC proposals; training-free approaches are emerging as a lightweight alternative."

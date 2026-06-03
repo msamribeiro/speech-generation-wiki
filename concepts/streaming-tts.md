@@ -3,8 +3,8 @@ slug: streaming-tts
 title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
-related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder]
-last_updated: 2026-06-02
+related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder, flow-matching]
+last_updated: 2026-06-03
 ---
 
 ## Executive Summary
@@ -44,6 +44,10 @@ For streaming VC, the same principles apply to the content extractor, style enco
 
 **Multi-queue AR scheduling.** LLMVoX [[2025.findings-acl.1051]] runs two LLMVoX instances concurrently on sentence-partitioned queues for 475 ms end-to-end latency vs. 4200 ms for XTTS — demonstrating that pipeline parallelism at the sentence level provides large latency gains independent of model speed.
 
+**Speculative decoding for AR TTS.** [[interspeech-2025-2447]] adapts speculative decoding from text LLMs to speech, using a lightweight draft model initialised from the upper layers of the target AR model to propose candidate speech tokens for parallel verification. A tolerance factor β relaxes strict token-distribution acceptance, exploiting the many-to-one mapping from speech token sequences to perceptual quality. At β=0.4 and draft length L=3, it achieves 1.4× AR LM speedup (RTF 0.504 → 0.36) on CosyVoice 2 with negligible degradation in naturalness and speaker similarity, and is deployable without modifying the target model.
+
+**Non-uniform step pruning for FM TTS.** [[interspeech-2025-2449]] (EPSS) constructs non-uniform ODE time-step schedules for flow-matching TTS by pruning later, near-linear trajectory steps while densely sampling the high-curvature early phase. Applied to F5-TTS, this reduces NFE from 32 to 7 (4× RTF speedup: 0.123 → 0.030) with near-identical WER, SPK-SIM, and UTMOS on standard benchmarks, and without any retraining.
+
 ## Major Claims
 
 Claims are generalised propositions aggregated from paper evidence.
@@ -69,6 +73,12 @@ Claims are generalised propositions aggregated from paper evidence.
 
 - The primary remaining latency bottleneck in streaming TTS is the acoustic vocoder, not the token generation stage; improvements to the AR stage yield diminishing returns once RTF < 0.1.
   Supporting: [[2025.emnlp-main.989]], [[2507.14534]]
+
+- Speculative decoding adapted to speech codec LMs with a tolerance-factor acceptance criterion achieves inference speedup without measurable subjective quality degradation, exploiting the many-to-one mapping from token sequences to perceptual quality.
+  Supporting: [[interspeech-2025-2447]]
+
+- Non-uniform ODE step scheduling that preserves the high-curvature early phase of FM trajectories enables 4× speedup from 32 to 7 NFE with near-negligible quality degradation in flow-matching TTS, as a training-free plug-in.
+  Supporting: [[interspeech-2025-2449]]
 
 ### Contested
 
@@ -117,6 +127,8 @@ Claims are generalised propositions aggregated from paper evidence.
 - Dragon-FM [[2507.22746]] demonstrates that chunk-wise AR + within-chunk flow-matching is KV-cache compatible; can this design serve as the basis for a production streaming system with first-byte latency under 100 ms?
 - SecoustiCodec [[2508.02849]] is designed for voice-dialogue streaming and achieves 12.08 ms initial latency; how does this compare in practice to other streaming codecs when embedded in a full TTS or VC pipeline?
 - SpectroStream [[2508.05207]] demonstrates 80 ms architectural latency for stereo audio codec; is this compatible with real-time streaming requirements for music applications?
+- [[interspeech-2025-2447]] reports a WER increase (3.67% → 5.70%) attributed to the draft model's limited training data; would this gap close if the draft model were trained on data matched to the target model's corpus size?
+- Can EPSS-style non-uniform step pruning ([[interspeech-2025-2449]]) be combined with FM distillation to push quality-preserving inference below 5 NFE, and does the trajectory linearity assumption hold for different conditioning types?
 
 ## Trend Summary
 
@@ -145,3 +157,5 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2508.05207]] | SpectroStream | arXiv | 2025 | Causal 2D-TF neural codec for 48 kHz stereo general audio; 80 ms architectural latency (1-embedding look-ahead in decoder); real-time CPU inference via KWS streaming framework |
 | [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | Multi-queue scheduler with two concurrent LLMVoX instances; 475 ms vs. 4200 ms for XTTS; plug-and-play with any LLM |
 | [[2510.00981]] | FlexiCodec-TTS: Flexible Frame-Rate Neural Codec for Efficient Streaming TTS | arXiv | 2025 | 6.25 Hz AR frame rate; 7.3× AR speedup (RTF 0.07); competitive quality at very low token rate |
+| [[interspeech-2025-2447]] | Accelerating Autoregressive Speech Synthesis Inference With Speech Speculative Decoding | Interspeech | 2025 | Speculative decoding with tolerance-factor acceptance; 1.4× AR LM speedup (RTF 0.504→0.36) on CosyVoice 2 without modifying the target model |
+| [[interspeech-2025-2449]] | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling | Interspeech | 2025 | Non-uniform ODE step pruning (32→7 NFE); 4× RTF speedup (0.123→0.030) for F5-TTS; training-free, immediately deployable |

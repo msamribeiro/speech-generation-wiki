@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 status: established
 ---
 
@@ -66,6 +66,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Small-scale MOS panels (10–30 listeners, 30 samples per condition) are pervasive in low-resource and domain-specific TTS evaluation, but lack the statistical power to support fine-grained system comparisons.
   Supporting: [[2508.08715]], [[2508.06870]]
 
+- Human Fooling Rate (HFR) — the fraction of trials where listeners misclassify synthetic speech as human — detects performance gaps that preference-based metrics (CMOS, MUSHRA) conceal, because reference matching inflates preference scores against low-expressivity references.
+  Supporting: [[interspeech-2025-2765]]
+
+- Open-source TTS systems remain 20+ percentage points behind commercial systems on HFR for expressive conversational speech, contradicting claims of human parity from CMOS/MUSHRA-based evaluations.
+  Supporting: [[interspeech-2025-2765]]
+
+- Shareable evaluation recipes — self-contained bundles of procedure, anonymised data, and configuration — lower the practical barrier to replication without requiring infrastructure replication, making perceptual evaluation more reproducible at the protocol level.
+  Supporting: [[interspeech-2025-0401]]
+
 ## Relationship to Other Concepts
 
 ### Extends or Builds On
@@ -101,7 +110,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Trend Summary
 
-The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility. 2025: New multi-dimensional evaluation frameworks are emerging for richer subjective assessment: SpeechRole [[2508.02013]] introduces a nine-dimension role-playing evaluation with LLM-as-judge; Maestro-EVC [[2508.06890]] uses four-dimension MOS (naturalness, emotion similarity, speaker similarity, prosody similarity) for VC evaluation. The VoiceMOS/AudioMOS Challenge series [[2508.00317]] provides a four-year view showing that: (1) community infrastructure accelerates progress more than individual modelling advances, and (2) near-human-quality systems defeat all current SQA predictors — a ceiling effect that will require new benchmark design. Small-scale evaluations (30 samples, 10 listeners) remain prevalent in low-resource settings [[2508.08715]], [[2508.06870]], and represent a known weakness in statistical reliability that the field has not systematically addressed.
+The TTS/SCA field has not converged on a standard subjective evaluation protocol. Recent high-profile papers (F5-TTS [[2025.acl-long.313]], NaturalSpeech 3, Seed-TTS) use different evaluator counts, sample counts, and test sets, making CMOS/SMOS values incomparable across papers. For SCA evaluation, DiVA ([[2025.acl-long.388]]) uses a side-by-side preference study on Prolific (53 participants, 522 judgments) rather than MOS, finding a 72% win rate against Qwen 2 Audio — a different methodology that captures holistic assistant quality rather than speech naturalness alone. The trend toward releasing evaluation samples and model checkpoints is positive for reproducibility. 2025: New multi-dimensional evaluation frameworks are emerging for richer subjective assessment: SpeechRole [[2508.02013]] introduces a nine-dimension role-playing evaluation with LLM-as-judge; Maestro-EVC [[2508.06890]] uses four-dimension MOS (naturalness, emotion similarity, speaker similarity, prosody similarity) for VC evaluation. The VoiceMOS/AudioMOS Challenge series [[2508.00317]] provides a four-year view showing that: (1) community infrastructure accelerates progress more than individual modelling advances, and (2) near-human-quality systems defeat all current SQA predictors — a ceiling effect that will require new benchmark design. Small-scale evaluations (30 samples, 10 listeners) remain prevalent in low-resource settings [[2508.08715]], [[2508.06870]], and represent a known weakness in statistical reliability that the field has not systematically addressed. Integration pass 6 adds two important contributions to this picture: [[interspeech-2025-2765]] provides the largest English TTS subjective study in this corpus (135 participants, 30,000+ ratings) and demonstrates via HFR that CMOS scores from standard benchmarks overstate naturalness — specifically because low-expressivity references inflate apparent quality. [[interspeech-2025-0401]] pairs this empirical critique with an infrastructure response: the replikant platform and evaluation recipe schema that operationalise what the field has described as best practices since Wester et al. (2015) but not yet adopted at scale. These two papers together make the case that the field needs both better metrics (HFR, domain-specific evaluation) and better infrastructure (shareable recipes, reviewer checklists) to close the gap between reported results and real-world quality.
 
 ## All Papers
 
@@ -127,3 +136,8 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2508.07711]] | Is GAN Necessary for Neural Vocoder? | arXiv | 2025 | 100-listener MOS shows no significant difference between GAN and GAN-free vocoder; UTMOS ranking diverges from subjective ranking, adding to evidence of predictor unreliability |
 | [[2508.08715]] | MultiGen | arXiv | 2025 | 10-listener 30-sample MOS per language for three low-resource Southeast Asian languages; exemplifies statistical limitations of small-scale evaluation |
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Psychometric calibration via recursive binary-search sigmoid estimation for mapping engineering parameter to perceived accentedness; Best-Worst experimental design for preference evaluation across 32 listeners |
+| [[interspeech-2025-2765]] | The State of TTS: Human Fooling Rates | Interspeech | 2025 | Large-scale HFR study (135 native listeners, 30k+ ratings, 10 TTS systems) on 4 datasets; CMOS/MUSHRA shown to overestimate quality; binary forced-choice more efficient (24s vs. 42s per sample) |
+| [[interspeech-2025-0401]] | Enabling Replicability of Speech Synthesis Perceptual Evaluations | Interspeech | 2025 | Proposes shareable recipe schema, replikant platform (Flask+SQLite), and reviewer checklist; distinguishes replicability from reproducibility for subjective evaluations |
+| [[interspeech-2025-1066]] | Score-Based Training for Energy-Based TTS | Interspeech | 2025 | 3-listener MOS on 100 samples; UTMOSv2 diverges from human MOS for delta loss EBMs — a concrete instance of automatic predictor failure on non-standard systems |
+| [[interspeech-2025-1122]] | BitTTS | Interspeech | 2025 | 15-rater 30-sample MOS for compact TTS evaluation; documents statistical fragility of small-panel evaluations at ±0.11 CI |
+| [[interspeech-2025-0739]] | FD-Bench | Interspeech | 2025 | GPT-4o-mini subjective scoring across 6 dimensions as a surrogate for human evaluation of full-duplex dialogue quality |

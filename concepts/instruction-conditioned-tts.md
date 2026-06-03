@@ -2,8 +2,8 @@
 slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
-related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement]
-last_updated: 2026-06-02
+related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement, voice-conversion]
+last_updated: 2026-06-03
 status: emerging
 ---
 ## Executive Summary
@@ -72,6 +72,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Natural language emotion prompts can drive emotional voice conversion at parity with reference speech for the majority of listeners when a contrastive alignment model bridges speech and text emotional representations.
   Supporting: [[interspeech-2025-0203]]
+
+- A diffusion-based prompt mapper trained to predict speech emotion embeddings from text LM features can replace reference audio at inference time in emotional VC with multi-attribute controllability (pitch, speed, volume, intensity, mixed emotion) from natural language descriptions.
+  Supporting: [[interspeech-2025-0948]]
 
 - Adding a "thinking pattern" (LLM reasoning about the style description before generating) substantially improves instruction interpretation for complex style descriptions compared to direct conditioning.
   Supporting: [[2601.15621]]
@@ -143,3 +146,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2504.12867]] | EmoVoice | arXiv | 2025 | Freestyle natural language emotion prompting on Qwen2.5-based AR codec LM; parallel phoneme-boost decoding head for intelligibility; emotion recall 0.424 approaching GPT-4o-mini-tts (0.456) |
 | [[2508.11326]] | MoE-TTS | arXiv | 2025 | Modality-based MoE with frozen text experts; evaluates out-of-domain figurative descriptions; MoE-TTS outperforms ElevenLabs and MiniMax on OOD description alignment |
 | [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP dual-mode conditioning (NL prompt or reference speech) for emotional VC; 57.4% no-preference between modes; instruction-conditioned VC without categorical labels |
+| [[interspeech-2025-0948]] | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech | 2025 | Diffusion-based prompt mapper bridges RoBERTa and Emotion2Vec embeddings for multi-attribute NL-controlled EVC; extends instruction conditioning paradigm from TTS to emotional voice conversion; MOS 4.22 vs. 3.95 for Emovox |

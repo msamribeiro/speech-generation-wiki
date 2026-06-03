@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: 2026-06-02
-paper_count: 40
+last_updated: 2026-06-03
+paper_count: 46
 
 papers:
   - id: 2507.22746
@@ -170,13 +170,94 @@ claim_clusters:
     supporting_papers: [2025.findings-naacl.184, 2508.19098, 2502.03930]
     contradicting_papers: [2301.02111, 2407.05407, 2601.15621]
 
+  - id: 2508.20660
+    year: 2025
+    task: [codec, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Existing codec benchmarks conflate acoustic and semantic quality, requiring separate evaluation dimensions for use in downstream speech generation.
+    evidence:
+      - CodecBench introduces separate acoustic (reconstruction) and semantic (content understanding) evaluation tracks for comprehensive codec assessment.
+    limitations:
+      - Benchmark coverage of multi-speaker diversity and cross-lingual conditions not detailed in available summary.
+
+  - id: interspeech-2025-0115
+    year: 2025
+    task: [codec]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - Neural audio codec tokens can be post-hoc analysed for interpretability using probing classifiers, revealing which codebook layers encode phonetic, speaker, prosodic, and acoustic-environment information.
+    evidence:
+      - Probing analysis on multiple codec architectures reveals that different RVQ layers specialise in different speech attributes; semantic information is concentrated in early layers.
+    limitations:
+      - Probing results are architecture-dependent; findings may not generalise across codec types.
+
+  - id: interspeech-2025-0246
+    year: 2025
+    task: [codec]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Speaker-invariant speech tokenisers that suppress paralinguistic information improve downstream spoken language model performance.
+    evidence:
+      - DC-Spin achieves improved ASR-in-LM and VC performance by discarding speaker information during tokenisation.
+    limitations:
+      - Trade-off between speaker invariance and acoustic detail preservation not fully characterised.
+
+  - id: interspeech-2025-0468
+    year: 2025
+    task: [codec]
+    architecture: [VAE, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Semantically-enhanced low-frame-rate codec (DualCodec) reduces downstream AR TTS latency while preserving downstream generation quality.
+    evidence:
+      - DualCodec achieves competitive speech generation quality at lower frame rates than standard EnCodec/DAC through SSL-guidance.
+    limitations:
+      - Frame rate reduction may sacrifice prosodic detail not captured in semantic-acoustic split.
+
+  - id: interspeech-2025-1440
+    year: 2025
+    task: [codec]
+    architecture: [VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Disentangled codec with explicitly separate content, speaker, and prosody codebooks achieves competitive reconstruction quality with fewer tokens than standard RVQ codecs.
+    evidence:
+      - FreeCodec achieves competitive performance with three separate codebooks and fewer total tokens vs. EnCodec at equivalent bitrate.
+    limitations:
+      - Codec-level disentanglement may not fully separate information when SSL representations are not perfectly disentangled.
+
+  - id: interspeech-2025-1993
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Neural codec architecture is a natural access-control intervention point for preventing unauthorised voice cloning in speaker-conditioned TTS.
+    evidence:
+      - Watermark-aware codec: training-time augmentation of codec encoder to detect and block watermarked reference audio in TTS generation.
+    limitations:
+      - Adversarial robustness not thoroughly evaluated.
+
 open_questions:
   - Can dynamic frame merging be extended to sub-3 Hz without catastrophic quality loss?
   - Does FlexiCodec's dynamic merging interact well with prosodic information (Factor C from 2412.17048)?
   - Is there a natural lower bound on frame rate below which semantic content cannot be preserved in discrete tokens?
   - Can SecoustiCodec's contrastive training be extended to a fully unsupervised setting without phoneme labels?
+  - Do neural codec interpretability probing results (interspeech-2025-0115) generalise across codec architectures (RVQ, FSQ, DAC)?
+  - Can FreeCodec's fewer-token design achieve streaming-compatible frame rates without sacrificing the disentanglement quality?
 
 trend_notes:
   - The field is tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
   - 2025: SecoustiCodec proposes cross-modal contrastive learning as an alternative to SSL distillation; SPCODEC introduces spectral supervision; SpectroStream establishes TF-domain codec for full-band audio.
   - 2026: Codec frame rate competition continues with Fish Audio S2 (21 Hz streaming) vs. Qwen3-TTS (12.5 Hz).
+  - "2025 (Interspeech): A cluster of codec analysis and design papers: CodecBench (2508.20660) introduces unified evaluation; interpretability probing (interspeech-2025-0115) reveals layer specialisation; DC-Spin (interspeech-2025-0246) establishes speaker-invariant tokenisation; DualCodec (interspeech-2025-0468) targets low-frame-rate semantic enhancement; FreeCodec (interspeech-2025-1440) enables fewer-token disentangled codec."

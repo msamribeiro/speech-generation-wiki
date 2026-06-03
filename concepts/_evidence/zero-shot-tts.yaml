@@ -1,6 +1,6 @@
 concept: zero-shot-tts
-last_updated: 2026-06-02
-paper_count: 48
+last_updated: 2026-06-03
+paper_count: 54
 
 papers:
   - id: 2507.22746
@@ -123,12 +123,94 @@ claim_clusters:
     contradicting_papers: [2603.08823]
     notes: At very large scale (Fish Audio S2), both high WER and SIM are achieved simultaneously.
 
+  - id: interspeech-2025-1344
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Zero-shot TTS capability in multilingual FM models is preserved by PEFT but destroyed by full fine-tuning on single-speaker data.
+    evidence:
+      - PEFT-TTS retains multi-speaker NMOS 3.06 vs. full fine-tune 2.24 after Korean adaptation.
+    limitations:
+      - Korean only; multi-speaker WER substantially higher than large-scale systems.
+
+  - id: interspeech-2025-1641
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit phoneme position supervision in AR codec LMs eliminates zero-shot TTS alignment errors on hard cases.
+    evidence:
+      - 67.2% relative CER reduction on Seed-TTS hard-400 cases (13.78%→4.52%); zero skipping/repetition errors.
+    limitations:
+      - Mandarin only; requires forced-alignment annotations at training time.
+
+  - id: interspeech-2025-1779
+    year: 2025
+    task: [VC]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Rectified flow achieves competitive zero-shot VC quality with fewer inference steps than diffusion.
+    evidence:
+      - ReFlow-VC demonstrates competitive performance with fewer NFE on zero-shot VC tasks.
+    limitations:
+      - Benchmark comparison scope limited.
+
+  - id: interspeech-2025-1993
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Neural codec architectures are a natural intervention point for access control in zero-shot TTS.
+    evidence:
+      - Watermark-aware codec prevents unauthorised voice cloning via training-time augmentation.
+    limitations:
+      - Adversarial robustness not thoroughly evaluated.
+
+  - id: interspeech-2025-2447
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Speculative decoding with relaxed acceptance criteria achieves AR TTS speedup without degrading zero-shot speaker similarity.
+    evidence:
+      - SSD on CosyVoice 2: MOS 3.925 vs. 3.930; SIM-MOS 3.784 vs. 3.789 for 37 unseen speakers.
+    limitations:
+      - WER rises 3.67%→5.70%.
+
+  - id: interspeech-2025-2765
+    year: 2025
+    task: [TTS, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - CMOS and MUSHRA overestimate naturalness relative to human deception rates; benchmarks with low expressive variation set an artificially low bar.
+      - Human fooling rate provides a direct measure of TTS naturalness that standard preference tests cannot replicate.
+    evidence:
+      - Human fooling rates for leading zero-shot TTS systems show clear differentiation despite many systems approaching 4.0 MOS; expressive variation in benchmarks is the key confound.
+    limitations:
+      - Limited system coverage; human fooling rate collection is expensive.
+
 open_questions:
   - Can CFG improvements fully close the gap to closed-source SOTA, or is training-time methodology the bottleneck?
   - Is the intelligibility/naturalness trade-off fundamental to the learned-prior approach?
   - What is the minimum data per language for acceptable zero-shot quality in a multilingual model?
+  - Does the fooling rate metric (interspeech-2025-2765) correlate with CMOS/MUSHRA across diverse speaker types and expressive conditions?
+  - Can explicit position supervision in AR codec LMs (interspeech-2025-1641) be applied to languages without forced-alignment annotations?
 
 trend_notes:
   - The gap between open-source and closed-source SOTA has materially narrowed in 2026 (Fish Audio S2, Qwen3-TTS, OmniVoice).
   - Zero-shot VC is increasingly integrated as a secondary capability in TTS systems (REF-VC, DisCo-Speech).
   - Cross-lingual zero-shot remains consistently harder than same-language zero-shot synthesis.
+  - 2025 (Interspeech): Human fooling rate (interspeech-2025-2765) emerges as a new evaluation paradigm that complements MOS/MUSHRA by measuring absolute naturalness rather than relative preference; explicit position supervision (interspeech-2025-1641) provides a clean solution to AR alignment failures; PEFT preserves zero-shot capability that full fine-tuning destroys (interspeech-2025-1344).

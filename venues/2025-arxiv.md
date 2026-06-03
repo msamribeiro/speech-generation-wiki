@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 49
-last_updated: 2026-06-02
+papers_ingested: 52
+last_updated: 2026-06-03
 ---
 
 # arXiv 2025
@@ -67,3 +67,6 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2508.09767 | UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual TTS |
 | 2508.08715 | MultiGen: Child-Friendly Multilingual Speech Generator with LLMs |
 | 2503.04721 | Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models on Turn-taking Capabilities |
+| 2508.08095 | Dual Information Speech Language Models for Emotional Conversations |
+| 2508.15827 | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in Large Speech M |
+| 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and Semantic Evalua |

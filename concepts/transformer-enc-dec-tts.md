@@ -3,7 +3,7 @@ slug: transformer-enc-dec-tts
 title: Transformer Encoder-Decoder TTS
 aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
-last_updated: 2026-06-01
+last_updated: 2026-06-03
 status: declining
 ---
 
@@ -93,3 +93,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0754]] | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech | 2025 | FastSpeech2-style backbone with EPE (Emphasis Perception Enhancement) block adding attention modulation for joint emphasis-emotion control; variance-based emphasis features alongside standard duration/energy predictors |
 | [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Tacotron 1 and Tacotron 2+WaveGlow applied to low-resource South Asian languages with phoneme-based lexicons; demonstrates phoneme-level enc-dec TTS outperforms MMS character-based approach |
 | [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | LSTM encoder-decoder Seq2Seq frontend for 14-accent pronunciation knowledge transfer; demonstrates that Tacotron-era architecture components remain relevant for low-resource accent TTS frontends |
+| [[interspeech-2025-1122]] | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech | 2025 | JETS-based enc-dec (FastSpeech2 + HiFi-GAN) as the compression baseline; demonstrates 83% model size reduction via 1.58-bit QAT, confirming that enc-dec architecture remains relevant for on-device deployment where quantisation is preferable to parameter reduction |

@@ -6,6 +6,11 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[2508.15827]] | [Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in](papers/2508.15827.md) | — | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-03 |
+| [[interspeech-2025-0739]] | [FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems](papers/interspeech-2025-0739.md) | — | Interspeech | 2025 | SCA, evaluation |  | 2026-06-03 |
+| [[interspeech-2025-1993]] | [Defending Unauthorized Voice Cloning with Watermark-Aware Codecs](papers/interspeech-2025-1993.md) | The Chinese University of Hong Kong | Interspeech | 2025 | TTS, VC | autoregressive-LM | 2026-06-03 |
+| [[2508.08095]] | [Dual Information Speech Language Models for Emotional Conversations](papers/2508.08095.md) | Mashang Consumer Finance Co., Ltd. | arXiv | 2025 | SCA | transformer-enc-dec | 2026-06-03 |
+| [[interspeech-2025-0948]] | [PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts](papers/interspeech-2025-0948.md) | Southeast University | Interspeech | 2025 | VC | VAE, diffusion | 2026-06-03 |
 | [[interspeech-2025-0203]] | [ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech](papers/interspeech-2025-0203.md) | Kyushu University / University of Tokyo / EverestAI Ximalaya | Interspeech | 2025 | VC | flow-matching, transformer-enc-dec | 2026-06-02 |
 | [[interspeech-2025-0196]] | [SPCODEC: Split and Prediction for Neural Speech Codec](papers/interspeech-2025-0196.md) | Samsung | Interspeech | 2025 | codec | GAN | 2026-06-02 |
 | [[2503.04721]] | [Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models on Turn-taking Capabilities](papers/2503.04721.md) | — | arXiv | 2025 | SCA, evaluation |  | 2026-06-02 |
@@ -132,3 +137,24 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2025.acl-long.911]] | [DNASpeech: A Contextualized and Situated Text-to-Speech Dataset with Dialogues, Narratives and Actions](papers/2025.acl-long.911.md) | Renmin University of China | ACL | 2025 | TTS, evaluation | transformer-enc-dec | 2026-05-29 |
 | [[2025.acl-short.81]] | [Zero-Shot Text-to-Speech for Vietnamese](papers/2025.acl-short.81.md) | Movian AI | ACL | 2025 | TTS, evaluation | autoregressive-LM, transformer-enc-dec | 2026-05-29 |
 | [[2025.acl-long.912]] | [LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis](papers/2025.acl-long.912.md) | Chinese Academy of Sciences | ACL | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-05-29 |
+| interspeech-2025-2765 | The State Of TTS: A Case Study with Human Fooling Rates | IIT Madras | Interspeech | 2025 | TTS, evaluation |  | 2026-06-03 |
+| interspeech-2025-0401 | Enabling the replicability of speech synthesis perceptu |  | Interspeech | 2025 | evaluation |  | 2026-06-03 |
+| [[interspeech-2025-0115]] | [Bringing Interpretability to Neural Audio Codecs](papers/interspeech-2025-0115.md) |  | Interspeech | 2025 | codec | transformer-enc-dec | 2026-06-03 |
+| interspeech-2025-0468 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neur | CUHK-SZ / Baidu | Interspeech | 2025 | codec | VAE, GAN | 2026-06-03 |
+| interspeech-2025-1641 | Robust Neural Codec Language Modeling with Phoneme Posi | Samsung | Interspeech | 2025 | TTS | autoregressive-LM | 2026-06-03 |
+| interspeech-2025-2447 | Accelerating Autoregressive Speech Synthesis Inference  | Tsinghua / Tencent | Interspeech | 2025 | TTS | autoregressive-LM | 2026-06-03 |
+| interspeech-2025-1779 | ReFlow-VC: Zero-shot Voice Conversion Based on Rectifie |  | Interspeech | 2025 | VC | flow-matching | 2026-06-03 |
+| interspeech-2025-0874 | Efficient and Direct Duplex Modeling for Speech-to-Spee |  | Interspeech | 2025 | SCA | autoregressive-LM, hybrid | 2026-06-03 |
+| [[interspeech-2025-0246]] | [DC-Spin: A Speaker-invariant Speech Tokenizer for Spoke](papers/interspeech-2025-0246.md) |  | Interspeech | 2025 | codec | transformer-enc-dec | 2026-06-03 |
+| interspeech-2025-1440 | FreeCodec: A Disentangled Neural Speech Codec with Fewe |  | Interspeech | 2025 | codec | VAE | 2026-06-03 |
+| [[interspeech-2025-2043]] | [Training-Free Voice Conversion with Factorized Optimal ](papers/interspeech-2025-2043.md) |  | Interspeech | 2025 | VC | transformer-enc-dec | 2026-06-03 |
+| interspeech-2025-0816 | Bridging Speech and Singing: Multi-stage Speech-Prompte |  | Interspeech | 2025 | singing, VC | diffusion | 2026-06-03 |
+| interspeech-2025-1066 | Score-Based Training for Energy-Based TTS Models |  | Interspeech | 2025 | TTS | diffusion | 2026-06-03 |
+| interspeech-2025-1122 | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Qu |  | Interspeech | 2025 | TTS | GAN, transformer-enc-dec | 2026-06-03 |
+| 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and  | Fudan University | arXiv | 2025 | codec, evaluation |  | 2026-06-03 |
+| interspeech-2025-1344 | Parameter-Efficient Fine-Tuning for Low-Resource Text-t | Ajou University | Interspeech | 2025 | TTS | flow-matching | 2026-06-03 |
+| [[interspeech-2025-2449]] | [Accelerating Flow-Matching-Based Text-to-Speech via Emp](papers/interspeech-2025-2449.md) | — | Interspeech | 2025 | TTS | flow-matching | 2026-06-03 |
+| interspeech-2025-1595 | Scheduled Interleaved Speech-Text Training for Speech-t |  | Interspeech | 2025 | TTS, SCA | autoregressive-LM | 2026-06-03 |
+| interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Ze |  | Interspeech | 2025 | VC | VAE, GAN | 2026-06-03 |
+| interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conve |  | Interspeech | 2025 | VC | diffusion | 2026-06-03 |
+| interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn- | Kyoto University | Interspeech | 2025 | SCA | transformer-enc-dec | 2026-06-03 |

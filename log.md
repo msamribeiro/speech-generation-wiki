@@ -6,6 +6,14 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-03
+
+- integrate | 26 papers | pass 6 | 18 concepts updated | 19 digests updated | 6 cross-links added
+- ingest | interspeech-2025-1993 | Defending Unauthorized Voice Cloning with Watermark-Aware Codecs | Interspeech 2025
+- ingest | interspeech-2025-2765 | The State Of TTS: A Case Study with Human Fooling Rates | Interspeech 2025
+- ingest | interspeech-2025-0948 | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech 2025
+- ingest | 2508.08095 | Dual Information Speech Language Models for Emotional Conversations | arXiv 2025
+
 ## 2026-06-02
 
 - ingest | interspeech-2025-0203 | ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control | Interspeech 2025
@@ -165,3 +173,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2025.acl-long.388 | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL 2025
 - ingest | 2025.acl-long.598 | Advancing Zero-shot Text-to-Speech Intelligibility across Diverse Domains via Preference Alignment | ACL 2025
 - ingest | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP 2025
+- ingest | interspeech-2025-0401 | Enabling the replicability of speech synthesis perceptual evaluations | Interspeech 2025
+- ingest | interspeech-2025-0115 | Bringing Interpretability to Neural Audio Codecs | Interspeech 2025
+- ingest | interspeech-2025-0468 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec for Speech Generation | Interspeech 2025
+- ingest | interspeech-2025-1641 | Robust Neural Codec Language Modeling with Phoneme Position Prediction for Zero-Shot TTS | Interspeech 2025
+- ingest | interspeech-2025-2447 | Accelerating Autoregressive Speech Synthesis Inference With Speech Speculative Decoding | Interspeech 2025
+- ingest | interspeech-2025-1779 | ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow and Speaker Feature Optimization | Interspeech 2025
+- ingest | interspeech-2025-0874 | Efficient and Direct Duplex Modeling for Speech-to-Speech Language Model | Interspeech 2025
+- ingest | interspeech-2025-0246 | DC-Spin: A Speaker-invariant Speech Tokenizer for Spoken Language Models | Interspeech 2025
+- ingest | interspeech-2025-1440 | FreeCodec: A Disentangled Neural Speech Codec with Fewer Tokens | Interspeech 2025
+- ingest | interspeech-2025-2043 | Training-Free Voice Conversion with Factorized Optimal Transport | Interspeech 2025
+- ingest | interspeech-2025-0816 | Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation | Interspeech 2025
+- ingest | interspeech-2025-0739 | FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems | Interspeech 2025
+- ingest | 2508.15827 | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in Large Speech Models | arXiv 2025
+- ingest | interspeech-2025-1066 | Score-Based Training for Energy-Based TTS Models | Interspeech 2025
+- ingest | interspeech-2025-1122 | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech 2025
+- ingest | 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and Semantic Evaluation | arXiv 2025
+- ingest | interspeech-2025-1344 | Parameter-Efficient Fine-Tuning for Low-Resource Text-to-Speech via Cross-Lingual Continual Learning | Interspeech 2025
+- ingest | interspeech-2025-2449 | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling | Interspeech 2025
+- ingest | interspeech-2025-1595 | Scheduled Interleaved Speech-Text Training for Speech-to-Speech Translation with LLMs | Interspeech 2025
+- ingest | interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism | Interspeech 2025
+- ingest | interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn-taking in Spoken Dialogue Systems | Interspeech 2025

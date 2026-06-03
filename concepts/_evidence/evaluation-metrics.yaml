@@ -1,6 +1,6 @@
 concept: evaluation-metrics
-last_updated: 2026-06-02
-paper_count: 37
+last_updated: 2026-06-03
+paper_count: 43
 
 papers:
   - id: 2503.04721
@@ -206,12 +206,95 @@ claim_clusters:
     contradicting_papers: []
     notes: Single implementation; validation in English and Chinese only.
 
+  - id: 2508.20660
+    year: 2025
+    task: [codec, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Comprehensive codec benchmarking requires both acoustic (reconstruction quality) and semantic (content understanding) evaluation tracks.
+    evidence:
+      - CodecBench provides standardised multi-dimensional evaluation for neural audio codecs, exposing trade-offs not visible in single-metric assessments.
+    limitations:
+      - Benchmark scope not fully detailed in available summary.
+
+  - id: interspeech-2025-0401
+    year: 2025
+    task: [evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Replicability of TTS perceptual evaluations is systematically low due to underdocumented listener pool characteristics, stimulus construction, and rating interface design.
+    evidence:
+      - Analysis of published TTS MOS studies reveals major replicability barriers; proposes checklist of conditions needed for reproducible listening tests.
+    limitations:
+      - Retrospective analysis; adoption of the checklist by the community not yet measured.
+
+  - id: interspeech-2025-0739
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Full-duplex spoken dialogue system evaluation requires dedicated benchmarks that test turn-taking timing, speech quality, and semantic coherence simultaneously.
+    evidence:
+      - FD-Bench proposes a pipelined benchmarking framework for full-duplex SDS, revealing consistent aggressiveness-caution tension across evaluated systems.
+    limitations:
+      - Automated pipeline; no large-scale human correlation validation yet.
+
+  - id: interspeech-2025-2765
+    year: 2025
+    task: [TTS, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Human fooling rate reveals differentiation between TTS systems that MOS/MUSHRA fails to capture, especially for systems approaching ground-truth quality.
+      - Benchmarks with low expressive variation set an artificially low bar for naturalness evaluation.
+    evidence:
+      - Human fooling rate study on leading zero-shot TTS systems shows clear rank-differentiation even when MOS differences are below significance threshold.
+    limitations:
+      - Expensive to collect; limited system coverage.
+
+  - id: interspeech-2025-1066
+    year: 2025
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - UTMOS and human MOS diverge for EBM-based TTS systems with non-standard synthesis regimes, limiting reliability of automatic MOS predictors.
+    evidence:
+      - Delta loss EBM achieves competitive human MOS (3.95) but low UTMOSv2 (2.959), specifically in one-step inference.
+    limitations:
+      - Single system/architecture; not a systematic study of UTMOS failure modes.
+
+  - id: interspeech-2025-1122
+    year: 2025
+    task: [TTS]
+    architecture: [GAN, transformer-enc-dec]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - MOS evaluation of 1.58-bit quantised TTS systems confirms quality degradation patterns that diverge from objective measures.
+    evidence:
+      - BitTTS: 15-rater MOS on 30 utterances; 1.58-bit system scores 3.09 MOS vs. 3.75 for 32-bit; naive channel reduction collapses to 1.20 MOS.
+    limitations:
+      - Small listener panel (15 raters, 30 samples); limited generalisability.
+
 open_questions:
   - Can a shared evaluation infrastructure for full-duplex SCA be established that integrates TOR-style automated metrics with user preference measures?
   - What sample size and panel size are required to establish statistical reliability for fine-grained vocoder or emotion TTS evaluation?
   - Should the community develop a dedicated high-quality discrimination benchmark for SQA since near-human-quality systems defeat current predictors?
+  - Does the human fooling rate metric (interspeech-2025-2765) correlate with CMOS/MUSHRA across diverse speaker types and expressive conditions?
+  - Is the UTMOS vs. human MOS divergence documented for delta loss EBM systems (interspeech-2025-1066) a systematic property of non-standard synthesis regimes?
+  - Can the replicability checklist proposed in interspeech-2025-0401 be operationalised as a community standard for TTS listening test reporting?
 
 trend_notes:
   - Community challenge infrastructure (VoiceMOS/AudioMOS) is the dominant driver of evaluation method progress as of 2025.
   - Multi-dimensional evaluation (9 dimensions for role-playing, 4 for VC) is expanding beyond standard MOS/WER.
   - UTMOS vs. subjective MOS divergence is now documented in multiple evaluation contexts, raising systematic concern about its use as the sole proxy.
+  - 2025 (Interspeech): Multiple evaluation papers emerge — CodecBench (2508.20660) for codec multi-dimensional evaluation, replicability checklist (interspeech-2025-0401) for perceptual TTS tests, FD-Bench (interspeech-2025-0739) for full-duplex SDS, and human fooling rate study (interspeech-2025-2765) as a new naturalness evaluation paradigm that reveals TTS differentiation invisible to standard MOS.

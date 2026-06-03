@@ -1,6 +1,6 @@
 concept: flow-matching
-last_updated: 2026-06-02
-paper_count: 33
+last_updated: 2026-06-03
+paper_count: 35
 
 papers:
   - id: 2507.22746
@@ -84,6 +84,34 @@ papers:
     limitations:
       - Any-to-one evaluation only; any-to-any EVC with unseen target speakers not tested.
 
+  - id: interspeech-2025-1344
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Adapter-based PEFT (1.72% params) for FM TTS preserves zero-shot multilingual capability while full fine-tuning on single-speaker data destroys it.
+      - Cross-lingual PEFT of FM TTS to a typologically distant language (Korean) is feasible with 12h single-speaker data.
+    evidence:
+      - PEFT-TTS on F5-TTS: CER 4.906, MOS 3.88; full fine-tune loses zero-shot (NMOS 2.24 vs. 3.06).
+    limitations:
+      - Korean only; multi-speaker WER substantially higher (21.6%) than large-scale systems.
+
+  - id: interspeech-2025-2449
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Non-uniform ODE step pruning enables 4× FM TTS speedup (32→7 NFE) with near-negligible quality loss, exploiting near-linearity of late FM trajectory.
+      - Training-free step scheduling generalises across FM TTS architectures without retraining.
+    evidence:
+      - Fast F5-TTS EPSS (7 NFE): RTF 0.030 vs. 0.123 (32 NFE); WER 1.74% vs. 1.70%; UTMOS 3.78 vs. 3.76 on Seed-TTS test-en.
+    limitations:
+      - Validated only on mel-spectrogram-based FM TTS; applicability to waveform-latent or token-based FM untested.
+
 claim_clusters:
   - claim: Flow matching requires fewer inference steps than diffusion for equivalent speech quality, due to straighter OT transport paths.
     status: strongly_supported
@@ -136,8 +164,11 @@ open_questions:
   - Can discrete FM (DiFlow-TTS) be accelerated to the 1-2 NFE range of continuous FM?
   - Does Dragon-FM's hybrid AR+FM design scale to standardized benchmarks like Seed-TTS-Eval?
   - Can REF-VC's 4-step Shortcut Models approach be generalized to TTS systems beyond VC?
+  - Can EPSS-style non-uniform step pruning be combined with FM distillation to push below 5 NFE without retraining?
+  - Does the PEFT-first cross-lingual adaptation finding (interspeech-2025-1344) extend to languages more phonologically distant than Korean from English/Chinese?
 
 trend_notes:
   - 2025: FM acceleration via consistency (RapFlow-TTS), adversarial post-training (APTTS), Shortcut Models (REF-VC), and learned prior (OZSpeech) all demonstrated simultaneously — convergence on sub-5 NFE as practical target.
   - 2026: LongCat-AudioDiT shifted FM from mel-spectrogram to waveform VAE latent, revealing training-inference mismatch in all prior Voicebox/F5-TTS style training.
   - Dual-mode reference/text conditioning for FM emotional VC (ClapFM-EVC) is an emerging direction for instruction-conditioned voice conversion.
+  - 2025 (Interspeech): Non-uniform ODE step pruning (EPSS, interspeech-2025-2449) validated as a training-free 4× speedup for F5-TTS; PEFT for cross-lingual continual adaptation (interspeech-2025-1344) confirms FM models adapt well with minimal parameters but require PEFT rather than full fine-tuning to preserve multi-language capability.

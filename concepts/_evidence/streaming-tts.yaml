@@ -1,6 +1,6 @@
 concept: streaming-tts
-last_updated: 2026-06-02
-paper_count: 19
+last_updated: 2026-06-03
+paper_count: 21
 
 papers:
   - id: 2507.22746
@@ -84,13 +84,59 @@ claim_clusters:
     contradicting_papers: []
     notes: No user study on this perceptual threshold exists in the corpus.
 
+  - claim: Speculative decoding with relaxed acceptance criteria achieves AR TTS speedup without measurable subjective quality loss.
+    status: emerging
+    supporting_papers: [interspeech-2025-2447]
+    contradicting_papers: []
+    notes: WER increases from 3.67% to 5.70% — attributed to draft model data scale mismatch.
+
+  - claim: Non-uniform ODE step pruning from the near-linear late trajectory phase enables 4× FM TTS speedup with near-negligible quality degradation.
+    status: emerging
+    supporting_papers: [interspeech-2025-2449]
+    contradicting_papers: []
+
+  - id: interspeech-2025-2447
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Speculative decoding adapted for speech can reduce AR inference latency without measurable degradation in subjective naturalness or speaker similarity.
+      - Speech token sequences exhibit many-to-one mappings to perceived quality, enabling relaxed acceptance criteria that improve throughput.
+      - Inference-stage acceleration of AR TTS is achievable without fine-tuning the target model.
+    evidence:
+      - SSD achieves 1.4× AR LM speedup (RTF 0.504→0.36) on CosyVoice 2 with MOS 3.925 vs. 3.930 baseline; tolerance factor β=0.4 relaxes acceptance without quality degradation.
+    limitations:
+      - WER rises from 3.67% to 5.70%, attributed to draft model data scale mismatch (not verified experimentally).
+      - Evaluated on single target model (CosyVoice 2) on English only.
+
+  - id: interspeech-2025-2449
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Non-uniform ODE step schedules that preserve the high-curvature early phase enable 4× FM TTS speedup (32→7 NFE) with near-negligible quality loss.
+      - The early, high-curvature phase of FM inference is disproportionately critical; uniform step reduction degrades performance primarily by under-sampling this phase.
+      - Training-free step scheduling generalises across FM TTS architectures (F5-TTS, E2 TTS).
+    evidence:
+      - Fast F5-TTS (7 NFE, EPSS): RTF 0.030 vs. 0.123 (32 NFE); WER 1.74% vs. 1.70% baseline on Seed-TTS test-en; UTMOS 3.78 vs. 3.76.
+    limitations:
+      - Validated only on mel-spectrogram FM TTS; not tested on token-based or waveform-latent FM systems.
+      - Step configurations determined empirically, not via principled search.
+
 open_questions:
   - Can streaming zero-shot TTS achieve comparable quality to non-streaming SOTA at under 100 ms on diverse speakers?
   - Does depth-wise sequential non-AR decoding scale to zero-shot multi-speaker synthesis?
   - Can Dragon-FM's hybrid design achieve first-byte latency under 100 ms on standardized benchmarks?
   - Is pixel shuffle the optimal approach for causal upsampling, or are better artifact-free alternatives possible?
+  - Would scaling the SSD draft model to match the target model's training corpus close the WER gap (interspeech-2025-2447)?
+  - Can EPSS be combined with FM distillation to push quality-preserving inference below 5 NFE (interspeech-2025-2449)?
 
 trend_notes:
   - 2026: The bottleneck has shifted from token generation speed to acoustic vocoder latency; the gap between streaming and non-streaming systems has largely closed.
   - Leading systems in 2026: Qwen3-TTS (97 ms), Fish Audio S2 (TTFA <100 ms), 2604.12438 (48.99 ms RTF 0.0033).
   - Dragon-FM introduces a hybrid chunk-AR+FM approach as a new streaming paradigm beyond pure AR or pure NAR streaming.
+  - 2025 (Interspeech): Inference acceleration techniques — speculative decoding for AR (SSD, interspeech-2025-2447) and non-uniform step pruning for FM (EPSS, interspeech-2025-2449) — are emerging as practical drop-in methods for existing deployed models without retraining.

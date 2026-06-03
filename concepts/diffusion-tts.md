@@ -2,8 +2,8 @@
 slug: diffusion-tts
 title: Diffusion Models for TTS
 aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, score-matching TTS]
-related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts]
-last_updated: 2026-06-02
+related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts, voice-conversion]
+last_updated: 2026-06-03
 status: established
 ---
 
@@ -63,6 +63,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Training-inference mismatch in Voicebox/F5-TTS style flow-matching training (caused by the OT plan assuming a specific source distribution that is not matched at inference) is a systematic but correctable degradation.
   Supporting: [[2603.29339]]
 
+- Score-based training objectives for energy-based TTS models can reduce inference to a single MCMC step; the delta loss criterion is formally equivalent to flow matching at t=0, suggesting a deeper structural connection between energy-based and flow-based synthesis.
+  Supporting: [[interspeech-2025-1066]]
+
+- Diffusion-based voice conversion with mutual information disentanglement and inference-time expressive guidance can achieve strong emotion controllability in zero-shot settings without speaker-specific training.
+  Supporting: [[interspeech-2025-1101]]
+
 ### Contested
 
 > [!warning]
@@ -109,6 +115,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Does the training-inference mismatch identified by LongCat-AudioDiT [[2603.29339]] affect all Voicebox/F5-TTS style models, and how easily can it be corrected post-hoc in pre-trained models?
 - What is the optimal VAE latent dimensionality and frame rate for diffusion TTS? LongCat-AudioDiT shows a counterintuitive trade-off: higher VAE fidelity does not help downstream TTS quality.
 - Can DiTAR [[2502.03930]] scaling laws (data and model scale both improve quality monotonically) be replicated for StyleTTS-ZS and other compact latent diffusion approaches?
+- [[interspeech-2025-1066]] shows that delta loss EBMs peak at 1 inference step and degrade at 100 steps, while automatic MOS predictors (UTMOSv2) and human MOS diverge for these systems — does this UTMOS divergence extend to other non-standard synthesis paradigms?
+- Can diffusion-based EVC with zero-shot generalisation ([[interspeech-2025-1101]]) preserve naturalness comparable to seen-speaker diffusion methods, or is the naturalness gap at the zero-shot boundary fundamental?
 
 ## Trend Summary
 
@@ -130,3 +138,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Replaces the AR LM stage of a CosyVoice-style TTS pipeline with a masked discrete diffusion model (LLaDA-based); achieves CER 0.98% (zh) on Seed-TTS-Eval while enabling parallel generation with step-count-independent cost |
 | [[interspeech-2025-0063]] | Fine-Tuning TTS Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech | 2025 | DLPO: first RLHF framework specifically designed for non-autoregressive diffusion TTS; original DDPM noise-prediction loss used as reward penalty to maintain temporal coherence; UTMOS 3.65 vs. 2.90 base, preferred 67% of pairwise comparisons |
 | [[2508.01796]] | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension | arXiv | 2025 | DiT-based diffusion model for linear spectrogram estimation (LSE) as an intermediate step between acoustic model and vocoder; time-axis-only self-attention with per-frequency embeddings; improves singing synthesis MOS from 3.576 to 4.176 |
+| [[interspeech-2025-1066]] | Score-Based Training for Energy-Based TTS Models | Interspeech | 2025 | Introduces delta loss for EBMs — a score-based criterion equivalent to flow matching at t=0 — enabling single-step EBM inference; first comparison of SSM and NCE training for TTS EBMs |
+| [[interspeech-2025-1101]] | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism | Interspeech | 2025 | Diffusion-based zero-shot EVC with vCLUB MI disentanglement and expressive guidance; demonstrates zero-shot emotional VC with substantially higher ECA (0.53) than seen-speaker diffusion baselines (0.256) |

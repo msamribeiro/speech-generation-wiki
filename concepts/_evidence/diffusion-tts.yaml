@@ -1,6 +1,6 @@
 concept: diffusion-tts
-last_updated: 2026-06-02
-paper_count: 12
+last_updated: 2026-06-03
+paper_count: 14
 
 papers:
   - id: 2508.01796
@@ -49,16 +49,60 @@ claim_clusters:
     supporting_papers: [2508.01796]
     contradicting_papers: []
 
+  - claim: Score-based EBM training objectives for TTS can reduce inference to a single MCMC step; delta loss is formally equivalent to flow matching at t=0.
+    status: emerging
+    supporting_papers: [interspeech-2025-1066]
+    contradicting_papers: []
+
+  - claim: Diffusion-based zero-shot EVC with MI disentanglement and expressive guidance enables emotion control in zero-shot settings, though naturalness lags seen-speaker systems.
+    status: emerging
+    supporting_papers: [interspeech-2025-1101]
+    contradicting_papers: []
+
   - claim: Pure NAR diffusion/flow models vs. AR+diffusion hybrid architectures — neither has established a clear quality-efficiency dominance at scale.
     status: contested
     supporting_papers: [2603.29339]
     contradicting_papers: [2502.03930, 2510.12210]
     notes: LongCat-AudioDiT shows pure NAR competitive; DiTAR and DiSTAR argue hybrid advantage.
 
+  - id: interspeech-2025-1066
+    year: 2025
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Score-based training objectives for EBMs can reduce TTS inference to a single MCMC step, bypassing many-iteration NCE-trained EBMs.
+      - The delta loss criterion for EBMs is formally equivalent to the flow matching objective at t=0, suggesting structural connection between energy-based and flow-based TTS.
+      - Automatic MOS predictors and subjective MOS can diverge for EBM-based TTS systems.
+    evidence:
+      - Delta loss EBM achieves 3.95 MOS at 1 inference step vs. Tacotron 2 at 3.74 on LJSpeech; UTMOSv2 and MOS diverge for delta loss model.
+    limitations:
+      - Single-speaker LJSpeech only; 3-listener MOS panel too small for strong conclusions.
+      - Tacotron 2 backbone is dated by 2025 standards; generalisability to codec-based architectures untested.
+
+  - id: interspeech-2025-1101
+    year: 2025
+    task: [VC]
+    architecture: [diffusion]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Diffusion-based zero-shot EVC with MI disentanglement and expressive guidance achieves substantially higher emotion controllability than seen-speaker diffusion baselines (ECA 0.53 vs. 0.256).
+      - Classifier-free-style guidance on emotion representations at inference time provides direct control over naturalness-emotion trade-off in diffusion-based EVC.
+      - Training on in-the-wild emotional corpora enables zero-shot generalisation to speakers absent from training.
+    evidence:
+      - ZSDEVC on ESD: ECA 0.53 vs. EMOCONV-DIFF 0.256; naturalness lower (MOS 4.342 vs. 4.709) but EMOCONV-DIFF evaluated under seen-speaker setup.
+    limitations:
+      - Cross-system comparison mixes seen-speaker and zero-shot evaluation conditions.
+      - Intensity control within a single emotion category not provided.
+
 open_questions:
   - Can discrete masked diffusion be accelerated to the 1-2 NFE range of continuous flow matching?
   - Does training-inference mismatch correction in LongCat-AudioDiT apply to existing pre-trained models post-hoc?
   - Can the LSE+Vocos2D pipeline be accelerated via flow matching without losing spectrogram realism gains?
+  - Does the UTMOS vs. human MOS divergence for EBM-based TTS (interspeech-2025-1066) extend to other non-standard synthesis paradigms?
+  - Can diffusion-based EVC (ZSDEVC) match seen-speaker naturalness while maintaining zero-shot controllability?
 
 trend_notes:
   - 2025: DiTAR patch-based continuous AR+diffusion established hybrid paradigm; DiSTAR extended to discrete token space.

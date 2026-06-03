@@ -1,6 +1,6 @@
 concept: subjective-evaluation
-last_updated: 2026-06-02
-paper_count: 20
+last_updated: 2026-06-03
+paper_count: 24
 
 papers:
   - id: 2503.04721
@@ -154,3 +154,4 @@ trend_notes:
   - FreeGAN (2508.07711) adds to the growing evidence of UTMOS vs. subjective MOS divergence, reinforcing that UTMOS is unreliable for systems with architectural novelty.
   - SpeechRole demonstrates LLM-as-judge with multi-reference normalisation as a scalable alternative to human evaluation for role-playing benchmarking.
   - The trend toward automated reproducible benchmarks (Full-Duplex-Bench, SpeechRole, VoiceMOS) reduces reliance on costly subjective listening tests for specific evaluation dimensions.
+  - Integration pass 6: Three new papers expand subjective evaluation — interspeech-2025-0401 provides a replicability checklist for TTS listening tests, interspeech-2025-2765 introduces human fooling rate as a new naturalness evaluation paradigm, and interspeech-2025-1066 adds another UTMOS vs. human MOS divergence data point for EBM TTS systems.

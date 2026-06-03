@@ -1,6 +1,6 @@
 concept: speaker-adaptation
-last_updated: 2026-06-02
-paper_count: 10
+last_updated: 2026-06-03
+paper_count: 11
 
 papers:
   - id: 2508.07426
@@ -109,13 +109,38 @@ claim_clusters:
     supporting_papers: [2508.14049]
     contradicting_papers: []
 
+  - claim: Adapter-based PEFT (1–2% of parameters) for cross-lingual continual adaptation of flow-matching TTS preserves zero-shot capability while full fine-tuning destroys it.
+    status: strongly_supported
+    supporting_papers: [interspeech-2025-1344, 2508.09767]
+    contradicting_papers: []
+    notes: interspeech-2025-1344 specifically shows PEFT is functionally necessary, not just computationally convenient, for preserving multi-language capability.
+
+  - id: interspeech-2025-1344
+    year: 2025
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Adapter-based PEFT preserves zero-shot TTS capability in multilingual models more reliably than full parameter fine-tuning on single-speaker low-resource data.
+      - Cross-lingual adaptation of TTS models is feasible with fewer than 15 hours of single-speaker data when a multilingual pre-trained foundation is available.
+      - In flow-matching TTS fine-tuning, the text conditioning module requires more parameters to adapt to a typologically distant language than the acoustic generation module.
+      - Low-rank adaptation in DiT-based TTS shows a rank-dependent trade-off between linguistic accuracy and speaker generalisation.
+    evidence:
+      - PEFT-TTS (1.72% params) achieves CER 4.906/WER 12.625 vs. full fine-tune CER 5.671; full fine-tune loses zero-shot capability (NMOS 2.24 vs. 3.06 for PEFT).
+    limitations:
+      - Multi-speaker WER substantially higher (21.6%) than large-scale CosyVoice 2 (10.9%); hallucination artefacts remain.
+      - Korean-only adaptation; generalisation to other low-resource non-Latin-script languages untested.
+
 open_questions:
   - At what data scale does full fine-tuning outperform parameter-efficient adaptation (LoRA, adapters) for TTS?
   - Can LoRA-based pitch accent correction generalise to other tonally complex languages beyond Japanese?
   - What is the minimum data floor for reliable domain adaptation to a new speaker type?
   - Does kNN-VC timbre augmentation reliably improve perceived accent quality, or only automatic metrics?
+  - Do the optimal adapter hyperparameters (compression factor, LoRA rank) transfer across language pairs of varying phonological distance from the pre-training distribution?
 
 trend_notes:
   - Integration pass 5 confirms that parameter-efficient adaptation (LoRA, fine-tuning) is increasingly the practical default, with adaptation scope ranging from pronunciation-specific (UtterTune) to full domain transfer (MultiGen).
   - Two-stage semantic-acoustic decoupling (MahaTTS) establishes 200 hours as a practical threshold for new language addition without acoustic model retraining.
   - The gap between zero-shot and adapted quality is narrowing in high-resource settings; adaptation remains essential for specialized populations and low-resource languages.
+  - Integration pass 6: interspeech-2025-1344 confirms PEFT-first is not just computationally efficient but functionally necessary for cross-lingual continual adaptation — full fine-tuning causes catastrophic forgetting of prior languages even with small (12h) adaptation datasets.

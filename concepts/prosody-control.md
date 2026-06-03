@@ -2,8 +2,8 @@
 slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
-related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement]
-last_updated: 2026-06-02
+related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement, voice-conversion]
+last_updated: 2026-06-03
 status: established
 ---
 ## Executive Summary
@@ -82,6 +82,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Explicit F0 and energy conditioning from a reference utterance transfers temporal prosody dynamics more faithfully than implicit prediction from latent codes in emotional VC.
   Supporting: [[2508.06890]], [[interspeech-2025-0203]]
+
+- Natural language prosody control via a diffusion-based prompt mapper bridging text LM and speech emotion embeddings can match reference-audio-level emotion accuracy in voice conversion without reference audio at inference.
+  Supporting: [[interspeech-2025-0948]]
+
+- Enriching global style embeddings with explicit pitch and energy features substantially improves emotion transfer fidelity in expressive voice conversion beyond mel-spectrogram-only style encoding.
+  Supporting: [[interspeech-2025-0815]]
 
 ### Contested
 
@@ -168,3 +174,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.08399]] | Exploring Disentangled Neural Speech Codecs | arXiv | 2025 | Prosody as the time-variant residual after instance normalization; UMAP shows quantized prosody vectors align with speaker-normalized F0 deviation |
 | [[2508.09767]] | UtterTune | arXiv | 2025 | LoRA with phoneme-tag tokens for pitch accent control in Japanese; accent correctness 0.498 → 0.899; demonstrates parameter-efficient G2P-free prosody correction |
 | [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | Adaptive intensity gate (AIG) for scalar emotion strength control; flow-matching decoder produces richer prosodic variation than GAN baselines |
+| [[interspeech-2025-0815]] | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion | Interspeech | 2025 | Enriched ECAPA-TDNN style encoder with explicit F0/energy features; cross-attention F0 injection for finer prosodic alignment to target; Mix-LN reduces style-content mismatch |
+| [[interspeech-2025-0948]] | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech | 2025 | Diffusion-based prompt mapper bridging RoBERTa and Emotion2Vec embeddings; multi-attribute prosody control (pitch, speed, volume, intensity, mixed emotions) from natural language prompts in EVC |

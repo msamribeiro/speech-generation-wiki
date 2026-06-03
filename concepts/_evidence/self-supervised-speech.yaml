@@ -1,6 +1,6 @@
 concept: self-supervised-speech
-last_updated: 2026-06-02
-paper_count: 26
+last_updated: 2026-06-03
+paper_count: 35
 
 papers:
   - id: 2508.02849
@@ -173,3 +173,4 @@ trend_notes:
   - The field has shifted from "which SSL model?" toward "SSL vs. supervised foundation model?" as the core design question for codec and SLM architectures.
   - 2025: SecoustiCodec proposes eliminating SSL distillation in favour of frame-level contrastive learning; DualSpeechLM trains a tokenizer against LLM objectives — departing from both SSL distillation and ASR supervision.
   - SSL retains strong practical value for VC content extraction and low-resource multilingual TTS (MahaTTS-v2 with XLS-R).
+  - Integration pass 6 (Interspeech 2025): Nine new SSL applications — codec interpretability probing (interspeech-2025-0115), speaker-invariant DC-Spin tokeniser (interspeech-2025-0246), DualCodec SSL-guided low-frame-rate (interspeech-2025-0468), expressive VC with mHuBERT-147 discrete units (interspeech-2025-0815), speech-prompted singing VC (interspeech-2025-0816), FreeCodec SSL-based content stream (interspeech-2025-1440), cross-lingual PEFT TTS (interspeech-2025-1344), ZSDEVC Wav2Vec2 emotion encoder (interspeech-2025-1101), training-free OT VC (interspeech-2025-2043). SSL-based discrete unit extraction remains the dominant content representation choice for VC systems in this batch.

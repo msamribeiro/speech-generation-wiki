@@ -2,8 +2,8 @@
 slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
-related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts]
-last_updated: 2026-06-02
+related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts, flow-matching]
+last_updated: 2026-06-03
 status: established
 ---
 
@@ -32,7 +32,9 @@ Adaptation can target different granularities: global speaker identity (timbre, 
 
 **Style encoder for zero-shot cloning.** Rather than updating model weights per speaker, a style encoder extracts a latent speaker representation from a reference audio clip, and this representation is injected into the synthesis pipeline. [[2025.acl-industry.42]] uses this as its zero-shot voice cloning mechanism (SPK-SIM 0.91 on a 10-second reference). This is the zero-shot boundary of adaptation — no gradient updates, only inference-time conditioning.
 
-# TODO: expand with AdaSpeech, StyleSpeech, prompt-based speaker adaptation, LoRA TTS fine-tuning
+**PEFT for cross-lingual continual adaptation.** [[interspeech-2025-1344]] demonstrates that adapting a 335.8M-parameter flow-matching TTS (F5-TTS) to Korean with only 12.65 hours of single-speaker data is feasible by inserting three lightweight adapter modules (Conditioning Adapter, Prompt Adapter with LoRA and DropPath, DiT LoRA at rank 16), totalling 1.72% of model parameters. Critically, full fine-tuning destroys zero-shot capability for previously learned languages entirely, while PEFT preserves it — making parameter efficiency not merely computationally convenient but functionally necessary for continual cross-lingual adaptation. A key finding is that for typologically distant languages, the text encoder adapter requires lower compression (0.25) than for languages closer to the training distribution.
+
+# TODO: expand with AdaSpeech, StyleSpeech, prompt-based speaker adaptation
 
 ## Major Claims
 
@@ -57,6 +59,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Decoupling the text-to-semantic and acoustic generation stages in a two-stage TTS pipeline allows new language addition via approximately 200 hours of target language data without retraining the acoustic model.
   Supporting: [[2508.14049]]
+
+- Adapter-based PEFT for flow-matching TTS preserves zero-shot multi-speaker capability more reliably than full fine-tuning when adapting to a new language with single-speaker low-resource data.
+  Supporting: [[interspeech-2025-1344]]
+
+- Cross-lingual TTS adaptation to a typologically distant language (Korean) with 12–15 hours of data achieves competitive single-speaker quality; the text encoder module requires lower compression than the acoustic generation module when the target language is distant from the pre-training distribution.
+  Supporting: [[interspeech-2025-1344]]
 
 ### Emerging
 
@@ -96,12 +104,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - UtterTune [[2508.09767]] demonstrates LoRA-based pitch accent correction at <0.5% of parameter count; does this approach extend effectively to other prosodically complex languages beyond Japanese?
 - MultiGen [[2508.08715]] adapts a multilingual foundation model to child-friendly speech with as few as 1,400 utterances; what is the minimum data floor for reliable domain adaptation to a new speaker type?
 - kNN-VC augmentation in [[2508.07426]] improves objective accent similarity but shows mixed human evaluation; does voice conversion-based timbre augmentation reliably improve perceived accent quality, or only automatic metrics?
+- [[interspeech-2025-1344]] shows that LoRA rank and DropPath rate both affect the pronunciation–speaker-generalisation trade-off in single-speaker PEFT; how do optimal hyperparameters transfer across language pairs with different degrees of phonological distance from the pre-training distribution?
+- [[interspeech-2025-1344]] adapts F5-TTS from English/Chinese to Korean; does the same three-adapter design transfer to non-Latin-script languages (Arabic, Thai) without modification to the tokenizer?
 
 ## Trend Summary
 
-# TODO: expand — dedicated speaker adaptation papers not yet represented in corpus.
-
-2025: Language-level adaptation is demonstrated for tonal low-resource languages ([[2025.acl-industry.42]]). The practical trend is toward zero-shot cloning reducing the need for adaptation in high-resource scenarios, while adaptation remains essential for low-resource and domain-specific applications. Integration pass 5 adds four new adaptation approaches: LoRA-based pronunciation correction (UtterTune [[2508.09767]]) for Japanese pitch accent at <0.5% parameter overhead; foundation model fine-tuning for child-friendly speech in three low-resource Southeast Asian languages (MultiGen [[2508.08715]]) demonstrating effectiveness from as few as 1,400 utterances; kNN-VC timbre augmentation for low-resource accented TTS [[2508.07426]] providing data diversity at the cost of acoustic degradation; and two-stage semantic-acoustic decoupling for 22-language Indic TTS (MahaTTS [[2508.14049]]) requiring only 200 hours per new language addition. The batch confirms that parameter-efficient adaptation (LoRA, fine-tuning) is increasingly the practical default, with adaptation scope ranging from pronunciaton-specific (UtterTune) to full domain transfer (MultiGen).
+2025: Language-level adaptation is demonstrated for tonal low-resource languages ([[2025.acl-industry.42]]). The practical trend is toward zero-shot cloning reducing the need for adaptation in high-resource scenarios, while adaptation remains essential for low-resource and domain-specific applications. Integration pass 5 adds four new adaptation approaches: LoRA-based pronunciation correction (UtterTune [[2508.09767]]) for Japanese pitch accent at <0.5% parameter overhead; foundation model fine-tuning for child-friendly speech in three low-resource Southeast Asian languages (MultiGen [[2508.08715]]) demonstrating effectiveness from as few as 1,400 utterances; kNN-VC timbre augmentation for low-resource accented TTS [[2508.07426]] providing data diversity at the cost of acoustic degradation; and two-stage semantic-acoustic decoupling for 22-language Indic TTS (MahaTTS [[2508.14049]]) requiring only 200 hours per new language addition. The batch confirms that parameter-efficient adaptation (LoRA, fine-tuning) is increasingly the practical default, with adaptation scope ranging from pronunciation-specific (UtterTune) to full domain transfer (MultiGen). Integration pass 6 adds a key result: [[interspeech-2025-1344]] demonstrates that PEFT for cross-lingual continual adaptation of F5-TTS with 1.72% of parameters is functionally necessary (not just efficient) — full fine-tuning destroys zero-shot capability for previously learned languages. This finding reinforces LoRA/adapter-first adaptation as the default strategy for multilingual TTS extension.
 
 ## All Papers
 
@@ -117,3 +125,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.08715]] | MultiGen | arXiv | 2025 | CosyVoice-300M fine-tuning for child-friendly Southeast Asian TTS; x-vector speaker conditioning; effective from 1,400 utterances for Singaporean-accented Mandarin |
 | [[2508.09767]] | UtterTune | arXiv | 2025 | Rank-16 LoRA on CosyVoice2 AR LM with two phoneme-tag tokens for Japanese pitch accent; <0.5% trainable parameters; raises accent correctness from 0.499 to 0.899 |
 | [[2508.14049]] | MahaTTS | arXiv | 2025 | Two-stage semantic-acoustic pipeline for 22-language Indic TTS; ~200 hours per new language addition; Gemma-based LM fine-tuning for text-to-semantic stage |
+| [[interspeech-2025-1344]] | Parameter-Efficient Fine-Tuning for Low-Resource TTS via Cross-Lingual Continual Learning | Interspeech | 2025 | Three-adapter PEFT (1.72% params) adapts F5-TTS to Korean on 12.65h single-speaker data; full fine-tuning destroys zero-shot capability while PEFT preserves it; text encoder adapter requires lower compression for typologically distant languages |

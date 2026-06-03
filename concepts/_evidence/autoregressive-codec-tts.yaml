@@ -1,6 +1,6 @@
 concept: autoregressive-codec-tts
-last_updated: 2026-06-02
-paper_count: 47
+last_updated: 2026-06-03
+paper_count: 49
 
 papers:
   - id: 2504.12867
@@ -183,14 +183,47 @@ claim_clusters:
     contradicting_papers: [2025.acl-long.1498]
     notes: DRI mitigation at codec training time partially addresses Factor C.
 
+  - id: interspeech-2025-1641
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit phoneme position supervision during AR codec training eliminates alignment errors (skipping, repetition, one-to-many) more effectively than identity prediction or monotonic decoding.
+      - Alignment failures in codec LM TTS are a training-objective problem, not an inference-time problem.
+      - Jointly predicting phoneme identity and position introduces conflicting signals that degrade pronunciation accuracy compared to position-only prediction.
+    evidence:
+      - 52.7% relative CER reduction (6.69%→3.16%) over VALL-E on Seed-TTS test-zh; 67.2% reduction on hard 400-case subset; zero alignment errors in any error category on hard set.
+    limitations:
+      - Mandarin only; requires phoneme duration annotations at training time.
+      - 15-listener subjective panel; model size not reported.
+
+  - id: interspeech-2025-2447
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Speculative decoding for AR TTS achieves 1.4× inference speedup without measurable subjective quality degradation.
+      - Speech token sequences exhibit many-to-one perceptual mappings, enabling relaxed acceptance criteria beyond strict distributional matching.
+    evidence:
+      - SSD on CosyVoice 2: RTF 0.36 vs. 0.504; MOS 3.925 vs. 3.930; WER rises 3.67%→5.70% (attributed to draft data scale mismatch).
+    limitations:
+      - WER increase unresolved; evaluated on single English model.
+
 open_questions:
   - At what AR frame rate does performance degrade irreversibly for a given codec design?
   - Is the Factor C problem addressable within the AR+NAR framework, or does it require fundamentally different architectures?
   - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
   - Can MTP improve speaker similarity as well as intelligibility in AR speech LMs?
   - Does modality-based MoE routing benefit all LLM backbone sizes equally?
+  - Would scaling the SSD draft model to match the target corpus close the WER gap?
+  - Does explicit position supervision in codec LM TTS generalise to languages without reliable forced-alignment annotations?
 
 trend_notes:
   - AR TTS has bifurcated by 2026 into two tracks: scaling AR LMs with better tokenizers/RL alignment, and challenging whether AR decoding is necessary at all.
   - Dual-AR (slow semantic + fast acoustic) is emerging as the dominant industrial architecture in 2026.
   - Hybrid AR+FM (CosyVoice 2, Dragon-FM) is now the standard for production streaming systems.
+  - "2025 (Interspeech): Two robustness/efficiency advances: phoneme position prediction (interspeech-2025-1641) eliminates AR alignment errors on hard Mandarin cases; speculative decoding (interspeech-2025-2447) achieves 1.4x AR speedup without modifying the target model."

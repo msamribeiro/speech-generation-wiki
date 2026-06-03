@@ -1,6 +1,6 @@
 concept: spoken-language-model
-last_updated: 2026-06-02
-paper_count: 18
+last_updated: 2026-06-03
+paper_count: 25
 
 papers:
   - id: 2503.04721
@@ -115,13 +115,108 @@ claim_clusters:
     supporting_papers: [2025.acl-long.912, 2025.emnlp-main.989, 2025.acl-long.388]
     contradicting_papers: [2412.17048, interspeech-2025-0310]
 
+  - id: 2508.08095
+    year: 2025
+    task: [SCA]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Dual information streams (emotion-aware and emotion-removed) in a speech LM improve emotional conversation quality without requiring explicit emotion labels.
+    evidence:
+      - Dual Information Speech LM shows improved emotional response quality on conversation benchmarks compared to single-stream baselines.
+    limitations:
+      - Limited to pre-scripted emotional dialogue scenarios; spontaneous speech evaluation limited.
+
+  - id: 2508.15827
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Token-level thinking-in-speaking enables LLM reasoning concurrent with speech generation, reducing response latency while maintaining reasoning quality.
+    evidence:
+      - Mini-Omni-Reasoner shows reduced latency vs. sequential think-then-speak baseline while maintaining task accuracy.
+    limitations:
+      - Reasoning depth constrained by interleaved speech token generation; complex reasoning tasks may still require sequential approach.
+
+  - id: interspeech-2025-0739
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Full-duplex SDS require dedicated benchmarks testing turn-taking timing, speech quality, and semantic coherence simultaneously.
+    evidence:
+      - FD-Bench reveals consistent aggressiveness-caution tension across evaluated full-duplex systems.
+    limitations:
+      - Automated pipeline; no large-scale human correlation study.
+
+  - id: interspeech-2025-0874
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Direct duplex modeling without turn-taking detection modules can achieve natural full-duplex dialogue through unified speech-text token interleaving.
+    evidence:
+      - Direct duplex system achieves competitive full-duplex performance without dedicated turn detection; efficient generation at production scale.
+    limitations:
+      - Evaluation on constrained dialogue scenarios; spontaneous multi-turn generalisation untested.
+
+  - id: interspeech-2025-1595
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Scheduled interleaved speech-text training improves speech-to-speech translation quality by progressively exposing the LLM to speech modality inputs.
+    evidence:
+      - Scheduled training achieves competitive S2ST quality vs. cascade system on standard benchmarks with end-to-end LLM architecture.
+    limitations:
+      - Limited language pair coverage; latency vs. cascade not fully characterised.
+
+  - id: interspeech-2025-2660
+    year: 2025
+    task: [SCA]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Acoustic-only VAP can predict next-speaker in triadic conversation with accuracy above last-speaker baseline, though gains are modest for spontaneous speech.
+      - The complexity of multi-party turn-taking increases faster than linearly with group size.
+    evidence:
+      - Triadic VAP: 62.43%–87.50% accuracy vs. 55.56%–81.25% baseline across model variants on TEIDAN corpus.
+    limitations:
+      - Small corpus (under 5 hours); monolingual Japanese; no cross-corpus generalisation.
+
+  - id: interspeech-2025-0246
+    year: 2025
+    task: [codec]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Speaker-invariant speech tokenisers improve spoken language model downstream performance by removing paralinguistic confounds from content tokens.
+    evidence:
+      - DC-Spin achieves improved spoken LM perplexity and downstream task performance by suppressing speaker information in discrete tokens.
+    limitations:
+      - Speaker-invariant tokens may sacrifice prosodic detail needed for expressive generation.
+
 open_questions:
   - Can the Factor C problem (paralinguistic variability) be solved by better codecs alone, or does it require architectural changes?
   - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex suffice?
   - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
   - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm or addressable by training regime?
+  - Can token-level thinking-in-speaking (Mini-Omni-Reasoner, 2508.15827) scale to complex reasoning tasks without sacrificing speech naturalness?
+  - Does triadic VAP (interspeech-2025-2660) accuracy degrade gracefully beyond three participants, or is it fundamentally limited by state-space explosion?
 
 trend_notes:
   - 2025: Full-Duplex-Bench provides the first automated benchmark for turn-taking in full-duplex systems; SpeechRole provides the first large-scale S2S role-playing benchmark.
   - Integration pass 5 adds: Full-Duplex-Bench (aggressiveness-caution tension), SpeechRole (text-LM bottleneck), UniTalker (speech-visual joint prediction), DualSpeechLM (dual-token decoupling).
   - The convergence toward hybrid architectures (text LLM + speech I/O) is accelerating with systems like VocalNet, LLaMA-Omni 2, and DualSpeechLM.
+  - "2025 (Interspeech): Several new SCA directions: dual information stream for emotional conversations (2508.08095), token-level concurrent thinking-in-speaking (2508.15827), direct duplex modeling (interspeech-2025-0874), and triadic multi-party turn-taking prediction (interspeech-2025-2660)."

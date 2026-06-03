@@ -5,7 +5,7 @@ title: "Wiki Index"
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
 
 > [!abstract]
-> A living systematic review and knowledge graph of the state of the art in synthetic speech — covering **text-to-speech (TTS)**, **voice conversion (VC)**, and **spoken conversational agents (SCA)**. 100 papers ingested · 21 concepts · Last updated 2026-06-01.
+> A living systematic review and knowledge graph of the state of the art in synthetic speech — covering **text-to-speech (TTS)**, **voice conversion (VC)**, and **spoken conversational agents (SCA)**. 150 papers ingested · 21 concepts · Last updated 2026-06-03.
 
 ## Start Here
 
@@ -35,4 +35,4 @@ The knowledge graph. Each concept page synthesises what the field currently know
 
 ## Papers
 
-→ [[papers/index|Browse all 100 papers]]
+→ [[papers/index|Browse all 150 papers]]

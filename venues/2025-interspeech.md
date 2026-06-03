@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 29
-last_updated: 2026-06-02
+papers_ingested: 52
+last_updated: 2026-06-03
 ---
 
 # Interspeech 2025
@@ -55,3 +55,26 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer |
 | interspeech-2025-0196 | SPCODEC: Split and Prediction for Neural Speech Codec |
 | interspeech-2025-0203 | ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech |
+| interspeech-2025-2765 | The State Of TTS: A Case Study with Human Fooling Rates |
+| interspeech-2025-0401 | Enabling the replicability of speech synthesis perceptual evaluations |
+| interspeech-2025-0115 | Bringing Interpretability to Neural Audio Codecs |
+| interspeech-2025-0468 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec  |
+| interspeech-2025-1641 | Robust Neural Codec Language Modeling with Phoneme Position Prediction |
+| interspeech-2025-2447 | Accelerating Autoregressive Speech Synthesis Inference With Speech Spe |
+| interspeech-2025-0948 | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts |
+| interspeech-2025-1779 | ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow and Spea |
+| interspeech-2025-0874 | Efficient and Direct Duplex Modeling for Speech-to-Speech Language Mod |
+| interspeech-2025-1993 | Defending Unauthorized Voice Cloning with Watermark-Aware Codecs |
+| interspeech-2025-0246 | DC-Spin: A Speaker-invariant Speech Tokenizer for Spoken Language Mode |
+| interspeech-2025-1440 | FreeCodec: A Disentangled Neural Speech Codec with Fewer Tokens |
+| interspeech-2025-2043 | Training-Free Voice Conversion with Factorized Optimal Transport |
+| interspeech-2025-0816 | Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice |
+| interspeech-2025-0739 | FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex |
+| interspeech-2025-1066 | Score-Based Training for Energy-Based TTS Models |
+| interspeech-2025-1122 | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and  |
+| interspeech-2025-1344 | Parameter-Efficient Fine-Tuning for Low-Resource Text-to-Speech via Cr |
+| interspeech-2025-2449 | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned |
+| interspeech-2025-1595 | Scheduled Interleaved Speech-Text Training for Speech-to-Speech Transl |
+| interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Express |
+| interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Dise |
+| interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn-taking in Spoke |

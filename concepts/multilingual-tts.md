@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 ---
 
 ## Executive Summary
@@ -133,6 +133,8 @@ Claims are generalised propositions aggregated from paper evidence.
 - UtterTune [[2508.09767]] provides targeted pitch accent correction for Japanese via LoRA; can this approach generalise to other tonally complex languages (Mandarin tones, Scandinavian pitch accent) without language-specific phonemic transcription?
 - MahaTTS-v2 [[2508.14049]] achieves competitive results on 22 Indic languages but English dominates (58%) the training data; how much of the cross-language quality is genuine transfer vs. data dominance?
 - The non-verbal speech pipeline [[2508.05385]] generalises across language in its NV detection model without retraining; does this hold for synthesis, where NV vocalizations may have culture-specific acoustic realizations?
+- PEFT-TTS [[interspeech-2025-1344]] adapts F5-TTS to Korean with 12h data; does the PEFT approach remain effective when the target language is more phonologically distant (e.g. Arabic or Swahili with no script overlap with pre-training data)?
+- Scheduled ILT [[interspeech-2025-1595]] shows the largest gains for low-resource language pairs in S2ST; do these gains persist when the target language lacks CTC-quality forced alignments needed for word-aligned text interleaving?
 
 ## Trend Summary
 
@@ -161,6 +163,9 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM; best WER for EN, IT, PT, ZH among compared systems |
 | [[interspeech-2025-0469]] | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech | 2025 | Dedicated phoneme-based pipelines outperform Meta MMS for very low-resource non-Latin scripts |
 | [[interspeech-2025-1034]] | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech | 2025 | 14-accent neural Seq2Seq frontend; 95% data reduction for new accent via cross-accent transfer |
+| [[interspeech-2025-1344]] | PEFT-TTS: Cross-Lingual Continual Learning via PEFT | Interspeech | 2025 | Adapts F5-TTS to Korean using 1.72% parameters and 12h data; PEFT preserves zero-shot capability that full fine-tuning destroys; LoRA rank-accuracy trade-off documented for typologically distant languages |
+| [[interspeech-2025-1595]] | Scheduled Interleaved Speech-Text Training for S2ST | Interspeech | 2025 | Scheduled ILT for multilingual S2ST across 7 language pairs; largest gains for low-resource languages (Portuguese +89% BLEU) via gradual modality transition |
+| [[interspeech-2025-2043]] | MKL-VC: Training-Free VC via Factorized OT | Interspeech | 2025 | Cross-lingual voice conversion on German-French FLEURS; kNN-VC cross-lingual failure mode quantified and partially fixed by distribution matching |
 | [[interspeech-2025-0762]] | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech | 2025 | Per-phoneme accentedness parameter for intrasentential code-switching in Swedish TTS |
 | [[interspeech-2025-0143]] | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech | 2025 | Cross-lingual transfer for sentence mode prediction across Italian, French, and German |
 | [[2508.05385]] | Non-Verbal Speech Generation Pipeline | arXiv | 2025 | Bilingual EN/ZH NV dataset; cross-lingual NV detection generalisation without retraining; demonstrates language-agnostic acoustic features of non-verbal sounds |

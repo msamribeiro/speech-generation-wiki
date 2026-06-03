@@ -1,6 +1,6 @@
 concept: prosody-control
-last_updated: 2026-06-02
-paper_count: 28
+last_updated: 2026-06-03
+paper_count: 30
 
 papers:
   - id: 2507.20091
@@ -136,6 +136,38 @@ papers:
     limitations:
       - Any-to-one setting; any-to-any prosody transfer not tested.
 
+  - id: interspeech-2025-0815
+    year: 2025
+    task: [VC]
+    architecture: [VAE, GAN]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Enriching global style embeddings with explicit pitch and energy features substantially improves emotion transfer in expressive VC beyond mel-spectrogram-only encoding.
+      - Cross-attention F0 fusion with content embeddings produces stronger prosodic alignment to the target than additive F0 injection.
+      - Mix-style layer normalisation mitigates the train-inference mismatch in style encoders, improving zero-shot generalisation.
+    evidence:
+      - Proposed system achieves ECA 78.9% vs. Hierspeech++ 37.0%; eMOS 3.72 vs. 2.94 on RAVDESS; WER higher (7.98% vs. 5.01% on ESD).
+    limitations:
+      - WER substantially higher than baselines due to discrete speech unit representation.
+      - 15-listener subjective panel; cross-lingual generalisation limited to English and German.
+
+  - id: interspeech-2025-0948
+    year: 2025
+    task: [VC]
+    architecture: [VAE, diffusion]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Diffusion-based prompt mapper can bridge text LM and speech emotion embeddings for multi-attribute EVC control from NL descriptions.
+      - Preserving speaker identity during emotional pitch manipulation requires explicit F0 constraint in the speaker encoder.
+      - Mixed-emotion synthesis is harder to control than single-category emotion intensity.
+    evidence:
+      - PromptEVC achieves MOS 4.22, emotion similarity 81.3%, CER 4.09%, F0 RMSE 42.58 — all best among five systems on TextrolSpeech; mixed-emotion accuracy 61.3% vs. 91.5% for volume control.
+    limitations:
+      - Training and evaluation on single corpus (TextrolSpeech); out-of-domain speakers untested.
+      - 25 listeners, 132 utterances — borderline statistical power for MOS.
+
 claim_clusters:
   - claim: Pitch, loudness, and prominence are redundant with 3–8 past words and only 1–2 future words; duration is better predicted from future context.
     status: strongly_supported
@@ -182,13 +214,26 @@ claim_clusters:
     supporting_papers: [2025.acl-long.346]
     contradicting_papers: []
 
+  - claim: NL prompt-based diffusion mapper can replace reference audio in multi-attribute EVC while achieving emotion controllability above reference-audio baselines.
+    status: emerging
+    supporting_papers: [interspeech-2025-0948]
+    contradicting_papers: []
+
+  - claim: Enriching global style embeddings with explicit pitch and energy features substantially improves emotion transfer in expressive VC beyond mel-spectrogram-only encoding.
+    status: emerging
+    supporting_papers: [interspeech-2025-0815]
+    contradicting_papers: []
+
 open_questions:
   - Can natural language prosody control generalise to fine-grained instructions beyond standard attributes (pitch, speed, volume, emotion, gender)?
   - Does explicit word-level prosody tokenisation (ProsodyLM) generalise to conversational or spontaneous speech?
   - Is acoustic pitch the most difficult attribute to independently control under multi-factor conditioning?
   - What is the minimal phonological expertise burden for LoRA pitch accent correction to be practical for end users?
+  - PromptEVC (interspeech-2025-0948) achieves 61.3% mixed-emotion accuracy; can diffusion-based prompt mappers learn to model compound emotional states more faithfully?
+  - Does enriching style embeddings with explicit pitch and energy (interspeech-2025-0815) generalise to spontaneous or cross-lingual expressive conversion?
 
 trend_notes:
   - 2025: ProsodyLM demonstrates that prosody emergence requires tokenisation design rather than data scale — a conceptually novel finding that reframes the prosody control problem.
   - Integration pass 5 adds: UtterTune (LoRA-based pitch accent correction for Japanese), Maestro-EVC (frame-level temporal emotion/prosody alignment), REF-VC (multi-scale pitch encoder for source prosody preservation), NV pipeline (temporal-semantic alignment for NV positioning).
   - The SpeechRole benchmark confirms prosodic consistency is the hardest evaluation dimension for spoken role-playing agents.
+  - Integration pass 6 adds two Interspeech 2025 papers extending prosody control into voice conversion: PromptEVC (interspeech-2025-0948) applies diffusion prompt mapping from text LM to speech emotion embeddings for multi-attribute EVC from NL prompts; the disentanglement-focused VC system (interspeech-2025-0815) demonstrates that enriched pitch/energy style embeddings with cross-attention F0 injection substantially improve emotion transfer ECA.

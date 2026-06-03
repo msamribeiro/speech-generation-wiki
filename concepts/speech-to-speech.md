@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 status: emerging
 ---
 
@@ -115,3 +115,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2025.acl-long.682]] | Recent Advances in Speech Language Models: A Survey | ACL | 2025 | Survey covering all three S2S sub-paradigms (E2E, direct translation, cascade); taxonomizes full-duplex systems (Moshi, Parrot, LSLM) and evaluates their latency, paralinguistic continuity, and training complexity |
 | [[2503.04721]] | Full-Duplex-Bench | arXiv | 2025 | First automated benchmark for full-duplex S2S dialogue systems; four turn-taking scenarios; reveals aggressiveness-caution trade-off across all tested models; finds commercial systems better calibrated than open-source |
 | [[2508.02013]] | SpeechRole | arXiv | 2025 | First large-scale S2S speech role-playing benchmark (111K dialogues, 98 roles); text LM quality is the primary bottleneck for both cascaded and E2E systems |
+| [[interspeech-2025-0874]] | Efficient and Direct Duplex Modeling for Speech-to-Speech LLMs | Interspeech | 2025 | Full-duplex S2S via continuous encoder + codec decoder without speech pretraining; open-source first; barge-in 83% vs. 56% for Moshi; NVIDIA NanoCodec at 0.6 kbps for agent output |
+| [[interspeech-2025-2660]] | Triadic Multi-party VAP for Turn-Taking | Interspeech | 2025 | Extends VAP from dyadic to 3-party conversation; acoustic-only next-speaker prediction above baseline; relevant to multi-party S2S system turn management |
+| [[interspeech-2025-1595]] | Scheduled ILT for Speech-to-Speech Translation | Interspeech | 2025 | LLaMA 3.2-1B fine-tuned for S2ST via scheduled speech-text token interleaving; large BLEU gains for low-resource language pairs |
+| [[2508.15827]] | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking | arXiv | 2025 | Full S2S system with interleaved reasoning; spoken response generation during chain-of-thought computation at 3B scale |
+| [[interspeech-2025-0739]] | FD-Bench: Full-Duplex Benchmarking Pipeline | Interspeech | 2025 | Automated evaluation harness for full-duplex S2S systems; TTS-synthesised interruptions at three difficulty levels; Moshi vs. Freeze-Omni vs. VITA-1.5 |

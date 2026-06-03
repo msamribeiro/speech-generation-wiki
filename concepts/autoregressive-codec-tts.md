@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-06-02
+last_updated: 2026-06-03
 status: dominant
 ---
 
@@ -70,6 +70,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Pseudo-autoregressive inference (PAR) — span-level causal commitment with bidirectional intra-span generation — can match or exceed AR TTS quality at dramatically lower latency, challenging the necessity of token-by-token decoding.
   Supporting: [[2504.10352]]
 
+- Explicit phoneme position supervision during AR codec training eliminates alignment failures (skipping, repetition, one-to-many mapping) more effectively than phoneme identity co-prediction or monotonic decoding constraints.
+  Supporting: [[interspeech-2025-1641]]
+
+- Speculative decoding adapted for speech — with a tolerance-factor acceptance criterion exploiting the many-to-one mapping between token sequences and perceptual quality — can accelerate AR TTS without modifying the target model.
+  Supporting: [[interspeech-2025-2447]]
+
 - Codec-free continuous mel AR achieves human-parity speech quality, demonstrating that discrete tokenization is not necessary for competitive zero-shot TTS.
   Supporting: [[2025.acl-long.65]], [[2502.03930]]
 
@@ -133,6 +139,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - MoE-TTS [[2508.11326]] shows that instruction-conditioned AR TTS systems fail to generalise to figurative or metaphorical descriptions; can LLM-aligned AR models overcome this with better tokenizer design or training data?
 - Modality-based MoE routing (frozen text experts, trained speech experts) preserves LLM capabilities during speech fine-tuning in [[2508.11326]]; is this approach necessary for all LLM-backbone AR TTS, or only for instruction-conditioned variants?
 - DualSpeechLM [[2508.08961]] demonstrates competitive understanding and generation at 4.5K hours; does the dual-token advantage persist at 100K+ hour scale where the modality gap may narrow?
+- interspeech-2025-1641 demonstrates that position supervision generalises alignment across all three failure mode categories; can this approach be extended to languages lacking forced-alignment annotations without quality loss?
+- SSD [[interspeech-2025-2447]] achieves only 1.4× speedup with the current draft model; could a larger-data draft training narrow the WER gap (3.67% → 5.70%) and enable higher acceptance rates for >2× speedup?
 
 ## Trend Summary
 
@@ -183,6 +191,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning; resolves text dilution problem of decoder-only AR TTS; achieves best WER among compared systems on English, Italian, Portuguese, and Chinese |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time) with 48.99 ms first-byte latency — fastest in corpus |
 | [[interspeech-2025-0551]] | Monotonic Attention for Robust TTS Synthesis in Large Language Model Frameworks | Interspeech | 2025 | Stepwise monotonic attention (SMA) fine-tuning of selected alignment heads in decoder-only LLM TTS reduces deletion/insertion errors without external aligners; CER 8.53% vs. 10.42% on Seed-ZH-Hard at 300M/150K-hour scale |
+| [[interspeech-2025-1641]] | Robust Neural Codec Language Modeling with Phoneme Position Prediction | Interspeech | 2025 | Joint AR prediction of codec tokens and phoneme position indices eliminates all three alignment failure modes (skipping, repetition, one-to-many); 52.7% relative CER reduction on Seed-TTS test-zh; position supervision outperforms identity prediction |
+| [[interspeech-2025-2447]] | Accelerating Autoregressive Speech Synthesis Inference with Speech Speculative Decoding | Interspeech | 2025 | Draft model from target's upper layers + tolerance-factor acceptance criterion; 1.4× LM-RTF speedup on CosyVoice 2 with no perceptible quality change |
+| [[interspeech-2025-1993]] | Defending Unauthorized Voice Cloning with Watermark-Aware Codecs | Interspeech | 2025 | EnCodec-based VALL-E protected against voice cloning via watermark-aware codec encoder training; structural defense that degrades to silence on watermarked prompts |
+| [[interspeech-2025-0468]] | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec | Interspeech | 2025 | VALL-E downstream TTS with DualCodec 25Hz achieves WER 3.4% EN / 2.49% ZH on Seed-TTS-Eval, vs. 15.4%/21.5% for SpeechTokenizer — establishing DualCodec as a strong codec choice for AR TTS |
 | [[2504.12867]] | EmoVoice | arXiv | 2025 | Extends Qwen2.5-based AR codec LM with parallel phoneme-boost decoding head; parallel phoneme output reduces WER; LLM pretraining initialisation essential for emotion-controllable TTS |
 | [[2507.20091]] | ProsodyLM | arXiv | 2025 | Proposes replacing codec tokens with explicit prosody-text dual tokens in a Llama 3.1 backbone; demonstrates that prosody emergence requires tokenisation design, not data scale |
 | [[2507.22746]] | Next Tokens Denoising for Speech Synthesis (Dragon-FM) | arXiv | 2025 | Hybrid chunk-wise AR + within-chunk flow-matching in a unified model; KV-cache compatible AR backbone with bidirectional intra-chunk denoising; FSQ codec at 12.5 Hz |

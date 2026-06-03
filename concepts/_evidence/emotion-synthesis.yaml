@@ -1,6 +1,6 @@
 concept: emotion-synthesis
-last_updated: 2026-06-02
-paper_count: 24
+last_updated: 2026-06-03
+paper_count: 28
 
 papers:
   - id: 2504.12867
@@ -173,3 +173,4 @@ trend_notes:
   - Two parallel directions in 2025: (1) better supervision for explicit emotion conditioning during training; (2) post-hoc control for pre-trained models without labeled emotional data.
   - Integration pass 5 adds: EmoVoice (freestyle text prompting), XEmoRAG (cross-lingual retrieval), ClapFM-EVC (dual-mode reference/prompt), Maestro-EVC (frame-level temporal alignment).
   - The SpeechRole benchmark reveals emotion appropriateness as the hardest evaluation dimension for current spoken role-playing agents.
+  - Integration pass 6 (Interspeech 2025): Four new papers — zero-shot EVC with MI disentanglement (ZSDEVC, interspeech-2025-1101), expressive VC disentanglement with enriched style embeddings (interspeech-2025-0815), NL prompt EVC via diffusion mapper (PromptEVC, interspeech-2025-0948), and dual information stream for emotional SCA (2508.08095). The dominant theme is zero-shot emotion transfer without speaker-specific training data, either via disentanglement + guidance or via reference-free NL prompt mapping.

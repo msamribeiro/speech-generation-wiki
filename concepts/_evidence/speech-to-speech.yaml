@@ -1,6 +1,6 @@
 concept: speech-to-speech
-last_updated: 2026-06-02
-paper_count: 9
+last_updated: 2026-06-03
+paper_count: 13
 
 papers:
   - id: 2503.04721
@@ -62,12 +62,68 @@ claim_clusters:
     supporting_papers: [2025.findings-emnlp.424]
     contradicting_papers: []
 
+  - id: interspeech-2025-0739
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Full-duplex spoken dialogue systems require dedicated benchmarks that test turn-taking timing, speech quality, and semantic coherence simultaneously.
+      - Aggressiveness-caution tension is a consistent property of current full-duplex E2E systems under automated evaluation.
+    evidence:
+      - FD-Bench pipeline evaluates real-time SDS on turn-taking, speech quality, and semantic coherence; reveals consistent tension between aggressive response and cautious turn-taking.
+    limitations:
+      - Automated pipeline; human correlation study not yet conducted.
+
+  - id: interspeech-2025-0874
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Direct duplex modeling via unified speech-text token interleaving achieves natural full-duplex dialogue without dedicated turn-detection modules.
+    evidence:
+      - Efficient direct duplex system: competitive full-duplex dialogue at production scale without separate turn-detection component.
+    limitations:
+      - Spontaneous multi-turn generalisation untested.
+
+  - id: interspeech-2025-1595
+    year: 2025
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Scheduled interleaved speech-text training improves speech-to-speech translation quality in an end-to-end LLM architecture.
+    evidence:
+      - Gradual exposure to speech inputs via scheduled training achieves competitive S2ST quality vs. cascade systems.
+    limitations:
+      - Language pair coverage limited; latency vs. cascade not characterised.
+
+  - id: interspeech-2025-2660
+    year: 2025
+    task: [SCA]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Acoustic-only voice activity projection can predict next-speaker in triadic conversation, extending the VAP paradigm beyond dyadic settings.
+    evidence:
+      - Triadic VAP achieves 62.43%–87.50% accuracy vs. 55.56%–81.25% baseline on TEIDAN.
+    limitations:
+      - Small corpus (<5 hours), monolingual Japanese; scaling to >3 participants expected problematic.
+
 open_questions:
   - Can the Factor C problem be solved by better codecs alone, or does it require architectural changes to the LM?
   - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex models suffice?
   - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm?
   - SpeechRole shows interaction quality is text-LM bottlenecked; does this bottleneck affect open-ended S2S dialogue in the same way as role-playing?
+  - Does direct duplex modeling (interspeech-2025-0874) require dedicated turn-taking training data, or does the pattern emerge from standard speech-text interleaving?
+  - Can triadic VAP (interspeech-2025-2660) scale to >3 participants without a fundamentally different state-space design?
 
 trend_notes:
   - Integration pass 5 adds: Full-Duplex-Bench (first automated benchmark for turn-taking, revealing aggressiveness-caution tension), SpeechRole (text-LM bottleneck in S2S role-playing).
   - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (Factor C) and text reasoning, not synthesis architecture.
+  - 2025 (Interspeech): FD-Bench (interspeech-2025-0739) provides the first automated full-duplex benchmark; direct duplex modeling (interspeech-2025-0874) bypasses turn-detection modules; triadic VAP (interspeech-2025-2660) extends turn-taking beyond dyadic settings.
