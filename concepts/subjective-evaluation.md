@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: established
 ---
 
@@ -141,3 +141,15 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[interspeech-2025-1066]] | Score-Based Training for Energy-Based TTS | Interspeech | 2025 | 3-listener MOS on 100 samples; UTMOSv2 diverges from human MOS for delta loss EBMs — a concrete instance of automatic predictor failure on non-standard systems |
 | [[interspeech-2025-1122]] | BitTTS | Interspeech | 2025 | 15-rater 30-sample MOS for compact TTS evaluation; documents statistical fragility of small-panel evaluations at ±0.11 CI |
 | [[interspeech-2025-0739]] | FD-Bench | Interspeech | 2025 | GPT-4o-mini subjective scoring across 6 dimensions as a surrogate for human evaluation of full-duplex dialogue quality |
+| [[2508.08957]] | QAMRO | ASRU | 2025 | System-level SRCC as primary subjective alignment metric; ablation shows both adaptive margin and quality-aware weighting improve SRCC over standard regression |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | Subjective evaluation absent; all metrics automatic; illustrates the need for subjective validation in prompt selection quality evaluation |
+| [[interspeech-2025-0984]] | Benchmarking Neural Speech Codec Intelligibility with SITool | Interspeech | 2025 | SITool crowdsourced DRT/MRT platform; 82 retained Mechanical Turk participants; STOI/WER correlation with DRT scores |
+| [[2508.13028]] | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv | 2025 | 13-listener subjective evaluation on sarcasm prosody; exact MOS not reported; preference test showing 53% preference for proposed system |
+| [[2508.15931]] | QvTAD | arXiv | 2025 | VCTK-RVA pairwise comparison dataset; human annotation of relative timbre attribute strength as ground truth |
+| [[2508.17031]] | RephraseTTS | arXiv | 2025 | 6-listener MOS on 15 LibriTTS utterances for speech insertion quality; MOS 3.93 vs. 4.32 ground truth |
+| [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | 18-listener 30-pair AB test on one-minute segments; MOS 3.87 vs. 3.20 baseline; p<0.005 significance |
+| [[2508.17623]] | EMO-Reasoning | arXiv | 2025 | 20-annotator human perceptual ERS evaluation across 20 sampled dialogues per system; three-axis subjective protocol |
+| [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | MOS evaluation on LibriTTS-R with VITS and Matcha-TTS backbones; statistical significance testing between PLM variants |
+| [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | Human-annotated AudioMOS Challenge 2025 scores as ground truth for multi-axis aesthetic prediction |
+| [[2509.03940]] | VoxRole | arXiv | 2025 | 20-annotator human evaluation of 20 sampled dialogues; Pearson correlation 0.762 between LLM judge and human scores; validates acoustically-aware LLM evaluation paradigm |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | 30-sample CMOS study (2 per speaker), win-rate pairwise, and ContextMOS via Gemini-2.5-Pro for LibriQuote expressivity benchmark |

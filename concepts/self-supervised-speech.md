@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: mature-infrastructure
 ---
 
@@ -79,6 +79,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Training a codec content encoder using WavLM cosine similarity loss routed to the decoder branch rather than the encoder achieves cleaner content-speaker disentanglement for voice conversion than routing the same loss to the encoder.
   Supporting: [[interspeech-2025-1440]]
+
+- Entropy-based adaptive segmentation of SSL speech tokens preserves more task-relevant linguistic information than fixed-length downsampling at equivalent compression ratios, with 15 Hz achieving the best trade-off between compression and ASR/ST performance.
+  Supporting: [[2509.00503]]
+
+- Optimal compression granularity for SSL tokens differs systematically between understanding and generation tasks: ASR/ST benefit from moderate compression near phoneme rate, while voice conversion requires finer density to maintain acoustic fidelity.
+  Supporting: [[2509.00503]]
+
+- SSL-derived discrete tokens at standard 50 Hz rates contain substantial redundancy removable without degrading recognition performance; 70% sequence length reduction at 15 Hz improves ASR WER vs. the original 50 Hz baseline.
+  Supporting: [[2509.00503]]
+
+- Training k-means clustering on emotionally expressive speech increases prosodic sensitivity in the resulting SSL discrete tokens for most SSL model and layer combinations.
+  Supporting: [[2508.11224]]
+
+- SSL models using frame-wise masked prediction capture relative prosodic contours within utterances rather than absolute acoustic magnitudes, making them insensitive to global intensity rescaling.
+  Supporting: [[2508.11224]]
 
 ### Contested
 
@@ -167,3 +182,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-1595]] | Scheduled Interleaved Speech-Text Training for S2ST | Interspeech | 2025 | w2v-BERT fine-tuned for CTC ASR as semantic unit extractor; k-means clustering on 21-language data for 2048-category units; word-level alignments from CTC decoder used for scheduled interleaving |
 | [[interspeech-2025-0468]] | DualCodec | Interspeech | 2025 | w2v-BERT-2.0 (600M, frozen) 16th-layer features as primary SSL input for dual-stream encoding; direct SSL feature encoding into RVQ-1 rather than distillation |
 | [[interspeech-2025-0948]] | PromptEVC | Interspeech | 2025 | Emotion2Vec (large-scale SSL model for speech emotion recognition) for extracting emotion embeddings used as reference targets in the prompt mapper training |
+| [[2508.07273]] | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv | 2025 | Whisper large-v3 encoder as frozen speech representation backbone in Speech-LLM; MLP adapter compresses 1500-length sequence to 100 embeddings |
+| [[2508.07375]] | TurnGuide | arXiv | 2025 | VAD from pyannote (SSL-based) for turn segmentation; Whisper medium for word-level alignment in full-duplex dialogue |
+| [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Whisper-Medium encoder via 1D convolutional adapter for speech understanding in empathetic dialogue system |
+| [[2508.11224]] | Benchmarking Prosody Encoding in Discrete Speech Tokens | ASRU | 2025 | Systematic comparison of HuBERT, ContentVec, data2vec, emotion2vec on prosody sensitivity; controlled TER-based analysis of SSL tokenization design choices |
+| [[2508.15565]] | Any-to-any Speaker Attribute Perturbation for Voice Anonymization | arXiv | 2025 | ECAPA-TDNN (trained on VoxCeleb) as frozen speaker encoder for adversarial anonymization training |
+| [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | SpiritLM (interleaved semantic/style/pitch speech tokens from SSL-adjacent model) as backbone for audio-visual speech LM |
+| [[2508.16790]] | TaDiCodec | arXiv | 2025 | No SSL distillation — end-to-end flow-matching training without SSL teacher represents departure from SSL-guided codec design |
+| [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-based adaptive compression of HuBERT discrete tokens; CALE cross-attention aggregation; 15 Hz outperforms 50 Hz for ASR/ST; evaluation compares SSL token compression strategies |
+| [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | MP BERT (phoneme-level SSL-adjacent pre-trained LM) outperforms all subword BERT variants on phrase break prediction |
+| [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | HuBERT-family ContentVec as SSL encoder; k-means (500 clusters) produces pseudo-language labels for G2P-free Japanese TTS |
+| [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | BEATs self-supervised audio model as feature backbone; weighted layer combination over all BEATs transformer layers for multi-axis aesthetic prediction |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | WavLM-large cosine similarity (SPK-SIM) for speaker similarity in LibriQuote benchmark evaluation |

@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: dominant
 ---
 
@@ -191,3 +191,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-1344]] | Parameter-Efficient Fine-Tuning for Low-Resource TTS via Cross-Lingual Continual Learning | Interspeech | 2025 | Adapts F5-TTS to Korean using LoRA + adapter modules (1.72% parameters, 12h data); preserves zero-shot capability that full fine-tuning destroys; DiT LoRA rank-accuracy trade-off |
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching-Based TTS via Empirically Pruned Step Sampling | Interspeech | 2025 | EPSS: training-free non-uniform ODE step schedule reduces F5-TTS from 32 to 7 NFE with near-zero quality degradation; trajectory analysis shows early phase is disproportionately critical |
 | [[interspeech-2025-1779]] | ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow | Interspeech | 2025 | Rectified flow applied to zero-shot VC; gated cross-attention fusion of speaker embedding with content and pitch features; 1-step Euler matches Diff-VC 30-step quality in speaker similarity |
+| [[2508.16790]] | TaDiCodec | arXiv | 2025 | Flow-matching (rectified flow) as the codec decoder training objective; end-to-end joint quantization and reconstruction without adversarial training; 6.25 Hz with BSQ quantization |

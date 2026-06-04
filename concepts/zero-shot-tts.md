@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: dominant
 ---
 
@@ -203,3 +203,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching TTS via EPSS | Interspeech | 2025 | Zero-shot F5-TTS with 4× inference speedup at 7 NFE; WER 1.74%, SPK-SIM 0.68 maintained |
 | [[interspeech-2025-1993]] | Watermark-Aware Codecs | Interspeech | 2025 | Zero-shot voice cloning protection; MOS 3.64 on clean prompts collapses to 1.27 on watermarked prompts — codec-level access control |
 | [[interspeech-2025-2765]] | The State of TTS: HFR Case Study | Interspeech | 2025 | Systematic HFR evaluation of 10 zero-shot TTS systems; commercial systems approach human level, open-source systems remain 20+ points behind |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | 400K-hour multimodal prompt database with cascaded latency-aware selection; addresses quality mismatch between training and inference-time prompts |
+| [[2508.16790]] | TaDiCodec | arXiv | 2025 | Zero-shot TTS via text-conditioned 6.25 Hz codec; WER 2.28% EN outperforming CosyVoice 2 and MaskGCT; documents reconstruction-generation gap across tokenizer families |
+| [[2508.17031]] | RephraseTTS | arXiv | 2025 | Speech insertion with zero-shot speaker style transfer from surrounding audio context; cross-modal attention outperforms global speaker embeddings |
+| [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Zero-shot multi-speaker long-form TTS; continuous VAE tokenizer at 7.5 Hz; SPK-SIM 0.692 on podcast benchmark |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | Zero-shot expressive TTS benchmark on LibriQuote; IndexTTS2 achieves human-level ContextMOS; flow-matching models benefit more from expressive fine-tuning |

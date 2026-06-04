@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement, voice-conversion]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: established
 ---
 ## Executive Summary
@@ -88,6 +88,18 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - Enriching global style embeddings with explicit pitch and energy features substantially improves emotion transfer fidelity in expressive voice conversion beyond mel-spectrogram-only style encoding.
   Supporting: [[interspeech-2025-0815]]
+
+- Speaker-specific phrasing behavior is a substantive source of variance in respiratory pause placement that generic multi-speaker front-end models fail to capture; modeling speaker identity explicitly in phrase-break prediction improves both objective and perceptual phrasing quality.
+  Supporting: [[2509.00675]]
+
+- Phoneme-level language models outperform subword-level models on phrase break prediction, even at smaller model sizes, because phoneme representations carry acoustic information more directly relevant to pause insertion.
+  Supporting: [[2509.00675]]
+
+- SSML-based prosody control yields substantial perceptual gains over neutral commercial TTS voices even when the underlying synthesiser is not retrained, with cascaded task decomposition (structure prediction before parameter regression) substantially outperforming joint LLM generation.
+  Supporting: [[2508.17494]]
+
+- Cross-modal attention using phoneme queries over audio-context keys is more effective than global speaker embeddings for preserving localised prosodic context in speech insertion tasks.
+  Supporting: [[2508.17031]]
 
 ### Contested
 
@@ -176,3 +188,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | Adaptive intensity gate (AIG) for scalar emotion strength control; flow-matching decoder produces richer prosodic variation than GAN baselines |
 | [[interspeech-2025-0815]] | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion | Interspeech | 2025 | Enriched ECAPA-TDNN style encoder with explicit F0/energy features; cross-attention F0 injection for finer prosodic alignment to target; Mix-LN reduces style-content mismatch |
 | [[interspeech-2025-0948]] | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech | 2025 | Diffusion-based prompt mapper bridging RoBERTa and Emotion2Vec embeddings; multi-attribute prosody control (pitch, speed, volume, intensity, mixed emotions) from natural language prompts in EVC |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | Multi-modal prompt database (400K h, 18 langs) for zero-shot TTS; latency-aware cascaded similarity retrieval for prompt selection including prosody matching dimensions |
+| [[2508.11224]] | Benchmarking Prosody Encoding in Discrete Speech Tokens | ASRU | 2025 | Systematic TER-based benchmark of prosody sensitivity in SSL discrete tokens; guidance for tokenisation design targeting prosody control |
+| [[2508.13028]] | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv | 2025 | Feedback loss from sarcasm detector guides prosody toward sarcasm-recognizable patterns; demonstrates classifier-guided prosody training for a specific communicative style |
+| [[2508.17031]] | RephraseTTS | arXiv | 2025 | Cross-modal attention between phoneme and audio representations transfers localised prosodic context for speech insertion; outperforms global speaker embedding conditioning |
+| [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | Cascaded LLM pipeline (QwenA for structure, QwenB for values) for automated SSML prosody markup; MOS 3.20→3.87 over commercial TTS baseline |
+| [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | Speaker identity injection into phrasing front-end; phoneme-level PLMs (MP BERT) outperform subword models for respiratory pause placement |
+| [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | SSL-derived pseudo-language labels carry implicit accent and intonation patterns for G2P-free Japanese TTS prosody modeling |
+| [[2509.03940]] | VoxRole | arXiv | 2025 | Paralinguistic appropriateness as the weakest capability in role-playing spoken dialogue; acoustic feature bins as LLM judge prosody proxies |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | LibriQuote narrative-aware corpus; flow-matching models benefit more from expressive fine-tuning than autoregressive models; contextual narrative conditioning improves expressivity |

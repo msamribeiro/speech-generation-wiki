@@ -4,7 +4,7 @@ title: Fine-Tuning Foundation Models for Speech Generation
 aliases: [parameter-efficient fine-tuning, PEFT, LoRA for TTS, adapter fine-tuning, model adaptation]
 status: established
 related_concepts: [speaker-adaptation, multilingual-tts, zero-shot-tts, self-supervised-speech, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-04
+last_updated: 2026-06-05
 ---
 
 ## Executive Summary
@@ -97,3 +97,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 |----|-------|-------|------|------------------------|
 | [[2508.09767]] | UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual Text-to-Speech | arXiv | 2025 | Rank-16 LoRA with phoneme-tag tokens on CosyVoice 2 for Japanese pitch accent; <0.5% trainable params; accent correctness 0.499 → 0.899 |
 | [[interspeech-2025-1344]] | Parameter-Efficient Fine-Tuning for Low-Resource TTS via Cross-Lingual Continual Learning | Interspeech | 2025 | Three-adapter PEFT (1.72%) adapts F5-TTS to Korean on 12.65h; full fine-tuning destroys zero-shot capability while PEFT preserves it |
+| [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | Bottleneck acoustic + convolutional vocoder adapters (10% params) for language and speaker adaptation; outperforms full fine-tuning on naturalness and speaker similarity |

@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 ---
 
 ## Executive Summary
@@ -175,3 +175,7 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2508.08715]] | MultiGen | arXiv | 2025 | CosyVoice-300M fine-tuning for child-friendly speech in Singaporean-accented Mandarin, Malay, and Tamil; x-vector conditioning; effective from 1,400 utterances |
 | [[2508.09767]] | UtterTune | arXiv | 2025 | LoRA pitch accent correction for Japanese on CosyVoice 2; phoneme-tag tokens; accent correctness 0.499→0.899; language-specific corrective layer for BPE-input multilingual TTS |
 | [[2508.14049]] | MahaTTS | arXiv | 2025 | 22-language Indic TTS from 20K hours; Gemma-based two-stage pipeline; 200 hours per new language; WER-based evaluation across 17 languages |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | 400K-hour 18-language multimodal prompt database; cross-lingual proxy prompt selection via linguistic family proximity for unseen languages |
+| [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | French-specific SSML prosody control; phrase-final intonation and pacing normalisation for commercial TTS engines; MOS 3.20→3.87 |
+| [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | English→Spanish language adaptation via adapter PEFT; PSR accent metric for cross-lingual evaluation; vocoderside adapters drive accent quality |
+| [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | G2P-free mixed-script Japanese TTS; SSL pseudo-label prediction via T5; comparable naturalness to G2P baseline demonstrating resource-free multilingual front-end |

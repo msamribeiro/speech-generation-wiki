@@ -1,6 +1,6 @@
 concept: spoken-language-model
-last_updated: 2026-06-03
-paper_count: 25
+last_updated: 2026-06-05
+paper_count: 35
 
 papers:
   - id: 2503.04721
@@ -220,3 +220,4 @@ trend_notes:
   - Integration pass 5 adds: Full-Duplex-Bench (aggressiveness-caution tension), SpeechRole (text-LM bottleneck), UniTalker (speech-visual joint prediction), DualSpeechLM (dual-token decoupling).
   - The convergence toward hybrid architectures (text LLM + speech I/O) is accelerating with systems like VocalNet, LLaMA-Omni 2, and DualSpeechLM.
   - "2025 (Interspeech): Several new SCA directions: dual information stream for emotional conversations (2508.08095), token-level concurrent thinking-in-speaking (2508.15827), direct duplex modeling (interspeech-2025-0874), and triadic multi-party turn-taking prediction (interspeech-2025-2660)."
+  - "2025 (Aug-Sep pass 7): TurnGuide (2508.07375) demonstrates turn-level text-speech interleaving substantially improves full-duplex semantic quality. OSUM-EChat (2508.09600) adds three-stage paralinguistic curriculum for empathetic dialogue. EMO-Reasoning (2508.17623) and VoxRole (2509.03940) provide systematic evidence that emotional coherence is a consistent failure mode across all tested SLMs. TaDiCodec (2508.16790) and VibeVoice (2508.19205) demonstrate that codec compression to 6.25-7.5 Hz is tractable and benefits SLM generation efficiency."

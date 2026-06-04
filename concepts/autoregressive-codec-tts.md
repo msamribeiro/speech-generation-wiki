@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: dominant
 ---
 
@@ -208,3 +208,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0787]] | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech | 2025 | Applies embedding-space manipulation to Metavoice 1B (autoregressive codec LM) to generate speaker-style-modified (Lombard) speech via spherical interpolation |
 | [[2025.emnlp-main.180]] | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP | 2025 | ParaSpeechCaps fine-tunes Parler-TTS (880M DAC-token autoregressive LM) on 2709 hours of rich style-annotated data, improving intrinsic tag recall from 33% to 69.5% |
 | [[2025.findings-acl.1051]] | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL | 2025 | 30M autoregressive transformer decoder predicts WavTokenizer speech tokens from phoneme embeddings for streaming LLM-to-speech conversion; WER 3.70% at 475ms latency, decoupled from base LLM |
+| [[interspeech-2025-1289]] | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate | Interspeech | 2025 | Variable frame rate codec reduces sequence length for downstream AR TTS; WER improvement from 4.13 to 2.85 at 6kbps through sequence compactness |
+| [[2508.16790]] | TaDiCodec | arXiv | 2025 | 6.25 Hz text-conditioned AR TTS with single-codebook tokenizer; AR sequence lengths 4–12× shorter than prior systems; outperforms CosyVoice 2 and MaskGCT on SeedTTS test-en WER |
+| [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Next-token diffusion LLM (7.5 Hz continuous VAE) for hour-long multi-speaker AR TTS in 64K context; outperforms ElevenLabs on podcast subjective preference |
+| [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Post-hoc entropy-compressed HuBERT tokens as AR codec LM input; 15 Hz outperforms 50 Hz for ASR downstream while reducing sequence length |

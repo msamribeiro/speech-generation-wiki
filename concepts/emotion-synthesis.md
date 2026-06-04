@@ -3,7 +3,7 @@ slug: emotion-synthesis
 title: Emotion Synthesis
 aliases: [expressive TTS, affective speech synthesis, emotional TTS, style transfer]
 related_concepts: [prosody-control, instruction-conditioned-tts, disentanglement, subjective-evaluation, spoken-language-model]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: emerging
 ---
 ## Executive Summary
@@ -97,6 +97,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - LLM-based TTS systems fine-tuned with appropriate speaker conditioning substantially outperform conventional non-autoregressive models on emotion naturalness for low-resource languages.
   Supporting: [[2508.08715]]
 
+- Full-face visual features encode complementary emotional information not captured by audio alone; combining visual and acoustic modalities yields meaningfully higher emotion recognition and more emotionally aligned generation.
+  Supporting: [[2508.16188]]
+
+- Explicit chain-of-thought reasoning over paralinguistic cues before generating a response improves empathetic response quality in end-to-end spoken dialogue systems.
+  Supporting: [[2508.09600]]
+
+- Synthetic emotional speech derived from TTS systems exhibits reduced expressiveness compared to real human speech, creating a systematic domain gap that degrades empathetic dialogue evaluation.
+  Supporting: [[2508.09600]]
+
+- All current spoken dialogue systems fail to sustain emotionally coherent responses across multi-turn conversations; degradation compounds across turns and is not captured by single-turn evaluation.
+  Supporting: [[2508.17623]]
+
+- Flow-matching TTS models show larger expressivity gains from fine-tuning on targeted expressive speech data (narrative-segmented audiobooks) than autoregressive models.
+  Supporting: [[2509.04072]]
+
 ### Contested
 
 > [!warning]
@@ -183,3 +198,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0815]] | Non-AR Zero-Shot Expressive VC | Interspeech | 2025 | Enriched global style embedding with pitch and energy features improves emotion transfer (eMOS 3.72 vs. 2.94 for Hierspeech++); cross-attention F0 fusion for temporal prosody alignment |
 | [[2508.08095]] | Dual Information Speech LMs for Emotional Conversations | arXiv | 2025 | Dual adapters for paralinguistic/linguistic separation in a frozen LLM; 90% emotion classification accuracy; competitive with Qwen-Audio on MELD while training adapters only |
 | [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP contrastive model with symKL soft-label training; AIG for scalar intensity control; 57.4% of listeners show no preference between reference and prompt modes |
+| [[2508.07273]] | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv | 2025 | Dimensional emotion (VAD) annotations in LLM-generated CPQA training data improve empathetic reasoning in Speech-LLMs; 46% gain over baseline on contextual emotion questions |
+| [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Three-stage curriculum with chain-of-thought emotional reasoning; EChat-200K corpus; strongest open-source result on multi-label empathetic dialogue |
+| [[2508.13028]] | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv | 2025 | First targeted sarcasm TTS system; feedback loss from bi-modal sarcasm detector guides prosody toward detector-recognizable sarcastic patterns |
+| [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | Q-Former prefix fusion of full-face visual features into SpiritLM; +4.9 F1 on IEMOCAP emotion recognition; +4.1 F1 on generated emotional speech |
+| [[2508.17623]] | EMO-Reasoning | arXiv | 2025 | First unified 3-axis benchmark for emotional coherence in spoken dialogue; reveals that all SLMs fail multi-turn emotional consistency |
+| [[2509.03940]] | VoxRole | arXiv | 2025 | Paralinguistic appropriateness is the weakest capability across all tested spoken dialogue models; movie-character benchmark with acoustically-aware LLM evaluation |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | Narrative-segmented LibriQuote corpus; flow-matching fine-tuning gains larger expressivity than autoregressive fine-tuning; ContextMOS metric for narrative appropriateness |

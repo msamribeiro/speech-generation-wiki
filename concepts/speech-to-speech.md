@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: emerging
 ---
 
@@ -120,3 +120,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-1595]] | Scheduled ILT for Speech-to-Speech Translation | Interspeech | 2025 | LLaMA 3.2-1B fine-tuned for S2ST via scheduled speech-text token interleaving; large BLEU gains for low-resource language pairs |
 | [[2508.15827]] | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking | arXiv | 2025 | Full S2S system with interleaved reasoning; spoken response generation during chain-of-thought computation at 3B scale |
 | [[interspeech-2025-0739]] | FD-Bench: Full-Duplex Benchmarking Pipeline | Interspeech | 2025 | Automated evaluation harness for full-duplex S2S systems; TTS-synthesised interruptions at three difficulty levels; Moshi vs. Freeze-Omni vs. VITA-1.5 |
+| [[2508.07375]] | TurnGuide | arXiv | 2025 | Turn-level text-speech interleaving for full-duplex S2S; 24% semantic coherence improvement over baseline; evaluated on Full-Duplex-Bench |
+| [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Native multimodal end-to-end empathetic spoken chatbot; CosyVoice token-to-wav for synthesis; EChat-eval benchmark for paralinguistic responsiveness |
+| [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | SpiritLM-based audio-visual expressive speech generation; Q-Former prefix fusion of full-face visual features |
+| [[2508.17623]] | EMO-Reasoning | arXiv | 2025 | Evaluation benchmark for emotional coherence in spoken dialogue systems; documents failure of all tested S2S systems on multi-turn emotional consistency |
+| [[2509.03940]] | VoxRole | arXiv | 2025 | Role-playing spoken dialogue benchmark; paralinguistic appropriateness as the weakest dimension; acoustic-aware LLM evaluation for S2S character fidelity |

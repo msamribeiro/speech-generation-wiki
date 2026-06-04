@@ -4,7 +4,7 @@ title: Voice Conversion
 aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conversion]
 status: established
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 ---
 
 ## Executive Summary
@@ -171,3 +171,5 @@ Through 2022–2024, the field progressed from parallel/non-parallel offline met
 | [[interspeech-2025-2043]] | Training-Free VC with Factorized Optimal Transport (MKL-VC) | Interspeech | 2025 | Analytical Gaussian OT map in factorized WavLM subspaces; matches FACodec from 5–10 s reference; fixes kNN-VC cross-lingual failure |
 | [[interspeech-2025-0948]] | PromptEVC: Controllable Emotional Voice Conversion | Interspeech | 2025 | Diffusion-based prompt mapper bridges RoBERTa text embeddings and Emotion2Vec speech embeddings; replaces reference audio at inference; MOS 4.22 vs. 3.95 for Emovox |
 | [[interspeech-2025-0816]] | Bridging Speech and Singing: SSANSVC | Interspeech | 2025 | Cross-modal speaker embedding alignment (SSAN) enables speech-prompted singing VC; SIM 0.506 vs. 0.448 for CoMoSVC on cross-domain task |
+| [[2508.15565]] | Any-to-any Speaker Attribute Perturbation for Voice Anonymization | arXiv | 2025 | Conformer-based adversarial perturbation generator; batch mean pseudo-speaker training for unlinkability; EER 46.79% de-id; EER 38.93% unlinkability |
+| [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-compressed HuBERT tokens as VC conditioning; compression degrades VC quality more than ASR/ST; optimal granularity differs across task types |

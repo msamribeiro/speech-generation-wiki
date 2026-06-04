@@ -4,7 +4,7 @@ title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder, flow-matching]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 ---
 
 ## Executive Summary
@@ -159,3 +159,5 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2510.00981]] | FlexiCodec-TTS: Flexible Frame-Rate Neural Codec for Efficient Streaming TTS | arXiv | 2025 | 6.25 Hz AR frame rate; 7.3× AR speedup (RTF 0.07); competitive quality at very low token rate |
 | [[interspeech-2025-2447]] | Accelerating Autoregressive Speech Synthesis Inference With Speech Speculative Decoding | Interspeech | 2025 | Speculative decoding with tolerance-factor acceptance; 1.4× AR LM speedup (RTF 0.504→0.36) on CosyVoice 2 without modifying the target model |
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling | Interspeech | 2025 | Non-uniform ODE step pruning (32→7 NFE); 4× RTF speedup (0.123→0.030) for F5-TTS; training-free, immediately deployable |
+| [[2508.07375]] | TurnGuide | arXiv | 2025 | Turn-level text-speech interleaving in full-duplex SLM; 1.05s first-package latency; streaming design limited by vocoder cost |
+| [[interspeech-2025-1289]] | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate | Interspeech | 2025 | Entropy-based VFR reduces token sequence length; shorter sequences benefit streaming AR TTS systems directly |

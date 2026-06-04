@@ -3,7 +3,7 @@ slug: rlhf-speech
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
-last_updated: 2026-06-01
+last_updated: 2026-06-05
 status: established
 ---
 
@@ -145,3 +145,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2601.03888]] | IndexTTS 2.5 Technical Report | arXiv | 2026 | RLAIF emotional alignment fine-tuning as one of three optimization stages; demonstrates RL-based emotion alignment is transferable to a multilingual setting |
 | [[interspeech-2025-0704]] | Differentiable Reward Optimization for LLM based TTS system | Interspeech | 2025 | DiffRO: Gumbel-Softmax differentiable token sampling enables end-to-end reward backpropagation in codec LM TTS; MTR model provides multi-task rewards (ASR, emotion, MOS) directly from codec tokens, achieving WER 0.78% on seed-tts-eval zh |
 | [[interspeech-2025-0063]] | Fine-Tuning TTS Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech | 2025 | DLPO: first RLHF framework for diffusion TTS; original DDPM noise-prediction loss used as reward penalty to maintain temporal coherence; UTMOS 3.65 vs. 2.90 baseline, preferred in 67% of pairwise comparisons |
+| [[2508.08957]] | QAMRO: Quality-aware Adaptive Margin Ranking Optimization | ASRU | 2025 | Pairwise ranking optimization for automatic MOS prediction; quality-aware weighting and adaptive margins as RLHF-adjacent ranking signal for audio quality evaluation |

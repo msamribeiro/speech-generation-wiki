@@ -1,6 +1,6 @@
 concept: evaluation-metrics
-last_updated: 2026-06-03
-paper_count: 43
+last_updated: 2026-06-05
+paper_count: 62
 
 papers:
   - id: 2503.04721
@@ -285,6 +285,107 @@ claim_clusters:
     limitations:
       - Small listener panel (15 raters, 30 samples); limited generalisability.
 
+  - id: interspeech-2025-0984
+    year: 2025
+    task: [codec, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - WER derived from ASR is not a valid proxy for subjective speech intelligibility in codec benchmarking on isolated word stimuli.
+      - STOI and ESTOI correlate well with subjective DRT intelligibility scores when averaged across conditions but fail at fine-grained level.
+      - Neural speech codecs below approximately 1,100 bps degrade in intelligibility even when quality metrics suggest acceptable performance.
+      - Talker gender significantly affects subjective intelligibility independently of codec condition, and this variation is not reflected in objective metrics.
+    evidence:
+      - SITool: 82 crowdsourced participants; WER-DRT correlation -0.11; STOI-DRT Pearson 0.958 averaged, drops to 0.595 disaggregated; DAC-S at 1.5kbps matches EVS at 8kbps.
+    limitations:
+      - Female reference signal shows lower baseline DRT (M=85 vs. 91.87 male), potentially confounding codec effects for female talkers.
+
+  - id: 2508.08957
+    year: 2025
+    task: [evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Pairwise ranking objectives improve automatic MOS system-level ranking consistency over regression-only losses.
+      - Adaptive margins that scale with perceptual score gaps outperform fixed-margin ranking losses.
+      - Quality-aware upweighting of high-scoring pairs is a consistently beneficial training objective component.
+    evidence:
+      - QAMRO: SRCC 0.972 (Musical Impression) vs. 0.845 baseline; SRCC 0.883 (Production Quality) vs. 0.864 baseline; gains hold across two backbone architectures.
+    limitations:
+      - Evaluated only on AudioMOS Challenge 2025 closed-set data; generalisation to unseen TTS/VC systems untested.
+
+  - id: 2509.03292
+    year: 2025
+    task: [evaluation]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Triplet loss over SSL embeddings with score-based sampling improves rank correlation with human perceptual ratings over MSE-only training.
+      - Self-supervised audio representations can generalise to predicting perceptual quality of synthetic audio without synthetic training examples.
+      - Domain shift between natural and synthetic audio is more problematic for absolute score prediction than for rank-based ordering.
+    evidence:
+      - AESA-Net: SRCC 0.896 (PQ) vs. 0.866 baseline; SRCC 0.894 (CU) vs. 0.810 baseline; trained on natural audio only, evaluated on synthetic.
+    limitations:
+      - Large CE MSE gap (3.991 vs. 1.142 baseline) indicates absolute score calibration fails for content enjoyment.
+
+  - id: 2508.17623
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Current spoken dialogue systems fail to sustain emotionally coherent responses across multi-turn conversations.
+      - Automatic continuous and categorical emotion metrics correlate moderately with human perceptual judgements but overestimate coherence on atypical outputs.
+    evidence:
+      - EMO-Reasoning: human ERS 0.928 vs. all SDMs below 0.800; multi-turn degradation pronounced for Moshi (0.284→0.271) and dGSLM (0.296→0.291).
+    limitations:
+      - Only 20 sampled dialogues per system in human evaluation; benchmark sourced from synthetic prompts, not live conversation.
+
+  - id: 2509.03940
+    year: 2025
+    task: [SCA, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Acoustic quality (paralinguistic appropriateness) is the most consistently underperformed capability across current spoken dialogue models.
+      - LLM-based evaluation augmented with discrete acoustic features achieves strong alignment with human judgment on multi-dimensional spoken role-playing.
+    evidence:
+      - VoxRole: GPT-4o paralinguistic score 3.82 vs. contextual coherence 4.48; human correlation Pearson 0.762; UTMOS 3.66 (GPT-4o) vs. 2.42 (Step-Audio).
+    limitations:
+      - Movie dialogue source domain; only two-speaker conversations; 20 characters validated by 5 annotators.
+
+  - id: 2508.07273
+    year: 2025
+    task: [SCA]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - LLM judge scores for open-ended speech-language model evaluation correlate reliably with classification-based accuracy and F1 on deterministic questions.
+    evidence:
+      - GPT-4o judge on CPQA set achieves rank correlation with accuracy/F1 metrics derived via embedding-based label extraction.
+    limitations:
+      - Evaluation confound: direct emotion questions in LLM-generated evaluation set benefit disproportionately from explicit metadata injection.
+
+  - id: 2509.04072
+    year: 2025
+    task: [TTS, evaluation]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Current open-source TTS systems are substantially less expressive than human audiobook narrators on contextual benchmarks, even when naturalness scores are comparable.
+      - Flow-matching TTS models show larger expressivity gains from fine-tuning on targeted expressive data than autoregressive models.
+    evidence:
+      - ContextMOS F5-TTS FT(Qf): 2.95→3.33; human ground truth 3.55; IndexTTS2-Context 3.45 Win-Rate 54% vs. ground truth.
+    limitations:
+      - Amateur LibriVox narrators as reference ceiling; ContextMOS uses Gemini-2.5-Pro judge on only 201 quotations.
+
 open_questions:
   - Can a shared evaluation infrastructure for full-duplex SCA be established that integrates TOR-style automated metrics with user preference measures?
   - What sample size and panel size are required to establish statistical reliability for fine-grained vocoder or emotion TTS evaluation?
@@ -298,3 +399,4 @@ trend_notes:
   - Multi-dimensional evaluation (9 dimensions for role-playing, 4 for VC) is expanding beyond standard MOS/WER.
   - UTMOS vs. subjective MOS divergence is now documented in multiple evaluation contexts, raising systematic concern about its use as the sole proxy.
   - 2025 (Interspeech): Multiple evaluation papers emerge — CodecBench (2508.20660) for codec multi-dimensional evaluation, replicability checklist (interspeech-2025-0401) for perceptual TTS tests, FD-Bench (interspeech-2025-0739) for full-duplex SDS, and human fooling rate study (interspeech-2025-2765) as a new naturalness evaluation paradigm that reveals TTS differentiation invisible to standard MOS.
+  - 2025 (Aug-Sep): Three automatic MOS improvement papers appear in the same window — QAMRO (2508.08957) and AESA-Net (2509.03292) demonstrate that ranking objectives improve predictor quality; SITool (interspeech-2025-0984) provides negative result against WER as intelligibility proxy for codecs. Dialogue evaluation cluster grows with EMO-Reasoning (2508.17623), VoxRole (2509.03940), and OSUM-EChat (2508.09600) documenting human-machine divergence in empathy and emotional coherence scoring. ContextMOS (2509.04072) and SSML evaluation (2508.17494) extend the task-specific evaluation paradigm.

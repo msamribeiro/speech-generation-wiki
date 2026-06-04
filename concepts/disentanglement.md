@@ -4,7 +4,7 @@ title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 status: established
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 ---
 
 ## Executive Summary
@@ -209,3 +209,10 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[interspeech-2025-0468]] | DualCodec | Interspeech | 2025 | Dual-stream SSL encoding structurally separates semantic content (SSL path, RVQ-1) from acoustic residual (waveform path, RVQ-rest); substantially outperforms distillation for semantic disentanglement |
 | [[interspeech-2025-0815]] | Non-AR Zero-Shot Expressive VC with Better Disentanglement | Interspeech | 2025 | Mix-LN reduces train-inference content-speaker mismatch; perturbation similarity loss suppresses source leakage; mHuBERT-147 discrete units for cross-lingual zero-shot capability |
 | [[interspeech-2025-0816]] | Bridging Speech and Singing via SSAN | Interspeech | 2025 | Cross-modal speaker-singer embedding alignment via cosine loss; cycle training addresses absence of paired speech-singing data; extends disentanglement to speech-singing domain gap |
+| [[2508.11224]] | Benchmarking Prosody Encoding in Discrete Speech Tokens | ASRU | 2025 | TER-based measurement of prosody/speaker/phonetic separation in SSL tokens; shows moving average on features adjusts prosody-speaker disentanglement trade-off |
+| [[2508.15565]] | Any-to-any Speaker Attribute Perturbation for Voice Anonymization | arXiv | 2025 | Batch mean pseudo-speaker loss as adversarial disentanglement of speaker identity; STFT-domain perturbation preserving speech content while obscuring speaker identity |
+| [[2508.15931]] | QvTAD | arXiv | 2025 | Differential attention to suppress shared timbral information between two speaker embeddings; DAG-based transitivity augmentation for pairwise timbre attribute labels |
+| [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | SpiritLM interleaved semantic/style/pitch token design as disentangled expressive speech representation; Q-Former fusion disentangles visual from acoustic conditioning |
+| [[2508.17031]] | RephraseTTS | arXiv | 2025 | Cross-modal attention implicitly disentangles phoneme content from audio-context style; triplet style matching loss promotes intra-utterance style consistency |
+| [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Separate acoustic and semantic tokenizers trained with task-specific objectives; semantic tokenizer discarded after pretraining; acoustic-semantic disentanglement at tokenization level |
+| [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-guided compression as implicit disentanglement: removes redundant from informative tokens in SSL representations |

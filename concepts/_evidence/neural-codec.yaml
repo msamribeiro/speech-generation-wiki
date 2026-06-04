@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: 2026-06-03
-paper_count: 46
+last_updated: 2026-06-05
+paper_count: 54
 
 papers:
   - id: 2507.22746
@@ -170,6 +170,31 @@ claim_clusters:
     supporting_papers: [2025.findings-naacl.184, 2508.19098, 2502.03930]
     contradicting_papers: [2301.02111, 2407.05407, 2601.15621]
 
+  - claim: Text conditioning in the codec decoder is a viable lever for achieving extreme compression without adversarial training or SSL distillation.
+    status: emerging
+    supporting_papers: [2508.16790]
+    contradicting_papers: []
+
+  - claim: The reconstruction-generation gap varies substantially across tokenizer architectures and is not captured by reconstruction metrics alone.
+    status: emerging
+    supporting_papers: [2508.16790]
+    contradicting_papers: []
+
+  - claim: Neural codecs below approximately 1,100 bps degrade in subjective intelligibility even when overall quality metrics suggest acceptable performance.
+    status: emerging
+    supporting_papers: [interspeech-2025-0984]
+    contradicting_papers: []
+
+  - claim: WER from large-vocabulary ASR is not a valid proxy for subjective speech intelligibility in codec benchmarking on isolated word stimuli.
+    status: strongly_supported
+    supporting_papers: [interspeech-2025-0984, 2508.20660]
+    contradicting_papers: []
+
+  - claim: Variable frame rate coding reduces codec sequence length without proportional quality degradation by allocating finer temporal resolution to high-entropy regions.
+    status: emerging
+    supporting_papers: [interspeech-2025-1289]
+    contradicting_papers: []
+
   - id: 2508.20660
     year: 2025
     task: [codec, evaluation]
@@ -248,6 +273,91 @@ claim_clusters:
     limitations:
       - Adversarial robustness not thoroughly evaluated.
 
+  - id: 2508.16790
+    year: 2025
+    task: [codec, TTS, zero-shot-tts]
+    architecture: [diffusion, transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Text conditioning in the codec decoder enables extreme compression (6.25 Hz) without adversarial training or SSL distillation.
+      - A single end-to-end flow-matching objective is sufficient to jointly optimise quantization and reconstruction.
+      - The reconstruction-generation gap varies substantially across tokenizer architectures and is not captured by reconstruction metrics alone.
+      - Binary Spherical Quantization without commitment loss achieves stable end-to-end training of a speech codec.
+    evidence:
+      - TaDiCodec: 0.0875 kbps, WER 2.28% on SeedTTS test-en outperforming CosyVoice 2 (2.89%); reconstruction-generation gap analysis shows Mimi degrades 104.5% on English WER.
+    limitations:
+      - Requires transcript at both training and inference; not a general-purpose audio codec; multi-step diffusion decoder adds latency.
+
+  - id: 2508.19205
+    year: 2025
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Extreme continuous VAE compression (7.5 Hz, single codebook) can achieve superior perceptual quality over multi-codebook discrete codecs at higher frame rates.
+      - Separate acoustic and semantic tokenizers trained with task-specific objectives outperform a unified codec for long-form generation.
+    evidence:
+      - VibeVoice 7.5 Hz VAE tokenizer achieves PESQ 3.068 and UTMOS 4.181 on LibriTTS test-clean, beating DAC and WavTokenizer 75 Hz.
+    limitations:
+      - Training data not disclosed; limited to English and Chinese; maximum 4 speakers; no overlapping speech.
+
+  - id: interspeech-2025-0984
+    year: 2025
+    task: [codec, evaluation]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Neural speech codecs below approximately 1,100 bps degrade in intelligibility even when quality metrics suggest acceptable performance.
+      - WER from large-vocabulary ASR is not a valid proxy for subjective speech intelligibility in codec benchmarking on isolated word stimuli.
+    evidence:
+      - SITool: 82 crowdsourced participants; WER-DRT Pearson -0.11; DAC-S at 1.5kbps matches EVS at 8kbps; SemantiCodec 340bps scores only 76-78% DRT.
+    limitations:
+      - Female reference baseline shows lower DRT than male baseline, potentially confounding codec comparisons.
+
+  - id: interspeech-2025-1289
+    year: 2025
+    task: [codec]
+    architecture: [hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Dynamically allocating coarser temporal frames to low-entropy speech reduces sequence length without proportional quality degradation.
+      - Reducing encoded frames at equivalent bitrate can improve intelligibility, suggesting sequence compactness benefits autoregressive models.
+    evidence:
+      - DAC+TFC: WER 2.845 vs. 4.125 for DAC at 6kbps; UTMOS 3.895 vs. 3.628 at 3kbps.
+    limitations:
+      - Only tested on DAC backbone; no human evaluation; generalisation to other architectures untested.
+
+  - id: 2509.00503
+    year: 2025
+    task: [codec, VC]
+    architecture: [autoregressive-LM, transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Adaptive entropy-based segmentation of SSL tokens preserves more task-relevant linguistic information than fixed-length downsampling.
+      - Optimal token granularity differs between understanding and generation tasks.
+    evidence:
+      - Entropy-guided 15 Hz: WER 5.6% vs. HuBERT 50 Hz 6.2%; but VC Q-MOS 3.85 vs. HuBERT dedup 4.12.
+    limitations:
+      - HuBERT tokens only; English only; VC quality degrades at coarse compression.
+
+  - id: 2509.02244
+    year: 2025
+    task: [codec]
+    architecture: [VAE, GAN]
+    relevance: low
+    contribution_type: architectural-novelty
+    claims:
+      - Single-stage vector quantization without residual refinement can achieve intelligibility competitive with multi-level RVQ at comparable bitrates.
+    evidence:
+      - Spectrogram Patch Codec: PESQ 2.70 at 7.5kbps vs. EnCodec 2.24 at 6kbps; trails DAC 2.92 at 8kbps.
+    limitations:
+      - Proprietary training dataset; no subjective evaluation; only 4x4 patch size tested.
+
 open_questions:
   - Can dynamic frame merging be extended to sub-3 Hz without catastrophic quality loss?
   - Does FlexiCodec's dynamic merging interact well with prosodic information (Factor C from 2412.17048)?
@@ -260,4 +370,5 @@ trend_notes:
   - The field is tracking two competing codec futures: lower-frame-rate discrete (toward text-rate ~4.5 Hz) and continuous waveform latent (bypassing codec discretization entirely).
   - 2025: SecoustiCodec proposes cross-modal contrastive learning as an alternative to SSL distillation; SPCODEC introduces spectral supervision; SpectroStream establishes TF-domain codec for full-band audio.
   - 2026: Codec frame rate competition continues with Fish Audio S2 (21 Hz streaming) vs. Qwen3-TTS (12.5 Hz).
+  - 2025 (Aug-Sep pass 7): TaDiCodec (2508.16790) achieves 6.25 Hz single-codebook codec via text-conditioned flow-matching without SSL/adversarial training; introduces reconstruction-generation gap as practical LM-friendliness metric. VibeVoice (2508.19205) demonstrates 7.5 Hz continuous VAE achieving superior reconstruction quality. SITool (interspeech-2025-0984) provides negative result against WER as intelligibility proxy for codecs; VFR/TFC (interspeech-2025-1289) introduces first variable frame rate strategy for neural codecs. Entropy-guided compression (2509.00503) provides evidence that 50 Hz HuBERT tokens are substantially redundant for ASR/ST but not for VC. 2D patch quantization (2509.02244) offers a non-RVQ alternative at competitive bitrates.
   - "2025 (Interspeech): A cluster of codec analysis and design papers: CodecBench (2508.20660) introduces unified evaluation; interpretability probing (interspeech-2025-0115) reveals layer specialisation; DC-Spin (interspeech-2025-0246) establishes speaker-invariant tokenisation; DualCodec (interspeech-2025-0468) targets low-frame-rate semantic enhancement; FreeCodec (interspeech-2025-1440) enables fewer-token disentangled codec."

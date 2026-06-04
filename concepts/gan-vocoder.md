@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: mature-infrastructure
 ---
 
@@ -133,3 +133,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.06870]] | TTS for Meitei Mayek Script | arXiv | 2025 | HiFi-GAN as standard vocoder in first TTS for Manipuri script; confirms GAN vocoder remains the default in new low-resource applied TTS pipelines |
 | [[2508.07711]] | Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder? | arXiv | 2025 | FreeGAN: GAN-free explicit-phase vocoder matches BigVGAN MOS on VCTK; GAN dispensable only for explicit-phase architectures; documents UTMOS vs. subjective MOS divergence |
 | [[interspeech-2025-1122]] | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech | 2025 | HiFi-GAN vocoder in a JETS-based system; demonstrates GAN vocoder's disproportionate sensitivity to aggressive quantisation; 83% model compression via 1.58-bit QAT with weight indexing |
+| [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | MultiBand MelGAN as vocoder in 2M-param GAN-based TTS; convolutional vocoder adapters (50K params) contribute to cross-lingual quality; vocoderside adapters drive accent nativeness |
+| [[2509.02244]] | Spectrogram Patch Codec | arXiv | 2025 | HiFi-GAN vocoder trained on codec-reconstructed spectrograms; codec-artefact conditioning improves vocoder robustness; alternative to RVQ with single-stage 2D patch VQ |

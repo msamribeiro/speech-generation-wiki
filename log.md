@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-05
+
+- integrate | 25 papers | 22 concepts updated | 14 digests updated | 10 cross-links added
+
 ## 2026-06-04
 
 - integrate | seed concept stubs | singing (3 papers) | fine-tuning (2 papers)

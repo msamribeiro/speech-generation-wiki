@@ -6,26 +6,26 @@ The knowledge graph. Each page synthesises what the field currently knows about 
 
 | Slug | Title | Paper count | Last updated |
 |------|-------|-------------|-------------|
-| [[flow-matching]] | Flow Matching | 35 | 2026-06-03|
-| [[diffusion-tts]] | Diffusion Models for TTS | 14 | 2026-06-03|
-| [[autoregressive-codec-tts]] | Autoregressive Codec TTS | 49 | 2026-06-03|
-| [[transformer-enc-dec-tts]] | Transformer Encoder-Decoder TTS | 12 | 2026-06-03|
-| [[gan-vocoder]] | GAN Vocoder | 16 | 2026-06-03|
-| [[zero-shot-tts]] | Zero-Shot TTS | 54 | 2026-06-03|
-| [[voice-conversion]] | Voice Conversion | 16 | 2026-06-03|
-| [[multilingual-tts]] | Multilingual TTS | 29 | 2026-06-03|
-| [[emotion-synthesis]] | Emotion Synthesis | 28 | 2026-06-03|
-| [[prosody-control]] | Prosody Control | 30 | 2026-06-03|
-| [[streaming-tts]] | Streaming TTS | 21 | 2026-06-03|
-| [[spoken-language-model]] | Spoken Language Model | 25 | 2026-06-03|
-| [[speech-to-speech]] | Speech-to-Speech Systems | 13 | 2026-06-03|
-| [[instruction-conditioned-tts]] | Instruction-Conditioned TTS | 16 | 2026-06-03|
-| [[neural-codec]] | Neural Audio Codec | 46 | 2026-06-03|
-| [[self-supervised-speech]] | Self-Supervised Speech Representations | 35 | 2026-06-03|
-| [[disentanglement]] | Disentanglement | 35 | 2026-06-03|
-| [[speaker-adaptation]] | Speaker Adaptation | 11 | 2026-06-03|
-| [[rlhf-speech]] | RLHF for Speech | 15 | 2026-05-30|
-| [[evaluation-metrics]] | Evaluation Metrics | 43 | 2026-06-03|
-| [[subjective-evaluation]] | Subjective Evaluation | 24 | 2026-06-03|
+| [[flow-matching]] | Flow Matching | 36 | 2026-06-05|
+| [[diffusion-tts]] | Diffusion Models for TTS | 15 | 2026-06-05|
+| [[autoregressive-codec-tts]] | Autoregressive Codec TTS | 53 | 2026-06-05|
+| [[transformer-enc-dec-tts]] | Transformer Encoder-Decoder TTS | 15 | 2026-06-05|
+| [[gan-vocoder]] | GAN Vocoder | 18 | 2026-06-05|
+| [[zero-shot-tts]] | Zero-Shot TTS | 59 | 2026-06-05|
+| [[voice-conversion]] | Voice Conversion | 18 | 2026-06-05|
+| [[multilingual-tts]] | Multilingual TTS | 33 | 2026-06-05|
+| [[emotion-synthesis]] | Emotion Synthesis | 35 | 2026-06-05|
+| [[prosody-control]] | Prosody Control | 39 | 2026-06-05|
+| [[streaming-tts]] | Streaming TTS | 23 | 2026-06-05|
+| [[spoken-language-model]] | Spoken Language Model | 35 | 2026-06-05|
+| [[speech-to-speech]] | Speech-to-Speech Systems | 18 | 2026-06-05|
+| [[instruction-conditioned-tts]] | Instruction-Conditioned TTS | 19 | 2026-06-05|
+| [[neural-codec]] | Neural Audio Codec | 54 | 2026-06-05|
+| [[self-supervised-speech]] | Self-Supervised Speech Representations | 47 | 2026-06-05|
+| [[disentanglement]] | Disentanglement | 42 | 2026-06-05|
+| [[speaker-adaptation]] | Speaker Adaptation | 17 | 2026-06-05|
+| [[rlhf-speech]] | RLHF for Speech | 16 | 2026-06-05|
+| [[evaluation-metrics]] | Evaluation Metrics | 62 | 2026-06-05|
+| [[subjective-evaluation]] | Subjective Evaluation | 36 | 2026-06-05|
 | [[singing]] | Singing Voice Synthesis and Conversion | 3 | 2026-06-04|
-| [[fine-tuning]] | Fine-Tuning Foundation Models for Speech Generation | 2 | 2026-06-04|
+| [[fine-tuning]] | Fine-Tuning Foundation Models for Speech Generation | 3 | 2026-06-05|

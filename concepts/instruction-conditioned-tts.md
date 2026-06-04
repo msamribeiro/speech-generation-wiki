@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement, voice-conversion]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: emerging
 ---
 ## Executive Summary
@@ -147,3 +147,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.11326]] | MoE-TTS | arXiv | 2025 | Modality-based MoE with frozen text experts; evaluates out-of-domain figurative descriptions; MoE-TTS outperforms ElevenLabs and MiniMax on OOD description alignment |
 | [[interspeech-2025-0203]] | ClapFM-EVC | Interspeech | 2025 | EVC-CLAP dual-mode conditioning (NL prompt or reference speech) for emotional VC; 57.4% no-preference between modes; instruction-conditioned VC without categorical labels |
 | [[interspeech-2025-0948]] | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech | 2025 | Diffusion-based prompt mapper bridges RoBERTa and Emotion2Vec embeddings for multi-attribute NL-controlled EVC; extends instruction conditioning paradigm from TTS to emotional voice conversion; MOS 4.22 vs. 3.95 for Emovox |
+| [[2508.07273]] | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv | 2025 | Explicit emotion metadata injection into inference prompts as instruction conditioning; 46% improvement on contextual emotion questions over baseline |
+| [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Chain-of-thought paralinguistic instruction conditioning; CosyVoice tokens for speech synthesis conditioned on emotion and sound event labels |
+| [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | SSML markup as structured prosody instructions; cascaded LLM pipeline for automatic SSML generation from natural text; MOS 3.20→3.87 |

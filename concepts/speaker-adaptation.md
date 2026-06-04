@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts, flow-matching]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: established
 ---
 
@@ -126,3 +126,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.09767]] | UtterTune | arXiv | 2025 | Rank-16 LoRA on CosyVoice2 AR LM with two phoneme-tag tokens for Japanese pitch accent; <0.5% trainable parameters; raises accent correctness from 0.499 to 0.899 |
 | [[2508.14049]] | MahaTTS | arXiv | 2025 | Two-stage semantic-acoustic pipeline for 22-language Indic TTS; ~200 hours per new language addition; Gemma-based LM fine-tuning for text-to-semantic stage |
 | [[interspeech-2025-1344]] | Parameter-Efficient Fine-Tuning for Low-Resource TTS via Cross-Lingual Continual Learning | Interspeech | 2025 | Three-adapter PEFT (1.72% params) adapts F5-TTS to Korean on 12.65h single-speaker data; full fine-tuning destroys zero-shot capability while PEFT preserves it; text encoder adapter requires lower compression for typologically distant languages |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | Large-scale prompt database with latency-aware cascaded selection for zero-shot adaptation at inference; cross-lingual proxy prompt selection improves synthesis quality |
+| [[2508.15565]] | Any-to-any Speaker Attribute Perturbation for Voice Anonymization | arXiv | 2025 | Adversarial perturbation-based speaker attribute manipulation; batch mean pseudo-speaker strategy for identity unlinkability without targeting real speakers |
+| [[2508.15931]] | QvTAD | arXiv | 2025 | Speaker identity discrimination and timbre attribute ranking; FACodec encoder as backbone for cross-speaker generalisation in pairwise comparison |
+| [[2508.17031]] | RephraseTTS | arXiv | 2025 | Cross-modal style transfer from short surrounding audio context for speech insertion; cross-modal attention over audio encoder keys outperforms global speaker embedding |
+| [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | Adapter-based PEFT (10% params) for language and speaker adaptation; vocoderside adapters drive accent quality; PSR metric for objective accent evaluation |
+| [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | Speaker embedding injection into phrasing front-end; few-shot unseen-speaker adaptation via embedding adapter with as few as 5 reference utterances |

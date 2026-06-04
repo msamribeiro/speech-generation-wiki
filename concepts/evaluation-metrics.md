@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-03
+last_updated: 2026-06-05
 status: established
 ---
 ## Executive Summary
@@ -81,6 +81,21 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Emotion similarity metrics correlate poorly at the utterance level with human perceptual judgements of emotional expressiveness, limiting their utility for fine-grained emotion TTS evaluation.
   Supporting: [[2504.12867]]
 
+- WER derived from large-vocabulary ASR systems is not a valid proxy for subjective speech intelligibility in codec benchmarking on isolated word stimuli; STOI and ESTOI are reasonable aggregate proxies but fail to capture gender- and wordlist-specific variation.
+  Supporting: [[interspeech-2025-0984]]
+
+- Pairwise ranking objectives with adaptive margins and quality-aware weighting improve automatic MOS predictor system-level correlation over standard regression losses across TTS, TTM, and TTA domains.
+  Supporting: [[2508.08957]], [[2509.03292]]
+
+- Automatic empathy evaluation pipelines using LLM scoring and automatic emotion classifiers diverge measurably from human judgements; model rankings remain consistent but absolute scores differ, limiting absolute score interpretation.
+  Supporting: [[2508.09600]], [[2508.17623]]
+
+- Current spoken dialogue systems consistently fail to sustain emotionally coherent responses across multi-turn conversations, and this failure is not fully captured by single-turn evaluation protocols.
+  Supporting: [[2508.17623]]
+
+- LLM-based evaluation augmented with discrete acoustic features achieves strong alignment with human judgment on multi-dimensional spoken role-playing tasks.
+  Supporting: [[2509.03940]]
+
 - Human Fooling Rate (HFR) — the proportion of trials where listeners misclassify synthetic speech as human — reveals performance gaps that CMOS/MUSHRA scores conceal, because preference metrics allow reference matching to inflate perceived quality.
   Supporting: [[interspeech-2025-2765]]
 
@@ -130,6 +145,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - For turn-taking and interaction benchmarks, human naturalistic conversation (as in [[2503.04721]]) and synthetic stimuli (GPT-4o + ChatTTS) differ in prosodic properties; does this gap affect benchmark validity?
 
 ## Trend Summary
+
+Integration pass 7 (Aug–Sep 2025): Three dedicated automatic MOS improvement papers appear — QAMRO [[2508.08957]] introduces pairwise ranking with adaptive margins and quality-aware weighting; AESA-Net [[2509.03292]] applies triplet loss over BEATs embeddings for multi-axis aesthetic assessment; both demonstrate that regression-only training is systematically suboptimal for perceptual quality ordering. SITool [[interspeech-2025-0984]] provides the first systematic correlation study between DRT/MRT subjective intelligibility and objective metrics for neural codecs, with the key negative result that WER (via Whisper) is uncorrelated with subjective intelligibility on isolated-word stimuli. The dialogue evaluation cluster grows further: EMO-Reasoning [[2508.17623]] introduces a unified three-axis framework (continuous VAD, categorical rationality, human perceptual) for emotional coherence in spoken dialogue; VoxRole [[2509.03940]] adds a role-playing dimension with acoustically-aware LLM evaluation; OSUM-EChat [[2508.09600]] documents auto–human divergence in empathy scoring. LibriQuote [[2509.04072]] introduces ContextMOS and Win-Rate as new expressivity-specific metrics for audiobook TTS. M3PDB [[2508.09702]] identifies quality mismatch between training and inference prompts as a systematic degradation source, connecting prompt evaluation to zero-shot TTS methodology. These papers collectively reinforce the trend toward task-specific evaluation frameworks that go beyond MOS/WER/SPK-SIM.
 
 Pre-2023: MOS and WER were the standard; speaker verification cosine similarity emerged as a faster alternative to SMOS. 2024–2025: UTMOS becomes standard in codec evaluation [[2510.00981]]; Seed-TTS-eval (English and Mandarin cross-sentence prompts) becomes the reference benchmark for zero-shot TTS. 2025: Interaction-specific evaluation emerges [[2025.findings-emnlp.424]]; the controllable TTS survey [[2025.emnlp-main.40]] documents that no benchmark unifies naturalness, intelligibility, similarity, and controllability accuracy in a single protocol; DiFlow-TTS [[2509.09631]] reports a concrete divergence between automatic SIM-O ranking and perceptual similarity MOS ranking, demonstrating that WavLM-based cosine similarity is insufficient for capturing perceptual voice identity. New frontiers emerging in 2025: Full-Duplex-Bench [[2503.04721]] introduces automated turn-taking metrics (TOR, backchannel frequency, response latency) for full-duplex dialogue evaluation; VoiceMOS/AudioMOS Challenge survey [[2508.00317]] documents that multi-track challenge infrastructure is the strongest accelerant for SQA method development, and that near-human-quality systems elude discrimination by current predictors; FreeGAN [[2508.07711]] provides concrete evidence that UTMOS and subjective MOS rank vocoders differently, adding to accumulated evidence that automatic predictors are insufficient surrogates. SpeechRole [[2508.02013]] introduces a nine-dimension evaluation framework for speech role-playing agents (Instruction Adherence, Conversational Coherence, Speech Fluency/Naturalness, Prosodic Consistency, Emotion Appropriateness, Personality/Knowledge Consistency). The non-verbal speech pipeline [[2508.05385]] introduces CLAP-based tag accuracy and IMOS as evaluation dimensions for non-verbal vocalization synthesis. 2026: EmergentTTS-Eval (instruction-following paralinguistic tasks) and Audio Turing Test emerge as new evaluation benchmarks used in Fish Audio S2 [[2603.08823]]; LongCat-AudioDiT [[2603.29339]] uses DNSMOS 3.40 as an alternative naturalness proxy; CV3-Eval for multilingual voice cloning across 9 languages is used by both [[2601.15621]] and [[2603.08823]]. F0-RMSE is used by DiFlow-TTS [[2509.09631]] and Vevo2 [[2508.16332]] as a prosody accuracy metric. The diversity of benchmarks remains a persistent problem: no single public benchmark adequately captures all dimensions of modern TTS capability. Integration pass 6 adds three evaluation-specific contributions: HFR [[interspeech-2025-2765]] provides direct empirical evidence that CMOS and MUSHRA overestimate naturalness when evaluating against low-expressivity reference recordings; the replikant platform [[interspeech-2025-0401]] proposes a replicability-by-design framework that the field has discussed but not operationalised for a decade; and DC-Spin [[interspeech-2025-0246]] provides a negative result against ABX, which is the most widely used proxy metric for speech tokenizer evaluation. CodecBench [[2508.20660]] advances multi-domain codec evaluation with acoustic-semantic orthogonality as a key finding. FD-Bench [[interspeech-2025-0739]] adds automated interrupt-handling metrics for full-duplex dialogue evaluation. The convergence of these papers signals a maturing evaluation subfield that is challenging the sufficiency of individual metrics (MOS, UTMOS, SPK-SIM, ABX) for capturing relevant dimensions of modern synthesis quality.
 
@@ -183,3 +200,21 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[interspeech-2025-2043]] | MKL-VC: Training-Free VC via Factorized OT | Interspeech | 2025 | Introduces composite total score (weighted sum of WER, CER, and SPK-SIM distance from ideal point) for VC system ranking; cross-lingual evaluation on FLEURS |
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching TTS via EPSS | Interspeech | 2025 | Reports RTF alongside WER, SPK-SIM, UTMOS for step-count reduction evaluation; three-benchmark evaluation (Seed-TTS-eval EN/ZH, LibriSpeech-PC) provides more robust speedup-quality characterisation |
 | [[interspeech-2025-0816]] | SSANSVC | Interspeech | 2025 | Custom MOS-n (naturalness) and MOS-ts (timbre similarity) alongside SIM, SingMOS, and CER for cross-modal speech-singing VC evaluation |
+| [[2508.07273]] | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv | 2025 | LLM judge validation with classification metric correlation; GPT-4o judge scores correlate reliably with accuracy/F1 on deterministic questions |
+| [[2508.07375]] | TurnGuide | arXiv | 2025 | GPT-based automated semantic evaluation of spoken dialogue; validated against human MOS across 25/30 pairwise comparisons |
+| [[2508.08957]] | QAMRO | ASRU | 2025 | Pairwise ranking loss with adaptive margins and quality-aware weighting improves automatic MOS system-level SRCC over regression baselines across TTS/TTM/TTA |
+| [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Documents divergence between GPT-4o and emotion2vec automatic evaluation vs. human empathy MOS; ranking preserved but absolute scores differ |
+| [[2508.09702]] | M3PDB | arXiv | 2025 | Automatic-only evaluation (SS, UTMOS, CER) for prompt selection quality; demonstrates quality mismatch between training-time and inference-time prompts |
+| [[2508.11224]] | Benchmarking Prosody Encoding in Discrete Speech Tokens | ASRU | 2025 | Token Error Rate (TER) as a direct proxy for prosody sensitivity in discrete SSL tokens, without downstream model dependence |
+| [[interspeech-2025-0984]] | Benchmarking Neural Speech Codec Intelligibility with SITool | Interspeech | 2025 | SITool open platform for DRT/MRT codec benchmarking; shows WER is uncorrelated with subjective DRT intelligibility; STOI adequate for aggregate ranking only |
+| [[2508.13028]] | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv | 2025 | Circular evaluation design (detector used as both training signal and evaluation metric); 13-listener subjective study |
+| [[2508.15931]] | QvTAD | arXiv | 2025 | Pairwise comparison framing reduces annotation subjectivity in perceptual attribute modelling |
+| [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | Emotion F1 via Qwen2-Audio as third-party emotion classifier for synthesized speech evaluation |
+| [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | MOS AB test on 18 listeners; automated SSML tag evaluation via F1 and MAE on numerical prosodic parameters |
+| [[2508.17623]] | EMO-Reasoning | arXiv | 2025 | Three-axis emotional coherence framework (continuous ERS, categorical rationality, human perceptual ERS) for spoken dialogue systems; first unified multi-turn emotional evaluation |
+| [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | Introduces Phoneme Substitution Rate (PSR) as objective proxy for accent nativeness; validated against MUSHRA with >90% pairwise ranking accuracy |
+| [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | UTMOS, CER, WARP-Q, and SDR as automatic-only proxies for G2P-free Japanese TTS naturalness |
+| [[2509.02244]] | Spectrogram Patch Codec | arXiv | 2025 | PESQ, STOI, ViSQOL, MCD evaluation across different sampling rates; reveals MCD divergence from perceptual quality when comparing across architectures |
+| [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | Triplet loss with BEATs embeddings improves SRCC on multi-axis aesthetic prediction; domain shift affects absolute score calibration more than ranking |
+| [[2509.03940]] | VoxRole | arXiv | 2025 | Acoustically-aware LLM judge augmented with discrete acoustic features; Pearson correlation 0.762 with human annotators |
+| [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | ContextMOS and Win-Rate (Gemini-2.5-Pro judge) as expressivity-specific metrics for audiobook TTS beyond standard naturalness MOS |
