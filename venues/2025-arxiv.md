@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 52
-last_updated: 2026-06-03
+papers_ingested: 54
+last_updated: 2026-06-04
 ---
 
 # arXiv 2025
@@ -70,3 +70,5 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2508.08095 | Dual Information Speech Language Models for Emotional Conversations |
 | 2508.15827 | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in Large Speech M |
 | 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and Semantic Evalua |
+| 2508.07375 | TurnGuide: Enhancing Meaningful Full Duplex Spoken Interactions via Dy |
+| 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Speech Language M |

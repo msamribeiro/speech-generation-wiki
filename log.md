@@ -199,3 +199,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion | Interspeech 2025
 - ingest | interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism | Interspeech 2025
 - ingest | interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn-taking in Spoken Dialogue Systems | Interspeech 2025
+- ingest | 2508.07375 | TurnGuide: Enhancing Meaningful Full Duplex Spoken Interactions via Dynamic Turn-Level Text-Speech Interleaving | arXiv 2025
+- ingest | 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Speech Language Modeling | arXiv 2025
+- ingest | interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate | Interspeech 2025
+- ingest | interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with SITool | Interspeech 2025

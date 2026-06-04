@@ -158,3 +158,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Ze |  | Interspeech | 2025 | VC | VAE, GAN | 2026-06-03 |
 | interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conve |  | Interspeech | 2025 | VC | diffusion | 2026-06-03 |
 | interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn- | Kyoto University | Interspeech | 2025 | SCA | transformer-enc-dec | 2026-06-03 |
+| [[2508.07375]] | [TurnGuide: Enhancing Meaningful Full Duplex Spoken Inte](papers/2508.07375.md) | — | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-04 |
+| 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Sp | CUHK-SZ | arXiv | 2025 | codec | diffusion, transformer-enc-dec, autoregressive-LM | 2026-06-04 |
+| interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec wit |  | Interspeech | 2025 | codec | hybrid | 2026-06-04 |
+| interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with S |  | Interspeech | 2025 | codec, evaluation |  | 2026-06-04 |
