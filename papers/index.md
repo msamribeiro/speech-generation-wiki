@@ -6,6 +6,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[2509.04072]] | [Computational Narrative Understanding for Expressive Te](papers/2509.04072.md) | — | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-04 |
 | [[2508.15827]] | [Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in](papers/2508.15827.md) | — | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-03 |
 | [[interspeech-2025-0739]] | [FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems](papers/interspeech-2025-0739.md) | — | Interspeech | 2025 | SCA, evaluation |  | 2026-06-03 |
 | [[interspeech-2025-1993]] | [Defending Unauthorized Voice Cloning with Watermark-Aware Codecs](papers/interspeech-2025-1993.md) | The Chinese University of Hong Kong | Interspeech | 2025 | TTS, VC | autoregressive-LM | 2026-06-03 |
@@ -162,3 +163,23 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Sp | CUHK-SZ | arXiv | 2025 | codec | diffusion, transformer-enc-dec, autoregressive-LM | 2026-06-04 |
 | interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec wit |  | Interspeech | 2025 | codec | hybrid | 2026-06-04 |
 | interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with S |  | Interspeech | 2025 | codec, evaluation |  | 2026-06-04 |
+| [[2508.07273]] | [Incorporating Contextual Paralinguistic Understanding i](papers/2508.07273.md) |  | arXiv | 2025 | SCA | transformer-enc-dec | 2026-06-04 |
+| 2508.08957 | QAMRO: Quality-aware Adaptive Margin Ranking Optimizati |  | arXiv | 2025 | evaluation |  | 2026-06-04 |
+| 2508.09600 | OSUM-EChat: Enhancing End-to-End Empathetic Spoken Chat | Northwestern Polytechnical University | arXiv | 2025 | SCA | autoregressive-LM, flow-matching | 2026-06-04 |
+| 2508.09702 | $\text{M}^3\text{PDB}$: A Multimodal, Multi-Label, Mult |  | arXiv | 2025 | TTS, evaluation |  | 2026-06-04 |
+| [[2508.11224]] | [Benchmarking Prosody Encoding in Discrete Speech Tokens](papers/2508.11224.md) | The University of Tokyo / AIST | ASRU | 2025 | evaluation, TTS |  | 2026-06-04 |
+| 2508.13028 | Integrating Feedback Loss from Bi-modal Sarcasm Detecto |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-06-04 |
+| 2508.15565 | Any-to-any Speaker Attribute Perturbation for Asynchron |  | arXiv | 2025 | VC | GAN | 2026-06-04 |
+| 2508.15931 | QvTAD: Differential Relative Attribute Learning for Voi | Qifu Technology | arXiv | 2025 | evaluation | transformer-enc-dec | 2026-06-04 |
+| 2508.16188 | Seeing is Believing: Emotion-Aware Audio-Visual Languag |  | EMNLP | 2025 | TTS, SCA | autoregressive-LM | 2026-06-04 |
+| 2508.17031 | RephraseTTS: Dynamic Length Text based Speech Insertion | IIT Kanpur | arXiv | 2025 | TTS, VC | transformer-enc-dec, GAN | 2026-06-04 |
+| 2508.17494 | Improving French Synthetic Speech Quality via SSML Pros |  | workshop | 2025 | TTS | hybrid | 2026-06-04 |
+| 2508.17623 | EMO-Reasoning: Benchmarking Emotional Reasoning Capabil |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-04 |
+| 2508.18006 | Unseen Speaker and Language Adaptation for Lightweight  | Amazon | arXiv | 2025 | TTS | GAN | 2026-06-04 |
+| 2508.19205 | VibeVoice Technical Report | Microsoft Research | arXiv | 2025 | TTS | hybrid | 2026-06-04 |
+| 2509.00503 | Entropy-based Coarse and Compressed Semantic Speech Rep |  | arXiv | 2025 | codec | autoregressive-LM, transformer-enc-dec | 2026-06-04 |
+| 2509.00675 | Speaker-Conditioned Phrase Break Prediction for Text-to | — | arXiv | 2025 | TTS | transformer-enc-dec | 2026-06-04 |
+| 2509.01391 | MixedG2P-T5: G2P-free Speech Synthesis for Mixed-script |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-06-04 |
+| 2509.02244 | Spectrogram Patch Codec: A 2D Block-Quantized VQ-VAE an |  | arXiv | 2025 | codec | VAE, GAN | 2026-06-04 |
+| 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Tri |  | arXiv | 2025 | evaluation | hybrid | 2026-06-04 |
+| 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speec |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-04 |

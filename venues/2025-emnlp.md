@@ -2,8 +2,8 @@
 title: "EMNLP 2025"
 venue: EMNLP
 year: 2025
-papers_ingested: 8
-last_updated: 2026-05-30
+papers_ingested: 9
+last_updated: 2026-06-04
 ---
 
 # EMNLP 2025
@@ -24,3 +24,4 @@ EMNLP 2025 contributes 8 papers across SCA, TTS, evaluation, and post-training. 
 | 2511.12347 | VoiceCraft-X: Unifying Multilingual, Voice-Cloning Speech Synthesis and Speech Editing |
 | 2508.15442 | Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment Using GFlowNets |
 | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets |
+| 2508.16188 | Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for  |

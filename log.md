@@ -203,3 +203,24 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Speech Language Modeling | arXiv 2025
 - ingest | interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate | Interspeech 2025
 - ingest | interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with SITool | Interspeech 2025
+- ingest | 2508.07273 | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv 2025
+- ingest | 2508.08957 | QAMRO: Quality-aware Adaptive Margin Ranking Optimization for Human-aligned Assessment of Audio Generation Systems | arXiv 2025
+- ingest | 2508.09600 | OSUM-EChat: Enhancing End-to-End Empathetic Spoken Chatbot via Understanding-Driven Spoken Dialogue | arXiv 2025
+- ingest | 2508.09702 | $\text{M}^3\text{PDB}$: A Multimodal, Multi-Label, Multilingual Prompt Database for Speech Generation | arXiv 2025
+- ingest | 2508.11224 | Benchmarking Prosody Encoding in Discrete Speech Tokens | ASRU 2025
+- ingest | 2508.13028 | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv 2025
+- ingest | 2508.15565 | Any-to-any Speaker Attribute Perturbation for Asynchronous Voice Anonymization | arXiv 2025
+- ingest | 2508.15931 | QvTAD: Differential Relative Attribute Learning for Voice Timbre Attribute Detection | arXiv 2025
+- ingest | 2508.16188 | Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for Expressive Speech Generation | EMNLP 2025
+- ingest | 2508.17031 | RephraseTTS: Dynamic Length Text based Speech Insertion with Speaker Style Transfer | arXiv 2025
+- ingest | 2508.17494 | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop 2025
+- ingest | 2508.17623 | EMO-Reasoning: Benchmarking Emotional Reasoning Capabilities in Spoken Dialogue Systems | arXiv 2025
+- ingest | 2508.18006 | Unseen Speaker and Language Adaptation for Lightweight Text-To-Speech with Adapters | arXiv 2025
+- ingest | 2508.19205 | VibeVoice Technical Report | arXiv 2025
+- ingest | 2509.00503 | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv 2025
+- ingest | 2509.00675 | Speaker-Conditioned Phrase Break Prediction for Text-to-Speech with Phoneme-Level Pre-trained Language Model | arXiv 2025
+- ingest | 2509.01391 | MixedG2P-T5: G2P-free Speech Synthesis for Mixed-script texts using Speech Self-Supervised Learning and Language Model | arXiv 2025
+- ingest | 2509.02244 | Spectrogram Patch Codec: A 2D Block-Quantized VQ-VAE and HiFi-GAN for Neural Speech Coding | arXiv 2025
+- ingest | 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss and Self-Supervised Embeddings | arXiv 2025
+- ingest | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Playing Agents | arXiv 2025
+- ingest | 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech | arXiv 2025

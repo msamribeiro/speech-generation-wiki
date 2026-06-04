@@ -2,7 +2,7 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 54
+papers_ingested: 72
 last_updated: 2026-06-04
 ---
 
@@ -72,3 +72,21 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and Semantic Evalua |
 | 2508.07375 | TurnGuide: Enhancing Meaningful Full Duplex Spoken Interactions via Dy |
 | 2508.16790 | TaDiCodec: Text-aware Diffusion Speech Tokenizer for Speech Language M |
+| 2508.07273 | Incorporating Contextual Paralinguistic Understanding in Large Speech- |
+| 2508.08957 | QAMRO: Quality-aware Adaptive Margin Ranking Optimization for Human-al |
+| 2508.09600 | OSUM-EChat: Enhancing End-to-End Empathetic Spoken Chatbot via Underst |
+| 2508.09702 | $\text{M}^3\text{PDB}$: A Multimodal, Multi-Label, Multilingual Prompt |
+| 2508.13028 | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic |
+| 2508.15565 | Any-to-any Speaker Attribute Perturbation for Asynchronous Voice Anony |
+| 2508.15931 | QvTAD: Differential Relative Attribute Learning for Voice Timbre Attri |
+| 2508.17031 | RephraseTTS: Dynamic Length Text based Speech Insertion with Speaker S |
+| 2508.17623 | EMO-Reasoning: Benchmarking Emotional Reasoning Capabilities in Spoken |
+| 2508.18006 | Unseen Speaker and Language Adaptation for Lightweight Text-To-Speech  |
+| 2508.19205 | VibeVoice Technical Report |
+| 2509.00503 | Entropy-based Coarse and Compressed Semantic Speech Representation Lea |
+| 2509.00675 | Speaker-Conditioned Phrase Break Prediction for Text-to-Speech with Ph |
+| 2509.01391 | MixedG2P-T5: G2P-free Speech Synthesis for Mixed-script texts using Sp |
+| 2509.02244 | Spectrogram Patch Codec: A 2D Block-Quantized VQ-VAE and HiFi-GAN for  |
+| 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss and S |
+| 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Pl |
+| 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech |
