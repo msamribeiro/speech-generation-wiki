@@ -27,3 +27,5 @@ The knowledge graph. Each page synthesises what the field currently knows about 
 | [[rlhf-speech]] | RLHF for Speech | 15 | 2026-05-30|
 | [[evaluation-metrics]] | Evaluation Metrics | 43 | 2026-06-03|
 | [[subjective-evaluation]] | Subjective Evaluation | 24 | 2026-06-03|
+| [[singing]] | Singing Voice Synthesis and Conversion | 3 | 2026-06-04|
+| [[fine-tuning]] | Fine-Tuning Foundation Models for Speech Generation | 2 | 2026-06-04|
