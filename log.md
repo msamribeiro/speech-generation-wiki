@@ -8,6 +8,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-08
 
+- site | landing page redesign | index.md editorial rewrite + field snapshot; overview.md renamed to "Field Overview"; start.md navigation hub added
 - integrate | seeded 2 evidence digests | transformer-enc-dec-tts (11 papers, 6 claim clusters) | rlhf-speech (15 papers, 7 claim clusters)
 
 ## 2026-06-05
