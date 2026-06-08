@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-08
+
+- integrate | seeded 2 evidence digests | transformer-enc-dec-tts (11 papers, 6 claim clusters) | rlhf-speech (15 papers, 7 claim clusters)
+
 ## 2026-06-05
 
 - integrate | 25 papers | 22 concepts updated | 14 digests updated | 10 cross-links added
