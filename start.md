@@ -2,6 +2,8 @@
 title: "Start Here"
 ---
 
+→ [[index|Home]]
+
 → [[overview|Field Overview]] — paradigms, trends, tensions, and open questions
 
 ## Concepts
@@ -27,6 +29,7 @@ title: "Start Here"
 ## Papers and Venues
 
 → [[papers/index|Browse all papers]]
+
 → [[venues/index|Browse by venue]]
 
 ## Reports

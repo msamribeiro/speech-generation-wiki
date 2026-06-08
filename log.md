@@ -1,5 +1,5 @@
 ---
-title: "Wiki Log"
+title: "Changelog"
 ---
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `integrate` (concept pages, cross-links, venue narratives, overview), `report` (periodic field report), `query` (research question answered and filed back). Most recent entries are at the top.
