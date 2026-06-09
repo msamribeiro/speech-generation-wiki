@@ -183,3 +183,13 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2509.02244 | Spectrogram Patch Codec: A 2D Block-Quantized VQ-VAE an |  | arXiv | 2025 | codec | VAE, GAN | 2026-06-04 |
 | 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Tri |  | arXiv | 2025 | evaluation | hybrid | 2026-06-04 |
 | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speec |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-04 |
+| 2410.00037 | Moshi: a speech-text foundation model for real-time dia | Kyutai | arXiv | 2024 | SCA, TTS | autoregressive-LM, hybrid | 2026-06-09 |
+| 2411.13577 | WavChat: A Survey of Spoken Dialogue Models |  | arXiv | 2024 | SCA | autoregressive-LM, transformer-enc-dec, hybrid | 2026-06-09 |
+| 2503.20215 | Qwen2.5-Omni Technical Report |  | arXiv | 2025 |  | autoregressive-LM, flow-matching, hybrid | 2026-06-09 |
+| 2407.21783 | The Llama 3 Herd of Models | Meta | arXiv | 2024 |  | autoregressive-LM | 2026-06-09 |
+| 1912.06670 | Common Voice: A Massively-Multilingual Speech Corpus |  | arXiv | 2019 |  |  | 2026-06-09 |
+| 2312.15185 | emotion2vec: Self-Supervised Pre-Training for Speech Em |  | arXiv | 2023 |  |  | 2026-06-09 |
+| 2212.04356 | Robust Speech Recognition via Large-Scale Weak Supervis |  | arXiv | 2022 |  | transformer-enc-dec | 2026-06-09 |
+| 2010.05646 | HiFi-GAN: Generative Adversarial Networks for Efficient | Kakao Enterprise | arXiv | 2020 | TTS | GAN | 2026-06-09 |
+| 2210.13438 | High Fidelity Neural Audio Compression | Meta AI | arXiv | 2022 | codec | GAN, VAE | 2026-06-09 |
+| 2006.04558 | FastSpeech 2: Fast and High-Quality End-to-End Text to | Microsoft Research Asia | arXiv | 2020 | TTS | transformer-enc-dec | 2026-06-09 |

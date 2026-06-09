@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 3
-last_updated: 2026-05-28
+papers_ingested: 6
+last_updated: 2026-06-09
 ---
 
 # arXiv 2024
@@ -23,3 +23,6 @@ Key differentiators: [[2406.02430]] (Seed-TTS) operates at the largest scale and
 | 2406.02430 | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models |
 | 2407.05407 | CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens |
 | 2412.10117 | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models |
+| 2410.00037 | Moshi: a speech-text foundation model for real-time dialogue |
+| 2411.13577 | WavChat: A Survey of Spoken Dialogue Models |
+| 2407.21783 | The Llama 3 Herd of Models |

@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 72
-last_updated: 2026-06-05
+papers_ingested: 73
+last_updated: 2026-06-09
 ---
 
 # arXiv 2025
@@ -90,3 +90,4 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss and S |
 | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Pl |
 | 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech |
+| 2503.20215 | Qwen2.5-Omni Technical Report |

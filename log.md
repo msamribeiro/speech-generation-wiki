@@ -6,6 +6,12 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-09
+
+- ingest | 2410.00037 | Moshi: a speech-text foundation model for real-time dialogue | arXiv 2024
+- ingest | 2210.13438 | High Fidelity Neural Audio Compression | arXiv 2022
+- ingest | 2006.04558 | FastSpeech 2: Fast and High-Quality End-to-End Text to Speech | arXiv 2020
+
 ## 2026-06-08
 
 - site | landing page redesign | index.md editorial rewrite + field snapshot; overview.md renamed to "Field Overview"; start.md navigation hub added
@@ -233,3 +239,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss and Self-Supervised Embeddings | arXiv 2025
 - ingest | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Playing Agents | arXiv 2025
 - ingest | 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech | arXiv 2025
+- ingest | 2411.13577 | WavChat: A Survey of Spoken Dialogue Models | arXiv 2024
+- ingest | 2503.20215 | Qwen2.5-Omni Technical Report | arXiv 2025
+- ingest | 2407.21783 | The Llama 3 Herd of Models | arXiv 2024
+- ingest | 1912.06670 | Common Voice: A Massively-Multilingual Speech Corpus | arXiv 2019
+- ingest | 2312.15185 | emotion2vec: Self-Supervised Pre-Training for Speech Emotion Representation | arXiv 2023
+- ingest | 2212.04356 | Robust Speech Recognition via Large-Scale Weak Supervision | arXiv 2022
+- ingest | 2010.05646 | HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis | arXiv 2020

@@ -4,9 +4,9 @@ title: "Venues"
 
 | Page | Venue | Year | Papers ingested |
 |------|-------|------|----------------|
-| [[2023-arxiv]] | arXiv | 2023 | 1 |
-| [[2024-arxiv]] | arXiv | 2024 | 3 |
-| [[2025-arxiv]] | arXiv | 2025 | 51 |
+| [[2023-arxiv]] | arXiv | 2023 | 2 |
+| [[2024-arxiv]] | arXiv | 2024 | 5 |
+| [[2025-arxiv]] | arXiv | 2025 | 52 |
 | [[2026-arxiv]] | arXiv | 2026 | 9 |
 | [[2025-acl]] | ACL | 2025 | 14 |
 | [[2025-emnlp]] | EMNLP | 2025 | 8 |
@@ -15,3 +15,6 @@ title: "Venues"
 | [[2026-icassp]] | ICASSP | 2026 | 1 |
 | [[2025-workshop]] | workshop | 2025 | 2 |
 | [[2025-asru]] | ASRU | 2025 | 1 |
+| [[2019-arxiv]] | arXiv | 2019 | 1 |
+| [[2022-arxiv]] | arXiv | 2022 | 2 |
+| [[2020-arxiv]] | arXiv | 2020 | 2 |
