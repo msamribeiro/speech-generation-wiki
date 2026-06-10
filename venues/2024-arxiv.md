@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 6
-last_updated: 2026-06-09
+papers_ingested: 11
+last_updated: 2026-06-10
 ---
 
 # arXiv 2024
@@ -26,3 +26,8 @@ Key differentiators: [[2406.02430]] (Seed-TTS) operates at the largest scale and
 | 2410.00037 | Moshi: a speech-text foundation model for real-time dialogue |
 | 2411.13577 | WavChat: A Survey of Spoken Dialogue Models |
 | 2407.21783 | The Llama 3 Herd of Models |
+| 2407.10759 | Qwen2-Audio Technical Report |
+| 2403.03100 | NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models |
+| 2412.02612 | GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot |
+| 2410.21276 | GPT-4o System Card |
+| 2412.15115 | Qwen2.5 Technical Report |

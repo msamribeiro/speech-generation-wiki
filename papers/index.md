@@ -6,6 +6,10 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[1904.02882]] | [LibriTTS: A Corpus Derived from LibriSpeech for Text-to-S](papers/1904.02882.md) | Google AI | arXiv | 2019 | TTS |  | 2026-06-10 |
+| [[2403.03100]] | [NaturalSpeech 3: Zero-Shot Speech Synthesis with Factori](papers/2403.03100.md) | Microsoft | arXiv | 2024 | TTS, VC | diffusion, hybrid | 2026-06-10 |
+| [[2504.18425]] | [Kimi-Audio Technical Report](papers/2504.18425.md) | Moonshot AI | arXiv | 2025 | TTS, VC, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
+| [[2204.02152]] | [UTMOS: UTokyo-SaruLab System for VoiceMOS Challenge 202](papers/2204.02152.md) | University of Tokyo | arXiv | 2022 | evaluation |  | 2026-06-10 |
 | [[2509.04072]] | [Computational Narrative Understanding for Expressive Te](papers/2509.04072.md) | — | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-04 |
 | [[2508.15827]] | [Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in](papers/2508.15827.md) | — | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-03 |
 | [[interspeech-2025-0739]] | [FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems](papers/interspeech-2025-0739.md) | — | Interspeech | 2025 | SCA, evaluation |  | 2026-06-03 |
@@ -193,3 +197,14 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2010.05646 | HiFi-GAN: Generative Adversarial Networks for Efficient | Kakao Enterprise | arXiv | 2020 | TTS | GAN | 2026-06-09 |
 | 2210.13438 | High Fidelity Neural Audio Compression | Meta AI | arXiv | 2022 | codec | GAN, VAE | 2026-06-09 |
 | 2006.04558 | FastSpeech 2: Fast and High-Quality End-to-End Text to | Microsoft Research Asia | arXiv | 2020 | TTS | transformer-enc-dec | 2026-06-09 |
+| 2407.10759 | Qwen2-Audio Technical Report | Alibaba Group | arXiv | 2024 |  |  | 2026-06-10 |
+| [[2303.08774]] | [GPT-4 Technical Report](papers/2303.08774.md) | OpenAI | arXiv | 2023 |  | autoregressive-LM | 2026-06-10 |
+| [[2412.02612]] | [GLM-4-Voice: Towards Intelligent and Human-Like End-to-S](papers/2412.02612.md) | Tsinghua University / Zhipu.AI | arXiv | 2024 | TTS, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
+| 1711.05101 | Decoupled Weight Decay Regularization |  | arXiv | 2017 |  |  | 2026-06-10 |
+| 2410.21276 | GPT-4o System Card |  | arXiv | 2024 |  | autoregressive-LM | 2026-06-10 |
+| 2412.15115 | Qwen2.5 Technical Report | Alibaba | arXiv | 2024 |  | autoregressive-LM | 2026-06-10 |
+| [[2210.02747]] | [Flow Matching for Generative Modeling](papers/2210.02747.md) | Meta AI (FAIR) | arXiv | 2022 |  | flow-matching | 2026-06-10 |
+| 2209.03143 | AudioLM: a Language Modeling Approach to Audio Generati |  | arXiv | 2022 | TTS, SCA | autoregressive-LM | 2026-06-10 |
+| 2206.04658 | BigVGAN: A Universal Neural Vocoder with Large-Scale Tr | NVIDIA | arXiv | 2022 | TTS | GAN | 2026-06-10 |
+| 2207.12598 | Classifier-Free Diffusion Guidance |  | arXiv | 2022 |  | diffusion | 2026-06-10 |
+| 1412.6980 | Adam: A Method for Stochastic Optimization |  | arXiv | 2014 |  |  | 2026-06-10 |
