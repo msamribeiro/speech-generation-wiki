@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: dominant
 ---
 
@@ -113,6 +113,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2210.02747]] — Flow Matching for Generative Modeling establishes the CFM training objective and OT path that most subsequent TTS flow-matching systems adopt; proves the marginal FM objective decomposes into tractable conditional objectives with identical gradients.
+- [[2207.12598]] — Classifier-free guidance introduces the standard conditioning mechanism adopted by virtually all subsequent conditional diffusion and flow-matching systems, including TTS.
 - [[2025.acl-long.313]] — F5-TTS established pure non-autoregressive flow matching as competitive with autoregressive methods for zero-shot TTS, and introduced Sway Sampling as the standard inference-time flow step scheduling technique.
 - [[2407.05407]] — CosyVoice established the LLM+flow-matching hybrid as a dominant paradigm, combining supervised semantic tokens with OT-CFM acoustic synthesis.
 
@@ -192,3 +194,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching-Based TTS via Empirically Pruned Step Sampling | Interspeech | 2025 | EPSS: training-free non-uniform ODE step schedule reduces F5-TTS from 32 to 7 NFE with near-zero quality degradation; trajectory analysis shows early phase is disproportionately critical |
 | [[interspeech-2025-1779]] | ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow | Interspeech | 2025 | Rectified flow applied to zero-shot VC; gated cross-attention fusion of speaker embedding with content and pitch features; 1-step Euler matches Diff-VC 30-step quality in speaker similarity |
 | [[2508.16790]] | TaDiCodec | arXiv | 2025 | Flow-matching (rectified flow) as the codec decoder training objective; end-to-end joint quantization and reconstruction without adversarial training; 6.25 Hz with BSQ quantization |
+| [[2210.02747]] | Flow Matching for Generative Modeling | arXiv | 2022 | Establishes the CFM training objective and OT conditional path; proves tractable decomposition of marginal flow into per-sample conditional fields; all TTS flow-matching systems build on this framework |
+| [[2207.12598]] | Classifier-Free Diffusion Guidance | arXiv | 2022 | Introduces conditioning dropout training + score interpolation at inference; the standard guidance mechanism adopted by all subsequent conditional diffusion and flow-matching TTS systems |
+| [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Uses chunk-wise flow-matching streaming detokenizer for low-latency semantic-token-to-mel conversion in a universal audio LLM |

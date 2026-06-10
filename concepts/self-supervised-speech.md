@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: mature-infrastructure
 ---
 
@@ -53,6 +53,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - WavLM-Large is the de facto standard backbone for automatic speaker similarity (SPK-SIM) evaluation in zero-shot TTS, and conclusions about speaker similarity in the literature are implicitly conditioned on this choice.
   Supporting: [[2509.19668]], [[2025.acl-long.682]], [[2507.14534]]
+
+- Self-supervised speech representations trained with masked language modeling objectives encode sufficient lexical and syntactic information to outperform earlier causal spoken language models on zero-resource linguistic benchmarks.
+  Supporting: [[2209.03143]]
 
 - HuBERT discrete cluster representations in speech language models retain paralinguistic variability that causes a combinatorial lexical explosion, substantially degrading semantic coherence relative to text LMs operating at equivalent sequence lengths.
   Supporting: [[2412.17048]], [[2025.acl-long.682]]
@@ -120,6 +123,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - [[2025.acl-long.682]] — comprehensive survey situating SSL models (Wav2vec 2.0, HuBERT, WavLM) within the SpeechLM training pipeline; taxonomizes SSL by objective type and downstream role
 
 ### Influential
+- [[2209.03143]] — AudioLM demonstrates the complementary role of SSL semantic tokens and codec acoustic tokens; w2v-BERT XL 7th-layer features serve as the semantic tier that enables long-range coherence in the first hierarchical codec LM
 - [[2412.17048]] — controlled study identifying paralinguistic variability in HuBERT tokens (Factor C) as the dominant cause of SLM coherence failure, providing the strongest evidence for why SSL tokens are a problematic SLM modality
 - [[2510.00981]] — FlexiCodec ablations demonstrating that ASR-supervised features (SenseVoice) substantially outperform SSL (w2v-bert-2) for dynamic frame merging at ultra-low codec rates; key inflection point for the SSL vs. supervised question
 - [[2507.14534]] — Conan: distills HuBERT-Large into a streaming content extractor for VC, demonstrating SSL's continued value for content-only feature extraction despite its limitations as a semantic codec target
@@ -194,3 +198,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | HuBERT-family ContentVec as SSL encoder; k-means (500 clusters) produces pseudo-language labels for G2P-free Japanese TTS |
 | [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | BEATs self-supervised audio model as feature backbone; weighted layer combination over all BEATs transformer layers for multi-axis aesthetic prediction |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | WavLM-large cosine similarity (SPK-SIM) for speaker similarity in LibriQuote benchmark evaluation |
+| [[2209.03143]] | AudioLM: a Language Modeling Approach to Audio Generation | arXiv | 2022 | Uses w2v-BERT XL 7th-layer representations as semantic tokens; demonstrates that SSL features encode linguistic content and prosody while acoustic codec tokens encode speaker identity and recording conditions |
+| [[2212.04356]] | Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) | arXiv | 2022 | Supervised at-scale speech recognition model used as ASR backbone in TTS evaluation pipelines; demonstrates that weakly supervised scaling surpasses SSL-based ASR on out-of-distribution robustness |
+| [[2312.15185]] | emotion2vec: Self-Supervised Pre-Training for Speech Emotion Representation | arXiv | 2023 | SSL pre-trained emotion representation model via online distillation on 262 hours unlabeled emotion data; used as frozen feature extractor in emotion-conditioned TTS evaluation |

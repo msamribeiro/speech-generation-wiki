@@ -3,7 +3,7 @@ slug: transformer-enc-dec-tts
 title: Transformer Encoder-Decoder TTS
 aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: declining
 ---
 
@@ -18,21 +18,30 @@ declining — Transformer enc-dec TTS is no longer the dominant approach for hig
 
 ## Why This Matters
 
-# TODO: expand
+Non-autoregressive encoder-decoder TTS was the field's primary solution to the speed and control limitations of autoregressive acoustic models (Tacotron, WaveNet). By generating all output frames in parallel, it achieved real-time factors above 40x, enabling deployment on CPU. The variance adaptor design it pioneered (FastSpeech 2) remains the clearest articulation of the one-to-many problem in TTS: given the same text, pitch, energy, and duration vary legitimately across utterances, and handling this underdetermination explicitly rather than sampling it implicitly turned out to be the correct diagnosis.
 
 ## Core Idea
 
-# TODO: expand
+A transformer encoder-decoder TTS system encodes a phoneme or character sequence into a latent representation and decodes it into a mel-spectrogram or codec token sequence in parallel (all frames simultaneously). Duration information is provided by an explicit length regulator that repeats encoder outputs to match the target frame count. Prosodic variation is managed through explicit variance predictors or diffusion modules. The waveform is then synthesized by a separate vocoder (typically HiFi-GAN). The key property is that inference is fully parallel: output quality does not degrade with utterance length the way autoregressive models can.
 
 ## Methods and Variants
 
-# TODO: expand
+**FastSpeech 2 (variance adaptor).** The canonical design: a feed-forward Transformer encoder-decoder with an interposed variance adaptor containing sequential duration, pitch, and energy predictors. Ground-truth variance signals at training time eliminate teacher-student distillation. Forced alignment (MFA) provides phoneme durations. Pitch modeled in frequency domain via CWT avoids issues with direct F0 regression. [[2006.04558]] established this as the dominant enc-dec architecture from 2020 onward.
+
+**VITS and end-to-end enc-dec.** VITS integrates a variational autoencoder and a normalizing flow with the encoder-decoder structure, learning alignment end-to-end without an external aligner and generating waveforms directly without a separate vocoder. This collapses the two-stage pipeline into one model while retaining parallel inference.
+
+**Hybrid enc-dec+diffusion.** Replace the deterministic variance adaptor with a diffusion module for stochastic prosody generation (DiffStyleTTS [[2025.coling-main.352]], EmoSSLSphere [[2508.11273]]). Retains the parallel text-to-frame structure while adding prosodic diversity.
+
+**Streaming enc-dec with codec output.** Non-autoregressive enc-dec with depth-wise sequential RVQ decoding [[2604.12438]] enables 303x real-time streaming synthesis — a latency advantage that autoregressive codec LMs cannot match with the same architecture.
 
 ## Major Claims
 
 Claims are generalised propositions aggregated from paper evidence. The full claim registry with supporting paper lists is in `wiki/concepts/_evidence/transformer-enc-dec-tts.yaml`.
 
 ### Strongly Supported
+
+- Explicit variance conditioning on pitch, energy, and duration in non-autoregressive TTS eliminates the information gap between text and speech, enabling quality matching or surpassing autoregressive acoustic models without autoregressive inference.
+  Supporting: [[2006.04558]]
 
 - Transformer enc-dec TTS (FastSpeech2, VITS) remains competitive with or superior to codec LM approaches on situated naturalness and low-resource language benchmarks where training data is limited.
   Supporting: [[2025.acl-long.911]], [[2025.acl-short.81]], [[interspeech-2025-0469]]
@@ -61,6 +70,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2006.04558]] — FastSpeech 2: introduces the variance adaptor (pitch/energy/duration) and eliminates teacher-student distillation; defines the non-autoregressive TTS architecture template from 2020 onward.
 - [[2508.12001]] — VITS-based enc-dec TTS with MoE duration predictor and Vocos vocoder replacement achieves MOS 4.48 on LJSpeech, the highest among evaluated systems including StyleTTS2 and F5-TTS.
 
 ### Influential
@@ -72,16 +82,20 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Open Questions
 
-# TODO: expand
+- Does the enc-dec architecture retain a latency advantage over AR codec LMs at all utterance lengths, or does the advantage only hold for short utterances?
+- Can hybrid enc-dec+diffusion systems match the prosodic diversity of AR LMs without sacrificing inference speed?
+- At what scale does the VITS-style end-to-end design outperform separate acoustic model + vocoder pipelines?
+- Can non-autoregressive enc-dec systems with codec output (like [[2604.12438]]) achieve comparable speaker similarity to AR systems at the same inference speed?
 
 ## Trend Summary
 
-# TODO: expand
+2018–2020: Tacotron and its variants established the autoregressive enc-dec baseline; FastSpeech 1 demonstrated parallel inference was competitive. 2020–2022: FastSpeech 2 [[2006.04558]] removed teacher-student distillation, introduced the variance adaptor, and set the non-autoregressive quality ceiling for the era; VITS merged encoder-decoder with VAE and flow for end-to-end waveform generation. 2023–2024: AR codec LMs (VALL-E family) and flow-matching systems (Voicebox, F5-TTS) surpassed enc-dec on naturalness and speaker similarity benchmarks for high-resource English TTS, initiating the architecture's shift from dominant to declining. 2025: Enc-dec architectures retain relevance in specialized applications: low-resource languages (where AR systems require much more data), pathological speech adaptation, hybrid enc-dec+diffusion prosody models, and streaming systems requiring ultra-low latency. PEFT-based cross-lingual adaptation ([[interspeech-2025-1344]]) most frequently targets flow-matching systems, but the same techniques apply to enc-dec architectures.
 
 ## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
+| [[2006.04558]] | FastSpeech 2: Fast and High-Quality End-to-End Text to Speech | arXiv | 2020 | Introduces variance adaptor (pitch/energy/duration) and eliminates teacher-student distillation; canonical non-autoregressive TTS baseline |
 | [[2025.acl-long.911]] | DNASpeech: A Contextualized and Situated TTS Dataset with Dialogue, Narrative, and Action Prompts | ACL | 2025 | Evaluates FastSpeech2-style and Tacotron-style enc-dec TTS models (TacotronGST, FastSpeech2-GST, FastSpeech2) as baselines for situated TTS; shows that traditional enc-dec models score better on situated naturalness MOS-S than codec TTS despite lower objective scores |
 | [[2025.acl-short.81]] | Zero-Shot Text-to-Speech for Vietnamese | ACL | 2025 | Benchmarks VoiceCraft (enc-dec codec LM) and XTTS-v2 (cross-lingual enc-dec with VITS backbone) as zero-shot TTS baselines for Vietnamese; demonstrates XTTS-v2 fine-tuned on domain data outperforms VALL-E-style systems |
 | [[2025.coling-main.352]] | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for TTS | workshop | 2025 | Extends FastSpeech2-style enc-dec architecture with a conditional diffusion module replacing the variance adaptor; preserves the text-encoder/decoder structure while adding stochastic prosody generation |

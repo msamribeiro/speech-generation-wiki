@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: established
 ---
 ## Executive Summary
@@ -126,6 +126,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - [[2025.emnlp-main.40]] — provides the most comprehensive taxonomy of evaluation metrics for controllable TTS, identifying fragmentation as a fundamental field-level problem
 
 ### Influential
+- [[2204.02152]] — UTMOS won VoiceMOS Challenge 2022 and became the standard automatic MOS predictor in TTS evaluation pipelines; ranked first on utterance-level MSE, SRCC, and system-level MSE
+- [[2212.04356]] — Whisper provides the robust ASR backbone universally used for WER-based intelligibility evaluation in TTS and codec papers
 - [[2025.acl-long.682]] — surveys SpeechLM evaluation across six categories (representation, linguistic, paralinguistic, generation quality/diversity, real-time interaction, downstream benchmarks), the broadest coverage in the corpus
 - [[2509.09631]] — documents a concrete case where automatic SPK-SIM and perceptual similarity MOS rank systems in opposite order, challenging the proxy assumption
 
@@ -196,6 +198,10 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[interspeech-2025-0401]] | Enabling Replicability of Speech Synthesis Perceptual Evaluations | Interspeech | 2025 | Proposes recipe-based replicability framework; replikant platform; reviewer checklist for evaluation protocol reporting; distinguishes reproducibility from replicability in TTS evaluation |
 | [[interspeech-2025-2765]] | The State of TTS: Human Fooling Rates Case Study | Interspeech | 2025 | Introduces HFR (Human Fooling Rate) as a binary deception metric; shows CMOS/MUSHRA overestimate naturalness; commercial systems approach but open-source systems fall 20+ points short of human deception rates |
 | [[interspeech-2025-1066]] | Score-Based Training for Energy-Based TTS Models | Interspeech | 2025 | UTMOSv2 and subjective MOS diverge for EBM-based TTS; documents a case where automatic naturalness predictor is unreliable for non-standard synthesis paradigms |
+| [[2204.02152]] | UTMOS: UTokyo-SaruLab System for VoiceMOS Challenge 2022 | arXiv | 2022 | Introduces the ensemble SSL-MOS predictor that becomes the community's primary automatic speech quality metric; first in-class on VoiceMOS Challenge 2022 main and OOD tracks |
+| [[1904.02882]] | LibriTTS: A Corpus Derived from LibriSpeech for Text-to-Speech | arXiv | 2019 | Establishes 24 kHz sentence-level TTS corpus with MOS evaluation methodology; foundational training and evaluation dataset for multi-speaker TTS naturalness benchmarking |
+| [[2212.04356]] | Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) | arXiv | 2022 | Whisper is the de facto ASR backbone for WER-based intelligibility evaluation in TTS papers; demonstrates that evaluation on in-distribution benchmarks overstates robustness |
+| [[2006.04558]] | FastSpeech 2: Fast and High-Quality End-to-End Text to Speech | arXiv | 2020 | Evaluates TTS with carefully controlled MOS and CMOS protocols; demonstrates that forced-alignment durations measurably improve intelligibility and that end-to-end waveform generation requires explicit variance conditioning |
 | [[interspeech-2025-0739]] | FD-Bench: Full-Duplex Benchmarking Pipeline | Interspeech | 2025 | Interrupt-specific metrics (SRRate, IRD, FSED, EIRate, NIRate) for FDSDS evaluation; LLM-as-judge and conditioned perplexity as complementary quality signals |
 | [[interspeech-2025-2043]] | MKL-VC: Training-Free VC via Factorized OT | Interspeech | 2025 | Introduces composite total score (weighted sum of WER, CER, and SPK-SIM distance from ideal point) for VC system ranking; cross-lingual evaluation on FLEURS |
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching TTS via EPSS | Interspeech | 2025 | Reports RTF alongside WER, SPK-SIM, UTMOS for step-count reduction evaluation; three-benchmark evaluation (Seed-TTS-eval EN/ZH, LibriSpeech-PC) provides more robust speedup-quality characterisation |

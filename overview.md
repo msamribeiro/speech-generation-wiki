@@ -3,7 +3,7 @@ title: "Field Overview"
 ---
 *Updated after every ~25 ingests or after a significant query that reveals a new pattern.*
 
-Last updated: 2026-06-03 | Papers ingested: 146
+Last updated: 2026-06-10 | Papers ingested: 200
 
 ---
 
@@ -11,14 +11,14 @@ Last updated: 2026-06-03 | Papers ingested: 146
 
 **Text-to-Speech (TTS).** Two paradigms dominate open-weight zero-shot TTS as of mid-2025:
 
-- **Pure flow-matching** ([[2025.acl-long.313]], F5-TTS; [[2025.acl-long.1043]], OZSpeech): Flow matching over mel-spectrograms with text and reference audio concatenation. F5-TTS (336M, 95K hours EN+ZH) is the reference open-weight system. OZSpeech demonstrates that replacing the Gaussian source distribution with a learned prior enables single-step inference (NFE=1) trained on only 500 hours.
-- **LLM + flow matching** (CosyVoice 2, [[2510.00981]] FlexiCodec-TTS): Autoregressive LM predicts semantic tokens from text; a flow-matching or continuous-token acoustic model synthesizes mel/waveform conditioned on those tokens. This hybrid achieves better text adherence at the cost of AR latency. The low-frame-rate direction ([[2510.00981]]: 6.25 Hz AR) makes this practical for streaming.
+- **Pure flow-matching** ([[2025.acl-long.313]], F5-TTS; [[2025.acl-long.1043]], OZSpeech): Flow matching over mel-spectrograms with text and reference audio concatenation. The theoretical framework was established by [[2210.02747]] (Flow Matching for Generative Modeling); [[2207.12598]] (Classifier-Free Guidance) provides the conditioning mechanism. F5-TTS (336M, 95K hours EN+ZH) is the reference open-weight system.
+- **LLM + flow matching** ([[2412.10117]] CosyVoice 2, [[2510.00981]] FlexiCodec-TTS): Autoregressive LM predicts semantic tokens from text; a flow-matching acoustic model synthesizes mel conditioned on those tokens. This hybrid achieves better text adherence at the cost of AR latency. The semantic-token-plus-acoustic-token hierarchy traces to [[2209.03143]] (AudioLM, 2022) and is made practical by neural codecs in the [[2210.13438]] (EnCodec) family.
 
-The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conceptual anchor, with active work on improving its codec ([[2025.acl-long.1498]] DRI consistency), decoding ([[2025.emnlp-main.989]] MTP), and post-training alignment ([[2025.acl-long.598]] INTP/DPO).
+The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conceptual anchor, with active work on improving its codec ([[2025.acl-long.1498]] DRI consistency), decoding ([[2025.emnlp-main.989]] MTP), and post-training alignment ([[2025.acl-long.598]] INTP/DPO). At the vocoder layer, [[2010.05646]] (HiFi-GAN) and [[2206.04658]] (BigVGAN) remain the dominant choices across virtually all published TTS systems.
 
 **Voice Conversion (VC).** Real-time zero-shot VC is the dominant research direction. Two systems define the 2025 frontier: [[2507.14534]] (Conan, SSL-distillation content extraction, 37–140 ms GPU latency, 85.71% SPK-SIM) and [[2025.acl-demo.37]] (RT-VC, articulatory coding, 61.4 ms CPU latency). The gap between streaming and offline VC quality has effectively closed.
 
-**Spoken Conversational Agents (SCA).** Aligned multimodal LLMs (speech encoder + text LLM + speech decoder) dominate over pure end-to-end speech LMs. GPT-4o voice mode, Moshi, Qwen2.5-Omni, and VocalNet ([[2025.emnlp-main.989]]) represent this paradigm. Key advances: cross-modal distillation without instruction data ([[2025.acl-long.388]] DiVA), empathetic response generation ([[2025.emnlp-demos.70]] OpenS2S), and the first interaction-annotation corpus for duplex modeling ([[2025.findings-emnlp.424]] InteractSpeech). A systematic diagnosis of why pure SLMs underperform text LLMs ([[2412.17048]]) reveals paralinguistic variability in tokens (Factor C) as the dominant bottleneck.
+**Spoken Conversational Agents (SCA).** Aligned multimodal LLMs (speech encoder + text LLM + speech decoder) dominate over pure end-to-end speech LMs. The SCA lineage runs from [[2209.03143]] (AudioLM, 2022) to [[2410.00037]] (Moshi, 2024, full-duplex real-time dialogue) to [[2410.21276]] (GPT-4o, 2024, natively multimodal at production scale) to [[2503.20215]] (Qwen2.5-Omni, 2025, omni-modal streaming). Key advances in the latest pass: cross-modal distillation without instruction data ([[2025.acl-long.388]] DiVA), empathetic response generation ([[2025.emnlp-demos.70]] OpenS2S), and the first interaction-annotation corpus for duplex modeling ([[2025.findings-emnlp.424]] InteractSpeech). A systematic diagnosis of why pure SLMs underperform text LLMs ([[2412.17048]]) reveals paralinguistic variability in tokens (Factor C) as the dominant bottleneck.
 
 ## 2. Emerging Trends
 
@@ -70,25 +70,30 @@ By paper count (as of this update):
 
 | Concept | Paper count | Key papers |
 |---------|------------|-----------|
-| [[self-supervised-speech]] | 11 | WavLM for SPK-SIM, HuBERT for VC content, Whisper for SLM encoding |
-| [[zero-shot-tts]] | 8 | F5-TTS, VALL-E, INTP, OZSpeech, ControlSpeech, Conan |
-| [[autoregressive-codec-tts]] | 9 | VALL-E, FlexiCodec, VocalNet, DRI, FireRedTTS-2 |
-| [[neural-codec]] | 9 | EnCodec, FlexiCodec, DRI, Cont-SPT, ControlSpeech, VocalNet |
-| [[spoken-language-model]] | 9 | SpeechLM survey, DiVA, VocalNet, OpenS2S, InteractSpeech, 2412.17048 |
-| [[evaluation-metrics]] | 7 | InteractSpeech, DRI, INTP, SpeechLM survey, Thai TTS, prosody MI |
-| [[flow-matching]] | 4 | F5-TTS, OZSpeech, INTP, Selective CFG |
+| [[autoregressive-codec-tts]] | 66 | VALL-E, CosyVoice 2, GLM-4-Voice, Moshi, AudioLM, Kimi-Audio |
+| [[evaluation-metrics]] | 68 | UTMOS, Whisper-WER, LibriTTS, MUSHRA benchmarks |
+| [[spoken-language-model]] | 51 | AudioLM, Moshi, GPT-4o, Qwen2.5-Omni, Kimi-Audio, WavChat |
+| [[neural-codec]] | 59 | EnCodec, BigCodec, SpeechTokenizer, DualCodec |
+| [[self-supervised-speech]] | 50 | WavLM, HuBERT, Whisper, AudioLM, emotion2vec |
+| [[zero-shot-tts]] | 62 | F5-TTS, NaturalSpeech 3, VALL-E, Seed-TTS, INTP, OZSpeech |
+| [[flow-matching]] | 40 | F5-TTS, OZSpeech, CosyVoice 2, NaturalSpeech 3, Flow Matching |
+| [[multilingual-tts]] | 36 | CosyVoice, Whisper, Common Voice, Llama 3 |
 | [[streaming-tts]] | 6 | Conan, RT-VC, FlexiCodec, VocalNet, OpenS2S, FireRedTTS-2 |
 
-The heaviest hub — [[self-supervised-speech]] — reflects the foundational role of SSL models as content extractors, speaker encoders, evaluation tools (WavLM for SPK-SIM), and codec distillation targets across all three tasks.
+The heaviest hubs reflect the paradigm shift from isolated TTS systems to integrated speech-language ecosystems: [[autoregressive-codec-tts]] and [[spoken-language-model]] are deeply intertwined (codec LMs are the foundation for both), while [[evaluation-metrics]] and [[neural-codec]] cross-cut all three tasks. The paper counts above increased substantially in integration pass 8 as foundational papers from 2019 to 2024 (AudioLM, EnCodec, Flow Matching, HiFi-GAN, Whisper, UTMOS, LibriTTS, Common Voice) were integrated, anchoring the full lineage explicitly in the corpus.
 
 ## 6. Year-on-Year Perspective
 
-The corpus currently spans 2023 ([[2301.02111]] VALL-E) through 2026 ([[2412.17048]] ICASSP 2026 paper, published 2026-01). The primary year cluster is 2025 (ACL 2025, EMNLP 2025, Interspeech 2025, arXiv preprints).
+The corpus now spans 2014 ([[1412.6980]] Adam optimizer) through 2026 ([[2412.17048]] ICASSP 2026 paper, published 2026-01). The primary year cluster is 2025 (ACL 2025, EMNLP 2025, Interspeech 2025, arXiv preprints). Integration pass 8 added 54 foundational papers from 2019 to 2024, making the full lineage visible.
 
-**2023:** VALL-E establishes codec LM paradigm. 60K hours of training, 3-second enrollment at inference. EnCodec at 75 Hz. Demonstrates zero-shot speaker generalization via scale.
+**Pre-2022 (foundational infrastructure, now in corpus):** [[1904.02882]] (LibriTTS) and [[1912.06670]] (Common Voice) provide the training and evaluation corpora on which most TTS research is benchmarked. [[2006.04558]] (FastSpeech 2) defines the non-autoregressive enc-dec TTS template. [[2010.05646]] (HiFi-GAN) closes the GAN vocoder quality gap. [[1412.6980]] (Adam) and [[1711.05101]] (AdamW) are the near-universal optimizers.
 
-**2024 (pre-corpus, referenced):** Voicebox, E2-TTS lay the groundwork for flow-matching TTS. Moshi achieves real-time duplex SLM. CosyVoice introduces LLM+flow-matching hybrid. Emilia dataset (100K hours EN+ZH) enables F5-TTS training.
+**2022: assembly of the modern foundational stack.** [[2209.03143]] (AudioLM) establishes the semantic-token-plus-acoustic-token hierarchy for neural audio generation. [[2210.13438]] (EnCodec) provides the RVQ streaming codec that the entire field builds on. [[2210.02747]] (Flow Matching) formalizes the continuous normalizing flow framework adopted by most modern TTS systems. [[2207.12598]] (Classifier-Free Guidance) introduces the conditioning mechanism used universally in flow-matching and diffusion TTS. [[2206.04658]] (BigVGAN) and [[2204.02152]] (UTMOS) complete the year: the former as the universal neural vocoder; the latter as the community's primary automatic quality proxy. [[2212.04356]] (Whisper) provides robust multilingual ASR used in WER-based TTS evaluation pipelines.
 
-**2025:** The dominant trend is post-training refinement and production deployment. F5-TTS (open-weight), preference alignment (INTP/DPO), codec consistency training (DRI), and streaming adaptation (Conan, RT-VC) all represent refinements of paradigms established in 2023–2024. The field shifts from "can we build a zero-shot TTS system?" to "how do we make it robust, efficient, multilingual, and conversational?" Key technical differentiators: Sway Sampling for inference-time flow improvements, DPO-FM/DPO-MGM extending alignment beyond AR models, DRI consistency training for codecs, and Factor C analysis providing a theoretical framing for SLM limitations.
+**2023:** VALL-E ([[2301.02111]]) establishes the codec LM paradigm: 60K hours, 3-second enrollment, zero-shot speaker generalization via scale. EnCodec at 75 Hz. NaturalSpeech 2 and Voicebox lay the groundwork for diffusion- and flow-based TTS without autoregressive decoding.
 
-The emerging 2025→2026 direction is dialogue-native TTS (FireRedTTS-2, InteractSpeech) and rigorous analysis of what limits current systems (DRI, Factor C, context-length constraints for prosody from [[2025.acl-long.1471]]). The field is maturing from empirical advances toward theoretical grounding. Integration pass 6 adds 26 Interspeech 2025 and arXiv papers, reinforcing three broad patterns: (1) inference acceleration as a first-class engineering concern (speculative decoding for AR, non-uniform step pruning for FM); (2) PEFT-first as the functional default for multilingual adaptation, not just a computational convenience; (3) evaluation methodology advances (fooling rate, replicability checklist, FD-Bench, CodecBench) emerging in parallel with synthesis quality improvements.
+**2024:** The paradigm diversifies. [[2403.03100]] (NaturalSpeech 3) demonstrates human-parity naturalness via disentangled FACodec. [[2406.02430]] (Seed-TTS) shows foundation-model-scale synthesis with RL post-training. [[2407.05407]] (CosyVoice) establishes LLM+flow-matching as a practical hybrid. [[2410.00037]] (Moshi) achieves real-time full-duplex speech-text LM dialogue. [[2410.21276]] (GPT-4o) demonstrates natively multimodal dialogue at production scale with end-to-end speech input/output. [[2412.02612]] (GLM-4-Voice) and [[2412.10117]] (CosyVoice 2) close the year with bilingual spoken chatbot and streaming hybrid TTS.
+
+**2025:** The dominant trend is post-training refinement and production deployment. F5-TTS (open-weight), preference alignment (INTP/DPO), codec consistency training (DRI), and streaming adaptation (Conan, RT-VC) all represent refinements of paradigms established in 2023–2024. The field shifts from "can we build a zero-shot TTS system?" to "how do we make it robust, efficient, multilingual, and conversational?" Key technical differentiators: Sway Sampling for inference-time flow improvements, DPO-FM/DPO-MGM extending alignment beyond AR models, DRI consistency training for codecs, and Factor C analysis providing a theoretical framing for SLM limitations. Omni models ([[2503.20215]] Qwen2.5-Omni, [[2504.18425]] Kimi-Audio) unify speech understanding and generation in a single streaming architecture.
+
+The emerging 2025→2026 direction is dialogue-native TTS (FireRedTTS-2, InteractSpeech) and rigorous analysis of what limits current systems (DRI, Factor C, context-length constraints for prosody). The field is maturing from empirical advances toward theoretical grounding. Integration pass 8 reinforced three broad patterns that compound those from earlier passes: (1) the foundational infrastructure lineage (AudioLM → EnCodec → Flow Matching → CFG → UTMOS → HiFi-GAN) is now explicitly in corpus and cross-linked; (2) the SCA convergence trajectory (AudioLM 2022 → Moshi 2024 → GPT-4o 2024 → Qwen2.5-Omni 2025) is traceable across papers; (3) inference acceleration and PEFT-first adaptation continue as first-class engineering concerns.

@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: dominant
 ---
 
@@ -108,6 +108,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2209.03143]] — AudioLM establishes the semantic-token-plus-acoustic-token hierarchical generation framework that VALL-E and subsequent AR codec TTS systems build on; first demonstration of text-free speech continuation indistinguishable from real speech.
 - [[2301.02111]] — VALL-E established the codec language modeling paradigm for TTS, demonstrating that an AR LM conditioned on a 3-second speaker prompt could achieve strong zero-shot speaker generalization without per-speaker fine-tuning.
 
 ### Influential
@@ -189,6 +190,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2603.18090]] | MOSS-TTS Technical Report | arXiv | 2026 | Large-scale AR TTS with causal Transformer tokenizer; millions of hours training data; WER 2.04% (EN) and CER 2.07% (ZH) on Seed-TTS-Eval; demonstrates that open-source large-scale AR TTS can match Qwen3-TTS and CosyVoice 3 |
 | [[2603.26364]] | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Discrete Diffusion | arXiv | 2026 | Drops AR LM stage of a CosyVoice-style pipeline and replaces with masked discrete diffusion; achieves CER 0.98% (zh) on Seed-TTS-Eval while enabling parallel generation and step-count-independent inference cost |
 | [[2604.01760]] | T5Gemma-TTS Technical Report | arXiv | 2026 | Encoder-decoder codec LM with cross-attention text conditioning; resolves text dilution problem of decoder-only AR TTS; achieves best WER among compared systems on English, Italian, Portuguese, and Chinese |
+| [[2209.03143]] | AudioLM: a Language Modeling Approach to Audio Generation | arXiv | 2022 | Establishes the semantic-token-plus-acoustic-token hierarchical LM paradigm that VALL-E and all subsequent AR codec TTS systems build on |
+| [[2410.00037]] | Moshi: a speech-text foundation model for real-time dialogue | arXiv | 2024 | First real-time full-duplex spoken dialogue system using multi-stream AR codec generation; demonstrates the AR codec LM paradigm scales to interactive speech-to-speech generation |
+| [[2412.02612]] | GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot | arXiv | 2024 | End-to-end bilingual spoken chatbot combining AR LM backbone with flow-matching decoder; demonstrates trillion-token speech-text interleaved pre-training substantially closes the S→S vs. S→T quality gap |
+| [[2503.20215]] | Qwen2.5-Omni Technical Report | arXiv | 2025 | Thinker-Talker architecture with dual-track AR Talker consuming LLM hidden states; sliding-window FM DiT vocoder enables streaming omni-modal generation |
 | [[2604.12438]] | An Ultra-Low Latency End-to-End Streaming Speech Synthesis Architecture | arXiv | 2026 | Non-autoregressive streaming TTS using depth-wise sequential decoding over 32 Mimi RVQ layers; RTF ~0.0033 (303× real-time) with 48.99 ms first-byte latency — fastest in corpus |
 | [[interspeech-2025-0551]] | Monotonic Attention for Robust TTS Synthesis in Large Language Model Frameworks | Interspeech | 2025 | Stepwise monotonic attention (SMA) fine-tuning of selected alignment heads in decoder-only LLM TTS reduces deletion/insertion errors without external aligners; CER 8.53% vs. 10.42% on Seed-ZH-Hard at 300M/150K-hour scale |
 | [[interspeech-2025-1641]] | Robust Neural Codec Language Modeling with Phoneme Position Prediction | Interspeech | 2025 | Joint AR prediction of codec tokens and phoneme position indices eliminates all three alignment failure modes (skipping, repetition, one-to-many); 52.7% relative CER reduction on Seed-TTS test-zh; position supervision outperforms identity prediction |

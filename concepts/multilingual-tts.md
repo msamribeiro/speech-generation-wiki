@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 ---
 
 ## Executive Summary
@@ -179,3 +179,6 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | French-specific SSML prosody control; phrase-final intonation and pacing normalisation for commercial TTS engines; MOS 3.20→3.87 |
 | [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | English→Spanish language adaptation via adapter PEFT; PSR accent metric for cross-lingual evaluation; vocoderside adapters drive accent quality |
 | [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | G2P-free mixed-script Japanese TTS; SSL pseudo-label prediction via T5; comparable naturalness to G2P baseline demonstrating resource-free multilingual front-end |
+| [[1912.06670]] | Common Voice: A Massively-Multilingual Speech Corpus | arXiv | 2019 | CC0-licensed crowdsourced multilingual corpus covering 29+ languages including low-resource ones; foundational open training and evaluation resource for multilingual TTS |
+| [[2212.04356]] | Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) | arXiv | 2022 | Multilingual ASR model trained on 680K hours across 99 languages; used as data annotation backbone and evaluation ASR in multilingual TTS pipelines |
+| [[2407.21783]] | The Llama 3 Herd of Models | arXiv | 2024 | Open-weight multilingual LLM backbone used by TTS and SCA systems; includes a speech extension path with a 1B conformer encoder covering 34 languages |

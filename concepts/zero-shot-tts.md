@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: dominant
 ---
 
@@ -208,3 +208,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.17031]] | RephraseTTS | arXiv | 2025 | Speech insertion with zero-shot speaker style transfer from surrounding audio context; cross-modal attention outperforms global speaker embeddings |
 | [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Zero-shot multi-speaker long-form TTS; continuous VAE tokenizer at 7.5 Hz; SPK-SIM 0.692 on podcast benchmark |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | Zero-shot expressive TTS benchmark on LibriQuote; IndexTTS2 achieves human-level ContextMOS; flow-matching models benefit more from expressive fine-tuning |
+| [[2403.03100]] | NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models | arXiv | 2024 | Introduces FACodec with disentangled attribute subspaces; achieves human-level naturalness (CMOS 0.00) and SMOS 4.01 on LibriSpeech zero-shot TTS; SMOS exceeds ground truth |
+| [[2410.00037]] | Moshi: a speech-text foundation model for real-time dialogue | arXiv | 2024 | Zero-shot voice TTS subsystem within Moshi; 4.7% WER on LibriSpeech test-clean in streaming mode via Inner Monologue; prompt-conditioned speaker voice preservation |
+| [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Kimi-TTS subsystem enables zero-shot TTS from the same multimodal backbone; flow-matching streaming detokenizer with BigVGAN vocoder |

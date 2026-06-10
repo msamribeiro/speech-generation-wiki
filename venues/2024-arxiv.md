@@ -10,11 +10,7 @@ last_updated: 2026-06-10
 
 ## Overview
 
-Three arXiv 2024 preprints are currently ingested, all foundational zero-shot TTS systems that established or advanced the state of the art heading into 2025. All three are from major industry labs (ByteDance, Alibaba) and are landmark systems widely cited in subsequent work.
-
-The dominant theme is the hybrid architecture: an autoregressive language model generates discrete or semi-supervised speech tokens, followed by a continuous diffusion or flow-matching decoder that reconstructs high-quality mel spectrograms. All three systems demonstrate human-parity or near-human-parity performance on zero-shot TTS benchmarks (CMOS within 0.1 of ground truth, or exceeding human on objective metrics).
-
-Key differentiators: [[2406.02430]] (Seed-TTS) operates at the largest scale and introduces self-distillation for timbre disentanglement and REINFORCE post-training; [[2407.05407]] (CosyVoice) introduces supervised S3 tokens from an ASR encoder to improve content consistency; [[2412.10117]] (CosyVoice 2) upgrades CosyVoice with FSQ tokenization and a chunk-aware causal flow matching model for streaming synthesis.
+The 11 arXiv 2024 preprints in this corpus span the full hierarchy from foundational LLM infrastructure to production speech systems. The dominant task theme is zero-shot TTS: [[2403.03100]] (NaturalSpeech 3) introduced disentangled factorized codecs achieving human-parity naturalness; [[2406.02430]] (Seed-TTS) demonstrated foundation-model-scale synthesis with RL post-training; [[2407.05407]] (CosyVoice) established supervised semantic tokens for multilingual zero-shot; and [[2412.10117]] (CosyVoice 2) added streaming. The most architecturally significant development was spoken conversational agents: [[2410.00037]] (Moshi) established the multi-stream full-duplex speech-text LLM paradigm, while [[2410.21276]] (GPT-4o) demonstrated end-to-end natively multimodal dialogue at production scale. On the LLM backbone side, [[2407.21783]] (Llama 3), [[2407.10759]] (Qwen2-Audio), and [[2412.15115]] (Qwen2.5) provide the open-weight foundations that TTS and SCA systems build on; [[2412.02612]] (GLM-4-Voice) and [[2411.13577]] (WavChat survey) round out the picture with a bilingual spoken chatbot and a comprehensive taxonomy of the emerging spoken dialogue field. The year is characterized by the convergence of LLM capability and audio generation into unified omni systems.
 
 ## Papers
 

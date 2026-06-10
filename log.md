@@ -8,6 +8,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-10
 
+- integrate | 25 papers | 12 concepts updated | 7 digests updated | 11 cross-links added
 - ingest | 2204.02152 | UTMOS: UTokyo-SaruLab System for VoiceMOS Challenge 2022 | arXiv 2022
 - ingest | 2504.18425 | Kimi-Audio Technical Report | arXiv 2025
 - ingest | 1904.02882 | LibriTTS: A Corpus Derived from LibriSpeech for Text-to-Speech | arXiv 2019

@@ -1,8 +1,48 @@
 concept: multilingual-tts
-last_updated: 2026-06-05
-paper_count: 33
+last_updated: 2026-06-10
+paper_count: 36
 
 papers:
+  - id: 1912.06670
+    year: 2019
+    task: []
+    architecture: []
+    relevance: high
+    contribution_type: dataset-contribution
+    claims:
+      - Large-scale crowdsourced multilingual speech corpora with permissive licensing enable open multilingual TTS research at a scale previously only possible in proprietary settings.
+    evidence:
+      - Common Voice provides 2,500 hours across 29+ languages at CC0 license including low-resource languages absent from most other corpora; broad typological coverage.
+    limitations:
+      - Read-speech only; pronunciation and annotation quality varies by language; volunteer-recorded audio quality inconsistent.
+
+  - id: 2212.04356
+    year: 2022
+    task: [evaluation]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Weakly supervised ASR training at sufficient scale across 99 languages produces a multilingual model that generalises without dataset-specific fine-tuning.
+      - Per-language zero-shot ASR performance scales predictably with per-language training data.
+    evidence:
+      - Whisper: 680K hours across 99 languages; BLEU 29.1 on CoVoST 2 X-to-English, outperforming mSLAM and XLS-R.
+    limitations:
+      - Coverage uneven; 20/102 Fleurs languages have zero training data.
+
+  - id: 2407.21783
+    year: 2024
+    task: []
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Open-weight multilingual LLMs can serve as speech generation backbones by adding a separately trained speech encoder and adapter, enabling multilingual ASR and spoken dialogue across 34 languages without modifying LLM weights.
+    evidence:
+      - Llama 3 + 1B Conformer + 100M adapter covers 34 languages for ASR/AST/spoken dialogue via compositional fine-tuning.
+    limitations:
+      - Speech extension described as separate component; speech synthesis capability not primary focus.
+
   - id: 2508.05385
     year: 2025
     task: [TTS]

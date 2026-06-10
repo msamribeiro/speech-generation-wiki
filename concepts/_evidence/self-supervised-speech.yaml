@@ -1,8 +1,62 @@
 concept: self-supervised-speech
-last_updated: 2026-06-05
-paper_count: 47
+last_updated: 2026-06-10
+paper_count: 50
 
 papers:
+  - id: 2209.03143
+    year: 2022
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Combining SSL semantic tokens with codec acoustic tokens in a hierarchical LM resolves the quality-versus-coherence tension in single-tokenizer audio language models.
+      - SSL semantic tokens (w2v-BERT) and codec acoustic tokens carry complementary information: semantic tokens encode linguistic content and prosody; acoustic tokens encode speaker identity.
+      - Autoregressive LM over discrete audio tokens can produce speech continuations indistinguishable from real speech in unpaired forced-choice tests.
+      - SSL representations trained with masked LM objectives encode sufficient lexical and syntactic information to outperform earlier causal spoken LMs on zero-resource linguistic benchmarks.
+    evidence:
+      - WER 6.0%, CER 3.4% for acoustic generation conditioned on GT semantic tokens on LibriSpeech test-clean.
+      - Speaker classification accuracy 3.2% on acoustic generations using same semantic tokens vs 100% on SoundStream reconstructions.
+      - Human forced-choice accuracy 51.2% (not distinguishable from chance, p=0.23) for 7s continuations.
+      - AudioLM: 71.5% sWUGGY / 64.7% sBLIMP, outperforming GSLM on ZeroResource 2021.
+    limitations:
+      - Not conditioned on text; generates continuations only, not instruction-following TTS.
+      - Three separate 0.3B transformer models; inference cost not reported.
+      - English only, trained on audiobook speech (Libri-Light).
+
+  - id: 2212.04356
+    year: 2022
+    task: [evaluation]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Weakly supervised ASR at sufficient scale produces models that generalise robustly across recording conditions, speakers, and languages without dataset-specific fine-tuning.
+      - Models evaluated on in-distribution benchmarks can appear superhuman while remaining significantly below human performance out-of-distribution.
+      - Per-language zero-shot ASR performance scales predictably with per-language training data.
+    evidence:
+      - Whisper Large V2: 2.7% WER on LibriSpeech test-clean; 55.2% lower avg WER than wav2vec 2.0 Large across 14 held-out datasets.
+      - CoVoST 2 X-to-English: 29.1 BLEU, outperforming mSLAM and XLS-R.
+      - Human comparison on Kincaid46: Whisper within fraction of a percentage point of human transcription services.
+    limitations:
+      - Text normalisation risk of overfitting to Whisper's transcription style.
+      - Long-form transcription requires explicit heuristics; hallucination not resolved.
+      - Performance on languages with non-Indo-European scripts below trend.
+
+  - id: 2312.15185
+    year: 2023
+    task: [evaluation]
+    architecture: []
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - SSL pre-training on 262 hours of unlabeled emotion data via online distillation produces a universal emotion representation that achieves state-of-the-art SER across 10 languages and multiple downstream emotion tasks.
+    evidence:
+      - emotion2vec achieves SOTA on IEMOCAP SER and 10-language evaluation without task-specific fine-tuning.
+    limitations:
+      - 262 hours is small by SSL standards; emotion domain is narrow.
+      - Downstream tasks limited to recognition; synthesis integration is indirect.
+
   - id: 2508.02849
     year: 2025
     task: [codec]

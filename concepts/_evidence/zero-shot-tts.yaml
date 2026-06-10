@@ -1,8 +1,53 @@
 concept: zero-shot-tts
-last_updated: 2026-06-05
-paper_count: 59
+last_updated: 2026-06-10
+paper_count: 62
 
 papers:
+  - id: 2403.03100
+    year: 2024
+    task: [TTS, VC]
+    architecture: [diffusion, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit disentanglement of speech attributes in the codec reduces zero-shot generation complexity and improves speaker similarity, quality, and prosody simultaneously.
+      - The factorization paradigm for codec representations is architecture-agnostic and improves both AR and NAR generators when applied.
+      - Discrete masked diffusion over disentangled codec tokens is faster than AR LM-based generation at comparable quality.
+      - Performance on zero-shot TTS scales predictably with training data volume and model size when the underlying speech representation captures disentangled attributes.
+    evidence:
+      - CMOS 0.00 (human-parity) on LibriSpeech test-clean; SMOS 4.01 exceeds ground truth 3.85; SPK-SIM 0.67; WER 1.81%.
+      - Removing factorization degrades Sim-O from 0.67 to 0.55, CMOS by 0.25, SMOS by 0.42.
+      - Scaling to 1B params and 200K hours: Sim-O 0.73→0.78, WER 2.11%→1.71%.
+    limitations:
+      - English-only evaluation; FACodec requires phoneme-level transcriptions limiting low-resource applicability.
+      - Attribute factorization is incomplete; background sounds and energy not captured.
+
+  - id: 2410.00037
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Prompt-conditioned TTS within a multi-stream SLM framework can achieve competitive intelligibility (4.7% WER on LibriSpeech test-clean) in streaming mode from short reference clips.
+    evidence:
+      - Moshi streaming TTS achieves 4.7% WER on LibriSpeech test-clean, outperforming VALL-E (5.9%) with only 2s lookahead.
+    limitations:
+      - TTS is a secondary capability of Moshi; not the primary design goal; benchmarked only on LibriSpeech clean speech.
+
+  - id: 2504.18425
+    year: 2025
+    task: [TTS, VC, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - A hybrid semantic-token plus acoustic-feature representation with flow-matching streaming detokenization enables zero-shot TTS and VC within a universal multimodal LLM framework.
+    evidence:
+      - Kimi-TTS and Kimi-VC subsystems built on Qwen2.5-7B backbone; semantic tokens at 12.5 Hz with Whisper acoustic features.
+    limitations:
+      - Lightweight stub; specific evaluation metrics not reported in this page.
+
   - id: 2507.22746
     year: 2025
     task: [TTS]

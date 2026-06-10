@@ -3,7 +3,7 @@ slug: diffusion-tts
 title: Diffusion Models for TTS
 aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, score-matching TTS]
 related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts, voice-conversion]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: established
 ---
 
@@ -94,6 +94,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2207.12598]] — Classifier-free guidance: eliminates the external classifier from guided diffusion sampling by jointly training for conditional and unconditional generation; the conditioning mechanism adopted by virtually all subsequent conditional diffusion and flow-matching TTS systems
 - [[2406.02430]] — Seed-TTSDiT variant: end-to-end diffusion transformer for zero-shot TTS without per-phoneme duration prediction; established that diffusion models are viable for large-scale zero-shot TTS
 - [[2025.acl-long.313]] — F5-TTS: demonstrates DiT backbone superiority over U-Net for flow-matching TTS; establishes DiT+AdaLN as the standard architecture
 
@@ -126,6 +127,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
+| [[2207.12598]] | Classifier-Free Diffusion Guidance | arXiv | 2022 | Introduces CFG — the standard quality-diversity guidance mechanism adopted by all subsequent conditional diffusion and flow-matching TTS systems; eliminates the external classifier requirement |
 | [[2025.acl-long.313]] | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL | 2025 | Uses Diffusion Transformer (DiT) backbone with adaLN-zero for flow matching TTS; shows that DiT is more compute-efficient than flat U-Net Transformer (lower GFLOPs) and avoids the entanglement issues of skip-connection architectures |
 | [[2025.naacl-long.242]] | StyleTTS-ZS: Efficient High-Quality Zero-Shot TTS with Distilled Time-Varying Style Diffusion | NAACL | 2025 | Fixed-length RVQ prosody latent diffusion model; one-step distillation from 10k samples; CMOS -0.032 vs. ground truth at 10-20x faster inference than prior diffusion SOTA; codec-free design |
 | [[2406.02430]] | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv | 2024 | Seed-TTSDiT variant: end-to-end diffusion transformer for zero-shot TTS without per-phoneme duration prediction; highest SIM (0.790) among Seed-TTS variants; supports speech editing via masked infilling |

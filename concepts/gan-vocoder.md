@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: mature-infrastructure
 ---
 
@@ -89,9 +89,11 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2010.05646]] — HiFi-GAN establishes the multi-period discriminator paradigm that defines GAN vocoders; closes the quality gap with autoregressive and flow-based models while running 167x faster than real-time on GPU.
 - [[2507.14534]] — introduces the Causal Shuffle Vocoder, the first artifact-free strictly causal adaptation of HiFi-GAN for streaming VC applications.
 
 ### Influential
+- [[2206.04658]] — BigVGAN introduces periodic Snake activations and anti-aliased representations that substantially improve out-of-distribution generalization to unseen speakers, languages, and musical audio.
 - [[2025.acl-long.654]] — demonstrates that GAN training with multiple discriminators (MPD, MRD, MSD, complex STFT) is essential for high-fidelity codec reconstruction in Language-Codec.
 - [[2508.12001]] — replaces HiFi-GAN with Vocos in a VITS-based system and adds advanced multi-scale discriminators, achieving MOS 4.48 on LJSpeech (highest among evaluated systems).
 
@@ -135,3 +137,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-1122]] | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech | 2025 | HiFi-GAN vocoder in a JETS-based system; demonstrates GAN vocoder's disproportionate sensitivity to aggressive quantisation; 83% model compression via 1.58-bit QAT with weight indexing |
 | [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | MultiBand MelGAN as vocoder in 2M-param GAN-based TTS; convolutional vocoder adapters (50K params) contribute to cross-lingual quality; vocoderside adapters drive accent nativeness |
 | [[2509.02244]] | Spectrogram Patch Codec | arXiv | 2025 | HiFi-GAN vocoder trained on codec-reconstructed spectrograms; codec-artefact conditioning improves vocoder robustness; alternative to RVQ with single-stage 2D patch VQ |
+| [[2010.05646]] | HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis | arXiv | 2020 | Introduces MPD + MRF design that defines the GAN vocoder paradigm; foundational architecture that all subsequent GAN vocoders extend or compare against |
+| [[2206.04658]] | BigVGAN: A Universal Neural Vocoder with Large-Scale Training | arXiv | 2022 | Introduces periodic Snake activations + anti-aliased nonlinearities for out-of-distribution generalization; establishes universal vocoding including singing and multilingual speech |

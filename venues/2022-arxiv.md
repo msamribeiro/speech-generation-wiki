@@ -8,7 +8,7 @@ last_updated: 2026-06-10
 
 ## Overview
 
-_Accumulates as papers are ingested._
+The 2022 arXiv preprints in this corpus represent a pivotal year for neural speech and audio generation. Three foundational infrastructure papers appeared: [[2209.03143]] (AudioLM) established the semantic-token plus acoustic-token hierarchical generation paradigm that anchors the codec LM lineage; [[2210.13438]] (EnCodec) provided the RVQ streaming codec whose design became the standard for codec-based TTS; and [[2210.02747]] (Flow Matching) formalized the conditional flow matching framework that most subsequent non-autoregressive TTS systems adopt. On the evaluation and conditioning side, [[2207.12598]] (Classifier-Free Guidance) introduced the guidance mechanism now used universally in conditional diffusion and flow-matching systems, and [[2204.02152]] (UTMOS) established the automatic MOS predictor that became the community's primary quality proxy. [[2206.04658]] (BigVGAN) and [[2212.04356]] (Whisper) completed the year's infrastructure: BigVGAN provided a universal neural vocoder via periodic activations, and Whisper provided a robust multilingual ASR model that TTS evaluation pipelines use for WER computation. Taken together, 2022 is the year when the modern foundational stack (codec + flow matching + SSL-assisted evaluation) was assembled.
 
 ## Papers
 

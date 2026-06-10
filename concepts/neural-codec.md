@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-06-05
+last_updated: 2026-06-10
 status: mature-infrastructure
 ---
 
@@ -154,6 +154,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
+- [[2210.13438]] — EnCodec introduces the streaming RVQ-based convolutional codec with gradient balancer and MS-STFT discriminator that outperforms Opus and SoundStream across all tested bandwidths; open-source release establishes it as the reference codec for downstream speech and audio research
 - [[2301.02111]] — first TTS system demonstrating that neural codec tokens (EnCodec 75 Hz) enable large-scale language model pre-training for zero-shot TTS, establishing the codec-LM paradigm
 
 ### Influential
@@ -194,6 +195,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
+| [[2210.13438]] | High Fidelity Neural Audio Compression (EnCodec) | arXiv | 2022 | Introduces the streaming RVQ codec with gradient balancer and MS-STFT discriminator that becomes the reference codec for downstream AR TTS and SLM research |
 | [[2301.02111]] | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (VALL-E) | arXiv | 2023 | First TTS system built on top of a neural audio codec (EnCodec 75 Hz, 8 RVQ layers); demonstrates that codec tokens enable large-scale language model pre-training for zero-shot TTS |
 | [[2510.00981]] | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv (ICLR 2026) | 2025 | Proposes ASR-feature-guided dynamic frame merging to achieve 3–12.5 Hz controllable codec with near-GT semantic preservation at 6.25 Hz; enables TTS AR speedup of 7.3× over CosyVoice |
 | [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL | 2025 | Introduces consistency accuracy metric and DRI (Discrete Representation Inconsistency) phenomenon; proposes slice-consistency and perturbation-consistency losses that increase RVQ consistency by up to 36% and reduce downstream VALL-E WER by 1.98% |

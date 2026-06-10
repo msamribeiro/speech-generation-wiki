@@ -1,8 +1,27 @@
 concept: transformer-enc-dec-tts
-last_updated: 2026-06-08
-paper_count: 11
+last_updated: 2026-06-10
+paper_count: 12
 
 papers:
+  - id: 2006.04558
+    year: 2020
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit variance conditioning on pitch, energy, and duration eliminates the information gap between text and speech in non-autoregressive TTS, enabling quality matching or surpassing autoregressive models without autoregressive inference.
+      - Phoneme durations from forced alignment are substantially more accurate than teacher-extracted durations, and this accuracy difference directly improves output voice quality.
+      - Modeling pitch in the frequency domain via CWT produces more natural pitch distributions than direct F0 regression.
+      - Removing teacher-student distillation from non-autoregressive TTS training can simultaneously simplify the pipeline, reduce training time, and improve quality.
+    evidence:
+      - FastSpeech 2 MOS 3.83 vs Tacotron 2 3.70 and FastSpeech 3.68 on LJSpeech with matched vocoder; CMOS +0.885 over FastSpeech, +0.235 over Transformer TTS.
+      - Training time 17.02h vs 53.12h for FastSpeech (3.12x reduction); inference 48x real-time.
+      - Removing pitch from FastSpeech 2s costs 1.130 CMOS; MFA durations improve CMOS by 0.195 vs teacher durations.
+    limitations:
+      - Evaluated on single studio-quality English speaker (LJSpeech); no multi-speaker or cross-lingual generalisation demonstrated.
+      - Relies on external forced aligner (MFA) and pitch extractor (PyWorldVocoder); not end-to-end.
+
   - id: 2025.acl-long.911
     year: 2025
     task: [TTS, evaluation]
@@ -184,6 +203,12 @@ papers:
       - Single target accent (EDI) tested; bootstrapped pronunciation data; frontend only (no end-to-end TTS quality evaluation).
 
 claim_clusters:
+  - claim: Explicit variance conditioning (pitch, energy, duration) in non-autoregressive transformer TTS eliminates the one-to-many mapping problem and enables quality matching or surpassing autoregressive acoustic models without sequential decoding.
+    status: strongly_supported
+    supporting_papers: [2006.04558]
+    contradicting_papers: []
+    notes: FastSpeech 2 established this as the foundational claim for the enc-dec TTS paradigm.
+
   - claim: FastSpeech2-style transformer encoder-decoder architectures provide a compact, adaptable foundation for specialized TTS tasks (emotion, accent, dysarthria, streaming) where codec LMs would be over-parameterized, but face a perceptual quality ceiling relative to autoregressive and flow-matching systems.
     status: strongly_supported
     supporting_papers: [2508.11273, interspeech-2025-0596, interspeech-2025-0754, 2604.12438, 2025.coling-main.352]
