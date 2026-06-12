@@ -18,6 +18,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2312.05187 | Seamless: Multilingual Expressive and Streaming Speech Translation | arXiv 2023
 - ingest | 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 10,000 Hours of Transcribed Audio | arXiv 2021
 - ingest | 2309.15505 | Finite Scalar Quantization: VQ-VAE Made Simple | arXiv 2023
+- integrate | 25 papers | 19 concepts updated | 4 digests updated | 16 cross-links added
 
 ## 2026-06-11
 

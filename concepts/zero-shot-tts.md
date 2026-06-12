@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: dominant
 ---
 
@@ -105,9 +105,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ### Foundational
 - [[2301.02111]] — VALL-E established the zero-shot TTS paradigm via conditional codec language modeling, demonstrating 3-second enrollment without per-speaker fine-tuning and achieving SPK-SIM 0.580 vs. prior SOTA 0.337 on LibriSpeech.
+- [[2304.09116]] — NaturalSpeech 2 established latent diffusion over codec representations as a viable zero-shot TTS paradigm, introducing in-context learning via speech prompting and avoiding AR repetition/skipping errors; first work demonstrating singing synthesis in zero-shot TTS.
 - [[2406.02430]] — Seed-TTS achieved human-parity synthesis (CMOS -0.07) at foundation-model scale, introduced RL post-training for robustness, and defined Seed-TTS-Eval as the standard benchmark for subsequent work.
 
 ### Influential
+- [[2406.05370]] — VALL-E 2 introduced grouped codec code prediction and repetition-aware sampling to resolve AR instability, and was the first to claim human parity on both LibriSpeech and VCTK benchmarks.
+- [[2409.00750]] — MaskGCT demonstrated that NAR masked generative transformers can achieve human-level speaker similarity in zero-shot TTS without text-speech alignment, and substantially outperform AR approaches on hard-text robustness.
 - [[2025.acl-long.313]] — F5-TTS established pure non-autoregressive flow matching as a competitive zero-shot TTS paradigm, resolving E2-TTS alignment failures and introducing Sway Sampling for inference-time robustness.
 - [[2407.05407]] — CosyVoice demonstrated that supervised semantic tokens substantially improve zero-shot WER and speaker similarity, establishing LLM+FM as a dominant hybrid paradigm.
 - [[2509.19668]] — First systematic study of CFG strategies for zero-shot flow-matching TTS, revealing that language-specific behavior and image-domain CFG improvements do not transfer to speech.
@@ -211,3 +214,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2403.03100]] | NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models | arXiv | 2024 | Introduces FACodec with disentangled attribute subspaces; achieves human-level naturalness (CMOS 0.00) and SMOS 4.01 on LibriSpeech zero-shot TTS; SMOS exceeds ground truth |
 | [[2410.00037]] | Moshi: a speech-text foundation model for real-time dialogue | arXiv | 2024 | Zero-shot voice TTS subsystem within Moshi; 4.7% WER on LibriSpeech test-clean in streaming mode via Inner Monologue; prompt-conditioned speaker voice preservation |
 | [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Kimi-TTS subsystem enables zero-shot TTS from the same multimodal backbone; flow-matching streaming detokenizer with BigVGAN vocoder |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Foundational disentangled codec enabling better speaker generalization by separating semantic content (RVQ-1) from acoustic detail in downstream AR TTS |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | Zero-shot TTS with small LLM backbone via single-stream decoupled tokens; shows speaker similarity gap remains relative to multi-stage systems |
+| [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | NAR masked generative approach achieving human-level speaker similarity in zero-shot TTS without text-speech alignment; strong hard-text robustness |
+| [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Zero-shot TTS scaling and post-training via differentiable reward optimization; extends in-the-wild generalization with multi-task tokenizer |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Zero-shot TTS with inference-time compute scaling via speech understanding verifiers for quality improvement |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Latent diffusion zero-shot TTS using in-context learning for speaker adaptation; demonstrates continuous codec latents avoid AR repetition/skipping errors |
+| [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Claimed human parity on LibriSpeech via grouped code prediction and repetition-aware sampling; proposes new benchmark conditions for zero-shot TTS evaluation |
+| [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice zero-shot multilingual voice cloning; establishes cross-lingual zero-shot TTS at production scale with instruction-following capabilities |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Foundation TTS with zero-shot and few-shot modes; demonstrates few-shot fine-tuning substantially outperforms zero-shot for highly distinctive voices |

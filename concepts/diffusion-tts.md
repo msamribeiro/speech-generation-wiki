@@ -3,7 +3,7 @@ slug: diffusion-tts
 title: Diffusion Models for TTS
 aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, score-matching TTS]
 related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts, voice-conversion]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: established
 ---
 
@@ -143,3 +143,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-1066]] | Score-Based Training for Energy-Based TTS Models | Interspeech | 2025 | Introduces delta loss for EBMs — a score-based criterion equivalent to flow matching at t=0 — enabling single-step EBM inference; first comparison of SSM and NCE training for TTS EBMs |
 | [[interspeech-2025-1101]] | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism | Interspeech | 2025 | Diffusion-based zero-shot EVC with vCLUB MI disentanglement and expressive guidance; demonstrates zero-shot emotional VC with substantially higher ECA (0.53) than seen-speaker diffusion baselines (0.256) |
 | [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Next-token diffusion head conditioned on LLM hidden states for continuous VAE feature generation; 10-step DPM-Solver++ at 7.5 Hz; outperforms discrete AR systems on long-form subjective quality |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Introduces latent diffusion over codec continuous vectors for zero-shot TTS; avoids AR repetition/skipping errors; first diffusion TTS also demonstrated for singing synthesis; CMOS competitive with ground truth |

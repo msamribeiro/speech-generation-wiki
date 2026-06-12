@@ -3,7 +3,7 @@ slug: autoregressive-codec-tts
 title: Autoregressive Codec TTS
 aliases: [VALL-E family, codec language model, audio LM, AR speech LM, token-by-token decoding]
 related_concepts: [neural-codec, spoken-language-model, flow-matching, zero-shot-tts]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: dominant
 ---
 
@@ -57,13 +57,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ### Strongly Supported
 
 - Autoregressive codec TTS scales reliably with data and model size, and benefits directly from advances in LLM architectures and training techniques developed for text LMs.
-  Supporting: [[2301.02111]], [[2406.02430]], [[2603.08823]], [[2601.15621]]
+  Supporting: [[2301.02111]], [[2406.02430]], [[2603.08823]], [[2601.15621]], [[2502.04128]], [[2406.05370]]
 
 - Lowering the AR codec frame rate does not degrade final speech quality as long as the NAR or vocoder stage can compensate, and substantially reduces AR inference latency.
   Supporting: [[2510.00981]], [[2601.15621]], [[2603.08823]]
 
 - Post-training alignment (RLHF, DPO, GRPO) reliably improves intelligibility, speaker similarity, and expressiveness in AR codec TTS systems without sacrificing naturalness.
-  Supporting: [[2406.02430]], [[2512.14291]], [[2603.08823]], [[2601.15621]]
+  Supporting: [[2406.02430]], [[2512.14291]], [[2603.08823]], [[2601.15621]], [[2505.17589]]
 
 ### Emerging
 
@@ -81,6 +81,18 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - The Dual-AR decoupling (separate large slow semantic model and lightweight fast acoustic model) is emerging as the dominant industrial architecture for high-quality low-latency AR TTS.
   Supporting: [[2603.08823]], [[2601.15621]]
+
+- Inference-time compute scaling via speech understanding verifiers can substantially improve TTS quality over single-sample decoding, extending the test-time compute paradigm from text LLMs to speech synthesis.
+  Supporting: [[2502.04128]]
+
+- Grouped codec code prediction, which bundles multiple RVQ tokens into a single AR step, reduces effective sequence length and improves long-context modeling in AR TTS without dedicated low-frame-rate codecs.
+  Supporting: [[2406.05370]]
+
+- Non-autoregressive masked generative codec TTS substantially outperforms AR approaches on hard-text robustness (tongue twisters, repeating phrases) while remaining competitive on naturalness, challenging the necessity of AR decoding for robustness.
+  Supporting: [[2409.00750]]
+
+- Multi-stage curriculum training that separates modality adaptation, cross-modal instruction tuning, and chain-of-modality alignment is a viable strategy for acquiring reliable cross-modal instruction-following from a text-only LLM backbone.
+  Supporting: [[2305.11000]]
 
 ### Contested
 
@@ -110,12 +122,16 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ### Foundational
 - [[2209.03143]] — AudioLM establishes the semantic-token-plus-acoustic-token hierarchical generation framework that VALL-E and subsequent AR codec TTS systems build on; first demonstration of text-free speech continuation indistinguishable from real speech.
 - [[2301.02111]] — VALL-E established the codec language modeling paradigm for TTS, demonstrating that an AR LM conditioned on a 3-second speaker prompt could achieve strong zero-shot speaker generalization without per-speaker fine-tuning.
+- [[2305.11000]] — SpeechGPT established the speech token vocabulary expansion paradigm for unified AR speech LMs, introducing the chain-of-modality training approach that subsequent SLM systems follow.
+- [[2308.16692]] — SpeechTokenizer established the SSL-distillation semantic codec design with explicit RVQ-1 semantic content separation; the first purpose-built codec designed for downstream speech LM quality.
 
 ### Influential
 - [[2406.02430]] — Seed-TTS achieved human-parity synthesis (CMOS -0.07) at foundation-model scale with RL post-training, and introduced Seed-TTS-Eval as the standard zero-shot TTS benchmark for subsequent work.
 - [[2407.05407]] — CosyVoice established the LLM+flow-matching hybrid as a dominant paradigm, combining supervised semantic tokens with OT-CFM acoustic synthesis.
+- [[2406.05370]] — VALL-E 2 achieved claimed human parity on LibriSpeech via grouped codec code prediction and repetition-aware sampling, resolving two key instability issues in AR codec LM decoding.
 - [[2510.00981]] — FlexiCodec demonstrated that 6.25 Hz AR tokens are viable, providing an important design principle: lower AR frame rate does not degrade quality while higher NAR frame rate improves naturalness.
 - [[2412.17048]] — Identified the root causes of AR LM failures on speech tokens (sequence length and paralinguistic variability), providing a theoretical framework for understanding the codec LM bottleneck.
+- [[2409.00750]] — MaskGCT demonstrated that non-autoregressive masked generative transformers can achieve human-level speaker similarity and substantially better hard-text robustness than AR approaches.
 
 ### Recent Highlights
 - [[2603.08823]] — Fish Audio S2 achieved the best open-source WER on Seed-TTS-Eval with a Dual-AR architecture and GRPO multi-dimensional RL, trained on 10M hours across 80+ languages.
@@ -142,10 +158,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - DualSpeechLM [[2508.08961]] demonstrates competitive understanding and generation at 4.5K hours; does the dual-token advantage persist at 100K+ hour scale where the modality gap may narrow?
 - interspeech-2025-1641 demonstrates that position supervision generalises alignment across all three failure mode categories; can this approach be extended to languages lacking forced-alignment annotations without quality loss?
 - SSD [[interspeech-2025-2447]] achieves only 1.4× speedup with the current draft model; could a larger-data draft training narrow the WER gap (3.67% → 5.70%) and enable higher acceptance rates for >2× speedup?
+- Llasa [[2502.04128]] demonstrates inference-time compute scaling via speech understanding verifiers; at what output-diversity level does repeated sampling with verifier selection saturate, and how does it interact with speaker similarity?
+- CosyVoice 3 [[2505.17589]] shows differentiable reward optimization over discrete tokens; can this approach extend to non-differentiable reward signals such as speaker similarity or emotion accuracy?
+- FireRedTTS [[2409.03283]] shows few-shot fine-tuning substantially outperforms zero-shot for distinctive voices; at what degree of voice distinctiveness does zero-shot generalization break down relative to fine-tuning?
 
 ## Trend Summary
 
-2023: VALL-E [[2301.02111]] established the paradigm at 75 Hz with a hierarchical AR+NAR architecture on 60K hours of LibriLight data. 2024: Systems pushed to 25–50 Hz (CosyVoice [[2407.05407]], SoundStorm). Seed-TTS [[2406.02430]] achieved human-parity synthesis (CMOS -0.07) at scale with RL post-training. CosyVoice 2 [[2412.10117]] introduced FSQ tokenization, LLM backbone, and chunk-aware causal flow matching for streaming. 2025: [[2510.00981]] demonstrates 6.25 Hz AR is viable and competitive. [[2025.acl-long.65]] (MELLE) achieves human-parity quality without any codec. DiTAR [[2502.03930]] demonstrates patch-based continuous AR+diffusion at 3-43x lower compute than competing NAR diffusion systems. GLM-TTS [[2512.14291]] introduces 4-reward GRPO for TTS. PALLE [[2504.10352]] introduces the PAR paradigm for O(1)-step inference. IndexTTS2 [[2506.21619]] solves the AR duration control problem via positional embedding tying. 2026: Fish Audio S2 [[2603.08823]] achieves best open-source WER on Seed-TTS-Eval with a Dual-AR architecture trained on 10M hours across 80+ languages. Qwen3-TTS [[2601.15621]] demonstrates sub-100 ms streaming with DPO+GRPO post-training at scale. DiSTAR [[2510.12210]] unifies AR temporal modeling with discrete masked diffusion intra-patch refinement. OmniVoice [[2604.00688]] covers 600+ languages with a single NAR model via full-codebook masking and LLM initialization. The field has bifurcated: one track scales AR LMs with better tokenizers and RL alignment; the other challenges whether AR decoding is necessary at all (MELLE, PALLE, OmniVoice).
+2023: VALL-E [[2301.02111]] established the paradigm at 75 Hz with a hierarchical AR+NAR architecture on 60K hours of LibriLight data. SpeechGPT [[2305.11000]] established the speech token vocabulary expansion paradigm for unified AR speech LMs. SpeechTokenizer [[2308.16692]] introduced the first purpose-built codec with explicit semantic/acoustic RVQ-1 separation, enabling better downstream LM coherence. 2024: Systems pushed to 25–50 Hz (CosyVoice [[2407.05407]], SoundStorm). VALL-E 2 [[2406.05370]] achieved claimed human parity on LibriSpeech via grouped code prediction and repetition-aware sampling. Seed-TTS [[2406.02430]] achieved human-parity synthesis (CMOS -0.07) at scale with RL post-training. MaskGCT [[2409.00750]] demonstrated that NAR masked generative models achieve human-level speaker similarity and better hard-text robustness than AR, challenging the AR paradigm's dominance on robustness. CosyVoice 2 [[2412.10117]] introduced FSQ tokenization, LLM backbone, and chunk-aware causal flow matching for streaming. Freeze-Omni [[2411.00774]] demonstrated codec-based TTS integration into spoken dialogue without LLM fine-tuning. 2025: [[2510.00981]] demonstrates 6.25 Hz AR is viable and competitive. [[2025.acl-long.65]] (MELLE) achieves human-parity quality without any codec. Llasa [[2502.04128]] extends inference-time compute scaling to AR TTS via speech understanding verifiers. DiTAR [[2502.03930]] demonstrates patch-based continuous AR+diffusion at 3-43x lower compute than competing NAR diffusion systems. GLM-TTS [[2512.14291]] introduces 4-reward GRPO for TTS. PALLE [[2504.10352]] introduces the PAR paradigm for O(1)-step inference. IndexTTS2 [[2506.21619]] solves the AR duration control problem via positional embedding tying. CosyVoice 3 [[2505.17589]] adds differentiable reward optimization over discrete tokens for scalable post-training. 2026: Fish Audio S2 [[2603.08823]] achieves best open-source WER on Seed-TTS-Eval with a Dual-AR architecture trained on 10M hours across 80+ languages. Qwen3-TTS [[2601.15621]] demonstrates sub-100 ms streaming with DPO+GRPO post-training at scale. DiSTAR [[2510.12210]] unifies AR temporal modeling with discrete masked diffusion intra-patch refinement. OmniVoice [[2604.00688]] covers 600+ languages with a single NAR model via full-codebook masking and LLM initialization. The field has bifurcated: one track scales AR LMs with better tokenizers and RL alignment; the other challenges whether AR decoding is necessary at all (MELLE, PALLE, OmniVoice).
 
 ## All Papers
 
@@ -217,3 +236,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.16790]] | TaDiCodec | arXiv | 2025 | 6.25 Hz text-conditioned AR TTS with single-codebook tokenizer; AR sequence lengths 4–12× shorter than prior systems; outperforms CosyVoice 2 and MaskGCT on SeedTTS test-en WER |
 | [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Next-token diffusion LLM (7.5 Hz continuous VAE) for hour-long multi-speaker AR TTS in 64K context; outperforms ElevenLabs on podcast subjective preference |
 | [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Post-hoc entropy-compressed HuBERT tokens as AR codec LM input; 15 Hz outperforms 50 Hz for ASR downstream while reducing sequence length |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Introduces disentangled RVQ codec with semantic/acoustic split; used as tokenizer in downstream AR TTS systems; foundational codec-LM co-design paper |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | Single-stream decoupled AR TTS using BiCodec; demonstrates small LLM (0.5B Qwen2.5) can achieve competitive zero-shot TTS via semantic token alignment |
+| [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | Non-autoregressive masked generative codec TTS achieving human-level speaker similarity; demonstrates NAR as strong alternative to AR for codec-based TTS |
+| [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Extends CosyVoice LLM+FM AR paradigm with differentiable reward optimization and multi-task tokenizer; state of practice for post-training in AR codec TTS |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Simultaneous text-audio AR generation enabling streaming speech LM without sequential decode bottleneck |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Single-stage AR TTS with Llama backbone and XCodec; demonstrates both train-time and inference-time compute scaling improve discrete token TTS |
+| [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Introduces grouped codec code prediction and repetition-aware sampling; claims human parity on LibriSpeech zero-shot TTS |
+| [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | AR speech output in a frozen-LLM framework; demonstrates codec-based TTS integrated into spoken dialogue without LLM fine-tuning |
+| [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Single-codebook tokenizer showing better downstream AR generation than multi-codebook RVQ systems |
+| [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice AR+FM system; establishes supervised semantic tokens for multilingual zero-shot TTS at production scale |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Foundational SpeechLLM using HuBERT discrete units; establishes the speech token vocabulary expansion paradigm for unified AR speech LMs |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | AR codec LM followed by flow-matching acoustic decoder; industry-scale zero-shot TTS with few-shot fine-tuning capability |

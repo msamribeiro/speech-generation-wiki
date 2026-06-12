@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: emerging
 ---
 ## Executive Summary
@@ -105,11 +105,23 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - Gradual modality transition during LLM fine-tuning (scheduled text-to-speech-unit replacement) substantially improves S2ST quality in low-resource language pairs, with gains amplified by low-resource data scarcity.
   Supporting: [[interspeech-2025-1595]]
 
+- Freezing the LLM backbone during speech-modality alignment substantially reduces the intelligence gap between spoken and text question-answering performance compared to full fine-tuning, preserving the pre-trained LLM's reasoning capabilities.
+  Supporting: [[2411.00774]]
+
+- Simultaneous text and audio generation from a single AR model enables streaming speech output without the latency penalty of sequential text-then-audio decoding in spoken conversational agents.
+  Supporting: [[2408.16725]]
+
+- End-to-end audio LLM training can degrade the underlying LLM's text-instruction and safety alignment capabilities relative to using the same base model in a pipeline configuration.
+  Supporting: [[2410.17196]]
+
+- Pipeline-based voice assistants substantially outperform end-to-end audio LLMs on spoken instruction understanding benchmarks, with the gap persisting for state-of-the-art proprietary end-to-end systems.
+  Supporting: [[2410.17196]]
+
 ### Contested
 
 > [!warning]
 > Whether pure end-to-end SLMs are a necessary development path or whether hybrid architectures (text LLM + speech I/O) will permanently dominate commercial deployment remains unresolved. Evidence increasingly favors hybrids on efficiency and semantic coherence.
-> Supporting hybrids: [[2025.acl-long.912]], [[2025.emnlp-main.989]], [[2025.acl-long.388]] / Supporting pure SLMs as research target: [[2412.17048]], [[interspeech-2025-0310]]
+> Supporting hybrids: [[2025.acl-long.912]], [[2025.emnlp-main.989]], [[2025.acl-long.388]], [[2410.17196]] / Supporting pure SLMs as research target: [[2412.17048]], [[interspeech-2025-0310]]
 
 ## Relationship to Other Concepts
 
@@ -129,6 +141,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ### Foundational
 - [[2209.03143]] — AudioLM establishes the semantic-token-plus-acoustic-token hierarchical generation paradigm; first demonstration that text-free spoken LM generation is indistinguishable from real speech; direct ancestor of VALL-E and all subsequent codec LM systems
+- [[2305.11000]] — SpeechGPT is the first system to expand an LLM's token vocabulary with discretised speech units for unified speech comprehension and generation; establishes the chain-of-modality training paradigm adopted by subsequent SLMs
 - [[2410.00037]] — Moshi is the first real-time full-duplex SLM eliminating the ASR-LM-TTS pipeline; Inner Monologue mechanism unifies dialogue, TTS, and ASR under a single delay hyperparameter; multi-stream architecture without explicit turn boundaries
 - [[2412.17048]] — systematic factor analysis isolating the three root causes of SLM coherence failure; foundational diagnostic for the field
 - [[2025.acl-long.682]] — first comprehensive survey of the SpeechLM landscape, covering tokenizers, architectures, training paradigms, and evaluation benchmarks
@@ -143,6 +156,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - [[2507.09318]] — NAR flow-matching dialogue generation 15× faster than AR baselines, challenging the assumption that AR is necessary for spoken dialogue
 - [[2025.emnlp-demos.70]] — first fully open-source empathetic SLM with automated data construction pipeline
 - [[interspeech-2025-0310]] — systematic grid search showing that optimized HuBERT tokenization (N=80ms, K=16384) achieves better SLU performance with 50% less data than GSLM-style defaults
+- [[2408.16725]] — Mini-Omni demonstrates simultaneous text-and-audio generation enabling streaming SLM responses without sequential decode latency; adapter-based training preserves base LLM capabilities
+- [[2409.06666]] — LLaMA-Omni establishes CTC-based streaming speech decoding from LLM hidden states as a practical low-latency architecture for spoken conversational agents
+- [[2411.00774]] — Freeze-Omni demonstrates that frozen LLM backbone with three-stage speech alignment achieves competitive spoken dialogue quality with lower intelligence degradation than fine-tuned alternatives
+
+### Cautionary / Negative Evidence
+- [[2410.17196]] — VoiceBench reveals that pipeline voice assistants substantially outperform end-to-end audio LLMs on instruction understanding, and that E2E training can degrade underlying LLM safety alignment; a systematic benchmark establishing the performance ceiling gap.
 
 ## Open Questions
 
@@ -159,6 +178,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 - SpeechRole [[2508.02013]] shows interaction quality is text-LM bottlenecked; how much of the gap between cascaded and E2E systems is paralinguistic modelling vs. text understanding quality?
 - SecoustiCodec [[2508.02849]] is designed explicitly for voice-dialogue streaming; can its explicit three-way semantic/acoustic/paralinguistic decomposition help address Factor C from [[2412.17048]]?
 - Mini-Omni-Reasoner [[2508.15827]] introduces token-level thinking-in-speaking; does the 2:8 response-to-reasoning ratio remain optimal across different LLM sizes and response types beyond mathematical tasks?
+- VoiceBench [[2410.17196]] shows that mispronunciation causes greater performance degradation than disfluency or grammatical errors; can audio LLMs be robustified against mispronunciation without degrading other capabilities?
+- Freeze-Omni [[2411.00774]] shows frozen LLM reduces intelligence degradation; does this advantage persist when the speech encoder and decoder are much smaller relative to the LLM, and does the benefit scale with LLM size?
+- Mini-Omni [[2408.16725]] shows audio reasoning quality lags behind text reasoning on similar data; is this gap addressable by data scaling alone, or does it require architectural changes to the attention patterns?
 - FD-Bench [[interspeech-2025-0739]] shows Moshi leads on interrupt success rate but VAD-based systems lead on first-speech latency; is this a fundamental architectural trade-off or can a single integrated system achieve both?
 - The NVIDIA duplex model [[interspeech-2025-0874]] eliminates speech LLM pretraining by separating encoder (for input) from codec (for output); does this generalise to multilingual settings where the user-agent language asymmetry is common?
 - Triadic VAP [[interspeech-2025-2660]] shows acoustic-only next-speaker prediction works for 3-party conversation; does performance degrade progressively beyond 3 parties due to exponential state-space growth?
@@ -224,3 +246,9 @@ Integration pass 6 (Interspeech 2025): Mini-Omni-Reasoner [[2508.15827]] introdu
 | [[2303.08774]] | GPT-4 Technical Report | arXiv | 2023 | Foundation LLM reference for spoken chatbot instruction-following quality targets |
 | [[2503.20215]] | Qwen2.5-Omni Technical Report | arXiv | 2025 | Thinker-Talker omni architecture with streaming FM DiT vocoder; demonstrates end-to-end omni-modal generation competitive with dedicated zero-shot TTS on SEED-TTS |
 | [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Universal audio foundation model unifying ASR, understanding, TTS, VC, and SCA in a single LLM architecture trained on 13M hours |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Foundational speech LLM using HuBERT discrete units; introduces chain-of-modality training and speech token vocabulary expansion; first to demonstrate LLM-native spoken dialogue |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Demonstrates simultaneous text and audio streaming generation; three-stage adapter training for integrating speech into frozen LLM without text capability degradation |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | CTC-based streaming speech decoder from LLM hidden states; low-latency speech response without sequential text decoding; instruction data rewriting for speech interaction style |
+| [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Frozen LLM backbone with three-stage speech-modality alignment; chunk-level duplex state classification without separate interrupt model |
+| [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Single-codebook codec for audio LM; demonstrates better downstream discrete token generation than multi-codebook RVQ at equivalent bitrate |
+| [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Comprehensive benchmark revealing pipeline ASR+LLM substantially outperforms end-to-end audio LLMs; key negative result for the field |

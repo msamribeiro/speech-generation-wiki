@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 status: established
 ---
 
@@ -153,3 +153,4 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | Human-annotated AudioMOS Challenge 2025 scores as ground truth for multi-axis aesthetic prediction |
 | [[2509.03940]] | VoxRole | arXiv | 2025 | 20-annotator human evaluation of 20 sampled dialogues; Pearson correlation 0.762 between LLM judge and human scores; validates acoustically-aware LLM evaluation paradigm |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | 30-sample CMOS study (2 per speaker), win-rate pairwise, and ContextMOS via Gemini-2.5-Pro for LibriQuote expressivity benchmark |
+| [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Automated evaluation framework for voice assistants using LLM-based scoring; demonstrates how multi-domain capability benchmarking complements naturalness-only subjective evaluation |

@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: mature-infrastructure
 ---
 
@@ -201,3 +201,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2209.03143]] | AudioLM: a Language Modeling Approach to Audio Generation | arXiv | 2022 | Uses w2v-BERT XL 7th-layer representations as semantic tokens; demonstrates that SSL features encode linguistic content and prosody while acoustic codec tokens encode speaker identity and recording conditions |
 | [[2212.04356]] | Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) | arXiv | 2022 | Supervised at-scale speech recognition model used as ASR backbone in TTS evaluation pipelines; demonstrates that weakly supervised scaling surpasses SSL-based ASR on out-of-distribution robustness |
 | [[2312.15185]] | emotion2vec: Self-Supervised Pre-Training for Speech Emotion Representation | arXiv | 2023 | SSL pre-trained emotion representation model via online distillation on 262 hours unlabeled emotion data; used as frozen feature extractor in emotion-conditioned TTS evaluation |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Distills HuBERT representations into RVQ-1 via teacher-student training; demonstrates D-axis (feature dimension-wise) distillation outperforms standard L-axis distillation for semantic codec training |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | Uses WavLM/SenseVoice as content tokenizer backbone; demonstrates SSL-derived content tokens enable LLM-native TTS without multi-stage pipeline |
+| [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | Replaces HuBERT k-means quantisation with VQ-VAE over semantic tokens; demonstrates VQ-VAE preserves more tonal information than k-means in multilingual settings |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Uses XCodec (based on HuBERT-derived features) for TTS; speech understanding verifiers built on SSL representations used for inference-time quality selection |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | Uses HuBERT discrete units for speech input tokenisation; demonstrates SSL tokens as practical speech LM input for real-time instruction-following |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Uses HuBERT k-means discrete units for speech discretisation; early demonstration of SSL tokenisation enabling unified speech LLM |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Uses SenseVoice ASR encoder for speech tokenisation; demonstrates ASR-supervised SSL as alternative to standard HuBERT/WavLM for TTS |

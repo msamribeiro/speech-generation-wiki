@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 ---
 
 ## Executive Summary
@@ -182,3 +182,6 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[1912.06670]] | Common Voice: A Massively-Multilingual Speech Corpus | arXiv | 2019 | CC0-licensed crowdsourced multilingual corpus covering 29+ languages including low-resource ones; foundational open training and evaluation resource for multilingual TTS |
 | [[2212.04356]] | Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) | arXiv | 2022 | Multilingual ASR model trained on 680K hours across 99 languages; used as data annotation backbone and evaluation ASR in multilingual TTS pipelines |
 | [[2407.21783]] | The Llama 3 Herd of Models | arXiv | 2024 | Open-weight multilingual LLM backbone used by TTS and SCA systems; includes a speech extension path with a 1B conformer encoder covering 34 languages |
+| [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | VQ-VAE over multilingual semantic tokens improves tonal language generation; MUSHRA-based multilingual evaluation across English, Chinese, French, German, Japanese, Korean |
+| [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Extends CosyVoice multilingual capabilities via multi-task tokenizer and in-the-wild data scaling; evaluation across multiple languages on Seed-TTS-Eval |
+| [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice multilingual zero-shot TTS with cross-lingual voice cloning; demonstrates that omitting source-language prompt at inference prevents prosody leakage |

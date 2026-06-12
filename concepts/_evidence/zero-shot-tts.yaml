@@ -1,6 +1,6 @@
 concept: zero-shot-tts
-last_updated: 2026-06-10
-paper_count: 62
+last_updated: 2026-06-12
+paper_count: 78
 
 papers:
   - id: 2403.03100
@@ -259,3 +259,129 @@ trend_notes:
   - Zero-shot VC is increasingly integrated as a secondary capability in TTS systems (REF-VC, DisCo-Speech).
   - Cross-lingual zero-shot remains consistently harder than same-language zero-shot synthesis.
   - 2025 (Interspeech): Human fooling rate (interspeech-2025-2765) emerges as a new evaluation paradigm that complements MOS/MUSHRA by measuring absolute naturalness rather than relative preference; explicit position supervision (interspeech-2025-1641) provides a clean solution to AR alignment failures; PEFT preserves zero-shot capability that full fine-tuning destroys (interspeech-2025-1344).
+  - "Integration pass 9 (2026-06-12): 10 historical papers added covering 2023-2025 systems: NaturalSpeech 2 (2304.09116) as foundational latent diffusion zero-shot TTS; SpeechTokenizer (2308.16692) for codec disentanglement enabling better speaker generalization; VALL-E 2 (2406.05370) for human parity claim and AR stabilisation; MaskGCT (2409.00750) for NAR human-level speaker similarity; FireRedTTS (2409.03283) for few-shot vs. zero-shot comparison; Spark-TTS (2503.01710) and Llasa (2502.04128) for small-backbone and scaling approaches; FunAudioLLM (2407.04051) for multilingual zero-shot; CosyVoice 3 (2505.17589) for post-training."
+
+papers:
+  - id: 2304.09116
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Latent diffusion models operating on codec continuous vectors avoid the word-skipping and repetition errors of autoregressive generation.
+      - Speech prompting via in-context learning enables zero-shot speaker adaptation without explicit speaker embeddings.
+      - Prosody adherence improves monotonically with reference prompt length up to 10 seconds.
+    evidence:
+      - NaturalSpeech 2 achieves CMOS within 0.01 of ground truth on LibriSpeech; no repetition/skipping errors in qualitative analysis; singing demonstrated with same model.
+    limitations:
+      - English-only evaluation; requires EnCodec codec; many diffusion inference steps.
+
+  - id: 2308.16692
+    year: 2023
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Codec-level disentanglement of semantic and acoustic content improves zero-shot TTS speaker generalization by ensuring RVQ-1 carries phonetic rather than speaker information.
+    evidence:
+      - SpeechTokenizer downstream evaluation shows improved downstream VALL-E WER vs. EnCodec when using SpeechTokenizer RVQ-1 semantic tokens.
+    limitations:
+      - Zero-shot evaluation limited to downstream VALL-E system; not a standalone zero-shot TTS.
+
+  - id: 2406.05370
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Grouped codec code prediction and repetition-aware sampling resolve the two main instabilities in AR codec LM zero-shot TTS.
+      - AR codec TTS with grouped prediction can match or exceed ground-truth speaker similarity on clean audiobook benchmarks.
+    evidence:
+      - VALL-E 2 human parity on LibriSpeech test-clean (WER 2.2%, SIM-O 0.648) and VCTK (WER 2.2%, SIM-O 0.595).
+    limitations:
+      - Evaluated only on clean English; proprietary model; benchmark conditions chosen by authors.
+
+  - id: 2409.00750
+    year: 2024
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - NAR masked generative transformers achieve human-level speaker similarity in zero-shot TTS without text-speech alignment or duration supervision.
+      - Masked generative TTS substantially outperforms AR TTS on hard-text robustness.
+    evidence:
+      - MaskGCT achieves SIM-O 0.789 and UTMOS 4.32 on SeedTTS test-en; hard-text failure rate 0.13% vs. ~5% for AR.
+    limitations:
+      - Evaluated on 6 languages; codec quality dependent on SemantiCodec.
+
+  - id: 2407.04051
+    year: 2024
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Cross-lingual zero-shot voice cloning requires omitting source-language prompt tokens at inference to prevent prosody leakage.
+      - Instruction fine-tuning on natural language style descriptions substantially improves emotion controllability in zero-shot TTS.
+    evidence:
+      - CosyVoice cross-lingual WER improvement of ~30% relative when source-language tokens omitted; instruction fine-tuning achieves near-ceiling accuracy on 5/6 emotion categories.
+    limitations:
+      - Chinese-centric training data; limited low-resource language evaluation.
+
+  - id: 2502.04128
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Both model scale and training data volume independently improve zero-shot TTS quality, consistent with LLM scaling laws.
+      - Inference-time compute scaling via speech understanding verifiers substantially improves zero-shot TTS quality over single-sample decoding.
+    evidence:
+      - Llasa-8B achieves WER 1.48% on SeedTTS test-en; Best-of-8 achieves 0.74% vs. 1.94% greedy; WER decreases monotonically from 1B to 8B.
+    limitations:
+      - English only; verifier training cost not reported.
+
+  - id: 2503.01710
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Single-stage AR TTS with decoupled semantic tokens achieves competitive intelligibility but consistently trails multi-stage systems on speaker similarity.
+    evidence:
+      - Spark-TTS WER 3.0% on SeedTTS test-en, SIM-O 0.644 (vs. CosyVoice2 0.696); gap attributed to single-stage AR limitations.
+    limitations:
+      - SIM-O gap acknowledged in paper; Mandarin evaluation less complete.
+
+  - id: 2505.17589
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Differentiable reward optimization over discrete speech tokens improves zero-shot TTS intelligibility and speaker similarity without full audio-level reward computation.
+    evidence:
+      - CosyVoice 3 achieves best or near-best WER and SIM on SeedTTS test-en after differentiable reward post-training.
+    limitations:
+      - Generalisation to non-differentiable rewards unclear; evaluation on SeedTTS only.
+
+  - id: 2409.03283
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Few-shot fine-tuning substantially outperforms zero-shot in-context learning for highly expressive or distinctive target voices.
+      - Prompt audio enhancement improves zero-shot voice cloning from noisy references but can slightly degrade clean-prompt performance.
+    evidence:
+      - FireRedTTS few-shot SIM-O 0.742 vs. zero-shot 0.685 on expressive voice set; noisy prompt enhancement +0.03 SIM-O on noisy test.
+    limitations:
+      - Evaluated on small set of distinctive voices; clean-prompt degradation effect is small but real.

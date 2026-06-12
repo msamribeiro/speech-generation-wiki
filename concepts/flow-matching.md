@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: dominant
 ---
 
@@ -197,3 +197,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2210.02747]] | Flow Matching for Generative Modeling | arXiv | 2022 | Establishes the CFM training objective and OT conditional path; proves tractable decomposition of marginal flow into per-sample conditional fields; all TTS flow-matching systems build on this framework |
 | [[2207.12598]] | Classifier-Free Diffusion Guidance | arXiv | 2022 | Introduces conditioning dropout training + score interpolation at inference; the standard guidance mechanism adopted by all subsequent conditional diffusion and flow-matching TTS systems |
 | [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Uses chunk-wise flow-matching streaming detokenizer for low-latency semantic-token-to-mel conversion in a universal audio LLM |
+| [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Extends CosyVoice OT-CFM acoustic decoder with multi-task tokenizer and post-training; demonstrates flow-matching acoustic decoder benefits from richer semantic token conditioning |

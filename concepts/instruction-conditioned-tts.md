@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement, voice-conversion]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 status: emerging
 ---
 ## Executive Summary
@@ -150,3 +150,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.07273]] | Incorporating Contextual Paralinguistic Understanding in Large Speech-Language Models | arXiv | 2025 | Explicit emotion metadata injection into inference prompts as instruction conditioning; 46% improvement on contextual emotion questions over baseline |
 | [[2508.09600]] | OSUM-EChat | arXiv | 2025 | Chain-of-thought paralinguistic instruction conditioning; CosyVoice tokens for speech synthesis conditioned on emotion and sound event labels |
 | [[2508.17494]] | Improving French Synthetic Speech Quality via SSML Prosody Control | workshop | 2025 | SSML markup as structured prosody instructions; cascaded LLM pipeline for automatic SSML generation from natural text; MOS 3.20→3.87 |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Foundational cross-modal instruction-following via speech token vocabulary expansion; chain-of-modality alignment enables instruction-conditioned speech generation from a text LLM backbone |
+| [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice instruction fine-tuning on natural language style descriptions substantially improves emotion controllability; first production-scale instruction-conditioned Chinese TTS |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Three-stage adapter training curriculum for integrating instruction-following into streaming spoken dialogue; demonstrates speech instruction-following without text quality degradation |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | Instruction data rewriting to adapt LLM text responses to speech interaction conventions; demonstrates that style adaptation is more data-driven than architecture-driven |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Instruction-conditioned TTS with style tags for expressiveness; demonstrates fine-grained control via instruction labels in a production-scale system |
+| [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Benchmarks instruction-following capabilities of voice assistants under various acoustic degradation conditions; mispronunciation significantly degrades instruction-following more than disfluency |

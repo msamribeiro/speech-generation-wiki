@@ -4,7 +4,7 @@ title: Singing Voice Synthesis and Conversion
 aliases: [singing voice synthesis, SVS, singing voice conversion, SVC, song synthesis]
 status: emerging
 related_concepts: [voice-conversion, zero-shot-tts, disentanglement, gan-vocoder, diffusion-tts, flow-matching, autoregressive-codec-tts, prosody-control]
-last_updated: 2026-06-04
+last_updated: 2026-06-12
 ---
 
 ## Executive Summary
@@ -99,3 +99,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0816]] | Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation | Interspeech | 2025 | SSAN cross-modal embedding alignment for speech-prompted SVC; cycle training strategy for cross-domain VC without paired data |
 | [[2508.01796]] | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder | arXiv | 2025 | LSE diffusion + Vocos2D vocoder specifically for singing high-frequency fidelity; spectrogram realism as a quality axis |
 | [[2508.16332]] | Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation | arXiv | 2025 | Unified speech-singing AR+FM model via chromagram prosody tokenization; GRPO multi-objective post-training; full suite of SVS/SVC tasks |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | First demonstration of zero-shot singing voice synthesis using the same latent diffusion model as TTS, without separate model or MIDI annotation; generalises in-context learning from speech to singing |

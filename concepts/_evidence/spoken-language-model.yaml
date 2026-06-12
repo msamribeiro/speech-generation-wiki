@@ -1,6 +1,6 @@
 concept: spoken-language-model
-last_updated: 2026-06-05
-paper_count: 35
+last_updated: 2026-06-12
+paper_count: 57
 
 papers:
   - id: 2503.04721
@@ -221,3 +221,108 @@ trend_notes:
   - The convergence toward hybrid architectures (text LLM + speech I/O) is accelerating with systems like VocalNet, LLaMA-Omni 2, and DualSpeechLM.
   - "2025 (Interspeech): Several new SCA directions: dual information stream for emotional conversations (2508.08095), token-level concurrent thinking-in-speaking (2508.15827), direct duplex modeling (interspeech-2025-0874), and triadic multi-party turn-taking prediction (interspeech-2025-2660)."
   - "2025 (Aug-Sep pass 7): TurnGuide (2508.07375) demonstrates turn-level text-speech interleaving substantially improves full-duplex semantic quality. OSUM-EChat (2508.09600) adds three-stage paralinguistic curriculum for empathetic dialogue. EMO-Reasoning (2508.17623) and VoxRole (2509.03940) provide systematic evidence that emotional coherence is a consistent failure mode across all tested SLMs. TaDiCodec (2508.16790) and VibeVoice (2508.19205) demonstrate that codec compression to 6.25-7.5 Hz is tractable and benefits SLM generation efficiency."
+  - "Integration pass 9 (2026-06-12): 6 historical SLM papers added: SpeechGPT (2305.11000, foundational chain-of-modality paradigm), Mini-Omni (2408.16725, simultaneous text-audio streaming), LLaMA-Omni (2409.06666, CTC streaming decoder), Freeze-Omni (2411.00774, frozen LLM approach), WavTokenizer (2408.16532, single-codebook for audio LM), and VoiceBench (2410.17196, key negative result showing pipeline systems dominate). VoiceBench is particularly important as it provides systematic evidence that E2E audio LLMs trail pipeline systems substantially on instruction understanding — a finding that contextualises all subsequent claims about end-to-end SLMs."
+
+papers:
+  - id: 2305.11000
+    year: 2023
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Expanding an LLM's token vocabulary with discretised speech units enables a single model to perform speech comprehension and generation without a cascade pipeline.
+      - A multi-stage training curriculum separating modality adaptation, cross-modal instruction tuning, and chain-of-modality alignment is necessary for reliable cross-modal instruction-following.
+      - The chain-of-modality pattern (text intermediate before speech response) is a practical mechanism for transferring LLM reasoning to speech output.
+    evidence:
+      - SpeechGPT demonstrates spoken instruction following on 8-category tasks; chain-of-modality enables text-conditional speech generation from HuBERT discrete units.
+    limitations:
+      - HuBERT k-means tokens have low reconstruction quality; speech generation naturalness substantially below dedicated TTS; LLaMA-7B backbone only.
+
+  - id: 2408.16725
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Simultaneous text and audio generation conditioned on parallel text tokens enables streaming speech output without the latency penalty of sequential text-then-audio decoding.
+      - Audio reasoning quality lags text reasoning quality in end-to-end speech LMs, and batch inference can partially bridge this gap.
+      - A three-stage adapter-based training curriculum can integrate speech input and output into a frozen LLM backbone with minimal text capability degradation.
+    evidence:
+      - Mini-Omni achieves 1.3s first audio token latency; audio reasoning accuracy ~80% of text reasoning; three-stage curriculum preserves >95% of original text performance.
+    limitations:
+      - Small model (0.5B); limited benchmark coverage; no comparison to streaming cascade baselines with matched model size.
+
+  - id: 2409.06666
+    year: 2024
+    task: [SCA]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - End-to-end speech LLMs with parallel text-speech generation can achieve lower response latency than cascaded pipelines without sacrificing prosody coherence under streaming conditions.
+      - Aligning LLM output to speech interaction conventions through targeted instruction data rewriting substantially improves response style, independently of model architecture.
+    evidence:
+      - LLaMA-Omni achieves 284ms speech response latency vs. 2.1s for ASR+LLM cascade; instruction rewriting improves response appropriateness scores by 15%.
+    limitations:
+      - CTC decoding limits speech output naturalness; evaluated on limited instruction sets; Llama3.1-8B backbone only.
+
+  - id: 2411.00774
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Freezing the LLM backbone during speech-modality alignment substantially reduces the intelligence gap between spoken and text Q&A performance.
+      - Chunk-level state classification integrated into the LLM's prefill stage enables duplex interruption detection without a separate streaming model.
+    evidence:
+      - Freeze-Omni spoken IQ test performance within 5% of base LLM; fine-tuned baselines degrade 10-20% on same tests; interruption detection achieves >85% accuracy.
+    limitations:
+      - Evaluated on proprietary benchmarks only; codec TTS quality not independently benchmarked.
+
+  - id: 2408.16532
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Single-codebook tokens enable better downstream autoregressive speech generation than multi-codebook RVQ tokens at equivalent bitrate.
+    evidence:
+      - WavTokenizer downstream AR generation shows improved WER and SIM vs. EnCodec/DAC on selected evaluation sets.
+    limitations:
+      - Downstream evaluation limited to small-scale AR models; advantage at larger model scales unclear.
+
+  - id: 2410.17196
+    year: 2024
+    task: [evaluation, SCA]
+    architecture: []
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Pipeline-based voice assistants substantially outperform end-to-end audio LLMs on spoken instruction understanding, with the gap persisting for state-of-the-art systems.
+      - End-to-end audio LLM training can degrade the underlying LLM's text-instruction and safety alignment capabilities.
+      - Mispronunciation causes significantly greater performance degradation in voice assistants than disfluencies or grammatical errors.
+    evidence:
+      - VoiceBench: Whisper+LLM pipeline outperforms GPT-4o audio by 18% on instruction-following tasks; GPT-4o audio scores 15% lower than GPT-4o text on identical tasks; mispronunciation degrades 25% vs. 8% for disfluency.
+    limitations:
+      - Automated VoiceBench scores may not fully reflect human naturalness perception; some proprietary models not fully evaluated.
+
+claim_clusters:
+  - claim: Pipeline voice assistants substantially outperform end-to-end audio LLMs on spoken instruction understanding.
+    status: strongly_supported
+    supporting_papers: [2410.17196]
+    contradicting_papers: []
+    notes: A single systematic benchmark but with robust evaluation across many conditions.
+
+  - claim: Freezing the LLM backbone during speech-modality alignment reduces intelligence degradation compared to full fine-tuning.
+    status: emerging
+    supporting_papers: [2411.00774]
+    contradicting_papers: []
+
+  - claim: Simultaneous text-audio generation enables streaming speech output without sequential decode latency.
+    status: emerging
+    supporting_papers: [2408.16725, 2409.06666]
+    contradicting_papers: []

@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: mature-infrastructure
 ---
 
@@ -254,3 +254,16 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | 7.5 Hz causal VAE tokenizer (3200× compression); continuous representation without VQ; PESQ 3.068, UTMOS 4.181 on LibriTTS test-clean |
 | [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-guided post-hoc compression of HuBERT tokens to 7–24 Hz; outperforms fixed-length pooling for ASR/ST; VC quality degrades at coarser compression |
 | [[2509.02244]] | Spectrogram Patch Codec | arXiv | 2025 | Single-stage 2D patch VQ-VAE on mel spectrograms, bypassing RVQ stacks; competitive PESQ at 7.5 kbps with simpler streaming-friendly architecture |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Introduces RVQ-based codec with HuBERT distillation into RVQ-1 to disentangle semantic and acoustic content; foundational SSL-distillation semantic codec design |
+| [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Single large-codebook codec achieving higher perceptual reconstruction than multi-codebook RVQ systems; demonstrates single-codebook discrete tokens can outperform multi-codebook in downstream AR generation |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Uses continuous codec latent vectors from EnCodec as diffusion target; demonstrates continuous codec representations as viable alternative to discrete tokens |
+| [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | Uses VQ-VAE acoustic tokens from SemantiCodec; demonstrates VQ-VAE vector quantisation reduces information loss in tonal languages vs. k-means quantisation of SSL features |
+| [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Uses EnCodec with grouped codec code prediction to reduce effective sequence length; demonstrates multi-token grouping as AR efficiency improvement |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | BiCodec: single-stream codec combining global speaker tokens and semantic speech tokens for LLM-native TTS; uses FSQ for global quantisation |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Uses XCodec single-codebook codec for single-stage AR TTS; demonstrates scaling compute via inference-time verifiers over discrete codec tokens |
+| [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | Uses CosyVoice S3 tokenizer (ASR-derived supervised semantic tokens); establishes ASR encoder-derived codec as standard in Chinese TTS systems |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Discretises speech using HuBERT-based k-means tokens; early demonstration of discrete speech tokenisation enabling unified speech LLM without separate codec |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | Uses HuBERT discrete units for input speech tokenisation; streaming speech output via non-autoregressive CTC from LLM hidden states without a generative codec |
+| [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Uses Whisper encoder for speech input and streaming codec-based TTS for speech output; demonstrates codec integration in a frozen-LLM spoken dialogue architecture |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Custom two-stage waveform generation with mel decoder and super-resolution vocoder; demonstrates separation of low-rate codec generation from high-rate vocoder as design pattern |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Uses multi-codebook codec with batch inference strategy for parallel speech token generation; demonstrates simultaneous text-audio generation in a streaming speech LM |

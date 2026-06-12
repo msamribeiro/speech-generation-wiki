@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: 2026-06-05
-paper_count: 54
+last_updated: 2026-06-12
+paper_count: 72
 
 papers:
   - id: 2507.22746
@@ -372,3 +372,177 @@ trend_notes:
   - 2026: Codec frame rate competition continues with Fish Audio S2 (21 Hz streaming) vs. Qwen3-TTS (12.5 Hz).
   - 2025 (Aug-Sep pass 7): TaDiCodec (2508.16790) achieves 6.25 Hz single-codebook codec via text-conditioned flow-matching without SSL/adversarial training; introduces reconstruction-generation gap as practical LM-friendliness metric. VibeVoice (2508.19205) demonstrates 7.5 Hz continuous VAE achieving superior reconstruction quality. SITool (interspeech-2025-0984) provides negative result against WER as intelligibility proxy for codecs; VFR/TFC (interspeech-2025-1289) introduces first variable frame rate strategy for neural codecs. Entropy-guided compression (2509.00503) provides evidence that 50 Hz HuBERT tokens are substantially redundant for ASR/ST but not for VC. 2D patch quantization (2509.02244) offers a non-RVQ alternative at competitive bitrates.
   - "2025 (Interspeech): A cluster of codec analysis and design papers: CodecBench (2508.20660) introduces unified evaluation; interpretability probing (interspeech-2025-0115) reveals layer specialisation; DC-Spin (interspeech-2025-0246) establishes speaker-invariant tokenisation; DualCodec (interspeech-2025-0468) targets low-frame-rate semantic enhancement; FreeCodec (interspeech-2025-1440) enables fewer-token disentangled codec."
+  - "Integration pass 9 (2026-06-12): 13 historical papers added tracing the codec lineage from SpeechTokenizer (2308.16692, 2023) through NaturalSpeech 2 (2304.09116), WavTokenizer (2408.16532), VALL-E 2 (2406.05370), MaskGCT (2409.00750), FireRedTTS (2409.03283), Spark-TTS (2503.01710), LLaMA-Omni (2409.06666), Mini-Omni (2408.16725), Freeze-Omni (2411.00774), SpeechGPT (2305.11000), FunAudioLLM (2407.04051), and Llasa (2502.04128). These papers confirm that SpeechTokenizer's SSL-distillation design pattern became the dominant approach through 2024, and that single-codebook designs (WavTokenizer) emerged as a simpler alternative with competitive downstream generation quality."
+
+papers:
+  - id: 2308.16692
+    year: 2023
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Separating semantic content from paralinguistic information across RVQ layers within a single codec improves both reconstruction quality and speech language model coherence.
+      - D-axis (feature dimension-wise) distillation produces stronger semantic guidance to the first RVQ quantizer than standard contrastive/predictive objectives.
+    evidence:
+      - SpeechTokenizer achieves UTMOS 4.00 (reconstruction) while downstream ASR WER improves substantially when using semantic RVQ-1 tokens vs. acoustic tokens alone.
+    limitations:
+      - Distillation from HuBERT may not generalise to tonal languages where HuBERT's pre-training is weaker.
+
+  - id: 2408.16532
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - A single large-codebook quantizer can achieve higher perceptual reconstruction quality than multi-quantizer RVQ at substantially higher bitrates.
+      - Single-codebook codec tokens enable better downstream autoregressive speech generation than multi-codebook tokens, as measured by intelligibility and speaker similarity.
+    evidence:
+      - WavTokenizer achieves PESQ 4.40, UTMOS 4.47 on LibriTTS test-clean with single-codebook at 75 Hz; downstream AR generation shows improved intelligibility vs. EnCodec and DAC.
+    limitations:
+      - High bitrate relative to low-frame-rate semantic codecs; downstream evaluation limited to specific AR baseline systems.
+
+  - id: 2304.09116
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous codec latent vectors as diffusion targets avoid the repetition and word-skipping errors characteristic of AR discrete token generation.
+      - In-context learning via speech prompting during training enables zero-shot speaker adaptation without explicit speaker embeddings.
+    evidence:
+      - NaturalSpeech 2 CMOS on LibriSpeech within 0.01 of ground truth; no repetition/skipping errors in qualitative analysis; singing synthesis demonstrated without separate training.
+    limitations:
+      - Continuous latent diffusion requires many inference steps; EnCodec as the base codec may limit tonal language performance.
+
+  - id: 2409.00750
+    year: 2024
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - VQ-VAE quantisation of SSL features preserves more tonal language information than k-means quantisation of the same features.
+    evidence:
+      - MaskGCT uses VQ-VAE over SemantiCodec tokens and reports improved MOS and speaker similarity on Mandarin vs. k-means SSL baselines.
+    limitations:
+      - VQ-VAE codec not independently benchmarked on standard reconstruction metrics.
+
+  - id: 2406.05370
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Grouping codec codes into multi-token AR prediction steps reduces effective sequence length and improves long-context modelling at moderate group sizes.
+    evidence:
+      - VALL-E 2 with group size 2 achieves best WER and SIM on LibriSpeech and VCTK benchmarks compared to group sizes 1, 4, and 8.
+    limitations:
+      - Optimal group size is dataset-dependent; benefit degrades for group sizes above 4.
+
+  - id: 2503.01710
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - A single-stream codec combining global speaker tokens and local semantic speech tokens enables LLM-native TTS with competitive zero-shot quality.
+    evidence:
+      - Spark-TTS with BiCodec achieves WER 3.0% on SeedTTS test-en with 0.5B Qwen2.5 backbone; BiCodec outperforms RVQ codecs on reconstruction quality in ablation.
+    limitations:
+      - Speaker similarity lags multi-stage systems; FSQ global token capacity may be insufficient for very diverse speakers.
+
+  - id: 2502.04128
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Single-codebook codec tokens support inference-time compute scaling via best-of-N selection with speech understanding verifiers.
+    evidence:
+      - Llasa with XCodec and verifier-based Best-of-N selection shows consistent improvement in WER and SIM as N increases from 1 to 8.
+    limitations:
+      - Verifier quality bounds the scaling benefit; verifier training requires paired speech-text data.
+
+  - id: 2407.04051
+    year: 2024
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - ASR encoder-derived supervised semantic tokens provide stronger semantic alignment for TTS than unsupervised codec tokens.
+    evidence:
+      - CosyVoice S3 tokenizer achieves WER 3.0% on SeedTTS test-en vs. much higher WER for models using unsupervised tokens.
+    limitations:
+      - Requires strong ASR model as teacher; less general than unsupervised codecs for low-resource languages.
+
+  - id: 2305.11000
+    year: 2023
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - HuBERT k-means discrete tokens can serve as a speech vocabulary for LLM token expansion without codec reconstruction quality.
+    evidence:
+      - SpeechGPT uses 500-unit HuBERT tokens for speech generation; intelligibility in zero-shot mode is limited but cross-modal instruction-following is demonstrated.
+    limitations:
+      - HuBERT k-means tokens have low reconstruction quality compared to codec tokens; acoustic detail is lost.
+
+  - id: 2409.06666
+    year: 2024
+    task: [SCA]
+    architecture: [hybrid]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - HuBERT discrete units as speech LM input tokens are sufficient for real-time instruction-following in spoken conversational agents.
+    evidence:
+      - LLaMA-Omni processes HuBERT discrete speech input with CTC decoding for speech output; speech understanding accuracy competitive with cascade ASR approach.
+    limitations:
+      - Speech output quality limited by CTC decoding; full speech naturalness requires dedicated TTS component.
+
+  - id: 2411.00774
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Combining a Whisper encoder for speech input with streaming codec-based TTS for output enables low-latency spoken dialogue without modifying the LLM backbone.
+    evidence:
+      - Freeze-Omni achieves competitive spoken dialogue quality with chunk-level duplex detection integrated with the LLM prefill stage.
+    limitations:
+      - Architecture relies on Whisper encoder; codec TTS choice (not disclosed in detail) affects final audio quality.
+
+  - id: 2409.03283
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Two-stage waveform generation separating a low-sampling-rate mel decoder from a super-resolution vocoder allows a system trained predominantly on low-rate data to produce high-fidelity 48 kHz output.
+    evidence:
+      - FireRedTTS achieves 48 kHz output quality comparable to ground truth on high-fidelity benchmarks using a 24 kHz mel decoder and SR vocoder combination.
+    limitations:
+      - Two-stage vocoder adds inference latency; SR vocoder quality depends on the lower-rate mel decoder's accuracy.
+
+  - id: 2408.16725
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Multi-codebook codec tokens with batch inference strategy enable parallel simultaneous text-audio generation in a streaming spoken LM.
+    evidence:
+      - Mini-Omni generates speech via multi-codebook tokens in parallel with text reasoning tokens; batch inference reduces effective decode time vs. sequential token prediction.
+    limitations:
+      - Codec-specific details not fully disclosed; speech quality measured only against voice naturalness, not against codec reconstruction benchmarks.

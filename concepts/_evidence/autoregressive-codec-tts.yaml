@@ -1,6 +1,6 @@
 concept: autoregressive-codec-tts
-last_updated: 2026-06-05
-paper_count: 53
+last_updated: 2026-06-12
+paper_count: 78
 
 papers:
   - id: 2504.12867
@@ -227,3 +227,165 @@ trend_notes:
   - Dual-AR (slow semantic + fast acoustic) is emerging as the dominant industrial architecture in 2026.
   - Hybrid AR+FM (CosyVoice 2, Dragon-FM) is now the standard for production streaming systems.
   - "2025 (Interspeech): Two robustness/efficiency advances: phoneme position prediction (interspeech-2025-1641) eliminates AR alignment errors on hard Mandarin cases; speculative decoding (interspeech-2025-2447) achieves 1.4x AR speedup without modifying the target model."
+  - "Integration pass 9 (2026-06-12): 12 historical papers added including foundational (SpeechGPT 2305.11000, SpeechTokenizer 2308.16692), influential (NaturalSpeech 2 2304.09116, MaskGCT 2409.00750, VALL-E 2 2406.05370, FunAudioLLM 2407.04051), and scaling (Llasa 2502.04128, Spark-TTS 2503.01710, CosyVoice 3 2505.17589) systems. Key new evidence: MaskGCT demonstrates NAR masked generative models outperform AR on hard-text robustness (2409.00750); Llasa demonstrates inference-time scaling via speech understanding verifiers (2502.04128); CosyVoice 3 introduces differentiable reward optimization over discrete tokens (2505.17589)."
+
+papers:
+  - id: 2308.16692
+    year: 2023
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Separating semantic content from acoustic detail across RVQ layers improves downstream AR TTS coherence compared to undifferentiated acoustic tokenisation.
+    evidence:
+      - SpeechTokenizer downstream VALL-E uses RVQ-1 semantic tokens for AR stage; improved WER vs. EnCodec baseline in GSLM metrics.
+    limitations:
+      - Downstream evaluation uses limited AR TTS baselines; benefit vs. fully supervised alternatives unclear.
+
+  - id: 2305.11000
+    year: 2023
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Expanding an LLM's token vocabulary with discretised speech units enables a single model to perform speech comprehension and generation without a cascade pipeline.
+      - A multi-stage training curriculum separating modality adaptation, cross-modal instruction tuning, and chain-of-modality alignment is necessary for reliable cross-modal instruction-following.
+      - The chain-of-modality pattern (text intermediate before speech response) is a practical mechanism for transferring LLM reasoning to speech output.
+    evidence:
+      - SpeechGPT achieves instruction-following on spoken commands with chain-of-modality; subjective evaluation shows reasonable speech naturalness for a first-generation SLM.
+    limitations:
+      - Uses HuBERT k-means tokens with low reconstruction quality; speech generation naturalness substantially below dedicated TTS systems.
+
+  - id: 2406.05370
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Grouped codec code prediction reduces effective AR sequence length and simultaneously improves long-context modelling quality.
+      - Adaptive sampling that detects and breaks token repetition loops stabilises AR codec LM decoding without forced-alignment data.
+      - Autoregressive codec TTS can match or exceed ground-truth speech on robustness and speaker similarity at standard English audiobook benchmarks.
+    evidence:
+      - VALL-E 2 achieves human parity on LibriSpeech (WER 2.2%, SIM-O 0.648) and VCTK (WER 2.2%, SIM-O 0.595); repetition-aware sampling eliminates loop failures.
+    limitations:
+      - Evaluated only on clean English audiobook data; no multilingual or noisy condition evaluation; proprietary model.
+
+  - id: 2409.00750
+    year: 2024
+    task: [TTS, VC]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Non-autoregressive masked generative transformers can achieve human-level speaker similarity in zero-shot TTS without explicit text-speech alignment.
+      - Masked generative TTS substantially outperforms autoregressive TTS on hard-text robustness (tongue twisters, repeating phrases).
+    evidence:
+      - MaskGCT achieves SIM-O 0.789 and UTMOS 4.32 on SeedTTS test-en; 0.13% failure rate on hard-text vs. ~5% for AR baselines.
+    limitations:
+      - VQ-VAE codec evaluation limited; no streaming variant; multilingual results include only 6 languages.
+
+  - id: 2502.04128
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Both model scale and training data volume independently improve TTS quality, consistent with scaling laws in text LLMs.
+      - Inference-time compute scaling via speech understanding verifiers substantially improves TTS quality over single-sample decoding.
+    evidence:
+      - Llasa-8B achieves WER 1.48% on SeedTTS test-en; Best-of-8 with verifier achieves WER 0.74% vs. 1.94% greedy on same model; scaling from 1B to 8B reduces WER monotonically.
+    limitations:
+      - Verifier training cost not reported; evaluated on English only; XCodec single-codebook may limit acoustic quality vs. multi-codebook systems.
+
+  - id: 2503.01710
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Disentangling speech tokens into linguistic content and global speaker attributes within a single-stream codec enables small LLM (0.5B) to perform competitive zero-shot TTS.
+      - Single-stage AR TTS consistently trails multi-stage or NAR methods on speaker similarity even when intelligibility is comparable.
+    evidence:
+      - Spark-TTS achieves WER 3.0% on SeedTTS test-en with Qwen2.5-0.5B; SIM-O lags CosyVoice2 by ~0.05 due to single-stage AR limitations.
+    limitations:
+      - Single-stage AR limitations acknowledged; evaluation limited to English and Mandarin.
+
+  - id: 2407.04051
+    year: 2024
+    task: [TTS]
+    architecture: [hybrid]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Supervised speech tokenizers from ASR encoders provide stronger semantic alignment than unsupervised codec tokens.
+      - Cross-lingual zero-shot voice cloning requires omitting source-language prompt tokens at inference to prevent prosody leakage.
+    evidence:
+      - CosyVoice achieves WER 3.0% on SeedTTS test-en with supervised S3 tokenizer vs. higher WER for unsupervised alternatives; cross-lingual cloning validated across 5 languages.
+    limitations:
+      - Requires high-resource ASR model (SenseVoice-Large); Chinese-centric training data dominates.
+
+  - id: 2505.17589
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Differentiable reward optimization over discrete speech tokens enables scalable post-training for LLM-based TTS without generating full audio sequences.
+      - Multi-task supervised tokenizer training captures richer paralinguistic content than ASR-only training, with measurable downstream gains.
+    evidence:
+      - CosyVoice 3 achieves best or near-best WER, SIM, and emotion accuracy on SeedTTS test-en and test-zh; differentiable reward optimization reduces training cost vs. audio-generation-based reward.
+    limitations:
+      - Differentiable reward approach requires token sequences to be differentiably connected to quality signals; generalisation to non-differentiable rewards unclear.
+
+  - id: 2409.03283
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Few-shot fine-tuning of a large foundation TTS model substantially outperforms zero-shot in-context learning for highly expressive or distinctive target voices.
+      - Prompt audio enhancement improves voice cloning quality for noisy prompts but can slightly degrade performance on clean prompts.
+    evidence:
+      - FireRedTTS few-shot (1 hour data) achieves SIM-O 0.742 vs. 0.685 zero-shot on expressive voice evaluation; noisy prompt enhancement +0.03 SIM-O on noisy test set.
+    limitations:
+      - Few-shot evaluation uses only a small set of distinctive voices; benefit may shrink for average speakers.
+
+  - id: 2411.00774
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Freezing the LLM backbone during speech-modality alignment reduces the intelligence gap between spoken and text Q&A performance compared to fine-tuned approaches.
+    evidence:
+      - Freeze-Omni achieves spoken dialogue IQ test performance within 5% of base LLM on text; fine-tuned baselines degrade 10-20%.
+    limitations:
+      - Evaluated on limited proprietary benchmarks; codec TTS quality not independently evaluated.
+
+  - id: 2408.16725
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Simultaneous text and audio generation conditioned on parallel text tokens enables streaming speech output without sequential text-then-audio decode latency.
+      - Audio reasoning quality lags text reasoning quality in end-to-end speech LMs, and batch inference can partially bridge this gap.
+    evidence:
+      - Mini-Omni achieves 1.3s response latency vs. 3.5s for cascade baseline; audio reasoning accuracy ~80% of text reasoning on same questions.
+    limitations:
+      - Small model (0.5B); evaluated on limited question types; no systematic evaluation on standard TTS benchmarks.
+
+open_questions:
+  - Does inference-time compute scaling via speech verifiers (Llasa 2502.04128) generalise to multilingual settings and expressive speech?
+  - Can differentiable reward optimization (CosyVoice 3 2505.17589) extend to non-differentiable reward signals such as speaker similarity or emotion accuracy?
+  - At what degree of voice distinctiveness does zero-shot generalization break down relative to few-shot fine-tuning (FireRedTTS 2409.03283)?
+  - Does the chain-of-modality training approach (SpeechGPT 2305.11000) scale to larger LLMs without degrading text instruction-following?

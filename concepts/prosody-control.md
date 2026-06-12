@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement, voice-conversion]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 status: established
 ---
 ## Executive Summary
@@ -197,3 +197,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | SSL-derived pseudo-language labels carry implicit accent and intonation patterns for G2P-free Japanese TTS prosody modeling |
 | [[2509.03940]] | VoxRole | arXiv | 2025 | Paralinguistic appropriateness as the weakest capability in role-playing spoken dialogue; acoustic feature bins as LLM judge prosody proxies |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | LibriQuote narrative-aware corpus; flow-matching models benefit more from expressive fine-tuning than autoregressive models; contextual narrative conditioning improves expressivity |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | Global speaker tokens conditioning via BiCodec; demonstrates that decoupling speaker timbre (global) from content (local) within a single token stream improves prosodic naturalness |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Uses speech understanding verifiers including prosody metrics at inference time; demonstrates that prosody quality benefits from inference-time compute scaling via best-of-N selection |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Prosody adherence improves monotonically with reference prompt length (up to 10 seconds); in-context prosody learning without explicit prosody supervision |

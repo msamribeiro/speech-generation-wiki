@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 status: established
 ---
 ## Executive Summary
@@ -224,3 +224,9 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[2509.03292]] | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss | arXiv | 2025 | Triplet loss with BEATs embeddings improves SRCC on multi-axis aesthetic prediction; domain shift affects absolute score calibration more than ranking |
 | [[2509.03940]] | VoxRole | arXiv | 2025 | Acoustically-aware LLM judge augmented with discrete acoustic features; Pearson correlation 0.762 with human annotators |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | ContextMOS and Win-Rate (Gemini-2.5-Pro judge) as expressivity-specific metrics for audiobook TTS beyond standard naturalness MOS |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Introduces codec evaluation framework separating semantic (WER, ABX) and acoustic (PESQ, STOI, UTMOS) quality dimensions; demonstrates how unified codec quality correlates with downstream task metrics |
+| [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Differentiable reward optimization using MOS predictors and ASR-based WER as training-time signals; demonstrates treating evaluation metrics as differentiable rewards |
+| [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Uses speech understanding verifiers (WER, speaker similarity) as inference-time selection criteria; demonstrates evaluation metrics as best-of-N selection signals |
+| [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Introduces new evaluation conditions (VCTK multi-speaker, specific benchmark splits) to claim human parity; documents how benchmark framing affects human parity claims |
+| [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Comprehensive multi-metric evaluation across PESQ, STOI, UTMOS, MCD for codec comparison; demonstrates evaluation metric disagreement across architecture families |
+| [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Introduces VoiceBench multi-capability evaluation framework for voice assistants; reveals substantial gaps between pipeline and E2E systems on robustness metrics |

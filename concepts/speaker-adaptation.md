@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts, flow-matching]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 status: established
 ---
 
@@ -132,3 +132,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.17031]] | RephraseTTS | arXiv | 2025 | Cross-modal style transfer from short surrounding audio context for speech insertion; cross-modal attention over audio encoder keys outperforms global speaker embedding |
 | [[2508.18006]] | Unseen Speaker and Language Adaptation for Lightweight TTS with Adapters | arXiv | 2025 | Adapter-based PEFT (10% params) for language and speaker adaptation; vocoderside adapters drive accent quality; PSR metric for objective accent evaluation |
 | [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | Speaker embedding injection into phrasing front-end; few-shot unseen-speaker adaptation via embedding adapter with as few as 5 reference utterances |
+| [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Grouped codec code prediction enables stable AR LM adaptation to unseen speakers; repetition-aware sampling reduces speaker identity drift in long utterances |
+| [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Few-shot fine-tuning with one hour of data substantially outperforms zero-shot for distinctive or expressive target voices; prompt audio enhancement improves voice cloning from noisy references |

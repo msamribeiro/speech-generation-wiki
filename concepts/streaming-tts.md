@@ -4,7 +4,7 @@ title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder, flow-matching]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 ---
 
 ## Executive Summary
@@ -161,3 +161,6 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[interspeech-2025-2449]] | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling | Interspeech | 2025 | Non-uniform ODE step pruning (32→7 NFE); 4× RTF speedup (0.123→0.030) for F5-TTS; training-free, immediately deployable |
 | [[2508.07375]] | TurnGuide | arXiv | 2025 | Turn-level text-speech interleaving in full-duplex SLM; 1.05s first-package latency; streaming design limited by vocoder cost |
 | [[interspeech-2025-1289]] | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate | Interspeech | 2025 | Entropy-based VFR reduces token sequence length; shorter sequences benefit streaming AR TTS systems directly |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Simultaneous text and audio streaming generation from a single AR model; batch-based parallel generation strategy for streaming speech without sequential decode bottleneck |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | CTC-based non-autoregressive speech decoding from LLM hidden states enables streaming synthesis robust to chunk size variation; demonstrates that CTC decoding suits streaming better than AR for speech rate naturalness |
+| [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Chunk-level state classification integrated into LLM prefill enables duplex interruption detection without a separate streaming component; three-stage training for low-latency speech I/O |

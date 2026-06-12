@@ -4,7 +4,7 @@ title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 status: established
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 ---
 
 ## Executive Summary
@@ -216,3 +216,7 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2508.17031]] | RephraseTTS | arXiv | 2025 | Cross-modal attention implicitly disentangles phoneme content from audio-context style; triplet style matching loss promotes intra-utterance style consistency |
 | [[2508.19205]] | VibeVoice Technical Report | arXiv | 2025 | Separate acoustic and semantic tokenizers trained with task-specific objectives; semantic tokenizer discarded after pretraining; acoustic-semantic disentanglement at tokenization level |
 | [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-guided compression as implicit disentanglement: removes redundant from informative tokens in SSL representations |
+| [[2308.16692]] | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv | 2023 | Foundational codec-level semantic/acoustic disentanglement using HuBERT distillation into RVQ-1; demonstrates that RVQ hierarchy can encode content-speaker split |
+| [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | BiCodec: single-stream decoupled codec separating global speaker tokens from local semantic tokens within a single codebook; enables LLM-native TTS without explicit disentanglement modules |
+| [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | In-context learning for disentanglement via speech prompting; separate pitch, duration, and timbre conditioning within latent diffusion TTS |
+| [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Attention-based semantic disentanglement in a single-codebook codec; demonstrates that extended context window improves semantic richness without explicit disentanglement training |

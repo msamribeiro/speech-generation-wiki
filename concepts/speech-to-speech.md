@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-05
+last_updated: 2026-06-12
 status: emerging
 ---
 
@@ -125,3 +125,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.16188]] | AVLM (Seeing is Believing) | EMNLP | 2025 | SpiritLM-based audio-visual expressive speech generation; Q-Former prefix fusion of full-face visual features |
 | [[2508.17623]] | EMO-Reasoning | arXiv | 2025 | Evaluation benchmark for emotional coherence in spoken dialogue systems; documents failure of all tested S2S systems on multi-turn emotional consistency |
 | [[2509.03940]] | VoxRole | arXiv | 2025 | Role-playing spoken dialogue benchmark; paralinguistic appropriateness as the weakest dimension; acoustic-aware LLM evaluation for S2S character fidelity |
+| [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Foundational speech-to-speech system using LLM vocabulary expansion with discrete speech tokens; introduces chain-of-modality pattern (text intermediate before speech response) |
+| [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | First system demonstrating simultaneous speech-in/speech-out with parallel text generation; three-stage adapter curriculum for speech I/O integration |
+| [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | End-to-end speech input/output with CTC streaming decoder; demonstrates E2E S2S with lower latency than cascaded ASR-LLM-TTS pipelines |
+| [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Frozen LLM speech-to-speech dialogue with chunk-level duplex state detection; demonstrates freezing LLM backbone preserves intelligence in S2S alignment |
+| [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Evaluation framework exposing gap between pipeline and E2E S2S systems on instruction understanding and robustness; demonstrates E2E S2S trails pipeline under all tested conditions |
