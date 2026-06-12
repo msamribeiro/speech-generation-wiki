@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 74
-last_updated: 2026-06-10
+papers_ingested: 80
+last_updated: 2026-06-12
 ---
 
 # arXiv 2025
@@ -91,4 +91,10 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Pl |
 | 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech |
 | 2503.20215 | Qwen2.5-Omni Technical Report |
+| 2503.01710 | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens |
+| 2505.17589 | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training |
 | 2504.18425 | Kimi-Audio Technical Report |
+| 2502.04128 | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based S |
+| 2505.09388 | Qwen3 Technical Report |
+| 2507.06261 | Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodalit |
+| 2501.12948 | DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcem |

@@ -208,3 +208,28 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2206.04658 | BigVGAN: A Universal Neural Vocoder with Large-Scale Tr | NVIDIA | arXiv | 2022 | TTS | GAN | 2026-06-10 |
 | 2207.12598 | Classifier-Free Diffusion Guidance |  | arXiv | 2022 |  | diffusion | 2026-06-10 |
 | 1412.6980 | Adam: A Method for Stochastic Optimization |  | arXiv | 2014 |  |  | 2026-06-10 |
+| 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech La | Fudan University | arXiv | 2023 | TTS, codec | GAN, VAE | 2026-06-11 |
+| 2503.01710 | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model  | HKUST | arXiv | 2025 | TTS | autoregressive-LM | 2026-06-11 |
+| 2409.00750 | MaskGCT: Zero-Shot Text-to-Speech with Masked Generativ | CUHK-SZ | arXiv | 2024 | TTS, VC | autoregressive-LM | 2026-06-11 |
+| 2505.17589 | CosyVoice 3: Towards In-the-wild Speech Generation via  | Alibaba | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-11 |
+| 2408.16725 | Mini-Omni: Language Models Can Hear, Talk While Thinki | Inspirai | arXiv | 2024 | SCA, TTS | autoregressive-LM | 2026-06-11 |
+| 2502.04128 | Llasa: Scaling Train-Time and Inference-Time Compute fo |  | arXiv | 2025 | TTS | autoregressive-LM | 2026-06-11 |
+| 2304.09116 | NaturalSpeech 2: Latent Diffusion Models are Natural an | Microsoft Research Asia | arXiv | 2023 | TTS, VC, singing | diffusion, VAE | 2026-06-11 |
+| 2406.05370 | VALL-E 2: Neural Codec Language Models are Human Parity | Microsoft | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-11 |
+| 2409.06666 | LLaMA-Omni: Seamless Speech Interaction with Large Lang | ICT/CAS | arXiv | 2024 | SCA | hybrid | 2026-06-11 |
+| 2411.00774 | Freeze-Omni: A Smart and Low Latency Speech-to-speech D | Tencent Youtu Lab | arXiv | 2024 | SCA | autoregressive-LM, hybrid | 2026-06-11 |
+| 2408.16532 | WavTokenizer: an Efficient Acoustic Discrete Codec Toke |  | arXiv | 2024 | codec | GAN, VAE | 2026-06-11 |
+| 2407.04051 | FunAudioLLM: Voice Understanding and Generation Foundat | Alibaba Group | arXiv | 2024 | TTS | hybrid | 2026-06-11 |
+| 2305.11000 | SpeechGPT: Empowering Large Language Models with Intrin | Fudan University | arXiv | 2023 | SCA, TTS | autoregressive-LM | 2026-06-11 |
+| 2410.17196 | VoiceBench: Benchmarking LLM-Based Voice Assistants | National University of Singapore | arXiv | 2024 | evaluation, SCA |  | 2026-06-11 |
+| 2409.03283 | FireRedTTS: A Foundation Text-To-Speech Framework for I | Xiaohongshu | arXiv | 2024 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-06-11 |
+| 2311.07919 | Qwen-Audio: Advancing Universal Audio Understanding via |  | arXiv | 2023 |  | transformer-enc-dec | 2026-06-12 |
+| 2505.09388 | Qwen3 Technical Report |  | arXiv | 2025 |  | autoregressive-LM | 2026-06-12 |
+| 2005.07143 | ECAPA-TDNN: Emphasized Channel Attention, Propagation a |  | arXiv | 2020 |  |  | 2026-06-12 |
+| 2302.13971 | LLaMA: Open and Efficient Foundation Language Models |  | arXiv | 2023 |  | autoregressive-LM | 2026-06-12 |
+| [[2507.06261]] | [Gemini 2.5: Pushing the Frontier with Advanced Reasonin](papers/2507.06261.md) | Google | arXiv | 2025 | TTS, SCA |  | 2026-06-12 |
+| 2012.03411 | MLS: A Large-Scale Multilingual Dataset for Speech Rese |  | arXiv | 2020 |  |  | 2026-06-12 |
+| 2501.12948 | DeepSeek-R1: Incentivizing Reasoning Capability in LLMs | DeepSeek | arXiv | 2025 |  | autoregressive-LM | 2026-06-12 |
+| 2312.05187 | Seamless: Multilingual Expressive and Streaming Speech  |  | arXiv | 2023 |  |  | 2026-06-12 |
+| 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 1 |  | arXiv | 2021 |  |  | 2026-06-12 |
+| 2309.15505 | Finite Scalar Quantization: VQ-VAE Made Simple |  | arXiv | 2023 |  | VAE | 2026-06-12 |

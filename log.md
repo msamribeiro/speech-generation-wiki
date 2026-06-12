@@ -6,6 +6,37 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-12
+
+- ingest | 2311.07919 | Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models | arXiv 2023
+- ingest | 2505.09388 | Qwen3 Technical Report | arXiv 2025
+- ingest | 2005.07143 | ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation in TDNN Based Speaker Verification | arXiv 2020
+- ingest | 2302.13971 | LLaMA: Open and Efficient Foundation Language Models | arXiv 2023
+- ingest | 2507.06261 | Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities | arXiv 2025
+- ingest | 2012.03411 | MLS: A Large-Scale Multilingual Dataset for Speech Research | arXiv 2020
+- ingest | 2501.12948 | DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning | arXiv 2025
+- ingest | 2312.05187 | Seamless: Multilingual Expressive and Streaming Speech Translation | arXiv 2023
+- ingest | 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 10,000 Hours of Transcribed Audio | arXiv 2021
+- ingest | 2309.15505 | Finite Scalar Quantization: VQ-VAE Made Simple | arXiv 2023
+
+## 2026-06-11
+
+- ingest | 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv 2023
+- ingest | 2503.01710 | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv 2025
+- ingest | 2409.00750 | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv 2024
+- ingest | 2505.17589 | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv 2025
+- ingest | 2408.16725 | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv 2024
+- ingest | 2502.04128 | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv 2025
+- ingest | 2304.09116 | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv 2023
+- ingest | 2406.05370 | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv 2024
+- ingest | 2409.06666 | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv 2024
+- ingest | 2411.00774 | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv 2024
+- ingest | 2408.16532 | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv 2024
+- ingest | 2407.04051 | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv 2024
+- ingest | 2305.11000 | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv 2023
+- ingest | 2410.17196 | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv 2024
+- ingest | 2409.03283 | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv 2024
+
 ## 2026-06-10
 
 - integrate | 25 papers | 12 concepts updated | 7 digests updated | 11 cross-links added

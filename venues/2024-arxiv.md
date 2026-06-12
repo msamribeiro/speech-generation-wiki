@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 11
-last_updated: 2026-06-10
+papers_ingested: 20
+last_updated: 2026-06-11
 ---
 
 # arXiv 2024
@@ -27,3 +27,12 @@ The 11 arXiv 2024 preprints in this corpus span the full hierarchy from foundati
 | 2412.02612 | GLM-4-Voice: Towards Intelligent and Human-Like End-to-End Spoken Chatbot |
 | 2410.21276 | GPT-4o System Card |
 | 2412.15115 | Qwen2.5 Technical Report |
+| 2409.00750 | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer |
+| 2408.16725 | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming |
+| 2406.05370 | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text |
+| 2409.06666 | LLaMA-Omni: Seamless Speech Interaction with Large Language Models |
+| 2411.00774 | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model w |
+| 2408.16532 | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio |
+| 2407.04051 | FunAudioLLM: Voice Understanding and Generation Foundation Models for  |
+| 2410.17196 | VoiceBench: Benchmarking LLM-Based Voice Assistants |
+| 2409.03283 | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level G |

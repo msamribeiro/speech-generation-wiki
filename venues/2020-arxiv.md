@@ -2,8 +2,8 @@
 title: "arXiv 2020"
 venue: arXiv
 year: 2020
-papers_ingested: 2
-last_updated: 2026-06-09
+papers_ingested: 4
+last_updated: 2026-06-12
 ---
 
 ## Overview
@@ -16,3 +16,5 @@ Two 2020 arXiv preprints anchor the non-autoregressive and GAN vocoder foundatio
 |----|-------|
 | 2010.05646 | HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis |
 | 2006.04558 | FastSpeech 2: Fast and High-Quality End-to-End Text to Speech |
+| 2005.07143 | ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation  |
+| 2012.03411 | MLS: A Large-Scale Multilingual Dataset for Speech Research |
