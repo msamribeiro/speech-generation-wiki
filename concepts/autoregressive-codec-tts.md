@@ -22,7 +22,7 @@ Autoregressive codec TTS achieves strong zero-shot speaker generalization (any s
 
 The central efficiency challenge is the codec frame rate: the AR LM must generate tokens sequentially, and standard codecs (50–75 Hz) produce very long sequences. This motivates low-frame-rate codecs. [[2510.00981]] (FlexiCodec) demonstrates that 6.25 Hz AR tokens achieve the same TTS quality as 12.5 Hz with a 2.1× AR speedup, and that going lower in AR frame rate does not necessarily degrade final speech quality.
 
-The semantic coherence challenge from [[2412.17048]] is equally important: even when codec tokens have reasonable semantic content, the paralinguistic variability (Factor C) and sequence length (Factor B) of speech tokens make LM training substantially harder than for text LMs.
+The semantic coherence challenge from [[2412.17048]] is equally important: even when codec tokens have reasonable semantic content, the paralinguistic variability and token sequence length of speech tokens make LM training substantially harder than for text LMs.
 
 ## Core Idea
 
@@ -97,7 +97,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ### Contested
 
 > [!warning]
-> Paralinguistic variability (Factor C) in speech codec tokens makes LM training substantially harder than for text LMs, and it is unclear whether this can be addressed within the AR+NAR framework or requires fundamentally different architectures.
+> Paralinguistic variability in speech codec tokens makes LM training substantially harder than for text LMs, and it is unclear whether this can be addressed within the AR+NAR framework or requires fundamentally different architectures.
 > Supporting: [[2412.17048]] / Partial mitigation: [[2025.acl-long.1498]]
 
 > [!warning]
@@ -149,8 +149,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 - At what AR frame rate does performance degrade irreversibly for a given codec design?
 - Can semantic speech tokens approach text-rate (~4.5 Hz) without quality loss?
-- Is the Factor C problem (paralinguistic variability) addressable within the AR+NAR framework, or does it require fundamentally different architectures?
-- [[2025.acl-long.1498]] shows DRI can be mitigated at codec training time; does reducing DRI also address part of Factor C?
+- Is paralinguistic variability in speech tokens ([[2412.17048]]) addressable within the AR+NAR framework, or does it require fundamentally different architectures?
+- [[2025.acl-long.1498]] shows DRI can be mitigated at codec training time; does reducing DRI also address part of the paralinguistic variability problem?
 - [[2025.findings-naacl.184]] proposes continuous tokens and [[2025.acl-long.65]] (MELLE) demonstrates codec-free AR; what are their stability and scaling behaviors compared to discrete-token systems?
 - [[2025.emnlp-main.989]] (VocalNet) shows MTP reduces WER substantially; can MTP also improve speaker similarity?
 - PALLE [[2504.10352]] achieves 10x speedup over AR via PAR at 580h; does this advantage persist at 100k-hour scale?
@@ -183,7 +183,7 @@ The field has bifurcated: one track scales AR LMs with better tokenizers and RL 
 |----|-------|-------|------|------------------------|
 | [[2301.02111]] | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (VALL-E) | arXiv | 2023 | Foundational paper establishing the AR+NAR codec language modeling paradigm for TTS; 75 Hz EnCodec tokens, 60K hours training, achieves strong zero-shot speaker generalization via in-context learning |
 | [[2510.00981]] | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv (ICLR 2026) | 2025 | Demonstrates 6.25 Hz AR codec tokens achieve competitive TTS quality with 7.3× AR speedup; finds lower AR frame rate does not degrade quality while higher NAR frame rate improves naturalness |
-| [[2412.17048]] | Why Do Speech Language Models Fail to Generate Semantically Coherent Outputs? | arXiv (ICASSP 2026) | 2026 | Identifies sequence length (Factor B) and paralinguistic variability (Factor C) as the primary bottlenecks for AR LMs over speech codec tokens |
+| [[2412.17048]] | Why Do Speech Language Models Fail to Generate Semantically Coherent Outputs? | arXiv (ICASSP 2026) | 2026 | Identifies token sequence length and paralinguistic variability in speech tokens as the primary bottlenecks for AR LMs over speech codec tokens |
 | [[2025.acl-long.1498]] | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL | 2025 | Introduces DRI phenomenon; shows consistency-trained codec reduces VALL-E WER by 1.98% abs and improves SPK-SIM by 5.52% at no reconstruction quality cost |
 | [[2025.findings-naacl.184]] | Continuous Speech Tokenizer in Text To Speech | NAACL | 2025 | Replaces RVQ discretization with continuous speech tokens in an AR TTS framework; improves WER from 12.73% (VALL-E) to 6.59% and SPK-SIM from 0.53 to 0.73 on LibriSpeech test-clean |
 | [[2025.acl-long.1043]] | OZSpeech: One-step Zero-shot Speech Synthesis with Learned-Prior-Conditioned Flow Matching | ACL | 2025 | Combines a prior-codes generator (feed-forward transformer) with OT-CFM initialized from a learned prior rather than Gaussian noise; achieves single-step inference (NFE=1) with best WER of 0.05% on LibriSpeech test-clean |

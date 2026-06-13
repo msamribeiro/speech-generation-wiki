@@ -218,7 +218,7 @@ claim_clusters:
     contradicting_papers: [2507.14534, 2025.coling-main.518, 2508.14049]
 
 open_questions:
-  - Can SSL models be explicitly trained to suppress paralinguistic variability (Factor C) while retaining phonetic content?
+  - Can SSL models be explicitly trained to suppress paralinguistic variability in speech tokens (2412.17048) while retaining phonetic content?
   - Is there a sweet spot between ASR-supervised (semantically concentrated) and SSL features (acoustically rich) for low-frame-rate codec design?
   - As supervised foundation models increasingly replace SSL in codec design, will the SSL vs. supervised distinction collapse?
   - Does XLS-R-based multilingual SSL generalise better as semantic targets across low-resource languages than English-centric SSL models?

@@ -360,7 +360,7 @@ claim_clusters:
 
 open_questions:
   - Can dynamic frame merging be extended to sub-3 Hz without catastrophic quality loss?
-  - Does FlexiCodec's dynamic merging interact well with prosodic information (Factor C from 2412.17048)?
+  - Does FlexiCodec's dynamic merging interact well with prosodic information (paralinguistic variability, 2412.17048)?
   - Is there a natural lower bound on frame rate below which semantic content cannot be preserved in discrete tokens?
   - Can SecoustiCodec's contrastive training be extended to a fully unsupervised setting without phoneme labels?
   - Do neural codec interpretability probing results (interspeech-2025-0115) generalise across codec architectures (RVQ, FSQ, DAC)?

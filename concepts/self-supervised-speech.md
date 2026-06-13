@@ -124,7 +124,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ### Influential
 - [[2209.03143]] — AudioLM demonstrates the complementary role of SSL semantic tokens and codec acoustic tokens; w2v-BERT XL 7th-layer features serve as the semantic tier that enables long-range coherence in the first hierarchical codec LM
-- [[2412.17048]] — controlled study identifying paralinguistic variability in HuBERT tokens (Factor C) as the dominant cause of SLM coherence failure, providing the strongest evidence for why SSL tokens are a problematic SLM modality
+- [[2412.17048]] — controlled study identifying paralinguistic variability in HuBERT tokens as the dominant cause of SLM coherence failure, providing the strongest evidence for why SSL tokens are a problematic SLM modality
 - [[2510.00981]] — FlexiCodec ablations demonstrating that ASR-supervised features (SenseVoice) substantially outperform SSL (w2v-bert-2) for dynamic frame merging at ultra-low codec rates; key inflection point for the SSL vs. supervised question
 - [[2507.14534]] — Conan: distills HuBERT-Large into a streaming content extractor for VC, demonstrating SSL's continued value for content-only feature extraction despite its limitations as a semantic codec target
 
@@ -136,7 +136,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Open Questions
 
-- Can SSL models be explicitly trained to suppress paralinguistic variability (Factor C from [[2412.17048]]) while retaining phonetic content, making them better codec targets?
+- Can SSL models be explicitly trained to suppress paralinguistic variability in speech tokens [[2412.17048]] while retaining phonetic content, making them better codec targets?
 - Is there a sweet spot between ASR-supervised (semantically concentrated) and SSL features (acoustically rich) for low-frame-rate codec design?
 - WavLM-Large is used for SPK-SIM evaluation; how sensitive are conclusions about speaker similarity to the choice of SSL backbone?
 - As supervised foundation models (SenseVoice, Whisper) increasingly replace SSL in codec design, does the field still need SSL-specific pre-training, or will the SSL vs. supervised distinction collapse?

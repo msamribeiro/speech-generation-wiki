@@ -116,7 +116,7 @@ claim_clusters:
       - Small corpus (<5 hours), monolingual Japanese; scaling to >3 participants expected problematic.
 
 open_questions:
-  - Can the Factor C problem be solved by better codecs alone, or does it require architectural changes to the LM?
+  - Can paralinguistic variability in speech tokens (2412.17048) be solved by better codecs alone, or does it require architectural changes to the LM?
   - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex models suffice?
   - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm?
   - SpeechRole shows interaction quality is text-LM bottlenecked; does this bottleneck affect open-ended S2S dialogue in the same way as role-playing?
@@ -125,7 +125,7 @@ open_questions:
 
 trend_notes:
   - Integration pass 5 adds: Full-Duplex-Bench (first automated benchmark for turn-taking, revealing aggressiveness-caution tension), SpeechRole (text-LM bottleneck in S2S role-playing).
-  - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (Factor C) and text reasoning, not synthesis architecture.
+  - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (paralinguistic variability in speech tokens, 2412.17048) and text reasoning, not synthesis architecture.
   - 2025 (Interspeech): FD-Bench (interspeech-2025-0739) provides the first automated full-duplex benchmark; direct duplex modeling (interspeech-2025-0874) bypasses turn-detection modules; triadic VAP (interspeech-2025-2660) extends turn-taking beyond dyadic settings.
   - id: 2303.03926
     year: 2023

@@ -10,15 +10,15 @@ status: emerging
 ## Executive Summary
 
 > [!abstract]
-> Speech-to-speech (S2S) systems take speech as input and produce speech as output without passing through an explicit text representation, preserving paralinguistic information lost in cascade ASR→LM→TTS pipelines. End-to-end S2S dialogue is emerging rapidly, with Moshi, LLaMA-omni, and GLM-4-Voice establishing real-time full- and half-duplex spoken dialogue in 2024. The key open challenge is the Factor C problem — paralinguistic variability in speech tokens that causes E2E systems to lag behind cascade on semantic coherence.
+> Speech-to-speech (S2S) systems take speech as input and produce speech as output without passing through an explicit text representation, preserving paralinguistic information lost in cascade ASR→LM→TTS pipelines. End-to-end S2S dialogue is emerging rapidly, with Moshi, LLaMA-omni, and GLM-4-Voice establishing real-time full- and half-duplex spoken dialogue in 2024. The key open challenge is that paralinguistic variability in speech tokens ([[2412.17048]]) causes E2E systems to lag behind cascade on semantic coherence.
 
 ## Current Status
 
-emerging — End-to-end S2S dialogue is a fast-moving frontier, catalysed by landmark 2024 systems (Moshi, LLaMA-omni, GLM-4-Voice) that demonstrated real-time spoken dialogue for the first time. Corpus coverage is still building: most landmark systems are citation discovery candidates not yet ingested. The 2025 literature focuses on diagnosing fundamental bottlenecks (Factor C), building enabling infrastructure (low-frame-rate codecs, interaction corpora), and streaming building blocks.
+emerging — End-to-end S2S dialogue is a fast-moving frontier, catalysed by landmark 2024 systems (Moshi, LLaMA-omni, GLM-4-Voice) that demonstrated real-time spoken dialogue for the first time. Corpus coverage is still building: most landmark systems are citation discovery candidates not yet ingested. The 2025 literature focuses on diagnosing fundamental bottlenecks (paralinguistic variability in speech tokens, [[2412.17048]]), building enabling infrastructure (low-frame-rate codecs, interaction corpora), and streaming building blocks.
 
 ## Why This Matters
 
-The cascade approach introduces compounding errors, irreversible information loss (paralinguistics discarded by ASR), and latency from three sequential modules. End-to-end S2S eliminates these: a single model maintains a continuous speech-token context window, can generate overlap and backchannels naturally, and can process and emit audio in real time (full-duplex). [[2412.17048]] identifies that making speech LMs work well is harder than text LMs — paralinguistic variability in speech tokens (Factor C) is the main bottleneck — but this is a fundamental research problem rather than a reason to avoid the paradigm.
+The cascade approach introduces compounding errors, irreversible information loss (paralinguistics discarded by ASR), and latency from three sequential modules. End-to-end S2S eliminates these: a single model maintains a continuous speech-token context window, can generate overlap and backchannels naturally, and can process and emit audio in real time (full-duplex). [[2412.17048]] identifies that making speech LMs work well is harder than text LMs — paralinguistic variability in speech tokens is the main bottleneck — but this is a fundamental research problem rather than a reason to avoid the paradigm.
 
 For TTS research, S2S systems are relevant because they require the same low-frame-rate, semantically rich codec representations as TTS autoregressive models ([[2510.00981]]), and the same streaming decoding infrastructure as streaming TTS ([[2507.14534]]). The dataset gap is also relevant: [[2025.findings-emnlp.424]] (InteractSpeech) was created specifically because no open corpus covered fine-grained interaction annotations needed for S2S dialogue training.
 
@@ -34,7 +34,7 @@ Three main sub-paradigms:
 
 ## Methods and Variants
 
-**Full-duplex E2E dialogue (Moshi family).** A single transformer processes a continuous interleaved stream of user and system speech tokens, enabling the system to listen and speak simultaneously. Requires a codec at sub-10 Hz to make the AR model tractable ([[2510.00981]]). The "inner monologue" trick (generating a text chain-of-thought token stream in parallel with speech tokens) is used to maintain semantic coherence, partially addressing the Factor C problem from [[2412.17048]].
+**Full-duplex E2E dialogue (Moshi family).** A single transformer processes a continuous interleaved stream of user and system speech tokens, enabling the system to listen and speak simultaneously. Requires a codec at sub-10 Hz to make the AR model tractable ([[2510.00981]]). The "inner monologue" trick (generating a text chain-of-thought token stream in parallel with speech tokens) is used to maintain semantic coherence, partially addressing the paralinguistic variability problem [[2412.17048]].
 
 **Half-duplex E2E dialogue (LLaMA-omni, GLM-4-Voice).** Speech input is encoded once per turn; response speech tokens are generated autoregressively. Simpler architecture but requires explicit turn-taking logic. Less natural for interruptions and backchannels.
 
@@ -48,7 +48,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ### Strongly Supported
 
-- Paralinguistic variability in speech tokens (Factor C) is the primary bottleneck limiting E2E speech LM semantic coherence relative to cascade systems, regardless of model scale.
+- Paralinguistic variability in speech tokens is the primary bottleneck limiting E2E speech LM semantic coherence relative to cascade systems, regardless of model scale.
   Supporting: [[2412.17048]]
 
 - Low-frame-rate codecs with semantically rich token representations are necessary infrastructure for tractable autoregressive generation in full-duplex S2S dialogue systems.
@@ -79,7 +79,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 ## Representative Papers
 
 ### Foundational
-- [[2412.17048]] — diagnoses Factor C (paralinguistic variability) as the primary bottleneck for E2E speech LM semantic coherence; frames the core research challenge for the field.
+- [[2412.17048]] — diagnoses paralinguistic variability in speech tokens as the primary bottleneck for E2E speech LM semantic coherence; frames the core research challenge for the field.
 
 ### Influential
 - [[2510.00981]] — demonstrates that low-frame-rate codecs are necessary for tractable AR sequence lengths in S2S dialogue LMs, directly enabling systems like Moshi.
@@ -91,7 +91,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Open Questions
 
-- Can the Factor C problem (paralinguistic variability in speech tokens) be solved by better codecs alone, or does it require architectural changes to the LM?
+- Can paralinguistic variability in speech tokens ([[2412.17048]]) be solved by better codecs alone, or does it require architectural changes to the LM?
 - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex models suffice?
 - How do S2S systems handle code-switching and multilingual input, where the ASR-intermediate approach has a natural advantage?
 - What evaluation benchmarks best capture the interactive quality of S2S systems? [[2025.findings-emnlp.424]] provides interaction annotations but no end-to-end S2S benchmark yet exists for open evaluation.
@@ -100,13 +100,13 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 
 ## Trend Summary
 
-2022–2023: S2S translation matured (Translatotron, SeamlessM4T). Spoken dialogue remained cascade-dominated. 2024: Moshi, LLaMA-omni, and GLM-4-Voice demonstrated real-time E2E spoken dialogue for the first time, catalysing the field. 2025: Corpus papers begin studying the fundamental bottlenecks (Factor C, [[2412.17048]]), building enabling infrastructure (low-frame-rate codecs [[2510.00981]], interaction corpora [[2025.findings-emnlp.424]]), and streaming VC building blocks ([[2507.14534]]). The gap between cascade and E2E on semantic quality remains open. Integration pass 5 adds: Full-Duplex-Bench [[2503.04721]] — the first automated benchmark for full-duplex turn-taking behaviour, revealing that all current systems show a consistent aggressiveness-caution tension; SpeechRole [[2508.02013]] — the first large-scale speech-to-speech role-playing benchmark, providing evidence that interaction quality is text-LM bottlenecked regardless of architecture.
+2022–2023: S2S translation matured (Translatotron, SeamlessM4T). Spoken dialogue remained cascade-dominated. 2024: Moshi, LLaMA-omni, and GLM-4-Voice demonstrated real-time E2E spoken dialogue for the first time, catalysing the field. 2025: Corpus papers begin studying the fundamental bottlenecks (paralinguistic variability in speech tokens, [[2412.17048]]), building enabling infrastructure (low-frame-rate codecs [[2510.00981]], interaction corpora [[2025.findings-emnlp.424]]), and streaming VC building blocks ([[2507.14534]]). The gap between cascade and E2E on semantic quality remains open. Integration pass 5 adds: Full-Duplex-Bench [[2503.04721]] — the first automated benchmark for full-duplex turn-taking behaviour, revealing that all current systems show a consistent aggressiveness-caution tension; SpeechRole [[2508.02013]] — the first large-scale speech-to-speech role-playing benchmark, providing evidence that interaction quality is text-LM bottlenecked regardless of architecture.
 
 ## All Papers
 
 | ID | Title | Venue | Year | Key use of this concept |
 |----|-------|-------|------|------------------------|
-| [[2412.17048]] | Why Do Speech Language Models Fail? | arXiv (ICASSP 2026) | 2026 | Diagnoses Factor C (paralinguistic variability) as the primary bottleneck for E2E speech LM semantic coherence |
+| [[2412.17048]] | Why Do Speech Language Models Fail? | arXiv (ICASSP 2026) | 2026 | Diagnoses paralinguistic variability in speech tokens as the primary bottleneck for E2E speech LM semantic coherence |
 | [[2510.00981]] | FlexiCodec | arXiv (ICLR 2026) | 2025 | Low-frame-rate codec enabling tractable AR sequence lengths for S2S dialogue LMs |
 | [[2025.findings-emnlp.424]] | InteractSpeech | EMNLP 2025 | 2025 | Interaction corpus for training S2S dialogue models on turn-taking, backchannels, interruptions |
 | [[2509.02020]] | FireRedTTS-2 | arXiv | 2025 | Cascade S2S dialogue (TTS + dialogue planning); sentence-by-sentence streaming multi-speaker generation |

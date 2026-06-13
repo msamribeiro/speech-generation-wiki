@@ -208,7 +208,7 @@ claim_clusters:
       - Speaker-invariant tokens may sacrifice prosodic detail needed for expressive generation.
 
 open_questions:
-  - Can the Factor C problem (paralinguistic variability) be solved by better codecs alone, or does it require architectural changes?
+  - Can paralinguistic variability in speech tokens (2412.17048) be solved by better codecs alone, or does it require architectural changes?
   - Is full-duplex strictly necessary for natural conversation, or can well-designed turn-taking logic in half-duplex suffice?
   - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
   - Full-Duplex-Bench reveals a consistent aggressiveness-caution tension; is this fundamental to the E2E paradigm or addressable by training regime?

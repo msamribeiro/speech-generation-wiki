@@ -181,7 +181,7 @@ claim_clusters:
     status: contested
     supporting_papers: [2412.17048]
     contradicting_papers: [2025.acl-long.1498]
-    notes: DRI mitigation at codec training time partially addresses Factor C.
+    notes: DRI mitigation at codec training time partially addresses paralinguistic variability in speech tokens (2412.17048).
 
   - id: interspeech-2025-1641
     year: 2025
@@ -215,7 +215,7 @@ claim_clusters:
 
 open_questions:
   - At what AR frame rate does performance degrade irreversibly for a given codec design?
-  - Is the Factor C problem addressable within the AR+NAR framework, or does it require fundamentally different architectures?
+  - Is the paralinguistic variability problem (2412.17048) addressable within the AR+NAR framework, or does it require fundamentally different architectures?
   - Does the dual-token advantage in DualSpeechLM persist at 100K+ hour scale?
   - Can MTP improve speaker similarity as well as intelligibility in AR speech LMs?
   - Does modality-based MoE routing benefit all LLM backbone sizes equally?
