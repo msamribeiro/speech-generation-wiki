@@ -8,6 +8,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-13
 
+- quality-pass | Factor A/B/C label cleanup | 12 files | paper-internal experiment labels from [[2412.17048]] replaced with descriptive language; citations added where missing
 - integrate | 4 papers (orphan fix) | autoregressive-codec-tts, prosody-control, spoken-language-model, evaluation-metrics, voice-conversion, multilingual-tts updated | interspeech-2025-0253, interspeech-2025-0408, interspeech-2025-0902, 2025.americasnlp-1.1 linked to concepts
 - integrate | 25 papers | 21 concepts updated | 21 digests updated | 133 cross-links added
 
