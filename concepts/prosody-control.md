@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement, voice-conversion]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: established
 ---
 ## Executive Summary
@@ -200,3 +200,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2503.01710]] | Spark-TTS: An Efficient LLM-Based Text-to-Speech Model with Single-Stream Decoupled Speech Tokens | arXiv | 2025 | Global speaker tokens conditioning via BiCodec; demonstrates that decoupling speaker timbre (global) from content (local) within a single token stream improves prosodic naturalness |
 | [[2502.04128]] | Llasa: Scaling Train-Time and Inference-Time Compute for Llama-based Speech Synthesis | arXiv | 2025 | Uses speech understanding verifiers including prosody metrics at inference time; demonstrates that prosody quality benefits from inference-time compute scaling via best-of-N selection |
 | [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Prosody adherence improves monotonically with reference prompt length (up to 10 seconds); in-context prosody learning without explicit prosody supervision |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Pre-net information bottleneck ensures stable attention alignment; established mel spectrogram prediction as the standard prosody-implicit representation for seq2seq TTS |
+| [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Receptive field size as binding constraint for prosodic naturalness; insufficient receptive field degrades phrase-level F0 contours even when segmental quality is high |
+| [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | Multiple-frames-per-step attention decoder improves training stability and implicit prosody modeling; established end-to-end prosody modeling from characters |
+| [[2402.01912]] | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv | 2024 | Natural language prosody conditioning via automatic acoustic labeling; accent control achievable in a single model covering dozens of accents |
+| [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Scale-dependent emergence of prosodic naturalness on linguistically complex inputs; BPE reduces sequence length improving long-context prosody |

@@ -1,6 +1,6 @@
 concept: flow-matching
-last_updated: 2026-06-12
-paper_count: 41
+last_updated: 2026-06-13
+paper_count: 44
 
 papers:
   - id: 2507.22746
@@ -172,3 +172,44 @@ trend_notes:
   - 2026: LongCat-AudioDiT shifted FM from mel-spectrogram to waveform VAE latent, revealing training-inference mismatch in all prior Voicebox/F5-TTS style training.
   - Dual-mode reference/text conditioning for FM emotional VC (ClapFM-EVC) is an emerging direction for instruction-conditioned voice conversion.
   - 2025 (Interspeech): Non-uniform ODE step pruning (EPSS, interspeech-2025-2449) validated as a training-free 4× speedup for F5-TTS; PEFT for cross-lingual continual adaptation (interspeech-2025-1344) confirms FM models adapt well with minimal parameters but require PEFT rather than full fine-tuning to preserve multi-language capability.
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: low
+    contribution_type: conceptual-contribution
+    claims:
+      - Normalising flow-based TTS models enable parallel generation with exact likelihood training, offering a quality-speed trade-off alternative to diffusion models.
+    evidence:
+      - Survey covers normalising flow TTS including Glow-TTS and FloWave; identifies flows as competitive with VAE-based parallel models as of 2021.
+    limitations:
+      - Pre-dates continuous flow-matching formulation; covers only normalising flows, not the rectified flow or FMPE approaches that dominate 2023+.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flow-matching mel generators can learn alignment from raw characters without G2P converters, phoneme aligners, or duration models.
+      - Explicit phoneme alignment supervision imposes a naturalness ceiling that character-level training can exceed.
+      - Non-AR flow-matching TTS scales predictably with training data volume.
+    evidence:
+      - E2 TTS UTMOS 4.20, WER 2.2%, SIM 0.71 on SeedTTS test-en; character+filler exceeds phoneme+duration by 0.12 UTMOS.
+    limitations:
+      - Slow inference (multi-step denoising); no streaming; requires multiple NFE for competitive quality.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Flow-matching decoders deployed as post-VQ refinement stages recover significant audio quality lost during quantization.
+    evidence:
+      - Baichuan-Audio FM decoder adds +0.61 UTMOS over codec reconstruction; staged approach avoids retraining the LLM backbone.
+    limitations:
+      - Adds inference latency; evaluated primarily on Chinese; codec architecture not disclosed.
+

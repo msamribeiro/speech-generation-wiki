@@ -4,7 +4,7 @@ title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder, flow-matching]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 ---
 
 ## Executive Summary
@@ -164,3 +164,5 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Simultaneous text and audio streaming generation from a single AR model; batch-based parallel generation strategy for streaming speech without sequential decode bottleneck |
 | [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | CTC-based non-autoregressive speech decoding from LLM hidden states enables streaming synthesis robust to chunk size variation; demonstrates that CTC decoding suits streaming better than AR for speech rate naturalness |
 | [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Chunk-level state classification integrated into LLM prefill enables duplex interruption detection without a separate streaming component; three-stage training for low-latency speech I/O |
+| [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | Speculative response generation reduces per-response latency 500ms in streaming spoken dialogue; 40% of pre-generated responses usable in real-time |
+| [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Streamable convolutional decoder matches diffusion decoder in naturalness at 3× lower compute; demonstrates streaming TTS at billion-parameter scale |

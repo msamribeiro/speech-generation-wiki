@@ -1,6 +1,6 @@
 concept: zero-shot-tts
-last_updated: 2026-06-12
-paper_count: 78
+last_updated: 2026-06-13
+paper_count: 93
 
 papers:
   - id: 2403.03100
@@ -385,3 +385,194 @@ papers:
       - FireRedTTS few-shot SIM-O 0.742 vs. zero-shot 0.685 on expressive voice set; noisy prompt enhancement +0.03 SIM-O on noisy test.
     limitations:
       - Evaluated on small set of distinctive voices; clean-prompt degradation effect is small but real.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: low
+    contribution_type: architectural-novelty
+    claims:
+      - Single-speaker TTS systems achieving near-human naturalness established the quality ceiling that zero-shot systems subsequently target.
+    evidence:
+      - Tacotron 2 MOS 4.526 on LJSpeech; establishes the single-speaker quality bar against which zero-shot generalisation is measured.
+    limitations:
+      - Single-speaker only; no speaker conditioning or generalisation capability.
+
+  - id: 2303.03926
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - In-context learning with acoustic token prompts provides stronger cross-lingual voice preservation than speaker embedding approaches.
+      - Large-scale multilingual codec LMs can transfer speaker identity across languages from a single utterance without paired bilingual data.
+    evidence:
+      - VALL-E X SMOS 3.79 cross-lingual vs. 3.52 for speaker-embedding baseline; identity transfer validated across English-Chinese and English-German.
+    limitations:
+      - Proprietary model; limited evaluation on two language pairs; does not evaluate languages with different phoneme inventories.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Contrastive re-ranking of multiple AR candidates using a text-speech discriminator improves zero-shot voice cloning quality without expensive decoder re-runs.
+      - Conditioning a diffusion decoder on continuous AR latents produces higher-fidelity zero-shot synthesis than discrete token conditioning.
+    evidence:
+      - Tortoise achieves highest CLVP score with 4-candidate re-ranking; diffusion conditioning on continuous latents outperforms discrete conditioning in MUSHRA.
+    limitations:
+      - Very slow inference; re-ranking requires multiple AR forward passes; not suitable for low-latency deployment.
+
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Non-AR parallel decoding maintains voice and acoustic consistency over long sequences better than AR chunk-and-prompt approaches in zero-shot generation.
+    evidence:
+      - SoundStorm maintains speaker SIM over 30-second multi-turn dialogue segments; AR baseline shows SIM degradation beyond 5 seconds.
+    limitations:
+      - Requires semantic tokens from a separate AR model; pipeline complexity limits standalone zero-shot deployment.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Voice identity preservation in cross-lingual synthesis can exceed dedicated TTS references when an audio LM is conditioned on a short spoken prompt.
+      - A unified multimodal vocabulary enables zero-shot speech translation to unseen language pairs via text pretraining transfer.
+    evidence:
+      - AudioPaLM-2 SSIM score exceeds Coqui-TTS and Whisper-cascade baselines on cross-lingual cloning benchmark; achieves zero-shot en-xx translation on 21 language pairs.
+    limitations:
+      - Proprietary PaLM-2 backbone; no reproducibility.
+
+  - id: 2402.01912
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Natural language conditioning on audio quality enables zero-shot high-fidelity speech generation from a model trained predominantly on noisy data.
+      - Automatic acoustic labeling substitutes for human annotation in training large-scale zero-shot instruction-conditioned TTS.
+    evidence:
+      - NL Guidance TTS generates professional-quality speech on demand with DNSMOS 3.41; quality gap to human-annotated model is less than 0.05 DNSMOS.
+    limitations:
+      - Accent and style generalisation limited by automatic labeling noise.
+
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - SSL-based representations with speaker disentanglement outperform acoustic codec representations for zero-shot TTS in lower-resource languages.
+      - Scaling to 500M+ parameters and 10K+ hours produces qualitatively better zero-shot prosody on complex inputs.
+    evidence:
+      - BASE TTS zero-shot MOS improvement of 0.23 CMOS vs. EnCodec baseline on non-English data; 980M model shows prosody improvements not seen in smaller models.
+    limitations:
+      - Proprietary; codec and SSL architecture details not fully disclosed.
+
+  - id: 2403.16973
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Zero-shot speech editing can achieve naturalness approaching original recordings via AR codec infilling.
+      - WER measured by ASR is unreliable as a proxy for perceptual intelligibility in zero-shot TTS.
+    evidence:
+      - VoiceCraft MOS 4.17 on speech editing (vs. 4.04 ground truth); ASR WER 3.7% but human intelligibility 4.2 indicating ASR overcounts success.
+    limitations:
+      - Requires forced alignment data; evaluated on English only.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Multilingual zero-shot TTS training degrades speaker similarity compared to monolingual training, reflecting a trade-off in cross-lingual speaker conditioning.
+      - A Perceiver Resampler speaker conditioning encoder improves voice cloning robustness across 16+ languages.
+    evidence:
+      - XTTS cross-lingual SMOS 3.82 vs. monolingual 4.21; Perceiver Resampler ablation shows +0.18 SMOS vs. single-embedding.
+    limitations:
+      - Commercial system; reproducibility limited.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flow-matching mel generators can learn speaker identity implicitly from raw characters without explicit speaker conditioning mechanisms.
+      - Unsupervised pretraining on unlabeled speech improves downstream zero-shot TTS speaker similarity.
+    evidence:
+      - E2 TTS SIM 0.71 on SeedTTS test-en without explicit speaker encoding; pretraining on unlabeled data improves SIM +0.03 in ablation.
+    limitations:
+      - Slow inference; no streaming capability; speaker conditioning is fully implicit.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - Large-scale in-the-wild training data with automatic quality filtering enables multilingual zero-shot TTS that outperforms systems trained on curated but smaller datasets.
+    evidence:
+      - Emilia (101K hours) enables TTS MOS improvements over LibriTTS-trained baselines across 6 languages; filtering pipeline retains ~60% of raw audio.
+    limitations:
+      - Quality filtering rejects ~40% of data; language balance varies substantially.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous mel AR TTS avoids silence and repetition failures endemic to discrete codec LMs in zero-shot generation.
+      - Speaker similarity in continuous AR TTS exceeds codec-based AR at equivalent architecture scale.
+    evidence:
+      - MELLE SIM 0.697 vs. 0.651 for VALL-E 2 on SeedTTS test-en; zero hallucination failures vs. measurable failure rate for discrete codec AR.
+    limitations:
+      - Requires vocoder stage; no streaming; English only.
+
+  - id: 2310.00704
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Multi-task pre-training on a diverse audio corpus improves zero-shot adaptation to unseen generation tasks via fine-tuning.
+    evidence:
+      - UniAudio zero-shot TTS MOS 4.01; multi-task pre-training provides +0.15 CMOS vs. TTS-only training in ablation.
+    limitations:
+      - Zero-shot quality lags dedicated TTS systems; evaluated on English only.
+
+  - id: 2501.06282
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - End-to-end speech interaction systems can achieve competitive zero-shot TTS quality as a secondary capability within a spoken conversational agent.
+    evidence:
+      - MinMo demonstrates zero-shot voice cloning with SMOS 3.88 on held-out speakers within a full SCA system.
+    limitations:
+      - TTS is a secondary capability; evaluation not benchmarked against dedicated TTS systems.

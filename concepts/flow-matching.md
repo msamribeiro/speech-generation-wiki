@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: dominant
 ---
 
@@ -198,3 +198,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2207.12598]] | Classifier-Free Diffusion Guidance | arXiv | 2022 | Introduces conditioning dropout training + score interpolation at inference; the standard guidance mechanism adopted by all subsequent conditional diffusion and flow-matching TTS systems |
 | [[2504.18425]] | Kimi-Audio Technical Report | arXiv | 2025 | Uses chunk-wise flow-matching streaming detokenizer for low-latency semantic-token-to-mel conversion in a universal audio LLM |
 | [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Extends CosyVoice OT-CFM acoustic decoder with multi-task tokenizer and post-training; demonstrates flow-matching acoustic decoder benefits from richer semantic token conditioning |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Foundational flow-matching zero-shot TTS from raw characters; demonstrates implicit alignment learning without phoneme supervision; sets the baseline for character-conditioned FM-TTS |
+| [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | Flow-matching post-VQ refinement stage recovering 0.6 UTMOS points lost during quantization; demonstrates FM as reconstruction quality recovery tool in codec pipelines |
+| [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical survey covering the predecessor normalizing flow approaches (Glow-TTS, WaveGlow) that informed modern flow-matching TTS development |

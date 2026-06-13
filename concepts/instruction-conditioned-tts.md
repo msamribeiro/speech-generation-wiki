@@ -3,7 +3,7 @@ slug: instruction-conditioned-tts
 title: Instruction-Conditioned TTS
 aliases: [controllable TTS, natural language style control, prompt-based TTS, text-prompted synthesis, style-controllable TTS]
 related_concepts: [prosody-control, emotion-synthesis, zero-shot-tts, rlhf-speech, spoken-language-model, disentanglement, voice-conversion]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: emerging
 ---
 ## Executive Summary
@@ -156,3 +156,7 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | Instruction data rewriting to adapt LLM text responses to speech interaction conventions; demonstrates that style adaptation is more data-driven than architecture-driven |
 | [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Instruction-conditioned TTS with style tags for expressiveness; demonstrates fine-grained control via instruction labels in a production-scale system |
 | [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Benchmarks instruction-following capabilities of voice assistants under various acoustic degradation conditions; mispronunciation significantly degrades instruction-following more than disfluency |
+| [[2402.01912]] | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv | 2024 | Automatic acoustic labeling substitutes for human annotations in instruction-conditioned TTS; includes recording quality, accent, speaking rate, and emotion conditioning from text prompts |
+| [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | RLHF for instruction-conditioned speech interaction; demonstrates RLHF reward models can fail systematically on unclear instructions unless explicit counter-examples are added |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Instruction-controlled speech style including emotion, dialect, speaking rate, and voice identity via multi-task instruction training |
+| [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Text instruction as task conditioning for multi-task audio generation including TTS; demonstrates instruction conditioning across 7 generation tasks |

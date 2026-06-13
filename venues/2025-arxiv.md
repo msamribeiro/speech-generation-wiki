@@ -2,15 +2,15 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 80
-last_updated: 2026-06-12
+papers_ingested: 84
+last_updated: 2026-06-13
 ---
 
 # arXiv 2025
 
 ## Overview
 
-This page tracks arXiv preprints ingested into the corpus. Fourteen papers are currently represented. Two are confirmed accepted to top venues: [[2510.00981]] (FlexiCodec → ICLR 2026) and [[2507.14534]] (Conan → ASRU 2025). [[2412.17048]] is accepted to ICASSP 2026. [[2502.03930]] (DiTAR) is accepted to ICML 2025. [[2504.10352]] (PALLE) is accepted to ACM MM 2025. The remaining papers are preprints ranging from 2023 to 2025.
+This page tracks arXiv preprints ingested into the corpus. Eighty-four papers are currently represented, spanning early 2025 through mid-2025. Four papers from this corpus represent major early-2025 industrial SCA systems: [[2502.11946]] (Step-Audio) demonstrates that scaling an AR LLM backbone from 3B to 130B produces substantial TTS quality gains and introduces RLHF counter-example training to prevent evasive non-answers; [[2501.06282]] (MinMo) integrates TTS, ASR, and full-duplex dialogue in a single framework with 268ms latency; [[2502.17239]] (Baichuan-Audio) introduces staged pretraining and flow-matching post-refinement to preserve LLM intelligence in end-to-end speech systems; and [[2507.16632]] (Step-Audio 2) extends to retrieval-augmented generation, tool calling, and paralinguistic comprehension at production scale. Two are confirmed accepted to top venues: [[2510.00981]] (FlexiCodec → ICLR 2026) and [[2507.14534]] (Conan → ASRU 2025). [[2412.17048]] is accepted to ICASSP 2026. [[2502.03930]] (DiTAR) is accepted to ICML 2025. [[2504.10352]] (PALLE) is accepted to ACM MM 2025. The remaining papers are preprints ranging from 2023 to 2025.
 
 The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.14534]], [[2508.16332]]), codec ([[2510.00981]]), singing ([[2508.16332]]), and SCA ([[2412.17048]], [[2509.02020]]). Dominant themes in the Aug–Sep 2025 integration window: (1) extreme codec compression — TaDiCodec [[2508.16790]] achieves 6.25 Hz single-codebook tokenization via text-conditioned flow-matching; VibeVoice [[2508.19205]] demonstrates 7.5 Hz continuous VAE for hour-long multi-speaker TTS; (2) empathetic spoken dialogue — OSUM-EChat [[2508.09600]] and TurnGuide [[2508.07375]] advance emotional awareness and semantic coherence in full-duplex systems; (3) dialogue evaluation — EMO-Reasoning [[2508.17623]], VoxRole [[2509.03940]], and LibriQuote [[2509.04072]] introduce new benchmarks for emotional coherence, role-playing, and narrative expressivity; (4) automatic evaluation methodology — QAMRO [[2508.08957]] and AESA-Net [[2509.03292]] improve MOS predictor training via ranking objectives; SITool [[interspeech-2025-0984]] provides negative result against WER as codec intelligibility proxy; (5) speaker anonymization and attribute disentanglement — [[2508.15565]] (any-to-any adversarial perturbation), [[2508.15931]] (timbre attribute ranking), [[2508.17031]] (cross-modal speech insertion); (6) prosody front-end — [[2509.00675]] (speaker-conditioned phrase break), [[2508.17494]] (French SSML control); (7) SSL token compression — [[2509.00503]] achieves adaptive 15 Hz compression of HuBERT tokens with better ASR than 50 Hz original. Earlier 2025 themes also present: unified speech + singing ([[2508.16332]] Vevo2); emotion control both training-based ([[2508.02038]] Marco-Voice, [[2508.11273]] EmoSSLSphere) and training-free ([[2508.03543]] EmoSteer-TTS); hybrid AR+diffusion ([[2502.03930]] DiTAR); attention-free flow matching ([[2510.02848]] Flamed-TTS); production-level GRPO RL ([[2512.14291]] GLM-TTS); codec-free AR TTS ([[2502.11128]] FELLE, [[2508.19098]] CLEAR); RL preference optimization ([[2509.00685]] MPO); streaming latency ([[2509.15969]] VoXtream); flow-matching distillation ([[2510.07979]] IntMeanFlow).
 
@@ -98,3 +98,7 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2505.09388 | Qwen3 Technical Report |
 | 2507.06261 | Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodalit |
 | 2501.12948 | DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcem |
+| 2502.11946 | Step-Audio: Unified Understanding and Generation in Intelligent Speech |
+| 2501.06282 | MinMo: A Multimodal Large Language Model for Seamless Voice Interactio |
+| 2502.17239 | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction |
+| 2507.16632 | Step-Audio 2 Technical Report |

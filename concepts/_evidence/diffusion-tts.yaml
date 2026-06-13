@@ -1,6 +1,6 @@
 concept: diffusion-tts
-last_updated: 2026-06-12
-paper_count: 17
+last_updated: 2026-06-13
+paper_count: 19
 
 papers:
   - id: 2207.12598
@@ -133,3 +133,30 @@ trend_notes:
   - 2025: DiTAR patch-based continuous AR+diffusion established hybrid paradigm; DiSTAR extended to discrete token space.
   - 2026: LongCat-AudioDiT shifted the representation from mel-spectrogram to waveform VAE latent, achieving SOTA SIM for diffusion NAR.
   - The SIM gap between diffusion NAR and AR systems has largely closed as of 2026.
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Diffusion-based vocoders achieve high perceptual quality but suffer from slow inference due to iterative reverse diffusion, motivating step-reduction methods.
+    evidence:
+      - Survey covers WaveGrad, DiffWave, and PriorGrad as diffusion vocoders; notes quality-speed trade-off as the primary open problem as of 2021.
+    limitations:
+      - Pre-dates the score-based EDM and DDIM approaches that substantially improved diffusion sampling efficiency post-2021.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Conditioning a diffusion decoder on continuous AR latents rather than discrete token outputs substantially improves quality in cascaded AR-diffusion TTS.
+      - Applying image-generation scaling techniques (large-scale pretraining, multi-stage AR-diffusion) to speech synthesis yields high-expressiveness multi-speaker TTS.
+    evidence:
+      - Tortoise AR-conditioned diffusion achieves MUSHRA exceeding professional narrators; diffusion on continuous latents outperforms discrete token conditioning by ~5 MUSHRA points.
+    limitations:
+      - Very slow inference (minutes per utterance); no streaming; predates codec LM mainstream approach.
+

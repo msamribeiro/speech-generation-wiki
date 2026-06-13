@@ -1,6 +1,6 @@
 concept: subjective-evaluation
-last_updated: 2026-06-12
-paper_count: 38
+last_updated: 2026-06-13
+paper_count: 50
 
 papers:
   - id: 2503.04721
@@ -155,3 +155,146 @@ trend_notes:
   - SpeechRole demonstrates LLM-as-judge with multi-reference normalisation as a scalable alternative to human evaluation for role-playing benchmarking.
   - The trend toward automated reproducible benchmarks (Full-Duplex-Bench, SpeechRole, VoiceMOS) reduces reliance on costly subjective listening tests for specific evaluation dimensions.
   - Integration pass 6: Three new papers expand subjective evaluation — interspeech-2025-0401 provides a replicability checklist for TTS listening tests, interspeech-2025-2765 introduces human fooling rate as a new naturalness evaluation paradigm, and interspeech-2025-1066 adds another UTMOS vs. human MOS divergence data point for EBM TTS systems.
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Crowdsourced MOS with naturalness instructions reliably ranks TTS systems; WaveNet achieves MOS 4.21 vs 3.86 for concatenative synthesis.
+    evidence:
+      - WaveNet introduces large-scale crowdsourced MOS as the primary TTS evaluation method; 1500 listeners via Amazon Mechanical Turk; sets the standard adopted by the field.
+    limitations:
+      - Crowd-sourced MOS without anchor stimuli; variability across listener cohorts not reported.
+
+  - id: 1703.10135
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Crowdsourced MOS can reliably rank systems where quality differences are perceptually significant; Tacotron 3.82 vs parametric 3.69.
+    evidence:
+      - Tacotron uses 5-point Likert MOS from Mechanical Turk; shows first end-to-end system competitive with production parametric TTS.
+    limitations:
+      - Single sentence set; no side-by-side comparison; anchor conditions absent.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - A crowdsourced MOS of 4.526 approaching human speech naturalness (4.582) is achievable with a mel-spectrogram conditioned WaveNet pipeline.
+    evidence:
+      - Tacotron 2 establishes MOS parity with natural speech; 500 raters per condition; introduces the MOS gap to GT as the standard TTS quality metric.
+    limitations:
+      - LJSpeech single speaker; no expressive or multi-speaker evaluation.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - MUSHRA-style naturalness evaluation with mean opinion score can rank high-quality TTS systems in an expressive multi-speaker setting.
+    evidence:
+      - Tortoise MUSHRA results show naturalness exceeding professional audiobook narrators; evaluation panel of crowdsourced raters with hidden reference condition.
+    limitations:
+      - Custom MUSHRA protocol; no anchor specification; may not match formal MUSHRA ITU-R BS.1534 protocol.
+
+  - id: 2306.00814
+    year: 2023
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - MUSHRA with anchor stimuli provides more reliable discrimination than MOS for high-quality vocoder comparison.
+    evidence:
+      - Vocos reports MUSHRA 82.6 vs HiFi-GAN 79.1 with explicit anchor conditions; shows MUSHRA superiority for fine-grained quality comparison.
+    limitations:
+      - MUSHRA is effort-intensive and rarely used in large-scale production evaluations.
+
+  - id: 2402.01912
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Human listening tests for attribute-conditioned TTS require separate attribute accuracy and naturalness dimensions; single MOS misses attribute satisfaction.
+    evidence:
+      - NL Guidance TTS evaluates MOS separately from accent and style identification accuracy; evaluators asked to rate attribute match as separate criterion.
+    limitations:
+      - Attribute identification accuracy is a proxy for attribute perception; perception and accuracy may diverge.
+
+  - id: 2403.16973
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Human intelligibility ratings and ASR WER disagree on TTS quality ranking; human judgment is necessary for valid intelligibility evaluation.
+    evidence:
+      - VoiceCraft shows WER 3.7% (better than GT) while human intelligibility 4.2 (worse than GT 4.4); ASR-based WER systematically overestimates TTS intelligibility.
+    limitations:
+      - Study based on a single TTS paper; broader correlation analysis across systems not conducted.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Speaker similarity metrics can exceed ground-truth recordings, indicating they measure consistency within generation rather than true perceptual identity.
+    evidence:
+      - E2 TTS SIM exceeds GT on SeedTTS test-en; authors interpret as consistency-within-generation artifact.
+    limitations:
+      - Observation system-specific; not validated across multiple evaluation cohorts.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - Naturalness MOS is sufficient to demonstrate that in-the-wild training data with quality filtering improves TTS quality over curated studio data.
+    evidence:
+      - Emilia MOS comparison shows training on 101K filtered hours improves MOS by 0.15 over LibriTTS-trained baseline.
+    limitations:
+      - MOS differences at this scale may be within test-retest reliability; no human-parity comparison.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Failure rate (silence, repetition, hallucination) is a distinct and underreported evaluation dimension for AR TTS.
+    evidence:
+      - MELLE reports zero failures across 500 sentences; codec AR baselines show measurable failure rates on the same set; argues for explicit failure rate reporting.
+    limitations:
+      - Test set is English-only; failure rates may differ substantially on tonal or morphologically rich languages.
+
+  - id: 2409.05377
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: low
+    contribution_type: empirical-benchmark
+    claims:
+      - UTMOS as automatic MOS predictor provides reliable ranking for codec reconstruction quality when used alongside PESQ and STOI.
+    evidence:
+      - BigCodec evaluation shows UTMOS 3.84 ranking consistent with manual subjective comparisons; UTMOS used as proxy for naturalness MOS in codec evaluations.
+    limitations:
+      - UTMOS trained on TTS data may not perfectly generalize to codec reconstruction artifacts.
+

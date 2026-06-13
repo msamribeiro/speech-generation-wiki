@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: dominant
 ---
 
@@ -223,3 +223,17 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Claimed human parity on LibriSpeech via grouped code prediction and repetition-aware sampling; proposes new benchmark conditions for zero-shot TTS evaluation |
 | [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice zero-shot multilingual voice cloning; establishes cross-lingual zero-shot TTS at production scale with instruction-following capabilities |
 | [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Foundation TTS with zero-shot and few-shot modes; demonstrates few-shot fine-tuning substantially outperforms zero-shot for highly distinctive voices |
+| [[2407.05361]] | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv | 2024 | Shows in-the-wild training data enables zero-shot TTS on spontaneous speech; large-scale dataset for zero-shot TTS training across 6 languages |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Demonstrates flow matching can learn speaker alignment from raw characters for zero-shot TTS without phoneme aligners; unsupervised pretraining improves zero-shot speaker similarity |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | Zero-shot TTS across 16 languages; trade-off between multilingual coverage and per-language speaker similarity in zero-shot settings |
+| [[2403.16973]] | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild | arXiv | 2024 | Zero-shot TTS and speech editing as unified AR infilling; demonstrates WER is unreliable proxy for perceptual intelligibility in zero-shot evaluation |
+| [[2305.09636]] | SoundStorm: Efficient Parallel Audio Generation | arXiv | 2023 | Zero-shot voice conditioning via semantic token speaker prompt; parallel masked generation for fast zero-shot synthesis at scale |
+| [[2303.03926]] | VALL-E X: Cross-lingual Neural Codec Language Modeling | arXiv | 2023 | Cross-lingual zero-shot voice transfer preserving identity, emotion, and acoustic environment without paired bilingual data |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Predecessor to zero-shot TTS; single-speaker conditioned synthesis establishing mel-spectrogram as intermediate representation |
+| [[2402.01912]] | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv | 2024 | Zero-shot TTS with natural language style control; speaker similarity evaluated on zero-shot voice cloning benchmarks |
+| [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | In-context speaker voice preservation in cross-lingual speech synthesis exceeds TTS-based references in zero-shot setting |
+| [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | Multi-speaker zero-shot TTS scaled via internet audio; contrastive re-ranking for quality improvement without per-speaker fine-tuning |
+| [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | Zero-shot codec-free AR TTS; speaker similarity scores can exceed ground-truth on standard metrics, raising concerns about metric validity |
+| [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Zero-shot speaker generalization with disentangled SSL tokens; SSL-based representations outperform acoustic codecs for zero-shot quality |
+| [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Zero-shot TTS as one of seven audio generation tasks; multi-task training improves zero-shot TTS relative to task-specific models |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Zero-shot voice cloning within a multi-task spoken dialogue system via streaming voice decoder |

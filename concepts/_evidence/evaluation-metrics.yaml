@@ -1,6 +1,6 @@
 concept: evaluation-metrics
-last_updated: 2026-06-12
-paper_count: 74
+last_updated: 2026-06-13
+paper_count: 89
 
 papers:
   - id: 2503.04721
@@ -400,3 +400,186 @@ trend_notes:
   - UTMOS vs. subjective MOS divergence is now documented in multiple evaluation contexts, raising systematic concern about its use as the sole proxy.
   - 2025 (Interspeech): Multiple evaluation papers emerge — CodecBench (2508.20660) for codec multi-dimensional evaluation, replicability checklist (interspeech-2025-0401) for perceptual TTS tests, FD-Bench (interspeech-2025-0739) for full-duplex SDS, and human fooling rate study (interspeech-2025-2765) as a new naturalness evaluation paradigm that reveals TTS differentiation invisible to standard MOS.
   - 2025 (Aug-Sep): Three automatic MOS improvement papers appear in the same window — QAMRO (2508.08957) and AESA-Net (2509.03292) demonstrate that ranking objectives improve predictor quality; SITool (interspeech-2025-0984) provides negative result against WER as intelligibility proxy for codecs. Dialogue evaluation cluster grows with EMO-Reasoning (2508.17623), VoxRole (2509.03940), and OSUM-EChat (2508.09600) documenting human-machine divergence in empathy and emotional coherence scoring. ContextMOS (2509.04072) and SSML evaluation (2508.17494) extend the task-specific evaluation paradigm.
+  - id: 1703.10135
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - MOS from crowdsourced listeners can reliably rank TTS systems when stimuli are carefully selected and test conditions controlled.
+    evidence:
+      - Tacotron MOS 3.82; establishes MOS as the primary TTS evaluation metric; crowdsourced MOS from Mechanical Turk with naturalness-focused instructions.
+    limitations:
+      - Single-system MOS without side-by-side comparison limits detectability of small differences.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - MOS near 4.5 constitutes near-human naturalness; ground truth speech MOS 4.58 establishes practical ceiling for TTS evaluation.
+    evidence:
+      - Tacotron 2 MOS 4.526 vs. ground truth 4.582 on LJSpeech; establishes MOS comparison to GT as standard for TTS papers.
+    limitations:
+      - Single speaker; MOS may not generalise to multi-speaker or expressive settings.
+
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - A unified survey of evaluation approaches reveals that mean opinion score remains the dominant TTS metric despite known reliability and reproducibility limitations.
+    evidence:
+      - Survey categorizes evaluation metrics across 100+ TTS papers; MOS used in 95%+ of papers; MUSHRA and listening tests in < 20%.
+    limitations:
+      - Survey reflects pre-automatic MOS predictor era; UTMOS and DNSMOS were not yet available.
+
+  - id: 2305.02765
+    year: 2023
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Objective speech quality metrics (PESQ, STOI) are insufficient alone to characterize codec reconstruction quality; subjective evaluation is necessary.
+    evidence:
+      - HiFi-Codec notes that objective metrics can diverge from subjective quality in codec evaluation; calls for standardized codec evaluation protocols.
+    limitations:
+      - No specific objective-vs-subjective correlation data reported.
+
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: architectural-novelty
+    claims:
+      - Side-by-side speaker similarity evaluation is a more sensitive metric than MOS for comparing voice consistency across long speech segments.
+    evidence:
+      - SoundStorm uses side-by-side speaker consistency test across 30s segments; finds AR chunk-and-prompt degrades SIM while NAR maintains it.
+    limitations:
+      - Custom evaluation; not benchmarked against standardized test sets.
+
+  - id: 2306.00814
+    year: 2023
+    task: [TTS]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - MUSHRA evaluations with anchor stimuli provide more reliable discrimination between high-quality vocoders than MOS.
+    evidence:
+      - Vocos MUSHRA 82.6 vs HiFi-GAN 79.1; anchor conditions with degraded stimuli improve discriminability at high quality levels.
+    limitations:
+      - MUSHRA is effort-intensive and rarely used in large-scale comparisons.
+
+  - id: 2403.16973
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - WER measured by ASR is unreliable as a proxy for perceptual intelligibility in TTS evaluation.
+      - Evaluation of TTS on audiobook data underestimates the performance gap between systems on in-the-wild speech.
+    evidence:
+      - VoiceCraft achieves lower WER than ground truth recordings while receiving lower human intelligibility ratings; audiobook vs. in-the-wild gap is 0.3 MOS.
+    limitations:
+      - Study is paper-specific; broader WER-intelligibility correlation across systems not systematically measured.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Evaluating multilingual TTS models against monolingual baselines on the same language produces misleading comparisons due to per-language data reduction.
+    evidence:
+      - XTTS shows that fair multilingual evaluation requires per-language data-matched baselines; multilingual model scores 0.39 SMOS below monolingual equivalent.
+    limitations:
+      - Applies primarily to multilingual evaluation; less relevant to monolingual settings.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Zero-shot TTS speaker similarity scores at inference can exceed ground-truth recordings on speaker verification metrics, indicating the metrics reward consistency rather than perceptual identity.
+    evidence:
+      - E2 TTS SIM exceeds GT recordings on SeedTTS test-en; authors note this may reflect consistency-within-generation rather than true identity matching.
+    limitations:
+      - Observation made for a single system; broader evidence across systems needed.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - In-the-wild training data evaluation requires different quality filtering criteria than studio-quality datasets; WER and SNR thresholds are necessary but insufficient.
+    evidence:
+      - Emilia-Pipe applies WER < 10%, SNR > 20 dB, and disfluency filtering; ~40% of raw audio rejected; filtering improves downstream TTS MOS.
+    limitations:
+      - Filtering thresholds are heuristic; optimal values depend on downstream task.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Zero hallucination failure rate is a distinct and important evaluation dimension for AR TTS that is not captured by MOS or WER alone.
+    evidence:
+      - MELLE reports zero silence and repetition failures across 500-sentence evaluation; codec AR baselines show measurable failure rates on the same test set.
+    limitations:
+      - Failure rate evaluation requires a large-scale hard-text test set; not yet standardised across papers.
+
+  - id: 2409.05377
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Standard codec evaluation metrics (UTMOS, PESQ, STOI) are necessary but insufficient for evaluating low-bitrate codecs; downstream TTS performance is a more relevant criterion.
+    evidence:
+      - BigCodec evaluation includes both reconstruction (UTMOS 3.84) and downstream TTS quality; reconstruction and downstream rankings are not always aligned.
+    limitations:
+      - Downstream TTS evaluation uses a single AR TTS system; results may differ with other downstream models.
+
+  - id: 2411.19842
+    year: 2024
+    task: [codec]
+    architecture: [transformer-enc-dec, VAE]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Objective metrics from SSL speech models (WavLM features) are more sensitive to intelligibility at low bitrates than standard PESQ or STOI.
+    evidence:
+      - TAAE shows WavLM perceptual loss ablation: -0.41 UTMOS without it while PESQ changes are smaller; WavLM loss is decisive for intelligible reconstruction.
+    limitations:
+      - Evaluated on a single codec design; generalizability across architectures untested.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Existing audio LM benchmarks fail to capture fine-grained paralinguistic comprehension and voice-triggered tool invocation, leaving important capability dimensions unmeasured.
+    evidence:
+      - Step-Audio 2 identifies gaps in VoiceBench and AIR-Bench; proposes additional evaluation dimensions for voice tool calling and paralinguistic understanding.
+    limitations:
+      - Proposed new evaluation dimensions not yet widely adopted; no standardized protocol.
+

@@ -1,6 +1,6 @@
 concept: prosody-control
-last_updated: 2026-06-12
-paper_count: 45
+last_updated: 2026-06-13
+paper_count: 51
 
 papers:
   - id: 2507.20091
@@ -237,3 +237,69 @@ trend_notes:
   - Integration pass 5 adds: UtterTune (LoRA-based pitch accent correction for Japanese), Maestro-EVC (frame-level temporal emotion/prosody alignment), REF-VC (multi-scale pitch encoder for source prosody preservation), NV pipeline (temporal-semantic alignment for NV positioning).
   - The SpeechRole benchmark confirms prosodic consistency is the hardest evaluation dimension for spoken role-playing agents.
   - Integration pass 6 adds two Interspeech 2025 papers extending prosody control into voice conversion: PromptEVC (interspeech-2025-0948) applies diffusion prompt mapping from text LM to speech emotion embeddings for multi-attribute EVC from NL prompts; the disentanglement-focused VC system (interspeech-2025-0815) demonstrates that enriched pitch/energy style embeddings with cross-attention F0 injection substantially improve emotion transfer ECA.
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Receptive field size is a binding constraint for prosodic naturalness; insufficient coverage of phrase-level F0 contours degrades prosody even when segmental quality is high.
+      - Multi-speaker conditioning enables prosody style transfer via speaker embeddings as an early form of prosody control.
+    evidence:
+      - WaveNet with insufficient receptive field shows prosodic naturalness degradation (MOS 3.99) vs. full RF model (4.21); multi-speaker conditioning enables per-speaker prosody.
+    limitations:
+      - No explicit prosody control mechanism; prosody variation is implicit and not user-controllable.
+
+  - id: 1703.10135
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Attention-based alignment in seq2seq TTS implicitly learns prosodic phrasing from character sequences without explicit prosody supervision.
+    evidence:
+      - Tacotron attention maps show phrase-level alignment; prosody naturalness MOS 3.82 without any explicit prosody annotation.
+    limitations:
+      - Implicit prosody learning is uncontrollable; no way to modify prosody at inference beyond input text changes.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Mel spectrogram conditioning of a WaveNet vocoder enables prosody-relevant spectral detail preservation that Griffin-Lim vocoders cannot achieve.
+    evidence:
+      - Tacotron 2 MOS 4.526; mel spectrogram intermediate representation preserves F0 and spectral envelope for prosodically natural output.
+    limitations:
+      - No explicit prosody control; prosody entirely determined by the acoustic model predictions.
+
+  - id: 2402.01912
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Natural language conditioning on speaking rate, pitch, and recording quality enables fine-grained prosody control at inference without task-specific architectures.
+    evidence:
+      - NL Guidance TTS achieves 78% accuracy on accent identification and 82% on speaking style matching via automatic acoustic labels.
+    limitations:
+      - Acoustic labeling noise affects fine-grained prosody control accuracy; label vocabulary is bounded by automatic classifier categories.
+
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Scaling AR codec TTS to 500M+ parameters produces qualitatively different prosody rendering on linguistically complex inputs, including quotative constructions and contrastive stress.
+    evidence:
+      - BASE TTS 980M shows CMOS +0.38 on complex prosody vs. 150M baseline; qualitative improvement on sentence-level prosodic phenomena not present in smaller models.
+    limitations:
+      - Proprietary evaluation; complex prosody benchmark not publicly released.
+

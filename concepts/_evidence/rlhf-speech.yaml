@@ -1,6 +1,6 @@
 concept: rlhf-speech
-last_updated: 2026-06-12
-paper_count: 17
+last_updated: 2026-06-13
+paper_count: 18
 
 papers:
   - id: 2025.acl-long.598
@@ -278,3 +278,17 @@ trend_notes:
   - 2026: The post-training paradigm converges on GRPO with multi-dimensional rewards as standard practice; DPO is now primarily used for targeted intelligibility alignment in combination with GRPO. Sequential DPO → GRPO pipelines adopted at 5M-hour scale (Qwen3-TTS). Dual-purpose pipeline concept (Fish Audio S2) addresses distribution shift. GFlowNets introduced as a no-preference-data alternative.
   - Interspeech 2025 contributions (DiffRO, DLPO) establish that RLHF applies across codec LM and diffusion TTS domains, not just autoregressive models.
   - The main open frontier is multi-dimensional reward co-optimization at scale without reward hacking or self-reinforcing bias.
+  - id: 2502.11946
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - RLHF reward models trained on speech interaction data exhibit failure modes unless explicit counter-examples are constructed during reward model training.
+      - Post-training RLHF improves intelligibility and responsiveness in large-scale speech interaction systems.
+    evidence:
+      - Step-Audio RLHF counter-example approach prevents evasive non-answer behavior in production; WER 1.8% post-RLHF vs. 2.4% pre-RLHF on SeedTTS test-en.
+    limitations:
+      - Counter-example construction requires manual effort to identify failure modes; RLHF reward model details not fully disclosed.
+

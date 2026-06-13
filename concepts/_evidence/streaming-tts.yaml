@@ -1,6 +1,6 @@
 concept: streaming-tts
-last_updated: 2026-06-12
-paper_count: 26
+last_updated: 2026-06-13
+paper_count: 28
 
 papers:
   - id: 2507.22746
@@ -140,3 +140,29 @@ trend_notes:
   - Leading systems in 2026: Qwen3-TTS (97 ms), Fish Audio S2 (TTFA <100 ms), 2604.12438 (48.99 ms RTF 0.0033).
   - Dragon-FM introduces a hybrid chunk-AR+FM approach as a new streaming paradigm beyond pure AR or pure NAR streaming.
   - 2025 (Interspeech): Inference acceleration techniques — speculative decoding for AR (SSD, interspeech-2025-2447) and non-uniform step pruning for FM (EPSS, interspeech-2025-2449) — are emerging as practical drop-in methods for existing deployed models without retraining.
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - A streamable convolutional decoder can match a diffusion-based spectrogram decoder in subjective naturalness at 3x less compute with streaming capability.
+    evidence:
+      - BASE TTS streamable decoder MOS 4.01 vs. diffusion decoder 4.03; latency 3x lower; first-packet latency under 100ms.
+    limitations:
+      - Streaming quality evaluated on limited English test set; first-chunk quality may differ from steady-state.
+
+  - id: 2502.11946
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Speculative response generation triggered by voice activity detection can reduce per-response latency by ~500ms with 40% of pre-generated responses usable.
+    evidence:
+      - Step-Audio speculative generation achieves 40% acceptance rate; 500ms average latency reduction in production deployment.
+    limitations:
+      - 60% of pre-generated responses discarded; acceptance rate depends on conversation predictability.
+

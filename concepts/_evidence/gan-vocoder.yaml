@@ -1,6 +1,6 @@
 concept: gan-vocoder
-last_updated: 2026-06-05
-paper_count: 18
+last_updated: 2026-06-13
+paper_count: 28
 
 papers:
   - id: 2508.01796
@@ -123,3 +123,83 @@ trend_notes:
   - 2025: FreeGAN provides clearest empirical evidence that GAN discriminators are dispensable for vocoders with explicit phase prediction — isolating phase modelling as the active ingredient rather than adversarial training itself.
   - Integration pass 5 adds: FreeGAN (GAN-free explicit-phase vocoder), LSE+Vocos2D (bandwidth extension step for singing), SpectroStream (TF-domain STFT discriminators), Meitei Mayek TTS and MultiGen confirming HiFi-GAN as default in low-resource pipelines.
   - Flow-matching vocoders (WaveFM) represent the strongest emerging alternative to GAN vocoders.
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - WaveNet raw-waveform generation demonstrated that neural vocoders could dramatically outperform signal-processing vocoders, motivating the GAN vocoder research program.
+    evidence:
+      - WaveNet MOS 4.21 vs. HMM 3.86; establishes raw waveform generation quality ceiling that GAN vocoders later achieved at real-time speed.
+    limitations:
+      - WaveNet is autoregressive and slow; GAN vocoders were developed specifically to match WaveNet quality at inference speed.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Mel spectrogram conditioning of WaveNet as vocoder establishes the acoustic model + neural vocoder pipeline that GAN vocoders subsequently improve.
+    evidence:
+      - Tacotron 2 + WaveNet achieves MOS 4.526; establishes mel spectrogram as the standard intermediate representation for GAN vocoders to target.
+    limitations:
+      - WaveNet vocoder is slow; the mel-conditioned vocoder architecture is the template, not GAN-based.
+
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - GAN vocoders (HiFi-GAN family) achieve real-time synthesis at comparable quality to autoregressive vocoders, resolving the WaveNet speed-quality trade-off.
+    evidence:
+      - Survey synthesises GAN vocoder progress through 2021; GAN vocoders achieve RTF < 1 at MOS competitive with WaveNet by 2020-2021.
+    limitations:
+      - Pre-dates Vocos Fourier-domain design and the use of GAN vocoders as neural codec decoders.
+
+  - id: 2305.02765
+    year: 2023
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - GAN-based neural codec decoders trained with multi-scale and multi-period discriminators achieve competitive reconstruction at lower codebook counts than pure acoustic codecs.
+    evidence:
+      - HiFi-Codec uses GAN decoder architecture adapted from HiFi-GAN; achieves competitive UTMOS with fewer RVQ codebooks via group-RVQ design.
+    limitations:
+      - No evaluation against Vocos Fourier-domain GAN design; discriminator architecture is standard HiFi-GAN, not the more recent ConvNeXt design.
+
+  - id: 2306.00814
+    year: 2023
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Fourier-domain GAN vocoders reduce periodicity errors more effectively than time-domain GANs and reduce inference cost by 10x.
+      - ConvNeXt blocks outperform dilated ResBlocks in the Fourier-domain vocoder setting even without receptive field motivation.
+      - A Fourier-domain GAN vocoder deployed as a neural codec decoder improves perceptual quality at all bitrates.
+    evidence:
+      - Vocos MUSHRA 82.6 vs. HiFi-GAN 79.1; inference 10x faster; as EnCodec decoder +2.1 MUSHRA across all bitrates.
+    limitations:
+      - Time-domain vocoder may retain advantages at very low bitrates or for very different audio types (music, noise).
+
+  - id: 2409.05377
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - GAN codec decoders at very low bitrates require large model capacity to compensate for severe quantisation loss.
+    evidence:
+      - BigCodec 159M GAN decoder achieves UTMOS 3.84 at 1 kbps; scaling capacity is more important than architectural complexity at this bitrate.
+    limitations:
+      - Evaluated on English speech only; GAN training stability at very large model sizes not fully characterized.
+

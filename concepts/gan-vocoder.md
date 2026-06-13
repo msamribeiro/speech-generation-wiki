@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-06-10
+last_updated: 2026-06-13
 status: mature-infrastructure
 ---
 
@@ -139,3 +139,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2509.02244]] | Spectrogram Patch Codec | arXiv | 2025 | HiFi-GAN vocoder trained on codec-reconstructed spectrograms; codec-artefact conditioning improves vocoder robustness; alternative to RVQ with single-stage 2D patch VQ |
 | [[2010.05646]] | HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis | arXiv | 2020 | Introduces MPD + MRF design that defines the GAN vocoder paradigm; foundational architecture that all subsequent GAN vocoders extend or compare against |
 | [[2206.04658]] | BigVGAN: A Universal Neural Vocoder with Large-Scale Training | arXiv | 2022 | Introduces periodic Snake activations + anti-aliased nonlinearities for out-of-distribution generalization; establishes universal vocoding including singing and multilingual speech |
+| [[2306.00814]] | Vocos: Closing the gap between time-domain and Fourier-based neural vocoders | arXiv | 2023 | Introduces ISTFT-only upsampling GAN vocoder with implicit phase wrapping; closes quality gap with time-domain GANs at substantially lower inference cost |
+| [[2409.05377]] | BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec | arXiv | 2024 | Uses EnVoice GAN decoder within the codec; demonstrates GAN training as the standard waveform synthesis stage for low-bitrate codecs |
+| [[2305.02765]] | HiFi-Codec: Group-residual Vector Quantization for High Fidelity Audio Codec | arXiv | 2023 | GAN discriminators (MPD+MSD) used in codec training; demonstrates GAN training objectives are standard for codec waveform synthesis |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Uses WaveNet as neural vocoder; predecessor to GAN vocoders; established mel-spectrogram as vocoder input representation |
+| [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Foundational autoregressive waveform model; directly superseded by GAN vocoders which achieve comparable quality with hundreds-of-times faster inference |
+| [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical coverage of GAN vocoder evolution from WaveNet through MelGAN to HiFi-GAN; contextualizes GAN vocoders in the broader TTS landscape |

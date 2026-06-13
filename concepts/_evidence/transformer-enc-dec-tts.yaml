@@ -1,6 +1,6 @@
 concept: transformer-enc-dec-tts
-last_updated: 2026-06-10
-paper_count: 12
+last_updated: 2026-06-13
+paper_count: 19
 
 papers:
   - id: 2006.04558
@@ -258,3 +258,45 @@ trend_notes:
   - Streaming TTS is an active direction within the transformer-enc-dec paradigm; depth-wise codec decoding is a promising but not yet quality-competitive approach.
   - Low-resource and specialized-domain TTS (South Asian languages, dysarthric speakers, non-standard accents) is a growing sub-area where FastSpeech2-family models are preferred due to data efficiency.
   - Hybrid architectures (diffusion + FastSpeech2, VAE + MoE + GAN) are increasingly common, suggesting the "pure" transformer-enc-dec paradigm is being augmented rather than replaced.
+  - id: 1703.10135
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Seq2seq attention-based TTS from characters achieves naturalness competitive with statistical parametric synthesis without hand-engineered features.
+      - Multi-frame output per step substantially improves training stability and alignment quality.
+    evidence:
+      - Tacotron MOS 3.82 vs. parametric 3.69; multiple output frames per attention step required for stable training; establishes seq2seq TTS paradigm.
+    limitations:
+      - Griffin-Lim vocoder output; prosody for long sentences can be unnatural; no explicit duration control.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Mel spectrogram conditioning of WaveNet achieves near-human naturalness; establishes the two-stage acoustic model + neural vocoder pipeline.
+      - Mel spectrograms are the standard intermediate representation decoupling sequence modeling from waveform synthesis.
+    evidence:
+      - Tacotron 2 MOS 4.526 vs. GT 4.582 on LJSpeech; establishes mel+WaveNet as the dominant TTS paradigm until non-AR methods emerged.
+    limitations:
+      - Two-stage pipeline; WaveNet vocoder is slow; training requires paired text-speech data.
+
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - The transition from attention-based alignment to explicit duration prediction in non-AR acoustic models eliminates word skipping and repeating artefacts while enabling parallel generation.
+      - Transformer encoder-decoder TTS achieved near-human quality by 2020 (FastSpeech 2 + HiFi-GAN), setting the quality bar for later codec LM approaches.
+    evidence:
+      - Survey synthesises FastSpeech, Transformer TTS, and VITS approaches; shows parallel non-AR TTS with duration predictors achieves quality comparable to AR models.
+    limitations:
+      - Pre-dates codec LM era; transformer enc-dec paradigm was largely superseded by codec LMs for expressive TTS by 2023.
+

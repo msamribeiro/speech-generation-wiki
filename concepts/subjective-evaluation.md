@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: established
 ---
 
@@ -154,3 +154,14 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[2509.03940]] | VoxRole | arXiv | 2025 | 20-annotator human evaluation of 20 sampled dialogues; Pearson correlation 0.762 between LLM judge and human scores; validates acoustically-aware LLM evaluation paradigm |
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | 30-sample CMOS study (2 per speaker), win-rate pairwise, and ContextMOS via Gemini-2.5-Pro for LibriQuote expressivity benchmark |
 | [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Automated evaluation framework for voice assistants using LLM-based scoring; demonstrates how multi-domain capability benchmarking complements naturalness-only subjective evaluation |
+| [[2306.00814]] | Vocos: Closing the gap between time-domain and Fourier-based neural vocoders | arXiv | 2023 | MUSHRA-based vocoder evaluation showing Fourier-domain GAN matches time-domain quality; WVMOS automatic predictor validated against subjective MUSHRA scores |
+| [[2407.05361]] | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv | 2024 | MOS comparison of models trained on in-the-wild vs. audiobook data; demonstrates subjective quality parity despite lower signal quality in training data |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | SMOS and MOS evaluation; highlights that SPK-SIM exceeding ground truth on automated metrics does not correlate with perceived speaker identity |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | MOS and SMOS evaluated across 16 languages; cautions against comparing multilingual vs. monolingual systems without matched training data |
+| [[2409.05377]] | BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec | arXiv | 2024 | MUSHRA evaluation showing subjective quality gains from capacity scaling; notes PESQ/STOI insufficient alone |
+| [[2403.16973]] | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild | arXiv | 2024 | DNSMOS and MOS; demonstrates WER lower than ground truth does not guarantee higher perceived intelligibility from human listeners |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Established crowd-sourced MOS with 5-point scale on Amazon Mechanical Turk as the methodological template for TTS naturalness evaluation |
+| [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | Contrastive re-ranking evaluated via preference studies; demonstrates that subjective preference over multiple AR candidates improves perceived quality |
+| [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Crowd-sourced MOS demonstrating raw-waveform AR synthesis surpasses all prior TTS methods; established the 5-point Likert MOS as the principal TTS evaluation scale |
+| [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | CMOS and SMOS for codec-free AR TTS; CMOS -0.032 vs. ground truth reported as near-human-parity |
+| [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | MOS evaluation against statistical parametric baselines; demonstrates naturalness parity of attention-based TTS with prior SOTA using crowd-sourced evaluation |

@@ -1,6 +1,6 @@
 concept: self-supervised-speech
-last_updated: 2026-06-12
-paper_count: 58
+last_updated: 2026-06-13
+paper_count: 68
 
 papers:
   - id: 2209.03143
@@ -228,3 +228,121 @@ trend_notes:
   - 2025: SecoustiCodec proposes eliminating SSL distillation in favour of frame-level contrastive learning; DualSpeechLM trains a tokenizer against LLM objectives — departing from both SSL distillation and ASR supervision.
   - SSL retains strong practical value for VC content extraction and low-resource multilingual TTS (MahaTTS-v2 with XLS-R).
   - Integration pass 6 (Interspeech 2025): Nine new SSL applications — codec interpretability probing (interspeech-2025-0115), speaker-invariant DC-Spin tokeniser (interspeech-2025-0246), DualCodec SSL-guided low-frame-rate (interspeech-2025-0468), expressive VC with mHuBERT-147 discrete units (interspeech-2025-0815), speech-prompted singing VC (interspeech-2025-0816), FreeCodec SSL-based content stream (interspeech-2025-1440), cross-lingual PEFT TTS (interspeech-2025-1344), ZSDEVC Wav2Vec2 emotion encoder (interspeech-2025-1101), training-free OT VC (interspeech-2025-2043). SSL-based discrete unit extraction remains the dominant content representation choice for VC systems in this batch.
+  - id: 2305.02765
+    year: 2023
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Codec architectures designed for downstream generation tasks benefit from integrating SSL pretraining insights, particularly for semantic content preservation.
+    evidence:
+      - HiFi-Codec notes that group-RVQ without SSL guidance is outperformed by SSL-distilled codecs on downstream LM tasks; cites SpeechTokenizer as the SSL integration direction.
+    limitations:
+      - HiFi-Codec does not use SSL directly; observation is comparative and inferential.
+
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - SSL-derived semantic tokens from AudioLM serve as the conditioning layer in SoundStorm's two-stage pipeline, demonstrating that SSL representations enable high-quality acoustic generation.
+    evidence:
+      - SoundStorm conditions on AudioLM semantic tokens derived from w2v-BERT SSL model; quality gains attributed to semantic token quality.
+    limitations:
+      - SSL model quality (w2v-BERT) not ablated against alternatives; result may be specific to AudioLM's token design.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Audio tokenizer quality, including SSL-derived semantic tokenizers, is a primary bottleneck in LLM-based speech generation independent of LM scale.
+    evidence:
+      - AudioPaLM tokenizer ablation: stronger semantic tokenizer yields +3.2 BLEU on speech translation regardless of LM size.
+    limitations:
+      - Proprietary model; specific SSL architecture not disclosed.
+
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - HuBERT units as speech tokens for LLM pretraining enable cross-modal transfer of few-shot learning from text to speech.
+      - Word-level interleaving of HuBERT speech tokens and text tokens is more effective than sentence-level interleaving for cross-modal semantic understanding.
+    evidence:
+      - Spirit LM uses HuBERT 500-unit tokens; few-shot spoken category score 0.724 with word-level vs. 0.672 with sentence-level interleaving.
+    limitations:
+      - HuBERT compression limits reconstruction fidelity; speech output quality substantially below dedicated TTS.
+
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - SSL-based representations with explicit speaker disentanglement outperform purely acoustic codec representations for zero-shot TTS in lower-resource languages.
+    evidence:
+      - BASE TTS with SSL codec improves MOS by 0.23 CMOS vs. EnCodec baseline on non-English languages; speaker disentanglement is key driver.
+    limitations:
+      - Proprietary SSL codec design; cannot reproduce or compare against standardized SSL models.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: low
+    contribution_type: dataset-contribution
+    claims:
+      - Automatic speech quality filtering using ASR (a form of SSL-based evaluation) enables large-scale in-the-wild TTS corpus construction.
+    evidence:
+      - Emilia uses ASR-based WER filtering with Whisper; filters ~40% of raw audio to improve downstream TTS quality.
+    limitations:
+      - ASR-based filtering is a proxy for speech quality; not a direct SSL representation learning contribution.
+
+  - id: 2411.19842
+    year: 2024
+    task: [codec]
+    architecture: [transformer-enc-dec, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Perceptual losses derived from SSL speech models (WavLM-Large features) are critical for achieving intelligible reconstruction at low bitrates beyond what adversarial and spectral losses provide.
+    evidence:
+      - TAAE WavLM perceptual loss ablation: -0.41 UTMOS without WavLM loss; PESQ difference is smaller; confirms SSL perceptual loss is the decisive ingredient at low bitrates.
+    limitations:
+      - WavLM-Large is English-dominant; perceptual loss quality may degrade for non-English languages.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Multi-codebook tokenizers with SSL semantic alignment objectives better preserve linguistic and acoustic content than single-codebook designs.
+    evidence:
+      - Baichuan-Audio multi-codebook reduces ASR WER substantially vs. single-codebook; each additional SSL-guided layer contributes up to 8 layers.
+    limitations:
+      - Specific SSL model used not disclosed; benefit may vary with SSL model quality.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - SSL-derived speech representations in multi-stage training pipelines contribute to improved paralinguistic comprehension in audio LMs.
+    evidence:
+      - Step-Audio 2 uses SSL-guided tokenizers in its multi-stage pretraining; VoiceBench composite 85.1 reflects improved speech understanding.
+    limitations:
+      - SSL contribution not isolated from other architectural changes.
+

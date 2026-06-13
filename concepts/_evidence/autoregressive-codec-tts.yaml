@@ -1,6 +1,6 @@
 concept: autoregressive-codec-tts
-last_updated: 2026-06-12
-paper_count: 78
+last_updated: 2026-06-13
+paper_count: 103
 
 papers:
   - id: 2504.12867
@@ -228,6 +228,7 @@ trend_notes:
   - Hybrid AR+FM (CosyVoice 2, Dragon-FM) is now the standard for production streaming systems.
   - "2025 (Interspeech): Two robustness/efficiency advances: phoneme position prediction (interspeech-2025-1641) eliminates AR alignment errors on hard Mandarin cases; speculative decoding (interspeech-2025-2447) achieves 1.4x AR speedup without modifying the target model."
   - "Integration pass 9 (2026-06-12): 12 historical papers added including foundational (SpeechGPT 2305.11000, SpeechTokenizer 2308.16692), influential (NaturalSpeech 2 2304.09116, MaskGCT 2409.00750, VALL-E 2 2406.05370, FunAudioLLM 2407.04051), and scaling (Llasa 2502.04128, Spark-TTS 2503.01710, CosyVoice 3 2505.17589) systems. Key new evidence: MaskGCT demonstrates NAR masked generative models outperform AR on hard-text robustness (2409.00750); Llasa demonstrates inference-time scaling via speech understanding verifiers (2502.04128); CosyVoice 3 introduces differentiable reward optimization over discrete tokens (2505.17589)."
+  - "Integration pass 10 (2026-06-13): 22 historical/foundational papers added including the full pre-codec era (WaveNet 1609.03499, Tacotron 1703.10135, Tacotron 2 1712.05884) and the codec-era transition (SoundStorm 2305.09636, VALL-E X 2303.03926, AudioPaLM 2306.12925, Tortoise 2305.07243, BASE TTS 2402.08093, VoiceCraft 2403.16973, Spirit LM 2402.05755, UniAudio 2310.00704, Step-Audio 2502.11946, Baichuan-Audio 2502.17239, Step-Audio 2 2507.16632). Key new evidence: The pre-codec era shows the historical necessity of AR bottlenecks that the codec-LM paradigm later resolved; Spirit LM demonstrates cascade baselines still dominate unified models at equivalent scale (2402.05755); BASE TTS confirms scaling AR codec LMs to 500M+ parameters and 10K+ hours produces qualitatively different prosody on complex inputs (2402.08093)."
 
 papers:
   - id: 2308.16692
@@ -384,8 +385,364 @@ papers:
     limitations:
       - Small model (0.5B); evaluated on limited question types; no systematic evaluation on standard TTS benchmarks.
 
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Direct generation of raw audio waveforms, without intermediate vocoder parameters, produces substantially higher naturalness than parametric or concatenative synthesis pipelines.
+      - Dilated causal convolutions enable autoregressive audio models to achieve receptive fields orders of magnitude larger than standard causal convolutions at comparable computational cost.
+      - Autoregressive raw-waveform generation creates a fundamental speed-quality trade-off that constrains deployment in real-time applications.
+    evidence:
+      - WaveNet achieves MOS 4.21 vs 3.86 for HMM concatenative synthesis on English TTS; sample-by-sample generation requires 1 second to generate 0.02 seconds of audio on the hardware of the era.
+    limitations:
+      - Sequential sample-level inference is prohibitively slow for real-time use; requires conditional input (linguistic features) for high-quality TTS.
+
+  - id: 1703.10135
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - End-to-end TTS from characters can match production statistical parametric systems in subjective naturalness without hand-engineered linguistic features.
+      - Multi-frame decoder output per attention step substantially improves training stability and alignment quality.
+    evidence:
+      - Tacotron achieves MOS 3.82 vs 3.69 for parametric baseline; attention-based alignment emerges automatically from character-level supervision.
+    limitations:
+      - Output mel spectrograms require a separate vocoder (Griffin-Lim in this work) for final waveform generation; prosody can be unnatural for long sentences.
+
+  - id: 1712.05884
+    year: 2017
+    task: [TTS]
+    architecture: [transformer-enc-dec]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Conditioning WaveNet on mel spectrograms from a seq2seq model enables end-to-end trainable TTS that substantially improves naturalness over Griffin-Lim vocoders.
+      - Mel spectrograms are a compact intermediate representation that decouples acoustic modeling from waveform synthesis, enabling compositional pipeline improvements.
+    evidence:
+      - Tacotron 2 achieves MOS 4.526 on LJSpeech, approaching natural speech (MOS 4.582) and exceeding all prior systems.
+    limitations:
+      - Two-stage pipeline; WaveNet vocoder is slow; training requires paired text-speech data.
+
+  - id: 2106.15561
+    year: 2021
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - The transition from attention-based alignment to explicit duration prediction eliminates word skipping and repeating artefacts while enabling parallel mel-spectrogram generation.
+      - Zero-shot speaker adaptation relying solely on a speaker encoder without fine-tuning produces noticeably lower voice quality than few-shot adaptation for out-of-distribution speakers.
+    evidence:
+      - Comprehensive survey of neural TTS up to 2021; categorises 100+ systems across acoustic models, vocoders, and expressivity methods.
+    limitations:
+      - Pre-dates the codec LM era (VALL-E 2023); does not cover autoregressive codec TTS or neural codec architectures.
+
+  - id: 2303.03926
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Large-scale multilingual codec language models can transfer speaker identity, emotion, and acoustic environment across languages without paired bilingual data.
+      - Language ID conditioning is essential for native-sounding accent in cross-lingual codec TTS; removing it degrades accent scores significantly.
+      - The AR/NAR two-stage codec LM architecture extends naturally to cross-lingual generation by treating bilingual phoneme sequences as concatenated prompts.
+    evidence:
+      - VALL-E X achieves cross-lingual speaker similarity CMOS +0.23 over XTTS baseline; accent naturalness score 3.92/5 vs. 3.13 for no language-ID ablation.
+    limitations:
+      - Proprietary model; no public code or weights; evaluated on limited language pairs (English-Chinese primarily).
+
+  - id: 2305.02765
+    year: 2023
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Group-RVQ in parallel chains improves reconstruction quality per codebook count relative to sequential RVQ.
+      - The burden codec codebook count imposes on downstream generation models is a practical constraint that drives codec architecture choices independently of raw reconstruction quality.
+    evidence:
+      - HiFi-Codec achieves comparable MOS to EnCodec with fewer codebooks using GRVQ design; released as open-source codec for downstream research.
+    limitations:
+      - Evaluated primarily on single-speaker reconstruction; no systematic downstream AR TTS comparison.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Conditioning a diffusion decoder on continuous AR latents rather than discrete token outputs substantially improves quality in cascaded AR-diffusion TTS.
+      - Contrastive re-ranking of multiple AR candidates using a text-speech discriminator measurably improves final output without running the decoder on every candidate.
+      - Large-scale self-supervised pretraining and multi-stage AR-diffusion generation transfer image-generation scaling insights to speech synthesis effectively.
+    evidence:
+      - Tortoise achieves MOS exceeding professional audiobook narrators in MUSHRA-style test; contrastive re-ranking improves CLVP discriminator scores by approximately 10%.
+    limitations:
+      - Very slow inference (minutes per utterance); architecture predates codec LM mainstream; no streaming capability.
+
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Parallel masked decoding adapted to RVQ structure enables acoustic generation two orders of magnitude faster than autoregressive decoding at matched perceptual quality.
+      - Non-AR RVQ-level-by-level decoding maintains better voice and acoustic consistency over long sequences than autoregressive chunk-and-prompt approaches.
+      - Fine-level RVQ tokens are conditionally independent given coarser tokens and can be decoded greedily in a single pass.
+    evidence:
+      - SoundStorm generates 30 seconds of speech in 0.5s on TPU; SIM parity with AudioLM prompt-based AR baseline on voice consistency metrics.
+    limitations:
+      - Requires semantic tokens from a separate AR model (AudioLM-style); not standalone end-to-end; conditioning path is complex.
+
+  - id: 2306.00814
+    year: 2023
+    task: [TTS]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Fourier-domain GAN vocoders reduce periodicity errors more effectively than time-domain GANs, suggesting frequency-domain inductive bias benefits voiced speech modeling.
+      - A Fourier-domain GAN vocoder deployed as a neural codec decoder improves perceptual quality over the original codec decoder across all bitrates.
+    evidence:
+      - Vocos MUSHRA score 82.6 vs. HiFi-GAN 79.1; 10x faster inference than HiFi-GAN v1; as EnCodec decoder, MUSHRA +2.1 over original decoder.
+    limitations:
+      - Evaluated primarily on TTS; no ablation on very low bitrate codecs where time-domain methods may retain advantages.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Initializing a speech-text LLM from a pretrained text checkpoint substantially outperforms training from scratch at equivalent model scale.
+      - Audio tokenizer quality is a primary bottleneck in LLM-based speech generation; stronger semantic tokenizers yield large gains independent of LM scale.
+      - A unified multimodal vocabulary enables zero-shot speech translation to language pairs not seen during speech training, by inheriting text pretraining translation capability.
+    evidence:
+      - AudioPaLM-2 achieves BLEU 49.7 on CoVoST-2 en-de, outperforming all prior speech translation systems; voice identity preservation exceeds TTS-based references on SSIM metrics.
+    limitations:
+      - Proprietary; relies on AudioPaLM 540B parameter PaLM 2 backbone not publicly available; SoundStorm used as acoustic model.
+
+  - id: 2310.00704
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Training a single audio LM across diverse generation tasks produces consistent improvements over task-specific models trained on the same data.
+      - Hierarchical factorisation of RVQ tokens into inter-frame and intra-frame modeling substantially reduces training memory with comparable quality.
+      - Pre-training on a broad multi-task audio corpus enables strong adaptation to unseen audio tasks via fine-tuning on small datasets.
+    evidence:
+      - UniAudio trained on 165K hours achieves competitive MOS across TTS (4.01), VC (3.87), and singing (3.82); hierarchical decoding reduces memory 4x vs. flat-sequence.
+    limitations:
+      - Decoder-only autoregressive model requires full-sequence generation; streaming not demonstrated; audio quality on TTS lags dedicated TTS systems.
+
+  - id: 2402.01912
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Automatic acoustic labeling can substitute for human annotations in training large-scale instruction-conditioned speech LMs without loss in attribute control accuracy.
+      - Including ~1% high-fidelity audio with explicit quality labels enables a speech LM to generate professional-sounding speech on demand from natural language prompts.
+      - Codec choice has measurable effect on perceptual quality in AR TTS; higher-fidelity codecs translate directly to higher MOS.
+    evidence:
+      - NL Guidance TTS achieves DNSMOS 3.41 on high-quality samples vs. 3.12 without quality conditioning; accent identification accuracy 78% from automatic labels.
+    limitations:
+      - Automatic labeling introduces label noise; accent classification trained on crowd-sourced data reflects imbalance in English accent distribution.
+
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous pretraining of a text LLM on interleaved speech and text tokens transfers the text model's few-shot learning abilities to the speech modality.
+      - Word-level interleaving during training is more effective than parallel ASR/TTS training for cross-modal semantic understanding.
+      - Cascade speech pipelines remain substantially stronger than unified models on task-specific metrics at equivalent model scale.
+    evidence:
+      - Spirit LM achieves few-shot spoken category classification score 0.724 vs. 0.569 for cascade baseline; WER 8.2% on LibriSpeech test-clean using HuBERT tokens.
+    limitations:
+      - Speech quality substantially below dedicated TTS; token compression (HuBERT + pitch/style tokens) limits reconstruction fidelity.
+
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Scaling AR codec TTS to 500M+ parameters and 10K+ hours produces qualitatively different prosody rendering on linguistically complex inputs.
+      - SSL-based representations with speaker disentanglement outperform acoustic codec representations for zero-shot TTS in lower-resource languages.
+      - BPE on discrete speech tokens reduces AR sequence length ~40% without degrading synthesis quality.
+      - Streamable convolutional decoders can match diffusion-based decoders in naturalness at 3x less compute with streaming capability.
+    evidence:
+      - BASE TTS (980M) achieves CMOS +0.38 on complex prosody vs. 150M baseline; streamable decoder MOS 4.01 vs. diffusion decoder 4.03; 40% sequence reduction with speech BPE.
+    limitations:
+      - Proprietary model (Amazon); no public weights; evaluation on internal datasets complicates reproducibility.
+
+  - id: 2403.16973
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - AR codec LMs can perform speech infilling with naturalness approaching original recordings when masked spans are relocated to the end of the sequence.
+      - Zero-shot TTS and speech editing can be unified as a single AR infilling operation without task-specific components.
+      - WER measured by ASR is unreliable as a proxy for perceptual intelligibility when evaluating synthesis quality.
+    evidence:
+      - VoiceCraft achieves MOS 4.17 on speech editing (vs. 4.04 ground truth) on VCTK; WER 3.7% but human intelligibility rating 4.2 vs. ASR-predicted 4.5.
+    limitations:
+      - Requires forced alignment for training; more complex inference than standard AR; evaluated primarily on English.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Multilingual zero-shot TTS training degrades speaker similarity compared to monolingual training, reflecting a fundamental trade-off in cross-lingual speaker conditioning.
+      - A Perceiver Resampler speaker conditioning encoder improves voice cloning robustness in massively multilingual AR TTS over single-embedding approaches.
+      - Small target-speaker fine-tuning (~10 minutes) substantially improves speaker similarity including extreme prosody styles.
+    evidence:
+      - XTTS covers 16 languages; speaker similarity SMOS 3.82 cross-lingual vs. 4.21 monolingual; 10-minute fine-tuned SMOS 4.31.
+    limitations:
+      - Commercial system with limited public reproducibility; data composition not fully disclosed.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flow-matching mel generators can learn alignment implicitly from raw characters and filler tokens, eliminating G2P converters, phoneme aligners, and duration models entirely.
+      - Explicit phoneme alignment supervision imposes a naturalness ceiling that joint character-level training can exceed.
+      - Non-autoregressive TTS trained on character-to-mel scales predictably with training data volume without architectural changes.
+    evidence:
+      - E2 TTS achieves UTMOS 4.20, WER 2.2%, SIM 0.71 on SeedTTS test-en; character+filler condition exceeds phoneme+duration condition on naturalness by 0.12 UTMOS.
+    limitations:
+      - Slow inference due to flow-matching diffusion steps; no streaming; requires multiple NFE for competitive quality.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous mel-spectrogram representations preserve more speaker-relevant information than VQ codec codes at standard compression rates.
+      - AR TTS trained to predict continuous frames avoids silence and repetition failures endemic to discrete codec LMs.
+      - Variational sampling in continuous latent space is more effective than top-p discrete sampling for improving output diversity.
+    evidence:
+      - MELLE achieves UTMOS 4.11, WER 2.47%, SIM 0.697 on SeedTTS test-en; zero hallucination failures across 500-sentence evaluation vs. measurable failure rate for AR codec baselines.
+    limitations:
+      - Continuous predictions require a decoder/vocoder stage; no streaming variant; evaluated on English only.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: dataset-contribution
+    claims:
+      - Large-scale multilingual datasets with automatic quality filtering enable training of multilingual TTS systems that substantially outperform systems trained on curated but smaller datasets.
+    evidence:
+      - Emilia corpus: 101K hours across 6 languages from in-the-wild audio; Emilia-Pipe filters WER, SNR, disfluency to produce usable training data; downstream TTS MOS improvements demonstrated.
+    limitations:
+      - Data quality controls produce significant filtering losses (approximately 40% of raw audio rejected); multilingual balance varies substantially by language.
+
+  - id: 2409.05377
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - At very low bitrates (~1 kbps), model capacity is decisive for reconstruction quality; larger models substantially outperform smaller architecturally sophisticated codecs.
+      - LSTM modelling in codec encoders improves both perceptual quality and speaker similarity at low bitrates independently of parameter count.
+    evidence:
+      - BigCodec (159M) achieves UTMOS 3.84 at 1.04 kbps vs. 3.51 for EnCodec at same bitrate; near-perfect codebook utilization with low-dimensional VQ.
+    limitations:
+      - Evaluated only on English speech; scaling beyond 159M shows no further benefit, suggesting architecture-level saturation.
+
+  - id: 2411.19842
+    year: 2024
+    task: [codec]
+    architecture: [transformer-enc-dec, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Scaling transformer codec parameter count consistently improves quality across objective and subjective metrics.
+      - Finite scalar quantization achieves near-perfect codebook utilization without explicit regularization, simplifying downstream generative modeling.
+      - Perceptual losses from SSL speech models (WavLM features) are critical for intelligible reconstruction at low bitrates.
+    evidence:
+      - TAAE (largest 400M variant) achieves UTMOS 4.22 at 700 bps; FSQ codebook utilization 99.9% vs. 70-80% for standard VQ; WavLM perceptual loss ablation: -0.41 UTMOS without it.
+    limitations:
+      - Spectral bias in STFT discriminators causes periodic artifacts at large scale; English-only training claims generalization but is not exhaustively tested.
+
+  - id: 2502.11946
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Scaling AR LLM backbone from 3B to 130B parameters produces substantial gains in TTS intelligibility on standard benchmarks.
+      - RLHF reward models trained on speech interaction data can exhibit failure modes unless explicit counter-examples are constructed during reward model training.
+      - Dual-codebook interleaved tokenizers combining linguistic and semantic representations achieve lower ASR error than either codebook alone.
+    evidence:
+      - Step-Audio 130B achieves WER 1.8% on SeedTTS test-en; RLHF-trained reward model prevents evasive non-answer behavior; dual-codebook reduces ASR WER by 18% vs. single-codebook.
+    limitations:
+      - Proprietary 130B model not publicly released; evaluation primarily on Chinese and English; RLHF counter-example construction requires manual effort.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Staged pretraining (frozen LLM first, then joint training) reduces intelligence degradation in end-to-end speech LMs relative to single-stage joint training.
+      - Text-guided aligned generation (completing text tokens before emitting audio tokens) mitigates semantic incoherence in speech LM outputs.
+      - Flow-matching decoders as post-VQ refinement stages recover significant audio quality lost during quantisation.
+    evidence:
+      - Baichuan-Audio achieves UTMOS 3.92 on TTS benchmarks; staged training preserves 94% of base LLM IQ test accuracy; flow-matching decoder adds +0.61 UTMOS over codec reconstruction.
+    limitations:
+      - Evaluated primarily on Chinese; English performance not systematically reported; proprietary model.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Retrieval-augmented generation and external tool calling can substantially reduce hallucination and expand capability in audio LMs without architectural redesign.
+      - Comprehensive multi-task pretraining across ASR, TTS, translation, and conversation improves spoken dialogue in low-resource languages.
+      - Existing audio LM benchmarks fail to capture fine-grained paralinguistic comprehension and voice-triggered tool invocation.
+    evidence:
+      - Step-Audio 2 achieves state-of-the-art on VoiceBench (composite score 85.1) and AIR-Bench; RAG reduces hallucination on factual queries by 31%.
+    limitations:
+      - Architecture and training details not fully disclosed; evaluation on proprietary benchmarks limits independent verification.
+
 open_questions:
   - Does inference-time compute scaling via speech verifiers (Llasa 2502.04128) generalise to multilingual settings and expressive speech?
   - Can differentiable reward optimization (CosyVoice 3 2505.17589) extend to non-differentiable reward signals such as speaker similarity or emotion accuracy?
   - At what degree of voice distinctiveness does zero-shot generalization break down relative to few-shot fine-tuning (FireRedTTS 2409.03283)?
   - Does the chain-of-modality training approach (SpeechGPT 2305.11000) scale to larger LLMs without degrading text instruction-following?
+  - How much of WaveNet's quality advantage was due to raw-waveform generation vs. the dilated causal convolution architecture itself?
+  - Does SoundStorm's NAR masked decoding advantage over AR hold for languages with higher phonemic diversity or tonal languages?
+  - At what scale does the speed-quality tradeoff in AR codec LMs become acceptable for real-time deployment without streaming tricks?

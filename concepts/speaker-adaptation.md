@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts, flow-matching]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: established
 ---
 
@@ -134,3 +134,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2509.00675]] | Speaker-Conditioned Phrase Break Prediction | arXiv | 2025 | Speaker embedding injection into phrasing front-end; few-shot unseen-speaker adaptation via embedding adapter with as few as 5 reference utterances |
 | [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Grouped codec code prediction enables stable AR LM adaptation to unseen speakers; repetition-aware sampling reduces speaker identity drift in long utterances |
 | [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Few-shot fine-tuning with one hour of data substantially outperforms zero-shot for distinctive or expressive target voices; prompt audio enhancement improves voice cloning from noisy references |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Reference audio conditioning for zero-shot speaker adaptation without explicit speaker encoders; demonstrates unsupervised pretraining improves zero-shot speaker generalization |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | Perceiver Resampler for variable-length reference audio; small amount of target-speaker fine-tuning data (~10 min) substantially improves cross-lingual speaker similarity |
+| [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | Multi-speaker zero-shot adaptation via CLVP-based discriminator re-ranking; demonstrates contrastive speaker conditioning at scale |
+| [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Foundational conditional speaker adaptation via one-hot speaker ID conditioning; multi-speaker training improves per-speaker quality relative to single-speaker training |
+| [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | Codec-free AR speaker adaptation via variational sampling over continuous mel frames; reduction factor enables latency-quality trade-off for zero-shot speaker conditioning |

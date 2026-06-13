@@ -3,7 +3,7 @@ slug: emotion-synthesis
 title: Emotion Synthesis
 aliases: [expressive TTS, affective speech synthesis, emotional TTS, style transfer]
 related_concepts: [prosody-control, instruction-conditioned-tts, disentanglement, subjective-evaluation, spoken-language-model]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: emerging
 ---
 ## Executive Summary
@@ -207,3 +207,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2509.04072]] | Computational Narrative Understanding for Expressive TTS | arXiv | 2025 | Narrative-segmented LibriQuote corpus; flow-matching fine-tuning gains larger expressivity than autoregressive fine-tuning; ContextMOS metric for narrative appropriateness |
 | [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | Non-autoregressive emotion-conditioned synthesis via semantic token control; multilingual emotion generation evaluated across English, Chinese, French, German, Japanese, Korean |
 | [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | Instruction fine-tuning on natural language style descriptions substantially improves emotion controllability; near-ceiling accuracy on anger, sadness, and surprise categories after instruction fine-tuning |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Instruction-controlled emotion synthesis across multiple speaking styles; demonstrates emotion conditioning in aligned multimodal architecture |
+| [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | Expressive speech tokens (sentiment, pitch, style) for cross-modal emotion preservation; discrete expressive token stream enables cross-modal sentiment consistency |

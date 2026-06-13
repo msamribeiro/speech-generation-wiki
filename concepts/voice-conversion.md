@@ -4,7 +4,7 @@ title: Voice Conversion
 aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conversion]
 status: established
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
-last_updated: 2026-06-05
+last_updated: 2026-06-13
 ---
 
 ## Executive Summary
@@ -173,3 +173,4 @@ Through 2022–2024, the field progressed from parallel/non-parallel offline met
 | [[interspeech-2025-0816]] | Bridging Speech and Singing: SSANSVC | Interspeech | 2025 | Cross-modal speaker embedding alignment (SSAN) enables speech-prompted singing VC; SIM 0.506 vs. 0.448 for CoMoSVC on cross-domain task |
 | [[2508.15565]] | Any-to-any Speaker Attribute Perturbation for Voice Anonymization | arXiv | 2025 | Conformer-based adversarial perturbation generator; batch mean pseudo-speaker training for unlinkability; EER 46.79% de-id; EER 38.93% unlinkability |
 | [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-compressed HuBERT tokens as VC conditioning; compression degrades VC quality more than ASR/ST; optimal granularity differs across task types |
+| [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Voice conversion as one of seven audio generation tasks in a single AR codec LM; multi-task training improves VC quality relative to task-specific models |

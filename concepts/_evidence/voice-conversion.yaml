@@ -1,6 +1,6 @@
 concept: voice-conversion
-last_updated: 2026-06-05
-paper_count: 18
+last_updated: 2026-06-13
+paper_count: 19
 
 papers:
   - id: 2508.00317
@@ -236,3 +236,16 @@ trend_notes:
   - VoiceMOS challenge retrospective confirms near-human-quality systems defeat all current SQA predictors — a quality ceiling problem for automated VC evaluation.
   - SecoustiCodec proposes eliminating SSL distillation in favour of contrastive learning — early signal of a deeper design shift.
   - "Integration pass 6 (2026): Interspeech 2025 adds six new VC papers spanning zero-shot EVC (ZSDEVC, interspeech-2025-1101), expressive disentanglement VC (interspeech-2025-0815), speech-prompted singing VC (interspeech-2025-0816), rectified flow VC (ReFlow-VC, interspeech-2025-1779), training-free OT VC (interspeech-2025-2043), and watermark-aware codec for VC access control (interspeech-2025-1993). The diffusion and flow-matching paradigms continue to dominate new VC proposals; training-free approaches are emerging as a lightweight alternative."
+  - id: 2310.00704
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Multi-task audio LM training with VC as one task improves VC quality over task-specific models trained on the same data via shared representations.
+    evidence:
+      - UniAudio VC MOS 3.87 with multi-task training vs. 3.73 with VC-only training; cross-task transfer benefits VC specifically.
+    limitations:
+      - VC evaluated on a limited test set; does not benchmark against dedicated VC systems on standard benchmarks (L2-ARCTIC, VCTK conversion).
+

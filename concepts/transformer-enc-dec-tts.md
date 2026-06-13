@@ -3,7 +3,7 @@ slug: transformer-enc-dec-tts
 title: Transformer Encoder-Decoder TTS
 aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
-last_updated: 2026-06-10
+last_updated: 2026-06-13
 status: declining
 ---
 
@@ -111,3 +111,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2508.13028]] | Integrating Feedback Loss from Bi-modal Sarcasm Detector for Sarcastic Speech Synthesis | arXiv | 2025 | FastSpeech2-based backbone with feedback loss from bi-modal sarcasm detector; demonstrates classifier-guided training for expressive prosody in a niche style |
 | [[2508.17031]] | RephraseTTS | arXiv | 2025 | FastSpeech2 non-autoregressive framework for dynamic-length speech insertion; cross-modal attention replaces standard speaker embedding; joint L1 + adversarial + triplet training |
 | [[2509.01391]] | MixedG2P-T5 | arXiv | 2025 | FastSpeech2 as spectral predictor with SSL pseudo-language labels as input; G2P-free Japanese TTS with comparable naturalness to conventional G2P baseline |
+| [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | Foundational enc-dec TTS from characters; CBHG encoder + attention decoder established the transformer enc-dec paradigm for end-to-end speech synthesis |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Transformer-style attention enc-dec with mel-spectrogram output; location-sensitive attention improves alignment stability; established the template for all subsequent enc-dec TTS |
+| [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical taxonomy of enc-dec TTS from Tacotron through FastSpeech 2; demonstrates transition from attention-based to explicit-duration enc-dec architectures |

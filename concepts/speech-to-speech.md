@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: emerging
 ---
 
@@ -130,3 +130,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | End-to-end speech input/output with CTC streaming decoder; demonstrates E2E S2S with lower latency than cascaded ASR-LLM-TTS pipelines |
 | [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Frozen LLM speech-to-speech dialogue with chunk-level duplex state detection; demonstrates freezing LLM backbone preserves intelligence in S2S alignment |
 | [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Evaluation framework exposing gap between pipeline and E2E S2S systems on instruction understanding and robustness; demonstrates E2E S2S trails pipeline under all tested conditions |
+| [[2303.03926]] | VALL-E X: Cross-lingual Neural Codec Language Modeling | arXiv | 2023 | Cross-lingual S2S translation preserving speaker identity, emotion, and acoustic environment; in-context learning provides stronger voice preservation than speaker embeddings |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Full-duplex spoken dialogue at sub-second latency via modular aligned architecture; multi-task training across heterogeneous speech tasks enables S2S without joint pretraining |
+| [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | End-to-end speech interaction with staged pretraining; S→S mode underperforms S→T indicating audio token generation introduces quality penalty |
+| [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | Word-level interleaved speech-text LM enabling S2S understanding and generation; cascade pipelines remain substantially stronger at equivalent scale |
+| [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | End-to-end S2S audio LM with RL alignment, RAG, and tool-calling for comprehensive voice assistant capabilities |

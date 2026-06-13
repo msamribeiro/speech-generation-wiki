@@ -6,6 +6,26 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-13
+
+- integrate | 25 papers | 21 concepts updated | 21 digests updated | 133 cross-links added
+
+- ingest | 2305.09636 | SoundStorm: Efficient Parallel Audio Generation | arXiv 2023
+- ingest | 1712.05884 | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions | arXiv 2017
+- ingest | 2402.01912 | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv 2024
+- ingest | 2306.12925 | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv 2023
+- ingest | 2305.07243 | Better speech synthesis through scaling | arXiv 2023
+- ingest | 1609.03499 | WaveNet: A Generative Model for Raw Audio | arXiv 2016
+- ingest | 2411.19842 | Scaling Transformers for Low-Bitrate High-Quality Speech Coding | arXiv 2024
+- ingest | 2407.08551 | Autoregressive Speech Synthesis without Vector Quantization | arXiv 2024
+- ingest | 1703.10135 | Tacotron: Towards End-to-End Speech Synthesis | arXiv 2017
+- ingest | 2502.17239 | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv 2025
+- ingest | 2402.05755 | Spirit LM: Interleaved Spoken and Written Language Model | arXiv 2024
+- ingest | 2402.08093 | BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data | arXiv 2024
+- ingest | 2507.16632 | Step-Audio 2 Technical Report | arXiv 2025
+- ingest | 2310.00704 | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv 2023
+- ingest | 2106.15561 | A Survey on Neural Speech Synthesis | arXiv 2021
+
 ## 2026-06-12
 
 - ingest | 2311.07919 | Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models | arXiv 2023
@@ -19,6 +39,16 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 10,000 Hours of Transcribed Audio | arXiv 2021
 - ingest | 2309.15505 | Finite Scalar Quantization: VQ-VAE Made Simple | arXiv 2023
 - integrate | 25 papers | 19 concepts updated | 4 digests updated | 16 cross-links added
+- ingest | 2306.00814 | Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis | arXiv 2023
+- ingest | 2407.05361 | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv 2024
+- ingest | 2406.18009 | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv 2024
+- ingest | 2406.04904 | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv 2024
+- ingest | 2409.05377 | BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec | arXiv 2024
+- ingest | 2305.02765 | HiFi-Codec: Group-residual Vector quantization for High Fidelity Audio Codec | arXiv 2023
+- ingest | 2403.16973 | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild | arXiv 2024
+- ingest | 2502.11946 | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv 2025
+- ingest | 2501.06282 | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv 2025
+- ingest | 2303.03926 | Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling | arXiv 2023
 
 ## 2026-06-11
 

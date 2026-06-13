@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 ---
 
 ## Executive Summary
@@ -185,3 +185,8 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2409.00750]] | MaskGCT: Zero-Shot Text-to-Speech with Masked Generative Codec Transformer | arXiv | 2024 | VQ-VAE over multilingual semantic tokens improves tonal language generation; MUSHRA-based multilingual evaluation across English, Chinese, French, German, Japanese, Korean |
 | [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Extends CosyVoice multilingual capabilities via multi-task tokenizer and in-the-wild data scaling; evaluation across multiple languages on Seed-TTS-Eval |
 | [[2407.04051]] | FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs | arXiv | 2024 | CosyVoice multilingual zero-shot TTS with cross-lingual voice cloning; demonstrates that omitting source-language prompt at inference prevents prosody leakage |
+| [[2407.05361]] | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv | 2024 | Six-language in-the-wild dataset; automatic pipeline for multilingual TTS training data from internet audio; enables zero-shot multilingual TTS with AR and flow-matching architectures |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | 16-language zero-shot TTS; Perceiver Resampler multilingual speaker conditioning; demonstrates fundamental trade-off between multilingual breadth and per-language speaker similarity |
+| [[2303.03926]] | VALL-E X: Cross-lingual Neural Codec Language Modeling | arXiv | 2023 | Cross-lingual voice transfer in a multilingual codec AR LM; language ID conditioning essential for native accent; in-context learning enables zero-shot cross-lingual synthesis |
+| [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | Unified multimodal vocabulary enables zero-shot speech translation to unseen language pairs inherited from text pretraining; voice identity preservation exceeds TTS-based references |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Multi-task multilingual training across heterogeneous speech tasks; instruction-controlled dialect and language style switching |

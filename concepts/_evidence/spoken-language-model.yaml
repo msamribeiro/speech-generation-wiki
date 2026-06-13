@@ -1,6 +1,6 @@
 concept: spoken-language-model
-last_updated: 2026-06-12
-paper_count: 57
+last_updated: 2026-06-13
+paper_count: 67
 
 papers:
   - id: 2503.04721
@@ -326,3 +326,130 @@ claim_clusters:
     status: emerging
     supporting_papers: [2408.16725, 2409.06666]
     contradicting_papers: []
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Parallel masked decoding adapted to RVQ codec structure enables acoustic generation two orders of magnitude faster than AR speech LMs at matched quality.
+      - Coarse RVQ level conditioning in a non-AR model achieves better voice consistency than AR prompt-based chunk generation over long sequences.
+    evidence:
+      - SoundStorm 100x faster than AudioLM AR baseline; side-by-side SIM evaluation favors SoundStorm over AR chunk generation at 30s.
+    limitations:
+      - Requires semantic tokens from a separate AR model; not standalone; pipeline adds complexity for deployment.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Initializing a speech-text LLM from a pretrained text checkpoint substantially outperforms training from scratch at equivalent model scale.
+      - Audio tokenizer quality is a primary bottleneck in LLM-based speech generation independent of LM scale.
+      - Interleaved speech-text LMs can generalize to zero-shot cross-lingual speech translation by inheriting text pretraining capabilities.
+    evidence:
+      - AudioPaLM-2 shows +2.5 BLEU from text initialization; tokenizer ablation shows +3.2 BLEU from stronger tokenizer independent of LM size.
+    limitations:
+      - Proprietary PaLM-2 backbone; uses SoundStorm as acoustic model; no public reproducibility.
+
+  - id: 2310.00704
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Training a single audio LM across diverse generation tasks improves performance over task-specific models trained on the same data.
+      - Hierarchical RVQ factorization into inter-frame and intra-frame modeling substantially reduces training memory with comparable quality.
+    evidence:
+      - UniAudio shows +0.15 CMOS vs. TTS-only training; hierarchical decoding reduces GPU memory 4x; multi-task pre-training enables adaptation to unseen tasks.
+    limitations:
+      - Audio quality on TTS lags dedicated TTS systems; streaming not demonstrated.
+
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous pretraining of a text LLM on interleaved speech-text tokens transfers few-shot learning abilities to the speech modality.
+      - Word-level interleaving is more effective than parallel ASR/TTS training for cross-modal semantic understanding.
+      - Cascade speech pipelines remain substantially stronger than unified models on task-specific metrics at equivalent model scale.
+    evidence:
+      - Spirit LM few-shot spoken category score 0.724 vs. cascade 0.569; WER 8.2% on LibriSpeech test-clean with HuBERT tokens.
+    limitations:
+      - HuBERT token compression limits reconstruction fidelity; cascade baselines still win on task-specific metrics.
+
+  - id: 2411.19842
+    year: 2024
+    task: [codec]
+    architecture: [transformer-enc-dec, VAE]
+    relevance: low
+    contribution_type: architectural-novelty
+    claims:
+      - FSQ codebooks enable simpler spoken LM token prediction than RVQ due to near-perfect utilization and no residual dependencies.
+    evidence:
+      - TAAE paper notes FSQ's 99.9% utilization makes downstream LM prediction more straightforward; no explicit downstream generation benchmark.
+    limitations:
+      - Downstream LM evaluation not systematically reported; claim is inferential.
+
+  - id: 2501.06282
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - End-to-end speech interaction systems can integrate TTS, ASR, and spoken dialogue in a single unified architecture with competitive performance on all three tasks.
+      - Cross-modal alignment between speech and text via shared LLM backbone enables spoken instruction-following without task-specific pipelines.
+    evidence:
+      - MinMo achieves DNSMOS 3.89 on TTS, WER 2.6% on ASR benchmark, spoken QA performance within 5% of text-only baseline.
+    limitations:
+      - TTS is a secondary capability; quality lags dedicated systems; evaluated primarily on Chinese and English.
+
+  - id: 2502.11946
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Scaling AR LLM backbone from 3B to 130B parameters produces substantial gains in speech synthesis intelligibility.
+      - RLHF reward models for speech interaction can develop failure modes unless counter-examples are constructed explicitly during reward model training.
+    evidence:
+      - Step-Audio 130B WER 1.8% vs. 3.2% for 3B; RLHF counter-example approach prevents evasive non-answer failure mode in production deployment.
+    limitations:
+      - Proprietary 130B model; RLHF details partially disclosed; evaluated primarily on Chinese and English.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Staged pretraining (frozen LLM first, joint training second) reduces intelligence degradation in speech LMs relative to single-stage training.
+      - Text-guided aligned generation mitigates semantic incoherence in speech LM outputs.
+    evidence:
+      - Baichuan-Audio staged training preserves 94% of base LLM IQ test performance; text-guided generation improves spoken QA accuracy by 6.2%.
+    limitations:
+      - Proprietary; primarily Chinese evaluation.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - RAG and external tool calling substantially reduce hallucination and expand capability in audio LMs without architectural redesign.
+      - Existing audio LM benchmarks fail to capture paralinguistic comprehension and voice-triggered tool invocation.
+    evidence:
+      - Step-Audio 2 VoiceBench composite 85.1, AIR-Bench state-of-the-art; RAG reduces hallucination on factual queries by 31%.
+    limitations:
+      - Architecture details partially disclosed; proprietary benchmarks limit independent verification.
+

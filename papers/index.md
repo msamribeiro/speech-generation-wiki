@@ -233,3 +233,28 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2312.05187 | Seamless: Multilingual Expressive and Streaming Speech  |  | arXiv | 2023 |  |  | 2026-06-12 |
 | 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 1 |  | arXiv | 2021 |  |  | 2026-06-12 |
 | 2309.15505 | Finite Scalar Quantization: VQ-VAE Made Simple |  | arXiv | 2023 |  | VAE | 2026-06-12 |
+| 2306.00814 | Vocos: Closing the gap between time-domain and Fourier- |  | arXiv | 2023 | TTS | GAN | 2026-06-12 |
+| 2407.05361 | Emilia: An Extensive, Multilingual, and Diverse Speech  |  | arXiv | 2024 |  |  | 2026-06-12 |
+| 2406.18009 | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Ze | Microsoft | arXiv | 2024 | TTS | flow-matching | 2026-06-12 |
+| 2406.04904 | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech | Coqui.ai / NVIDIA / Cantina.ai | arXiv | 2024 |  | autoregressive-LM, GAN | 2026-06-12 |
+| 2409.05377 | BigCodec: Pushing the Limits of Low-Bitrate Neural Spee | University of Tokyo, Microsoft, Keio University | arXiv | 2024 | codec | GAN, VAE | 2026-06-12 |
+| 2305.02765 | HiFi-Codec: Group-residual Vector quantization for High | Peking University / Tencent AI Lab | arXiv | 2023 | codec | GAN, VAE | 2026-06-12 |
+| 2403.16973 | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech |  | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-12 |
+| 2502.11946 | Step-Audio: Unified Understanding and Generation in Int | StepFun | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching, hybrid | 2026-06-12 |
+| 2501.06282 | MinMo: A Multimodal Large Language Model for Seamless V | Alibaba Group | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching, hybrid | 2026-06-12 |
+| 2303.03926 | Speak Foreign Languages with Your Own Voice: Cross-Ling | Microsoft | arXiv | 2023 | TTS, multilingual-tts | autoregressive-LM | 2026-06-12 |
+| 2305.09636 | SoundStorm: Efficient Parallel Audio Generation | Google | arXiv | 2023 | TTS, SCA | autoregressive-LM | 2026-06-13 |
+| 1712.05884 | Natural TTS Synthesis by Conditioning WaveNet on Mel Sp | Google | arXiv | 2017 | TTS | transformer-enc-dec | 2026-06-13 |
+| 2402.01912 | Natural language guidance of high-fidelity text-to-spee | Stability AI | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-13 |
+| 2306.12925 | AudioPaLM: A Large Language Model That Can Speak and Li | Google | arXiv | 2023 | TTS, SCA | autoregressive-LM | 2026-06-13 |
+| 2305.07243 | Better speech synthesis through scaling |  | arXiv | 2023 | TTS | autoregressive-LM, diffusion, VAE | 2026-06-13 |
+| 1609.03499 | WaveNet: A Generative Model for Raw Audio | Google DeepMind | arXiv | 2016 | TTS | autoregressive-LM | 2026-06-13 |
+| 2411.19842 | Scaling Transformers for Low-Bitrate High-Quality Speec | Stability AI | arXiv | 2024 | codec | transformer-enc-dec, VAE | 2026-06-13 |
+| 2407.08551 | Autoregressive Speech Synthesis without Vector Quantiza | Microsoft | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-13 |
+| 1703.10135 | Tacotron: Towards End-to-End Speech Synthesis | Google | arXiv | 2017 |  | transformer-enc-dec | 2026-06-13 |
+| 2502.17239 | Baichuan-Audio: A Unified Framework for End-to-End Spee | Baichuan Inc. | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-06-13 |
+| 2402.05755 | Spirit LM: Interleaved Spoken and Written Language Mode | Meta AI | arXiv | 2024 | SCA, TTS | autoregressive-LM | 2026-06-13 |
+| 2402.08093 | BASE TTS: Lessons from building a billion-parameter Tex | Amazon AGI | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-13 |
+| 2507.16632 | Step-Audio 2 Technical Report | StepFun | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-06-13 |
+| 2310.00704 | UniAudio: An Audio Foundation Model Toward Universal Au |  | arXiv | 2023 | TTS, VC, singing | autoregressive-LM, hybrid | 2026-06-13 |
+| 2106.15561 | A Survey on Neural Speech Synthesis | Microsoft Research Asia | arXiv | 2021 | TTS | autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec | 2026-06-13 |

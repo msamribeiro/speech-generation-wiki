@@ -1,6 +1,6 @@
 concept: speech-to-speech
-last_updated: 2026-06-12
-paper_count: 24
+last_updated: 2026-06-13
+paper_count: 30
 
 papers:
   - id: 2503.04721
@@ -127,3 +127,71 @@ trend_notes:
   - Integration pass 5 adds: Full-Duplex-Bench (first automated benchmark for turn-taking, revealing aggressiveness-caution tension), SpeechRole (text-LM bottleneck in S2S role-playing).
   - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (Factor C) and text reasoning, not synthesis architecture.
   - 2025 (Interspeech): FD-Bench (interspeech-2025-0739) provides the first automated full-duplex benchmark; direct duplex modeling (interspeech-2025-0874) bypasses turn-detection modules; triadic VAP (interspeech-2025-2660) extends turn-taking beyond dyadic settings.
+  - id: 2303.03926
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Cross-lingual speech-to-speech translation preserving the source speaker's voice is achievable via codec LM in-context learning.
+      - In-context learning with acoustic token prompts provides stronger cross-lingual voice preservation than speaker embedding approaches.
+    evidence:
+      - VALL-E X achieves speech-to-speech translation SSIM 0.79 on English-Chinese with source speaker voice preservation; outperforms cascade TTS-based S2ST baseline.
+    limitations:
+      - Proprietary model; limited to two evaluated language pairs; naturalness of translated speech not separately benchmarked.
+
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Interleaved speech-text LMs enable direct speech-to-speech generation without explicit speech recognition or synthesis stages.
+      - Expressive speech properties (sentiment, pitch) can be preserved across speech-to-speech modalities via discrete token streams.
+    evidence:
+      - Spirit LM demonstrates end-to-end speech-to-speech generation with sentiment preservation; spoken category classification 0.724 in cross-modal tasks.
+    limitations:
+      - Cascade baselines still substantially outperform on task-specific metrics; reconstruction fidelity limited by HuBERT tokens.
+
+  - id: 2501.06282
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Full-duplex end-to-end speech interaction with sub-500ms latency is achievable in a unified multi-modal LLM framework.
+    evidence:
+      - MinMo achieves end-to-end speech latency 268ms for simple queries; handles turn-taking and barge-in; ASR WER 2.6%.
+    limitations:
+      - Chinese-dominant evaluation; complex multi-turn dialogue performance not benchmarked against specialist systems.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Staged pretraining preserves LLM intelligence in speech-to-speech systems by decoupling modality alignment from capability transfer.
+      - End-to-end speech LMs show notably lower benchmark performance in S-to-S mode vs. S-to-T mode, indicating audio token generation introduces a quality penalty.
+    evidence:
+      - Baichuan-Audio S-to-T vs. S-to-S delta is 4.1 points on spoken QA benchmark; staged training preserves 94% of base LLM performance.
+    limitations:
+      - Primarily Chinese evaluation; English-first users may experience different quality gaps.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Retrieval-augmented generation and tool calling substantially expand speech-to-speech system capabilities without architectural redesign.
+    evidence:
+      - Step-Audio 2 achieves VoiceBench composite 85.1 and AIR-Bench state-of-the-art with RAG and tool calling integration.
+    limitations:
+      - Architecture details partially disclosed; tool calling evaluation uses proprietary benchmarks.
+

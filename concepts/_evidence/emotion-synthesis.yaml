@@ -1,6 +1,6 @@
 concept: emotion-synthesis
-last_updated: 2026-06-12
-paper_count: 38
+last_updated: 2026-06-13
+paper_count: 40
 
 papers:
   - id: 2504.12867
@@ -174,3 +174,29 @@ trend_notes:
   - Integration pass 5 adds: EmoVoice (freestyle text prompting), XEmoRAG (cross-lingual retrieval), ClapFM-EVC (dual-mode reference/prompt), Maestro-EVC (frame-level temporal alignment).
   - The SpeechRole benchmark reveals emotion appropriateness as the hardest evaluation dimension for current spoken role-playing agents.
   - Integration pass 6 (Interspeech 2025): Four new papers — zero-shot EVC with MI disentanglement (ZSDEVC, interspeech-2025-1101), expressive VC disentanglement with enriched style embeddings (interspeech-2025-0815), NL prompt EVC via diffusion mapper (PromptEVC, interspeech-2025-0948), and dual information stream for emotional SCA (2508.08095). The dominant theme is zero-shot emotion transfer without speaker-specific training data, either via disentanglement + guidance or via reference-free NL prompt mapping.
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Discrete expressive speech tokens capturing pitch and style enable emotion and sentiment preservation in cross-modal speech generation.
+    evidence:
+      - Spirit LM expressive tokens improve cross-modal sentiment transfer accuracy by 15%; pitch and style tokens are separable from phonetic tokens.
+    limitations:
+      - Emotion/sentiment vocabulary limited by discrete token categories; nuanced emotional gradations not captured.
+
+  - id: 2501.06282
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - End-to-end speech interaction systems can control emotion and prosody style via natural language instructions within a unified SCA framework.
+    evidence:
+      - MinMo supports emotion-conditioned TTS (happy, sad, angry, neutral) via natural language prompts; DNSMOS 3.89 on emotion-conditioned test set.
+    limitations:
+      - Emotion evaluation not benchmarked against dedicated emotion synthesis systems; covers only 4 basic emotion categories.
+

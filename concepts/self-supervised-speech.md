@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: mature-infrastructure
 ---
 
@@ -208,3 +208,12 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2409.06666]] | LLaMA-Omni: Seamless Speech Interaction with Large Language Models | arXiv | 2024 | Uses HuBERT discrete units for speech input tokenisation; demonstrates SSL tokens as practical speech LM input for real-time instruction-following |
 | [[2305.11000]] | SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities | arXiv | 2023 | Uses HuBERT k-means discrete units for speech discretisation; early demonstration of SSL tokenisation enabling unified speech LLM |
 | [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Uses SenseVoice ASR encoder for speech tokenisation; demonstrates ASR-supervised SSL as alternative to standard HuBERT/WavLM for TTS |
+| [[2407.05361]] | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv | 2024 | Self-supervised feature space diversity measurement for dataset quality assessment; shows in-the-wild data covers broader SSL feature distribution than audiobooks |
+| [[2305.02765]] | HiFi-Codec: Group-residual Vector Quantization for High Fidelity Audio Codec | arXiv | 2023 | Compares codec with ENCODEC and SoundStream; notes that SSL-derived semantic tokens provide better content representation than purely acoustic codecs |
+| [[2305.09636]] | SoundStorm: Efficient Parallel Audio Generation | arXiv | 2023 | Uses AudioLM w2v-BERT semantic tokens as conditioning signal; demonstrates hierarchical SSL+acoustic generation framework |
+| [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | SSL tokenizer quality identified as primary bottleneck; stronger semantic tokenizers based on SSL yield large downstream gains independent of LM scale |
+| [[2411.19842]] | Scaling Transformers for Low-Bitrate High-Quality Speech Coding (TAAE) | arXiv | 2024 | WavLM-Large perceptual features as critical reconstruction loss for intelligibility at low bitrates; SSL loss outperforms spectral losses for intelligibility |
+| [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | Multi-codebook RVQ tokenizer with SSL semantic alignment; staged pretraining preserving LLM capabilities |
+| [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | HuBERT and style/pitch SSL tokens for interleaved speech-text LM; word-level interleaving outperforms standard fine-tuning |
+| [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | SSL-based disentangled speech representations outperform acoustic codecs for zero-shot TTS particularly for low-resource languages |
+| [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | SSL-based speech encoder for understanding; demonstrates multi-task training across ASR, TTS, translation using SSL features |

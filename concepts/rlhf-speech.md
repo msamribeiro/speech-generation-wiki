@@ -3,7 +3,7 @@ slug: rlhf-speech
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 related_concepts: [instruction-conditioned-tts, spoken-language-model, evaluation-metrics, subjective-evaluation, zero-shot-tts, flow-matching]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: established
 ---
 
@@ -147,3 +147,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[interspeech-2025-0063]] | Fine-Tuning TTS Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech | 2025 | DLPO: first RLHF framework for diffusion TTS; original DDPM noise-prediction loss used as reward penalty to maintain temporal coherence; UTMOS 3.65 vs. 2.90 baseline, preferred in 67% of pairwise comparisons |
 | [[2508.08957]] | QAMRO: Quality-aware Adaptive Margin Ranking Optimization | ASRU | 2025 | Pairwise ranking optimization for automatic MOS prediction; quality-aware weighting and adaptive margins as RLHF-adjacent ranking signal for audio quality evaluation |
 | [[2505.17589]] | CosyVoice 3: Towards In-the-wild Speech Generation via Scaling-up and Post-training | arXiv | 2025 | Introduces differentiable reward optimization over discrete speech tokens for scalable post-training without full audio generation; multi-task supervised tokenizer training enables richer reward signals |
+| [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | RLHF reward models for speech interaction; systematic failure modes in reward models rewarding evasive responses; demonstrates RLHF at 130B scale for spoken dialogue |

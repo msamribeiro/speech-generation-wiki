@@ -1,6 +1,6 @@
 concept: disentanglement
-last_updated: 2026-06-12
-paper_count: 47
+last_updated: 2026-06-13
+paper_count: 48
 
 papers:
   - id: 2508.02849
@@ -205,3 +205,16 @@ trend_notes:
   - Primary open frontier: multi-factor simultaneous disentanglement (content + timbre + prosody + emotion) and cross-domain transfer (speech-singing, cross-lingual).
   - "Integration pass 6 (Interspeech 2025): Seven new disentanglement-focused papers — interpretable codec probing (interspeech-2025-0115), speaker-invariant DC-Spin (interspeech-2025-0246), DualCodec low-frame-rate (interspeech-2025-0468), expressive VC disentanglement (interspeech-2025-0815), zero-shot EVC with MI disentanglement (interspeech-2025-1101), FreeCodec fewer-token disentanglement (interspeech-2025-1440), training-free OT VC (interspeech-2025-2043). Codec-level disentanglement is confirmed as the dominant paradigm with MI minimisation and discrete unit approaches as key strategies."
   - Can speech-singing cross-domain embedding alignment (interspeech-2025-0816) generalise to other cross-modal conversion scenarios?
+  - id: 2402.05755
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Expressive speech properties (sentiment, pitch, style) can be disentangled as discrete token streams supplementing phonetic tokens, enabling cross-modal sentiment preservation.
+    evidence:
+      - Spirit LM expressive tokens improve cross-modal sentiment accuracy by 15% over base token-only variant; pitch and style tokens are separable streams.
+    limitations:
+      - Adding expressive tokens causes moderate degradation in lexical and grammatical speech understanding metrics.
+

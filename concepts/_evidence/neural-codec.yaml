@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: 2026-06-12
-paper_count: 72
+last_updated: 2026-06-13
+paper_count: 92
 
 papers:
   - id: 2507.22746
@@ -546,3 +546,248 @@ papers:
       - Mini-Omni generates speech via multi-codebook tokens in parallel with text reasoning tokens; batch inference reduces effective decode time vs. sequential token prediction.
     limitations:
       - Codec-specific details not fully disclosed; speech quality measured only against voice naturalness, not against codec reconstruction benchmarks.
+
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Direct raw-waveform autoregressive generation achieves substantially higher naturalness than vocoder-parameter synthesis but requires sample-level sequential decoding.
+    evidence:
+      - WaveNet MOS 4.21 vs. HMM concatenative 3.86 on English TTS; establishes the raw-waveform generation paradigm that later codecs replaced via learned discretization.
+    limitations:
+      - No codec component; WaveNet itself is not a codec but motivates the need for efficient speech representations.
+
+  - id: 2305.02765
+    year: 2023
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Group-RVQ parallel chains improve reconstruction quality per codebook relative to sequential RVQ at the same codebook count.
+      - Codebook count pressure on downstream generation models is a practical constraint that drives codec design decisions independently of reconstruction quality.
+    evidence:
+      - HiFi-Codec achieves competitive MOS with EnCodec using fewer codebooks via GRVQ; open-sourced to provide accessible codec baselines for downstream research.
+    limitations:
+      - Evaluated primarily on single-speaker reconstruction; downstream AR TTS comparison not systematic.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Discrete codec codes from multiple codebooks can serve as an intermediate representation for conditioning a diffusion decoder in cascaded TTS.
+    evidence:
+      - Tortoise uses multi-codebook autoregressive prediction as conditioning for a diffusion spectrogram decoder; achieves MOS exceeding professional audiobook narrators.
+    limitations:
+      - Very slow inference; uses bespoke latent codec not suited to streaming; no reconstruction quality benchmark provided.
+
+  - id: 2305.09636
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - RVQ structure enables level-by-level iterative masked decoding that achieves 100x speedup over AR generation at matched quality.
+      - Fine-level RVQ tokens are conditionally independent given coarser tokens and can be greedily decoded in one pass.
+    evidence:
+      - SoundStorm generates 30s of speech in 0.5s at matched SIM to AR baselines; ablation confirms greedy fine-level decoding is sufficient.
+    limitations:
+      - Dependent on a separate semantic token AR model (AudioLM); not standalone; conditioning pipeline adds complexity.
+
+  - id: 2306.00814
+    year: 2023
+    task: [TTS]
+    architecture: [GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - A Fourier-domain GAN deployed as a neural codec decoder improves perceptual quality over the original codec decoder at all bitrates.
+      - Implicit phase wrapping via unit-circle activation is essential for stable GAN training of complex-valued spectrogram generators.
+    evidence:
+      - Vocos as EnCodec decoder: MUSHRA +2.1 over original decoder; training stability via wrapping activation confirmed in ablation.
+    limitations:
+      - Serves as vocoder/decoder replacement only; does not modify the codec encoder or codebook design.
+
+  - id: 2303.03926
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Multilingual codec token streams can represent cross-lingual voice identity with minimal codec modifications.
+    evidence:
+      - VALL-E X uses standard EnCodec codec for cross-lingual synthesis; codec handles multilingual speech without language-specific fine-tuning.
+    limitations:
+      - Codec is not the primary contribution; language-specific acoustic details may not be fully captured by English-dominant codec training.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Audio tokenizer quality is a primary bottleneck in LLM-based speech generation; stronger semantic tokenizers yield large gains independent of LM scale.
+    evidence:
+      - AudioPaLM ablation shows tokenizer quality contributes +3.2 BLEU on speech translation independent of LM backbone scale.
+    limitations:
+      - Uses SoundStream tokens; full codec architecture details are proprietary.
+
+  - id: 2310.00704
+    year: 2023
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Hierarchical RVQ token factorization into inter-frame and intra-frame modeling reduces memory requirements substantially while preserving generation quality.
+    evidence:
+      - UniAudio hierarchical decoding reduces GPU memory 4x vs. flat-sequence AR on same codec token count; quality parity maintained.
+    limitations:
+      - Codec used (EnCodec variant) is not independently benchmarked; hierarchical design assumes stable RVQ layer structure.
+
+  - id: 2402.01912
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Neural audio codec choice has measurable effect on perceptual quality in AR TTS; higher-fidelity codecs translate directly to higher MOS.
+    evidence:
+      - NL Guidance TTS reports that switching to a higher-fidelity codec (Tortoise VQVAE) improves DNSMOS by 0.15 vs. EnCodec at equivalent architecture.
+    limitations:
+      - Codec comparison done implicitly as part of larger TTS system; not an isolated codec benchmark.
+
+  - id: 2402.08093
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - SSL-based speech representations with speaker disentanglement outperform acoustic codec representations for zero-shot TTS across lower-resource languages.
+      - BPE applied to discrete speech tokens reduces AR sequence length ~40% without quality degradation.
+    evidence:
+      - BASE TTS uses disentangled SSL codec outperforming EnCodec baseline in non-English MOS; BPE reduces sequence length from 75 to ~45 tokens/s with matched quality.
+    limitations:
+      - Proprietary; codec architecture details not fully disclosed; BPE benefits may be limited to specific codec designs.
+
+  - id: 2403.16973
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - AR codec LM quality for speech editing and TTS is sensitive to the codec bitrate and architecture choice.
+    evidence:
+      - VoiceCraft uses EnCodec 50 Hz at 6 kbps as its codec backbone; no systematic ablation on codec choice in the paper.
+    limitations:
+      - Codec choice is not systematically ablated; findings about codec impact are implicit.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Low-frequency codec codebook entries can be pruned without quality loss and improve expressiveness in multilingual discrete-token TTS.
+    evidence:
+      - XTTS prunes low-frequency codebook entries from VQVAE and reports improved subjective expressiveness rating on held-out evaluation.
+    limitations:
+      - Pruning strategy not systematically benchmarked against reconstruction metrics; may affect rare speakers disproportionately.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous mel-spectrogram representations preserve more speaker-relevant information than VQ codec codes at standard compression rates, challenging the necessity of discretization.
+      - AR TTS without vector quantization avoids silence and repetition failures endemic to discrete codec LMs.
+    evidence:
+      - MELLE achieves WER 2.47%, SIM 0.697 at zero hallucination failures; SPK-SIM exceeds EnCodec-based AR baselines by 0.04 on average.
+    limitations:
+      - Requires vocoder for waveform synthesis; no streaming; evaluated on English only.
+
+  - id: 2409.05377
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - At very low bitrates (~1 kbps), model capacity is decisive; larger codec models substantially outperform smaller but architecturally sophisticated designs.
+      - Low-dimensional VQ before codebook lookup substantially improves codebook utilization in single-codebook single-quantization codecs.
+    evidence:
+      - BigCodec 159M achieves UTMOS 3.84 at 1.04 kbps vs. 3.51 for EnCodec; near-perfect codebook utilization with low-dim VQ projection.
+    limitations:
+      - Scaling beyond 159M yields no further benefit; English-only evaluation.
+
+  - id: 2411.19842
+    year: 2024
+    task: [codec]
+    architecture: [transformer-enc-dec, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Scaling transformer codec model size consistently improves quality across objective and subjective metrics.
+      - FSQ achieves near-perfect codebook utilization without explicit regularization.
+      - WavLM perceptual losses are critical for intelligible reconstruction at low bitrates beyond what adversarial losses provide.
+    evidence:
+      - TAAE 400M achieves UTMOS 4.22 at 700 bps; FSQ 99.9% utilization vs. 70-80% for standard VQ; WavLM loss ablation -0.41 UTMOS.
+    limitations:
+      - Spectral bias in STFT discriminators causes periodic artifacts at large scale; English training claims multilingual generalization.
+
+  - id: 2502.11946
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Dual-codebook interleaved tokenizers combining linguistic and semantic streams achieve lower ASR error than either codebook alone without sacrificing reconstruction quality.
+    evidence:
+      - Step-Audio dual-codebook reduces ASR WER 18% vs. single-codebook; codebook count 2 at 25 Hz enables streaming with low latency.
+    limitations:
+      - Proprietary; codebook design details partially disclosed; no independent reconstruction benchmark.
+
+  - id: 2502.17239
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Flow-matching decoders deployed as post-VQ refinement stages recover significant audio quality lost during quantization.
+    evidence:
+      - Baichuan-Audio flow-matching decoder achieves +0.61 UTMOS improvement over codec reconstruction; retraining the LLM not required.
+    limitations:
+      - Adds inference latency; evaluated primarily on Chinese TTS; codec architecture not disclosed.
+
+  - id: 2507.16632
+    year: 2025
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: low
+    contribution_type: engineering-integration
+    claims:
+      - Neural codec tokens interleaved with text tokens in a shared LLM vocabulary enable end-to-end spoken dialogue with paralinguistic control.
+    evidence:
+      - Step-Audio 2 uses interleaved discrete audio tokens; codec enables timbre switching and voice style control in live dialogue.
+    limitations:
+      - Codec architecture details not disclosed; no independent reconstruction benchmark.
+
+trend_notes:
+  - "Integration pass 10 (2026-06-13): 18 historical papers added spanning the full codec era from WaveNet (1609.03499, 2016) through the early 2023 codec designs (HiFi-Codec 2305.02765, SoundStorm 2305.09636) through 2024-2025 industrial systems. Key themes: (1) The pre-codec era (WaveNet) motivates why learned discrete representations were needed; (2) MELLE (2407.08551) is the first strong evidence that continuous AR can outperform discrete codec AR, opening a new question about whether discretization is necessary; (3) TAAE (2411.19842) and BigCodec (2409.05377) confirm that scaling codec model size and using FSQ yield the most reliable quality improvements at low bitrates."

@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: emerging
 ---
 ## Executive Summary
@@ -252,3 +252,12 @@ Integration pass 6 (Interspeech 2025): Mini-Omni-Reasoner [[2508.15827]] introdu
 | [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Frozen LLM backbone with three-stage speech-modality alignment; chunk-level duplex state classification without separate interrupt model |
 | [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Single-codebook codec for audio LM; demonstrates better downstream discrete token generation than multi-codebook RVQ at equivalent bitrate |
 | [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Comprehensive benchmark revealing pipeline ASR+LLM substantially outperforms end-to-end audio LLMs; key negative result for the field |
+| [[2305.09636]] | SoundStorm: Efficient Parallel Audio Generation | arXiv | 2023 | Parallel masked RVQ decoding enabling real-time synthesis of multi-speaker dialogue; conditioned on AudioLM semantic tokens for coherent long-form generation |
+| [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | Unified speech-text LLM initialized from PaLM; demonstrates that text pre-training transfers to speech modality; hierarchical tokenizer quality as primary bottleneck |
+| [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | 130B spoken dialogue LLM with RLHF; scaling LLM backbone improves TTS intelligibility; speculative response reduces per-turn latency 500ms |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Aligned multimodal architecture achieving full-duplex dialogue at sub-second latency; multi-task training across heterogeneous speech tasks |
+| [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | RL-enhanced multi-task audio LLM with RAG and tool-calling; extends AR codec LM to comprehensive voice assistant capabilities |
+| [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | End-to-end speech LM with staged pretraining; S→S mode underperforms S→T indicating audio token generation introduces quality penalty |
+| [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | Word-level interleaved speech-text LM transferring text LLM's few-shot reasoning to speech modality; cascade systems remain stronger at equivalent scale |
+| [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Multi-task audio LM across 7 generation tasks; hierarchical RVQ factorization for efficient training; demonstrates cross-task generalization |
+| [[2411.19842]] | Scaling Transformers for Low-Bitrate High-Quality Speech Coding (TAAE) | arXiv | 2024 | Transformer-scaled FSQ codec simplifying downstream SLM training; FSQ near-perfect codebook utilization vs. VQ |

@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: mature-infrastructure
 ---
 
@@ -267,3 +267,22 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Uses Whisper encoder for speech input and streaming codec-based TTS for speech output; demonstrates codec integration in a frozen-LLM spoken dialogue architecture |
 | [[2409.03283]] | FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications | arXiv | 2024 | Custom two-stage waveform generation with mel decoder and super-resolution vocoder; demonstrates separation of low-rate codec generation from high-rate vocoder as design pattern |
 | [[2408.16725]] | Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming | arXiv | 2024 | Uses multi-codebook codec with batch inference strategy for parallel speech token generation; demonstrates simultaneous text-audio generation in a streaming speech LM |
+| [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Pre-codec autoregressive raw-waveform model; established the sequential synthesis baseline that codecs later replaced for LM-based TTS |
+| [[2305.02765]] | HiFi-Codec: Group-residual Vector Quantization for High Fidelity Audio Codec | arXiv | 2023 | Introduces group-RVQ reducing downstream AR burden; demonstrates that codebook count is a practical constraint for generative models |
+| [[2409.05377]] | BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec | arXiv | 2024 | Shows model capacity rather than data is the binding constraint at ~1 kbps; LSTM encoder improves speaker similarity; scaling saturates at ~159M params |
+| [[2411.19842]] | Scaling Transformers for Low-Bitrate High-Quality Speech Coding (TAAE) | arXiv | 2024 | Transformer-scaled FSQ codec with WavLM perceptual loss; demonstrates systematic quality gains from architecture scaling; FSQ achieves near-perfect codebook utilization |
+| [[2305.09636]] | SoundStorm: Efficient Parallel Audio Generation | arXiv | 2023 | Uses AudioLM codec tokens (SoundStream) for parallel masked decoding; demonstrates that fine-level RVQ tokens are conditionally independent given coarse tokens |
+| [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | AudioPaLM tokenizer quality identified as primary bottleneck in LLM-based speech; stronger semantic tokenizers yield large downstream gains independent of LM scale |
+| [[2303.03926]] | VALL-E X: Cross-lingual Neural Codec Language Modeling | arXiv | 2023 | Cross-lingual extension of EnCodec-based VALL-E; uses same 75 Hz EnCodec tokenizer for cross-lingual voice transfer |
+| [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | Uses discrete tokens from VQVAE for AR stage; demonstrates cascaded discrete AR + continuous diffusion as alternative to pure codec-LM TTS |
+| [[2402.01912]] | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv | 2024 | Shows codec choice has measurable effect on MOS; higher-fidelity codecs directly improve perceptual quality in AR TTS |
+| [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Uses disentangled SSL-based speech tokens (not RVQ) for AR stage; BPE on speech tokens reduces sequence length 40%; shows SSL tokens outperform acoustic codecs for low-resource languages |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | Low-frequency codec codebook entry pruning improves expressiveness; Perceiver Resampler over codec tokens for speaker conditioning |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Uses mel-spectrogram rather than codec tokens; unsupervised pretraining on unlabeled speech improves downstream zero-shot TTS |
+| [[2403.16973]] | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild | arXiv | 2024 | Autoregressive infilling over EnCodec tokens; demonstrates codec token rearrangement for bidirectional context conditioning |
+| [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | Codec-free AR TTS using continuous mel frames; shows continuous representations preserve more speaker-relevant information than VQ-quantized codec codes |
+| [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | Dual-codebook interleaved tokenizer combining linguistic and semantic representations; achieves lower ASR error than either codebook alone |
+| [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | 8-layer multi-codebook RVQ with semantic alignment; each additional layer reduces ASR error substantially up to 8 layers; flow-matching decoder recovers quality lost in quantization |
+| [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Hierarchical RVQ factorization into inter-frame and intra-frame modeling reduces training cost; uses EnCodec and other codecs for multi-task audio generation |
+| [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Streaming voice decoder over codec tokens; AR streaming decoder outperforms CTC for naturalness in aligned speech LMs |
+| [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | Uses interleaved discrete audio tokens; RL-enhanced codec token prediction for audio language modeling |

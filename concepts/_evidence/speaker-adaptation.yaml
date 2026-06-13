@@ -1,6 +1,6 @@
 concept: speaker-adaptation
-last_updated: 2026-06-12
-paper_count: 19
+last_updated: 2026-06-13
+paper_count: 25
 
 papers:
   - id: 2508.07426
@@ -144,3 +144,70 @@ trend_notes:
   - Two-stage semantic-acoustic decoupling (MahaTTS) establishes 200 hours as a practical threshold for new language addition without acoustic model retraining.
   - The gap between zero-shot and adapted quality is narrowing in high-resource settings; adaptation remains essential for specialized populations and low-resource languages.
   - Integration pass 6: interspeech-2025-1344 confirms PEFT-first is not just computationally efficient but functionally necessary for cross-lingual continual adaptation — full fine-tuning causes catastrophic forgetting of prior languages even with small (12h) adaptation datasets.
+  - id: 1609.03499
+    year: 2016
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Multi-speaker conditioning via speaker embeddings in an AR model enables shared internal structure across speakers, improving per-speaker quality relative to single-speaker training.
+    evidence:
+      - WaveNet multi-speaker model with 109-speaker embedding conditioning achieves MOS improvements over training per-speaker models on less data; establishes multi-speaker AR as viable.
+    limitations:
+      - Speaker embeddings learned jointly with the model; zero-shot generalisation to unseen speakers not demonstrated.
+
+  - id: 2305.07243
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Contrastive speaker conditioning using a text-speech CLVP discriminator enables robust zero-shot speaker adaptation at inference.
+    evidence:
+      - Tortoise uses CLVP-based speaker conditioning; achieves MOS exceeding professional narrators across diverse target speakers including distinctive voices.
+    limitations:
+      - Very slow inference; CLVP training requires large parallel speech-text corpus.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Perceiver Resampler speaker encoding handles variable-length reference audio and improves speaker adaptation robustness across 16+ languages.
+      - ~10 minutes of fine-tuning data substantially improves speaker similarity even for extreme prosody styles.
+    evidence:
+      - XTTS Perceiver Resampler +0.18 SMOS over single-embedding; 10-min fine-tuned SMOS 4.31 vs. zero-shot 3.82.
+    limitations:
+      - Commercial system; reproducibility limited; fine-tuning results reflect ideal conditions.
+
+  - id: 2406.18009
+    year: 2024
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Implicit speaker adaptation via reference conditioning in flow-matching TTS achieves speaker similarity without explicit speaker encoding.
+      - Unsupervised pretraining on unlabeled speech improves speaker similarity in zero-shot adaptation.
+    evidence:
+      - E2 TTS SIM 0.71 on SeedTTS test-en with fully implicit conditioning; pretraining adds +0.03 SIM in ablation.
+    limitations:
+      - Implicit conditioning may underperform explicit speaker encoders for very distinctive voices.
+
+  - id: 2407.08551
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Continuous mel AR TTS achieves higher speaker similarity than discrete codec AR at equivalent architecture scale.
+    evidence:
+      - MELLE SIM 0.697 vs. 0.651 for VALL-E 2; variational sampling improves SIM vs. greedy decoding.
+    limitations:
+      - Evaluated on English only; benefit for highly distinctive voices not isolated.
+

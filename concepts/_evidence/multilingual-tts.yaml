@@ -1,6 +1,6 @@
 concept: multilingual-tts
-last_updated: 2026-06-12
-paper_count: 41
+last_updated: 2026-06-13
+paper_count: 47
 
 papers:
   - id: 1912.06670
@@ -196,3 +196,71 @@ trend_notes:
   - Integration pass 5 adds five new multilingual perspectives: MahaTTS (22 Indic languages), MultiGen (child-friendly SEA), UtterTune (Japanese pitch accent), XEmoRAG (cross-lingual emotion transfer), and NV pipeline (bilingual NV detection).
   - The frontier has shifted from dozens of languages with EN/ZH focus to systems claiming full FLEURS coverage.
   - Integration pass 6: interspeech-2025-1344 (Korean PEFT adaptation), interspeech-2025-1595 (S2ST LLM with scheduled interleaved training), and 2508.20660 (CodecBench for multilingual codec evaluation) add evidence that cross-lingual PEFT is the practical adapter method for extending multilingual FM TTS to new languages.
+  - id: 2303.03926
+    year: 2023
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Large-scale multilingual codec LMs can transfer speaker identity across languages without paired bilingual data, achieving near-native accent.
+      - Language ID conditioning is essential for native-sounding accent in cross-lingual synthesis; removing it significantly degrades accent scores.
+    evidence:
+      - VALL-E X cross-lingual accent score 3.92 vs 3.13 without language ID conditioning; SMOS 3.79 across English-Chinese and English-German.
+    limitations:
+      - Proprietary model; limited to two evaluated language pairs; no evaluation on typologically distant languages.
+
+  - id: 2306.12925
+    year: 2023
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Unified multimodal vocabulary enables zero-shot speech translation to language pairs not seen during speech training via text pretraining transfer.
+    evidence:
+      - AudioPaLM achieves zero-shot translation to 21 language pairs including unseen speech-level pairs; BLEU 49.7 on CoVoST-2 en-de.
+    limitations:
+      - Translation quality is the primary metric; naturalness of multilingual TTS output not separately benchmarked.
+
+  - id: 2406.04904
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Multilingual zero-shot TTS training degrades speaker similarity compared to monolingual training, reflecting a fundamental cross-lingual conditioning trade-off.
+      - Perceiver Resampler speaker conditioning encoder improves voice cloning robustness across 16+ languages over single-embedding approaches.
+      - Small target-speaker fine-tuning (~10 minutes) substantially improves cross-lingual speaker similarity.
+    evidence:
+      - XTTS cross-lingual SMOS 3.82 vs. monolingual 4.21; Perceiver Resampler +0.18 SMOS vs. single-embedding; 10-min fine-tuned SMOS 4.31.
+    limitations:
+      - Commercial system; data composition not fully disclosed; 16-language coverage still limited relative to language diversity.
+
+  - id: 2407.05361
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: dataset-contribution
+    claims:
+      - Large-scale multilingual in-the-wild datasets with automatic quality filtering enable training of multilingual TTS systems that outperform curated but smaller datasets.
+    evidence:
+      - Emilia 101K hours across 6 languages; downstream multilingual TTS MOS improvements over LibriTTS-trained baselines in all 6 languages.
+    limitations:
+      - Language balance varies substantially; non-Romance/Germanic languages underrepresented.
+
+  - id: 2501.06282
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - End-to-end speech interaction systems with shared LLM backbones can achieve competitive multilingual TTS as a secondary capability.
+    evidence:
+      - MinMo supports Chinese-English multilingual TTS within a unified SCA framework; DNSMOS 3.89 on multilingual test set.
+    limitations:
+      - Multilingual TTS is a secondary capability; performance lags dedicated multilingual TTS systems.
+

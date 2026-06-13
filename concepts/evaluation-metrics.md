@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-12
+last_updated: 2026-06-13
 status: established
 ---
 ## Executive Summary
@@ -230,3 +230,17 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[2406.05370]] | VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers | arXiv | 2024 | Introduces new evaluation conditions (VCTK multi-speaker, specific benchmark splits) to claim human parity; documents how benchmark framing affects human parity claims |
 | [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Comprehensive multi-metric evaluation across PESQ, STOI, UTMOS, MCD for codec comparison; demonstrates evaluation metric disagreement across architecture families |
 | [[2410.17196]] | VoiceBench: Benchmarking LLM-Based Voice Assistants | arXiv | 2024 | Introduces VoiceBench multi-capability evaluation framework for voice assistants; reveals substantial gaps between pipeline and E2E systems on robustness metrics |
+| [[2306.00814]] | Vocos: Closing the gap between time-domain and Fourier-based neural vocoders | arXiv | 2023 | Ablation-driven vocoder comparison using PESQ, WVMOS, MUSHRA showing Fourier-domain GAN closes quality gap with time-domain at lower computational cost |
+| [[2407.05361]] | Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation | arXiv | 2024 | Uses MOS, WER, and speaker similarity to compare in-the-wild and audiobook training data; introduces acoustic diversity metric in SSL feature space |
+| [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Finds that zero-shot TTS SPK-SIM can exceed ground-truth recordings on standard speaker verification metrics, questioning what the metric actually measures |
+| [[2406.04904]] | XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model | arXiv | 2024 | Comparative evaluation showing multilingual vs. monolingual model comparisons produce misleading results when per-language training data is not matched |
+| [[2409.05377]] | BigCodec: Pushing the Limits of Low-Bitrate Neural Speech Codec | arXiv | 2024 | PESQ, STOI, WER, and subjective evaluation; notes PESQ and STOI insufficient alone for codec quality characterization |
+| [[2305.02765]] | HiFi-Codec: Group-residual Vector Quantization for High Fidelity Audio Codec | arXiv | 2023 | Argues that PESQ and STOI are insufficient alone for codec quality characterization; calls for combined objective and subjective evaluation |
+| [[2403.16973]] | VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild | arXiv | 2024 | Shows WER from ASR is an unreliable proxy for perceptual intelligibility; systems with lower WER than ground truth can receive substantially lower human intelligibility ratings |
+| [[2305.09636]] | SoundStorm: Efficient Parallel Audio Generation | arXiv | 2023 | Proposes generation time evaluation alongside MOS and SPK-SIM for fast TTS systems |
+| [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Establishes crowd-sourced MOS with English native speakers on Amazon Mechanical Turk as a methodological standard for TTS evaluation |
+| [[2411.19842]] | Scaling Transformers for Low-Bitrate High-Quality Speech Coding (TAAE) | arXiv | 2024 | Systematic spectral bias analysis showing power-of-two FFT configurations cause periodic reconstruction artifacts measurable via MUSHRA |
+| [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | Comparative evaluation across MOS, WER, SPK-SIM on multiple benchmarks; variational sampling compared with top-p sampling via diversity metrics |
+| [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | 5-scale MOS evaluation on Amazon Mechanical Turk; establishes naturalness MOS as primary quality metric for TTS benchmarking |
+| [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | Notes existing audio LM benchmarks fail to capture fine-grained paralinguistic comprehension and tool invocation, leaving important dimensions unmeasured |
+| [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Comprehensive survey of evaluation metrics across MOS, WER, CER, PESQ, STOI, F0-RMSE for all TTS paradigms; provides historical taxonomy |
