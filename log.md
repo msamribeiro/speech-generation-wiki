@@ -6,6 +6,34 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-14
+
+- ingest | 2411.01156 | Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis | arXiv 2024
+- ingest | 2505.07916 | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder | arXiv 2025
+- ingest | 2410.11190 | Mini-Omni2: Towards Open-source GPT-4o with Vision, Speech and Duplex Capabilities | arXiv 2024
+- ingest | 2410.03751 | Recent Advances in Speech Language Models: A Survey | arXiv 2024
+- ingest | 2104.00355 | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv 2021
+- ingest | 2502.06490 | Recent Advances in Discrete Speech Tokens: A Review | arXiv 2025
+- ingest | 2105.06337 | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech | arXiv 2021
+- ingest | 2412.15649 | SLAM-Omni: Timbre-Controllable Voice Interaction System with Single-Stage Training | arXiv 2024
+- ingest | 2502.05512 | IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System | arXiv 2025
+- ingest | 2502.07243 | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR 2025
+- ingest | 2406.07855 | VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment | arXiv 2024
+- ingest | 2410.17799 | OmniFlatten: An End-to-end GPT Model for Seamless Voice Conversation | arXiv 2024
+- ingest | 2504.08528 | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv 2025
+- ingest | 2206.08317 | Paraformer: Fast and Accurate Parallel Transformer for Non-autoregressive End-to-End Speech Recognition | arXiv 2022
+- ingest | 2412.19437 | DeepSeek-V3 Technical Report | arXiv 2024
+- ingest | 2402.03300 | DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models | arXiv 2024
+- ingest | 2310.13289 | SALMONN: Towards Generic Hearing Abilities for Large Language Models | arXiv 2023
+- ingest | 1810.04805 | BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding | arXiv 2018
+- ingest | 2502.05139 | Meta Audiobox Aesthetics: Unified Automatic Quality Assessment for Speech, Music, and Sound | arXiv 2025
+- ingest | 2307.09288 | Llama 2: Open Foundation and Fine-Tuned Chat Models | arXiv 2023
+- ingest | 2312.11805 | Gemini: A Family of Highly Capable Multimodal Models | arXiv 2023
+- ingest | 2005.14165 | Language Models are Few-Shot Learners | arXiv 2020
+- ingest | 2407.10671 | Qwen2 Technical Report | arXiv 2024
+- ingest | 2106.04624 | SpeechBrain: A General-Purpose Speech Toolkit | arXiv 2021
+- ingest | 2406.14294 | DASB - Discrete Audio and Speech Benchmark | arXiv 2024
+
 ## 2026-06-13
 
 - quality-pass | Factor A/B/C label cleanup | 12 files | paper-internal experiment labels from [[2412.17048]] replaced with descriptive language; citations added where missing
@@ -329,3 +357,8 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2509.03292 | Improving Perceptual Audio Aesthetic Assessment via Triplet Loss and Self-Supervised Embeddings | arXiv 2025
 - ingest | 2509.03940 | VoxRole: A Comprehensive Benchmark for Evaluating Speech-Based Role-Playing Agents | arXiv 2025
 - ingest | 2509.04072 | Computational Narrative Understanding for Expressive Text-to-Speech | arXiv 2025
+- ingest-batch | 2 ingested, 0 failed
+- ingest-batch | 2 ingested, 0 failed
+- ingest-batch | 2 ingested, 0 failed
+- ingest-batch | 2 ingested, 0 failed
+- ingest-batch | 1 ingested, 0 failed

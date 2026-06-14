@@ -2,8 +2,8 @@
 title: "arXiv 2020"
 venue: arXiv
 year: 2020
-papers_ingested: 4
-last_updated: 2026-06-12
+papers_ingested: 5
+last_updated: 2026-06-14
 ---
 
 ## Overview
@@ -18,3 +18,4 @@ Two 2020 arXiv preprints anchor the non-autoregressive and GAN vocoder foundatio
 | 2006.04558 | FastSpeech 2: Fast and High-Quality End-to-End Text to Speech |
 | 2005.07143 | ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation  |
 | 2012.03411 | MLS: A Large-Scale Multilingual Dataset for Speech Research |
+| 2005.14165 | Language Models are Few-Shot Learners |

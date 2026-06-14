@@ -2,8 +2,8 @@
 title: "arXiv 2023"
 venue: arXiv
 year: 2023
-papers_ingested: 17
-last_updated: 2026-06-13
+papers_ingested: 20
+last_updated: 2026-06-14
 ---
 
 ## Overview
@@ -31,3 +31,6 @@ The 17 arXiv 2023 papers in this corpus fall into four clusters. The foundation 
 | 2306.12925 | AudioPaLM: A Large Language Model That Can Speak and Listen |
 | 2305.07243 | Better speech synthesis through scaling |
 | 2310.00704 | UniAudio: An Audio Foundation Model Toward Universal Audio Generation |
+| 2310.13289 | SALMONN: Towards Generic Hearing Abilities for Large Language Models |
+| 2307.09288 | Llama 2: Open Foundation and Fine-Tuned Chat Models |
+| 2312.11805 | Gemini: A Family of Highly Capable Multimodal Models |

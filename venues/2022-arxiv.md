@@ -2,8 +2,8 @@
 title: "arXiv 2022"
 venue: arXiv
 year: 2022
-papers_ingested: 7
-last_updated: 2026-06-10
+papers_ingested: 8
+last_updated: 2026-06-14
 ---
 
 ## Overview
@@ -21,3 +21,4 @@ The 2022 arXiv preprints in this corpus represent a pivotal year for neural spee
 | 2209.03143 | AudioLM: a Language Modeling Approach to Audio Generation |
 | 2206.04658 | BigVGAN: A Universal Neural Vocoder with Large-Scale Training |
 | 2207.12598 | Classifier-Free Diffusion Guidance |
+| 2206.08317 | Paraformer: Fast and Accurate Parallel Transformer for Non-autoregress |

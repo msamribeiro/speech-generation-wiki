@@ -258,3 +258,28 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2507.16632 | Step-Audio 2 Technical Report | StepFun | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-06-13 |
 | 2310.00704 | UniAudio: An Audio Foundation Model Toward Universal Au |  | arXiv | 2023 | TTS, VC, singing | autoregressive-LM, hybrid | 2026-06-13 |
 | 2106.15561 | A Survey on Neural Speech Synthesis | Microsoft Research Asia | arXiv | 2021 | TTS | autoregressive-LM, flow-matching, diffusion, GAN, VAE, transformer-enc-dec | 2026-06-13 |
+| 2411.01156 | Fish-Speech: Leveraging Large Language Models for Advan | Fish Audio | arXiv | 2024 | TTS | autoregressive-LM, GAN | 2026-06-14 |
+| 2505.07916 | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with | MiniMax | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, VAE | 2026-06-14 |
+| 2410.11190 | Mini-Omni2: Towards Open-source GPT-4o with Vision, Spe | Inspirai / Tsinghua University | arXiv | 2024 | SCA | autoregressive-LM | 2026-06-14 |
+| 2410.03751 | Recent Advances in Speech Language Models: A Survey | Chinese University of Hong Kong | arXiv | 2024 | SCA, TTS | autoregressive-LM | 2026-06-14 |
+| 2104.00355 | Speech Resynthesis from Discrete Disentangled Self-Supe | Facebook AI Research | arXiv | 2021 | TTS, VC | GAN, VAE | 2026-06-14 |
+| 2502.06490 | Recent Advances in Discrete Speech Tokens: A Review | SJTU / MSRA | arXiv | 2025 | TTS, VC, SCA, codec | autoregressive-LM, transformer-enc-dec, GAN, VAE | 2026-06-14 |
+| 2105.06337 | Grad-TTS: A Diffusion Probabilistic Model for Text-to-S |  | arXiv | 2021 | TTS | diffusion, transformer-enc-dec | 2026-06-14 |
+| 2412.15649 | SLAM-Omni: Timbre-Controllable Voice Interaction System | SJTU / Microsoft | arXiv | 2024 | SCA | autoregressive-LM, flow-matching | 2026-06-14 |
+| 2502.05512 | IndexTTS: An Industrial-Level Controllable and Efficien | bilibili | arXiv | 2025 | TTS | autoregressive-LM, GAN | 2026-06-14 |
+| 2502.07243 | Vevo: Controllable Zero-Shot Voice Imitation with Self- | Meta AI | ICLR | 2025 | TTS, VC | autoregressive-LM, flow-matching, hybrid | 2026-06-14 |
+| 2406.07855 | VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech | Microsoft | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-14 |
+| 2410.17799 | OmniFlatten: An End-to-end GPT Model for Seamless Voice | Alibaba (Tongyi Lab) | arXiv | 2024 | SCA | autoregressive-LM | 2026-06-14 |
+| 2504.08528 | On The Landscape of Spoken Language Models: A Comprehen |  | arXiv | 2025 | SCA | autoregressive-LM, transformer-enc-dec | 2026-06-14 |
+| 2206.08317 | Paraformer: Fast and Accurate Parallel Transformer for  | Alibaba Group | arXiv | 2022 |  | transformer-enc-dec | 2026-06-14 |
+| 2412.19437 | DeepSeek-V3 Technical Report | DeepSeek-AI | arXiv | 2024 |  |  | 2026-06-14 |
+| 2402.03300 | DeepSeekMath: Pushing the Limits of Mathematical Reason |  | arXiv | 2024 |  | autoregressive-LM | 2026-06-14 |
+| 2310.13289 | SALMONN: Towards Generic Hearing Abilities for Large La | Tsinghua University / ByteDance | arXiv | 2023 |  |  | 2026-06-14 |
+| 1810.04805 | BERT: Pre-training of Deep Bidirectional Transformers f |  | arXiv | 2018 |  |  | 2026-06-14 |
+| 2502.05139 | Meta Audiobox Aesthetics: Unified Automatic Quality Ass | Meta (FAIR) | arXiv | 2025 |  |  | 2026-06-14 |
+| 2307.09288 | Llama 2: Open Foundation and Fine-Tuned Chat Models | Meta | arXiv | 2023 |  | autoregressive-LM | 2026-06-14 |
+| 2312.11805 | Gemini: A Family of Highly Capable Multimodal Models |  | arXiv | 2023 |  |  | 2026-06-14 |
+| 2005.14165 | Language Models are Few-Shot Learners |  | arXiv | 2020 |  | autoregressive-LM | 2026-06-14 |
+| 2407.10671 | Qwen2 Technical Report | Alibaba Group | arXiv | 2024 |  |  | 2026-06-14 |
+| 2106.04624 | SpeechBrain: A General-Purpose Speech Toolkit |  | arXiv | 2021 |  |  | 2026-06-14 |
+| 2406.14294 | DASB - Discrete Audio and Speech Benchmark |  | arXiv | 2024 |  |  | 2026-06-14 |

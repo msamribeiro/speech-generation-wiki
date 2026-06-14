@@ -2,8 +2,8 @@
 title: "arXiv 2021"
 venue: arXiv
 year: 2021
-papers_ingested: 2
-last_updated: 2026-06-13
+papers_ingested: 5
+last_updated: 2026-06-14
 ---
 
 ## Overview
@@ -16,3 +16,6 @@ The two arXiv 2021 papers in this corpus represent complementary infrastructure 
 |----|-------|
 | 2106.06909 | GigaSpeech: An Evolving, Multi-domain ASR Corpus with 10,000 Hours of  |
 | 2106.15561 | A Survey on Neural Speech Synthesis |
+| 2104.00355 | Speech Resynthesis from Discrete Disentangled Self-Supervised Represen |
+| 2105.06337 | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech |
+| 2106.04624 | SpeechBrain: A General-Purpose Speech Toolkit |

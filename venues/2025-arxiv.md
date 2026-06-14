@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 84
-last_updated: 2026-06-13
+papers_ingested: 89
+last_updated: 2026-06-14
 ---
 
 # arXiv 2025
@@ -102,3 +102,8 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2501.06282 | MinMo: A Multimodal Large Language Model for Seamless Voice Interactio |
 | 2502.17239 | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction |
 | 2507.16632 | Step-Audio 2 Technical Report |
+| 2505.07916 | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Sp |
+| 2502.06490 | Recent Advances in Discrete Speech Tokens: A Review |
+| 2502.05512 | IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Tex |
+| 2504.08528 | On The Landscape of Spoken Language Models: A Comprehensive Survey |
+| 2502.05139 | Meta Audiobox Aesthetics: Unified Automatic Quality Assessment for Spe |

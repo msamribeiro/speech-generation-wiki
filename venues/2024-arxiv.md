@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 30
-last_updated: 2026-06-13
+papers_ingested: 40
+last_updated: 2026-06-14
 ---
 
 # arXiv 2024
@@ -46,3 +46,13 @@ The 30 arXiv 2024 preprints in this corpus span the full hierarchy from foundati
 | 2407.08551 | Autoregressive Speech Synthesis without Vector Quantization |
 | 2402.05755 | Spirit LM: Interleaved Spoken and Written Language Model |
 | 2402.08093 | BASE TTS: Lessons from building a billion-parameter Text-to-Speech mod |
+| 2411.01156 | Fish-Speech: Leveraging Large Language Models for Advanced Multilingua |
+| 2410.11190 | Mini-Omni2: Towards Open-source GPT-4o with Vision, Speech and Duplex  |
+| 2410.03751 | Recent Advances in Speech Language Models: A Survey |
+| 2412.15649 | SLAM-Omni: Timbre-Controllable Voice Interaction System with Single-St |
+| 2406.07855 | VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via  |
+| 2410.17799 | OmniFlatten: An End-to-end GPT Model for Seamless Voice Conversation |
+| 2412.19437 | DeepSeek-V3 Technical Report |
+| 2402.03300 | DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Lan |
+| 2407.10671 | Qwen2 Technical Report |
+| 2406.14294 | DASB - Discrete Audio and Speech Benchmark |
