@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 40
-last_updated: 2026-06-15
+papers_ingested: 50
+last_updated: 2026-06-16
 ---
 
 # arXiv 2024
@@ -56,3 +56,13 @@ The 30 arXiv 2024 preprints in this corpus span the full hierarchy from foundati
 | 2402.03300 | DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Lan |
 | 2407.10671 | Qwen2 Technical Report |
 | 2406.14294 | DASB - Discrete Audio and Speech Benchmark |
+| 2401.07333 | ELLA-V: Stable Neural Codec Language Modeling with Alignment-guided Se |
+| 2402.13236 | Towards audio language modeling -- an overview |
+| 2404.03204 | RALL-E: Robust Codec Language Modeling with Chain-of-Thought Prompting |
+| 2406.00654 | Enhancing Zero-shot Text-to-Speech Synthesis with Human Feedback |
+| 2406.05551 | Autoregressive Diffusion Transformer for Text-to-Speech Synthesis |
+| 2408.02622 | Language Model Can Listen While Speaking |
+| 2411.09943 | Zero-shot Voice Conversion with Diffusion Transformers |
+| 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interleaved Data |
+| 2411.18803 | TS3-Codec: Transformer-Based Simple Streaming Single Codec |
+| 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion with Condition |

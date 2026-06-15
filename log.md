@@ -6,9 +6,27 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-16
+
+- ingest | 2411.09943 | Zero-shot Voice Conversion with Diffusion Transformers | arXiv 2024
+- ingest | 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interleaved Data | arXiv 2024
+- ingest | 2411.18803 | TS3-Codec: Transformer-Based Simple Streaming Single Codec | arXiv 2024
+- ingest | 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion with Conditional Flow Matching | arXiv 2024
+
 ## 2026-06-15
 
 - integrate | 25 papers | 20 concepts updated | 23 digests updated | 8 cross-links added
+- ingest | 2301.12503 | AudioLDM: Text-to-Audio Generation with Latent Diffusion Models | ICML 2023
+- ingest | 2301.11325 | MusicLM: Generating Music From Text | arXiv 2023
+- ingest | 2305.15255 | Spoken Question Answering and Speech Continuation Using Spectrogram-Powered LLM | arXiv 2023
+- ingest | 2312.01479 | OpenVoice: Versatile Instant Voice Cloning | arXiv 2023
+- ingest | 2312.15821 | Audiobox: Unified Audio Generation with Natural Language Prompts | arXiv 2023
+- ingest | 2401.07333 | ELLA-V: Stable Neural Codec Language Modeling with Alignment-guided Sequence Reordering | arXiv 2024
+- ingest | 2402.13236 | Towards audio language modeling -- an overview | arXiv 2024
+- ingest | 2404.03204 | RALL-E: Robust Codec Language Modeling with Chain-of-Thought Prompting for Text-to-Speech Synthesis | arXiv 2024
+- ingest | 2406.00654 | Enhancing Zero-shot Text-to-Speech Synthesis with Human Feedback | arXiv 2024
+- ingest | 2406.05551 | Autoregressive Diffusion Transformer for Text-to-Speech Synthesis | arXiv 2024
+- ingest | 2408.02622 | Language Model Can Listen While Speaking | arXiv 2024
 
 ## 2026-06-14
 

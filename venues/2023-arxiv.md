@@ -2,8 +2,8 @@
 title: "arXiv 2023"
 venue: arXiv
 year: 2023
-papers_ingested: 20
-last_updated: 2026-06-14
+papers_ingested: 24
+last_updated: 2026-06-15
 ---
 
 ## Overview
@@ -34,3 +34,7 @@ The 17 arXiv 2023 papers in this corpus fall into four clusters. The foundation 
 | 2310.13289 | SALMONN: Towards Generic Hearing Abilities for Large Language Models |
 | 2307.09288 | Llama 2: Open Foundation and Fine-Tuned Chat Models |
 | 2312.11805 | Gemini: A Family of Highly Capable Multimodal Models |
+| 2301.11325 | MusicLM: Generating Music From Text |
+| 2305.15255 | Spoken Question Answering and Speech Continuation Using Spectrogram-Po |
+| 2312.01479 | OpenVoice: Versatile Instant Voice Cloning |
+| 2312.15821 | Audiobox: Unified Audio Generation with Natural Language Prompts |

@@ -283,3 +283,18 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2407.10671 | Qwen2 Technical Report | Alibaba Group | arXiv | 2024 |  |  | 2026-06-14 |
 | 2106.04624 | SpeechBrain: A General-Purpose Speech Toolkit |  | arXiv | 2021 |  |  | 2026-06-14 |
 | 2406.14294 | DASB - Discrete Audio and Speech Benchmark |  | arXiv | 2024 |  |  | 2026-06-14 |
+| 2301.12503 | AudioLDM: Text-to-Audio Generation with Latent Diffusio |  | ICML | 2023 |  | diffusion, VAE | 2026-06-15 |
+| 2301.11325 | MusicLM: Generating Music From Text | Google | arXiv | 2023 | SCA | autoregressive-LM | 2026-06-15 |
+| 2305.15255 | Spoken Question Answering and Speech Continuation Using | Google Research | arXiv | 2023 | SCA | autoregressive-LM | 2026-06-15 |
+| 2312.01479 | OpenVoice: Versatile Instant Voice Cloning | MIT & MyShell.ai | arXiv | 2023 | TTS, VC | GAN, VAE | 2026-06-15 |
+| 2312.15821 | Audiobox: Unified Audio Generation with Natural Languag | Meta FAIR | arXiv | 2023 | TTS | flow-matching | 2026-06-15 |
+| 2401.07333 | ELLA-V: Stable Neural Codec Language Modeling with Alig |  | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-15 |
+| 2402.13236 | Towards audio language modeling -- an overview |  | arXiv | 2024 | TTS, SCA, codec |  | 2026-06-15 |
+| 2404.03204 | RALL-E: Robust Codec Language Modeling with Chain-of-Th | Microsoft | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-15 |
+| 2406.00654 | Enhancing Zero-shot Text-to-Speech Synthesis with Human | Nanyang Technological University | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-15 |
+| 2406.05551 | Autoregressive Diffusion Transformer for Text-to-Speech | CUHK Shenzhen | arXiv | 2024 | TTS | hybrid | 2026-06-15 |
+| 2408.02622 | Language Model Can Listen While Speaking | Shanghai Jiao Tong University / ByteDance | arXiv | 2024 | SCA, TTS | autoregressive-LM | 2026-06-15 |
+| 2411.09943 | Zero-shot Voice Conversion with Diffusion Transformers | Nanyang Technological University | arXiv | 2024 | VC | diffusion, transformer-enc-dec | 2026-06-16 |
+| 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interle | Tsinghua University / Zhipu.AI | arXiv | 2024 | SCA | autoregressive-LM, flow-matching | 2026-06-16 |
+| [[2411.18803]] | [TS3-Codec: Transformer-Based Simple Streaming Single Co](papers/2411.18803.md) |  | arXiv | 2024 |  | GAN | 2026-06-16 |
+| 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion | Northwestern Polytechnical University / Ximalaya | arXiv | 2024 | VC | flow-matching | 2026-06-16 |

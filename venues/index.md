@@ -4,8 +4,8 @@ title: "Venues"
 
 | Page | Venue | Year | Papers ingested |
 |------|-------|------|----------------|
-| [[2023-arxiv]] | arXiv | 2023 | 19 |
-| [[2024-arxiv]] | arXiv | 2024 | 40 |
+| [[2023-arxiv]] | arXiv | 2023 | 23 |
+| [[2024-arxiv]] | arXiv | 2024 | 50 |
 | [[2025-arxiv]] | arXiv | 2025 | 68 |
 | [[2026-arxiv]] | arXiv | 2026 | 9 |
 | [[2025-acl]] | ACL | 2025 | 14 |
@@ -24,3 +24,4 @@ title: "Venues"
 | [[2016-arxiv]] | arXiv | 2016 | 1 |
 | [[2025-iclr]] | ICLR | 2025 | 1 |
 | [[2018-arxiv]] | arXiv | 2018 | 1 |
+| [[2023-icml]] | ICML | 2023 | 1 |
