@@ -3,7 +3,7 @@ slug: subjective-evaluation
 title: Subjective Evaluation
 aliases: [listening tests, MOS studies, perceptual evaluation, crowdsourced evaluation, human evaluation]
 related_concepts: [evaluation-metrics, rlhf-speech]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: established
 ---
 
@@ -165,3 +165,5 @@ The TTS/SCA field has not converged on a standard subjective evaluation protocol
 | [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Crowd-sourced MOS demonstrating raw-waveform AR synthesis surpasses all prior TTS methods; established the 5-point Likert MOS as the principal TTS evaluation scale |
 | [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | CMOS and SMOS for codec-free AR TTS; CMOS -0.032 vs. ground truth reported as near-human-parity |
 | [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | MOS evaluation against statistical parametric baselines; demonstrates naturalness parity of attention-based TTS with prior SOTA using crowd-sourced evaluation |
+| [[2105.06337]] | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech | arXiv | 2021 | MOS study comparing diffusion TTS against Glow-TTS and Tacotron 2 on LJSpeech; establishes MOS as primary quality benchmark for early diffusion TTS evaluation |
+| [[2502.05139]] | Meta Audiobox Aesthetics: Unified Automatic Quality Assessment for Speech, Music, and Sound | arXiv | 2025 | Proposes four-axis aesthetic scoring as a no-reference automatic alternative to subjective MOS; validated against listener preference across speech, music, and sound domains |

@@ -1,6 +1,6 @@
 concept: spoken-language-model
-last_updated: 2026-06-13
-paper_count: 67
+last_updated: 2026-06-15
+paper_count: 78
 
 papers:
   - id: 2503.04721
@@ -222,6 +222,7 @@ trend_notes:
   - "2025 (Interspeech): Several new SCA directions: dual information stream for emotional conversations (2508.08095), token-level concurrent thinking-in-speaking (2508.15827), direct duplex modeling (interspeech-2025-0874), and triadic multi-party turn-taking prediction (interspeech-2025-2660)."
   - "2025 (Aug-Sep pass 7): TurnGuide (2508.07375) demonstrates turn-level text-speech interleaving substantially improves full-duplex semantic quality. OSUM-EChat (2508.09600) adds three-stage paralinguistic curriculum for empathetic dialogue. EMO-Reasoning (2508.17623) and VoxRole (2509.03940) provide systematic evidence that emotional coherence is a consistent failure mode across all tested SLMs. TaDiCodec (2508.16790) and VibeVoice (2508.19205) demonstrate that codec compression to 6.25-7.5 Hz is tractable and benefits SLM generation efficiency."
   - "Integration pass 9 (2026-06-12): 6 historical SLM papers added: SpeechGPT (2305.11000, foundational chain-of-modality paradigm), Mini-Omni (2408.16725, simultaneous text-audio streaming), LLaMA-Omni (2409.06666, CTC streaming decoder), Freeze-Omni (2411.00774, frozen LLM approach), WavTokenizer (2408.16532, single-codebook for audio LM), and VoiceBench (2410.17196, key negative result showing pipeline systems dominate). VoiceBench is particularly important as it provides systematic evidence that E2E audio LLMs trail pipeline systems substantially on instruction understanding — a finding that contextualises all subsequent claims about end-to-end SLMs."
+  - "Integration pass 11 (2026-06-15): 11 Tier 1 citation-discovery papers added: foundation LMs (GPT-3 2005.14165, Llama 2 2307.09288, Gemini 2312.11805, DeepSeek-V3 2412.19437) as SLM backbone references; SALMONN (2310.13289) as dual-encoder audio LM; Mini-Omni2 (2410.11190), OmniFlatten (2410.17799), SLAM-Omni (2412.15649) as 2024 full-duplex systems; two survey papers (2410.03751, 2504.08528) confirming AR dominance and identifying evaluation gaps; Discrete Speech Tokens review (2502.06490) unifying tokenization taxonomy. Key finding: VoiceBench-MMAU negative correlation (2504.08528) now well-supported across multiple papers."
 
 papers:
   - id: 2305.11000
@@ -452,4 +453,147 @@ claim_clusters:
       - Step-Audio 2 VoiceBench composite 85.1, AIR-Bench state-of-the-art; RAG reduces hallucination on factual queries by 31%.
     limitations:
       - Architecture details partially disclosed; proprietary benchmarks limit independent verification.
+
+  - id: 2005.14165
+    year: 2020
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Large-scale language model pretraining enables few-shot task generalization that scales predictably with parameter count.
+    evidence:
+      - GPT-3 175B achieves few-shot performance competitive with fine-tuned smaller models on many NLP tasks; establishes scaling law and in-context learning as paradigm.
+    limitations:
+      - Speech-specific relevance is indirect; GPT-3 is a text-only foundation LM used as architectural reference for speech LM design.
+
+  - id: 2307.09288
+    year: 2023
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - RLHF with iterative reward model updates and rejection sampling substantially improves LLM helpfulness and safety without degrading language modeling capability.
+    evidence:
+      - Llama 2 Chat models win human preference over ChatGPT in 68% of pairwise comparisons with single-blind evaluators; RLHF training approach adopted by speech RLHF papers.
+    limitations:
+      - Text-only; speech-specific relevance is as a methodology reference for SLM RLHF approaches.
+
+  - id: 2310.13289
+    year: 2023
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Combining speech and audio encoders via a Q-Former bridge enables generic hearing abilities in LLMs without audio-specific pretraining from scratch.
+    evidence:
+      - SALMONN achieves best-in-class on AudioCaps, VGGSound, AudioSet with dual Whisper+BEATs encoders; 13B model processes arbitrary audio types.
+    limitations:
+      - Hallucination in audio description tasks; not evaluated as a TTS backbone.
+
+  - id: 2312.11805
+    year: 2023
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Multimodal LLMs can process interleaved text and audio at scale via carefully curated pretraining mixtures and natively multimodal architecture.
+    evidence:
+      - Gemini 1.0 demonstrates state-of-the-art on multimodal benchmarks; establishes the native-multimodal paradigm competing with modular approaches.
+    limitations:
+      - Architectural and training details partially undisclosed; proprietary system limits reproducibility.
+
+  - id: 2412.19437
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Mixture-of-experts architecture enables efficient scaling of LLMs that serve as the intelligence backbone for speech LMs.
+    evidence:
+      - DeepSeek-V3 achieves frontier performance with 685B total (37B active) MoE parameters; used as backbone by several speech LM systems.
+    limitations:
+      - Text-only; speech-specific relevance is as a foundation LM backbone reference.
+
+  - id: 2410.03751
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - AR codec LMs are the dominant paradigm in speech language models as of 2024; evaluation remains fragmented across six dimensions.
+    evidence:
+      - Survey covers 180+ SpeechLM papers; taxonomizes evaluation into representation, linguistic, paralinguistic, generation quality, real-time interaction, and downstream categories.
+    limitations:
+      - Coverage limited by 2024 cutoff; evaluation taxonomy not universally adopted.
+
+  - id: 2410.11190
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Multimodal SLMs combining vision, speech input, and duplex capabilities in a single model are achievable without fundamental architectural redesign.
+    evidence:
+      - Mini-Omni2 achieves simultaneous vision, speech, and text processing with duplex generation; demonstrates joint multimodal training is feasible at moderate scale.
+    limitations:
+      - Open-source but lacks standardized benchmark evaluation for multimodal tasks.
+
+  - id: 2410.17799
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flattened interleaved streaming enables real-time full-duplex spoken dialogue with latency below 200ms from a single AR model.
+    evidence:
+      - OmniFlatten achieves 160ms first-token latency; progressive training preserves LLM text capability throughout speech alignment.
+    limitations:
+      - English-only evaluation; scalability to larger model sizes not demonstrated.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Single-stage SLM training with timbre control achieves competitive spoken dialogue without multi-stage alignment procedures.
+    evidence:
+      - SLAM-Omni demonstrates timbre-controllable spoken dialogue; introduces 8-dataset SDM benchmark covering understanding, reasoning, and oral conversation.
+    limitations:
+      - SDM benchmark not independently adopted; timbre control validated only on limited speaker set.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - The field requires a unified taxonomy distinguishing semantic, acoustic, and hybrid discrete speech tokens to enable principled SLM design.
+    evidence:
+      - Review of 50+ tokenization methods establishes three-way taxonomy; proposes unified evaluation protocol across WER, PESQ, STOI, SECS, and GPE.
+    limitations:
+      - No controlled head-to-head comparison across all reviewed token families.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Current SLM evaluation is insufficient on interactivity and trustworthiness dimensions; VoiceBench and MMAU scores are negatively correlated.
+    evidence:
+      - Survey of 200+ SLMs; VoiceBench-MMAU negative correlation documented; identifies trustworthiness as most underexplored SLM evaluation category.
+    limitations:
+      - Negative correlation finding based on subset of models; may not generalise to all architectures.
 

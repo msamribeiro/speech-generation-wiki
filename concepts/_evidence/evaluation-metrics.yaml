@@ -1,6 +1,6 @@
 concept: evaluation-metrics
-last_updated: 2026-06-13
-paper_count: 89
+last_updated: 2026-06-15
+paper_count: 97
 
 papers:
   - id: 2503.04721
@@ -400,6 +400,7 @@ trend_notes:
   - UTMOS vs. subjective MOS divergence is now documented in multiple evaluation contexts, raising systematic concern about its use as the sole proxy.
   - 2025 (Interspeech): Multiple evaluation papers emerge — CodecBench (2508.20660) for codec multi-dimensional evaluation, replicability checklist (interspeech-2025-0401) for perceptual TTS tests, FD-Bench (interspeech-2025-0739) for full-duplex SDS, and human fooling rate study (interspeech-2025-2765) as a new naturalness evaluation paradigm that reveals TTS differentiation invisible to standard MOS.
   - 2025 (Aug-Sep): Three automatic MOS improvement papers appear in the same window — QAMRO (2508.08957) and AESA-Net (2509.03292) demonstrate that ranking objectives improve predictor quality; SITool (interspeech-2025-0984) provides negative result against WER as intelligibility proxy for codecs. Dialogue evaluation cluster grows with EMO-Reasoning (2508.17623), VoxRole (2509.03940), and OSUM-EChat (2508.09600) documenting human-machine divergence in empathy and emotional coherence scoring. ContextMOS (2509.04072) and SSML evaluation (2508.17494) extend the task-specific evaluation paradigm.
+  - "Integration pass 11 (2026-06-15): 8 Tier 1 citation-discovery papers added: Grad-TTS (2105.06337) establishes diffusion TTS evaluation template with MOS+RTF; SpeechBrain (2106.04624) is the pre-trained toolkit providing de facto ASR/speaker evaluation models; DASB (2406.14294) provides systematic task-based evaluation across 11 tasks; SLM Survey (2410.03751) taxonomizes six SpeechLM evaluation dimensions; SLAM-Omni (2412.15649) proposes 8-dataset SDM benchmark; Audiobox Aesthetics (2502.05139) introduces four-axis no-reference quality assessment; Discrete Speech Tokens Review (2502.06490) proposes five-metric unified protocol; SLM Landscape Survey (2504.08528) documents VoiceBench-MMAU negative correlation. Key finding: the accumulation of multi-axis evaluation frameworks confirms that single-metric evaluation is now broadly recognized as insufficient."
   - id: 1703.10135
     year: 2017
     task: [TTS]
@@ -582,4 +583,108 @@ trend_notes:
       - Step-Audio 2 identifies gaps in VoiceBench and AIR-Bench; proposes additional evaluation dimensions for voice tool calling and paralinguistic understanding.
     limitations:
       - Proposed new evaluation dimensions not yet widely adopted; no standardized protocol.
+
+  - id: 2105.06337
+    year: 2021
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - MOS and real-time factor (RTF) are sufficient evaluation dimensions for comparing diffusion TTS against GAN and flow-based baselines.
+    evidence:
+      - Grad-TTS achieves MOS 4.2 on LJSpeech (GTT=4.58); RTF reported alongside WER; comparison against Glow-TTS and Tacotron 2 establishes diffusion TTS evaluation template.
+    limitations:
+      - LJSpeech only; small listener panel; no speaker similarity or prosody metrics.
+
+  - id: 2106.04624
+    year: 2021
+    task: [TTS, VC]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Pre-trained ASR, speaker verification, and SSL models distributed as open-source toolkits become the de facto standard evaluators for TTS and VC pipelines.
+    evidence:
+      - SpeechBrain provides pretrained WER (ASR), EER (speaker verification), and emotion classification models widely adopted as automatic TTS evaluators.
+    limitations:
+      - Model-specific evaluation introduces variability; cross-paper comparison depends on SpeechBrain version used.
+
+  - id: 2406.14294
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Task-based evaluation across 11 downstream tasks reveals systematic token-type advantages: semantic tokens for ASR, acoustic tokens for TTS/singing.
+    evidence:
+      - DASB benchmark: HuBERT tokens achieve WER 6.5% (ASR) while EnCodec achieves UTMOS 3.8 (TTS); no single tokenizer optimal across all tasks.
+    limitations:
+      - Evaluation restricted to English; fixed downstream architectures may advantage certain token families.
+
+  - id: 2410.03751
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - SpeechLM evaluation requires at least six distinct dimensions; single-metric evaluation misses important capability axes.
+    evidence:
+      - Survey taxonomizes SpeechLM evaluation into representation, linguistic, paralinguistic, generation quality/diversity, real-time interaction, and downstream benchmarks.
+    limitations:
+      - Taxonomy not yet widely operationalized; most papers still report 2-3 metrics.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: evaluation-contribution
+    claims:
+      - Spoken dialogue model evaluation requires task-diverse benchmark sets covering understanding, reasoning, and conversational naturalness simultaneously.
+    evidence:
+      - SLAM-Omni proposes 8-dataset SDM benchmark spanning distinct spoken dialogue capability dimensions.
+    limitations:
+      - SDM benchmark not independently validated; dimensions may overlap.
+
+  - id: 2502.05139
+    year: 2025
+    task: [TTS, codec]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Four-axis aesthetic scoring (Production Quality, Production Complexity, Content Enjoyment, Content Usefulness) captures perceptual quality dimensions not covered by MOS or UTMOS.
+    evidence:
+      - Audiobox Aesthetics model achieves Pearson r 0.72+ with human ratings across speech, music, and sound; correlates differently from UTMOS on the same samples.
+    limitations:
+      - Trained on proprietary Meta annotation data; generalizability to non-Western speech not evaluated.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - A unified evaluation protocol covering WER, PESQ, STOI, speaker embedding cosine similarity, and GPE is necessary for principled discrete speech token comparison.
+    evidence:
+      - Review of 50+ tokenization papers; proposes five-metric evaluation protocol; identifies inconsistent evaluation as primary barrier to cross-paper comparison.
+    limitations:
+      - Protocol not yet adopted in controlled experiments; synthesis from published numbers.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - VoiceBench and MMAU scores are negatively correlated across SLMs, indicating they measure incompatible capability dimensions.
+    evidence:
+      - Landscape survey finds negative correlation between VoiceBench and MMAU rankings across evaluated SLMs; characterizes four evaluation categories.
+    limitations:
+      - Correlation computed on a subset of models; may not generalize to all architectures.
 

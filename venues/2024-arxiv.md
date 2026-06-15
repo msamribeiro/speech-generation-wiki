@@ -3,7 +3,7 @@ title: "arXiv 2024"
 venue: arXiv
 year: 2024
 papers_ingested: 40
-last_updated: 2026-06-14
+last_updated: 2026-06-15
 ---
 
 # arXiv 2024

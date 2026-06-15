@@ -3,7 +3,7 @@ slug: self-supervised-speech
 title: Self-Supervised Speech Representations and Foundation Models
 aliases: [SSL speech, HuBERT, WavLM, wav2vec 2.0, speech foundation model, self-supervised pre-training, SenseVoice, Whisper, large speech model]
 related_concepts: [neural-codec, disentanglement, voice-conversion, speaker-adaptation, spoken-language-model, speech-to-speech]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: mature-infrastructure
 ---
 
@@ -217,3 +217,10 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | HuBERT and style/pitch SSL tokens for interleaved speech-text LM; word-level interleaving outperforms standard fine-tuning |
 | [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | SSL-based disentangled speech representations outperform acoustic codecs for zero-shot TTS particularly for low-resource languages |
 | [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | SSL-based speech encoder for understanding; demonstrates multi-task training across ASR, TTS, translation using SSL features |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Foundational demonstration that HuBERT discrete units combined with F0 and speaker embeddings enable high-quality disentangled speech resynthesis without parallel training data |
+| [[2310.13289]] | SALMONN: Towards Generic Hearing Abilities for Large Language Models | arXiv | 2023 | Combines Whisper speech encoder and BEAT audio encoder via Q-Former; dual-encoder SSL fusion approach for multi-task audio LLM capability |
+| [[2406.14294]] | DASB - Discrete Audio and Speech Benchmark | arXiv | 2024 | Provides systematic evaluation of SSL-derived discrete audio tokens across 11 downstream tasks, revealing task-specific token type superiority |
+| [[2410.03751]] | Recent Advances in Speech Language Models: A Survey | arXiv | 2024 | Surveys SSL representation roles across speech LM architectures; taxonomizes how HuBERT, WavLM, and wav2vec 2.0 are used as semantic tokenizers vs. feature extractors |
+| [[2502.06490]] | Recent Advances in Discrete Speech Tokens: A Review | arXiv | 2025 | Comprehensive review covering SSL-derived semantic tokens, codec acoustic tokens, and hybrid tokens; unifies discrete token taxonomy across HuBERT k-means, VQ-VAE, and RVQ families |
+| [[2502.07243]] | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR | 2025 | Uses SSL content encoders for self-supervised disentanglement of content and timbre; VQ-based content tokenizer trained without parallel data achieves controllable VC and TTS |
+| [[2504.08528]] | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv | 2025 | Reviews SSL vs. supervised tokenizer trade-offs for SLMs; finds SSL tokens superior for prosody/acoustic richness but supervised tokens better for text-speech alignment |

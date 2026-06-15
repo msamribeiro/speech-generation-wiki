@@ -1,6 +1,6 @@
 concept: autoregressive-codec-tts
-last_updated: 2026-06-13
-paper_count: 103
+last_updated: 2026-06-15
+paper_count: 115
 
 papers:
   - id: 2504.12867
@@ -213,6 +213,151 @@ claim_clusters:
     limitations:
       - WER increase unresolved; evaluated on single English model.
 
+  - id: 2406.07855
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Monotonic alignment in AR codec LMs eliminates skipping and repetition errors while improving pronunciation robustness.
+      - Codec language model TTS can achieve robust zero-shot generation using only 3-second speech prompts with monotonic alignment.
+    evidence:
+      - VALL-E R achieves WER 2.4% on LibriSpeech test-clean and 2.7% on test-other with monotonic decoding; zero alignment errors on test cases that caused errors in VALL-E.
+    limitations:
+      - Evaluated on English only; monotonic assumption may not transfer to languages with significantly freer word order.
+
+  - id: 2411.01156
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - LLM-based AR TTS using dual-codebook VQGAN tokenization can achieve competitive multilingual quality without language-specific adaptation.
+      - Fish token (interleaved semantic/acoustic representation) enables more natural prosody than single-codebook approaches.
+    evidence:
+      - Fish-Speech achieves MOS 4.0+ across tested languages with 1-10 second reference clips; dual-codebook VQGAN with 1024/2048 tokens.
+    limitations:
+      - MOS collected via crowdsourcing without statistical confidence intervals; limited ablation on codec design choices.
+
+  - id: 2502.05512
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, transformer-enc-dec]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Industrial-scale zero-shot TTS can achieve high naturalness and speaker fidelity using conformer AR and BigVGAN vocoder without architectural novelty.
+    evidence:
+      - IndexTTS outperforms CosyVoice and CosyVoice2 on internal evaluation; WER and SPK-SIM competitive with proprietary systems on internal benchmarks.
+    limitations:
+      - Primarily internal evaluation; lacks public standardized benchmark comparison.
+
+  - id: 2410.11190
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Vision, speech, and duplex interaction can be combined in a single LLM without severely degrading per-modality performance.
+    evidence:
+      - Mini-Omni2 integrates vision and duplex speech in a single model; demonstrates multimodal AR generation with simultaneous listening and speaking.
+    limitations:
+      - Open-source but lacks comparison against proprietary GPT-4o on the same tasks; evaluation primarily qualitative.
+
+  - id: 2410.17799
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flattened interleaved speech-text token streams with progressive multi-stage training enable real-time full-duplex spoken dialogue.
+    evidence:
+      - OmniFlatten achieves 160ms first-token latency for full-duplex dialogue; multi-stage training avoids catastrophic forgetting of LLM text capabilities.
+    limitations:
+      - Evaluated only on English; performance on tonal or agglutinative languages not reported.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Single-stage training for timbre-controllable spoken dialogue avoids the alignment collapse that plagues multi-stage cascade approaches.
+    evidence:
+      - SLAM-Omni achieves competitive SDM benchmark scores with single-stage training; timbre transfer validated on 8-dataset evaluation suite.
+    limitations:
+      - 8-dataset SDM benchmark not yet independently adopted; single-stage training limited to moderate context lengths.
+
+  - id: 2410.03751
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - AR codec LMs are the dominant architecture for speech language models as of 2024, accounting for the majority of high-performing systems.
+    evidence:
+      - Survey covers 180+ SpeechLM papers; finds AR generation is dominant for speech synthesis and dialogue tasks.
+    limitations:
+      - Survey cutoff limits coverage of 2025 systems; architectural categorizations may lag practitioner usage.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: conceptual-contribution
+    claims:
+      - Discrete speech token design choices (semantic vs. acoustic vs. hybrid) fundamentally shape what AR models can learn from them.
+    evidence:
+      - Reviews 50+ tokenization methods; establishes that semantic tokens improve intelligibility while acoustic tokens improve quality.
+    limitations:
+      - Taxonomy based on reported results; no unified controlled comparison across all token families.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Content-timbre disentanglement via self-supervised VQ enables zero-shot voice imitation without parallel training data.
+    evidence:
+      - Vevo achieves SPK-SIM 0.86 on zero-shot VC and WER 3.2% on zero-shot TTS; self-supervised VQ content tokenizer trained without speaker labels.
+    limitations:
+      - Evaluated on English only; disentanglement quality not ablated across languages.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Industrial-scale AR TTS trained on 300 billion tokens with a learnable speaker encoder achieves intrinsic zero-shot voice cloning without an external codec.
+    evidence:
+      - MiniMax-Speech outperforms CosyVoice 2 and MaskGCT on internal evaluation; zero-shot speaker similarity competitive with proprietary systems.
+    limitations:
+      - Internal evaluation only; training data and architecture details only partially disclosed.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - AR codec LMs dominate the spoken language model landscape in 2024-2025 but face systematic evaluation blind spots in interactivity and trustworthiness.
+    evidence:
+      - Survey of 200+ SLMs; identifies VoiceBench-MMAU negative correlation as evaluation inconsistency; finds AR generation dominant across all SLM task categories.
+    limitations:
+      - Coverage limited to publicly available models and papers; may not reflect industrial system performance.
+
 open_questions:
   - At what AR frame rate does performance degrade irreversibly for a given codec design?
   - Is the paralinguistic variability problem (2412.17048) addressable within the AR+NAR framework, or does it require fundamentally different architectures?
@@ -221,6 +366,7 @@ open_questions:
   - Does modality-based MoE routing benefit all LLM backbone sizes equally?
   - Would scaling the SSD draft model to match the target corpus close the WER gap?
   - Does explicit position supervision in codec LM TTS generalise to languages without reliable forced-alignment annotations?
+  - How much of MiniMax-Speech quality gain is due to scale (300B tokens) vs. the learnable speaker encoder design?
 
 trend_notes:
   - AR TTS has bifurcated by 2026 into two tracks: scaling AR LMs with better tokenizers/RL alignment, and challenging whether AR decoding is necessary at all.
@@ -229,6 +375,7 @@ trend_notes:
   - "2025 (Interspeech): Two robustness/efficiency advances: phoneme position prediction (interspeech-2025-1641) eliminates AR alignment errors on hard Mandarin cases; speculative decoding (interspeech-2025-2447) achieves 1.4x AR speedup without modifying the target model."
   - "Integration pass 9 (2026-06-12): 12 historical papers added including foundational (SpeechGPT 2305.11000, SpeechTokenizer 2308.16692), influential (NaturalSpeech 2 2304.09116, MaskGCT 2409.00750, VALL-E 2 2406.05370, FunAudioLLM 2407.04051), and scaling (Llasa 2502.04128, Spark-TTS 2503.01710, CosyVoice 3 2505.17589) systems. Key new evidence: MaskGCT demonstrates NAR masked generative models outperform AR on hard-text robustness (2409.00750); Llasa demonstrates inference-time scaling via speech understanding verifiers (2502.04128); CosyVoice 3 introduces differentiable reward optimization over discrete tokens (2505.17589)."
   - "Integration pass 10 (2026-06-13): 22 historical/foundational papers added including the full pre-codec era (WaveNet 1609.03499, Tacotron 1703.10135, Tacotron 2 1712.05884) and the codec-era transition (SoundStorm 2305.09636, VALL-E X 2303.03926, AudioPaLM 2306.12925, Tortoise 2305.07243, BASE TTS 2402.08093, VoiceCraft 2403.16973, Spirit LM 2402.05755, UniAudio 2310.00704, Step-Audio 2502.11946, Baichuan-Audio 2502.17239, Step-Audio 2 2507.16632). Key new evidence: The pre-codec era shows the historical necessity of AR bottlenecks that the codec-LM paradigm later resolved; Spirit LM demonstrates cascade baselines still dominate unified models at equivalent scale (2402.05755); BASE TTS confirms scaling AR codec LMs to 500M+ parameters and 10K+ hours produces qualitatively different prosody on complex inputs (2402.08093)."
+  - "Integration pass 11 (2026-06-15): 12 Tier 1 citation-discovery papers added: VALL-E R (2406.07855) demonstrates that monotonic alignment eliminates AR alignment errors; Fish-Speech (2411.01156) and IndexTTS (2502.05512) represent industrial LLM-based multilingual zero-shot TTS; Mini-Omni2 (2410.11190), OmniFlatten (2410.17799), SLAM-Omni (2412.15649) extend AR codec LM paradigm to full-duplex dialogue; MiniMax-Speech (2505.07916) shows industrial-scale AR TTS with 300B token training and learnable speaker encoder. Two survey papers (2410.03751, 2504.08528) confirm AR codec LMs are the dominant paradigm as of 2025. Vevo (2502.07243) introduces self-supervised disentanglement enabling AR TTS and VC in a unified framework."
 
 papers:
   - id: 2308.16692

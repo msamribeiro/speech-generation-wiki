@@ -3,7 +3,7 @@ slug: evaluation-metrics
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 related_concepts: [subjective-evaluation, rlhf-speech, spoken-language-model]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: established
 ---
 ## Executive Summary
@@ -245,3 +245,11 @@ Pre-2023: MOS and WER were the standard; speaker verification cosine similarity 
 | [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | Notes existing audio LM benchmarks fail to capture fine-grained paralinguistic comprehension and tool invocation, leaving important dimensions unmeasured |
 | [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Comprehensive survey of evaluation metrics across MOS, WER, CER, PESQ, STOI, F0-RMSE for all TTS paradigms; provides historical taxonomy |
 | [[interspeech-2025-0408]] | Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy | Interspeech | 2025 | Demonstrates that user impression diverges from naturalness MOS when paralinguistic style is mismatched to social context; intimacy as an additional evaluation dimension |
+| [[2105.06337]] | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech | arXiv | 2021 | Uses MOS and RTF as primary evaluation metrics comparing diffusion TTS against Glow-TTS and Tacotron 2 baselines on LJSpeech; foundational diffusion TTS evaluation setup |
+| [[2106.04624]] | SpeechBrain: A General-Purpose Speech Toolkit | arXiv | 2021 | Open-source toolkit providing pretrained ASR (WER), speaker verification (EER/SPK-SIM), and SSL (WavLM) models widely used as off-the-shelf evaluators in TTS and VC pipelines |
+| [[2406.14294]] | DASB - Discrete Audio and Speech Benchmark | arXiv | 2024 | Task-based evaluation protocol for discrete speech tokens across 11 downstream tasks, complementing reconstruction metrics (PESQ, STOI, UTMOS) without relying solely on waveform reconstruction quality |
+| [[2410.03751]] | Recent Advances in Speech Language Models: A Survey | arXiv | 2024 | Systematises SpeechLM evaluation across representation, linguistic, paralinguistic, and downstream dimensions; provides a taxonomy of evaluation categories for speech LMs |
+| [[2412.15649]] | SLAM-Omni: Timbre-Controllable Voice Interaction System with Single-Stage Training | arXiv | 2024 | Proposes 8-dataset SDM benchmark spanning understanding, reasoning, and oral conversation for spoken dialogue model evaluation |
+| [[2502.05139]] | Meta Audiobox Aesthetics: Unified Automatic Quality Assessment for Speech, Music, and Sound | arXiv | 2025 | Introduces four-axis automatic quality scoring (Production Quality, Production Complexity, Content Enjoyment, Content Usefulness) as a no-reference evaluator across speech, music, and sound domains |
+| [[2502.06490]] | Recent Advances in Discrete Speech Tokens: A Review | arXiv | 2025 | Proposes unified evaluation protocol covering WER, PESQ, STOI, speaker embedding cosine similarity, and GPE across discrete speech token types; highlights evaluation inconsistency across token families |
+| [[2504.08528]] | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv | 2025 | Systematises likelihood-based, generative, interactivity, and trustworthiness evaluation categories for spoken language models; identifies a negative correlation between VoiceBench and MMAU scores |

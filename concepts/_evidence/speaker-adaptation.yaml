@@ -1,6 +1,6 @@
 concept: speaker-adaptation
-last_updated: 2026-06-13
-paper_count: 25
+last_updated: 2026-06-15
+paper_count: 27
 
 papers:
   - id: 2508.07426
@@ -210,4 +210,30 @@ trend_notes:
       - MELLE SIM 0.697 vs. 0.651 for VALL-E 2; variational sampling improves SIM vs. greedy decoding.
     limitations:
       - Evaluated on English only; benefit for highly distinctive voices not isolated.
+
+  - id: 2406.07855
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Monotonic alignment in AR codec LMs improves speaker adaptation quality by better utilizing the 3-second reference prompt context.
+    evidence:
+      - VALL-E R in-context learning from 3s prompt achieves SPK-SIM competitive with ground truth on VCTK; monotonic decoding prevents prompt underutilization.
+    limitations:
+      - 3s prompt only; benefit for very distinctive speakers not quantified separately.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Learnable speaker encoder trained jointly with the acoustic model at 300B token scale achieves zero-shot speaker adaptation without explicit adaptation mechanisms.
+    evidence:
+      - MiniMax-Speech achieves intrinsic zero-shot TTS with speaker encoder outperforming MaskGCT and CosyVoice 2 on internal speaker similarity evaluation.
+    limitations:
+      - Training scale (300B tokens) may not be accessible to most researchers; per-speaker analysis not reported.
 

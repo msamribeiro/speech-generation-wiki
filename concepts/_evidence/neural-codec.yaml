@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: 2026-06-13
-paper_count: 92
+last_updated: 2026-06-15
+paper_count: 105
 
 papers:
   - id: 2507.22746
@@ -789,5 +789,163 @@ papers:
     limitations:
       - Codec architecture details not disclosed; no independent reconstruction benchmark.
 
+  - id: 2104.00355
+    year: 2021
+    task: [TTS, VC]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Discrete disentangled SSL representations (content + F0 + speaker) enable high-quality resynthesis without parallel data or codec-level training.
+    evidence:
+      - Speech resynthesis with HuBERT+F0+d-vector achieves naturalness competitive with original audio; enables any-to-any VC by swapping speaker embedding.
+    limitations:
+      - Pre-codec era system; discrete units require separate F0 extraction unlike end-to-end codec approaches.
+
+  - id: 2406.07855
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Monotonic alignment in AR codec LMs substantially improves intelligibility and speaker fidelity in zero-shot TTS.
+    evidence:
+      - VALL-E R with monotonic alignment achieves WER 2.4% on LibriSpeech test-clean; eliminates repetition/skip errors that occur in VALL-E.
+    limitations:
+      - English only; monotonic assumption requires text-audio alignment at inference time.
+
+  - id: 2406.14294
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Task-based evaluation of discrete audio tokens across diverse downstream tasks reveals that no single tokenizer excels on all tasks.
+    evidence:
+      - DASB evaluates 11 downstream tasks: ASR, ST, IC, SID, ER, PR, SS, SE, SVS, TTS, STG; finds semantic tokens excel at ASR while acoustic tokens excel at TTS/SVS.
+    limitations:
+      - Evaluation restricted to English; downstream task training uses fixed architectures that may advantage certain token types.
+
+  - id: 2411.01156
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - VQGAN dual-codebook tokenization with interleaved semantic/acoustic tokens enables LLM-based multilingual TTS without language-specific adaptation.
+    evidence:
+      - Fish-Speech dual-codebook (1024+2048 tokens) achieves competitive MOS across multiple languages in zero-shot conditions.
+    limitations:
+      - MOS without confidence intervals; ablation on dual-codebook design not published.
+
+  - id: 2502.05512
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, GAN]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - BigVGAN as vocoder in industrial zero-shot TTS achieves state-of-the-art waveform quality at competitive inference speed.
+    evidence:
+      - IndexTTS with BigVGAN vocoder outperforms CosyVoice/CosyVoice2 on internal naturalness evaluation.
+    limitations:
+      - Evaluation primarily internal; BigVGAN comparison vs. other vocoders not provided.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, codec]
+    architecture: [GAN, VAE, autoregressive-LM]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - The discrete speech token field requires a unified taxonomy distinguishing semantic, acoustic, and hybrid token families to enable principled comparison.
+      - No single tokenizer achieves simultaneously optimal reconstruction, intelligibility, and generation quality.
+    evidence:
+      - Review of 50+ methods; unified evaluation across WER, PESQ, STOI, SECS, GPE; documents performance-coverage trade-offs across token families.
+    limitations:
+      - No controlled head-to-head experiment; synthesis from review of published numbers.
+
+  - id: 2410.11190
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Codec tokens enable simultaneous multimodal streaming (vision + speech) in a single LLM without specialist speech architecture.
+    evidence:
+      - Mini-Omni2 uses codec tokens for speech generation alongside visual tokens; demonstrates joint generation from shared vocabulary.
+    limitations:
+      - Qualitative evaluation; codec choice not ablated.
+
+  - id: 2410.17799
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flattened speech-text token streams from a unified codec vocabulary enable full-duplex dialogue at 160ms latency.
+    evidence:
+      - OmniFlatten achieves 160ms first-token latency using codec tokens at a token rate compatible with real-time generation.
+    limitations:
+      - Codec frame rate not independently benchmarked for reconstruction quality.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Codec-based timbre-controllable spoken dialogue can be achieved with single-stage training without a separate TTS subsystem.
+    evidence:
+      - SLAM-Omni achieves timbre control via codec speaker conditioning; validated on 8-dataset SDM benchmark.
+    limitations:
+      - Codec reconstruction quality not independently reported.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [flow-matching, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - VQ-based content tokenizers trained without speaker labels can achieve better content-timbre disentanglement than SSL cluster-based approaches.
+    evidence:
+      - Vevo achieves SPK-SIM 0.86 on VC and WER 3.2% on TTS; self-supervised VQ outperforms HuBERT k-means on content purity.
+    limitations:
+      - English only; no ablation of VQ codebook size effects.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Codec tokens from a learnable speaker encoder trained jointly with the AR model at industrial scale eliminate need for explicit adaptation at inference time.
+    evidence:
+      - MiniMax-Speech trained on 300B tokens with learnable speaker encoder achieves intrinsic zero-shot TTS surpassing MaskGCT and CosyVoice 2 on internal evaluation.
+    limitations:
+      - Architecture details partially undisclosed; evaluation not on standardized public benchmark.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - Neural codec quality is the primary technical lever for SLM quality as of 2025; no architecture achieves good SLM performance with poor codec.
+    evidence:
+      - SLM landscape survey finds codec design is cited as limiting factor in the majority of reviewed SLM papers.
+    limitations:
+      - Based on qualitative synthesis of reported results; no direct experimental evidence.
+
 trend_notes:
   - "Integration pass 10 (2026-06-13): 18 historical papers added spanning the full codec era from WaveNet (1609.03499, 2016) through the early 2023 codec designs (HiFi-Codec 2305.02765, SoundStorm 2305.09636) through 2024-2025 industrial systems. Key themes: (1) The pre-codec era (WaveNet) motivates why learned discrete representations were needed; (2) MELLE (2407.08551) is the first strong evidence that continuous AR can outperform discrete codec AR, opening a new question about whether discretization is necessary; (3) TAAE (2411.19842) and BigCodec (2409.05377) confirm that scaling codec model size and using FSQ yield the most reliable quality improvements at low bitrates."
+  - "Integration pass 11 (2026-06-15): 13 Tier 1 citation-discovery papers added: DASB (2406.14294) provides the first systematic benchmark for discrete audio/speech tokens across 11 downstream tasks; Discrete Speech Tokens review (2502.06490) unifies the tokenization taxonomy; SLM surveys (2410.03751, 2504.08528) confirm codec design is the central research lever for SLM quality; SpeechBrain (2106.04624) and vq-wav2vec (2104.00355) provide foundational SSL context; Fish-Speech (2411.01156), IndexTTS (2502.05512), Mini-Omni2 (2410.11190), OmniFlatten (2410.17799), SLAM-Omni (2412.15649), Vevo (2502.07243), MiniMax-Speech (2505.07916) demonstrate the codec as enabling infrastructure for 2024-2025 zero-shot TTS and dialogue systems."

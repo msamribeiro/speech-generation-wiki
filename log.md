@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-15
+
+- integrate | 25 papers | 20 concepts updated | 23 digests updated | 8 cross-links added
+
 ## 2026-06-14
 
 - ingest | 2411.01156 | Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis | arXiv 2024

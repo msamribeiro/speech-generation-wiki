@@ -1,6 +1,6 @@
 concept: speech-to-speech
-last_updated: 2026-06-13
-paper_count: 30
+last_updated: 2026-06-15
+paper_count: 35
 
 papers:
   - id: 2503.04721
@@ -127,6 +127,7 @@ trend_notes:
   - Integration pass 5 adds: Full-Duplex-Bench (first automated benchmark for turn-taking, revealing aggressiveness-caution tension), SpeechRole (text-LM bottleneck in S2S role-playing).
   - The gap between cascade and E2E on semantic quality remains open; evidence increasingly suggests the bottleneck is codec design (paralinguistic variability in speech tokens, 2412.17048) and text reasoning, not synthesis architecture.
   - 2025 (Interspeech): FD-Bench (interspeech-2025-0739) provides the first automated full-duplex benchmark; direct duplex modeling (interspeech-2025-0874) bypasses turn-detection modules; triadic VAP (interspeech-2025-2660) extends turn-taking beyond dyadic settings.
+  - "Integration pass 11 (2026-06-15): 5 Tier 1 CD papers added: SLM Survey (2410.03751) confirms 2024 as the inflection year for real-time full-duplex deployment; Mini-Omni2 (2410.11190) extends S2S to multimodal (vision+speech); OmniFlatten (2410.17799) achieves 160ms first-token latency via flattened token streams; SLAM-Omni (2412.15649) introduces single-stage timbre-controllable spoken dialogue; SLM Landscape Survey (2504.08528) identifies interactivity and trustworthiness as underrepresented evaluation dimensions."
   - id: 2303.03926
     year: 2023
     task: [TTS]
@@ -194,4 +195,69 @@ trend_notes:
       - Step-Audio 2 achieves VoiceBench composite 85.1 and AIR-Bench state-of-the-art with RAG and tool calling integration.
     limitations:
       - Architecture details partially disclosed; tool calling evaluation uses proprietary benchmarks.
+
+  - id: 2410.03751
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - Full-duplex E2E S2S systems exist on a spectrum from fully cascade to fully end-to-end; most 2024 systems occupy intermediate positions.
+    evidence:
+      - Survey taxonomizes S2S systems by duplex capability and modality path; identifies 2024 as the inflection year for real-time full-duplex deployment.
+    limitations:
+      - Taxonomy based on disclosed system details; evaluation methodology heterogeneous across systems.
+
+  - id: 2410.11190
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Vision, speech input, and duplex speech output can be combined in a single AR model with competitive performance across all three modalities.
+    evidence:
+      - Mini-Omni2 demonstrates simultaneous multimodal processing with duplex speech; open-source alternative to GPT-4o in multimodal S2S configuration.
+    limitations:
+      - Evaluation primarily qualitative; no standardized multimodal S2S benchmark.
+
+  - id: 2410.17799
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flattened interleaved speech-text token streams enable full-duplex spoken dialogue with sub-200ms first-token latency from a single AR model.
+    evidence:
+      - OmniFlatten achieves 160ms first-token latency; three-stage progressive training preserves LLM text reasoning throughout speech alignment.
+    limitations:
+      - English only; human evaluation not reported.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Single-stage training with timbre conditioning enables end-to-end spoken dialogue without the alignment instability of multi-stage cascades.
+    evidence:
+      - SLAM-Omni achieves competitive 8-dataset SDM scores with single-stage training; timbre transfer validated across varied reference conditions.
+    limitations:
+      - SDM benchmark not independently adopted; single-stage approach limited to moderate context lengths.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: empirical-benchmark
+    claims:
+      - S2S dialogue systems require separate evaluation dimensions for interactivity and trustworthiness that current benchmarks do not cover.
+    evidence:
+      - SLM landscape survey identifies interactivity (duplex, latency, turn-taking) and trustworthiness (safety, factuality) as underrepresented S2S evaluation dimensions.
+    limitations:
+      - Qualitative synthesis; proposed evaluation categories not yet operationalized.
 

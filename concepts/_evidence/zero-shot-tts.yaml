@@ -1,6 +1,6 @@
 concept: zero-shot-tts
-last_updated: 2026-06-13
-paper_count: 93
+last_updated: 2026-06-15
+paper_count: 100
 
 papers:
   - id: 2403.03100
@@ -260,6 +260,7 @@ trend_notes:
   - Cross-lingual zero-shot remains consistently harder than same-language zero-shot synthesis.
   - 2025 (Interspeech): Human fooling rate (interspeech-2025-2765) emerges as a new evaluation paradigm that complements MOS/MUSHRA by measuring absolute naturalness rather than relative preference; explicit position supervision (interspeech-2025-1641) provides a clean solution to AR alignment failures; PEFT preserves zero-shot capability that full fine-tuning destroys (interspeech-2025-1344).
   - "Integration pass 9 (2026-06-12): 10 historical papers added covering 2023-2025 systems: NaturalSpeech 2 (2304.09116) as foundational latent diffusion zero-shot TTS; SpeechTokenizer (2308.16692) for codec disentanglement enabling better speaker generalization; VALL-E 2 (2406.05370) for human parity claim and AR stabilisation; MaskGCT (2409.00750) for NAR human-level speaker similarity; FireRedTTS (2409.03283) for few-shot vs. zero-shot comparison; Spark-TTS (2503.01710) and Llasa (2502.04128) for small-backbone and scaling approaches; FunAudioLLM (2407.04051) for multilingual zero-shot; CosyVoice 3 (2505.17589) for post-training."
+  - "Integration pass 11 (2026-06-15): 7 Tier 1 citation-discovery papers added: VALL-E R (2406.07855) confirms monotonic alignment as a robust fix for AR alignment errors; Fish-Speech (2411.01156) and IndexTTS (2502.05512) represent 2024-2025 industrial zero-shot TTS using LLM backbones; SLAM-Omni (2412.15649) demonstrates zero-shot timbre control in dialogue systems; Vevo (2502.07243) introduces self-supervised disentanglement as an alternative to codec LM approaches; MiniMax-Speech (2505.07916) shows that 300B token training with a learnable speaker encoder achieves intrinsic zero-shot capability. Key trend: industrial-scale training is increasingly replacing explicit adaptation mechanisms."
 
 papers:
   - id: 2304.09116
@@ -576,3 +577,81 @@ papers:
       - MinMo demonstrates zero-shot voice cloning with SMOS 3.88 on held-out speakers within a full SCA system.
     limitations:
       - TTS is a secondary capability; evaluation not benchmarked against dedicated TTS systems.
+
+  - id: 2406.07855
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Monotonic alignment in AR codec LMs eliminates alignment failures that degrade zero-shot TTS quality on complex inputs.
+    evidence:
+      - VALL-E R achieves WER 2.4/2.7% on LibriSpeech with 3-second prompts; outperforms VALL-E in speaker similarity on VCTK.
+    limitations:
+      - English only.
+
+  - id: 2411.01156
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - LLM-based multilingual AR codec TTS achieves high-quality zero-shot voice cloning with short reference clips.
+    evidence:
+      - Fish-Speech achieves MOS 4.0+ in zero-shot conditions across multiple languages from 1-10 second reference clips.
+    limitations:
+      - Evaluation lacks confidence intervals; comparison to dedicated zero-shot systems limited.
+
+  - id: 2412.15649
+    year: 2024
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Timbre control in zero-shot spoken dialogue systems is achievable within a single training stage.
+    evidence:
+      - SLAM-Omni timbre transfer validated on 8-dataset benchmark; zero-shot speaker conditioning integrated with spoken dialogue generation.
+    limitations:
+      - Performance vs. dedicated zero-shot TTS not directly compared.
+
+  - id: 2502.05512
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, transformer-enc-dec]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Industrial-scale zero-shot TTS with conformer AR and BigVGAN achieves competitive naturalness without architectural novelty.
+    evidence:
+      - IndexTTS outperforms CosyVoice/CosyVoice2 on internal evaluation; qualitative demos show high speaker fidelity from short references.
+    limitations:
+      - Internal evaluation only; no public benchmark comparison.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Self-supervised content-timbre disentanglement enables zero-shot voice imitation without parallel data or external speaker labels.
+    evidence:
+      - Vevo achieves WER 3.2% and SPK-SIM 0.86 on zero-shot TTS; self-supervised training avoids need for speaker ID annotations.
+    limitations:
+      - English only.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Learnable speaker encoder trained jointly with AR model at 300B token scale achieves intrinsic zero-shot TTS.
+    evidence:
+      - MiniMax-Speech outperforms MaskGCT and CosyVoice 2 on internal zero-shot evaluation; demonstrates that scale can substitute for explicit speaker adaptation modules.
+    limitations:
+      - Internal evaluation only; training details partially disclosed.

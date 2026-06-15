@@ -1,6 +1,6 @@
 concept: prosody-control
-last_updated: 2026-06-13
-paper_count: 51
+last_updated: 2026-06-15
+paper_count: 53
 
 papers:
   - id: 2507.20091
@@ -302,4 +302,30 @@ trend_notes:
       - BASE TTS 980M shows CMOS +0.38 on complex prosody vs. 150M baseline; qualitative improvement on sentence-level prosodic phenomena not present in smaller models.
     limitations:
       - Proprietary evaluation; complex prosody benchmark not publicly released.
+
+  - id: 2104.00355
+    year: 2021
+    task: [TTS, VC]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicitly disentangling F0 as a discrete conditioning dimension enables independent prosody control in speech resynthesis.
+    evidence:
+      - Grad-TTS-style F0 quantization in the resynthesis system allows F0 swapping between speakers; demonstrates that F0 is independently manipulable without affecting phonetic content.
+    limitations:
+      - F0 quantization coarsens pitch trajectories; continuous F0 control would require continuous representation.
+
+  - id: 2406.07855
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: architectural-novelty
+    claims:
+      - Monotonic alignment in AR codec LMs improves prosodic naturalness by preventing the alignment errors (skipping, repetition) that disrupt prosodic flow.
+    evidence:
+      - VALL-E R monotonic alignment achieves lower WER 2.4% and better prosody continuity; eliminates break patterns that cause perceptually jarring rhythm interruptions.
+    limitations:
+      - Prosody improvement attributed to alignment stability rather than explicit prosody conditioning; not separately evaluated.
 

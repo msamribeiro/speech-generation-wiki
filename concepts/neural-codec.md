@@ -3,7 +3,7 @@ slug: neural-codec
 title: Neural Audio Codec
 aliases: [EnCodec, SoundStream, audio tokenizer, discrete speech representations, RVQ, residual vector quantization, low-frame-rate codec, dynamic codec]
 related_concepts: [autoregressive-codec-tts, self-supervised-speech, spoken-language-model, gan-vocoder]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: mature-infrastructure
 ---
 
@@ -286,3 +286,15 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Hierarchical RVQ factorization into inter-frame and intra-frame modeling reduces training cost; uses EnCodec and other codecs for multi-task audio generation |
 | [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Streaming voice decoder over codec tokens; AR streaming decoder outperforms CTC for naturalness in aligned speech LMs |
 | [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | Uses interleaved discrete audio tokens; RL-enhanced codec token prediction for audio language modeling |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Foundational demonstration that SSL content units (HuBERT 50-unit) can serve as an ultra-low-bitrate codec (365 bps) outperforming Opus at 9 kbps in subjective quality |
+| [[2406.07855]] | VALL-E R: Robust and Efficient Zero-Shot TTS via Monotonic Alignment | arXiv | 2024 | EnCodec 75 Hz with codec-merging: first-layer 2x downsampling halves AR steps with negligible PESQ/STOI impact; demonstrates codec can be modified at inference without retraining |
+| [[2406.14294]] | DASB: Discrete Audio and Speech Benchmark | arXiv | 2024 | Evaluates acoustic tokenizers (EnCodec, DAC, Mimi, WavTokenizer) and semantic tokenizers on 11 downstream tasks without relying on waveform reconstruction metrics |
+| [[2411.01156]] | Fish-Speech: LLMs for Advanced Multilingual TTS | arXiv | 2024 | GFSQ (Grouped Finite Scalar Vector Quantization): achieves 100% codebook utilisation by combining FSQ with group quantization; first practical GFSQ deployment in a production TTS codec |
+| [[2502.05512]] | IndexTTS: Industrial-Level Controllable Zero-Shot TTS | arXiv | 2025 | FSQ-based VAE at 25 Hz, 8192 codes; demonstrates FSQ reaches 100% codebook utilisation with less training data than VQ, though VQ eventually converges at large scale |
+| [[2502.06490]] | Recent Advances in Discrete Speech Tokens: A Review | arXiv | 2025 | Controlled cross-paradigm benchmarking; finds reconstruction-semantics trade-off is fundamental: no current tokenizer excels on both axes simultaneously |
+| [[2410.11190]] | Mini-Omni2: Open-source GPT-4o with Vision, Speech and Duplex Capabilities | arXiv | 2024 | SNAC (seven-layer RVQ) codec for discrete audio output in a tri-modal spoken conversational agent |
+| [[2410.17799]] | OmniFlatten: End-to-end GPT Model for Seamless Voice Conversation | arXiv | 2024 | CosyVoice single-codebook VQ semantic tokenizer (4096 codes) flattened into a single GPT sequence for full-duplex spoken dialogue |
+| [[2412.15649]] | SLAM-Omni: Timbre-Controllable Voice Interaction with Single-Stage Training | arXiv | 2024 | CosyVoice supervised semantic tokens at 50 Hz, downsampled 5x; decouples timbre from content tokens for zero-shot speaker control |
+| [[2410.03751]] | Recent Advances in Speech Language Models: A Survey | arXiv | 2024 | Surveys neural codecs along the semantic-to-acoustic axis; covers SpeechTokenizer, Mimi, and their roles as mixed-objective tokenizers for SpeechLMs |
+| [[2504.08528]] | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv | 2025 | Reviews audio codec tokens vs. phonetic tokens; covers VQ-RVQ hierarchy, RVQ layer merging, and BPE-style post-hoc compression as sequence-length reduction strategies |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot TTS with a Learnable Speaker Encoder | arXiv | 2025 | Custom mel-spectrogram VQ tokenizer at 25 tokens/sec with CTC supervision; combined with Flow-VAE decoder for high-quality waveform reconstruction |

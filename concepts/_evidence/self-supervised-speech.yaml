@@ -1,6 +1,6 @@
 concept: self-supervised-speech
-last_updated: 2026-06-13
-paper_count: 68
+last_updated: 2026-06-15
+paper_count: 75
 
 papers:
   - id: 2209.03143
@@ -345,4 +345,95 @@ trend_notes:
       - Step-Audio 2 uses SSL-guided tokenizers in its multi-stage pretraining; VoiceBench composite 85.1 reflects improved speech understanding.
     limitations:
       - SSL contribution not isolated from other architectural changes.
+
+  - id: 2104.00355
+    year: 2021
+    task: [TTS, VC]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Discrete disentangled SSL representations (content units, F0, speaker) enable high-quality resynthesis and any-to-any VC without parallel data.
+    evidence:
+      - HuBERT+F0+d-vector resynthesis achieves naturalness competitive with original audio; speaker swap enables zero-shot VC on VCTK.
+    limitations:
+      - Requires separate F0 extraction; pre-dates end-to-end codec approaches that jointly encode all attributes.
+
+  - id: 2310.13289
+    year: 2023
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Combining SSL speech encoder (Whisper) with a general audio encoder (BEATs) via Q-Former provides generic audio understanding without task-specific training.
+    evidence:
+      - SALMONN achieves state-of-the-art on AudioCaps and speech understanding tasks; dual-encoder fusion outperforms single-encoder on multi-modal tasks.
+    limitations:
+      - Not evaluated on TTS tasks; audio understanding focus limits direct relevance to speech synthesis.
+
+  - id: 2406.14294
+    year: 2024
+    task: [codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - SSL-derived semantic tokens outperform acoustic tokens on ASR-related tasks while acoustic tokens excel on generation tasks.
+    evidence:
+      - DASB benchmark: HuBERT semantic tokens achieve best ASR WER; EnCodec acoustic tokens achieve best TTS UTMOS; no SSL model excels on all 11 tasks.
+    limitations:
+      - Fixed downstream architectures may advantage certain SSL token types; English only.
+
+  - id: 2410.03751
+    year: 2024
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - SSL tokenizer quality is a primary bottleneck for SpeechLM performance; supervised tokenizers are increasingly competitive with SSL-derived tokens.
+    evidence:
+      - Survey reviews SSL vs. supervised tokenizer comparisons across 180+ SpeechLM papers; finds growing adoption of supervised tokenizers by 2024.
+    limitations:
+      - Comparative analysis based on reported results rather than controlled experiments.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - SSL-derived semantic tokens, acoustic codec tokens, and hybrid tokens constitute three distinct families with different capability profiles.
+    evidence:
+      - Review documents that SSL tokens improve SLM linguistic tasks while codec tokens improve audio quality; hybrid tokens attempt to combine both.
+    limitations:
+      - No unified controlled comparison; synthesis from published results.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [flow-matching, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Self-supervised VQ content tokenizers can achieve better content-speaker disentanglement than SSL cluster-based (HuBERT k-means) approaches.
+    evidence:
+      - Vevo self-supervised VQ achieves SPK-SIM 0.86 on VC with cleaner content extraction than HuBERT k-means baseline.
+    limitations:
+      - English only; VQ codebook size not ablated.
+
+  - id: 2504.08528
+    year: 2025
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - The SSL-vs-supervised tokenizer debate remains unresolved; current evidence shows task-specific advantages for each family.
+    evidence:
+      - SLM landscape survey reviews 200+ models; documents ongoing SSL-supervised tokenizer trade-off debate without resolution.
+    limitations:
+      - Qualitative synthesis; no direct controlled comparison.
 

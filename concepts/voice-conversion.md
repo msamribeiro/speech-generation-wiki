@@ -4,7 +4,7 @@ title: Voice Conversion
 aliases: [VC, speaker style transfer, speaker transformation, cross-speaker conversion]
 status: established
 related_concepts: [zero-shot-tts, disentanglement, self-supervised-speech, speaker-adaptation, streaming-tts, gan-vocoder]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 ---
 
 ## Executive Summary
@@ -175,3 +175,5 @@ Through 2022–2024, the field progressed from parallel/non-parallel offline met
 | [[2509.00503]] | Entropy-based Coarse and Compressed Semantic Speech Representation Learning | arXiv | 2025 | Entropy-compressed HuBERT tokens as VC conditioning; compression degrades VC quality more than ASR/ST; optimal granularity differs across task types |
 | [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Voice conversion as one of seven audio generation tasks in a single AR codec LM; multi-task training improves VC quality relative to task-specific models |
 | [[interspeech-2025-0902]] | VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech | Interspeech | 2025 | Explicit voice quality conditioning (creakiness, breathiness, CPPS, H1-H2, H1-A3) added to FreeVC; enables controllable phonation type transfer independent of speaker identity |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Foundational self-supervised disentanglement approach enabling any-to-any VC by reassigning speaker identity to HuBERT content units; high-quality resynthesis without parallel training data |
+| [[2502.07243]] | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR | 2025 | Self-supervised content-timbre disentanglement for zero-shot VC; OT-CFM generation enables both content style transfer and voice imitation in a unified framework |

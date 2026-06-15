@@ -1,6 +1,6 @@
 concept: voice-conversion
-last_updated: 2026-06-13
-paper_count: 19
+last_updated: 2026-06-15
+paper_count: 21
 
 papers:
   - id: 2508.00317
@@ -248,4 +248,30 @@ trend_notes:
       - UniAudio VC MOS 3.87 with multi-task training vs. 3.73 with VC-only training; cross-task transfer benefits VC specifically.
     limitations:
       - VC evaluated on a limited test set; does not benchmark against dedicated VC systems on standard benchmarks (L2-ARCTIC, VCTK conversion).
+
+  - id: 2104.00355
+    year: 2021
+    task: [VC, TTS]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Discrete disentangled SSL representations enable any-to-any voice conversion without parallel data by substituting speaker embeddings.
+    evidence:
+      - Any-to-any VC via HuBERT+F0+d-vector substitution achieves naturalness competitive with original audio; evaluated on VCTK multi-speaker conversion.
+    limitations:
+      - Requires separate SSL content extraction; pre-dates end-to-end VC architectures.
+
+  - id: 2502.07243
+    year: 2025
+    task: [VC, TTS]
+    architecture: [flow-matching, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Self-supervised content-timbre disentanglement via OT-CFM flow-matching enables zero-shot VC without parallel data or speaker ID annotations.
+    evidence:
+      - Vevo achieves SPK-SIM 0.86 on zero-shot VC; self-supervised VQ content tokenizer outperforms HuBERT k-means baseline on content purity.
+    limitations:
+      - English only; evaluation on standard VC benchmarks (L2-ARCTIC) not reported.
 

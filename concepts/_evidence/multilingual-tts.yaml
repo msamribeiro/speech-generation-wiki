@@ -1,6 +1,6 @@
 concept: multilingual-tts
-last_updated: 2026-06-13
-paper_count: 47
+last_updated: 2026-06-15
+paper_count: 50
 
 papers:
   - id: 1912.06670
@@ -263,4 +263,43 @@ trend_notes:
       - MinMo supports Chinese-English multilingual TTS within a unified SCA framework; DNSMOS 3.89 on multilingual test set.
     limitations:
       - Multilingual TTS is a secondary capability; performance lags dedicated multilingual TTS systems.
+
+  - id: 2411.01156
+    year: 2024
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - LLM-based AR TTS with dual-codebook VQGAN tokenization achieves competitive multilingual quality without language-specific adaptation modules.
+    evidence:
+      - Fish-Speech achieves MOS 4.0+ across tested languages; dual-codebook design produces more natural prosody than monolingual codebook approaches.
+    limitations:
+      - Evaluation lacks confidence intervals; per-language breakdown not detailed.
+
+  - id: 2502.05512
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, transformer-enc-dec]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Conformer AR with BigVGAN vocoder achieves industrial-scale multilingual zero-shot TTS at competitive quality without new architectural components.
+    evidence:
+      - IndexTTS shows competitive performance on internal multilingual evaluation; extensive multilingual zero-shot demos across European and Asian languages.
+    limitations:
+      - Evaluation primarily internal; no systematic per-language benchmark comparison.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Multilingual zero-shot TTS at industrial scale (300B tokens) with a learnable speaker encoder eliminates need for language-specific adaptation modules.
+    evidence:
+      - MiniMax-Speech achieves competitive multilingual zero-shot TTS; learnable speaker encoder generalizes across languages in internal evaluation.
+    limitations:
+      - Per-language evaluation not published; training data language distribution not disclosed.
 

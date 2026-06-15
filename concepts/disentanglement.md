@@ -4,7 +4,7 @@ title: Disentanglement
 aliases: [content-speaker disentanglement, style disentanglement, speech factorization, representation disentanglement]
 status: established
 related_concepts: [voice-conversion, self-supervised-speech, speaker-adaptation, prosody-control, emotion-synthesis]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 ---
 
 ## Executive Summary
@@ -221,3 +221,7 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | In-context learning for disentanglement via speech prompting; separate pitch, duration, and timbre conditioning within latent diffusion TTS |
 | [[2408.16532]] | WavTokenizer: an Efficient Acoustic Discrete Codec Tokenizer for Audio Language Modeling | arXiv | 2024 | Attention-based semantic disentanglement in a single-codebook codec; demonstrates that extended context window improves semantic richness without explicit disentanglement training |
 | [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | Expressive speech token streams (semantic, style, pitch) as disentangled discrete speech representations for cross-modal sentiment preservation |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Foundational resynthesis system disentangling content (HuBERT units), F0 (pitch), and speaker identity (d-vector) from the same speech signal without parallel data |
+| [[2502.06490]] | Recent Advances in Discrete Speech Tokens: A Review | arXiv | 2025 | Reviews disentanglement strategies across token families: semantic/acoustic split in multi-codebook systems, VQ-based content disentanglement, and hybrid approaches |
+| [[2502.07243]] | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR | 2025 | Self-supervised content-timbre disentanglement without parallel data; VQ content tokenizer enables both content style transfer and voice imitation in a unified framework |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder | arXiv | 2025 | Learnable speaker encoder disentangles global speaker identity from prosodic variation; intrinsic zero-shot TTS without an explicit semantic codec layer |

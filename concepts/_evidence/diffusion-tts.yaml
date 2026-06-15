@@ -1,6 +1,6 @@
 concept: diffusion-tts
-last_updated: 2026-06-13
-paper_count: 19
+last_updated: 2026-06-15
+paper_count: 20
 
 papers:
   - id: 2207.12598
@@ -159,4 +159,18 @@ trend_notes:
       - Tortoise AR-conditioned diffusion achieves MUSHRA exceeding professional narrators; diffusion on continuous latents outperforms discrete token conditioning by ~5 MUSHRA points.
     limitations:
       - Very slow inference (minutes per utterance); no streaming; predates codec LM mainstream approach.
+
+  - id: 2105.06337
+    year: 2021
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Score-based diffusion over mel spectrograms with monotonic alignment search achieves TTS quality competitive with GAN-based Glow-TTS.
+      - Diffusion TTS can approach human naturalness at 100 denoising steps without requiring adversarial training.
+    evidence:
+      - Grad-TTS achieves MOS 4.2 on LJSpeech (GTT=4.58); outperforms Glow-TTS on naturalness; RTF 0.65 at 100 steps on a single GPU.
+    limitations:
+      - Single-speaker only; 100 denoising steps is impractical for real-time applications; later superseded by flow-matching for speed.
 

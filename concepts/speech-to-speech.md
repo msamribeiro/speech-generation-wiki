@@ -3,7 +3,7 @@ slug: speech-to-speech
 title: Speech-to-Speech Systems
 aliases: [S2S, end-to-end spoken dialogue, direct speech translation, speech-in speech-out, voice-to-voice]
 related_concepts: [spoken-language-model, neural-codec, self-supervised-speech, streaming-tts, voice-conversion]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: emerging
 ---
 
@@ -135,3 +135,8 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | End-to-end speech interaction with staged pretraining; S→S mode underperforms S→T indicating audio token generation introduces quality penalty |
 | [[2402.05755]] | Spirit LM: Interleaved Spoken and Written Language Model | arXiv | 2024 | Word-level interleaved speech-text LM enabling S2S understanding and generation; cascade pipelines remain substantially stronger at equivalent scale |
 | [[2507.16632]] | Step-Audio 2 Technical Report | arXiv | 2025 | End-to-end S2S audio LM with RL alignment, RAG, and tool-calling for comprehensive voice assistant capabilities |
+| [[2410.03751]] | Recent Advances in Speech Language Models: A Survey | arXiv | 2024 | Surveys S2S system taxonomy (full-duplex, half-duplex, cascade) and evaluates the trade-offs in paralinguistic preservation, latency, and semantic quality |
+| [[2410.11190]] | Mini-Omni2: Towards Open-source GPT-4o with Vision, Speech and Duplex Capabilities | arXiv | 2024 | Half-duplex E2E spoken dialogue system with vision integration; demonstrates multimodal S2S extending beyond audio to visual grounding |
+| [[2410.17799]] | OmniFlatten: An End-to-end GPT Model for Seamless Voice Conversation | arXiv | 2024 | Full-duplex spoken dialogue via flattened interleaved speech-text streams; progressive multi-stage training to align speech and text modalities |
+| [[2412.15649]] | SLAM-Omni: Timbre-Controllable Voice Interaction System with Single-Stage Training | arXiv | 2024 | Single-stage training for spoken dialogue with timbre control; proposes 8-dataset SDM benchmark for evaluating spoken dialogue model capabilities |
+| [[2504.08528]] | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv | 2025 | Systematises E2E S2S systems under the spoken LM landscape; evaluates interactivity and trustworthiness as distinct evaluation dimensions |

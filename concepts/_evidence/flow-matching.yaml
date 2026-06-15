@@ -1,6 +1,6 @@
 concept: flow-matching
-last_updated: 2026-06-13
-paper_count: 44
+last_updated: 2026-06-15
+paper_count: 46
 
 papers:
   - id: 2507.22746
@@ -212,4 +212,30 @@ trend_notes:
       - Baichuan-Audio FM decoder adds +0.61 UTMOS over codec reconstruction; staged approach avoids retraining the LLM backbone.
     limitations:
       - Adds inference latency; evaluated primarily on Chinese; codec architecture not disclosed.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [flow-matching, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - OT-CFM flow matching enables controllable zero-shot VC and TTS from a self-supervised content tokenizer in a unified architecture.
+    evidence:
+      - Vevo OT-CFM achieves SPK-SIM 0.86 on VC and WER 3.2% on TTS; FM decoder generalizes across both tasks from the same backbone.
+    limitations:
+      - English only; generation speed vs. AR models not reported.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - Flow-matching acoustic decoders conditioned on learnable speaker encoders scale effectively to 300 billion token industrial training.
+    evidence:
+      - MiniMax-Speech FM acoustic decoder with learnable speaker encoder achieves intrinsic zero-shot TTS; outperforms CosyVoice 2 and MaskGCT on internal evaluation.
+    limitations:
+      - FM decoder architecture details partially undisclosed; no ablation on FM variant choice.
 

@@ -3,7 +3,7 @@ slug: transformer-enc-dec-tts
 title: Transformer Encoder-Decoder TTS
 aliases: [non-autoregressive TTS, FastSpeech family, parallel TTS, NAR TTS]
 related_concepts: [flow-matching, diffusion-tts, prosody-control, gan-vocoder]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: declining
 ---
 
@@ -114,3 +114,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[1703.10135]] | Tacotron: Towards End-to-End Speech Synthesis | arXiv | 2017 | Foundational enc-dec TTS from characters; CBHG encoder + attention decoder established the transformer enc-dec paradigm for end-to-end speech synthesis |
 | [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Transformer-style attention enc-dec with mel-spectrogram output; location-sensitive attention improves alignment stability; established the template for all subsequent enc-dec TTS |
 | [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical taxonomy of enc-dec TTS from Tacotron through FastSpeech 2; demonstrates transition from attention-based to explicit-duration enc-dec architectures |
+| [[2105.06337]] | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech | arXiv | 2021 | Uses a transformer enc-dec text encoder with monotonic alignment search (MAS) as the text-to-duration alignment module; illustrates how transformer enc-dec alignment methods were adopted by diffusion-based TTS |

@@ -4,7 +4,7 @@ title: Streaming TTS
 aliases: [real-time TTS, low-latency TTS, incremental TTS, chunk-based synthesis, online voice conversion, streaming VC]
 status: established
 related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, voice-conversion, gan-vocoder, flow-matching]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 ---
 
 ## Executive Summary
@@ -166,3 +166,5 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2411.00774]] | Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM | arXiv | 2024 | Chunk-level state classification integrated into LLM prefill enables duplex interruption detection without a separate streaming component; three-stage training for low-latency speech I/O |
 | [[2502.11946]] | Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction | arXiv | 2025 | Speculative response generation reduces per-response latency 500ms in streaming spoken dialogue; 40% of pre-generated responses usable in real-time |
 | [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Streamable convolutional decoder matches diffusion decoder in naturalness at 3× lower compute; demonstrates streaming TTS at billion-parameter scale |
+| [[2410.11190]] | Mini-Omni2: Towards Open-source GPT-4o with Vision, Speech and Duplex Capabilities | arXiv | 2024 | Streaming speech generation with duplex voice interaction; demonstrates that simultaneous vision and speech streaming imposes additional latency constraints on the synthesis module |
+| [[2410.17799]] | OmniFlatten: An End-to-end GPT Model for Seamless Voice Conversation | arXiv | 2024 | Full-duplex streaming speech synthesis via flattened interleaved speech-text token generation; streaming TTS integrated into real-time dialogue with the lowest reported latency among open-source full-duplex systems |

@@ -1,6 +1,6 @@
 concept: gan-vocoder
-last_updated: 2026-06-13
-paper_count: 28
+last_updated: 2026-06-15
+paper_count: 31
 
 papers:
   - id: 2508.01796
@@ -202,4 +202,43 @@ trend_notes:
       - BigCodec 159M GAN decoder achieves UTMOS 3.84 at 1 kbps; scaling capacity is more important than architectural complexity at this bitrate.
     limitations:
       - Evaluated on English speech only; GAN training stability at very large model sizes not fully characterized.
+
+  - id: 2104.00355
+    year: 2021
+    task: [TTS, VC]
+    architecture: [GAN]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - HiFi-GAN vocoder conditioned on disentangled SSL representations produces high-quality speech from content+F0+speaker factorization.
+    evidence:
+      - Speech resynthesis system using HiFi-GAN achieves naturalness competitive with original audio when conditioned on HuBERT+F0+d-vector.
+    limitations:
+      - HiFi-GAN used as-is without vocoder-specific ablation; GAN contribution not isolated from disentanglement contribution.
+
+  - id: 2411.01156
+    year: 2024
+    task: [TTS]
+    architecture: [GAN, autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - VQGAN with MPD+MSD discriminators in an LLM-based TTS pipeline enables high-quality multilingual synthesis.
+    evidence:
+      - Fish-Speech VQGAN with dual discriminators achieves MOS 4.0+ across tested languages; GAN training objectives are production-stable at this scale.
+    limitations:
+      - VQGAN contribution not ablated against alternative vocoders (HiFi-GAN, BigVGAN).
+
+  - id: 2502.05512
+    year: 2025
+    task: [TTS]
+    architecture: [GAN, autoregressive-LM]
+    relevance: high
+    contribution_type: engineering-integration
+    claims:
+      - BigVGAN as vocoder in industrial zero-shot TTS achieves superior waveform quality compared to standard HiFi-GAN at comparable inference cost.
+    evidence:
+      - IndexTTS BigVGAN vocoder produces high-fidelity waveforms in zero-shot conditions; used as the production-grade synthesis backend.
+    limitations:
+      - BigVGAN comparison not ablated against alternatives in the IndexTTS paper.
 

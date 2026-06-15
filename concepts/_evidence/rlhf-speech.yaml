@@ -1,6 +1,6 @@
 concept: rlhf-speech
-last_updated: 2026-06-13
-paper_count: 18
+last_updated: 2026-06-15
+paper_count: 19
 
 papers:
   - id: 2025.acl-long.598
@@ -58,7 +58,7 @@ papers:
       - RL reward optimization for intelligibility (RL-SIM-WER) reduces WER in large-scale TTS systems; RL-SER improves emotion control accuracy substantially.
       - Reward hacking is a concrete risk in TTS RL: optimizing intelligibility reward produces over-slow, over-articulated speech.
     evidence:
-      - RL-SIM-WER: EN WER reduced from 2.249 to 1.945; RL-SER: emotion accuracy from 0.13–0.53 to 0.78–0.91.
+      - "RL-SIM-WER: EN WER reduced from 2.249 to 1.945; RL-SER: emotion accuracy from 0.13-0.53 to 0.78-0.91."
     limitations:
       - Reward hacking observed; reward weighting requires careful tuning.
 
@@ -144,7 +144,7 @@ papers:
       - GFlowNets reformulate TTS hallucination reduction as trajectory flow optimization without requiring paired preference data.
       - GFlowNet-based alignment can reduce CER by >50% on hard intelligibility subsets relative to the non-aligned baseline.
     evidence:
-      - >50% CER reduction on Seed-TTS-Eval hard subset vs baseline; no preference pairs required.
+      - "More than 50% CER reduction on Seed-TTS-Eval hard subset vs baseline; no preference pairs required."
     limitations:
       - First application of GFlowNets to TTS; training stability and scaling behavior not yet established.
 
@@ -291,4 +291,17 @@ trend_notes:
       - Step-Audio RLHF counter-example approach prevents evasive non-answer behavior in production; WER 1.8% post-RLHF vs. 2.4% pre-RLHF on SeedTTS test-en.
     limitations:
       - Counter-example construction requires manual effort to identify failure modes; RLHF reward model details not fully disclosed.
+
+  - id: 2307.09288
+    year: 2023
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Iterative RLHF with PPO and rejection sampling fine-tuning substantially improves helpfulness and safety without catastrophic forgetting of language modeling capability.
+    evidence:
+      - Llama 2 Chat models win human preference over ChatGPT in 68% pairwise comparisons; RLHF methodology adopted across speech RLHF papers including Step-Audio and CosyVoice 3.
+    limitations:
+      - Text-only foundation LM; speech-specific relevance is as a methodological reference for RLHF training procedures adapted in TTS RLHF systems.
 

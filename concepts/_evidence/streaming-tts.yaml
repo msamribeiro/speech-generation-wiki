@@ -1,6 +1,6 @@
 concept: streaming-tts
-last_updated: 2026-06-13
-paper_count: 28
+last_updated: 2026-06-15
+paper_count: 30
 
 papers:
   - id: 2507.22746
@@ -165,4 +165,30 @@ trend_notes:
       - Step-Audio speculative generation achieves 40% acceptance rate; 500ms average latency reduction in production deployment.
     limitations:
       - 60% of pre-generated responses discarded; acceptance rate depends on conversation predictability.
+
+  - id: 2410.11190
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Simultaneous vision and speech streaming in a single AR model is feasible but introduces additional latency constraints on the streaming synthesis module.
+    evidence:
+      - Mini-Omni2 demonstrates streaming speech generation with vision processing; latency impact of vision integration not fully quantified.
+    limitations:
+      - Latency breakdown between vision and speech components not reported; audio quality not benchmarked independently.
+
+  - id: 2410.17799
+    year: 2024
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Flattened interleaved speech-text token streaming achieves the lowest first-token latency among open-source full-duplex dialogue systems.
+    evidence:
+      - OmniFlatten achieves 160ms first-token latency; progressive multi-stage training enables stable streaming generation from a single AR model.
+    limitations:
+      - English only; latency evaluation on CPU/mobile hardware not reported.
 

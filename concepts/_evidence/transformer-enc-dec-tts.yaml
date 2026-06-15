@@ -1,6 +1,6 @@
 concept: transformer-enc-dec-tts
-last_updated: 2026-06-13
-paper_count: 19
+last_updated: 2026-06-15
+paper_count: 20
 
 papers:
   - id: 2006.04558
@@ -299,4 +299,17 @@ trend_notes:
       - Survey synthesises FastSpeech, Transformer TTS, and VITS approaches; shows parallel non-AR TTS with duration predictors achieves quality comparable to AR models.
     limitations:
       - Pre-dates codec LM era; transformer enc-dec paradigm was largely superseded by codec LMs for expressive TTS by 2023.
+
+  - id: 2105.06337
+    year: 2021
+    task: [TTS]
+    architecture: [diffusion, transformer-enc-dec]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Transformer encoder with monotonic alignment search (MAS) provides a robust text-to-duration alignment module that transfers to diffusion-based decoders.
+    evidence:
+      - Grad-TTS transformer encoder + MAS achieves reliable text-to-frame alignment; MAS replaces learned attention for more robust duration prediction.
+    limitations:
+      - Single speaker only; MAS requires iterative optimization at training time increasing training cost vs. CTC-based alignment.
 

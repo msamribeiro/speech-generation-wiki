@@ -3,7 +3,7 @@ slug: diffusion-tts
 title: Diffusion Models for TTS
 aliases: [score-based TTS, DDPM TTS, Grad-TTS, DiffSpeech, EDM speech, DiT TTS, score-matching TTS]
 related_concepts: [flow-matching, transformer-enc-dec-tts, neural-codec, evaluation-metrics, zero-shot-tts, autoregressive-codec-tts, voice-conversion]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: established
 ---
 
@@ -146,3 +146,4 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2304.09116]] | NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers | arXiv | 2023 | Introduces latent diffusion over codec continuous vectors for zero-shot TTS; avoids AR repetition/skipping errors; first diffusion TTS also demonstrated for singing synthesis; CMOS competitive with ground truth |
 | [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | AR+diffusion cascade TTS; diffusion decoder conditioned on continuous AR latents rather than discrete tokens substantially improves output quality |
 | [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical survey covering diffusion-based TTS and vocoders; documents the transition from iterative diffusion toward faster sampling methods |
+| [[2105.06337]] | Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech | arXiv | 2021 | Foundational diffusion TTS; score-based diffusion over mel spectrograms with monotonic alignment search; first to demonstrate diffusion TTS competitive with GAN-based Glow-TTS on LJSpeech |

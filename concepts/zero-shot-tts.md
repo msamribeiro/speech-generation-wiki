@@ -3,7 +3,7 @@ slug: zero-shot-tts
 title: Zero-Shot TTS
 aliases: [voice cloning, any-speaker TTS, speaker generalization, few-shot TTS]
 related_concepts: [speaker-adaptation, voice-conversion, neural-codec, instruction-conditioned-tts, autoregressive-codec-tts, flow-matching]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: dominant
 ---
 
@@ -237,3 +237,9 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Zero-shot speaker generalization with disentangled SSL tokens; SSL-based representations outperform acoustic codecs for zero-shot quality |
 | [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Zero-shot TTS as one of seven audio generation tasks; multi-task training improves zero-shot TTS relative to task-specific models |
 | [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Zero-shot voice cloning within a multi-task spoken dialogue system via streaming voice decoder |
+| [[2406.07855]] | VALL-E R: Robust and Efficient Zero-Shot TTS via Monotonic Alignment | arXiv | 2024 | Zero-shot speaker cloning from 3-second reference; phoneme monotonic alignment achieves near-codec-ceiling WER of 1.58% on LibriSpeech test-clean |
+| [[2411.01156]] | Fish-Speech: LLMs for Advanced Multilingual TTS | arXiv | 2024 | Zero-shot voice cloning from a reference clip; WER 6.89% on proprietary multilingual evaluation, substantially below competing systems |
+| [[2412.15649]] | SLAM-Omni: Timbre-Controllable Voice Interaction with Single-Stage Training | arXiv | 2024 | Zero-shot timbre control in a spoken dialogue system via speaker-decoupled semantic tokens and flow-matching vocoder |
+| [[2502.05512]] | IndexTTS: Industrial-Level Controllable Zero-Shot TTS | arXiv | 2025 | Zero-shot voice cloning with Conformer Perceiver multi-reference speaker conditioning; WER 3.7% average across Chinese and English benchmarks |
+| [[2502.07243]] | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR | 2025 | Zero-shot timbre and style imitation via self-supervised VQ-VAE bottleneck; trained only on 60K hours of unlabeled audiobooks, outperforms supervised style conversion baselines |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot TTS with a Learnable Speaker Encoder | arXiv | 2025 | True zero-shot from untranscribed reference (no text required); jointly-trained speaker encoder; WER 0.83% on SeedTTS-eval test-zh; ranked first on Artificial Analysis TTS Arena (May 2025) |

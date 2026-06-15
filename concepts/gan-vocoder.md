@@ -3,7 +3,7 @@ slug: gan-vocoder
 title: GAN Vocoder
 aliases: [HiFi-GAN, MelGAN, adversarial vocoder, neural vocoder, GAN-based waveform synthesis, causal vocoder, streaming vocoder]
 related_concepts: [diffusion-tts, flow-matching, neural-codec, transformer-enc-dec-tts, streaming-tts, voice-conversion]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: mature-infrastructure
 ---
 
@@ -145,3 +145,6 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[1712.05884]] | Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (Tacotron 2) | arXiv | 2017 | Uses WaveNet as neural vocoder; predecessor to GAN vocoders; established mel-spectrogram as vocoder input representation |
 | [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Foundational autoregressive waveform model; directly superseded by GAN vocoders which achieve comparable quality with hundreds-of-times faster inference |
 | [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical coverage of GAN vocoder evolution from WaveNet through MelGAN to HiFi-GAN; contextualizes GAN vocoders in the broader TTS landscape |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Uses HiFi-GAN as the waveform synthesis backend; demonstrates GAN vocoder as modular resynthesis component conditioned on disentangled speech representations |
+| [[2411.01156]] | Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis | arXiv | 2024 | VQGAN with GAN discriminators (MPD+MSD) as the acoustic model stage; demonstrates GAN discriminator training in the context of LLM-based TTS |
+| [[2502.05512]] | IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System | arXiv | 2025 | Uses BigVGAN as the high-fidelity waveform synthesis backend; demonstrates GAN vocoder as production-grade component in industrial zero-shot TTS |

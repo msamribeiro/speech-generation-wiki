@@ -1,6 +1,6 @@
 concept: subjective-evaluation
-last_updated: 2026-06-13
-paper_count: 50
+last_updated: 2026-06-15
+paper_count: 52
 
 papers:
   - id: 2503.04721
@@ -297,4 +297,30 @@ trend_notes:
       - BigCodec evaluation shows UTMOS 3.84 ranking consistent with manual subjective comparisons; UTMOS used as proxy for naturalness MOS in codec evaluations.
     limitations:
       - UTMOS trained on TTS data may not perfectly generalize to codec reconstruction artifacts.
+
+  - id: 2105.06337
+    year: 2021
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: medium
+    contribution_type: empirical-benchmark
+    claims:
+      - MOS with a listener panel of 20+ evaluators is sufficient to rank diffusion TTS vs. GAN and flow-based baselines on a single-speaker dataset.
+    evidence:
+      - Grad-TTS MOS 4.2 (n=20 listeners) on LJSpeech; comparison against Glow-TTS and Tacotron 2 is statistically significant with overlapping confidence intervals.
+    limitations:
+      - Single-speaker (LJSpeech); confidence intervals overlap; RTF reported without breakdown by component.
+
+  - id: 2502.05139
+    year: 2025
+    task: [TTS, codec]
+    architecture: [transformer-enc-dec]
+    relevance: high
+    contribution_type: evaluation-contribution
+    claims:
+      - Four-axis aesthetic scoring can replace subjective MOS for rapid content quality assessment when human ratings are unavailable.
+    evidence:
+      - Audiobox Aesthetics model achieves Pearson r 0.72+ across speech, music, and sound domains; correlates differently from UTMOS revealing distinct perceptual dimensions.
+    limitations:
+      - Trained on proprietary annotation data; generalizability not tested across languages or recording conditions.
 

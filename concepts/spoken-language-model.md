@@ -3,7 +3,7 @@ slug: spoken-language-model
 title: Spoken Language Model
 aliases: [speech LM, SpeechGPT, spoken dialogue system, SCA, speech foundation model, audio LLM, SLM, end-to-end spoken dialogue]
 related_concepts: [autoregressive-codec-tts, neural-codec, streaming-tts, rlhf-speech, instruction-conditioned-tts, self-supervised-speech]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: emerging
 ---
 ## Executive Summary
@@ -262,3 +262,14 @@ Integration pass 6 (Interspeech 2025): Mini-Omni-Reasoner [[2508.15827]] introdu
 | [[2310.00704]] | UniAudio: An Audio Foundation Model Toward Universal Audio Generation | arXiv | 2023 | Multi-task audio LM across 7 generation tasks; hierarchical RVQ factorization for efficient training; demonstrates cross-task generalization |
 | [[2411.19842]] | Scaling Transformers for Low-Bitrate High-Quality Speech Coding (TAAE) | arXiv | 2024 | Transformer-scaled FSQ codec simplifying downstream SLM training; FSQ near-perfect codebook utilization vs. VQ |
 | [[interspeech-2025-0408]] | Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy | Interspeech | 2025 | Intimacy-driven paralinguistic adaptation in spoken dialogue; prosody style conditioned on inferred speaker relationship, improving user impression over naturalness-only MOS |
+| [[2005.14165]] | Language Models are Few-Shot Learners (GPT-3) | arXiv | 2020 | Foundational LLM demonstrating emergent few-shot in-context learning at scale; the backbone paradigm adopted by all subsequent AR SpeechLMs |
+| [[2307.09288]] | Llama 2: Open Foundation and Fine-Tuned Chat Models | arXiv | 2023 | Open-weight LLM backbone adopted by multiple SpeechLM systems; RLHF-Chat alignment pipeline referenced in spoken dialogue agent training |
+| [[2310.13289]] | SALMONN: Towards Generic Hearing Abilities for Large Language Models | arXiv | 2023 | Dual audio encoder + Q-Former architecture for audio-conditioned LLM; informs speech encoder component design in hybrid SpeechLMs |
+| [[2312.11805]] | Gemini: A Family of Highly Capable Multimodal Models | arXiv | 2023 | Foundation multimodal LLM; reference for speech-aware text LMs and natively multimodal SCA architectures |
+| [[2412.19437]] | DeepSeek-V3 Technical Report | arXiv | 2024 | Large MoE LLM adopted as backbone by recent SpeechLM and TTS systems; demonstrates efficient frontier scaling with mixture-of-experts at 671B total / 37B active parameters |
+| [[2410.03751]] | Recent Advances in Speech Language Models: A Survey | arXiv | 2024 | First comprehensive SpeechLM survey; taxonomises tokenizer, LM, and vocoder components; identifies post-alignment and full-duplex gaps as understudied frontiers |
+| [[2410.11190]] | Mini-Omni2: Towards Open-source GPT-4o with Vision, Speech and Duplex Capabilities | arXiv | 2024 | Open-source tri-modal (vision+audio+text) SpeechLM at 0.5B scale; staged adapter training for modality expansion without catastrophic forgetting |
+| [[2410.17799]] | OmniFlatten: An End-to-end GPT Model for Seamless Voice Conversation | arXiv | 2024 | Flattening interleaved speech-text token streams into a single GPT sequence enables full-duplex dialogue without backbone architectural changes |
+| [[2412.15649]] | SLAM-Omni: Timbre-Controllable Voice Interaction with Single-Stage Training | arXiv | 2024 | Speaker-decoupled semantic tokens enable zero-shot timbre control in a spoken dialogue system; single-stage training outperforms multi-stage pre-training pipelines |
+| [[2502.06490]] | Recent Advances in Discrete Speech Tokens: A Review | arXiv | 2025 | Maps the reconstruction-vs-semantics trade-off space for discrete speech tokens; directly informs tokenizer selection for SpeechLM pipelines |
+| [[2504.08528]] | On The Landscape of Spoken Language Models: A Comprehensive Survey | arXiv | 2025 | Unified encoder-adapter-sequence-model-decoder formulation spanning pure speech LMs, speech+text LMs, and speech-aware text LMs; identifies negative VoiceBench-MMAU correlation |

@@ -3,7 +3,7 @@ slug: speaker-adaptation
 title: Speaker Adaptation
 aliases: [few-shot speaker adaptation, personalized TTS, speaker fine-tuning, target speaker adaptation]
 related_concepts: [zero-shot-tts, voice-conversion, disentanglement, multilingual-tts, flow-matching]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: established
 ---
 
@@ -139,3 +139,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2305.07243]] | Better speech synthesis through scaling (Tortoise TTS) | arXiv | 2023 | Multi-speaker zero-shot adaptation via CLVP-based discriminator re-ranking; demonstrates contrastive speaker conditioning at scale |
 | [[1609.03499]] | WaveNet: A Generative Model for Raw Audio | arXiv | 2016 | Foundational conditional speaker adaptation via one-hot speaker ID conditioning; multi-speaker training improves per-speaker quality relative to single-speaker training |
 | [[2407.08551]] | MELLE: Autoregressive Speech Synthesis without Vector Quantization | arXiv | 2024 | Codec-free AR speaker adaptation via variational sampling over continuous mel frames; reduction factor enables latency-quality trade-off for zero-shot speaker conditioning |
+| [[2406.07855]] | VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment | arXiv | 2024 | In-context learning from a 3-second speech prompt for zero-shot speaker adaptation; monotonic alignment improves prompt utilization over original VALL-E |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder | arXiv | 2025 | Intrinsic zero-shot speaker adaptation via a learnable speaker encoder trained jointly with the acoustic model on 300 billion tokens; demonstrates that large-scale joint training eliminates need for explicit adaptation modules |

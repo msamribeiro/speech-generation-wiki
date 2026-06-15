@@ -3,7 +3,7 @@ slug: prosody-control
 title: Prosody Control
 aliases: [pitch control, rhythm control, intonation modelling, duration modelling, prosody prediction]
 related_concepts: [emotion-synthesis, instruction-conditioned-tts, transformer-enc-dec-tts, disentanglement, voice-conversion]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: established
 ---
 ## Executive Summary
@@ -206,3 +206,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2402.01912]] | Natural language guidance of high-fidelity text-to-speech with synthetic annotations | arXiv | 2024 | Natural language prosody conditioning via automatic acoustic labeling; accent control achievable in a single model covering dozens of accents |
 | [[2402.08093]] | BASE TTS: Lessons from building a billion-parameter TTS model on 100K hours | arXiv | 2024 | Scale-dependent emergence of prosodic naturalness on linguistically complex inputs; BPE reduces sequence length improving long-context prosody |
 | [[interspeech-2025-0253]] | Long-Context Speech Synthesis with Context-Aware Memory | Interspeech | 2025 | Cross-paragraph prosodic coherence via Context-Aware Memory; addresses prosodic drift over novel-length sequences in AR LM synthesis |
+| [[2104.00355]] | Speech Resynthesis from Discrete Disentangled Self-Supervised Representations | arXiv | 2021 | Disentangles pitch (F0) as an explicit discrete conditioning dimension for speech resynthesis; demonstrates that independently controllable F0 enables fine-grained prosody manipulation |
+| [[2406.07855]] | VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment | arXiv | 2024 | Monotonic alignment in a codec AR LM improves prosodic stability; phoneme-to-frame alignment prevents prosodic collapses at natural break points |

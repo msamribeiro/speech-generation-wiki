@@ -3,7 +3,7 @@ slug: flow-matching
 title: Flow Matching
 aliases: [rectified flow, continuous normalizing flows, CFM, Voicebox family, flow-based TTS, OT flow matching]
 related_concepts: [diffusion-tts, autoregressive-codec-tts, neural-codec, transformer-enc-dec-tts, zero-shot-tts]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 status: dominant
 ---
 
@@ -201,3 +201,5 @@ Claims are generalised propositions aggregated from paper evidence. The full cla
 | [[2406.18009]] | E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS | arXiv | 2024 | Foundational flow-matching zero-shot TTS from raw characters; demonstrates implicit alignment learning without phoneme supervision; sets the baseline for character-conditioned FM-TTS |
 | [[2502.17239]] | Baichuan-Audio: A Unified Framework for End-to-End Speech Interaction | arXiv | 2025 | Flow-matching post-VQ refinement stage recovering 0.6 UTMOS points lost during quantization; demonstrates FM as reconstruction quality recovery tool in codec pipelines |
 | [[2106.15561]] | A Survey on Neural Speech Synthesis | arXiv | 2021 | Historical survey covering the predecessor normalizing flow approaches (Glow-TTS, WaveGlow) that informed modern flow-matching TTS development |
+| [[2502.07243]] | Vevo: Controllable Zero-Shot Voice Imitation with Self-Supervised Disentanglement | ICLR | 2025 | Uses OT-CFM flow-matching for both content style transfer and voice imitation; demonstrates FM's flexibility as a generative backbone for controllable zero-shot VC/TTS |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder | arXiv | 2025 | Flow-matching acoustic model conditioned on a learnable speaker encoder; industrial-scale zero-shot TTS with 300 billion token training demonstrating FM scalability |

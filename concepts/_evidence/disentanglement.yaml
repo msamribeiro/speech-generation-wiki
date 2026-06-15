@@ -1,6 +1,6 @@
 concept: disentanglement
-last_updated: 2026-06-13
-paper_count: 48
+last_updated: 2026-06-15
+paper_count: 52
 
 papers:
   - id: 2508.02849
@@ -217,4 +217,56 @@ trend_notes:
       - Spirit LM expressive tokens improve cross-modal sentiment accuracy by 15% over base token-only variant; pitch and style tokens are separable streams.
     limitations:
       - Adding expressive tokens causes moderate degradation in lexical and grammatical speech understanding metrics.
+
+  - id: 2104.00355
+    year: 2021
+    task: [TTS, VC]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Explicit factorization of speech into content (SSL units), F0, and speaker identity enables high-quality resynthesis and any-to-any VC without parallel data.
+    evidence:
+      - HuBERT+F0+d-vector resynthesis achieves naturalness competitive with original audio on VCTK; speaker swap demonstrates any-to-any VC without task-specific training.
+    limitations:
+      - Requires separate SSL encoder, F0 extractor, and speaker encoder; more complex than end-to-end codec disentanglement.
+
+  - id: 2502.06490
+    year: 2025
+    task: [TTS, codec]
+    architecture: [GAN, VAE]
+    relevance: high
+    contribution_type: conceptual-contribution
+    claims:
+      - Disentanglement strategies across token families represent fundamentally different inductive biases with task-specific quality implications.
+    evidence:
+      - Review of 50+ tokenization methods; documents that semantic/acoustic splits in multi-codebook systems improve SLM tasks but reduce TTS naturalness.
+    limitations:
+      - Taxonomy descriptive only; no controlled head-to-head experiments.
+
+  - id: 2502.07243
+    year: 2025
+    task: [TTS, VC]
+    architecture: [flow-matching, VAE]
+    relevance: high
+    contribution_type: architectural-novelty
+    claims:
+      - Self-supervised VQ content tokenization without speaker labels achieves stronger content-timbre disentanglement than SSL cluster-based approaches.
+    evidence:
+      - Vevo VQ achieves SPK-SIM 0.86 on zero-shot VC; self-supervised training outperforms HuBERT k-means on content purity metric.
+    limitations:
+      - English only; codebook size ablation not published.
+
+  - id: 2505.07916
+    year: 2025
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    contribution_type: engineering-integration
+    claims:
+      - Learnable speaker encoder trained jointly with acoustic model at scale can achieve implicit disentanglement without explicit disentanglement objectives.
+    evidence:
+      - MiniMax-Speech speaker encoder enables intrinsic zero-shot TTS; joint training on 300B tokens produces stable speaker conditioning.
+    limitations:
+      - Disentanglement quality not ablated; architecture details partially undisclosed.
 

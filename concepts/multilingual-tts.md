@@ -4,7 +4,7 @@ title: Multilingual TTS
 aliases: [cross-lingual TTS, polyglot TTS, multilingual speech synthesis, cross-lingual voice cloning]
 status: dominant
 related_concepts: [zero-shot-tts, self-supervised-speech, speaker-adaptation, neural-codec, flow-matching]
-last_updated: 2026-06-13
+last_updated: 2026-06-15
 ---
 
 ## Executive Summary
@@ -191,3 +191,6 @@ Claims are generalised propositions aggregated from paper evidence.
 | [[2306.12925]] | AudioPaLM: A Large Language Model That Can Speak and Listen | arXiv | 2023 | Unified multimodal vocabulary enables zero-shot speech translation to unseen language pairs inherited from text pretraining; voice identity preservation exceeds TTS-based references |
 | [[2501.06282]] | MinMo: A Multimodal Large Language Model for Seamless Voice Interaction | arXiv | 2025 | Multi-task multilingual training across heterogeneous speech tasks; instruction-controlled dialect and language style switching |
 | [[2025.americasnlp-1.1]] | Text-to-speech system for low-resource languages: A case study in Shipibo-Konibo | workshop | 2025 | FastSpeech 2 + HiFi-GAN for Shipibo-Konibo, an indigenous Peruvian language with ~2 hours of training speech; demonstrates that standard end-to-end TTS pipelines are accessible for extremely low-resource settings |
+| [[2411.01156]] | Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis | arXiv | 2024 | LLM-based multilingual TTS using VQGAN dual-codebook tokenization and AR+NAR generation; scales to multiple languages without language-specific adaptation modules |
+| [[2502.05512]] | IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System | arXiv | 2025 | Industrial-scale controllable multilingual zero-shot TTS with conformer-based acoustic model and BigVGAN vocoder; extensive multilingual evaluation |
+| [[2505.07916]] | MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder | arXiv | 2025 | Multilingual zero-shot TTS trained on 300 billion tokens across languages; learnable speaker encoder achieves intrinsic voice cloning without language-specific modules |
