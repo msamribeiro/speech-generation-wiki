@@ -12,6 +12,21 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interleaved Data | arXiv 2024
 - ingest | 2411.18803 | TS3-Codec: Transformer-Based Simple Streaming Single Codec | arXiv 2024
 - ingest | 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion with Conditional Flow Matching | arXiv 2024
+- ingest | 2506.13053 | ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Matching | arXiv 2025
+- ingest | 2505.02625 | LLaMA-Omni2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | arXiv 2025
+- ingest | 2502.18924 | MegaTTS 3: Sparse Alignment Enhanced Latent Diffusion Transformer for Zero-Shot Speech Synthesis | arXiv 2025
+- ingest | 2507.23159 | Full-Duplex-Bench v1.5: Evaluating Overlap Handling for Full-Duplex Speech Models | arXiv 2025
+- ingest | 2506.16381 | InstructTTSEval: Benchmarking Complex Natural-Language Instruction Following in Text-to-Speech Systems | arXiv 2025
+- ingest | 2506.10274 | Discrete Audio Tokens: More Than a Survey! | arXiv 2025
+- ingest | 2505.13000 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec for Speech Generation | arXiv 2025
+- ingest | 2503.14345 | MoonCast: High-Quality Zero-Shot Podcast Generation | arXiv 2025
+- ingest | 2508.04195 | NVSpeech: An Integrated and Scalable Pipeline for Human-Like Speech Modeling with Paralinguistic Vocalizations | arXiv 2025
+- ingest | 2505.09558 | WavReward: Spoken Dialogue Models With Generalist Reward Evaluators | arXiv 2025
+- ingest | 2504.10344 | ALMTokenizer: A Low-bitrate and Semantic-rich Audio Codec Tokenizer for Audio Language Modeling | arXiv 2025
+- ingest | 2504.02407 | F5R-TTS: Improving Flow-Matching based Text-to-Speech with Group Relative Policy Optimization | arXiv 2025
+- ingest | 2511.15848 | Step-Audio-R1 Technical Report | arXiv 2025
+- ingest | 2510.07838 | Full-Duplex-Bench-v2: A Multi-Turn Evaluation Framework for Duplex Dialogue Systems with an Automated Examiner | arXiv 2025
+- ingest | 2505.14648 | Vox-Profile: A Speech Foundation Model Benchmark for Characterizing Diverse Speaker and Speech Traits | arXiv 2025
 
 ## 2026-06-15
 

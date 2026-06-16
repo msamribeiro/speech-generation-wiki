@@ -298,3 +298,18 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interle | Tsinghua University / Zhipu.AI | arXiv | 2024 | SCA | autoregressive-LM, flow-matching | 2026-06-16 |
 | [[2411.18803]] | [TS3-Codec: Transformer-Based Simple Streaming Single Co](papers/2411.18803.md) |  | arXiv | 2024 |  | GAN | 2026-06-16 |
 | 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion | Northwestern Polytechnical University / Ximalaya | arXiv | 2024 | VC | flow-matching | 2026-06-16 |
+| 2506.13053 | ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speec | Xiaomi | arXiv | 2025 | TTS | flow-matching | 2026-06-16 |
+| 2505.02625 | LLaMA-Omni2: LLM-based Real-time Spoken Chatbot with Au | ICT/CAS | arXiv | 2025 | SCA | autoregressive-LM, flow-matching, hybrid | 2026-06-16 |
+| 2502.18924 | MegaTTS 3: Sparse Alignment Enhanced Latent Diffusion T | Zhejiang University, ByteDance | arXiv | 2025 | TTS | diffusion, VAE | 2026-06-16 |
+| 2507.23159 | Full-Duplex-Bench v1.5: Evaluating Overlap Handling for |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-16 |
+| 2506.16381 | InstructTTSEval: Benchmarking Complex Natural-Language  | Fudan University | arXiv | 2025 | TTS, evaluation |  | 2026-06-16 |
+| 2506.10274 | Discrete Audio Tokens: More Than a Survey! |  | arXiv | 2025 | codec, TTS, evaluation |  | 2026-06-16 |
+| 2505.13000 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neur | CUHK-SZ / Baidu | arXiv | 2025 | codec, TTS | autoregressive-LM | 2026-06-16 |
+| 2503.14345 | MoonCast: High-Quality Zero-Shot Podcast Generation |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-16 |
+| 2508.04195 | NVSpeech: An Integrated and Scalable Pipeline for Human |  | arXiv | 2025 |  | autoregressive-LM, flow-matching | 2026-06-16 |
+| 2505.09558 | WavReward: Spoken Dialogue Models With Generalist Rewar | Zhejiang University / Alibaba Group | arXiv | 2025 | SCA, evaluation | autoregressive-LM | 2026-06-16 |
+| 2504.10344 | ALMTokenizer: A Low-bitrate and Semantic-rich Audio Cod |  | arXiv | 2025 | codec, TTS, SCA | autoregressive-LM, VAE | 2026-06-16 |
+| 2504.02407 | F5R-TTS: Improving Flow-Matching based Text-to-Speech w | Tencent | arXiv | 2025 | TTS | flow-matching | 2026-06-16 |
+| 2511.15848 | Step-Audio-R1 Technical Report | StepFun | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-16 |
+| 2510.07838 | Full-Duplex-Bench-v2: A Multi-Turn Evaluation Framework |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-16 |
+| 2505.14648 | Vox-Profile: A Speech Foundation Model Benchmark for Ch |  | arXiv | 2025 | evaluation |  | 2026-06-16 |

@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 89
-last_updated: 2026-06-15
+papers_ingested: 104
+last_updated: 2026-06-16
 ---
 
 # arXiv 2025
@@ -107,3 +107,18 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2502.05512 | IndexTTS: An Industrial-Level Controllable and Efficient Zero-Shot Tex |
 | 2504.08528 | On The Landscape of Spoken Language Models: A Comprehensive Survey |
 | 2502.05139 | Meta Audiobox Aesthetics: Unified Automatic Quality Assessment for Spe |
+| 2506.13053 | ZipVoice: Fast and High-Quality Zero-Shot Text-to-Speech with Flow Mat |
+| 2505.02625 | LLaMA-Omni2: LLM-based Real-time Spoken Chatbot with Autoregressive St |
+| 2502.18924 | MegaTTS 3: Sparse Alignment Enhanced Latent Diffusion Transformer for  |
+| 2507.23159 | Full-Duplex-Bench v1.5: Evaluating Overlap Handling for Full-Duplex Sp |
+| 2506.16381 | InstructTTSEval: Benchmarking Complex Natural-Language Instruction Fol |
+| 2506.10274 | Discrete Audio Tokens: More Than a Survey! |
+| 2505.13000 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec  |
+| 2503.14345 | MoonCast: High-Quality Zero-Shot Podcast Generation |
+| 2508.04195 | NVSpeech: An Integrated and Scalable Pipeline for Human-Like Speech Mo |
+| 2505.09558 | WavReward: Spoken Dialogue Models With Generalist Reward Evaluators |
+| 2504.10344 | ALMTokenizer: A Low-bitrate and Semantic-rich Audio Codec Tokenizer fo |
+| 2504.02407 | F5R-TTS: Improving Flow-Matching based Text-to-Speech with Group Relat |
+| 2511.15848 | Step-Audio-R1 Technical Report |
+| 2510.07838 | Full-Duplex-Bench-v2: A Multi-Turn Evaluation Framework for Duplex Dia |
+| 2505.14648 | Vox-Profile: A Speech Foundation Model Benchmark for Characterizing Di |
