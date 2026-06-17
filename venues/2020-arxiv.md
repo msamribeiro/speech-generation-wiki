@@ -2,8 +2,8 @@
 title: "arXiv 2020"
 venue: arXiv
 year: 2020
-papers_ingested: 5
-last_updated: 2026-06-14
+papers_ingested: 8
+last_updated: 2026-06-17
 ---
 
 ## Overview
@@ -19,3 +19,6 @@ Two 2020 arXiv preprints anchor the non-autoregressive and GAN vocoder foundatio
 | 2005.07143 | ECAPA-TDNN: Emphasized Channel Attention, Propagation and Aggregation  |
 | 2012.03411 | MLS: A Large-Scale Multilingual Dataset for Speech Research |
 | 2005.14165 | Language Models are Few-Shot Learners |
+| 2007.10310 | CoVoST 2 and Massively Multilingual Speech-to-Text Translation |
+| 2002.05202 | GLU Variants Improve Transformer |
+| 2001.08361 | Scaling Laws for Neural Language Models |

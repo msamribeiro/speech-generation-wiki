@@ -313,3 +313,35 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | 2511.15848 | Step-Audio-R1 Technical Report | StepFun | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-16 |
 | 2510.07838 | Full-Duplex-Bench-v2: A Multi-Turn Evaluation Framework |  | arXiv | 2025 | SCA, evaluation |  | 2026-06-16 |
 | 2505.14648 | Vox-Profile: A Speech Foundation Model Benchmark for Ch |  | arXiv | 2025 | evaluation |  | 2026-06-16 |
+| 1510.08484 | MUSAN: A Music, Speech, and Noise Corpus |  | arXiv | 2015 |  |  | 2026-06-17 |
+| 1908.06248 | JVS corpus: free Japanese multi-speaker voice corpus |  | arXiv | 2019 | TTS, VC |  | 2026-06-17 |
+| 1607.06450 | Layer Normalization |  | arXiv | 2016 |  |  | 2026-06-17 |
+| 1808.10583 | AISHELL-2: Transforming Mandarin ASR Research Into Indu |  | arXiv | 2018 |  |  | 2026-06-17 |
+| 2002.05202 | GLU Variants Improve Transformer |  | arXiv | 2020 |  |  | 2026-06-17 |
+| 2302.00482 | Improving and generalizing flow-based generative models |  | arXiv | 2023 |  |  | 2026-06-17 |
+| 2007.10310 | CoVoST 2 and Massively Multilingual Speech-to-Text Tran |  | arXiv | 2020 |  |  | 2026-06-17 |
+| 2001.08361 | Scaling Laws for Neural Language Models |  | arXiv | 2020 |  |  | 2026-06-17 |
+| 2308.10248 | Steering Language Models With Activation Engineering |  | arXiv | 2023 |  |  | 2026-06-17 |
+| 2309.16609 | Qwen Technical Report |  | arXiv | 2023 |  | autoregressive-LM | 2026-06-17 |
+| 2308.05725 | EXPRESSO: A Benchmark and Analysis of Discrete Expressi |  | arXiv | 2023 |  |  | 2026-06-17 |
+| 2308.11596 | SeamlessM4T: Massively Multilingual & Multimodal Machin |  | arXiv | 2023 |  | transformer-enc-dec | 2026-06-17 |
+| 2408.05211 | VITA: Towards Open-Source Interactive Omni Multimodal L |  | arXiv | 2024 |  |  | 2026-06-17 |
+| 2408.01800 | MiniCPM-V: A GPT-4V Level MLLM on Your Phone |  | arXiv | 2024 |  |  | 2026-06-17 |
+| 2312.10997 | Retrieval-Augmented Generation for Large Language Model |  | arXiv | 2023 |  |  | 2026-06-17 |
+| 2402.07729 | AIR-Bench: Benchmarking Large Audio-Language Models via |  | arXiv | 2024 |  |  | 2026-06-17 |
+| 2501.07246 | Audio-CoT: Exploring Chain-of-Thought Reasoning in Larg |  | arXiv | 2025 |  |  | 2026-06-17 |
+| 2412.08635 | Multimodal Latent Language Modeling with Next-Token Dif |  | arXiv | 2024 |  | autoregressive-LM, diffusion, VAE, hybrid | 2026-06-17 |
+| 2410.19168 | MMAU: A Massive Multi-Task Audio Understanding and Reas |  | arXiv | 2024 |  |  | 2026-06-17 |
+| 2501.01957 | VITA-1.5: Towards GPT-4o Level Real-Time Vision and Spe |  | arXiv | 2025 |  | autoregressive-LM, transformer-enc-dec | 2026-06-17 |
+| 2503.01743 | Phi-4-Mini Technical Report: Compact yet Powerful Multi |  | arXiv | 2025 |  |  | 2026-06-17 |
+| 2503.19786 | Gemma 3 Technical Report | Google DeepMind | arXiv | 2025 |  | autoregressive-LM | 2026-06-17 |
+| 2505.03739 | VITA-Audio: Fast Interleaved Cross-Modal Token Generati |  | arXiv | 2025 |  | autoregressive-LM, hybrid | 2026-06-17 |
+| 2501.15368 | Baichuan-Omni-1.5 Technical Report | Baichuan Inc. | arXiv | 2025 |  | autoregressive-LM, flow-matching | 2026-06-17 |
+| 2506.02863 | CapSpeech: Enabling Downstream Applications in Style-Ca |  | arXiv | 2025 | TTS, evaluation | autoregressive-LM, flow-matching | 2026-06-17 |
+| 2507.12705 | AudioJudge: Understanding What Works in Large Audio Mod |  | arXiv | 2025 |  |  | 2026-06-17 |
+| 2506.07900 | MiniCPM4: Ultra-Efficient LLMs on End Devices |  | arXiv | 2025 |  | autoregressive-LM | 2026-06-17 |
+| 2507.08128 | Audio Flamingo 3: Advancing Audio Intelligence with Ful |  | arXiv | 2025 |  | autoregressive-LM | 2026-06-17 |
+| 2510.14664 | SpeechLLM-as-Judges: Towards General and Interpretable  |  | arXiv | 2025 |  |  | 2026-06-17 |
+| 2508.13992 | MMAU-Pro: A Challenging and Comprehensive Benchmark for |  | arXiv | 2025 |  |  | 2026-06-17 |
+| 2511.09690 | Omnilingual ASR: Open-Source Multilingual Speech Recogn | Meta (FAIR) | arXiv | 2025 |  | transformer-enc-dec | 2026-06-17 |
+| 2509.08753 | Streaming Sequence-to-Sequence Learning with Delayed St |  | arXiv | 2025 |  | autoregressive-LM | 2026-06-17 |

@@ -6,6 +6,40 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-17
+
+- ingest | 1510.08484 | MUSAN: A Music, Speech, and Noise Corpus | arXiv 2015
+- ingest | 1607.06450 | Layer Normalization | arXiv 2016
+- ingest | 1908.06248 | JVS corpus: free Japanese multi-speaker voice corpus | arXiv 2019
+- ingest | 1808.10583 | AISHELL-2: Transforming Mandarin ASR Research Into Industrial Scale | arXiv 2018
+- ingest | 2002.05202 | GLU Variants Improve Transformer | arXiv 2020
+- ingest | 2001.08361 | Scaling Laws for Neural Language Models | arXiv 2020
+- ingest | 2007.10310 | CoVoST 2 and Massively Multilingual Speech-to-Text Translation | arXiv 2020
+- ingest | 2302.00482 | Improving and generalizing flow-based generative models with minibatch optimal transport | arXiv 2023
+- ingest | 2308.10248 | Steering Language Models With Activation Engineering | arXiv 2023
+- ingest | 2308.05725 | EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resynthesis | arXiv 2023
+- ingest | 2309.16609 | Qwen Technical Report | arXiv 2023
+- ingest | 2308.11596 | SeamlessM4T: Massively Multilingual & Multimodal Machine Translation | arXiv 2023
+- ingest | 2408.05211 | VITA: Towards Open-Source Interactive Omni Multimodal LLM | arXiv 2024
+- ingest | 2408.01800 | MiniCPM-V: A GPT-4V Level MLLM on Your Phone | arXiv 2024
+- ingest | 2312.10997 | Retrieval-Augmented Generation for Large Language Models: A Survey | arXiv 2023
+- ingest | 2501.07246 | Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Language Model | arXiv 2025
+- ingest | 2412.08635 | Multimodal Latent Language Modeling with Next-Token Diffusion | arXiv 2024
+- ingest | 2410.19168 | MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark | arXiv 2024
+- ingest | 2501.01957 | VITA-1.5: Towards GPT-4o Level Real-Time Vision and Speech Interaction | arXiv 2025
+- ingest | 2503.01743 | Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs | arXiv 2025
+- ingest | 2503.19786 | Gemma 3 Technical Report | arXiv 2025
+- ingest | 2505.03739 | VITA-Audio: Fast Interleaved Cross-Modal Token Generation for Efficient Large Speech-Language Model | arXiv 2025
+- ingest | 2501.15368 | Baichuan-Omni-1.5 Technical Report | arXiv 2025
+- ingest | 2506.02863 | CapSpeech: Enabling Downstream Applications in Style-Captioned Text-to-Speech | arXiv 2025
+- ingest | 2507.12705 | AudioJudge: Understanding What Works in Large Audio Model Based Speech Evaluation | arXiv 2025
+- ingest | 2506.07900 | MiniCPM4: Ultra-Efficient LLMs on End Devices | arXiv 2025
+- ingest | 2507.08128 | Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large Audio Language Models | arXiv 2025
+- ingest | 2510.14664 | SpeechLLM-as-Judges: Towards General and Interpretable Speech Quality Evaluation | arXiv 2025
+- ingest | 2511.09690 | Omnilingual ASR: Open-Source Multilingual Speech Recognition for 1600+ Languages | arXiv 2025
+- ingest | 2508.13992 | MMAU-Pro: A Challenging and Comprehensive Benchmark for Holistic Evaluation of Audio General Intelligence | arXiv 2025
+- ingest | 2509.08753 | Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling | arXiv 2025
+
 ## 2026-06-16
 
 - ingest | 2411.09943 | Zero-shot Voice Conversion with Diffusion Transformers | arXiv 2024

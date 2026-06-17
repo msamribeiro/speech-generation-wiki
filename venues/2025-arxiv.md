@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 104
-last_updated: 2026-06-16
+papers_ingested: 118
+last_updated: 2026-06-17
 ---
 
 # arXiv 2025
@@ -122,3 +122,17 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2511.15848 | Step-Audio-R1 Technical Report |
 | 2510.07838 | Full-Duplex-Bench-v2: A Multi-Turn Evaluation Framework for Duplex Dia |
 | 2505.14648 | Vox-Profile: A Speech Foundation Model Benchmark for Characterizing Di |
+| 2501.07246 | Audio-CoT: Exploring Chain-of-Thought Reasoning in Large Audio Languag |
+| 2501.01957 | VITA-1.5: Towards GPT-4o Level Real-Time Vision and Speech Interaction |
+| 2503.01743 | Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language  |
+| 2503.19786 | Gemma 3 Technical Report |
+| 2505.03739 | VITA-Audio: Fast Interleaved Cross-Modal Token Generation for Efficien |
+| 2501.15368 | Baichuan-Omni-1.5 Technical Report |
+| 2506.02863 | CapSpeech: Enabling Downstream Applications in Style-Captioned Text-to |
+| 2507.12705 | AudioJudge: Understanding What Works in Large Audio Model Based Speech |
+| 2506.07900 | MiniCPM4: Ultra-Efficient LLMs on End Devices |
+| 2507.08128 | Audio Flamingo 3: Advancing Audio Intelligence with Fully Open Large A |
+| 2510.14664 | SpeechLLM-as-Judges: Towards General and Interpretable Speech Quality  |
+| 2511.09690 | Omnilingual ASR: Open-Source Multilingual Speech Recognition for 1600+ |
+| 2508.13992 | MMAU-Pro: A Challenging and Comprehensive Benchmark for Holistic Evalu |
+| 2509.08753 | Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling |

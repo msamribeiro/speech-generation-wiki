@@ -2,8 +2,8 @@
 title: "arXiv 2023"
 venue: arXiv
 year: 2023
-papers_ingested: 24
-last_updated: 2026-06-15
+papers_ingested: 30
+last_updated: 2026-06-17
 ---
 
 ## Overview
@@ -38,3 +38,9 @@ The 17 arXiv 2023 papers in this corpus fall into four clusters. The foundation 
 | 2305.15255 | Spoken Question Answering and Speech Continuation Using Spectrogram-Po |
 | 2312.01479 | OpenVoice: Versatile Instant Voice Cloning |
 | 2312.15821 | Audiobox: Unified Audio Generation with Natural Language Prompts |
+| 2302.00482 | Improving and generalizing flow-based generative models with minibatch |
+| 2308.10248 | Steering Language Models With Activation Engineering |
+| 2308.05725 | EXPRESSO: A Benchmark and Analysis of Discrete Expressive Speech Resyn |
+| 2309.16609 | Qwen Technical Report |
+| 2308.11596 | SeamlessM4T: Massively Multilingual & Multimodal Machine Translation |
+| 2312.10997 | Retrieval-Augmented Generation for Large Language Models: A Survey |

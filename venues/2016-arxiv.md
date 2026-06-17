@@ -2,8 +2,8 @@
 title: "arXiv 2016"
 venue: arXiv
 year: 2016
-papers_ingested: 1
-last_updated: 2026-06-13
+papers_ingested: 2
+last_updated: 2026-06-17
 ---
 
 ## Overview
@@ -15,3 +15,4 @@ The single arXiv 2016 paper in this corpus is [[1609.03499]] (WaveNet), a founda
 | ID | Title |
 |----|-------|
 | 1609.03499 | WaveNet: A Generative Model for Raw Audio |
+| 1607.06450 | Layer Normalization |

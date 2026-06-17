@@ -2,8 +2,8 @@
 title: "arXiv 2024"
 venue: arXiv
 year: 2024
-papers_ingested: 50
-last_updated: 2026-06-16
+papers_ingested: 54
+last_updated: 2026-06-17
 ---
 
 # arXiv 2024
@@ -66,3 +66,7 @@ The 30 arXiv 2024 preprints in this corpus span the full hierarchy from foundati
 | 2411.17607 | Scaling Speech-Text Pre-training with Synthetic Interleaved Data |
 | 2411.18803 | TS3-Codec: Transformer-Based Simple Streaming Single Codec |
 | 2412.04724 | StableVC: Style Controllable Zero-Shot Voice Conversion with Condition |
+| 2408.05211 | VITA: Towards Open-Source Interactive Omni Multimodal LLM |
+| 2408.01800 | MiniCPM-V: A GPT-4V Level MLLM on Your Phone |
+| 2410.19168 | MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark |
+| 2412.08635 | Multimodal Latent Language Modeling with Next-Token Diffusion |
