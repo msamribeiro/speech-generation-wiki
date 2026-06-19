@@ -72,7 +72,7 @@ Local F0 contours are extracted at the same frame rate as the content embeddings
 
 The style encoder extends ECAPA-TDNN by computing separate 512-dimensional embeddings from mel spectrograms, F0 contours, and energy contours, then fusing them with a trainable weighted sum. This enriched global embedding conditions all encoders and carries both speaker identity and expressive attributes.
 
-![Overall architecture of the proposed system.](assets/interspeech-2025-0815/figure-1.png)
+![Overall architecture of the proposed system.](assets/interspeech-2025-0815/figure-2.png)
 
 ## Key Results
 
