@@ -10,7 +10,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 - misc | quoted id: fields in frontmatter (327 pages; unquoted arXiv IDs were parsed as floats by YAML)
 - misc | added [!info] Citation Stub callout to all 65 Tier 2 stub pages
-- misc | papers/index.md: all ID cells → [[wikilinks]], all titles → markdown links, blank row removed
+- misc | papers/index.md: all ID cells → `[[wikilinks]]`, all titles → markdown links, blank row removed
 
 ## 2026-06-17
 
@@ -113,7 +113,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-13
 
-- quality-pass | Factor A/B/C label cleanup | 12 files | paper-internal experiment labels from [[2412.17048]] replaced with descriptive language; citations added where missing
+- misc | Factor A/B/C label cleanup | 12 files | paper-internal experiment labels from [[2412.17048]] replaced with descriptive language; citations added where missing
 - integrate | 4 papers (orphan fix) | autoregressive-codec-tts, prosody-control, spoken-language-model, evaluation-metrics, voice-conversion, multilingual-tts updated | interspeech-2025-0253, interspeech-2025-0408, interspeech-2025-0902, 2025.americasnlp-1.1 linked to concepts
 - integrate | 25 papers | 21 concepts updated | 21 digests updated | 133 cross-links added
 
@@ -209,7 +209,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-06-08
 
-- site | landing page redesign | index.md editorial rewrite + field snapshot; overview.md renamed to "Field Overview"; start.md navigation hub added
+- misc | landing page redesign | index.md editorial rewrite + field snapshot; overview.md renamed to "Field Overview"; start.md navigation hub added
 - integrate | seeded 2 evidence digests | transformer-enc-dec-tts (11 papers, 6 claim clusters) | rlhf-speech (15 papers, 7 claim clusters)
 
 ## 2026-06-05
