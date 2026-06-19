@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0973
+id: "interspeech-2025-0973"
 title: "A Dataset for Automatic Assessment of TTS Quality in Spanish"
 authors: ["Alejandro Sosa Welford", "Leonardo Pepino"]
 organization: null

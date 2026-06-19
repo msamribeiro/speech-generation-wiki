@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-2449
+id: "interspeech-2025-2449"
 title: "Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling"
 authors: ["Qixi Zheng", "Yushen Chen", "Zhikang Niu", "Ziyang Ma", "Xiaofei Wang", "Kai Yu", "Xie Chen"]
 organization: Shanghai Jiao Tong University

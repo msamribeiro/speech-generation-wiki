@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1779
+id: "interspeech-2025-1779"
 title: "ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow and Speaker Feature Optimization"
 authors: ["Pengyu Ren", "Wenhao Guan", "Kaidi Wang", "Peijie Chen", "Qingyang Hong", "Lin Li"]
 organization: Xiamen University

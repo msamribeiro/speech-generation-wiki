@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1034
+id: "interspeech-2025-1034"
 title: "Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer"
 authors: ["Noe Berger", "Siqi Sun", "Korin Richmond"]
 organization: "University of Edinburgh"

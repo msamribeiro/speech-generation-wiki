@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0984
+id: "interspeech-2025-0984"
 title: "Benchmarking Neural Speech Codec Intelligibility with SITool"
 authors: ["Anna Leschanowsky", "Kishor Kayyar Lakshminarayana", "Anjana Rajasekhar", "Lyonel Behringer", "Ibrahim Kilinc", "Guillaume Fuchs", "Emanüel A. P. Habets"]
 organization: null

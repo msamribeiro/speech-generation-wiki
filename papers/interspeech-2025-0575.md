@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0575
+id: "interspeech-2025-0575"
 title: "VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents"
 authors: [Haiyun Li, Zhiyong Wu, Xiaofeng Xie, Jingran Xie, Yaoxun Xu, Hanyang Peng]
 organization: Tsinghua University

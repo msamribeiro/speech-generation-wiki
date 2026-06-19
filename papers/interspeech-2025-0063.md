@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0063
+id: "interspeech-2025-0063"
 title: "Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback"
 authors: ["Jingyi Chen", "Ju Seung Byun", "Micha Elsner", "Pichao Wang", "Andrew Perrault"]
 organization: null

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0310
+id: "interspeech-2025-0310"
 title: "Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech Language Models"
 authors: ["Shunsuke Kando", "Yusuke Miyao", "Shinnosuke Takamichi"]
 organization: null

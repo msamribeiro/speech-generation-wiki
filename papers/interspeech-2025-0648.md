@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0648
+id: "interspeech-2025-0648"
 title: "MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling"
 authors: [Yifan Cheng, Ruoyi Zhang, Jiatong Shi]
 organization: Fish Audio

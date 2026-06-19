@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0779
+id: "interspeech-2025-0779"
 title: "Intelligibility of Text-to-Speech Systems for Mathematical Expressions"
 authors: ["Sujoy Roychowdhury", "Ranjani H.G.", "Sumit Soman", "Nishtha Paul", "Subhadip Bandyopadhyay", "Siddhanth Iyengar"]
 organization: Ericsson R&D

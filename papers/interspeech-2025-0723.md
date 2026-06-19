@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0723
+id: "interspeech-2025-0723"
 title: "Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models"
 authors: ["Kyowoon Lee", "Artyom Stitsyuk", "Gunu Jho", "Inchul Hwang", "Jaesik Choi"]
 organization: KAIST / Samsung Electronics

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0669
+id: "interspeech-2025-0669"
 title: "PAST: Phonetic-Acoustic Speech Tokenizer"
 authors: [Nadav Har-Tuv, Or Tal, Yossi Adi]
 organization: Hebrew University of Jerusalem

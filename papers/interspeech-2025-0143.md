@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0143
+id: "interspeech-2025-0143"
 title: "Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction"
 authors: ["Bogdan Vlasenko", "Mathew Magimai Doss"]
 organization: Idiap Research Institute

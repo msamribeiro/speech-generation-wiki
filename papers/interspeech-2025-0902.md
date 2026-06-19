@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0902
+id: "interspeech-2025-0902"
 title: "VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech"
 authors: [Harm Lameris, Joakim Gustafsson, Éva Székely]
 organization: KTH Royal Institute of Technology

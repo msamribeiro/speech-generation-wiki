@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0816
+id: "interspeech-2025-0816"
 title: "Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation"
 authors: ["Mingda Liu", "Jiatong Shi"]
 organization: null

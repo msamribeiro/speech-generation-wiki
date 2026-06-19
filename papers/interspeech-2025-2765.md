@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-2765
+id: "interspeech-2025-2765"
 title: "The State Of TTS: A Case Study with Human Fooling Rates"
 authors: ["Praveen Srinivasa Varadhan", "Sherry Thomas", "Sai Teja M S", "Suvrat Bhooshan", "Mitesh M. Khapra"]
 organization: IIT Madras

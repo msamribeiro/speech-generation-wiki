@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0854
+id: "interspeech-2025-0854"
 title: "Bridging the Training–Inference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers"
 authors: ["Frank Zalkow", "Paolo Sani", "Kishor Kayyar Lakshminarayana", "Emanuël A. P. Habets", "Nicola Pia", "Christian Dittmar"]
 organization: "Fraunhofer IIS"

@@ -2,7 +2,7 @@
 title: "Changelog"
 ---
 
-Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `integrate` (concept pages, cross-links, venue narratives, overview), `report` (periodic field report), `query` (research question answered and filed back). Most recent entries are at the top.
+Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (concept pages and evidence dossiers regenerated from YAML), `query` (research question answered and filed back). Most recent entries are at the top.
 
 ---
 

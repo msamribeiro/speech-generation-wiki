@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0596
+id: "interspeech-2025-0596"
 title: "Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning"
 authors: [Yejin Jeon, Solee Im, Youngjae Kim, Gary Geunbae Lee]
 organization: POSTECH

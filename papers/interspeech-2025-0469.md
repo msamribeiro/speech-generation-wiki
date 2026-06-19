@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0469
+id: "interspeech-2025-0469"
 title: "Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models"
 authors: ["Fatima Naseem", "Maham Sajid", "Farah Adeeba", "Sahar Rauf", "Asad Mustafa", "Sarmad Hussain", "Faisal Kamiran"]
 organization: "University of Engineering and Technology, Lahore (KICS)"

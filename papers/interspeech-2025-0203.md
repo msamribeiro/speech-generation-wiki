@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0203
+id: "interspeech-2025-0203"
 title: "ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech"
 authors: ["Yu Pan", "Yanni Hu", "Yuguang Yang", "Jixun Yao", "Jianhao Ye", "Hongbin Zhou", "Lei Ma", "Jianjun Zhao"]
 organization: "Kyushu University / University of Tokyo / EverestAI Ximalaya"

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-2043
+id: "interspeech-2025-2043"
 title: "Training-Free Voice Conversion with Factorized Optimal Transport"
 authors: ["Alexander Lobashev", "Assel Yermekova", "Maria Larchenko"]
 organization: null

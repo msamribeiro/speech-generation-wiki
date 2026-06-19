@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1595
+id: "interspeech-2025-1595"
 title: "Scheduled Interleaved Speech-Text Training for Speech-to-Speech Translation with LLMs"
 authors: ["Hayato Futami", "Emiru Tsunoo", "Yosuke Kashiwagi", "Yuki Ito", "Hassan Shahmohammadi", "Siddhant Arora", "Shinji Watanabe"]
 organization: Sony Group Corporation

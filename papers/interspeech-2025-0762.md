@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0762
+id: "interspeech-2025-0762"
 title: "Intrasentential English in Swedish TTS: perceived English-accentedness"
 authors: ["Christina Tannander", "David House", "Jonas Beskow", "Jens Edlund"]
 organization: KTH Royal Institute of Technology / Swedish Agency for Accessible Media (MTM)

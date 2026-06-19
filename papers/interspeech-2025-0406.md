@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0406
+id: "interspeech-2025-0406"
 title: "Zero-Shot Mono-to-Binaural Speech Synthesis"
 authors: [Alon Levkovitch, Julian Salazar, Soroosh Mariooryad, RJ Skerry-Ryan, Nadav Bar, Bastiaan Kleijn, Eliya Nachmani]
 organization: Google

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0948
+id: "interspeech-2025-0948"
 title: "PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts"
 authors: ["Tianhua Qi", "Shiyan Wang", "Cheng Lu", "Tengfei Song", "Hao Yang", "Zhanglin Wu", "Wenming Zheng"]
 organization: Southeast University

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0047
+id: "interspeech-2025-0047"
 title: "Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis"
 authors: ["Minsu Kim", "Pingchuan Ma", "Honglie Chen", "Stavros Petridis", "Maja Pantic"]
 organization: Meta AI

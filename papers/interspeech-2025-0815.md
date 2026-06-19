@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0815
+id: "interspeech-2025-0815"
 title: "Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion"
 authors: ["Seymanur Akti", "Tuan-Nam Nguyen", "Alexander Waibel"]
 organization: Karlsruhe Institute of Technology

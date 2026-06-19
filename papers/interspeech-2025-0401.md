@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0401
+id: "interspeech-2025-0401"
 title: "Enabling the replicability of speech synthesis perceptual evaluations"
 authors: ["Sébastien Le Maguer", "Gwénolé Lecorvé", "Damien Lolive", "Naomi Harte", "Juraj Šimko"]
 organization: null

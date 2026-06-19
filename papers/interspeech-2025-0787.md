@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0787
+id: "interspeech-2025-0787"
 title: "Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model"
 authors: ["Thiago Henrique Gomes Lobato", "Magnus Schäfer"]
 organization: HEAD acoustics GmbH

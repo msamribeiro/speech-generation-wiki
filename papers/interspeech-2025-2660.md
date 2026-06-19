@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-2660
+id: "interspeech-2025-2660"
 title: "Triadic Multi-party Voice Activity Projection for Turn-taking in Spoken Dialogue Systems"
 authors: ["Mikey Elmers", "Koji Inoue", "Divesh Lala", "Tatsuya Kawahara"]
 organization: Kyoto University

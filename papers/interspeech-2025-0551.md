@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0551
+id: "interspeech-2025-0551"
 title: "Monotonic Attention for Robust Text-to-Speech Synthesis in Large Language Model Frameworks"
 authors: [Yike Zhang, Yiming Li, Jie Chen, Qinghua Wu, Songjun Cao, Long Ma]
 organization: Tencent

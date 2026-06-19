@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0408
+id: "interspeech-2025-0408"
 title: "Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy"
 authors: [Shoki Kawanishi, Akinori Ito, Yuya Chiba, Takashi Nose]
 organization: Tohoku University

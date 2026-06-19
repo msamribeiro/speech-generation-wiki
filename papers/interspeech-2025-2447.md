@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-2447
+id: "interspeech-2025-2447"
 title: "Accelerating Autoregressive Speech Synthesis Inference With Speech Speculative Decoding"
 authors: ["Zijian Lin", "Yang Zhang", "Yougen Yuan", "Yuming Yan", "Jinjiang Liu", "Zhiyong Wu", "Pengfei Hu", "Qun Yu"]
 organization: Tsinghua University / Tencent

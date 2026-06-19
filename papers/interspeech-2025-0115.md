@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0115
+id: "interspeech-2025-0115"
 title: "Bringing Interpretability to Neural Audio Codecs"
 authors: ["Samir Sadok", "Julien Hauret", "Eric Bavu"]
 organization: null

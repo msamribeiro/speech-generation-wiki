@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0246
+id: "interspeech-2025-0246"
 title: "DC-Spin: A Speaker-invariant Speech Tokenizer for Spoken Language Models"
 authors: ["Heng-Jui Chang", "Hongyu Gong", "Changhan Wang", "James Glass", "Yu-An Chung"]
 organization: null

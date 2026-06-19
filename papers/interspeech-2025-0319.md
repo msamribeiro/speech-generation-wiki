@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0319
+id: "interspeech-2025-0319"
 title: "Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising"
 authors: ["Ye-Xin Lu", "Hui-Peng Du", "Fei Liu", "Yang Ai", "Zhen-Hua Ling"]
 organization: University of Science and Technology of China

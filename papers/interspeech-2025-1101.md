@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1101
+id: "interspeech-2025-1101"
 title: "ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism"
 authors: ["Hsing-Hang Chou", "Yun-Shao Lin", "Ching-Chin Sung", "Yu Tsao", "Chi-Chun Lee"]
 organization: null

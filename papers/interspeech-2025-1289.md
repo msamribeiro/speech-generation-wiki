@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1289
+id: "interspeech-2025-1289"
 title: "Unlocking Temporal Flexibility: Neural Speech Codec with Variable Frame Rate"
 authors: ["Hanglei Zhang", "Yiwei Guo", "Zhihan Li", "Xiang Hao", "Xie Chen", "Kai Yu"]
 organization: Shanghai Jiao Tong University

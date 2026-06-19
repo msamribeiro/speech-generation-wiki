@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0754
+id: "interspeech-2025-0754"
 title: "EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis"
 authors: ["Haoxun Li", "Leyuan Qu", "Jiaxi Hu", "Taihao Li"]
 organization: Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences

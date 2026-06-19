@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0739
+id: "interspeech-2025-0739"
 title: "FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems"
 authors: ["Yizhou Peng", "Yi-Wen Chao", "Dianwen Ng", "Yukun Ma", "Chongjia Ni", "Bin Ma", "Eng Siong Chng"]
 organization: null

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1993
+id: "interspeech-2025-1993"
 title: "Defending Unauthorized Voice Cloning with Watermark-Aware Codecs"
 authors: ["Jiankun Zhao", "Lingwei Meng", "Chengxi Deng", "Helen Meng", "Xixin Wu"]
 organization: The Chinese University of Hong Kong

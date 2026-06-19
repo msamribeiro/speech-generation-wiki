@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1066
+id: "interspeech-2025-1066"
 title: "Score-Based Training for Energy-Based TTS Models"
 authors: ["Wanli Sun", "Anton Ragni"]
 organization: University of Sheffield

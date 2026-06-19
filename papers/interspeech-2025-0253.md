@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0253
+id: "interspeech-2025-0253"
 title: "Long-Context Speech Synthesis with Context-Aware Memory"
 authors: [Zhipeng Li, Xiaofen Xing, Jingyuan Xing, Hangrui Hu, Heng Lu, Xiangmin Xu]
 organization: South China University of Technology / Alibaba Group

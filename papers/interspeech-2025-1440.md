@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1440
+id: "interspeech-2025-1440"
 title: "FreeCodec: A Disentangled Neural Speech Codec with Fewer Tokens"
 authors: ["Youqiang Zheng", "Weiping Tu", "Yueteng Kang", "Jie Chen", "Yike Zhang", "Li Xiao", "Yuhong Yang", "Long Ma"]
 organization: null

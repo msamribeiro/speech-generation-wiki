@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0989
+id: "interspeech-2025-0989"
 title: "HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset"
 authors: ["Ryan Langman", "Xuesong Yang", "Paarth Neekhara", "Shehzeen Hussain", "Edresson Casanova", "Evelina Bakhturina", "Jason Li"]
 organization: NVIDIA

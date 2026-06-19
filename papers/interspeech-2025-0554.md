@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0554
+id: "interspeech-2025-0554"
 title: "RapFlow-TTS: Rapid and High-Fidelity Text-to-Speech with Improved Consistency Flow Matching"
 authors: [Hyun Joon Park, Jeongmin Liu, Jin Sob Kim, Jeong Yeol Yang, Sung Won Han, Eunwoo Song]
 organization: NAVER Cloud

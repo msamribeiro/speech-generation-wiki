@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1344
+id: "interspeech-2025-1344"
 title: "Parameter-Efficient Fine-Tuning for Low-Resource Text-to-Speech via Cross-Lingual Continual Learning"
 authors: ["Ki-Joong Kwon", "Jun-Ho So", "Sang-Hoon Lee"]
 organization: Ajou University

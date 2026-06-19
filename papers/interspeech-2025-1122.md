@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1122
+id: "interspeech-2025-1122"
 title: "BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing"
 authors: ["Masaya Kawamura", "Takuya Hasumi", "Yuma Shirahata", "Ryuichi Yamamoto"]
 organization: LY Corporation

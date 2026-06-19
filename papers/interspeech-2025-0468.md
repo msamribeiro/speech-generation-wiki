@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0468
+id: "interspeech-2025-0468"
 title: "DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec for Speech Generation"
 authors: ["Jiaqi Li", "Xiaolong Lin", "Zhekai Li", "Shixi Huang", "Yuancheng Wang", "Chaoren Wang", "Zhenpeng Zhan", "Zhizheng Wu"]
 organization: "The Chinese University of Hong Kong, Shenzhen / Baidu"

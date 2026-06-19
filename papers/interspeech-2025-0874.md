@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0874
+id: "interspeech-2025-0874"
 title: "Efficient and Direct Duplex Modeling for Speech-to-Speech Language Model"
 authors: ["Ke Hu", "Ehsan Hosseini-Asl", "Chen Chen", "Edresson Casanova", "Subhankar Ghosh", "Piotr Zelasko", "Zhehuai Chen", "Jason Li", "Jagadeesh Balam", "Boris Ginsburg"]
 organization: NVIDIA

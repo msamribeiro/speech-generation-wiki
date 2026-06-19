@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0704
+id: "interspeech-2025-0704"
 title: "Differentiable Reward Optimization for LLM based TTS system"
 authors: [Changfeng Gao, Zhihao Du, Shiliang Zhang]
 organization: Alibaba Group (Tongyi Lab)

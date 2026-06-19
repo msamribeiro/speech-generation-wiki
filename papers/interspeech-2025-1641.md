@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-1641
+id: "interspeech-2025-1641"
 title: "Robust Neural Codec Language Modeling with Phoneme Position Prediction for Zero-Shot TTS"
 authors: ["Chunhui Lu", "Xue Wen", "Liming Song", "Junkwang Oh"]
 organization: Samsung

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0196
+id: "interspeech-2025-0196"
 title: "SPCODEC: Split and Prediction for Neural Speech Codec"
 authors: ["Liang Wen", "Lizhong Wang", "Yuxing Zheng", "Weijing Shi", "Kwang Pyo Choi"]
 organization: Samsung

@@ -1,5 +1,5 @@
 ---
-id: interspeech-2025-0455
+id: "interspeech-2025-0455"
 title: "APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity Text-to-Speech"
 authors: [Hyungchan Yoon, Chanwoo Lee, Hoodong Lee, Stanley Jungkyu Choi]
 organization: LG AI Research
