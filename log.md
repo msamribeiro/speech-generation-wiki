@@ -11,6 +11,21 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - misc | quoted id: fields in frontmatter (327 pages; unquoted arXiv IDs were parsed as floats by YAML)
 - misc | added [!info] Citation Stub callout to all 65 Tier 2 stub pages
 - misc | papers/index.md: all ID cells → `[[wikilinks]]`, all titles → markdown links, blank row removed
+- review | 2025.acl-long.65 | Autoregressive Speech Synthesis without Vector Quantization | ACL 2025
+- review | 2025.acl-long.346 | ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control | ACL 2025
+- review | interspeech-2025-0739 | FD-Bench: A Full-Duplex Benchmarking Pipeline Designed for Full Duplex Spoken Dialogue Systems | Interspeech 2025
+- review | interspeech-2025-0815 | Towards Better Disentanglement in Non-Autoregressive Zero-Shot Expressive Voice Conversion | Interspeech 2025
+- review | 2025.emnlp-main.40 | Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey | EMNLP 2025
+- review | 2301.02111 | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers | arXiv 2023
+- review | 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv 2023
+- review | 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv 2023
+- review | 2406.02430 | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv 2024
+- review | 2407.05407 | CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens | arXiv 2024
+- review | 2412.10117 | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv 2024
+- review | 2502.03930 | DiTAR: Diffusion Transformer Autoregressive Modeling for Speech Generation | arXiv 2025
+- review | 2504.12867 | EmoVoice: LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting | arXiv 2025
+- review | 2025.acl-long.1043 | OZSpeech: One-step Zero-shot Speech Synthesis with Learned-Prior-Conditioned Flow Matching | ACL 2025
+- review | interspeech-2025-0816 | Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation | Interspeech 2025
 
 ## 2026-06-17
 

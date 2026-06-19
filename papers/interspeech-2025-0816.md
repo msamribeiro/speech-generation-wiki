@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-19
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "10845cc"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -88,10 +89,10 @@ Moderate — This paper addresses a genuine and underexplored gap: SVC systems t
 
 ## Claims
 
-- Converting speech timbre to singing requires cross-modal speaker embedding alignment, and standard singer-identity conditioning generalises poorly across the speech-singing domain boundary.
-- Cycle training strategies that simulate paired cross-domain data can compensate for the scarcity of matched speech-singing corpora in voice conversion training.
-- Zero-shot singing voice conversion with speech prompts achieves lower timbre similarity scores than same-domain (singing-to-singing) conversion, indicating that the cross-modal gap is not fully closed by embedding alignment alone.
-- Automated speaker similarity metrics capture relative improvements from cross-domain adaptation that are not clearly reflected in small-panel subjective timbre similarity ratings.
+- Converting speech timbre to singing requires cross-modal speaker embedding alignment, and standard singer-identity conditioning generalises poorly across the speech-singing domain boundary. *(§1, §2.1)*
+- Cycle training strategies that simulate paired cross-domain data can compensate for the scarcity of matched speech-singing corpora in voice conversion training. *(§2.3)*
+- Zero-shot singing voice conversion with speech prompts achieves lower timbre similarity scores than same-domain (singing-to-singing) conversion, indicating that the cross-modal gap is not fully closed by embedding alignment alone. *(§3.3, Table 1, Table 2)*
+- Automated speaker similarity metrics capture relative improvements from cross-domain adaptation that are not clearly reflected in small-panel subjective timbre similarity ratings. *(§3.2, §3.3, Table 3)*
 
 ## Limitations and Open Questions
 
@@ -102,4 +103,9 @@ The model's loss function addresses only mel reconstruction; the authors note th
 
 ## Wiki Connections
 
-Related concepts: [[voice-conversion]] · [[singing]] · [[disentanglement]] · [[self-supervised-speech]] · [[speaker-adaptation]] · [[evaluation-metrics]]
+- [[voice-conversion]]
+- [[singing]]
+- [[disentanglement]]
+- [[self-supervised-speech]]
+- [[speaker-adaptation]]
+- [[evaluation-metrics]]

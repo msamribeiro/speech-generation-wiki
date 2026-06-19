@@ -35,9 +35,10 @@ field_significance:
   level: moderate
   type: [evaluation-contribution, empirical-benchmark]
 generation:
-  date: 2026-06-03
+  date: 2026-06-19
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "10845cc"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -72,11 +73,11 @@ Moderate — FD-Bench addresses a genuine evaluation gap: the field had no stand
 
 ## Claims
 
-- Full-duplex spoken dialogue systems that integrate interruption detection internally rather than relying on external VAD modules show systematically higher interrupt success rates under challenging conditions.
-- Real-time responsiveness (first-speech-emit delay) and interruption robustness trade off against each other: systems optimised for low latency may not handle mid-utterance interruptions reliably.
-- Background noise degrades response quality in full-duplex spoken dialogue systems more severely than discrete noise events inserted into silence gaps.
-- Automated LLM-based scoring and conditioned perplexity provide complementary signals for evaluating spoken dialogue quality, but neither alone captures interruption-handling behaviour.
-- Current full-duplex spoken dialogue systems remain far from human-level robustness under frequent interruptions, suggesting the capability remains an open engineering and research challenge.
+- Full-duplex spoken dialogue systems that integrate interruption detection internally rather than relying on external VAD modules show systematically higher interrupt success rates under challenging conditions. *(§3.2, Table 4)*
+- Real-time responsiveness (first-speech-emit delay) and interruption robustness trade off against each other: systems optimised for low latency may not handle mid-utterance interruptions reliably. *(§3.2, Table 4)*
+- Background noise degrades response quality in full-duplex spoken dialogue systems more severely than discrete noise events inserted into silence gaps. *(§3.2, Table 5)*
+- Automated LLM-based scoring and conditioned perplexity provide complementary signals for evaluating spoken dialogue quality, but neither alone captures interruption-handling behaviour. *(§2.3, §3.2)*
+- Current full-duplex spoken dialogue systems remain far from human-level robustness under frequent interruptions, suggesting the capability remains an open engineering and research challenge. *(§3.2, §5)*
 
 ## Limitations and Open Questions
 

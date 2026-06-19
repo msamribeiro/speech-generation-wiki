@@ -47,9 +47,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-19
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "10845cc"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -93,11 +94,11 @@ Moderate — This paper advances the sub-problem of source timbre leakage in exp
 
 ## Claims
 
-- Discrete speech unit representations reduce source speaker leakage in voice conversion but introduce pronunciation artefacts that degrade intelligibility compared to continuous feature counterparts.
-- Mix-style layer normalisation mitigates the train-inference mismatch caused by content-style dependence in style encoders, improving zero-shot generalisation on unseen speakers.
-- Enriching global style embeddings with explicit pitch and energy features improves emotion transfer fidelity in expressive voice conversion beyond mel-spectrogram-only style encoding.
-- Cross-attention fusion of local F0 contours with content embeddings produces stronger prosodic alignment to the target than additive F0 injection in non-autoregressive voice conversion.
-- Zero-shot cross-lingual voice conversion is achievable with a monolingual training corpus when content representations are extracted from a multilingual speech model, though intelligibility degrades for unseen source languages.
+- Discrete speech unit representations reduce source speaker leakage in voice conversion but introduce pronunciation artefacts that degrade intelligibility compared to continuous feature counterparts. *(§4.2, Table 1)*
+- Mix-style layer normalisation mitigates the train-inference mismatch caused by content-style dependence in style encoders, improving zero-shot generalisation on unseen speakers. *(§4.3, Table 2)*
+- Enriching global style embeddings with explicit pitch and energy features improves emotion transfer fidelity in expressive voice conversion beyond mel-spectrogram-only style encoding. *(§3.5, §4.3, Table 2)*
+- Cross-attention fusion of local F0 contours with content embeddings produces stronger prosodic alignment to the target than additive F0 injection in non-autoregressive voice conversion. *(§3.1, §4.3, Table 2)*
+- Zero-shot cross-lingual voice conversion is achievable with a monolingual training corpus when content representations are extracted from a multilingual speech model, though intelligibility degrades for unseen source languages. *(§4.4, Table 4)*
 
 ## Limitations and Open Questions
 
