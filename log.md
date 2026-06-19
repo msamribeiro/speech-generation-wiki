@@ -18,7 +18,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - review | 2025.emnlp-main.40 | Towards Controllable Speech Synthesis in the Era of Large Language Models: A Systematic Survey | EMNLP 2025
 - review | 2301.02111 | Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers | arXiv 2023
 - review | 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv 2023
-- review | 2308.16692 | SpeechTokenizer: Unified Speech Tokenizer for Speech Large Language Models | arXiv 2023
+- review | 2403.03100 | NaturalSpeech 3: Zero-Shot Speech Synthesis with Factorized Codec and Diffusion Models | arXiv 2024
 - review | 2406.02430 | Seed-TTS: A Family of High-Quality Versatile Speech Generation Models | arXiv 2024
 - review | 2407.05407 | CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens | arXiv 2024
 - review | 2412.10117 | CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models | arXiv 2024
