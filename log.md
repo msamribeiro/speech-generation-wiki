@@ -2,9 +2,15 @@
 title: "Changelog"
 ---
 
-Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (concept pages and evidence dossiers regenerated from YAML), `query` (research question answered and filed back). Most recent entries are at the top.
+Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (concept pages and evidence dossiers regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
 ---
+
+## 2026-06-19
+
+- misc | quoted id: fields in frontmatter (327 pages; unquoted arXiv IDs were parsed as floats by YAML)
+- misc | added [!info] Citation Stub callout to all 65 Tier 2 stub pages
+- misc | papers/index.md: all ID cells → [[wikilinks]], all titles → markdown links, blank row removed
 
 ## 2026-06-17
 
