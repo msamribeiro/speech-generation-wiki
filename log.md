@@ -6,6 +6,11 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-20
+
+- review | interspeech-2025-0063 | Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech 2025
+- review | interspeech-2025-0115 | Bringing Interpretability to Neural Audio Codecs | Interspeech 2025
+
 ## 2026-06-19
 
 - misc | quoted id: fields in frontmatter (327 pages; unquoted arXiv IDs were parsed as floats by YAML)

@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [conceptual-contribution, empirical-benchmark]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -81,10 +82,10 @@ Moderate — This paper adds useful empirical grounding to a question the field 
 
 ## Claims
 
-- Even codecs explicitly trained with disentanglement objectives fail to cleanly separate pitch from other speech attributes in their token embeddings.
-- Linguistic content in neural audio codec representations concentrates in the lowest RVQ scales regardless of whether distillation was used, but leaks into higher scales when the frame rate is very low.
-- A masked-autoencoder framework can bridge codec tokens and perceptual speech attributes bidirectionally, enabling voice conversion at dramatically lower bitrates than spectrogram-based equivalents.
-- Post-hoc interpretability tools reveal systematic trade-offs between content accuracy and synthesis quality that differ by codec design, complicating the choice of codec for controllable speech generation.
+- Even codecs explicitly trained with disentanglement objectives fail to cleanly separate pitch from other speech attributes in their token embeddings. *(§2.3, §2.4)*
+- Linguistic content in neural audio codec representations concentrates in the lowest RVQ scales regardless of whether distillation was used, but leaks into higher scales when the frame rate is very low. *(§2.1)*
+- A masked-autoencoder framework can bridge codec tokens and perceptual speech attributes bidirectionally, enabling voice conversion at dramatically lower bitrates than spectrogram-based equivalents. *(§3.1, §3.2)*
+- Post-hoc interpretability tools reveal systematic trade-offs between content accuracy and synthesis quality that differ by codec design, complicating the choice of codec for controllable speech generation. *(§3.2, Table 1)*
 
 ## Limitations and Open Questions
 
@@ -95,4 +96,8 @@ The study covers four specific codecs; the broader generalisation across the gro
 
 ## Wiki Connections
 
-Concepts: [[neural-codec]] · [[disentanglement]] · [[self-supervised-speech]] · [[voice-conversion]] · [[evaluation-metrics]]
+- [[neural-codec]]
+- [[disentanglement]]
+- [[self-supervised-speech]]
+- [[voice-conversion]]
+- [[evaluation-metrics]]
