@@ -57,8 +57,16 @@ metrics:
 code_available: false
 demo_available: false
 url: "https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html"
-related_concepts: [zero-shot-tts, neural-codec, autoregressive-codec-tts, self-supervised-speech]
-related_papers: []
+related_concepts: [zero-shot-tts, neural-codec, autoregressive-codec-tts]
+related_papers: ["2301.02111"]
+field_significance:
+  level: moderate
+  type: [architectural-novelty, engineering-integration]
+generation:
+  date: 2026-06-20
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "bfd00ba"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Ye-Xin Lu et al.** (University of Science and Technology of China) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lu25b_interspeech.html) · Demo: ✗ · Code: ✗
@@ -80,6 +88,8 @@ LLM-based zero-shot TTS systems (VALL-E, NaturalSpeech 3, LauraTTS) use discrete
 2. **Embedding Refiner:** 6 Conformer blocks. Takes the predicted first two clean token embeddings concatenated with the full noisy embedding sum, and predicts the summed acoustic embedding across all 32 VQ groups. This is supervised by an L1 + Frobenius norm loss against the clean summed embedding.
 
 Training: teacher-forcing with random substitution of predicted tokens by clean ground-truth tokens. The codec denoiser is trained on LibriTTS-R + DNS Challenge 2022 noise (SNR −5 to +15 dB), independently of LauraTTS. At inference, the token denoiser output is fed directly as the acoustic prompt to LauraTTS.
+
+![Overall structure of the proposed codec denoiser.](assets/interspeech-2025-0319/figure-3.png)
 
 ## Key Results
 
@@ -105,6 +115,18 @@ NR-LauraTTS achieves SECS of 0.827 — matching LauraTTS with clean prompts exac
 ## Novelty Assessment
 
 Operating speech enhancement in the discrete acoustic token domain is conceptually clean and practically effective. The codec bottleneck (VQ discretization) acts as an information filter that removes noise during quantization, giving the denoiser a structurally advantageous starting point. The finding that predicting only the first two RVQ groups is sufficient (and that predicting more degrades results) is well-motivated by the hierarchical information structure of RVQ codecs. The compute comparison (1.10G vs. 38.93G) is a strong practical argument. The approach is architecture-specific to LauraTTS/Encodec; generalization to other LLM-TTS systems with different codec architectures is not demonstrated but seems feasible.
+
+## Field Significance
+
+Moderate — This paper introduces a targeted solution to a concrete practical failure mode of LLM-based zero-shot TTS: noise sensitivity from audio prompts. The codec-domain denoising idea — exploiting the VQ bottleneck as an implicit noise filter — is architecturally novel within the SE literature and provides a more computationally efficient and speaker-preserving alternative to waveform-domain SE. The contribution is narrow in scope (specific to LauraTTS and Encodec) but the underlying principle generalises to any codec-LM system that uses audio prompts for in-context learning.
+
+## Claims
+
+- LLM-based zero-shot TTS systems are more sensitive to noise in audio prompts than speaker-embedding-based approaches, because their in-context learning mechanism preserves the acoustic environment of the prompt. *(§1)*
+- Performing speech enhancement in the discrete acoustic token domain outperforms waveform-domain SE methods in both speech quality and computational efficiency, achieving higher DNSMOS scores at roughly one-third the FLOPs. *(§4.1, Table 1)*
+- Waveform-domain speech enhancement introduces artifacts that degrade speaker identity in the enhanced prompt, resulting in lower speaker similarity in downstream zero-shot TTS compared to codec-domain denoising. *(§4.2, Table 3)*
+- Predicting only the first two RVQ groups of clean acoustic tokens is sufficient for effective token-domain speech enhancement; predicting more groups increases complexity without improving quality. *(§4.1, Table 2)*
+- The VQ bottleneck of neural codecs acts as an implicit noise filter during quantization, providing a structural advantage for denoising in the token domain relative to signal-domain methods. *(§4.1)*
 
 ## Limitations and Open Questions
 

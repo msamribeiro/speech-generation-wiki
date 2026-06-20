@@ -51,9 +51,10 @@ field_significance:
   level: moderate
   type: ["architectural-novelty"]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -100,10 +101,10 @@ Moderate — DualCodec provides a concrete architectural alternative to SSL dist
 
 ## Claims
 
-- Directly encoding SSL features as a first-class codec stream produces stronger semantic preservation in RVQ-1 tokens than distillation from an SSL model, particularly for tonal languages where pitch fidelity is critical.
-- Operating a neural codec at lower frame rates with more RVQ layers at fixed token rate improves audio quality over higher-frame-rate codecs with fewer layers at the same bitrate.
-- Semantic quality of RVQ-1 tokens is a primary determinant of downstream TTS intelligibility in autoregressive codec-based systems, independent of codec audio reconstruction quality.
-- An SSL-based semantic stream in a codec encoder can improve perceptual audio quality beyond what waveform-only codecs achieve, even when using the same decoder architecture.
+- Directly encoding SSL features as a first-class codec stream produces stronger semantic preservation in RVQ-1 tokens than distillation from an SSL model, particularly for tonal languages where pitch fidelity is critical. *(§4.2, Table 2)*
+- Operating a neural codec at lower frame rates with more RVQ layers at fixed token rate improves audio quality over higher-frame-rate codecs with fewer layers at the same bitrate. *(§4.3, Table 3)*
+- Semantic quality of RVQ-1 tokens is a primary determinant of downstream TTS intelligibility in autoregressive codec-based systems, independent of codec audio reconstruction quality. *(§4.4, Table 4)*
+- An SSL-based semantic stream in a codec encoder can improve perceptual audio quality beyond what waveform-only codecs achieve, even when using the same decoder architecture. *(§4.3, Table 3)*
 
 ## Limitations and Open Questions
 
@@ -115,6 +116,11 @@ Codec evaluation uses a single controlled bitrate band (~0.75 kbps); performance
 
 ## Wiki Connections
 
-Core concepts: [[neural-codec]] · [[self-supervised-speech]] · [[autoregressive-codec-tts]] · [[spoken-language-model]] · [[disentanglement]] · [[zero-shot-tts]]
-
-In-corpus papers: [[2301.02111]] (VALL-E, used as the TTS backbone in downstream experiments) · [[2406.02430]] (Seed-TTS-Eval benchmark used for TTS evaluation)
+- [[neural-codec]]
+- [[self-supervised-speech]]
+- [[autoregressive-codec-tts]]
+- [[spoken-language-model]]
+- [[disentanglement]]
+- [[zero-shot-tts]]
+- [[2301.02111|VALL-E]] (used as the TTS backbone in downstream experiments)
+- [[2406.02430|Seed-TTS-Eval]] (benchmark used for TTS evaluation)

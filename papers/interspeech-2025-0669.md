@@ -22,10 +22,6 @@ metrics:
     value: 3.55
     system: PAST
     testset: LibriSpeech test-clean
-  - name: STOI
-    value: not reported
-    system: PAST
-    testset: LibriSpeech test-clean
   - name: WER
     value: 15.7
     system: PAST
@@ -45,8 +41,16 @@ metrics:
 code_available: true
 demo_available: true
 url: https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html
-related_concepts: [neural-codec, self-supervised-speech, autoregressive-codec-tts, streaming-tts]
+related_concepts: [neural-codec, autoregressive-codec-tts, streaming-tts]
 related_papers: []
+field_significance:
+  level: moderate
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-20
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "bfd00ba"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Nadav Har-Tuv et al.** (Hebrew University of Jerusalem) · [→ Paper](https://www.isca-archive.org/interspeech_2025/hartuv25_interspeech.html) · Demo: ✓ · Code: ✓
@@ -71,6 +75,8 @@ Training data is LibriSpeech (960h) + TIMIT (5h phoneme-labeled). Training uses 
 
 **Streamable variant.** PAST-Streamable replaces the transformer with a causal self-attention and unidirectional LSTM, uses left-only padding, and operates with a 20ms look-ahead window. This enables real-time applications.
 
+![Schematic of the PAST pipeline. The auxiliary heads use the output of the first vector quantization module as input.](assets/interspeech-2025-0669/figure-1.png)
+
 ## Key Results
 
 **Phonetic metrics** (PNMI, ABX, WER on discrete tokens, DASB benchmark): PAST achieves PNMI=0.75 (vs. SpeechTokenizer 0.72, X-Codec 0.40), ABX-within 2.82 (vs. SpeechTokenizer 3.43), WER test-clean 15.7% (vs. SpeechTokenizer 18.5%, X-Codec 17.1%), WER test-other 36.8% (vs. SpeechTokenizer 41.3%). PAST-Streamable also surpasses baselines: PNMI=0.74, ABX-within 3.05, WER clean 14.3%.
@@ -84,6 +90,18 @@ Ablation over components: CTC loss is the single most important addition (ABX-wi
 ## Novelty Assessment
 
 The key insight — that supervised phonetic data (CTC on characters + phoneme classification) can replace SSL pseudo-label distillation in hybrid tokenizers — is well-supported and practically impactful. It simplifies the pipeline (no external SSL model needed), potentially lowers cost for low-resource languages (only 965h of labeled data needed), and achieves better performance. The stochastic skip-connection to prevent transformer bypass is a practical training-stability contribution. The streamable variant is a useful engineering contribution for real-time applications. The approach is a direct challenge to the prevailing assumption that SSL pseudo-labels are necessary for hybrid tokenization.
+
+## Field Significance
+
+Moderate — PAST demonstrates that direct phonetic supervision via CTC and phoneme classification is a viable and more effective alternative to SSL pseudo-label distillation in hybrid speech tokenizers, simplifying the pipeline while improving both phonetic representation and reconstruction quality. The result provides a cleaner design point for the codec-level foundation of speech language models, though scalability to multilingual and low-resource settings remains an open question.
+
+## Claims
+
+- Supervised phonetic data (CTC and phoneme classification) can replace SSL pseudo-label distillation as the phonetic supervision signal in hybrid speech tokenizers, achieving superior phonetic representation without requiring a pretrained SSL model. *(§3.3, §5.1, Table 1)*
+- CTC character-match loss is the dominant driver of phonetic encoding quality in RVQ-based tokenizers, contributing more than phoneme classification alone. *(§5.3, Table 4)*
+- A transformer encoder inserted before the RVQ quantizer improves phonetic representation, but requires stochastic skip-connection dropout during training to prevent the network from bypassing it. *(§3.2, §5.3, Table 5)*
+- Hybrid tokenizers that optimize phonetic encoding via direct supervision can approach pure acoustic codecs in reconstruction quality while substantially surpassing SSL-distilled baselines. *(§5.1, Table 2)*
+- Speech tokenizers that better encode phonetic structure yield stronger downstream speech language model performance on lexical discrimination benchmarks. *(§5.2, Table 3)*
 
 ## Limitations and Open Questions
 

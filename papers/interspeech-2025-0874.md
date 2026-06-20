@@ -47,9 +47,10 @@ field_significance:
   level: high
   type: [architectural-novelty, engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -91,11 +92,11 @@ The core architectural contribution — separating user and agent streams into a
 
 ## Claims
 
-- Separating user and agent stream representations — using a pretrained speech encoder for input and a neural codec for generation — allows full-duplex S2S models to bypass LLM speech pretraining without sacrificing conversation quality.
-- Codec personalisation through fine-tuning on target-speaker data can recover audio quality at half the bitrate of an untuned codec, as measured by MOS, CER, and speaker similarity.
-- Turn-level alignment between text and speech tokens in duplex training is sufficient to learn barge-in behaviour; word-level alignment provides no measurable improvement.
-- Full-duplex end-to-end models remain at a reasoning disadvantage compared to cascaded oracle systems, though the gap narrows as backbone LLM quality increases.
-- Open-source availability of training code and model weights is a critical bottleneck for research progress in full-duplex spoken dialogue, given the historical concentration of such systems in closed industrial labs.
+- Separating user and agent stream representations — using a pretrained speech encoder for input and a neural codec for generation — allows full-duplex S2S models to bypass LLM speech pretraining without sacrificing conversation quality. *(§3, §6.1, §6.2)*
+- Codec personalisation through fine-tuning on target-speaker data can recover audio quality at half the bitrate of an untuned codec, as measured by MOS, CER, and speaker similarity. *(§6.3, Table 4)*
+- Turn-level alignment between text and speech tokens in duplex training is sufficient to learn barge-in behaviour; word-level alignment provides no measurable improvement. *(§3.1)*
+- Full-duplex end-to-end models remain at a reasoning disadvantage compared to cascaded oracle systems, though the gap narrows as backbone LLM quality increases. *(§6.2, Table 3)*
+- Open-source availability of training code and model weights is a critical bottleneck for research progress in full-duplex spoken dialogue, given the historical concentration of such systems in closed industrial labs. *(§1)*
 
 ## Limitations and Open Questions
 

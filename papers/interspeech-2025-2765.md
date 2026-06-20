@@ -39,9 +39,10 @@ field_significance:
   level: moderate
   type: ["empirical-benchmark", "evaluation-contribution"]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -83,11 +84,11 @@ Moderate — This paper provides direct empirical evidence that commonly used pr
 
 ## Claims
 
-- CMOS and MUSHRA scores can overestimate naturalness relative to human deception rates, because listeners in preference tests match stimuli to reference recordings rather than assess absolute human-likeness.
-- Evaluating TTS systems on benchmarks with low expressive variation sets an artificially low bar, as human recordings from such datasets are themselves infrequently identified as human.
-- Commercial TTS systems achieve near-human deception rates in zero-shot speaker adaptation to expressive conversational speech, while leading open-source systems remain substantially below this threshold.
-- Fine-tuning on high-quality expressive data improves but does not close the gap between open-source TTS naturalness and human speech in deception-based evaluations.
-- Digital voice quality artifacts and flat prosody are the primary perceptual cues that allow listeners to reliably identify synthetic speech from open-source systems.
+- CMOS and MUSHRA scores can overestimate naturalness relative to human deception rates, because listeners in preference tests match stimuli to reference recordings rather than assess absolute human-likeness. *(§4.1, §4.2, Table 2)*
+- Evaluating TTS systems on benchmarks with low expressive variation sets an artificially low bar, as human recordings from such datasets are themselves infrequently identified as human. *(§4.1)*
+- Commercial TTS systems achieve near-human deception rates in zero-shot speaker adaptation to expressive conversational speech, while leading open-source systems remain substantially below this threshold. *(§4.2, Table 2)*
+- Fine-tuning on high-quality expressive data improves but does not close the gap between open-source TTS naturalness and human speech in deception-based evaluations. *(§4.3, Table 3)*
+- Digital voice quality artifacts and flat prosody are the primary perceptual cues that allow listeners to reliably identify synthetic speech from open-source systems. *(§4.4, Table 4)*
 
 ## Limitations and Open Questions
 
@@ -98,4 +99,4 @@ The evaluation is limited to ten systems due to budget constraints, excluding ma
 
 ## Wiki Connections
 
-This paper directly informs [[evaluation-metrics]] and [[subjective-evaluation]], providing evidence that standard metrics are insufficient for deployment-readiness assessment. The zero-shot evaluation places [[zero-shot-tts]] and [[speaker-adaptation]] in context by demonstrating a large performance gap between commercial and open-source systems. The F5-TTS result is directly measured here: [[2410.06885]].
+This paper directly informs [[evaluation-metrics]] and [[subjective-evaluation]], providing evidence that standard metrics are insufficient for deployment-readiness assessment. The zero-shot evaluation places [[zero-shot-tts]] and [[speaker-adaptation]] in context by demonstrating a large performance gap between commercial and open-source systems. The F5-TTS result is directly measured here: [[2410.06885|F5-TTS]].

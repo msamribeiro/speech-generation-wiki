@@ -51,9 +51,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -98,10 +99,10 @@ Moderate — This paper addresses a well-known failure mode of autoregressive co
 
 ## Claims
 
-- Explicit phoneme position supervision during autoregressive codec training eliminates alignment errors more effectively than phoneme identity prediction or monotonic decoding constraints.
-- Alignment failures in codec language model TTS — including phoneme skipping, repetition, and one-to-many correspondence — are fundamentally a training-objective problem rather than an inference-time problem.
-- Jointly predicting phoneme identity and position introduces conflicting signals that degrade pronunciation accuracy compared to position-only prediction.
-- Robustness improvements in autoregressive codec TTS can be achieved without changes to inference-time decoding strategy or additional duration prediction stages.
+- Explicit phoneme position supervision during autoregressive codec training eliminates alignment errors more effectively than phoneme identity prediction or monotonic decoding constraints. *(§4.2.1, Table 2; §4.3, Table 4)*
+- Alignment failures in codec language model TTS — including phoneme skipping, repetition, and one-to-many correspondence — are fundamentally a training-objective problem rather than an inference-time problem. *(§4.2.1, §4.3, Table 4)*
+- Jointly predicting phoneme identity and position introduces conflicting signals that degrade pronunciation accuracy compared to position-only prediction. *(§4.2.1, Table 2)*
+- Robustness improvements in autoregressive codec TTS can be achieved without changes to inference-time decoding strategy or additional duration prediction stages. *(§3.3, §4.2.1, Table 1)*
 
 ## Limitations and Open Questions
 
@@ -116,4 +117,4 @@ The subjective evaluation is limited (15 listeners, 30 samples per system, Manda
 
 Concept pages most relevant to this paper: [[autoregressive-codec-tts]], [[zero-shot-tts]], [[neural-codec]], [[spoken-language-model]].
 
-In-corpus papers: [[2301.02111]] (VALL-E — the direct foundation this work modifies), [[2406.02430]] (Seed-TTS — the test benchmark used for evaluation).
+In-corpus papers: [[2301.02111|VALL-E]] (the direct foundation this work modifies), [[2406.02430|Seed-TTS]] (the test benchmark used for evaluation).

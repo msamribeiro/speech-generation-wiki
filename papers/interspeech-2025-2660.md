@@ -31,9 +31,10 @@ field_significance:
   level: moderate
   type: [engineering-integration, dataset-contribution]
 generation:
-  date: 2026-06-03
+  date: 2026-06-20
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "bfd00ba"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -73,10 +74,10 @@ Moderate — This paper establishes a proof of concept for multi-party turn-taki
 
 ## Claims
 
-- Acoustic-only voice activity projection can predict next-speaker identity in triadic conversation with accuracy above a last-speaker baseline, though gains over baseline are modest in spontaneous overlapping speech.
-- The complexity of multi-party turn-taking increases faster than linearly with group size, making state-space design a fundamental constraint for VAP-style approaches beyond dyadic settings.
-- The type of conversation — spontaneous discussion versus structured attentive listening — substantially affects VAP accuracy, reflecting differences in overlapping speech prevalence.
-- Spoken dialogue systems operating in multi-party scenarios require turn-taking models trained on matched multi-party data, as dyadic training corpora are unlikely to transfer directly.
+- Acoustic-only voice activity projection can predict next-speaker identity in triadic conversation with accuracy above a last-speaker baseline, though gains over baseline are modest in spontaneous overlapping speech. *(§3.2, Table 4)*
+- The complexity of multi-party turn-taking increases faster than linearly with group size, making state-space design a fundamental constraint for VAP-style approaches beyond dyadic settings. *(§2.1, §4)*
+- The type of conversation — spontaneous discussion versus structured attentive listening — substantially affects VAP accuracy, reflecting differences in overlapping speech prevalence. *(§3.2, Table 4)*
+- Spoken dialogue systems operating in multi-party scenarios require turn-taking models trained on matched multi-party data, as dyadic training corpora are unlikely to transfer directly. *(§2.2, §4)*
 
 ## Limitations and Open Questions
 

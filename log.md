@@ -10,6 +10,14 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 - review | interspeech-2025-0063 | Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech 2025
 - review | interspeech-2025-0115 | Bringing Interpretability to Neural Audio Codecs | Interspeech 2025
+- review | interspeech-2025-0319 | Improving Noise Robustness of LLM-based Zero-shot TTS via Discrete Acoustic Token Denoising | Interspeech 2025
+- review | interspeech-2025-0455 | APTTS: Adversarial Post-training in Latent Flow Matching for Fast and High-fidelity Text-to-Speech | Interspeech 2025
+- review | interspeech-2025-0468 | DualCodec: A Low-Frame-Rate, Semantically-Enhanced Neural Audio Codec for Speech Generation | Interspeech 2025
+- review | interspeech-2025-0669 | PAST: Phonetic-Acoustic Speech Tokenizer | Interspeech 2025
+- review | interspeech-2025-0874 | Efficient and Direct Duplex Modeling for Speech-to-Speech Language Model | Interspeech 2025
+- review | interspeech-2025-1641 | Robust Neural Codec Language Modeling with Phoneme Position Prediction for Zero-Shot TTS | Interspeech 2025
+- review | interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn-taking in Spoken Dialogue Systems | Interspeech 2025
+- review | interspeech-2025-2765 | The State Of TTS: A Case Study with Human Fooling Rates | Interspeech 2025
 
 ## 2026-06-19
 
