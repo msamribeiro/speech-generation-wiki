@@ -1,7 +1,7 @@
 ---
 id: "interspeech-2025-0648"
 title: "MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling"
-authors: [Yifan Cheng, Ruoyi Zhang, Jiatong Shi]
+authors: ["Yifan Cheng", "Ruoyi Zhang", "Jiatong Shi"]
 organization: Fish Audio
 venue: Interspeech
 venue_type: conference
@@ -34,7 +34,15 @@ code_available: true
 demo_available: null
 url: https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html
 related_concepts: [emotion-synthesis, evaluation-metrics, subjective-evaluation]
-related_papers: [2412.10117, 2406.02430, 2301.02111]
+related_papers: ["2412.10117", "2406.02430", "2301.02111"]
+field_significance:
+  level: moderate
+  type: [dataset-contribution, engineering-integration]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Yifan Cheng et al.** (Fish Audio) · [→ Paper](https://www.isca-archive.org/interspeech_2025/cheng25_interspeech.html) · Demo: ? · Code: ✓
@@ -73,10 +81,26 @@ A mixed emotion annotation experiment on 10,000 YouTube segments using t-SNE vis
 
 The primary contribution is the pipeline design and resulting dataset, not a new model architecture. The insight that consistency matters more than accuracy for downstream TTS training (Fleiss κ 0.93 vs. 0.40, even if accuracy is slightly lower) is practically important. The 26-category taxonomy grounded in psychological research is a principled extension beyond Ekman's basic emotions. Using a multimodal LLM for zero-shot emotion labeling rather than training a dedicated classifier is an effective engineering shortcut that also enables flexibility. The MIKU-EmoBench dataset provides a substantially larger and more emotionally diverse benchmark than existing alternatives.
 
+## Field Significance
+
+Moderate — MIKU-PAL demonstrates that a multimodal LLM pipeline can replace costly human annotators for emotional speech labeling with substantially higher consistency, enabling the construction of large-scale fine-grained emotion datasets that were previously infeasible. The MIKU-EmoBench dataset provides a more emotionally diverse training resource for emotional TTS than any existing public corpus, and the consistency-over-accuracy insight offers a practical principle for dataset curation in affective speech synthesis.
+
+## Claims
+
+- Automated multimodal annotation pipelines can achieve annotation consistency significantly exceeding that of human raters on emotional speech datasets, at substantially lower cost per hour. *(§2.3, Table 1)*
+- Fine-grained emotion datasets with a larger category space and higher annotation consistency lead to measurable improvements in downstream emotional TTS quality compared to smaller manually annotated alternatives. *(§3.2, Table 3)*
+- Visual preprocessing is a substantial contributor to multimodal emotion recognition accuracy, as removing it causes a measurable drop in classification performance. *(§2.1)*
+- The limited emotion category sets in standard SER benchmarks introduce systematic classification confusion for emotionally adjacent categories that are not psychologically distinct. *(§2.3)*
+
 ## Limitations and Open Questions
 
 MIKU-PAL accuracy (58.6–68.5%) remains below human accuracy on IEMOCAP (72.9%). Performance depends on the capabilities and potential biases of Gemini 2.0 Flash, which may change across model versions. YouTube-sourced data introduces demographic and cultural biases from the content distribution. Current SER models cannot reliably classify all 26 fine-grained emotion categories, so full evaluation of MIKU-EmoBench is limited. The pipeline retains only 42% of raw video, which is efficient but still discards a large fraction. Multilingual generalization beyond English is not demonstrated.
 
 ## Wiki Connections
 
-MIKU-PAL directly enables [[emotion-synthesis]] by providing large-scale, high-quality labeled emotional speech. The emotion taxonomy discussion connects to [[evaluation-metrics]] and [[subjective-evaluation]] — the paper argues that existing evaluation frameworks rely on flawed emotion categories. It builds on the Fish-Speech system (in-corpus) and fine-tunes using its architecture. CosyVoice 2.0 ([[2412.10117]]) and SeedTTS ([[2406.02430]]) are cited as context for scale of speech LM training data. VALL-E ([[2301.02111]]) is cited as a foundational codec language model for TTS.
+- [[emotion-synthesis]] — MIKU-PAL directly enables large-scale emotional TTS by providing high-quality labeled emotional speech at scale
+- [[evaluation-metrics]] — the paper argues that existing evaluation frameworks rely on flawed emotion category taxonomies and proposes a 26-category alternative grounded in psychological research
+- [[subjective-evaluation]] — the consistency analysis (Fleiss κ comparison) bears directly on how subjective evaluation reliability should be interpreted in emotional speech tasks
+- [[2412.10117|CosyVoice 2]] — cited as a representative instruction-conditioned TTS system and used as a baseline in the emotional TTS evaluation
+- [[2406.02430|SeedTTS]] — cited as context for the scale of data used in large speech LM training
+- [[2301.02111|VALL-E]] — cited as a foundational codec language model for TTS

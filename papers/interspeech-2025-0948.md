@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty, engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-21
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "3538db5"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -87,11 +88,11 @@ Moderate — PromptEVC is the first system to apply a diffusion-based prompt map
 
 ## Claims
 
-- Natural language prompts enable more flexible and subjectively accurate emotion control in voice conversion than numeric intensity values or reference audio selection.
-- A diffusion-based mapping from text embeddings to speech emotion embeddings is sufficient to replace reference audio at inference time without significant quality loss.
-- Joint training of a text-to-emotion mapper with reference emotion embeddings improves prosody naturalness over direct prediction from text alone.
-- Preserving speaker identity during emotional pitch manipulation requires an explicit F0 constraint in the speaker encoder; adversarial training alone is insufficient.
-- Mixed-emotion synthesis remains harder to control than single-category emotion intensity across both subjective and objective metrics.
+- Natural language prompts enable more flexible and subjectively accurate emotion control in voice conversion than numeric intensity values or reference audio selection. *(§1, §3.4)*
+- A diffusion-based mapping from text embeddings to speech emotion embeddings is sufficient to replace reference audio at inference time without significant quality loss. *(§2.1, §3.2, Table 1)*
+- Joint training of a text-to-emotion mapper with reference emotion embeddings improves prosody naturalness over direct prediction from text alone. *(§3.3, Table 1)*
+- Preserving speaker identity during emotional pitch manipulation requires an explicit F0 constraint in the speaker encoder; adversarial training alone is insufficient. *(§2.3, §3.3, Table 1)*
+- Mixed-emotion synthesis remains harder to control than single-category emotion intensity across both subjective and objective metrics. *(§3.4, Table 2, Table 3)*
 
 ## Limitations and Open Questions
 

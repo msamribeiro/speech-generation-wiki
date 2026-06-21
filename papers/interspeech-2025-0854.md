@@ -43,6 +43,14 @@ demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html"
 related_concepts: [gan-vocoder, flow-matching, speaker-adaptation, evaluation-metrics, subjective-evaluation]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: ["engineering-integration"]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Frank Zalkow et al.** (Fraunhofer IIS) · [→ Paper](https://www.isca-archive.org/interspeech_2025/zalkow25_interspeech.html) · Demo: ? · Code: ?
@@ -85,6 +93,18 @@ SCOREQ results: CFM Proposed 0.27, CFM Standard 0.28, GAN Proposed 0.32, GAN Sta
 The core contribution is a practical training-data generation recipe, not a new architecture. The idea of simulating low-resource conditions from high-resource data via subsampling is straightforward but effective. The careful duration-distribution matching via KDE is a useful detail. The paper thoroughly tests on two generative architectures (GAN and CFM) and two speakers (male/female), giving the results credibility. The RBE/Plackett-Luce evaluation methodology is more rigorous than standard MUSHRA and the finding that CFM-proposed sometimes outperforms vocoded reference is noteworthy.
 
 The limitation that the improvement for CFM is not statistically significant means the method's benefit is more clearly demonstrated for GAN-based postprocessors.
+
+## Field Significance
+
+Moderate — This paper addresses a practical bottleneck in traditional TTS pipelines: generative postprocessors degrade for low-resource speakers because the artifacts they must learn to correct cannot be replicated from the limited available data. The proposed subsampling strategy provides a low-cost recipe to synthesize artifact-realistic training pairs from high-resource speakers, and the dual-architecture evaluation (GAN and CFM) gives the findings broader applicability. The contribution is engineering integration rather than architectural novelty, and its relevance is primarily to multi-speaker TTS systems that retain a discriminative acoustic model stage.
+
+## Claims
+
+- Generative postprocessing models for spectrogram enhancement lose effectiveness in low-resource settings because the acoustic model produces stronger artifacts that are underrepresented in the available training pairs. *(§1, §2.1)*
+- Simulating low-resource speaker conditions from subsampled high-resource data provides a viable source of artifact-realistic training pairs for spectrogram postprocessors, yielding consistent naturalness improvements across both GAN and flow-matching architectures. *(§2.2, §4, Table 2)*
+- Flow-matching postprocessors achieve higher absolute naturalness than GAN-based postprocessors on low-resource speakers, but show smaller and statistically insignificant gains from the proposed data generation strategy compared to GAN-based postprocessors. *(§4, Table 2)*
+- Noise augmentation of the acoustic model does not improve spectrogram naturalness when ground-truth prosody is used at evaluation, as its primary benefit is prosody prediction rather than spectrogram texture quality. *(§4, Table 2)*
+- Multi-stimulus hidden-reference tests alone may be insufficient to detect when a TTS system exceeds vocoded ground-truth quality; ranking-by-elimination tests can reveal preferences for synthetic over reference conditions that MUSHRA-style scoring cannot capture. *(§3.3, §4)*
 
 ## Limitations and Open Questions
 

@@ -35,9 +35,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty, empirical-benchmark]
 generation:
-  date: 2026-06-03
+  date: 2026-06-21
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "3538db5"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -57,7 +58,7 @@ The paper contributes two linked components. First, **SpinHuBERT** replaces HuBE
 
 Second, **DC-Spin** (Double-Codebook Spin) resolves the codebook size tension by adding an auxiliary large codebook (e.g. 4096 entries) alongside the small primary codebook (50–500 entries). Both share the same encoder; the auxiliary codebook encourages the encoder to capture finer phonetic distinctions, which indirectly improves the quality of units from the smaller primary codebook. Discrete tokens for downstream use come exclusively from the primary codebook.
 
-![The proposed speech tokenizer training. Stage (I) pre-trains a speech encoder with pseudo labels from K-means or Spin units, where the latter is the proposed SpinHuBERT (Section 2.2). The optional stage (II) fine-tunes the encoder with CTC-based ASR or phoneme recognition (PR). In stage (III), the encoder is fine-tuned with the DC-Spin objective (Section 2.3).](assets/interspeech-2025-0246/figure-1.png)
+![The proposed speech tokenizer training. Stage (I) pre-trains a speech encoder with pseudo labels from K-means or Spin units, where the latter is the proposed SpinHuBERT (Section 2.2). The optional stage (II) fine-tunes the encoder with CTC-based ASR or phoneme recognition (PR). In stage (III), the encoder is fine-tuned with the DC-Spin objective (Section 2.3).](assets/interspeech-2025-0246/figure-2.png)
 
 The downstream evaluation uses a 150M-parameter unit language model (uLM) for zero-shot SLM tasks and a HiFi-GAN vocoder conditioned on speaker and style IDs for speech resynthesis; these serve as standard, comparable proxies. The complete pipeline trains on a 124k-hour English corpus for SpinHuBERT pre-training and 6k hours of Libri-Light for SLM training — substantially less than competing high-resource systems.
 
@@ -79,11 +80,11 @@ Moderate — DC-Spin contributes a practical improvement to the SSL-based speech
 
 ## Claims
 
-- Speaker-invariant discrete speech tokens, trained with a dual-codebook objective, can improve both spoken language model performance and speech resynthesis intelligibility simultaneously.
-- N-gram predictability and phoneme/character mutual information are stronger proxies for SLM downstream performance than the widely-used ABX error rate.
-- SSL-based tokenizers can match or exceed neural codec tokenizers on speech intelligibility (WER) at substantially lower bitrates when the encoder is fine-tuned to suppress speaker variation.
-- Supervised fine-tuning with phoneme recognition targets provides consistent gains over ASR targets for speech resynthesis intelligibility, suggesting phoneme alignment is more directly beneficial than word-level transcription for unit-based vocoders.
-- Scaling SLM model size has diminishing returns on tasks that require sentence-level semantic coherence when the tokenizer quality is the primary bottleneck.
+- Speaker-invariant discrete speech tokens, trained with a dual-codebook objective, can improve both spoken language model performance and speech resynthesis intelligibility simultaneously. *(§3.2, §3.3, Tables 1–3)*
+- N-gram predictability and phoneme/character mutual information are stronger proxies for SLM downstream performance than the widely-used ABX error rate. *(§3.5, Figure 3b)*
+- SSL-based tokenizers can match or exceed neural codec tokenizers on speech intelligibility (WER) at substantially lower bitrates when the encoder is fine-tuned to suppress speaker variation. *(§3.3, Table 3)*
+- Supervised fine-tuning with phoneme recognition targets provides consistent gains over ASR targets for speech resynthesis intelligibility, suggesting phoneme alignment is more directly beneficial than word-level transcription for unit-based vocoders. *(§3.3, Table 3)*
+- Scaling SLM model size has diminishing returns on tasks that require sentence-level semantic coherence when the tokenizer quality is the primary bottleneck. *(§3.2, Table 2)*
 
 ## Limitations and Open Questions
 

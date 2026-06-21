@@ -1,7 +1,7 @@
 ---
 id: "interspeech-2025-0408"
 title: "Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy"
-authors: [Shoki Kawanishi, Akinori Ito, Yuya Chiba, Takashi Nose]
+authors: ["Shoki Kawanishi", "Akinori Ito", "Yuya Chiba", "Takashi Nose"]
 organization: Tohoku University
 venue: Interspeech
 venue_type: conference
@@ -15,18 +15,26 @@ conditioning: [emotion-conditioned, prosody-conditioned]
 training: [supervised, fine-tuning]
 model_size: "not reported"
 codec_used: "none"
-datasets_train: [SMOC corpus (Japanese, 4700 utterances), JSUT corpus (voice conversion target)]
-datasets_eval: [SMOC test set (100 utterances), subjective dialogue experiments (33 participants)]
+datasets_train: ["SMOC corpus (Japanese, 4700 utterances)", "JSUT corpus (voice conversion target)"]
+datasets_eval: ["SMOC test set (100 utterances)", "subjective dialogue experiments (33 participants)"]
 metrics:
-  - name: MOS
-    value: 3.36
+  - name: Satisfaction (Q1)
+    value: 4.00
     system: Proposed (Day 3)
-    testset: VCTK
+    testset: SMOC subjective dialogue (Q1 Satisfaction)
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html"
-related_concepts: [spoken-language-model, prosody-control, emotion-synthesis, subjective-evaluation]
+related_concepts: [prosody-control, emotion-synthesis, subjective-evaluation]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [engineering-integration]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Shoki Kawanishi et al.** (Tohoku University) · [→ Paper](https://www.isca-archive.org/interspeech_2025/kawanishi25_interspeech.html) · Demo: ? · Code: ?
@@ -55,10 +63,23 @@ Objective evaluation confirms the TTS model captures intimacy: speech rate RMSE 
 
 The core novelty is the integration of continuous paralinguistic (prosodic) intimacy control into a multi-session dialogue management loop. The individual components — Tacotron 2 TTS, HiFi-GAN, GPT-4 response generation, intimacy-label conditioning — are standard. The contribution is systemic: demonstrating that gradually adjusting both linguistic and paralinguistic style over days improves user impressions beyond linguistic-only adaptation. The effect is real but modest in magnitude; larger longitudinal studies with more participants are needed to reach statistical significance. The paper is primarily an application/systems contribution.
 
+## Field Significance
+
+Moderate — This paper extends prior work on multi-session dialogue adaptation by adding paralinguistic control as a second axis alongside linguistic register change, demonstrating measurable but non-significant user satisfaction gains in a three-day Japanese dialogue study. Its contribution is primarily a systems integration: existing components (Tacotron 2, HiFi-GAN, GPT-4, RVC) are combined in a novel loop, and the evaluation framework itself provides a reusable methodology for studying long-term speech style adaptation in spoken conversational agents.
+
+## Claims
+
+- Combining paralinguistic intimacy adaptation with linguistic register change improves user satisfaction more than linguistic-only adaptation in multi-session dialogue. *(§5.2, Table 2)*
+- Intimacy-conditioned TTS trained on spontaneous conversational data can reproduce prosodic features (speech rate and F0) that distinguish high- and low-intimacy speech. *(§5.1)*
+- Binary intimacy labels are sufficient to produce measurable prosodic differences in synthesised speech, suggesting that coarse-grained conditioning captures style variation in spontaneous dialogue. *(§5.1)*
+- Paralinguistic intimacy may be less effectively conveyed through speech prosody alone than through linguistic register, as gains in friendliness ratings remain modest even when prosodic style shifts. *(§5.2)*
+
 ## Limitations and Open Questions
 
 Only binary (high/low) intimacy labels are used; a continuous intimacy scale might enable finer-grained adaptation. The experiment spans only 3 days; longer interactions may reveal larger effects. The CG agent's gesture and emotion were frozen, which may have suppressed multimodal intimacy cues. The study is Japanese-language only, limiting generalizability. Future work intends to incorporate multimodal behaviors (gestures, facial expressions) and longer-term experiments.
 
 ## Wiki Connections
 
-This paper informs [[spoken-language-model]] on the integration of adaptive speech style into multi-session SCA. The intimacy-conditioned TTS relates to [[prosody-control]] and [[emotion-synthesis]] — though the intimacy dimension is distinct from typical emotion categories. The evaluation methodology (multi-session subjective questionnaire) connects to [[subjective-evaluation]]. No in-corpus citations identified.
+- [[prosody-control]] — this paper introduces explicit intimacy-level conditioning as a prosody control mechanism within a multi-session dialogue system
+- [[emotion-synthesis]] — the intimacy embedding operates similarly to emotion conditioning, though intimacy is a relational rather than affective dimension
+- [[subjective-evaluation]] — the multi-session 11-item questionnaire protocol is the primary evidence base, demonstrating a methodology for longitudinal spoken dialogue evaluation

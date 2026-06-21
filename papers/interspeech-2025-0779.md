@@ -14,7 +14,7 @@ architecture: []
 conditioning: [text-conditioned]
 training: []
 model_size: "not reported"
-codec_used: "not reported"
+codec_used: "none"
 datasets_train: []
 datasets_eval: ["HME (Handwritten Mathematical Equations Kaggle dataset), 120 MX across 8 categories"]
 metrics:
@@ -35,6 +35,14 @@ demo_available: null
 url: https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.html
 related_concepts: [evaluation-metrics, subjective-evaluation]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: ["evaluation-contribution"]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Sujoy Roychowdhury et al.** (Ericsson R&D) · [→ Paper](https://www.isca-archive.org/interspeech_2025/roychowdhury25_interspeech.html) · Demo: ? · Code: ?
@@ -75,6 +83,18 @@ TTS-ASR cascade metrics (CER=0.10, BLEU=0.66, ROUGE=0.84) correlate very weakly 
 ## Novelty Assessment
 
 The primary contribution is empirical: this is the first listener study of modern commercial TTS models on mathematical expressions with transcription-based intelligibility measurement. The introduction of LaTeX-aware metrics (LCER, TeXBLEU) alongside MOS is a practical methodological advance. The finding that ASR-based metrics are uncorrelated with human intelligibility for MX is an important negative result for the field. The work is narrowly evaluative — it does not propose a new TTS system or training method — but the benchmark and findings are directly actionable for future math-aware TTS development.
+
+## Field Significance
+
+Moderate — This paper opens a new evaluation front for TTS by demonstrating that standard metrics (WER, MOS, ASR-cascade scores) fail to capture intelligibility for mathematical content. It introduces domain-specific transcription metrics (LCER, TeXBLEU, Count-of-Correct) and provides the first systematic evidence that commercial TTS systems perform well only for simple numeric and fraction categories, with substantial gaps remaining for summations, matrices, and calculus expressions. The benchmark can serve as a baseline for future math-aware TTS development.
+
+## Claims
+
+- Standard ASR-based metrics (CER, BLEU, ROUGE) correlate near-zero with human transcription accuracy for TTS of mathematical expressions, making them insufficient proxies for intelligibility in this domain. *(§5.3)*
+- TTS intelligibility for mathematical content is strongly dependent on expression category, with numeric expressions near ceiling and summation or matrix expressions substantially degraded, even for state-of-the-art commercial systems. *(§4, Table 2)*
+- No single commercial TTS model consistently outperforms others across all mathematical expression categories, indicating that model selection for math-aware TTS must be category-specific. *(§4, Table 2)*
+- Human expert rendition of mathematical expressions achieves near-perfect intelligibility (97% CoC), establishing a large gap relative to all evaluated TTS systems for most expression categories. *(§4, Table 3)*
+- LLM-generated pronunciation text does not significantly affect TTS intelligibility when the pronunciation is correct, indicating that the bottleneck lies in the TTS prosody rather than the text normalization step. *(§4)*
 
 ## Limitations and Open Questions
 

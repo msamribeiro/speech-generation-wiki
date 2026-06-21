@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-02
+  date: 2026-06-21
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "f0299ef"
+  commit: "3538db5"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -63,7 +64,7 @@ ClapFM-EVC is a two-stage, any-to-one EVC framework. The first stage trains EVC-
 
 The second stage is AdaFM-VC, the voice conversion backbone. Content representations are extracted from source speech via a pre-trained ASR model (HybridFormer) as Phonetic Posteriorgrams (PPGs). A FuEncoder module fuses PPGs with emotional embeddings from EVC-CLAP. Central to FuEncoder is an adaptive intensity gate (AIG), a learnable scalar applied to the emotional embedding before fusion, giving the user direct control over expression strength. The fused features are passed to a conditional flow-matching (CFM) decoder — 6 CFM blocks using ResNet, multi-head self-attention, and FiLM conditioning — that generates the target Mel-spectrogram from Gaussian noise via an optimal-transport flow. A pre-trained BigVGAN vocoder converts the spectrogram to audio.
 
-![Overall training architecture of the proposed ClapFM-EVC framework.](assets/interspeech-2025-0203/figure-1.png)
+![Overall training architecture of the proposed ClapFM-EVC framework.](assets/interspeech-2025-0203/figure-2.png)
 
 At inference, the target emotion embedding can be obtained in three ways: from a reference speech clip directly, from a natural language prompt, or via retrieval from a pre-built reference corpus using a natural language query. This three-mode design means the system degrades gracefully when reference audio is unavailable.
 
@@ -88,10 +89,10 @@ Moderate — ClapFM-EVC advances the case that natural language prompts can repl
 
 ## Claims
 
-- Natural language prompts can control emotional voice conversion at parity with reference speech for the majority of listeners, reducing reliance on hard-to-source reference audio.
-- Flow matching produces noticeably higher speech naturalness and audio quality in emotional voice conversion than GAN and autoencoder baselines.
-- Combining categorical emotion labels with free-form prompt labels through soft-label contrastive training improves emotion embedding quality over prompt-only or label-only training.
-- An explicit scalar intensity gate applied to emotional embeddings before content-emotion fusion improves both naturalness and emotion similarity in converted speech.
+- Natural language prompts can control emotional voice conversion at parity with reference speech for the majority of listeners, reducing reliance on hard-to-source reference audio. *(§3.2.2)*
+- Flow matching produces noticeably higher speech naturalness and audio quality in emotional voice conversion than GAN and autoencoder baselines. *(§3.2.1, Table 1)*
+- Combining categorical emotion labels with free-form prompt labels through soft-label contrastive training improves emotion embedding quality over prompt-only or label-only training. *(§3.3, Table 2)*
+- An explicit scalar intensity gate applied to emotional embeddings before content-emotion fusion improves both naturalness and emotion similarity in converted speech. *(§3.3, Table 2)*
 
 ## Limitations and Open Questions
 

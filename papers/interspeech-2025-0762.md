@@ -25,8 +25,16 @@ metrics:
 code_available: null
 demo_available: null
 url: https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html
-related_concepts: [multilingual-tts, prosody-control, evaluation-metrics]
+related_concepts: [multilingual-tts, prosody-control, subjective-evaluation, flow-matching]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: ["evaluation-contribution", "empirical-benchmark"]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Christina Tannander et al.** (KTH Royal Institute of Technology / Swedish Agency for Accessible Media (MTM)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/tannander25_interspeech.html) · Demo: ? · Code: ?
@@ -59,6 +67,17 @@ The work proceeds in four stages:
 ## Novelty Assessment
 
 The psychometric calibration approach — using recursive binary search to fit a sigmoid from perceptual data — is methodologically careful and produces a principled mapping from an engineering parameter to perception, which is relatively rare in TTS controllability work. The finding that listener preferences are insertion-type-dependent (rather than uniformly preferring one accentedness level) is a useful empirical result for practical Swedish TTS deployment. The architecture contribution (adding a per-phoneme EA scalar to Matcha-TTS) is straightforward. The work is narrow in scope: one speaker, one language pair, small listener panels (16–32 participants per experiment).
+
+## Field Significance
+
+Moderate — This paper introduces a psychometric calibration methodology for aligning engineering conditioning parameters with listener perception, a useful approach that can be applied to other controllable TTS dimensions beyond accentedness. Its empirical finding that intrasentential insertion type determines preferred accentedness provides practical guidance for Swedish TTS deployment, though the narrow scope (one speaker, one language pair) limits immediate generalization.
+
+## Claims
+
+- Recursive psychometric function estimation can establish a perceptually calibrated mapping from a continuous TTS conditioning parameter to perceived accentedness, yielding at least 9 distinguishable perceptual levels for English-accented Swedish. *(§3.2, §4.2)*
+- Misalignment between transcription style and accentedness level is consistently dispreferred by listeners, regardless of which misaligned combination is presented. *(§3.3, §4.3, Table 1)*
+- Listener preference for accentedness in intrasentential English insertions is insertion-type-dependent rather than uniform, requiring fine-grained PEA control beyond binary Swedish/English switching. *(§3.4, §4.4, Table 1)*
+- Perceptual sensitivity to accent direction is asymmetric: listeners can distinguish more granular levels of English-accentedness in Swedish speech than of Swedish-accentedness in English speech. *(§4.2)*
 
 ## Limitations and Open Questions
 

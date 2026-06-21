@@ -35,6 +35,14 @@ demo_available: true
 url: https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html
 related_concepts: [prosody-control, disentanglement, self-supervised-speech]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Kyowoon Lee et al.** (KAIST / Samsung Electronics) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lee25f_interspeech.html) · Demo: ✓ · Code: ?
@@ -72,6 +80,17 @@ For prosody control, Manifold Preserving CAE achieves more accurate pitch/durati
 ## Novelty Assessment
 
 The application of counterfactual editing from interpretability research (neuron-level gradient ascent) to TTS control is genuinely novel. The manifold-preserving constraint via beta-VAE latent space, combined with VQ-VAE prototype anchoring, is a well-motivated engineering contribution that directly addresses the known failure mode of off-manifold edits. The scope is deliberately narrow (Tacotron 2 encoder-decoder architecture; single-speaker LJSpeech), so generalization to flow-matching or autoregressive LM TTS is undemonstrated. The method is model-agnostic in principle but validated on one architecture.
+
+## Field Significance
+
+Moderate — CAE introduces a retraining-free path for post-hoc prosody and pronunciation correction by applying counterfactual editing techniques from neural network interpretability to TTS encoder representations. The approach is architecturally novel in this context, though validation is limited to a single-speaker, single-architecture setting, which constrains immediate impact. It provides a useful existence proof that inference-time activation editing can substitute for module-level prosody control in encoder-decoder TTS.
+
+## Claims
+
+- Encoder representations in trained encoder-decoder TTS models encode prosodic and phonetic properties in a distributed, neuron-level format that is recoverable by linear classifiers. *(§3.1, §5.1)*
+- Gradient ascent in a compressed VAE latent space produces more controlled prosodic edits than direct activation manipulation in the ambient space, reducing off-manifold artifacts. *(§3.2.1, §5.2)*
+- Anchoring latent edits to a VQ-VAE prototype codebook is necessary to preserve phoneme identity under large prosodic shifts at inference time. *(§3.2.2, §5.2)*
+- Post-hoc activation editing can correct mispronunciations in grapheme-input TTS without a pronunciation dictionary, using a speech-only correction query as the sole supervision signal. *(§5.3, Table 1)*
 
 ## Limitations and Open Questions
 

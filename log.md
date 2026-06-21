@@ -6,6 +6,33 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-21
+
+- review | interspeech-2025-0047 | Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis | Interspeech 2025
+- review | interspeech-2025-0143 | Multimodal Prosody Modeling: A Use Case for Multilingual Sentence Mode Prediction | Interspeech 2025
+- review | interspeech-2025-0196 | SPCODEC: Split and Prediction for Neural Speech Codec | Interspeech 2025
+- review | interspeech-2025-0203 | ClapFM-EVC: High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Language and Speech | Interspeech 2025
+- review | interspeech-2025-0246 | DC-Spin: A Speaker-invariant Speech Tokenizer for Spoken Language Models | Interspeech 2025
+- review | interspeech-2025-0253 | Long-Context Speech Synthesis with Context-Aware Memory | Interspeech 2025
+- review | interspeech-2025-0310 | Exploring the Effect of Segmentation and Vocabulary Size on Speech Tokenization for Speech Language Models | Interspeech 2025
+- review | interspeech-2025-0401 | Enabling the replicability of speech synthesis perceptual evaluations | Interspeech 2025
+- review | interspeech-2025-0406 | Zero-Shot Mono-to-Binaural Speech Synthesis | Interspeech 2025
+- review | interspeech-2025-0408 | Improving User Impression of Spoken Dialogue Systems by Controlling Para-linguistic Expression Based on Intimacy | Interspeech 2025
+- review | interspeech-2025-0551 | Monotonic Attention for Robust Text-to-Speech Synthesis in Large Language Model Frameworks | Interspeech 2025
+- review | interspeech-2025-0554 | RapFlow-TTS: Rapid and High-Fidelity Text-to-Speech with Improved Consistency Flow Matching | Interspeech 2025
+- review | interspeech-2025-0575 | VoiceMark: Zero-Shot Voice Cloning-Resistant Watermarking Approach Leveraging Speaker-Specific Latents | Interspeech 2025
+- review | interspeech-2025-0596 | Facilitating Personalized TTS for Dysarthric Speakers Using Knowledge Anchoring and Curriculum Learning | Interspeech 2025
+- review | interspeech-2025-0648 | MIKU-PAL: An Automated and Standardized Multimodal Method for Speech Paralinguistic and Affect Labeling | Interspeech 2025
+- review | interspeech-2025-0704 | Differentiable Reward Optimization for LLM based TTS system | Interspeech 2025
+- review | interspeech-2025-0723 | Counterfactual Activation Editing for Post-hoc Prosody and Mispronunciation Correction in TTS Models | Interspeech 2025
+- review | interspeech-2025-0754 | EME-TTS: Unlocking the Emphasis and Emotion Link in Speech Synthesis | Interspeech 2025
+- review | interspeech-2025-0762 | Intrasentential English in Swedish TTS: perceived English-accentedness | Interspeech 2025
+- review | interspeech-2025-0779 | Intelligibility of Text-to-Speech Systems for Mathematical Expressions | Interspeech 2025
+- review | interspeech-2025-0787 | Gradual modeling of the Lombard effect by modifying speaker embeddings from a Text-To-Speech model | Interspeech 2025
+- review | interspeech-2025-0854 | Bridging the TrainingâInference Gap in TTS: Training Strategies for Robust Generative Postprocessing for Low-Resource Speakers | Interspeech 2025
+- review | interspeech-2025-0902 | VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech | Interspeech 2025
+- review | interspeech-2025-0948 | PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts | Interspeech 2025
+
 ## 2026-06-20
 
 - review | interspeech-2025-0063 | Fine-Tuning Text-to-Speech Diffusion Models Using Reinforcement Learning with Human Feedback | Interspeech 2025

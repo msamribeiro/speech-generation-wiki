@@ -1,7 +1,7 @@
 ---
 id: "interspeech-2025-0902"
 title: "VoiceQualityVC: A Voice Conversion System for Studying the Perceptual Effects of Voice Quality in Speech"
-authors: [Harm Lameris, Joakim Gustafsson, Éva Székely]
+authors: ["Harm Lameris", "Joakim Gustafsson", "Éva Székely"]
 organization: KTH Royal Institute of Technology
 venue: Interspeech
 venue_type: conference
@@ -16,21 +16,29 @@ training: [fine-tuning, supervised]
 model_size: "39,351,872 parameters"
 codec_used: "none"
 datasets_train: [LibriTTS-R]
-datasets_eval: [LibriTTS-R (held-out), custom stimuli via ElevenLabs multilingual v2]
+datasets_eval: ["LibriTTS-R (held-out)", "custom stimuli via ElevenLabs multilingual v2"]
 metrics:
-  - name: MOS
+  - name: Intimacy (Breathy vs Modal)
     value: 4.93
-    system: Breathy VoiceQualityVC (Intimacy)
-    testset: Subjective listening test (25 participants)
-  - name: MOS
+    system: VoiceQualityVC breathy voice
+    testset: Subjective listening test (25 participants, 7-point Likert)
+  - name: Intimacy (Creaky vs Modal)
     value: 4.42
-    system: Creaky VoiceQualityVC (Intimacy)
-    testset: Subjective listening test (25 participants)
+    system: VoiceQualityVC creaky voice
+    testset: Subjective listening test (25 participants, 7-point Likert)
 code_available: true
 demo_available: false
-url: https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html
-related_concepts: [voice-conversion, prosody-control, disentanglement, evaluation-metrics, subjective-evaluation]
+url: "https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html"
+related_concepts: [voice-conversion, prosody-control, evaluation-metrics, subjective-evaluation]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [engineering-integration, evaluation-contribution]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Harm Lameris et al.** (KTH Royal Institute of Technology) · [→ Paper](https://www.isca-archive.org/interspeech_2025/lameris25_interspeech.html) · Demo: ✗ · Code: ✓
@@ -64,6 +72,17 @@ Results replicate prior findings from natural speech studies and extend them to 
 ## Novelty Assessment
 
 The primary contribution is practical: a controllable, open-source, multi-feature voice quality VC tool for use as a research instrument, rather than a system optimized for speech naturalness per se. The perceptual findings (breathy = intimate/invested; creaky = detached/negative) replicate and generalize prior work using more ecologically valid multi-speaker synthesized stimuli. The architecture extends FreeVC with minimal parameter additions. The novelty is incremental on the modeling side but genuinely useful for paralinguistic and UX voice design research.
+
+## Field Significance
+
+Moderate — VoiceQualityVC provides the field with an open-source instrument for paralinguistic voice quality research, enabling stimulus creation that would otherwise require controlled phonetician recordings. The perceptual results confirm and extend findings from natural speech to synthesized multi-speaker conditions, adding replication value. The engineering contribution is modest, but the tool fills a genuine gap for researchers studying how phonation type shapes listener inference about speaker stance and social proximity.
+
+## Claims
+
+- Explicit conditioning on acoustic voice quality features (CPPS, H1-H2, H1-A3, creakiness) enables controllable manipulation of phonation type in a VC system. *(§3.2, §4.1)*
+- Breathy voice is perceived as more intimate and more invested than modal voice when paralinguistic content is held constant across speakers. *(§5.2, Table 1)*
+- Creaky voice is perceived as less intimate and less positive than modal voice, consistent with prior findings using natural speech stimuli. *(§5.2, Table 1)*
+- Fine-tuning an existing VC backbone with lightweight feature encoders is sufficient to achieve intuitive control over multiple acoustic correlates of voice quality without degrading the base model's conversion capability. *(§3.3, §4.1)*
 
 ## Limitations and Open Questions
 

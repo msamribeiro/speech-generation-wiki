@@ -34,7 +34,15 @@ code_available: null
 demo_available: true
 url: https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html
 related_concepts: [emotion-synthesis, prosody-control]
-related_papers: []
+related_papers: ["2412.10117"]
+field_significance:
+  level: "moderate"
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Haoxun Li et al.** (Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences) · [→ Paper](https://www.isca-archive.org/interspeech_2025/li25i_interspeech.html) · Demo: ✓ · Code: ?
@@ -63,6 +71,8 @@ During inference, emphasis positions are predicted by GPT-4 given the emotion la
 
 Training uses 2 A100 + 8 RTX 4090 GPUs, batch size 64, 100k steps, iSTFTNet vocoder.
 
+![Figure 1: The entire framework of our proposed model. (a) is the overall architecture diagram. (b) and (c) show the detailed structure of variance adapter and Emphasis Perception Enhancement (EPE) block, respectively.](assets/interspeech-2025-0754/figure-2.png)
+
 ## Key Results
 
 Evaluated with 11 listeners across four subjective tasks:
@@ -78,6 +88,18 @@ Objective emotion accuracy (Emotion2vec-plus-large classifier) shows EME-TTS mat
 
 The joint modeling of emphasis and emotion in a single TTS framework is claimed as the first such systematic investigation, and the EPE block's attention-modulation approach to emphasis protection is architecturally novel. The use of EmphaClass pseudo-labels for annotation avoids costly manual labeling. The practical setup — GPT-4 predicts emphasis at inference from emotion label + text — is pragmatic but introduces a dependency on a closed-source LLM. The improvement over EmoSpeech is incremental in absolute numbers but meaningful for perceptual clarity in difficult emotions.
 
+## Field Significance
+
+Moderate — EME-TTS introduces a targeted architectural mechanism (the EPE block) for preserving emphasis clarity under expressive emotional conditions, addressing an interaction that prior emotional TTS work left unmodeled. The contribution is architecturally concrete but scoped to a small single-language dataset, limiting its immediate generalisability. It provides useful evidence that joint emotion-emphasis modeling requires explicit attention-level intervention rather than relying on global prosody conditioning alone.
+
+## Claims
+
+- Expressive emotional prosody can suppress or distort intended word-level emphasis without explicit attention-level intervention, degrading perceptual emphasis clarity particularly in high-arousal emotions. *(§1, §2.4)*
+- Variance-based pitch and duration features derived from emphasis pseudo-labels provide effective local prosody modulation signals for jointly supervised emphasis and emotion control in TTS. *(§2.3)*
+- An attention-bias mechanism targeting predefined emphasis positions improves listener emphasis recognition accuracy across emotion categories compared to a system without such a mechanism. *(§3.2.1, Table 1)*
+- LLM-predicted emphasis positions can substitute for manual annotation at inference time in emphasis-controllable emotional TTS, enabling controllable emphasis without per-utterance human labeling. *(§1, §3.1)*
+- Joint emphasis-emotion modeling improves subjective emotion recognition accuracy for difficult emotions (angry, sad) while leaving high-arousal emotions (happy, surprise) less changed. *(§3.2.2, Table 3)*
+
 ## Limitations and Open Questions
 
 - Dataset is small (ESD, ~1.2 hours/speaker, 5 emotions) and single-language (English); broader emotional diversity and multilingual transfer are untested.
@@ -87,4 +109,6 @@ The joint modeling of emphasis and emotion in a single TTS framework is claimed 
 
 ## Wiki Connections
 
-EME-TTS contributes to [[emotion-synthesis]] by providing an explicit mechanism for emphasis-emotion co-control, and to [[prosody-control]] by demonstrating variance-based emphasis features as effective local prosody modulators. The use of SSL-based EmphaClass for pseudo-labeling connects to [[self-supervised-speech]]. It compares directly against CosyVoice2 as a zero-shot TTS baseline, linking to [[zero-shot-tts]].
+- [[emotion-synthesis]] — EME-TTS contributes an explicit mechanism for emphasis-emotion co-control, showing that attention-level intervention improves emotional expressiveness
+- [[prosody-control]] — variance-based emphasis features (pitch variance, duration variance) serve as effective local prosody modulators for emphasis prominence
+- [[2412.10117|CosyVoice 2]] — used as a zero-shot TTS baseline in subjective emotion accuracy comparisons (Tables 2 and 3)

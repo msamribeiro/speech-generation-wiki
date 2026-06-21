@@ -27,9 +27,10 @@ field_significance:
   level: moderate
   type: [evaluation-contribution, conceptual-contribution]
 generation:
-  date: 2026-06-03
+  date: 2026-06-21
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "3538db5"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -67,10 +68,10 @@ Moderate — A decade of published meta-analyses documenting poor evaluation rep
 
 ## Claims
 
-- Standard MOS and MUSHRA protocols are insufficient for evaluating modern high-quality synthetic speech, and evaluation protocol saturation now drives the need for purpose-designed alternatives.
-- Missing methodological details in published evaluation reports — particularly the exact question posed to listeners and cohort composition — materially affect the validity of cross-paper comparisons.
-- Standardising evaluation into a shareable recipe schema separates the evaluation design from its execution platform, enabling replication without re-implementing the full setup.
-- Conference review processes can meaningfully improve evaluation quality by assessing protocol justification, material appropriateness, and alignment between the statistical analysis and the evaluated hypothesis.
+- Standard MOS and MUSHRA protocols are insufficient for evaluating modern high-quality synthetic speech, and evaluation protocol saturation now drives the need for purpose-designed alternatives. *(§1, §2)*
+- Missing methodological details in published evaluation reports — particularly the exact question posed to listeners and cohort composition — materially affect the validity of cross-paper comparisons. *(§1)*
+- Standardising evaluation into a shareable recipe schema separates the evaluation design from its execution platform, enabling replication without re-implementing the full setup. *(§3.3)*
+- Conference review processes can meaningfully improve evaluation quality by assessing protocol justification, material appropriateness, and alignment between the statistical analysis and the evaluated hypothesis. *(§4, §4.1, §4.2)*
 
 ## Limitations and Open Questions
 

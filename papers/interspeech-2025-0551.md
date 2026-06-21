@@ -50,7 +50,15 @@ code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html"
 related_concepts: [autoregressive-codec-tts, zero-shot-tts, evaluation-metrics]
-related_papers: []
+related_papers: [2301.02111, 2406.02430, 2407.05407]
+field_significance:
+  level: moderate
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Yike Zhang et al.** (Tencent) · [→ Paper](https://www.isca-archive.org/interspeech_2025/zhang25c_interspeech.html) · Demo: ✓ · Code: ?
@@ -81,10 +89,25 @@ On hard-case sets (where robustness failures concentrate): Phn-Cosy-L-SMA reduce
 
 The method transfers monotonic attention from encoder-decoder models to decoder-only transformers in a technically principled way. The alignment head selection procedure is novel and practically important — applying SMA to non-alignment heads severely degrades accuracy. The focus-vs-completeness trade-off in head selection (diagonal ratio captures both, unlike prior focus-rate metrics) is a concrete algorithmic contribution. The method is alignment-free (no external aligner needed) and memory-efficient (near-zero additional cost). The demonstration at 300M / 150K-hour scale, and on both Chinese and English, is meaningful for production applicability. The limitation is that it only partially solves the robustness problem (hard-case errors are reduced but not eliminated).
 
+## Field Significance
+
+Moderate — This paper provides a practical solution to a well-known robustness failure mode in decoder-only LLM-based TTS, transferring monotonic attention mechanisms from encoder-decoder architectures without requiring forced aligners or additional memory. The diagonal-ratio head selection procedure is a reusable algorithmic contribution that other LLM-based TTS systems can adopt directly.
+
+## Claims
+
+- Selectively applying monotonic attention constraints to automatically identified alignment heads in decoder-only LLMs reduces word repetition and omission errors without degrading performance on general test sets. *(§3.1, §3.2, §5.1, Table 1)*
+- Forced-aligner-based monotonic alignment methods for LLM TTS suffer from out-of-domain generalization failure when training data is diverse, while alignment-free approaches are more robust. *(§5.1, Table 1)*
+- In decoder-only LLMs used for TTS, alignment characteristics are concentrated in a small subset of attention heads (typically 2–3 out of the full multi-head set), and applying monotonic constraints only to those heads is critical for preserving generation quality. *(§3.2, §5.2, Figure 2)*
+- Monotonic attention fine-tuning for LLM-based TTS scales to large model sizes and large-scale multilingual training corpora without degrading speaker similarity. *(§5.1, Table 1)*
+
 ## Limitations and Open Questions
 
 The method fine-tunes a pre-trained model; it remains unclear whether SMA should be applied from scratch or only as a fine-tuning step. Hard-case CER/WER remains substantially above general test performance even after SMA (e.g., Seed-ZH-Hard CER 8.53% vs. Seed-ZH CER 2.33%), meaning severe repetition/omission cases are not fully resolved. The selection of alignment heads via the diagonal ratio heuristic is validated empirically but not theoretically. Extension to streaming/online inference (where the monotonic state must be maintained across steps) is not discussed. No subjective (MOS/SMOS) evaluation is reported, making naturalness trade-offs unclear.
 
 ## Wiki Connections
 
-This paper directly advances [[autoregressive-codec-tts]] by addressing a critical robustness failure mode of LLM-based systems without sacrificing naturalness or speaker similarity. It connects to [[zero-shot-tts]] via CosyVoice as the base model and multilingual evaluation. The evaluation methodology (WER, CER, SPK-SIM across multiple hard-case test sets) informs [[evaluation-metrics]]. No in-corpus references found; primary baselines are VALL-E, VALL-E R, CosyVoice, VoiceCraft, Seed-TTS (all out-of-corpus).
+- [[autoregressive-codec-tts]] — addresses a critical robustness failure mode of LLM-based systems without sacrificing naturalness or speaker similarity
+- [[zero-shot-tts]] — builds on [[2407.05407|CosyVoice]] as the base model with multilingual evaluation across English and Chinese
+- [[2301.02111|VALL-E]] — the original neural codec language model whose decoder-only architecture motivates the alignment problem studied here
+- [[2406.02430|Seed-TTS]] — evaluation uses the SeedTTS hard-case test sets (Seed-ZH-Hard, Seed-EN) as primary robustness benchmarks
+- [[evaluation-metrics]] — evaluation methodology using WER, CER, and SPK-SIM across multiple hard-case test sets informs robustness measurement practice

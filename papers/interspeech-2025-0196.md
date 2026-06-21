@@ -39,9 +39,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-02
+  date: 2026-06-21
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "f0299ef"
+  commit: "3538db5"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -59,7 +60,7 @@ SPCODEC is a causal, time-domain, fully convolutional encoder-decoder codec buil
 
 An attention-based prediction module operates between the two groups. During encoding, the quantized low-frequency embedding `ê_l` is used to predict a correction that is subtracted from `e_h` before quantization, removing the component predictable from low frequencies and thus reducing bitstream redundancy. During decoding, the same module adds back the predicted component to the quantized high-frequency representation before the decoder reconstructs the full waveform. The two groups use separate quantizers `Q_l` and `Q_h` with independent codebooks. At 16 kHz, the system uses eight 8-bit codebooks for `Q_l` and four 4-bit codebooks for `Q_h`, totalling 10.66 kbps. At 32 kHz, eight 10-bit and four 10-bit codebooks yield 16 kbps. The SP module itself adds only 33K parameters and 4.3 MMAC/s of compute.
 
-![SPCODEC: a time domain encoder-quantizer-decoder codec architecture which is trained end-to-end with reconstruction loss, VQ loss, adversarial loss and feature matching loss for both reconstructed low frequency waveform and 'low+high' frequency waveform. Latent embedding is split into disentangled two parts, which are supervised to contain high and low frequency information, respectively. Prediction module: high frequency feature is predicted from input low and high frequency information for encoder's feature redundancy removal and decoder's feature fusion.](assets/interspeech-2025-0196/figure-1.png)
+![SPCODEC: a time domain encoder-quantizer-decoder codec architecture which is trained end-to-end with reconstruction loss, VQ loss, adversarial loss and feature matching loss for both reconstructed low frequency waveform and 'low+high' frequency waveform. Latent embedding is split into disentangled two parts, which are supervised to contain high and low frequency information, respectively. Prediction module: high frequency feature is predicted from input low and high frequency information for encoder's feature redundancy removal and decoder's feature fusion.](assets/interspeech-2025-0196/figure-2.png)
 
 Training follows the DAC paradigm: adversarial loss using a multi-period discriminator and a complex multi-scale band-splitting STFT discriminator, feature matching loss, and multi-resolution spectrogram reconstruction loss, applied jointly to both the full-band and low-band outputs. The system is causal (zero algorithmic delay), achieving a real-time factor of 8.6× for WB and 3.9× for SWB on a single CPU core.
 
@@ -82,10 +83,10 @@ Moderate — SPCODEC demonstrates that imposing spectral structure on learned co
 
 ## Claims
 
-- Imposing spectral structure on codec latent embeddings through supervised disentanglement improves compression efficiency over unstructured group quantization.
-- Inter-group prediction in neural codecs, where high-frequency representations are predicted from quantized low-frequency components, reduces bitstream redundancy without proportional increases in model size.
-- The performance advantage of latent-space spectral decomposition in neural codecs scales with bitrate, with larger gains at higher bitrates where low-frequency quality is sufficient to anchor the prediction.
-- Causal, time-domain neural speech codecs can match or exceed traditional codecs (EVS, Opus) on perceptual quality metrics at equivalent bitrates.
+- Imposing spectral structure on codec latent embeddings through supervised disentanglement improves compression efficiency over unstructured group quantization. *(§2.2, §3.3, Table 3)*
+- Inter-group prediction in neural codecs, where high-frequency representations are predicted from quantized low-frequency components, reduces bitstream redundancy without proportional increases in model size. *(§2.2, §3.1)*
+- The performance advantage of latent-space spectral decomposition in neural codecs scales with bitrate, with larger gains at higher bitrates where low-frequency quality is sufficient to anchor the prediction. *(§3.3, Table 3)*
+- Causal, time-domain neural speech codecs can match or exceed traditional codecs (EVS, Opus) on perceptual quality metrics at equivalent bitrates. *(§3.2, Table 2)*
 
 ## Limitations and Open Questions
 

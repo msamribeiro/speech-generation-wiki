@@ -47,6 +47,14 @@ demo_available: true
 url: https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html
 related_concepts: [voice-conversion, zero-shot-tts, neural-codec, disentanglement]
 related_papers: [2407.05407, 2410.06885]
+field_significance:
+  level: "moderate"
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Haiyun Li et al.** (Tsinghua University) · [→ Paper](https://www.isca-archive.org/interspeech_2025/li25g_interspeech.html) · Demo: ✓ · Code: ✓
@@ -71,6 +79,8 @@ VoiceMark consists of three components built on a pretrained SpeechTokenizer RVQ
 
 The watermark decoder is trained jointly with the embedder using a weighted loss combining VAD cross-entropy, speaker cosine similarity loss, multi-scale mel spectrogram loss, adversarial loss, and watermark decoding cross-entropy.
 
+![The overall architecture of our proposed VoiceMark.](assets/interspeech-2025-0575/figure-3.png)
+
 ## Key Results
 
 On three zero-shot VC models (CosyVoice, F5-TTS, MaskGCT), VoiceMark achieves bit-wise accuracy of 0.964 / 0.979 / 0.957 respectively, with False Attribution Rate (FAR, 1-vs-99 candidates) of 0.112 / 0.070 / 0.141. In contrast, AudioSeal, WavMark, and Timbre all fall to ACC ≈ 0.5 and FAR ≈ 1.0 — effectively random performance. On traditional audio editing (resampling, amplitude, filtering, MP3), VoiceMark performs comparably to baselines, with 0.965–0.995 ACC and 0.014–0.109 FAR.
@@ -83,10 +93,21 @@ Ablation confirms that speaker-specific latent embedding (vs. generic waveform-l
 
 The central insight — that zero-shot VC models must transfer speaker-specific latents to produce high-similarity clones, and therefore a watermark embedded in those latents will also be transferred — is genuinely novel and well-reasoned. Prior work had not observed this latent-space invariance property. The VAD-based loss and VC-simulated augmentations are practical engineering contributions that address the silence/voiceless-frame and distortion problems. The architecture builds on SpeechTokenizer and standard transformer components; the novelty is in the application and the training regime, not the architecture itself.
 
+## Field Significance
+
+Moderate — VoiceMark introduces the first attribution mechanism that remains effective after zero-shot voice cloning, addressing a gap that emerged as zero-shot VC models became capable enough to evade training-time watermark embedding. The core insight — that speaker-specific latents are invariant through the zero-shot synthesis process — provides a principled foundation for future watermarking work targeting neural generative models. Audio quality trade-offs (PESQ 2.2 vs. 4.32 for waveform-level methods) suggest the approach is more suitable for forensic attribution than transparent production use.
+
+## Claims
+
+- Watermarks embedded in the speaker-specific latent space of a neural codec survive zero-shot voice cloning synthesis, whereas waveform-level watermarks do not. *(§1, §3.5, Table 1)*
+- The effectiveness of latent-space watermarking in zero-shot VC scenarios depends on the VC model preserving speaker-specific latents to achieve high speaker similarity. *(§1, §2.1)*
+- VC-simulated augmentation during training — without exposure to actual VC model outputs — is sufficient to achieve robust watermark recovery from synthesized audio. *(§2.3, §3.6, Table 2)*
+- Codec-based watermarking pipelines introduce perceptible audio quality degradation compared to waveform-level methods, representing a trade-off between VC resistance and transparency. *(§3.7, Table 3)*
+
 ## Limitations and Open Questions
 
 The model is trained only on VCTK, a small clean dataset, which limits robustness to out-of-distribution audio editing (the paper notes lower-than-1.0 ACC on traditional editing, likely due to this). The audio quality impact (PESQ 2.2 vs. 4.32 for AudioSeal) is significant and may be prohibitive for some use cases. The approach does not address adversarial attacks specifically designed to remove latent-space watermarks. Coverage is limited to English; multilingual generalization is untested. Finally, the approach assumes the zero-shot VC model must preserve speaker-specific latents for high similarity — models that do not operate this way could evade detection.
 
 ## Wiki Connections
 
-VoiceMark builds directly on the zero-shot VC capabilities of [[2407.05407]] (CosyVoice) and [[2410.06885]] (F5-TTS) as the attack models it is designed to survive. It leverages the SpeechTokenizer disentanglement scheme from the [[neural-codec]] concept. The speaker-specific latent disentanglement is central to the [[disentanglement]] concept. As a tool for protecting [[voice-conversion]] and [[zero-shot-tts]] outputs, it represents a security/attribution layer on top of those systems.
+VoiceMark builds directly on the zero-shot VC capabilities of [[2407.05407|CosyVoice]] and [[2410.06885|F5-TTS]] as the attack models it is designed to survive. It leverages the SpeechTokenizer disentanglement scheme from the [[neural-codec]] concept. The speaker-specific latent disentanglement is central to the [[disentanglement]] concept. As a tool for protecting [[voice-conversion]] and [[zero-shot-tts]] outputs, it represents a security/attribution layer on top of those systems.

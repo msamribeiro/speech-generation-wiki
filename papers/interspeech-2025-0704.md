@@ -46,7 +46,15 @@ code_available: null
 demo_available: null
 url: https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html
 related_concepts: [rlhf-speech, autoregressive-codec-tts, evaluation-metrics, emotion-synthesis]
-related_papers: [2406.02430, 2412.10117, 2410.06885]
+related_papers: [2406.02430, 2412.10117, 2025.acl-long.313]
+field_significance:
+  level: "high"
+  type: [architectural-novelty]
+generation:
+  date: 2026-06-21
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "3538db5"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Changfeng Gao et al.** (Alibaba Group (Tongyi Lab)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/gao25d_interspeech.html) · Demo: ? · Code: ?
@@ -61,7 +69,11 @@ Applying RLHF to neural codec LM-based TTS faces three specific challenges not p
 
 **Token2Reward prediction.** Instead of decoding codec tokens to audio before computing rewards, DiffRO trains a reward model that operates directly on predicted codec token sequences. The language model generates a codec token sequence Ũ via autoregressive sampling, then the reward model predicts the ASR transcript from Ũ. The reward is the log-probability that the predicted transcript matches the input text — effectively using ASR performance on the codec token space as a proxy for pronunciation quality. To make this differentiable for end-to-end optimization, Gumbel-Softmax replaces the argmax token sampling operation, allowing gradients to flow from the reward signal back through the LM parameters without PPO's policy gradient loop.
 
+![Comparison between the DPO and the proposed DiffRO. DiffRO can directly predict the reward score from the codec token sequence rather than the audio, and it can directly optimize the LM with back-propagation rather than the RL training loop like DPO.](assets/interspeech-2025-0704/figure-2.png)
+
 **Multi-Task Reward (MTR) model.** A codec-based speech understanding model is trained jointly on four downstream tasks: ASR (WER), speech emotion recognition (SER, cross-entropy), speech quality assessment (SQA, MOS prediction via 5-class CE), and audio event detection. SenseVoice's CNN front-end is replaced with an embedding layer that accepts codec token inputs; attention pooling heads are added per task. Training uses 13,000+ hours of in-house ASR data with pseudo-labels for emotion (cross-entropy), MOS (5-class classification), age/gender (CE/MSE), and events (binary CE). The MTR model is used as a reward to guide the LM to generate tokens that carry desired attribute information.
+
+![The Structure of the proposed MTR model. ASR, SER, SQA and AED are used for the downstream task in this figure and can be adjusted according to requirements.](assets/interspeech-2025-0704/figure-3.png)
 
 **Training setup.** The baseline system is CosyVoice 2.0-0.5B. SFT fine-tuning uses 4,000 samples from 5 speakers (mostly Mandarin). RL training uses 10,000 Internet-sourced texts (90% Chinese/English, 10% Japanese/Korean). β=0.1 KL penalty, lr=1e-5, 4 × A800 GPUs.
 
@@ -79,7 +91,20 @@ Applying RLHF to neural codec LM-based TTS faces three specific challenges not p
 
 ## Novelty Assessment
 
-The Gumbel-Softmax trick applied to codec token sampling to make RLHF fully differentiable is the most technically novel contribution — it eliminates the PPO/DPO loop for the LM optimization step. Computing rewards directly on codec tokens (bypassing FM+vocoder) is a practical speedup that also sidesteps the diversity problem. The MTR model as a multi-dimensional reward is a natural extension but requires substantial training infrastructure. The emergent multilingual generalization and learned paralinguistic vocalizations (laughter, breaths) from the emotion reward are interesting byproducts. The approach is built on and validated with CosyVoice 2.0 ([[2412.10117]]) specifically.
+The Gumbel-Softmax trick applied to codec token sampling to make RLHF fully differentiable is the most technically novel contribution — it eliminates the PPO/DPO loop for the LM optimization step. Computing rewards directly on codec tokens (bypassing FM+vocoder) is a practical speedup that also sidesteps the diversity problem. The MTR model as a multi-dimensional reward is a natural extension but requires substantial training infrastructure. The emergent multilingual generalization and learned paralinguistic vocalizations (laughter, breaths) from the emotion reward are interesting byproducts. The approach is built on and validated with [[2412.10117|CosyVoice 2.0]] specifically.
+
+## Field Significance
+
+> [!tip]
+> High — DiffRO introduces a genuinely new mechanism for applying RLHF to codec LM-based TTS: by operating rewards directly on codec tokens and using Gumbel-Softmax to make token sampling differentiable, it removes the most expensive bottleneck in TTS RLHF pipelines (audio decoding) and enables gradient-based optimization without PPO. The multi-task reward model further provides a practical template for multi-dimensional speech quality optimization beyond simple pronunciation accuracy.
+
+## Claims
+
+- Computing rewards directly on codec tokens rather than synthesized audio reduces the computational cost of RLHF for codec LM-based TTS systems without sacrificing reward signal quality. *(§3.1)*
+- Differentiable reward optimization via Gumbel-Softmax can replace PPO-style policy gradient training for codec LM fine-tuning, enabling direct backpropagation through the reward model. *(§3.1, §2.2)*
+- A multi-task reward model trained on codec tokens can simultaneously improve pronunciation accuracy, emotion expressiveness, and audio quality in a single RL training phase. *(§3.2, §4.3)*
+- RLHF fine-tuning on Mandarin and English data generalizes to unseen languages (Japanese, Korean) when the reward signal targets phonetic accuracy rather than language-specific patterns. *(§4.2, Table 2)*
+- Quality attributes governed primarily by the flow-matching and vocoder stages (MOS, speaker characteristics) are largely resistant to optimization by LM-level RLHF alone. *(§4.3.2, Table 4)*
 
 ## Limitations and Open Questions
 
@@ -87,6 +112,6 @@ DiffRO only optimizes the LM component; the FM and vocoder are frozen, which lim
 
 ## Wiki Connections
 
-DiffRO is a direct contribution to [[rlhf-speech]], advancing the state of the art beyond DPO for codec LM-based TTS. It builds on [[autoregressive-codec-tts]] — specifically CosyVoice 2.0 ([[2412.10117]]) — as the base system. The emotion control experiment connects to [[emotion-synthesis]]. The MTR model draws on ideas from [[evaluation-metrics]] by operationalizing multiple evaluation dimensions as differentiable rewards. SeedTTS ([[2406.02430]]) provides the seed-tts-eval benchmark used for evaluation. F5-TTS ([[2025.acl-long.313]]) is included as an emotion control baseline.
+DiffRO is a direct contribution to [[rlhf-speech]], advancing the state of the art beyond DPO for codec LM-based TTS. It builds on [[autoregressive-codec-tts]] — specifically CosyVoice 2.0 ([[2412.10117|CosyVoice 2.0]]) — as the base system. The emotion control experiment connects to [[emotion-synthesis]]. The MTR model draws on ideas from [[evaluation-metrics]] by operationalizing multiple evaluation dimensions as differentiable rewards. SeedTTS ([[2406.02430|SeedTTS]]) provides the seed-tts-eval benchmark used for evaluation. F5-TTS ([[2025.acl-long.313|F5-TTS]]) is included as an emotion control baseline.
 
-Related RLHF-for-TTS work from Interspeech 2025: [[interspeech-2025-0063]] (DLPO) applies RLHF to diffusion TTS rather than codec LM TTS, using the original DDPM loss as a reward penalty. DiffRO and DLPO together establish RLHF as applicable across both major TTS paradigms (AR codec LM and diffusion), with DiffRO's Gumbel-Softmax differentiable sampling vs. DLPO's task-specific loss regularization as complementary solutions to the RL credit assignment problem in TTS.
+Related RLHF-for-TTS work from Interspeech 2025: [[interspeech-2025-0063|DLPO]] applies RLHF to diffusion TTS rather than codec LM TTS, using the original DDPM loss as a reward penalty. DiffRO and DLPO together establish RLHF as applicable across both major TTS paradigms (AR codec LM and diffusion), with DiffRO's Gumbel-Softmax differentiable sampling vs. DLPO's task-specific loss regularization as complementary solutions to the RL credit assignment problem in TTS.
