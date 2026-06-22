@@ -6,6 +6,44 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-23
+
+- review | 2025.acl-long.654 | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL 2025
+- review | 2507.20091 | ProsodyLM: Uncovering the Emerging Prosody Processing Capabilities in Speech Language Models | arXiv 2025
+
+## 2026-06-22
+
+- review | interspeech-2025-0469 | Developing High-Quality TTS for Punjabi and Urdu: Benchmarking against MMS Models | Interspeech 2025
+- review | interspeech-2025-0973 | A Dataset for Automatic Assessment of TTS Quality in Spanish | Interspeech 2025
+- review | 2025.acl-demo.37 | RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding | ACL 2025
+- review | 2412.17048 | Why Do Speech Language Models Fail to Generate Semantically Coherent Outputs? A Modality Evolving Perspective | arXiv 2026
+- review | interspeech-2025-0989 | HiFiTTS-2: A Large-Scale High Bandwidth Speech Dataset | Interspeech 2025
+- review | interspeech-2025-1034 | Non-Standard Accent TTS Support via Large Multi-Accent Frontend Pronunciation Knowledge Transfer | Interspeech 2025
+- review | 2025.acl-industry.42 | Scaling Under-Resourced TTS: A Data-Optimized Framework with Advanced Acoustic Modeling for Thai | ACL 2025
+- review | 2502.11128 | FELLE: Autoregressive Speech Synthesis with Token-Wise Coarse-to-Fine Flow Matching | arXiv 2025
+- review | interspeech-2025-1066 | Score-Based Training for Energy-Based TTS Models | Interspeech 2025
+- review | interspeech-2025-1101 | ZSDEVC: Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism | Interspeech 2025
+- review | 2025.acl-long.1252 | Finding A Voice: Exploring the Potential of African American Dialect and Voice Generation for Chatbots | ACL 2025
+- review | 2503.04721 | Full-Duplex-Bench: A Benchmark to Evaluate Full-duplex Spoken Dialogue Models on Turn-taking Capabilities | arXiv 2025
+- review | interspeech-2025-1122 | BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing | Interspeech 2025
+- review | interspeech-2025-1344 | Parameter-Efficient Fine-Tuning for Low-Resource Text-to-Speech via Cross-Lingual Continual Learning | Interspeech 2025
+- review | 2025.acl-long.1471 | The time scale of redundancy between prosody and linguistic context | ACL 2025
+- review | 2504.10352 | Pseudo-Autoregressive Neural Codec Language Models for Efficient Zero-Shot Text-to-Speech Synthesis | arXiv 2025
+- review | interspeech-2025-1440 | FreeCodec: A Disentangled Neural Speech Codec with Fewer Tokens | Interspeech 2025
+- review | interspeech-2025-1595 | Scheduled Interleaved Speech-Text Training for Speech-to-Speech Translation with LLMs | Interspeech 2025
+- review | 2025.acl-long.1498 | Analyzing and Mitigating Inconsistency in Discrete Speech Tokens for Neural Codec Language Models | ACL 2025
+- review | 2506.21619 | IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot Text-to-Speech | arXiv 2025
+- review | interspeech-2025-1779 | ReFlow-VC: Zero-shot Voice Conversion Based on Rectified Flow and Speaker Feature Optimization | Interspeech 2025
+- review | interspeech-2025-1993 | Defending Unauthorized Voice Cloning with Watermark-Aware Codecs | Interspeech 2025
+- review | 2025.acl-long.313 | F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching | ACL 2025
+- review | 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv 2026
+- review | interspeech-2025-2043 | Training-Free Voice Conversion with Factorized Optimal Transport | Interspeech 2025
+- review | interspeech-2025-2447 | Accelerating Autoregressive Speech Synthesis Inference With Speech Speculative Decoding | Interspeech 2025
+- review | 2025.acl-long.388 | Distilling an End-to-End Voice Assistant Without Instruction Training Data | ACL 2025
+- review | 2507.14534 | Conan: A Chunkwise Online Network for Zero-Shot Adaptive Voice Conversion | arXiv 2025
+- review | interspeech-2025-2449 | Accelerating Flow-Matching-Based Text-to-Speech via Empirically Pruned Step Sampling | Interspeech 2025
+- review | 2025.acl-long.598 | Advancing Zero-shot Text-to-Speech Intelligibility across Diverse Domains via Preference Alignment | ACL 2025
+
 ## 2026-06-21
 
 - review | interspeech-2025-0047 | Revival with Voice: Multi-modal Controllable Text-to-Speech Synthesis | Interspeech 2025

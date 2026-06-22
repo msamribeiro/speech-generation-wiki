@@ -47,6 +47,14 @@ demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html"
 related_concepts: [multilingual-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [dataset-contribution, engineering-integration]
+generation:
+  date: 2026-06-22
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "24ea64d"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Fatima Naseem et al.** (University of Engineering and Technology, Lahore (KICS)) · [→ Paper](https://www.isca-archive.org/interspeech_2025/naseem25_interspeech.html) · Demo: ? · Code: ?
@@ -80,6 +88,18 @@ Real-time factor: Tacotron 1 (RTF = 0.17, 6.9M params) is suitable for real-time
 ## Novelty Assessment
 
 The primary contribution is practical and linguistic rather than architectural: the creation of the first dedicated Punjabi Shahmukhi phonetic lexicon and TTS training corpus, along with script-specific text-analysis modules. The paper does not propose new neural architectures; it applies well-established Tacotron models in a rigorous multilingual low-resource setting. The comprehensive phoneme-level evaluation methodology (DRT, MRT, SUS) is more thorough than typical TTS papers in this space. The finding that phoneme-based training is necessary (vs. character-based MMS) for these languages is a meaningful empirical result.
+
+## Field Significance
+
+Moderate — This paper provides the first dedicated TTS resources for Punjabi Shahmukhi (corpus, phonetic lexicon, and text-analysis module), filling a gap that large-scale multilingual systems like MMS leave unaddressed. Its significance is primarily as a dataset and engineering contribution for an underserved language pair rather than a methodological advance; the phoneme-based pipeline approach is well-established, but the linguistic resources created here enable future work on both languages.
+
+## Claims
+
+- Phoneme-based TTS training substantially outperforms character-based multilingual approaches in intelligibility for low-resource South Asian languages, as measured by WER, CER, and subjective MOS. *(§4.2, §4.3)*
+- Script-mismatch workarounds such as transliteration introduce cumulative errors that degrade TTS quality below what a dedicated script-native model achieves. *(§1, §5)*
+- Large-scale multilingual TTS models fail to synthesize numerals and language-specific symbols correctly in languages whose text processing was not explicitly handled at training time, causing systematic intelligibility failures. *(§4.2, §4.3)*
+- Phoneme-level evaluation metrics (DRT/MRT) expose word-final articulatory weaknesses in TTS systems that aggregate perceptual scores like MOS do not adequately capture. *(§4.3.1)*
+- For low-resource encoder-decoder TTS, simpler architectures can match or exceed larger ones in transcription accuracy while offering substantially lower inference latency. *(§4.1, §4.2)*
 
 ## Limitations and Open Questions
 

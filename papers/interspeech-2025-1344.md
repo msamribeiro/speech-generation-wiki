@@ -37,15 +37,16 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/kwon25_interspeech.html"
-related_concepts: ["flow-matching", "multilingual-tts", "speaker-adaptation", "zero-shot-tts", "self-supervised-speech"]
-related_papers: ["2410.06885", "2412.10117"]
+related_concepts: ["flow-matching", "multilingual-tts", "speaker-adaptation", "zero-shot-tts"]
+related_papers: ["2025.acl-long.313", "2412.10117"]
 field_significance:
   level: moderate
   type: [engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -59,7 +60,7 @@ Adapting a multilingual TTS model to a new language typically requires large mul
 
 ## Method
 
-The system builds on F5-TTS (arXiv:2410.06885), a fully non-autoregressive flow-matching TTS model based on a Diffusion Transformer (DiT) with ConvNeXt V2 text embeddings. Rather than fine-tuning the 335.8M-parameter base model, three lightweight adapter modules are inserted while keeping all pre-trained weights frozen:
+The system builds on [[2025.acl-long.313|F5-TTS]], a fully non-autoregressive flow-matching TTS model based on a Diffusion Transformer (DiT) with ConvNeXt V2 text embeddings. Rather than fine-tuning the 335.8M-parameter base model, three lightweight adapter modules are inserted while keeping all pre-trained weights frozen:
 
 **Conditioning Adapter** attaches a Conv-Adapter to the depth-wise convolution layers of the ConvNeXt V2 text encoder. It uses a compression factor of 0.25 with a kernel size of 3, modulating feature responses via squeeze-and-excitation parameters to adapt the text encoder to new phonemic patterns. A key empirical finding is that adapting the full text encoder (rather than using a compressed adapter) is necessary for reliable Korean pronunciation — the compression factor that works for English adaptation is too restrictive for a typologically distinct language.
 
@@ -90,10 +91,10 @@ Moderate — This paper advances the practitioner's toolkit for low-resource mul
 
 ## Claims
 
-- Adapter-based fine-tuning preserves zero-shot TTS capability in multilingual models more reliably than full parameter fine-tuning on single-speaker low-resource data.
-- Cross-lingual adaptation of TTS models is feasible with fewer than 15 hours of single-speaker data when a multilingual pre-trained foundation is available.
-- In flow-matching TTS fine-tuning, the text conditioning module requires more parameters to adapt to a typologically distant language than the acoustic generation module.
-- Low-rank adaptation in DiT-based TTS models exhibits a rank-dependent trade-off between linguistic accuracy and speaker generalisation, with optimal rank dependent on dataset scale.
+- Adapter-based fine-tuning preserves zero-shot TTS capability in multilingual models more reliably than full parameter fine-tuning on single-speaker low-resource data. *(§4.3, Table 2)*
+- Cross-lingual adaptation of TTS models is feasible with fewer than 15 hours of single-speaker data when a multilingual pre-trained foundation is available. *(§4.1.1, §4.2)*
+- In flow-matching TTS fine-tuning, the text conditioning module requires more parameters to adapt to a typologically distant language than the acoustic generation module. *(§4.4.1)*
+- Low-rank adaptation in DiT-based TTS models exhibits a rank-dependent trade-off between linguistic accuracy and speaker generalisation, with optimal rank dependent on dataset scale. *(§4.4.3)*
 
 ## Limitations and Open Questions
 
@@ -104,6 +105,9 @@ The paper does not address languages with non-Latin scripts that differ even mor
 
 ## Wiki Connections
 
-Concept pages most relevant to this paper: [[flow-matching]], [[multilingual-tts]], [[zero-shot-tts]], [[speaker-adaptation]], [[self-supervised-speech]].
-
-In-corpus papers this work builds on: [[2410.06885]] (F5-TTS, the pre-trained base model), [[2412.10117]] (CosyVoice 2, used as a large-scale multilingual baseline).
+- [[flow-matching]] — PEFT-TTS fine-tunes a flow-matching base model (F5-TTS) for cross-lingual adaptation
+- [[multilingual-tts]] — cross-lingual Korean adaptation from an English/Chinese pre-trained model
+- [[zero-shot-tts]] — PEFT preserves zero-shot capability that full fine-tuning destroys
+- [[speaker-adaptation]] — adapter-based approach to single-speaker low-resource adaptation
+- [[2025.acl-long.313|F5-TTS]] — the pre-trained base model this work adapts
+- [[2412.10117|CosyVoice 2]] — large-scale multilingual baseline used for comparison

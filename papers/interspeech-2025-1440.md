@@ -2,7 +2,7 @@
 id: "interspeech-2025-1440"
 title: "FreeCodec: A Disentangled Neural Speech Codec with Fewer Tokens"
 authors: ["Youqiang Zheng", "Weiping Tu", "Yueteng Kang", "Jie Chen", "Yike Zhang", "Li Xiao", "Yuhong Yang", "Long Ma"]
-organization: null
+organization: "Wuhan University; Tencent Youtu Lab"
 venue: Interspeech
 venue_type: conference
 year: 2025
@@ -51,9 +51,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -99,10 +100,10 @@ Moderate — FreeCodec advances the state of self-supervised disentangled neural
 
 ## Claims
 
-- Self-supervised disentanglement of speech into content, speaker, and prosody streams can match or exceed supervised codec quality at significantly lower bitrate.
-- Codec coding efficiency is more sensitive to information factorisation than to raw model capacity or bitrate allocation.
-- Routing WavLM supervision to the decoder rather than the encoder during training improves speaker-content disentanglement for voice conversion.
-- Ultra-low-bitrate codecs (below 0.5 kbps) can achieve MUSHRA scores competitive with codecs operating at 2–3 kbps when disentanglement is applied to reduce frame-level redundancy.
+- Self-supervised disentanglement of speech into content, speaker, and prosody streams can match or exceed supervised codec quality at significantly lower bitrate. *(§4.1, Table 1, Table 2)*
+- Codec coding efficiency is more sensitive to information factorisation than to raw model capacity or bitrate allocation. *(§4.1, Table 1)*
+- Routing WavLM supervision to the decoder rather than the encoder during training improves speaker-content disentanglement for voice conversion. *(§2.5, §4.2)*
+- Ultra-low-bitrate codecs (below 0.5 kbps) can achieve MUSHRA scores competitive with codecs operating at 2–3 kbps when disentanglement is applied to reduce frame-level redundancy. *(§4.1, Table 2)*
 
 ## Limitations and Open Questions
 
@@ -113,4 +114,4 @@ Evaluation is restricted to English (LibriSpeech and VCTK). Generalisation to ot
 
 ## Wiki Connections
 
-FreeCodec builds on [[neural-codec]] by extending the VQ-VAE paradigm with explicit [[disentanglement]] of speech attributes. The self-supervised guidance from WavLM links to [[self-supervised-speech]] representations as training targets. The voice conversion capability enabled by the speaker-content separation is directly relevant to [[voice-conversion]]. The continuous speaker stream in v1/v3 targets [[zero-shot-tts]] pipelines where low token count reduces autoregressive generation cost (as in [[2301.02111]]). The prosody encoder design touches [[prosody-control]] and the speaker encoder approach relates to [[speaker-adaptation]].
+FreeCodec builds on [[neural-codec]] by extending the VQ-VAE paradigm with explicit [[disentanglement]] of speech attributes. The self-supervised guidance from WavLM links to [[self-supervised-speech]] representations as training targets. The voice conversion capability enabled by the speaker-content separation is directly relevant to [[voice-conversion]]. The continuous speaker stream in v1/v3 targets [[zero-shot-tts]] pipelines where low token count reduces autoregressive generation cost (as in [[2301.02111|VALL-E]]). The prosody encoder design touches [[prosody-control]] and the speaker encoder approach relates to [[speaker-adaptation]].

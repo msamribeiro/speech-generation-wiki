@@ -59,9 +59,10 @@ field_significance:
   level: moderate
   type: [engineering-integration, conceptual-contribution]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -97,10 +98,10 @@ Moderate — This paper addresses a real and growing security concern for open-s
 
 ## Claims
 
-- Embedding watermark detection directly into codec encoder training is a viable alternative to post-hoc or hard-coded watermark gates for protecting open-source zero-shot TTS models.
-- Neural codec architectures are a natural intervention point for access-control in speaker-conditioned TTS because they mediate all speaker information transfer from prompt to synthesis.
-- Training-time augmentation with common audio distortions substantially improves a codec's robustness to watermark removal attacks without degrading reconstruction quality on clean audio.
-- Codec-level defenses for voice cloning create a structural barrier to adaptation attacks because TTS models trained on modified codec distributions cannot be trivially swapped to unprotected codecs without retraining.
+- Embedding watermark detection directly into codec encoder training is a viable alternative to post-hoc or hard-coded watermark gates for protecting open-source zero-shot TTS models. *(§2.2, §3.3.1)*
+- Neural codec architectures are a natural intervention point for access-control in speaker-conditioned TTS because they mediate all speaker information transfer from prompt to synthesis. *(§1, §2.3)*
+- Training-time augmentation with common audio distortions substantially improves a codec's robustness to watermark removal attacks without degrading reconstruction quality on clean audio. *(§2.2, Table 1, Table 2)*
+- Codec-level defenses for voice cloning create a structural barrier to adaptation attacks because TTS models trained on modified codec distributions cannot be trivially swapped to unprotected codecs without retraining. *(§2.3, §3.3.2)*
 
 ## Limitations and Open Questions
 
@@ -111,4 +112,9 @@ The evaluation is conducted only on the VALL-E architecture and EnCodec backbone
 
 ## Wiki Connections
 
-This paper builds on [[2301.02111]] (VALL-E) as the target TTS system for its codec-level defense. Relevant concept pages: [[zero-shot-tts]], [[neural-codec]], [[autoregressive-codec-tts]], [[voice-conversion]], [[evaluation-metrics]].
+- [[2301.02111|VALL-E]] is the downstream zero-shot TTS system used to demonstrate the codec-level defense
+- [[zero-shot-tts]]
+- [[neural-codec]]
+- [[autoregressive-codec-tts]]
+- [[voice-conversion]]
+- [[evaluation-metrics]]

@@ -12,7 +12,7 @@ ingested_date: "2026-05-30"
 task: [TTS, evaluation]
 architecture: []
 conditioning: []
-training: [self-supervised, fine-tuning, supervised]
+training: [supervised, fine-tuning]
 model_size: "NISQA fine-tuned: 304,539 params; DenseMOS: 115,086 params (excluding wav2vec 2.0)"
 codec_used: none
 datasets_train: ["custom Spanish TTS evaluation dataset (4,326 samples from 52 systems/voices)", "NISQA Corpus (English, for pretraining)"]
@@ -37,8 +37,16 @@ metrics:
 code_available: true
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.html"
-related_concepts: [evaluation-metrics, subjective-evaluation, self-supervised-speech]
+related_concepts: [evaluation-metrics, subjective-evaluation, self-supervised-speech, multilingual-tts]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [dataset-contribution, evaluation-contribution]
+generation:
+  date: 2026-06-22
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "24ea64d"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Alejandro Sosa Welford et al.** · [→ Paper](https://www.isca-archive.org/interspeech_2025/sosawelford25_interspeech.html) · Demo: ? · Code: ✓
@@ -68,6 +76,17 @@ NISQA v1.0 (out-of-box, trained on English) achieves PCC=0.71, MAE=0.99, RMSE=1.
 The primary contribution is the dataset itself — the first Spanish MOS corpus for automatic TTS evaluation — rather than the models. The NISQA fine-tuning is a straightforward transfer learning exercise. DenseMOS is a simple, effective architecture drawing on prior work using wav2vec 2.0 for speech tasks; its comparable performance to fine-tuned NISQA with far fewer parameters (115k vs. 305k) is interesting. The finding that CNN-based local features dominate over contextual transformer representations for MOS prediction adds to growing understanding of what representations matter for perceptual quality estimation.
 
 The dataset is released publicly alongside source code, making it a durable community resource. Its relatively small scale (4,326 samples, mostly single ratings) and geographic skew toward Rioplatense Spanish (23/52 voices) are acknowledged limitations.
+
+## Field Significance
+
+Moderate — This paper fills a concrete gap in the evaluation infrastructure for Spanish TTS: no labelled naturalness corpus existed for training or benchmarking automatic MOS predictors in that language. The automatic predictors introduced (fine-tuned NISQA, DenseMOS) are lightweight rather than state-of-the-art, and the dataset's scale and dialect coverage are limited. Its value lies primarily in providing a community resource and a methodology that can be replicated for other under-resourced languages.
+
+## Claims
+
+- Automatic MOS predictors trained primarily on English data underperform on Spanish TTS, and language-specific fine-tuning provides meaningful improvement even with small datasets. *(§4.2, Table 2)*
+- Low-level local acoustic features from SSL encoder layers are more informative for naturalness prediction than higher-level contextual representations from deeper transformer blocks. *(§4.2, Figure 2)*
+- The scarcity of samples rated near MOS 4.0 in evaluation datasets introduces a systematic prediction bias toward the dataset mean, suggesting label distribution matters as much as dataset size for MOS predictor quality. *(§4.2)*
+- Lightweight downstream models trained on frozen SSL representations can achieve MOS prediction performance comparable to fine-tuned specialist models, despite having fewer than half the parameters. *(§4.2, Table 2)*
 
 ## Limitations and Open Questions
 

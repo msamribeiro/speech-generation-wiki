@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -85,10 +86,10 @@ Moderate — ReFlow-VC extends rectified flow from TTS to voice conversion, demo
 
 ## Claims
 
-- Rectified flow achieves comparable or better sample quality to diffusion for voice conversion at substantially fewer inference steps.
-- Conditioning speaker embeddings on concurrent content and pitch features improves speaker similarity in zero-shot voice conversion.
-- A single-step ODE solver can match the quality of dozens of diffusion steps when the flow trajectories are sufficiently linear.
-- Recursive rectification (retraining on model-generated samples) yields only marginal improvements when the initial model is already well-trained.
+- Rectified flow achieves comparable or better sample quality to diffusion for voice conversion at substantially fewer inference steps. *(§4.2, Table 1)*
+- Conditioning speaker embeddings on concurrent content and pitch features improves speaker similarity in zero-shot voice conversion. *(§3.1, §4.2, Table 1)*
+- A single-step ODE solver can match the quality of dozens of diffusion steps when the flow trajectories are sufficiently linear. *(§4.2, Table 1)*
+- Recursive rectification (retraining on model-generated samples) yields only marginal improvements when the initial model is already well-trained. *(§4.2, Table 2)*
 
 ## Limitations and Open Questions
 
@@ -99,4 +100,8 @@ Speaker similarity scores (SECS ~0.84) are competitive but still well below the 
 
 ## Wiki Connections
 
-This paper applies [[flow-matching]] principles — specifically rectified flow — to [[voice-conversion]] and demonstrates that efficient ODE transport generalises from TTS to VC. The use of HuBERT-Soft for content extraction connects to [[self-supervised-speech]] representations, and the explicit separation of content, pitch, and timbre streams relates to [[disentanglement]] approaches. For zero-shot generalisation, the work sits alongside other [[zero-shot-tts]] and VC methods that rely on reference speaker embeddings without fine-tuning.
+- [[flow-matching]] — ReFlow-VC applies the rectified flow ODE formulation to voice conversion, demonstrating that efficient transport from Gaussian noise to mel spectrograms generalises from TTS to the VC task.
+- [[voice-conversion]] — The paper is a direct contribution to zero-shot VC, comparing against Diff-VC, Free-VC, and AutoVC on a shared dataset.
+- [[self-supervised-speech]] — HuBERT-Soft is used as the core content encoder, providing continuous soft speech units for speaker-independent content extraction.
+- [[disentanglement]] — Content, pitch, and timbre are explicitly separated into distinct encoder streams before being recombined via the feature fusion module.
+- [[zero-shot-tts]] — The zero-shot setting (no target speaker training data) places this work alongside other reference-based generation methods that generalise to unseen speakers.

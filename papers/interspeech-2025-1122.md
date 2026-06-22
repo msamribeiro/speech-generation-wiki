@@ -37,15 +37,16 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/kawamura25_interspeech.html"
-related_concepts: ["streaming-tts", "evaluation-metrics", "subjective-evaluation", "transformer-enc-dec-tts", "gan-vocoder"]
+related_concepts: ["evaluation-metrics", "subjective-evaluation", "transformer-enc-dec-tts", "gan-vocoder"]
 related_papers: []
 field_significance:
   level: moderate
   type: [engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -82,10 +83,10 @@ Moderate — This paper provides the first systematic evidence that 1.58-bit QAT
 
 ## Claims
 
-- Quantisation-aware training is more effective than parameter reduction via channel shrinkage for achieving compact TTS models at equivalent model sizes.
-- The vocoder stage of a TTS pipeline is more sensitive to aggressive weight quantisation than the acoustic model, making it a disproportionate source of quality degradation.
-- Extremely low-bit (1–2 bit) weight quantisation can preserve intelligible and reasonably natural speech synthesis when applied selectively to convolutional layers.
-- Hardware-aware packing schemes are necessary to realise the theoretical storage savings of sub-byte quantisation on devices that operate in 8-bit units.
+- Quantisation-aware training is more effective than parameter reduction via channel shrinkage for achieving compact TTS models at equivalent model sizes. *(§3.3.1, Table 1)*
+- The vocoder stage of a TTS pipeline is more sensitive to aggressive weight quantisation than the acoustic model, making it a disproportionate source of quality degradation. *(§3.3.1)*
+- Extremely low-bit (1–2 bit) weight quantisation can preserve intelligible and reasonably natural speech synthesis when applied selectively to convolutional layers. *(§3.3.1, Table 1)*
+- Hardware-aware packing schemes are necessary to realise the theoretical storage savings of sub-byte quantisation on devices that operate in 8-bit units. *(§2.3)*
 
 ## Limitations and Open Questions
 
@@ -96,4 +97,7 @@ The subjective evaluation uses only 15 raters and 30 utterances, which is at the
 
 ## Wiki Connections
 
-Related concepts: [[transformer-enc-dec-tts]], [[gan-vocoder]], [[streaming-tts]], [[evaluation-metrics]], [[subjective-evaluation]]
+- [[transformer-enc-dec-tts]]
+- [[gan-vocoder]]
+- [[evaluation-metrics]]
+- [[subjective-evaluation]]

@@ -47,9 +47,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty, conceptual-contribution]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -96,10 +97,10 @@ Moderate — This paper introduces a well-motivated training criterion for EBMs 
 
 ## Claims
 
-- Score-based training objectives for energy-based models can reduce TTS inference to a single step, bypassing the many-iteration MCMC requirement of NCE-trained EBMs.
-- The choice of training objective for score-based generative models materially affects the geometry of learned score functions and their suitability for first-order iterative inference.
-- Sliced score matching and flow matching objectives are formally equivalent at a single interpolation timestep, suggesting a deeper structural connection between energy-based and flow-based TTS training regimes.
-- Automatic MOS predictors and subjective listening scores can diverge for EBM-based TTS systems, limiting the reliability of UTMOSv2 as a sole quality proxy in non-standard synthesis paradigms.
+- Score-based training objectives for energy-based models can reduce TTS inference to a single step, bypassing the many-iteration MCMC requirement of NCE-trained EBMs. *(§4.2, Table 2, Table 3)*
+- The choice of training objective for score-based generative models materially affects the geometry of learned score functions and their suitability for first-order iterative inference. *(§3.2)*
+- Sliced score matching and flow matching objectives are formally equivalent at a single interpolation timestep, suggesting a deeper structural connection between energy-based and flow-based TTS training regimes. *(§3.3)*
+- Automatic MOS predictors and subjective listening scores can diverge for EBM-based TTS systems, limiting the reliability of UTMOSv2 as a sole quality proxy in non-standard synthesis paradigms. *(§4.2, §4.3)*
 
 ## Limitations and Open Questions
 
@@ -110,4 +111,7 @@ The experimental setup uses a Tacotron 2 backbone (mel spectrograms, HiFi-GAN vo
 
 ## Wiki Connections
 
-Related concept pages: [[diffusion-tts]], [[flow-matching]], [[evaluation-metrics]], [[subjective-evaluation]].
+- [[diffusion-tts]]
+- [[flow-matching]]
+- [[evaluation-metrics]]
+- [[subjective-evaluation]]

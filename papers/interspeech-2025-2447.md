@@ -46,14 +46,15 @@ code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/lin25h_interspeech.html"
 related_concepts: [autoregressive-codec-tts, streaming-tts, neural-codec, evaluation-metrics, zero-shot-tts]
-related_papers: ["2301.02111", "2406.02430", "2407.05407", "2412.10117", "2410.06885"]
+related_papers: ["2301.02111", "2406.02430", "2407.05407", "2412.10117", "2025.acl-long.313"]
 field_significance:
   level: moderate
   type: [architectural-novelty, engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -96,10 +97,10 @@ Moderate — SSD demonstrates that speculative decoding can be applied to speech
 
 ## Claims
 
-- Speculative decoding adapted for speech can reduce autoregressive inference latency without measurable degradation in subjective naturalness or speaker similarity.
-- Speech token sequences exhibit many-to-one mappings to perceived quality, enabling relaxed acceptance criteria that improve decoding throughput over strict token-distribution matching.
-- Initialising a lightweight draft model from the upper layers of the target model provides immediate vocabulary alignment and reduces the data requirements for draft model training.
-- Inference-stage acceleration of autoregressive TTS is achievable without fine-tuning the target model, preserving deployment flexibility for frozen production systems.
+- Speculative decoding adapted for speech can reduce autoregressive inference latency without measurable degradation in subjective naturalness or speaker similarity. *(§4.1, §4.2)*
+- Speech token sequences exhibit many-to-one mappings to perceived quality, enabling relaxed acceptance criteria that improve decoding throughput over strict token-distribution matching. *(§2.2, §4.3)*
+- Initialising a lightweight draft model from the upper layers of the target model provides immediate vocabulary alignment and reduces the data requirements for draft model training. *(§2.3)*
+- Inference-stage acceleration of autoregressive TTS is achievable without fine-tuning the target model, preserving deployment flexibility for frozen production systems. *(§2, §4.1)*
 
 ## Limitations and Open Questions
 
@@ -112,4 +113,10 @@ Evaluation is restricted to a single target model (CosyVoice 2) on a single Engl
 
 This paper contributes evidence to [[autoregressive-codec-tts]] by demonstrating a practical inference-time acceleration strategy for LM-based TTS. The tolerance-factor criterion relates to [[neural-codec]] and how codec token discretisation affects perceptual quality. The zero-shot evaluation setup connects to [[zero-shot-tts]].
 
-In-corpus papers this work builds on: [[2301.02111]] (VALL-E, the foundational neural codec LM for TTS), [[2406.02430]] (Seed-TTS), [[2407.05407]] (CosyVoice), [[2412.10117]] (CosyVoice 2, the target model), [[2410.06885]] (F5-TTS, cited as a flow-matching alternative context).
+In-corpus papers this work builds on:
+
+- [[2301.02111|VALL-E]], the foundational neural codec LM for TTS
+- [[2406.02430|Seed-TTS]]
+- [[2407.05407|CosyVoice]]
+- [[2412.10117|CosyVoice 2]], the target model evaluated in this work
+- [[2025.acl-long.313|F5-TTS]], cited as a flow-matching alternative context

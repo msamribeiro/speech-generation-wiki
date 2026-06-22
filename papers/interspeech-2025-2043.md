@@ -33,15 +33,16 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/lobashev25_interspeech.html"
-related_concepts: [voice-conversion, self-supervised-speech, disentanglement, multilingual-tts, evaluation-metrics]
+related_concepts: [voice-conversion, self-supervised-speech, multilingual-tts, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -65,7 +66,9 @@ The factorization serves two purposes: it ensures that low-variance dimensions p
 
 At inference, the algorithm requires only a single reference utterance (5–10 seconds) — far shorter than the ~5 minutes required for kNN-VC to be reliable. There is no training, fine-tuning, or adaptation step; the transport statistics are estimated from the reference audio directly.
 
-![Our Factorized MKL method performs distribution matching per sorted dimensions of WavLM encoder.](assets/interspeech-2025-2043/figure-1.png)
+![kNN-VC (baseline): assigns each source embedding to the mean of its k nearest target embeddings, conflating phoneme proximity with speaker identity.](assets/interspeech-2025-2043/figure-2.png)
+
+![MKL-VC (proposed): performs distribution matching per sorted variance dimensions of the WavLM encoder, separating content-preserving from speaker-characteristic dimensions.](assets/interspeech-2025-2043/figure-3.png)
 
 ## Key Results
 
@@ -91,10 +94,10 @@ Moderate — MKL-VC demonstrates that the short-reference limitation of kNN-VC c
 
 ## Claims
 
-- Training-free voice conversion based on distribution matching in self-supervised embedding subspaces can achieve speaker similarity and content preservation comparable to trained codec-based systems when reference audio is limited to a few seconds.
-- The nearest-neighbour approach in kNN-style voice conversion degrades significantly in cross-lingual settings because phoneme-level proximity in the embedding space conflates content with language-specific pronunciation.
-- Non-uniform variance structure in self-supervised speech representations makes global optimal transport maps suboptimal; factorizing the embedding space by variance before applying transport improves both content preservation and numerical stability.
-- A content-speaker-similarity trade-off is inherent to WavLM-based voice conversion and can be navigated via the block-size hyperparameter of a factorized transport scheme.
+- Training-free voice conversion based on distribution matching in self-supervised embedding subspaces can achieve speaker similarity and content preservation comparable to trained codec-based systems when reference audio is limited to a few seconds. *(§4.4, Table 2)*
+- The nearest-neighbour approach in kNN-style voice conversion degrades significantly in cross-lingual settings because phoneme-level proximity in the embedding space conflates content with language-specific pronunciation. *(§1, §4.4, Table 3)*
+- Non-uniform variance structure in self-supervised speech representations makes global optimal transport maps suboptimal; factorizing the embedding space by variance before applying transport improves both content preservation and numerical stability. *(§3)*
+- A content-speaker-similarity trade-off is inherent to WavLM-based voice conversion and can be navigated via the block-size hyperparameter of a factorized transport scheme. *(§4.4, Table 2)*
 
 ## Limitations and Open Questions
 
@@ -109,12 +112,7 @@ No code or demo is linked in the paper; reproducibility depends on the authors r
 
 ## Wiki Connections
 
-Core method: [[voice-conversion]] — MKL-VC is a training-free kNN-VC variant with factorized optimal transport replacing the nearest-neighbour step.
-
-Encoder dependency: [[self-supervised-speech]] — the method relies on and exploits statistical properties specific to WavLM-Large embeddings.
-
-Representation analysis: [[disentanglement]] — variance-based factorization implicitly separates content-dominant from speaker-dominant embedding dimensions.
-
-Cross-lingual capability: [[multilingual-tts]] — the paper provides quantitative evidence of kNN-VC's cross-lingual failure mode and demonstrates that distribution-matching approaches partially address it.
-
-Evaluation: [[evaluation-metrics]] — introduces a composite total score combining WER, CER, and SPK-SIM as distance to ideal point (Eq. 3).
+- [[voice-conversion]] — MKL-VC is a training-free kNN-VC variant with factorized optimal transport replacing the nearest-neighbour step.
+- [[self-supervised-speech]] — the method relies on and exploits statistical properties specific to WavLM-Large embeddings.
+- [[multilingual-tts]] — the paper provides quantitative evidence of kNN-VC's cross-lingual failure mode and demonstrates that distribution-matching approaches partially address it.
+- [[evaluation-metrics]] — introduces a composite total score combining WER, CER, and SPK-SIM as distance to ideal point (Eq. 3).

@@ -47,6 +47,14 @@ demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html"
 related_concepts: [zero-shot-tts, autoregressive-codec-tts, neural-codec, evaluation-metrics]
 related_papers: []
+field_significance:
+  level: "moderate"
+  type: [dataset-contribution]
+generation:
+  date: 2026-06-22
+  agent: speech-generation-review-agent
+  model: claude-sonnet-4-6
+  commit: "24ea64d"
 ---
 > [!abstract] Interspeech · 2025 · Conference
 > **Ryan Langman et al.** (NVIDIA) · [→ Paper](https://www.isca-archive.org/interspeech_2025/langman25_interspeech.html) · Demo: ? · Code: ?
@@ -82,6 +90,17 @@ Koel-TTS trained on HiFiTTS-2 (30,400 hrs, 4,940 speakers) substantially outperf
 ## Novelty Assessment
 
 The primary contribution is the dataset and processing pipeline, not a new model. The scale (36.7k hrs at 22 kHz, comparable to MLS English but at high bandwidth) is the main differentiator. The bandwidth estimation + multi-speaker detection pipeline is engineering-focused but carefully designed. The commercial licensing (LibriVox public domain source) is a meaningful practical advantage over Emilia and other large-scale datasets. The experiments with Koel-TTS convincingly demonstrate that scale and speaker diversity from HiFiTTS-2 substantially improve zero-shot speaker similarity, with the improvement attributable to scale + diversity rather than audio quality alone.
+
+## Field Significance
+
+Moderate — HiFiTTS-2 fills a specific and well-documented gap: there is no other large-scale, commercially licensed, high-bandwidth English speech corpus designed with TTS pipeline requirements in mind. The dataset provides a practical foundation for zero-shot TTS research above 16 kHz, and the per-utterance metadata (bandwidth estimate, WER, CER, speaker count) enables researchers to apply custom quality thresholds without reprocessing. Its contribution is infrastructural rather than conceptual, but the scale and licensing clarity make it immediately useful.
+
+## Claims
+
+- Speaker diversity in training data is a stronger driver of zero-shot TTS generalization than audio quality or dataset size alone, as a 10-speaker high-quality dataset fails catastrophically on unseen speakers despite controlled recording conditions. *(§4.3, Table 3)*
+- Mixed-bandwidth audio in large-scale speech corpora degrades codec and vocoder training, making bandwidth estimation and filtering an essential step in high-bandwidth TTS data preparation. *(§1, §2.3)*
+- Restoring punctuation and capitalization to ASR-derived transcripts is feasible at scale via text matching (87% coverage) with neural prediction for remaining cases, and meaningfully improves transcript quality for TTS prosody modeling. *(§2.1)*
+- Providing per-utterance quality metadata (WER, CER, bandwidth, speaker count) rather than applying fixed thresholds increases dataset utility by allowing downstream researchers to select quality-volume trade-offs appropriate to their application. *(§2.5, §2.6)*
 
 ## Limitations and Open Questions
 

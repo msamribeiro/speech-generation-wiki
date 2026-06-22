@@ -38,14 +38,15 @@ code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/zheng25d_interspeech.html"
 related_concepts: ["flow-matching", "zero-shot-tts", "streaming-tts", "evaluation-metrics"]
-related_papers: ["2406.02430", "2412.10117", "2410.06885"]
+related_papers: ["2406.02430", "2412.10117", "2025.acl-long.313"]
 field_significance:
   level: moderate
   type: [engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -82,10 +83,10 @@ Moderate — EPSS offers a practical, no-cost inference speedup for the F5-TTS f
 
 ## Claims
 
-- Non-uniform ODE time-step schedules can reduce flow-matching TTS inference to 7 steps with minimal quality degradation when steps are pruned from the later, near-linear portion of the trajectory.
-- The early, high-curvature phase of flow-matching inference in TTS is disproportionately critical for quality, and uniform step reduction degrades performance primarily by under-sampling this phase.
-- Training-free step scheduling methods generalise across flow-matching TTS architectures without requiring model-specific retraining.
-- At very low NFE (below 6 steps), quality degradation in flow-matching TTS becomes abrupt rather than gradual, suggesting a practical floor for inference reduction without distillation.
+- Non-uniform ODE time-step schedules can reduce flow-matching TTS inference to 7 steps with minimal quality degradation when steps are pruned from the later, near-linear portion of the trajectory. *(§3.2, §4.3, Table 1)*
+- The early, high-curvature phase of flow-matching inference in TTS is disproportionately critical for quality, and uniform step reduction degrades performance primarily by under-sampling this phase. *(§3.1, §4.4, Table 3)*
+- Training-free step scheduling methods generalise across flow-matching TTS architectures without requiring model-specific retraining. *(§4.3, Table 1)*
+- At very low NFE (below 6 steps), quality degradation in flow-matching TTS becomes abrupt rather than gradual, suggesting a practical floor for inference reduction without distillation. *(§4.4, Table 3)*
 
 ## Limitations and Open Questions
 
@@ -96,6 +97,10 @@ EPSS is validated only on F5-TTS and E2 TTS, both mel-spectrogram-based flow-mat
 
 ## Wiki Connections
 
-Key concepts: [[flow-matching]] · [[zero-shot-tts]] · [[streaming-tts]] · [[evaluation-metrics]]
-
-Related papers: [[2410.06885]] (F5-TTS, the primary baseline) · [[2406.02430]] (Seed-TTS, evaluation benchmark and comparison system) · [[2412.10117]] (CosyVoice 2, comparison system in Table 1)
+- [[flow-matching]] — core inference paradigm; EPSS operates on the ODE solver schedule
+- [[zero-shot-tts]] — the system performs zero-shot voice cloning from an audio prompt
+- [[streaming-tts]] — reduced NFE directly lowers latency, relevant to streaming deployment
+- [[evaluation-metrics]] — evaluation uses WER, SPK-SIM, UTMOS, and RTF
+- [[2025.acl-long.313|F5-TTS]] — primary baseline system; EPSS is applied on top of F5-TTS's sway sampling
+- [[2406.02430|Seed-TTS]] — provides the Seed-TTS-eval benchmark used for evaluation
+- [[2412.10117|CosyVoice 2]] — comparison system in Table 1

@@ -43,9 +43,10 @@ field_significance:
   level: moderate
   type: [architectural-novelty]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -86,11 +87,11 @@ Moderate — ZSDEVC addresses a genuine gap: zero-shot generalisation in emotion
 
 ## Claims
 
-- Diffusion-based voice conversion systems can achieve strong emotion controllability in zero-shot settings when combined with mutual-information disentanglement and inference-time guidance.
-- Disentangling speaker identity and emotion via mutual information minimisation improves emotion controllability in voice conversion without requiring parallel or speaker-specific training data.
-- In emotional voice conversion, autoencoder-based methods tend to achieve higher emotion accuracy than GAN-based methods, but at the cost of substantially lower naturalness and higher speech distortion.
-- Classifier-free-style guidance applied to emotion representations at inference time provides a direct lever for trading naturalness against emotion controllability in diffusion-based EVC.
-- Training on large-scale in-the-wild emotional corpora enables zero-shot generalisation to speakers absent from training, even when evaluation is conducted on acted-speech datasets with different recording conditions.
+- Diffusion-based voice conversion systems can achieve strong emotion controllability in zero-shot settings when combined with mutual-information disentanglement and inference-time guidance. *(§3.2, §3.3, Table 2)*
+- Disentangling speaker identity and emotion via mutual information minimisation improves emotion controllability in voice conversion without requiring parallel or speaker-specific training data. *(§2.1.4, §3.3, Table 2)*
+- In emotional voice conversion, autoencoder-based methods tend to achieve higher emotion accuracy than GAN-based methods, but at the cost of substantially lower naturalness and higher speech distortion. *(§3.2, Table 1)*
+- Classifier-free-style guidance applied to emotion representations at inference time provides a direct lever for trading naturalness against emotion controllability in diffusion-based EVC. *(§2.1.3, §3.3, Table 2)*
+- Training on large-scale in-the-wild emotional corpora enables zero-shot generalisation to speakers absent from training, even when evaluation is conducted on acted-speech datasets with different recording conditions. *(§3.4, §4)*
 
 ## Limitations and Open Questions
 
@@ -101,4 +102,9 @@ The model does not address intensity control within a target emotion category �
 
 ## Wiki Connections
 
-Relevant concept pages: [[voice-conversion]], [[emotion-synthesis]], [[diffusion-tts]], [[disentanglement]], [[zero-shot-tts]], [[self-supervised-speech]].
+- [[voice-conversion]]
+- [[emotion-synthesis]]
+- [[diffusion-tts]]
+- [[disentanglement]]
+- [[zero-shot-tts]]
+- [[self-supervised-speech]]

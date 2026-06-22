@@ -29,15 +29,16 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/futami25_interspeech.html"
-related_concepts: ["spoken-language-model", "self-supervised-speech", "multilingual-tts", "speech-to-speech", "neural-codec"]
+related_concepts: ["spoken-language-model", "self-supervised-speech", "speech-to-speech"]
 related_papers: []
 field_significance:
   level: moderate
   type: [engineering-integration]
 generation:
-  date: 2026-06-03
+  date: 2026-06-22
+  agent: speech-generation-review-agent
   model: claude-sonnet-4-6
-  commit: "55d0339"
+  commit: "24ea64d"
 ---
 
 > [!abstract] Interspeech · 2025 · Conference
@@ -71,10 +72,10 @@ Moderate — This paper extends the idea of interleaved speech-text training fro
 
 ## Claims
 
-- Gradual modality transition during fine-tuning, rather than abrupt full-speech training, improves LLM adaptation from text to speech units.
-- The benefit of interleaved speech-text training is amplified in low-resource language settings where speech-domain supervision is scarce.
-- Applying word-aligned text interleaving to both source and target sequences simultaneously is necessary; one-sided interleaving provides substantially weaker adaptation.
-- The modality gap between speech and text in LLM-based S2ST manifests as both a length disparity and a representation distance, and scheduled training addresses both.
+- Gradual modality transition during fine-tuning, rather than abrupt full-speech training, improves LLM adaptation from text to speech units. *(§3.2, Table 2)*
+- The benefit of interleaved speech-text training is amplified in low-resource language settings where speech-domain supervision is scarce. *(§4, Table 2)*
+- Applying word-aligned text interleaving to both source and target sequences simultaneously is necessary; one-sided interleaving provides substantially weaker adaptation. *(§4, Table 3)*
+- The modality gap between speech and text in LLM-based S2ST manifests as both a length disparity and a representation distance, and scheduled training addresses both. *(§3.1, Figure 3)*
 
 ## Limitations and Open Questions
 
@@ -85,4 +86,6 @@ The evaluation is limited to seven language pairs from a single corpus (CVSS-C) 
 
 ## Wiki Connections
 
-This paper applies [[spoken-language-model]] fine-tuning to end-to-end [[speech-to-speech]] translation. It relies on [[self-supervised-speech]] representations (w2v-BERT semantic units) and a unit HiFi-GAN vocoder. The multilingual coverage across seven language pairs links to [[multilingual-tts]] practice.
+- [[spoken-language-model]] — the paper fine-tunes a text LLM on semantic speech units for end-to-end S2ST, extending LM-based generation beyond text
+- [[speech-to-speech]] — the core task is direct speech-to-speech translation across seven language pairs
+- [[self-supervised-speech]] — semantic units are derived from a w2v-BERT encoder fine-tuned for ASR via CTC, serving as the core speech representation
