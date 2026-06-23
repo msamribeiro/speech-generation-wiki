@@ -10,6 +10,34 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 - review | 2025.acl-long.654 | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL 2025
 - review | 2507.20091 | ProsodyLM: Uncovering the Emerging Prosody Processing Capabilities in Speech Language Models | arXiv 2025
+- review | 2025.acl-long.682 | Recent Advances in Speech Language Models: A Survey | ACL 2025
+- review | 2025.acl-long.911 | DNASpeech: A Contextualized and Situated Text-to-Speech Dataset with Dialogues, Narratives and Actions | ACL 2025
+- review | 2507.22746 | Next Tokens Denoising for Speech Synthesis | arXiv 2025
+- review | 2508.00317 | Advancing Speech Quality Assessment Through Scientific Challenges and Open-source Activities | arXiv 2025
+- review | 2025.acl-long.912 | LLaMA-Omni 2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis | ACL 2025
+- review | 2025.acl-short.81 | Zero-Shot Text-to-Speech for Vietnamese | ACL 2025
+- review | 2508.01796 | Enhancing Spectrogram Realism in Singing Voice Synthesis via Explicit Bandwidth Extension Prior to Vocoder | arXiv 2025
+- review | 2508.02013 | SpeechRole: A Large-Scale Dataset and Benchmark for Evaluating Speech Role-Playing Agents | arXiv 2025
+- review | 2025.americasnlp-1.1 | Text-to-speech system for low-resource languages: A case study in Shipibo-Konibo (a Panoan language from Peru) | workshop 2025
+- review | 2025.ccl-1.80 | Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling | workshop 2025
+- review | 2508.02038 | Marco-Voice Technical Report | arXiv 2025
+- review | 2508.02849 | SecoustiCodec: Cross-Modal Aligned Streaming Single-Codecbook Speech Codec | arXiv 2025
+- review | 2025.coling-main.352 | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles | workshop 2025
+- review | 2025.coling-main.518 | ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models | workshop 2025
+- review | 2508.03543 | EmoSteer-TTS: Fine-Grained and Training-Free Emotion-Controllable Text-to-Speech via Activation Steering | arXiv 2025
+- review | 2508.04141 | Parallel GPT: Harmonizing the Independence and Interdependence of Acoustic and Semantic Information for Zero-Shot Text-to-Speech | arXiv 2025
+- review | 2025.emnlp-demos.70 | OpenS2S: Advancing Fully Open-Source End-to-End Empathetic Large Speech Language Model | EMNLP 2025
+- review | 2025.emnlp-main.1730 | FillerSpeech: Towards Human-Like Text-to-Speech Synthesis with Filler Insertion and Filler Style Control | EMNLP 2025
+- review | 2508.04585 | UniTalker: Conversational Speech-Visual Synthesis | ACM MM 2025
+- review | 2508.04996 | REF-VC: Robust, Expressive and Fast Zero-Shot Voice Conversion with Diffusion Transformers | arXiv 2025
+- review | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets | EMNLP 2025
+- review | 2025.emnlp-main.989 | VocalNet: Speech LLMs with Multi-Token Prediction for Faster and High-Quality Generation | EMNLP 2025
+- review | 2508.05207 | SpectroStream: A Versatile Neural Codec for General Audio | arXiv 2025
+- review | 2508.05385 | A Scalable Pipeline for Enabling Non-Verbal Speech Generation and Understanding | arXiv 2025
+- review | 2025.findings-acl.1051 | LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM | ACL 2025
+- review | 2025.findings-emnlp.424 | InteractSpeech: A Speech Dialogue Interaction Corpus for Spoken Dialogue Model | EMNLP 2025
+- review | 2508.06262 | Llasa+: Free Lunch for Accelerated and Streaming Llama-Based Speech Synthesis | arXiv 2025
+- review | 2508.06870 | Text to Speech System for Meitei Mayek Script | arXiv 2025
 
 ## 2026-06-22
 
