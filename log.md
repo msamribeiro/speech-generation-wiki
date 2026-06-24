@@ -9,6 +9,18 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 ## 2026-06-24
 
 - render | 1 concepts | mode: full | model: claude-sonnet-4-6
+- review | 2025.findings-naacl.184 | Continuous Speech Tokenizer in Text To Speech | NAACL 2025
+- review | 2025.naacl-long.110 | WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching | NAACL 2025
+- review | 2025.naacl-long.242 | StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion | NAACL 2025
+- review | 2508.06890 | Maestro-EVC: Controllable Emotional Voice Conversion Guided by References and Explicit Prosody | arXiv 2025
+- review | 2508.07302 | XEmoRAG: Cross-Lingual Emotion Transfer with Controllable Intensity Using Retrieval-Augmented Generation | arXiv 2025
+- review | 2508.07426 | Scalable Controllable Accented TTS | arXiv 2025
+- review | 2508.07711 | Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder? | arXiv 2025
+- review | 2508.08095 | Dual Information Speech Language Models for Emotional Conversations | arXiv 2025
+- review | 2508.08399 | Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations | arXiv 2025
+- review | 2508.08715 | MultiGen: Child-Friendly Multilingual Speech Generator with LLMs | arXiv 2025
+- review | 2508.08961 | DualSpeechLM: Towards Unified Speech Understanding and Generation via Dual Speech Token Modeling with Large Language Models | arXiv 2025
+- review | 2508.09767 | UtterTune: LoRA-Based Target-Language Pronunciation Edit and Control in Multilingual Text-to-Speech | arXiv 2025
 
 ## 2026-06-23
 
