@@ -1,6 +1,6 @@
 ---
 concept: flow-matching
-title: "Evidence Dossier: Flow Matching for Speech Synthesis"
+title: "Evidence Dossier: Flow Matching"
 source_digest_date: 2026-06-24
 generation:
   date: 2026-06-24
@@ -11,7 +11,7 @@ generation:
   commit: 323d530
 ---
 
-# Evidence Dossier: Flow Matching for Speech Synthesis
+# Evidence Dossier: Flow Matching
 
 Companion to [[concepts/flow-matching]]. The concept page is interpretive; this dossier keeps the
 full paper inventory, canonical claim clusters, and reassessment queue.

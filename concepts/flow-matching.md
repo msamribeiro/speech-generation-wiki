@@ -1,6 +1,6 @@
 ---
 slug: flow-matching
-title: Flow Matching for Speech Synthesis
+title: Flow Matching
 aliases: [CFM, OT-CFM, conditional flow matching, rectified flow, flow-based TTS]
 status: dominant
 last_reviewed: 2026-06-24
