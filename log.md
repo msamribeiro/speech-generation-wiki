@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-24
+
+- render | 1 concepts | mode: full | model: claude-sonnet-4-6
+
 ## 2026-06-23
 
 - review | 2025.acl-long.654 | Language-Codec: Bridging Discrete Codec Representations and Speech Language Models | ACL 2025
