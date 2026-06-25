@@ -6,6 +6,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-25
+
+- review | 2508.11273 | EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens | arXiv 2025
+- review | 2508.11326 | MoE-TTS: Enhancing Out-of-Domain Text Understanding for Description-based TTS via Mixture-of-Experts | arXiv 2025
+- review | 2508.12001 | FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts | arXiv 2025
+- review | 2508.14049 | MahaTTS: A Unified Framework for Multilingual Text-to-Speech Synthesis | arXiv 2025
+- review | 2508.15442 | Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment Using GFlowNets | EMNLP 2025
+- review | 2508.15827 | Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in Large Speech Models | arXiv 2025
+- review | 2508.16332 | Vevo2: A Unified and Controllable Framework for Speech and Singing Voice Generation | arXiv 2025
+- review | 2508.19098 | CLEAR: Continuous Latent Autoregressive Modeling for High-quality and Low-latency Speech Synthesis | arXiv 2025
+- review | 2508.20660 | CodecBench: A Comprehensive Benchmark for Acoustic and Semantic Evaluation | arXiv 2025
+- review | 2509.00685 | MPO: Multidimensional Preference Optimization for Language Model-based Text-to-Speech | arXiv 2025
+- review | 2509.02020 | FireRedTTS-2: Towards Long Conversational Speech Generation for Podcast and Chatbot | arXiv 2025
+- review | 2509.09631 | DiFlow-TTS: Compact and Low-Latency Zero-Shot Text-to-Speech with Factorized Discrete Flow Matching | arXiv 2025
+- review | 2509.15969 | VoXtream: Full-Stream Text-to-Speech with Extremely Low Latency | arXiv 2025
+- review | 2509.19668 | Selective Classifier-free Guidance for Zero-shot Text-to-speech | arXiv 2025
+- review | 2510.00981 | FlexiCodec: A Dynamic Neural Audio Codec for Low Frame Rates | arXiv 2025
+- review | 2510.02848 | Flamed-TTS: Flow Matching Attention-Free Models for Efficient Generating and Dynamic Pacing Zero-shot Text-to-Speech | arXiv 2025
+
 ## 2026-06-24
 
 - render | 1 concepts | mode: full | model: claude-sonnet-4-6
