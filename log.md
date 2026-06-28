@@ -6,6 +6,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-28
+
+- review | 2510.05758 | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in LLM-based TTS | ICASSP 2026
+- review | 2510.07979 | IntMeanFlow: Few-step Speech Generation with Integral Velocity Distillation | arXiv 2025
+- review | 2510.12210 | DiSTAR: Diffusion over a Scalable Token Autoregressive Representation for Speech Generation | arXiv 2025
+- review | 2511.12347 | VoiceCraft-X: Unifying Multilingual, Voice-Cloning Speech Synthesis and Speech Editing | EMNLP 2025
+- review | 2512.04720 | M3-TTS: Multi-modal DiT Alignment & Mel-latent for Zero-shot High-fidelity Speech Synthesis | arXiv 2025
+- review | 2512.13251 | DisCo-Speech: Controllable Zero-Shot Speech Generation with A Disentangled Speech Codec | arXiv 2025
+- review | 2512.14291 | GLM-TTS Technical Report | arXiv 2025
+- review | 2601.03888 | IndexTTS 2.5 Technical Report | arXiv 2026
+- review | 2601.15621 | Qwen3-TTS Technical Report | arXiv 2026
+- review | 2603.08823 | Fish Audio S2 Technical Report | arXiv 2026
+- review | 2603.18090 | MOSS-TTS Technical Report | arXiv 2026
+- review | 2603.26364 | LLaDA-TTS: Unifying Speech Synthesis and Zero-Shot Editing via Masked Diffusion Modeling | arXiv 2026
+- review | 2603.29339 | LongCat-AudioDiT: High-Fidelity Diffusion Text-to-Speech in the Waveform Latent Space | arXiv 2026
+- review | 2604.00688 | OmniVoice: Towards Omnilingual Zero-Shot Text-to-Speech with Diffusion Language Models | arXiv 2026
+- review | 2604.01760 | T5Gemma-TTS Technical Report | arXiv 2026
+- review | 2604.12438 | An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding | arXiv 2026
+
 ## 2026-06-25
 
 - review | 2508.11273 | EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens | arXiv 2025
