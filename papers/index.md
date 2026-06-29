@@ -344,3 +344,19 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2508.13992]] | [MMAU-Pro: A Challenging and Comprehensive Benchmark for](papers/2508.13992.md) |  | arXiv | 2025 |  |  | 2026-06-17 |
 | [[2511.09690]] | [Omnilingual ASR: Open-Source Multilingual Speech Recogn](papers/2511.09690.md) | Meta (FAIR) | arXiv | 2025 |  | transformer-enc-dec | 2026-06-17 |
 | [[2509.08753]] | [Streaming Sequence-to-Sequence Learning with Delayed St](papers/2509.08753.md) |  | arXiv | 2025 |  | autoregressive-LM | 2026-06-17 |
+| [[2409.09098]] | [AccentBox: Towards High-Fidelity Zero-Shot Accent Gener](papers/2409.09098.md) | University of Edinburgh | arXiv | 2025 | TTS | transformer-enc-dec | 2026-06-29 |
+| [[2025.coling-industry.29]] | [CarMem: Enhancing Long-Term Memory in LLM Voice Assista](papers/2025.coling-industry.29.md) | BMW Group / Univ. Augsburg / TUM | COLING | 2025 | SCA |  | 2026-06-29 |
+| [[2025.chipsal-1.18]] | [Impacts of Vocoder Selection on Tacotron-based Nepali T](papers/2025.chipsal-1.18.md) |  | CHiPSAL | 2025 | TTS, evaluation | GAN, transformer-enc-dec | 2026-06-29 |
+| [[2025.coling-main.685]] | [VoxpopuliTTS: a large-scale multilingual TTS corpus for](papers/2025.coling-main.685.md) | Zhejiang University | COLING | 2025 | TTS |  | 2026-06-29 |
+| [[2409.20007]] | [DeSTA2: Developing Instruction-Following Speech Language](papers/2409.20007.md) |  | arXiv | 2025 | SCA | transformer-enc-dec | 2026-06-29 |
+| [[2025.computel-main.6]] | [Evaluating Indigenous language speech synthesis for educ](papers/2025.computel-main.6.md) |  | ComputEL | 2025 | TTS, evaluation |  | 2026-06-29 |
+| [[2025.nodalida-1.32]] | [Estonian isolated-word text-to-speech synthesiser](papers/2025.nodalida-1.32.md) | Institute of the Estonian Language | NoDaLiDa | 2025 | TTS |  | 2026-06-29 |
+| [[2025.naacl-srw.6]] | [Towards Codec-LM Co-design for Neural Codec Language Mo](papers/2025.naacl-srw.6.md) | Cartesia AI / MIT / CMU | NAACL | 2025 | TTS, codec | autoregressive-LM, hybrid | 2026-06-29 |
+| [[2025.findings-naacl.298]] | [Gender Bias in Instruction-Guided Speech Synthesis Mode](papers/2025.findings-naacl.298.md) |  | NAACL | 2025 | TTS, evaluation |  | 2026-06-29 |
+| [[2025.findings-naacl.471]] | [The Role of Prosody in Spoken Question Answering](papers/2025.findings-naacl.471.md) |  | NAACL | 2025 | evaluation |  | 2026-06-29 |
+| [[2025.naacl-long.464]] | [ManaTTS Persian: a recipe for creating TTS datasets for](papers/2025.naacl-long.464.md) | Sharif University of Technology | NAACL | 2025 | TTS, evaluation |  | 2026-06-29 |
+| [[2025.naacl-long.619]] | [ProSE: Diffusion Priors for Speech Enhancement](papers/2025.naacl-long.619.md) | University of Maryland | NAACL | 2025 | TTS | diffusion, transformer-enc-dec | 2026-06-29 |
+| [[iclr-2025-tQ1PmLfPBL]] | [PeriodWave: Multi-Period Flow Matching for High-Fidelity Waveform Gen](papers/iclr-2025-tQ1PmLfPBL.md) |  | ICLR | 2025 | TTS | flow-matching | 2026-06-29 |
+| [[iclr-2025-cuFzE8Jlvb]] | [Continuous Autoregressive Modeling with Stochastic Monotonic Alignmen](papers/iclr-2025-cuFzE8Jlvb.md) | The Hong Kong Polytechnic University | ICLR | 2025 | TTS | autoregressive-LM, VAE | 2026-06-29 |
+| [[iclr-2025-dGSOn7sdWg]] | [SyllableLM: Learning Coarse Semantic Units for Speech Language Models](papers/iclr-2025-dGSOn7sdWg.md) | University of Texas at Austin | ICLR | 2025 | SCA | autoregressive-LM | 2026-06-29 |
+| [[iclr-2025-868masI331]] | [HALL-E: Hierarchical Neural Codec Language Model for Minute-Long Zero](papers/iclr-2025-868masI331.md) |  | ICLR | 2025 | TTS | autoregressive-LM | 2026-06-29 |

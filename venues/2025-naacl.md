@@ -2,7 +2,7 @@
 title: "NAACL 2025"
 venue: NAACL
 year: 2025
-papers_ingested: 3
+papers_ingested: 8
 last_updated: 2026-05-30
 ---
 
@@ -27,3 +27,8 @@ Together, the NAACL 2025 TTS papers cover a broad methodological range: continuo
 | 2025.findings-naacl.184 | Continuous Speech Tokenizer in Text To Speech |
 | 2025.naacl-long.242 | StyleTTS-ZS: Efficient High-Quality Zero-Shot TTS with Distilled Time-Varying Style Diffusion |
 | 2025.naacl-long.110 | WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching |
+| 2025.naacl-srw.6 | Towards Codec-LM Co-design for Neural Codec Language Models |
+| 2025.findings-naacl.298 | Gender Bias in Instruction-Guided Speech Synthesis Models |
+| 2025.findings-naacl.471 | The Role of Prosody in Spoken Question Answering |
+| 2025.naacl-long.464 | ManaTTS Persian: a recipe for creating TTS datasets for lower resource languages |
+| 2025.naacl-long.619 | ProSE: Diffusion Priors for Speech Enhancement |

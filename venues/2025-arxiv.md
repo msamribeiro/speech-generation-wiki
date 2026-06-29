@@ -2,7 +2,7 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 118
+papers_ingested: 120
 last_updated: 2026-06-17
 ---
 

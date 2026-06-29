@@ -2,7 +2,7 @@
 title: "Workshop 2025"
 venue: workshop
 year: 2025
-papers_ingested: 5
+papers_ingested: 10
 last_updated: 2026-06-04
 ---
 
@@ -21,3 +21,8 @@ Workshop papers 2025 includes 4 papers from diverse venues. Key themes: (1) low-
 | 2025.coling-main.352 | DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles | COLING 2025 |
 | 2025.coling-main.518 | ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models | COLING 2025 |
 | 2508.17494 | Improving French Synthetic Speech Quality via SSML Prosody Control |
+| 2025.coling-industry.29 | CarMem: Enhancing Long-Term Memory in LLM Voice Assistants through Category-Bounding | COLING Industry Track 2025 |
+| 2025.chipsal-1.18 | Impacts of Vocoder Selection on Tacotron-based Nepali Text-To-Speech Synthesis | CHiPSAL 2025 |
+| 2025.coling-main.685 | VoxpopuliTTS: a large-scale multilingual TTS corpus for zero-shot speech generation | COLING 2025 |
+| 2025.computel-main.6 | Evaluating Indigenous language speech synthesis for education: A participatory design workshop on Ojibwe TTS | ComputEL 2025 |
+| 2025.nodalida-1.32 | Estonian isolated-word text-to-speech synthesiser | NoDaLiDa/Baltic-HLT 2025 |

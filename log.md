@@ -6,6 +6,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-29
+
+- ingest | 2409.09098 | AccentBox: Towards High-Fidelity Zero-Shot Accent Generation | arXiv 2025
+- ingest | 2025.coling-industry.29 | CarMem: Enhancing Long-Term Memory in LLM Voice Assistants through Category-Bounding | COLING Industry Track 2025
+- ingest | 2025.chipsal-1.18 | Impacts of Vocoder Selection on Tacotron-based Nepali Text-To-Speech Synthesis | CHiPSAL 2025
+- ingest | 2025.coling-main.685 | VoxpopuliTTS: a large-scale multilingual TTS corpus for zero-shot speech generation | COLING 2025
+- ingest | 2409.20007 | DeSTA2: Developing Instruction-Following Speech Language Model Without Speech Instruction-Tuning Data | arXiv 2025
+- ingest | 2025.computel-main.6 | Evaluating Indigenous language speech synthesis for education: A participatory design workshop on Ojibwe TTS | ComputEL 2025
+- ingest | 2025.nodalida-1.32 | Estonian isolated-word text-to-speech synthesiser | NoDaLiDa/Baltic-HLT 2025
+- ingest | 2025.naacl-srw.6 | Towards Codec-LM Co-design for Neural Codec Language Models | NAACL 2025
+- ingest | 2025.findings-naacl.298 | Gender Bias in Instruction-Guided Speech Synthesis Models | NAACL 2025
+- ingest | 2025.findings-naacl.471 | The Role of Prosody in Spoken Question Answering | NAACL 2025
+- ingest | 2025.naacl-long.464 | ManaTTS Persian: a recipe for creating TTS datasets for lower resource languages | NAACL 2025
+- ingest | 2025.naacl-long.619 | ProSE: Diffusion Priors for Speech Enhancement | NAACL 2025
+- ingest | iclr-2025-tQ1PmLfPBL | PeriodWave: Multi-Period Flow Matching for High-Fidelity Waveform Generation | ICLR 2025
+- ingest | iclr-2025-cuFzE8Jlvb | Continuous Autoregressive Modeling with Stochastic Monotonic Alignment for Speech Synthesis | ICLR 2025
+- ingest | iclr-2025-dGSOn7sdWg | SyllableLM: Learning Coarse Semantic Units for Speech Language Models | ICLR 2025
+- ingest | iclr-2025-868masI331 | HALL-E: Hierarchical Neural Codec Language Model for Minute-Long Zero-Shot Text-to-Speech Synthesis | ICLR 2025
+
 ## 2026-06-28
 
 - review | 2510.05758 | EMORL-TTS: Reinforcement Learning for Fine-Grained Emotion Control in LLM-based TTS | ICASSP 2026
