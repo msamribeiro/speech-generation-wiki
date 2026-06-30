@@ -6,6 +6,17 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-06-30
+
+- ingest | iclr-2025-hQvX9MBowC | DiTTo-TTS: Diffusion Transformers for Scalable Text-to-Speech without Domain-Specific Factors | ICLR 2025
+- ingest | iclr-2025-uxDFlPGRLX | FlowDec: A flow-based full-band general audio codec with high perceptual quality | ICLR 2025
+- ingest | 2025.findings-naacl.130 | DiVISe: Direct Visual-Input Speech Synthesis Preserving Speaker Characteristics And Intelligibility | NAACL 2025
+- ingest | 2025.findings-naacl.279 | BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting | NAACL 2025
+- ingest | 2025.findings-naacl.38 | Prompt-Guided Selective Masking Loss for Context-Aware Emotive Text-to-Speech | NAACL 2025
+- ingest | 2025.naacl-demo.12 | ESPnet-SpeechLM: An Open Speech Language Model Toolkit | NAACL 2025
+- ingest | 2025.naacl-demo.21 | ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogue Systems | NAACL 2025
+- ingest | 2025.naacl-long.484 | Behavior-SD: Behaviorally Aware Spoken Dialogue Generation with Large Language Models | NAACL 2025
+
 ## 2026-06-29
 
 - ingest | 2409.09098 | AccentBox: Towards High-Fidelity Zero-Shot Accent Generation | arXiv 2025

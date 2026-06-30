@@ -360,3 +360,11 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[iclr-2025-cuFzE8Jlvb]] | [Continuous Autoregressive Modeling with Stochastic Monotonic Alignmen](papers/iclr-2025-cuFzE8Jlvb.md) | The Hong Kong Polytechnic University | ICLR | 2025 | TTS | autoregressive-LM, VAE | 2026-06-29 |
 | [[iclr-2025-dGSOn7sdWg]] | [SyllableLM: Learning Coarse Semantic Units for Speech Language Models](papers/iclr-2025-dGSOn7sdWg.md) | University of Texas at Austin | ICLR | 2025 | SCA | autoregressive-LM | 2026-06-29 |
 | [[iclr-2025-868masI331]] | [HALL-E: Hierarchical Neural Codec Language Model for Minute-Long Zero](papers/iclr-2025-868masI331.md) |  | ICLR | 2025 | TTS | autoregressive-LM | 2026-06-29 |
+| [[iclr-2025-hQvX9MBowC]] | [DiTTo-TTS: Diffusion Transformers for Scalable Text-to-](papers/iclr-2025-hQvX9MBowC.md) | KRAFTON | ICLR | 2025 | TTS | diffusion, transformer-enc-dec | 2026-06-30 |
+| [[iclr-2025-uxDFlPGRLX]] | [FlowDec: A flow-based full-band general audio codec wit](papers/iclr-2025-uxDFlPGRLX.md) | Meta | ICLR | 2025 | codec | flow-matching, GAN | 2026-06-30 |
+| [[2025.findings-naacl.130]] | [DiVISe: Direct Visual-Input Speech Synthesis Preserving](papers/2025.findings-naacl.130.md) | Shanghai Jiao Tong University | NAACL | 2025 | TTS | transformer-enc-dec, GAN | 2026-06-30 |
+| [[2025.findings-naacl.279]] | [BnTTS: Few-Shot Speaker Adaptation in Low-Resource Sett](papers/2025.findings-naacl.279.md) | Hishab Singapore | NAACL | 2025 | TTS | autoregressive-LM, GAN, hybrid | 2026-06-30 |
+| [[2025.findings-naacl.38]] | [Prompt-Guided Selective Masking Loss for Context-Aware ](papers/2025.findings-naacl.38.md) | POSTECH | NAACL | 2025 | TTS | transformer-enc-dec | 2026-06-30 |
+| [[2025.naacl-demo.12]] | [ESPnet-SpeechLM: An Open Speech Language Model Toolkit](papers/2025.naacl-demo.12.md) | Carnegie Mellon University | NAACL | 2025 | TTS, SCA | autoregressive-LM | 2026-06-30 |
+| [[2025.naacl-demo.21]] | [ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogu](papers/2025.naacl-demo.21.md) | Carnegie Mellon University | NAACL | 2025 | SCA |  | 2026-06-30 |
+| [[2025.naacl-long.484]] | [Behavior-SD: Behaviorally Aware Spoken Dialogue Generat](papers/2025.naacl-long.484.md) | Seoul National University | NAACL | 2025 | SCA | autoregressive-LM | 2026-06-30 |

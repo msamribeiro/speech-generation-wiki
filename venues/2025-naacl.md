@@ -2,8 +2,8 @@
 title: "NAACL 2025"
 venue: NAACL
 year: 2025
-papers_ingested: 8
-last_updated: 2026-05-30
+papers_ingested: 14
+last_updated: "2026-06-30"
 ---
 
 # NAACL 2025
@@ -32,3 +32,9 @@ Together, the NAACL 2025 TTS papers cover a broad methodological range: continuo
 | 2025.findings-naacl.471 | The Role of Prosody in Spoken Question Answering |
 | 2025.naacl-long.464 | ManaTTS Persian: a recipe for creating TTS datasets for lower resource languages |
 | 2025.naacl-long.619 | ProSE: Diffusion Priors for Speech Enhancement |
+| 2025.findings-naacl.130 | DiVISe: Direct Visual-Input Speech Synthesis Preserving Speaker Charac |
+| 2025.findings-naacl.279 | BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting |
+| 2025.findings-naacl.38 | Prompt-Guided Selective Masking Loss for Context-Aware Emotive Text-to-Speech |
+| 2025.naacl-demo.12 | ESPnet-SpeechLM: An Open Speech Language Model Toolkit |
+| 2025.naacl-demo.21 | ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogue Systems |
+| 2025.naacl-long.484 | Behavior-SD: Behaviorally Aware Spoken Dialogue Generation with Large  |
