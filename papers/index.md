@@ -368,3 +368,35 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2025.naacl-demo.12]] | [ESPnet-SpeechLM: An Open Speech Language Model Toolkit](papers/2025.naacl-demo.12.md) | Carnegie Mellon University | NAACL | 2025 | TTS, SCA | autoregressive-LM | 2026-06-30 |
 | [[2025.naacl-demo.21]] | [ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogu](papers/2025.naacl-demo.21.md) | Carnegie Mellon University | NAACL | 2025 | SCA |  | 2026-06-30 |
 | [[2025.naacl-long.484]] | [Behavior-SD: Behaviorally Aware Spoken Dialogue Generat](papers/2025.naacl-long.484.md) | Seoul National University | NAACL | 2025 | SCA | autoregressive-LM | 2026-06-30 |
+| [[2025.naacl-long.591]] | [Robust and Unbounded Length Generalization in Autoregre](papers/2025.naacl-long.591.md) | Google DeepMind | NAACL | 2025 | TTS | transformer-enc-dec | 2026-06-30 |
+| [[2025.naacl-short.65]] | [kNN Retrieval for Simple and Effective Zero-Shot Multi-](papers/2025.naacl-short.65.md) |  | NAACL | 2025 | TTS | hybrid, GAN | 2026-06-30 |
+| [[2025.naacl-short.69]] | [Developing multilingual speech synthesis system for Oji](papers/2025.naacl-short.69.md) |  | NAACL | 2025 | TTS | flow-matching | 2026-06-30 |
+| [[2025.iwsds-1.11]] | [Paralinguistic Attitude Recognition for Spoken Dialogue](papers/2025.iwsds-1.11.md) | Fairy Devices Inc. | IWSDS | 2025 | SCA |  | 2026-06-30 |
+| [[2025.iwsds-1.27]] | [A Survey of Recent Advances on Turn-taking Modeling in ](papers/2025.iwsds-1.27.md) | Université Paris-Saclay, CEA, List | IWSDS | 2025 | SCA |  | 2026-07-01 |
+| [[2505.15772]] | [MIKU-PAL: An Automated and Standardized Multi-Modal Met](papers/2505.15772.md) | Fish Audio; Carnegie Mellon University | arXiv | 2025 | TTS, evaluation |  | 2026-07-01 |
+| [[2507.06235]] | [Super Kawaii Vocalics: Amplifying the "Cute" Factor in ](papers/2507.06235.md) |  | arXiv | 2025 | TTS |  | 2026-07-01 |
+| [[2506.23049]] | [AURA: Agent for Understanding, Reasoning, and Automated](papers/2506.23049.md) |  | arXiv | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.acl-long.681]] | [SIFT-50M: A Large-Scale Multilingual Dataset for Speech](papers/2025.acl-long.681.md) | Amazon AGI | ACL | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.acl-long.790]] | [Rhythm Controllable and Efficient Zero-Shot Voice Conve](papers/2025.acl-long.790.md) | Zhejiang University | ACL | 2025 | VC | flow-matching | 2026-07-01 |
+| [[2025.acl-long.817]] | [SimulS2S-LLM: Unlocking Simultaneous Inference of Speec](papers/2025.acl-long.817.md) |  | ACL | 2025 | SCA, TTS | autoregressive-LM | 2026-07-01 |
+| [[2025.acl-long.87]] | [Takin-VC: Expressive Zero-Shot Voice Conversion via Ada](papers/2025.acl-long.87.md) |  | ACL | 2025 | VC | flow-matching | 2026-07-01 |
+| [[2025.acl-long.937]] | [UniCodec: Unified Audio Codec with Single Domain-Adapti](papers/2025.acl-long.937.md) |  | ACL | 2025 | codec | VAE | 2026-07-01 |
+| [[2025.acl-long.997]] | [Align-SLM: Textless Spoken Language Models with Reinfor](papers/2025.acl-long.997.md) |  | ACL | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.conll-1.9]] | [A Linguistically Motivated Analysis of Intonational Phr](papers/2025.conll-1.9.md) |  | CoNLL | 2025 | TTS, evaluation |  | 2026-07-01 |
+| [[2025.findings-acl.101]] | [Chain-Talker: Chain Understanding and Rendering for Emp](papers/2025.findings-acl.101.md) |  | ACL | 2025 | TTS | autoregressive-LM, flow-matching | 2026-07-01 |
+| [[2025.findings-acl.115]] | [SLAM-Omni: Timbre-Controllable Voice Interaction System](papers/2025.findings-acl.115.md) |  | ACL | 2025 | SCA, TTS | autoregressive-LM | 2026-07-01 |
+| [[2025.findings-acl.1226]] | [PodAgent: A Comprehensive Framework for Podcast Generat](papers/2025.findings-acl.1226.md) |  | ACL | 2025 | TTS, VC | hybrid | 2026-07-01 |
+| [[2025.findings-acl.470]] | [Does Your Voice Assistant Remember? Analyzing Conversat](papers/2025.findings-acl.470.md) | Seoul National University | ACL | 2025 | SCA, evaluation |  | 2026-07-01 |
+| [[2025.findings-acl.534]] | [Unlocking Speech Instruction Data Potential with Query ](papers/2025.findings-acl.534.md) |  | ACL | 2025 | SCA |  | 2026-07-01 |
+| [[2025.findings-acl.631]] | [Slamming: Training a Speech Language Model on One GPU i](papers/2025.findings-acl.631.md) | The Hebrew University of Jerusalem | ACL | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.findings-acl.687]] | [TCSinger 2: Customizable Multilingual Zero-shot Singing](papers/2025.findings-acl.687.md) | Zhejiang University | ACL | 2025 | singing, TTS | flow-matching, VAE | 2026-07-01 |
+| [[2025.findings-acl.71]] | [Data-Centric Improvements for Enhancing Multi-Modal Und](papers/2025.findings-acl.71.md) |  | ACL | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.findings-acl.75]] | [Leveraging Unit Language Guidance to Advance Speech Mod](papers/2025.findings-acl.75.md) |  | ACL | 2025 | TTS, SCA | transformer-enc-dec | 2026-07-01 |
+| [[2025.findings-ijcnlp.49]] | [Incorporating Dialogue State Tracking into Japanese Ful](papers/2025.findings-ijcnlp.49.md) | NTT / Nagoya University | ACL | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.iwslt-1.5]] | [SSR: Alignment-Aware Modality Connector for Speech Lang](papers/2025.iwslt-1.5.md) |  | IWSLT | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2025.unlp-1.11]] | [Context-Aware Lexical Stress Prediction and Phonemizati](papers/2025.unlp-1.11.md) |  | workshop | 2025 | TTS | transformer-enc-dec | 2026-07-01 |
+| [[2412.18603]] | [Long-Form Speech Generation with Spoken Language Models](papers/2412.18603.md) |  | ICML | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2503.11026]] | [MAVFlow: Preserving Paralinguistic Elements with Condit](papers/2503.11026.md) | KAIST | arXiv | 2025 | VC, TTS | flow-matching | 2026-07-01 |
+| [[2505.15670]] | [SALM-Duplex: Efficient and Direct Duplex Modeling for S](papers/2505.15670.md) | NVIDIA | arXiv | 2025 | SCA | autoregressive-LM | 2026-07-01 |
+| [[2506.09874]] | [UmbraTTS: Adapting Text-to-Speech to Environmental Cont](papers/2506.09874.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-01 |
+| [[2506.18296]] | [JIS: A Speech Corpus of Japanese Idol Speakers with Var](papers/2506.18296.md) | NTT Corporation | Interspeech | 2025 | TTS, VC, evaluation |  | 2026-07-01 |

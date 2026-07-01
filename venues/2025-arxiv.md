@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 120
-last_updated: 2026-06-17
+papers_ingested: 126
+last_updated: 2026-07-01
 ---
 
 # arXiv 2025
@@ -136,3 +136,9 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2511.09690 | Omnilingual ASR: Open-Source Multilingual Speech Recognition for 1600+ |
 | 2508.13992 | MMAU-Pro: A Challenging and Comprehensive Benchmark for Holistic Evalu |
 | 2509.08753 | Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling |
+| 2505.15772 | MIKU-PAL: An Automated and Standardized Multi-Modal Method for Speech  |
+| 2507.06235 | Super Kawaii Vocalics: Amplifying the "Cute" Factor in Computer Voice |
+| 2506.23049 | AURA: Agent for Understanding, Reasoning, and Automated Tool Use in Vo |
+| 2503.11026 | MAVFlow: Preserving Paralinguistic Elements with Conditional Flow Matc |
+| 2505.15670 | SALM-Duplex: Efficient and Direct Duplex Modeling for Speech-to-Speech |
+| 2506.09874 | UmbraTTS: Adapting Text-to-Speech to Environmental Contexts with Flow  |

@@ -6,6 +6,37 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-01
+
+- ingest | 2025.iwsds-1.27 | A Survey of Recent Advances on Turn-taking Modeling in Spoken Dialogue Systems | IWSDS 2025
+- ingest | 2505.15772 | MIKU-PAL: An Automated and Standardized Multi-Modal Method for Speech Paralinguistic and Affect Labeling | arXiv 2025
+- ingest | 2507.06235 | Super Kawaii Vocalics: Amplifying the "Cute" Factor in Computer Voice | arXiv 2025
+- ingest | 2506.23049 | AURA: Agent for Understanding, Reasoning, and Automated Tool Use in Voice-Driven Tasks | arXiv 2025
+- ingest | 2025.acl-long.681 | SIFT-50M: A Large-Scale Multilingual Dataset for Speech Instruction Fine-Tuning | ACL 2025
+- ingest | 2025.acl-long.790 | Rhythm Controllable and Efficient Zero-Shot Voice Conversion via Shortcut Flow Matching | ACL 2025
+- ingest | 2025.acl-long.817 | SimulS2S-LLM: Unlocking Simultaneous Inference of Speech LLMs for Speech-to-Speech Translation | ACL 2025
+- ingest | 2025.acl-long.87 | Takin-VC: Expressive Zero-Shot Voice Conversion via Adaptive Hybrid Content Encoding and Enhanced Timbre Modeling | ACL 2025
+- ingest | 2025.acl-long.937 | UniCodec: Unified Audio Codec with Single Domain-Adaptive Codebook | ACL 2025
+- ingest | 2025.acl-long.997 | Align-SLM: Textless Spoken Language Models with Reinforcement Learning from AI Feedback | ACL 2025
+- ingest | 2025.conll-1.9 | A Linguistically Motivated Analysis of Intonational Phrasing in Text-to-Speech Systems: Revealing Gaps in Syntactic Sensitivity | CoNLL 2025
+- ingest | 2025.findings-acl.101 | Chain-Talker: Chain Understanding and Rendering for Empathetic Conversational Speech Synthesis | ACL 2025
+- ingest | 2025.findings-acl.115 | SLAM-Omni: Timbre-Controllable Voice Interaction System with Single-Stage Training | ACL 2025
+- ingest | 2025.findings-acl.1226 | PodAgent: A Comprehensive Framework for Podcast Generation | ACL 2025
+- ingest | 2025.findings-acl.470 | Does Your Voice Assistant Remember? Analyzing Conversational Context Recall and Utilization in Voice Interaction Models | ACL 2025
+- ingest | 2025.findings-acl.534 | Unlocking Speech Instruction Data Potential with Query Rewriting | ACL 2025
+- ingest | 2025.findings-acl.631 | Slamming: Training a Speech Language Model on One GPU in a Day | ACL 2025
+- ingest | 2025.findings-acl.687 | TCSinger 2: Customizable Multilingual Zero-shot Singing Voice Synthesis | ACL 2025
+- ingest | 2025.findings-acl.71 | Data-Centric Improvements for Enhancing Multi-Modal Understanding in Spoken Conversation Modeling | ACL 2025
+- ingest | 2025.findings-acl.75 | Leveraging Unit Language Guidance to Advance Speech Modeling in Textless Speech-to-Speech Translation | ACL 2025
+- ingest | 2025.findings-ijcnlp.49 | Incorporating Dialogue State Tracking into Japanese Full-duplex Task-oriented Spoken Dialogue Model | ACL 2025
+- ingest | 2025.iwslt-1.5 | SSR: Alignment-Aware Modality Connector for Speech Language Models | IWSLT 2025
+- ingest | 2025.unlp-1.11 | Context-Aware Lexical Stress Prediction and Phonemization for Ukrainian TTS Systems | workshop 2025
+- ingest | 2412.18603 | Long-Form Speech Generation with Spoken Language Models | ICML 2025
+- ingest | 2503.11026 | MAVFlow: Preserving Paralinguistic Elements with Conditional Flow Matching for Zero-Shot AV2AV Multilingual Translation | arXiv 2025
+- ingest | 2505.15670 | SALM-Duplex: Efficient and Direct Duplex Modeling for Speech-to-Speech Language Model | arXiv 2025
+- ingest | 2506.09874 | UmbraTTS: Adapting Text-to-Speech to Environmental Contexts with Flow Matching | arXiv 2025
+- ingest | 2506.18296 | JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking Styles | Interspeech 2025
+
 ## 2026-06-30
 
 - ingest | iclr-2025-hQvX9MBowC | DiTTo-TTS: Diffusion Transformers for Scalable Text-to-Speech without Domain-Specific Factors | ICLR 2025
@@ -16,6 +47,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2025.naacl-demo.12 | ESPnet-SpeechLM: An Open Speech Language Model Toolkit | NAACL 2025
 - ingest | 2025.naacl-demo.21 | ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogue Systems | NAACL 2025
 - ingest | 2025.naacl-long.484 | Behavior-SD: Behaviorally Aware Spoken Dialogue Generation with Large Language Models | NAACL 2025
+- ingest | 2025.naacl-long.591 | Robust and Unbounded Length Generalization in Autoregressive Transformer-Based Text-to-Speech | NAACL 2025
+- ingest | 2025.naacl-short.65 | kNN Retrieval for Simple and Effective Zero-Shot Multi-speaker Text-to-Speech | NAACL 2025
+- ingest | 2025.naacl-short.69 | Developing multilingual speech synthesis system for Ojibwe, Mi’kmaq, and Maliseet | NAACL 2025
+- ingest | 2025.iwsds-1.11 | Paralinguistic Attitude Recognition for Spoken Dialogue Systems | IWSDS 2025
 
 ## 2026-06-29
 

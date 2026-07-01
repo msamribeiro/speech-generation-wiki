@@ -2,8 +2,8 @@
 title: "NAACL 2025"
 venue: NAACL
 year: 2025
-papers_ingested: 14
-last_updated: "2026-06-30"
+papers_ingested: 17
+last_updated: 2026-06-30
 ---
 
 # NAACL 2025
@@ -38,3 +38,6 @@ Together, the NAACL 2025 TTS papers cover a broad methodological range: continuo
 | 2025.naacl-demo.12 | ESPnet-SpeechLM: An Open Speech Language Model Toolkit |
 | 2025.naacl-demo.21 | ESPnet-SDS: Unified Toolkit and Demo for Spoken Dialogue Systems |
 | 2025.naacl-long.484 | Behavior-SD: Behaviorally Aware Spoken Dialogue Generation with Large  |
+| 2025.naacl-long.591 | Robust and Unbounded Length Generalization in Autoregressive Transform |
+| 2025.naacl-short.65 | kNN Retrieval for Simple and Effective Zero-Shot Multi-speaker Text-to |
+| 2025.naacl-short.69 | Developing multilingual speech synthesis system for Ojibwe, Mi’kmaq, a |

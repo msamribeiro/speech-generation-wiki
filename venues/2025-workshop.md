@@ -2,8 +2,8 @@
 title: "Workshop 2025"
 venue: workshop
 year: 2025
-papers_ingested: 10
-last_updated: 2026-06-04
+papers_ingested: 11
+last_updated: 2026-07-01
 ---
 
 # Workshop Papers 2025
@@ -26,3 +26,4 @@ Workshop papers 2025 includes 4 papers from diverse venues. Key themes: (1) low-
 | 2025.coling-main.685 | VoxpopuliTTS: a large-scale multilingual TTS corpus for zero-shot speech generation | COLING 2025 |
 | 2025.computel-main.6 | Evaluating Indigenous language speech synthesis for education: A participatory design workshop on Ojibwe TTS | ComputEL 2025 |
 | 2025.nodalida-1.32 | Estonian isolated-word text-to-speech synthesiser | NoDaLiDa/Baltic-HLT 2025 |
+| 2025.unlp-1.11 | Context-Aware Lexical Stress Prediction and Phonemization for Ukrainia |

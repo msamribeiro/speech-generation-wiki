@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 54
-last_updated: 2026-06-04
+papers_ingested: 55
+last_updated: 2026-07-01
 ---
 
 # Interspeech 2025
@@ -80,3 +80,4 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-2660 | Triadic Multi-party Voice Activity Projection for Turn-taking in Spoke |
 | interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Fram |
 | interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with SITool |
+| 2506.18296 | JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking S |

@@ -5,7 +5,7 @@ title: "Speech Generation Wiki"
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
 
 > [!abstract]
-> A living systematic review of the state of the art in synthetic speech, covering **text-to-speech (TTS)**, **voice conversion (VC)**, and **spoken conversational agents (SCA)**. 363 papers ingested · 24 concepts · Last updated 2026-06-30.
+> A living systematic review of the state of the art in synthetic speech, covering **text-to-speech (TTS)**, **voice conversion (VC)**, and **spoken conversational agents (SCA)**. 390 papers ingested · 24 concepts · Last updated 2026-07-01.
 
 This wiki ingests papers from Interspeech, ICASSP, ACL, EMNLP, arXiv, and industry technical reports on a rolling basis. Each paper contributes structured **evidence** and **claims** (generalised propositions the paper supports, refutes, or complicates). Claims are aggregated into **concept pages** that synthesise what the field collectively knows. Concept pages and evidence digests feed periodic **field reports** that track how the frontier is moving.
 
@@ -39,14 +39,14 @@ Each concept page synthesises what the field knows, with claims, representative 
 
 ## Papers and Venues
 
-363 papers ingested from arXiv (2019–2026), Interspeech 2025, ACL 2025, EMNLP 2025, NAACL 2025, ICLR 2026, NeurIPS 2025, and industry technical reports.
+390 papers ingested from arXiv (2019–2026), Interspeech 2025, ACL 2025, EMNLP 2025, NAACL 2025, ICLR 2026, NeurIPS 2025, and industry technical reports.
 
-→ [[papers/index|Browse all 363 papers]]
+→ [[papers/index|Browse all 390 papers]]
 
 → [[venues/index|Browse by venue]]
 
 ## Reports
 
-Field reports synthesise changes across multiple ingestion passes, tracking shifts in dominant approaches, emerging trends, and contested claims. The first report is due — 363 papers ingested.
+Field reports synthesise changes across multiple ingestion passes, tracking shifts in dominant approaches, emerging trends, and contested claims. The first report is due — 390 papers ingested.
 
 → [[reports/index|All reports]]
