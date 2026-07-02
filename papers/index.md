@@ -400,3 +400,31 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2505.15670]] | [SALM-Duplex: Efficient and Direct Duplex Modeling for S](papers/2505.15670.md) | NVIDIA | arXiv | 2025 | SCA | autoregressive-LM | 2026-07-01 |
 | [[2506.09874]] | [UmbraTTS: Adapting Text-to-Speech to Environmental Cont](papers/2506.09874.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-01 |
 | [[2506.18296]] | [JIS: A Speech Corpus of Japanese Idol Speakers with Var](papers/2506.18296.md) | NTT Corporation | Interspeech | 2025 | TTS, VC, evaluation |  | 2026-07-01 |
+| [[2507.02176]] | [Analyzing and Improving Speaker Similarity Assessment f](papers/2507.02176.md) |  | arXiv | 2025 | evaluation |  | 2026-07-01 |
+| [[2507.00808]] | [Multi-interaction TTS toward professional recording rep](papers/2507.00808.md) | NTT | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-01 |
+| [[2507.01611]] | [QHARMA-GAN: Quasi-Harmonic Neural Vocoder based on Auto](papers/2507.01611.md) |  | arXiv | 2025 | TTS | GAN | 2026-07-01 |
+| [[2507.02380]] | [JoyTTS: LLM-based Spoken Chatbot With Voice Cloning](papers/2507.02380.md) | JD Health International Inc. | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching | 2026-07-01 |
+| [[2507.03887]] | [Traceable TTS: Toward Watermark-Free TTS with Strong Tr](papers/2507.03887.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-01 |
+| [[2507.03912]] | [Prosody Labeling with Phoneme-BERT and Speech Foundatio](papers/2507.03912.md) | CyberAgent | arXiv | 2025 | TTS |  | 2026-07-01 |
+| [[2507.08012]] | [RepeaTTS: Towards Feature Discovery through Repeated Fi](papers/2507.08012.md) |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-01 |
+| [[2507.04349]] | [TTS-CtrlNet: Time varying emotion aligned text-to-speec](papers/2507.04349.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-01 |
+| [[2507.04598]] | [Multi-Step Prediction and Control of Hierarchical Emoti](papers/2507.04598.md) |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-01 |
+| [[2507.04817]] | [Fast-VGAN: Lightweight Voice Conversion with Explicit C](papers/2507.04817.md) |  | arXiv | 2025 | VC | GAN | 2026-07-01 |
+| [[2507.01348]] | [SpeechAccentLLM: A Unified Framework for Foreign Accent](papers/2507.01348.md) |  | arXiv | 2025 | VC, TTS | autoregressive-LM, VAE, GAN | 2026-07-01 |
+| [[2507.06116]] | [Speech Quality Assessment Model Based on Mixture of Exp](papers/2507.06116.md) | Zhejiang University | arXiv | 2025 | evaluation |  | 2026-07-01 |
+| [[2506.23325]] | [XY-Tokenizer: Mitigating the Semantic-Acoustic Conflict](papers/2506.23325.md) | Fudan University | arXiv | 2025 | codec | GAN, hybrid | 2026-07-01 |
+| [[2507.07799]] | [SecureSpeech: Prompt-based Speaker and Content Protecti](papers/2507.07799.md) |  | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-01 |
+| [[2507.08319]] | [Active Learning for Text-to-Speech Synthesis with Infor](papers/2507.08319.md) |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-01 |
+| [[2507.09070]] | [SemAlignVC: Enhancing zero-shot timbre conversion using](papers/2507.09070.md) | Meta / KTH Royal Institute of Technology | arXiv | 2025 | VC | autoregressive-LM, flow-matching | 2026-07-01 |
+| [[2507.09282]] | [ClaritySpeech: Dementia Obfuscation in Speech](papers/2507.09282.md) | Imperial College London | arXiv | 2025 | TTS | autoregressive-LM, diffusion, VAE | 2026-07-02 |
+| [[2507.09310]] | [Voice Conversion for Lombard Speaking Style with Implic](papers/2507.09310.md) | Amazon Alexa / Imperial College London | arXiv | 2025 | VC, TTS | VAE | 2026-07-02 |
+| [[2507.10985]] | [Pronunciation Deviation Analysis Through Voice Cloning ](papers/2507.10985.md) | California State University Long Beach | arXiv | 2025 | TTS |  | 2026-07-02 |
+| [[2507.12197]] | [Quantize More, Lose Less: Autoregressive Generation fro](papers/2507.12197.md) |  | arXiv | 2025 | TTS, singing | autoregressive-LM, GAN | 2026-07-02 |
+| [[2507.14988]] | [DMOSpeech 2: Reinforcement Learning for Duration Predic](papers/2507.14988.md) | Columbia University | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |
+| [[2507.15272]] | [A2TTS: TTS for Low Resource Indian Languages](papers/2507.15272.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-02 |
+| [[2507.16875]] | [Technical report: Impact of Duration Prediction on Spea](papers/2507.16875.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |
+| [[2507.21138]] | [TTS-1 Technical Report](papers/2507.21138.md) | Inworld AI | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-02 |
+| [[2507.18119]] | [GOAT-SLM: A Spoken Language Model with Paralinguistic a](papers/2507.18119.md) | TeleAI, China Telecom | arXiv | 2025 | SCA | autoregressive-LM, flow-matching | 2026-07-02 |
+| [[2507.18897]] | [HH-Codec: High Compression High-fidelity Discrete Neura](papers/2507.18897.md) |  | arXiv | 2025 | codec | GAN | 2026-07-02 |
+| [[2507.17527]] | [Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-](papers/2507.17527.md) | ByteDance | arXiv | 2025 | TTS, VC | autoregressive-LM | 2026-07-02 |
+| [[2507.20140]] | [Do Not Mimic My Voice: Speaker Identity Unlearning for ](papers/2507.20140.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |

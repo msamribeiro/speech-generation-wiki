@@ -68,14 +68,14 @@ Moderate — this paper demonstrates that a non-adversarial, flow matching-based
 
 ## Claims
 
-- supports: A flow matching-based stochastic postfilter conditioned on a deterministic codec's decoder output can replace adversarial training while achieving comparable subjective quality to a GAN-based codec.
-  Evidence: MUSHRA listening tests (Test A, 11 expert listeners) show no significant difference between FlowDec-75m and DAC-75 score distributions at matched bitrates of 4.5 and 7.5 kbit/s. *(§5.2, Figure 6)*
-- supports: Coupling the flow matching source distribution to the conditioning signal (rather than sampling it independently) removes the need for minibatch optimal-transport solvers and improves postfilter sample quality at low inference budgets.
-  Evidence: At NFE=6, the proposed coupled formulation achieves FAD×100 of 1.62 versus 145.3 for the diffusion-based ScoreDec baseline and approximately 29 for an alternative constant-σ flow matching formulation, on the same underlying codec and test set. *(§5.1, Table 4)*
-- complicates: Improving perceptual distance metrics (FAD) via generative postfiltering trades off against intrusive distortion metrics relative to discriminator-trained codecs.
-  Evidence: Retrained non-adversarial DAC (NDAC) generally outperforms FlowDec on SI-SDR and fwSSNR even though FlowDec achieves better FAD, consistent with the perception-distortion tradeoff; the gap is small in the perceptually weighted fwSSNR but clear in SI-SDR. *(§5.1, Figure 4, Figure 5)*
-- complicates: Generative postfilters trained with vanilla score- or flow-matching formulations using a fixed-variance or independent prior can fail to converge to the target signal or require expensive multi-step inference to reach acceptable quality.
-  Evidence: ScoreDec (diffusion-based postfilter) produces unusable audio quality at a reduced inference budget of 6 function evaluations (FAD×100 = 145.3, SI-SDR = -27.23), only becoming competitive at roughly 50 evaluations; a constant-σ flow matching variant also underperforms the proposed coupled formulation at NFE=6. *(§5.1, Table 4)*
+- **supports:** A flow matching-based stochastic postfilter conditioned on a deterministic codec's decoder output can replace adversarial training while achieving comparable subjective quality to a GAN-based codec.
+  > *Evidence:* MUSHRA listening tests (Test A, 11 expert listeners) show no significant difference between FlowDec-75m and DAC-75 score distributions at matched bitrates of 4.5 and 7.5 kbit/s. *(§5.2, Figure 6)*
+- **supports:** Coupling the flow matching source distribution to the conditioning signal (rather than sampling it independently) removes the need for minibatch optimal-transport solvers and improves postfilter sample quality at low inference budgets.
+  > *Evidence:* At NFE=6, the proposed coupled formulation achieves FAD×100 of 1.62 versus 145.3 for the diffusion-based ScoreDec baseline and approximately 29 for an alternative constant-σ flow matching formulation, on the same underlying codec and test set. *(§5.1, Table 4)*
+- **complicates:** Improving perceptual distance metrics (FAD) via generative postfiltering trades off against intrusive distortion metrics relative to discriminator-trained codecs.
+  > *Evidence:* Retrained non-adversarial DAC (NDAC) generally outperforms FlowDec on SI-SDR and fwSSNR even though FlowDec achieves better FAD, consistent with the perception-distortion tradeoff; the gap is small in the perceptually weighted fwSSNR but clear in SI-SDR. *(§5.1, Figure 4, Figure 5)*
+- **complicates:** Generative postfilters trained with vanilla score- or flow-matching formulations using a fixed-variance or independent prior can fail to converge to the target signal or require expensive multi-step inference to reach acceptable quality.
+  > *Evidence:* ScoreDec (diffusion-based postfilter) produces unusable audio quality at a reduced inference budget of 6 function evaluations (FAD×100 = 145.3, SI-SDR = -27.23), only becoming competitive at roughly 50 evaluations; a constant-σ flow matching variant also underperforms the proposed coupled formulation at NFE=6. *(§5.1, Table 4)*
 
 ## Limitations and Open Questions
 

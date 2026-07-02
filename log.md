@@ -6,6 +6,21 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-02
+
+- ingest | 2507.09282 | ClaritySpeech: Dementia Obfuscation in Speech | arXiv 2025
+- ingest | 2507.09310 | Voice Conversion for Lombard Speaking Style with Implicit and Explicit Acoustic Feature Conditioning | arXiv 2025
+- ingest | 2507.10985 | Pronunciation Deviation Analysis Through Voice Cloning and Acoustic Comparison | arXiv 2025
+- ingest | 2507.12197 | Quantize More, Lose Less: Autoregressive Generation from Residually Quantized Speech Representations | arXiv 2025
+- ingest | 2507.14988 | DMOSpeech 2: Reinforcement Learning for Duration Prediction in Metric-Optimized Speech Synthesis | arXiv 2025
+- ingest | 2507.15272 | A2TTS: TTS for Low Resource Indian Languages | arXiv 2025
+- ingest | 2507.16875 | Technical report: Impact of Duration Prediction on Speaker-specific TTS for Indian Languages | arXiv 2025
+- ingest | 2507.21138 | TTS-1 Technical Report | arXiv 2025
+- ingest | 2507.18119 | GOAT-SLM: A Spoken Language Model with Paralinguistic and Speaker Characteristic Awareness | arXiv 2025
+- ingest | 2507.18897 | HH-Codec: High Compression High-fidelity Discrete Neural Codec for Spoken Language Modeling | arXiv 2025
+- ingest | 2507.17527 | Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-to-speech Translation with Your Voice | arXiv 2025
+- ingest | 2507.20140 | Do Not Mimic My Voice: Speaker Identity Unlearning for Zero-Shot Text-to-Speech | arXiv 2025
+
 ## 2026-07-01
 
 - ingest | 2025.iwsds-1.27 | A Survey of Recent Advances on Turn-taking Modeling in Spoken Dialogue Systems | IWSDS 2025
@@ -36,6 +51,22 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2505.15670 | SALM-Duplex: Efficient and Direct Duplex Modeling for Speech-to-Speech Language Model | arXiv 2025
 - ingest | 2506.09874 | UmbraTTS: Adapting Text-to-Speech to Environmental Contexts with Flow Matching | arXiv 2025
 - ingest | 2506.18296 | JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking Styles | Interspeech 2025
+- ingest | 2507.02176 | Analyzing and Improving Speaker Similarity Assessment for Speech Synthesis | arXiv 2025
+- ingest | 2507.00808 | Multi-interaction TTS toward professional recording reproduction | arXiv 2025
+- ingest | 2507.01611 | QHARMA-GAN: Quasi-Harmonic Neural Vocoder based on Autoregressive Moving Average Model | arXiv 2025
+- ingest | 2507.02380 | JoyTTS: LLM-based Spoken Chatbot With Voice Cloning | arXiv 2025
+- ingest | 2507.03887 | Traceable TTS: Toward Watermark-Free TTS with Strong Traceability | arXiv 2025
+- ingest | 2507.03912 | Prosody Labeling with Phoneme-BERT and Speech Foundation Models | arXiv 2025
+- ingest | 2507.08012 | RepeaTTS: Towards Feature Discovery through Repeated Fine-Tuning | arXiv 2025
+- ingest | 2507.04349 | TTS-CtrlNet: Time varying emotion aligned text-to-speech generation with ControlNet | arXiv 2025
+- ingest | 2507.04598 | Multi-Step Prediction and Control of Hierarchical Emotion Distribution in Text-to-Speech Synthesis | arXiv 2025
+- ingest | 2507.04817 | Fast-VGAN: Lightweight Voice Conversion with Explicit Control of F0 and Duration Parameters | arXiv 2025
+- ingest | 2507.01348 | SpeechAccentLLM: A Unified Framework for Foreign Accent Conversion and Text to Speech | arXiv 2025
+- ingest | 2507.06116 | Speech Quality Assessment Model Based on Mixture of Experts: System-Level Performance Enhancement and Utterance-Level Challenge Analysis | arXiv 2025
+- ingest | 2506.23325 | XY-Tokenizer: Mitigating the Semantic-Acoustic Conflict in Low-Bitrate Speech Codecs | arXiv 2025
+- ingest | 2507.07799 | SecureSpeech: Prompt-based Speaker and Content Protection | arXiv 2025
+- ingest | 2507.08319 | Active Learning for Text-to-Speech Synthesis with Informative Sample Collection | arXiv 2025
+- ingest | 2507.09070 | SemAlignVC: Enhancing zero-shot timbre conversion using semantic alignment | arXiv 2025
 
 ## 2026-06-30
 

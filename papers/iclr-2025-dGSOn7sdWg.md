@@ -77,20 +77,20 @@ The autoregressive SpeechLM component is not novel; it directly follows the TWIS
 
 ## Claims
 
-- supports: Reducing the token rate of speech representations below 10 Hz is sufficient to preserve semantic content adequate for spoken language modelling, while substantially improving training and inference efficiency.
-  Evidence: SyllableLM at 6.25 Hz, 90M parameters, matches or exceeds TWIST models up to 13B parameters on sBLIMP semantic understanding benchmarks, with 30x less training compute and 4.5x faster inference than an equal-sized TWIST baseline. *(§5.6, Table 6)*
+- **supports:** Reducing the token rate of speech representations below 10 Hz is sufficient to preserve semantic content adequate for spoken language modelling, while substantially improving training and inference efficiency.
+  > *Evidence:* SyllableLM at 6.25 Hz, 90M parameters, matches or exceeds TWIST models up to 13B parameters on sBLIMP semantic understanding benchmarks, with 30x less training compute and 4.5x faster inference than an equal-sized TWIST baseline. *(§5.6, Table 6)*
 
-- supports: The loss surface of a masked-prediction SSL model encodes latent syllabic segmentation boundaries discoverable without additional supervised signal or cross-modal supervision.
-  Evidence: LossPred, applied to a frozen HuBERT student-teacher pair without any training, achieves F1-50 of 59.6 on syllabic boundary detection, outperforming the feature-similarity-based baseline (47.3) while requiring no fine-tuning. *(§3.1, Table 1)*
+- **supports:** The loss surface of a masked-prediction SSL model encodes latent syllabic segmentation boundaries discoverable without additional supervised signal or cross-modal supervision.
+  > *Evidence:* LossPred, applied to a frozen HuBERT student-teacher pair without any training, achieves F1-50 of 59.6 on syllabic boundary detection, outperforming the feature-similarity-based baseline (47.3) while requiring no fine-tuning. *(§3.1, Table 1)*
 
-- supports: Iterative student-teacher distillation over pseudo-syllabic boundaries progressively sharpens SSL encoder representations toward syllable-level organisation.
-  Evidence: SylBoost applied to HuBERT improves boundary detection F1 from 60.1 (LossPred initialisation) to 70.2 after two iterations; applying it to Data2Vec2 reaches 73.2, each iteration producing a measurable gain over the previous. *(§5.3, Table 2)*
+- **supports:** Iterative student-teacher distillation over pseudo-syllabic boundaries progressively sharpens SSL encoder representations toward syllable-level organisation.
+  > *Evidence:* SylBoost applied to HuBERT improves boundary detection F1 from 60.1 (LossPred initialisation) to 70.2 after two iterations; applying it to Data2Vec2 reaches 73.2, each iteration producing a measurable gain over the previous. *(§5.3, Table 2)*
 
-- complicates: Low-frequency speech units that improve semantic modelling efficiency may sacrifice robustness to speaker rate variation.
-  Evidence: SylBoost unit counts collapse under audio speedups of 0.5x and 0.6x relative to original length, performing comparably to SD-HuBERT only at mild speedups (0.8x–0.9x range), while showing greater robustness to slowdowns. *(Appendix A.5, Table 11)*
+- **complicates:** Low-frequency speech units that improve semantic modelling efficiency may sacrifice robustness to speaker rate variation.
+  > *Evidence:* SylBoost unit counts collapse under audio speedups of 0.5x and 0.6x relative to original length, performing comparably to SD-HuBERT only at mild speedups (0.8x–0.9x range), while showing greater robustness to slowdowns. *(Appendix A.5, Table 11)*
 
-- complicates: Units optimised for semantic modelling in audiobook speech may lose paralinguistic information, limiting applicability to domains requiring prosodic or tonal fidelity.
-  Evidence: The authors note that low-frequency SylBoost units may lose paralinguistic features such as tone, and the entire evaluation is conducted on audiobook data (LibriSpeech / LibriLight); performance on spontaneous or multi-speaker speech is not reported. *(§6)*
+- **complicates:** Units optimised for semantic modelling in audiobook speech may lose paralinguistic information, limiting applicability to domains requiring prosodic or tonal fidelity.
+  > *Evidence:* The authors note that low-frequency SylBoost units may lose paralinguistic features such as tone, and the entire evaluation is conducted on audiobook data (LibriSpeech / LibriLight); performance on spontaneous or multi-speaker speech is not reported. *(§6)*
 
 ## Limitations and Open Questions
 

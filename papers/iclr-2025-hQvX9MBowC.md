@@ -91,16 +91,16 @@ This closes a gap that prior phoneme-free LDM-TTS work (E3 TTS, Simple-TTS) had 
 
 ## Claims
 
-- supports: Diffusion Transformer backbones are better suited to TTS than U-Net backbones once domain-specific conditioning factors (phonemes, durations) are removed.
-  Evidence: Under matched training conditions, replacing the DiT backbone with a U-Net (and a U-Net variant without down/up-sampling) increases WER from 2.93 to 3.7 and drops SIM-r from 0.588 to 0.389 on the English cross-sentence task. *(§5.2, Table 4)*
-- supports: Predicting total target length and generating variable-length sequences outperforms fixed-length generation with padding in diffusion-based TTS.
-  Evidence: Fixed-length modeling with padding reaches WER 6.81-8.89, while a learned speech length predictor with variable-length generation reaches WER 5.36-5.58 under otherwise identical settings. *(§5.2, Table 5)*
-- supports: Aligning text and speech latent representations improves cross-attention-conditioned generation quality, independent of model or training-data scale.
-  Evidence: A speech codec fine-tuned with an auxiliary language-modeling loss against a frozen text encoder (Mel-VAE++) improves WER/SIM over the unaligned codec regardless of which text encoder (ByT5 or SpeechT5) is paired with it, and a jointly text-speech-trained text encoder (SpeechT5, 85M params) outperforms a larger text-only encoder (ByT5-base, 415M params) trained on more data. *(§5.2, Tables 6-7)*
-- complicates: Removing domain-specific alignment factors from LDM-based TTS narrows but does not eliminate the gap to phoneme-duration-based systems in speaker similarity.
-  Evidence: DiTTo-en-XL reaches SIM-r 0.6554 on the cross-sentence task, below Voicebox's reported 0.681 (a phoneme/duration-based non-autoregressive model), even though DiTTo-en-XL is faster and matches or exceeds Voicebox on WER. *(§5.1, Table 2)*
-- complicates: Codec compression ratio, not codec-reconstruction quality alone, determines suitability as a diffusion target for variable-length TTS.
-  Evidence: DAC achieves higher PESQ and ViSQOL codec-reconstruction scores than Mel-VAE, but its 7-8x longer latent sequences make training and inference substantially less efficient and degrade end-to-end WER/SIM relative to the more compressed but lower-fidelity Mel-VAE. *(§5.2, Table 7)*
+- **supports:** Diffusion Transformer backbones are better suited to TTS than U-Net backbones once domain-specific conditioning factors (phonemes, durations) are removed.
+  > *Evidence:* Under matched training conditions, replacing the DiT backbone with a U-Net (and a U-Net variant without down/up-sampling) increases WER from 2.93 to 3.7 and drops SIM-r from 0.588 to 0.389 on the English cross-sentence task. *(§5.2, Table 4)*
+- **supports:** Predicting total target length and generating variable-length sequences outperforms fixed-length generation with padding in diffusion-based TTS.
+  > *Evidence:* Fixed-length modeling with padding reaches WER 6.81-8.89, while a learned speech length predictor with variable-length generation reaches WER 5.36-5.58 under otherwise identical settings. *(§5.2, Table 5)*
+- **supports:** Aligning text and speech latent representations improves cross-attention-conditioned generation quality, independent of model or training-data scale.
+  > *Evidence:* A speech codec fine-tuned with an auxiliary language-modeling loss against a frozen text encoder (Mel-VAE++) improves WER/SIM over the unaligned codec regardless of which text encoder (ByT5 or SpeechT5) is paired with it, and a jointly text-speech-trained text encoder (SpeechT5, 85M params) outperforms a larger text-only encoder (ByT5-base, 415M params) trained on more data. *(§5.2, Tables 6-7)*
+- **complicates:** Removing domain-specific alignment factors from LDM-based TTS narrows but does not eliminate the gap to phoneme-duration-based systems in speaker similarity.
+  > *Evidence:* DiTTo-en-XL reaches SIM-r 0.6554 on the cross-sentence task, below Voicebox's reported 0.681 (a phoneme/duration-based non-autoregressive model), even though DiTTo-en-XL is faster and matches or exceeds Voicebox on WER. *(§5.1, Table 2)*
+- **complicates:** Codec compression ratio, not codec-reconstruction quality alone, determines suitability as a diffusion target for variable-length TTS.
+  > *Evidence:* DAC achieves higher PESQ and ViSQOL codec-reconstruction scores than Mel-VAE, but its 7-8x longer latent sequences make training and inference substantially less efficient and degrade end-to-end WER/SIM relative to the more compressed but lower-fidelity Mel-VAE. *(§5.2, Table 7)*
 
 ## Limitations and Open Questions
 

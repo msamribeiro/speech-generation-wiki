@@ -96,20 +96,20 @@ Moderate — this paper provides a proof of concept that autoregressive TTS does
 
 ## Claims
 
-- supports: Continuous latent representations can replace discrete vector quantization in autoregressive TTS without sacrificing generation quality.
-  Evidence: GMM-LM trained on continuous GMM-VAE encoder features outperforms VALL-E (RVQ-based) on WER, speaker similarity, Q-MOS, and S-MOS on LibriSpeech test-clean across all prompt lengths, while using 10.3% of VALL-E's parameter count. *(§5.1, Table 1, Table 2)*
+- **supports:** Continuous latent representations can replace discrete vector quantization in autoregressive TTS without sacrificing generation quality.
+  > *Evidence:* GMM-LM trained on continuous GMM-VAE encoder features outperforms VALL-E (RVQ-based) on WER, speaker similarity, Q-MOS, and S-MOS on LibriSpeech test-clean across all prompt lengths, while using 10.3% of VALL-E's parameter count. *(§5.1, Table 1, Table 2)*
 
-- complicates: Longer audio prompts do not uniformly improve zero-shot speaker cloning across AR architectures.
-  Evidence: VALL-E's WER increases monotonically with prompt length (6.04% at 3s, 7.54% at 8s, 9.68% at 15s), suggesting that simple cross-attention cannot leverage extended speaker context in AR decoding; the proposed GMM-LM shows the opposite trend, consistently benefiting from longer prompts. *(§5.1, Table 2)*
+- **complicates:** Longer audio prompts do not uniformly improve zero-shot speaker cloning across AR architectures.
+  > *Evidence:* VALL-E's WER increases monotonically with prompt length (6.04% at 3s, 7.54% at 8s, 9.68% at 15s), suggesting that simple cross-attention cannot leverage extended speaker context in AR decoding; the proposed GMM-LM shows the opposite trend, consistently benefiting from longer prompts. *(§5.1, Table 2)*
 
-- supports: Strict monotonic alignment substantially reduces word error rate in autoregressive TTS compared to standard cross-attention and soft monotonic variants.
-  Evidence: Among alignment strategies tested on the same GMM-LM architecture, stochastic monotonic alignment with ST-Gumbel achieves WER 2.72% vs. 6.6% for cross-attention alone; even monotonic attention with Gumbel (without the stochastic binary forward pass) scores 3.34%. *(Appendix A.1, Table 6)*
+- **supports:** Strict monotonic alignment substantially reduces word error rate in autoregressive TTS compared to standard cross-attention and soft monotonic variants.
+  > *Evidence:* Among alignment strategies tested on the same GMM-LM architecture, stochastic monotonic alignment with ST-Gumbel achieves WER 2.72% vs. 6.6% for cross-attention alone; even monotonic attention with Gumbel (without the stochastic binary forward pass) scores 3.34%. *(Appendix A.1, Table 6)*
 
-- supports: Continuous speech representations improve downstream autoregressive model performance relative to discrete counterparts, independent of the alignment mechanism.
-  Evidence: A head-to-head ablation comparing GMM-LM (continuous) against discrete AR models (VQ-VAE single codebook and DAC multi-codebook with delayed prediction), all using the proposed monotonic alignment, shows GMM-LM achieves WER 2.72% vs. 5.35% and 5.87% for the discrete variants. *(Appendix A.6, Table 10)*
+- **supports:** Continuous speech representations improve downstream autoregressive model performance relative to discrete counterparts, independent of the alignment mechanism.
+  > *Evidence:* A head-to-head ablation comparing GMM-LM (continuous) against discrete AR models (VQ-VAE single codebook and DAC multi-codebook with delayed prediction), all using the proposed monotonic alignment, shows GMM-LM achieves WER 2.72% vs. 5.35% and 5.87% for the discrete variants. *(Appendix A.6, Table 10)*
 
-- complicates: Increasing the number of Gaussian components in continuous AR modeling yields diminishing returns and can reduce quality through overfitting.
-  Evidence: GMM-LM with 6 diagonal-covariance Gaussians (WER 2.72%, SIM 0.91) outperforms 3-Gaussian (WER 2.89%, SIM 0.85), but 10-Gaussian degrades to WER 5.21%, SIM 0.71; the 6-mixture GMM-VAE also shows worse evaluation-set reconstruction than the 3-mixture model despite better training-set fit. *(§5.4, Table 4, Table 5, Appendix A.3)*
+- **complicates:** Increasing the number of Gaussian components in continuous AR modeling yields diminishing returns and can reduce quality through overfitting.
+  > *Evidence:* GMM-LM with 6 diagonal-covariance Gaussians (WER 2.72%, SIM 0.91) outperforms 3-Gaussian (WER 2.89%, SIM 0.85), but 10-Gaussian degrades to WER 5.21%, SIM 0.71; the 6-mixture GMM-VAE also shows worse evaluation-set reconstruction than the 3-mixture model despite better training-set fit. *(§5.4, Table 4, Table 5, Appendix A.3)*
 
 ## Limitations and Open Questions
 

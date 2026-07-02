@@ -95,20 +95,20 @@ The contribution is genuinely architectural rather than a simple application of 
 
 ## Claims
 
-- supports: Flow matching enables higher-quality waveform generation than diffusion with fewer inference steps.
-  Evidence: PeriodWave with CFM and 6 steps achieves UTMOS 3.628 versus PeriodWave with DDPM at 50 steps achieving UTMOS 3.377 on LibriTTS; the CFM model also reaches comparable quality to 50-step DDPM at only 16 steps. *(§4.6, Table 8)*
+- **supports:** Flow matching enables higher-quality waveform generation than diffusion with fewer inference steps.
+  > *Evidence:* PeriodWave with CFM and 6 steps achieves UTMOS 3.628 versus PeriodWave with DDPM at 50 steps achieving UTMOS 3.377 on LibriTTS; the CFM model also reaches comparable quality to 50-step DDPM at only 16 steps. *(§4.6, Table 8)*
 
-- supports: Explicit multi-period decomposition in the generator architecture improves pitch accuracy and periodicity over GAN and diffusion vocoders.
-  Evidence: PeriodWave achieves pitch error of 15.04 cents and periodicity 0.0744 on LJSpeech, substantially below BigVGAN (19.02 cents, 0.0782) and all diffusion baselines; ablation shows monotonic improvement as more distinct prime-number periods are added. *(§4.2, §4.6, Table 1, Table 7)*
+- **supports:** Explicit multi-period decomposition in the generator architecture improves pitch accuracy and periodicity over GAN and diffusion vocoders.
+  > *Evidence:* PeriodWave achieves pitch error of 15.04 cents and periodicity 0.0744 on LJSpeech, substantially below BigVGAN (19.02 cents, 0.0782) and all diffusion baselines; ablation shows monotonic improvement as more distinct prime-number periods are added. *(§4.2, §4.6, Table 1, Table 7)*
 
-- complicates: Single-step GAN vocoders achieve significantly faster inference than iterative flow-matching vocoders.
-  Evidence: PeriodWave at 16 steps runs at 7.48× real-time; HiFi-GAN runs at 166.70× real-time; even PeriodWave at 2 steps (56.36×) is slower than HiFi-GAN, though it already outperforms HiFi-GAN on all quality metrics. *(§E, Table 15, Table 16)*
+- **complicates:** Single-step GAN vocoders achieve significantly faster inference than iterative flow-matching vocoders.
+  > *Evidence:* PeriodWave at 16 steps runs at 7.48× real-time; HiFi-GAN runs at 166.70× real-time; even PeriodWave at 2 steps (56.36×) is slower than HiFi-GAN, though it already outperforms HiFi-GAN on all quality metrics. *(§E, Table 15, Table 16)*
 
-- supports: Iterative waveform generation reduces train-inference mismatch artefacts in two-stage TTS relative to one-step GAN vocoders.
-  Evidence: In zero-shot TTS with ARDiT-TTS acoustic features, PeriodWave+FreeU achieves MOS 4.07 versus BigVGAN's 4.03 and BigVSAN's 3.99; the iterative refinement allows the vocoder to correct imperfections in generated Mel-spectrograms rather than propagating them. *(§4.7, Table 9, §G)*
+- **supports:** Iterative waveform generation reduces train-inference mismatch artefacts in two-stage TTS relative to one-step GAN vocoders.
+  > *Evidence:* In zero-shot TTS with ARDiT-TTS acoustic features, PeriodWave+FreeU achieves MOS 4.07 versus BigVGAN's 4.03 and BigVSAN's 3.99; the iterative refinement allows the vocoder to correct imperfections in generated Mel-spectrograms rather than propagating them. *(§4.7, Table 9, §G)*
 
-- supports: Flow-matching vocoders can decode neural codec tokens with streaming generation and minimal quality degradation.
-  Evidence: PeriodWave trained for parallel generation from Mimi (Q=8) tokens achieves CER 2.5% versus Mimi decoder's 3.07%; streaming with single-token delay and 2-step sampling maintains comparable quality (CER 2.45%, UTMOS 3.85 versus parallel 3.93). *(§5, Table 10, Table 11)*
+- **supports:** Flow-matching vocoders can decode neural codec tokens with streaming generation and minimal quality degradation.
+  > *Evidence:* PeriodWave trained for parallel generation from Mimi (Q=8) tokens achieves CER 2.5% versus Mimi decoder's 3.07%; streaming with single-token delay and 2-step sampling maintains comparable quality (CER 2.45%, UTMOS 3.85 versus parallel 3.93). *(§5, Table 10, Table 11)*
 
 ## Limitations and Open Questions
 

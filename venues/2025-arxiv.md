@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 126
-last_updated: 2026-07-01
+papers_ingested: 154
+last_updated: 2026-07-02
 ---
 
 # arXiv 2025
@@ -142,3 +142,31 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2503.11026 | MAVFlow: Preserving Paralinguistic Elements with Conditional Flow Matc |
 | 2505.15670 | SALM-Duplex: Efficient and Direct Duplex Modeling for Speech-to-Speech |
 | 2506.09874 | UmbraTTS: Adapting Text-to-Speech to Environmental Contexts with Flow  |
+| 2507.02176 | Analyzing and Improving Speaker Similarity Assessment for Speech Synth |
+| 2507.00808 | Multi-interaction TTS toward professional recording reproduction |
+| 2507.01611 | QHARMA-GAN: Quasi-Harmonic Neural Vocoder based on Autoregressive Movi |
+| 2507.02380 | JoyTTS: LLM-based Spoken Chatbot With Voice Cloning |
+| 2507.03887 | Traceable TTS: Toward Watermark-Free TTS with Strong Traceability |
+| 2507.03912 | Prosody Labeling with Phoneme-BERT and Speech Foundation Models |
+| 2507.08012 | RepeaTTS: Towards Feature Discovery through Repeated Fine-Tuning |
+| 2507.04349 | TTS-CtrlNet: Time varying emotion aligned text-to-speech generation wi |
+| 2507.04598 | Multi-Step Prediction and Control of Hierarchical Emotion Distribution |
+| 2507.04817 | Fast-VGAN: Lightweight Voice Conversion with Explicit Control of F0 an |
+| 2507.01348 | SpeechAccentLLM: A Unified Framework for Foreign Accent Conversion and |
+| 2507.06116 | Speech Quality Assessment Model Based on Mixture of Experts: System-Le |
+| 2506.23325 | XY-Tokenizer: Mitigating the Semantic-Acoustic Conflict in Low-Bitrate |
+| 2507.07799 | SecureSpeech: Prompt-based Speaker and Content Protection |
+| 2507.08319 | Active Learning for Text-to-Speech Synthesis with Informative Sample C |
+| 2507.09070 | SemAlignVC: Enhancing zero-shot timbre conversion using semantic align |
+| 2507.09282 | ClaritySpeech: Dementia Obfuscation in Speech |
+| 2507.09310 | Voice Conversion for Lombard Speaking Style with Implicit and Explicit |
+| 2507.10985 | Pronunciation Deviation Analysis Through Voice Cloning and Acoustic Co |
+| 2507.12197 | Quantize More, Lose Less: Autoregressive Generation from Residually Qu |
+| 2507.14988 | DMOSpeech 2: Reinforcement Learning for Duration Prediction in Metric- |
+| 2507.15272 | A2TTS: TTS for Low Resource Indian Languages |
+| 2507.16875 | Technical report: Impact of Duration Prediction on Speaker-specific TT |
+| 2507.21138 | TTS-1 Technical Report |
+| 2507.18119 | GOAT-SLM: A Spoken Language Model with Paralinguistic and Speaker Char |
+| 2507.18897 | HH-Codec: High Compression High-fidelity Discrete Neural Codec for Spo |
+| 2507.17527 | Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-to-speech Trans |
+| 2507.20140 | Do Not Mimic My Voice: Speaker Identity Unlearning for Zero-Shot Text- |
