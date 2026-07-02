@@ -428,3 +428,26 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2507.18897]] | [HH-Codec: High Compression High-fidelity Discrete Neura](papers/2507.18897.md) |  | arXiv | 2025 | codec | GAN | 2026-07-02 |
 | [[2507.17527]] | [Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-](papers/2507.17527.md) | ByteDance | arXiv | 2025 | TTS, VC | autoregressive-LM | 2026-07-02 |
 | [[2507.20140]] | [Do Not Mimic My Voice: Speaker Identity Unlearning for ](papers/2507.20140.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |
+| [[2507.20731]] | [Learning Neural Vocoder from Range-Null Space Decomposi](papers/2507.20731.md) |  | arXiv | 2025 | TTS | GAN | 2026-07-02 |
+| [[2025.ccl-1.77]] | [HFSD-V2C: Zero-Shot Visual Voice Cloning Via Hierarchic](papers/2025.ccl-1.77.md) |  | workshop | 2025 | TTS | diffusion | 2026-07-02 |
+| [[2025.icnlsp-1.34]] | [Beyond Labeled Datasets: Advancing TTS with Direct Pref](papers/2025.icnlsp-1.34.md) |  | workshop | 2025 | TTS | autoregressive-LM | 2026-07-02 |
+| [[2025.sigdial-1.21]] | [Transition Relevance Point Detection for Spoken Dialogu](papers/2025.sigdial-1.21.md) |  | workshop | 2025 | SCA | hybrid | 2026-07-02 |
+| [[2025.sigdial-1.27]] | [EmoNews: A Spoken Dialogue System for Expressive News C](papers/2025.sigdial-1.27.md) |  | workshop | 2025 | SCA, TTS | transformer-enc-dec | 2026-07-02 |
+| [[2025.sigdial-1.51]] | [rrSDS 2.0: Incremental, Modular, Distributed, Multimoda](papers/2025.sigdial-1.51.md) |  | workshop | 2025 | SCA |  | 2026-07-02 |
+| [[interspeech-2025-0166]] | [Frozen Large Language Models Can Perceive Paralinguisti](papers/interspeech-2025-0166.md) |  | Interspeech | 2025 | SCA | transformer-enc-dec | 2026-07-02 |
+| [[interspeech-2025-0305]] | [DAFMSVC: One-Shot Singing Voice Conversion with Dual At](papers/interspeech-2025-0305.md) |  | Interspeech | 2025 | singing, VC | flow-matching, transformer-enc-dec | 2026-07-02 |
+| [[interspeech-2025-0347]] | [PeriodCodec: A Pitch-Controllable Neural Audio Codec Us](papers/interspeech-2025-0347.md) |  | Interspeech | 2025 | codec, singing | GAN, VAE | 2026-07-02 |
+| [[interspeech-2025-0355]] | [Probing the Robustness Properties of Neural Speech Code](papers/interspeech-2025-0355.md) |  | Interspeech | 2025 | codec, evaluation |  | 2026-07-02 |
+| [[interspeech-2025-0383]] | [Voice Conversion for Likability Control via Automated R](papers/interspeech-2025-0383.md) |  | Interspeech | 2025 | VC | transformer-enc-dec | 2026-07-02 |
+| [[interspeech-2025-0433]] | [When Humans Growl and Birds Speak: High-Fidelity Voice ](papers/interspeech-2025-0433.md) |  | Interspeech | 2025 | VC | VAE | 2026-07-02 |
+| [[interspeech-2025-0438]] | [LinearVC: Linear Transformations of Self-Supervised Fea](papers/interspeech-2025-0438.md) |  | Interspeech | 2025 | VC | hybrid | 2026-07-02 |
+| [[interspeech-2025-0464]] | [Prosody-Adaptable Audio Codecs for Zero-Shot Voice Conv](papers/interspeech-2025-0464.md) |  | Interspeech | 2025 | VC, codec | autoregressive-LM | 2026-07-02 |
+| [[interspeech-2025-0506]] | [EnCodecMAE: leveraging neural codecs for universal audi](papers/interspeech-2025-0506.md) |  | Interspeech | 2025 | codec | transformer-enc-dec | 2026-07-02 |
+| [[interspeech-2025-0656]] | [EEG-based Voice Conversion : Hearing the Voice of Your ](papers/interspeech-2025-0656.md) | Beijing University of Posts and Telecommunications | Interspeech | 2025 | VC | hybrid | 2026-07-02 |
+| [[interspeech-2025-0706]] | [Contextual Paralinguistic Data Creation for Multi-Modal](papers/interspeech-2025-0706.md) |  | Interspeech | 2025 | SCA |  | 2026-07-02 |
+| [[interspeech-2025-0756]] | [A-SMiLE: Affective Sparse Mixture-of-Experts Adapter wi](papers/interspeech-2025-0756.md) |  | Interspeech | 2025 | SCA | hybrid | 2026-07-02 |
+| [[interspeech-2025-0998]] | [Voice-ENHANCE: Speech Restoration using a Diffusion-bas](papers/interspeech-2025-0998.md) |  | Interspeech | 2025 | VC | diffusion, GAN | 2026-07-02 |
+| [[interspeech-2025-1020]] | [Learning Optimal Prosody Embedding Codebook based on F0](papers/interspeech-2025-1020.md) |  | Interspeech | 2025 | TTS, evaluation | VAE | 2026-07-03 |
+| [[interspeech-2025-1081]] | [Speaker Normalization and Content Restoration for Zero-](papers/interspeech-2025-1081.md) |  | Interspeech | 2025 | VC | GAN | 2026-07-03 |
+| [[interspeech-2025-1084]] | [Efficient Streaming TTS Acoustic Model with Depthwise R](papers/interspeech-2025-1084.md) |  | Interspeech | 2025 | TTS | autoregressive-LM | 2026-07-03 |
+| [[interspeech-2025-1098]] | [GST-BERT-TTS: Prosody Prediction Without Accentual Labe](papers/interspeech-2025-1098.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |

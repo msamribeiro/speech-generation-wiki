@@ -2,8 +2,8 @@
 title: "Workshop 2025"
 venue: workshop
 year: 2025
-papers_ingested: 11
-last_updated: 2026-07-01
+papers_ingested: 16
+last_updated: 2026-07-02
 ---
 
 # Workshop Papers 2025
@@ -27,3 +27,8 @@ Workshop papers 2025 includes 4 papers from diverse venues. Key themes: (1) low-
 | 2025.computel-main.6 | Evaluating Indigenous language speech synthesis for education: A participatory design workshop on Ojibwe TTS | ComputEL 2025 |
 | 2025.nodalida-1.32 | Estonian isolated-word text-to-speech synthesiser | NoDaLiDa/Baltic-HLT 2025 |
 | 2025.unlp-1.11 | Context-Aware Lexical Stress Prediction and Phonemization for Ukrainia |
+| 2025.ccl-1.77 | HFSD-V2C: Zero-Shot Visual Voice Cloning Via Hierarchical Face-Styled  |
+| 2025.icnlsp-1.34 | Beyond Labeled Datasets: Advancing TTS with Direct Preference Optimiza |
+| 2025.sigdial-1.21 | Transition Relevance Point Detection for Spoken Dialogue Systems with  |
+| 2025.sigdial-1.27 | EmoNews: A Spoken Dialogue System for Expressive News Conversations |
+| 2025.sigdial-1.51 | rrSDS 2.0: Incremental, Modular, Distributed, Multimodal Spoken Dialog |

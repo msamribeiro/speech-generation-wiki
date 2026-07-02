@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 55
-last_updated: 2026-07-01
+papers_ingested: 72
+last_updated: 2026-07-03
 ---
 
 # Interspeech 2025
@@ -81,3 +81,20 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-1289 | Unlocking Temporal Flexibility: Neural Speech Codec with Variable Fram |
 | interspeech-2025-0984 | Benchmarking Neural Speech Codec Intelligibility with SITool |
 | 2506.18296 | JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking S |
+| interspeech-2025-0166 | Frozen Large Language Models Can Perceive Paralinguistic Aspects of Sp |
+| interspeech-2025-0305 | DAFMSVC: One-Shot Singing Voice Conversion with Dual Attention Mechani |
+| interspeech-2025-0347 | PeriodCodec: A Pitch-Controllable Neural Audio Codec Using Periodic Si |
+| interspeech-2025-0355 | Probing the Robustness Properties of Neural Speech Codecs |
+| interspeech-2025-0383 | Voice Conversion for Likability Control via Automated Rating of Speech |
+| interspeech-2025-0433 | When Humans Growl and Birds Speak: High-Fidelity Voice Conversion from |
+| interspeech-2025-0438 | LinearVC: Linear Transformations of Self-Supervised Features Through t |
+| interspeech-2025-0464 | Prosody-Adaptable Audio Codecs for Zero-Shot Voice Conversion via In-C |
+| interspeech-2025-0506 | EnCodecMAE: leveraging neural codecs for universal audio representatio |
+| interspeech-2025-0656 | EEG-based Voice Conversion : Hearing the Voice of Your Brain |
+| interspeech-2025-0706 | Contextual Paralinguistic Data Creation for Multi-Modal Speech-LLM: Da |
+| interspeech-2025-0756 | A-SMiLE: Affective Sparse Mixture-of-Experts Adapter with Multi-Task L |
+| interspeech-2025-0998 | Voice-ENHANCE: Speech Restoration using a Diffusion-based Voice Conver |
+| interspeech-2025-1020 | Learning Optimal Prosody Embedding Codebook based on F0 and Energy |
+| interspeech-2025-1081 | Speaker Normalization and Content Restoration for Zero-Shot Voice Conv |
+| interspeech-2025-1084 | Efficient Streaming TTS Acoustic Model with Depthwise RVQ Decoding Str |
+| interspeech-2025-1098 | GST-BERT-TTS: Prosody Prediction Without Accentual Labels For Multi-Sp |

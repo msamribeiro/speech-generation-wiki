@@ -6,6 +6,13 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-03
+
+- ingest | interspeech-2025-1020 | Learning Optimal Prosody Embedding Codebook based on F0 and Energy | Interspeech 2025
+- ingest | interspeech-2025-1081 | Speaker Normalization and Content Restoration for Zero-Shot Voice Conversion with Attention-Enhanced Discriminator | Interspeech 2025
+- ingest | interspeech-2025-1084 | Efficient Streaming TTS Acoustic Model with Depthwise RVQ Decoding Strategies in a Mamba Framework | Interspeech 2025
+- ingest | interspeech-2025-1098 | GST-BERT-TTS: Prosody Prediction Without Accentual Labels For Multi-Speaker TTS Using BERT With Global Style Tokens | Interspeech 2025
+
 ## 2026-07-02
 
 - ingest | 2507.09282 | ClaritySpeech: Dementia Obfuscation in Speech | arXiv 2025
@@ -20,6 +27,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2507.18897 | HH-Codec: High Compression High-fidelity Discrete Neural Codec for Spoken Language Modeling | arXiv 2025
 - ingest | 2507.17527 | Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-to-speech Translation with Your Voice | arXiv 2025
 - ingest | 2507.20140 | Do Not Mimic My Voice: Speaker Identity Unlearning for Zero-Shot Text-to-Speech | arXiv 2025
+- ingest | 2507.20731 | Learning Neural Vocoder from Range-Null Space Decomposition | arXiv 2025
+- ingest | 2025.ccl-1.77 | HFSD-V2C: Zero-Shot Visual Voice Cloning Via Hierarchical Face-Styled Diffusion Model | workshop 2025
+- ingest | 2025.icnlsp-1.34 | Beyond Labeled Datasets: Advancing TTS with Direct Preference Optimization on Unlabeled Speech Dataset | workshop 2025
+- ingest | 2025.sigdial-1.21 | Transition Relevance Point Detection for Spoken Dialogue Systems with Self-Attention Transformer | workshop 2025
+- ingest | 2025.sigdial-1.27 | EmoNews: A Spoken Dialogue System for Expressive News Conversations | workshop 2025
+- ingest | 2025.sigdial-1.51 | rrSDS 2.0: Incremental, Modular, Distributed, Multimodal Spoken Dialogue with Robotic Platforms | workshop 2025
+- ingest | interspeech-2025-0166 | Frozen Large Language Models Can Perceive Paralinguistic Aspects of Speech | Interspeech 2025
+- ingest | interspeech-2025-0305 | DAFMSVC: One-Shot Singing Voice Conversion with Dual Attention Mechanism and Flow Matching | Interspeech 2025
+- ingest | interspeech-2025-0347 | PeriodCodec: A Pitch-Controllable Neural Audio Codec Using Periodic Signals for Singing Voice Synthesis | Interspeech 2025
+- ingest | interspeech-2025-0355 | Probing the Robustness Properties of Neural Speech Codecs | Interspeech 2025
+- ingest | interspeech-2025-0383 | Voice Conversion for Likability Control via Automated Rating of Speech Synthesis Corpora | Interspeech 2025
+- ingest | interspeech-2025-0433 | When Humans Growl and Birds Speak: High-Fidelity Voice Conversion from Human to Animal and Designed Sounds | Interspeech 2025
+- ingest | interspeech-2025-0438 | LinearVC: Linear Transformations of Self-Supervised Features Through the Lens of Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-0464 | Prosody-Adaptable Audio Codecs for Zero-Shot Voice Conversion via In-Context Learning | Interspeech 2025
+- ingest | interspeech-2025-0506 | EnCodecMAE: leveraging neural codecs for universal audio representation learning | Interspeech 2025
+- ingest | interspeech-2025-0656 | EEG-based Voice Conversion : Hearing the Voice of Your Brain | Interspeech 2025
+- ingest | interspeech-2025-0706 | Contextual Paralinguistic Data Creation for Multi-Modal Speech-LLM: Data Condensation and Spoken QA Generation | Interspeech 2025
+- ingest | interspeech-2025-0756 | A-SMiLE: Affective Sparse Mixture-of-Experts Adapter with Multi-Task Learning for Spoken Dialogue Models | Interspeech 2025
+- ingest | interspeech-2025-0998 | Voice-ENHANCE: Speech Restoration using a Diffusion-based Voice Conversion Framework | Interspeech 2025
 
 ## 2026-07-01
 

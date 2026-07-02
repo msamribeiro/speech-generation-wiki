@@ -6,14 +6,14 @@ title: "Venues"
 |------|-------|------|----------------|
 | [[2023-arxiv]] | arXiv | 2023 | 30 |
 | [[2024-arxiv]] | arXiv | 2024 | 54 |
-| [[2025-arxiv]] | arXiv | 2025 | 154 |
+| [[2025-arxiv]] | arXiv | 2025 | 155 |
 | [[2026-arxiv]] | arXiv | 2026 | 10 |
 | [[2025-acl]] | ACL | 2025 | 34 |
 | [[2025-emnlp]] | EMNLP | 2025 | 9 |
 | [[2025-naacl]] | NAACL | 2025 | 17 |
-| [[2025-interspeech]] | Interspeech | 2025 | 55 |
+| [[2025-interspeech]] | Interspeech | 2025 | 72 |
 | [[2026-icassp]] | ICASSP | 2026 | 1 |
-| [[2025-workshop]] | workshop | 2025 | 11 |
+| [[2025-workshop]] | workshop | 2025 | 16 |
 | [[2025-asru]] | ASRU | 2025 | 3 |
 | [[2019-arxiv]] | arXiv | 2019 | 3 |
 | [[2022-arxiv]] | arXiv | 2022 | 8 |

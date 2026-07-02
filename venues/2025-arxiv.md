@@ -2,7 +2,7 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 154
+papers_ingested: 155
 last_updated: 2026-07-02
 ---
 
@@ -170,3 +170,4 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2507.18897 | HH-Codec: High Compression High-fidelity Discrete Neural Codec for Spo |
 | 2507.17527 | Seed LiveInterpret 2.0: End-to-end Simultaneous Speech-to-speech Trans |
 | 2507.20140 | Do Not Mimic My Voice: Speaker Identity Unlearning for Zero-Shot Text- |
+| 2507.20731 | Learning Neural Vocoder from Range-Null Space Decomposition |
