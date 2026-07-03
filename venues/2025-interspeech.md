@@ -2,7 +2,7 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 72
+papers_ingested: 88
 last_updated: 2026-07-03
 ---
 
@@ -98,3 +98,19 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-1081 | Speaker Normalization and Content Restoration for Zero-Shot Voice Conv |
 | interspeech-2025-1084 | Efficient Streaming TTS Acoustic Model with Depthwise RVQ Decoding Str |
 | interspeech-2025-1098 | GST-BERT-TTS: Prosody Prediction Without Accentual Labels For Multi-Sp |
+| interspeech-2025-1106 | LSCodec: Low-Bitrate and Speaker-Decoupled Discrete Speech Codec |
+| interspeech-2025-1115 | MPE-TTS: Customized Emotion Zero-Shot Text-To-Speech Using Multi-Modal |
+| interspeech-2025-1192 | Voice Impression Control in Zero-Shot TTS |
+| interspeech-2025-1210 | DiffEmotionVC: A Dual-Granularity Disentangled Diffusion Framework for |
+| interspeech-2025-1229 | E2E-BPVC: End-to-End Background-Preserving Voice Conversion via In-Con |
+| interspeech-2025-1236 | Accelerating Diffusion-based Text-to-Speech Model Trainingwith Dual Mo |
+| interspeech-2025-1334 | MiSTR: Multi-Modal iEEG-to-Speech Synthesis with Transformer-Based Pro |
+| interspeech-2025-1364 | VS-Singer: Vision-Guided Stereo Singing Voice Synthesis with Consisten |
+| interspeech-2025-1394 | DiEmo-TTS: Disentangled Emotion Representations via Self-Supervised Di |
+| interspeech-2025-1397 | VibE-SVC: Vibrato Extraction with High-frequency F0 Contour for Singin |
+| interspeech-2025-1434 | REWIND: Speech Time Reversal for Enhancing Speaker Representations in  |
+| interspeech-2025-1478 | LightL2S: Ultra-Low Complexity Lip-to-Speech Synthesis for Multi-Speak |
+| interspeech-2025-1494 | VisualSpeech: Enhancing Prosody Modeling in TTS Using Video |
+| interspeech-2025-1531 | Simple and Effective Content Encoder for Singing Voice Conversion via  |
+| interspeech-2025-1536 | Fairness in Dysarthric Speech Synthesis: Understanding Intrinsic Bias  |
+| interspeech-2025-1538 | StarVC: A Unified Auto-Regressive Framework for Joint Text and Speech  |

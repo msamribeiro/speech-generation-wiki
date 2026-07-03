@@ -451,3 +451,19 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[interspeech-2025-1081]] | [Speaker Normalization and Content Restoration for Zero-](papers/interspeech-2025-1081.md) |  | Interspeech | 2025 | VC | GAN | 2026-07-03 |
 | [[interspeech-2025-1084]] | [Efficient Streaming TTS Acoustic Model with Depthwise R](papers/interspeech-2025-1084.md) |  | Interspeech | 2025 | TTS | autoregressive-LM | 2026-07-03 |
 | [[interspeech-2025-1098]] | [GST-BERT-TTS: Prosody Prediction Without Accentual Labe](papers/interspeech-2025-1098.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |
+| [[interspeech-2025-1106]] | [LSCodec: Low-Bitrate and Speaker-Decoupled Discrete Spe](papers/interspeech-2025-1106.md) |  | Interspeech | 2025 | codec | VAE, GAN | 2026-07-03 |
+| [[interspeech-2025-1115]] | [MPE-TTS: Customized Emotion Zero-Shot Text-To-Speech Us](papers/interspeech-2025-1115.md) |  | Interspeech | 2025 | TTS | diffusion, autoregressive-LM | 2026-07-03 |
+| [[interspeech-2025-1192]] | [Voice Impression Control in Zero-Shot TTS](papers/interspeech-2025-1192.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |
+| [[interspeech-2025-1210]] | [DiffEmotionVC: A Dual-Granularity Disentangled Diffusio](papers/interspeech-2025-1210.md) |  | Interspeech | 2025 | VC | diffusion | 2026-07-03 |
+| [[interspeech-2025-1229]] | [E2E-BPVC: End-to-End Background-Preserving Voice Conver](papers/interspeech-2025-1229.md) |  | Interspeech | 2025 | VC | flow-matching | 2026-07-03 |
+| [[interspeech-2025-1236]] | [Accelerating Diffusion-based Text-to-Speech Model Training with Dual Modality Alignment](papers/interspeech-2025-1236.md) |  | Interspeech | 2025 | TTS | flow-matching | 2026-07-03 |
+| [[interspeech-2025-1334]] | [MiSTR: Multi-Modal iEEG-to-Speech Synthesis with Transf](papers/interspeech-2025-1334.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |
+| [[interspeech-2025-1364]] | [VS-Singer: Vision-Guided Stereo Singing Voice Synthesis](papers/interspeech-2025-1364.md) |  | Interspeech | 2025 | singing, TTS | diffusion | 2026-07-03 |
+| [[interspeech-2025-1394]] | [DiEmo-TTS: Disentangled Emotion Representations via Sel](papers/interspeech-2025-1394.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |
+| [[interspeech-2025-1397]] | [VibE-SVC: Vibrato Extraction with High-frequency F0 Con](papers/interspeech-2025-1397.md) | Korea University | Interspeech | 2025 | singing, VC | diffusion | 2026-07-03 |
+| [[interspeech-2025-1434]] | [REWIND: Speech Time Reversal for Enhancing Speaker Repr](papers/interspeech-2025-1434.md) |  | Interspeech | 2025 | VC | diffusion | 2026-07-03 |
+| [[interspeech-2025-1478]] | [LightL2S: Ultra-Low Complexity Lip-to-Speech Synthesis ](papers/interspeech-2025-1478.md) |  | Interspeech | 2025 | TTS | hybrid | 2026-07-03 |
+| [[interspeech-2025-1494]] | [VisualSpeech: Enhancing Prosody Modeling in TTS Using V](papers/interspeech-2025-1494.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-03 |
+| [[interspeech-2025-1531]] | [Simple and Effective Content Encoder for Singing Voice ](papers/interspeech-2025-1531.md) |  | Interspeech | 2025 | singing, VC | VAE, GAN | 2026-07-03 |
+| [[interspeech-2025-1536]] | [Fairness in Dysarthric Speech Synthesis: Understanding ](papers/interspeech-2025-1536.md) |  | Interspeech | 2025 | TTS, evaluation | flow-matching | 2026-07-03 |
+| [[interspeech-2025-1538]] | [StarVC: A Unified Auto-Regressive Framework for Joint T](papers/interspeech-2025-1538.md) |  | Interspeech | 2025 | VC | autoregressive-LM | 2026-07-03 |

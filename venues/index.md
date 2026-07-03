@@ -11,7 +11,7 @@ title: "Venues"
 | [[2025-acl]] | ACL | 2025 | 34 |
 | [[2025-emnlp]] | EMNLP | 2025 | 9 |
 | [[2025-naacl]] | NAACL | 2025 | 17 |
-| [[2025-interspeech]] | Interspeech | 2025 | 72 |
+| [[2025-interspeech]] | Interspeech | 2025 | 88 |
 | [[2026-icassp]] | ICASSP | 2026 | 1 |
 | [[2025-workshop]] | workshop | 2025 | 16 |
 | [[2025-asru]] | ASRU | 2025 | 3 |

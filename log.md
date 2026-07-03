@@ -12,6 +12,22 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | interspeech-2025-1081 | Speaker Normalization and Content Restoration for Zero-Shot Voice Conversion with Attention-Enhanced Discriminator | Interspeech 2025
 - ingest | interspeech-2025-1084 | Efficient Streaming TTS Acoustic Model with Depthwise RVQ Decoding Strategies in a Mamba Framework | Interspeech 2025
 - ingest | interspeech-2025-1098 | GST-BERT-TTS: Prosody Prediction Without Accentual Labels For Multi-Speaker TTS Using BERT With Global Style Tokens | Interspeech 2025
+- ingest | interspeech-2025-1106 | LSCodec: Low-Bitrate and Speaker-Decoupled Discrete Speech Codec | Interspeech 2025
+- ingest | interspeech-2025-1115 | MPE-TTS: Customized Emotion Zero-Shot Text-To-Speech Using Multi-Modal Prompt | Interspeech 2025
+- ingest | interspeech-2025-1192 | Voice Impression Control in Zero-Shot TTS | Interspeech 2025
+- ingest | interspeech-2025-1210 | DiffEmotionVC: A Dual-Granularity Disentangled Diffusion Framework for Any-to-Any Emotional Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-1229 | E2E-BPVC: End-to-End Background-Preserving Voice Conversion via In-Context Learning | Interspeech 2025
+- ingest | interspeech-2025-1236 | Accelerating Diffusion-based Text-to-Speech Model Trainingwith Dual Modality Alignment | Interspeech 2025
+- ingest | interspeech-2025-1334 | MiSTR: Multi-Modal iEEG-to-Speech Synthesis with Transformer-Based Prosody Prediction and Neural Phase Reconstruction | Interspeech 2025
+- ingest | interspeech-2025-1364 | VS-Singer: Vision-Guided Stereo Singing Voice Synthesis with Consistency SchrÃ¶dinger Bridge | Interspeech 2025
+- ingest | interspeech-2025-1394 | DiEmo-TTS: Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker Emotion Transfer in Text-to-Speech | Interspeech 2025
+- ingest | interspeech-2025-1397 | VibE-SVC: Vibrato Extraction with High-frequency F0 Contour for Singing Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-1434 | REWIND: Speech Time Reversal for Enhancing Speaker Representations in Diffusion-based Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-1478 | LightL2S: Ultra-Low Complexity Lip-to-Speech Synthesis for Multi-Speaker Scenarios | Interspeech 2025
+- ingest | interspeech-2025-1494 | VisualSpeech: Enhancing Prosody Modeling in TTS Using Video | Interspeech 2025
+- ingest | interspeech-2025-1531 | Simple and Effective Content Encoder for Singing Voice Conversion via SSL-Embedding Dimension Reduction | Interspeech 2025
+- ingest | interspeech-2025-1536 | Fairness in Dysarthric Speech Synthesis: Understanding Intrinsic Bias in Dysarthric Speech Cloning using F5-TTS | Interspeech 2025
+- ingest | interspeech-2025-1538 | StarVC: A Unified Auto-Regressive Framework for Joint Text and Speech Generation in Voice Conversion | Interspeech 2025
 
 ## 2026-07-02
 
