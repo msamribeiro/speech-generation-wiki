@@ -467,3 +467,11 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[interspeech-2025-1531]] | [Simple and Effective Content Encoder for Singing Voice ](papers/interspeech-2025-1531.md) |  | Interspeech | 2025 | singing, VC | VAE, GAN | 2026-07-03 |
 | [[interspeech-2025-1536]] | [Fairness in Dysarthric Speech Synthesis: Understanding ](papers/interspeech-2025-1536.md) |  | Interspeech | 2025 | TTS, evaluation | flow-matching | 2026-07-03 |
 | [[interspeech-2025-1538]] | [StarVC: A Unified Auto-Regressive Framework for Joint T](papers/interspeech-2025-1538.md) |  | Interspeech | 2025 | VC | autoregressive-LM | 2026-07-03 |
+| [[interspeech-2025-1550]] | [ArVoice: A Multi-Speaker Dataset for Arabic Speech Synt](papers/interspeech-2025-1550.md) | Mohamed Bin Zayed University of Artificial Intelligence | Interspeech | 2025 | TTS, VC, evaluation | transformer-enc-dec, VAE, GAN | 2026-07-03 |
+| [[interspeech-2025-1625]] | [Mimic Blocker: Self-Supervised Adversarial Training for](papers/interspeech-2025-1625.md) |  | Interspeech | 2025 | VC | GAN | 2026-07-03 |
+| [[interspeech-2025-1638]] | [EATS-Speech: Emotion-Adaptive Transformation and Priori](papers/interspeech-2025-1638.md) |  | Interspeech | 2025 | TTS | hybrid | 2026-07-03 |
+| [[interspeech-2025-1639]] | [LombardTokenizer: Disentanglement and Control of Vocal ](papers/interspeech-2025-1639.md) | GIPSA-lab, Univ. Grenoble Alpes | Interspeech | 2025 | codec, VC | GAN | 2026-07-03 |
+| [[interspeech-2025-1684]] | [SA-RAS: Speaker-Aware Style Retrieval Augmented Generat](papers/interspeech-2025-1684.md) |  | Interspeech | 2025 | TTS | hybrid | 2026-07-03 |
+| [[interspeech-2025-1726]] | [Voice Reconstruction through Large-Scale TTS Models: Co](papers/interspeech-2025-1726.md) |  | Interspeech | 2025 | TTS, evaluation | hybrid | 2026-07-03 |
+| [[interspeech-2025-1747]] | [FasterVoiceGrad: Faster One-step Diffusion-Based Voice ](papers/interspeech-2025-1747.md) | NTT, Inc. | Interspeech | 2025 | VC | diffusion, GAN | 2026-07-03 |
+| [[interspeech-2025-1763]] | [Vocoder-Projected Feature Discriminator](papers/interspeech-2025-1763.md) | NTT | Interspeech | 2025 | VC | GAN, diffusion | 2026-07-03 |

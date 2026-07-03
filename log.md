@@ -28,6 +28,14 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | interspeech-2025-1531 | Simple and Effective Content Encoder for Singing Voice Conversion via SSL-Embedding Dimension Reduction | Interspeech 2025
 - ingest | interspeech-2025-1536 | Fairness in Dysarthric Speech Synthesis: Understanding Intrinsic Bias in Dysarthric Speech Cloning using F5-TTS | Interspeech 2025
 - ingest | interspeech-2025-1538 | StarVC: A Unified Auto-Regressive Framework for Joint Text and Speech Generation in Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-1550 | ArVoice: A Multi-Speaker Dataset for Arabic Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-1625 | Mimic Blocker: Self-Supervised Adversarial Training for Voice Conversion Defense with Pretrained Feature Extractors | Interspeech 2025
+- ingest | interspeech-2025-1638 | EATS-Speech: Emotion-Adaptive Transformation and Priority Synthesis for Zero-Shot Text-to-Speech | Interspeech 2025
+- ingest | interspeech-2025-1639 | LombardTokenizer: Disentanglement and Control of Vocal Effort in a Neural Speech Codec | Interspeech 2025
+- ingest | interspeech-2025-1684 | SA-RAS: Speaker-Aware Style Retrieval Augmented Generation for Expressive Zero-Shot Text-to-Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-1726 | Voice Reconstruction through Large-Scale TTS Models: Comparing Zero-Shot and Fine-tuning Approaches to Personalise TTS in Assistive Communication | Interspeech 2025
+- ingest | interspeech-2025-1747 | FasterVoiceGrad: Faster One-step Diffusion-Based Voice Conversion with Adversarial Diffusion Conversion Distillation | Interspeech 2025
+- ingest | interspeech-2025-1763 | Vocoder-Projected Feature Discriminator | Interspeech 2025
 
 ## 2026-07-02
 

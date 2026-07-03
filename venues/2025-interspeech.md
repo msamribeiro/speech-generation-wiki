@@ -2,7 +2,7 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 88
+papers_ingested: 96
 last_updated: 2026-07-03
 ---
 
@@ -114,3 +114,11 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-1531 | Simple and Effective Content Encoder for Singing Voice Conversion via  |
 | interspeech-2025-1536 | Fairness in Dysarthric Speech Synthesis: Understanding Intrinsic Bias  |
 | interspeech-2025-1538 | StarVC: A Unified Auto-Regressive Framework for Joint Text and Speech  |
+| interspeech-2025-1550 | ArVoice: A Multi-Speaker Dataset for Arabic Speech Synthesis |
+| interspeech-2025-1625 | Mimic Blocker: Self-Supervised Adversarial Training for Voice Conversi |
+| interspeech-2025-1638 | EATS-Speech: Emotion-Adaptive Transformation and Priority Synthesis fo |
+| interspeech-2025-1639 | LombardTokenizer: Disentanglement and Control of Vocal Effort in a Neu |
+| interspeech-2025-1684 | SA-RAS: Speaker-Aware Style Retrieval Augmented Generation for Express |
+| interspeech-2025-1726 | Voice Reconstruction through Large-Scale TTS Models: Comparing Zero-Sh |
+| interspeech-2025-1747 | FasterVoiceGrad: Faster One-step Diffusion-Based Voice Conversion with |
+| interspeech-2025-1763 | Vocoder-Projected Feature Discriminator |
