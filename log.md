@@ -6,6 +6,24 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-05
+
+- ingest | interspeech-2025-2328 | A Watermark for Auto-Regressive Speech Generation Models | Interspeech 2025
+
+## 2026-07-04
+
+- ingest | interspeech-2025-1776 | SpeechSEC: A Unified Multi-Task Framework for Speech Synthesis, Editing, and Continuation | Interspeech 2025
+- ingest | interspeech-2025-1819 | Comparative Analysis of Fast and High-Fidelity Neural Vocoders for Low-Latency Streaming Synthesis in Resource-Constrained Environments | Interspeech 2025
+- ingest | interspeech-2025-1873 | Can AI Understand Mandarin Speech Prosody?  A Framework and Benchmark Showcase | Interspeech 2025
+- ingest | interspeech-2025-1940 | Investigating Stochastic Methods for Prosody Modeling in Speech Synthesis | Interspeech 2025
+- ingest | interspeech-2025-2031 | Kinship in Speech: Leveraging Linguistic Relatedness for Zero-Shot TTS in Indian Languages | Interspeech 2025
+- ingest | interspeech-2025-2032 | ExagTTS: An Approach Towards Controllable Word Stress Incorporated TTS for Exaggerated Synthesized Speech Aiding Second Language Learners | Interspeech 2025
+- ingest | interspeech-2025-2075 | Segmentation-Variant Codebooks for Preservation of Paralinguistic and Prosodic Information | Interspeech 2025
+- ingest | interspeech-2025-2151 | FaVC: A Validated, Transcribed, Parallel Farsi Speech Dataset for Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-2159 | Generating Consistent Prosodic Patterns from Open-Source TTS Systems | Interspeech 2025
+- ingest | interspeech-2025-2189 | ProMode: A Speech Prosody Model Conditioned on Acoustic and Textual Inputs | Interspeech 2025
+- ingest | interspeech-2025-2283 | Pairwise Evaluation of Accent Similarity in Speech Synthesis | Interspeech 2025
+
 ## 2026-07-03
 
 - ingest | interspeech-2025-1020 | Learning Optimal Prosody Embedding Codebook based on F0 and Energy | Interspeech 2025

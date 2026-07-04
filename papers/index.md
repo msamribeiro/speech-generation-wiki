@@ -475,3 +475,15 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[interspeech-2025-1726]] | [Voice Reconstruction through Large-Scale TTS Models: Co](papers/interspeech-2025-1726.md) |  | Interspeech | 2025 | TTS, evaluation | hybrid | 2026-07-03 |
 | [[interspeech-2025-1747]] | [FasterVoiceGrad: Faster One-step Diffusion-Based Voice ](papers/interspeech-2025-1747.md) | NTT, Inc. | Interspeech | 2025 | VC | diffusion, GAN | 2026-07-03 |
 | [[interspeech-2025-1763]] | [Vocoder-Projected Feature Discriminator](papers/interspeech-2025-1763.md) | NTT | Interspeech | 2025 | VC | GAN, diffusion | 2026-07-03 |
+| [[interspeech-2025-1776]] | [SpeechSEC: A Unified Multi-Task Framework for Speech Sy](papers/interspeech-2025-1776.md) |  | Interspeech | 2025 | TTS | hybrid | 2026-07-04 |
+| [[interspeech-2025-1819]] | [Comparative Analysis of Fast and High-Fidelity Neural V](papers/interspeech-2025-1819.md) |  | Interspeech | 2025 | TTS | GAN | 2026-07-04 |
+| [[interspeech-2025-1873]] | [Can AI Understand Mandarin Speech Prosody?  A Framework](papers/interspeech-2025-1873.md) |  | Interspeech | 2025 | SCA, evaluation |  | 2026-07-04 |
+| [[interspeech-2025-1940]] | [Investigating Stochastic Methods for Prosody Modeling i](papers/interspeech-2025-1940.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec, flow-matching | 2026-07-04 |
+| [[interspeech-2025-2031]] | [Kinship in Speech: Leveraging Linguistic Relatedness fo](papers/interspeech-2025-2031.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-04 |
+| [[interspeech-2025-2032]] | [ExagTTS: An Approach Towards Controllable Word Stress I](papers/interspeech-2025-2032.md) | IIIT Hyderabad | Interspeech | 2025 | TTS | hybrid | 2026-07-04 |
+| [[interspeech-2025-2075]] | [Segmentation-Variant Codebooks for Preservation of Para](papers/interspeech-2025-2075.md) |  | Interspeech | 2025 | codec |  | 2026-07-04 |
+| [[interspeech-2025-2151]] | [FaVC: A Validated, Transcribed, Parallel Farsi Speech D](papers/interspeech-2025-2151.md) | University of Tehran | Interspeech | 2025 | VC, evaluation | GAN | 2026-07-04 |
+| [[interspeech-2025-2159]] | [Generating Consistent Prosodic Patterns from Open-Sourc](papers/interspeech-2025-2159.md) |  | Interspeech | 2025 | TTS, evaluation | flow-matching | 2026-07-04 |
+| [[interspeech-2025-2189]] | [ProMode: A Speech Prosody Model Conditioned on Acoustic](papers/interspeech-2025-2189.md) |  | Interspeech | 2025 | TTS | transformer-enc-dec | 2026-07-04 |
+| [[interspeech-2025-2283]] | [Pairwise Evaluation of Accent Similarity in Speech Synt](papers/interspeech-2025-2283.md) |  | Interspeech | 2025 | TTS, evaluation |  | 2026-07-04 |
+| [[interspeech-2025-2328]] | [A Watermark for Auto-Regressive Speech Generation Model](papers/interspeech-2025-2328.md) | University of Maryland | Interspeech | 2025 | TTS, evaluation | autoregressive-LM | 2026-07-05 |

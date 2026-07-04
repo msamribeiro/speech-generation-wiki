@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 96
-last_updated: 2026-07-03
+papers_ingested: 108
+last_updated: 2026-07-05
 ---
 
 # Interspeech 2025
@@ -122,3 +122,15 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-1726 | Voice Reconstruction through Large-Scale TTS Models: Comparing Zero-Sh |
 | interspeech-2025-1747 | FasterVoiceGrad: Faster One-step Diffusion-Based Voice Conversion with |
 | interspeech-2025-1763 | Vocoder-Projected Feature Discriminator |
+| interspeech-2025-1776 | SpeechSEC: A Unified Multi-Task Framework for Speech Synthesis, Editin |
+| interspeech-2025-1819 | Comparative Analysis of Fast and High-Fidelity Neural Vocoders for Low |
+| interspeech-2025-1873 | Can AI Understand Mandarin Speech Prosody?  A Framework and Benchmark  |
+| interspeech-2025-1940 | Investigating Stochastic Methods for Prosody Modeling in Speech Synthe |
+| interspeech-2025-2031 | Kinship in Speech: Leveraging Linguistic Relatedness for Zero-Shot TTS |
+| interspeech-2025-2032 | ExagTTS: An Approach Towards Controllable Word Stress Incorporated TTS |
+| interspeech-2025-2075 | Segmentation-Variant Codebooks for Preservation of Paralinguistic and  |
+| interspeech-2025-2151 | FaVC: A Validated, Transcribed, Parallel Farsi Speech Dataset for Voic |
+| interspeech-2025-2159 | Generating Consistent Prosodic Patterns from Open-Source TTS Systems |
+| interspeech-2025-2189 | ProMode: A Speech Prosody Model Conditioned on Acoustic and Textual In |
+| interspeech-2025-2283 | Pairwise Evaluation of Accent Similarity in Speech Synthesis |
+| interspeech-2025-2328 | A Watermark for Auto-Regressive Speech Generation Models |
