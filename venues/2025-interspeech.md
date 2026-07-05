@@ -2,7 +2,7 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 108
+papers_ingested: 119
 last_updated: 2026-07-05
 ---
 
@@ -134,3 +134,15 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-2189 | ProMode: A Speech Prosody Model Conditioned on Acoustic and Textual In |
 | interspeech-2025-2283 | Pairwise Evaluation of Accent Similarity in Speech Synthesis |
 | interspeech-2025-2328 | A Watermark for Auto-Regressive Speech Generation Models |
+| interspeech-2025-2536 | The Text-to-speech in the Wild (TITW) Database |
+| interspeech-2025-2564 | Towards a Japanese Full-duplex Spoken Dialogue System |
+| interspeech-2025-2573 | SawtArabi: A Benchmark Corpus for Arabic TTS. Standard, Dialectal and Code-Switching |
+| interspeech-2025-2586 | Spotlight-TTS: Spotlighting the Style via Voiced-Aware Style Extraction and Style Direction Adjustment for Expressive Text-to-Speech |
+| interspeech-2025-2595 | Harnessing Text-to-Speech Voice Cloning Models for Improved Audiological Speech Assessment |
+| interspeech-2025-2679 | Can We Reconstruct a Dysarthric Voice with the Large Speech Model Parler TTS? |
+| interspeech-2025-2684 | Discl-VC: Disentangled Discrete Tokens and In-Context Learning for Controllable Zero-Shot Voice Conversion |
+| interspeech-2025-2726 | DS-Codec: Dual-Stage Training with Mirror-to-NonMirror Architecture Switching for Speech Codec |
+| interspeech-2025-2739 | AF-Vocoder: Artifact-Free Neural Vocoder with Global Artifact Filter |
+| interspeech-2025-2787 | Towards Adaptable and Intelligible Speech Synthesis in Noisy Environments |
+| interspeech-2025-2815 | From Static to Dynamic: Enhancing AAC with Generative Imagery and Zero-Shot TTS |
+| interspeech-2025-bokkahallisatish25_interspeech | Hear Me Out: Interactive evaluation and bias discovery platform for speech-to-speech conversational AI |

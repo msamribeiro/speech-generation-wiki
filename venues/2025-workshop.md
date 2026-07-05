@@ -2,8 +2,8 @@
 title: "Workshop 2025"
 venue: workshop
 year: 2025
-papers_ingested: 16
-last_updated: 2026-07-02
+papers_ingested: 17
+last_updated: 2026-07-05
 ---
 
 # Workshop Papers 2025
@@ -32,3 +32,4 @@ Workshop papers 2025 includes 4 papers from diverse venues. Key themes: (1) low-
 | 2025.sigdial-1.21 | Transition Relevance Point Detection for Spoken Dialogue Systems with  |
 | 2025.sigdial-1.27 | EmoNews: A Spoken Dialogue System for Expressive News Conversations |
 | 2025.sigdial-1.51 | rrSDS 2.0: Incremental, Modular, Distributed, Multimodal Spoken Dialog |
+| 2025.clicit-1.27 | Veras Audire Et Reddere Voces: A Corpus of Prosodically-Correct Latin Poetic Audio from Large-Language-Model TTS | CLiC-it 2025 |

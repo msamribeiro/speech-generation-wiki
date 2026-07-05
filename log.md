@@ -9,6 +9,22 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 ## 2026-07-05
 
 - ingest | interspeech-2025-2328 | A Watermark for Auto-Regressive Speech Generation Models | Interspeech 2025
+- ingest | interspeech-2025-2536 | The Text-to-speech in the Wild (TITW) Database | Interspeech 2025
+- ingest | interspeech-2025-2564 | Towards a Japanese Full-duplex Spoken Dialogue System | Interspeech 2025
+- ingest | interspeech-2025-2573 | SawtArabi: A Benchmark Corpus for Arabic TTS.  Standard, Dialectal and Code-Switching | Interspeech 2025
+- ingest | interspeech-2025-2586 | Spotlight-TTS: Spotlighting the Style via Voiced-Aware Style Extraction and Style Direction Adjustment for Expressive Text-to-Speech | Interspeech 2025
+- ingest | interspeech-2025-2595 | Harnessing Text-to-Speech Voice Cloning Models for Improved Audiological Speech Assessment | Interspeech 2025
+- ingest | interspeech-2025-2679 | Can We Reconstruct a Dysarthric Voice with the Large Speech Model Parler TTS? | Interspeech 2025
+- ingest | interspeech-2025-2684 | Discl-VC: Disentangled Discrete Tokens and In-Context Learning for Controllable Zero-Shot Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-2726 | DS-Codec: Dual-Stage Training with Mirror-to-NonMirror Architecture Switching for Speech Codec | Interspeech 2025
+- ingest | interspeech-2025-2739 | AF-Vocoder: Artifact-Free Neural Vocoder with Global Artifact Filter | Interspeech 2025
+- ingest | interspeech-2025-2787 | Towards Adaptable and Intelligible Speech Synthesis in Noisy Environments | Interspeech 2025
+- ingest | interspeech-2025-2815 | From Static to Dynamic: Enhancing AAC with Generative Imagery and Zero-Shot TTS | Interspeech 2025
+- ingest | interspeech-2025-bokkahallisatish25_interspeech | Hear Me Out: Interactive evaluation and bias discovery platform for speech-to-speech conversational AI | Interspeech 2025
+- ingest | 2507.16835 | Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems | arXiv 2025
+- ingest | 2411.19770 | Noro: Noise-Robust One-shot Voice Conversion with Hidden Speaker Representation Learning | arXiv 2025
+- ingest | 2025.clicit-1.27 | Veras Audire Et Reddere Voces: A Corpus of Prosodically-Correct Latin Poetic Audio from Large-Language-Model TTS | workshop 2025
+- misc | 2025.clicit-1.81 | FAMA ingest reverted: paper is a pure ASR/speech-translation model with no TTS/VC/SCA component, outside wiki scope; moved to review_queue.md for a final corpus-inclusion decision | workshop 2025
 
 ## 2026-07-04
 
