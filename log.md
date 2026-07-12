@@ -6,6 +6,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-12
+
+- ingest | 2506.23367 | You Sound a Little Tense: L2 Tailored Clear TTS Using Durational Vowel Properties | arXiv 2025
+- ingest | 2509.05359 | An Empirical Analysis of Discrete Unit Representations in Speech Language Modeling Pre-training | arXiv 2025
+- ingest | 2509.04093 | Open-Source Full-Duplex Conversational Datasets for Natural and Interactive Speech Synthesis | arXiv 2025
+- ingest | 2509.04667 | DarkStream: real-time speech anonymization with low latency | arXiv 2025
+- ingest | 2509.04685 | Say More with Less: Variable-Frame-Rate Speech Tokenization via Adaptive Clustering and Implicit Duration Coding | arXiv 2025
+- ingest | 2509.04702 | OleSpeech-IV: A Large-Scale Multispeaker and Multilingual Conversational Speech Dataset with Diverse Topics | arXiv 2025
+- ingest | 2509.05863 | LatinX: Aligning a Multilingual TTS Model with Direct Preference Optimization | arXiv 2025
+- ingest | 2509.06074 | Multimodal Fine-grained Context Interaction Graph Modeling for Conversational Speech Synthesis | EMNLP 2025
+- ingest | 2509.06502 | FireRedChat: A Pluggable, Full-Duplex Voice Interaction System with Cascaded and Semi-Cascaded Implementations | arXiv 2025
+- ingest | 2509.07038 | Controllable Singing Voice Synthesis using Phoneme-Level Energy Sequence | arXiv 2025
+- ingest | 2509.07376 | Progressive Facial Granularity Aggregation with Bilateral Attribute-based Enhancement for Face-to-Speech Synthesis | EMNLP 2025
+- ingest | 2509.09716 | VStyle: A Benchmark for Voice Style Adaptation with Spoken Instructions | arXiv 2025
+- ingest | 2509.08379 | LatentVoiceGrad: Nonparallel Voice Conversion with Latent Diffusion/Flow-Matching Models | arXiv 2025
+- ingest | 2509.08696 | Accelerating Diffusion Transformer-Based Text-to-Speech with Transformer Layer Caching | arXiv 2025
+- ingest | 2506.04077 | A Novel Data Augmentation Approach for Automatic Speaking Assessment on Opinion Expressions | arXiv 2025
+- ingest | 2509.09174 | EchoX: Towards Mitigating Acoustic-Semantic Gap via Echo Training for Speech-to-Speech LLMs | arXiv 2025
+
 ## 2026-07-05
 
 - ingest | interspeech-2025-2328 | A Watermark for Auto-Regressive Speech Generation Models | Interspeech 2025

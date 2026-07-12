@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 157
-last_updated: 2026-07-05
+papers_ingested: 169
+last_updated: 2026-07-12
 ---
 
 # arXiv 2025
@@ -173,3 +173,17 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2507.20731 | Learning Neural Vocoder from Range-Null Space Decomposition |
 | 2507.16835 | Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems |
 | 2411.19770 | Noro: Noise-Robust One-shot Voice Conversion with Hidden Speaker Representation Learning |
+| 2506.23367 | You Sound a Little Tense: L2 Tailored Clear TTS Using Durational Vowel Properties |
+| 2509.05359 | An Empirical Analysis of Discrete Unit Representations in Speech Language Modeling Pre-training |
+| 2509.04093 | Open-Source Full-Duplex Conversational Datasets for Natural and Interactive Speech Synthesis |
+| 2509.04667 | DarkStream: real-time speech anonymization with low latency |
+| 2509.04685 | Say More with Less: Variable-Frame-Rate Speech Tokenization via Adaptive Clustering and Implicit Duration Coding |
+| 2509.04702 | OleSpeech-IV: A Large-Scale Multispeaker and Multilingual Conversational Speech Dataset with Diverse Topics |
+| 2509.05863 | LatinX: Aligning a Multilingual TTS Model with Direct Preference Optimization |
+| 2509.06502 | FireRedChat: A Pluggable, Full-Duplex Voice Interaction System with Cascaded and Semi-Cascaded Implementations |
+| 2509.07038 | Controllable Singing Voice Synthesis using Phoneme-Level Energy Sequence |
+| 2509.09716 | VStyle: A Benchmark for Voice Style Adaptation with Spoken Instructions |
+| 2509.08379 | LatentVoiceGrad: Nonparallel Voice Conversion with Latent Diffusion/Flow-Matching Models |
+| 2509.08696 | Accelerating Diffusion Transformer-Based Text-to-Speech with Transformer Layer Caching |
+| 2506.04077 | A Novel Data Augmentation Approach for Automatic Speaking Assessment on Opinion Expressions |
+| 2509.09174 | EchoX: Towards Mitigating Acoustic-Semantic Gap via Echo Training for Speech-to-Speech LLMs |

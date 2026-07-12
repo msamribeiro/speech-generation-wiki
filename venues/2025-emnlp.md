@@ -2,8 +2,8 @@
 title: "EMNLP 2025"
 venue: EMNLP
 year: 2025
-papers_ingested: 9
-last_updated: 2026-06-04
+papers_ingested: 11
+last_updated: 2026-07-12
 ---
 
 # EMNLP 2025
@@ -25,3 +25,5 @@ EMNLP 2025 contributes 8 papers across SCA, TTS, evaluation, and post-training. 
 | 2508.15442 | Mitigating Hallucinations in LM-Based TTS Models via Distribution Alignment Using GFlowNets |
 | 2025.emnlp-main.180 | Scaling Rich Style-Prompted Text-to-Speech Datasets |
 | 2508.16188 | Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for  |
+| 2509.06074 | Multimodal Fine-grained Context Interaction Graph Modeling for Conversational Speech Synthesis |
+| 2509.07376 | Progressive Facial Granularity Aggregation with Bilateral Attribute-based Enhancement for Face-to-Speech Synthesis |
