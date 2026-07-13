@@ -2,8 +2,8 @@
 title: "Interspeech 2025"
 venue: Interspeech
 year: 2025
-papers_ingested: 119
-last_updated: 2026-07-05
+papers_ingested: 122
+last_updated: 2026-07-13
 ---
 
 # Interspeech 2025
@@ -146,3 +146,6 @@ Interspeech 2025 is the largest single venue in the corpus with 27 ingested pape
 | interspeech-2025-2787 | Towards Adaptable and Intelligible Speech Synthesis in Noisy Environments |
 | interspeech-2025-2815 | From Static to Dynamic: Enhancing AAC with Generative Imagery and Zero-Shot TTS |
 | interspeech-2025-bokkahallisatish25_interspeech | Hear Me Out: Interactive evaluation and bias discovery platform for speech-to-speech conversational AI |
+| interspeech-2025-cho25c_interspeech | Unleashing the Inner Monster: Demonstrating High-Fidelity Human to Non-Human Voice Conversion |
+| interspeech-2025-gourav25_interspeech | Code Mix TTS: An Approach to Infer Human Like Speech for Multi-Lingual Input Texts |
+| interspeech-2025-raju25_interspeech | End-to-End Indian Language Dubbing with Zero-Shot Speaker Preservation |

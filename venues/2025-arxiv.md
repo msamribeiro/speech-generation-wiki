@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 169
-last_updated: 2026-07-12
+papers_ingested: 182
+last_updated: 2026-07-13
 ---
 
 # arXiv 2025
@@ -187,3 +187,16 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2509.08696 | Accelerating Diffusion Transformer-Based Text-to-Speech with Transformer Layer Caching |
 | 2506.04077 | A Novel Data Augmentation Approach for Automatic Speaking Assessment on Opinion Expressions |
 | 2509.09174 | EchoX: Towards Mitigating Acoustic-Semantic Gap via Echo Training for Speech-to-Speech LLMs |
+| 2509.09201 | DeCodec: Rethinking Audio Codecs as Universal Disentangled Representation Learners |
+| 2509.09550 | Finite Scalar Quantization Enables Redundant and Transmission-Robust Neural Audio Compression at Low Bit-rates |
+| 2509.09748 | DiTReducio: A Training-Free Acceleration for DiT-Based TTS via Progressive Calibration |
+| 2509.11084 | Length-Aware Rotary Position Embedding for Text-Speech Alignment |
+| 2509.11425 | FuseCodec: Semantic-Contextual Fusion and Supervision for Neural Codecs |
+| 2508.18240 | MTalk-Bench: Evaluating Speech-to-Speech Models in Multi-Turn Dialogues via Arena-style and Rubrics Protocols |
+| 2509.12171 | Preservation of Language Understanding Capabilities in Speech-aware Large Language Models |
+| 2509.12831 | A Lightweight Pipeline for Noisy Speech Voice Cloning and Accurate Lip Sync Synthesis |
+| 2509.13068 | MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement |
+| 2412.16846 | KALL-E: Autoregressive Speech Synthesis with Next-Distribution Prediction |
+| 2504.20581 | ClonEval: An Open Voice Cloning Benchmark |
+| 2509.13667 | A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction |
+| 2509.13670 | A High-Quality and Low-Complexity Streamable Neural Speech Codec with Knowledge Distillation |

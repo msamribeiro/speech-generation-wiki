@@ -6,6 +6,27 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-13
+
+- ingest | 2509.09201 | DeCodec: Rethinking Audio Codecs as Universal Disentangled Representation Learners | arXiv 2025
+- ingest | 2509.09550 | Finite Scalar Quantization Enables Redundant and Transmission-Robust Neural Audio Compression at Low Bit-rates | arXiv 2025
+- ingest | 2509.09748 | DiTReducio: A Training-Free Acceleration for DiT-Based TTS via Progressive Calibration | arXiv 2025
+- ingest | 2509.11084 | Length-Aware Rotary Position Embedding for Text-Speech Alignment | arXiv 2025
+- ingest | 2509.11425 | FuseCodec: Semantic-Contextual Fusion and Supervision for Neural Codecs | arXiv 2025
+- ingest | 2508.18240 | MTalk-Bench: Evaluating Speech-to-Speech Models in Multi-Turn Dialogues via Arena-style and Rubrics Protocols | arXiv 2025
+- ingest | 2509.12171 | Preservation of Language Understanding Capabilities in Speech-aware Large Language Models | arXiv 2025
+- ingest | 2509.14270 | SpeechWeave: Diverse Multilingual Synthetic Text & Audio Data Generation Pipeline for Training Text to Speech Models | ACL 2025
+- ingest | 2509.12831 | A Lightweight Pipeline for Noisy Speech Voice Cloning and Accurate Lip Sync Synthesis | arXiv 2025
+- ingest | 2509.13068 | MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement | arXiv 2025
+- ingest | 2412.16846 | KALL-E:Autoregressive Speech Synthesis with Next-Distribution Prediction | arXiv 2025
+- ingest | 2504.20581 | ClonEval: An Open Voice Cloning Benchmark | arXiv 2025
+- ingest | interspeech-2025-cho25c_interspeech | Unleashing   the  Inner Monster: Demonstrating High-Fidelity Human to Non-Human  Voice Conversion | Interspeech 2025
+- ingest | interspeech-2025-gourav25_interspeech | Code Mix TTS: An Approach to Infer Human Like Speech for Multi-Lingual Input Texts | Interspeech 2025
+- ingest | interspeech-2025-raju25_interspeech | End-to-End Indian Language Dubbing with Zero-Shot Speaker Preservation | Interspeech 2025
+- ingest | 2509.13667 | A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction | arXiv 2025
+- ingest | 2509.13670 | A High-Quality and Low-Complexity Streamable Neural Speech Codec with Knowledge Distillation | arXiv 2025
+- misc | 2509.13785 | Ingest reverted: pure ASR + speaker-diarization challenge summary (MER/tcpMER only), no TTS/VC/SCA generative component; filter-stage false accept, same pattern as FAMA; user-confirmed reject after reading the PDF | arXiv 2025
+
 ## 2026-07-12
 
 - ingest | 2506.23367 | You Sound a Little Tense: L2 Tailored Clear TTS Using Durational Vowel Properties | arXiv 2025
