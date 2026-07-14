@@ -2,8 +2,8 @@
 title: "EMNLP 2025"
 venue: EMNLP
 year: 2025
-papers_ingested: 11
-last_updated: 2026-07-12
+papers_ingested: 12
+last_updated: 2026-07-14
 ---
 
 # EMNLP 2025
@@ -27,3 +27,4 @@ EMNLP 2025 contributes 8 papers across SCA, TTS, evaluation, and post-training. 
 | 2508.16188 | Seeing is Believing: Emotion-Aware Audio-Visual Language Modeling for  |
 | 2509.06074 | Multimodal Fine-grained Context Interaction Graph Modeling for Conversational Speech Synthesis |
 | 2509.07376 | Progressive Facial Granularity Aggregation with Bilateral Attribute-based Enhancement for Face-to-Speech Synthesis |
+| 2509.16589 | Benchmarking Contextual and Paralinguistic Reasoning in Speech-LLMs: A Case Study with In-the-Wild Data |

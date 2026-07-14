@@ -6,6 +6,29 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-14
+
+- ingest | 2509.13989 | Do You Hear What I Mean? Quantifying the Instruction-Perception Gap in Instruction-Guided Expressive Text-To-Speech Systems | arXiv 2025
+- ingest | 2509.14579 | Cross-Lingual F5-TTS: Towards Language-Agnostic Voice Cloning and Speech Synthesis | arXiv 2025
+- ingest | 2509.14684 | DAIEN-TTS: Disentangled Audio Infilling for Environment-Aware Text-to-Speech Synthesis | arXiv 2025
+- ingest | 2509.14784 | MELA-TTS: Joint transformer-diffusion model with representation alignment for speech synthesis | arXiv 2025
+- ingest | 2509.14946 | SynParaSpeech: Automated Synthesis of Paralinguistic Datasets for Speech Generation and Understanding | arXiv 2025
+- ingest | 2509.15085 | Real-Time Streaming Mel Vocoding with Generative Flow Matching | arXiv 2025
+- ingest | 2509.15253 | Emotion-Aware Speech Generation with Character-Specific Voices for Comics | arXiv 2025
+- ingest | 2509.15462 | A Novel Semantic Compression Approach for Ultra-low Bandwidth Voice Communication | arXiv 2025
+- ingest | 2505.17093 | P2VA: Converting Persona Descriptions into Voice Attributes for Fair and Controllable Text-to-Speech | arXiv 2025
+- ingest | 2509.15626 | LibriTTS-VI: A Public Corpus and Novel Methods for Efficient Voice Impression Control | arXiv 2025
+- ingest | 2509.15629 | The Singing Voice Conversion Challenge 2025: From Singer Identity Conversion To Singing Style Conversion | arXiv 2025
+- ingest | 2509.15845 | Deep Dubbing: End-to-End Auto-Audiobook System with Text-to-Timbre and Context-Aware Instruct-TTS | arXiv 2025
+- ingest | 2509.16010 | Fed-PISA: Federated Voice Cloning via Personalized Identity-Style Adaptation | arXiv 2025
+- ingest | 2509.16195 | FocalCodec-Stream: Streaming Low-Bitrate Speech Coding via Causal Distillation | arXiv 2025
+- ingest | 2509.16589 | Benchmarking Contextual and Paralinguistic Reasoning in Speech-LLMs: A Case Study with In-the-Wild Data | EMNLP 2025
+- ingest | 2509.20378 | Beyond Global Emotion: Fine-Grained Emotional Speech Synthesis with Dynamic Word-Level Modulation | arXiv 2025
+- ingest | 2509.17006 | MBCodec:Thorough disentangle for high-fidelity audio compression | arXiv 2025
+- ingest | 2509.17021 | Bridging the gap between training and inference in LM-based TTS models | arXiv 2025
+- ingest | 2509.17143 | MaskVCT: Masked Voice Codec Transformer for Zero-Shot Voice Conversion With Increased Controllability via Multiple Guidances | arXiv 2025
+- ingest | 2509.14882 | Llama-Mimi: Exploring the Limits of Flattened Speech Language Modeling | arXiv 2025
+
 ## 2026-07-13
 
 - ingest | 2509.09201 | DeCodec: Rethinking Audio Codecs as Universal Disentangled Representation Learners | arXiv 2025

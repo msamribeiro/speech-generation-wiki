@@ -535,3 +535,23 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[interspeech-2025-raju25_interspeech]] | [End-to-End Indian Language Dubbing with Zero-Shot Speaker Preservation](papers/interspeech-2025-raju25_interspeech.md) | Hitloop | Interspeech | 2025 | TTS | flow-matching | 2026-07-13 |
 | [[2509.13667]] | [A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction](papers/2509.13667.md) |  | arXiv | 2025 | TTS | GAN | 2026-07-13 |
 | [[2509.13670]] | [A High-Quality and Low-Complexity Streamable Neural Speech Codec with Knowledge Distillation](papers/2509.13670.md) | University of Science and Technology of China | arXiv | 2025 | codec | GAN | 2026-07-13 |
+| [[2509.13989]] | [Do You Hear What I Mean? Quantifying the Instruction-Perception Gap in Instruction-Guided Expressive Text-To-Speech Systems](papers/2509.13989.md) |  | arXiv | 2025 | TTS, evaluation |  | 2026-07-14 |
+| [[2509.14579]] | [Cross-Lingual F5-TTS: Towards Language-Agnostic Voice Cloning and Speech Synthesis](papers/2509.14579.md) | Shanghai Jiao Tong University | arXiv | 2025 | TTS, VC | flow-matching | 2026-07-14 |
+| [[2509.14684]] | [DAIEN-TTS: Disentangled Audio Infilling for Environment-Aware Text-to-Speech Synthesis](papers/2509.14684.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-14 |
+| [[2509.14784]] | [MELA-TTS: Joint transformer-diffusion model with representation alignment for speech synthesis](papers/2509.14784.md) |  | arXiv | 2025 | TTS | hybrid | 2026-07-14 |
+| [[2509.14946]] | [SynParaSpeech: Automated Synthesis of Paralinguistic Datasets for Speech Generation and Understanding](papers/2509.14946.md) |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-07-14 |
+| [[2509.15085]] | [Real-Time Streaming Mel Vocoding with Generative Flow Matching](papers/2509.15085.md) | University of Hamburg | arXiv | 2025 | TTS | flow-matching | 2026-07-14 |
+| [[2509.15253]] | [Emotion-Aware Speech Generation with Character-Specific Voices for Comics](papers/2509.15253.md) | Queen Mary University of London | arXiv | 2025 | TTS |  | 2026-07-14 |
+| [[2509.15462]] | [A Novel Semantic Compression Approach for Ultra-low Bandwidth Voice Communication](papers/2509.15462.md) | Systems & Technology Research | arXiv | 2025 | codec, VC | autoregressive-LM, flow-matching | 2026-07-14 |
+| [[2505.17093]] | [P2VA: Converting Persona Descriptions into Voice Attributes for Fair and Controllable Text-to-Speech](papers/2505.17093.md) |  | arXiv | 2025 | TTS |  | 2026-07-14 |
+| [[2509.15626]] | [LibriTTS-VI: A Public Corpus and Novel Methods for Efficient Voice Impression Control](papers/2509.15626.md) | Sony Group Corporation | arXiv | 2025 | TTS | VAE | 2026-07-14 |
+| [[2509.15629]] | [The Singing Voice Conversion Challenge 2025: From Singer Identity Conversion To Singing Style Conversion](papers/2509.15629.md) |  | arXiv | 2025 | VC, singing, evaluation |  | 2026-07-14 |
+| [[2509.15845]] | [Deep Dubbing: End-to-End Auto-Audiobook System with Text-to-Timbre and Context-Aware Instruct-TTS](papers/2509.15845.md) |  | arXiv | 2025 | TTS | flow-matching, autoregressive-LM | 2026-07-14 |
+| [[2509.16010]] | [Fed-PISA: Federated Voice Cloning via Personalized Identity-Style Adaptation](papers/2509.16010.md) |  | arXiv | 2025 | TTS, VC | hybrid | 2026-07-14 |
+| [[2509.16195]] | [FocalCodec-Stream: Streaming Low-Bitrate Speech Coding via Causal Distillation](papers/2509.16195.md) |  | arXiv | 2025 | codec, VC | hybrid | 2026-07-14 |
+| [[2509.16589]] | [Benchmarking Contextual and Paralinguistic Reasoning in Speech-LLMs: A Case Study with In-the-Wild Data](papers/2509.16589.md) |  | EMNLP | 2025 | SCA, evaluation |  | 2026-07-14 |
+| [[2509.20378]] | [Beyond Global Emotion: Fine-Grained Emotional Speech Synthesis with Dynamic Word-Level Modulation](papers/2509.20378.md) | Harbin Institute of Technology | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-14 |
+| [[2509.17006]] | [MBCodec: Thorough Disentangle for High-Fidelity Audio Compression](papers/2509.17006.md) |  | arXiv | 2025 | codec | GAN | 2026-07-14 |
+| [[2509.17021]] | [Bridging the gap between training and inference in LM-based TTS models](papers/2509.17021.md) |  | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-14 |
+| [[2509.17143]] | [MaskVCT: Masked Voice Codec Transformer for Zero-Shot Voice Conversion With Increased Controllability via Multiple Guidances](papers/2509.17143.md) |  | arXiv | 2025 | VC | autoregressive-LM | 2026-07-14 |
+| [[2509.14882]] | [Llama-Mimi: Exploring the Limits of Flattened Speech Language Modeling](papers/2509.14882.md) |  | arXiv | 2025 | SCA | autoregressive-LM | 2026-07-14 |

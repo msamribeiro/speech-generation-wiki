@@ -2,8 +2,8 @@
 title: "arXiv 2025"
 venue: arXiv
 year: 2025
-papers_ingested: 182
-last_updated: 2026-07-13
+papers_ingested: 201
+last_updated: 2026-07-14
 ---
 
 # arXiv 2025
@@ -200,3 +200,22 @@ The arXiv 2025 corpus spans the full range of tasks: TTS (majority), VC ([[2507.
 | 2504.20581 | ClonEval: An Open Voice Cloning Benchmark |
 | 2509.13667 | A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction |
 | 2509.13670 | A High-Quality and Low-Complexity Streamable Neural Speech Codec with Knowledge Distillation |
+| 2509.13989 | Do You Hear What I Mean? Quantifying the Instruction-Perception Gap in Instruction-Guided Expressive Text-To-Speech Systems |
+| 2509.14579 | Cross-Lingual F5-TTS: Towards Language-Agnostic Voice Cloning and Speech Synthesis |
+| 2509.14684 | DAIEN-TTS: Disentangled Audio Infilling for Environment-Aware Text-to-Speech Synthesis |
+| 2509.14784 | MELA-TTS: Joint transformer-diffusion model with representation alignment for speech synthesis |
+| 2509.14946 | SynParaSpeech: Automated Synthesis of Paralinguistic Datasets for Speech Generation and Understanding |
+| 2509.15085 | Real-Time Streaming Mel Vocoding with Generative Flow Matching |
+| 2509.15253 | Emotion-Aware Speech Generation with Character-Specific Voices for Comics |
+| 2509.15462 | A Novel Semantic Compression Approach for Ultra-low Bandwidth Voice Communication |
+| 2505.17093 | P2VA: Converting Persona Descriptions into Voice Attributes for Fair and Controllable Text-to-Speech |
+| 2509.15626 | LibriTTS-VI: A Public Corpus and Novel Methods for Efficient Voice Impression Control |
+| 2509.15629 | The Singing Voice Conversion Challenge 2025: From Singer Identity Conversion To Singing Style Conversion |
+| 2509.15845 | Deep Dubbing: End-to-End Auto-Audiobook System with Text-to-Timbre and Context-Aware Instruct-TTS |
+| 2509.16010 | Fed-PISA: Federated Voice Cloning via Personalized Identity-Style Adaptation |
+| 2509.16195 | FocalCodec-Stream: Streaming Low-Bitrate Speech Coding via Causal Distillation |
+| 2509.20378 | Beyond Global Emotion: Fine-Grained Emotional Speech Synthesis with Dynamic Word-Level Modulation |
+| 2509.17006 | MBCodec: Thorough Disentangle for High-Fidelity Audio Compression |
+| 2509.17021 | Bridging the gap between training and inference in LM-based TTS models |
+| 2509.17143 | MaskVCT: Masked Voice Codec Transformer for Zero-Shot Voice Conversion With Increased Controllability via Multiple Guidances |
+| 2509.14882 | Llama-Mimi: Exploring the Limits of Flattened Speech Language Modeling |
