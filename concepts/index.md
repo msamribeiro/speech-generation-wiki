@@ -2,11 +2,13 @@
 title: "Concepts"
 ---
 
-Concept pages synthesise what the corpus currently knows about a method, capability, or evaluation approach: claims ranked by evidence strength, method families, open questions, and a recommended reading path. Each concept page has a companion evidence dossier (linked in the table below) — the structured record of paper inventory and claim tables that the concept page distils into prose.
+Concept pages synthesise what the corpus currently knows about a method, capability, or evaluation approach: claims ranked by evidence strength, method families, open questions, and a recommended reading path. They are interpretive — written prose for a reader who wants the current state of the field.
+
+Evidence dossiers are the companion record behind each concept page: the full paper inventory, canonical claim clusters, and reassessment queue that the concept page distils into prose. They are structured and machine-oriented rather than narrative, and exist only for concepts where enough integration work has accumulated to warrant one — not every concept has one yet.
 
 | Concept | Evidence | Papers | Last updated |
 |---------|----------|--------|-------------|
-| [[concepts/flow-matching\|Flow Matching]] | [[evidence/flow-matching\|dossier]] | 46 | 2026-06-24 |
+| [[concepts/flow-matching\|Flow Matching]] | [[evidence/flow-matching\|Flow Matching Evidence]] | 46 | 2026-06-24 |
 | [[concepts/diffusion-tts\|Diffusion Models for TTS]] | — | 20 | 2026-06-15 |
 | [[concepts/autoregressive-codec-tts\|Autoregressive Codec TTS]] | — | 115 | 2026-06-15 |
 | [[concepts/transformer-enc-dec-tts\|Transformer Encoder-Decoder TTS]] | — | 20 | 2026-06-15 |
