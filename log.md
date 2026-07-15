@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-15
+
+- misc | removed `wiki/venues/` (27 per-venue-year pages + index.md) and the ingest-time instructions that auto-updated them — most were thin paper listings that accumulated one row per ingest with no synthesis; venue trend reports will instead be generated on demand for venues with enough papers to support real synthesis (e.g. a full conference), not auto-maintained per paper
+
 ## 2026-07-14
 
 - ingest | 2509.13989 | Do You Hear What I Mean? Quantifying the Instruction-Perception Gap in Instruction-Guided Expressive Text-To-Speech Systems | arXiv 2025

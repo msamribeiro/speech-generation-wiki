@@ -2,7 +2,7 @@
 title: "Papers"
 ---
 
-Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Concepts]] or by conference via [[venues/index|Venues]]. Use search to find a specific paper by title or author.
+Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Concepts]]. Use search to find a specific paper by title or author.
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|

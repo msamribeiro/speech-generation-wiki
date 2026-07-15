@@ -31,8 +31,8 @@ concepts/        Technology and method concept pages
   _evidence/     Machine-oriented evidence digests (one per concept; used for synthesis)
 
 comparisons/     Cross-paper comparison tables generated in response to research queries
-venues/          Per-venue summary pages (named {year}-{venue}, e.g. 2025-interspeech)
-  index.md       Venue directory
+venues/          Per-venue trend reports, generated on demand (not part of the automated
+                 pipeline); named {year}-{venue}, e.g. 2025-interspeech
 reports/         Periodic field reports — monthly, quarterly, yearly
 ```
 

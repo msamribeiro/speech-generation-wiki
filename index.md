@@ -37,13 +37,11 @@ Each concept page synthesises what the field knows, with claims, representative 
 
 → [[concepts/index|All concepts with paper counts]]
 
-## Papers and Venues
+## Papers
 
 549 papers ingested from arXiv (2019–2026), Interspeech 2025, ACL 2025, EMNLP 2025, NAACL 2025, ICLR 2026, NeurIPS 2025, and industry technical reports.
 
 → [[papers/index|Browse all 549 papers]]
-
-→ [[venues/index|Browse by venue]]
 
 ## Reports
 

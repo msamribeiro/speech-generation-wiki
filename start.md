@@ -26,11 +26,9 @@ title: "Start Here"
 
 → [[concepts/index|All concepts with paper counts]]
 
-## Papers and Venues
+## Papers
 
 → [[papers/index|Browse all papers]]
-
-→ [[venues/index|Browse by venue]]
 
 ## Reports
 

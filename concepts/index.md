@@ -2,7 +2,7 @@
 title: "Concepts"
 ---
 
-Concept pages synthesise what the corpus currently knows about a method, capability, or evaluation approach: claims ranked by evidence strength, method families, open questions, and a recommended reading path. Each concept page has a companion [[evidence/index\|evidence dossier]] — the structured record of paper inventory and claim tables that the concept page distils into prose.
+Concept pages synthesise what the corpus currently knows about a method, capability, or evaluation approach: claims ranked by evidence strength, method families, open questions, and a recommended reading path. Each concept page has a companion evidence dossier (linked in the table below) — the structured record of paper inventory and claim tables that the concept page distils into prose.
 
 | Concept | Evidence | Papers | Last updated |
 |---------|----------|--------|-------------|
