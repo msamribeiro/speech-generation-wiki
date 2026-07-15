@@ -8,6 +8,22 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-07-15
 
+- ingest | 2509.19231 | Finding My Voice: Generative Reconstruction of Disordered Speech for Automated Clinical Evaluation | arXiv 2025
+- ingest | 2509.19592 | Frame-Stacked Local Transformers For Efficient Multi-Codebook Speech Generation | arXiv 2025
+- ingest | 2509.19812 | Efficient Speech Watermarking for Speech Synthesis via Progressive Knowledge Distillation | arXiv 2025
+- ingest | 2509.19883 | CoMelSinger: Discrete Token-Based Zero-Shot Singing Synthesis With Structured Melody Control and Guidance | arXiv 2025
+- ingest | 2509.18823 | Towards Evaluating Generative Audio: Insights from Neural Audio Codec Embedding Distances | arXiv 2025
+- ingest | 2509.18928 | Direct Preference Optimization for Speech Autoregressive Diffusion Models | arXiv 2025
+- ingest | 2509.19025 | Enhancing Noise Robustness for Neural Speech Codecs through Resource-Efficient Progressive Quantization Perturbation Simulation | arXiv 2025
+- ingest | 2509.19186 | Improving Test-Time Performance of RVQ-based Neural Codecs | arXiv 2025
+- ingest | 2509.18470 | Discrete-Time Diffusion-Like Models for Speech Synthesis | arXiv 2025
+- ingest | 2501.04561 | OpenOmni: Advancing Open-Source Omnimodal Large Language Models with Progressive Multimodal Alignment and Real-Time Self-Aware Emotional Speech Synthesis | arXiv 2025
+- ingest | 2509.18531 | No Verifiable Reward for Prosody: Toward Preference-Guided Prosody Learning in TTS | arXiv 2025
+- ingest | 2509.18806 | Rethinking the joint estimation of magnitude and phase for time-frequency domain neural vocoders | arXiv 2025
+- ingest | 2509.17516 | Audiobook-CC: Controllable Long-context Speech Generation for Multicast Audiobook | arXiv 2025
+- ingest | 2509.17765 | Qwen3-Omni Technical Report | arXiv 2025
+- ingest | 2509.17988 | Nord-Parl-TTS: Finnish and Swedish TTS Dataset from Parliament Speech | arXiv 2025
+- ingest | 2509.18060 | TMD-TTS: A Unified Tibetan Multi-Dialect Text-to-Speech Framework for Ü-Tsang, Amdo and Kham Speech Dataset Generation | arXiv 2025
 - misc | removed `wiki/venues/` (27 per-venue-year pages + index.md) and the ingest-time instructions that auto-updated them — most were thin paper listings that accumulated one row per ingest with no synthesis; venue trend reports will instead be generated on demand for venues with enough papers to support real synthesis (e.g. a full conference), not auto-maintained per paper
 - integrate | 20 papers | 1 concepts updated | 20 clusters updated | 0 reassessments checked
 
