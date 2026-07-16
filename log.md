@@ -6,6 +6,20 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-16
+
+- ingest | 2506.21875 | WildSpeech-Bench: Benchmarking End-to-End SpeechLLMs in the Wild | arXiv 2025
+- ingest | 2509.22727 | DiaMoE-TTS: A Unified IPA-Based Dialect TTS Framework with Mixture-of-Experts and Parameter-Efficient Zero-Shot Adaptation | arXiv 2025
+- ingest | 2509.19928 | Measuring Prosody Diversity in Zero-Shot TTS: A New Metric, Benchmark, and Exploration | arXiv 2025
+- ingest | 2509.20086 | OLaPh: Optimal Language Phonemizer | arXiv 2025
+- ingest | 2509.20321 | Conversational Speech Reveals Structural Robustness Failures in SpeechLLM Backbones | arXiv 2025
+- ingest | 2509.20410 | Phoenix-VAD: Streaming Semantic Endpoint Detection for Full-Duplex Speech Interaction | arXiv 2025
+- ingest | 2509.20485 | Objective Evaluation of Prosody and Intelligibility in Speech Synthesis via Conditional Prediction of Discrete Tokens | arXiv 2025
+- ingest | 2509.22718 | PerformSinger: Multimodal Singing Voice Synthesis Leveraging Synchronized Lip Cues from Singing Performance Videos | arXiv 2025
+- ingest | 2505.10599 | UDDETTS: Unifying Discrete and Dimensional Emotions for Controllable Emotional Text-to-Speech | arXiv 2025
+- ingest | 2509.20802 | SPADE: Structured Pruning and Adaptive Distillation for Efficient LLM-TTS | arXiv 2025
+- ingest | 2509.21968 | AUV: Teaching Audio Universal Vector Quantization with Single Nested Codebook | arXiv 2025
+
 ## 2026-07-15
 
 - ingest | 2509.19231 | Finding My Voice: Generative Reconstruction of Disordered Speech for Automated Clinical Evaluation | arXiv 2025
