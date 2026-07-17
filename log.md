@@ -6,6 +6,25 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-17
+
+- ingest | 2509.22062 | Comprehend and Talk: Text to Speech Synthesis via Dual Language Modeling | arXiv 2025
+- ingest | 2509.22167 | Semantic-VAE: Semantic-Alignment Latent Representation for Better Speech Synthesis | arXiv 2025
+- ingest | 2509.22243 | FLEXI: Benchmarking Full-duplex Human-LLM Speech Interaction | arXiv 2025
+- ingest | 2509.23147 | BFA: Real-time Multilingual Text-to-speech Forced Alignment | arXiv 2025
+- ingest | 2510.02352 | Evaluating Bias in Spoken Dialogue LLMs for Real-World Decisions and Recommendations | arXiv 2025
+- ingest | 2509.23938 | Easy Turn: Integrating Acoustic and Linguistic Modalities for Robust Turn-Taking in Full-Duplex Spoken Dialogue Systems | arXiv 2025
+- ingest | 2509.24457 | Assessing speech quality metrics for evaluation of neural audio codecs under clean speech conditions | arXiv 2025
+- ingest | 2509.24570 | ISSE: An Instruction-Guided Speech Style Editing Dataset And Benchmark | arXiv 2025
+- ingest | 2509.24650 | VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning | arXiv 2025
+- ingest | 2509.24773 | VSSFlow: Unifying Video-conditioned Sound and Speech Generation via Joint Learning | arXiv 2025
+- ingest | 2509.25131 | MGM-Omni: Scaling Omni LLMs to Personalized Long-Horizon Speech | arXiv 2025
+- ingest | 2509.25416 | Emotion-Aligned Generation in Diffusion Text to Speech Models via Preference-Guided Optimization | arXiv 2025
+- ingest | 2509.26276 | Optimizing Speech Language Models for Acoustic Consistency | arXiv 2025
+- ingest | 2509.26514 | BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs | arXiv 2025
+- ingest | 2509.26542 | Voice Evaluation of Reasoning Ability: Diagnosing the Modality-Induced Performance Gap | arXiv 2025
+- ingest | 2510.00264 | Baseline Systems For The 2025 Low-Resource Audio Codec Challenge | arXiv 2025
+
 ## 2026-07-16
 
 - ingest | 2506.21875 | WildSpeech-Bench: Benchmarking End-to-End SpeechLLMs in the Wild | arXiv 2025

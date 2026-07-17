@@ -582,3 +582,19 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2509.22727]] | [DiaMoE-TTS: A Unified IPA-Based Dialect TTS Framework with Mixture-of-Experts and Parameter-Efficient Zero-Shot Adaptation](papers/2509.22727.md) | Tsinghua University, Giant Network AI Lab | arXiv | 2025 | TTS | flow-matching | 2026-07-16 |
 | [[2506.21875]] | [WildSpeech-Bench: Benchmarking End-to-End SpeechLLMs in the Wild](papers/2506.21875.md) | WeChat AI, Tencent | arXiv | 2025 | SCA, evaluation |  | 2026-07-16 |
 | [[2509.21968]] | [AUV: Teaching Audio Universal Vector Quantization with Single Nested Codebook](papers/2509.21968.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-07-16 |
+| [[2509.22062]] | [Comprehend and Talk: Text to Speech Synthesis via Dual Language Modeling](papers/2509.22062.md) | AMAP Speech, Tsinghua University | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-17 |
+| [[2509.22167]] | [Semantic-VAE: Semantic-Alignment Latent Representation ](papers/2509.22167.md) | Shanghai Jiao Tong University | arXiv | 2025 | TTS | VAE | 2026-07-17 |
+| [[2509.22243]] | [FLEXI: Benchmarking Full-duplex Human-LLM Speech Interaction](papers/2509.22243.md) | Northeastern University | arXiv | 2025 | SCA, evaluation |  | 2026-07-17 |
+| [[2509.23147]] | [BFA: Real-time Multilingual Text-to-speech Forced Alignment](papers/2509.23147.md) | Bournemouth University | arXiv | 2025 | TTS |  | 2026-07-17 |
+| [[2510.02352]] | [Evaluating Bias in Spoken Dialogue LLMs for Real-World ](papers/2510.02352.md) |  | arXiv | 2025 | SCA |  | 2026-07-17 |
+| [[2509.23938]] | [Easy Turn: Integrating Acoustic and Linguistic Modaliti](papers/2509.23938.md) |  | arXiv | 2025 | SCA | hybrid | 2026-07-17 |
+| [[2509.24457]] | [Assessing speech quality metrics for evaluation of neur](papers/2509.24457.md) | Cisco Systems | arXiv | 2025 | codec, evaluation |  | 2026-07-17 |
+| [[2509.24570]] | [ISSE: An Instruction-Guided Speech Style Editing Dataset And Benchmark](papers/2509.24570.md) |  | arXiv | 2025 | TTS, VC, evaluation | autoregressive-LM | 2026-07-17 |
+| [[2509.24650]] | [VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning](papers/2509.24650.md) |  | arXiv | 2025 | TTS, VC | autoregressive-LM, diffusion | 2026-07-17 |
+| [[2509.24773]] | [VSSFlow: Unifying Video-conditioned Sound and Speech Ge](papers/2509.24773.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-17 |
+| [[2509.25131]] | [MGM-Omni: Scaling Omni LLMs to Personalized Long-Horizo](papers/2509.25131.md) | CUHK, HKUST, SmartMore | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-07-17 |
+| [[2509.25416]] | [Emotion-Aligned Generation in Diffusion Text to Speech Models via Preference-Guided Optimization](papers/2509.25416.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-17 |
+| [[2509.26276]] | [Optimizing Speech Language Models for Acoustic Consistency](papers/2509.26276.md) | University of Zurich | arXiv | 2025 | TTS, SCA | autoregressive-LM | 2026-07-17 |
+| [[2509.26514]] | [BatonVoice: An Operationalist Framework for Enhancing C](papers/2509.26514.md) | Tencent | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, GAN | 2026-07-17 |
+| [[2509.26542]] | [Voice Evaluation of Reasoning Ability: Diagnosing the Modality-Induced Performance Gap](papers/2509.26542.md) |  | arXiv | 2025 | SCA, evaluation |  | 2026-07-17 |
+| [[2510.00264]] | [Baseline Systems For The 2025 Low-Resource Audio Codec Challenge](papers/2510.00264.md) | Cisco Systems (Collaboration AI) | arXiv | 2025 | codec, evaluation | GAN | 2026-07-17 |
