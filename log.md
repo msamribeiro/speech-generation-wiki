@@ -6,6 +6,18 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-18
+
+- misc | 2407.05361 | Emilia (re-ingested, merged with arXiv:2501.15907 full version) | canonical ID stays 2407.05361 (SLT 2024 published paper); content updated to reflect the 216k-hour Emilia-Large scale and expanded scaling-law/multilingual experiments from the full arXiv version, which is not separately tracked (marked duplicate, canonical_id: 2407.05361)
+- ingest | 2506.15556 | PredGen: Accelerated Inference of Large Language Models through Input-Time Speculation for Real-Time Speech Interaction | arXiv 2025
+- ingest | 2510.07096 | Modeling Sarcastic Speech: Semantic and Prosodic Cues in a Speech Synthesis Framework | arXiv 2025
+- ingest | 2510.06917 | SHANKS: Simultaneous Hearing and Thinking for Spoken Language Models | arXiv 2025
+- ingest | 2510.06927 | Position: Towards Responsible Evaluation for Text-to-Speech | arXiv 2025
+- ingest | 2510.07881 | CS3-Bench: Evaluating and Enhancing Speech-to-Speech LLMs for Mandarin-English Code-Switching | arXiv 2025
+- ingest | 2510.08373 | DialoSpeech: Dual-Speaker Dialogue Generation with LLM and Flow Matching | arXiv 2025
+- ingest | 2510.08392 | MeanVC: Lightweight and Streaming Zero-Shot Voice Conversion via Mean Flows | arXiv 2025
+- ingest | 2510.07978 | VoiceAgentBench: Are Voice Assistants ready for agentic tasks? | arXiv 2025
+
 ## 2026-07-17
 
 - ingest | 2509.22062 | Comprehend and Talk: Text to Speech Synthesis via Dual Language Modeling | arXiv 2025
@@ -24,6 +36,22 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2509.26514 | BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs | arXiv 2025
 - ingest | 2509.26542 | Voice Evaluation of Reasoning Ability: Diagnosing the Modality-Induced Performance Gap | arXiv 2025
 - ingest | 2510.00264 | Baseline Systems For The 2025 Low-Resource Audio Codec Challenge | arXiv 2025
+- ingest | 2510.00499 | MOSS-Speech: Towards True Speech-to-Speech Models Without Text Guidance | arXiv 2025
+- ingest | 2510.00743 | From Scores to Preferences: Redefining MOS Benchmarking for Speech Quality Reward Modeling | arXiv 2025
+- ingest | 2025.vlsp-1.15 | Twinkle-VC: A Robust and High-Quality Zero-Shot Voice Conversion System for the VLSP 2025 Shared Task | VLSP 2025
+- ingest | 2025.vlsp-1.14 | ViettelRoar: Voice conversion approach for VLSP 2025 | VLSP 2025
+- ingest | 2025.vlsp-1.13 | The 2025 VLSP Task on Vietnamese Voice Conversion: Overview and Preliminary Results | VLSP 2025
+- ingest | 2510.05150 | Chronological Thinking in Full-Duplex Spoken Dialogue Language Models | arXiv 2025
+- ingest | 2510.02066 | Chain-of-Thought Reasoning in Streaming Full-Duplex End-to-End Spoken Dialogue Systems | arXiv 2025
+- ingest | 2510.01722 | Emotional Text-To-Speech Based on Mutual-Information-Guided Emotion-Timbre Disentanglement | arXiv 2025
+- ingest | 2510.01903 | MelTok: 2D Tokenization for Single-Codebook Audio Compression | arXiv 2025
+- ingest | 2510.02044 | Stream RAG: Instant and Accurate Spoken Dialogue Systems with Streaming Tool Usage | arXiv 2025
+- ingest | 2510.03111 | Evaluation of preprocessing pipelines in the creation of in-the-wild TTS datasets | arXiv 2025
+- ingest | 2510.03735 | Soft Disentanglement in Frequency Bands for Neural Audio Codecs | arXiv 2025
+- ingest | 2510.04738 | Speak, Edit, Repeat: High-Fidelity Voice Editing and Zero-Shot TTS with Cross-Attentive Mamba | arXiv 2025
+- ingest | 2510.05619 | Teaching Machines to Speak Using Articulatory Control | arXiv 2025
+- ingest | 2510.05984 | ECTSpeech: Enhancing Efficient Speech Synthesis via Easy Consistency Tuning | arXiv 2025
+- ingest | 2510.05799 | Data-efficient Targeted Token-level Preference Optimization for LLM-based Text-to-Speech | arXiv 2025
 
 ## 2026-07-16
 
