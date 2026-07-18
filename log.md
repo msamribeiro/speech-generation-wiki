@@ -17,6 +17,29 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2510.08373 | DialoSpeech: Dual-Speaker Dialogue Generation with LLM and Flow Matching | arXiv 2025
 - ingest | 2510.08392 | MeanVC: Lightweight and Streaming Zero-Shot Voice Conversion via Mean Flows | arXiv 2025
 - ingest | 2510.07978 | VoiceAgentBench: Are Voice Assistants ready for agentic tasks? | arXiv 2025
+- ingest | 2510.09061 | O_O-VC: Synthetic Data-Driven One-to-One Alignment for Any-to-Any Voice Conversion | EMNLP 2025
+- ingest | 2510.09016 | DiTSinger: Scaling Singing Voice Synthesis with Diffusion Transformer and Implicit Alignment | arXiv 2025
+- ingest | 2506.12311 | Phonikud: Hebrew Grapheme-to-Phoneme Conversion for Real-Time Text-to-Speech | arXiv 2025
+- ingest | 2510.09424 | The Speech-LLM Takes It All: A Truly Fully End-to-End Spoken Dialogue State Tracking Approach | arXiv 2025
+- ingest | 2510.09592 | Mind-Paced Speaking: A Dual-Brain Approach to Real-Time Reasoning in Spoken Language Models | arXiv 2025
+- ingest | 2510.09245 | SynthVC: Leveraging Synthetic Data for End-to-End Low Latency Streaming Voice Conversion | arXiv 2025
+- ingest | 2510.10003 | MTP-S2UT: Enhancing Speech-to-Speech Translation Quality with Multi-token Prediction | arXiv 2025
+- ingest | 2510.10774 | ParsVoice: A Large-Scale Multi-Speaker Persian Speech Corpus for Text-to-Speech Synthesis | arXiv 2025
+- ingest | 2510.11646 | BridgeCode: A Dual Speech Representation Paradigm for Autoregressive Zero-Shot Text-to-Speech Synthesis | arXiv 2025
+- ingest | 2510.11124 | Perturbation Self-Supervised Representations for Cross-Lingual Emotion TTS: Stage-Wise Modeling of Emotion and Speaker | arXiv 2025
+- ingest | 2510.12964 | VCTR: A Transformer-Based Model for Non-parallel Voice Conversion | arXiv 2025
+- ingest | 2510.12995 | Continuous-Token Diffusion for Speaker-Referenced TTS in Multimodal LLMs | arXiv 2025
+- ingest | 2510.13221 | Acoustic Teleportation via Disentangled Neural Audio Codec Representations | arXiv 2025
+- ingest | 2510.13293 | Cross-modal Consistency Guidance for Robust Emotion Control in Auto-Regressive TTS Models | arXiv 2025
+- ingest | 2510.13194 | StressTransfer: Stress-Aware Speech-to-Speech Translation with Emphasis Preservation | arXiv 2025
+- ingest | 2510.15364 | LDCodec: A high quality neural audio codec with low-complexity decoder | arXiv 2025
+- ingest | 2510.15227 | LongCat-Audio-Codec: An Audio Tokenizer and Detokenizer Solution Designed for Speech Large Language Models | arXiv 2025
+- ingest | 2510.16841 | SAC: Neural Speech Codec with Semantic-Acoustic Dual-Stream Quantization | arXiv 2025
+- ingest | 2510.16718 | U-Codec: Ultra Low Frame-rate Neural Speech Codec for Fast High-fidelity Speech Generation | arXiv 2025
+- ingest | 2503.06211 | Late Fusion and Multi-Level Fission Amplify Cross-Modal Transfer in Text-Speech LMs | arXiv 2025
+- ingest | 2510.18308 | ParaStyleTTS: Toward Efficient and Robust Paralinguistic Style Control for Expressive Text-to-Speech Generation | arXiv 2025
+- ingest | 2506.23670 | Efficient Interleaved Speech Modeling through Knowledge Distillation | arXiv 2025
+- ingest | 2510.19509 | Which Evaluation for Which Model? A Taxonomy for Speech Model Assessment | arXiv 2025
 
 ## 2026-07-17
 
