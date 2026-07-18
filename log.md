@@ -40,6 +40,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2510.18308 | ParaStyleTTS: Toward Efficient and Robust Paralinguistic Style Control for Expressive Text-to-Speech Generation | arXiv 2025
 - ingest | 2506.23670 | Efficient Interleaved Speech Modeling through Knowledge Distillation | arXiv 2025
 - ingest | 2510.19509 | Which Evaluation for Which Model? A Taxonomy for Speech Model Assessment | arXiv 2025
+- ingest | 2510.10785 | FAC-FACodec: Controllable Zero-Shot Foreign Accent Conversion with Factorized Speech Codec | arXiv 2025
 
 ## 2026-07-17
 

@@ -645,3 +645,4 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2510.18308]] | [ParaStyleTTS: Toward Efficient and Robust Paralinguistic Style Control for Expressive Text-to-Speech Generation](papers/2510.18308.md) | University of New South Wales | arXiv | 2025 | TTS | VAE, GAN | 2026-07-18 |
 | [[2506.23670]] | [Efficient Interleaved Speech Modeling through Knowledge Distillation](papers/2506.23670.md) | Nlpie Research; University of Zurich | arXiv | 2025 | TTS, SCA | autoregressive-LM | 2026-07-18 |
 | [[2510.19509]] | [Which Evaluation for Which Model? A Taxonomy for Speech Model Assessment](papers/2510.19509.md) | Apple | arXiv | 2025 | evaluation |  | 2026-07-18 |
+| [[2510.10785]] | [FAC-FACodec: Controllable Zero-Shot Foreign Accent Conversion with Factorized Speech Codec](papers/2510.10785.md) | University of Illinois Urbana-Champaign | arXiv | 2025 | VC | diffusion | 2026-07-18 |
