@@ -6,6 +6,19 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-19
+
+- integrate | speech-to-speech | 6 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 54 -> 60; processed the final 7 in-scope candidates (2509.17765 through 2509.26542), 1 skipped as scope-mismatch (2509.23938, Easy Turn: turn-taking detection module with no speech-generation stage of its own, does not fit any of the 3 S2S sub-paradigms, same reasoning as the VAP/DiVA precedents); Q3-and-earlier Phase 1 backlog for speech-to-speech is now fully closed | phase 2 synthesis not yet run for this concept
+- integrate | speech-to-speech | 19 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 35 -> 54; processed the next 20 oldest-first candidates (2025.findings-acl.75 through 2508.18240), 1 skipped as scope-mismatch (interspeech-2025-2660, Triadic VAP: acoustic-only turn-taking predictor with no speech-generation stage, does not fit any of the 3 S2S sub-paradigms, same reasoning as the DiVA precedent); 7 in-scope papers remain, continuing oldest-first from 2509.17765 (2025-09-22) through 2509.26542 (2025-09-30) | phase 2 synthesis deferred
+- integrate | speech-to-speech | 19 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 16 -> 35 of 47 in-scope candidates; 1 paper (2025.acl-long.388, DiVA) skipped as scope-mismatch (speech-in/text-out, no speech output, does not fit any of the 3 S2S sub-paradigms); 27 in-scope papers remain, continuing oldest-first from 2025.findings-acl.75 (2025-07-27) through 2509.26542 (2025-09-30) | phase 2 synthesis deferred
+- integrate | flow-matching | 20 papers integrated (phase 1 only) | oldest-first continuation of round-1 production run (34 -> 54 of 112 candidates) | phase 2 synthesis deferred
+- integrate | flow-matching | 20 papers integrated (phase 1 only) | oldest-first continuation of round-1 production run (54 -> 74 of 109 candidates) | phase 2 synthesis deferred
+- integrate | flow-matching | 20 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 74 -> 94; 3 in-scope papers remain (2509.24650, 2509.24773, 2509.26514); 11 Q4-2025-or-later candidates explicitly excluded per user-supplied scope cutoff | phase 2 synthesis deferred
+- integrate | 3 papers | 1 concepts updated | 0 clusters updated | 0 reassessments checked (phase 1 only; flow-matching Q3-and-earlier backlog closed, 97/97)
+- integrate | phase 2 only | flow-matching (97 papers) | 34 claim_clusters (14 new, 12 updated) | 7 method_families (2 new) | 3 reassessment_queue items added
+- integrate | speech-to-speech | 16 papers integrated (phase 1 only, first pass, new YAML created) | Q3-scoped oldest-first batch, 0 -> 16 of 71 in-scope candidates; 4 papers skipped as Tier 2 despite appearing on the supplied ID list (2308.11596, 2408.05211, 2410.21276, 2501.01957); 55 in-scope papers remain, continuing oldest-first from 2501.06282 | phase 2 synthesis deferred
+- integrate | phase 2 only | speech-to-speech (60 papers) | 16 claim_clusters (16 new) | 5 method_families (5 new) | 5 reassessment_queue items added | first Phase 2 synthesis run for this concept; surfaced staged_pretraining_effect_on_instruction_following as contested (SLAM-Omni vs Baichuan-Audio) and cascade_outperforms_e2e_on_benchmarks as strongly_supported (10 supporting + 5 refining papers); flagged a second duplicate paper pair (2412.15649 / 2025.findings-acl.115, SLAM-Omni) alongside the already-known LLaMA-Omni 2 pair
+
 ## 2026-07-18
 
 - misc | 2407.05361 | Emilia (re-ingested, merged with arXiv:2501.15907 full version) | canonical ID stays 2407.05361 (SLT 2024 published paper); content updated to reflect the 216k-hour Emilia-Large scale and expanded scaling-law/multilingual experiments from the full arXiv version, which is not separately tracked (marked duplicate, canonical_id: 2407.05361)
