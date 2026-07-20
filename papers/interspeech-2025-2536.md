@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: false
 url: "https://www.isca-archive.org/interspeech_2025/jung25c_interspeech.html"
-related_concepts: ["evaluation-metrics", "diffusion-tts", "autoregressive-codec-tts"]
+related_concepts: [evaluation-metrics, diffusion-tts, autoregressive-codec-tts]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

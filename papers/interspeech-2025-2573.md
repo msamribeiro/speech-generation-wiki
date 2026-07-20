@@ -37,7 +37,7 @@ metrics:
 code_available: true
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/lodagala25_interspeech.html"
-related_concepts: ["multilingual-tts", "evaluation-metrics", "subjective-evaluation", "flow-matching", "gan-vocoder"]
+related_concepts: [multilingual-tts, evaluation-metrics, subjective-evaluation, flow-matching, gan-vocoder]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

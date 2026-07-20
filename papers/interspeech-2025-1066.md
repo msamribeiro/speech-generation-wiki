@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/sun25f_interspeech.html"
-related_concepts: ["diffusion-tts", "flow-matching", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [diffusion-tts, flow-matching, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: moderate

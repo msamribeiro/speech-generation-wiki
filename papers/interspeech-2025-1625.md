@@ -29,7 +29,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/yu25c_interspeech.html"
-related_concepts: ["voice-conversion", "self-supervised-speech", "subjective-evaluation"]
+related_concepts: [voice-conversion, self-supervised-speech, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

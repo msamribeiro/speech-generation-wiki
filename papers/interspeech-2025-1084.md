@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/lee25h_interspeech.html"
-related_concepts: ["autoregressive-codec-tts", "streaming-tts", "neural-codec", "zero-shot-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [autoregressive-codec-tts, streaming-tts, neural-codec, zero-shot-tts, evaluation-metrics, subjective-evaluation]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

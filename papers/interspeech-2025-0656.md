@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/geng25b_interspeech.html"
-related_concepts: ["voice-conversion", "zero-shot-tts", "disentanglement", "evaluation-metrics", "subjective-evaluation", "self-supervised-speech"]
+related_concepts: [voice-conversion, zero-shot-tts, disentanglement, evaluation-metrics, subjective-evaluation, self-supervised-speech]
 related_papers: []
 field_significance:
   level: "moderate"

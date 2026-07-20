@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/ren25b_interspeech.html"
-related_concepts: ["flow-matching", "voice-conversion", "zero-shot-tts", "disentanglement", "self-supervised-speech"]
+related_concepts: [flow-matching, voice-conversion, zero-shot-tts, disentanglement, self-supervised-speech]
 related_papers: []
 field_significance:
   level: moderate

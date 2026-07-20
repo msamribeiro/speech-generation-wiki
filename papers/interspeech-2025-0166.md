@@ -29,7 +29,7 @@ metrics:
 code_available: false
 demo_available: false
 url: "https://www.isca-archive.org/interspeech_2025/kang25_interspeech.html"
-related_concepts: ["spoken-language-model", "self-supervised-speech", "emotion-synthesis", "evaluation-metrics"]
+related_concepts: [spoken-language-model, self-supervised-speech, emotion-synthesis, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate

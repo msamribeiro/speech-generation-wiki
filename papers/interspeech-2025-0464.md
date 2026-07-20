@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/zhao25d_interspeech.html"
-related_concepts: ["zero-shot-tts", "voice-conversion", "neural-codec", "prosody-control", "disentanglement", "autoregressive-codec-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [zero-shot-tts, voice-conversion, neural-codec, prosody-control, disentanglement, autoregressive-codec-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

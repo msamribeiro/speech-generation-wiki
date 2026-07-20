@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/liu25j_interspeech.html"
-related_concepts: ["voice-conversion", "flow-matching", "zero-shot-tts", "self-supervised-speech", "subjective-evaluation", "evaluation-metrics"]
+related_concepts: [voice-conversion, flow-matching, zero-shot-tts, self-supervised-speech, subjective-evaluation, evaluation-metrics]
 related_papers: ["2406.02430"]
 field_significance:
   level: "moderate"

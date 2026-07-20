@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/takagi25_interspeech.html"
-related_concepts: ["neural-codec", "gan-vocoder", "prosody-control", "disentanglement", "singing", "evaluation-metrics"]
+related_concepts: [neural-codec, gan-vocoder, prosody-control, disentanglement, singing, evaluation-metrics]
 related_papers: ["2301.02111"]
 field_significance:
   level: moderate

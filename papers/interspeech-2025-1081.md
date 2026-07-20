@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/hu25i_interspeech.html"
-related_concepts: ["voice-conversion", "disentanglement", "zero-shot-tts", "gan-vocoder", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [voice-conversion, disentanglement, zero-shot-tts, gan-vocoder, evaluation-metrics, subjective-evaluation]
 related_papers: ["2406.02430"]
 field_significance:
   level: moderate

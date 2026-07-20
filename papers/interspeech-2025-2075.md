@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/sanders25_interspeech.html"
-related_concepts: ["neural-codec", "self-supervised-speech", "emotion-synthesis"]
+related_concepts: [neural-codec, self-supervised-speech, emotion-synthesis]
 related_papers: []
 field_significance:
   level: "moderate"

@@ -21,7 +21,7 @@ metrics: []
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/bokkahallisatish25_interspeech.html"
-related_concepts: ["spoken-language-model", "voice-conversion", "evaluation-metrics", "subjective-evaluation", "speech-to-speech"]
+related_concepts: [spoken-language-model, voice-conversion, evaluation-metrics, subjective-evaluation, speech-to-speech]
 related_papers: []
 field_significance:
   level: "low"

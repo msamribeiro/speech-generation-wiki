@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/kang25b_interspeech.html"
-related_concepts: ["voice-conversion", "self-supervised-speech", "disentanglement", "prosody-control", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [voice-conversion, self-supervised-speech, disentanglement, prosody-control, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

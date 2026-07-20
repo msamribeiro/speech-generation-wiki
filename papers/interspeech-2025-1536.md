@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/m25_interspeech.html"
-related_concepts: ["flow-matching", "zero-shot-tts", "evaluation-metrics", "speaker-adaptation"]
+related_concepts: [flow-matching, zero-shot-tts, evaluation-metrics, speaker-adaptation]
 related_papers: ["2025.acl-long.313"]
 field_significance:
   level: "moderate"

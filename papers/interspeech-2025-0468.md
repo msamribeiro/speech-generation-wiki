@@ -45,7 +45,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/li25e_interspeech.html"
-related_concepts: ["neural-codec", "self-supervised-speech", "autoregressive-codec-tts", "spoken-language-model", "zero-shot-tts", "disentanglement"]
+related_concepts: [neural-codec, self-supervised-speech, autoregressive-codec-tts, spoken-language-model, zero-shot-tts, disentanglement]
 related_papers: ["2301.02111", "2406.02430"]
 field_significance:
   level: moderate

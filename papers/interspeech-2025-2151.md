@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/serajian25_interspeech.html"
-related_concepts: ["voice-conversion", "evaluation-metrics", "subjective-evaluation", "gan-vocoder"]
+related_concepts: [voice-conversion, evaluation-metrics, subjective-evaluation, gan-vocoder]
 related_papers: []
 field_significance:
   level: "moderate"

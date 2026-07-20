@@ -21,7 +21,7 @@ metrics: []
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/raju25_interspeech.html"
-related_concepts: ["zero-shot-tts", "multilingual-tts", "flow-matching", "speaker-adaptation"]
+related_concepts: [zero-shot-tts, multilingual-tts, flow-matching, speaker-adaptation]
 related_papers: ["2025.acl-long.313"]
 field_significance:
   level: "low"

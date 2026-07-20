@@ -21,7 +21,7 @@ metrics: []
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/shahidi25_interspeech.html"
-related_concepts: ["zero-shot-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [zero-shot-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "low"

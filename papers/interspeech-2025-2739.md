@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/chen25q_interspeech.html"
-related_concepts: ["gan-vocoder", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [gan-vocoder, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

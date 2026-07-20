@@ -37,7 +37,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://openreview.net/forum?id=tQ1PmLfPBL"
-related_concepts: ["flow-matching", "gan-vocoder", "neural-codec", "streaming-tts", "spoken-language-model"]
+related_concepts: [flow-matching, gan-vocoder, neural-codec, streaming-tts, spoken-language-model]
 related_papers: ["2301.02111"]
 field_significance:
   level: "high"

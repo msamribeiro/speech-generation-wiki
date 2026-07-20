@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/chen25p_interspeech.html"
-related_concepts: ["neural-codec", "autoregressive-codec-tts", "evaluation-metrics", "gan-vocoder"]
+related_concepts: [neural-codec, autoregressive-codec-tts, evaluation-metrics, gan-vocoder]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

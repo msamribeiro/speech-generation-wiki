@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/pathak25_interspeech.html"
-related_concepts: ["multilingual-tts", "zero-shot-tts", "evaluation-metrics", "subjective-evaluation", "gan-vocoder"]
+related_concepts: [multilingual-tts, zero-shot-tts, evaluation-metrics, subjective-evaluation, gan-vocoder]
 related_papers: []
 field_significance:
   level: "moderate"

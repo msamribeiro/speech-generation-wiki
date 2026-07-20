@@ -37,7 +37,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/zheng25d_interspeech.html"
-related_concepts: ["flow-matching", "zero-shot-tts", "streaming-tts", "evaluation-metrics"]
+related_concepts: [flow-matching, zero-shot-tts, streaming-tts, evaluation-metrics]
 related_papers: ["2406.02430", "2412.10117", "2025.acl-long.313"]
 field_significance:
   level: moderate

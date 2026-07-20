@@ -33,7 +33,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/szekely25_interspeech.html"
-related_concepts: ["zero-shot-tts", "speaker-adaptation", "prosody-control", "subjective-evaluation", "evaluation-metrics"]
+related_concepts: [zero-shot-tts, speaker-adaptation, prosody-control, subjective-evaluation, evaluation-metrics]
 related_papers: []
 field_significance:
   level: "moderate"

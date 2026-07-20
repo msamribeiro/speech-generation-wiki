@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/futami25_interspeech.html"
-related_concepts: ["spoken-language-model", "self-supervised-speech", "speech-to-speech"]
+related_concepts: [spoken-language-model, self-supervised-speech, speech-to-speech]
 related_papers: []
 field_significance:
   level: moderate

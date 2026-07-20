@@ -45,7 +45,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/kaneko25b_interspeech.html"
-related_concepts: ["voice-conversion", "gan-vocoder", "diffusion-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [voice-conversion, gan-vocoder, diffusion-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

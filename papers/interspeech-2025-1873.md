@@ -25,7 +25,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/wang25v_interspeech.html"
-related_concepts: ["evaluation-metrics", "spoken-language-model"]
+related_concepts: [evaluation-metrics, spoken-language-model]
 related_papers: []
 field_significance:
   level: "moderate"

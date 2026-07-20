@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/zhou25e_interspeech.html"
-related_concepts: ["singing", "voice-conversion", "self-supervised-speech", "disentanglement", "evaluation-metrics", "subjective-evaluation", "zero-shot-tts"]
+related_concepts: [singing, voice-conversion, self-supervised-speech, disentanglement, evaluation-metrics, subjective-evaluation, zero-shot-tts]
 related_papers: []
 field_significance:
   level: "moderate"

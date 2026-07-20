@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/xing25_interspeech.html"
-related_concepts: ["zero-shot-tts", "emotion-synthesis", "disentanglement", "speaker-adaptation", "subjective-evaluation"]
+related_concepts: [zero-shot-tts, emotion-synthesis, disentanglement, speaker-adaptation, subjective-evaluation]
 related_papers: ["2301.02111", "2407.05407"]
 field_significance:
   level: "moderate"

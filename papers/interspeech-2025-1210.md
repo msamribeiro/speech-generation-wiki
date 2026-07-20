@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/su25c_interspeech.html"
-related_concepts: ["voice-conversion", "emotion-synthesis", "diffusion-tts", "disentanglement", "self-supervised-speech", "subjective-evaluation"]
+related_concepts: [voice-conversion, emotion-synthesis, diffusion-tts, disentanglement, self-supervised-speech, subjective-evaluation]
 related_papers: ["2412.10117"]
 field_significance:
   level: "moderate"

@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/chou25_interspeech.html"
-related_concepts: ["voice-conversion", "emotion-synthesis", "diffusion-tts", "disentanglement", "zero-shot-tts", "self-supervised-speech"]
+related_concepts: [voice-conversion, emotion-synthesis, diffusion-tts, disentanglement, zero-shot-tts, self-supervised-speech]
 related_papers: []
 field_significance:
   level: moderate

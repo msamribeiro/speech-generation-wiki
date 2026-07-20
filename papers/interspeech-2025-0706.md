@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/wang25e_interspeech.html"
-related_concepts: ["emotion-synthesis", "evaluation-metrics", "subjective-evaluation", "self-supervised-speech"]
+related_concepts: [emotion-synthesis, evaluation-metrics, subjective-evaluation, self-supervised-speech]
 related_papers: ["interspeech-2025-0166"]
 field_significance:
   level: moderate

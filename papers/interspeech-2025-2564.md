@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/ohashi25_interspeech.html"
-related_concepts: ["spoken-language-model", "autoregressive-codec-tts", "neural-codec", "speech-to-speech", "streaming-tts"]
+related_concepts: [spoken-language-model, autoregressive-codec-tts, neural-codec, speech-to-speech, streaming-tts]
 related_papers: []
 field_significance:
   level: moderate

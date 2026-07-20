@@ -25,7 +25,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/elmers25_interspeech.html"
-related_concepts: ["spoken-language-model", "speech-to-speech", "self-supervised-speech", "evaluation-metrics"]
+related_concepts: [spoken-language-model, speech-to-speech, self-supervised-speech, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate

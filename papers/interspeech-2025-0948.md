@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/qi25_interspeech.html"
-related_concepts: ["voice-conversion", "emotion-synthesis", "prosody-control", "instruction-conditioned-tts", "self-supervised-speech", "disentanglement"]
+related_concepts: [voice-conversion, emotion-synthesis, prosody-control, instruction-conditioned-tts, self-supervised-speech, disentanglement]
 related_papers: []
 field_significance:
   level: moderate

@@ -21,7 +21,7 @@ metrics: []
 code_available: true
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/francis25_interspeech.html"
-related_concepts: ["zero-shot-tts", "speaker-adaptation"]
+related_concepts: [zero-shot-tts, speaker-adaptation]
 related_papers: []
 field_significance:
   level: "low"

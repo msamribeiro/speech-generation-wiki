@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/toyin25_interspeech.html"
-related_concepts: ["multilingual-tts", "subjective-evaluation", "evaluation-metrics", "voice-conversion"]
+related_concepts: [multilingual-tts, subjective-evaluation, evaluation-metrics, voice-conversion]
 related_papers: []
 field_significance:
   level: "moderate"

@@ -37,7 +37,7 @@ metrics:
 code_available: false
 demo_available: false
 url: "https://www.isca-archive.org/interspeech_2025/byun25_interspeech.html"
-related_concepts: ["voice-conversion", "diffusion-tts", "self-supervised-speech", "gan-vocoder", "evaluation-metrics"]
+related_concepts: [voice-conversion, diffusion-tts, self-supervised-speech, gan-vocoder, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate

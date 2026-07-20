@@ -53,7 +53,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/zhang25k_interspeech.html"
-related_concepts: ["neural-codec", "autoregressive-codec-tts", "streaming-tts", "spoken-language-model"]
+related_concepts: [neural-codec, autoregressive-codec-tts, streaming-tts, spoken-language-model]
 related_papers: ["2412.17048"]
 field_significance:
   level: moderate

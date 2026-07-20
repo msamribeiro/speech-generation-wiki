@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/eren25_interspeech.html"
-related_concepts: ["prosody-control", "transformer-enc-dec-tts", "zero-shot-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [prosody-control, transformer-enc-dec-tts, zero-shot-tts, evaluation-metrics, subjective-evaluation]
 related_papers: ["2025.acl-long.313"]
 field_significance:
   level: "moderate"

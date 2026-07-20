@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/wu25k_interspeech.html"
-related_concepts: ["autoregressive-codec-tts", "spoken-language-model", "evaluation-metrics"]
+related_concepts: [autoregressive-codec-tts, spoken-language-model, evaluation-metrics]
 related_papers: []
 field_significance:
   level: "moderate"

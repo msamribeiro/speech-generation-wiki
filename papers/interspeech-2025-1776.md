@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/liang25e_interspeech.html"
-related_concepts: ["neural-codec", "self-supervised-speech", "autoregressive-codec-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [neural-codec, self-supervised-speech, autoregressive-codec-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

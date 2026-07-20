@@ -37,7 +37,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/kwon25_interspeech.html"
-related_concepts: ["flow-matching", "multilingual-tts", "speaker-adaptation", "zero-shot-tts"]
+related_concepts: [flow-matching, multilingual-tts, speaker-adaptation, zero-shot-tts]
 related_papers: ["2025.acl-long.313", "2412.10117"]
 field_significance:
   level: moderate

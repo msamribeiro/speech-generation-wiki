@@ -45,7 +45,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/zheng25b_interspeech.html"
-related_concepts: ["neural-codec", "disentanglement", "self-supervised-speech", "voice-conversion", "zero-shot-tts", "speaker-adaptation"]
+related_concepts: [neural-codec, disentanglement, self-supervised-speech, voice-conversion, zero-shot-tts, speaker-adaptation]
 related_papers: ["2301.02111"]
 field_significance:
   level: moderate

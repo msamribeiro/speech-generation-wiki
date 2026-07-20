@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/chao25_interspeech.html"
-related_concepts: ["spoken-language-model", "emotion-synthesis", "self-supervised-speech", "evaluation-metrics"]
+related_concepts: [spoken-language-model, emotion-synthesis, self-supervised-speech, evaluation-metrics]
 related_papers: ["2305.11000", "2311.07919", "2508.07273", "2507.18119"]
 field_significance:
   level: "moderate"

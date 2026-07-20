@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/wu25g_interspeech.html"
-related_concepts: ["zero-shot-tts", "emotion-synthesis", "diffusion-tts", "disentanglement", "subjective-evaluation", "evaluation-metrics"]
+related_concepts: [zero-shot-tts, emotion-synthesis, diffusion-tts, disentanglement, subjective-evaluation, evaluation-metrics]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

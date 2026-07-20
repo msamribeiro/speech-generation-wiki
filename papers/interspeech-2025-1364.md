@@ -33,7 +33,7 @@ metrics:
 code_available: false
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/zhao25g_interspeech.html"
-related_concepts: ["singing", "diffusion-tts", "evaluation-metrics", "subjective-evaluation"]
+related_concepts: [singing, diffusion-tts, evaluation-metrics, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

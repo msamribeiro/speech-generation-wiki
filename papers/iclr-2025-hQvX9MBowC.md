@@ -41,7 +41,7 @@ metrics:
 code_available: false
 demo_available: true
 url: "https://openreview.net/forum?id=hQvX9MBowC"
-related_concepts: ["diffusion-tts", "zero-shot-tts", "neural-codec", "multilingual-tts", "transformer-enc-dec-tts"]
+related_concepts: [diffusion-tts, zero-shot-tts, neural-codec, multilingual-tts, transformer-enc-dec-tts]
 related_papers: ["2301.02111", "2403.03100", "2304.09116", "2206.04658", "2406.02430"]
 field_significance:
   level: "high"

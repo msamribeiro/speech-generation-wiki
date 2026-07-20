@@ -25,7 +25,7 @@ metrics:
 code_available: true
 demo_available: null
 url: "https://openreview.net/forum?id=dGSOn7sdWg"
-related_concepts: ["spoken-language-model", "self-supervised-speech", "neural-codec", "autoregressive-codec-tts", "evaluation-metrics"]
+related_concepts: [spoken-language-model, self-supervised-speech, neural-codec, autoregressive-codec-tts, evaluation-metrics]
 related_papers: []
 field_significance:
   level: "high"

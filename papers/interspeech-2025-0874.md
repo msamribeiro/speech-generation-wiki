@@ -41,7 +41,7 @@ metrics:
 code_available: true
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/hu25f_interspeech.html"
-related_concepts: ["spoken-language-model", "speech-to-speech", "neural-codec", "streaming-tts", "autoregressive-codec-tts"]
+related_concepts: [spoken-language-model, speech-to-speech, neural-codec, streaming-tts, autoregressive-codec-tts]
 related_papers: []
 field_significance:
   level: high

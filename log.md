@@ -8,6 +8,8 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-07-20
 
+- misc | related_concepts normalization | 354 paper pages (348 bracket-quoted, 6 YAML block-list) rewritten to canonical bracket-unquoted `related_concepts: [slug-one, slug-two]` form via `scripts/normalize_related_concepts.py`; only the `related_concepts` line(s) touched per file, verified via `git diff` and `health_check.py` (0 errors before and after) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 - misc | concept cleanup | 21 stale concept pages replaced with pending-integration placeholders; concept index split into rendered and pending sections | runtime: codex | provider: openai | model: gpt-5
 
 - render | 2 concepts | mode: full | runtime: codex | provider: openai | model: gpt-5

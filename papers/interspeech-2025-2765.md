@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/srinivasavaradhan25_interspeech.html"
-related_concepts: ["evaluation-metrics", "subjective-evaluation", "zero-shot-tts", "speaker-adaptation"]
+related_concepts: [evaluation-metrics, subjective-evaluation, zero-shot-tts, speaker-adaptation]
 related_papers: ["2410.06885"]
 field_significance:
   level: moderate

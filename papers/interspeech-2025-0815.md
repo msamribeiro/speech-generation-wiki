@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/akti25_interspeech.html"
-related_concepts: ["voice-conversion", "disentanglement", "self-supervised-speech", "emotion-synthesis", "zero-shot-tts", "prosody-control"]
+related_concepts: [voice-conversion, disentanglement, self-supervised-speech, emotion-synthesis, zero-shot-tts, prosody-control]
 related_papers: []
 field_significance:
   level: moderate

@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/choi25e_interspeech.html"
-related_concepts: ["singing", "voice-conversion", "disentanglement", "diffusion-tts", "self-supervised-speech", "subjective-evaluation"]
+related_concepts: [singing, voice-conversion, disentanglement, diffusion-tts, self-supervised-speech, subjective-evaluation]
 related_papers: []
 field_significance:
   level: "moderate"

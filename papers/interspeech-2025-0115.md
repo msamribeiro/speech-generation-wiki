@@ -37,7 +37,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/sadok25_interspeech.html"
-related_concepts: ["neural-codec", "disentanglement", "self-supervised-speech", "voice-conversion", "evaluation-metrics"]
+related_concepts: [neural-codec, disentanglement, self-supervised-speech, voice-conversion, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate

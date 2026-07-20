@@ -25,7 +25,7 @@ metrics:
 code_available: true
 demo_available: false
 url: "https://www.isca-archive.org/interspeech_2025/pepino25_interspeech.html"
-related_concepts: ["neural-codec", "self-supervised-speech", "evaluation-metrics"]
+related_concepts: [neural-codec, self-supervised-speech, evaluation-metrics]
 related_papers: []
 field_significance:
   level: moderate

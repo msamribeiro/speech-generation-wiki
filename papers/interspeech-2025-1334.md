@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/alradhi25_interspeech.html"
-related_concepts: ["prosody-control", "evaluation-metrics", "transformer-enc-dec-tts"]
+related_concepts: [prosody-control, evaluation-metrics, transformer-enc-dec-tts]
 related_papers: []
 field_significance:
   level: "moderate"

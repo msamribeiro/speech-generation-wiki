@@ -21,7 +21,7 @@ metrics: []
 code_available: true
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/mayer25_interspeech.html"
-related_concepts: ["prosody-control", "flow-matching", "subjective-evaluation", "evaluation-metrics", "transformer-enc-dec-tts"]
+related_concepts: [prosody-control, flow-matching, subjective-evaluation, evaluation-metrics, transformer-enc-dec-tts]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

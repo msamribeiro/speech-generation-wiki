@@ -41,7 +41,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/kim25t_interspeech.html"
-related_concepts: ["transformer-enc-dec-tts", "disentanglement", "emotion-synthesis", "subjective-evaluation", "gan-vocoder"]
+related_concepts: [transformer-enc-dec-tts, disentanglement, emotion-synthesis, subjective-evaluation, gan-vocoder]
 related_papers: ["2006.04558", "2206.04658"]
 field_significance:
   level: "moderate"

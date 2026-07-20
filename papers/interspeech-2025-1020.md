@@ -29,7 +29,7 @@ metrics:
 code_available: true
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/portes25_interspeech.html"
-related_concepts: ["prosody-control", "evaluation-metrics", "neural-codec"]
+related_concepts: [prosody-control, evaluation-metrics, neural-codec]
 related_papers: []
 field_significance:
   level: "low"

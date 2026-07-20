@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://openreview.net/forum?id=cuFzE8Jlvb"
-related_concepts: ["autoregressive-codec-tts", "zero-shot-tts", "neural-codec", "speaker-adaptation", "evaluation-metrics"]
+related_concepts: [autoregressive-codec-tts, zero-shot-tts, neural-codec, speaker-adaptation, evaluation-metrics]
 related_papers: ["2301.02111"]
 field_significance:
   level: "moderate"

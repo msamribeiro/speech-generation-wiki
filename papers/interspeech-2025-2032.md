@@ -29,7 +29,7 @@ metrics:
 code_available: null
 demo_available: null
 url: "https://www.isca-archive.org/interspeech_2025/mondal25b_interspeech.html"
-related_concepts: ["prosody-control", "subjective-evaluation", "evaluation-metrics"]
+related_concepts: [prosody-control, subjective-evaluation, evaluation-metrics]
 related_papers: []
 field_significance:
   level: "low"
