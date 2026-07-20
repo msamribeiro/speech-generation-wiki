@@ -14,6 +14,9 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 - render | 2 concepts | mode: full | runtime: codex | provider: openai | model: gpt-5
 
+- integrate | rlhf-speech | 20 papers integrated (phase 1 only) | first-ever integration pass for this concept, new YAML created; Q3-scoped (published_date < 2025-10-01) oldest-first batch, 20 of 29 in-scope candidates processed (2406.00654 through 2508.15442), 2 Tier 2 candidates skipped (2501.12948, 2307.09288); 9 in-scope papers remain for a follow-up Phase 1 batch (2508.16332, 2509.00685, 2509.05863, 2509.14946, 2501.04561, 2509.18531, 2509.18928, 2509.19928, 2509.25416) | phase 2 synthesis not yet run for this concept | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- integrate | rlhf-speech | 9 papers integrated (phase 1 only) | second and final Phase 1 batch for this concept, Q3-scoped oldest-first continuation, 20 -> 29 of 29 in-scope candidates; processed 2508.16332 through 2509.25416; no candidates skipped (all 9 confirmed Tier 1, ingested, not previously integrated); Q3-and-earlier Phase 1 backlog for rlhf-speech is now fully closed (29/29) | phase 2 synthesis not yet run for this concept | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-19
 
 - integrate | speech-to-speech | 6 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 54 -> 60; processed the final 7 in-scope candidates (2509.17765 through 2509.26542), 1 skipped as scope-mismatch (2509.23938, Easy Turn: turn-taking detection module with no speech-generation stage of its own, does not fit any of the 3 S2S sub-paradigms, same reasoning as the VAP/DiVA precedents); Q3-and-earlier Phase 1 backlog for speech-to-speech is now fully closed | phase 2 synthesis not yet run for this concept

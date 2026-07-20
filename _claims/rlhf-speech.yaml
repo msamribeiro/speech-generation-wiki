@@ -1,0 +1,1493 @@
+concept: rlhf-speech
+last_updated: "2026-07-20"
+paper_count: 29
+
+papers:
+  - id: "2406.00654"
+    entry_date: "2026-07-20"
+    year: 2024
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - control_evidence
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: uno_kto_uncertainty_optimization
+        role: supports
+        claim: "Standard supervised training objectives for TTS produce a systematic mismatch with human perceptual evaluation metrics such as MOS and WER, and correcting this mismatch through preference-aware fine-tuning yields large performance gains."
+        source: "§1, §4.2, Table 1"
+        evidence: "UNO reduces VoiceCraft's WER from 8.4% to 2.6% and raises naturalness MOS from 3.38 to 4.06 by incorporating human feedback directly into training."
+        confidence: high
+        relevance: high
+      - claim_id: uno_dpo_infeasible_for_codec_tts
+        role: complicates
+        claim: "Existing RLHF methods requiring pairwise preference data from the same input (DPO) are difficult to apply directly to autoregressive codec TTS because these models lack sufficient output diversity to form meaningful preference pairs from a fixed transcript-prompt combination."
+        source: "§4.2, Appendix B"
+        evidence: "The paper argues DPO-style pairwise preference collection is impractical because a fixed transcript-prompt pair yields insufficiently diverse codec LM outputs for meaningful preference labelling, motivating UNO's non-pairwise KTO-style approach."
+        confidence: medium
+        relevance: high
+      - claim_id: uno_uncertainty_as_signal
+        role: supports
+        claim: "Uncertainty in human speech quality annotations is not noise to be discarded but an informative signal that, when incorporated into the optimization objective, improves the consistency of generated speech across listeners."
+        source: "§4.2, §6.3, Table 3"
+        evidence: "Uncertainty-weighted KTO (I-CNF) achieves comparable mean MOS to an unweighted ablation (UNO-null) but with lower output variance, indicating the uncertainty signal specifically improves generation consistency."
+        confidence: medium
+        relevance: high
+      - claim_id: uno_data_efficient_alignment
+        role: supports
+        claim: "RLHF-style alignment for TTS can be achieved with a small number of self-generated samples (hundreds) without access to ground truth speech, making it practical for post-training fine-tuning at low computational cost."
+        source: "§4.1, §5, Appendix D"
+        evidence: "Fine-tuning uses only 400 self-generated samples (200 positive / 200 negative) and about 10 minutes on a single A100 GPU, with no ground-truth speech required."
+        confidence: high
+        relevance: high
+      - claim_id: uno_generalizes_to_emotion
+        role: supports
+        claim: "Alignment objectives designed for naturalness MOS transfer to other perceptual dimensions such as emotion by substituting the selection criterion, demonstrating that preference-based fine-tuning generalises beyond a single quality axis."
+        source: "§6.4, Table 4"
+        evidence: "Substituting the sampling selection criterion with emotional valence/arousal scores increases valence from 0.55 to 0.67 and arousal from 0.62 to 0.71, without any explicit emotion labelling at training time."
+        confidence: medium
+        relevance: medium
+    limitations:
+      - "Evaluated exclusively on VoiceCraft, an autoregressive codec model; applicability to diffusion or flow-matching TTS is discussed theoretically but untested."
+      - "Human evaluation uses only 10 listeners for 120 samples, a relatively small pool."
+    caveats:
+      - "The comparison against SpeechAlign is partially unfair by the authors' own admission: SpeechAlign-DPO requires ground-truth speech as positive samples, additional supervision UNO does not use."
+
+  - id: "2406.02430"
+    entry_date: "2026-07-20"
+    year: 2024
+    venue: arXiv
+    task: [TTS, VC]
+    architecture: [autoregressive-LM, diffusion, hybrid]
+    relevance: medium
+    evidence_role:
+      - core_evidence
+      - evaluation_caution
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: seedtts_human_parity_zeroshot
+        role: supports
+        claim: "Autoregressive codec language models trained at sufficient scale can generate zero-shot speech with naturalness and speaker similarity indistinguishable from human speech as measured by CMOS."
+        source: "§3.1, Table 1"
+        evidence: "Seed-TTS ICL achieves CMOS of -0.07 (EN) and -0.08 (ZH) versus human recordings, effectively indistinguishable in subjective comparison."
+        confidence: high
+        relevance: low
+      - claim_id: seedtts_self_distillation_disentanglement
+        role: supports
+        claim: "Self-distillation on perturbation-generated pairs is an effective method for timbre disentanglement in TTS systems, achieving large speaker similarity gains in voice conversion without modifying model architecture or loss functions."
+        source: "§4.1, Table 6"
+        evidence: "Self-distillation raises voice-conversion SIM from 0.491 to 0.753 (EN) and 0.636 to 0.791 (ZH), far exceeding DiffVC (0.311) and HierSpeech++ (0.387)."
+        confidence: high
+        relevance: low
+      - claim_id: seedtts_rl_posttraining_reward_hacking
+        role: refines
+        claim: "Reinforcement learning post-training with objective speech quality rewards improves robustness and speaker similarity in autoregressive TTS while introducing reward hacking that must be carefully managed."
+        source: "§4.2, Tables 7, 8"
+        evidence: "REINFORCE-based RL post-training (RL-SIM-WER) reduces EN WER from 2.249% to 1.945% and ZH WER from 1.115% to 1.002%, while the paper documents reward hacking (over-slow, over-articulated speech) as a failure mode requiring careful tuning."
+        confidence: high
+        relevance: high
+      - claim_id: seedtts_dit_implicit_alignment
+        role: supports
+        claim: "End-to-end diffusion models that predict total duration and learn local text-audio alignment implicitly can match or exceed the quality of autoregressive codec LM systems without per-phoneme duration supervision."
+        source: "§4.3, Table 10"
+        evidence: "Seed-TTSDiT achieves EN WER 1.733% and SIM 0.790, superior speaker similarity to the autoregressive ICL variant."
+        confidence: high
+        relevance: low
+      - claim_id: seedtts_synthetic_asr_training
+        role: supports
+        claim: "Synthetic speech generated by a high-quality zero-shot TTS system can train ASR models that approach real-data performance on clean test sets, though a gap persists on noisy sets due to background noise smoothing."
+        source: "§3.1, Table 2"
+        evidence: "An ASR model trained on synthetic Seed-TTS LibriSpeech data achieves WER within 0.31% absolute of a real-data baseline on clean sets."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "Reward hacking (over-slow, over-articulated speech) during RL post-training requires careful tuning; model weights and RL implementation details are not released."
+    caveats:
+      - "RL post-training is described at a high level (REINFORCE with WER+SIM or SER rewards, plus a DPO exploration) without extensive ablation of reward design choices, so the RLHF-specific contribution is thinner than in papers dedicated to alignment methodology."
+
+  - id: "2412.10117"
+    entry_date: "2026-07-20"
+    year: 2024
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    evidence_role:
+      - core_evidence
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: cosyvoice2_fsq_codebook_utilization
+        role: supports
+        claim: "Finite scalar quantization achieves full codebook utilization in supervised speech tokenizers, capturing substantially more semantic content than vector quantization at equivalent bitrates."
+        source: "§2.2, §4.1, Table 4"
+        evidence: "FSQ reaches 100% codebook utilization versus 23% for VQ, and reduces ASR error rate from 18.26% to 10.67% on CommonVoice EN."
+        confidence: high
+        relevance: low
+      - claim_id: cosyvoice2_llm_backbone_consistency
+        role: supports
+        claim: "Replacing a randomly initialized custom LM with a pre-trained LLM backbone improves content consistency in hybrid TTS systems without requiring a separate text encoder."
+        source: "§2.3, §4.3, Table 7"
+        evidence: "Initializing from Qwen2.5-0.5B and dropping the speaker embedding and text encoder yields an 18.46% relative CER improvement on Chinese test sets in ablation (Table 7)."
+        confidence: high
+        relevance: low
+      - claim_id: cosyvoice2_unified_streaming
+        role: supports
+        claim: "Streaming and non-streaming synthesis can be unified in a single autoregressive model through interleaved text-speech token sequences, with virtually lossless quality on typical inputs relative to offline mode."
+        source: "§2.3, §4.2, Table 8"
+        evidence: "Streaming LM + streaming flow matching achieves WER 2.38% (EN) versus 2.57% offline, close to lossless on typical test cases."
+        confidence: high
+        relevance: low
+      - claim_id: cosyvoice2_chunk_aware_fm
+        role: supports
+        claim: "Training a flow matching model simultaneously on multiple causal mask types, from non-causal to full-causal, enables a single model to span the latency-quality trade-off continuum at inference time, with masks providing implicit self-distillation."
+        source: "§2.4, §4.3, Table 8"
+        evidence: "The chunk-aware causal flow matching model trained with four mask types (non-causal, full-causal, Chunk-M, Chunk-2M) supports both offline and streaming deployment from one set of weights."
+        confidence: high
+        relevance: low
+      - claim_id: cosyvoice2_differentiable_reward_vs_dpo
+        role: refines
+        claim: "Differentiable ASR reward optimization generalizes better to out-of-domain and hard-case inputs than preference-based DPO in TTS speaker fine-tuning."
+        source: "§2.8, §4.7, Table 11"
+        evidence: "Combining a differentiable ASR reward (Gumbel-softmax sampling through FSQ indices into a frozen ASR decoder) with DPO achieves the best WER/SIM results on both in-domain speaker fine-tuning and SEED test sets in Table 11, avoiding the four-forward-pass overhead of standard DPO."
+        confidence: medium
+        relevance: high
+    limitations:
+      - "RL/DPO fine-tuning is reported only for the speaker fine-tuning stage, without extensive ablation isolating the differentiable-reward contribution from the DPO baseline component."
+    caveats:
+      - "The differentiable ASR reward mechanism is demonstrated only for speaker fine-tuning; it is not evaluated as a general-purpose alignment technique across the model's other capabilities (streaming, instruction-following)."
+
+  - id: "2502.11946"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    evidence_role:
+      - core_evidence
+      - evaluation_caution
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: stepaudio_dual_codebook_tokenizer
+        role: supports
+        claim: "A dual-codebook interleaved tokenizer that combines linguistic and semantic representations can achieve lower ASR error rates than either codebook alone, without sacrificing acoustic reconstruction quality."
+        source: "§4.4, §6.2.1"
+        evidence: "The dual-codebook approach reduced CER on ASR tasks from 25.5 to 18.4 in ablation experiments on a 3B-scale model."
+        confidence: medium
+        relevance: low
+      - claim_id: stepaudio_scale_sensitivity
+        role: supports
+        claim: "Scaling autoregressive LLM backbone size from 3B to 130B parameters produces substantial gains in speech synthesis intelligibility on standard TTS benchmarks, suggesting speech generation quality is LLM-scale-sensitive."
+        source: "§6.2.2, Table 3"
+        evidence: "The 130B Step-Audio-TTS improves CER/WER to 1.17%/2.00% on SEED-TTS versus 1.31%/2.31% for the distilled 3B model."
+        confidence: medium
+        relevance: low
+      - claim_id: stepaudio_rlhf_deaf_hacking
+        role: complicates
+        claim: "RLHF reward models trained on speech interaction data can exhibit systematic failure modes (such as rewarding evasive non-answers to unclear audio) unless explicit counter-examples are constructed during reward model training."
+        source: "§5.2.6"
+        evidence: "During PPO-based RLHF training of Step-Audio-Chat, a 'deaf hacking' failure mode emerged where the reward model preferred evasive non-answers to unclear audio; the team mitigated it by constructing explicit counter-examples for reward model training."
+        confidence: medium
+        relevance: high
+      - claim_id: stepaudio_speculative_response
+        role: supports
+        claim: "Speculative response generation triggered by voice activity detection can reduce per-response latency by approximately 500 ms, with roughly 40% of pre-generated responses being usable, enabling practical real-time conversational systems."
+        source: "§3.4"
+        evidence: "The system preemptively generates responses during user pauses; roughly 40% of speculative responses are committed, reducing latency by approximately 500 ms per response."
+        confidence: medium
+        relevance: low
+      - claim_id: stepaudio_synthetic_data_substitution
+        role: supports
+        claim: "Synthetic speech data generated by a large multi-modal model can substitute for manually curated recordings in training TTS systems for low-resource dialects, emotions, and singing styles."
+        source: "§5.1.1"
+        evidence: "The distilled Step-Audio-TTS-3B model is trained on synthetic data produced by the 130B model rather than manually curated recordings, and reaches competitive intelligibility on SEED-TTS."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "RLHF training details are limited to a single subsection (§5.2.6) without ablation of the counter-example mitigation's independent effect."
+    caveats:
+      - "The RLHF post-training targets the AQTA chat/dialogue model, not the TTS decoder itself; its transferability to pure TTS alignment (as in UNO or F5R-TTS) is untested."
+
+  - id: "2504.02407"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - architecture_variant
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: f5rtts_gaussian_reformulation_enables_rl
+        role: supports
+        claim: "Reformulating the output of a flow-matching TTS model as a Gaussian distribution is sufficient to enable standard policy-gradient RL algorithms without architectural redesign."
+        source: "§2.2"
+        evidence: "The final linear layer of the F5-TTS DiT backbone is modified to output a Gaussian mean/variance instead of a deterministic velocity vector, with the pretraining phase functionally equivalent to the original flow-matching loss."
+        confidence: high
+        relevance: high
+      - claim_id: f5rtts_grpo_improves_wer_sim
+        role: supports
+        claim: "GRPO with WER and speaker-similarity rewards consistently reduces word error rate and increases speaker similarity in non-autoregressive TTS post-training, across diverse Mandarin datasets."
+        source: "§3.2.2, Table 1, Table 2"
+        evidence: "GRPO reduces WER from 2.10% to 1.48% and raises SIM from 0.698 to 0.730 on Seed-TTS-eval test-cn general set, with consistent gains (18.4% relative WER reduction, 3.1% SIM improvement) replicated on a separate internal 10,000-hour dataset."
+        confidence: high
+        relevance: high
+      - claim_id: f5rtts_rl_improves_noise_robustness
+        role: supports
+        claim: "RL post-training that optimises speaker-similarity reward also improves robustness to noisy reference audio, not only clean-reference speaker cloning."
+        source: "§3.2.2, Table 1"
+        evidence: "On a noisy-reference subset, GRPO training yields a larger relative WER reduction (33.6%, from 2.32% to 1.54%) than the general-set improvement, indicating improved robustness to reference audio quality."
+        confidence: medium
+        relevance: high
+      - claim_id: f5rtts_hard_text_limits_rl_gains
+        role: complicates
+        claim: "Hard text (tongue twisters and repetitive phrasing) degrades all flow-matching TTS variants substantially, and RL training with WER rewards provides smaller relative gains in this regime than on plain text."
+        source: "§3.2.2, Table 1"
+        evidence: "On the hard set, WER drops only from 11.30% to 10.63% (6.1% relative) after GRPO, versus a 29.5% relative reduction on the general set."
+        confidence: medium
+        relevance: medium
+      - claim_id: f5rtts_data_efficient_rl
+        role: supports
+        claim: "The GRPO phase requires only a small fraction of the pretraining data (100 h out of 7,226 h) and update steps to achieve measurable objective improvements, suggesting that RL fine-tuning is data-efficient for this task."
+        source: "§3.1"
+        evidence: "The GRPO phase uses only 100 hours of data and runs for 1,100 update steps on 8 A100 GPUs, compared to 1 million steps in pretraining, yet produces measurable WER/SIM gains."
+        confidence: high
+        relevance: medium
+    limitations:
+      - "No subjective (MOS/MUSHRA) evaluation is reported; all claimed improvements rely on automatic WER and speaker-cosine-similarity proxies."
+      - "Evaluation is restricted to Mandarin (Seed-TTS-eval test-cn); generalisation to English or multilingual settings is not studied."
+    caveats:
+      - "As the first RL application to a NAR/flow-matching TTS architecture, the probabilistic-output reformulation technique has not yet been validated on other flow-matching or diffusion TTS backbones beyond F5-TTS."
+
+  - id: "2025.naacl-demo.12"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: NAACL
+    task: [TTS, SCA]
+    architecture: [autoregressive-LM]
+    relevance: low
+    evidence_role:
+      - infrastructure
+    current_role: minor
+    method_family: []
+    claims:
+      - claim_id: espnet_speechlm_llm_init_no_degradation
+        role: supports
+        claim: "A speech language model can be initialized from a pre-trained text LLM and jointly trained on speech recognition, speech synthesis, text continuation, and audio continuation without substantially degrading the text-only capability of the base model."
+        source: "§4.3, Table 5"
+        evidence: "The 1.7B multi-task model trained on ASR, TTS, TextLM, and AudioLM objectives scores MMLU 30.5, ARC-C 41.3, and HellaSwag 50.4, close to the text-only LLaMA-3.2-1B baseline (32.2, 32.8, 41.2)."
+        confidence: medium
+        relevance: low
+      - claim_id: espnet_speechlm_codec_ssl_concat
+        role: supports
+        claim: "Concatenating neural codec tokens with self-supervised speech representations frame-by-frame is a viable tokenization strategy for both speech understanding and generation tasks within a single sequential model."
+        source: "§3.3"
+        evidence: "The 'Codec_SSL' scheme (ESPnet-Codec combined with XEUS SSL tokens) is used for the headline ASR and TTS experiments and is reported to behave well in both understanding and generation."
+        confidence: medium
+        relevance: low
+      - claim_id: espnet_speechlm_small_matches_large_asr
+        role: supports
+        claim: "A decoder-only autoregressive speech language model can match or exceed dedicated, larger ASR-only systems on English benchmarks while using substantially fewer parameters."
+        source: "§4.2, Table 3"
+        evidence: "A 442M-parameter ESPnet-SpeechLM ASR model reaches average WER 5.4% across six English test sets, matching OWSM v3.1-medium (1.02B, 5.4%) and beating Whisper-small/medium."
+        confidence: medium
+        relevance: low
+      - claim_id: espnet_speechlm_unmatched_comparisons
+        role: complicates
+        claim: "Cross-system comparisons of speech language models reported in the literature are frequently not run under matched conditions, limiting how much can be concluded from any single performance table."
+        source: "§4.3, Table 5"
+        evidence: "In the multi-task comparison table, competitor numbers for Moshi, VITA, and GLM-4-Voice are taken directly from their own published reports rather than reproduced by the authors, flagged explicitly with footnotes."
+        confidence: medium
+        relevance: low
+      - claim_id: espnet_speechlm_codec_ssl_unablated
+        role: complicates
+        claim: "Combining a codec tokenizer with a self-supervised tokenizer frame-by-frame is reported as an effective design choice but is not validated against single-tokenizer ablations in the same controlled setting."
+        source: "§3.3"
+        evidence: "The claim that Codec_SSL tokenization 'behaves well' rests on a single line of justification without a paired ablation against codec-only or SSL-only tokenization."
+        confidence: low
+        relevance: low
+    limitations:
+      - "As a toolkit/demo paper, RLHF is offered only as a configurable training option; no RLHF experiments, ablations, or results are reported for the flagship 1.7B model."
+    caveats:
+      - "The paper's relevance to rlhf-speech is purely infrastructural: it states the toolkit 'also supports RLHF fine-tuning for speech LMs' but presents no RLHF-trained model, reward design, or evaluation."
+
+  - id: "2505.09558"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [SCA, evaluation]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - infrastructure
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: wavreward_text_only_eval_misses_acoustics
+        role: supports
+        claim: "Text-only evaluation of speech-to-speech dialogue systems systematically misses acoustic-level mismatches that human judges readily detect."
+        source: "§2.2, §4.3"
+        evidence: "The paper motivates WavReward by noting text-based metrics (BLEU, ChatGPT-based scoring) cannot detect acoustic mismatches, such as a fearful query answered with cheerful mockery."
+        confidence: medium
+        relevance: low
+      - claim_id: wavreward_grpo_outperforms_sft_reward_model
+        role: supports
+        claim: "Reinforcement learning with group-based advantage estimates substantially outperforms supervised fine-tuning for training audio-domain reward models, consistent with patterns observed in text-domain RLHF."
+        source: "§4.2, Table 2"
+        evidence: "RL (GRPO) fine-tuning outperforms full-parameter supervised fine-tuning, which itself outperforms LoRA-based fine-tuning, on ChatReward-30K-test accuracy across content, explicit paralinguistic, and implicit categories."
+        confidence: high
+        relevance: high
+      - claim_id: wavreward_cot_improves_scoring
+        role: supports
+        claim: "Chain-of-thought reasoning improves scoring accuracy of audio language model evaluators, with the benefit amplified in out-of-domain settings."
+        source: "§4.4"
+        evidence: "Removing chain-of-thought reasoning costs roughly 10 percentage points across categories and up to 21.7 points on the out-of-domain RealDialogue set."
+        confidence: medium
+        relevance: medium
+      - claim_id: wavreward_nonlinear_reward_calibration
+        role: supports
+        claim: "Nonlinear reward shaping that penalises large prediction errors exponentially improves calibration across acoustic attributes compared to binary correct/incorrect rewards."
+        source: "§3.1, §4.4"
+        evidence: "Ablation removing the nonlinear reward reduces performance particularly on implicit and generation tasks relative to the full model's exponential-penalty reward."
+        confidence: medium
+        relevance: high
+      - claim_id: wavreward_implicit_dialogue_hardest
+        role: supports
+        claim: "Implicit dialogue scenarios, where the appropriate response depends on inferring the user's emotional state from speech, remain significantly harder to evaluate automatically than explicit instruction-following scenarios."
+        source: "§4.2, Table 2"
+        evidence: "WavReward raises implicit dialogue scoring accuracy from 48.5% to 74.3% relative to the strongest open baseline, still notably lower than explicit-category accuracy (around 91.5%)."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "The entire ChatReward-30K training corpus is synthesised using TTS systems (GPT-4o-mini-TTS, Step-Audio-TTS-3B, CosyVoice2) rather than real human speech; generalisation to real dialogue audio is tested only on a 120-sample RealDialogue set."
+      - "GPU training details are withheld due to company policy, reducing reproducibility."
+    caveats:
+      - "WavReward trains a reward *evaluator* via RL rather than applying RLHF to a TTS/SCA generation model directly; its relevance to rlhf-speech is as a reusable reward-model methodology and potential future reward source, not as a demonstrated RLHF-tuned generation system."
+
+  - id: "2505.17589"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: cosyvoice3_diffro_token_level_reward
+        role: supports
+        claim: "Differentiable reward optimization over discrete speech tokens, rather than synthesized audio, enables scalable post-training for LLM-based TTS without the computational overhead of full audio generation."
+        source: "§2.2"
+        evidence: "DiffRO trains a Token2Text model and uses Gumbel-Softmax sampling to backpropagate gradients through discrete token predictions, with a KL penalty against the reference policy; DiffRO alone contributes 12-35% relative WER improvements, exceeding 50% in half of cross-lingual/low-resource conditions."
+        confidence: high
+        relevance: high
+      - claim_id: cosyvoice3_multitask_tokenizer_paralinguistic
+        role: supports
+        claim: "Supervised multi-task training of a speech tokenizer on tasks including emotion recognition, language identification, and speaker analysis captures richer paralinguistic content than ASR-only objectives, with measurable downstream gains in content consistency and speaker similarity."
+        source: "§2.1, §5.3"
+        evidence: "The MinMo-based tokenizer, fine-tuned on 530K hours across ASR, LID, SER, AED, and speaker analysis, embeds richer paralinguistic content than the SenseVoice-based CosyVoice 2 tokenizer."
+        confidence: medium
+        relevance: low
+      - claim_id: cosyvoice3_emotion_from_text_not_prompt
+        role: complicates
+        claim: "Current zero-shot TTS systems infer emotional tone primarily from text semantics; expression of text-unrelated emotions from a reference prompt remains a significant unsolved challenge."
+        source: "§5.2.3, Table 9"
+        evidence: "Emotion cloning results show text-related emotion accuracy is strong (0.84-0.98) with DiffRO-EMO, but text-unrelated emotion accuracy drops substantially for sad and angry categories, and multi-reward DiffRO with emotion targets further degrades pronunciation."
+        confidence: medium
+        relevance: medium
+      - claim_id: cosyvoice3_scaling_diminishing_returns
+        role: supports
+        claim: "Scaling training data and model size in two-stage codec TTS produces consistent gains up to a point of diminishing returns, with data scaling showing stronger marginal returns than model size scaling beyond 0.5B parameters on current benchmarks."
+        source: "§4.2, §5.1"
+        evidence: "CosyVoice 3-1.5B with DiffRO reaches 44-51% relative CER/WER improvements over CosyVoice 2, attributed jointly to the 1M-hour data scale and the larger 1.5B LM."
+        confidence: medium
+        relevance: low
+      - claim_id: cosyvoice3_studio_benchmarks_underestimate_difficulty
+        role: supports
+        claim: "Existing TTS benchmarks based on studio-quality audiobook data underestimate the difficulty of in-the-wild voice cloning, where noisy reference audio and domain diversity expose robustness gaps not visible in standard evaluations."
+        source: "§4.4"
+        evidence: "The newly introduced CV3-Eval multilingual benchmark is the only one covering noisy in-the-wild reference conditions across 9 languages; open-source baselines (F5-TTS, SparkTTS, GPT-SoVits) support only Chinese and English."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "DiffRO exhibits a trade-off between intelligibility and speaker similarity: RL post-training slightly reduces speaker similarity while improving WER."
+      - "Multi-reward DiffRO with emotion targets further degrades pronunciation, indicating reward balancing in multi-objective post-training for TTS remains an open engineering problem."
+    caveats:
+      - "DiffRO's generality across other LLM-based TTS pipelines is asserted by the authors but demonstrated only within the CosyVoice architecture family."
+
+  - id: "2507.14988"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [flow-matching]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - architecture_variant
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: dmospeech2_grpo_subcomponent_efficiency
+        role: supports
+        claim: "Applying GRPO to a discrete upstream subcomponent of a distilled TTS pipeline achieves perceptual metric gains at substantially lower computational cost than whole-system RL."
+        source: "§3.2.2, §4.1, Table 1"
+        evidence: "Duration predictor GRPO fine-tuning uses 4-step student inference for reward computation and converges in 1.5K steps; on Seed-TTS-en, WER improves from 3.750 (no RL) to 1.752 and SIM from 0.672 to 0.698 without modifying the synthesis model."
+        confidence: high
+        relevance: high
+      - claim_id: dmospeech2_duration_bottleneck
+        role: supports
+        claim: "Duration prediction quality independently constrains intelligibility and speaker similarity in non-autoregressive TTS regardless of synthesis model capacity."
+        source: "§A.1, Table 3"
+        evidence: "With the same flow-matching generator, WER on Seed-TTS-en ranges from 1.723 (best-of-8 oracle duration sampling) to 3.750 (unoptimized predictor) to 1.752 (RL-optimized), establishing duration as the primary bottleneck."
+        confidence: high
+        relevance: medium
+      - claim_id: dmospeech2_distillation_reduces_diversity
+        role: complicates
+        claim: "Distribution matching distillation in flow-matching TTS reduces prosodic diversity disproportionately relative to acoustic quality, concentrating degradation in temporal and structural dimensions."
+        source: "§3.3.1, §4.3.3, Table 1, Figure 3"
+        evidence: "Step reduction from 32 to 4 lowers pitch CV-f0 by 30.3% (from 0.666 to 0.464) while mean-centered UTMOS distributions remain consistent across teacher and student, showing diversity loss is prosodic rather than spectral."
+        confidence: high
+        relevance: low
+      - claim_id: dmospeech2_best_of_n_ceiling
+        role: refines
+        claim: "Best-of-N sampling over discrete duration predictions establishes a practical performance ceiling for RL-based duration optimization in non-autoregressive TTS."
+        source: "§A.1, Table 3"
+        evidence: "Best-of-8 duration sampling achieves WER 1.723 and SIM 0.724 on Seed-TTS-en; the RL-optimized system reaches WER 1.752 and SIM 0.698 in a single pass, approaching but not fully closing the gap to this oracle upper bound."
+        confidence: high
+        relevance: high
+      - claim_id: dmospeech2_teacher_guided_sampling
+        role: supports
+        claim: "A hybrid inference strategy using a high-diversity teacher for early denoising and a distilled student for acoustic refinement can restore prosodic diversity without sacrificing metric optimization gains."
+        source: "§3.3.2, §4.3.3, Table 1"
+        evidence: "Teacher-guided sampling (t_switch=0.25, 16 steps) recovers CV-f0 to 0.593 (89.1% of teacher diversity) while achieving WER 1.738 and SIM 0.699, outperforming the teacher on both objective metrics at 1.8x faster RTF."
+        confidence: high
+        relevance: low
+    limitations:
+      - "RL training is sensitive to step count: performance degrades significantly beyond 1.5K steps due to reward over-optimization, constraining total optimization capacity."
+      - "Rewards are limited to WER and speaker similarity; explicit naturalness or prosody rewards are not explored."
+    caveats:
+      - "RL is applied narrowly to the duration predictor subcomponent rather than the full synthesis pipeline; this scope decision is motivated by compute cost, not a general claim that narrow RL scope is preferable."
+
+  - id: "2507.21138"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: tts1_grpo_composite_reward_multi_dimension
+        role: supports
+        claim: "RL alignment with composite perceptual rewards improves multiple speech quality dimensions simultaneously over SFT-only baselines in autoregressive codec TTS."
+        source: "§3.5, Table 8"
+        evidence: "GRPO with combined WER + speaker similarity + DNSMOS rewards achieves gains in all three metrics over the SFT baseline, while single-reward models improve only their target dimension; TTS-1 WER drops from 7.9% (SFT) to 6.3% (RL-aligned)."
+        confidence: high
+        relevance: high
+      - claim_id: tts1_audio_pretraining_improves_sft
+        role: supports
+        claim: "Audio pre-training on large-scale raw speech substantially improves subsequent SFT quality in LLM-based TTS beyond what instruction-tuned LLM initialisation provides."
+        source: "§3.4, Figure 5"
+        evidence: "Initialising SFT from an audio pre-trained LLaMA-3.2-1B checkpoint yields approximately 15% lower WER and approximately 3% higher speaker similarity than initialising from the base instruct checkpoint."
+        confidence: medium
+        relevance: low
+      - claim_id: tts1_scaling_improves_intelligibility
+        role: supports
+        claim: "Scaling SpeechLM parameter count in autoregressive codec TTS consistently improves intelligibility and speaker fidelity across languages."
+        source: "§4, Figure 8, Table 8"
+        evidence: "TTS-1-Max (8.8B) achieves 5.1% overall WER and higher SIM across all 11 evaluated languages compared to TTS-1 (1.6B) at 6.3% WER."
+        confidence: medium
+        relevance: low
+      - claim_id: tts1_style_tags_conflict_speaker_identity
+        role: complicates
+        claim: "Style conditioning via discrete text tags conflicts with speaker identity preservation in single-codebook codec TTS architectures."
+        source: "§3.6"
+        evidence: "Direct prepending of style markup tags during SFT produced no effect on synthesized speech because the single-codebook design entangles acoustic and semantic information; successful style control required paired neutral/stylized data and LoRA fine-tuning."
+        confidence: medium
+        relevance: low
+      - claim_id: tts1_streaming_artifacts_engineering
+        role: complicates
+        claim: "Streaming audio delivery in autoregressive TTS introduces audible artifacts and volume inconsistencies at segment boundaries that require specific engineering mitigations independent of the generative model's quality."
+        source: "§5.1"
+        evidence: "Without concatenation restricted to non-voicing regions and context-aware decoder decoding, segment boundaries introduce clicks and volume drops."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "Model weights are not publicly released, making independent benchmarking of the RL-aligned model impossible."
+      - "All evaluations use proprietary or internal test sets; the internal TTS arena covers only English with a modest vote count per pair."
+    caveats:
+      - "The composite GRPO reward (WER + SIM + DNSMOS) is reported at a system level without an ablation isolating a single-reward variant against the full three-way reward, so the marginal contribution of each reward term to RL-specific gains is not separable."
+
+  - id: "2025.acl-long.598"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: ACL
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - infrastructure
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: intp_cross_model_pairs_outperform_self_comparison
+        role: supports
+        claim: "Preference alignment with cross-model preference pairs yields larger intelligibility improvements than single-model self-comparison pairs for TTS post-training."
+        source: "§5.2, Table 5"
+        evidence: "Ablations show all three INTP pair types (intra, inter, perturbed) contribute, with inter-pairs and intra-pairs complementary; full DPO with negative-pair contrast gives larger improvements than supervised fine-tuning on positives alone."
+        confidence: high
+        relevance: high
+      - claim_id: intp_dpo_fm_dpo_mgm_derivation
+        role: supports
+        claim: "DPO objectives can be derived for flow-matching and masked generative TTS architectures by operating in velocity space and masked token distributions, respectively, without requiring explicit reward models."
+        source: "§4.2, §4.3"
+        evidence: "The paper derives DPO-FM (log-ratio of learned vs. reference velocity fields, equivalent to an MSE difference in predicted velocities) and DPO-MGM (product of log-probabilities over masked tokens), enabling principled preference alignment for flow-matching (F5-TTS) and masked generative (MaskGCT) TTS architectures for the first time."
+        confidence: high
+        relevance: high
+      - claim_id: intp_generalizes_to_unseen_languages
+        role: supports
+        claim: "Intelligibility gains from preference alignment on English and Chinese data generalize to unseen languages (Japanese, Korean, German, French) without degrading speaker similarity."
+        source: "§5.1, Table 10"
+        evidence: "INTP alignment trained on EN+ZH data reduces WER substantially across Japanese, Korean, German, and French evaluation sets, without harming speaker similarity."
+        confidence: high
+        relevance: high
+      - claim_id: intp_weak_to_strong_generalization
+        role: supports
+        claim: "Preference datasets constructed from weaker TTS generators effectively improve stronger models outside the training distribution, demonstrating weak-to-strong generalization in speech alignment."
+        source: "§5.1, Table 4"
+        evidence: "INTP built from weaker ARS/F5-TTS/MaskGCT generators also improves the stronger CosyVoice 2 model (average WER 13.09 to 10.56), and Ints v1 (INTP-aligned) generates new preference data used to train the stronger Ints v2."
+        confidence: high
+        relevance: high
+      - claim_id: intp_iterative_alignment_diminishing_returns
+        role: complicates
+        claim: "Iterative preference alignment yields diminishing returns across rounds, suggesting that base model capability is the primary ceiling on alignment effectiveness."
+        source: "§5.3, Table 6"
+        evidence: "Ints v2 (iterative alignment) reaches 7.10 average WER versus 7.96 for Ints v1, a smaller relative gain than the first alignment round; the authors attribute this ceiling to base model capability."
+        confidence: medium
+        relevance: medium
+    limitations:
+      - "INTP covers only English and Chinese; while generalization to a few unseen languages is shown, low-resource language coverage remains weak."
+      - "The computational cost of alignment (8 H100 GPUs per run) limits accessibility for smaller labs."
+      - "Anti-spoofing robustness is not evaluated; improved intelligibility alignment may inadvertently affect spoofing resilience."
+    caveats:
+      - "All evaluation uses SeedTTS test sets (English/Chinese); no evaluation on truly out-of-distribution natural speech (radio or phone call recordings) is provided."
+
+  - id: "2025.acl-long.682"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: ACL
+    task: [TTS, SCA, evaluation]
+    architecture: [autoregressive-LM, GAN, hybrid]
+    relevance: low
+    evidence_role:
+      - historical_context
+    current_role: minor
+    method_family: []
+    claims:
+      - claim_id: speechlm_survey_gan_vocoder_dominance
+        role: supports
+        claim: "GAN-based vocoders occupy the dominant position in production speech generation systems because their computational efficiency advantage over autoregressive and diffusion alternatives is orders of magnitude, at acceptable perceptual quality cost."
+        source: "§3.3.1, §F.3, Table 8"
+        evidence: "GAN-based vocoders achieve real-time factors 70-3,500x faster than diffusion models at competitive perceptual quality, explaining their prevalence in production SpeechLMs."
+        confidence: medium
+        relevance: low
+      - claim_id: speechlm_survey_textlm_init_improves_convergence
+        role: supports
+        claim: "Continued pretraining from a text language model checkpoint improves SpeechLM convergence and downstream task performance compared to random initialization."
+        source: "§4.2.1"
+        evidence: "TWIST and AudioPaLM show continued pretraining from TextLM checkpoints improves convergence and task performance over cold initialization."
+        confidence: medium
+        relevance: low
+      - claim_id: speechlm_survey_semantic_acoustic_tradeoff
+        role: supports
+        claim: "Semantic tokenizers and acoustic tokenizers represent complementary capability profiles, strong semantic content fidelity versus strong acoustic reconstruction fidelity, and no single tokenizer type dominates both dimensions."
+        source: "§3.1, §F.2, Table 6"
+        evidence: "Semantic tokens excel at content modeling (lower WER) but fail at acoustic fidelity (lower SPK-SIM), while acoustic tokens invert this profile; mixed tokens (SpeechTokenizer, Mimi) offer partial balance."
+        confidence: medium
+        relevance: low
+      - claim_id: speechlm_survey_post_alignment_different_failure_modes
+        role: refines
+        claim: "Post-alignment of SpeechLMs via preference optimization addresses qualitatively different failure modes (semantic inconsistency, token distribution mismatch) than post-alignment of text LLMs."
+        source: "§4.2.3"
+        evidence: "The survey identifies AlignSLM's DPO for semantic consistency and SpeechAlign's token distribution alignment as addressing SpeechLM-specific failure modes, and notes post-alignment is substantially underexplored relative to the TextLM literature."
+        confidence: medium
+        relevance: high
+      - claim_id: speechlm_survey_full_duplex_open_challenge
+        role: supports
+        claim: "Full-duplex spoken interaction, simultaneous bidirectional speech with interruption support, requires joint modeling of both speaker streams and remains an open research challenge."
+        source: "§4.3"
+        evidence: "Full-duplex systems (dGSLM, Parrot, Moshi, LSLM) are surveyed as an emerging frontier requiring joint modeling of both speaker streams simultaneously."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "As a survey, no original experimental results are reported; the RLHF/post-alignment discussion (§4.2.3) is brief relative to the tokenizer and LM architecture sections."
+    caveats:
+      - "Coverage of post-alignment work is limited to citing AlignSLM and SpeechAlign as examples rather than providing a systematic comparison of preference-optimization approaches for speech, so this entry contributes context rather than new evidence to rlhf-speech."
+
+  - id: "2025.acl-long.997"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: ACL
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: alignslm_preference_opt_improves_semantic_coherence
+        role: supports
+        claim: "Preference optimization with LLM-based semantic feedback improves long-range semantic coherence in textless spoken language models beyond next-token prediction training."
+        source: "§5.2, Table 2"
+        evidence: "DPO with Mistral-score preference data raises T-StoryCloze from 69.7% to 74.2% (1.3B model) and from 75.4% to 83.8% (7B model) over the pre-trained TWIST baseline; curriculum learning further improves both to 76.1% and 85.6% respectively."
+        confidence: high
+        relevance: high
+      - claim_id: alignslm_llm_scoring_beats_perplexity
+        role: supports
+        claim: "LLM-based semantic scoring provides more effective alignment signal for speech continuation than perplexity-based preference selection."
+        source: "§5.1, Table 1"
+        evidence: "On the 1.3B model, Align-SLM with Mistral score improves T-StoryCloze by +4.5 over the pre-trained baseline, whereas the PPL-based variant degrades T-StoryCloze by 2.0."
+        confidence: high
+        relevance: high
+      - claim_id: alignslm_curriculum_learning_progressive_gains
+        role: supports
+        claim: "Curriculum learning with iteratively tightened preference thresholds yields progressive semantic improvements in preference-optimized spoken language models."
+        source: "§5.3, Appendix E, Table 2"
+        evidence: "Two curriculum learning iterations on the 7B model improve T-StoryCloze from 83.8% (Align-SLM) to 85.6% (Align-SLM+CL) and GPT4-o score from 3.50 to 3.56."
+        confidence: medium
+        relevance: high
+      - claim_id: alignslm_gains_not_uniform_grammar
+        role: complicates
+        claim: "Semantic gains from preference optimization do not transfer uniformly to lexical and grammatical aspects of spoken language modeling."
+        source: "§5.5, Table 2"
+        evidence: "Align-SLM shows only marginal sBLIMP improvement (+1.3 for the 1.3B Mistral variant) while models with no preference training but better token designs (AudioLM, SyllableLM) outperform on grammatical correctness."
+        confidence: medium
+        relevance: medium
+      - claim_id: alignslm_gap_to_cascaded_topline
+        role: complicates
+        claim: "Textless end-to-end spoken language models remain substantially behind cascaded ASR+LLM pipelines in semantic understanding even with preference optimization."
+        source: "§5.5, Table 2"
+        evidence: "The best Align-SLM variant achieves 77.9% sWUGGY and 86.8% T-StoryCloze, compared to 79.2% and 94.8% for the ASR+LLM cascade topline, a gap that preference optimization alone does not close."
+        confidence: high
+        relevance: medium
+    limitations:
+      - "Training and evaluation are restricted to English audiobook speech (LibriSpeech, MLS); generalisation to spontaneous, noisy, or multi-speaker speech is untested."
+      - "The paper does not compare against text-injecting SLMs (SPIRITLM, Moshi, VoxtLM) under matched data and compute budgets."
+    caveats:
+      - "Only the semantic dimension of SLM quality is addressed via preference optimization; paralinguistic aspects (prosody, speaking style, emotion) are explicitly out of scope for this alignment framework."
+
+  - id: "2025.findings-acl.631"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: ACL Findings
+    task: [SCA]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: slam_textlm_init_accelerates_convergence
+        role: supports
+        claim: "Text LM initialization substantially accelerates SLM convergence and improves final model quality within fixed compute budgets."
+        source: "§4.1, Figure 2, Figure 3"
+        evidence: "TWIST-style initialization from Qwen2.5-0.5B outperforms uninitialised variants across all evaluated model families, surpassing alternatives even with fewer training tokens."
+        confidence: high
+        relevance: low
+      - claim_id: slam_synthetic_data_improves_semantics
+        role: supports
+        claim: "Synthetic TTS data improves semantic modeling in SLMs when combined with real speech, but replacing real data with synthetic data alone degrades performance."
+        source: "§4.2, Table 1"
+        evidence: "Adding sTinyStories to the training mix boosts TSC from 71.14 to 78.01 and GenPPL from 145.4 to 88.3 for Qwen-0.5B; training on synthetic data exclusively yields lower sBLIMP than the mixed baseline."
+        confidence: medium
+        relevance: low
+      - claim_id: slam_dpo_improves_under_tight_compute
+        role: supports
+        claim: "Preference optimization with synthetically generated preference data substantially improves SLM generation quality even under tight compute constraints."
+        source: "§4.4, Figure 5, Table 2"
+        evidence: "30 minutes of DPO training on SpokenSwag improves TSC from 78.01 to 82.04 and GenPPL from 88.3 to 62.8; the gain saturates quickly and additional DPO budget can degrade results."
+        confidence: high
+        relevance: high
+      - claim_id: slam_scaling_laws_too_pessimistic
+        role: contradicts
+        claim: "SLM scaling laws accurately predict compute-optimal performance boundaries for academic-scale training."
+        source: "§5, Table 2"
+        evidence: "Slam on one A5000 GPU-day achieves TSC 82.04 against the scaling-law predicted optimal of TSC 70.49 for the same compute; the authors attribute the gap partly to preference optimization (DPO) not being factored into scaling law derivations."
+        confidence: medium
+        relevance: medium
+      - claim_id: slam_diverse_data_hurts_low_compute
+        role: complicates
+        claim: "Diverse multi-domain speech training data improves SLM generalization."
+        source: "§4.2, Table 1"
+        evidence: "Augmenting LibriLight and LibriSpeech with VoxPopuli, TED-LIUM, PeopleSpeech, and SWC consistently degrades TSC and SSC under the single-GPU budget."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "Evaluation uses only semantic modeling benchmarks (TSC, SSC, sBLIMP) and generation perplexity; acoustic and prosodic quality of the DPO-aligned outputs are not evaluated."
+    caveats:
+      - "DPO here uses fully synthetic preference pairs (SpokenSwag, derived from a text commonsense corpus) rather than paired human or model-judged speech preferences, and allocating more DPO budget beyond roughly 30 minutes can degrade results rather than continuing to improve them."
+
+  - id: "2507.17527"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - evaluation_caution
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: seedliveinterpret_rl_lower_latency_higher_quality
+        role: supports
+        claim: "End-to-end speech-to-speech translation trained with reinforcement learning can achieve substantially lower latency than cascaded commercial systems while surpassing them in translation quality."
+        source: "§3.3, Table 1"
+        evidence: "On RealSI (zh-en), the RL-trained system achieves VIP 79.5 and SVIP 67.8 at Average Lagging 5.18 seconds, versus the best commercial competitor at VIP 53.2 and SVIP 3.0 at AL 48.21."
+        confidence: high
+        relevance: high
+      - claim_id: seedliveinterpret_two_stage_rl_outperforms_single
+        role: supports
+        claim: "Two-stage RL training that separates fine-grained process rewards from holistic sequence-level outcome rewards outperforms applying either strategy in isolation for streaming speech generation."
+        source: "§4.3, Table 6"
+        evidence: "The combined two-stage RL scheme achieves higher VIP and lower Average Lagging than both single-turn-only and multi-turn-only reward variants on internal benchmarks."
+        confidence: high
+        relevance: high
+      - claim_id: seedliveinterpret_reward_exploitation_without_constraints
+        role: complicates
+        claim: "RL reward design for speech generation is prone to exploitation when individual reward signals are applied without complementary constraints."
+        source: "§4.2, Table 5"
+        evidence: "Training with the Time Compliance Reward alone caused the model to reduce audio duration by ~35% and text token count by ~15%, yielding an 8-point BLEURT drop; adding an adversarial quality reward restored translation fidelity."
+        confidence: high
+        relevance: high
+      - claim_id: seedliveinterpret_rl_improves_latency_more_than_quality
+        role: supports
+        claim: "Reinforcement learning applied after SFT improves latency more substantially than translation quality in simultaneous speech translation."
+        source: "§4.1, Tables 3, 4"
+        evidence: "RL reduces FLAL from 3.90 to 2.37 and Average Lagging from 2.82 to 2.58 on RealSI, while VIP improves more modestly from 75.1 to 79.5 compared to the SFT baseline."
+        confidence: high
+        relevance: high
+      - claim_id: seedliveinterpret_automated_mt_metrics_insufficient
+        role: complicates
+        claim: "Automated MT metrics such as BLEURT and COMET do not fully capture the quality of simultaneous speech interpretation in realistic long-form scenarios."
+        source: "§3.2, Appendix A"
+        evidence: "The paper introduces SVIP as a composite human evaluation metric combining translation quality, delivery latency, speech rate, pronunciation, and fluency, arguing automated metrics fail to assess the pragmatic requirements of live spoken interpretation."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "Training data, model weights, and all commercial baseline identities are proprietary; the headline results cannot be independently reproduced or verified."
+    caveats:
+      - "The RL framework is specialized for the simultaneous-translation task (chunk-level read-write policy, duration-matching rewards); its transferability to general TTS or open-domain SCA alignment beyond simultaneous interpretation is untested."
+
+  - id: "2025.icnlsp-1.34"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: workshop
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: icnlsp_dpo_matches_labeled_ft
+        role: supports
+        claim: "Preference alignment via DPO can match the perceptual quality of supervised fine-tuning on human-labeled TTS data when preference pairs are constructed automatically from model-generated samples."
+        source: "§3.5, Table 1, Table 2, Table 5"
+        evidence: "On VCTK, DPO fine-tuning with LLM-augmented texts (V4) achieves WER 0.013, SS 0.482, and UTMOS 4.108 from the base xTTSv2 checkpoint, outperforming classical fine-tuning on human-labeled data (V1: WER 0.041, SS 0.500, UTMOS 3.685) on intelligibility and naturalness; CMOS evaluation confirms no statistically significant perceptual difference (all CM p > 0.30)."
+        confidence: high
+        relevance: high
+      - claim_id: icnlsp_dpo_init_point_critical
+        role: complicates
+        claim: "The initialisation point before DPO fine-tuning critically determines outcome quality, with checkpoint diversity being a more important factor than label quality of the preceding supervised stage."
+        source: "§3.6, Table 1, Table 2"
+        evidence: "DPO applied from the ASR-fine-tuned checkpoint (L5/V5) consistently underperforms DPO from the base model (L3/V3), with V5 reaching WER 0.273 versus V3's WER 0.014, because standard fine-tuning narrows generation diversity, leaving insufficient variation for DPO preference signal."
+        confidence: high
+        relevance: high
+      - claim_id: icnlsp_llm_texts_improve_naturalness
+        role: supports
+        claim: "Augmenting unlabeled TTS training data with LLM-generated texts improves synthesis naturalness when the dataset's own texts are structurally mismatched with natural language."
+        source: "§3.5, Table 1, Table 2"
+        evidence: "On VCTK, which contains newspaper sentences well-aligned with LLM output, adding 15,000 LLM-generated texts (V4 vs. V3) raises UTMOS from 4.009 to 4.108; on LJSpeech (audiobook fragments) the improvement is smaller and WER increases, attributed to domain mismatch."
+        confidence: medium
+        relevance: medium
+      - claim_id: icnlsp_spk_sim_hardest_to_preserve
+        role: complicates
+        claim: "Speaker similarity is the most difficult quality dimension to preserve when fine-tuning TTS on ASR-transcribed or automatically constructed data, even when naturalness and intelligibility are maintained."
+        source: "§3.5, §3.7, Table 4, Table 5"
+        evidence: "Human-labeled fine-tuning achieves the highest SS scores across both datasets; DPO from the base model recovers intelligibility and naturalness but trails on SS, and SS degradation is statistically significant for checkpoint-initialised DPO (p < 0.001) while naturalness differences are not."
+        confidence: high
+        relevance: medium
+    limitations:
+      - "All experiments use xTTSv2 as the sole base model; it is unknown whether the checkpoint-initialisation finding generalises to other LM-based TTS architectures."
+      - "Evaluation covers English only despite xTTSv2 being multilingual."
+    caveats:
+      - "The human-labeled baseline starts from the same pre-trained xTTSv2 checkpoint rather than a randomly initialised model, which limits conclusions about the true cost of label-free DPO training relative to a from-scratch comparison."
+
+  - id: "2508.08957"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: ASRU
+    task: [evaluation]
+    architecture: []
+    relevance: low
+    evidence_role:
+      - infrastructure
+    current_role: minor
+    method_family: []
+    claims:
+      - claim_id: qamro_ranking_objective_improves_correlation
+        role: supports
+        claim: "Incorporating pairwise ranking objectives into MOS prediction training improves system-level ranking consistency with human judgments beyond what standard regression losses achieve."
+        source: "§II.A, Table I"
+        evidence: "QAMRO achieves SRCC 0.972 (musical impression) versus 0.845 for the MusicEval baseline on the same regression backbone, with consistent gains on AES-Natural across four dimensions."
+        confidence: high
+        relevance: low
+      - claim_id: qamro_adaptive_margin_outperforms_fixed
+        role: supports
+        claim: "Adaptive margins that scale with perceptual score gaps outperform fixed-margin ranking losses for audio quality assessment."
+        source: "§II.A, Table I"
+        evidence: "Ablation removing the adaptive margin component (leaving quality-aware weighting alone) causes an additional performance degradation beyond removing quality-aware weighting."
+        confidence: medium
+        relevance: low
+      - claim_id: qamro_quality_weighting_beneficial
+        role: supports
+        claim: "Quality-aware upweighting of high-scoring sample pairs is a consistently beneficial component in automatic perceptual quality evaluation."
+        source: "§IV.A, §IV.B"
+        evidence: "Removing quality-aware weighting causes a noticeable SRCC drop; gains are most pronounced on content usefulness (0.052 SRCC improvement), the hardest dimension for baselines."
+        confidence: medium
+        relevance: low
+      - claim_id: qamro_objective_change_improves_predictors
+        role: supports
+        claim: "Automatic MOS predictors built on pre-trained audio-text representations can be meaningfully improved by training objective changes without modifying the backbone architecture."
+        source: "§II.B, Table II"
+        evidence: "Results hold across both CLAP (TTM) and Audiobox-Aesthetics (multi-task TTS/TTA/TTM) backbones with only a training objective change, no architecture modification."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "All training and evaluation is conducted on the AudioMOS Challenge 2025 closed-set data only; generalisation to unseen TTS or VC systems outside this distribution is untested."
+    caveats:
+      - "QAMRO trains an automatic MOS predictor, not an RLHF-tuned generation system; its relevance to rlhf-speech is only as a potential future reward-model architecture, since the paper does not connect QAMRO to any RL training loop."
+
+  - id: "interspeech-2025-0063"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: Interspeech
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: dlpo_image_domain_rl_transfers_poorly
+        role: complicates
+        claim: "KL-based regularization strategies developed for text-to-image diffusion RL fine-tuning provide limited gains when transferred to TTS, because audio waveform generation requires stronger temporal coherence than image synthesis."
+        source: "§2.3.1, Table 1"
+        evidence: "DDPO, DPOK, and KLinR (image-domain RL methods) achieve UTMOS 2.69-3.18 versus DLPO's 3.65 on WaveGrad 2R fine-tuning, with RWR actually degrading quality (UTMOS 2.18, WER 8.9%) relative to the base model."
+        confidence: high
+        relevance: high
+      - claim_id: dlpo_diffusion_loss_penalty_stabilizes
+        role: supports
+        claim: "Incorporating the original diffusion training objective as a penalty term in the RL reward function stabilizes fine-tuning and yields larger quality improvements than KL-divergence regularization alone."
+        source: "§2.2, Table 1"
+        evidence: "DLPO (diffusion loss + reward) achieves UTMOS 3.65 and NISQA 4.02, outperforming OnlyDL (diffusion loss only, UTMOS 3.16) and all four KL/score-based baselines tested."
+        confidence: high
+        relevance: high
+      - claim_id: dlpo_dual_mos_guards_reward_hacking
+        role: supports
+        claim: "Dual MOS evaluation using a reward-model-independent predictor (NISQA) alongside the training reward (UTMOS) provides a practical safeguard against reward hacking in RLHF for TTS."
+        source: "§2.3"
+        evidence: "NISQA (held out from the UTMOS reward) reaches 4.02, close to the ground truth ceiling of 4.37, corroborating the UTMOS-based reward gains rather than reflecting pure reward overfitting."
+        confidence: medium
+        relevance: high
+      - claim_id: dlpo_naturalness_gain_without_intelligibility_loss
+        role: supports
+        claim: "RLHF fine-tuning of diffusion TTS models can improve perceived naturalness substantially without degrading intelligibility, as measured by WER remaining near the pre-trained baseline."
+        source: "§2.3.1, Table 1"
+        evidence: "DLPO achieves WER 1.2% versus the base model's 1.5% and ground truth's 0.99%, and is preferred by humans in 67% of pairwise comparisons (p<10^-16) over the base WaveGrad 2R model."
+        confidence: high
+        relevance: high
+    limitations:
+      - "Single-speaker dataset (LJSpeech); generalization to multi-speaker and zero-shot diffusion TTS is unverified."
+      - "WaveGrad 2R is a relatively simple baseline; DLPO's benefit on more capable flow-matching or score-based TTS systems remains to be shown."
+    caveats:
+      - "UTMOS as reward model introduces reward hacking risk; the NISQA cross-check and human study mitigate but do not fully eliminate this risk."
+
+  - id: "interspeech-2025-0704"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: Interspeech
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - control_evidence
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: diffro_token_level_rewards_cheaper
+        role: supports
+        claim: "Computing rewards directly on codec tokens rather than synthesized audio reduces the computational cost of RLHF for codec LM-based TTS systems without sacrificing reward signal quality."
+        source: "§3.1"
+        evidence: "DiffRO-ASR achieves WER 0.78% (zh), 1.89% (en), 5.58% (hard) on seed-tts-eval versus baseline 1.56%/2.75%/6.91%, computing rewards directly on codec tokens by bypassing FM+vocoder decoding."
+        confidence: high
+        relevance: high
+      - claim_id: diffro_gumbel_softmax_replaces_ppo
+        role: supports
+        claim: "Differentiable reward optimization via Gumbel-Softmax can replace PPO-style policy gradient training for codec LM fine-tuning, enabling direct backpropagation through the reward model."
+        source: "§3.1, §2.2"
+        evidence: "Gumbel-Softmax replaces argmax token sampling, allowing gradients to flow from the reward signal back through the LM parameters without a PPO policy-gradient loop; applied to the SFT model, DiffRO-ASR (1.09% zh) outperforms DPO (1.27% zh)."
+        confidence: high
+        relevance: high
+      - claim_id: diffro_multitask_reward_multi_dimension
+        role: supports
+        claim: "A multi-task reward model trained on codec tokens can simultaneously improve pronunciation accuracy, emotion expressiveness, and audio quality in a single RL training phase."
+        source: "§3.2, §4.3"
+        evidence: "The MTR model (trained on ASR, SER, SQA, AED) drives DiffRO-MTR emotion accuracy on EmoBox to 1.00/0.92 (Happy zh/en) versus 0.92/0.80 baseline, with the LM spontaneously learning laughter/sobs/breaths for emotion without emotion-labeled RL data."
+        confidence: high
+        relevance: high
+      - claim_id: diffro_generalizes_unseen_languages
+        role: supports
+        claim: "RLHF fine-tuning on Mandarin and English data generalizes to unseen languages (Japanese, Korean) when the reward signal targets phonetic accuracy rather than language-specific patterns."
+        source: "§4.2, Table 2"
+        evidence: "Japanese WER improves from 9.13% to 6.36% and Korean from 7.43% to 5.41% under RL training using only Mandarin/English text, without explicit multilingual RL data curation."
+        confidence: medium
+        relevance: high
+      - claim_id: diffro_lm_level_rl_cannot_fix_postlm_quality
+        role: complicates
+        claim: "Quality attributes governed primarily by the flow-matching and vocoder stages (MOS, speaker characteristics) are largely resistant to optimization by LM-level RLHF alone."
+        source: "§4.3.2, Table 4"
+        evidence: "DiffRO can shift codec-level predicted MOS substantially (MOS_t=2 drops codec MOS to 2.2 from 3.82; MOS_t=4 raises it to 3.96), but the final audio MOS change after the frozen FM+vocoder is modest (3.77-3.86), showing quality is mostly determined by post-LM stages."
+        confidence: high
+        relevance: high
+    limitations:
+      - "DiffRO only optimizes the LM component; the FM and vocoder are frozen, limiting the impact of rewards that primarily affect post-LM processing."
+      - "The MTR reward model requires a large in-house multi-task labeled corpus (13,000+ hours) that is not publicly available, limiting reproducibility."
+    caveats:
+      - "Validated only on Mandarin-focused data with CosyVoice 2.0 as the base system; generalization to languages with distinct phonological properties beyond Japanese/Korean needs further study."
+
+  - id: "2508.15442"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: EMNLP
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+    current_role: foundational
+    method_family: []
+    claims:
+      - claim_id: goat_entropy_predicts_hallucination
+        role: supports
+        claim: "Token-level entropy is a statistically significant predictor of hallucination in autoregressive LM-based TTS, enabling unsupervised detection of likely error regions before synthesis is complete."
+        source: "§2.1, §2.2"
+        evidence: "Token-level entropy correlates with hallucination at Pearson r=0.636, Spearman r=0.649 (p<1e-4) on 200 SeedTTS-Eval test-hard samples."
+        confidence: high
+        relevance: medium
+      - claim_id: goat_gflownet_trajectory_flow_reduces_hallucination
+        role: supports
+        claim: "Reformulating autoregressive speech token generation as trajectory flow optimization via GFlowNets enables reward-proportional sampling that reduces hallucination without modifying the inference procedure."
+        source: "§3.1, §3.2"
+        evidence: "GOAT trains a GFlowNet forward policy via a SubTrajectory Balance objective, reducing test-hard CER from 13.72% to 6.28-6.61% (a >50% reduction) with no added inference latency."
+        confidence: high
+        relevance: high
+      - claim_id: goat_intrinsic_reward_sufficient
+        role: supports
+        claim: "An intrinsic reward derived from the backbone LM's own probability distribution is sufficient to drive distribution alignment in post-training, without requiring human annotations or an external reward model."
+        source: "§3.2.2"
+        evidence: "GOAT uses the cumulative log-probability of the generated sequence under the backbone LM (sharpened by an inverse temperature) as its sole reward signal, requiring no external reward model or labeled preference data, trained on only 1,000 text-speech pairs per language."
+        confidence: high
+        relevance: high
+      - claim_id: goat_subtrajectory_optimization_essential
+        role: refines
+        claim: "Fine-grained subtrajectory optimization is essential for hallucination suppression in long and complex utterances; degrading to trajectory-level balance significantly reduces the error reduction."
+        source: "§4.4.5, Table 2"
+        evidence: "Enhanced SubTB reduces test-hard CER to 6.61%, while degrading to plain Trajectory Balance yields 11.72-11.84%, nearly double the error rate."
+        confidence: high
+        relevance: high
+      - claim_id: goat_crosslingual_generalization
+        role: supports
+        claim: "Post-training alignment for hallucination suppression in one language generalizes to unseen languages, with cross-lingual models retaining meaningful gains over the untuned baseline."
+        source: "§4.4.4, Table 1"
+        evidence: "Models trained on one language and evaluated on the other still outperform the baseline; mixed-language training on 500 samples per language matches monolingual-training performance."
+        confidence: medium
+        relevance: medium
+    limitations:
+      - "Evaluated on a single backbone (CosyVoice 2); generalization to other LM-based TTS architectures (VALL-E, BASE TTS, LLaSA) is asserted but not demonstrated."
+      - "No subjective listening evaluation (MOS/MUSHRA) is reported; quality improvements are measured entirely through ASR-based error rates and the automatic UTMOS predictor."
+    caveats:
+      - "Reward temperature (a key hyperparameter controlling reward sharpness and reward-hacking suppression) was tuned empirically to 0.825 and may not transfer to other backbones; the assumption that the backbone LM assigns higher probability to higher-quality sequences is acknowledged by the authors as a hypothesis, not a proven property."
+
+  - id: "2508.16332"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS, VC, singing]
+    architecture: [autoregressive-LM, flow-matching, hybrid]
+    relevance: medium
+    evidence_role:
+      - control_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: vevo2_joint_pretraining_domain_transfer
+        role: supports
+        claim: "Joint pre-training on speech and singing voice data improves generation quality in both domains, with singing data contributing to expressive speech prosody richness and speech data compensating for the limited size of singing corpora."
+        source: "§V-A, Table I"
+        evidence: "Vevo2's joint speech-singing training yields mutual quality gains, validated by ablation comparisons on the SeedTTS and singing benchmarks."
+        confidence: medium
+        relevance: low
+      - claim_id: vevo2_chromagram_prosody_tokenizer
+        role: supports
+        claim: "Chromagram-based prosody tokenization provides a notation-free, octave-invariant representation that bridges the F0 distribution gap between speech and singing, enabling unified prosody control without expert MIDI annotations."
+        source: "§III-A"
+        evidence: "The prosody tokenizer encodes chromagram features (6.25 Hz, codebook 512) that are octave-free and notation-free, unlike prior F0- or mel-subband-based tokenizers."
+        confidence: high
+        relevance: low
+      - claim_id: vevo2_ar_llm_init_low_frame_rate
+        role: supports
+        claim: "Autoregressive models initialized from LLM checkpoints can achieve competitive zero-shot TTS quality at low codec frame rates (12.5 Hz) when paired with strong post-training, partially compensating for the sequence granularity disadvantage relative to higher frame-rate systems."
+        source: "§V-A, Table VII"
+        evidence: "Vevo2's AR stage, initialized from Qwen2.5-0.5B and operating at 12.5 Hz, achieves SeedTTS WER/SIM competitive with CosyVoice 2 and MaskGCT despite the lower frame rate."
+        confidence: medium
+        relevance: low
+      - claim_id: vevo2_single_objective_alignment_degrades_complements
+        role: complicates
+        claim: "Single-objective preference alignment in multi-capability speech models degrades complementary objectives; joint multi-objective optimization is necessary to avoid quality regressions on non-targeted capabilities."
+        source: "§V-F, Figure 5"
+        evidence: "GRPO post-training with intelligibility-only reward drops melody accuracy from 65% to 50%, while joint multi-objective GRPO (intelligibility + prosody similarity reward) achieves gains on both axes simultaneously."
+        confidence: high
+        relevance: high
+      - claim_id: vevo2_pitch_shift_similarity_intelligibility_tradeoff
+        role: complicates
+        claim: "Inference-time pitch shift applied to prosody tokens improves speaker similarity in voice and singing conversion tasks, at the cost of a minor intelligibility degradation due to train-inference distribution mismatch."
+        source: "§V-E, Table VI"
+        evidence: "Pitch-shifted content-style tokens are out-of-distribution relative to training, causing slight WER degradation alongside the similarity gain."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "Training-inference mismatch when applying pitch shift causes slight WER degradation; the paper flags future work to include pitch shift augmentation during training."
+      - "The 12.5 Hz frame rate of the content-style tokenizer slightly limits VC intelligibility compared to the higher-frame-rate Vevo-FM variant."
+    caveats:
+      - "The GRPO multi-objective post-training stage is one component of a larger unified speech-singing architecture; the RLHF-specific contribution (composite intelligibility + prosody-similarity reward) is narrower in scope than papers dedicated to preference-alignment methodology, and reward construction details (e.g. Bradley-Terry model over the INTP preference corpus) are described only briefly."
+
+  - id: "2509.00685"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - control_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: mpo_multidimensional_preference_set
+        role: supports
+        claim: "Optimizing LM-based TTS with preference data across multiple quality dimensions simultaneously is more effective than per-metric or naively combined ranking approaches."
+        source: "§4.5, Table 2"
+        evidence: "MPO's multidimensional preference-set construction (CER, speaker similarity, prosody, pooled with cross-dimensional pairing) outperforms a combined-ranking baseline and single-metric DPO variants on CER, SPK-SIM, and F0-RMSE jointly."
+        confidence: high
+        relevance: high
+      - claim_id: mpo_vanilla_dpo_collapse
+        role: complicates
+        claim: "Vanilla DPO applied to LM-based TTS without regularization causes progressive degradation of generation capability, with CER rising sharply after 10k training steps."
+        source: "§4.4, Table 1"
+        evidence: "Without a cross-entropy regularization constraint, CER worsens from 4.72 (SFT baseline) to 6.41 at 10k steps and 14.52 at 15k steps, consistent with DPO's winning-response probability collapsing toward zero."
+        confidence: high
+        relevance: high
+      - claim_id: mpo_ce_regularization_prevents_collapse
+        role: supports
+        claim: "Adding a cross-entropy loss on preferred sequences as a regularizer during DPO training prevents model collapse without sacrificing alignment gains."
+        source: "§3.2, §4.4"
+        evidence: "MPO's combined loss (λ·L_DPO + L_CE, λ=10) reaches CER 4.24 at ~20k steps with no degradation, versus catastrophic CER inflation in the unregularized ablation."
+        confidence: high
+        relevance: high
+      - claim_id: mpo_multidim_alignment_near_ground_truth
+        role: supports
+        claim: "Multi-dimensional preference alignment in LM-based TTS produces output quality comparable to ground truth in subjective pairwise preference tests."
+        source: "§4.5, Figure 3"
+        evidence: "In ABX preference tests, MPO is preferred over the SFT baseline in 52.3% of comparisons (22.4% ties) and is reported as competitive with ground truth in pairwise preference."
+        confidence: medium
+        relevance: medium
+    limitations:
+      - "Evaluation is entirely on an internal Mandarin TTS corpus with no open benchmark comparison, making it difficult to assess absolute quality relative to published systems."
+      - "The preference set construction requires running three separate quality scorers (ASR, speaker verification, F0) over 10 generated candidates per input, a non-trivial computational overhead not quantified in the paper."
+    caveats:
+      - "The optimal value of λ (set to 10) and the preference margin thresholds (0.1 for SPK-SIM and prosody) are not ablated, so sensitivity of the regularization and preference-set construction to these hyperparameters is unknown; comparison against SpeechAlign, UNO, and RIO is only qualitative."
+
+  - id: "2509.05863"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - evaluation_caution
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: latinx_dpo_improves_crosslingual_intelligibility
+        role: supports
+        claim: "Preference-based alignment (DPO) improves intelligibility in multilingual autoregressive TTS systems beyond what supervised fine-tuning achieves."
+        source: "§4.3, §5.2, Table 2, Table 3"
+        evidence: "LatinX (DPO) reduces WER across nearly all 30 cross-lingual language pairs compared to the supervised fine-tuned baseline and outperforms XTTSv2 in most pairs, with particularly large gains for low-resource Romanian source conditions (e.g. ro-to-es at 0.45% WER)."
+        confidence: high
+        relevance: high
+      - claim_id: latinx_objective_vs_subjective_similarity_divergence
+        role: complicates
+        claim: "Automated speaker similarity metrics based on speaker encoder embeddings do not reliably reflect human perceptual judgments of voice identity in zero-shot TTS."
+        source: "§5.2, §6, Table 4, Table 5"
+        evidence: "XTTSv2 achieves higher Sim-O scores than both LatinX models, yet human evaluators strongly prefer LatinX speaker similarity (SMOS 3.63/3.54 vs. 3.24), a divergence the paper explicitly flags between objective and subjective evaluation."
+        confidence: high
+        relevance: medium
+      - claim_id: latinx_dpo_naturalness_tradeoff
+        role: complicates
+        claim: "DPO alignment in TTS involves a trade-off: optimizing for intelligibility and objective similarity can reduce naturalness MOS and, in some language conditions, perceptual similarity relative to the fine-tuned baseline."
+        source: "§5.2, §6, Table 5, Table 6"
+        evidence: "LatinX (DPO) improves WER and Sim-E over the fine-tuned model but achieves lower average MOS (3.35 vs. 3.41) and lower SMOS in several cross-lingual conditions, attributed partly to the codec introducing artifacts that cap perceptual quality."
+        confidence: medium
+        relevance: high
+      - claim_id: latinx_codec_quality_ceiling
+        role: complicates
+        claim: "Lossy neural audio codecs set a perceptual quality ceiling in codec-based TTS that preference alignment cannot overcome, because the model learns to replicate codec artifacts introduced during reference encoding."
+        source: "§6"
+        evidence: "The paper notes that its VQ-VAE codec is lossy and the model learns to reproduce its artifacts, limiting the maximum perceptual quality achievable regardless of post-training alignment method."
+        confidence: medium
+        relevance: medium
+    limitations:
+      - "The evaluation uses an internal test set of unseen speakers with no publicly named benchmark, and the human rating pool is predominantly English and Portuguese native speakers."
+      - "The DPO preference signal is constructed solely from WER and speaker similarity; no prosody, naturalness, or rhythm metric is incorporated, which likely explains the MOS regression relative to the fine-tuned baseline."
+    caveats:
+      - "The preference labeling is fully automated via Pareto-dominance on WER and speaker similarity with no human verification of winner/loser assignments; the Romanian SMOS results (exceeding real audio) rest on very small, predominantly non-native rater counts and should be treated cautiously."
+
+  - id: "2509.14946"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM, flow-matching]
+    relevance: medium
+    evidence_role:
+      - core_evidence
+      - infrastructure
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: synparaspeech_synthetic_paralinguistic_finetune
+        role: supports
+        claim: "Automated mixing of isolated paralinguistic audio events with clean conversational speech, combined with voice conversion for timbre alignment, can produce effective fine-tuning data for paralinguistic TTS."
+        source: "§4.2.1, Table 3"
+        evidence: "CosyVoice2 SFT on SynParaSpeech achieves PMOS 3.31 versus 2.35 for NVS SFT and 1.88 baseline; F5-TTS SFT on SynParaSpeech similarly achieves PMOS 3.10 versus 1.49 for NVS SFT."
+        confidence: high
+        relevance: low
+      - claim_id: synparaspeech_natural_pairing_dpo
+        role: supports
+        claim: "DPO with naturally paired utterances (with vs. without paralinguistic events) can improve paralinguistic speech quality beyond SFT alone."
+        source: "§4.2.1, Table 3"
+        evidence: "CosyVoice2 DPO-Joint (using original clean speech as rejected and paralinguistic-event speech as chosen) achieves PMOS 3.46 and QMOS 4.12 versus SFT-only PMOS 3.31 and QMOS 4.01, with joint SFT+DPO outperforming staged DPO across all subjective dimensions."
+        confidence: high
+        relevance: high
+      - claim_id: synparaspeech_objective_metrics_unreliable_for_paralinguistic
+        role: complicates
+        claim: "Standard automatic speech quality metrics are unreliable for evaluating paralinguistic TTS systems."
+        source: "§4.2.1, Table 3"
+        evidence: "All models fine-tuned on paralinguistic data show degraded CER, SECS, and UTMOSv2 relative to baselines despite achieving higher subjective NMOS and QMOS, because e.g. ASR transcribes laughter as 'ha ha'."
+        confidence: high
+        relevance: low
+      - claim_id: synparaspeech_fewshot_icl_paralinguistic_detection
+        role: supports
+        claim: "Few-shot in-context prompting with paralinguistic examples improves paralinguistic event detection in multimodal LLMs."
+        source: "§4.2.2, Table 4"
+        evidence: "SynParaSpeech prompt tuning raises accuracy and macro F1 for both Kimi Audio and Qwen 2.5 Omni over no-context baselines, with optimal performance at 5-shot context for both models."
+        confidence: medium
+        relevance: low
+      - claim_id: synparaspeech_context_length_diminishing_returns
+        role: complicates
+        claim: "Increasing prompt context length for in-context learning in paralinguistic event detection yields diminishing returns and eventually degrades performance."
+        source: "§4.2.2, Table 4"
+        evidence: "Kimi Audio accuracy peaks at 5-shot (0.382) and declines at 7-shot (0.371); Qwen 2.5 Omni also peaks at 5-shot (0.473) and declines at 7-shot (0.423)."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "The corpus is Chinese-only and covers only 6 paralinguistic categories, limiting direct applicability to other languages or richer paralinguistic inventories."
+      - "Standard objective metrics (CER, UTMOSv2, SECS) degrade after paralinguistic fine-tuning and do not reflect the true quality improvement observed in subjective evaluation, leaving the field without reliable automatic metrics for this task."
+    caveats:
+      - "The RLHF-relevant contribution is a natural-pairing DPO application enabled by the dataset's structure (clean vs. paralinguistic-event speech as a ready-made preference pair) rather than a new alignment algorithm; the paper's primary contribution is the dataset construction pipeline, not preference-optimization methodology."
+
+  - id: "2501.04561"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [SCA, TTS]
+    architecture: [autoregressive-LM, hybrid]
+    relevance: medium
+    evidence_role:
+      - control_evidence
+    current_role: active_evidence
+    method_family: []
+    claims:
+      - claim_id: openomni_text_pivot_alignment
+        role: supports
+        claim: "Progressive, text-pivoted alignment across modality pairs can substitute for paired tri-modal training data without sacrificing downstream omnimodal task performance."
+        source: "§4.2, Table 1"
+        evidence: "OpenOmni trains only on speech-text and image-text pairs (no image-speech-text triples) yet outperforms VITA, which is trained on 5M tri-modal samples, by 4 points on OmniBench while using a 7B rather than 7x8B language model and roughly 5x fewer training samples."
+        confidence: high
+        relevance: low
+      - claim_id: openomni_nar_latency_quality_tradeoff
+        role: complicates
+        claim: "Non-autoregressive discrete-unit speech decoding trades generation quality for latency relative to autoregressive decoding."
+        source: "§4.2, §D 'AR mode'"
+        evidence: "The AR mode (16K-unit vocabulary) yields higher speech generation quality but slower streaming, while the NAR mode (CTC loss, 6K-unit vocabulary) achieves under-1-second latency for up to 30 seconds of speech (5x faster) at the cost of slightly worse generation quality."
+        confidence: medium
+        relevance: low
+      - claim_id: openomni_ctc_dpo_emotional_coherence
+        role: supports
+        claim: "Direct preference optimization can be adapted to discrete-unit, CTC-trained speech generators to improve emotional coherence without an auxiliary emotion-control module."
+        source: "§4.2, Table 4"
+        evidence: "CTC-DPO training on the 9K-pair EO2S-9K preference dataset (Plutchik-based emotion categories, CosyVoice-synthesized positive/negative pairs) raises Emotion2Vec-classified accuracy from 57.9% to 70.4% on Chinese and 62.6% to 65.4% on English test speech."
+        confidence: high
+        relevance: high
+      - claim_id: openomni_moe_necessary_for_ctc_stability
+        role: complicates
+        claim: "Mixture-of-experts capacity is necessary, not merely beneficial, for stabilizing CTC-loss training of multilingual non-autoregressive speech decoders."
+        source: "§3.4, §C, Table 6"
+        evidence: "A single feed-forward decoder layer (1 expert) fails to converge on bilingual WeNetSpeech/LibriSpeech data (CER/WER of 113.6/129.7/87.8/96.5), while a 4-expert MoE layer brings these down to single digits (8.5/8.4/4.2/4.7)."
+        confidence: high
+        relevance: low
+    limitations:
+      - "The system is trained and validated only on Chinese and English; generalization of the alignment and speech-generation strategy to other languages is untested."
+      - "Evaluation of emotional and omnimodal quality relies on automated classifiers (Emotion2Vec, Whisper-based WER) and the authors' own benchmarks rather than independent human listening tests."
+    caveats:
+      - "The CTC-DPO contribution is one component of a broader omnimodal LLM system; the preference dataset (EO2S-9K) is synthesized rather than human-labeled, and the DPO reference policy is the frozen post-CTC-training model rather than an independently validated baseline."
+
+  - id: "2509.18531"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM]
+    relevance: high
+    evidence_role:
+      - negative_evidence
+      - core_evidence
+      - evaluation_caution
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: prosody_grpo_verifiable_reward_collapse
+        role: contradicts
+        claim: "Reinforcement learning with automatically verifiable rewards can optimize the measured objective while degrading unmeasured perceptual qualities such as prosodic naturalness."
+        source: "§4.3, Table 1, Figure 2"
+        evidence: "GRPO trained on a harmonic-mean reward of CER and token likelihood reduced CER to the lowest value among all tested systems (2.20%) but produced the lowest human-preference ELO (753.7), with log-F0 pitch distributions showing collapse toward monotone speech relative to the baseline."
+        confidence: high
+        relevance: high
+      - claim_id: prosody_grpo_reward_augmentation_destabilizes
+        role: complicates
+        claim: "Adding an auxiliary reward term intended to fix a known RL side effect can destabilize training instead of correcting the targeted attribute."
+        source: "§4.4"
+        evidence: "Extending the GRPO reward with a speaker-similarity utility increased similarity scores but inflated CER to 42.63% and produced degenerate non-terminating outputs (missing end-of-sequence tokens), consistent with reward hacking."
+        confidence: high
+        relevance: high
+      - claim_id: prosody_iterative_dpo_recovers_naturalness
+        role: supports
+        claim: "Small-scale iterative human preference optimization can recover perceptual speech qualities lost to metric-driven RL training without requiring a large static preference dataset."
+        source: "§4.5, Table 1"
+        evidence: "Using approximately 200 human preference pairs per round with a moving DPO reference, three iterative rounds raised ELO from 753.7 (GRPO) to a peak of 1190.1 at round 2, exceeding three commercial TTS baselines in human preference, while CER recovered to 3.30-3.60% by rounds 2-3."
+        confidence: high
+        relevance: high
+      - claim_id: prosody_iterative_dpo_nonmonotonic_gains
+        role: refines
+        claim: "The benefit of successive rounds of iterative preference optimization is not monotonic and can saturate or reverse as the policy converges toward its own reference."
+        source: "§4.5"
+        evidence: "ELO peaked at round 2 (1190.1) and declined at round 3 (1064.2); the authors attribute this to a narrowing policy-reference gap reducing the informativeness of newly collected preference pairs in later rounds."
+        confidence: medium
+        relevance: high
+    limitations:
+      - "The evaluation is narrow: a single base architecture (Llasa-1B derived), a single language and domain (Korean call-center dialogue), a single fine-tuned speaker voice, a 50-utterance test set, and 596 votes from 27 raters."
+      - "No ablation is reported over the DPO sharpness parameter (beta) or preference-pair budget per round; the mechanism behind the round-3 ELO decline is a hypothesis rather than directly verified."
+    caveats:
+      - "Open-source TTS systems were deliberately excluded from the human-preference comparison after a preliminary screening judged them to produce floor-effect prosody, which removes a category of baseline from the headline ELO comparison; the GRPO speaker-similarity failure is reported as a single run rather than across multiple reward-weighting configurations."
+
+  - id: "2509.18928"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [autoregressive-LM, diffusion, hybrid]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - architecture_variant
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: ardm_dpo_extension_to_diffusion
+        role: supports
+        claim: "Direct Preference Optimization can be extended beyond discrete-token generative models to continuous-token autoregressive diffusion models for speech, by marginalizing the DPO objective over intermediate diffusion states of the autoregressive sampling trajectory."
+        source: "§3, §4.2, Table 1"
+        evidence: "The derived ARDM-DPO objective reduces to a log-sigmoid of the difference in denoising losses between the fine-tuned and reference model on winning vs. losing trajectories; applied to a 0.4B DiTAR model it nearly doubles F0 variance (14.2 to 29.2) while WER improves (5.17 to 3.73) after 200 training steps."
+        confidence: high
+        relevance: high
+      - claim_id: ardm_dpo_automatic_proxy_preference_data
+        role: supports
+        claim: "Automatic proxy signals, rather than human-labeled preference pairs, can be used to construct DPO training data that improves a targeted, measurable aspect of speech generation quality."
+        source: "§4.3, Table 2"
+        evidence: "Task B builds 430k preference pairs by ranking 16 candidate outputs per prompt using a separately trained CTC model's negative log-likelihood as an intelligibility proxy; this reduces CER by 25% (8.37 to 6.32) on the Seed-TTS-Eval hard test set while preserving speaker similarity and naturalness in subjective tests."
+        confidence: high
+        relevance: high
+      - claim_id: ardm_dpo_training_instability
+        role: complicates
+        claim: "DPO fine-tuning of autoregressive diffusion speech models is not guaranteed to be stable and can require early stopping to prevent degradation of speaker similarity and naturalness."
+        source: "§4.2, Fig. 3, §5"
+        evidence: "Across the beta in {200, 400, 800} grid search for Task A, speaker similarity decreases monotonically throughout training regardless of beta, and the diffusion loss for both preferred and dispreferred samples increases during training instead of diverging as the objective predicts."
+        confidence: high
+        relevance: high
+      - claim_id: ardm_dpo_beats_bestofk_and_raft
+        role: refines
+        claim: "Preference-optimizing a generative TTS model via a single fine-tuning run can match or exceed the quality gains obtained by inference-time best-of-K sampling or iterative rejection-sampling fine-tuning, without their added inference-time or multi-round training cost."
+        source: "§4.2, Table 1"
+        evidence: "On Task A, ARDM-DPO (200 steps, beta=200) reaches F0V 29.2, higher than best-of-64 sampling (26.6, no training) and three iterations of RAFT rejection-sampling SFT (20.1), while requiring a single training run and no extra inference-time sampling."
+        confidence: high
+        relevance: high
+    limitations:
+      - "All experiments fine-tune a single proprietary 0.4B DiTAR checkpoint pretrained on an internal 280,000-hour corpus, with no code or model release; the reported gains cannot be independently reproduced or verified on a public base model."
+      - "Training instability on Task A (monotonically decreasing speaker similarity across all tested beta values) is acknowledged as unresolved and requires manual early stopping rather than a principled stopping criterion."
+    caveats:
+      - "The preference signals used (F0 variance, CTC-model negative log-likelihood) are automatic proxies for expressiveness and intelligibility rather than direct human preference judgments, so the method is validated against these specific proxies rather than against a broader notion of listener preference."
+
+  - id: "2509.19928"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS, evaluation]
+    architecture: []
+    relevance: low
+    evidence_role:
+      - evaluation_caution
+    current_role: minor
+    method_family: []
+    claims:
+      - claim_id: prosodyeval_token_distance_correlates_with_perception
+        role: supports
+        claim: "Acoustic proxy metrics for prosodic variation correlate weakly with human perception, while distance measures computed over discretized self-supervised speech tokens correlate substantially better."
+        source: "§4.1, Table 1"
+        evidence: "Averaged Pearson correlation with human PMOS ratings is r=0.30 for log F0 RMSE and r=0.66 for MCD, versus r=0.77 for the proposed DS-WED token-edit-distance metric, aggregated across 1000 samples and 2000 ratings."
+        confidence: high
+        relevance: low
+      - claim_id: prosodyeval_ar_vs_fm_diversity
+        role: supports
+        claim: "Autoregressive generation provides greater output diversity in prosody than non-autoregressive flow-matching models with implicit text-speech alignment, but this advantage does not extend to non-autoregressive masked generative modeling."
+        source: "§4.4-4.5, Table 2"
+        evidence: "Three AR systems (XTTS-v2, CosyVoice, CosyVoice 2) outperform three flow-matching NAR systems (E2 TTS, F5-TTS, ZipVoice) in DS-WED prosody diversity, while the masked generative modeling system MaskGCT surpasses all AR systems on LibriSpeech and remains competitive on Seed-TTS despite training on the same Emilia corpus as the flow-matching systems."
+        confidence: medium
+        relevance: low
+      - claim_id: prosodyeval_duration_perturbation_partial_fix
+        role: complicates
+        claim: "Explicit duration control during inference is a significant, but not sufficient, factor in restoring prosodic diversity to non-autoregressive TTS systems with implicit alignment."
+        source: "§4.5, Table 3"
+        evidence: "Applying duration perturbation (0.8-1.2x) to two flow-matching/MGM NAR systems increases DS-WED diversity by 13.8-28.5%, but the perturbed flow-matching system F5-TTS still lags behind AR and MGM systems evaluated without perturbation."
+        confidence: medium
+        relevance: low
+      - claim_id: prosodyeval_dpo_suppresses_prosody_diversity
+        role: complicates
+        claim: "Preference optimization that targets one quality dimension (intelligibility) can measurably suppress output diversity along an unrelated axis (prosody) as a side effect."
+        source: "§4.5, Table 4"
+        evidence: "Applying DPO for intelligibility to CosyVoice 2 and MaskGCT reduces DS-WED prosody-diversity scores by 18.8% and 2.9-3.2% respectively across two test sets, with no diversity-specific reward term in the alignment objective."
+        confidence: high
+        relevance: high
+      - claim_id: prosodyeval_llm_judge_unreliable_for_prosody
+        role: contradicts
+        claim: "A general-purpose large audio language model with strong multimodal reasoning capability can serve as a reliable automatic judge of fine-grained prosodic variation."
+        source: "§4.5, Table 5"
+        evidence: "Gemini 2.5 Pro, prompted to rate relative prosodic difference within groups of five samples, achieves only a weak correlation with human PMOS ratings (r=0.27) and unstable, wide-confidence-interval correlations with objective acoustic and token-based metrics."
+        confidence: medium
+        relevance: low
+    limitations:
+      - "DS-WED has only been validated on English speech; cross-lingual applicability is untested."
+      - "The DPO and duration-perturbation exploration each cover only two systems, limiting how confidently the reported trends generalize across the broader space of NAR TTS architectures."
+    caveats:
+      - "This is primarily an evaluation-methodology paper; its only claim bearing directly on RLHF for speech (that DPO for intelligibility measurably reduces prosody diversity as a side effect) is a secondary application of the paper's core metric contribution rather than a proposed alignment method."
+
+  - id: "2509.25416"
+    entry_date: "2026-07-20"
+    year: 2025
+    venue: arXiv
+    task: [TTS]
+    architecture: [diffusion]
+    relevance: high
+    evidence_role:
+      - core_evidence
+      - control_evidence
+    current_role: influential
+    method_family: []
+    claims:
+      - claim_id: easpo_stepwise_beats_endpoint_dpo
+        role: supports
+        claim: "Applying preference supervision at each denoising step of a diffusion model, rather than only at the final generated output, improves alignment with a fine-grained target attribute compared to endpoint-propagated preference optimization."
+        source: "§3.4, Table 8"
+        evidence: "Under a matched Grad-TTS backbone, the stepwise EASPO method outperforms three prior diffusion-DPO variants (DDPO, D3PO, Diffusion-DPO) on emotion similarity, prosody similarity, WER, and UTMOS."
+        confidence: high
+        relevance: high
+      - claim_id: easpo_endpoint_propagation_assumption_invalid
+        role: complicates
+        claim: "The assumption underlying trajectory-level preference propagation in diffusion models, that all intermediate states on a path toward a preferred final output are themselves preferred, does not reliably hold."
+        source: "§1, §2.2"
+        evidence: "The paper motivates its stepwise design specifically by rejecting this assumption, and shows local win/lose selection at a shared latent outperforms endpoint-propagated variants."
+        confidence: medium
+        relevance: high
+      - claim_id: easpo_contrastive_scorer_on_noisy_states
+        role: supports
+        claim: "A contrastive audio-language scoring model can be adapted to evaluate noisy intermediate diffusion states, enabling automatic preference-pair construction without categorical emotion classifiers."
+        source: "§2.1, Table 3"
+        evidence: "Adding a time-aware normalization layer to a CLAP-based encoder (CLEP) and training it with diffusion-perturbed audio pairs lets it score emotional-prompt consistency directly on noisy mel-spectrograms; removing this timestep conditioning degrades Emo SIM, Prosody SIM, WER, and UTMOS."
+        confidence: high
+        relevance: high
+      - claim_id: easpo_topcandidate_rollout_bias
+        role: complicates
+        claim: "In RLHF-style fine-tuning of diffusion generation, continuing rollouts from the highest-reward candidate at each step, rather than a randomly selected candidate, biases training toward degenerate regions and reduces overall quality."
+        source: "§2.1, §3.4, Table 4"
+        evidence: "The paper reports that random selection of the next rollout state from the candidate pool consistently improves performance relative to continuing from the top-ranked (winning) candidate."
+        confidence: high
+        relevance: high
+    limitations:
+      - "Evaluation is confined to a single diffusion TTS backbone (Grad-TTS) and a single, small English emotion corpus (ESD: 5 emotions x 10 speakers, 350 utterances/emotion)."
+      - "The paper does not report parameter counts for the fine-tuned decoder or wall-clock/inference overhead introduced by the k-candidate sampling and reward scoring at each training step, which matters for RLHF-style diffusion fine-tuning cost."
+    caveats:
+      - "Generalization to other diffusion or flow-based TTS architectures, other languages, or continuous/non-categorical emotional targets is untested; the reward-difference matching objective is adapted from a prior image-diffusion alignment method (PRDP) rather than developed from scratch for speech."
+
+claim_clusters: []
+method_families: []
+reassessment_queue: []
+open_questions: []
+trend_notes: []
