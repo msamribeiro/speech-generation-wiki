@@ -14,7 +14,7 @@ papers:
       - core_evidence
       - control_evidence
     current_role: foundational
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: uno_kto_uncertainty_optimization
         role: supports
@@ -68,7 +68,7 @@ papers:
       - core_evidence
       - evaluation_caution
     current_role: influential
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: seedtts_human_parity_zeroshot
         role: supports
@@ -120,7 +120,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: influential
-    method_family: []
+    method_family: [differentiable_reward_gradient_backprop, dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: cosyvoice2_fsq_codebook_utilization
         role: supports
@@ -173,7 +173,7 @@ papers:
       - core_evidence
       - evaluation_caution
     current_role: influential
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: stepaudio_dual_codebook_tokenizer
         role: supports
@@ -226,7 +226,7 @@ papers:
       - core_evidence
       - architecture_variant
     current_role: foundational
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: f5rtts_gaussian_reformulation_enables_rl
         role: supports
@@ -332,7 +332,7 @@ papers:
       - core_evidence
       - infrastructure
     current_role: influential
-    method_family: []
+    method_family: [reward_model_infrastructure]
     claims:
       - claim_id: wavreward_text_only_eval_misses_acoustics
         role: supports
@@ -385,7 +385,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: influential
-    method_family: []
+    method_family: [differentiable_reward_gradient_backprop]
     claims:
       - claim_id: cosyvoice3_diffro_token_level_reward
         role: supports
@@ -439,7 +439,7 @@ papers:
       - core_evidence
       - architecture_variant
     current_role: active_evidence
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: dmospeech2_grpo_subcomponent_efficiency
         role: supports
@@ -492,7 +492,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: tts1_grpo_composite_reward_multi_dimension
         role: supports
@@ -546,7 +546,7 @@ papers:
       - core_evidence
       - infrastructure
     current_role: foundational
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts, continuous_generative_preference_optimization]
     claims:
       - claim_id: intp_cross_model_pairs_outperform_self_comparison
         role: supports
@@ -652,7 +652,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: foundational
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: alignslm_preference_opt_improves_semantic_coherence
         role: supports
@@ -705,7 +705,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: slam_textlm_init_accelerates_convergence
         role: supports
@@ -758,7 +758,7 @@ papers:
       - core_evidence
       - evaluation_caution
     current_role: influential
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: seedliveinterpret_rl_lower_latency_higher_quality
         role: supports
@@ -810,7 +810,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: icnlsp_dpo_matches_labeled_ft
         role: supports
@@ -856,7 +856,7 @@ papers:
     evidence_role:
       - infrastructure
     current_role: minor
-    method_family: []
+    method_family: [reward_model_infrastructure]
     claims:
       - claim_id: qamro_ranking_objective_improves_correlation
         role: supports
@@ -901,7 +901,7 @@ papers:
     evidence_role:
       - core_evidence
     current_role: foundational
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: dlpo_image_domain_rl_transfers_poorly
         role: complicates
@@ -948,7 +948,7 @@ papers:
       - core_evidence
       - control_evidence
     current_role: influential
-    method_family: []
+    method_family: [differentiable_reward_gradient_backprop]
     claims:
       - claim_id: diffro_token_level_rewards_cheaper
         role: supports
@@ -1054,7 +1054,7 @@ papers:
     evidence_role:
       - control_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: vevo2_joint_pretraining_domain_transfer
         role: supports
@@ -1108,7 +1108,7 @@ papers:
       - core_evidence
       - control_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: mpo_multidimensional_preference_set
         role: supports
@@ -1155,7 +1155,7 @@ papers:
       - core_evidence
       - evaluation_caution
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: latinx_dpo_improves_crosslingual_intelligibility
         role: supports
@@ -1202,7 +1202,7 @@ papers:
       - core_evidence
       - infrastructure
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: synparaspeech_synthetic_paralinguistic_finetune
         role: supports
@@ -1255,7 +1255,7 @@ papers:
     evidence_role:
       - control_evidence
     current_role: active_evidence
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts]
     claims:
       - claim_id: openomni_text_pivot_alignment
         role: supports
@@ -1303,7 +1303,7 @@ papers:
       - core_evidence
       - evaluation_caution
     current_role: influential
-    method_family: []
+    method_family: [dpo_style_preference_optimization_discrete_tts, rl_policy_gradient_reward_optimization]
     claims:
       - claim_id: prosody_grpo_verifiable_reward_collapse
         role: contradicts
@@ -1350,7 +1350,7 @@ papers:
       - core_evidence
       - architecture_variant
     current_role: influential
-    method_family: []
+    method_family: [continuous_generative_preference_optimization]
     claims:
       - claim_id: ardm_dpo_extension_to_diffusion
         role: supports
@@ -1450,7 +1450,7 @@ papers:
       - core_evidence
       - control_evidence
     current_role: influential
-    method_family: []
+    method_family: [continuous_generative_preference_optimization]
     claims:
       - claim_id: easpo_stepwise_beats_endpoint_dpo
         role: supports
@@ -1486,8 +1486,550 @@ papers:
     caveats:
       - "Generalization to other diffusion or flow-based TTS architectures, other languages, or continuous/non-categorical emotional targets is untested; the reward-difference matching objective is adapted from a prior image-diffusion alignment method (PRDP) rather than developed from scratch for speech."
 
-claim_clusters: []
-method_families: []
-reassessment_queue: []
-open_questions: []
-trend_notes: []
+claim_clusters:
+  - id: rlhf_posttraining_beats_sft_baseline
+    claim: >-
+      Preference- or reward-based post-training (DPO, KTO, GRPO, differentiable-reward optimization)
+      for TTS/SLM generation consistently improves intelligibility, speaker similarity, or naturalness
+      beyond what supervised fine-tuning alone achieves.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2406.00654", "2025.icnlsp-1.34", "2509.00685", "2509.05863", "2025.acl-long.598", "2507.21138", "2504.02407", "2509.14946", "interspeech-2025-0063", "2505.17589", "2025.findings-acl.631"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        This is the headline result replicated across 11 independent papers spanning DPO, KTO, GRPO, and
+        differentiable-reward methods, but each paper measures a different subset of WER/SIM/MOS
+        metrics, so the effect size is not directly comparable across papers.
+    last_reviewed: "2026-07-20"
+
+  - id: rlhf_reward_hacking_risk
+    claim: >-
+      RL/RLHF post-training for speech generation optimized against an automatically measured proxy
+      reward is prone to reward hacking, degrading unmeasured or complementary perceptual qualities
+      (prosody naturalness, emotional appropriateness, non-targeted objectives) unless explicitly
+      counteracted.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2406.02430", "2502.11946", "2507.17527", "2509.18531", "2509.19928", "2508.16332", "2509.05863"]
+    contradicting_papers: []
+    refining_papers: ["interspeech-2025-0063", "2509.25416"]
+    caveats:
+      - >-
+        No paper in the corpus disputes that reward hacking is a real risk; disagreement (where it
+        exists) is only about which mitigation works best, not whether the phenomenon occurs.
+      - >-
+        2509.18531 (Prosody-GRPO) is the most extreme documented case: GRPO on a harmonic-mean
+        CER/likelihood reward achieved the lowest CER of any tested system while producing the lowest
+        human-preference ELO score, with pitch collapsing toward monotone speech.
+    last_reviewed: "2026-07-20"
+
+  - id: preference_pair_construction_determines_dpo_success
+    claim: >-
+      The construction strategy for DPO/preference training pairs in speech generation (checkpoint
+      diversity, cross-model vs. self-comparison sourcing, natural vs. synthetic pairing, automatic
+      scoring of noisy intermediate states) has a first-order effect on alignment outcome quality,
+      independent of the DPO objective itself.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2025.icnlsp-1.34", "2025.acl-long.598", "2509.14946", "2406.00654", "2509.18928", "2509.25416"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        2025.icnlsp-1.34 found DPO from an ASR-fine-tuned checkpoint underperforms DPO from the base
+        model because standard fine-tuning narrows generation diversity, leaving insufficient variation
+        for the preference signal: a direct mechanistic explanation for why 2406.00654 (UNO) argues
+        pairwise DPO is impractical for codec TTS in the first place.
+    last_reviewed: "2026-07-20"
+
+  - id: differentiable_reward_backprop_cheaper_than_policy_gradient
+    claim: >-
+      Backpropagating gradients from a frozen differentiable reward/critic model through discrete
+      speech tokens via Gumbel-Softmax achieves comparable or better alignment gains than PPO-style
+      policy-gradient RL or standard DPO, at lower computational cost, by avoiding multi-sample
+      rollout or multi-forward-pass overhead.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2412.10117", "2505.17589", "interspeech-2025-0704"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Validated only within the CosyVoice architecture family (CosyVoice 2, CosyVoice 3, and the
+        Interspeech DiffRO paper all build on the same lineage): no independent replication on an
+        unrelated backbone yet.
+    last_reviewed: "2026-07-20"
+
+  - id: grpo_extends_to_non_autoregressive_tts
+    claim: >-
+      GRPO/policy-gradient RL, originally developed for discrete-token generation, can be extended to
+      non-autoregressive flow-matching TTS pipelines by reformulating a continuous output as a
+      probabilistic (Gaussian) distribution or by applying RL to a discrete upstream subcomponent,
+      yielding measurable WER/SIM gains.
+    status: emerging
+    confidence: medium
+    supporting_papers: ["2504.02407", "2507.14988"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Both papers apply RL to a narrow, isolated component (F5R-TTS: the final output layer;
+        DMOSpeech2: only the duration predictor) rather than the full flow-matching generation process.
+    last_reviewed: "2026-07-20"
+
+  - id: rlhf_alignment_is_data_and_compute_efficient
+    claim: >-
+      Preference or reward-based post-training for speech generation can achieve substantial quality
+      gains using only a small fraction of pretraining-scale data, compute, or update steps, and a
+      single fine-tuning run can match or exceed the gains from inference-time best-of-K sampling or
+      iterative rejection-sampling fine-tuning (RAFT).
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2406.00654", "2504.02407", "2025.findings-acl.631", "2509.18928"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        2025.findings-acl.631 (Slam) frames this as scaling laws being too pessimistic because they
+        don't factor in a subsequent DPO stage, rather than a direct efficiency claim about DPO itself:
+        a related but distinct framing worth keeping separate in future review.
+    last_reviewed: "2026-07-20"
+
+  - id: preference_optimization_extends_to_continuous_generative_tts
+    claim: >-
+      DPO-style preference optimization, originally formulated for discrete autoregressive token
+      sequences, can be reformulated for continuous or iterative-denoising generative TTS
+      architectures (flow-matching, diffusion, autoregressive-diffusion hybrids) by operating in
+      velocity space, marginalizing over intermediate diffusion states, or applying local win/lose
+      preference supervision at each denoising step, without requiring an external reward model.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2025.acl-long.598", "2509.18928", "2509.25416"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        2509.25416 (EASPO) additionally shows that endpoint-propagated preference optimization (applying
+        preference supervision only to the final output) underperforms local, stepwise supervision,
+        because the assumption that intermediate states toward a preferred output are themselves
+        preferred does not reliably hold.
+      - >-
+        Each of the 3 papers validates on a different, non-overlapping backbone (F5-TTS/MaskGCT, DiTAR,
+        Grad-TTS); no cross-backbone replication yet.
+    last_reviewed: "2026-07-20"
+
+  - id: reward_model_training_benefits_from_rl_and_reward_shaping
+    claim: >-
+      Training automatic reward models / evaluators for speech RLHF benefits from RL-based training
+      (over plain supervised fine-tuning) and from carefully shaped, nonlinear reward functions and
+      chain-of-thought reasoning, mirroring patterns established in text-domain RLHF.
+    status: emerging
+    confidence: medium
+    supporting_papers: ["2505.09558"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding; 2508.08957 (QAMRO) trains a comparable audio-quality predictor but with a
+        ranking loss rather than RL, so it does not independently corroborate the RL-specific portion of
+        this claim.
+    last_reviewed: "2026-07-20"
+
+  - id: composite_multiobjective_rewards_outperform_single_metric_but_need_balancing
+    claim: >-
+      RL or preference-optimization reward functions that jointly target multiple speech quality
+      dimensions (intelligibility, speaker similarity, emotion, prosody) outperform single-metric
+      rewards, which improve only their targeted dimension and can degrade complementary ones, but
+      balancing multiple reward terms remains a nontrivial, often under-ablated engineering problem.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2507.21138", "2508.16332", "2509.00685", "interspeech-2025-0704"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        2508.16332 (Vevo2) is the clearest negative case: intelligibility-only GRPO reward dropped
+        melody accuracy from 65% to 50%, only resolved by joint multi-objective reward design.
+    last_reviewed: "2026-07-20"
+
+  - id: rlhf_alignment_generalizes_crosslingually
+    claim: >-
+      Preference- or reward-based alignment trained on a small set of high-resource languages
+      generalizes intelligibility/quality gains to unseen languages without requiring language-
+      specific alignment data.
+    status: emerging
+    confidence: medium
+    supporting_papers: ["2025.acl-long.598", "interspeech-2025-0704"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Both papers test generalization to a small number of additional languages (INTP: Japanese,
+        Korean, German, French; DiffRO: Japanese, Korean) from an English+Chinese/Mandarin training
+        base: broader multilingual coverage is untested.
+    last_reviewed: "2026-07-20"
+
+  - id: preference_optimization_improves_slm_semantic_coherence
+    claim: >-
+      Preference optimization (DPO) with semantic-quality feedback (LLM scoring or synthetic
+      preference data) improves long-range semantic coherence and generation quality in textless
+      spoken language models beyond next-token pretraining, more effectively than perplexity-based
+      selection.
+    status: emerging
+    confidence: high
+    supporting_papers: ["2025.acl-long.997", "2025.findings-acl.631"]
+    contradicting_papers: []
+    refining_papers: ["2025.acl-long.997"]
+    caveats:
+      - >-
+        2025.acl-long.997 (AlignSLM) itself refines this claim: semantic gains do not transfer uniformly
+        to lexical/grammatical correctness (sBLIMP), and even the best preference-optimized variant
+        remains behind a cascaded ASR+LLM topline.
+    last_reviewed: "2026-07-20"
+
+  - id: rlhf_alignment_bounded_by_base_model_capability
+    claim: >-
+      Gains from preference or reward-based alignment are ultimately bounded by the base model's
+      underlying capability: iterative alignment rounds show diminishing returns, and RL-optimized
+      systems approach but do not fully close the gap to oracle best-of-N or cascaded-system toplines.
+    status: strongly_supported
+    confidence: medium
+    supporting_papers: ["2025.acl-long.997", "2025.acl-long.598", "2507.14988"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        This is a consistent qualitative pattern across three independent papers, but none directly
+        measures the ceiling's location, only that alignment approaches without fully reaching an oracle
+        or topline comparator.
+    last_reviewed: "2026-07-20"
+
+  - id: rl_posttraining_for_streaming_s2s_translation
+    claim: >-
+      For streaming/simultaneous end-to-end speech-to-speech translation, RL post-training combining
+      fine-grained process rewards with holistic outcome rewards improves latency more substantially
+      than translation quality, and outperforms cascaded commercial systems on both dimensions.
+    status: emerging
+    confidence: high
+    supporting_papers: ["2507.17527"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding from a proprietary system (SeedLiveInterpret) with no public weights or
+        reproducible baseline; the RL framework is specialized for chunk-level read-write policies and
+        duration-matching rewards specific to simultaneous interpretation.
+    last_reviewed: "2026-07-20"
+
+  - id: rlhf_training_instability_requires_regularization_or_early_stopping
+    claim: >-
+      RL or DPO fine-tuning of speech generation models (autoregressive or diffusion-based) is prone
+      to training instability, capability collapse, or monotonic degradation of held-out quality
+      metrics without explicit regularization (e.g. cross-entropy penalty) or early stopping,
+      particularly as training progresses beyond an optimal point.
+    status: strongly_supported
+    confidence: high
+    supporting_papers: ["2509.00685", "2509.18928", "2509.18531"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        2509.00685 (MPO) documents catastrophic CER inflation (4.72 to 14.52) without CE regularization;
+        2509.18928 (ARDM-DPO) documents monotonically decreasing speaker similarity across all tested
+        beta values with no principled stopping criterion; 2509.18531 (Prosody-GRPO) documents non-
+        monotonic ELO across iterative DPO rounds, peaking at round 2 and declining at round 3.
+    last_reviewed: "2026-07-20"
+
+  - id: sca_rlhf_addresses_distinct_failure_modes_from_tts_quality_alignment
+    claim: >-
+      RLHF applied to spoken conversational agents / dialogue systems targets qualitatively different
+      failure modes (evasive or unhelpful responses to ambiguous input, semantic inconsistency, token-
+      distribution mismatch) than RLHF applied to raw TTS acoustic quality, and this direction remains
+      substantially underexplored relative to text-LLM RLHF.
+    status: emerging
+    confidence: medium
+    supporting_papers: ["2502.11946"]
+    contradicting_papers: []
+    refining_papers: ["2025.acl-long.682"]
+    caveats:
+      - >-
+        2025.acl-long.682 is a survey citing this pattern from secondary sources (AlignSLM, SpeechAlign)
+        rather than presenting independent primary evidence, so this cluster currently rests on one
+        primary-research data point (Step-Audio's 'deaf hacking' finding) plus one literature-review
+        corroboration.
+    last_reviewed: "2026-07-20"
+
+  - id: intrinsic_backbone_reward_sufficient_for_alignment
+    claim: >-
+      An intrinsic reward signal derived from a speech LM's own output probability distribution
+      (without an external reward model, human annotations, or ground-truth speech) is sufficient to
+      drive meaningful post-training alignment, when combined with fine-grained trajectory-level
+      (rather than sequence-level) optimization.
+    status: emerging
+    confidence: high
+    supporting_papers: ["2508.15442"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding (GOAT) using a GFlowNet trajectory-balance objective, a distinct paradigm
+        from every other paper in the corpus: no second paper yet replicates or extends GFlowNet-based
+        intrinsic-reward alignment for speech.
+      - >-
+        The paper's own authors acknowledge the core assumption (that the backbone LM assigns higher
+        probability to higher-quality sequences) as a hypothesis, not a proven property.
+    last_reviewed: "2026-07-20"
+
+  - id: image_domain_rl_techniques_transfer_poorly_to_speech
+    claim: >-
+      RL/regularization techniques developed for text-to-image diffusion alignment (e.g. plain KL-
+      divergence regularization) transfer poorly to speech diffusion TTS, because audio generation
+      requires stronger temporal coherence than image synthesis; incorporating the model's own
+      diffusion training loss as a penalty term in the reward function works better.
+    status: emerging
+    confidence: high
+    supporting_papers: ["interspeech-2025-0063"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding (DLPO) benchmarked against 4 image-domain RL baselines (DDPO, DPOK, KLinR,
+        RWR) on a single-speaker dataset with a relatively simple diffusion TTS backbone (WaveGrad 2R):
+        untested on more capable flow-matching or score-based TTS systems.
+    last_reviewed: "2026-07-20"
+
+  - id: lm_level_rlhf_cannot_fix_post_lm_pipeline_quality
+    claim: >-
+      In cascaded TTS pipelines where an LM component is followed by a separate flow-matching/vocoder
+      stage, RLHF applied only at the LM/token level has limited ability to improve final audio
+      quality attributes (MOS, speaker characteristics) that are primarily determined by the
+      downstream, frozen post-LM stages.
+    status: emerging
+    confidence: high
+    supporting_papers: ["interspeech-2025-0704"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding; the paper shows DiffRO can shift codec-level predicted MOS substantially
+        but the final audio MOS change after the frozen flow-matching+vocoder stages is comparatively
+        modest, implying a structural ceiling on LM-level-only RLHF in cascaded architectures.
+    last_reviewed: "2026-07-20"
+
+  - id: dpo_adapts_to_non_autoregressive_ctc_decoders
+    claim: >-
+      DPO-style preference optimization can be adapted to non-autoregressive, CTC-trained discrete-
+      unit speech decoders to improve a targeted qualitative attribute (e.g. emotional coherence)
+      without requiring an auxiliary control module.
+    status: emerging
+    confidence: high
+    supporting_papers: ["2501.04561"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding (OpenOmni); the CTC-DPO contribution is one component of a broader
+        omnimodal LLM system, and the preference dataset used is synthesized rather than human-labeled.
+    last_reviewed: "2026-07-20"
+
+  - id: iterative_human_preference_optimization_recovers_rl_induced_degradation
+    claim: >-
+      When RL post-training optimized for a verifiable proxy reward degrades an unmeasured perceptual
+      quality, a subsequent small-scale iterative human preference optimization (DPO) stage using only
+      a few hundred preference pairs per round can recover much of the lost quality, though gains
+      across rounds are not strictly monotonic and can saturate or reverse.
+    status: emerging
+    confidence: high
+    supporting_papers: ["2509.18531"]
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - >-
+        Single-paper finding (Prosody-GRPO); evaluated on a narrow scope (single fine-tuned speaker
+        voice, Korean call-center dialogue, 50-utterance test set, 27 raters): the generality of the
+        recovery effect across domains/languages is untested.
+    last_reviewed: "2026-07-20"
+
+method_families:
+  - id: dpo_style_preference_optimization_discrete_tts
+    name: "DPO/KTO-style preference optimization on discrete-token TTS/SLM output"
+    summary: >-
+      Offline preference optimization (DPO, KTO, or regularized variants) applied directly to a
+      discrete-token autoregressive TTS or spoken-language-model decoder's own generated output, using
+      a log-ratio or classification-style objective without an explicit policy-gradient rollout.
+    papers:
+      - "2406.00654"
+      - "2412.10117"
+      - "2025.acl-long.598"
+      - "2025.acl-long.997"
+      - "2025.findings-acl.631"
+      - "2025.icnlsp-1.34"
+      - "2509.00685"
+      - "2509.05863"
+      - "2509.14946"
+      - "2501.04561"
+      - "2509.18531"
+    open_questions:
+      - >-
+        How much of DPO's reported gain in this family depends on preference-pair construction quality
+        (checkpoint diversity, cross-model sourcing) versus the DPO objective itself?
+  - id: rl_policy_gradient_reward_optimization
+    name: "Policy-gradient RL with explicit reward signals (GRPO/PPO/REINFORCE)"
+    summary: >-
+      Online reinforcement learning (GRPO, PPO, or REINFORCE) using an explicit scalar reward computed
+      on synthesized audio, intermediate tokens, or task-level metrics (WER, speaker similarity,
+      DNSMOS, translation quality), applied to autoregressive-LM, flow-matching, or diffusion TTS/SCA
+      systems via a policy-gradient update.
+    papers:
+      - "2406.02430"
+      - "2502.11946"
+      - "2504.02407"
+      - "2507.14988"
+      - "2507.21138"
+      - "2507.17527"
+      - "interspeech-2025-0063"
+      - "2508.16332"
+      - "2509.18531"
+    open_questions:
+      - >-
+        Does the reward-hacking pattern documented repeatedly in this family (Seed-TTS, Prosody-GRPO,
+        Vevo2, SeedLiveInterpret) have a general mitigation, or is it addressed ad hoc per paper?
+  - id: differentiable_reward_gradient_backprop
+    name: "Differentiable reward optimization via gradient backpropagation through discrete tokens"
+    summary: >-
+      Backpropagates gradients from a frozen differentiable reward or critic model (e.g. an ASR
+      decoder) directly through discrete speech-token predictions via Gumbel-Softmax, bypassing
+      explicit RL rollout or PPO-style policy-gradient loops.
+    papers:
+      - "2412.10117"
+      - "2505.17589"
+      - "interspeech-2025-0704"
+    open_questions:
+      - >-
+        Does differentiable-reward backprop generalize beyond the CosyVoice architecture family it has
+        so far been validated on?
+  - id: continuous_generative_preference_optimization
+    name: "Preference optimization extended to continuous/iterative-denoising generative TTS"
+    summary: >-
+      Adapts DPO-style preference optimization to non-autoregressive continuous generative TTS (flow-
+      matching, diffusion, autoregressive-diffusion hybrids) by operating in velocity space,
+      marginalizing the objective over intermediate diffusion states, or applying local win/lose
+      preference supervision at each denoising step, without requiring an external reward model.
+    papers:
+      - "2025.acl-long.598"
+      - "2509.18928"
+      - "2509.25416"
+    open_questions:
+      - >-
+        Each of the 3 papers in this family validates on a single, different backbone (F5-TTS/MaskGCT,
+        DiTAR, Grad-TTS) with no cross-backbone replication yet: does the technique transfer across
+        continuous TTS architectures?
+  - id: reward_model_infrastructure
+    name: "Reward model / automatic evaluator construction for speech RLHF"
+    summary: >-
+      Trains a dedicated reward model or automatic quality predictor for speech (via RL or ranking-
+      based objectives) as reusable infrastructure for future RLHF pipelines, rather than directly
+      aligning a TTS/SCA generation model.
+    papers:
+      - "2505.09558"
+      - "2508.08957"
+    open_questions:
+      - >-
+        Neither WavReward nor QAMRO has yet been plugged into an end-to-end RLHF training loop as the
+        reward source for a generation model in the corpus: does either transfer effectively when used
+        that way?
+
+reassessment_queue:
+  - id: intrinsic_backbone_reward_sufficient_for_alignment
+    type: method_family
+    reason: >-
+      GOAT (2508.15442) is currently the sole paper using a GFlowNet-based intrinsic-reward paradigm
+      for speech alignment; the family threshold (>=2 papers) has not been met.
+    trigger: >-
+      A second paper adopts GFlowNet trajectory-balance optimization, or otherwise validates
+      intrinsic-reward-only alignment without an external reward model or human preference data, for
+      any speech generation task.
+    due: "2026-12"
+    current_assessment: emerging
+    watch_for:
+      - >-
+        GFlowNet or trajectory-balance objectives applied to TTS/SLM/VC alignment.
+      - >-
+        Replication of the backbone-probability-as-reward assumption on a second architecture.
+
+  - id: preference_optimization_extends_to_continuous_generative_tts
+    type: claim_status
+    reason: >-
+      Strongly_supported status rests on 3 papers, each validated on a different, non-overlapping
+      backbone (F5-TTS/MaskGCT, DiTAR, Grad-TTS) with no direct cross-backbone replication: a similar
+      pattern to flow-matching's cfg_conditioning_mechanism_adopted cluster before it was downgraded
+      to contested.
+    trigger: >-
+      A new paper either replicates one of the three specific techniques (DPO-FM/DPO-MGM, ARDM-DPO
+      trajectory marginalization, EASPO stepwise supervision) on a backbone already used by another
+      paper in this cluster, or reports a negative result when attempting to transfer one of them.
+    due: "2027-01"
+    current_assessment: strongly_supported
+    watch_for:
+      - >-
+        Direct backbone overlap between two papers in this family (currently zero).
+      - >-
+        A negative-result paper showing one of these three techniques fails to transfer to a new
+        continuous-generative backbone.
+
+  - id: sca_rlhf_addresses_distinct_failure_modes_from_tts_quality_alignment
+    type: claim_status
+    reason: >-
+      Currently rests on one primary-research data point (Step-Audio's 'deaf hacking' finding) plus
+      one survey's secondary citation of AlignSLM/SpeechAlign: thinner evidentiary basis than most
+      other strongly_supported or emerging clusters in this concept.
+    trigger: >-
+      A second primary-research paper (not a survey) reports a distinct RLHF failure mode specific to
+      spoken dialogue/SCA systems, corroborating that SCA-level alignment differs structurally from
+      TTS-acoustic-quality alignment.
+    due: "2026-12"
+    current_assessment: emerging
+    watch_for:
+      - >-
+        New SCA/dialogue papers applying RLHF or DPO directly to a conversational (not single-utterance
+        TTS) speech model.
+      - >-
+        Reports of reward-model failure modes specific to ambiguous or multi-turn audio input.
+
+open_questions:
+  - >-
+    Does GFlowNet-based intrinsic-reward alignment (GOAT) generalize beyond hallucination
+    suppression to other quality dimensions, and does it replicate on a second backbone?
+  - >-
+    Can preference/RL alignment techniques so far validated on a single flow-matching or diffusion
+    TTS backbone (F5R-TTS, DMOSpeech2, ARDM-DPO, EASPO) be shown to transfer across backbones, or is
+    each currently a backbone-specific proof of concept?
+  - >-
+    Is there a principled, generalizable mitigation for RLHF reward hacking in speech generation
+    (dual held-out metrics, human-in-the-loop iterative DPO, constrained multi-objective rewards),
+    or do current mitigations remain ad hoc per-paper workarounds?
+  - >-
+    How does RLHF alignment for spoken conversational agents / dialogue quality differ
+    mechanistically from RLHF alignment for raw TTS acoustic quality, and can a unified framework
+    address both?
+
+trend_notes:
+  - >-
+    RLHF/preference-optimization methodology for speech generation is a fast-moving, recently-
+    emerged research direction: all 29 papers integrated for this concept were published between
+    June 2024 and September 2025, with roughly two-thirds appearing in Q3 2025 alone.
+  - >-
+    DPO-style preference optimization directly on discrete autoregressive codec tokens is the
+    dominant paradigm by paper count (10 of 29 papers), closely followed by policy-gradient RL
+    (GRPO/PPO/REINFORCE, 9 papers); extending either family to non-autoregressive flow-matching or
+    diffusion TTS backbones is a newer, less mature direction (6 papers total across the
+    differentiable-reward and continuous-preference-optimization families) that emerged mostly in Q3
+    2025.
+  - >-
+    Reward hacking / proxy-objective side effects (degraded prosody, evasive 'deaf hacking'
+    responses, reduced output diversity) recur across roughly a quarter of the corpus (7 of 29
+    papers) regardless of underlying architecture or optimization method, suggesting this is a
+    structural property of applying automatically verifiable rewards to speech generation rather
+    than a defect specific to any single technique.
