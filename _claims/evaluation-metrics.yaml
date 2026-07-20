@@ -1,6 +1,6 @@
 concept: evaluation-metrics
 last_updated: "2026-07-20"
-paper_count: 60
+paper_count: 80
 papers:
 - id: "1703.10135"
   entry_date: "2026-07-20"
@@ -4089,6 +4089,1378 @@ papers:
   - "The survey's central empirical finding, that 72% of surveyed turn-taking papers do not compare
     against prior methods and one third use no public corpus, is a direct, quantified diagnosis of a
     reproducibility and benchmark-standardization gap in the field."
+- id: "2025.americasnlp-1.1"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: AmericasNLP 2025
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: transfer_learning_enables_low_resource_indigenous_tts
+    role: supports
+    claim: "Transfer learning from a closely related language can enable intelligible TTS for an
+      indigenous language with fewer than 5 hours of training data."
+    source: "§4.1, §5.1"
+    evidence: "Tacotron 2 fine-tuned from a Latin American Spanish checkpoint on 4h37m of
+      Shipibo-Konibo speech achieves Intelligibility Rate 88.56% and MOS 4.01, both exceeding
+      the natural speech reference recordings."
+    confidence: medium
+    relevance: low
+  - claim_id: subjective_evaluation_necessary_without_reference_audio
+    role: supports
+    claim: "Subjective evaluation by native speakers is necessary when objective metrics such as
+      PESQ and POLQA cannot be applied due to absent high-quality reference recordings."
+    source: "§5.3"
+    evidence: "No high-quality studio reference existed for Shipibo-Konibo, so the authors relied
+      entirely on MOS and Intelligibility Rate ratings from 26 native-speaker evaluators rather
+      than reference-based objective metrics."
+    confidence: high
+    relevance: high
+  - claim_id: speaker_pronunciation_drift_confounds_natural_vs_synthetic_comparison
+    role: complicates
+    claim: "Pronunciation drift in a native speaker living outside the language community can
+      cause natural speech to score lower on intelligibility than synthetic speech on
+      standardised evaluation."
+    source: "§5.4"
+    evidence: "The single native recording speaker's years of residence in Lima introduced
+      pronunciation variations into the reference recordings, which the authors offer as the
+      explanation for synthetic speech (MOS 4.01, IR 88.56%) outscoring natural speech
+      (MOS 3.75, IR 83.45%)."
+    confidence: medium
+    relevance: high
+  - claim_id: gan_vocoder_converges_fast_from_similar_pretraining_distribution
+    role: supports
+    claim: "GAN-based vocoders initialized from a universal pretrained model converge rapidly
+      when the target speaker is similar to the pretraining distribution."
+    source: "§4.2, §5.2"
+    evidence: "HiFi-GAN initialized from a pretrained universal female voice model converged
+      after only 34 epochs when fine-tuned on the single-speaker Shipibo-Konibo corpus."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "Evaluation relied entirely on subjective metrics (no PESQ/POLQA due to lack of reference
+    data); subjectivity and evaluator bias are acknowledged."
+  caveats:
+  - "The reversal of the usual natural-speech-scores-highest pattern (synthetic MOS and IR both
+    exceeded the natural reference) illustrates how a single-speaker reference recording's own
+    quality issues can distort comparative TTS evaluation in low-resource settings lacking
+    objective reference-based metrics."
+
+- id: "2505.09558"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: text_only_eval_misses_acoustic_mismatches
+    role: supports
+    claim: "Text-only evaluation of speech-to-speech dialogue systems systematically misses
+      acoustic-level mismatches that human judges readily detect."
+    source: "§2.2, §4.3"
+    evidence: "Existing benchmarks (VoiceBench, VoxDialogue, SD-Eval, AirBench) transcribe audio
+      to text before scoring, so a response with correct wording but a mismatched emotional tone
+      (e.g. cheerful mockery of a fearful query) receives no penalty, while WavReward and human
+      raters both detect the mismatch."
+    confidence: high
+    relevance: high
+  - claim_id: group_rl_outperforms_sft_for_audio_reward_models
+    role: supports
+    claim: "Reinforcement learning with group-based advantage estimates substantially outperforms
+      supervised fine-tuning for training audio-domain reward models, consistent with patterns
+      observed in text-domain RLHF."
+    source: "§4.2, Table 2"
+    evidence: "GRPO-trained WavReward outperforms full-parameter supervised fine-tuning, which in
+      turn outperforms LoRA-based fine-tuning, on ChatReward-30K-test scoring accuracy."
+    confidence: high
+    relevance: medium
+  - claim_id: cot_improves_audio_judge_ood_generalization
+    role: supports
+    claim: "Chain-of-thought reasoning improves scoring accuracy of audio language model
+      evaluators, with the benefit amplified in out-of-domain settings."
+    source: "§4.4"
+    evidence: "Removing chain-of-thought reasoning from WavReward costs roughly 10 percentage
+      points of accuracy across in-domain categories and up to 21.7 points on the out-of-domain
+      RealDialogue set."
+    confidence: high
+    relevance: high
+  - claim_id: nonlinear_reward_shaping_improves_calibration
+    role: supports
+    claim: "Nonlinear reward shaping that penalises large prediction errors exponentially improves
+      calibration across acoustic attributes compared to binary correct/incorrect rewards."
+    source: "§3.1, §4.4"
+    evidence: "Removing the nonlinear reward component from WavReward's training objective reduces
+      performance particularly on implicit dialogue and generation-scoring tasks relative to the
+      full model."
+    confidence: medium
+    relevance: high
+  - claim_id: implicit_dialogue_harder_to_evaluate_than_explicit
+    role: supports
+    claim: "Implicit dialogue scenarios, where the appropriate response depends on inferring the
+      user's emotional state from speech, remain significantly harder to evaluate automatically
+      than explicit instruction-following scenarios."
+    source: "§4.2, Table 2"
+    evidence: "WavReward's accuracy on implicit emotional dialogue scoring (74.3%) trails its
+      accuracy on explicit paralinguistic and content scoring categories, and the paper notes no
+      single ground truth exists for what constitutes an emotionally appropriate response."
+    confidence: medium
+    relevance: high
+  limitations:
+  - "The entire ChatReward-30K training corpus is synthesised using TTS systems (GPT-4o-mini-TTS,
+    Step-Audio-TTS-3B, CosyVoice2) rather than real human speech, and generalisation to real-world
+    dialogue audio is validated only on a 120-sample RealDialogue set."
+  caveats:
+  - "As the first reward model designed specifically to score end-to-end speech-to-speech
+    dialogue quality, WavReward's own evaluation infrastructure (ChatReward-30K, the RL-trained
+    scorer) is itself a new evaluation-metrics artifact for the field, distinct from the
+    TTS/VC quality metrics this concept page otherwise centers on."
+
+- id: "2505.14648"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - core_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: ser_hardest_speaker_trait_to_predict
+    role: supports
+    claim: "Speech emotion recognition remains the most difficult speaker/speech trait to predict
+      from speech alone, with state-of-the-art models plateauing around macro F1 of 0.40 even when
+      trained on large naturalistic corpora."
+    source: "§5, Table 4"
+    evidence: "Across all evaluated speech foundation models (HuBERT, WavLM, ECAPA-TDNN, Whisper
+      family), speech emotion recognition macro F1 tops out near 0.40, including the authors' own
+      top-ranked IS25-SER challenge system that uses both text and speech modalities."
+    confidence: high
+    relevance: high
+  - claim_id: narrow_accent_harder_than_broad_accent
+    role: supports
+    claim: "Narrow accent classification is substantially harder than broad regional accent
+      grouping, with the performance gap between coarse and fine-grained accent labels exceeding
+      0.20 macro F1 points for all tested models."
+    source: "§5, Table 3"
+    evidence: "Whisper Large achieves narrow accent macro F1 of 0.724 versus stronger broad accent
+      performance, and WavLM Large's broad accent macro F1 of 0.884 drops to 0.617 on narrow
+      accent categories."
+    confidence: high
+    relevance: low
+  - claim_id: asr_tts_pipelines_preserve_accent_better_than_textless_vc
+    role: supports
+    claim: "ASR-TTS voice cloning pipelines preserve target speaker accent more faithfully than
+      latent-space textless voice conversion, because the intermediate transcription stage retains
+      accent-relevant phonetic patterns."
+    source: "§6.2, Table 6"
+    evidence: "Vox-Profile's accent similarity scores show VALL-E X (ASR-TTS pipeline) more closely
+      matching reference accent than FreeVC (textless VC), which instead preserves source accent."
+    confidence: medium
+    relevance: low
+  - claim_id: automated_trait_predictions_substitute_manual_labels
+    role: supports
+    claim: "Automated speech trait predictions can substitute for manual ground-truth labels in
+      statistical analysis of ASR performance variability across demographic groups, with similar
+      trend conclusions."
+    source: "§6.1, Figure 2"
+    evidence: "Statistical analyses of ASR performance variability using Vox-Profile's automated
+      age, sex, and accent predictions reach conclusions comparable to analyses using manual
+      metadata labels."
+    confidence: medium
+    relevance: high
+  - claim_id: model_scale_correlates_with_trait_prediction_accuracy
+    role: supports
+    claim: "Model scale correlates positively with speaker and speech trait prediction accuracy
+      across both self-supervised and supervised speech foundation models."
+    source: "§5, Tables 3-4"
+    evidence: "Whisper Large achieves the strongest overall trait-prediction profile among tested
+      models, including the best narrow accent F1, speaker age accuracy, and speaker sex accuracy,
+      and Whisper accuracy scales mildly with model size across the Whisper family."
+    confidence: medium
+    relevance: medium
+  limitations:
+  - "The benchmark covers English only; all accent, emotion, and speech flow models are trained on
+    English-language datasets, and generalizability to other languages is not assessed."
+  caveats:
+  - "Vox-Profile is proposed as a complement to naturalness (MOS) and intelligibility (WER)
+    metrics rather than a replacement, providing multi-dimensional speaker and speech trait
+    metrics (accent similarity, emotion F1, speech flow accuracy) not covered by those standard
+    evaluation axes."
+
+- id: "2507.06235"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: f0_f1_predict_perceived_cuteness
+    role: supports
+    claim: "Fundamental frequency and lower formant frequencies are primary acoustic predictors of
+      perceived cuteness in synthetic voices."
+    source: "§4.6.1"
+    evidence: "Phase 1 Spearman correlations show strong positive relationships between kawaii
+      ratings and F0 (rs=0.89) and F1 (rs=0.74), while F2 and F3 are non-significant."
+    confidence: high
+    relevance: low
+  - claim_id: tts_cuteness_manipulation_fails_on_professional_voices
+    role: complicates
+    claim: "Acoustic frequency manipulations that amplify cuteness perceptions in generative TTS
+      voices do not transfer to naturally recorded or professionally processed voices."
+    source: "§5.4, Table 6"
+    evidence: "The three-semitone F0/formant shift that improved kawaii ratings for TTS voices
+      significantly reduced kawaiiness for professionally recorded game character voices
+      (Mann-Whitney U test, p<0.001), attributed to processing artefacts and possible ceiling
+      effects."
+    confidence: high
+    relevance: medium
+  - claim_id: automated_vocoder_shifting_matches_manual_editing_on_primary_but_not_secondary_attributes
+    role: complicates
+    claim: "Automated vocoder-based pitch and formant shifting matches manual audio editing for
+      cuteness perception but diverges on secondary perceptual attributes."
+    source: "§4.6.2, Table 3, Table 4"
+    evidence: "Wilcoxon signed-rank tests found no significant kawaii-rating differences across
+      Cubase, Legacy-STRAIGHT, and WORLD manipulation methods, but significant differences emerged
+      on humanlikeness, animal-likeness, trustworthiness, and excitedness ratings for several
+      voices."
+    confidence: medium
+    relevance: high
+  - claim_id: social_desirability_outpredicts_frequency_for_cuteness
+    role: supports
+    claim: "Perceived cuteness of synthetic voices is more strongly predicted by social
+      desirability attributes than by acoustic frequency measures in isolation."
+    source: "§5.4, Table 7"
+    evidence: "GEE analysis across game character voices found favorability, humanlikeness,
+      familiarity, and trustworthiness as significant predictors of kawaiiness, with effect sizes
+      exceeding those of frequency correlations alone."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "All four study phases recruited exclusively Japanese adults, so generalisability of the
+    kawaii vocalics manipulation to non-Japanese listeners or other languages is untested."
+  caveats:
+  - "The finding that manipulation methods (Cubase, Legacy-STRAIGHT, WORLD) produce statistically
+    indistinguishable ratings on the primary perceptual dimension being measured, but significantly
+    different ratings on secondary attributes not targeted by the manipulation, illustrates a
+    methodological risk for any perceptual evaluation design that measures only its intended
+    target dimension."
+
+- id: "2505.15772"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: automated_multimodal_annotation_exceeds_human_interrater_consistency
+    role: supports
+    claim: "Automated multimodal annotation can match human accuracy while substantially
+      outperforming human annotation in inter-rater consistency for emotional speech labeling."
+    source: "§2.3, Table 1"
+    evidence: "MIKU-PAL achieves Fleiss kappa of 0.93-0.95 on IEMOCAP and MELD across five
+      independent annotation runs, compared to 0.40-0.43 for human annotators, at roughly
+      $0.50/hour versus $10/hour for manual labeling."
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_emotion_taxonomy_improves_downstream_tts_expressiveness
+    role: supports
+    claim: "Expanding emotional speech training data beyond conventional 6-category taxonomies to
+      psychologically grounded fine-grained categories improves downstream TTS emotion
+      expressiveness."
+    source: "§3.2, Table 3"
+    evidence: "Fish-Speech fine-tuned on MIKU-EmoBench (26 categories) achieves MOS 4.12 and
+      emotion similarity 0.92, outperforming fine-tuning on IEMOCAP and MELD (MOS 4.01/4.00,
+      emotion similarity 0.89 each)."
+    confidence: medium
+    relevance: low
+  - claim_id: standard_emotion_categories_inflate_apparent_error_rates
+    role: complicates
+    claim: "Standard emotional speech benchmark categories introduce annotation ambiguity that
+      inflates apparent system error rates in automatic labeling."
+    source: "§2.3, Figure 4"
+    evidence: "MIKU-PAL accuracy on IEMOCAP rises from approximately 58.6% to approximately 75%
+      when 'frustration' and 'neutral' categories, which lack a distinct basis in established
+      psychological classification, are excluded from scoring."
+    confidence: medium
+    relevance: high
+  - claim_id: visual_modality_improves_speech_emotion_classification
+    role: supports
+    claim: "Visual modality information contributes substantially to speech emotion
+      classification accuracy in multimodal annotation systems."
+    source: "§2.1"
+    evidence: "Ablation on MELD shows a 25.6% accuracy improvement when vision preprocessing (face
+      detection and active speaker identification) is included relative to audio-only analysis."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "MIKU-PAL's annotation quality depends on Gemini 2.0 Flash, a proprietary model whose
+    availability, versioning, and cost structure may change, limiting reproducibility over time."
+  caveats:
+  - "MIKU-PAL introduces Fleiss kappa as an explicit annotation-consistency measure for emotional
+    speech labeling, proposing it as a quality criterion distinct from downstream synthesis
+    metrics such as MOS or WER."
+
+- id: "2505.17589"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: differentiable_reward_opt_over_tokens_enables_scalable_posttraining
+    role: supports
+    claim: "Differentiable reward optimization over discrete speech tokens, rather than
+      synthesized audio, enables scalable post-training for LLM-based TTS without the
+      computational overhead of full audio generation."
+    source: "§2.2"
+    evidence: "DiffRO trains a Token2Text model and uses Gumbel-Softmax sampling to backpropagate
+      gradients through token prediction, contributing 12-35% relative WER improvements across
+      conditions without synthesizing full audio during the reward computation."
+    confidence: high
+    relevance: low
+  - claim_id: multitask_tokenizer_captures_richer_paralinguistic_content
+    role: supports
+    claim: "Supervised multi-task training of a speech tokenizer on tasks including emotion
+      recognition, language identification, and speaker analysis captures richer paralinguistic
+      content than ASR-only objectives, with measurable downstream gains in content consistency
+      and speaker similarity."
+    source: "§2.1, §5.3"
+    evidence: "The MinMo-based FSQ tokenizer, supervised-trained on ASR, LID, SER, AED, and speaker
+      analysis, replaces CosyVoice 2's SenseVoice-based (ASR-only) tokenizer and contributes to
+      44-51% relative CER/WER improvements over CosyVoice 2 on SEED-TTS-Eval."
+    confidence: medium
+    relevance: low
+  - claim_id: zero_shot_tts_infers_emotion_from_text_not_reference_prompt
+    role: complicates
+    claim: "Current zero-shot TTS systems infer emotional tone primarily from text semantics;
+      expression of text-unrelated emotions from a reference prompt remains a significant
+      unsolved challenge."
+    source: "§5.2.3, Table 9"
+    evidence: "Text-related emotion cloning accuracy is strong (0.84-0.98 for happy/angry/sad with
+      DiffRO-EMO), but text-unrelated emotion accuracy drops substantially for sad and angry
+      categories when the emotional tone is not signalled by the text itself."
+    confidence: medium
+    relevance: medium
+  - claim_id: scaling_data_and_model_size_shows_diminishing_returns
+    role: refines
+    claim: "Scaling training data and model size in two-stage codec TTS produces consistent gains
+      up to a point of diminishing returns, with data scaling showing stronger marginal returns
+      than model size scaling beyond 0.5B parameters on current benchmarks."
+    source: "§4.2, §5.1"
+    evidence: "CosyVoice 3's scaling investigation across 1.5B/0.5B model sizes and up to 1M hours
+      of training data shows data volume driving larger measured gains than parameter count
+      increases beyond the 0.5B scale."
+    confidence: medium
+    relevance: low
+  - claim_id: studio_quality_benchmarks_underestimate_in_the_wild_difficulty
+    role: complicates
+    claim: "Existing TTS benchmarks based on studio-quality audiobook data underestimate the
+      difficulty of in-the-wild voice cloning, where noisy reference audio and domain diversity
+      expose robustness gaps not visible in standard evaluations."
+    source: "§4.4"
+    evidence: "CosyVoice 3 is the only system among tested baselines (F5-TTS, SparkTTS, GPT-SoVits)
+      able to cover all 9 languages on the newly introduced CV3-Eval in-the-wild multilingual
+      benchmark, exposing coverage and robustness gaps that audiobook-quality benchmarks such as
+      SEED-TTS-Eval do not surface."
+    confidence: high
+    relevance: high
+  limitations:
+  - "Pretraining data (1M internal hours) is not released, so the degree to which CosyVoice 3's
+    improvements are reproducible without Alibaba's internal corpus is unclear."
+  caveats:
+  - "CV3-Eval is introduced specifically to address a gap in multilingual and in-the-wild
+    evaluation that studio-quality benchmarks such as SEED-TTS-Eval do not cover, making it a
+    direct evaluation-methodology contribution alongside the TTS system itself."
+
+- id: "2506.10274"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - core_evidence
+  current_role: influential
+  method_family: []
+  claims:
+  - claim_id: no_tokenizer_dominates_across_criteria
+    role: supports
+    claim: "No discrete audio tokenizer consistently outperforms others across reconstruction,
+      downstream discriminative tasks, and acoustic language modeling; the optimal tokenizer is
+      task- and domain-dependent."
+    source: "§3.4, Figure 4"
+    evidence: "Across seven benchmarked tokenizers (EnCodec, DAC, SpeechTokenizer, Mimi, Discrete
+      WavLM, SQ-Codec, WavTokenizer), Discrete WavLM leads discriminative speech tasks, DAC leads
+      speaker recognition, and HuBERT-derived semantic tokens lead acoustic language modeling, with
+      no single system leading across all three evaluation axes."
+    confidence: high
+    relevance: high
+  - claim_id: more_codebooks_hurts_downstream_despite_reconstruction_gains
+    role: supports
+    claim: "Increasing the number of codebooks improves signal reconstruction quality but often
+      degrades downstream task performance by adding redundancy that burdens
+      representation-level learning."
+    source: "§3.2"
+    evidence: "The benchmark's downstream task evaluation (DASB, 12 tasks) shows higher codebook
+      counts increasing bitrate-driven reconstruction fidelity while adding representational
+      redundancy that reduces discriminative task accuracy for several tokenizers."
+    confidence: medium
+    relevance: medium
+  - claim_id: semantic_distillation_tradeoff_with_generalization
+    role: refines
+    claim: "Semantic distillation (aligning early RVQ layers with SSL features) improves phonetic
+      content preservation in acoustic tokenizers but may reduce cross-domain generalization when
+      the distillation source is speech-specific."
+    source: "§4.2, Table 16"
+    evidence: "The controlled ablation study isolating semantic distillation from SSL features
+      shows improved signal reconstruction on some metrics alongside reduced cross-domain
+      generalization when the distillation target is a speech-only SSL model."
+    confidence: medium
+    relevance: medium
+  - claim_id: domain_alignment_dominates_codec_performance
+    role: supports
+    claim: "Domain alignment between tokenizer training data and evaluation domain is the dominant
+      factor in discrete audio codec performance, outweighing quantization method or bitrate
+      choices."
+    source: "§4.2"
+    evidence: "The ESPnet-Codec ablation study finds that even balanced multi-domain training
+      yields worse domain-specific performance than single-domain training, more strongly than
+      varying quantization method (RVQ, SVQ, FSQ) or sampling rate."
+    confidence: high
+    relevance: medium
+  - claim_id: continuous_representations_outperform_discrete_tokenizers
+    role: supports
+    claim: "Continuous speech representations (e.g., WavLM-large) consistently outperform all
+      discrete tokenizers on discriminative tasks, with the gap widening in low-resource
+      conditions."
+    source: "§3.2, Table 7"
+    evidence: "WavLM-large continuous representations remain the ceiling across most DASB
+      discriminative tasks compared to all seven benchmarked discrete tokenizers, with the
+      performance gap widening under low-resource settings."
+    confidence: high
+    relevance: medium
+  limitations:
+  - "The acoustic LM evaluation uses a single architecture (Qwen-2.5 based, 357M) and a single
+    dataset (LibriHeavy), so findings on which tokenizers support better SLMs may not generalise
+    to other LM architectures or training scales."
+  caveats:
+  - "This paper is itself the first unified evaluation framework spanning reconstruction
+    (Codec-SUPERB, VERSA), downstream discriminative performance (DASB), and acoustic language
+    modeling (SALMon, ZeroSpeech) across speech, music, and general audio under consistent
+    conditions, making it a direct methodological contribution to the evaluation-metrics concept
+    rather than an incidental user of existing benchmarks."
+
+- id: "2506.16381"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: fine_grained_paralinguistic_control_remains_open_challenge
+    role: complicates
+    claim: "Fine-grained paralinguistic control, independent manipulation of multiple acoustic
+      attributes from natural-language instructions, remains an open challenge for current TTS
+      systems, including commercial offerings."
+    source: "§4.3, Table 5"
+    evidence: "Even the top-scoring commercial system (Gemini-2.5-flash-preview-tts) reaches only
+      88.7% average accuracy on the English InstructTTSEval subset, well below the reference audio
+      upper bound of 96.2%."
+    confidence: high
+    relevance: medium
+  - claim_id: closed_vs_open_source_gap_widens_with_abstraction
+    role: supports
+    claim: "A substantial performance gap exists between closed-source commercial TTS systems and
+      open-source alternatives on instruction-following benchmarks, widening as instruction
+      abstraction increases."
+    source: "§4.3, Tables 5-6"
+    evidence: "On the English subset, the leading open-source system (VoxInstruct) reaches 50.4%
+      versus 88.7% for the top commercial system, and on the Chinese subset GPT-4o-mini-TTS drops
+      sharply to 51.1% relative to closed Gemini models at 84-85%."
+    confidence: high
+    relevance: low
+  - claim_id: timbre_and_emotion_control_are_orthogonal_capabilities
+    role: refines
+    claim: "Timbre controllability and emotional expressiveness represent orthogonal capabilities
+      in current TTS systems, as models that succeed on one dimension frequently fail on the
+      other."
+    source: "§4.4, Table 7"
+    evidence: "Case-study analysis across evaluated systems shows models scoring well on timbre
+      instruction-following frequently perform poorly on emotional expressiveness instructions and
+      vice versa."
+    confidence: medium
+    relevance: low
+  - claim_id: llm_judge_achieves_79_percent_agreement_with_humans
+    role: supports
+    claim: "Automatic LLM-based evaluation of instruction-following in speech achieves
+      approximately 79% agreement with human annotators, with lower reliability on subjective
+      role-play tasks."
+    source: "§4.1, Table 4"
+    evidence: "Human-Gemini consistency validated on 50 reference samples per task and language
+      averages 79% across tasks, with 87% agreement on structured Acoustic-Parameter
+      Specification tasks dropping to 71% on open-ended Role-Play tasks."
+    confidence: high
+    relevance: high
+  - claim_id: paralinguistic_vocal_events_not_reproducible
+    role: complicates
+    claim: "Paralinguistic vocal events such as laughter, sighs, and screams are not reliably
+      reproducible by any current TTS system when specified in natural-language instructions."
+    source: "§4.4, Table 7"
+    evidence: "Case studies across all evaluated systems identify reproduction of paralinguistic
+      sound events as a systematic failure mode, alongside extreme emotional intensity and singing
+      or melodic vocal production."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "Gemini is used both as the caption generator for benchmark construction and as the judge
+    evaluating model outputs; Gemini TTS models score highest on the benchmark, and the authors
+    acknowledge LLM self-evaluator bias as a confound."
+  caveats:
+  - "InstructTTSEval is the first benchmark to measure paralinguistic instruction-following at
+    scale using an automated LLM-as-judge pipeline, directly extending the evaluation-metrics
+    toolkit beyond WER/MOS-style measurement, though its 79% human-agreement rate and
+    self-evaluator bias concern should be weighed against that scalability."
+
+- id: "2506.23049"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: low
+  evidence_role:
+  - core_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: cascaded_pipelines_outperform_e2e_on_practical_benchmarks
+    role: supports
+    claim: "Cascaded ASR+LLM+TTS pipelines outperform end-to-end speech models on practical spoken
+      task benchmarks when a high-quality instruction-tuned text LLM serves as the reasoning
+      backbone."
+    source: "§III.A, Table I"
+    evidence: "AURA with Whisper+LLaMA-3.3-70B achieves 92.75% on VoiceBench OpenBookQA versus
+      25.93% (Moshi) and 26.59% (Mini-Omni2) for end-to-end speech models, and 83.52% for
+      Kimi-Audio."
+    confidence: high
+    relevance: low
+  - claim_id: retrieval_augmentation_improves_spoken_qa
+    role: supports
+    claim: "Retrieval augmentation via web search at inference time improves spoken question
+      answering on knowledge-intensive multiple-choice tasks without retraining."
+    source: "§III.A"
+    evidence: "Prompting AURA (OWSM ASR) to perform at least one web search before answering raises
+      OpenBookQA accuracy from 87.69% to 89.23%."
+    confidence: medium
+    relevance: low
+  - claim_id: react_reasoning_enables_reliable_multiturn_tool_use
+    role: supports
+    claim: "ReAct-style interleaved reasoning and action enables reliable tool selection and goal
+      completion in multi-turn spoken conversational agents."
+    source: "§III.B, Table II"
+    evidence: "AURA achieves 90% overall task success and satisfaction scores above 4.0 across 30
+      human-evaluated tasks spanning compound goals requiring calendar, email, contact, and web
+      search APIs."
+    confidence: medium
+    relevance: low
+  - claim_id: dst_remains_unreliable_even_with_large_llms
+    role: complicates
+    claim: "Dialog state tracking in spoken task-oriented systems remains far from reliable even
+      with large instruction-tuned LLMs applied without fine-tuning."
+    source: "§III.C, Table III"
+    evidence: "AURA achieves 28.76% JGA on SpokenWOZ, improving over the best prior baseline by
+      3.1 points but remaining well below full accuracy."
+    confidence: medium
+    relevance: medium
+  limitations:
+  - "The human evaluation of multi-turn task success uses a single evaluator (a co-author), which
+    introduces potential bias and limits the reliability of reported success rates."
+  caveats:
+  - "AURA's benchmarking is entirely against existing metrics (VoiceBench accuracy, AlpacaEval,
+    SpokenWOZ JGA) rather than introducing new evaluation methodology; its relevance to this
+    concept is primarily as comparative evidence of cascaded-versus-end-to-end performance under
+    established benchmarks."
+
+- id: "2507.01611"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - GAN
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: explicit_envelope_modeling_enables_pitch_extrapolation
+    role: supports
+    claim: "Explicit spectral envelope modeling in a neural vocoder enables reliable pitch
+      modification beyond the training frequency range, where purely neural waveform predictors
+      fail."
+    source: "§V.B, §V.D, Tables II, VI, Fig. 6"
+    evidence: "QHARMA-GAN maintains f0 RMSE of 0.08-0.11 Hz across pitch-scale factors from 0.5x to
+      2x on VCTK, while Vocos fails catastrophically at 0.65-0.67 Hz."
+    confidence: high
+    relevance: low
+  - claim_id: signal_processing_priors_reduce_vocoder_data_requirements
+    role: supports
+    claim: "Incorporating classical signal-processing constraints into a neural vocoder reduces
+      data requirements without sacrificing subjective quality."
+    source: "§V.D, Table VII"
+    evidence: "QHARMA-GAN trained on 919 LJSpeech utterances achieves MOS 3.85 compared to
+      HiFi-GAN's 3.53 under the same data constraint, with HiFi-GAN overfitting on insufficient
+      data."
+    confidence: medium
+    relevance: low
+  - claim_id: pesq_diverges_from_mos_for_hybrid_vocoders
+    role: complicates
+    claim: "Hybrid vocoders that analytically reconstruct phase can achieve higher subjective
+      naturalness than end-to-end neural vocoders despite lower PESQ scores, suggesting objective
+      spectral distance metrics do not fully capture perceptual frequency smoothness."
+    source: "§V.B, Table III"
+    evidence: "QHARMA-GAN scores MOS 4.21 on VCTK versus HiFi-GAN's 4.08, while PESQ is comparable
+      (3.14 vs 3.14) and both trail QHM's PESQ of 3.45 despite QHM scoring the lowest subjective
+      MOS."
+    confidence: medium
+    relevance: high
+  - claim_id: vuv_detection_bottleneck_for_pitch_modification
+    role: complicates
+    claim: "V/UV detection errors are a critical bottleneck for hybrid pitch-modification vocoders,
+      particularly at extreme pitch-raising factors."
+    source: "§V.B, Table IV"
+    evidence: "QHARMA-GAN outperforms WORLD in pitch lowering (MOS 3.01 vs 2.98 at rho=0.5x) but
+      underperforms WORLD in pitch raising (2.72 vs 2.82 at rho=2x), attributed to V/UV
+      misclassification during upward pitch shifts."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "Evaluations use proprietary metrics (UTMOS) alongside standard ones; no listening test
+    confidence intervals are reported for the modification experiments, making statistical
+    significance of cross-method differences difficult to assess."
+  caveats:
+  - "The MOS-versus-PESQ divergence observed for QHARMA-GAN and QHM (higher subjective naturalness
+    with lower or comparable objective spectral-distance scores) is a direct, quantified instance
+    of objective-subjective metric disagreement relevant to any evaluation-metrics discussion of
+    vocoder quality assessment."
+
+- id: "2507.02176"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - evaluation_caution
+  - core_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: asv_embeddings_miss_dynamic_identity_markers
+    role: supports
+    claim: "ASV embeddings encode static anatomical speech features but systematically fail to
+      represent dynamic behavioral identity markers such as rhythm and timing patterns."
+    source: "§3.2, Figure 1"
+    evidence: "Lasso regression predicting handcrafted features from seven ASV models' embeddings
+      shows high r² for mean pitch, HNR, shimmer, and α-ratio, but near-zero r² for speech rate,
+      voiced/unvoiced segment lengths, and pitch standard deviation."
+    confidence: high
+    relevance: high
+  - claim_id: eer_confounded_by_non_identity_factors
+    role: complicates
+    claim: "EER-based speaker similarity measurements in speech synthesis evaluation are
+      susceptible to confounding factors unrelated to voice identity, which can invalidate
+      comparisons between synthesis systems."
+    source: "§3.3, Table 2"
+    evidence: "Duration-sorting same-speaker utterances depresses EER from an expected 50% to
+      30-39% across all ASV models tested; SNR 20dB noise reduces EER to 15-38%; equalization
+      mismatches cause near-total failure in GE2E, all correctable via re-equalization and duration
+      matching."
+    confidence: high
+    relevance: high
+  - claim_id: rhythm_identity_requires_phoneme_duration_distributions
+    role: supports
+    claim: "Characterizing speaker rhythm for identity assessment requires modeling
+      phoneme-duration distributions rather than aggregate measures such as mean speech rate."
+    source: "§3.4, Figure 2, Table 3"
+    evidence: "U3D Wasserstein distances clearly separate same-speaker pairs (avg. 2.15) from
+      nearest-by-speech-rate pairs (18.40) and random pairs (21.53), while many L2-ARCTIC speakers
+      sharing similar syllable rates show markedly different voiced-segment duration patterns."
+    confidence: high
+    relevance: high
+  - claim_id: ssl_units_substitute_for_phoneme_labels_in_rhythm_analysis
+    role: refines
+    claim: "Self-supervised speech unit representations serve as language-agnostic substitutes for
+      phoneme labels in rhythm analysis, avoiding the need for forced alignment."
+    source: "§3.4, Table 3"
+    evidence: "U3D using HuBERT-derived unsupervised clusters achieves Wasserstein distance
+      separation between speaker conditions (2.15 same, 18.40 nearest, 21.53 random) nearly
+      identical to forced-alignment-based phoneme rhythm analysis (2.48, 18.37, 24.43)."
+    confidence: medium
+    relevance: high
+  limitations:
+  - "U3D is validated as a discriminative metric (separating speaker pairs) but has not been
+    validated against human perceptual judgments of rhythm similarity."
+  caveats:
+  - "This paper is a dedicated methodological critique and improvement of speaker similarity
+    assessment itself, directly identifying concrete confounds (duration, channel noise,
+    equalization) in the field's default ASV-EER metric and proposing U3D as a complementary
+    rhythm-specific measure."
+
+- id: "2507.03887"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - core_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: joint_training_improves_ood_attribution
+    role: supports
+    claim: "Joint training of a TTS generator and a speech discriminator with aligned optimization
+      objectives improves out-of-domain generalization of model-specific attribution compared to
+      training the discriminator independently."
+    source: "§5.4, Table 3"
+    evidence: "Jointly training F5-TTS and a wav2vec 2.0 + LCNN discriminator improves
+      out-of-domain AUC from 0.8823 to 0.9421 and EER from 18.99% to 11.50% relative to
+      independent discriminator training."
+    confidence: high
+    relevance: low
+  - claim_id: watermark_free_traceability_preserves_quality
+    role: supports
+    claim: "Watermark-free TTS traceability through joint training can preserve or slightly improve
+      synthesis quality relative to the base model."
+    source: "§5.6, Table 5"
+    evidence: "The jointly trained F5-TTS achieves WER 2.033% (vs. 2.202% baseline), UTMOS 3.958
+      (vs. 3.926), and speaker similarity 0.661 (vs. 0.659) on LibriSpeech-PC test-clean."
+    confidence: medium
+    relevance: low
+  - claim_id: attribution_vulnerable_to_noise_and_pitch_manipulation
+    role: complicates
+    claim: "TTS attribution discriminators based on audio feature patterns are vulnerable to
+      additive noise and pitch manipulation, but robust to common audio processing operations."
+    source: "§5.5, Table 4"
+    evidence: "Out-of-domain AUC drops by 0.1233 under additive noise (MUSAN) and 0.0901 under
+      pitch shifting, while remaining stable within 0.025 AUC under resampling, time-stretching,
+      reverb, volume scaling, and MP3 compression."
+    confidence: medium
+    relevance: low
+  - claim_id: differentiability_required_for_watermark_free_traceability
+    role: complicates
+    claim: "Differentiability of the full synthesis pipeline from text input to output waveform is
+      a necessary precondition for watermark-free traceability via joint generator-discriminator
+      training, excluding discrete token-based TTS architectures."
+    source: "§6"
+    evidence: "The paper explicitly notes VALL-E-type models using non-differentiable discrete
+      token generation are incompatible with this framework because the discriminator's loss
+      cannot backpropagate through the discrete generation step."
+    confidence: high
+    relevance: low
+  limitations:
+  - "The method is evaluated on a single TTS backbone (F5-TTS) with a single discriminator
+    architecture, and the out-of-domain test uses only three other TTS systems."
+  caveats:
+  - "The paper establishes a multi-dimensional evaluation protocol (EER, AUC for traceability;
+    WER, UTMOS for synthesis quality) for the attribution task, but its primary contribution to
+    the evaluation-metrics concept is applying existing metrics to a new task rather than
+    proposing new measurement methodology."
+
+- id: "2507.03912"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture: []
+  relevance: low
+  evidence_role:
+  - infrastructure
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: combining_acoustic_and_linguistic_features_improves_prosody_labeling
+    role: supports
+    claim: "Combining acoustic foundation model features with phoneme-level linguistic BERT
+      features improves automatic prosody label prediction over either modality alone."
+    source: "§5.4, Table 1"
+    evidence: "On CSJ, HuBERT-base + PnG BERT achieves 89.8% ACC accuracy versus 89.0% with HuBERT
+      alone and 82.5% with PnG BERT alone."
+    confidence: high
+    relevance: low
+  - claim_id: ssl_features_outperform_handcrafted_acoustics_for_prosody
+    role: supports
+    claim: "SSL speech features substantially outperform hand-crafted acoustic features for
+      automatic prosody annotation."
+    source: "§5.4, Table 1"
+    evidence: "HuBERT-base achieves 89.8% ACC accuracy versus 75.2% for melspectrogram and 62.9%
+      for F0 alone on CSJ."
+    confidence: high
+    relevance: low
+  - claim_id: language_matched_pretraining_benefits_prosody_prediction
+    role: supports
+    claim: "Language-matched pre-training benefits SSL model utility for prosody prediction in a
+      pitch-accent language."
+    source: "§5.6, Table 2"
+    evidence: "Japanese-trained HuBERT-base and wav2vec2.0-base outperform English and multilingual
+      SSL variants across all four prosodic label types on CSJ, though margins are modest."
+    confidence: medium
+    relevance: low
+  - claim_id: prosodic_boundaries_require_acoustic_evidence
+    role: complicates
+    claim: "Prosodic boundary and pause signals cannot be reliably estimated from text alone;
+      explicit acoustic evidence is required."
+    source: "§5.5"
+    evidence: "Without acoustic input, pause presence prediction fails to distinguish short pauses,
+      and boundary pitch movement symbols in ACC labels show higher error rates than when HuBERT
+      features are included."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "The paper does not evaluate whether the predicted prosodic labels improve downstream TTS
+    naturalness or prosody controllability; all results are annotation accuracy on CSJ."
+  caveats:
+  - "The paper's ablation across acoustic and linguistic model combinations offers a practical
+    benchmark for evaluating prosody annotation quality specifically, distinct from downstream TTS
+    quality metrics such as MOS or WER."
+
+- id: "2507.04817"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - GAN
+  relevance: low
+  evidence_role:
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: explicit_prosody_conditioning_matches_larger_vc_systems
+    role: supports
+    claim: "Explicit, interpretable prosodic conditioning in voice conversion can match the
+      intelligibility and speaker similarity of systems using implicit or disentangled
+      representations, at a fraction of the parameter cost."
+    source: "§5.1.1, Table 2"
+    evidence: "Fast-VGAN (~3.2M params) achieves WER of 0.000% and cosine similarity 0.648,
+      competitive with ControlVC (~20M params, WER 0.089%, similarity 0.652) and superior to
+      HiFi-VC (~14M params, WER 2.857%)."
+    confidence: high
+    relevance: low
+  - claim_id: joint_prosodic_adaptation_degrades_naturalness_and_similarity
+    role: complicates
+    claim: "Adapting target-speaker-specific prosodic parameters (pitch ambitus, speech rate)
+      during voice conversion does not reliably improve perceived speaker identity, and combining
+      multiple prosodic adaptations simultaneously degrades both naturalness and similarity."
+    source: "§5.2.1, Table 4"
+    evidence: "When ambitus and speech rate dilation are applied jointly, subjective MOS
+      naturalness drops from 3.63 to 3.13 and speaker similarity from 3.47 to 2.99 compared to
+      baseline conversion without prosodic parameter adaptation."
+    confidence: medium
+    relevance: low
+  - claim_id: neutral_to_expressive_transfer_without_expressive_training_data
+    role: supports
+    claim: "Neutral-to-expressive speech resynthesis can be achieved by applying prosodic contours
+      from expressive reference recordings to a model trained exclusively on neutral speech,
+      without requiring expressive training data."
+    source: "§4.3, §5.1.3, Table 3"
+    evidence: "Fast-VGAN trained only on neutral Expresso speaker utterances achieves 0.867 cosine
+      speaker similarity on expressive resynthesis across confused, happy, and sad conditions,
+      with WER comparable to real recordings."
+    confidence: medium
+    relevance: low
+  - claim_id: extreme_prosodic_transforms_degrade_bell_shaped
+    role: complicates
+    claim: "Extreme prosodic transformations in GAN-based voice conversion degrade naturalness and
+      speaker similarity, with performance falling off on both sides of the neutral setting in a
+      bell-shaped pattern."
+    source: "§5.2.2, Figure 3"
+    evidence: "MOS scores for naturalness and speaker similarity peak at unmodified settings and
+      decline for both compression and expansion of duration, ambitus, and F0 transposition."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "Speaker generalisation is restricted to seen speakers, as speaker identity is encoded as a
+    learned lookup embedding rather than a d-vector or x-vector, so the model cannot convert to
+    unseen target speakers without retraining."
+  caveats:
+  - "The paper's evaluation shows partial misalignment between an objective speaker-similarity
+    metric (Resemblyzer cosine similarity) and subjective MOS similarity ratings (Fast-VGAN and
+    ControlVC nearly tied on cosine similarity at 0.648 vs 0.652, but 3.47 vs 2.82 on subjective
+    similarity), a concrete instance of objective-subjective metric divergence for the
+    evaluation-metrics concept."
+
+- id: "2507.06116"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: auxiliary_model_classification_improves_system_level_mos_accuracy
+    role: supports
+    claim: "Multi-task learning with an auxiliary synthesis-model classification objective can
+      improve absolute MOS prediction accuracy at the system level by encouraging the model to
+      learn discriminative acoustic quality features."
+    source: "§III.C, Table 2"
+    evidence: "The MoE system with auxiliary classification achieves system-level MSE 0.056 (rank 1
+      of seven teams), a 21% reduction in MSE over the strongest single-objective baseline
+      (MSE 0.071)."
+    confidence: high
+    relevance: high
+  - claim_id: system_level_gains_dont_transfer_to_utterance_level
+    role: complicates
+    claim: "Improvements in system-level MOS prediction accuracy do not reliably transfer to
+      utterance-level prediction performance."
+    source: "§IV, Table 1"
+    evidence: "Despite ranking first on system-level MSE, the proposed model places 3rd-6th across
+      utterance-level metrics; the authors identify disjoint train/test annotator sets as a
+      primary cause."
+    confidence: high
+    relevance: high
+  - claim_id: system_utterance_gap_reflects_different_task_requirements
+    role: refines
+    claim: "The performance gap between system-level and utterance-level MOS prediction reflects
+      fundamentally different task requirements, not a data-scaling problem alone."
+    source: "§IV"
+    evidence: "Doubling training data from 400 to 800 samples and introducing the MoE architecture
+      yields only marginal utterance-level gains, while system-level gains are large, which the
+      paper attributes to micro-feature variability and rater-specific bias rather than data
+      volume."
+    confidence: medium
+    relevance: high
+  - claim_id: high_system_level_correlation_doesnt_imply_utterance_level_correlation
+    role: complicates
+    claim: "High correlation between predicted and actual MOS at the system level does not imply
+      high correlation at the utterance level for the same model."
+    source: "§IV, Tables 1-2"
+    evidence: "The proposed model achieves LCC 0.978 on system-level evaluation but only LCC 0.811
+      on utterance-level evaluation, with similarly large gaps in SRCC and KTAU."
+    confidence: high
+    relevance: high
+  limitations:
+  - "The training and test annotator pools are completely disjoint (raters 0-9 for training,
+    raters 10-19 for testing), meaning utterance-level results measure generalisation to unseen
+    rater subjectivity rather than a standard train/test split."
+  caveats:
+  - "This paper directly analyzes the system-level versus utterance-level MOS prediction gap and
+    attributes it to rater-set mismatch, a durable methodological finding for the evaluation-metrics
+    concept independent of whether the specific MoE architecture is adopted."
+
+- id: "2506.23325"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - hybrid
+  relevance: low
+  evidence_role:
+  - core_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: minimizing_shared_params_resolves_semantic_acoustic_conflict
+    role: supports
+    claim: "Minimizing shared parameters between semantic and acoustic encoding pathways in a
+      speech codec reduces task conflict and enables simultaneous strong text alignment and high
+      acoustic fidelity at low bitrates."
+    source: "§3.1, §4.4, Table 4"
+    evidence: "XY-Tokenizer's dual-tower architecture achieves WER 0.13 and SPK-SIM 0.83 at 1 kbps;
+      a matched single-channel model sharing encoder and RVQ across both tasks achieves SPK-SIM
+      0.77 at the same WER, confirming parameter sharing degrades reconstruction."
+    confidence: high
+    relevance: low
+  - claim_id: llm_asr_supervision_beats_ssl_distillation_for_alignment
+    role: supports
+    claim: "LLM-based ASR supervision during codec pre-training provides stronger text alignment
+      than SSL representation distillation for low-bitrate codecs."
+    source: "§4.3, Table 3"
+    evidence: "At approximately 1 kbps, XY-Tokenizer (LLM-based ASR, WER 0.13) substantially
+      outperforms SpeechTokenizer variants (distillation-based, WER 0.18-0.34) and Mimi-8
+      (distillation-based, WER 0.28) on the ASR probing task."
+    confidence: medium
+    relevance: high
+  - claim_id: distillation_strength_tradeoff_with_reconstruction
+    role: complicates
+    claim: "Representation distillation from SSL models for semantic alignment introduces
+      reconstruction-quality penalties that worsen with distillation strength at low bitrates."
+    source: "§4.3, Table 3"
+    evidence: "SpeechTokenizer-x3 (5x stronger distillation) achieves WER 0.18 but SPK-SIM only
+      0.48 at 1.5 kbps, compared to SpeechTokenizer-x1 (WER 0.34, SPK-SIM 0.65)."
+    confidence: medium
+    relevance: low
+  - claim_id: trainable_llm_decoder_degrades_encoder_text_alignment
+    role: complicates
+    claim: "Allowing the LLM decoder to train freely during multi-task codec pre-training improves
+      autoregressive text generation but degrades the encoder's transferable text-alignment
+      representations."
+    source: "§4.4, Table 5"
+    evidence: "A trainable-LLM variant achieves lower LLM decoder WER (0.03 vs. 0.06 at 200K steps)
+      but higher ASR probing WER (0.18 vs. 0.13), worsening progressively over 800K training
+      steps."
+    confidence: medium
+    relevance: low
+  - claim_id: whisper_pretraining_preserves_paralinguistic_info_better_than_ssl
+    role: supports
+    claim: "Whisper's supervised ASR pre-training enables better paralinguistic information
+      preservation in codec encoder architectures than self-supervised alternatives."
+    source: "§2, Table 1"
+    evidence: "Preliminary auto-encoder experiments with frozen encoders show Whisper achieves
+      SPK-SIM 0.68 on LibriSpeech test-clean, compared to WavLM (0.53) and HuBERT (0.42)."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "Evaluation uses only objective metrics (WER, SPK-SIM, STOI, PESQ); no subjective listening
+    tests or MOS scores are reported, making it impossible to assess perceptual audio quality
+    relative to competing systems."
+  caveats:
+  - "The paper's ASR-probing-task methodology (a downstream LSTM-CTC model trained on quantized
+    codec embeddings, used as a quantitative measure of semantic alignment) is a reusable
+    evaluation technique for codec design relevant beyond this specific tokenizer."
+
+- id: "2412.18603"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: ICML
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: influential
+  method_family: []
+  claims:
+  - claim_id: ssm_enables_stable_long_form_generation
+    role: supports
+    claim: "Linear-time state-space sequence models enable stable long-form speech generation that
+      Transformer spoken LMs cannot sustain at comparable scale."
+    source: "§7.1, §7.2, Tables 3-4"
+    evidence: "SpeechSSM-2B maintains N-MOS of 4.12-4.16 across all time strata up to 4+ minutes
+      and stable semantic coherence in 16-minute generation, while Transformer-based baselines and
+      windowed extensions of prior spoken LMs degrade rapidly beyond their training lengths."
+    confidence: high
+    relevance: low
+  - claim_id: separating_speaker_conditioning_preserves_identity_long_form
+    role: supports
+    claim: "Separating speaker conditioning into a dedicated acoustic synthesis stage preserves
+      voice identity more effectively in long-form speech generation than encoding speaker
+      information in semantic tokens."
+    source: "§6.1, §7.1, Tables 2-3"
+    evidence: "SpeechSSM achieves SpkrSim of 0.85 in long-form evaluation versus 0.33-0.41 for
+      GSLM and TWIST, attributed to SoundStorm's speaker-prompted acoustic stage handling identity
+      independently of the semantic LM."
+    confidence: medium
+    relevance: low
+  - claim_id: standard_spoken_lm_metrics_unreliable
+    role: complicates
+    claim: "Standard evaluation metrics for spoken language models are unreliable or saturating for
+      modern systems, particularly in long-form settings."
+    source: "§6.1, §4"
+    evidence: "sWUGGY scores negatively correlate with generation quality at large token
+      vocabularies (32k vs. hundreds); short-form holistic MOS approaches ground truth at 7 seconds
+      while qualitative failures persist; transcript perplexity favors repetitive outputs at
+      default temperatures."
+    confidence: high
+    relevance: high
+  - claim_id: long_form_generation_remains_below_human_quality
+    role: complicates
+    claim: "Long-form speech generation remains far below human quality even for state-of-the-art
+      spoken language models."
+    source: "§7.1, Table 3"
+    evidence: "No model achieves any wins against LibriSpeech-Long ground truth in 4-minute
+      side-by-side comparisons judged by an LLM on fluency, coherence, logicality, and
+      interestingness."
+    confidence: high
+    relevance: medium
+  limitations:
+  - "Model weights are not released and inference requires TPU infrastructure; independent
+    reproducibility of the long-form results is not currently possible."
+  caveats:
+  - "SpeechSSM introduces the LibriSpeech-Long benchmark and a time-stratified naturalness MOS plus
+    LLM-as-judge side-by-side evaluation methodology specifically because it demonstrates existing
+    spoken-LM metrics (sWUGGY, transcript perplexity, short-form MOS) are unreliable or saturating
+    for long-form generation, a direct evaluation-metrics contribution."
+
+- id: "2506.09874"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - core_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: joint_generation_beats_post_hoc_mixing
+    role: supports
+    claim: "Joint generative modelling of speech and environmental audio produces more naturally
+      integrated output than post-hoc mixing of separately generated speech with background
+      sounds."
+    source: "§4.2"
+    evidence: "A/B tests with 20+ raters per sample showed 87.89% preference for UmbraTTS over
+      F5-TTS plus post-hoc background mixing across 30 AudioSet samples."
+    confidence: high
+    relevance: low
+  - claim_id: self_supervised_extraction_sufficient_for_environmental_tts
+    role: supports
+    claim: "Self-supervised extraction of speech and background audio from unlabeled mixed
+      recordings is sufficient to train environmentally conditioned TTS to state-of-the-art
+      performance."
+    source: "§3, §4.1, Table 1"
+    evidence: "UmbraTTS uses VAD-based silence extraction and learned source separation applied to
+      AudioSet to construct training triplets without manual annotation, achieving best WER and
+      FAD among all baselines on AudioCaps."
+    confidence: medium
+    relevance: low
+  - claim_id: flow_matching_beats_diffusion_for_environmental_tts
+    role: supports
+    claim: "Flow matching outperforms diffusion-based architectures in environmentally aware speech
+      synthesis on both automatic and human evaluation metrics."
+    source: "§4.1, §4.2, Tables 1-3"
+    evidence: "UmbraTTS (CFM-based) achieves WER 6.89% and FAD 4.14 versus VoiceDiT (diffusion,
+      7.09%, 4.60) and VoiceLDM (diffusion, 10.39%, 5.56) on AudioCaps, with 78.54-81.91% human
+      preference over VoiceLDM."
+    confidence: medium
+    relevance: low
+  - claim_id: explicit_ser_control_needed_for_background_balance
+    role: complicates
+    claim: "Controlling speech-to-environment balance in jointly generated audio scenes requires an
+      explicit scalar conditioning parameter; standard text and speaker conditioning are
+      insufficient for this degree of output control."
+    source: "§3, §4.2"
+    evidence: "UmbraTTS introduces a dedicated SER signal injected via adaLN-zero; a separate
+      controlled listening test confirms 96.6% of participants correctly distinguish the intended
+      background volume direction in pairwise comparisons."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "The evaluation protocol is borrowed from VoiceLDM and covers only the AudioCaps and MusicCaps
+    test subsets, so generalisation to other environmental conditions is untested."
+  caveats:
+  - "Evaluation combines FAD, KL divergence, CLAP score, and WER alongside A/B human preference
+    tests, providing a multi-dimensional protocol for jointly generated speech-plus-environment
+    audio, though the paper does not itself propose new metrics."
+
+- id: "2507.07799"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: instruction_tts_enables_anonymization_without_source_audio
+    role: supports
+    claim: "Instruction-conditioned TTS enables speaker anonymization without relying on source
+      speaker audio or speaker embeddings."
+    source: "§3.3, §3.4.1, Table 1"
+    evidence: "Parler-TTS with natural language speaker descriptions achieves FAR=0% on
+      SLUE-VoxPopuli, matching zero-shot TTS baselines (VALL-E, XTTS-v2) that require reference
+      audio."
+    confidence: high
+    relevance: low
+  - claim_id: far_unreliable_under_disjoint_speaker_evaluation_design
+    role: complicates
+    claim: "False acceptance rate is an unreliable discriminator of speaker anonymization quality
+      when evaluation design guarantees disjoint training and test speakers."
+    source: "§3.4.1"
+    evidence: "FAR=0% is achieved by every TTS-based system regardless of architecture or
+      conditioning, because TTS models are trained on speakers absent from the evaluation set; the
+      metric cannot distinguish the proposed method from any TTS-based pipeline in this setting."
+    confidence: high
+    relevance: high
+  - claim_id: asr_ner_pipeline_content_privacy_limited_by_errors
+    role: complicates
+    claim: "ASR + NER pipeline-based content privacy is limited by recognition and detection errors
+      that allow a meaningful share of sensitive content to pass through."
+    source: "§3.4.1, §4"
+    evidence: "The ASR component achieves 19.00% WER on original speech and DeBERTa-L NER achieves
+      only 71.80% F1 on predicted transcriptions, meaning many named entities are missed at the
+      detection stage."
+    confidence: medium
+    relevance: low
+  - claim_id: prompt_based_tts_variability_limits_identity_consistency
+    role: complicates
+    claim: "Generative variability in prompt-based TTS limits consistent voice identity
+      reproduction across utterances sharing the same speaker description."
+    source: "§4"
+    evidence: "Parler-TTS outputs may sound like different persons across generations even with an
+      identical speaker description, undermining multi-utterance anonymization coherence."
+    confidence: low
+    relevance: low
+  - claim_id: speaker_attribute_choice_affects_intelligibility
+    role: supports
+    claim: "Speaker attribute choice in instruction-conditioned TTS introduces measurable variation
+      in downstream speech intelligibility that practitioners must account for."
+    source: "§3.4.2, Tables 2 and 3"
+    evidence: "WER varies from 12.07% (Slovak accent) to 23.76% (Italian accent) across 38 accent
+      descriptions, and from 12.39% (normal rate) to 18.56% (very fast) across speaking rate
+      settings, while speaker privacy (FAR=0%) remains constant."
+    confidence: medium
+    relevance: medium
+  limitations:
+  - "FAR=0% is observed for all TTS-based systems including both baselines, because the evaluation
+    speakers are disjoint from TTS training speakers; the privacy metric cannot distinguish the
+    proposed approach from any TTS pipeline in this experimental design."
+  caveats:
+  - "The paper's most durable contribution to evaluation-metrics is the demonstration that FAR, a
+    standard speaker-anonymization privacy metric, is structurally unable to discriminate between
+    methods whenever evaluation speakers are disjoint from TTS training speakers, a design flaw
+    that could affect other anonymization evaluations using the same protocol."
+
+- id: "2507.08319"
+  entry_date: "2026-07-20"
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: low
+  evidence_role:
+  - core_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: active_learning_more_data_efficient_than_static_selection
+    role: supports
+    claim: "Active learning with model-informed informativeness criteria produces more
+      data-efficient TTS corpora than model-agnostic static data selection at equal corpus size."
+    source: "§III.B, Table I"
+    evidence: "The proposed method achieves 71.0% synthesizable speaker ratio at 3,943 utterances
+      versus 66.6% for the static baseline of the same size, measured by pseudo-MOS exceedance
+      rate."
+    confidence: high
+    relevance: low
+  - claim_id: informativeness_criterion_trades_off_top_quality_speakers
+    role: complicates
+    claim: "Data selection methods that optimize synthesizable speaker coverage may reduce
+      synthesis quality for speakers already near the quality threshold."
+    source: "§III.B, Figure 3"
+    evidence: "The proposed method underperforms the static baseline for speakers with pseudo-MOS
+      above 2.6, because the informativeness criterion explicitly excludes speakers the current
+      model can already synthesize well."
+    confidence: medium
+    relevance: medium
+  - claim_id: quality_estimator_effective_on_small_training_fraction
+    role: supports
+    claim: "TTS corpus quality estimators remain effective when trained on a small fraction of
+      candidate data rather than requiring full candidate set pre-processing."
+    source: "§III.B, Figure 7"
+    evidence: "The data quality estimator trained on 10% of the YouTube candidate pool shows a
+      strong correlation with the estimator trained on 100% of the data, with no significant change
+      in selection behavior."
+    confidence: medium
+    relevance: medium
+  - claim_id: diffusion_better_captures_speaker_embedding_distributions
+    role: supports
+    claim: "Diffusion models better capture complex speaker embedding distributions than Gaussian
+      mixture models for speaker generation tasks with limited training samples."
+    source: "§III.B, Figure 5"
+    evidence: "The diffusion model achieves Wasserstein distance to held-out test speakers that is
+      more than twice the standard deviation lower than GMMs across all cluster sizes (M=1..10)."
+    confidence: medium
+    relevance: low
+  limitations:
+  - "The evaluation uses pseudo-MOS (an automatic quality predictor) rather than subjective
+    listening tests, so the absolute synthesis quality of the final corpora is not independently
+    verified."
+  caveats:
+  - "Pseudo-MOS quality prediction is used as the sole selection and evaluation criterion
+    throughout the pipeline; its role here is as a practical automated stand-in for human MOS
+    rather than a methodological contribution to evaluation-metrics itself."
 claim_clusters: []
 method_families: []
 reassessment_queue: []
