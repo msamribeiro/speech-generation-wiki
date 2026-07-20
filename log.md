@@ -6,6 +6,12 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ---
 
+## 2026-07-20
+
+- misc | concept cleanup | 21 stale concept pages replaced with pending-integration placeholders; concept index split into rendered and pending sections | runtime: codex | provider: openai | model: gpt-5
+
+- render | 2 concepts | mode: full | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-07-19
 
 - integrate | speech-to-speech | 6 papers integrated (phase 1 only) | Q3-scoped oldest-first continuation, 54 -> 60; processed the final 7 in-scope candidates (2509.17765 through 2509.26542), 1 skipped as scope-mismatch (2509.23938, Easy Turn: turn-taking detection module with no speech-generation stage of its own, does not fit any of the 3 S2S sub-paradigms, same reasoning as the VAP/DiVA precedents); Q3-and-earlier Phase 1 backlog for speech-to-speech is now fully closed | phase 2 synthesis not yet run for this concept
