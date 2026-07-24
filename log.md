@@ -2,7 +2,13 @@
 title: "Changelog"
 ---
 
-Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (concept pages and evidence dossiers regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
+Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
+
+## 2026-07-24
+
+- misc | removed obsolete `evidence/` directory after Overview and In Depth production migration; deleted the legacy speech-to-speech and flow-matching evidence dossiers | runtime: codex | provider: openai | model: gpt-5
+- render | 1 concept | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- render | 4 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
 
 ## 2026-07-22
 
