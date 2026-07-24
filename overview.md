@@ -1,102 +1,148 @@
 ---
 title: "Field Overview"
+source_digest_date: 2026-07-22
+source_concepts: [flow-matching, speech-to-speech, evaluation-metrics, rlhf-speech, disentanglement]
+generation:
+  schema_version: 2
+  date: "2026-07-24"
+  stage: render
+  mode: full
+  runtime: codex
+  provider: openai
+  agent: speech-generation-render-agent
+  model: "gpt-5"
+  commit: "9bf1473"
 ---
-*Updated after every ~25 ingests or after a significant query that reveals a new pattern.*
 
-Last updated: 2026-06-13 | Papers ingested: 225
+# Field Overview
 
----
+> [!abstract]
+> Across the five concepts currently integrated in depth, speech generation is becoming faster,
+> more interactive, and more controllable—but improvements increasingly depend on whether systems
+> preserve capabilities that their objectives and benchmarks do not directly measure. This is a
+> partial field view derived from the reviewed corpus, not an exhaustive account of speech
+> generation research.
 
-## 1. Dominant Paradigms
+> [!warning]
+> **Work in progress.** This synthesis currently stops at Q3 2025 and includes only the five
+> completed concept integrations listed below. Later papers in the catalog have not necessarily
+> reached the claim graphs or this field-level account.
 
-**Text-to-Speech (TTS).** Two paradigms dominate open-weight zero-shot TTS as of mid-2025:
+## What the Integrated Corpus Shows
 
-- **Pure flow-matching** ([[2025.acl-long.313]], F5-TTS; [[2025.acl-long.1043]], OZSpeech): Flow matching over mel-spectrograms with text and reference audio concatenation. The theoretical framework was established by [[2210.02747]] (Flow Matching for Generative Modeling); [[2207.12598]] (Classifier-Free Guidance) provides the conditioning mechanism. F5-TTS (336M, 95K hours EN+ZH) is the reference open-weight system.
-- **LLM + flow matching** ([[2412.10117]] CosyVoice 2, [[2510.00981]] FlexiCodec-TTS): Autoregressive LM predicts semantic tokens from text; a flow-matching acoustic model synthesizes mel conditioned on those tokens. This hybrid achieves better text adherence at the cost of AR latency. The semantic-token-plus-acoustic-token hierarchy traces to [[2209.03143]] (AudioLM, 2022) and is made practical by neural codecs in the [[2210.13438]] (EnCodec) family.
+### Generation is becoming faster, but speed does not settle system design
 
-The VALL-E-family pure AR codec LM ([[2301.02111]]) remains a baseline and conceptual anchor, with active work on improving its codec ([[2025.acl-long.1498]] DRI consistency), decoding ([[2025.emnlp-main.989]] MTP), and post-training alignment ([[2025.acl-long.598]] INTP/DPO). At the vocoder layer, [[2010.05646]] (HiFi-GAN) and [[2206.04658]] (BigVGAN) remain the dominant choices across virtually all published TTS systems.
+Within the reviewed flow-matching literature, continuous-output generation offers a practical
+speed advantage over conventional diffusion across TTS, voice conversion, vocoding, and related
+representations. Few-step methods now use several distinct mechanisms, including distillation,
+learned priors, scheduling, caching, and specialized solvers. Their headline step counts are not
+interchangeable: lower compute can reduce naturalness, prosodic diversity, memory efficiency, or
+training simplicity in different ways ([[2025.acl-long.313|F5-TTS]],
+[[2025.acl-long.1043|OZSpeech]], [[2507.14988|DMOSpeech 2]]).
 
-**Voice Conversion (VC).** Real-time zero-shot VC is the dominant research direction. Two systems define the 2025 frontier: [[2507.14534]] (Conan, SSL-distillation content extraction, 37–140 ms GPU latency, 85.71% SPK-SIM) and [[2025.acl-demo.37]] (RT-VC, articulatory coding, 61.4 ms CPU latency). The gap between streaming and offline VC quality has effectively closed.
+The same distinction appears in spoken interaction. Full-duplex systems can listen while speaking
+and respond rapidly to interruption, but low latency alone does not produce good turn-taking.
+False yielding, premature takeover, weak backchannels, and loss of semantic coherence remain
+visible failure modes ([[2507.23159|Full-Duplex-Bench v1.5]], [[2509.22243|FLEXI]]). Across these
+concepts, speed is best understood as one dimension of capability rather than a proxy for overall
+system quality.
 
-**Spoken Conversational Agents (SCA).** Aligned multimodal LLMs (speech encoder + text LLM + speech decoder) dominate over pure end-to-end speech LMs. The SCA lineage runs from [[2209.03143]] (AudioLM, 2022) to [[2410.00037]] (Moshi, 2024, full-duplex real-time dialogue) to [[2410.21276]] (GPT-4o, 2024, natively multimodal at production scale) to [[2503.20215]] (Qwen2.5-Omni, 2025, omni-modal streaming). Key advances in the latest pass: cross-modal distillation without instruction data ([[2025.acl-long.388]] DiVA), empathetic response generation ([[2025.emnlp-demos.70]] OpenS2S), and the first interaction-annotation corpus for duplex modeling ([[2025.findings-emnlp.424]] InteractSpeech). A systematic diagnosis of why pure SLMs underperform text LLMs ([[2412.17048]]) reveals paralinguistic variability in speech tokens as the dominant bottleneck.
+### Modularity remains a strong defense against capability loss
 
-## 2. Emerging Trends
+The reviewed speech-to-speech evidence favors modularity when general language ability matters.
+Cascaded ASR–language-model–TTS systems remain strong general-purpose baselines, while systems
+that preserve a pretrained text backbone and attach a speech decoder often retain reasoning and
+instruction-following more reliably than jointly trained speech models
+([[2410.17196|VoiceBench]], [[2411.00774|Freeze-Omni]],
+[[2025.findings-acl.1051|LLMVoX]]).
 
-**Preference alignment as standard post-training for TTS.** [[2025.acl-long.598]] (INTP) demonstrates that DPO fine-tuning on ~250K paired samples reduces WER by 31–52% relative across five diverse architectures without degrading speaker similarity. DPO has now been extended beyond AR models to flow-matching (DPO-FM) and masked generative models (DPO-MGM), making preference alignment architecture-general. Interspeech 2025 adds two new RLHF approaches: DiffRO ([[interspeech-2025-0704]]) introduces Gumbel-Softmax differentiable token sampling to bypass audio decoding for reward computation (WER 0.78% zh on seed-tts-eval); DLPO ([[interspeech-2025-0063]]) demonstrates RLHF for diffusion TTS via task-specific loss regularization. Together, these papers establish RLHF as applicable across AR codec LMs, flow-matching, and diffusion TTS — no longer limited to any single paradigm.
+Flow-matching systems reveal a related choice. Pure non-autoregressive generation offers parallel
+decoding, whereas autoregressive-plus-flow hybrids separate semantic or stylistic planning from
+acoustic rendering at the cost of sequential latency. The relevant question is therefore not
+simply whether a model is “end to end,” but which capabilities are coupled, which components can
+be trained independently, and where information is discarded.
 
-**TTS inference acceleration as a dedicated research area.** FM acceleration continues to expand: APTTS ([[interspeech-2025-0455]]) via adversarial post-training (4 steps), RapFlow-TTS ([[interspeech-2025-0554]]) via consistency FM (2 NFE), and now EPSS ([[interspeech-2025-2449]]) via empirically pruned non-uniform step schedules (7 NFE, 4× RTF speedup, training-free). For AR TTS, Speech Speculative Decoding ([[interspeech-2025-2447]]) adapts speculative decoding from text LLMs with a tolerance-factor acceptance criterion that exploits the many-to-one mapping from speech tokens to perceptual quality (1.4× AR LM speedup on CosyVoice 2). The two complementary approaches — non-uniform step scheduling for FM and speculative decoding for AR — are both training-free drop-ins for existing deployed models.
+### Control depends on separation, but separation is not free
 
-**Codec reliability as a first-class design criterion.** [[2025.acl-long.1498]] formalizes Discrete Representation Inconsistency (DRI) — the same audio produces different codec token sequences depending on context — and shows that training-time consistency constraints reduce downstream VALL-E WER by 1.98% absolute at no reconstruction quality cost. Combined with [[2412.17048]]'s paralinguistic variability analysis, the field is converging on the view that codec design quality directly determines SLM/TTS quality, not just audio reconstruction fidelity. PAST ([[interspeech-2025-0669]]) challenges SSL distillation as the mechanism, demonstrating that supervised CTC losses on RVQ-1 outperform SSL pseudo-label distillation for phonetic content preservation.
+Disentanglement makes independent control of content, speaker identity, prosody, emotion, and style
+practical. Explicit factorization supports attribute transfer and substitution across TTS, voice
+conversion, codecs, and expressive generation ([[2403.03100|NaturalSpeech 3]],
+[[2025.acl-long.346|ControlSpeech]], [[2508.02038|Marco-Voice]]). Yet tighter separation repeatedly
+costs reconstruction quality, intelligibility, speaker similarity, or useful phonetic detail.
 
-**Dialogue-native TTS and spoken dialogue generation.** [[2509.02020]] (FireRedTTS-2), ZipVoice-Dialog ([[2507.09318]]), and long-context papers demonstrate that TTS systems are being designed for multi-turn conversational scenarios. ZipVoice-Dialog's curriculum learning + speaker-turn embeddings achieves 15× faster inference than AR dialogue baselines (Dia 1.61B), showing that NAR flow-matching is now competitive for the dialogue generation task.
+This evidence argues against treating maximum independence as the goal. A more practical target is
+enough separation for the intended control while preserving the information required by the
+downstream generator. Pitch illustrates the difficulty: generic latent separation often leaves F0
+entangled, while dedicated signal-level mechanisms perform better in the systems represented here
+([[interspeech-2025-0347|PeriodCodec]], [[interspeech-2025-1397|VibE-SVC]]). Whether that advantage
+generalizes beyond the current mechanisms remains unresolved.
 
-**Large-scale evaluation and annotation infrastructure.** MIKU-PAL ([[interspeech-2025-0648]]) demonstrates automated multimodal emotion labeling at Fleiss κ=0.93 (vs. human 0.43) using Gemini 2.0 Flash, enabling the 131.2h MIKU-EmoBench dataset with 26 emotion categories. ParaSpeechCaps ([[2025.emnlp-main.180]]) provides 2709h of rich style-annotated data using perceptual speaker similarity and audio LLM quality filters. HiFiTTS-2 ([[interspeech-2025-0989]]) provides 36.7k hours at 22kHz from LibriVox. The field is building scalable annotation infrastructure rather than relying on small hand-labeled datasets.
+### Post-training improves targets more reliably than whole-system quality
 
-**Social and dialect-aware evaluation.** [[2025.acl-long.1252]] demonstrates that prosodic/acoustic persona (voice accent) substantially outperforms lexical-syntactic style matching (dialect text) for user acceptance in AAE-speaking populations. This introduces socially-grounded subjective evaluation — measuring warmth, trustworthiness, and engagement — as a dimension absent from standard WER/MOS/SPK-SIM evaluations.
+Across the young RLHF-for-speech corpus, preference and reward optimization improve the dimensions
+they explicitly target across discrete, flow, diffusion, and hybrid generators. The recurring
+problem is reward scope. Better WER, likelihood, speaker similarity, or reward-model scores can
+coexist with flatter prosody, reduced diversity, weaker emotional appropriateness, or evasive
+dialogue behavior ([[2025.acl-long.598]], [[2509.18531]],
+[[2508.16332|Vevo2]]).
 
-**PEFT as the default for cross-lingual continual adaptation.** [[interspeech-2025-1344]] demonstrates that adapter-based fine-tuning at 1.72% of model parameters is not merely computationally efficient but functionally necessary for cross-lingual continual adaptation: full fine-tuning on single-speaker data destroys zero-shot capability for previously learned languages even with only 12 hours of adaptation data. This finding, combined with prior LoRA results (UtterTune, MahaTTS), confirms PEFT-first as the practical default for extending FM-based multilingual TTS to new low-resource languages.
+Multi-objective rewards reduce some one-dimensional failures, but the literature does not yet
+establish principled weighting or a general defense against reward hacking. Post-training also
+cannot reliably create capabilities absent from the base model or repair qualities controlled by
+a frozen downstream acoustic model or vocoder. These limitations connect alignment directly to
+evaluation: a system can only be optimized safely when the evaluation suite represents the
+qualities that should be preserved.
 
-**Evaluation methodology under scrutiny.** [[interspeech-2025-2765]] introduces human fooling rate — measuring how frequently listeners mistake synthesised speech for real — as a new naturalness paradigm that reveals differentiation between leading zero-shot TTS systems invisible to MOS/MUSHRA. [[interspeech-2025-0401]] proposes a replicability checklist for TTS perceptual evaluations, addressing systematic underreporting in published listening tests. CodecBench ([[2508.20660]]) extends this to codec evaluation, separating acoustic reconstruction from semantic content quality. Together, these papers signal growing methodological awareness in the evaluation layer.
+### Evaluation is the common bottleneck
 
-**Low-resource tonal language TTS.** [[2025.acl-industry.42]] provides a complete practical framework for Thai TTS, demonstrating that domain-specific acoustic modeling (Phoneme-Tone BERT, LLM-supervised pause prediction) combined with data-efficient pipeline design can achieve competitive results against Google TTS and Microsoft TTS.
+The broadest conclusion across the integrated concepts is that no single score captures speech
+quality. Naturalness, intelligibility, speaker identity, prosody, diversity, emotion, robustness,
+latency, and interaction quality can move independently. WER and CER may disagree with perceived
+intelligibility; speaker embeddings can mis-rank synthetic voices; automatic MOS predictors can
+reverse human rankings; and reconstruction quality does not necessarily predict whether codec
+tokens are useful for generation ([[2403.16973|VoiceCraft]], [[2406.18009|E2 TTS]],
+[[2025.naacl-srw.6]], [[2506.10274]]).
 
-## 3. Points of Tension
+The measurement gap becomes larger for spoken agents. Transcript-based evaluation discards timing,
+emotion, speaker traits, ambient sound, and non-verbal behavior, while single-turn tests conceal
+failures that accumulate over a conversation ([[2508.18240|MTalk-Bench]],
+[[2507.23159|Full-Duplex-Bench v1.5]]). Learned judges make broad evaluation more scalable, but the
+reviewed evidence supports capability-specific use rather than treating them as general substitutes
+for listening or interaction tests.
 
-**Open-weight vs. closed-source gap in zero-shot TTS.** There is a persistent 5–7 SIM-point gap between the best open-weight systems (F5-TTS: SIM-o 0.67 on Seed-TTS test-en) and closed-source SOTA (Seed-TTS: 0.790, Minimax-Speech: 0.738). The root causes — data scale, model scale, or training recipe — are not yet clear. [[2509.19668]] shows that inference-time CFG tuning alone cannot close this gap.
+## Shared Research Priorities
 
-**Intelligibility vs. naturalness trade-off.** OZSpeech ([[2025.acl-long.1043]]) achieves WER 0.05% (best in corpus on LibriSpeech test-clean) at UTMOS 3.15, while F5-TTS ([[2025.acl-long.313]]) achieves UTMOS 3.89 at WER 2.42%. There is no consensus on the right trade-off for practical applications, and no composite metric standardizes this balance.
+Across the five completed integrations, several questions recur:
 
-**SSL vs. ASR-supervised representations for codec design.** [[2510.00981]] shows that ASR features dramatically outperform SSL features for dynamic frame merging at ultra-low rates. Yet SSL features remain widely used in SSL distillation codecs (Mimi, DualCodec). The question of when to use which foundation model representation type for codec semantic extraction is not yet resolved.
+- How can faster generation preserve naturalness, speaker identity, and prosodic diversity?
+- Which forms of modularity preserve language capability without discarding useful acoustic
+  information?
+- How much attribute separation is sufficient for control, and how should residual leakage be
+  measured directly?
+- Can preference optimization protect qualities that are absent from its reward?
+- Which evaluation suites remain valid across architectures, domains, languages, and multi-turn
+  interaction?
 
-**DPO alignment vs. pre-training scale.** [[2025.acl-long.598]] shows diminishing returns in iterative preference alignment, suggesting base model capability is the ceiling. It remains unclear whether training on more diverse data, larger models, or better preference data construction would break through this ceiling — or whether the base model's inherent expressiveness limits what post-training can achieve.
+## Read by Concept
 
-**Cascade vs. end-to-end SCA.** Pure speech-to-speech LMs ([[2412.17048]] characterizes their coherence failures) remain far below cascade systems on semantic tasks. Commercial systems (GPT-4o, Qwen2.5-Omni) use cascade or hybrid approaches. [[2025.acl-long.388]] (DiVA) demonstrates that distillation from a text LLM narrows the gap using only ASR data, but cannot capture paralinguistic information that has no textual correlate.
+| Concept | Overview | In Depth |
+|---------|----------|----------|
+| Flow Matching | [[concepts/flow-matching\|Overview]] | [[concepts/flow-matching-in-depth\|In Depth]] |
+| Speech-to-Speech Systems | [[concepts/speech-to-speech\|Overview]] | [[concepts/speech-to-speech-in-depth\|In Depth]] |
+| Evaluation Metrics | [[concepts/evaluation-metrics\|Overview]] | [[concepts/evaluation-metrics-in-depth\|In Depth]] |
+| RLHF for Speech | [[concepts/rlhf-speech\|Overview]] | [[concepts/rlhf-speech-in-depth\|In Depth]] |
+| Disentanglement | [[concepts/disentanglement\|Overview]] | [[concepts/disentanglement-in-depth\|In Depth]] |
 
-**Reward model scope vs. downstream audio quality in RLHF.** DiffRO ([[interspeech-2025-0704]]) shows that codec-token-level reward prediction improves pronunciation WER substantially but has limited impact on final audio MOS, because the FM+vocoder stages largely denoise codec imperfections. This reveals a fundamental scope problem: optimizing the codec LM stage alone cannot improve quality dimensions controlled by the FM and vocoder stages.
+## Scope
 
-**Consistency vs. adversarial acceleration for FM TTS.** RapFlow-TTS ([[interspeech-2025-0554]]) and APTTS ([[interspeech-2025-0455]]) both reduce FM TTS inference to 2–4 steps but via different mechanisms; APTTS achieves better intelligibility (WER 1.73%) at the cost of a 3-stage training pipeline, while RapFlow-TTS achieves simpler training but remains slightly below human-level MOS. There is no consensus on which acceleration mechanism is preferred for production deployment.
+This overview draws only from the five claim graphs completed through Q3 2025: flow matching
+(97 papers), speech-to-speech systems (60), evaluation metrics (285), RLHF for speech (29), and
+disentanglement (100). Counts overlap because papers can inform multiple concepts. Eighteen tracked
+concepts have not yet completed integration, so this page should not be read as a comprehensive
+ranking of paradigms or a full history of the field. Representative citations are selected for
+readability; complete paper-to-claim provenance remains in the corresponding `_claims/*.yaml`
+files.
 
-## 4. Gaps
-
-- **Multilingual coverage beyond EN+ZH.** The dominant training datasets (Emilia, 95K hours EN+ZH) and evaluation benchmarks (SeedTTS-eval) center on English and Mandarin. Japanese, Korean, European languages, and especially low-resource tonal languages remain underrepresented. [[2025.acl-long.598]] shows INTP alignment generalizes to JA/KO/DE/FR from EN+ZH training, but this is not validated at pre-training scale.
-- **Standardized spoken dialogue evaluation.** Turn-taking, interruption handling, backchannel timing, and empathy response are not captured by standard TTS metrics (WER, SPK-SIM, MOS). [[2025.findings-emnlp.424]] provides a starting point but end-to-end duplex evaluation remains standardization-free.
-- **Causal/streaming zero-shot TTS.** Streaming VC is solved ([[2507.14534]], [[2025.acl-demo.37]]), but streaming zero-shot TTS with comparable quality to non-streaming systems at <100 ms latency remains undemonstrated.
-- **Anti-spoofing robustness under preference alignment.** [[2025.acl-long.598]] notes that intelligibility-focused DPO may inadvertently reduce anti-spoofing resilience. This interaction has not been evaluated.
-- **Prosody modeling for non-English, non-CJK languages.** [[2025.acl-long.1471]]'s context-length analysis is validated only on English audiobooks. Duration/pause behavior and prosody prediction requirements for tonal, agglutinative, or non-configurational languages are unstudied in the corpus.
-
-## 5. Key Concept Hubs
-
-By paper count (as of this update):
-
-| Concept | Paper count | Key papers |
-|---------|------------|-----------|
-| [[autoregressive-codec-tts]] | 103 | VALL-E, WaveNet, Tacotron 2, VALL-E 2, SoundStorm, CosyVoice 2, Llasa |
-| [[evaluation-metrics]] | 89 | UTMOS, VoiceBench, MUSHRA, SeedTTS-eval, WER via Whisper |
-| [[zero-shot-tts]] | 93 | F5-TTS, NaturalSpeech 2/3, VALL-E 2, MaskGCT, Seed-TTS, CosyVoice 3 |
-| [[neural-codec]] | 92 | EnCodec, SpeechTokenizer, WavTokenizer, BigCodec, TAAE |
-| [[self-supervised-speech]] | 68 | WavLM, HuBERT, Whisper, Spirit LM, BASE TTS |
-| [[spoken-language-model]] | 67 | SpeechGPT, AudioPaLM, Mini-Omni, LLaMA-Omni, Moshi, Step-Audio |
-| [[prosody-control]] | 51 | WaveNet, Tacotron 2, FastSpeech 2, NaturalSpeech 2, BASE TTS |
-| [[disentanglement]] | 48 | NaturalSpeech 3, Spirit LM, Spark-TTS, DualSpeechLM |
-| [[multilingual-tts]] | 47 | CosyVoice, Emilia, XTTS, VALL-E X, Seamless |
-| [[flow-matching]] | 44 | F5-TTS, E2 TTS, OZSpeech, CosyVoice 2/3, NaturalSpeech 3 |
-
-The heaviest hubs reflect the paradigm shift from isolated TTS systems to integrated speech-language ecosystems: [[autoregressive-codec-tts]] and [[spoken-language-model]] are deeply intertwined (codec LMs are the foundation for both), while [[evaluation-metrics]] and [[neural-codec]] cross-cut all three tasks. Integration pass 10 added 25 papers including the complete historical lineage from WaveNet (2016) and Tacotron/Tacotron 2 (2017) through to Step-Audio 2 (2025), filling the pre-codec era context. Key additions: WaveNet establishes why the speed-quality tradeoff needed to be solved; Tacotron/Tacotron 2 establish the mel-spectrogram intermediate representation still used by virtually all modern systems; SoundStorm, AudioPaLM, VALL-E X, Tortoise TTS, VoiceCraft, HiFi-Codec, BigCodec, XTTS, Emilia, E2 TTS, MELLE, BASE TTS, Spirit LM, UniAudio, NL Guidance TTS, TAAE, Step-Audio, MinMo, Baichuan-Audio, and Step-Audio 2 complete the mid-2023 to early-2025 bridge.
-
-## 6. Year-on-Year Perspective
-
-The corpus now spans 2014 ([[1412.6980]] Adam optimizer) through 2026 ([[2412.17048]] ICASSP 2026 paper, published 2026-01). The primary year cluster is 2025 (ACL 2025, EMNLP 2025, Interspeech 2025, arXiv preprints). Integration passes 8–10 added foundational papers from 2016 through 2024, making the full lineage visible.
-
-**2016–2017 (pre-deep-learning-TTS inflection, now in corpus):** [[1609.03499]] (WaveNet, DeepMind) establishes raw-waveform autoregressive generation as the neural TTS paradigm, achieving MOS 4.21 vs. 3.86 for concatenative synthesis. The core trade-off WaveNet revealed — high quality at the cost of sample-level sequential inference — defined the research agenda until codec LMs resolved it via learned discretization. [[1703.10135]] (Tacotron, Google) introduces the first end-to-end seq2seq TTS from characters, eliminating hand-engineered linguistic features and achieving naturalness competitive with statistical parametric synthesis. [[1712.05884]] (Tacotron 2, Google) refines this with mel-spectrogram conditioning of WaveNet, reaching near-human naturalness (MOS 4.526 vs. 4.582 GT) and establishing the two-stage acoustic model + neural vocoder pipeline that dominated TTS until 2023.
-
-**Pre-2022 (foundational infrastructure, now in corpus):** [[1904.02882]] (LibriTTS) and [[1912.06670]] (Common Voice) provide the training and evaluation corpora on which most TTS research is benchmarked. [[2006.04558]] (FastSpeech 2) defines the non-autoregressive enc-dec TTS template. [[2010.05646]] (HiFi-GAN) closes the GAN vocoder quality gap. [[1412.6980]] (Adam) and [[1711.05101]] (AdamW) are the near-universal optimizers.
-
-**2022: assembly of the modern foundational stack.** [[2209.03143]] (AudioLM) establishes the semantic-token-plus-acoustic-token hierarchy for neural audio generation. [[2210.13438]] (EnCodec) provides the RVQ streaming codec that the entire field builds on. [[2210.02747]] (Flow Matching) formalizes the continuous normalizing flow framework adopted by most modern TTS systems. [[2207.12598]] (Classifier-Free Guidance) introduces the conditioning mechanism used universally in flow-matching and diffusion TTS. [[2206.04658]] (BigVGAN) and [[2204.02152]] (UTMOS) complete the year: the former as the universal neural vocoder; the latter as the community's primary automatic quality proxy. [[2212.04356]] (Whisper) provides robust multilingual ASR used in WER-based TTS evaluation pipelines.
-
-**2023:** VALL-E ([[2301.02111]]) establishes the codec LM paradigm: 60K hours, 3-second enrollment, zero-shot speaker generalization via scale. [[2304.09116]] (NaturalSpeech 2) adapts RVQ latent space for diffusion TTS with singing capability, establishing diffusion as a viable alternative to AR codec LMs. [[2305.11000]] (SpeechGPT) introduces the chain-of-modality SLM paradigm. [[2308.16692]] (SpeechTokenizer) establishes the "codec-for-LM" design criterion. The LLaMA backbone ([[2302.13971]]) provides the open-weight foundation. Integration pass 10 completed the 2023 picture with: [[2303.03926]] (VALL-E X) extending codec LM generation to cross-lingual voice transfer; [[2305.02765]] (HiFi-Codec) providing an open-source group-RVQ codec alternative; [[2305.07243]] (Tortoise TTS) demonstrating scaling self-supervised techniques to expressive multi-speaker TTS; [[2305.09636]] (SoundStorm) achieving 100x faster parallel RVQ-level generation; [[2306.00814]] (Vocos) advancing GAN vocoders into the Fourier domain at 10x inference speedup; [[2306.12925]] (AudioPaLM) demonstrating that LLM backbone initialization and semantic tokenizer quality are the primary TTS quality levers; and [[2310.00704]] (UniAudio) proving multi-task audio LM training generalises across TTS, VC, and singing.
-
-**2024:** The paradigm diversifies across zero-shot TTS and SCA. [[2406.05370]] (VALL-E 2) achieves human parity on VCTK and LibriSpeech. [[2409.00750]] (MaskGCT) demonstrates that masked generative transformers match AR quality. [[2403.03100]] (NaturalSpeech 3) demonstrates human-parity naturalness via disentangled FACodec. [[2406.02430]] (Seed-TTS) shows foundation-model-scale synthesis with RL post-training. Integration pass 10 added key mid-2024 papers: [[2406.18009]] (E2 TTS) demonstrates fully non-AR flow-matching that learns alignment implicitly from characters; [[2406.04904]] (XTTS) establishes massively multilingual zero-shot TTS across 16 languages; [[2407.05361]] (Emilia) provides the in-the-wild 101K-hour multilingual training corpus; [[2403.16973]] (VoiceCraft) unifies TTS and speech editing as AR infilling; [[2402.01912]] (NL Guidance TTS) demonstrates natural language acoustic attribute conditioning; [[2409.05377]] (BigCodec) shows model capacity dominates architecture at low bitrates; [[2411.19842]] (TAAE) scales transformer codec with FSQ for near-perfect codebook utilization; [[2407.08551]] (MELLE) achieves continuous AR TTS without VQ at zero hallucination failures; [[2402.05755]] (Spirit LM) enables cross-modal knowledge transfer via interleaved speech-text LM training; and [[2402.08093]] (BASE TTS) confirms that scaling AR TTS to 980M parameters and 100K hours produces emergent prosody rendering on linguistically complex inputs. The SCA cluster crystallizes with [[2410.00037]] (Moshi), [[2410.21276]] (GPT-4o), and the VoiceBench negative result ([[2410.17196]]) showing that cascade pipelines still outperform end-to-end audio LLMs on semantic tasks.
-
-**2025:** The dominant trend is post-training refinement and production deployment at scale. [[2502.04128]] (Llasa) scales LLaMA-based AR codec TTS to 7B parameters. [[2503.01710]] (Spark-TTS) introduces BiCodec for LLM-based TTS. [[2505.17589]] (CosyVoice 3) adds RLHF post-training at scale. Integration pass 10 added early-2025 industrial SCA systems: [[2502.11946]] (Step-Audio) demonstrates that scaling AR LLM backbone from 3B to 130B parameters produces substantial TTS quality gains and introduces RLHF counter-example training for speech; [[2501.06282]] (MinMo) integrates TTS, ASR, and full-duplex dialogue in a single 268ms-latency framework; [[2502.17239]] (Baichuan-Audio) introduces staged pretraining and flow-matching post-refinement to preserve LLM intelligence in end-to-end speech systems; and [[2507.16632]] (Step-Audio 2) extends to RAG, tool calling, and paralinguistic comprehension benchmarks at production scale. Omni models ([[2503.20215]] Qwen2.5-Omni, [[2504.18425]] Kimi-Audio) unify speech understanding and generation in a single streaming architecture.
-
-The emerging 2025 direction is dialogue-native TTS, rigorous analysis of what limits current systems (DRI [[2025.acl-long.1498]], paralinguistic variability in speech tokens [[2412.17048]], context-length constraints for prosody), and the industrialization of speech interaction at 100B+ parameter scale. Integration passes 9–10 together completed the historical lineage from WaveNet through the full 2023 mid-wave (SoundStorm, AudioPaLM, VALL-E X, Tortoise, Spirit LM) and established explicit cross-links across the corpus. The most significant new structural insight from pass 10: the pre-codec era (WaveNet, Tacotron) is now explicitly in corpus, providing causal context for why the speed-quality trade-off resolution was the defining challenge of the 2016–2023 period.
+The coverage boundary will advance through Q4 2025 and later periods until it catches up with
+current research. Future field views will be complemented by period-over-period reports,
+venue-specific synthesis, and citation analysis.
