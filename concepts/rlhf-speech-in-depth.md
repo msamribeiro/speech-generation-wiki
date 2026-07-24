@@ -8,15 +8,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# RLHF for Speech: In Depth
 
 This page explains what the reviewed speech-alignment literature collectively supports. For the
 short state-of-the-art view, see [[concepts/rlhf-speech|RLHF for Speech]]. Citations are
@@ -93,7 +91,7 @@ the least mature in the graph.
 
 ## What the Research Shows
 
-### 1. Post-training improves targeted qualities beyond supervised fine-tuning
+### Targeted post-training gains
 
 **Current assessment:** preference or reward optimization consistently improves at least one
 targeted speech dimension over an SFT baseline across discrete autoregressive, flow-matching,
@@ -113,7 +111,7 @@ hacking evidence.
 **Most informative evidence:** [[2406.00654]], [[2025.acl-long.598]],
 [[2509.00685|MPO]], [[2505.17589|CosyVoice 3]].
 
-### 2. Alignment is a data- and compute-efficient final stage
+### Alignment efficiency
 
 **Current assessment:** substantial gains often require only a small fraction of pretraining-scale
 data or updates, and a single alignment run can compete with inference-time best-of-K or iterative
@@ -129,10 +127,11 @@ Efficiency does not make the stage cheap in every form. Online policy-gradient m
 multiple generations and reward computation. The strongest statement is comparative: alignment is
 small relative to pretraining and can replace some expensive inference-time selection.
 
-### 3. Reward hacking is the defining failure mode
+### Reward hacking
 
-**Current assessment:** optimizing an automatic proxy predictably degrades unmeasured or
-complementary qualities unless the training procedure monitors and constrains them.
+> [!warning]
+> **Central risk:** optimizing an automatic proxy can degrade unmeasured or complementary
+> qualities unless the training procedure monitors and constrains them.
 
 The pattern crosses architectures and tasks. [[2509.18531]] obtains very low character error while
 human preference falls and pitch becomes monotone. [[2508.16332|Vevo2]] finds that an
@@ -152,7 +151,7 @@ property of incomplete objectives rather than a defect of one RL algorithm.
 **What remains unresolved:** whether a general constraint framework can protect untargeted
 qualities or each application needs bespoke safeguards.
 
-### 4. Preference-pair construction can determine whether DPO works
+### Preference-pair construction
 
 **Current assessment:** the diversity, source, and scoring of preferred/rejected pairs have a
 first-order effect independent of the DPO objective.
@@ -168,7 +167,7 @@ This evidence changes the interpretation of many “DPO versus baseline” resul
 may reflect the pair distribution, not the preference loss. Reproducible alignment studies should
 report how candidates were generated, filtered, scored, and balanced.
 
-### 5. Multi-objective rewards reduce one-dimensional failures but do not solve reward design
+### Multi-objective rewards
 
 **Current assessment:** combining intelligibility, speaker identity, emotion, prosody, or other
 dimensions is more robust than optimizing one metric, but choosing weights and resolving conflicts
@@ -183,7 +182,7 @@ Most papers test a small number of manually chosen weights. They rarely establis
 weights transfer across speakers, languages, or architectures. Multi-objective design is therefore
 the best-supported mitigation direction, not a completed solution.
 
-### 6. Continuous generators can be aligned, but techniques remain fragmented
+### Continuous-generator alignment
 
 **Current assessment:** preference optimization is no longer limited to discrete autoregressive
 token sequences; it has been reformulated for flow matching, diffusion, and hybrid iterative
@@ -202,7 +201,7 @@ final flow output or an upstream duration predictor—rather than the full conti
 **What remains unresolved:** whether these formulations transfer across backbones or remain
 architecture-specific proofs of concept.
 
-### 7. Differentiable critics offer a cheaper alternative to rollout-heavy RL
+### Differentiable critics
 
 **Current assessment:** gradients from a frozen differentiable reward model can flow through
 discrete token predictions and produce comparable or better gains than PPO-style RL or standard
@@ -217,7 +216,7 @@ strong within that architecture family but not yet established for unrelated cod
 continuous generators. A differentiable critic can also be gamed like any other reward if it
 captures only one property.
 
-### 8. Alignment runs need regularization and early stopping
+### Training stability
 
 **Current assessment:** RL and DPO training can become unstable or monotonically degrade held-out
 qualities after an optimum; longer optimization is not reliably better.
@@ -230,7 +229,7 @@ These failures imply that the reward used for training is not sufficient for mod
 Alignment should track held-out perceptual dimensions, retain a reference or supervised penalty,
 and stop based on a multi-dimensional validation criterion.
 
-### 9. The base model and downstream pipeline impose hard ceilings
+### Capability ceilings
 
 **Current assessment:** alignment redirects an existing model but does not supply missing
 capability, and optimizing one component cannot repair qualities determined downstream.
@@ -245,7 +244,7 @@ quality at the LM stage produces a smaller change in final audio once a frozen f
 vocoder determine later attributes. RLHF must be applied where the target quality is actually
 controlled.
 
-### 10. Spoken-agent RLHF is a distinct and underdeveloped problem
+### Spoken-agent alignment
 
 **Current assessment:** alignment for dialogue behavior targets semantic consistency, ambiguity
 handling, helpfulness, and token-distribution mismatch—failures that differ from TTS naturalness or
@@ -262,26 +261,26 @@ is tied to simultaneous translation policies.
 
 ## Where Findings Disagree
 
-### Is DPO or policy-gradient RL the better default?
+### DPO or policy-gradient RL
 
 The corpus does not support a universal winner. DPO is simpler and avoids online rollouts but is
 highly sensitive to pair construction and reference regularization. Policy gradients optimize
 arbitrary rewards and process decisions but require more sampling and expose the policy directly to
 reward hacking. Architecture and reward availability should drive the choice.
 
-### Are multi-objective rewards enough to prevent reward hacking?
+### Limits of composite rewards
 
 They are the strongest repeated mitigation, but not a guarantee. Every composite reward still
 omits properties, and fixed weights can transfer poorly. Held-out human evaluation, untargeted
 diagnostics, and regularization remain necessary.
 
-### Do continuous preference objectives generalize?
+### Transfer across generators
 
 Three different formulations succeed on three different backbones, which supports feasibility but
 not transferability. Replicating one formulation across architectures—or publishing a failed
 transfer—would materially change confidence.
 
-### Can models reward themselves?
+### Intrinsic rewards
 
 [[2508.15442]] reports that an intrinsic probability signal combined with GFlowNet trajectory
 balance can reduce hallucination without external reward data. It is a single-paper result resting

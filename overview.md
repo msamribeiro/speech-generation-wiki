@@ -6,15 +6,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "9bf1473"
+  commit: "39007c6"
 ---
-
-# Field Overview
 
 > [!abstract]
 > Across the five concepts currently integrated in depth, speech generation is becoming faster,
@@ -30,7 +28,7 @@ generation:
 
 ## What the Integrated Corpus Shows
 
-### Generation is becoming faster, but speed does not settle system design
+### Generation speed
 
 Within the reviewed flow-matching literature, continuous-output generation offers a practical
 speed advantage over conventional diffusion across TTS, voice conversion, vocoding, and related
@@ -47,7 +45,7 @@ visible failure modes ([[2507.23159|Full-Duplex-Bench v1.5]], [[2509.22243|FLEXI
 concepts, speed is best understood as one dimension of capability rather than a proxy for overall
 system quality.
 
-### Modularity remains a strong defense against capability loss
+### Modularity and capability retention
 
 The reviewed speech-to-speech evidence favors modularity when general language ability matters.
 Cascaded ASR–language-model–TTS systems remain strong general-purpose baselines, while systems
@@ -62,7 +60,7 @@ acoustic rendering at the cost of sequential latency. The relevant question is t
 simply whether a model is “end to end,” but which capabilities are coupled, which components can
 be trained independently, and where information is discarded.
 
-### Control depends on separation, but separation is not free
+### Control and separation
 
 Disentanglement makes independent control of content, speaker identity, prosody, emotion, and style
 practical. Explicit factorization supports attribute transfer and substitution across TTS, voice
@@ -77,7 +75,7 @@ entangled, while dedicated signal-level mechanisms perform better in the systems
 ([[interspeech-2025-0347|PeriodCodec]], [[interspeech-2025-1397|VibE-SVC]]). Whether that advantage
 generalizes beyond the current mechanisms remains unresolved.
 
-### Post-training improves targets more reliably than whole-system quality
+### Post-training and reward scope
 
 Across the young RLHF-for-speech corpus, preference and reward optimization improve the dimensions
 they explicitly target across discrete, flow, diffusion, and hybrid generators. The recurring
@@ -93,7 +91,7 @@ a frozen downstream acoustic model or vocoder. These limitations connect alignme
 evaluation: a system can only be optimized safely when the evaluation suite represents the
 qualities that should be preserved.
 
-### Evaluation is the common bottleneck
+### Evaluation
 
 The broadest conclusion across the integrated concepts is that no single score captures speech
 quality. Naturalness, intelligibility, speaker identity, prosody, diversity, emotion, robustness,

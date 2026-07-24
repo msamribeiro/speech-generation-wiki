@@ -8,15 +8,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Evaluation Metrics: In Depth
 
 This page explains what the reviewed evaluation literature collectively supports. For the short
 state-of-the-art view, see [[concepts/evaluation-metrics|Evaluation Metrics]]. Citations are
@@ -91,7 +89,7 @@ the landscape.
 
 ## What the Research Shows
 
-### 1. WER and CER measure recognizability, not perceptual intelligibility
+### Content intelligibility
 
 **Current assessment:** ASR-derived error rates are valuable content diagnostics but are
 insufficient as standalone measures of how intelligible speech is to people.
@@ -114,7 +112,7 @@ across accents, or preservation of clinically relevant speech characteristics.
 **What remains unresolved:** how to combine human intelligibility, recognizer performance, and
 listener-population effects in a protocol that remains affordable at benchmark scale.
 
-### 2. Speaker embeddings compress identity into a useful but incomplete proxy
+### Speaker identity
 
 **Current assessment:** embedding cosine similarity and EER-based verification do not reliably
 represent perceived speaker identity across synthesis, conversion, anonymization, and
@@ -134,7 +132,7 @@ pair automatic similarity with human identity or suitability judgments designed 
 **Most informative evidence:** [[2406.18009|E2 TTS]],
 [[2025.naacl-long.242|StyleTTS-ZS]], [[interspeech-2025-1726]].
 
-### 3. Automatic quality predictors are strongest as calibrated tools, not universal MOS replacements
+### Automatic quality prediction
 
 **Current assessment:** SSL representations provide an effective, data-efficient foundation for
 automatic quality prediction, but predictor validity does not transfer automatically across
@@ -157,7 +155,7 @@ be treated as human MOS merely because its output has a MOS-like scale.
 **Most informative evidence:** [[2204.02152|UTMOS]], [[2508.00317]],
 [[2507.06116]], [[2509.20485]].
 
-### 4. Reference-based distortion scores do not define perceptual quality
+### Reference-based metrics
 
 **Current assessment:** PESQ, STOI, MCD, and related intrusive metrics provide diagnostic
 information but can disagree with subjective quality and with one another across vocoders, codecs,
@@ -174,11 +172,14 @@ The failure comes from turning one controlled diagnostic into an overall quality
 **Most informative evidence:** [[2507.01611]], [[2305.02765]],
 [[iclr-2025-uxDFlPGRLX|FlowDec]], [[interspeech-2025-0984|SITool]].
 
-### 5. LLM and audio-LM judges are reliable for some capabilities, not for speech in general
+### Learned judges
 
-**Current assessment: contested and capability-scoped.** Learned judges can approximate human
-evaluation for instruction following, style adherence, broad dialogue quality, and checklist-based
-rubrics, but they are unreliable for fine-grained prosody and non-verbal or raw-waveform cues.
+> [!warning]
+> **Capability-scoped:** learned judges can approximate human evaluation for structured semantic
+> tasks, but they remain unreliable for fine-grained prosody and non-verbal or raw-waveform cues.
+
+Their strongest uses include instruction following, style adherence, broad dialogue quality, and
+checklist-based rubrics.
 
 The positive evidence is operationally important. [[2506.16381|InstructTTSEval]] uses structured
 instruction-following judgments, while [[2508.02013|SpeechRole]] and
@@ -197,7 +198,7 @@ carried in the waveform rather than its transcript.
 **What remains unresolved:** whether audio-native judges with better temporal and perceptual
 training can close this gap, or whether fine human judgment remains an irreducible requirement.
 
-### 6. Clean benchmark success does not predict robust real-world behavior
+### Robustness under domain shift
 
 **Current assessment:** evaluation restricted to studio-quality, neutral, in-domain speech
 systematically understates failures under noise, reverberation, spontaneous content, unfamiliar
@@ -212,7 +213,7 @@ Robust evaluation therefore needs condition axes, not one “test set”: clean 
 in-domain versus shifted, read versus spontaneous, short versus long, and single-turn versus
 multi-turn. Aggregate averages should not hide the worst condition that matters in deployment.
 
-### 7. Codec quality has at least three distinct meanings
+### Codec evaluation
 
 **Current assessment:** acoustic reconstruction, semantic retention, and downstream generative
 utility are partly orthogonal; no codec metric reliably predicts all three.
@@ -230,7 +231,7 @@ not only through resynthesis.
 **Most informative evidence:** [[2508.20660|CodecBench]], [[2025.naacl-srw.6]],
 [[2506.10274]], [[interspeech-2025-0355]].
 
-### 8. Modern subjective tests are reaching a discrimination ceiling
+### Subjective-test saturation
 
 **Current assessment:** MOS, CMOS, and MUSHRA remain essential, but conventional protocols can
 struggle to separate high-quality modern systems or detect when synthetic output approaches the
@@ -247,7 +248,7 @@ also answers a narrower question than naturalness or usability. The more general
 that subjective protocols must specify the construct they intend to measure and evolve as systems
 approach their anchors.
 
-### 9. Evaluation must expose social, clinical, and interaction-specific failures
+### Social and interaction-specific evaluation
 
 **Current assessment:** aggregate quality and accuracy mask failures tied to demographic groups,
 clinical speech, conversational context, and timing behavior.
@@ -265,7 +266,7 @@ interruption response, false yielding, jump-in, floor holding, and backchannel t
 These specialized protocols should not be bolted on after a generic scorecard. They define what
 success means for the application.
 
-### 10. Metric optimization can create the failure that the evaluation omits
+### Metric optimization
 
 **Current assessment:** optimizing intelligibility, duration accuracy, or accelerated sampling can
 reduce prosodic diversity or another unmeasured property.
@@ -281,21 +282,21 @@ automatic rewards.
 
 ## Where Findings Disagree
 
-### Can learned judges replace human evaluation?
+### Learned and human judgment
 
 The apparent disagreement is resolved by scope. Studies supporting learned judges generally target
 semantic instructions, style labels, checklists, or large quality differences. Negative studies
 target fine prosody, non-verbal cues, and near-tied systems. The current evidence supports learned
 judges as validated components of an evaluation suite, not universal human substitutes.
 
-### Are better reconstruction metrics enough for codecs?
+### Codec reconstruction metrics
 
 No single side claims reconstruction is irrelevant. The disagreement concerns its role. Signal
 metrics are useful for resynthesis quality, while downstream studies show that a representation
 optimized for reconstruction can be worse for semantic or generative use. Codec evaluation must
 state which meaning of “quality” is intended.
 
-### Should evaluation seek one standardized scorecard or task-specific protocols?
+### Standardized or task-specific protocols
 
 Shared benchmarks improve comparability, but universal metrics repeatedly fail at specialized
 properties. The likely direction is a common core—content, quality, identity, robustness—combined

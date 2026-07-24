@@ -12,15 +12,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Disentanglement
 
 > [!abstract]
 > Disentanglement separates linguistic content, speaker identity, prosody, emotion, style, and

@@ -8,15 +8,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Speech-to-Speech Systems: In Depth
 
 This review asks what the 60 papers currently encoded for speech-to-speech systems collectively
 show, where independent studies converge, and where comparisons remain too confounded to support a
@@ -78,7 +76,7 @@ table.
 
 ## What the Research Shows
 
-### 1. Cascades still set the quality baseline, but the comparison is not architecture-pure
+### Cascade baseline
 
 **Assessment: strongly supported within the reviewed corpus.**
 
@@ -110,7 +108,7 @@ matched backbones, matched data, and equally mature speech generation.
 **What would change the assessment:** a matched comparison holding the backbone, data, evaluation
 inputs, and speech-output quality constant while changing only cascade versus end-to-end coupling.
 
-### 2. Preserving the text backbone is the clearest current route to preserving reasoning
+### Preserving language reasoning
 
 **Assessment: strongly supported, with architectural scope limits.**
 
@@ -136,7 +134,7 @@ a transcript-centered design cannot express.
 **Boundary:** current support comes largely from modular streaming systems. It should not be read as
 a universal claim that freezing is always preferable to joint training.
 
-### 3. Fast full-duplex response exposes a floor-control trade-off rather than solving turn-taking
+### Full-duplex floor control
 
 **Assessment: strongly supported across overlapping benchmark lineages.**
 
@@ -163,7 +161,7 @@ that it is merely an artifact of one benchmark.
 pause takeover, backchannel timing, and semantic continuation. A single average latency hides the
 central trade-off.
 
-### 4. Speech systems understand words better than how they are spoken
+### Paralinguistic understanding
 
 **Assessment: strongly supported across several diagnostic benchmarks.**
 
@@ -184,7 +182,7 @@ The studies do not isolate one cause. The bottleneck may lie in tokenization, tr
 backbone adaptation, generation, or the benchmarks themselves. The convergence is in the observed
 failure pattern, not yet in its mechanism.
 
-### 5. Multi-turn evaluation reveals failures hidden by single-turn tests
+### Multi-turn evaluation
 
 **Assessment: strongly supported, with heterogeneous outcome measures.**
 
@@ -200,7 +198,7 @@ common construct. They should not be pooled into a single numerical “multi-tur
 They do, however, agree on the practical conclusion that single-turn evaluation systematically
 misses important failure modes.
 
-### 6. Automatic evaluation is informative at coarse resolution and fragile at fine resolution
+### Automatic evaluation
 
 **Assessment: strongly supported for the limitations; method choice remains task-dependent.**
 
@@ -218,9 +216,11 @@ human evaluation of spoken interaction.
 
 ## Where Findings Disagree
 
-### Does staged ASR/TTS pretraining help or harm instruction-following?
+### Staged pretraining
 
-**Status: contested.**
+> [!warning]
+> **Contested:** staged ASR or TTS pretraining improves instruction-following in some systems and
+> degrades it in others; current comparisons do not isolate the cause.
 
 [[2502.17239|Baichuan-Audio]] finds that staged pretraining reduces the gap between speech and text
 performance. [[2412.15649|SLAM-Omni]] reports the opposite pattern: adding ASR or TTS pretraining
@@ -234,7 +234,7 @@ The disagreement is confounded by backbone scale, data volume, freezing policy, 
 “staged.” It is therefore premature to recommend staged pretraining in general. A controlled,
 scale-matched ablation is required.
 
-### Does retrieval solve spoken-agent knowledge and memory problems?
+### Retrieval and memory
 
 **Status: scope-dependent and currently contested in the graph.**
 
@@ -288,15 +288,24 @@ that neither family can currently claim to have solved.
 
 This is a curated route through the evidence, not a strength ranking or full inventory.
 
-| If you want to understand… | Start with | Why |
-|----------------------------|------------|-----|
-| The origin of native speech-text language modeling | [[2305.11000|SpeechGPT]] | Early unified next-token formulation; important historically despite limited quantitative evaluation |
-| Joint acoustic-semantic full-duplex generation | [[2410.00037|Moshi]] | Foundational example of a native joint-token design and its semantic trade-offs |
-| Modular streaming speech output | [[2409.06666|LLaMA-Omni]] and [[2411.00774|Freeze-Omni]] | Representative decoder attachment and frozen-backbone strategies |
-| The current cascade advantage | [[2410.17196|VoiceBench]] and [[2506.23049|AURA]] | Broad comparative and knowledge-intensive evidence |
-| Full-duplex failure modes | [[2503.04721|Full-Duplex-Bench]], [[2507.23159|Full-Duplex-Bench v1.5]], and [[2509.22243|FLEXI]] | Separates interruption, false yielding, pause takeover, and backchannels |
-| Multi-turn and paralinguistic evaluation | [[2508.18240|MTalk-Bench]], [[2508.17623|EMO-Reasoning]], and [[2025.findings-acl.470]] | Shows what semantic and single-turn metrics miss |
-| Simultaneous speech translation | [[2303.03926|VALL-E X]], [[2025.acl-long.817]], and [[interspeech-2025-1595]] | Voice prompting, boundary-aware decoding, and interleaved training |
+1. **Begin with native speech-text language modeling.** Read [[2305.11000|SpeechGPT]] for an early
+   unified next-token formulation and its historical importance despite limited quantitative
+   evaluation.
+2. **Then examine joint acoustic-semantic generation.** Read [[2410.00037|Moshi]] for a
+   foundational full-duplex joint-token design and the semantic trade-offs that accompany it.
+3. **Compare modular streaming alternatives.** Read [[2409.06666|LLaMA-Omni]] alongside
+   [[2411.00774|Freeze-Omni]] to contrast decoder attachment with frozen-backbone strategies.
+4. **Test the case for cascades.** Use [[2410.17196|VoiceBench]] and [[2506.23049|AURA]] for broad
+   comparative and knowledge-intensive evidence on the current cascade advantage.
+5. **Study full-duplex failure modes.** Read [[2503.04721|Full-Duplex-Bench]],
+   [[2507.23159|Full-Duplex-Bench v1.5]], and [[2509.22243|FLEXI]] to separate interruption,
+   false yielding, pause takeover, and backchannel behavior.
+6. **Move from single-turn scores to conversational evaluation.** Read
+   [[2508.18240|MTalk-Bench]], [[2508.17623|EMO-Reasoning]], and
+   [[2025.findings-acl.470]] for evidence on what semantic and single-turn metrics miss.
+7. **Finish with simultaneous speech translation.** Compare [[2303.03926|VALL-E X]],
+   [[2025.acl-long.817]], and [[interspeech-2025-1595]] for voice prompting, boundary-aware
+   decoding, and interleaved training.
 
 ## Limits of This Review
 

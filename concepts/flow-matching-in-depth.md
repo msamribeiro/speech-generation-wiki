@@ -8,15 +8,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Flow Matching: In Depth
 
 This page explains what the reviewed flow-matching literature collectively supports. For the short
 state-of-the-art view, see [[concepts/flow-matching|Flow Matching]]. Citations are representative;
@@ -92,7 +90,7 @@ framework's modularity, although most applications remain less mature than acous
 
 ## What the Research Shows
 
-### 1. The training objective is simple; its theoretical interpretation still has boundaries
+### Objective and theory
 
 **Current assessment:** flow matching provides a tractable way to train continuous normalizing
 flows without simulating an ODE during training, by learning a vector field along conditional
@@ -112,7 +110,7 @@ concurrently, so historical priority is less clean than a single-origin narrativ
 **Most informative evidence:** [[2210.02747]], [[2312.15821|Audiobox]],
 [[interspeech-2025-1066]].
 
-### 2. Flow matching improves the practical diffusion speed-quality frontier
+### Speed–quality trade-off
 
 **Current assessment:** across the reviewed continuous-output speech systems, flow matching
 generally reaches useful quality with fewer function evaluations than conventional diffusion.
@@ -131,7 +129,7 @@ not proof that every flow model beats every diffusion model.
 **What remains unresolved:** controlled, same-backbone comparisons across several step budgets and
 perceptual dimensions remain rarer than headline system comparisons.
 
-### 3. Few-step generation is an ecosystem of non-equivalent techniques
+### Few-step acceleration
 
 **Current assessment:** one-to-four-step generation is possible, but “few-step flow matching” does
 not identify a single method or a single trade-off.
@@ -154,7 +152,7 @@ which quality dimensions, and at what training or memory cost?”
 **Most informative evidence:** [[2025.acl-long.1043|OZSpeech]], [[2507.14988|DMOSpeech 2]],
 [[interspeech-2025-2449]], [[2509.18470]].
 
-### 4. Early trajectory steps disproportionately shape global speech attributes
+### Trajectory scheduling
 
 **Current assessment:** evidence from scheduling and control studies indicates that early ODE
 steps, near the prior, have greater influence over global fidelity, speaker identity, and some
@@ -170,7 +168,7 @@ therefore appears to have a floor; it cannot replace distillation or path redesi
 Theoretical explanation remains incomplete, and activation-space emotion localization is related
 but not identical to timestep importance.
 
-### 5. Implicit alignment enables simple architectures but creates a robustness-diversity tension
+### Implicit alignment
 
 **Current assessment:** flow-based non-autoregressive TTS can learn alignment from characters and
 speech without a conventional duration model, but explicit alignment remains useful when
@@ -190,7 +188,7 @@ than the stronger claim that duration supervision simply imposes a quality ceili
 [[2025.acl-long.313|F5-TTS]], [[2506.13053|ZipVoice]], [[2509.19928]],
 [[2509.17988]].
 
-### 6. Non-autoregressive flow and autoregressive codec systems optimize different strengths
+### Parallel and autoregressive generation
 
 **Current assessment:** large-scale non-autoregressive flow systems can match or exceed
 autoregressive codec models on intelligibility and utterance-level generation speed, while
@@ -206,7 +204,7 @@ diversity gaps belong to implicit-alignment flow models rather than non-autoregr
 The choice depends on whether the application prioritizes full-utterance throughput, first-token
 latency, voice fidelity, or expressive variation.
 
-### 7. Hybrid AR-plus-flow designs recover control by giving up some parallelism
+### Autoregressive–flow hybrids
 
 **Current assessment:** separating autoregressive style or semantic planning from flow-based
 acoustic rendering can improve style-timbre decoupling and provide an informative prior, but
@@ -223,11 +221,13 @@ interfaces with informative continuous priors, shorter latent sequences, or bloc
 All three find that more denoising is not always better: excessive function evaluations can degrade
 quality after an optimum.
 
-### 8. Classifier-free guidance is valuable but empirically fragile
+### Classifier-free guidance
 
-**Current assessment: contested.** CFG is widely used for zero-shot speaker conditioning and can
-separate guidance scales for attributes such as accent or environment, but strategies transferred
-from image diffusion do not work uniformly for speech.
+> [!warning]
+> **Contested:** CFG is widely used for zero-shot speaker conditioning, but strategies transferred
+> from image diffusion do not work uniformly for speech.
+
+Separate guidance scales can provide control over attributes such as accent or environment.
 
 The positive evidence spans Voicebox-lineage systems and hybrid TTS architectures. Decoupled
 guidance provides useful control axes, and hybrid unconditional branches can improve conditioning.
@@ -242,7 +242,7 @@ non-monotonic pattern: too little or too much guidance degrades both intelligibi
 The current conclusion is not that CFG fails, but that it is an architecture-dependent control
 mechanism rather than a solved recipe.
 
-### 9. Flow matching has become a modular tool beyond primary acoustic generation
+### Uses beyond acoustic generation
 
 **Current assessment:** the framework transfers cleanly to several continuous target spaces, but
 evidence maturity varies sharply by application.
@@ -257,7 +257,7 @@ GAN-based TTS system does not show that flow matching should replace its acousti
 Likewise, codec refiners often report automatic WER or UTMOS without complete human comparisons.
 The application-level question must remain explicit.
 
-### 10. Efficient architecture and representation can matter as much as the objective
+### Architecture and representation
 
 **Current assessment:** carefully chosen compact backbones and continuous representations can match
 much larger flow systems on several dimensions, but efficiency gains are not uniform.
@@ -273,25 +273,25 @@ system frontier.
 
 ## Where Findings Disagree
 
-### Does removing explicit alignment improve TTS overall?
+### Removing explicit alignment
 
 Alignment-free systems provide strong naturalness and architectural simplicity, but later work
 finds robustness, hallucination, language, and diversity costs. The disagreement is best understood
 as a trade-off between unconstrained naturalness and explicit temporal control, not a universal
 winner.
 
-### Does classifier-free guidance transfer cleanly from diffusion?
+### Guidance transfer
 
 CFG is clearly useful, but the “clean transfer” claim is too strong. The negative evidence shows
 that speech conditioning requires schedule, condition, language, and architecture awareness.
 
-### Does fewer-step generation preserve quality?
+### Quality at fewer steps
 
 It often preserves headline naturalness or intelligibility, but can reduce diversity or speaker
 fidelity. Different accelerators move different dimensions, so step count alone cannot resolve the
 question.
 
-### Is flow matching already preferable for raw-waveform generation?
+### Raw-waveform generation
 
 PeriodWave and related systems provide strong quality evidence, yet GAN vocoders retain a large
 throughput advantage. The acoustic-model conclusion cannot yet be copied directly to vocoding.

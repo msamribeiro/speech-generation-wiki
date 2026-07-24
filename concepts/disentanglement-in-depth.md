@@ -8,15 +8,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Disentanglement: In Depth
 
 ## Findings at a Glance
 
@@ -90,7 +88,7 @@ that every stream is cleanly separated.
 
 ## What the Research Shows
 
-### Useful representations still mix attributes by default
+### Mixed representations
 
 The strongest starting conclusion is negative: a representation optimized for reconstruction or
 general speech modeling is not automatically factorized. Standard neural codecs and SSL features
@@ -113,7 +111,7 @@ reports incomplete overlap between learned prosody and speaker clusters even whi
 competitive reconstruction. The practical lesson is to treat codec layers as biased toward
 particular information, not as guaranteed semantic and acoustic compartments.
 
-### Explicit factorization enables independent control
+### Explicit factorization
 
 The most broadly supported positive result is functional: separate representations allow systems
 to vary one attribute while preserving others. Twelve papers support simultaneous or independent
@@ -137,12 +135,14 @@ recognition instead of a direct leakage test. OpenVoice-style qualitative demons
 weaker evidence of statistical independence. The corpus therefore supports “enables useful
 independent control” more strongly than “produces pure factors.”
 
-### The fidelity trade-off is structural, not an edge case
+### Fidelity trade-off
 
-Ten supporting papers report that stronger disentanglement reduces reconstruction quality,
-speaker similarity, intelligibility, or another target attribute. The pattern appears in codecs,
-bottleneck systems, and generative models, so it cannot be dismissed as one training objective's
-failure.
+> [!warning]
+> **Recurring trade-off:** stronger disentanglement can reduce reconstruction quality, speaker
+> similarity, intelligibility, or another target attribute.
+
+Ten supporting papers report this pattern across codecs, bottleneck systems, and generative
+models, so it cannot be dismissed as one training objective's failure.
 
 The mechanism is intuitive: speaker identity, pitch, articulation, and content are correlated in
 speech. A bottleneck or independence penalty that removes predictable speaker information can
@@ -159,7 +159,7 @@ Codecs]] also shows that its severity depends on codec design and operating poin
 “maximize independence” is a poor engineering objective. A useful system needs enough separation
 to enable a chosen intervention while retaining the correlated information that listeners expect.
 
-### Content isolation works best when content is explicitly defined
+### Defining linguistic content
 
 Generic SSL distillation narrows speaker and paralinguistic leakage but does not eliminate it. The
 graph marks this conclusion as emerging because the evidence base is smaller and relies on proxy
@@ -182,7 +182,7 @@ aggressive removal of speaker or style cues degrades intelligibility. The correc
 representation containing only abstract lexical meaning; it must preserve timing and phonetic
 detail required by the decoder.
 
-### Bottlenecks create separation by deciding what cannot fit
+### Information bottlenecks
 
 A small VQ vocabulary, finite scalar quantization, or differentiable scalar quantization can strip
 nonessential attributes without a classifier or explicit information-theoretic loss. Six papers
@@ -197,7 +197,7 @@ quality. The quantization scheme and defenses against codebook collapse may matt
 vocabulary size. Vevo2 follows the same architectural pattern, but its tokenizer is not directly
 ablated in the reviewed record, so it is supporting lineage rather than decisive replication.
 
-### Pitch needs a dedicated treatment
+### Pitch separation
 
 Pitch is where the broad promise of latent factorization most visibly breaks down. Codec
 interpretability studies, GRL-based systems, and prosody-token analyses all find residual F0
@@ -218,7 +218,7 @@ disentangled. It shows that generic representation-level separation often fails 
 signal-level modeling succeeds. A matched benchmark applying both approaches to the same codecs
 would determine whether this is a structural advantage or simply an implementation gap.
 
-### Independence losses differ in stability and interpretability
+### Independence constraints
 
 Gradient reversal is the best represented explicit independence objective. Five papers report
 reduced leakage, but PeriodCodec reports a quality regression and another system directly critiques
@@ -239,7 +239,7 @@ objective is conceptually direct, but current evidence cannot establish it as a 
 to GRL or orthogonality. Broader adoption may be limited by MI-estimator complexity, or the method
 may simply be specialized. A matched comparison is still missing.
 
-### Data recipes can reduce leakage without adding a module
+### Data-driven separation
 
 Six papers support disentanglement through perturbation, decoupled data construction, or
 self-distillation. [[2406.02430|Seed-TTS]] uses perturbation and training design to separate voice
@@ -257,7 +257,7 @@ backbones, and most methods require carefully generated perturbations or decoupl
 disentanglement should be treated as a training intervention that needs revalidation for each model
 family, not a universal preprocessing recipe.
 
-### Prompt conditioning introduces leakage at inference scale
+### Prompt leakage
 
 Three independent 2025 papers show that prompt-based codec-language or masked-generative systems
 copy unintended attributes from the acoustic prompt. [[2509.19883|CoMelSinger]] identifies prosody
@@ -271,7 +271,7 @@ constructions exchange identity stability for naturalness. This is the same core
 representation bottlenecks, now expressed through in-context conditioning: the prompt contains
 useful identity information and unwanted style information in the same acoustic evidence.
 
-### Evaluation does not yet match the strength of the claims
+### Measuring disentanglement
 
 Most papers measure successful separation through an outcome: WER after conversion, speaker
 classifier accuracy, embedding similarity, emotion recognition, or subjective preference. These

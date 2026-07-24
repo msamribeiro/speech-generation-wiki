@@ -4,17 +4,15 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "9bf1473"
+  commit: "39007c6"
 ---
 
 → [[index|Home]]
-
-# Choose a Reading Path
 
 The wiki presents the same concept-level research at two human-readable depths. Choose based on
 the question you are trying to answer.

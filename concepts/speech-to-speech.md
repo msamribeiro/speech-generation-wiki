@@ -12,15 +12,13 @@ generation:
   schema_version: 2
   date: "2026-07-24"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "36da0b2"
+  commit: "39007c6"
 ---
-
-# Speech-to-Speech Systems
 
 > [!abstract]
 > Speech-to-speech systems accept speech and produce spoken responses, spanning conversational
