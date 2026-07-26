@@ -17,6 +17,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - ingest | 2506.21864 | DeepOmni: Towards Seamless and Smart Speech Interaction with Adaptive Modality-Specific MoE | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
 - ingest | 2510.23312 | Low-Resource Audio Codec (LRAC): 2025 Challenge Description | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
 - ingest | 2510.23541 | SoulX-Podcast: Towards Realistic Long-form Podcasts with Dialectal and Paralinguistic Diversity | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.25178 | SFMS-ALR: Script-First Multilingual Speech Synthesis with Adaptive Locale Resolution | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
 - ingest | 2510.24372 | Bayesian Speech Synthesizers Can Learn from Multiple Teachers | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
 - ingest | 2510.25566 | PitchFlower: A flow-based neural audio codec with pitch controllability | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
 - ingest | 2510.25577 | Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
@@ -1075,4 +1076,3 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - render | field overview and reader navigation | formats: field-overview, index, start | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | speech-to-speech | formats: in-depth | mode: light | runtime: codex | provider: openai | model: gpt-5
 - render | 5 concepts | formats: overview, in-depth, field-overview, navigation | mode: light | runtime: codex | provider: openai | model: gpt-5
-- ingest | 2510.25178 | SFMS-ALR: Script-First Multilingual Speech Synthesis with Adaptive Locale Resolution | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
