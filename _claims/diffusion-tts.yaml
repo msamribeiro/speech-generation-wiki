@@ -1,0 +1,3618 @@
+concept: diffusion-tts
+last_updated: '2026-07-26'
+paper_count: 46
+papers:
+- id: '2105.06337'
+  entry_date: '2026-07-26'
+  year: 2021
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: influential
+  method_family:
+  - diffusion_transformer_acoustic_models
+  claims:
+  - claim_id: gradtts_diffusion_matches_ar_with_speed_control
+    role: supports
+    claim: Diffusion-based acoustic feature generators can match autoregressive TTS naturalness while
+      enabling flexible inference-time speed-quality trade-offs not available in single-pass models.
+    source: §4.1, Table 2
+    evidence: Grad-TTS-10 reaches MOS 4.38 versus 4.32 for Tacotron 2 while running roughly twice as fast
+      (RTF 0.033 vs. 0.075 on GPU).
+    confidence: high
+    relevance: high
+  - claim_id: gradtts_text_conditioned_prior_reduces_steps
+    role: supports
+    claim: Initialising reverse diffusion from a text-conditioned noise distribution rather than standard
+      Gaussian substantially reduces the number of steps required for high-quality synthesis.
+    source: §3.1, Table 1
+    evidence: A preference test (p < 0.005) shows that even at 50 reverse-diffusion steps, the standard
+      N(0,I) variant is significantly worse than Grad-TTS-10 using the text-conditioned N(mu,I) prior.
+    confidence: high
+    relevance: high
+  - claim_id: gradtts_higher_likelihood_than_flow
+    role: supports
+    claim: Diffusion models can achieve higher data log-likelihood on mel-spectrograms than normalising-flow
+      models with larger decoder capacity explicitly trained for maximum likelihood.
+    source: §4.2, Table 2
+    evidence: Grad-TTS achieves a log-likelihood of 0.174 versus 0.082 for Glow-TTS despite Glow-TTS having
+      a 3x larger decoder trained explicitly to maximise likelihood.
+    confidence: medium
+    relevance: high
+  - claim_id: gradtts_diminishing_returns_with_steps
+    role: supports
+    claim: Subjective quality in diffusion-based mel-spectrogram synthesis improves diminishingly with
+      reverse-diffusion step count, with most quality gain recovered by 10 steps rather than 1000.
+    source: §4.1, Table 2
+    evidence: Grad-TTS-1000 reaches MOS 4.44 versus 4.38 for Grad-TTS-10, a gain of only 0.06 for a 100x
+      increase in reverse-diffusion steps.
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation is restricted to a single-speaker English dataset (LJSpeech); no multi-speaker, zero-shot,
+    or multilingual capability is demonstrated.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2106.15561'
+  entry_date: '2026-07-26'
+  year: 2021
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - diffusion
+  - GAN
+  - VAE
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - historical_context
+  - infrastructure
+  current_role: historical_context
+  method_family:
+  - autoregressive_diffusion_hybrids
+  claims:
+  - claim_id: survey_explicit_duration_prediction_robustness
+    role: supports
+    claim: The transition from attention-based alignment to explicit duration prediction in non-autoregressive
+      acoustic models eliminates word skipping and repeating artefacts while enabling parallel mel-spectrogram
+      generation.
+    source: §3.4, Table 11
+    evidence: The survey's alignment strategy table shows explicit duration prediction is the only mechanism
+      that simultaneously satisfies the local, monotonic, and completeness properties for robust alignment.
+    confidence: high
+    relevance: medium
+  - claim_id: survey_multigranular_variation_modeling
+    role: supports
+    claim: Modelling variation information (prosody, style, speaker) at multiple granularities from frame
+      to utterance level improves expressiveness while fine-grained control remains difficult when relying
+      on implicit latent representations.
+    source: §3.5.1, §3.5.3
+    evidence: The survey catalogues variation modeling approaches (explicit labels, reference encoders,
+      VAE/flow latents) across granularities, noting a persistent controllability gap for implicit latent
+      methods.
+    confidence: medium
+    relevance: low
+  - claim_id: survey_diffusion_vocoder_quality_speed_tradeoff
+    role: supports
+    claim: Diffusion-based vocoders achieve high perceptual quality but suffer from slow inference due
+      to iterative reverse diffusion, motivating step-reduction methods.
+    source: §2.4, Table 6
+    evidence: The survey's generative-family comparison table notes flow and diffusion models support
+      parallel inference and likelihood estimation but require O(T) iterative sampling steps, unlike GANs.
+    confidence: high
+    relevance: high
+  - claim_id: survey_zeroshot_encoder_only_quality_gap
+    role: supports
+    claim: Zero-shot speaker adaptation that relies solely on a speaker encoder without any fine-tuning
+      produces noticeably lower voice quality than few-shot adaptation, particularly for speakers distant
+      from the training distribution.
+    source: §3.6.2
+    evidence: The survey's adaptive TTS section characterises encoder-only zero-shot adaptation as consistently
+      trailing few-shot fine-tuning approaches in the pre-2021 literature it surveys.
+    confidence: medium
+    relevance: medium
+  - claim_id: survey_crosslingual_transfer_phoneme_bridging
+    role: supports
+    claim: Low-resource TTS benefits from cross-lingual transfer because human languages share vocal organs
+      and phonetic structures, though phoneme set mismatches require explicit bridging.
+    source: §3.3
+    evidence: The survey's low-resource TTS section catalogues cross-lingual transfer methods that rely
+      on shared phonetic representations, noting that phoneme inventory mismatches between source and
+      target languages require explicit mapping.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The coverage horizon is mid-2021, predating neural codec-based discrete tokenisation, LLM-based TTS,
+    and flow-matching (CFM) acoustic models specifically; its treatment of 'flow' models refers to earlier
+    normalising-flow acoustic models (Glow-TTS, Flowtron), not the CFM framework.
+  - Evaluation methodology is discussed mainly by cataloguing metrics rather than analysing their reliability
+    or mutual disagreement.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2207.12598'
+  entry_date: '2026-07-26'
+  year: 2022
+  venue: arXiv
+  task: []
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  - control_evidence
+  current_role: influential
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: cfg_quality_diversity_tradeoff
+    role: historical_context
+    claim: Diffusion models can trade sample fidelity for diversity at inference time by interpolating
+      conditional and unconditional score estimates, without any externally trained classifier or discriminator.
+    source: §3.2
+    evidence: Guided score estimate is formed as a linear combination of conditional and unconditional
+      score estimates; w=0 recovers the unguided model, increasing w sharpens the conditional distribution.
+    confidence: high
+    relevance: high
+  - claim_id: cfg_joint_training_sufficient
+    role: historical_context
+    claim: Jointly training a single model for both conditional and unconditional generation, via random
+      conditioning dropout, is sufficient to recover the full quality-diversity trade-off of classifier
+      guidance.
+    source: §3.2, §4.1
+    evidence: Single U-Net trained with conditioning dropped at rate p_uncond=0.1-0.2 matches or exceeds
+      separately trained classifier guidance on ImageNet FID.
+    confidence: high
+    relevance: low
+  - claim_id: cfg_uncond_fraction_sensitivity
+    role: historical_context
+    claim: A small unconditional training fraction (p_uncond of 0.1 to 0.2) is sufficient for effective
+      guidance; dedicating a larger fraction to unconditional training harms performance across the guidance
+      sweep.
+    source: §4.2
+    evidence: Ablation over p_uncond values shows 0.1 and 0.2 consistently outperform 0.5 across the full
+      guidance sweep.
+    confidence: high
+    relevance: low
+  - claim_id: cfg_double_forward_cost
+    role: historical_context
+    claim: Classifier-free guidance requires two score-function evaluations per sampling step, making
+      the per-step compute cost twice that of classifier-free unconditional sampling; fair comparisons
+      with single-pass baselines must account for this.
+    source: §4.3
+    evidence: At T=256, each CFG step requires two model evaluations; headline FID comparison holds only
+      when evaluating at twice the inference compute budget of single-pass baselines.
+    confidence: high
+    relevance: high
+  - claim_id: cfg_generative_guidance_principle
+    role: historical_context
+    claim: The quality-diversity trade-off in conditional generative models is a general property accessible
+      to pure generative formulations, not uniquely enabled by discriminative classifiers or adversarial
+      components.
+    source: §5
+    evidence: Implicit classifier interpretation shows guided score corresponds to Bayes-rule ratio of
+      conditional to unconditional densities, achievable without any discriminative component.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments are on class-conditional image generation (ImageNet); the paper makes no claims about
+    speech or audio modalities.
+  - The guidance strength w is a manual hyperparameter with no principled selection criterion.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2210.02747'
+  entry_date: '2026-07-26'
+  year: 2022
+  venue: arXiv
+  task: []
+  architecture:
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - historical_context
+  - infrastructure
+  current_role: foundational
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: fm_simulation_free_cnf
+    role: supports
+    claim: Simulation-free training of Continuous Normalizing Flows is achievable by regressing conditional
+      vector fields rather than marginal vector fields, without any gradient bias.
+    source: §3.2, Theorem 2
+    evidence: The Conditional Flow Matching (CFM) objective regresses per-sample conditional vector fields
+      and is proven to yield identical gradients to the intractable marginal flow matching objective.
+    confidence: high
+    relevance: medium
+  - claim_id: fm_ot_straighter_trajectories
+    role: supports
+    claim: Optimal Transport paths yield straighter generation trajectories than diffusion paths, enabling
+      accurate sample generation with fewer ODE function evaluations.
+    source: §4.1, §6.2, Figure 7
+    evidence: OT path sets mean and standard deviation to change linearly in time, producing straight-line
+      particle trajectories; FM-OT achieves same numerical error threshold as diffusion at roughly 60%
+      of NFEs on ImageNet-32.
+    confidence: high
+    relevance: high
+  - claim_id: fm_objective_more_stable
+    role: supports
+    claim: The Flow Matching objective provides more stable and faster-converging training than denoising
+      score matching when applied to the same diffusion probability paths.
+    source: §6.1, Figure 5
+    evidence: FM with diffusion paths (FM-Diffusion) consistently outperforms training diffusion models
+      via score matching; sampling cost under FM remains constant across training while score matching
+      shows variable NFE.
+    confidence: high
+    relevance: high
+  - claim_id: fm_diffusion_special_case
+    role: supports
+    claim: Diffusion-based generative models are a restricted special case of the broader flow matching
+      framework, which encompasses a continuous family of probability paths with varying efficiency trade-offs.
+    source: §4.1
+    evidence: Both Variance Exploding and Variance Preserving diffusion paths are recovered as special
+      cases by specific choices of time-dependent mean and standard deviation in the Gaussian conditional
+      path parametrization.
+    confidence: high
+    relevance: high
+  limitations:
+  - Experiments are conducted on image generation only (CIFAR-10, ImageNet); speech and audio modalities
+    are flagged as future applications but not explored.
+  - Theoretical analysis assumes Gaussian conditional paths throughout; extensions to non-Gaussian or
+    manifold-constrained paths are not explored.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2301.12503'
+  entry_date: '2026-07-26'
+  year: 2023
+  venue: ICML
+  task: []
+  architecture:
+  - diffusion
+  - VAE
+  relevance: low
+  evidence_role:
+  - historical_context
+  - architecture_variant
+  current_role: minor
+  method_family:
+  - latent_diffusion_synthesis
+  claims:
+  - claim_id: audioldm_latent_diffusion_efficient
+    role: supports
+    claim: Latent diffusion models operating on compressed mel-spectrogram representations achieve significantly
+      better computational efficiency than diffusion models applied in raw waveform or full-resolution
+      spectrogram space, without sacrificing generation quality.
+    source: §3.2, §G, Table 4
+    evidence: AudioLDM-S trains on a single RTX 3090 while surpassing DiffSound (trained on 32 V100s)
+      and AudioGen (64 A100s) on objective metrics.
+    confidence: high
+    relevance: high
+  - claim_id: audioldm_audio_embedding_conditioning_outperforms_text
+    role: supports
+    claim: Conditioning generative models on audio embeddings from a contrastive audio-text model during
+      training, then substituting text embeddings at inference, can outperform direct text-conditioned
+      training when paired audio-text data is limited or noisy.
+    source: §5.1, Table 3
+    evidence: Table 3's ablation shows audio-embedding-conditioned training consistently outperforms text-embedding-conditioned
+      training across all model sizes and data scales, even with augmented text data.
+    confidence: high
+    relevance: medium
+  - claim_id: audioldm_zeroshot_manipulation_without_finetuning
+    role: supports
+    claim: Latent diffusion models trained for audio generation can perform zero-shot manipulation tasks
+      (inpainting, super-resolution, style transfer) by controlling the reverse diffusion starting point,
+      without task-specific fine-tuning.
+    source: §4, Table 5
+    evidence: AudioLDM-L achieves LSD 0.98 on VCTK zero-shot super-resolution, outperforming the AudioUNet
+      baseline (1.32) without any task-specific fine-tuning.
+    confidence: medium
+    relevance: high
+  - claim_id: audioldm_quality_scales_with_data_more_than_size
+    role: supports
+    claim: Text-guided audio generation quality scales with both model size and training data volume,
+      but data scale provides larger gains than model size at comparable compute.
+    source: §5.1, Table 1
+    evidence: Table 1's scaling comparison shows larger gains from increased training data than from increased
+      model size at matched compute.
+    confidence: medium
+    relevance: low
+  limitations:
+  - AudioLDM operates at 16 kHz, limiting music generation fidelity, and all pipeline modules (VAE, LDM,
+    vocoder) are trained separately, creating potential train-time misalignment.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: '2304.09116'
+  entry_date: '2026-07-26'
+  year: 2023
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  - singing
+  architecture:
+  - diffusion
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: influential
+  method_family:
+  - latent_diffusion_synthesis
+  claims:
+  - claim_id: latent_diffusion_models_operating_on_continuous_codec_vectors
+    role: supports
+    claim: Latent diffusion models operating on continuous codec vectors avoid the word-skipping and repetition
+      errors that arise from autoregressive generation over long discrete token sequences.
+    source: §2.3, §5.3, Table 7
+    evidence: NaturalSpeech 2 sidesteps the discrete-token dilemma by using a custom RVQ codec that produces
+      continuous latent vectors rather than discrete indices.
+    confidence: high
+    relevance: high
+  - claim_id: speech_prompting_via_in_context_learning_during_training
+    role: supports
+    claim: Speech prompting via in-context learning during training enables zero-shot speaker adaptation
+      without requiring speaker embeddings or multi-step speaker encoding pipelines.
+    source: §3.3, §5.5
+    evidence: On LibriSpeech test-clean (zero-shot setting, all speakers unseen during training), NaturalSpeech
+      2 achieves a CMOS of 0.00 reference-anchored, matching ground truth at +0.04 CMOS — a result the
+      authors interpret as human-level naturalness on this benchmark.
+    confidence: high
+    relevance: low
+  - claim_id: prosody_adherence_in_zero_shot_tts_improves_monotonically
+    role: supports
+    claim: Prosody adherence in zero-shot TTS improves monotonically with the length of the reference
+      speech prompt, at least up to 10 seconds.
+    source: §5.5, Table 10
+    evidence: On LibriSpeech test-clean (zero-shot setting, all speakers unseen during training), NaturalSpeech
+      2 achieves a CMOS of 0.00 reference-anchored, matching ground truth at +0.04 CMOS — a result the
+      authors interpret as human-level naturalness on this benchmark.
+    confidence: high
+    relevance: medium
+  - claim_id: non_autoregressive_tts_architectures_maintain_near_zero_error
+    role: complicates
+    claim: Non-autoregressive TTS architectures maintain near-zero error rates on adversarially difficult
+      phoneme sequences where autoregressive models degrade significantly.
+    source: §5.3, Table 7
+    evidence: On robustness, NaturalSpeech 2 achieves 0% error rate on 50 adversarially hard sentences
+      (vs. 24% for Tacotron, 34% for Transformer-TTS, and known failures for VALL-E).
+    confidence: high
+    relevance: medium
+  - claim_id: a_system_trained_jointly_on_speech_and_singing
+    role: supports
+    claim: A system trained jointly on speech and singing data can synthesise singing in novel timbres
+      using only a speech reference prompt, demonstrating cross-modal timbre transfer within a shared
+      latent space.
+    source: §5.6
+    evidence: A novel RVQ cross-entropy loss (L_ce-rvq) computed at each residual quantizer level is added
+      as a regularisation term, contributing to sharper latent prediction.
+    confidence: high
+    relevance: low
+  limitations:
+  - The direct comparison with VALL-E is based on VALL-E demo page samples rather than a controlled shared
+    test set — the 16 compared utterances are cherry-picked by the VALL-E authors and may not be representative.
+    This limits the strength of the head-to-head quality claim.
+  - The model is described as still underfitting at 300K training steps, meaning reported results are
+    likely below the system's ceiling performance. Inference requires 150 diffusion steps (ODE solver),
+    and 1000 steps for singing, which is slow for real-time deployment. The paper cites consistency models
+    as future work for acceleration. Training and evaluation are English-only, so multilingual generalisation
+    is uncharacterised. The singing dataset is approximately 30 hours of web-crawled data with no formal
+    provenance or quality validation beyond alignment filtering, which raises questions about singing
+    style coverage. Code and model weights are not publicly released, limiting reproducibility.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2305.07243'
+  entry_date: '2026-07-26'
+  year: 2023
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - diffusion
+  - VAE
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_diffusion_hybrids
+  claims:
+  - claim_id: conditioning_a_diffusion_decoder_on_the_continuous_latent
+    role: supports
+    claim: Conditioning a diffusion decoder on the continuous latent activations of an autoregressive
+      model rather than its discrete token outputs substantially improves output quality in a cascaded
+      AR-diffusion TTS pipeline.
+    source: §2.2.2, Appendix B.4
+    evidence: 'The "TorToise Trick" is the most consequential design choice: after training the diffusion
+      decoder on discrete VQVAE tokens to convergence, it is fine-tuned to decode the final hidden-state
+      activations of the autoregressive model rather than the discrete tokens.'
+    confidence: high
+    relevance: high
+  - claim_id: contrastive_re_ranking_of_multiple_autoregressive_candidates_using
+    role: supports
+    claim: Contrastive re-ranking of multiple autoregressive candidates using a text-speech discriminator
+      measurably improves the final output quality of a TTS system without requiring the expensive decoder
+      to process every candidate.
+    source: §2.3, §4
+    evidence: Third, CLVP (Contrastive Language-Voice Pretrained Transformer) is a CLIP-style dual encoder
+      trained contrastively on text/speech pairs; it scores autoregressive output candidates during re-ranking
+      before the expensive diffusion step, allowing many candidates to be filtered cheaply.
+    confidence: high
+    relevance: high
+  - claim_id: applying_image_generation_scaling_techniques_large_scale_self
+    role: supports
+    claim: Applying image-generation scaling techniques (large-scale self-supervised data, generalist
+      transformer architectures, multi-stage AR-then-diffusion generation) to speech synthesis yields
+      high-expressiveness multi-speaker TTS even when trained by a single researcher on commodity hardware.
+    source: §7
+    evidence: Second, a GPT-2-style autoregressive decoder (30 transformer layers, dim 1024, 16 heads)
+      is trained to predict sequences of these speech tokens conditioned on text and a speaker conditioning
+      vector.
+    confidence: high
+    relevance: high
+  - claim_id: building_a_large_scale_tts_training_corpus_by
+    role: supports
+    claim: Building a large-scale TTS training corpus by scraping and filtering internet audio (audiobooks,
+      podcasts) with automatic transcription is a viable path to tens-of-thousands-of-hours datasets without
+      manual labelling.
+    source: §5, Appendix A
+    evidence: The extended dataset of 49,000 hours was self-assembled from audiobooks and podcasts, transcribed
+      with a fine-tuned wav2vec2-large model that was adapted to predict punctuation.
+    confidence: high
+    relevance: medium
+  limitations:
+  - No formal listening test or MOS table is reported.
+  - The primary quality claim rests on informal sample comparisons; the paper's own evaluation suite (CLVP-FID)
+    is not a standard benchmark.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2403.03100'
+  entry_date: '2026-07-26'
+  year: 2024
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - diffusion
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: influential
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: explicit_disentanglement_of_speech_attributes_in_the_codec
+    role: supports
+    claim: Explicit disentanglement of speech attributes in the codec representation reduces the complexity
+      of zero-shot generation and improves speaker similarity, quality, and prosody simultaneously.
+    source: §3, §4.2, Table 1, Table 2
+    evidence: Disentanglement is enforced through a combination of supervised auxiliary losses (F0 prediction
+      on prosody codes, phoneme prediction on content codes, speaker classification on the timbre vector),
+      gradient reversal layers to actively suppress cross-attribute information leakage, and detail dropout
+      that randomly masks acoustic detail codes during training to prevent the codec from offloading content
+      and prosody into the detail subspace.
+    confidence: high
+    relevance: low
+  - claim_id: gradient_reversal_combined_with_attribute_specific_supervised_losses
+    role: supports
+    claim: Gradient reversal combined with attribute-specific supervised losses is an effective mechanism
+      for suppressing cross-attribute information leakage in neural codec quantization.
+    source: §3.2.2, Appendix B.4
+    evidence: Disentanglement is enforced through a combination of supervised auxiliary losses (F0 prediction
+      on prosody codes, phoneme prediction on content codes, speaker classification on the timbre vector),
+      gradient reversal layers to actively suppress cross-attribute information leakage, and detail dropout
+      that randomly masks acoustic detail codes during training to prevent the codec from offloading content
+      and prosody into the detail subspace.
+    confidence: high
+    relevance: low
+  - claim_id: the_factorization_paradigm_for_codec_representations_is_architecture
+    role: supports
+    claim: The factorization paradigm for codec representations is architecture-agnostic and improves
+      both autoregressive and non-autoregressive generators when applied.
+    source: §4.3.2, Table 6
+    evidence: The paper also shows the factorisation paradigm generalises to autoregressive generation
+      by substituting VALL-E for the diffusion modules while retaining FACodec, demonstrating the design
+      is not tied to its diffusion formulation.
+    confidence: high
+    relevance: high
+  - claim_id: discrete_masked_diffusion_over_disentangled_codec_tokens_is
+    role: supports
+    claim: Discrete masked diffusion over disentangled codec tokens is faster than autoregressive LM-based
+      codec generation at comparable or better quality.
+    source: Appendix A.5, Table 10
+    evidence: The factorized diffusion model is a discrete masked diffusion system (mask-and-predict,
+      not continuous DDPM), operating over the discrete tokens from FACodec.
+    confidence: high
+    relevance: high
+  - claim_id: performance_on_zero_shot_tts_scales_predictably_with
+    role: supports
+    claim: Performance on zero-shot TTS scales predictably with both training data volume and model size
+      when the underlying speech representation captures disentangled attributes.
+    source: §4.4, Tables 7, 8
+    evidence: FACodec also enables zero-shot voice conversion without task-specific training, achieving
+      Sim-O of 0.86 and WER of 3.46% on VCTK, competitive with dedicated VC models (Table 14).
+    confidence: high
+    relevance: medium
+  limitations:
+  - FACodec requires phoneme-level transcriptions for content supervision during training, constraining
+    its applicability to languages and settings where reliable alignments are unavailable. The zero-shot
+    TTS evaluation is English-only; multilingual generalisation is stated as future work but not demonstrated.
+  - 'Additional limitations: the attribute factorization is incomplete (background sounds, energy, and
+    other fine-grained characteristics are not captured, as noted in Appendix C); the acoustic detail
+    subspace retains some content and prosody leakage without gradient reversal (verified qualitatively
+    in Appendix B.4); and the prosody evaluation relies on MCD and emotion classifiers on the RAVDESS
+    dataset, which assesses a narrow range of acted emotions rather than naturalistic prosodic variation.'
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2406.02430'
+  entry_date: '2026-07-26'
+  year: 2024
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - autoregressive-LM
+  - diffusion
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_diffusion_hybrids
+  claims:
+  - claim_id: autoregressive_codec_language_models_trained_at_sufficient_scale
+    role: supports
+    claim: Autoregressive codec language models trained at sufficient scale can generate zero-shot speech
+      with naturalness and speaker similarity indistinguishable from human speech as measured by CMOS.
+    source: §3.1, Table 1
+    evidence: Seed-TTS ICL receives CMOS scores of -0.07 in English and -0.08 in Chinese relative to human
+      speech while retaining strong speaker-similarity scores.
+    confidence: high
+    relevance: medium
+  - claim_id: self_distillation_on_perturbation_generated_pairs_is_an
+    role: supports
+    claim: Self-distillation on perturbation-generated pairs is an effective method for timbre disentanglement
+      in TTS systems, achieving large speaker similarity gains in voice conversion without modifying model
+      architecture or loss functions.
+    source: §4.1, Table 6
+    evidence: 'ICL: +0.14 preference win - RL-SER improves emotion control from (0.46, 0.44, 0.53, 0.13)
+      to (0.91, 0.80, 0.78, 0.82) across angry/happy/sad/surprise **Voice conversion (Table 6, self-distillation):**
+      - Without self-distillation: SIM 0.491 EN, 0.636 ZH - With self-distillation: SIM 0.753 EN, 0.791
+      ZH — far exceeding DiffVC (0.311) and HierSpeech++ (0.387) **Speaker fine-tuning (Table 3):** -
+      SFT CMOS +0.37 over ICL baseline **Deployed model (Table 5):** - Latency 0.028× offline, RTF 0.132×,
+      with CMOS only -0.02 vs. offline model **ASR data utility (Table 2):** ASR model trained on synthetic
+      Seed-TTS LibriSpeech data achieves WER within 0.31% absolute of real-data baseline on clean sets.'
+    confidence: high
+    relevance: medium
+  - claim_id: reinforcement_learning_post_training_with_objective_speech_quality
+    role: supports
+    claim: Reinforcement learning post-training with objective speech quality rewards improves robustness
+      and speaker similarity in autoregressive TTS while introducing reward hacking that must be carefully
+      managed.
+    source: §4.2, Tables 7, 8
+    evidence: 'For post-training, REINFORCE is used with two reward configurations: Seed-TTS-RL-SIM-WER
+      (WER + speaker similarity as rewards) and Seed-TTS-RL-SER (speech emotion recognition accuracy as
+      reward).'
+    confidence: high
+    relevance: medium
+  - claim_id: end_to_end_diffusion_models_that_predict_total
+    role: supports
+    claim: End-to-end diffusion models that predict total duration and learn local text-audio alignment
+      implicitly can match or exceed the quality of autoregressive codec LM systems without per-phoneme
+      duration supervision.
+    source: §4.3, Table 10
+    evidence: This enables zero-shot voice conversion without architectural changes. **Seed-TTSDiT (NAR
+      variant):** A fully diffusion-based architecture (Diffusion Transformer / DiT) that directly maps
+      Gaussian noise to vocoder latents conditioned on text, audio prompt, and a total duration signal.
+    confidence: high
+    relevance: high
+  - claim_id: synthetic_speech_generated_by_a_high_quality_zero
+    role: supports
+    claim: Synthetic speech generated by a high-quality zero-shot TTS system can train ASR models that
+      approach real-data performance on clean test sets, though a gap persists on noisy sets due to background
+      noise smoothing.
+    source: §3.1, Table 2
+    evidence: 'ICL: +0.14 preference win - RL-SER improves emotion control from (0.46, 0.44, 0.53, 0.13)
+      to (0.91, 0.80, 0.78, 0.82) across angry/happy/sad/surprise **Voice conversion (Table 6, self-distillation):**
+      - Without self-distillation: SIM 0.491 EN, 0.636 ZH - With self-distillation: SIM 0.753 EN, 0.791
+      ZH — far exceeding DiffVC (0.311) and HierSpeech++ (0.387) **Speaker fine-tuning (Table 3):** -
+      SFT CMOS +0.37 over ICL baseline **Deployed model (Table 5):** - Latency 0.028× offline, RTF 0.132×,
+      with CMOS only -0.02 vs. offline model **ASR data utility (Table 2):** ASR model trained on synthetic
+      Seed-TTS LibriSpeech data achieves WER within 0.31% absolute of real-data baseline on clean sets.'
+    confidence: high
+    relevance: medium
+  limitations:
+  - '- Model weights not released; no reported parameter count. - Zero-shot ICL struggles with speakers
+    having strong accents or unique styles not captured in a short (15s) prompt — the fine-tuned model
+    is still preferred for ''hard'' speakers. - Synthesized speech slightly over-smooths background noise
+    (ASR degrades on noisy test sets). - Does not handle singing or speech with background music well.
+    - Reward hacking (over-slow, over-articulated speech) in RL post-training requires careful tuning.
+    - Multi-shot ICL for long-form generation not yet demonstrated.'
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2411.09943'
+  entry_date: '2026-07-26'
+  year: 2024
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - diffusion_transformer_acoustic_models
+  claims:
+  - claim_id: seedvc_timbre_shifter_reduces_leakage
+    role: supports
+    claim: Using an imperfect external VC model as a timbre-shifting augmentation device during training
+      reduces timbre leakage in content representations without requiring discrete bottlenecking, preserving
+      intelligibility.
+    source: §3.3, Table 1
+    evidence: Seed-VC's OpenVoice-based timbre-shifter applied before Whisper feature extraction suppresses
+      residual source-speaker information without discrete quantisation, avoiding the intelligibility
+      loss typical of VQ-based disentanglement.
+    confidence: high
+    relevance: low
+  - claim_id: seedvc_incontext_conditioning_improves_sim
+    role: supports
+    claim: Conditioning a generative VC model on the full reference utterance via in-context learning
+      yields higher speaker similarity than conditioning on a single speaker embedding alone.
+    source: §3.4, Table 1
+    evidence: Removing full-reference in-context conditioning and using only the timbre vector drops Seed-VC's
+      SECS from 0.8676 to 0.7948 on the flow-matching diffusion transformer backbone.
+    confidence: high
+    relevance: high
+  - claim_id: seedvc_disentanglement_mitigates_tradeoff
+    role: supports
+    claim: The speaker similarity versus intelligibility trade-off that limits bottleneck-based zero-shot
+      VC approaches can be mitigated by separating timbre perturbation from content feature extraction.
+    source: §1, §3.3.1
+    evidence: Seed-VC's timbre-shifter separates timbre perturbation (training-time augmentation) from
+      content feature extraction (Whisper encoder), avoiding the aggressive bottlenecking that trades
+      intelligibility for disentanglement in prior VC systems.
+    confidence: medium
+    relevance: low
+  - claim_id: seedvc_f0_conditioning_extends_to_singing
+    role: supports
+    claim: F0 conditioning enables diffusion transformer VC models to extend to zero-shot singing voice
+      conversion with competitive pitch preservation and improved lyric intelligibility over per-speaker
+      trained baselines.
+    source: §3.5, Table 2
+    evidence: The singing variant of Seed-VC, adding quantised F0 conditioning to the flow-matching-objective
+      diffusion transformer, outperforms RVCv2 on SECS (0.7405 vs. 0.7264) and CER (19.70% vs. 28.46%)
+      despite RVCv2 requiring per-speaker training.
+    confidence: high
+    relevance: high
+  limitations:
+  - No subjective listening tests (MOS or MUSHRA) are reported; all quality comparisons rely on DNSMOS
+    P.835, an automatic metric.
+  - The training data advantage (Emilia-101k) over baselines (OpenVoice, CosyVoice) is substantial and
+    a dataset-controlled comparison is deferred to future work.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: 2025.coling-main.352
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: COLING
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - diffusion_transformer_acoustic_models
+  claims:
+  - claim_id: applying_diffusion_based_classifier_free_guidance_to_low
+    role: supports
+    claim: Applying diffusion-based classifier-free guidance to low-dimensional prosodic features (pitch,
+      energy, duration) rather than the full Mel-spectrogram achieves faster inference than Mel-diffusion
+      baselines while retaining prosodic diversity benefits over regression-based models.
+    source: §3.2, Table 1
+    evidence: On synthesis speed (RTF), DiffStyleTTS (0.048) is faster than Grad-TTS (0.250) and Guided-TTS
+      (0.479) because it runs diffusion only over low-dimensional prosodic features rather than full Mel-spectrograms.
+    confidence: high
+    relevance: high
+  - claim_id: hierarchical_conditioning_combining_coarse_grained_implicit_style_tokens
+    role: supports
+    claim: Hierarchical conditioning combining coarse-grained implicit style tokens with fine-grained
+      explicit prosodic diffusion outperforms both purely regression-based and discriminator-constrained
+      diffusion baselines on naturalness and prosodic distribution accuracy.
+    source: §3.2, Table 1
+    evidence: Coarse-grained implicit style conditions (ISC) are extracted from reference Mel-spectrograms
+      via a GST module (10 tokens, 256-D token embeddings, 4-head attention).
+    confidence: high
+    relevance: high
+  - claim_id: classifier_free_guidance_scale_controls_a_trade_off
+    role: complicates
+    claim: Classifier-free guidance scale controls a trade-off between prosodic diversity and naturalness
+      quality in diffusion-based prosody prediction, with distortion artefacts emerging at high guiding
+      scales.
+    source: §3.3, Table 2
+    evidence: A dynamic thresholding improvement corrects the standard deviation of the guided noise output
+      to prevent phoneme distortion (elongation/noise artefacts) that arises at high guiding scales (η
+      ≥ 7.0).
+    confidence: high
+    relevance: high
+  - claim_id: dynamic_thresholding_applied_to_cfg_noise_outputs_effectively
+    role: supports
+    claim: Dynamic thresholding applied to CFG noise outputs effectively mitigates phoneme distortion
+      caused by excessive guiding scales in prosodic diffusion models.
+    source: §2.2, §3.3
+    evidence: A dynamic thresholding improvement corrects the standard deviation of the guided noise output
+      to prevent phoneme distortion (elongation/noise artefacts) that arises at high guiding scales (η
+      ≥ 7.0).
+    confidence: high
+    relevance: high
+  - claim_id: gst_based_implicit_style_conditioning_enables_meaningful_prosodic
+    role: supports
+    claim: GST-based implicit style conditioning enables meaningful prosodic transfer across speakers,
+      outperforming both regression-based style transfer and discriminator-constrained diffusion in subjective
+      preference evaluations.
+    source: §3.4, Table 3
+    evidence: 'The conditional diffusion module implements classifier-free guidance (CFG) using two jointly
+      trained denoisers sharing the same bidirectional dilated convolution architecture (12 residual layers,
+      WaveNet-style): one conditioned on both text embeddings and implicit style conditions (Ψ_θ1), one
+      conditioned on text embeddings only (Ψ_θ2).'
+    confidence: high
+    relevance: high
+  limitations:
+  - Speaker timbre and prosody are not disentangled — the model can transfer prosodic style but cannot
+    fully separate it from speaker identity. The GST tokens show partial overlap in t-SNE visualizations,
+    indicating shared prosodic modes and incomplete independence. The evaluation is conducted on a private
+    Mandarin Chinese dataset (9 male speakers from similar genres), limiting generalization claims across
+    languages, genders, or more varied speaking styles. The 200-step diffusion process at inference is
+    still far slower than FastSpeech2, and no acceleration scheme (consistency models, flow-matching)
+    is explored. Whether the CFG approach generalises to cross-lingual or highly emotional speech remains
+    untested.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2502.18924'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - latent_diffusion_synthesis
+  claims:
+  - claim_id: megatts3_sparse_alignment_naturalness_robustness
+    role: supports
+    claim: Providing coarse stochastic phoneme anchors rather than fully expanded forced alignments improves
+      both naturalness and robustness simultaneously in latent diffusion TTS.
+    source: §3.2, §4.3, Table 4, Table 7
+    evidence: Sparse alignment anchors improve prosodic naturalness metrics (GPE 0.44→0.31, VDE 0.33→0.29)
+      over forced alignment while cutting hard-sentence WER from 8.49% (E2-TTS, fully implicit) to 3.95%.
+    confidence: high
+    relevance: high
+  - claim_id: megatts3_compact_continuous_latent_quality
+    role: supports
+    claim: Compact continuous latent representations at very low token rates enable higher zero-shot TTS
+      quality than discrete codecs at higher bit rates when used as the target space for diffusion.
+    source: §4.5, Table 5, Table 6
+    evidence: WaveVAE's 25 vectors/second continuous latent space outperforms discrete codec targets at
+      higher bitrates on downstream TTS quality, per the paper's codec-choice ablation.
+    confidence: high
+    relevance: high
+  - claim_id: megatts3_perflow_distillation_25_to_8_steps
+    role: supports
+    claim: Piecewise rectified flow distillation reduces inference steps from 25 to 8 with negligible
+      degradation in speaker similarity and intelligibility.
+    source: §3.2, §4.2, Table 1
+    evidence: The PeRFlow-distilled MegaTTS 3 (8 steps) retains SIM-O 0.70 and WER 1.86% versus the 25-step
+      teacher's SIM-O 0.71 and WER 1.82%, while RTF drops from 0.188 to 0.124.
+    confidence: high
+    relevance: medium
+  - claim_id: megatts3_decoupled_cfg_accent_control
+    role: supports
+    claim: Decoupled text and speaker guidance scales in classifier-free guidance provide a continuous
+      accent intensity control axis without requiring accent labels.
+    source: §3.2, §4.4, Table 3
+    evidence: Varying alpha-txt independently of alpha-spk shifts pronunciation systematically from distorted
+      to accented to standard English on L2-ARCTIC, with no accent labels used in training.
+    confidence: high
+    relevance: high
+  - claim_id: megatts3_scaling_behaviour
+    role: supports
+    claim: Latent diffusion TTS systems exhibit strong data and model scaling behaviour, with both speaker
+      similarity and intelligibility improving consistently as training data grows from 2k to 600k hours
+      and model size grows from 0.5B to 7B parameters.
+    source: Appendix D, Table 8
+    evidence: SIM-O improves from 0.52 at 2k training hours to 0.66 at 600k hours, and a 7B-parameter
+      model reaches 0.74 SIM-O and 1.90% WER.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Scaling and cross-domain results use an internal 400-sample test set, limiting external reproducibility
+    for those specific claims.
+  - The sparse alignment mechanism still depends on an external forced aligner (MFA) at training time,
+    relaxing rather than eliminating the alignment-tooling dependency.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: iclr-2025-hQvX9MBowC
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: ICLR
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - diffusion_transformer_acoustic_models
+  claims:
+  - claim_id: diffusion_transformer_backbones_are_better_suited_to_tts_than_u_net_back
+    role: supports
+    claim: Diffusion Transformer backbones are better suited to TTS than U-Net backbones once domain-specific
+      conditioning factors (phonemes, durations) are removed.
+    source: §5.2, Table 4
+    evidence: Under matched training conditions, replacing the DiT backbone with a U-Net (and a U-Net
+      variant without down/up-sampling) increases WER from 2.93 to 3.7 and drops SIM-r from 0.588 to 0.389
+      on the English cross-sentence task.
+    confidence: high
+    relevance: high
+  - claim_id: predicting_total_target_length_and_generating_variable_length_sequences
+    role: supports
+    claim: Predicting total target length and generating variable-length sequences outperforms fixed-length
+      generation with padding in diffusion-based TTS.
+    source: §5.2, Table 5
+    evidence: Fixed-length modeling with padding reaches WER 6.81-8.89, while a learned speech length
+      predictor with variable-length generation reaches WER 5.36-5.58 under otherwise identical settings.
+    confidence: high
+    relevance: high
+  - claim_id: aligning_text_and_speech_latent_representations_improves_cross_attention
+    role: supports
+    claim: Aligning text and speech latent representations improves cross-attention-conditioned generation
+      quality, independent of model or training-data scale.
+    source: §5.2, Tables 6-7
+    evidence: A speech codec fine-tuned with an auxiliary language-modeling loss against a frozen text
+      encoder (Mel-VAE++) improves WER/SIM over the unaligned codec regardless of which text encoder (ByT5
+      or SpeechT5) is paired with it, and a jointly text-speech-trained text encoder (SpeechT5, 85M params)
+      outperforms a larger text-only encoder (ByT5-base, 415M params) trained on more data.
+    confidence: high
+    relevance: low
+  - claim_id: removing_domain_specific_alignment_factors_from_ldm_based_tts_narrows_bu
+    role: complicates
+    claim: Removing domain-specific alignment factors from LDM-based TTS narrows but does not eliminate
+      the gap to phoneme-duration-based systems in speaker similarity.
+    source: §5.1, Table 2
+    evidence: DiTTo-en-XL reaches SIM-r 0.6554 on the cross-sentence task, below Voicebox's reported 0.681
+      (a phoneme/duration-based non-autoregressive model), even though DiTTo-en-XL is faster and matches
+      or exceeds Voicebox on WER.
+    confidence: medium
+    relevance: medium
+  - claim_id: codec_compression_ratio_not_codec_reconstruction_quality_alone_determine
+    role: complicates
+    claim: Codec compression ratio, not codec-reconstruction quality alone, determines suitability as
+      a diffusion target for variable-length TTS.
+    source: §5.2, Table 7
+    evidence: DAC achieves higher PESQ and ViSQOL codec-reconstruction scores than Mel-VAE, but its 7-8x
+      longer latent sequences make training and inference substantially less efficient and degrade end-to-end
+      WER/SIM relative to the more compressed but lower-fidelity Mel-VAE.
+    confidence: medium
+    relevance: high
+  limitations:
+  - See the source paper page for the complete limitations and evaluation scope.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: iclr-2025-uxDFlPGRLX
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: ICLR
+  task:
+  - codec
+  architecture:
+  - flow-matching
+  - GAN
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - historical_context
+  current_role: minor
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: flowdec_fm_postfilter_matches_gan_quality
+    role: supports
+    claim: A flow matching-based stochastic postfilter conditioned on a deterministic codec's decoder
+      output can replace adversarial training while achieving comparable subjective quality to a GAN-based
+      codec.
+    source: §5.2, Figure 6
+    evidence: MUSHRA listening tests with 11 expert listeners show no significant difference between the
+      FlowDec postfilter and DAC (GAN-based codec) score distributions at matched bitrates of 4.5 and
+      7.5 kbit/s.
+    confidence: high
+    relevance: medium
+  - claim_id: flowdec_coupled_prior_removes_ot_solver_need
+    role: supports
+    claim: Coupling the flow matching source distribution to the conditioning signal, rather than sampling
+      it independently, removes the need for minibatch optimal-transport solvers and improves postfilter
+      sample quality at low inference budgets.
+    source: §5.1, Table 4
+    evidence: At NFE=6, the coupled formulation achieves FAD×100 of 1.62 versus 145.3 for a diffusion-based
+      postfilter (ScoreDec) and approximately 29 for a constant-variance flow matching ablation, on the
+      same codec and test set.
+    confidence: high
+    relevance: high
+  - claim_id: flowdec_fad_distortion_tradeoff
+    role: complicates
+    claim: Improving perceptual distance metrics (FAD) via generative postfiltering trades off against
+      intrusive distortion metrics relative to discriminator-trained codecs.
+    source: §5.1, Figure 4, Figure 5
+    evidence: The retrained non-adversarial codec generally outperforms the flow-matching postfilter on
+      SI-SDR and fwSSNR even though the postfilter achieves better FAD, consistent with a perception-distortion
+      tradeoff.
+    confidence: high
+    relevance: low
+  - claim_id: flowdec_vanilla_fm_prior_convergence_failure
+    role: complicates
+    claim: Generative postfilters trained with vanilla score- or flow-matching formulations using a fixed-variance
+      or independent prior can fail to converge to the target signal or require expensive multi-step inference
+      to reach acceptable quality.
+    source: §5.1, Table 4
+    evidence: The diffusion-based ScoreDec postfilter produces unusable quality at NFE=6 (FAD×100 = 145.3,
+      SI-SDR = -27.23), only becoming competitive at roughly 50 evaluations; a constant-variance flow
+      matching variant also underperforms the coupled formulation.
+    confidence: high
+    relevance: high
+  limitations:
+  - The proposed codec, like the DAC baseline it builds on, uses a noncausal architecture and is not streaming-capable.
+  - The postfilter and underlying codec are trained in two separate stages; joint training is left unexplored
+    due to potential instability.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: 2025.naacl-long.110
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: NAACL
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - acceleration_evidence
+  current_role: minor
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: wavefm_mel_prior_reduces_transport_cost
+    role: supports
+    claim: A mel-conditioned prior that matches the energy distribution of the target signal reduces transportation
+      cost in flow matching vocoders and substantially improves one-step generation quality.
+    source: §3.1, Table 4
+    evidence: Removing the mel-conditioned prior (reverting to standard Gaussian noise) drops SMOS from
+      4.11 to 3.79 in the paper's component ablation, the single largest contributor among the three innovations.
+    confidence: high
+    relevance: medium
+  - claim_id: wavefm_reparam_enables_aux_losses
+    role: supports
+    claim: Reparameterizing the flow matching objective to directly predict clean output, rather than
+      random derivatives, enables auxiliary perceptual losses (STFT, mel) and periodic activation functions
+      that cannot otherwise be applied.
+    source: §3.2, Table 4
+    evidence: Without the reparameterization, SMOS drops to 3.88 because auxiliary STFT and mel losses
+      and Snake-beta periodic activations cannot be applied to a model predicting random instantaneous
+      derivatives.
+    confidence: high
+    relevance: medium
+  - claim_id: wavefm_consistency_distillation_near_gan_speed
+    role: supports
+    claim: Consistency distillation can be adapted to flow matching vocoders with dynamic priors, enabling
+      single-step inference at near-GAN speeds without adversarial training.
+    source: §3.3, Table 3
+    evidence: WaveFM-1 Step (distilled) achieves SMOS 4.11 and runs at 303x real-time, essentially matching
+      HiFi-GAN V1's 325x real-time speed, using only ~25k additional distillation steps on top of the
+      base 1M training steps.
+    confidence: high
+    relevance: medium
+  - claim_id: wavefm_aux_losses_improve_ood_generalisation
+    role: supports
+    claim: Flow matching vocoders trained with auxiliary perceptual losses generalize better to out-of-distribution
+      audio (music) than diffusion vocoders trained without them.
+    source: §4.4, Table 2
+    evidence: WaveFM-6 Steps achieves SMOS 4.05 versus BigVGAN-base's 3.95 on out-of-distribution MUSDB18-HQ
+      music, attributed to the refined multi-resolution STFT and mel auxiliary losses unlocked by the
+      reparameterized objective.
+    confidence: medium
+    relevance: high
+  limitations:
+  - The model is a vocoder (mel-to-waveform); it does not address text-to-mel acoustic modeling.
+  - Evaluated only on English speech; whether the reparameterization technique generalizes to latent (non-waveform)
+    flow matching is unexplored.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: 2025.naacl-long.242
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: NAACL
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - GAN
+  - VAE
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - latent_diffusion_synthesis
+  claims:
+  - claim_id: compressing_prosodic_variation_into_a_fixed_length_discrete
+    role: complicates
+    claim: Compressing prosodic variation into a fixed-length discrete latent before diffusion modeling
+      makes one-step distillation feasible with a small simulation budget, whereas bootstrapping-based
+      distillation methods require significantly more samples or fail entirely on variable-length latents.
+    source: §3.3, Appendix A.3, Table 6
+    evidence: This diffusion model is then distilled to one step via a simulation-based approach with
+      perceptual loss (prosody decoder output as perceptual metric), requiring only 10k samples.
+    confidence: high
+    relevance: high
+  - claim_id: codec_free_end_to_end_waveform_synthesis_achieves
+    role: supports
+    claim: Codec-free end-to-end waveform synthesis achieves competitive or superior human-rated naturalness
+      and similarity compared to codec-dependent systems, while adversarial training with multimodal discriminators
+      compensates for the quantisation reconstruction gap.
+    source: §3.1, §3.4, §4.2, Table 1
+    evidence: 'Training uses mel reconstruction loss, a speaker embedding feature matching (SEFM) loss
+      for timbre fidelity, plus two multimodal discriminators: one for the waveform decoder (conditioned
+      on all decoder inputs) and one for the prosody decoder.'
+    confidence: high
+    relevance: low
+  - claim_id: jointly_encoding_the_speech_prompt_and_input_text
+    role: supports
+    claim: Jointly encoding the speech prompt and input text into prompt-aligned embeddings alongside
+      a global style vector provides larger naturalness and similarity gains than using either conditioning
+      alone in zero-shot TTS.
+    source: §4.3, Table 3
+    evidence: Combined with prompt-aligned text embeddings (PATE) — a joint encoding of the input text
+      and prompt speech — to produce richer speaker conditioning. 2.
+    confidence: high
+    relevance: medium
+  - claim_id: automatic_speaker_embedding_similarity_metrics_can_diverge_from
+    role: supports
+    claim: Automatic speaker embedding similarity metrics can diverge from human-rated similarity in zero-shot
+      TTS when codec-free systems are compared to codec-dependent ones, suggesting that codec representations
+      may be tuned to neural-network perceptions rather than human perception.
+    source: §4.2, Table 1
+    evidence: 'On LibriSpeech test-clean with 3-second reference prompts (Table 1, 40 unseen speakers):
+      - StyleTTS-ZS (LibriLight) achieves CMOS-N = 0.00 (best), outperforming NaturalSpeech 3 (CMOS-N
+      = -0.28), FlashSpeech (CMOS-N = -0.42), and VALL-E (CMOS-N = -1.07). - WER: 0.79% — best across
+      all compared models, better than ground truth (0.34% is GT itself). - UT-MOS: 4.16, RTF: 0.03 (vs.
+      0.30 for NaturalSpeech 3, 0.62 for VALL-E). - Speaker embedding SIM: 0.56 — competitive with most,
+      below NaturalSpeech 3 (0.66), which the authors attribute to perceptual vs. neural-network-centric
+      similarity measures.'
+    confidence: high
+    relevance: medium
+  limitations:
+  - The model is English-only (LibriTTS and LibriLight are English audiobook corpora), limiting multilingual
+    applicability. Speaker embedding SIM is somewhat lower than NaturalSpeech 3, suggesting the codec-free
+    approach may still leave timbre fidelity on the table for neural-network-centric metrics. The GAN-based
+    acoustic synthesizer does not benefit from iterative refinement; the authors acknowledge that replacing
+    it with a distilled diffusion component could improve quality. The RTF advantage is significant but
+    the prosody RVQ (fixed K=50) has limited capacity for very long or very short utterances. Distillation
+    quality degrades compared to the full diffusion model at very small sample sizes (1k–5k), meaning
+    the 10k minimum is a practical requirement.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2507.15272'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: conditioning_duration_prediction_on_reference_audio_from_the_same_speake
+    role: supports
+    claim: Conditioning duration prediction on reference audio from the same speaker can improve speaker
+      similarity in zero-shot diffusion TTS without modifying the training objective.
+    source: §2.2, Table 2
+    evidence: Cross-attention over an unrelated reference mel-spectrogram (same speaker, different content)
+      improves SIM-O over a speaker-embedding-conditioned Grad-TTS baseline across all seven Indian languages
+      tested.
+    confidence: high
+    relevance: high
+  - claim_id: classifier_free_guidance_with_a_dataset_mean_unconditional_condition_imp
+    role: supports
+    claim: Classifier-free guidance with a dataset-mean unconditional condition improves speaker consistency
+      at inference time in diffusion-based TTS for unseen speakers.
+    source: §2.3, Table 2
+    evidence: A2TTS applies CFG at inference, following UnitSpeech, to amplify speaker conditioning without
+      changing the training procedure; speaker similarity gains are observed across all languages evaluated.
+    confidence: high
+    relevance: high
+  - claim_id: diffusion_based_zero_shot_tts_can_achieve_reasonable_speaker_similarity
+    role: complicates
+    claim: Diffusion-based zero-shot TTS can achieve reasonable speaker similarity, but intelligibility
+      on out-of-domain benchmarks degrades substantially relative to ground-truth speech.
+    source: §Appendix A, Tables 3-9
+    evidence: A2TTS TTS WER on FLEURS, CommonVoice, and IndicTTS is 1.5-4x higher than the corresponding
+      ASR baseline on the same test sets across Hindi, Marathi, Punjabi, Bengali, Gujarati, Tamil, and
+      Malayalam.
+    confidence: medium
+    relevance: high
+  - claim_id: language_specific_diffusion_tts_models_can_be_trained_on_standard_benchm
+    role: supports
+    claim: Language-specific diffusion TTS models can be trained on standard benchmark speech corpora
+      to achieve multi-speaker zero-shot synthesis in low-resource settings.
+    source: §3.1, Table 2
+    evidence: A2TTS trains separate models for seven Indian languages using only the IndicSUPERB dataset
+      (except Malayalam and Tamil which also use IndicTTS), achieving SIM-O above 0.70 for all languages
+      on the IndicSUPERB evaluation set.
+    confidence: high
+    relevance: high
+  limitations:
+  - See the source paper page for the complete limitations and evaluation scope.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: 2025.ccl-1.77
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: workshop
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: cross_modal_facial_features_can_provide_sufficient_speaker
+    role: supports
+    claim: Cross-modal facial features can provide sufficient speaker identity signal for zero-shot voice
+      generation without reference audio.
+    source: §3.2, Table 1, Table 2
+    evidence: The cross-modal biometric unseen speaker modelling module maps a face image to a speaker
+      embedding via ResNet50 and a trainable visual network; Id.Acc of 66.87/68.99 on LRS2/GRID exceeds
+      all baselines that require reference audio at inference.
+    confidence: high
+    relevance: low
+  - claim_id: diffusion_based_denoising_in_a_multimodal_tts_dubbing
+    role: supports
+    claim: Diffusion-based denoising in a multimodal TTS/dubbing pipeline improves prosodic diversity
+      relative to deterministic autoregressive or attention-based baselines.
+    source: §4.2.4, Figure 4
+    evidence: Running HFSD-V2C 10 times per speaker produces diverse F0 contours capturing individual
+      accent patterns; Neural Dubber and HPMDubbing produce fixed prosodic distributions.
+    confidence: high
+    relevance: high
+  - claim_id: hierarchical_multimodal_prosody_modelling_video_audio_and_text
+    role: supports
+    claim: Hierarchical multimodal prosody modelling (video, audio, and text levels jointly) improves
+      emotion accuracy over methods relying on fewer modalities.
+    source: §4.2.1, §4.2.5, Table 1, Table 2
+    evidence: Emo.Acc reaches 65.63 on LRS2 and 66.32 on GRID, against 61.46 and 63.66 for HPMDubbing;
+      the ablation (w/o UP) drops Emo.Acc to 22.08/27.64, confirming the prosody module's role.
+    confidence: high
+    relevance: low
+  - claim_id: zero_shot_visual_voice_cloning_accuracy_remains_significantly
+    role: complicates
+    claim: Zero-shot visual voice cloning accuracy remains significantly below ground-truth speaker identity,
+      indicating that cross-modal biometric embeddings do not fully replace reference audio.
+    source: §4.2.1, Table 1
+    evidence: GT Id.Acc on LRS2 is 91.52 vs. HFSD-V2C's 66.87; GT MOS is 4.72 vs. 4.29 for HFSD-V2C, a
+      gap of 0.43 that persists after hierarchical multimodal conditioning.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluation is restricted to LRS2 and GRID, both of which contain constrained speaking styles (BBC
+    broadcasts and phonetically structured lab speech), leaving generalisation to spontaneous conversational
+    video undemonstrated. The subjective MOS is collected on only 20 clips rated by 20 evaluators, which
+    is a limited sample for drawing robust conclusions. The model trains on both LRS2 and GRID but the
+    zero-shot claim means unseen speakers at test time, not unseen datasets; the extent of genuine out-of-domain
+    generalisation is not assessed. Code and demos are not released, limiting reproducibility. Finally,
+    the method depends on visible, well-lit face images, which may not be robust in natural video production
+    environments.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2508.01796'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - diffusion
+  - GAN
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - architecture_variant
+  current_role: minor
+  method_family:
+  - adversarial_and_distilled_diffusion
+  claims:
+  - claim_id: mel_vocoders_underrepresent_highfreq_detectable_signature
+    role: supports
+    claim: Mel-spectrogram-to-waveform vocoders systematically underrepresent high-frequency spectral
+      structure, producing a detectable signature that lightweight classifiers can exploit.
+    source: §1, §4.2
+    evidence: A ConvNeXt classifier trained to distinguish real from synthetic spectrograms readily identifies
+      baseline vocoder (Vocos, mdctGAN, NU-Wave 2) outputs as synthetic due to blurry, smoothed high-frequency
+      energy patterns, whereas human observers rate baseline Vocos spectrograms as real only 24.3% of
+      the time versus 78.1% for ground truth.
+    confidence: medium
+    relevance: medium
+  - claim_id: bandwidth_extension_helps_only_with_redesigned_vocoder
+    role: refines
+    claim: Inserting an explicit bandwidth extension step prior to vocoding can improve both spectrogram
+      visual realism and perceived audio quality, but only when the vocoder is redesigned to accommodate
+      the higher-resolution intermediate representation.
+    source: §4.4, Figure 8
+    evidence: Adding the LSE bandwidth-extension step to the original (unmodified) Vocos vocoder slightly
+      reduces audio quality (MOS 3.329), because the unmodified 1D-convolution vocoder struggles with
+      the larger frequency resolution; the quality gain requires the Vocos2D redesign, which alone reaches
+      MOS 4.157.
+    confidence: medium
+    relevance: medium
+  - claim_id: dit_adaptable_to_timefrequency_spectral_data
+    role: supports
+    claim: Diffusion models with transformer backbones can be adapted to time-frequency spectral data
+      by restricting self-attention to the time axis and using per-frequency learned embeddings to handle
+      the lack of spatial invariance across frequency.
+    source: §3.2
+    evidence: The LSE model restricts DiT self-attention to the time axis only and handles inter-frequency
+      communication through linear projections with per-frequency-bin learned embeddings, reconstructing
+      a 592-bin full-bandwidth linear spectrogram from a mel spectrogram condition.
+    confidence: medium
+    relevance: high
+  - claim_id: spectrogram_realism_and_audio_quality_partially_independent
+    role: complicates
+    claim: 'Spectrogram visual realism and waveform perceptual quality are partially independent dimensions:
+      a system can improve on one while degrading on the other depending on how the vocoder processes
+      the extended spectral representation.'
+    source: §4.4
+    evidence: The Vocos2D-only ablation (without the LSE step) achieves a subjective MOS of 4.157, close
+      to the full LSE+Vocos2D system's 4.176, suggesting most of the MOS gain comes from the vocoder redesign
+      rather than the LSE step, even though LSE contributes materially to spectrogram-level visual realism.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - All training and evaluation data is assembled from a mix of privately recorded singing audio and public
+    datasets under a custom pipeline; no standard public benchmark is used for final comparison.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: interspeech-2025-0063
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: kl_regularizers_transfer_poorly_to_tts
+    role: complicates
+    claim: KL-based regularization strategies developed for text-to-image diffusion RL fine-tuning provide
+      limited gains when transferred to TTS, because audio waveform generation requires stronger temporal
+      coherence than image synthesis.
+    source: §2.3.1, Table 1
+    evidence: DPOK and KLinR (KL-regularized baselines) reach UTMOS of only 3.18 and 3.02 respectively,
+      versus 3.65 for DLPO, on the same WaveGrad 2R base model.
+    confidence: high
+    relevance: high
+  - claim_id: diffusion_loss_penalty_stabilizes_rlhf
+    role: supports
+    claim: Incorporating the original diffusion training objective as a penalty term in the RL reward
+      function stabilizes fine-tuning and yields larger quality improvements than KL-divergence regularization
+      alone.
+    source: §2.2, Table 1
+    evidence: DLPO achieves UTMOS 3.65 and NISQA 4.02, exceeding all five competing RL fine-tuning strategies
+      including OnlyDL (diffusion loss only, UTMOS 3.16) and DPOK (UTMOS 3.18).
+    confidence: high
+    relevance: high
+  - claim_id: dual_mos_evaluation_guards_against_reward_hacking
+    role: supports
+    claim: Dual MOS evaluation using a reward-model-independent predictor (NISQA) alongside the training
+      reward (UTMOS) provides a practical safeguard against reward hacking in RLHF for TTS.
+    source: §2.3
+    evidence: The paper reports NISQA (4.02) as a held-out predictor separate from the UTMOS reward model
+      used during training, plus a human preference study (67% preference for DLPO), to guard against
+      overfitting the reward signal.
+    confidence: medium
+    relevance: medium
+  - claim_id: rlhf_improves_naturalness_without_degrading_intelligibility
+    role: supports
+    claim: RLHF fine-tuning of diffusion TTS models can improve perceived naturalness substantially without
+      degrading intelligibility, as measured by WER remaining near the pre-trained baseline.
+    source: §2.3.1, Table 1
+    evidence: DLPO's WER (1.2%) remains close to the base WaveGrad 2R's 1.5% and the ground truth's 0.99%,
+      while UTMOS rises from 2.90 to 3.65.
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation is single-speaker (LJSpeech) on a relatively simple base diffusion model (WaveGrad 2R);
+    it is unclear whether DLPO's benefit generalizes to more capable multi-speaker or flow-matching-based
+    TTS systems.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-0554
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: rapflow_straight_trajectory_better_for_consistency
+    role: supports
+    claim: Enforcing velocity-field self-consistency on straight flow-matching trajectories yields more
+      effective few-step TTS than applying consistency constraints to curved diffusion-model trajectories.
+    source: §1, §3.1, Table 1
+    evidence: RapFlow-TTS builds consistency constraints on Matcha-TTS's straight flow-matching trajectories
+      and at 2 NFE (MOS 3.89) exceeds Comospeech's diffusion-based consistency distillation at 2 NFE (MOS
+      3.19) on LJSpeech.
+    confidence: high
+    relevance: high
+  - claim_id: rapflow_adversarial_learning_most_impactful
+    role: supports
+    claim: Adversarial learning at the mel-spectrogram level is the single most impactful technique for
+      improving few-step consistency TTS naturalness, outperforming all other regularisation methods individually.
+    source: §3.2, §4.3, Table 2
+    evidence: Ablation confirms adversarial learning yields the largest NISQA improvement (3.78 to 4.19
+      on LJSpeech) among all improved techniques tested (encoder freeze, shared dropout, Huber loss, delta
+      scheduling).
+    confidence: high
+    relevance: medium
+  - claim_id: rapflow_consistency_models_dont_benefit_from_more_steps
+    role: supports
+    claim: Consistency models for TTS do not benefit from increasing the number of inference steps beyond
+      what they were trained for, and can degrade with more steps.
+    source: §4.3, Table 2
+    evidence: The paper documents that more NFE steps do not consistently improve quality for RapFlow-TTS's
+      consistency-trained model, a characteristic behaviour distinct from standard flow-matching models.
+    confidence: high
+    relevance: high
+  - claim_id: rapflow_two_stage_recipe_enables_2step_realtime
+    role: supports
+    claim: Combining a straight flow pre-training stage with consistency fine-tuning and multi-segment
+      objectives enables 2-step TTS at real-time factors comparable to non-autoregressive models such
+      as FastSpeech2.
+    source: §3.1, §4.2, Table 1
+    evidence: RapFlow-TTS+ achieves RTF 0.031 at 2 NFE, matching FastSpeech2's speed, while reaching MOS
+      4.01 versus FastSpeech2's 3.35 on LJSpeech.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Quality at 2 NFE remains slightly below ground truth (MOS 4.01 vs GT 4.42 on LJSpeech).
+  - The system is not zero-shot; it conditions on speaker identity via training rather than a reference
+    prompt, and extension to large-scale data and zero-shot capability is left to future work.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-0998
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - adversarial_and_distilled_diffusion
+  claims:
+  - claim_id: multistage_restoration_outperforms_single_stage_under_severe_degradation
+    role: supports
+    claim: Multi-stage speech restoration pipelines that separate noise suppression from speaker-guided
+      generation outperform single-stage generative approaches under severe degradation conditions.
+    source: §4.3, Table 3
+    evidence: GSR+VC substantially outperforms standalone GSR or standalone VC across all metrics on both
+      VCTK-DEMAND and UNIVERSE, with the largest gain on the more severely distorted UNIVERSE set.
+    confidence: high
+    relevance: low
+  - claim_id: ssl_discrete_content_features_more_robust_than_mel_under_degradation
+    role: supports
+    claim: Self-supervised discrete speech representations provide more robust content features for voice
+      conversion than raw mel-spectrograms when the input speech is degraded.
+    source: §4.3, Table 3
+    evidence: VC (SSL) using HuBERT+VQ consistently outperforms VC (Mel), with the gap widening on the
+      more challenging UNIVERSE dataset where VC (Mel) shows significant quality degradation.
+    confidence: high
+    relevance: low
+  - claim_id: diffusion_vc_requires_preprocessing_for_degraded_input
+    role: complicates
+    claim: Diffusion-based voice conversion models cannot reliably handle degraded input without a dedicated
+      pre-processing stage, even when conditioned on clean speaker embeddings.
+    source: §4.3, Table 3
+    evidence: VC (SSL) in standalone mode scores lower than GSR+VC on both evaluation sets, confirming
+      that speaker-embedding guidance alone does not compensate for noisy content features.
+    confidence: medium
+    relevance: high
+  - claim_id: evaluation_relies_entirely_on_automatic_perceptual_metrics
+    role: complicates
+    claim: Enrollment-dependent speaker guidance for speech restoration limits applicability to settings
+      where clean reference speech from the same speaker is available in advance, and evaluation of such
+      systems relies entirely on automatic perceptual quality metrics without human listening validation.
+    source: §3, §4.1
+    evidence: The system's reported NISQA, UTMOS, WV-MOS, and DNSMOS scores are all computed by automated
+      predictors; no MOS or other human listening test is conducted, and no comparison against Miipher
+      (the closest prior system) was possible.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluation uses only automated perceptual quality metrics (NISQA, UTMOS, WV-MOS, DNSMOS) without any
+    human listening tests, so it is unclear whether the metric gains translate to perceived quality improvements;
+    no comparison with Miipher could be performed.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1066
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: ebm_score_training_singlestep
+    role: supports
+    claim: Score-based training objectives for energy-based models can reduce TTS inference to a single
+      step, bypassing the many-iteration MCMC requirement of NCE-trained EBMs.
+    source: §4.2, Table 2, Table 3
+    evidence: Both SSM- and delta-loss-trained EBMs obtain their best UTMOSv2 and MOS results after just
+      1 inference step, versus the 100-step MCMC schedule needed by NCE-trained EBMs from prior work.
+    confidence: high
+    relevance: high
+  - claim_id: ebm_training_objective_shapes_score_geometry
+    role: supports
+    claim: The choice of training objective for score-based generative models materially affects the geometry
+      of learned score functions and their suitability for first-order iterative inference.
+    source: §3.2
+    evidence: Delta loss, which explicitly enforces linear score paths between hypothesis and reference,
+      degrades sharply at 100 steps (UTMOSv2 drops from 3.703 to 2.937) while SSM, which does not enforce
+      this geometry, remains comparatively stable.
+    confidence: medium
+    relevance: high
+  - claim_id: ssm_fm_formal_equivalence
+    role: supports
+    claim: Sliced score matching and flow matching objectives are formally equivalent at a single interpolation
+      timestep, suggesting a deeper structural connection between energy-based and flow-based TTS training
+      regimes.
+    source: §3.3
+    evidence: The paper derives that its delta-loss objective (equation 9) is formally equivalent to the
+      flow-matching objective (equation 10) when t=0, connecting EBM score training to the continuously-interpolated
+      vector field used in rectified-flow-style TTS.
+    confidence: high
+    relevance: high
+  - claim_id: ebm_mos_utmos_divergence
+    role: complicates
+    claim: Automatic MOS predictors and subjective listening scores can diverge for EBM-based TTS systems,
+      limiting the reliability of UTMOSv2 as a sole quality proxy in non-standard synthesis paradigms.
+    source: §4.2, §4.3
+    evidence: Delta loss produces a low UTMOSv2 score (2.959) but a competitive subjective MOS (3.95 ±
+      0.05), with far fewer low listener ratings than SSM despite comparable mean MOS.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - Experiments use only single-speaker LJSpeech with a Tacotron 2 + mel + HiFi-GAN backbone substantially
+    behind current codec-based or DiT-based practice, so it is untested whether the flow-matching-equivalence
+    finding transfers to modern flow-matching TTS architectures.
+  - The subjective evaluation uses only 3 listeners and 100 test clips, giving insufficient statistical
+    power to draw strong conclusions.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1101
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: zsdevc_diffusion_mi_guidance_zeroshot_emotion_control
+    role: supports
+    claim: Diffusion-based voice conversion systems can achieve strong emotion controllability in zero-shot
+      settings when combined with mutual-information disentanglement and inference-time guidance.
+    source: §3.2, §3.3, Table 2
+    evidence: ZSDEVC achieves subjective emotion classification accuracy (ECA) of 0.53 vs. 0.256 for EMOCONV-DIFF,
+      with the disentanglement mechanism alone raising ECA by 16.8-21.1% and expressive guidance adding
+      a further 34.4-40.0% relative gain over the backbone.
+    confidence: high
+    relevance: high
+  - claim_id: zsdevc_mi_minimisation_no_parallel_data
+    role: supports
+    claim: Disentangling speaker identity and emotion via mutual information minimisation improves emotion
+      controllability in voice conversion without requiring parallel or speaker-specific training data.
+    source: §2.1.4, §3.3, Table 2
+    evidence: The vCLUB contrastive upper-bound estimator minimises MI between speaker and emotion projections
+      during training on MSP-Podcast, an in-the-wild corpus with no parallel emotional recordings, and
+      this alone raises ECA by 16.8% on MSP-Podcast and 21.1% on ESD over the backbone.
+    confidence: high
+    relevance: low
+  - claim_id: zsdevc_autoencoder_higher_accuracy_lower_naturalness
+    role: complicates
+    claim: In emotional voice conversion, autoencoder-based methods tend to achieve higher emotion accuracy
+      than GAN-based methods, but at the cost of substantially lower naturalness and higher speech distortion.
+    source: §3.2, Table 1
+    evidence: The paper notes that autoencoder-disentanglement approaches accurately separate emotion
+      but tend to produce distorted, low-naturalness outputs, motivating the diffusion-plus-guidance approach
+      instead of a pure autoencoder disentanglement pipeline.
+    confidence: medium
+    relevance: high
+  - claim_id: zsdevc_cfg_style_guidance_tradeoff
+    role: complicates
+    claim: Classifier-free-style guidance applied to emotion representations at inference time provides
+      a direct lever for trading naturalness against emotion controllability in diffusion-based EVC.
+    source: §2.1.3, §3.3, Table 2
+    evidence: Adding EG_emo guidance boosts ECA by 40.0% on MSP-Podcast and 37.4% on ESD relative to the
+      backbone, with a slight cost in naturalness (UTMOS drops from 2.427 to 2.353 on MSP-Podcast).
+    confidence: medium
+    relevance: high
+  - claim_id: zsdevc_large_scale_itw_training_generalizes
+    role: supports
+    claim: Training on large-scale in-the-wild emotional corpora enables zero-shot generalisation to speakers
+      absent from training, even when evaluation is conducted on acted-speech datasets with different
+      recording conditions.
+    source: §3.4, §4
+    evidence: The model is trained on 48,389 utterances from 1,381 speakers in MSP-Podcast (in-the-wild
+      podcast recordings) and evaluated on entirely held-out speakers from both MSP-Podcast and the acted
+      ESD dataset with consistent trends.
+    confidence: medium
+    relevance: low
+  limitations:
+  - The comparison between ZSDEVC and EMOCONV-DIFF in Table 1 is not fully fair, as EMOCONV-DIFF is evaluated
+    in a seen-speaker scenario while ZSDEVC operates zero-shot; evaluation covers only five emotion categories
+    and excludes neutral-to-emotional conversion.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1115
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_diffusion_hybrids
+  claims:
+  - claim_id: unified_multimodal_emotion_encoder_enables_flexible_control
+    role: supports
+    claim: Unified multi-modal emotion encoders that align different prompt modalities to a shared emotion
+      representation space enable flexible emotion control in zero-shot TTS without sacrificing speaker
+      similarity.
+    source: §2.2, §3.4, Table 1
+    evidence: Removing the MPEE module drops MOS from 3.73 to 3.20 and emotion accuracy from 48% to 35%
+      in speech-prompt mode, while SSMOS (3.73) is maintained even when emotion and timbre are drawn from
+      different speakers.
+    confidence: high
+    relevance: medium
+  - claim_id: emotion_consistency_loss_improves_prosody_emotion_alignment
+    role: supports
+    claim: Auxiliary emotion consistency losses applied to autoregressive prosody prediction improve emotion
+      alignment in generated speech.
+    source: §2.3, §3.4, Tables 1-3
+    evidence: Removing ECL reduces ESMOS from 4.05 to 3.83 and ACC from 48% to 45% in speech-prompt mode,
+      with a larger effect for text and image prompts.
+    confidence: medium
+    relevance: low
+  - claim_id: emotion_accuracy_remains_below_ground_truth_despite_conditioning
+    role: complicates
+    claim: Emotion accuracy in expressive zero-shot TTS remains substantially below ground truth even
+      with explicit emotion conditioning and auxiliary training objectives.
+    source: §3.4, Tables 1-3
+    evidence: Best system ACC is 48% versus 54% for ground-truth mel-spectrograms, a 6-point gap that
+      persists despite MPEE and ECL.
+    confidence: high
+    relevance: medium
+  - claim_id: baseline_comparison_limited_by_absence_of_official_implementation
+    role: complicates
+    claim: Evaluating multi-modal TTS systems against prior work is complicated by the absence of official
+      open-source implementations for key baselines.
+    source: §3.4
+    evidence: MM-TTS has no official open-source release; all comparisons in this paper are against the
+      authors' own reproduction, which the authors acknowledge as a limitation of the experimental evaluation.
+    confidence: high
+    relevance: medium
+  - claim_id: hierarchical_disentanglement_enables_independent_timbre_emotion_control
+    role: supports
+    claim: Hierarchical disentanglement of speech attributes at different granularity levels enables fine-grained
+      independent control over timbre and emotion in zero-shot TTS.
+    source: §2.1, §3.4, Tables 1-3
+    evidence: SSMOS remains stable (3.73-3.76) across all three prompt modalities despite using different
+      emotion sources than the timbre reference.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The system is fine-tuned on only 36 hours of MEAD-TTS (48 actors, 8 emotions), evaluates only English
+    speech, and WER is noticeably worse than ground-truth reconstructed mel (23.4% vs. 18.8%).
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1210
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: diffemotionvc_dual_granularity_emotion
+    role: supports
+    claim: Dual-granularity emotion feature extraction (combining utterance-level and frame-level representations)
+      improves emotion discriminability in voice conversion compared to single-scale approaches.
+    source: §2.1.3, §3.3.3, Table 3
+    evidence: DiffEmotionVC's dual-granularity emotion encoder achieves 80% ECA and 0.78 Pearson Corr
+      on the ESD dataset; ablation confirms removing the emotion encoder is the most damaging intervention,
+      dropping Corr to 0.38.
+    confidence: high
+    relevance: low
+  - claim_id: diffemotionvc_orthogonality_stable_disentanglement
+    role: supports
+    claim: Orthogonality constraints on emotion, speaker, and content feature spaces provide a stable
+      and effective disentanglement mechanism for emotional voice conversion.
+    source: §2.2.2, §3.3.3, Table 3
+    evidence: Removing orthogonal loss reduces SECS from 0.73 to 0.70 and Corr from 0.78 to 0.72; the
+      paper explicitly motivates orthogonal loss as a remedy for the training instability of the mutual
+      information loss used in prior work.
+    confidence: high
+    relevance: low
+  - claim_id: diffemotionvc_arousal_confusion
+    role: complicates
+    claim: Diffusion-based EVC systems achieve strong overall emotion accuracy but struggle to discriminate
+      between high-arousal emotions sharing similar arousal-valence profiles.
+    source: §3.3.1
+    evidence: DiffEmotionVC reaches 80% ECA overall but the paper notes difficulty distinguishing happy,
+      surprised, and angry, attributing this to insufficient emotional diversity in the ESD training data
+      rather than a fundamental model limitation.
+    confidence: medium
+    relevance: high
+  - claim_id: diffemotionvc_discretization_leakage
+    role: complicates
+    claim: Discretisation of continuous speech representations degrades emotion voice conversion by introducing
+      content-emotion feature leakage.
+    source: §3.3.2, Table 2
+    evidence: Replacing continuous ContentVec with VQ-ContentVec drops UTMOS from 4.04 to 2.54 and Corr
+      from 0.78 to 0.50; SpeechTokenizer RVQ1 discrete features produce the worst performance (UTMOS 1.79),
+      demonstrating that discrete tokens cause timbre and emotion entanglement.
+    confidence: high
+    relevance: low
+  - claim_id: diffemotionvc_crossattention_fusion
+    role: supports
+    claim: Cross-attention fusion outperforms additive fusion for integrating heterogeneous speech features
+      in voice conversion systems.
+    source: §3.3.3, Table 3
+    evidence: Ablation replacing gated cross-attention with simple additive fusion reduces UTMOS from
+      4.04 to 3.26, a 19% degradation in predicted audio quality.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluation is limited to the ESD dataset (five emotions, primarily Mandarin Chinese; the ablation
+    table specifically targets the zh-Angry subset), restricting generalisability to other languages and
+    broader emotion categories; model size is unreported and no code is released.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1236
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: adma_auxiliary_alignment_accelerates_fm_training
+    role: supports
+    claim: Auxiliary alignment losses applied at intermediate transformer layers can substantially accelerate
+      convergence in flow-matching TTS training without modifying the inference pipeline.
+    source: §2, §4.1, Table 1
+    evidence: A-DMA reduces WER from 2.68% to 1.97% and improves SIM from 0.60 to 0.62 for F5-TTS on LibriSpeech-PC
+      in a low-resource (0.6kh) setting, with A-DMA matching the baseline's terminal WER in roughly half
+      the training steps.
+    confidence: high
+    relevance: medium
+  - claim_id: adma_modality_specific_layer_depth
+    role: refines
+    claim: In transformer-based generative models, text-semantic and speaker-acoustic alignment supervision
+      are best applied at different network depths rather than at the same layer.
+    source: §4.2, Table 2
+    evidence: Layer-wise ablation on F5-TTS Small (18 DiT layers) shows CTC text alignment at layer 8
+      combined with HuBERT speech alignment at layer 12 (WER 2.226%) outperforms same-layer dual alignment
+      at either layer 8 (3.063%) or layer 12 (2.688%).
+    confidence: high
+    relevance: medium
+  - claim_id: adma_ssl_teacher_improves_sim
+    role: supports
+    claim: Frozen self-supervised speech encoders such as HuBERT are effective perceptual teachers for
+      improving speaker similarity in flow-matching TTS through cosine-similarity distillation.
+    source: §4.3, Table 3
+    evidence: Negative cosine similarity to HuBERT-large features at the 12th transformer layer improves
+      SIM from 0.578 to 0.609 and WER from 7.474% to 3.521%; WavLM achieves similar gains.
+    confidence: high
+    relevance: medium
+  - claim_id: adma_training_acceleration_not_naturalness
+    role: complicates
+    claim: Training-time alignment acceleration for diffusion TTS primarily improves text intelligibility
+      and speaker similarity rather than overall speech naturalness, as measured by automatic MOS prediction.
+    source: §4.2, Table 2, §6
+    evidence: UTMOS scores across all A-DMA ablation conditions range from 4.01 to 4.12, close to the
+      4.04 baseline, while WER and SIM show large improvements; no human listening test is reported.
+    confidence: medium
+    relevance: high
+  limitations:
+  - All experiments use the low-resource 0.6kh training regime; whether doubled convergence speed holds
+    at the 100kh scale used by high-resource baselines is untested.
+  - No human listening evaluation is reported; naturalness gains rest entirely on UTMOS as an automatic
+    proxy.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1364
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - singing
+  - TTS
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: schrodinger_bridge_consistency_training_improves_one_step_quality
+    role: supports
+    claim: Integrating Schrödinger bridge into consistency training can improve one-step generative model
+      quality for audio synthesis without a pre-trained teacher model.
+    source: §2.2, §3.4, Table 2
+    evidence: VS-Singer's CSB decoder achieves MOS 3.74 at NFE=4 on test-unseen, outperforming teacher-distilled
+      CoMoSpeech (3.70); ablation removing the Schrödinger bridge drops MOS from 3.81 to 3.50 and raises
+      MCD from 7.65 to 8.63.
+    confidence: high
+    relevance: high
+  - claim_id: cross_modal_visual_attention_encodes_spatial_acoustics_for_singing
+    role: supports
+    claim: Cross-modal visual attention over scene images can encode spatial acoustic properties into
+      a singing synthesis pipeline, enabling reverberation-aware binaural audio generation.
+    source: §2.1, §3.4, Table 2
+    evidence: Removing the Modal Interaction Network degrades LRE from 0.889 to 1.257 and RTE from 0.058
+      to 0.084 in ablation on test-seen.
+    confidence: medium
+    relevance: low
+  - claim_id: one_step_consistency_inference_incurs_quality_penalty
+    role: complicates
+    claim: One-step consistency model inference incurs a substantial quality penalty compared to multi-step
+      inference in diffusion-based singing synthesis.
+    source: §3.3, Table 1
+    evidence: VS-Singer at NFE=1 achieves MOS 3.48 vs. 3.74 at NFE=4 on test-unseen, with MCD degrading
+      from 7.71 to 8.55; CoMoSpeech shows the same pattern.
+    confidence: high
+    relevance: high
+  - claim_id: unified_e2e_spatial_audio_outperforms_cascaded_pipelines
+    role: supports
+    claim: Unified end-to-end architectures for spatial audio generation outperform cascaded specialised
+      model pipelines in both inference speed and spatial accuracy.
+    source: §3.3, Table 1
+    evidence: VS-Singer (NFE=1) achieves RTF 0.024 on test-unseen vs. RTF 0.203 for a cascaded DiffSinger
+      baseline, while achieving better LRE and RTE than all cascaded combinations at NFE=4.
+    confidence: medium
+    relevance: low
+  limitations:
+  - The full system is evaluated on a single female Chinese pop singer with synthetic room-impulse-response
+    binaural training data; no code is released, and perceptual evaluation uses only naturalness MOS without
+    spatial audio perceptual tests.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1397
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - singing
+  - VC
+  architecture:
+  - diffusion
+  relevance: low
+  evidence_role:
+  - control_evidence
+  - historical_context
+  current_role: minor
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: vibesvc_dwt_f0_decomposition_control
+    role: supports
+    claim: Explicit frequency-domain decomposition of the F0 contour enables more accurate and controllable
+      singing style transfer than implicit style-embedding approaches.
+    source: §4.1.1, Table 1
+    evidence: VibE-SVC achieves 0.700 style accuracy in style-only conversion versus 0.213-0.525 for SoVITS
+      baselines using direct style embeddings, on the VocalSet straight/vibrato benchmark.
+    confidence: high
+    relevance: low
+  - claim_id: vibesvc_mpd_style_accuracy
+    role: supports
+    claim: Adversarial training on the target frequency band of the F0 contour improves singing style
+      accuracy without degrading naturalness.
+    source: §4.3, Table 1
+    evidence: Removing the multi-period discriminator reduces style accuracy from 0.700 to 0.625 and MOS
+      from 4.124 to 4.016 in the style-only conversion experiment.
+    confidence: high
+    relevance: low
+  - claim_id: vibesvc_naturalness_tradeoff
+    role: complicates
+    claim: Increasing style transfer accuracy in singing voice conversion trades off against naturalness,
+      and explicit disentanglement does not fully eliminate this tension.
+    source: §4.1.2, Figure 3
+    evidence: Figure 3 shows a consistent inverse correlation between MOS and style accuracy across all
+      baselines and VibE-SVC; the highest-accuracy model (VibE-SVC) has lower naturalness than the highest-naturalness
+      baseline (SoVITS with style embedding, 0.213 style accuracy).
+    confidence: medium
+    relevance: low
+  - claim_id: vibesvc_dwt_level_sensitivity
+    role: refines
+    claim: The effective granularity of F0-based singing style disentanglement via DWT is sensitive to
+      decomposition level, with an optimal level that captures vibrato without including unrelated high-frequency
+      content.
+    source: §4.3, Table 3
+    evidence: Style accuracy is 0.163 at DWT level 3 (vibrato information absent), 0.694 at level 4 (optimal),
+      and drops slightly at level 5 due to inclusion of irrelevant high-frequency components.
+    confidence: high
+    relevance: low
+  - claim_id: vibesvc_continuous_vibrato_control
+    role: supports
+    claim: Vibrato extent in singing voice conversion can be controlled continuously at inference time
+      by scalar multiplication of the isolated high-frequency F0 component, without retraining.
+    source: §4.2, Table 2, Figure 5
+    evidence: Scaling the high-frequency F0 contour from 0.1 to 2.0 produces style accuracy ranging from
+      0.066 to 0.928; frame-level control is also demonstrated by applying scaling at specific target
+      frame indices.
+    confidence: high
+    relevance: low
+  limitations:
+  - The model is restricted to two singing styles (straight and vibrato) derived from VocalSet and does
+    not address falsetto, breathy voice, belt, or melisma; human evaluation uses at minimum 20 Amazon
+    MTurk raters per model, on the low end for resolving the small MOS differences reported.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: interspeech-2025-1434
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: rewind_time_reversal_augmentation
+    role: supports
+    claim: Full-utterance time reversal can serve as an effective signal-level data augmentation for speaker
+      representation learning in voice conversion, as it suppresses phonemic content while retaining speaker-discriminative
+      tonal features.
+    source: §3.1, Table 1
+    evidence: A perceptual study shows 80.3% speaker identification accuracy from time-reversed speech;
+      Table 1 confirms complete reversal achieves 100% WER (full linguistic removal) alongside the highest
+      cosine speaker similarity score (0.96), higher than any short-time reversal window.
+    confidence: high
+    relevance: low
+  - claim_id: rewind_embedding_fusion_similarity
+    role: supports
+    claim: Fusing speaker embeddings from augmented training signals with conventional embeddings improves
+      speaker similarity in zero-shot diffusion-based voice conversion.
+    source: §4.3, Table 2
+    evidence: Adding reversed-speech speaker embeddings via a weighted fusion layer (α = β = 0.5) improves
+      objective speaker similarity by 4.16% on average across DiffHierVC and DDDM-VC; DDDM-VC objective
+      SPK-SIM rises from 0.70 to 0.79 and subjective MUSHRA from 77.46 to 78.61.
+    confidence: high
+    relevance: high
+  - claim_id: rewind_backbone_variance
+    role: complicates
+    claim: The effectiveness of speaker embedding augmentation in voice conversion varies substantially
+      across backbone architectures, complicating claims of generalisability.
+    source: §4.3, Table 2
+    evidence: For DiffVC, the augmentation improves subjective speaker similarity (50.12 to 53.42) but
+      reduces objective similarity (0.75 to 0.71), while DiffHierVC shows objective improvement but negligible
+      subjective change; only DDDM-VC shows consistent gains on both metrics.
+    confidence: medium
+    relevance: low
+  - claim_id: rewind_no_quality_tradeoff
+    role: supports
+    claim: Improving speaker disentanglement through augmentation does not necessarily trade off against
+      generated speech quality in diffusion-based voice conversion.
+    source: §4.3, Table 2
+    evidence: DDDM-VC+Ours improves both WV-MOS (3.84 to 3.91) and UTMOS (3.21 to 3.55) alongside speaker
+      similarity gains, indicating that stronger speaker conditioning from the STR augmentation does not
+      degrade synthesis quality.
+    confidence: high
+    relevance: high
+  limitations:
+  - The perceptual study supporting the time-reversal principle is small (25 participants, 6 speakers,
+    English only); the approach has been evaluated only on diffusion-based VC systems, and no code is
+    publicly released.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1684
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: saras_speaker_aware_retrieval
+    role: supports
+    claim: Incorporating speaker identity into the retrieval query improves style compatibility in RAG-based
+      zero-shot TTS.
+    source: §3.5, Table 1
+    evidence: Ablation removing the speaker encoder from Zero-shot CLAP drops S-SMOS from 3.556 to 3.168,
+      while the full model outperforms CA-CLAP (3.117) on the same metric, confirming that speaker conditioning
+      directs retrieval toward each speaker's stylistic range.
+    confidence: high
+    relevance: medium
+  - claim_id: saras_style_timbre_disentangle_retrieval
+    role: supports
+    claim: Style-timbre disentanglement enables retrieval in a style-specific embedding space that better
+      captures expressive variation than entangled audio representations.
+    source: §2.1, §3.3, §3.4
+    evidence: Split-TTS uses Seed-VC to generate timbre-free NTF features for training, yielding a GST
+      encoder whose embeddings cluster by emotion in t-SNE; this style encoder, used in Zero-shot CLAP
+      retrieval, outperforms the CA-CLAP audio encoder on style-similarity MOS (3.556 vs 3.117).
+    confidence: high
+    relevance: medium
+  - claim_id: saras_style_fidelity_tradeoff
+    role: complicates
+    claim: Optimizing for style-compatible reference retrieval in zero-shot TTS can trade off against
+      acoustic fidelity metrics.
+    source: §3.3, Table 1
+    evidence: SA-RAS achieves better S-SMOS and ST-MOS than CA-CLAP but slightly higher MCD (6.86 vs 6.678),
+      suggesting that the reference best matched for style is not always the one that minimises acoustic
+      distortion.
+    confidence: medium
+    relevance: medium
+  - claim_id: saras_oracle_gap
+    role: complicates
+    claim: Retrieval-augmented zero-shot TTS consistently falls short of oracle (text-matched) reference
+      selection by a substantial margin across both naturalness and style metrics.
+    source: §3.4, Table 1
+    evidence: The proposed SA-RAS scores NMOS 3.827 and S-SMOS 3.556, versus the "Self" oracle at NMOS
+      4.046 and S-SMOS 3.980, a gap that persists even after speaker-aware retrieval improvements.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The subjective evaluation involves only 15 listeners rating 15 samples drawn from three unseen speakers;
+    the paper does not compare against end-to-end zero-shot TTS systems beyond the retrieval method comparison.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1747
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - adversarial_and_distilled_diffusion
+  claims:
+  - claim_id: conversion_process_distillation_avoids_identity_collapse
+    role: supports
+    claim: Performing knowledge distillation in the conversion process rather than the reconstruction
+      process is necessary to avoid identity-mapping collapse when the content encoder is simultaneously
+      trainable.
+    source: §4.2, Table 1, Table 2
+    evidence: Baseline reconstruction-distillation with trainable CNN achieves UTMOS 3.45 and SECS 0.718;
+      switching to conversion-based ADCD raises these to 4.03 and 0.853.
+    confidence: high
+    relevance: low
+  - claim_id: joint_diffusion_content_encoder_distillation_cuts_cost
+    role: supports
+    claim: Simultaneously distilling both the diffusion backbone and the content encoder of a one-step
+      diffusion VC model can reduce inference cost substantially with little or no quality degradation
+      relative to distilling only the diffusion module.
+    source: §4.3, Table 3, Table 5
+    evidence: FasterVoiceGrad achieves UTMOS 4.03 and SECS 0.853 vs. FastVoiceGrad's 3.96 and 0.847, while
+      delivering 6.6x GPU RTF and 1.8x CPU RTF improvement.
+    confidence: high
+    relevance: high
+  - claim_id: secs_may_not_reflect_perceptual_speaker_identity_in_vc
+    role: complicates
+    claim: Neural speaker-encoder-based similarity metrics may not reflect perceptual speaker identity
+      as judged by human listeners, particularly when source speaker residuals remain after conversion.
+    source: §4.3, Table 3, Table 4
+    evidence: FasterVoiceGrad scores higher SECS (0.853 vs. 0.847) than FastVoiceGrad but lower sMOS (2.66
+      vs. 2.84); the authors attribute the discrepancy to residual source-speaker characteristics.
+    confidence: high
+    relevance: low
+  - claim_id: inverse_score_distillation_mitigates_content_speaker_tradeoff
+    role: refines
+    claim: Contrastive speaker emphasis via inverse score distillation mitigates the trade-off between
+      content preservation and speaker conversion when joint distillation is used.
+    source: §4.2, Table 1
+    evidence: Adding inverse score distillation on top of reconversion-based distillation improves SECS
+      from 0.844 to 0.853 without degrading CER (1.2) or UTMOS (4.03).
+    confidence: medium
+    relevance: low
+  limitations:
+  - Subjective evaluation involved only 11 participants and 90 speaker/sentence pairs; the study does
+    not evaluate against modern flow-matching or large-scale VC baselines.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: interspeech-2025-1763
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - VC
+  architecture:
+  - GAN
+  - diffusion
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - architecture_variant
+  current_role: minor
+  method_family:
+  - adversarial_and_distilled_diffusion
+  claims:
+  - claim_id: partial_vocoder_upsampling_sufficient_for_adversarial_discrimination
+    role: supports
+    claim: Intermediate vocoder features after partial upsampling are sufficient for waveform-quality
+      adversarial discrimination of acoustic feature generators.
+    source: §3.2, Tables 1 and 5, Figure 3
+    evidence: FVG + VPFD1 (single upsampling step, 8x) matches full waveform discriminator performance
+      on UTMOS, DNSMOS, CER, and SECS across both VCTK and LibriTTS.
+    confidence: high
+    relevance: high
+  - claim_id: frozen_pretrained_feature_extractor_essential_for_projected_gan
+    role: supports
+    claim: Freezing pretrained feature extractors in projected GAN discriminators is essential for acoustic
+      synthesis quality.
+    source: §3.2, Table 2
+    evidence: Ablation shows that both pretraining and freezing V_feat are independently necessary; omitting
+      either degrades UTMOS, DNSMOS, and SECS.
+    confidence: high
+    relevance: low
+  - claim_id: waveform_discriminators_effective_but_resourceheavy
+    role: complicates
+    claim: Waveform-domain discriminators in two-stage TTS/VC training are effective but impose resource
+      costs that make them impractical outside well-resourced settings.
+    source: §1, §3.3, Tables 1 and 3
+    evidence: VWD requires 47 hours and 66.3 GB GPU memory on VCTK; mel-spectrogram discriminators avoid
+      this cost but fail to match waveform-domain quality on DNSMOS.
+    confidence: high
+    relevance: medium
+  - claim_id: minimum_one_upsampling_step_needed_for_periodic_structure
+    role: refines
+    claim: For vocoder-based feature projection, a minimum of one upsampling step is necessary to produce
+      the periodic structures required for effective adversarial discrimination.
+    source: §3.2, Table 1, Figure 3
+    evidence: VPFD0 (no upsampling) significantly degrades DNSMOS (3.66 vs. 3.79) and SECS (0.843 vs.
+      0.851) relative to VPFD1.
+    confidence: medium
+    relevance: high
+  limitations:
+  - VPFD is validated only on one VC system (FastVoiceGrad on VoiceGrad) and never on a TTS system, despite
+    TTS being a stated target application; subjective evaluation involves only 11 participants.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: interspeech-2025-2536
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: enhancement_and_filtering_necessary_for_inthewild_tts_training
+    role: supports
+    claim: Speech enhancement and automated quality filtering are necessary preprocessing steps for training
+      current-generation TTS systems on in-the-wild audio.
+    source: §3.3, §5.3, Table 4
+    evidence: All four TTS systems trained on TITW-Easy (enhanced, DNSMOS-filtered) converge and produce
+      intelligible speech, while TransformerTTS and MQTTS fail to converge on TITW-Hard (unenhanced).
+    confidence: high
+    relevance: medium
+  - claim_id: raw_social_media_audio_training_unstable_for_current_tts
+    role: supports
+    claim: Training TTS models directly on raw social media audio without enhancement remains too unstable
+      for most current model architectures.
+    source: §3.2, §5.3, Table 4
+    evidence: TITW-Hard data (DNSMOS 2.38) caused divergence in two of four tested systems despite heuristic
+      data selection; only VITS and GradTTS-DiffWave converged, both with degraded quality relative to
+      TITW-Easy counterparts.
+    confidence: high
+    relevance: medium
+  - claim_id: automated_quality_metrics_dont_predict_intelligibility
+    role: complicates
+    claim: Automated perceptual quality metrics such as UTMOS and DNSMOS do not consistently predict intelligibility
+      performance at inference time.
+    source: §5.2, §5.3, Table 2, Table 4
+    evidence: TITW-Easy and TITW-Hard training sets differ modestly in WER (9.1% vs. 9.3%), but GradTTS-DiffWave
+      trained on Hard exhibits WER of 26.2% vs. 11.9% for Easy; the DNSMOS gap (2.38 vs. 2.78) understates
+      the intelligibility collapse.
+    confidence: high
+    relevance: medium
+  - claim_id: asr_datasets_provide_scalable_source_for_tts_corpus_construction
+    role: supports
+    claim: Automatic speaker recognition datasets derived from in-the-wild audio provide a scalable and
+      ethically beneficial source for TTS corpus construction.
+    source: §3, Table 1
+    evidence: VoxCeleb1 (1,251 speakers, YouTube-sourced) yields 173-189 hours of TTS-trainable speech
+      through a fully automated pipeline, with a single-speaker-per-segment guarantee enabling deepfake-detection
+      benchmark pairing.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - Evaluation uses only automated metrics (UTMOS, DNSMOS, MCD, WER) without human listening tests, so
+    the perceptual quality of models trained on TITW relative to studio-trained counterparts is not directly
+    measured.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: interspeech-2025-gourav25_interspeech
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - GAN
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: minor
+  method_family:
+  - adversarial_and_distilled_diffusion
+  claims:
+  - claim_id: inference_time_g2p_modification_enables_codemixed_tts
+    role: supports
+    claim: Inference-time G2P modification can enable code-mixed speech synthesis from a multilingual
+      TTS model without retraining or fine-tuning the acoustic model.
+    source: §2
+    evidence: The authors add a language-detection and chunking layer at the espeak-ng phonemizer; the
+      StyleTTS2 acoustic model and iSTFTNet vocoder are unchanged, and the code-mixed system achieves
+      A-MOS 4.12 matching the monolingual baseline.
+    confidence: medium
+    relevance: medium
+  - claim_id: multilingual_tts_maintains_automated_naturalness_on_codemixed_input
+    role: supports
+    claim: Multilingual TTS models trained on diverse language data can maintain automated naturalness
+      scores comparable to single-language models when handling code-mixed input.
+    source: §3, Table 1
+    evidence: Code-Mix StyleTTS2 achieves A-MOS 4.12 +/- 0.09 on code-mixed English-Hindi/Spanish/Portuguese
+      inputs, matching monolingual StyleTTS2 at 4.12 +/- 0.08 and outperforming VITS (3.69) and YourTTS
+      (2.35).
+    confidence: medium
+    relevance: medium
+  - claim_id: codemixed_tts_evaluation_lacks_standardized_benchmarks
+    role: complicates
+    claim: Code-mixed TTS evaluation lacks standardized benchmarks and relies primarily on automated quality
+      metrics rather than human perceptual studies, limiting comparability across systems.
+    source: §3
+    evidence: The evaluation uses only NISQA A-MOS on a custom 250-utterance dataset with no human listener
+      panel, and no comparison to dedicated code-switching TTS baselines from prior work is provided.
+    confidence: high
+    relevance: medium
+  - claim_id: codemixed_tts_constrained_to_pivot_language_pairs
+    role: complicates
+    claim: Practical code-mixed TTS systems are constrained to language pairs involving a dominant pivot
+      language, limiting generalization to non-English language combinations.
+    source: §4
+    evidence: The proposed chunking and phonemization pipeline requires English as one of the two input
+      languages; the paper identifies extension to non-English pairs and romanized mixed scripts as explicit
+      future work.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - Evaluation uses automated MOS (NISQA) on a custom 250-utterance proprietary test set with CPU inference
+    only; no human listening panel was conducted, and no comparison to existing code-switching TTS systems
+    is made.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: '2508.19205'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: frontier_probe
+  method_family: []
+  claims:
+  - claim_id: extreme_acoustic_codec_compression_single_codebook_vae_at
+    role: supports
+    claim: Extreme acoustic codec compression (single-codebook VAE at 7.5 Hz) can achieve superior perceptual
+      quality over multi-codebook discrete codecs operating at much higher frame rates.
+    source: §3.3, Table 3
+    evidence: The acoustic tokenizer comparison (Table 3) shows that at 7.5 Hz — 40× fewer tokens than
+      WavTokenizer at 40 Hz — the proposed tokenizer achieves PESQ 3.068 and UTMOS 4.181 on LibriTTS test-clean,
+      beating all discrete codec baselines including DAC (UTMOS 3.433) and WavTokenizer 75 Hz (UTMOS 4.049).
+    confidence: high
+    relevance: medium
+  - claim_id: long_form_multi_speaker_tts_benefits_from_separate
+    role: supports
+    claim: Long-form multi-speaker TTS benefits from separate acoustic and semantic tokenizers trained
+      with task-specific objectives rather than a single unified codec.
+    source: §2.1
+    evidence: A separate semantic tokenizer mirrors the encoder architecture but is trained via an ASR
+      proxy task, producing content-aligned representations; this component is discarded after pre-training
+      and used only to provide hybrid acoustic-semantic context tokens during generation.
+    confidence: high
+    relevance: medium
+  - claim_id: scaling_the_llm_backbone_in_a_next_token
+    role: supports
+    claim: Scaling the LLM backbone in a next-token diffusion speech system yields consistent gains in
+      perceptual quality, speaker similarity, and expressiveness.
+    source: §3.1, Table 1
+    evidence: 'VibeVoice (paper name: VIBEVOICE) resolves the context-length bottleneck through two innovations
+      that work in tandem: an ultra-compressed acoustic tokenizer and a next-token diffusion generation
+      framework.'
+    confidence: high
+    relevance: high
+  - claim_id: token_level_diffusion_conditioned_on_llm_hidden_states
+    role: supports
+    claim: Token-level diffusion conditioned on LLM hidden states enables streaming speech generation
+      without the codebook constraints of discrete autoregressive systems.
+    source: §2.2
+    evidence: The LLM processes this hybrid context and produces hidden states that condition a lightweight
+      token-level diffusion head (4 transformer layers) adapted from the MAR image generation framework.
+    confidence: high
+    relevance: high
+  - claim_id: tts_systems_optimised_for_long_form_conversational_content
+    role: supports
+    claim: TTS systems optimised for long-form conversational content retain competitive performance on
+      short-utterance benchmarks without dedicated fine-tuning.
+    source: §3.2, Table 2
+    evidence: On the SEED short-utterance benchmark (CommonVoice English/Chinese), VibeVoice-1.5B achieves
+      CER of 1.16% and SIM of 0.744 for Chinese, and WER of 3.04% and SIM of 0.689 for English, despite
+      being primarily trained for long-form content.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Training data is not disclosed. The paper is from Microsoft Research but does not specify the data
+    composition, size, or any cleaning procedures, making it impossible to assess whether the reported
+    gains are attributable to architecture or data advantage.
+  - The model is limited to English and Chinese; other languages produce unpredictable outputs. The system
+    does not model overlapping speech — a significant gap for realistic conversational audio. The subjective
+    evaluation used only 8 long-form test conversations, which is a narrow sample; standard benchmark
+    evaluations (SEED) are short-utterance only and do not capture the long-form quality the paper targets.
+    Speaker similarity at 7.5 Hz remains below the best short-utterance systems (e.g., Seed-TTS at 0.762
+    SIM for English), suggesting the compressed representation sacrifices some speaker identity fidelity.
+    The maximum of 4 speakers is a hard constraint imposed by the context design.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2411.19770'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - diffusion
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: noro_contrastive_noise_invariant_speaker
+    role: supports
+    claim: Contrastive training with noise-augmented views enforces noise-invariant speaker representations
+      and substantially improves one-shot VC robustness at low SNR without adding inference cost.
+    source: §III.A, Tables I-II
+    evidence: Noro's dual-branch reference encoding module and noise-agnostic contrastive speaker loss
+      hold SECS at 80.09 and CER at 4.66 in 0-5 dB noise, versus 77.28 and 7.26 for the baseline; weight
+      sharing means inference architecture is unchanged.
+    confidence: high
+    relevance: low
+  - claim_id: noro_baseline_degrades_under_noise
+    role: complicates
+    claim: Standard one-shot voice conversion systems degrade substantially when reference speech contains
+      background noise, even after data augmentation training.
+    source: §III.A.2, Table II
+    evidence: The diffusion-based baseline trained on LibriLight with no noise-robustness mechanism shows
+      CMOS dropping from 3.29 to 2.09 and SMOS from 3.02 to 2.75 under 0-5 dB noisy reference conditions.
+    confidence: high
+    relevance: high
+  - claim_id: noro_vc_encoder_competitive_speaker_verification
+    role: supports
+    claim: Voice conversion reference encoders trained on large-scale speech data develop speaker representations
+      competitive with dedicated self-supervised speaker models.
+    source: §III.B.2, Table III
+    evidence: VC-SPK2VEC (the Noro baseline reference encoder repurposed as a speaker encoder, 72.4M params,
+      trained on LibriLight) achieves 5.32% EER on VoxCeleb1 under SUPERB, outperforming wav2vec 2.0 Base
+      (6.02%) and Large (5.65%) and HuBERT Large (5.98%).
+    confidence: medium
+    relevance: low
+  - claim_id: noro_explicit_alignment_beyond_augmentation
+    role: refines
+    claim: Speaker-noise disentanglement in voice conversion benefits from training objectives that explicitly
+      align clean and noisy representations of the same speaker, beyond simple noise augmentation.
+    source: §III.A.2, Figure 2
+    evidence: t-SNE visualisations show that the baseline (trained with augmentation but no contrastive
+      alignment) produces clearly separated clean/noisy representation clusters, while Noro's contrastive
+      loss causes them to mix, correlating with the performance gap under noise.
+    confidence: medium
+    relevance: low
+  limitations:
+  - Evaluation uses VCTK studio-recorded English with synthetically added DEMAND noise; the test set is
+    small (150 objective pairs, ten per condition for subjective evaluation); the contrastive loss requires
+    speaker labels at training time, so the approach does not extend to fully unsupervised training; the
+    secondary VC-SPK2VEC finding is evaluated under only one SUPERB protocol.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.07038'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - diffusion
+  relevance: low
+  evidence_role:
+  - control_evidence
+  - historical_context
+  current_role: minor
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: explicit_conditioning_on_a_signal_derived_attribute_provides
+    role: supports
+    claim: Explicit conditioning on a signal-derived attribute provides substantially more controllability
+      than implicit predictors trained on the same attribute as an auxiliary loss.
+    source: §V.B, Table III
+    evidence: Adding an energy predictor to the baseline reduces energy MAE from 0.33 to 0.30, while replacing
+      the predictor with explicit phoneme-level energy input achieves 0.14 - a 57.6% reduction over baseline
+      vs. 9% for the predictor.
+    confidence: high
+    relevance: low
+  - claim_id: phoneme_level_aggregation_of_frame_level_features_enables
+    role: supports
+    claim: Phoneme-level aggregation of frame-level features enables user-friendly control in singing
+      synthesis at acceptable precision cost.
+    source: §III.B, §V.A, Table I, Table II
+    evidence: Phoneme-level energy (L values, matching lyric and note sequence length) achieves energy
+      MAE of 0.14 vs. 0.03 for frame-level (T values, roughly 1,000 per utterance), with higher MOS (3.78
+      vs. 3.57), demonstrating that coarser granularity trades minor precision loss for substantially
+      reduced control burden.
+    confidence: high
+    relevance: low
+  - claim_id: ground_truth_signal_features_can_substitute_for_manually
+    role: supports
+    claim: Ground-truth signal features can substitute for manually annotated expressive attributes as
+      conditioning signals in singing voice synthesis.
+    source: §I, §III.B
+    evidence: Frame-level energy is extracted directly from ground-truth mel-spectrograms without human
+      annotation, yet conditioning on it enables effective dynamics control, reducing annotation costs
+      relative to technique-labelled datasets used in prior controllable SVS work.
+    confidence: high
+    relevance: low
+  - claim_id: perceptual_quality_and_controllability_precision_do_not_align
+    role: complicates
+    claim: Perceptual quality and controllability precision do not align monotonically across conditioning
+      granularities in SVS.
+    source: §V.A, Table I, Table II
+    evidence: The frame-level model achieves the best energy MAE (0.03) but lower MOS (3.57 ± 0.18) than
+      the phoneme-level model (MOS 3.78 ± 0.19, energy MAE 0.14), suggesting that very tight energy matching
+      may over-constrain generation in ways that reduce perceived naturalness.
+    confidence: high
+    relevance: low
+  limitations:
+  - MOS evaluation involved only 10 listeners, which the authors acknowledge constrains statistical reliability
+    and generalizability. Results should be treated as directional rather than definitive.
+  - The study uses only the Chinese subset of GTSinger and two speakers, leaving multilingual and speaker-diversity
+    generalisability untested. The baseline DDPM architecture is explicitly noted to fall below state-of-the-art
+    SVS performance, so the absolute quality figures do not reflect what the conditioning mechanism would
+    achieve on a competitive backbone. Expressive attributes beyond dynamics (timbre, vibrato, advanced
+    singing techniques) are not addressed. Phoneme-level energy may not capture fine-grained intra-phoneme
+    temporal variation present in skilled vocal performance.
+  caveats:
+  - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: '2509.08379'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - diffusion_flow_bridge_models
+  claims:
+  - claim_id: latentvoicegrad_latent_diffusion_fm_improves_quality_speed
+    role: supports
+    claim: Operating diffusion and flow-matching models in a compressed latent representation improves
+      audio quality and inference speed in non-parallel voice conversion compared to operating directly
+      on mel-spectrograms.
+    source: §III.A, §IV.H, Table IV, Table X
+    evidence: LatentVoiceGrad-DPM outperforms VoiceGrad-DPM in pMOS (3.93 vs. 3.86), subjective qMOS (4.09
+      vs. 3.83), sMOS (3.05 vs. 2.63), and GPU RTF (0.034 vs. 0.045) on VCTK zero-shot any-to-any conversion.
+    confidence: high
+    relevance: high
+  - claim_id: latentvoicegrad_fm_matches_dpm_fewer_steps
+    role: supports
+    claim: Flow matching achieves comparable voice conversion quality to diffusion models with substantially
+      fewer inference steps.
+    source: §IV.G, §IV.J, Tables VII, IX
+    evidence: VoiceGrad-FM with L=3 Euler steps achieves pMOS 3.85 (versus 3.86 for VoiceGrad-DPM at L=20),
+      at GPU RTF 0.007 versus 0.045, a six-fold speedup with no quality penalty.
+    confidence: high
+    relevance: high
+  - claim_id: latentvoicegrad_adversarial_autoencoder_improves_quality
+    role: supports
+    claim: Adversarial autoencoder training substantially improves audio quality and speaker similarity
+      in latent-domain voice conversion compared to reconstruction-only training.
+    source: §IV.F, Table V
+    evidence: Adding adversarial loss during autoencoder training improves pMOS from 3.78 to 3.93 and
+      SECS from 0.829 to 0.844 on VCTK zero-shot VC with the DPM generative model.
+    confidence: high
+    relevance: medium
+  - claim_id: latentvoicegrad_discrete_tokens_underperform_continuous
+    role: complicates
+    claim: Discrete acoustic token sequences from neural audio codecs underperform continuous spectral
+      representations as the conversion domain for iterative generative voice conversion models.
+    source: §IV.E, Tables II, III
+    evidence: VoiceGrad with DAT features (DAC codec, dimensionality 1024) achieves pMOS 2.41 versus 3.86
+      for mel-spectrograms; LatentVoiceGrad-DAT shows CER 9.08 versus 2.99 for the mel-spectrogram variant.
+    confidence: medium
+    relevance: low
+  - claim_id: latentvoicegrad_noise_ratio_controls_tradeoff
+    role: refines
+    claim: The noise injection ratio at the initial point of the ODE in flow-matching voice conversion
+      controls a three-way trade-off between audio quality, intelligibility, and speaker similarity.
+    source: §IV.G, Table VI
+    evidence: Systematic sweeps of r from 0 to 1 in VoiceGrad-FM and LatentVoiceGrad-FM show increasing
+      r raises SECS but degrades CER, with pMOS peaking around r=0.4-0.6; r=0.7 provides a practical balance.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluation is limited to English speech (VCTK, LibriTTS) and a 12-listener subjective test that omits
+    FACodec as a comparison.
+  - The discrete-token (DAT) evaluation is acknowledged as potentially sub-optimal due to untuned hyperparameters,
+    leaving the conclusion about discrete-token unsuitability tentative.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.08696'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: smoothcache_zero_training_caching_accelerates_fm_tts
+    role: supports
+    claim: Zero-training transformer layer caching can accelerate diffusion-based TTS inference without
+      retraining or architectural changes.
+    source: §3.2, Table 1
+    evidence: Applying SmoothCache to F5-TTS with alpha=0.25 (caching approximately half of 32 NFE steps)
+      reduces RTF from 0.46 to 0.26 while keeping WER, SIM-o, and UTMOS within measurement noise on LibriSpeech-PC
+      test-clean.
+    confidence: high
+    relevance: high
+  - claim_id: smoothcache_quality_benefit_depends_on_trajectory_length
+    role: complicates
+    claim: The inference-time quality benefit of layer caching in diffusion TTS depends on the length
+      of the denoising trajectory.
+    source: §4.1, Table 1
+    evidence: At 32 NFE, caching 50% of steps preserves quality; at 16 NFE, the same proportional caching
+      degrades UTMOS from 3.90 to 3.79 and NISQA from 4.14 to 3.97 on LibriSpeech-PC test-clean, comparable
+      to reducing NFE directly.
+    confidence: high
+    relevance: high
+  - claim_id: smoothcache_independent_schedules_cause_artifacts
+    role: complicates
+    claim: Per-layer cache schedules derived independently for attention and feed-forward sublayers introduce
+      inter-layer dependency artefacts in diffusion transformer TTS.
+    source: §3.1
+    evidence: Applying separate Attn-only and FFN-only cache schedules to F5-TTS caused audible artefacts
+      in informal listening tests; a unified schedule derived from the attention layer pattern resolved
+      this issue.
+    confidence: medium
+    relevance: high
+  - claim_id: smoothcache_caching_beats_step_reduction_at_high_nfe
+    role: supports
+    claim: Calibrated layer caching provides a marginally superior quality-compute trade-off compared
+      to equivalent step reduction at high NFE settings.
+    source: §4.1, Table 2
+    evidence: A 37-participant user study found 53% preference for 32 NFE with caching over a 24 NFE no-cache
+      baseline at the same compute budget; the difference collapsed to 49% vs. 51% at 16 NFE.
+    confidence: medium
+    relevance: low
+  limitations:
+  - RTF measurements use a single GPU (NVIDIA T4) and a single flow-matching TTS model (F5-TTS); generalization
+    to other DiT-based TTS systems or GPU architectures is untested.
+  - The calibration set contains only ten utterances, which may not capture the full distribution of synthesis
+    conditions.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.09748'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_and_consistency_alternatives
+  claims:
+  - claim_id: ditreducio_training_free_caching_reduces_flops
+    role: supports
+    claim: Training-free caching of redundant DiT computations can substantially reduce FLOPs in TTS without
+      retraining and without significant intelligibility degradation.
+    source: §4.2, Table 1
+    evidence: At the optimal T4 threshold, DiTReducio reduces F5-TTS FLOPs by 54.4% while keeping WER
+      within 0.002 percentage points of the uncompressed baseline on LibriSpeech-PC test-clean.
+    confidence: high
+    relevance: medium
+  - claim_id: ditreducio_diagonal_attention_predicts_redundancy
+    role: supports
+    claim: Diagonal-like self-attention patterns in DiT layers are a reliable proxy for identifying temporally
+      redundant layer-timestep pairs during diffusion inference.
+    source: §3.3, Figure 4
+    evidence: Cosine similarity between an attention heatmap and the identity matrix is strongly correlated
+      with temporal redundancy; layer-step pairs scoring above 0.35 in diagonal similarity approach 100%
+      redundancy.
+    confidence: high
+    relevance: high
+  - claim_id: ditreducio_temporal_skipping_alone_loses_info
+    role: complicates
+    claim: Temporal skipping alone in DiT TTS inference causes severe conditional information loss, making
+      branch skipping a necessary complement for quality-preserving acceleration.
+    source: §4.3, Figure 6
+    evidence: Ablation on F5-TTS shows TS-only reaches WER of 23.06% at maximum threshold, while full
+      DiTReducio (TS + BS) holds WER at 2.9% under the same threshold.
+    confidence: high
+    relevance: medium
+  - claim_id: ditreducio_threshold_dependent_quality_cliff
+    role: complicates
+    claim: 'Training-free DiT acceleration exhibits a threshold-dependent quality cliff: beyond a moderate
+      compression ratio, marginal speed gains decrease while speaker similarity degradation accelerates.'
+    source: §4.2, Table 1
+    evidence: For F5-TTS, moving from T4 to T6 yields only an additional 0.017 RTF improvement (0.129
+      to 0.112) but drops SIM-o from 0.618 to 0.590.
+    confidence: high
+    relevance: medium
+  - claim_id: ditreducio_image_acceleration_needs_domain_adaptation
+    role: refines
+    claim: Inference-time acceleration techniques from image and video diffusion transfer to speech synthesis
+      but require domain-specific adaptation, particularly for classifier-free guidance structures.
+    source: §3.2, §Appendix A.1
+    evidence: Branch skipping is introduced to handle speech CFG's conditional/unconditional branch redundancy,
+      and MegaTTS 3's multi-condition CFG requires separate residuals for each branch pair.
+    confidence: medium
+    relevance: high
+  limitations:
+  - 'Evaluation is narrow: two models, one dataset (LibriSpeech-PC test-clean), no human listening test,
+    and no comparison against other TTS-specific distillation methods on equivalent hardware.'
+  - The framework applies only to DiT-based flow-matching models and does not generalize to autoregressive
+    or non-DiT architectures.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.12831'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: frontier_probe
+  method_family: []
+  claims:
+  - claim_id: pre_trained_zero_shot_tts_and_gan_based_visual_synthesis_models_can_be_c
+    role: supports
+    claim: Pre-trained zero-shot TTS and GAN-based visual synthesis models can be chained in a modular
+      pipeline without fine-tuning to produce lip-synced talking-head video from short noisy reference
+      audio.
+    source: §3.4, §5.2, §5.7
+    evidence: Tortoise TTS and Wav2Lip were connected in inference-only mode using a single 10-15 second
+      audio clip and one frontal-face video, producing output that informal viewers assessed as perceptually
+      coherent.
+    confidence: high
+    relevance: medium
+  - claim_id: diffusion_based_autoregressive_tts_systems_impose_inference_latency_that
+    role: complicates
+    claim: Diffusion-based autoregressive TTS systems impose inference latency that conflicts with real-time
+      voice cloning requirements even on dedicated GPU hardware.
+    source: §7.4
+    evidence: Tortoise TTS synthesis takes "several minutes for each sentence" on an NVIDIA Tesla T4,
+      which the authors acknowledge prevents interactive or real-time deployment without model compression
+      or server-side acceleration.
+    confidence: medium
+    relevance: high
+  - claim_id: single_speaker_uncontrolled_evaluations_with_informal_raters_provide_ins
+    role: complicates
+    claim: Single-speaker, uncontrolled evaluations with informal raters provide insufficient evidence
+      to support generalizability claims for zero-shot VC and talking-head pipelines.
+    source: §6.2, §6.6, §7.1
+    evidence: The entire evaluation rests on one speaker (public recordings of Angelina Jolie), assessment
+      by three non-expert viewers with no task protocol, and no computed metrics; the authors explicitly
+      state that generalizability to other speakers, languages, or acoustics cannot be claimed.
+    confidence: medium
+    relevance: low
+  limitations:
+  - See the source paper page for the complete limitations and evaluation scope.
+  caveats:
+  - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.14784'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: aligning_autoregressive_decoder_representations_with_pre_trained_asr
+    role: supports
+    claim: Aligning autoregressive decoder representations with pre-trained ASR encoder semantics improves
+      content consistency in continuous-feature TTS.
+    source: §2.3, §3.2, Table 1, Table 2
+    evidence: Representation alignment reduces WER 6.3 to 5.3 on LibriTTS ablation and produces 25%, 40%,
+      and 30% relative CER/WER reductions on seed-tts-eval test-zh, test-en, and test-hard at 170K-hour
+      scale. Training convergence accelerates by over 3.3x.
+    confidence: high
+    relevance: medium
+  - claim_id: using_the_target_acoustic_domain_mel_spectrogram_as
+    role: contradicts
+    claim: Using the target acoustic domain (mel-spectrogram) as an intermediate alignment target helps
+      continuous AR TTS systems.
+    source: §3.2, Table 1
+    evidence: Aligning transformer decoder outputs to mel-spectrograms (Exp 2, Table 1) raises WER from
+      6.3 to 6.7 and degrades SS1/SS2, while alignment to SenseVoice-Large ASR representations (Exp 1)
+      reduces WER to 5.3.
+    confidence: high
+    relevance: medium
+  - claim_id: continuous_feature_ar_tts_achieves_competitive_content_accuracy
+    role: complicates
+    claim: Continuous-feature AR TTS achieves competitive content accuracy but lags behind discrete-token
+      systems on speaker similarity in zero-shot voice cloning.
+    source: §3.3, Table 2
+    evidence: MELA-TTS achieves best CER on seed-tts-eval test-zh but lower SS1 (0.59 vs. F5-TTS 0.65)
+      and SS2 (0.68 vs. F5-TTS 0.74) on test-en; attributed to the diffusion module's local context constraint
+      versus discrete-token systems that condition on all prior tokens and the full prompt.
+    confidence: high
+    relevance: high
+  - claim_id: unified_interleaved_training_on_streaming_and_offline_sequences
+    role: supports
+    claim: Unified interleaved training on streaming and offline sequences enables continuous AR TTS to
+      operate in both modes at comparable quality without separate model variants.
+    source: §2.4, §3.2, §3.3, Table 1, Table 2
+    evidence: Streaming mode achieves WER 5.0 versus offline 5.2, and SS1/SS2 parity, on LibriTTS. At
+      170K-hour scale, streaming WER is 2.5 versus offline 2.4 on test-en.
+    confidence: high
+    relevance: medium
+  - claim_id: continuous_feature_tts_without_speech_tokenization_scales_effectively
+    role: supports
+    claim: Continuous-feature TTS without speech tokenization scales effectively with training data, reducing
+      content error rates and approaching discrete-token system performance.
+    source: §3.3, Table 2
+    evidence: Scaling from LibriTTS (585h) to 170K-hour in-house data reduces English WER from 5.2 to
+      2.4 and improves SS1 from 0.48 to 0.59, bringing MELA-TTS close to CosyVoice 2.0 (2.6 WER) and CosyVoice
+      3.0 (2.5 WER).
+    confidence: high
+    relevance: medium
+  limitations:
+  - The diffusion module operates on local context only (the immediately adjacent latent vector and the
+    previous mel chunk), preventing it from attending to the full prompt speech. This is identified as
+    the likely structural cause of the consistent speaker similarity gap versus discrete-token systems
+    across test-en and test-hard. The limitation is left as future work with no proposed fix.
+  - Main comparison results rely on a proprietary 170K-hour multilingual dataset that is not publicly
+    available, limiting reproducibility of the top-line numbers. Ablations are conducted on LibriTTS only
+    (585 hours), which may not reflect behavior at full scale. No comparison to DiTAR on test-hard is
+    available, making it unclear whether MELA-TTS's robustness advantage on challenging inputs holds relative
+    to the closest continuous AR baseline. Code and demo are not released with the preprint.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.18470'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: frontier_probe
+  method_family:
+  - diffusion_flow_bridge_models
+  claims:
+  - claim_id: graddt_discrete_time_matches_continuous_baseline
+    role: supports
+    claim: A fully discrete-time training and inference formulation can match the subjective and objective
+      speech quality of a continuous-time diffusion baseline while eliminating the continuous/discrete
+      mismatch inherent to score-based samplers.
+    source: §4.1, Table 1; §4.2, Table 3
+    evidence: Grad-TTS-DT (discretized additive-Gaussian noising, clean-data prediction) achieves MCD
+      5.53, log F0 error 0.31, UTMOSv2 3.95 versus the continuous Grad-TTS baseline's 5.71/0.33/4.03 at
+      10 inference steps, and a higher subjective MOS (4.07 vs. 4.02).
+    confidence: high
+    relevance: high
+  - claim_id: graddt_multiplicative_noise_viable_alternative
+    role: supports
+    claim: Multiplicative Gaussian noise is a viable alternative to additive Gaussian noise as a diffusion-like
+      noising process for speech, despite its non-isotropic covariance structure.
+    source: §4.1, Table 1, Table 2
+    evidence: RFMG (multiplicative noise) achieves MCD, log F0, and UTMOSv2 close to RFAG (additive noise)
+      across matched sigma values at both 10-step and 5-step inference.
+    confidence: high
+    relevance: high
+  - claim_id: graddt_deterministic_noising_insufficient_naturalness
+    role: complicates
+    claim: Fully deterministic noising processes are insufficient on their own for naturalness in discrete-time
+      diffusion-like speech synthesis; some stochasticity in the noising process appears necessary.
+    source: §4.1, Table 1, Table 2; §4.2, Table 3
+    evidence: The fully deterministic Blurring system records the lowest UTMOSv2 of all compared systems
+      (3.71 at 10 steps, 3.66 at 5 steps) and ties for the lowest subjective MOS (3.86).
+    confidence: medium
+    relevance: high
+  - claim_id: graddt_traintest_consistency_determines_robustness
+    role: refines
+    claim: Consistency between training and inference conditions, not just the number of inference steps,
+      determines how well a diffusion-like TTS model generalizes to fewer sampling steps.
+    source: §4.1, Table 1, Table 2
+    evidence: All discrete-time systems retain near-identical MCD and log F0 error when inference steps
+      are reduced from 10 to 5, which the authors attribute to the discrete-time formulation exposing
+      the model to identical conditions at training and inference.
+    confidence: medium
+    relevance: high
+  limitations:
+  - All systems are trained/evaluated on a single English, single-speaker corpus (LJSpeech) with a text
+    encoder inherited unmodified from a pretrained Grad-TTS checkpoint the authors describe as suboptimal.
+  - The paper does not compare against more recent flow-matching TTS systems (e.g. rectified-flow or OT-CFM
+    models), only against the original score-based Grad-TTS, leaving unclear how the discrete-time variants
+    compare to the current flow-matching state of the art.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.18928'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - diffusion
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - autoregressive_diffusion_hybrids
+  claims:
+  - claim_id: ardm_dpo_extension_to_diffusion
+    role: supports
+    claim: Direct Preference Optimization can be extended beyond discrete-token generative models to continuous-token
+      autoregressive diffusion models for speech, by marginalizing the DPO objective over intermediate
+      diffusion states of the autoregressive sampling trajectory.
+    source: §3, §4.2, Table 1
+    evidence: The derived ARDM-DPO objective reduces to a log-sigmoid of the difference in denoising losses
+      between the fine-tuned and reference model on winning vs. losing trajectories; applied to a 0.4B
+      DiTAR model it nearly doubles F0 variance (14.2 to 29.2) while WER improves (5.17 to 3.73) after
+      200 training steps.
+    confidence: high
+    relevance: high
+  - claim_id: ardm_dpo_automatic_proxy_preference_data
+    role: supports
+    claim: Automatic proxy signals, rather than human-labeled preference pairs, can be used to construct
+      DPO training data that improves a targeted, measurable aspect of speech generation quality.
+    source: §4.3, Table 2
+    evidence: Task B builds 430k preference pairs by ranking 16 candidate outputs per prompt using a separately
+      trained CTC model's negative log-likelihood as an intelligibility proxy; this reduces CER by 25%
+      (8.37 to 6.32) on the Seed-TTS-Eval hard test set while preserving speaker similarity and naturalness
+      in subjective tests.
+    confidence: high
+    relevance: medium
+  - claim_id: ardm_dpo_training_instability
+    role: complicates
+    claim: DPO fine-tuning of autoregressive diffusion speech models is not guaranteed to be stable and
+      can require early stopping to prevent degradation of speaker similarity and naturalness.
+    source: §4.2, Fig. 3, §5
+    evidence: Across the beta in {200, 400, 800} grid search for Task A, speaker similarity decreases
+      monotonically throughout training regardless of beta, and the diffusion loss for both preferred
+      and dispreferred samples increases during training instead of diverging as the objective predicts.
+    confidence: high
+    relevance: high
+  - claim_id: ardm_dpo_beats_bestofk_and_raft
+    role: refines
+    claim: Preference-optimizing a generative TTS model via a single fine-tuning run can match or exceed
+      the quality gains obtained by inference-time best-of-K sampling or iterative rejection-sampling
+      fine-tuning, without their added inference-time or multi-round training cost.
+    source: §4.2, Table 1
+    evidence: On Task A, ARDM-DPO (200 steps, beta=200) reaches F0V 29.2, higher than best-of-64 sampling
+      (26.6, no training) and three iterations of RAFT rejection-sampling SFT (20.1), while requiring
+      a single training run and no extra inference-time sampling.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments fine-tune a single proprietary 0.4B DiTAR checkpoint pretrained on an internal 280,000-hour
+    corpus, with no code or model release; the reported gains cannot be independently reproduced or verified
+    on a public base model.
+  - Training instability on Task A (monotonically decreasing speaker similarity across all tested beta
+    values) is acknowledged as unresolved and requires manual early stopping rather than a principled
+    stopping criterion.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2509.25416'
+  entry_date: '2026-07-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - score_based_diffusion_synthesis
+  claims:
+  - claim_id: easpo_stepwise_beats_endpoint_dpo
+    role: supports
+    claim: Applying preference supervision at each denoising step of a diffusion model, rather than only
+      at the final generated output, improves alignment with a fine-grained target attribute compared
+      to endpoint-propagated preference optimization.
+    source: §3.4, Table 8
+    evidence: Under a matched Grad-TTS backbone, the stepwise EASPO method outperforms three prior diffusion-DPO
+      variants (DDPO, D3PO, Diffusion-DPO) on emotion similarity, prosody similarity, WER, and UTMOS.
+    confidence: high
+    relevance: high
+  - claim_id: easpo_endpoint_propagation_assumption_invalid
+    role: complicates
+    claim: The assumption underlying trajectory-level preference propagation in diffusion models, that
+      all intermediate states on a path toward a preferred final output are themselves preferred, does
+      not reliably hold.
+    source: §1, §2.2
+    evidence: The paper motivates its stepwise design specifically by rejecting this assumption, and shows
+      local win/lose selection at a shared latent outperforms endpoint-propagated variants.
+    confidence: medium
+    relevance: high
+  - claim_id: easpo_contrastive_scorer_on_noisy_states
+    role: supports
+    claim: A contrastive audio-language scoring model can be adapted to evaluate noisy intermediate diffusion
+      states, enabling automatic preference-pair construction without categorical emotion classifiers.
+    source: §2.1, Table 3
+    evidence: Adding a time-aware normalization layer to a CLAP-based encoder (CLEP) and training it with
+      diffusion-perturbed audio pairs lets it score emotional-prompt consistency directly on noisy mel-spectrograms;
+      removing this timestep conditioning degrades Emo SIM, Prosody SIM, WER, and UTMOS.
+    confidence: high
+    relevance: high
+  - claim_id: easpo_topcandidate_rollout_bias
+    role: complicates
+    claim: In RLHF-style fine-tuning of diffusion generation, continuing rollouts from the highest-reward
+      candidate at each step, rather than a randomly selected candidate, biases training toward degenerate
+      regions and reduces overall quality.
+    source: §2.1, §3.4, Table 4
+    evidence: The paper reports that random selection of the next rollout state from the candidate pool
+      consistently improves performance relative to continuing from the top-ranked (winning) candidate.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'Evaluation is confined to a single diffusion TTS backbone (Grad-TTS) and a single, small English
+    emotion corpus (ESD: 5 emotions x 10 speakers, 350 utterances/emotion).'
+  - The paper does not report parameter counts for the fine-tuned decoder or wall-clock/inference overhead
+    introduced by the k-candidate sampling and reward scoring at each training step, which matters for
+    RLHF-style diffusion fine-tuning cost.
+  caveats:
+  - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+claim_clusters:
+- id: diffusion_enables_high_fidelity_synthesis
+  claim: Iterative diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation
+    tasks.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - 2025.naacl-long.110
+  - '2105.06337'
+  - '2106.15561'
+  - '2301.12503'
+  - '2304.09116'
+  - '2305.07243'
+  - '2403.03100'
+  - '2406.02430'
+  - '2502.18924'
+  - '2508.19205'
+  - '2509.08379'
+  - '2509.08696'
+  - '2509.18470'
+  - '2509.25416'
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0063
+  - interspeech-2025-0554
+  - interspeech-2025-1434
+  - interspeech-2025-1747
+  contradicting_papers: []
+  refining_papers:
+  - 2025.coling-main.352
+  - '2207.12598'
+  - '2411.19770'
+  - '2509.08696'
+  - '2509.18470'
+  - '2509.18928'
+  - '2509.25416'
+  - iclr-2025-hQvX9MBowC
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0063
+  - interspeech-2025-1101
+  - interspeech-2025-1236
+  - interspeech-2025-1364
+  caveats:
+  - Comparisons span different datasets, vocoders, and sampling budgets, so quality gains are not attributable
+    to the diffusion objective alone.
+  last_reviewed: '2026-07-26'
+- id: iterative_sampling_limits_latency
+  claim: Iterative denoising remains a central latency and compute bottleneck for diffusion speech synthesis.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - '2105.06337'
+  - '2106.15561'
+  - '2210.02747'
+  - '2507.15272'
+  - '2509.08379'
+  - '2509.08696'
+  - '2509.09748'
+  - '2509.18470'
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-1066
+  - interspeech-2025-1101
+  - interspeech-2025-1747
+  contradicting_papers: []
+  refining_papers:
+  - '2207.12598'
+  - '2509.08696'
+  - '2509.09748'
+  - '2509.12831'
+  - '2509.18470'
+  - iclr-2025-hQvX9MBowC
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-1101
+  - interspeech-2025-1364
+  caveats:
+  - Reported speed depends on solver, hardware, target length, and whether encoder and vocoder costs are
+    included.
+  last_reviewed: '2026-07-26'
+- id: distillation_and_caching_accelerate_diffusion
+  claim: Distillation, caching, and progressive calibration can reduce diffusion-TTS inference steps while
+    retaining useful quality.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.naacl-long.110
+  - '2406.02430'
+  - '2502.18924'
+  - '2509.08696'
+  - interspeech-2025-0554
+  - interspeech-2025-1747
+  contradicting_papers: []
+  refining_papers:
+  - 2025.naacl-long.242
+  - '2509.08696'
+  - '2509.09748'
+  - '2509.12831'
+  - interspeech-2025-1364
+  caveats:
+  - Hard-case intelligibility, diversity, and speaker similarity can degrade before aggregate naturalness
+    metrics expose the loss.
+  last_reviewed: '2026-07-26'
+- id: latent_diffusion_reduces_generation_complexity
+  claim: Compressed latent targets reduce diffusion generation complexity without necessarily sacrificing
+    speech quality.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2301.12503'
+  - '2304.09116'
+  - '2305.07243'
+  - '2403.03100'
+  - '2406.02430'
+  - '2502.18924'
+  - iclr-2025-uxDFlPGRLX
+  contradicting_papers: []
+  refining_papers:
+  - 2025.naacl-long.242
+  - iclr-2025-hQvX9MBowC
+  caveats:
+  - Benefits depend on the latent encoder; reconstruction loss and semantic predictability can become
+    new bottlenecks.
+  last_reviewed: '2026-07-26'
+- id: guidance_controls_quality_and_conditioning
+  claim: Guidance strength provides a direct but non-monotonic control over diffusion quality, fidelity,
+    and conditioning adherence.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - '2502.18924'
+  - '2507.15272'
+  - interspeech-2025-1101
+  contradicting_papers: []
+  refining_papers:
+  - 2025.coling-main.352
+  - '2207.12598'
+  - '2509.09748'
+  - interspeech-2025-1101
+  caveats:
+  - Guidance optima vary by condition type and evaluation metric, and classifier-free guidance increases
+    per-step compute.
+  last_reviewed: '2026-07-26'
+- id: transformer_backbones_scale_diffusion_tts
+  claim: Transformer backbones support scalable diffusion modeling of speech and long-range conditioning.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.naacl-long.110
+  - 2025.naacl-long.242
+  - '2105.06337'
+  - '2301.12503'
+  - '2305.07243'
+  - '2507.15272'
+  - '2508.19205'
+  - '2509.08696'
+  - '2509.09748'
+  - '2509.18470'
+  - iclr-2025-hQvX9MBowC
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-1434
+  contradicting_papers: []
+  refining_papers:
+  - '2509.08696'
+  - '2509.09748'
+  - '2509.18470'
+  - interspeech-2025-1236
+  caveats:
+  - Scaling evidence is confounded by data volume and target representation, while transformer depth increases
+    inference cost.
+  last_reviewed: '2026-07-26'
+- id: diffusion_supports_zero_shot_voice_transfer
+  claim: Diffusion generators can transfer unseen-speaker identity from reference speech without speaker-specific
+    fine-tuning.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2301.12503'
+  - '2406.02430'
+  - '2411.09943'
+  - '2502.18924'
+  - '2507.15272'
+  - '2508.19205'
+  - '2509.08379'
+  - interspeech-2025-1101
+  - interspeech-2025-1434
+  contradicting_papers: []
+  refining_papers:
+  - '2507.15272'
+  - '2509.12831'
+  - '2509.14784'
+  - '2509.18928'
+  - interspeech-2025-0998
+  - interspeech-2025-1236
+  caveats:
+  - Speaker-similarity results depend on prompt quality, language match, and the embedding model used
+    for evaluation.
+  last_reviewed: '2026-07-26'
+- id: factorized_conditioning_improves_control
+  claim: Factorizing content, speaker, and style conditioning improves controllability in diffusion speech
+    generation.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2403.03100'
+  - '2406.02430'
+  - '2507.15272'
+  - '2508.19205'
+  - '2509.18928'
+  - interspeech-2025-1434
+  - interspeech-2025-1684
+  contradicting_papers: []
+  refining_papers:
+  - interspeech-2025-1101
+  caveats:
+  - Representation separation is often inferred from downstream metrics rather than verified causally.
+  last_reviewed: '2026-07-26'
+- id: diffusion_supports_expressive_style_and_emotion
+  claim: Diffusion models can support explicit style, emotion, prosody, and singing control.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.ccl-1.77
+  - 2025.coling-main.352
+  - '2301.12503'
+  - '2305.07243'
+  - '2411.09943'
+  - '2502.18924'
+  - '2508.19205'
+  - '2509.25416'
+  - interspeech-2025-1101
+  contradicting_papers: []
+  refining_papers:
+  - 2025.coling-main.352
+  - 2025.naacl-long.242
+  - '2509.25416'
+  - interspeech-2025-1101
+  - interspeech-2025-1210
+  - interspeech-2025-1364
+  caveats:
+  - Control accuracy, naturalness, and speaker preservation are rarely evaluated jointly under matched
+    conditions.
+  last_reviewed: '2026-07-26'
+- id: noise_robust_training_improves_generation
+  claim: Robust training and representation design improve diffusion speech generation under noisy or
+    mismatched conditions.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - '2105.06337'
+  - '2406.02430'
+  - '2502.18924'
+  - '2509.08696'
+  - '2509.12831'
+  - '2509.18470'
+  - '2509.25416'
+  contradicting_papers: []
+  refining_papers:
+  - 2025.coling-main.352
+  - '2304.09116'
+  - '2411.19770'
+  - interspeech-2025-0998
+  caveats:
+  - Noise types and recording channels vary substantially, limiting generalization from individual robustness
+    tests.
+  last_reviewed: '2026-07-26'
+- id: preference_optimization_can_steer_diffusion
+  claim: Preference optimization can steer diffusion trajectories toward human-aligned speech attributes.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - '2105.06337'
+  - '2406.02430'
+  - '2509.18928'
+  - '2509.25416'
+  - interspeech-2025-0063
+  contradicting_papers: []
+  refining_papers:
+  - '2509.18928'
+  - '2509.25416'
+  caveats:
+  - Trajectory-level preference assumptions may fail at noisy intermediate states, and reward models can
+    encode metric bias.
+  last_reviewed: '2026-07-26'
+- id: flow_and_consistency_offer_faster_paths
+  claim: Flow, consistency, and bridge formulations offer lower-step alternatives to conventional diffusion
+    sampling.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.naacl-long.110
+  - '2210.02747'
+  - '2509.08379'
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0554
+  - interspeech-2025-1066
+  - interspeech-2025-1364
+  contradicting_papers: []
+  refining_papers:
+  - interspeech-2025-1364
+  caveats:
+  - Objective comparisons are often unmatched in architecture, solver budget, or target representation.
+  last_reviewed: '2026-07-26'
+- id: alignment_supervision_improves_training
+  claim: Semantic, acoustic, or duration alignment supervision can improve diffusion-TTS training and
+    intelligibility.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2305.07243'
+  - '2406.02430'
+  - '2411.09943'
+  - '2502.18924'
+  - '2507.15272'
+  - '2509.25416'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence disagrees on where alignment should be imposed; intermediate acoustic targets may help some
+    hybrids while constraining others.
+  last_reviewed: '2026-07-26'
+- id: representation_choice_shapes_diffusion_quality
+  claim: The target representation materially shapes diffusion-TTS quality, efficiency, and controllability.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2105.06337'
+  - '2301.12503'
+  - '2403.03100'
+  - '2502.18924'
+  - '2509.08379'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Representation comparisons frequently change the decoder or vocoder simultaneously, weakening causal
+    attribution.
+  last_reviewed: '2026-07-26'
+- id: automatic_metrics_complicate_comparison
+  claim: Automatic metrics are insufficient for fair comparison of diffusion speech generators across
+    quality dimensions.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.coling-main.352
+  - '2210.02747'
+  - '2301.12503'
+  - '2502.18924'
+  - '2507.15272'
+  contradicting_papers: []
+  refining_papers:
+  - 2025.naacl-long.242
+  - '2507.15272'
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0998
+  caveats:
+  - Metric disagreement is not uniform, and many studies omit matched subjective evaluation or uncertainty
+    estimates.
+  last_reviewed: '2026-07-26'
+method_families:
+- id: score_based_diffusion_synthesis
+  name: Score-based diffusion synthesis
+  summary: Score-based and denoising diffusion models generate acoustic or speech representations through
+    an iterative reverse process. This family includes direct diffusion TTS, voice conversion, and expressive
+    generation without a more specific dominant hybrid pattern.
+  papers:
+  - '2207.12598'
+  - '2403.03100'
+  - '2507.15272'
+  - 2025.ccl-1.77
+  - interspeech-2025-0063
+  - interspeech-2025-1066
+  - interspeech-2025-1101
+  - interspeech-2025-1210
+  - interspeech-2025-1364
+  - interspeech-2025-1397
+  - interspeech-2025-1434
+  - '2411.19770'
+  - '2509.07038'
+  - '2509.25416'
+  open_questions:
+  - How can score-based systems reduce sampling cost without losing the stability that motivates iterative
+    denoising?
+- id: diffusion_transformer_acoustic_models
+  name: Diffusion-transformer acoustic models
+  summary: Transformer backbones parameterize diffusion over mel, latent, or related acoustic targets.
+    Their scaling capacity supports long-context and style modeling but raises caching and inference-cost
+    questions.
+  papers:
+  - '2105.06337'
+  - '2411.09943'
+  - 2025.coling-main.352
+  - iclr-2025-hQvX9MBowC
+  open_questions:
+  - Which transformer layers and conditioning paths can be cached or pruned without harming alignment
+    and speaker fidelity?
+- id: latent_diffusion_synthesis
+  name: Latent diffusion synthesis
+  summary: Latent diffusion models denoise compressed VAE, codec, or learned acoustic representations
+    rather than full-resolution waveforms or spectrograms. Compression lowers sequence and sampling cost
+    while making representation quality a central constraint.
+  papers:
+  - '2301.12503'
+  - '2304.09116'
+  - '2502.18924'
+  - 2025.naacl-long.242
+  open_questions:
+  - What latent rate and factorization best balance reconstruction fidelity, semantic predictability,
+    and controllability?
+- id: adversarial_and_distilled_diffusion
+  name: Adversarial and distilled diffusion
+  summary: Adversarial objectives, discriminators, and diffusion distillation compress iterative generation
+    into fewer steps or refine output realism. These systems pursue deployment speed but can inherit instability
+    and teacher dependence.
+  papers:
+  - '2508.01796'
+  - interspeech-2025-0998
+  - interspeech-2025-1747
+  - interspeech-2025-1763
+  - interspeech-2025-gourav25_interspeech
+  open_questions:
+  - Can distilled one-step systems preserve out-of-domain robustness and diversity without an expensive
+    diffusion teacher?
+- id: diffusion_flow_bridge_models
+  name: Diffusion-flow bridge models
+  summary: These models combine diffusion-like stochastic processes with flow matching or discrete-time
+    flow formulations in one generator. They explore a continuum between stochastic denoising and transport-based
+    generation.
+  papers:
+  - '2509.08379'
+  - '2509.18470'
+  open_questions:
+  - Which stochasticity and path parameterizations are genuinely useful once solver budget and target
+    representation are controlled?
+- id: flow_and_consistency_alternatives
+  name: Flow, consistency, and bridge alternatives
+  summary: Flow matching, consistency models, and Schrödinger bridges appear in the diffusion-TTS evidence
+    base as faster neighboring formulations or comparison points. They often target low-step synthesis
+    while retaining diffusion-derived conditioning strategies.
+  papers:
+  - '2210.02747'
+  - iclr-2025-uxDFlPGRLX
+  - 2025.naacl-long.110
+  - interspeech-2025-0554
+  - interspeech-2025-1236
+  - '2509.08696'
+  - '2509.09748'
+  open_questions:
+  - Under matched backbones and compute, when do flow or consistency objectives outperform distilled diffusion
+    rather than merely use fewer solver steps?
+- id: autoregressive_diffusion_hybrids
+  name: Autoregressive-diffusion hybrids
+  summary: Autoregressive modules plan tokens, semantics, or continuous frames while a diffusion component
+    models local distributions or reconstructs acoustics. The combination expands expressiveness but introduces
+    cross-stage alignment and latency trade-offs.
+  papers:
+  - '2106.15561'
+  - '2305.07243'
+  - '2406.02430'
+  - interspeech-2025-1115
+  - '2509.18928'
+  open_questions:
+  - How should autoregressive state and diffusion trajectories be aligned to avoid error accumulation
+    across stages?
+reassessment_queue: []
+open_questions:
+- Which combinations of target representation, solver, and conditioning yield the best quality-latency
+  frontier under matched compute?
+- Can one-step or cached diffusion systems retain diversity, robustness, and speaker identity on difficult
+  out-of-domain prompts?
+- When should diffusion be preferred to flow matching or consistency objectives once architecture and
+  inference budget are controlled?
+- How should human preference supervision be applied to noisy intermediate diffusion states without reward-model
+  bias?
+- Which evaluation suite jointly captures naturalness, intelligibility, identity, expressiveness, diversity,
+  and deployment latency?
+trend_notes:
+- Diffusion TTS moved from iterative score-based acoustic generation in 2021–2022 toward latent, transformer,
+  and hybrid formulations by 2023–2025.
+- Acceleration became a primary research axis in 2025, with distillation, layer caching, progressive calibration,
+  flow matching, and consistency objectives targeting few-step or one-step generation.
+- Latent and factorized representations increasingly separate semantic, speaker, and style information
+  before denoising, shifting bottlenecks from waveform generation to representation design.
+- Diffusion methods expanded beyond naturalness toward zero-shot cloning, emotional control, singing,
+  voice conversion, restoration, and preference-guided generation.
+- Comparisons with flow matching are increasingly common, but matched objective-level evaluations remain
+  scarce because systems often differ simultaneously in backbone, target, solver, and data.
