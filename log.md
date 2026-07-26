@@ -4,6 +4,24 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-07-26
+
+- ingest | 2510.20210 | Vox-Evaluator: Enhancing Stability and Fidelity for Zero-shot TTS with A Multi-Level Evaluator | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.20513 | Decoding the Ear: A Framework for Objectifying Expressiveness from Human Preference Through Efficient Alignment | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.20677 | R2-SVC: Towards Real-World Robust and Expressive Zero-shot Singing Voice Conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.21209 | SpecTokenizer: A Lightweight Streaming Codec in the Compressed Spectrum Domain | Interspeech 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.21685 | StylePitcher: Generating Style-Following and Expressive Pitch Curves for Versatile Singing Tasks | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.22241 | FOA Tokenizer: Low-bitrate Neural Codec for First Order Ambisonics with Spatial Consistency Loss | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.22588 | UltraVoice: Scaling Fine-Grained Style-Controlled Speech Conversations for Spoken Dialogue Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.05516 | Ming-UniAudio: Speech LLM for Joint Understanding, Generation and Editing with Unified Representation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2506.21864 | DeepOmni: Towards Seamless and Smart Speech Interaction with Adaptive Modality-Specific MoE | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.23312 | Low-Resource Audio Codec (LRAC): 2025 Challenge Description | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.23541 | SoulX-Podcast: Towards Realistic Long-form Podcasts with Dialectal and Paralinguistic Diversity | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.24372 | Bayesian Speech Synthesizers Can Learn from Multiple Teachers | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.25566 | PitchFlower: A flow-based neural audio codec with pitch controllability | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.25577 | Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2510.26190 | SP-MCQA: Evaluating Intelligibility of TTS Beyond the Word Level | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-25
 
 - integrate | phase 2 only | prosody-control (94 papers) | 17 claim_clusters | 14 method_families | 7 reassessment_queue items | first synthesis pass after Phase 1 closed; assigned 82/94 papers to at least one reciprocal family with 179 total memberships; an initial 23-paper outlier set was reconciled against the established evidentiary threshold by adding implicit-scale, language/domain, analysis/evaluation, and voice-quality families and correcting missed disentanglement, context, latent-control, and language-mediated assignments, leaving 12 legitimate low-relevance or contextual outliers; 13 clusters strongly_supported and 4 emerging; largest families are explicit_acoustic_variance_control (42 papers), emotion_expressive_prosody_control (28), latent_reference_prosody_transfer (23), and disentangled_prosody_content_timbre (17), with the first two queued for future subdivision; Phase 2 health check passed with 0 errors and 12 expected method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
@@ -1057,3 +1075,4 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - render | field overview and reader navigation | formats: field-overview, index, start | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | speech-to-speech | formats: in-depth | mode: light | runtime: codex | provider: openai | model: gpt-5
 - render | 5 concepts | formats: overview, in-depth, field-overview, navigation | mode: light | runtime: codex | provider: openai | model: gpt-5
+- ingest | 2510.25178 | SFMS-ALR: Script-First Multilingual Speech Synthesis with Adaptive Locale Resolution | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5

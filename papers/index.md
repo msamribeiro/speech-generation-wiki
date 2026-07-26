@@ -646,3 +646,19 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2506.23670]] | [Efficient Interleaved Speech Modeling through Knowledge Distillation](papers/2506.23670.md) | Nlpie Research; University of Zurich | arXiv | 2025 | TTS, SCA | autoregressive-LM | 2026-07-18 |
 | [[2510.19509]] | [Which Evaluation for Which Model? A Taxonomy for Speech Model Assessment](papers/2510.19509.md) | Apple | arXiv | 2025 | evaluation |  | 2026-07-18 |
 | [[2510.10785]] | [FAC-FACodec: Controllable Zero-Shot Foreign Accent Conversion with Factorized Speech Codec](papers/2510.10785.md) | University of Illinois Urbana-Champaign | arXiv | 2025 | VC | diffusion | 2026-07-18 |
+| [[2510.20210]] | [Vox-Evaluator: Enhancing Stability and Fidelity for Zero-shot TTS with A Multi-Level Evaluator](papers/2510.20210.md) | Tencent AI Lab | arXiv | 2025 | TTS, evaluation | transformer-enc-dec | 2026-07-26 |
+| [[2510.20513]] | [Decoding the Ear: A Framework for Objectifying Expressiveness from Human Preference Through Efficient Alignment](papers/2510.20513.md) | The Chinese University of Hong Kong, Shenzhen / Li Auto Inc. | arXiv | 2025 | SCA, evaluation |  | 2026-07-26 |
+| [[2510.20677]] | [R2-SVC: Towards Real-World Robust and Expressive Zero-shot Singing Voice Conversion](papers/2510.20677.md) |  | arXiv | 2025 | singing, VC | flow-matching | 2026-07-26 |
+| [[2510.21209]] | [SpecTokenizer: A Lightweight Streaming Codec in the Compressed Spectrum Domain](papers/2510.21209.md) |  | Interspeech | 2025 | codec | GAN, VAE | 2026-07-26 |
+| [[2510.21685]] | [StylePitcher: Generating Style-Following and Expressive Pitch Curves for Versatile Singing Tasks](papers/2510.21685.md) |  | arXiv | 2025 | singing, VC | flow-matching | 2026-07-26 |
+| [[2510.22241]] | [FOA Tokenizer: Low-Bitrate Neural Codec for First Order Ambisonics with Spatial Consistency Loss](papers/2510.22241.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-07-26 |
+| [[2510.22588]] | [UltraVoice: Scaling Fine-Grained Style-Controlled Speech Conversations for Spoken Dialogue Models](papers/2510.22588.md) |  | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching | 2026-07-26 |
+| [[2511.05516]] | [Ming-UniAudio: Speech LLM for Joint Understanding, Generation and Editing with Unified Representation](papers/2511.05516.md) |  | arXiv | 2025 | TTS, codec | autoregressive-LM, VAE, flow-matching, hybrid | 2026-07-26 |
+| [[2506.21864]] | [DeepOmni: Towards Seamless and Smart Speech Interaction with Adaptive Modality-Specific MoE](papers/2506.21864.md) |  | arXiv | 2025 | SCA, TTS | autoregressive-LM | 2026-07-26 |
+| [[2510.23312]] | [Low-Resource Audio Codec (LRAC): 2025 Challenge Description](papers/2510.23312.md) | Cisco Systems (Collaboration AI) | arXiv | 2025 | codec, evaluation |  | 2026-07-26 |
+| [[2510.23541]] | [SoulX-Podcast: Towards Realistic Long-form Podcasts with Dialectal and Paralinguistic Diversity](papers/2510.23541.md) |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-07-26 |
+| [[2510.25178]] | [SFMS-ALR: Script-First Multilingual Speech Synthesis with Adaptive Locale Resolution](papers/2510.25178.md) |  | arXiv | 2025 | TTS |  | 2026-07-26 |
+| [[2510.24372]] | [Bayesian Speech Synthesizers Can Learn from Multiple Teachers](papers/2510.24372.md) |  | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-26 |
+| [[2510.25566]] | [PitchFlower: A flow-based neural audio codec with pitch controllability](papers/2510.25566.md) | IRCAM, CNRS, Sorbonne Universite | arXiv | 2025 | codec | flow-matching | 2026-07-26 |
+| [[2510.25577]] | [Lost in Phonation: Voice Quality Variation as an Evaluation Dimension for Speech Foundation Models](papers/2510.25577.md) |  | arXiv | 2025 | evaluation |  | 2026-07-26 |
+| [[2510.26190]] | [SP-MCQA: Evaluating Intelligibility of TTS Beyond the Word Level](papers/2510.26190.md) | The Chinese University of Hong Kong, Shenzhen | arXiv | 2025 | TTS, evaluation |  | 2026-07-26 |
