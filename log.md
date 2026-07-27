@@ -4,6 +4,23 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-07-27
+
+- ingest | 2511.00256 | NaturalVoices: A Large-Scale, Spontaneous and Emotional Podcast Dataset for Voice Conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.00850 | MULTI-Bench: A Multi-Turn Interactive Benchmark for Assessing Emotional Intelligence ability of Spoken Dialogue Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.01056 | WhisperVC: Decoupled Cross-Domain Alignment and Speech Generation for Low-Resource Whisper-to-Normal Conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.01261 | Speech-DRAME: A Framework for Human-Aligned Benchmarks in Speech Role-Play | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.02104 | Toward Objective and Interpretable Prosody Evaluation in Text-to-Speech: A Linguistically Motivated Approach | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.emnlp-main.1160 | C3: A Bilingual Benchmark for Spoken Dialogue Models Exploring Challenges in Complex Conversations | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.emnlp-main.1447 | MULTIVOX: A Benchmark for Evaluating Voice Assistants for Multimodal Interactions | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.emnlp-main.1492 | PACHAT: Persona-Aware Speech Assistant for Multi-party Dialogue | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.1077 | EZ-VC: Easy Zero-shot Any-to-Any Voice Conversion | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.1381 | UniSpeaker: A Unified Approach for Multimodality-driven Speaker Generation | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.1394 | DM-Codec: Distilling Multimodal Representations for Speech Tokenization | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.241 | Enhancing Speech-to-Speech Dialogue Modeling with End-to-End Retrieval-Augmented Generation | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.524 | Dub-S2ST: Textless Speech-to-Speech Translation for Seamless Dubbing | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.findings-emnlp.933 | URO-Bench: Towards Comprehensive Evaluation for End-to-End Spoken Dialogue Models | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-26
 
 - ingest | 2510.20210 | Vox-Evaluator: Enhancing Stability and Fidelity for Zero-shot TTS with A Multi-Level Evaluator | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
