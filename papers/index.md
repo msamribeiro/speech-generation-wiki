@@ -676,3 +676,11 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2025.findings-emnlp.241]] | [Enhancing Speech-to-Speech Dialogue Modeling with End-to-End Retrieval-Augmented Generation](papers/2025.findings-emnlp.241.md) | Shanghai Jiao Tong University | EMNLP | 2025 | SCA | autoregressive-LM, flow-matching | 2026-07-27 |
 | [[2025.findings-emnlp.524]] | [Dub-S2ST: Textless Speech-to-Speech Translation for Seamless Dubbing](papers/2025.findings-emnlp.524.md) | Korea Advanced Institute of Science and Technology | EMNLP | 2025 | TTS | diffusion, flow-matching, hybrid | 2026-07-27 |
 | [[2025.findings-emnlp.933]] | [URO-Bench: Towards Comprehensive Evaluation for End-to-End Spoken Dialogue Models](papers/2025.findings-emnlp.933.md) |  | EMNLP | 2025 | SCA, evaluation |  | 2026-07-27 |
+| [[2511.03080]] | [PolyNorm: Few-Shot LLM-Based Text Normalization for Text-to-Speech](papers/2511.03080.md) | Apple | EMNLP | 2025 | TTS, evaluation |  | 2026-07-28 |
+| [[2511.03601]] | [Step-Audio-EditX Technical Report](papers/2511.03601.md) | StepFun | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-07-28 |
+| [[2511.13732]] | [Principled Coarse-Grained Acceptance for Speculative Decoding in Speech](papers/2511.13732.md) |  | arXiv | 2025 | TTS, codec | autoregressive-LM | 2026-07-28 |
+| [[2511.14779]] | [The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech](papers/2511.14779.md) |  | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-28 |
+| [[2025.arabicnlp-main.38]] | [DialG2P: Dialectal Grapheme-to-Phoneme. Arabic as a Case Study](papers/2025.arabicnlp-main.38.md) |  | workshop | 2025 | TTS | transformer-enc-dec | 2026-07-28 |
+| [[2511.06150]] | [BSCodec: A Band-Split Neural Codec for High-Quality Universal Audio Reconstruction](papers/2511.06150.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-07-28 |
+| [[2511.06246]] | [IDMap: A Pseudo-Speaker Generator Framework Based on Speaker Identity Index to Vector Mapping](papers/2511.06246.md) |  | arXiv | 2025 | VC | diffusion, hybrid | 2026-07-28 |
+| [[2508.20916]] | [SageLM: A Multi-aspect and Explainable Large Language Model for Speech Judgement](papers/2508.20916.md) | Northeastern University, China / NiuTrans Research | arXiv | 2025 | SCA, evaluation | autoregressive-LM | 2026-07-28 |
