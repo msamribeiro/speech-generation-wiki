@@ -4,6 +4,17 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-07-28
+
+- ingest | 2511.03080 | PolyNorm: Few-Shot LLM-Based Text Normalization for Text-to-Speech | EMNLP 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.03601 | Step-Audio-EditX Technical Report | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.13732 | Principled Coarse-Grained Acceptance for Speculative Decoding in Speech | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.14779 | The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.arabicnlp-main.38 | DialG2P: Dialectal Grapheme-to-Phoneme. Arabic as a Case Study | workshop 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.06150 | BSCodec: A Band-Split Neural Codec for High-Quality Universal Audio Reconstruction | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.06246 | IDMap: A Pseudo-Speaker Generator Framework Based on Speaker Identity Index to Vector Mapping | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2508.20916 | SageLM: A Multi-aspect and Explainable Large Language Model for Speech Judgement | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-27
 
 - ingest | 2511.00256 | NaturalVoices: A Large-Scale, Spontaneous and Emotional Podcast Dataset for Voice Conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
