@@ -4,6 +4,28 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-07-29
+
+- ingest | 2511.05143 | Synthesizing speech with selected perceptual voice qualities - A case study with creaky voice | Interspeech 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.07116 | BridgeVoC: Revitalizing Neural Vocoder from a Restoration Perspective | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.07135 | Generating Novel and Realistic Speakers for Voice Conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.08496 | HQ-SVC: Towards High-Quality Zero-Shot Singing Voice Conversion in Low-Resource Scenarios | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.09995 | Time-Layer Adaptive Alignment for Speaker Similarity in Flow-Matching Based Zero-Shot TTS | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.10112 | FabasedVC: Enhancing Voice Conversion with Text Modality Fusion and Phoneme-Level SSL Features | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.10262 | MTR-DuplexBench: Towards a Comprehensive Evaluation of Multi-Round Conversations for Full-Duplex Speech Language Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.10913 | Synthetic Voices, Real Threats: Evaluating Large Text-to-Speech Models in Generating Harmful Audio | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.11104 | CLARITY: Contextual Linguistic Adaptation and Accent Retrieval for Dual-Bias Mitigation in Text-to-Speech Generation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.11124 | AV-Dialog: Spoken Dialogue Models with Audio-Visual Input | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.12074 | MF-Speech: Achieving Fine-Grained and Compositional Control in Speech Generation via Factor Disentanglement | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.12690 | Improving Direct Persian-English Speech-to-Speech Translation with Discrete Units and Synthetic Parallel Data | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.14249 | Towards Authentic Movie Dubbing with Retrieve-Augmented Director-Actor Interaction Learning | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.16639 | Codec2Vec: Self-Supervised Speech Representation Learning Using Neural Speech Codecs | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.18487 | InstructAudio: Unified speech and music generation with natural language instruction | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.05126 | SyncVoice: Towards Video Dubbing with Vision-Augmented Pretrained TTS Model | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.19734 | Evaluating Objective Speech Quality Metrics for Neural Audio Codecs | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.20974 | RosettaSpeech: Zero-Shot Speech-to-Speech Translation without Parallel Speech | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.21045 | CartoonSing: Unifying Human and Nonhuman Timbres in Singing Generation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-28
 
 - integrate | 20 papers | neural-codec | Phase 1 batch 1 | first integration pass for this concept; Q3-scoped (`published_date < 2025-10-01`) oldest-first; authoritative discovery found 183 eligible papers, skipped 9 Tier 2 pages, and excluded 45 Q4 pages; processed 1609.03499, 2104.00355, 2209.03143, 2210.13438, 2301.02111, 2301.11325, 2303.03926, 2304.09116, 2305.02765, 2305.07243, 2305.09636, 2305.11000, 2306.00814, 2306.12925, 2308.16692, 2310.00704, 2312.15821, 2401.07333, 2402.01912, 2402.08093; 94 claims preserved from 20 legacy pages, all with source citations; 163 papers remain; Phase 1 only, with method families and claim clusters left empty; concept-scoped health check passed with 0 errors and 0 warnings; corpus-wide papers_not_in_any_yaml remained 118 | runtime: codex | provider: openai | model: gpt-5

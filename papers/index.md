@@ -684,3 +684,22 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2511.06150]] | [BSCodec: A Band-Split Neural Codec for High-Quality Universal Audio Reconstruction](papers/2511.06150.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-07-28 |
 | [[2511.06246]] | [IDMap: A Pseudo-Speaker Generator Framework Based on Speaker Identity Index to Vector Mapping](papers/2511.06246.md) |  | arXiv | 2025 | VC | diffusion, hybrid | 2026-07-28 |
 | [[2508.20916]] | [SageLM: A Multi-aspect and Explainable Large Language Model for Speech Judgement](papers/2508.20916.md) | Northeastern University, China / NiuTrans Research | arXiv | 2025 | SCA, evaluation | autoregressive-LM | 2026-07-28 |
+| [[2511.05143]] | [Synthesizing speech with selected perceptual voice qualities - A case study with creaky voice](papers/2511.05143.md) |  | Interspeech | 2025 | TTS | VAE | 2026-07-29 |
+| [[2511.07116]] | [BridgeVoC: Revitalizing Neural Vocoder from a Restoration Perspective](papers/2511.07116.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-29 |
+| [[2511.07135]] | [Generating Novel and Realistic Speakers for Voice Conversion](papers/2511.07135.md) | University of Rochester | arXiv | 2025 | VC | VAE | 2026-07-29 |
+| [[2511.08496]] | [HQ-SVC: Towards High-Quality Zero-Shot Singing Voice Conversion in Low-Resource Scenarios](papers/2511.08496.md) |  | arXiv | 2025 | singing, VC | diffusion, hybrid | 2026-07-29 |
+| [[2511.09995]] | [Time-Layer Adaptive Alignment for Speaker Similarity in Flow-Matching Based Zero-Shot TTS](papers/2511.09995.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-29 |
+| [[2511.10112]] | [FabasedVC: Enhancing Voice Conversion with Text Modality Fusion and Phoneme-Level SSL Features](papers/2511.10112.md) |  | arXiv | 2025 | VC | VAE, GAN | 2026-07-29 |
+| [[2511.10262]] | [MTR-DuplexBench: Towards a Comprehensive Evaluation of Multi-Round Conversations for Full-Duplex Speech Language Models](papers/2511.10262.md) |  | arXiv | 2025 | SCA, evaluation |  | 2026-07-29 |
+| [[2511.10913]] | [Synthetic Voices, Real Threats: Evaluating Large Text-to-Speech Models in Generating Harmful Audio](papers/2511.10913.md) |  | arXiv | 2025 | TTS, evaluation |  | 2026-07-29 |
+| [[2511.11104]] | [CLARITY: Contextual Linguistic Adaptation and Accent Retrieval for Dual-Bias Mitigation in Text-to-Speech Generation](papers/2511.11104.md) |  | arXiv | 2025 | TTS |  | 2026-07-29 |
+| [[2511.11124]] | [AV-Dialog: Spoken Dialogue Models with Audio-Visual Input](papers/2511.11124.md) |  | arXiv | 2025 | SCA | autoregressive-LM, hybrid | 2026-07-29 |
+| [[2511.12074]] | [MF-Speech: Achieving Fine-Grained and Compositional Control in Speech Generation via Factor Disentanglement](papers/2511.12074.md) | University of Science and Technology of China | arXiv | 2025 | VC | GAN | 2026-07-29 |
+| [[2511.12690]] | [Improving Direct Persian-English Speech-to-Speech Translation with Discrete Units and Synthetic Parallel Data](papers/2511.12690.md) | Sharif University of Technology | arXiv | 2025 | TTS | transformer-enc-dec | 2026-07-29 |
+| [[2511.14249]] | [Towards Authentic Movie Dubbing with Retrieve-Augmented Director-Actor Interaction Learning](papers/2511.14249.md) | Inner Mongolia University | arXiv | 2025 | TTS | hybrid | 2026-07-29 |
+| [[2511.16639]] | [Codec2Vec: Self-Supervised Speech Representation Learning Using Neural Speech Codecs](papers/2511.16639.md) |  | arXiv | 2025 | codec |  | 2026-07-29 |
+| [[2511.18487]] | [InstructAudio: Unified speech and music generation with natural language instruction](papers/2511.18487.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-29 |
+| [[2512.05126]] | [SyncVoice: Towards Video Dubbing with Vision-Augmented Pretrained TTS Model](papers/2512.05126.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-29 |
+| [[2511.19734]] | [Evaluating Objective Speech Quality Metrics for Neural Audio Codecs](papers/2511.19734.md) | ETH Zurich | arXiv | 2025 | codec, evaluation |  | 2026-07-29 |
+| [[2511.20974]] | [RosettaSpeech: Zero-Shot Speech-to-Speech Translation without Parallel Speech](papers/2511.20974.md) | University of Texas at Austin / Amazon | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-29 |
+| [[2511.21045]] | [CartoonSing: Unifying Human and Nonhuman Timbres in Singing Generation](papers/2511.21045.md) | Carnegie Mellon University | arXiv | 2025 | singing, TTS, VC | transformer-enc-dec, GAN | 2026-07-29 |
