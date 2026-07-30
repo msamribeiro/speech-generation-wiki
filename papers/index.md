@@ -703,3 +703,18 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2511.19734]] | [Evaluating Objective Speech Quality Metrics for Neural Audio Codecs](papers/2511.19734.md) | ETH Zurich | arXiv | 2025 | codec, evaluation |  | 2026-07-29 |
 | [[2511.20974]] | [RosettaSpeech: Zero-Shot Speech-to-Speech Translation without Parallel Speech](papers/2511.20974.md) | University of Texas at Austin / Amazon | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-29 |
 | [[2511.21045]] | [CartoonSing: Unifying Human and Nonhuman Timbres in Singing Generation](papers/2511.21045.md) | Carnegie Mellon University | arXiv | 2025 | singing, TTS, VC | transformer-enc-dec, GAN | 2026-07-29 |
+| [[2511.21229]] | [Developing an Open Conversational Speech Corpus for the Isan Language](papers/2511.21229.md) | SCB 10X (Typhoon Team) | arXiv | 2025 | TTS |  | 2026-07-30 |
+| [[2511.21270]] | [Multi-Reward GRPO for Stable and Prosodic Single-Codebook TTS LLMs at Scale](papers/2511.21270.md) | Tencent | arXiv | 2025 | TTS | autoregressive-LM | 2026-07-30 |
+| [[2511.22293]] | [GLA-Grad++: An Improved Griffin-Lim Guided Diffusion Model for Speech Synthesis](papers/2511.22293.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-30 |
+| [[2512.00451]] | [STCTS: Generative Semantic Compression for Ultra-Low Bitrate Speech via Explicit Text-Prosody-Timbre Decomposition](papers/2512.00451.md) |  | arXiv | 2025 | TTS, codec | autoregressive-LM, GAN | 2026-07-30 |
+| [[2511.22687]] | [PURE Codec: Progressive Unfolding of Residual Entropy for Speech Codec Learning](papers/2511.22687.md) | Carnegie Mellon University, Shanghai Jiao Tong University | arXiv | 2025 | codec | VAE, GAN | 2026-07-30 |
+| [[2505.17320]] | [Comparative Evaluation of Expressive Japanese Character Text-to-Speech with VITS and Style-BERT-VITS2](papers/2505.17320.md) |  | arXiv | 2025 | TTS, evaluation | VAE, GAN | 2026-07-30 |
+| [[2512.00937]] | [Arabic TTS with FastPitch: Reproducible Baselines, Adversarial Training, and Oversmoothing Analysis](papers/2512.00937.md) |  | arXiv | 2025 | TTS | transformer-enc-dec, GAN | 2026-07-30 |
+| [[2025.iwclul-1.3]] | [The world's first South Sámi TTS – a revitalisation effort of an endangered language by reviving a legacy voice](papers/2025.iwclul-1.3.md) |  | workshop | 2025 | TTS | transformer-enc-dec, GAN | 2026-07-30 |
+| [[2512.01537]] | [Two-Dimensional Quantization for Geometry-Aware Audio Coding](papers/2512.01537.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-07-30 |
+| [[2512.01865]] | [Cross-Lingual Interleaving for Speech Language Models](papers/2512.01865.md) | University of Cambridge | arXiv | 2025 | SCA | autoregressive-LM | 2026-07-30 |
+| [[2512.02523]] | [Generative Multi-modal Feedback for Singing Voice Synthesis Evaluation](papers/2512.02523.md) |  | arXiv | 2025 | singing, evaluation | autoregressive-LM | 2026-07-30 |
+| [[2512.03486]] | [A Universal Harmonic Discriminator for High-quality GAN-based Vocoder](papers/2512.03486.md) | Alibaba Digital Media & Entertainment Group | ASRU | 2025 | TTS, singing | GAN | 2026-07-30 |
+| [[2512.04552]] | [RRPO: Robust Reward Policy Optimization for LLM-based Emotional TTS](papers/2512.04552.md) | Alibaba Group (Tongyi Lab) | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-07-30 |
+| [[2512.04779]] | [YingMusic-Singer: Zero-shot Singing Voice Synthesis and Editing with Annotation-free Melody Guidance](papers/2512.04779.md) | GiantNetwork AI Lab | arXiv | 2025 | singing | flow-matching | 2026-07-30 |
+| [[2512.04793]] | [YingMusic-SVC: Real-World Robust Zero-Shot Singing Voice Conversion with Flow-GRPO and Singing-Specific Inductive Biases](papers/2512.04793.md) | GiantNetwork AI Lab | arXiv | 2025 | singing, VC | flow-matching | 2026-07-30 |
