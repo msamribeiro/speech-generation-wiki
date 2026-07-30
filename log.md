@@ -4,6 +4,24 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-07-30
+
+- ingest | 2512.02523 | Generative Multi-modal Feedback for Singing Voice Synthesis Evaluation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.21229 | Developing an Open Conversational Speech Corpus for the Isan Language | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.21270 | Multi-Reward GRPO for Stable and Prosodic Single-Codebook TTS LLMs at Scale | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.22293 | GLA-Grad++: An Improved Griffin-Lim Guided Diffusion Model for Speech Synthesis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.00451 | STCTS: Generative Semantic Compression for Ultra-Low Bitrate Speech via Explicit Text-Prosody-Timbre Decomposition | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2511.22687 | PURE Codec: Progressive Unfolding of Residual Entropy for Speech Codec Learning | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2505.17320 | Comparative Evaluation of Expressive Japanese Character Text-to-Speech with VITS and Style-BERT-VITS2 | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.00937 | Arabic TTS with FastPitch: Reproducible Baselines, Adversarial Training, and Oversmoothing Analysis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2025.iwclul-1.3 | The world’s first South Sámi TTS – a revitalisation effort of an endangered language by reviving a legacy voice | workshop 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.01537 | Two-Dimensional Quantization for Geometry-Aware Audio Coding | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.01865 | Cross-Lingual Interleaving for Speech Language Models | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.03486 | A Universal Harmonic Discriminator for High-quality GAN-based Vocoder | ASRU 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.04552 | RRPO: Robust Reward Policy Optimization for LLM-based Emotional TTS | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.04779 | YingMusic-Singer: Zero-shot Singing Voice Synthesis and Editing with Annotation-free Melody Guidance | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.04793 | YingMusic-SVC: Real-World Robust Zero-Shot Singing Voice Conversion with Flow-GRPO and Singing-Specific Inductive Biases | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-29
 
 - integrate | 20 papers | multilingual-tts | Phase 1 batch 1 | first integration pass for this concept; Q3-scoped (`published_date < 2025-10-01`) oldest-first; authoritative discovery found 75 eligible papers, skipped 13 Tier 2 pages, and excluded 25 Q4-or-later pages; processed 2206.04658, 2212.04356, 2303.03926, 2306.12925, 2312.01479, 2406.04904, 2407.05361, 2407.05407, 2409.00750, 2411.01156, 2412.02612, 2501.06282, 2025.coling-main.685, 2502.05512, 2503.14345, iclr-2025-hQvX9MBowC, 2025.naacl-short.69, 2025.americasnlp-1.1, 2505.07916, 2505.13000; 90 claims preserved from 4 structured and 16 legacy pages, all with source citations; 55 papers remain; Phase 1 only, with method families and claim clusters left empty; concept-scoped health check passed with 0 errors and 0 warnings; corpus-wide papers_not_in_any_yaml remained 123 | runtime: codex | provider: openai | model: gpt-5
