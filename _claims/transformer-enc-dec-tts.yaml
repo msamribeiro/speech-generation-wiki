@@ -1,0 +1,2290 @@
+concept: transformer-enc-dec-tts
+last_updated: '2026-07-30'
+paper_count: 28
+papers:
+- id: '1703.10135'
+  entry_date: '2026-07-30'
+  year: 2017
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: foundational
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: end_to_end_tts_models_trained_from_characters_with_seq2seq
+    role: supports
+    claim: End-to-end TTS models trained from characters with seq2seq attention can match or exceed production statistical
+      parametric systems in subjective naturalness without hand-engineered linguistic features.
+    source: §5.2, Table 2
+    evidence: End-to-end TTS models trained from characters with seq2seq attention can match or exceed production
+      statistical parametric systems in subjective naturalness without hand-engineered linguistic features.
+    confidence: high
+    relevance: high
+  - claim_id: training_stability_and_alignment_quality_in_character_level_seq2seq_tts
+    role: supports
+    claim: Training stability and alignment quality in character-level seq2seq TTS improve substantially when the
+      decoder emits multiple output frames per attention step rather than one.
+    source: §3.3
+    evidence: Training stability and alignment quality in character-level seq2seq TTS improve substantially when
+      the decoder emits multiple output frames per attention step rather than one.
+    confidence: high
+    relevance: high
+  - claim_id: cbhg_style_encoders_combining_multi_scale_convolution_highway_networks_and
+    role: supports
+    claim: CBHG-style encoders combining multi-scale convolution, highway networks, and bidirectional recurrence
+      yield more robust text representations than standard RNN encoders, reducing mispronunciation rates.
+    source: §3.2, §5.1
+    evidence: CBHG-style encoders combining multi-scale convolution, highway networks, and bidirectional recurrence
+      yield more robust text representations than standard RNN encoders, reducing mispronunciation rates.
+    confidence: high
+    relevance: medium
+  - claim_id: post_processing_networks_with_access_to_the_full_decoded_sequence
+    role: supports
+    claim: Post-processing networks with access to the full decoded sequence improve harmonic structure in predicted
+      spectrograms compared to frame-level-only decoding.
+    source: §3.4, §5.1
+    evidence: Post-processing networks with access to the full decoded sequence improve harmonic structure in predicted
+      spectrograms compared to frame-level-only decoding.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Evaluated on a single internal speaker in a controlled studio environment. No multi-speaker, out-of-domain,
+    or noisy-data experiments are reported. The internal dataset is not released, making direct replication impossible.
+  - Griffin-Lim waveform synthesis introduces audible artefacts that depress MOS scores and prevent fair comparison
+    against systems using neural vocoders. The authors explicitly flag this as a known limitation and describe neural
+    inversion as ongoing work. The reduction factor r is fixed at inference; the paper does not explore adaptive
+    or learned stopping. The model still requires clean text-normalised input; robustness to raw text (numbers,
+    abbreviations, punctuation) is handled by a rule-based preprocessing step rather than learned normalisation.
+  caveats: []
+- id: '1712.05884'
+  entry_date: '2026-07-30'
+  year: 2017
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  current_role: foundational
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: a_compact_low_level_acoustic_intermediate_representation_can_bridge_text
+    role: supports
+    claim: A compact low-level acoustic intermediate representation can bridge text encoding and neural vocoder
+      synthesis without requiring hand-crafted linguistic features, enabling fully end-to-end neural TTS at human-quality
+      levels.
+    source: §2.1, Table 1
+    evidence: A compact low-level acoustic intermediate representation can bridge text encoding and neural vocoder
+      synthesis without requiring hand-crafted linguistic features, enabling fully end-to-end neural TTS at human-quality
+      levels.
+    confidence: high
+    relevance: low
+  - claim_id: location_sensitive_attention_which_incorporates_cumulative_attention_weights_as_a
+    role: supports
+    claim: Location-sensitive attention, which incorporates cumulative attention weights as a conditioning signal,
+      reduces failure modes such as repetition and omission compared to standard additive attention in autoregressive
+      TTS decoders.
+    source: §2.2
+    evidence: Location-sensitive attention, which incorporates cumulative attention weights as a conditioning signal,
+      reduces failure modes such as repetition and omission compared to standard additive attention in autoregressive
+      TTS decoders.
+    confidence: high
+    relevance: low
+  - claim_id: a_pre_net_information_bottleneck_in_the_autoregressive_decoder_is
+    role: supports
+    claim: A pre-net information bottleneck in the autoregressive decoder is essential for stable attention alignment
+      during training.
+    source: §2.2
+    evidence: A pre-net information bottleneck in the autoregressive decoder is essential for stable attention alignment
+      during training.
+    confidence: high
+    relevance: medium
+  - claim_id: training_the_vocoder_on_predicted_rather_than_ground_truth_intermediate
+    role: supports
+    claim: Training the vocoder on predicted rather than ground-truth intermediate features is necessary because
+      predicted features are systematically oversmoothed; vocoders trained on clean features degrade when exposed
+      to predicted inputs.
+    source: §3.3.1, Table 2
+    evidence: Training the vocoder on predicted rather than ground-truth intermediate features is necessary because
+      predicted features are systematically oversmoothed; vocoders trained on clean features degrade when exposed
+      to predicted inputs.
+    confidence: high
+    relevance: low
+  - claim_id: neural_vocoders_conditioned_on_compact_mel_spectrograms_can_operate_with
+    role: supports
+    claim: Neural vocoders conditioned on compact mel spectrograms can operate with substantially smaller receptive
+      fields than those conditioned on linguistic features, enabling significant architecture simplification without
+      quality loss.
+    source: §3.3.4, Table 4
+    evidence: Neural vocoders conditioned on compact mel spectrograms can operate with substantially smaller receptive
+      fields than those conditioned on linguistic features, enabling significant architecture simplification without
+      quality loss.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments use a single proprietary speaker and an internal dataset. The paper provides no evidence of
+    generalisation to multiple speakers, different languages, or recording conditions, and no training or evaluation
+    data is publicly released, limiting independent reproducibility.
+  - 'Prosody remains imperfect: 23 of 100 test sentences are rated as containing unnatural prosody (wrong emphasis,
+    unnatural pitch), and occasional mispronunciations are identified as the main gap between the system and human
+    speech. The paper''s authors explicitly identify prosody modeling as the primary remaining challenge.'
+  - 'The two-stage training setup, while producing high quality, introduces a train/inference mismatch that the
+    ablations expose: the vocoder trained on predicted spectrograms is specifically tuned to the oversmoothed distribution
+    of the encoder-decoder output. Any change to the first stage (retraining, fine-tuning) requires retraining the
+    vocoder independently. Joint end-to-end training is left as future work.'
+  - Real-time synthesis is not addressed; WaveNet inference was known to be slow at the time of publication.
+  caveats: []
+- id: '2006.04558'
+  entry_date: '2026-07-30'
+  year: 2020
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: influential
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: explicit_variance_conditioning_on_pitch_energy_and_duration_in_non
+    role: supports
+    claim: Explicit variance conditioning on pitch, energy, and duration in non-autoregressive TTS reduces the information
+      gap between text and speech, enabling quality matching or surpassing autoregressive models without autoregressive
+      inference.
+    source: §2.2, §3.2.1, Table 1
+    evidence: Explicit variance conditioning on pitch, energy, and duration in non-autoregressive TTS reduces the
+      information gap between text and speech, enabling quality matching or surpassing autoregressive models without
+      autoregressive inference.
+    confidence: high
+    relevance: low
+  - claim_id: phoneme_durations_derived_from_forced_alignment_are_substantially_more_accurate
+    role: supports
+    claim: Phoneme durations derived from forced alignment are substantially more accurate than those extracted
+      from autoregressive teacher attention maps, and this accuracy difference directly improves output voice quality.
+    source: §3.2.2, Table 5
+    evidence: Phoneme durations derived from forced alignment are substantially more accurate than those extracted
+      from autoregressive teacher attention maps, and this accuracy difference directly improves output voice quality.
+    confidence: high
+    relevance: medium
+  - claim_id: modeling_pitch_in_the_frequency_domain_via_continuous_wavelet_transform
+    role: supports
+    claim: Modeling pitch in the frequency domain via continuous wavelet transform produces more natural pitch distributions
+      in synthesized speech than direct time-domain F0 regression.
+    source: §2.3, §3.2.3, Table 3
+    evidence: Modeling pitch in the frequency domain via continuous wavelet transform produces more natural pitch
+      distributions in synthesized speech than direct time-domain F0 regression.
+    confidence: high
+    relevance: medium
+  - claim_id: removing_teacher_student_distillation_from_non_autoregressive_tts_training_can
+    role: supports
+    claim: Removing teacher-student distillation from non-autoregressive TTS training can simultaneously simplify
+      the pipeline, reduce training time, and improve output quality relative to the distillation approach.
+    source: §1, §3.2.1, Table 2
+    evidence: Removing teacher-student distillation from non-autoregressive TTS training can simultaneously simplify
+      the pipeline, reduce training time, and improve output quality relative to the distillation approach.
+    confidence: high
+    relevance: low
+  - claim_id: end_to_end_parallel_text_to_waveform_generation_is_technically
+    role: supports
+    claim: End-to-end parallel text-to-waveform generation is technically feasible but more sensitive to variance
+      conditioning than mel-spectrogram-based acoustic models, particularly in the pitch dimension.
+    source: §2.4, §3.2.3, Table 6
+    evidence: End-to-end parallel text-to-waveform generation is technically feasible but more sensitive to variance
+      conditioning than mel-spectrogram-based acoustic models, particularly in the pitch dimension.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments use a single studio-quality English speaker (LJSpeech). Generalisation to multi-speaker, emotional,
+    noisy, or cross-lingual conditions is untested. The paper does not include speaker similarity metrics or speaker-conditioned
+    variants.
+  - The variance adaptor relies on an external forced alignment tool (MFA) and pitch extraction (PyWorldVocoder)
+    at training time; these are not learned end-to-end, which limits the system from being fully self-contained.
+    The authors acknowledge this and note future work toward eliminating external alignment tools.
+  - FastSpeech 2s requires the mel-spectrogram decoder during training even though it is discarded at inference.
+    This coupling adds training complexity and means the waveform decoder benefits from a pre-trained mel-spectrogram
+    branch, creating a two-stage dependency that partially reintroduces the pipeline complexity the paper otherwise
+    avoids.
+  - The CMOS evaluation protocol is used for ablation comparisons rather than the more interpretable absolute MOS,
+    which makes it harder to assess the magnitude of individual component contributions in absolute terms.
+  caveats: []
+- id: '2105.06337'
+  entry_date: '2026-07-30'
+  year: 2021
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: influential
+  method_family:
+  - diffusion_augmented_acoustic_decoders
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: diffusion_based_acoustic_feature_generators_can_match_autoregressive_tts_naturalness
+    role: supports
+    claim: Diffusion-based acoustic feature generators can match autoregressive TTS naturalness while enabling flexible
+      inference-time speed-quality trade-offs not available in single-pass models.
+    source: §4.1, Table 2
+    evidence: Diffusion-based acoustic feature generators can match autoregressive TTS naturalness while enabling
+      flexible inference-time speed-quality trade-offs not available in single-pass models.
+    confidence: high
+    relevance: low
+  - claim_id: initialising_reverse_diffusion_from_a_text_conditioned_noise_distribution_rather
+    role: supports
+    claim: Initialising reverse diffusion from a text-conditioned noise distribution rather than standard Gaussian
+      substantially reduces the number of steps required for high-quality synthesis.
+    source: §3.1, Table 1
+    evidence: Initialising reverse diffusion from a text-conditioned noise distribution rather than standard Gaussian
+      substantially reduces the number of steps required for high-quality synthesis.
+    confidence: high
+    relevance: low
+  - claim_id: diffusion_models_can_achieve_higher_data_log_likelihood_on_mel
+    role: supports
+    claim: Diffusion models can achieve higher data log-likelihood on mel-spectrograms than normalising-flow models
+      with larger decoder capacity explicitly trained for maximum likelihood.
+    source: §4.2, Table 2
+    evidence: Diffusion models can achieve higher data log-likelihood on mel-spectrograms than normalising-flow
+      models with larger decoder capacity explicitly trained for maximum likelihood.
+    confidence: high
+    relevance: low
+  - claim_id: subjective_quality_in_diffusion_based_mel_spectrogram_synthesis_improves_diminishingly
+    role: supports
+    claim: Subjective quality in diffusion-based mel-spectrogram synthesis improves diminishingly with reverse-diffusion
+      step count, with most quality gain recovered by 10 steps rather than 1000.
+    source: §4.1, Table 2
+    evidence: Subjective quality in diffusion-based mel-spectrogram synthesis improves diminishingly with reverse-diffusion
+      step count, with most quality gain recovered by 10 steps rather than 1000.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluation is restricted to a single-speaker English dataset (LJSpeech); no multi-speaker, zero-shot, or multilingual
+    capability is demonstrated, leaving generalisation of the diffusion framework to diverse speakers untested.
+  - Training requires approximately 1.7 million iterations on a single GPU (NVIDIA RTX 2080 Ti), and slow convergence
+    of the diffusion loss is noted as a necessary condition for quality. The paper does not report total training
+    time or wall-clock comparisons with baselines.
+  - The end-to-end variant (replacing the mel-spectrogram output with raw waveform via a WaveGrad decoder) does
+    not reach the quality of the two-stage system and is excluded from the main listening test, leaving the end-to-end
+    direction as a preliminary result.
+  - The noise schedule is a simple linear function of time; the paper acknowledges that more principled schedule
+    design and loss weighting are open questions that could improve sample quality and training efficiency.
+  caveats: []
+- id: '2106.15561'
+  entry_date: '2026-07-30'
+  year: 2021
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - diffusion
+  - GAN
+  - VAE
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - control_evidence
+  - infrastructure
+  current_role: influential
+  method_family:
+  - autoregressive_token_decoders
+  - flow_matching_acoustic_decoders
+  - diffusion_augmented_acoustic_decoders
+  - gan_augmented_encoder_decoder_systems
+  - vae_latent_encoder_decoder_systems
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: the_transition_from_attention_based_alignment_to_explicit_duration_prediction
+    role: supports
+    claim: The transition from attention-based alignment to explicit duration prediction in non-autoregressive acoustic
+      models eliminates word skipping and repeating artefacts while enabling parallel mel-spectrogram generation.
+    source: §3.4, Table 11
+    evidence: The transition from attention-based alignment to explicit duration prediction in non-autoregressive
+      acoustic models eliminates word skipping and repeating artefacts while enabling parallel mel-spectrogram generation.
+    confidence: high
+    relevance: medium
+  - claim_id: modelling_variation_information_prosody_style_speaker_at_multiple_granularities_from
+    role: supports
+    claim: Modelling variation information (prosody, style, speaker) at multiple granularities from frame to utterance
+      level improves expressiveness while fine-grained control remains difficult when relying on implicit latent
+      representations.
+    source: §3.5.1, §3.5.3
+    evidence: Modelling variation information (prosody, style, speaker) at multiple granularities from frame to
+      utterance level improves expressiveness while fine-grained control remains difficult when relying on implicit
+      latent representations.
+    confidence: high
+    relevance: medium
+  - claim_id: diffusion_based_vocoders_achieve_high_perceptual_quality_but_suffer_from
+    role: supports
+    claim: Diffusion-based vocoders achieve high perceptual quality but suffer from slow inference due to iterative
+      reverse diffusion, motivating step-reduction methods.
+    source: §2.4, Table 6
+    evidence: Diffusion-based vocoders achieve high perceptual quality but suffer from slow inference due to iterative
+      reverse diffusion, motivating step-reduction methods.
+    confidence: high
+    relevance: low
+  - claim_id: zero_shot_speaker_adaptation_that_relies_solely_on_a_speaker
+    role: supports
+    claim: Zero-shot speaker adaptation that relies solely on a speaker encoder without any fine-tuning produces
+      noticeably lower voice quality than few-shot adaptation, particularly for speakers distant from the training
+      distribution.
+    source: §3.6.2
+    evidence: Zero-shot speaker adaptation that relies solely on a speaker encoder without any fine-tuning produces
+      noticeably lower voice quality than few-shot adaptation, particularly for speakers distant from the training
+      distribution.
+    confidence: high
+    relevance: medium
+  - claim_id: low_resource_tts_benefits_from_cross_lingual_transfer_because_human
+    role: supports
+    claim: Low-resource TTS benefits from cross-lingual transfer because human languages share vocal organs and
+      phonetic structures, though phoneme set mismatches require explicit bridging.
+    source: §3.3
+    evidence: Low-resource TTS benefits from cross-lingual transfer because human languages share vocal organs and
+      phonetic structures, though phoneme set mismatches require explicit bridging.
+    confidence: high
+    relevance: low
+  limitations:
+  - 'The coverage horizon is mid-2021, which means the survey predates several paradigm shifts: neural codec-based
+    discrete speech tokenisation, large language model-based TTS (VALL-E, NaturalSpeech 2), flow-matching acoustic
+    models, and the instruction-conditioned and zero-shot capabilities that came with LLM-scale training. The survey''s
+    taxonomy (acoustic model + vocoder pipeline) is also less applicable to fully codec-native systems where this
+    separation dissolves.'
+  - The survey focuses on English and Mandarin and, while noting multilingual coverage, does not deeply address
+    the orthographic diversity or tonal complexity of the majority of the world's languages. Evaluation methodology
+    is discussed mainly by cataloguing metrics rather than analysing their reliability or mutual disagreement, which
+    limits the survey's utility for assessing evaluation practices.
+  - 'Open questions identified include: better variation information modeling that reconciles controllability and
+    expressiveness, casual and spontaneous speech synthesis, parameter-efficient adaptation at scale, and energy-efficient
+    training and inference.'
+  caveats: []
+- id: 2025.coling-main.352
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: COLING
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_augmented_acoustic_decoders
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: applying_diffusion_based_classifier_free_guidance_to_low_dimensional_prosodic
+    role: supports
+    claim: Applying diffusion-based classifier-free guidance to low-dimensional prosodic features (pitch, energy,
+      duration) rather than the full Mel-spectrogram achieves faster inference than Mel-diffusion baselines while
+      retaining prosodic diversity benefits over regression-based models.
+    source: §3.2, Table 1
+    evidence: Applying diffusion-based classifier-free guidance to low-dimensional prosodic features (pitch, energy,
+      duration) rather than the full Mel-spectrogram achieves faster inference than Mel-diffusion baselines while
+      retaining prosodic diversity benefits over regression-based models.
+    confidence: high
+    relevance: low
+  - claim_id: hierarchical_conditioning_combining_coarse_grained_implicit_style_tokens_with_fine
+    role: supports
+    claim: Hierarchical conditioning combining coarse-grained implicit style tokens with fine-grained explicit prosodic
+      diffusion outperforms both purely regression-based and discriminator-constrained diffusion baselines on naturalness
+      and prosodic distribution accuracy.
+    source: §3.2, Table 1
+    evidence: Hierarchical conditioning combining coarse-grained implicit style tokens with fine-grained explicit
+      prosodic diffusion outperforms both purely regression-based and discriminator-constrained diffusion baselines
+      on naturalness and prosodic distribution accuracy.
+    confidence: high
+    relevance: low
+  - claim_id: classifier_free_guidance_scale_controls_a_trade_off_between_prosodic
+    role: complicates
+    claim: Classifier-free guidance scale controls a trade-off between prosodic diversity and naturalness quality
+      in diffusion-based prosody prediction, with distortion artefacts emerging at high guiding scales.
+    source: §3.3, Table 2
+    evidence: Classifier-free guidance scale controls a trade-off between prosodic diversity and naturalness quality
+      in diffusion-based prosody prediction, with distortion artefacts emerging at high guiding scales.
+    confidence: high
+    relevance: low
+  - claim_id: dynamic_thresholding_applied_to_cfg_noise_outputs_effectively_mitigates_phoneme
+    role: supports
+    claim: Dynamic thresholding applied to CFG noise outputs effectively mitigates phoneme distortion caused by
+      excessive guiding scales in prosodic diffusion models.
+    source: §2.2, §3.3
+    evidence: Dynamic thresholding applied to CFG noise outputs effectively mitigates phoneme distortion caused
+      by excessive guiding scales in prosodic diffusion models.
+    confidence: high
+    relevance: low
+  - claim_id: gst_based_implicit_style_conditioning_enables_meaningful_prosodic_transfer_across
+    role: supports
+    claim: GST-based implicit style conditioning enables meaningful prosodic transfer across speakers, outperforming
+      both regression-based style transfer and discriminator-constrained diffusion in subjective preference evaluations.
+    source: §3.4, Table 3
+    evidence: GST-based implicit style conditioning enables meaningful prosodic transfer across speakers, outperforming
+      both regression-based style transfer and discriminator-constrained diffusion in subjective preference evaluations.
+    confidence: high
+    relevance: low
+  limitations:
+  - Speaker timbre and prosody are not disentangled — the model can transfer prosodic style but cannot fully separate
+    it from speaker identity. The GST tokens show partial overlap in t-SNE visualizations, indicating shared prosodic
+    modes and incomplete independence. The evaluation is conducted on a private Mandarin Chinese dataset (9 male
+    speakers from similar genres), limiting generalization claims across languages, genders, or more varied speaking
+    styles. The 200-step diffusion process at inference is still far slower than FastSpeech2, and no acceleration
+    scheme (consistency models, flow-matching) is explored. Whether the CFG approach generalises to cross-lingual
+    or highly emotional speech remains untested.
+  caveats: []
+- id: 2025.coling-main.518
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: COLING
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_acoustic_decoders
+  - hybrid_acoustic_generation_pipelines
+  claims:
+  - claim_id: applying_conditional_flow_matching_to_a_self_supervised_prosody_latent
+    role: supports
+    claim: Applying conditional flow matching to a self-supervised prosody latent space rather than to full acoustic
+      features enables diverse prosody generation at inference without requiring a reference utterance.
+    source: §2.3, §3.3
+    evidence: Applying conditional flow matching to a self-supervised prosody latent space rather than to full acoustic
+      features enables diverse prosody generation at inference without requiring a reference utterance.
+    confidence: high
+    relevance: low
+  - claim_id: self_supervised_speech_representations_wavlm_provide_a_more_effective_prosody
+    role: supports
+    claim: Self-supervised speech representations (WavLM) provide a more effective prosody conditioning signal for
+      TTS than conventional pitch and energy predictors, as shown by ablation.
+    source: §3.4, Table 3
+    evidence: Self-supervised speech representations (WavLM) provide a more effective prosody conditioning signal
+      for TTS than conventional pitch and energy predictors, as shown by ablation.
+    confidence: high
+    relevance: low
+  - claim_id: flow_matching_in_a_prosody_latent_space_achieves_comparable_quality
+    role: supports
+    claim: Flow matching in a prosody latent space achieves comparable quality to diffusion-based prosody modeling
+      with substantially lower computational cost.
+    source: §3.4, Table 3
+    evidence: Flow matching in a prosody latent space achieves comparable quality to diffusion-based prosody modeling
+      with substantially lower computational cost.
+    confidence: high
+    relevance: low
+  - claim_id: a_small_number_of_flow_matching_function_evaluations_n_1
+    role: supports
+    claim: A small number of flow matching function evaluations (n=1) is sufficient to match or exceed legacy TTS
+      baselines on MOS and WER, confirming the sample efficiency of flow matching for prosody.
+    source: §3.3, Table 2
+    evidence: A small number of flow matching function evaluations (n=1) is sufficient to match or exceed legacy
+      TTS baselines on MOS and WER, confirming the sample efficiency of flow matching for prosody.
+    confidence: high
+    relevance: low
+  limitations:
+  - The model is validated only on single-speaker LJSpeech; extension to multi-speaker and zero-shot settings is
+    explicitly acknowledged as future work. The model architecture size is not reported. WavLM parameters are frozen
+    throughout training, which may limit adaptation to unusual prosody distributions. The comparison set does not
+    include the most recent flow matching TTS systems (Voicebox, Matcha-TTS, E2 TTS) — only legacy baselines (FastSpeech
+    2, VITS, StyleTTS 2) and one diffusion model (DiffProsody). The absence of speaker diversity means the prosody
+    variability shown may primarily reflect intra-speaker diversity of LJSpeech rather than generalizable prosodic
+    modeling.
+  caveats: []
+- id: iclr-2025-hQvX9MBowC
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: ICLR
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: influential
+  method_family:
+  - diffusion_augmented_acoustic_decoders
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: diffusion_transformer_backbones_are_better_suited_to_tts_than_u
+    role: supports
+    claim: Diffusion Transformer backbones are better suited to TTS than U-Net backbones once domain-specific conditioning
+      factors (phonemes, durations) are removed.
+    source: §5.2, Table 4
+    evidence: Under matched training conditions, replacing the DiT backbone with a U-Net (and a U-Net variant without
+      down/up-sampling) increases WER from 2.93 to 3.7 and drops SIM-r from 0.588 to 0.389 on the English cross-sentence
+      task.
+    confidence: high
+    relevance: low
+  - claim_id: predicting_total_target_length_and_generating_variable_length_sequences_outperforms
+    role: supports
+    claim: Predicting total target length and generating variable-length sequences outperforms fixed-length generation
+      with padding in diffusion-based TTS.
+    source: §5.2, Table 5
+    evidence: Fixed-length modeling with padding reaches WER 6.81-8.89, while a learned speech length predictor
+      with variable-length generation reaches WER 5.36-5.58 under otherwise identical settings.
+    confidence: high
+    relevance: low
+  - claim_id: aligning_text_and_speech_latent_representations_improves_cross_attention_conditioned
+    role: supports
+    claim: Aligning text and speech latent representations improves cross-attention-conditioned generation quality,
+      independent of model or training-data scale.
+    source: §5.2, Tables 6-7
+    evidence: A speech codec fine-tuned with an auxiliary language-modeling loss against a frozen text encoder (Mel-VAE++)
+      improves WER/SIM over the unaligned codec regardless of which text encoder (ByT5 or SpeechT5) is paired with
+      it, and a jointly text-speech-trained text encoder (SpeechT5, 85M params) outperforms a larger text-only encoder
+      (ByT5-base, 415M params) trained on more data.
+    confidence: high
+    relevance: medium
+  - claim_id: removing_domain_specific_alignment_factors_from_ldm_based_tts_narrows
+    role: complicates
+    claim: Removing domain-specific alignment factors from LDM-based TTS narrows but does not eliminate the gap
+      to phoneme-duration-based systems in speaker similarity.
+    source: §5.1, Table 2
+    evidence: DiTTo-en-XL reaches SIM-r 0.6554 on the cross-sentence task, below Voicebox's reported 0.681 (a phoneme/duration-based
+      non-autoregressive model), even though DiTTo-en-XL is faster and matches or exceeds Voicebox on WER.
+    confidence: high
+    relevance: low
+  - claim_id: codec_compression_ratio_not_codec_reconstruction_quality_alone_determines_suitability
+    role: complicates
+    claim: Codec compression ratio, not codec-reconstruction quality alone, determines suitability as a diffusion
+      target for variable-length TTS.
+    source: §5.2, Table 7
+    evidence: DAC achieves higher PESQ and ViSQOL codec-reconstruction scores than Mel-VAE, but its 7-8x longer
+      latent sequences make training and inference substantially less efficient and degrade end-to-end WER/SIM relative
+      to the more compressed but lower-fidelity Mel-VAE.
+    confidence: high
+    relevance: low
+  limitations:
+  - Code and pretrained weights are not released at publication (only demo samples), and most baseline comparisons
+    (Voicebox, VALL-E, NaturalSpeech 2/3) use numbers copied from the original papers' reported results rather than
+    reproduced under DiTTo's own evaluation pipeline, limiting independent verification of head-to-head rankings.
+  - The speaker-similarity gap to phoneme-duration-based systems like Voicebox persists even at the largest model
+    scale tested, suggesting that removing domain-specific factors trades off some speaker-identity preservation
+    for simplicity and speed. The paper also does not explore natural-language instruction following or fine-grained
+    prosody control, both noted as future directions rather than addressed in this work. Multilingual results are
+    reported on only 100 held-out examples per language, which is a narrow evaluation slice given nine languages
+    with very different phonological properties.
+  caveats: []
+- id: 2025.naacl-long.591
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: NAACL
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: monotonic_alignment_can_be_learned_end_to_end_as_a
+    role: supports
+    claim: Monotonic alignment can be learned end-to-end as a latent property of an encoder-decoder TTS model via
+      backpropagation, without requiring forced alignments or dynamic programming during training.
+    source: §3.3, §3.4
+    evidence: VAT's alignment layer learns continuous alignment positions through interpolated relative position
+      biases (IRPBs); alignment trajectories emerge from joint training with no external supervision, and generalise
+      to utterances far longer than the training distribution.
+    confidence: high
+    relevance: high
+  - claim_id: augmenting_cross_attention_with_a_learned_monotonic_alignment_position_enables
+    role: supports
+    claim: Augmenting cross-attention with a learned monotonic alignment position enables unbounded length generalisation
+      in encoder-decoder TTS without degrading naturalness relative to an unmodified Transformer baseline.
+    source: §5.1, §5.2, §5.3, Table 1
+    evidence: VAT achieves near-zero CER on inputs up to 1500 characters (~90 seconds) despite training only on
+      utterances up to 9.6 seconds, while matching the T5 baseline in side-by-side naturalness evaluations (SxS
+      -0.06 ± 0.14 on Lessac, 0.01 ± 0.14 on LibriTTS).
+    confidence: high
+    relevance: high
+  - claim_id: standard_mos_evaluations_are_insufficient_to_surface_robustness_failures_in
+    role: complicates
+    claim: Standard MOS evaluations are insufficient to surface robustness failures in autoregressive TTS because
+      raters cannot detect dropped or repeated words without access to target transcripts.
+    source: §5.1, §5.2, Table 1
+    evidence: The T5 baseline achieves overlapping MOS with VAT (3.75 vs. 3.68 on Lessac) while producing a CER
+      of 10.2 versus VAT's 3.3; the perceptual quality rating is statistically indistinguishable despite systematic
+      robustness failures.
+    confidence: high
+    relevance: low
+  - claim_id: autoregressive_transformer_tts_without_explicit_alignment_guidance_fails_on_repeated
+    role: complicates
+    claim: Autoregressive Transformer TTS without explicit alignment guidance fails on repeated words even within
+      training sequence length limits.
+    source: §5.4
+    evidence: The T5 baseline makes errors on 14 of 27 (52%) repeated-word test phrases, including phrases with
+      as few as 2 repetitions of a single word, while VAT makes zero errors across all 27 templates.
+    confidence: high
+    relevance: high
+  - claim_id: duration_based_tts_achieves_better_asr_measured_character_error_rates
+    role: refines
+    claim: Duration-based TTS achieves better ASR-measured character error rates than expressive autoregressive
+      models, but the gain is attributable to hyper-intelligible, monotone synthesis rather than superior text coverage.
+    source: §5.3, Table 1
+    evidence: NAT achieves CER 3.3 on LibriTTS, below both VAT (4.6) and ground truth (3.6), yet VAT is preferred
+      over NAT in naturalness side-by-sides because NAT's unsupervised duration predictor produces robotic, monotonous
+      prosody.
+    confidence: high
+    relevance: low
+  limitations:
+  - Training speed is affected by the need to compute alignment positions serially during training, imposing a 12-20%
+    slowdown relative to the T5 baseline depending on model scale. All experiments use English and a speaker-conditioned
+    (non-zero-shot) setting; generalisation to other languages and to audio-prompted zero-shot scenarios is untested.
+    Evaluation compares against T5, Tacotron-GMMA, and NAT; no direct comparison with codec LM systems (VALL-E,
+    SPEAR-TTS, MQTTS) is provided, which the paper attributes to incompatible dataset scales and evaluation protocols.
+    Hyper-parameter choices for the alignment layer, IRPB initialization, and maximum distance penalty are reported
+    but not systematically ablated.
+  caveats: []
+- id: 2025.americasnlp-1.1
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: AmericasNLP 2025
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  - gan_augmented_encoder_decoder_systems
+  claims:
+  - claim_id: transfer_learning_from_a_closely_related_language_can_enable_intelligible
+    role: supports
+    claim: Transfer learning from a closely related language can enable intelligible TTS for an indigenous language
+      with fewer than 5 hours of training data.
+    source: §4.1, §5.1
+    evidence: Transfer learning from a closely related language can enable intelligible TTS for an indigenous language
+      with fewer than 5 hours of training data.
+    confidence: high
+    relevance: low
+  - claim_id: subjective_evaluation_by_native_speakers_is_necessary_when_objective_metrics
+    role: supports
+    claim: Subjective evaluation by native speakers is necessary when objective metrics such as PESQ and POLQA cannot
+      be applied due to absent high-quality reference recordings.
+    source: §5.3
+    evidence: Subjective evaluation by native speakers is necessary when objective metrics such as PESQ and POLQA
+      cannot be applied due to absent high-quality reference recordings.
+    confidence: high
+    relevance: low
+  - claim_id: pronunciation_drift_in_a_native_speaker_living_outside_the_language
+    role: supports
+    claim: Pronunciation drift in a native speaker living outside the language community can cause natural speech
+      to score lower on intelligibility than synthetic speech on standardised evaluation.
+    source: §5.4
+    evidence: Pronunciation drift in a native speaker living outside the language community can cause natural speech
+      to score lower on intelligibility than synthetic speech on standardised evaluation.
+    confidence: high
+    relevance: low
+  - claim_id: gan_based_vocoders_initialized_from_a_universal_pretrained_model_converge
+    role: supports
+    claim: GAN-based vocoders initialized from a universal pretrained model converge rapidly when the target speaker
+      is similar to the pretraining distribution.
+    source: §4.2, §5.2
+    evidence: GAN-based vocoders initialized from a universal pretrained model converge rapidly when the target
+      speaker is similar to the pretraining distribution.
+    confidence: high
+    relevance: low
+  limitations:
+  - '- Corpus is only 4h 37m from a single female speaker, limiting prosodic and phonetic diversity and voice coverage.
+    - Transfer learning from Spanish may introduce Spanish phonotactic biases that are not present in Shipibo-Konibo.
+    - Evaluation relied entirely on subjective metrics (no PESQ/POLQA due to lack of reference data); subjectivity
+    and evaluator bias are acknowledged. - Two writing conventions for Shipibo-Konibo exist; the 2015 standard was
+    used, limiting applicability in communities using older orthographies. - The speaker''s extended residence in
+    Lima introduced pronunciation drift that complicates the natural vs. synthetic comparison. - The model has not
+    been tested on adaptation to other Panoan or Amazonian languages yet, though the framework is intended to generalize.'
+  caveats: []
+- id: '2507.04598'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: hierarchical_dependency_aware_emotion_prediction_yields_better_emotional_naturalness_and
+    role: supports
+    claim: Hierarchical, dependency-aware emotion prediction yields better emotional naturalness and intelligibility
+      than treating prosodic granularities independently.
+    source: §5.1.1, Table 1
+    evidence: VA (Multi-Step) achieves MUSHRA naturalness 62.2 vs. 57.5 (single-step VA) with ground-truth ED, and
+      WER 2.45 vs. 4.61 with predicted ED on LibriTTS-R.
+    confidence: high
+    relevance: medium
+  - claim_id: multi_level_emotion_intensity_control_when_implemented_at_the_phoneme
+    role: supports
+    claim: Multi-level emotion intensity control, when implemented at the phoneme and word levels, enables fine-grained
+      and quantifiable manipulation of prosodic features consistent with perceptual expectations.
+    source: §5.2, Table 4, Figure 6
+    evidence: BWS controllability tests show the proposed model more consistently associates low intensity with
+      least-expressive and high intensity with most-expressive ratings across all five emotions compared to MsEmoTTS,
+      and prosodic trend analysis (duration, pitch mean/std, energy) confirms expected acoustic correlates at each
+      level.
+    confidence: high
+    relevance: medium
+  - claim_id: sequential_multi_step_prediction_across_hierarchical_levels_introduces_error_accumulation
+    role: complicates
+    claim: Sequential multi-step prediction across hierarchical levels introduces error accumulation that can degrade
+      pitch and duration alignment even when overall naturalness improves.
+    source: §5.1.2, Table 2
+    evidence: In the VA setting, multi-step prediction does not outperform single-step on pitch distortion or frame
+      disturbance metrics, attributed to cascaded prediction error and increased sensitivity from joint training
+      with ED difference loss.
+    confidence: high
+    relevance: medium
+  - claim_id: the_gap_between_ground_truth_and_text_predicted_emotion_distributions
+    role: refines
+    claim: The gap between ground-truth and text-predicted emotion distributions at the word level is smaller than
+      at the phoneme level, suggesting that phoneme-level emotion is harder to infer from text.
+    source: §5.1.3, Table 3
+    evidence: Table 3 shows mean absolute ED differences are lower for words than phonemes in the multi-step (Predicted)
+      condition, and the authors interpret this as the model prioritizing cross-segment dependencies over precise
+      ED matching.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The system is evaluated exclusively on English data, and the authors identify extension to additional languages
+    as future work. Both training datasets (LibriTTS-R, ESD) are relatively clean, and the method's robustness in
+    noisy or spontaneous conditions is untested. The MsEmoTTS baseline is re-implemented within the FastSpeech2
+    framework rather than evaluated in its original form, which introduces a potential confound in the emotion editing
+    comparison. The external module's claim of compatibility with arbitrary TTS systems is not verified against
+    any system other than FastSpeech2. Model size and computational cost are not reported.
+  caveats: []
+- id: 2025.conll-1.9
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: CoNLL
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: naturalness_ratings_do_not_fully_reflect_whether_tts_prosody_is
+    role: complicates
+    claim: Naturalness ratings do not fully reflect whether TTS prosody is linguistically appropriate.
+    source: §5.3, Figure 3
+    evidence: Syntactic Sensitivity Score precision and recall diverge from the MOS ranking across Tacotron2, SpeechT5,
+      and Parler-TTS; specifically, recall does not follow MOS order, revealing that missed boundary errors have
+      less impact on perceived naturalness than spurious boundary errors — a dimension MOS does not capture independently.
+    confidence: high
+    relevance: low
+  - claim_id: punctuation_marks_are_the_dominant_surface_cue_for_intonational_boundary
+    role: supports
+    claim: Punctuation marks are the dominant surface cue for intonational boundary placement in TTS systems, overriding
+      syntactic and semantic information in ambiguous contexts.
+    source: §4.4, §5.3
+    evidence: All three systems place boundaries reliably only when commas are present; without comma cues in garden
+      path and attachment ambiguity sentences, systems default to the statistically most frequent pattern regardless
+      of the intended structure, and semantic bias in prepositional phrase attachment has no measurable effect on
+      boundary placement.
+    confidence: high
+    relevance: low
+  - claim_id: transformer_based_tts_architectures_encode_partial_clause_boundary_information_for
+    role: supports
+    claim: Transformer-based TTS architectures encode partial clause boundary information for prosody that LSTM-based
+      systems do not.
+    source: §6.1, Figure 4
+    evidence: LASSO regression selects `is_clause_boundary` as a significant predictor of pause duration for SpeechT5
+      and Parler-TTS but not for Tacotron2, which relies more on token position and length features.
+    confidence: high
+    relevance: low
+  - claim_id: increasing_tts_training_exposure_to_syntactically_diverse_speech_can_improve
+    role: refines
+    claim: Increasing TTS training exposure to syntactically diverse speech can improve prosodic alignment with
+      syntactic structure for structural cues, but not for semantic disambiguation cues.
+    source: §7.3, Figure 5
+    evidence: Fine-tuning Parler-TTS on Jenny corpus prepositional phrase data produces more differentiated pause
+      patterns correlated with syntactic function of ambiguous words; fine-tuning on synthetic semantic-bias data
+      increases pause duration generally but does not teach the model to distinguish high from low attachment based
+      on semantic context.
+    confidence: high
+    relevance: low
+  limitations:
+  - The study measures intonational boundaries through duration proxies only (pause insertion and pre-boundary lengthening),
+    omitting pitch contour and intensity changes that also contribute to boundary perception. The ToBI framework
+    identifies multiple boundary strength levels that this methodology cannot distinguish.
+  - Evaluation is limited to English and to three specific TTS systems trained on audiobook speech, which under-represents
+    prosodically disambiguating speech patterns relative to conversational speech.
+  - The Parler-TTS model supports natural-language voice conditioning, but only a single fixed voice description
+    was used. How voice conditioning interacts with syntactic sensitivity is unexplored.
+  - 'The fine-tuning results are diagnostic rather than prescriptive: datasets are small (~6 hours), and the synthetic
+    data experiment suggests that semantic disambiguation remains out of reach even with targeted exposure.'
+  caveats: []
+- id: '2508.11273'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: discretizing_self_supervised_speech_features_via_k_means_produces_more
+    role: supports
+    claim: Discretizing self-supervised speech features via k-means produces more stable prosodic control signals
+      than retaining continuous SSL representations in encoder-decoder TTS.
+    source: §5.6, Table 1
+    evidence: Discretizing self-supervised speech features via k-means produces more stable prosodic control signals
+      than retaining continuous SSL representations in encoder-decoder TTS.
+    confidence: high
+    relevance: high
+  - claim_id: combining_continuous_spherical_emotion_vectors_with_discrete_ssl_prosody_tokens
+    role: supports
+    claim: Combining continuous spherical emotion vectors with discrete SSL prosody tokens improves both naturalness
+      and intelligibility compared to spherical emotion vectors alone.
+    source: §5.1, §5.3, Tables 1–2
+    evidence: Combining continuous spherical emotion vectors with discrete SSL prosody tokens improves both naturalness
+      and intelligibility compared to spherical emotion vectors alone.
+    confidence: high
+    relevance: medium
+  - claim_id: speaker_independent_prosody_conditioning_via_ssl_tokens_can_generalize_across
+    role: supports
+    claim: Speaker-independent prosody conditioning via SSL tokens can generalize across reference speakers with
+      minimal degradation, enabling robust cross-speaker emotion transfer.
+    source: §5.6, Table 1
+    evidence: Speaker-independent prosody conditioning via SSL tokens can generalize across reference speakers with
+      minimal degradation, enabling robust cross-speaker emotion transfer.
+    confidence: high
+    relevance: medium
+  - claim_id: semantic_text_encoders_contribute_to_emotional_and_prosodic_consistency_in
+    role: supports
+    claim: Semantic text encoders contribute to emotional and prosodic consistency in multilingual TTS even when
+      they do not serve as direct decoder inputs.
+    source: §5.6, Table 1
+    evidence: Semantic text encoders contribute to emotional and prosodic consistency in multilingual TTS even when
+      they do not serve as direct decoder inputs.
+    confidence: high
+    relevance: low
+  limitations:
+  - '- Evaluations are limited to single-speaker datasets in two languages, making it unclear whether EmoSSLSphere
+    generalises to multi-speaker, low-resource, or unseen-language scenarios. - Subjective listener panels are small,
+    and emotional authenticity is assessed primarily via AVD RMSE as a proxy rather than direct perceptual emotion
+    ratings. - Speaker similarity (SPK-SIM) is not evaluated, making it hard to quantify speaker fidelity claims.
+    - Cross-speaker emotion transfer is described but not formally evaluated; inference always uses same-speaker
+    reference audio. - Separate per-language encoder instances do not scale to many-language settings without significant
+    parameter overhead. - Integration with semi-supervised training (EmoSphere++) and extension to zero-shot speaker
+    scenarios are listed as future work.'
+  caveats: []
+- id: '2508.12001'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - vae_latent_encoder_decoder_systems
+  - gan_augmented_encoder_decoder_systems
+  - hybrid_acoustic_generation_pipelines
+  claims:
+  - claim_id: applying_mixture_of_experts_routing_to_the_duration_predictor_of
+    role: supports
+    claim: Applying Mixture-of-Experts routing to the duration predictor of a non-autoregressive TTS system produces
+      phoneme duration distributions that more closely match ground-truth speaker-specific prosodic variation than
+      deterministic or stochastic single-path predictors.
+    source: §IV-C, Table III
+    evidence: Applying Mixture-of-Experts routing to the duration predictor of a non-autoregressive TTS system produces
+      phoneme duration distributions that more closely match ground-truth speaker-specific prosodic variation than
+      deterministic or stochastic single-path predictors.
+    confidence: high
+    relevance: high
+  - claim_id: improving_duration_prediction_diversity_in_nar_tts_without_upgrading_the
+    role: supports
+    claim: Improving duration prediction diversity in NAR TTS without upgrading the vocoder degrades synthesis quality,
+      because richer prosodic information exceeds the artifact-rejection capacity of standard GAN discriminators.
+    source: §IV-A, Table I
+    evidence: Improving duration prediction diversity in NAR TTS without upgrading the vocoder degrades synthesis
+      quality, because richer prosodic information exceeds the artifact-rejection capacity of standard GAN discriminators.
+    confidence: high
+    relevance: low
+  - claim_id: frequency_domain_and_multi_band_discriminators_combd_and_sbd_are
+    role: supports
+    claim: Frequency-domain and multi-band discriminators (CoMBD and SBD) are more effective than HiFi-GAN's multi-period
+      discriminator at suppressing spectral artifacts when a more expressive duration predictor is used.
+    source: §V-B, Table II
+    evidence: Frequency-domain and multi-band discriminators (CoMBD and SBD) are more effective than HiFi-GAN's
+      multi-period discriminator at suppressing spectral artifacts when a more expressive duration predictor is
+      used.
+    confidence: high
+    relevance: high
+  - claim_id: word_error_rate_is_an_unreliable_proxy_for_prosody_modeling
+    role: supports
+    claim: Word Error Rate is an unreliable proxy for prosody modeling quality in TTS, as simpler prosodic patterns
+      can yield lower WER by reducing ASR system disruption.
+    source: §IV-C, §III
+    evidence: Word Error Rate is an unreliable proxy for prosody modeling quality in TTS, as simpler prosodic patterns
+      can yield lower WER by reducing ASR system disruption.
+    confidence: high
+    relevance: low
+  limitations:
+  - '- The MoE-DP requires the discriminator upgrade to yield any net benefit; neither module alone suffices, which
+    raises questions about robustness when either component is replaced or updated independently. - Evaluation is
+    limited to English datasets; whether MoE-DP''s speaker-specific prosody gains transfer to more typologically
+    diverse languages with different prosodic structures is untested. - The paper notes that current vocoders still
+    struggle under highly diverse prosodic patterns (disharmony components persist even with CoMBD+SBD), pointing
+    to an open challenge for future vocoder designs. - WER is shown to be an unreliable proxy for prosody quality,
+    but the proposed duration-accuracy metric (MFA-based classification) requires ground-truth phoneme duration
+    annotations, limiting its generalizability. - No code or demo links are provided, limiting reproducibility.
+    - Inference RTF on CPU (0.046) is not compared directly against autoregressive or diffusion-based competitors
+    that operate on the same hardware, making efficiency claims difficult to contextualize.'
+  caveats: []
+- id: interspeech-2025-1098
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: bert_based_prosody_predictors_for_pitch_accent_languages_can_be
+    role: supports
+    claim: BERT-based prosody predictors for pitch-accent languages can be extended to multi-speaker settings through
+      speaker style embedding injection without requiring accent label annotation.
+    source: §2.1, §3.4, Table 2, Table 3
+    evidence: GST-BERT-TTS integrates averaged GST vectors into BERT token embeddings via a linear adaptor, reducing
+      log f0 MSE from 0.773 (fo-BERT) to 0.266 and raising top-level accent correctness from 47.5% to 65% on Hi-Fi-CAPTAIN.
+    confidence: high
+    relevance: medium
+  - claim_id: speaker_style_embeddings_derived_from_seen_speaker_averages_do_not
+    role: complicates
+    claim: Speaker style embeddings derived from seen-speaker averages do not generalise well to unseen speakers
+      in label-free prosody prediction.
+    source: §4.1
+    evidence: The authors report that using the GST embedding of an unseen speaker during inference produced flat,
+      monotonous prosody, attributing the failure to insufficient speaker diversity in the training corpus and limited
+      coverage of GST's latent space.
+    confidence: high
+    relevance: medium
+  - claim_id: improvements_in_prosody_prediction_accuracy_and_accent_correctness_do_not
+    role: complicates
+    claim: Improvements in prosody prediction accuracy and accent correctness do not automatically translate into
+      higher overall MOS in multi-speaker TTS.
+    source: §3.4, Figure 3
+    evidence: GST-BERT-TTS outperforms fo-BERT on MSE and accent correctness, yet MOS scores remain lower than TTS+Accent;
+      the authors attribute this partly to vocoder artefacts on a high-variability multi-speaker corpus and to the
+      fact that MOS conflates naturalness and audio clarity with prosodic correctness.
+    confidence: high
+    relevance: low
+  - claim_id: multi_task_prosody_prediction_covering_fundamental_frequency_energy_and_duration
+    role: supports
+    claim: Multi-task prosody prediction covering fundamental frequency, energy, and duration jointly improves over
+      pitch-only prediction when speaker conditioning is present.
+    source: §3.4, Table 2
+    evidence: Adding energy and duration prediction to fo-BERT (full params.) had minimal impact on log f0 MSE (0.773
+      vs. 0.776), whereas GST-BERT (full params.) showed a synergistic improvement over GST-BERT (log f0 only),
+      reducing log f0 MSE from 0.302 to 0.266.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Evaluation uses a proprietary internal Japanese corpus; the accent correctness listening test involves only
+    two speakers. Generalisation of the approach to other pitch-accent languages, larger speaker sets, or publicly
+    available benchmarks is untested.
+  - GST embeddings fail to provide useful conditioning for genuinely unseen speakers, limiting the method's zero-shot
+    applicability. Addressing this may require a larger and more diverse speaker pool or a different style representation
+    strategy. The authors acknowledge a tension between BERT's strength in contextual linguistic modelling and its
+    suitability for constrained, character-level prosodic parameter regression, and identify integration with large
+    language models as a direction requiring future methodological work.
+  caveats: []
+- id: interspeech-2025-1122
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - GAN
+  - transformer-enc-dec
+  relevance: low
+  evidence_role:
+  - historical_context
+  current_role: minor
+  method_family:
+  - gan_augmented_encoder_decoder_systems
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: quantisation_aware_training_is_more_effective_than_parameter_reduction_via
+    role: supports
+    claim: Quantisation-aware training is more effective than parameter reduction via channel shrinkage for achieving
+      compact TTS models at equivalent model sizes.
+    source: §3.3.1, Table 1
+    evidence: Quantisation-aware training is more effective than parameter reduction via channel shrinkage for achieving
+      compact TTS models at equivalent model sizes.
+    confidence: high
+    relevance: low
+  - claim_id: the_vocoder_stage_of_a_tts_pipeline_is_more_sensitive
+    role: supports
+    claim: The vocoder stage of a TTS pipeline is more sensitive to aggressive weight quantisation than the acoustic
+      model, making it a disproportionate source of quality degradation.
+    source: §3.3.1
+    evidence: The vocoder stage of a TTS pipeline is more sensitive to aggressive weight quantisation than the acoustic
+      model, making it a disproportionate source of quality degradation.
+    confidence: high
+    relevance: low
+  - claim_id: extremely_low_bit_1_2_bit_weight_quantisation_can_preserve
+    role: supports
+    claim: Extremely low-bit (1–2 bit) weight quantisation can preserve intelligible and reasonably natural speech
+      synthesis when applied selectively to convolutional layers.
+    source: §3.3.1, Table 1
+    evidence: Extremely low-bit (1–2 bit) weight quantisation can preserve intelligible and reasonably natural speech
+      synthesis when applied selectively to convolutional layers.
+    confidence: high
+    relevance: low
+  - claim_id: hardware_aware_packing_schemes_are_necessary_to_realise_the_theoretical
+    role: supports
+    claim: Hardware-aware packing schemes are necessary to realise the theoretical storage savings of sub-byte quantisation
+      on devices that operate in 8-bit units.
+    source: §2.3
+    evidence: Hardware-aware packing schemes are necessary to realise the theoretical storage savings of sub-byte
+      quantisation on devices that operate in 8-bit units.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments use a single TTS architecture (JETS with convolutional blocks) trained on a single corpus (LibriTTS-R).
+    Whether these findings generalise to transformer-heavy or autoregressive architectures, or to lower-resource
+    languages, is not addressed.
+  - The subjective evaluation uses only 15 raters and 30 utterances, which is at the lower end of statistical power
+    for MOS comparisons. The index distribution is heavily non-uniform (indices 0, 121, 242 — representing all-zero,
+    all-one, all-minus-one blocks — are overrepresented), suggesting that further compression via entropy coding
+    (e.g. Huffman) is feasible but unexplored. Inference speed does not improve relative to the full 32-bit base
+    model because weight reconstruction from indices adds overhead; achieving both compact storage and fast inference
+    simultaneously requires dedicated hardware or kernel-level support that is not demonstrated.
+  caveats: []
+- id: interspeech-2025-1334
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: multi_scale_neural_feature_extraction_that_captures_cross_frequency_coupling
+    role: supports
+    claim: Multi-scale neural feature extraction that captures cross-frequency coupling improves iEEG-to-speech
+      intelligibility over single-band or handcrafted acoustic feature approaches.
+    source: §2.1.1, §2.1.2, Table 1
+    evidence: MiSTR's wavelet encoder (DWT with Daubechies-4) combined with Phase-Amplitude Coupling features achieves
+      Pearson correlation 0.91 and STOI 0.73, compared to 0.72 and 0.61 for a regression baseline relying on simpler
+      acoustic features from the same dataset.
+    confidence: high
+    relevance: medium
+  - claim_id: transformer_based_sequence_decoders_outperform_rnn_and_cnn_architectures_for
+    role: supports
+    claim: Transformer-based sequence decoders outperform RNN and CNN architectures for Mel spectrogram reconstruction
+      from neural signals.
+    source: §2.2.2, §3.3, Table 1
+    evidence: MiSTR Transformer decoder achieves STOI 0.73 against 0.48 (bLSTM), 0.52 (CNN), 0.56 (3D-CNN), 0.59
+      (Seq2Seq), and 0.64 (encoder-decoder) on the same iEEG dataset under identical evaluation conditions.
+    confidence: high
+    relevance: medium
+  - claim_id: harmonic_phase_constrained_iterative_phase_reconstruction_reduces_spectral_artifacts_in
+    role: supports
+    claim: Harmonic-phase-constrained iterative phase reconstruction reduces spectral artifacts in neural speech
+      synthesis compared to unconstrained vocoding.
+    source: §2.3, §4, Table 1, Figure 2
+    evidence: 'IHPR achieves HNR 12.7 dB, over 1.6 dB above the best baseline (encoder-decoder: 11.1 dB), and MiSTR''s
+      spectrograms preserve harmonic structures in high-frequency regions where baselines exhibit blurring and artifact
+      distortions.'
+    confidence: high
+    relevance: low
+  - claim_id: automated_perceptual_quality_estimators_used_as_proxies_for_human_listening
+    role: complicates
+    claim: Automated perceptual quality estimators used as proxies for human listening tests may not provide sufficient
+      validation for clinical or neuroprosthetics applications of neural speech synthesis.
+    source: §3.3, §4
+    evidence: MiSTR reports perceptual quality solely through MOSA-Net (MOSA-Net score 3.38), explicitly framing
+      it as an alternative to "time-consuming listening tests." No human listener evaluation is conducted, leaving
+      the perceptual validity of the improvements in intelligibility and naturalness unverified.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluation is conducted on a single dataset of 10 participants with pharmacoresistant epilepsy implanted
+    with depth electrodes (Dutch, iEEG). All perceptual quality comparisons rely on MOSA-Net rather than human listener
+    tests. No cross-subject generalization to unseen individuals is assessed.
+  - The dataset's clinical and linguistic specificity (Dutch epilepsy patients with implanted electrodes) limits
+    how broadly the results generalize. iEEG-based speech synthesis requires invasive electrode placement, making
+    large-scale data collection and multi-subject generalization substantially more difficult than standard TTS.
+    The paper uses an F0 proxy derived from the neural signal rather than actual acoustic F0, which may limit the
+    fidelity of the prosodic features. Future directions proposed by the authors include end-to-end decoding without
+    intermediate representations and integration of diffusion-based waveform generation.
+  caveats: []
+- id: interspeech-2025-1394
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: self_supervised_distillation_with_emotion_specific_inductive_biases_can_learn
+    role: supports
+    claim: Self-supervised distillation with emotion-specific inductive biases can learn speaker-independent emotion
+      embeddings more effectively than GRL-based or VQ-based disentanglement.
+    source: §3.4, Table 1
+    evidence: DiEmo-TTS surpasses Trans-GRL, Trans-VQ, and Trans-Ort on eMOS across all four emotion categories
+      in subjective evaluation, without requiring explicit speaker labels during emotion encoder training.
+    confidence: high
+    relevance: medium
+  - claim_id: formant_based_speaker_perturbation_is_more_effective_for_disentangling_speaker
+    role: supports
+    claim: Formant-based speaker perturbation is more effective for disentangling speaker identity from emotion
+      than non-targeted noise augmentation in cross-speaker emotion transfer.
+    source: §3.6, Table 2
+    evidence: Replacing formant perturbation with MUSAN/RIR noise augmentation in the ablation increases WER and
+      degrades SECS, whereas formant perturbation exploits the timbre-formant correlation to distort identity while
+      preserving emotional expression.
+    confidence: high
+    relevance: medium
+  - claim_id: multi_factor_conditioning_via_shared_attention_mechanisms_produces_better_balance
+    role: supports
+    claim: Multi-factor conditioning via shared attention mechanisms produces better balance between speaker fidelity
+      and emotional expressiveness than concatenation conditioning in transformer-based TTS.
+    source: §3.6, Table 2
+    evidence: Adding the DCT block improves eMOS from 3.89 to 4.07 while keeping sMOS comparable in the ablation;
+      the block applies weight-sharing multi-head attention per style signal and fuses outputs via MLP.
+    confidence: high
+    relevance: low
+  - claim_id: achieving_speaker_independent_emotion_representations_via_self_supervised_methods_still
+    role: complicates
+    claim: Achieving speaker-independent emotion representations via self-supervised methods still depends on labeled
+      auxiliary data for emotion space definition.
+    source: §4, §3.2
+    evidence: The emotion clustering step requires a WavLM-based emotional attribute predictor fine-tuned on the
+      MSP-Podcast labeled corpus; the authors identify dependence on this predictor as a limitation for generalising
+      to unseen speakers.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Evaluation uses only 2 target speakers (one male, one female from ESD), both trained exclusively on neutral
+    utterances. Generalisation to speakers trained on mixed emotional data or to out-of-domain voices is not assessed.
+  - WER of 16.16% indicates non-trivial intelligibility degradation compared to clean TTS; the source of this degradation
+    (emotion conditioning, model architecture, or dataset characteristics) is not explicitly discussed. The emotional
+    attribute predictor is fine-tuned on MSP-Podcast, a separate labeled corpus, introducing a labeled-data dependency
+    that the authors acknowledge as a target for future unsupervised replacement. Scalability to languages beyond
+    English and to larger multi-emotion multi-speaker datasets remains undemonstrated.
+  caveats: []
+- id: interspeech-2025-1494
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: visual_features_extracted_from_video_carry_prosodic_information_that_complements
+    role: supports
+    claim: Visual features extracted from video carry prosodic information that complements text-derived features
+      for pitch and duration prediction in TTS.
+    source: §3.2, Table 2; §3.3, Table 3
+    evidence: A feedforward network trained solely on Omnivore visual features achieves substantially lower pitch
+      and energy MSE than a mean-predictor baseline on CMD2, and combining visual features with text reduces pitch
+      MSE from 0.43 to 0.39 and duration MSE by 3% relative over text-only PED prediction.
+    confidence: high
+    relevance: low
+  - claim_id: visual_context_conditioning_does_not_uniformly_improve_all_acoustic_dimensions
+    role: complicates
+    claim: Visual context conditioning does not uniformly improve all acoustic dimensions in prosody prediction.
+    source: §3.3, Table 3; §3.4, Table 4
+    evidence: Adding visual features to the text-based PED predictor degrades energy MSE from 0.50 (text-only) to
+      0.59 (Text+VF-Omnivore), and energy improvements in the full TTS system are the smallest of the three prosody
+      dimensions (5% relative vs. 33% for pitch and 49% for duration).
+    confidence: high
+    relevance: medium
+  - claim_id: objective_prosody_metrics_are_insufficient_to_verify_perceptual_quality_gains
+    role: complicates
+    claim: Objective prosody metrics are insufficient to verify perceptual quality gains in visually-conditioned
+      TTS systems.
+    source: §3.4, Table 5
+    evidence: VisualSpeech is evaluated entirely on MCD, Log F0 RMSE, pitch/energy/duration MSE, and STOI/PESQ;
+      no human listening test or MOS study is reported, leaving the perceptual significance of the measured improvements
+      unconfirmed.
+    confidence: high
+    relevance: low
+  - claim_id: cross_attention_fusion_between_visual_and_text_encoder_representations_enables
+    role: supports
+    claim: Cross-attention fusion between visual and text encoder representations enables modality integration in
+      sequence-to-sequence prosody prediction without requiring equal-length sequences.
+    source: §2.3
+    evidence: The visual-text fusion module addresses the length mismatch between the phoneme sequence and the variable-length
+      visual feature sequence by using text queries attending to visual key-value pairs, with output aligned to
+      the phoneme level for per-phone PED prediction.
+    confidence: high
+    relevance: high
+  limitations:
+  - No human evaluation is conducted. All improvements are measured on objective metrics (MCD, Log F0 RMSE, prosody
+    MSE), and it is unknown whether the observed gains translate to perceptibly more natural or contextually appropriate
+    speech for listeners.
+  - The CMD2 dataset is derived from movie audio which contains residual noise, music, and variable recording conditions
+    despite preprocessing; the paper acknowledges this directly as a limitation of the current study. The approach
+    is tested only on English speech from a movie domain, and generalisability to other languages, read speech,
+    or clean studio recordings is untested. The visual features used (Omnivore, ResNet50) are general-purpose video
+    and image recognition models, not speech-specific; whether domain-adapted visual encoders would yield larger
+    prosody gains is an open question. The paper does not address how VisualSpeech would operate when video is unavailable
+    at inference time, which limits its applicability to scenarios where visual input is always present.
+  caveats: []
+- id: interspeech-2025-1940
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  - flow_matching_acoustic_decoders
+  claims:
+  - claim_id: stochastic_prosody_predictors_achieve_naturalness_parity_with_human_recordings_while
+    role: supports
+    claim: Stochastic prosody predictors achieve naturalness parity with human recordings while enabling prosodic
+      diversity that deterministic predictors cannot produce.
+    source: §3.4, Figure 5, Figure 6
+    evidence: RF at 0.4 temperature shows no statistically significant difference from human naturalness ratings
+      (Kruskal-Wallis, Dunn post-hoc); the deterministic baseline achieves highest naturalness but lowest diversity
+      across 40 Prolific raters on ADEPT.
+    confidence: high
+    relevance: medium
+  - claim_id: for_explicit_prosody_modeling_cascaded_prediction_of_prosodic_features_outperforms
+    role: refines
+    claim: For explicit prosody modeling, cascaded prediction of prosodic features outperforms joint prediction
+      for duration but the ordering of pitch and energy within the cascade has negligible impact.
+    source: §3.3, Table 1
+    evidence: Table 1 shows joint prediction yields 17% higher duration JS divergence (0.562) vs. cascading (0.481),
+      while pitch-first and energy-first orderings differ by less than 0.005 across all prosodic parameters.
+    confidence: high
+    relevance: medium
+  - claim_id: naturalness_and_prosodic_diversity_are_inversely_correlated_constraining_simultaneous_optimization
+    role: complicates
+    claim: Naturalness and prosodic diversity are inversely correlated, constraining simultaneous optimization of
+      both properties in TTS.
+    source: §3.4, Figure 5, Figure 6
+    evidence: Subjective ratings show no system achieves both maximal naturalness and maximal diversity; even human
+      speech exhibits this trade-off, with the human baseline scoring highest on diversity but not on naturalness.
+    confidence: high
+    relevance: low
+  - claim_id: sampling_temperature_in_generative_prosody_predictors_enables_effective_runtime_control
+    role: supports
+    claim: Sampling temperature in generative prosody predictors enables effective runtime control over prosodic
+      variability without retraining.
+    source: §3.3, Figure 2, Figure 3
+    evidence: Pitch contour variance and duration variance increase monotonically with temperature for all stochastic
+      methods (NF, CFM, RF), following a near-exponential relationship that allows a log-linear temperature axis
+      for more intuitive user control.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Experiments are restricted to read speech (LibriTTS), with conversational speech explicitly deferred to future
+    work. Prior work found significant benefits for stochastic duration prediction specifically in conversational
+    scenarios, so the present findings may not generalize to that more demanding setting. The stochastic models
+    do not yet capture the full diversity of human prosodic distributions, with synthetic KDE distributions consistently
+    narrower and more unimodal than human reference distributions from RAVDESS; the authors hypothesize that larger
+    predictor modules could close this gap.
+  caveats: []
+- id: interspeech-2025-2189
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: combining_acoustic_context_with_text_conditioning_in_a_masked_prediction
+    role: supports
+    claim: Combining acoustic context with text conditioning in a masked prediction framework produces more accurate
+      prosody prediction than style encoders or emotion representations adapted to the task.
+    source: §4.1, Table 1
+    evidence: ProMode outperforms StyleTTS2*, Wav2Vec2-SER*, and Emotion2Vec* across all F0 and energy metrics at
+      frame and phoneme level on GigaSpeech Test; since all models share the same decoder, performance differences
+      isolate the encoder contribution.
+    confidence: high
+    relevance: medium
+  - claim_id: self_supervised_representations_trained_for_emotion_recognition_do_not_transfer
+    role: complicates
+    claim: Self-supervised representations trained for emotion recognition do not transfer effectively to prosody
+      prediction, even after full fine-tuning on prosody-labelled data.
+    source: §4.1, Table 1
+    evidence: Emotion2Vec* and Wav2Vec2-SER* show markedly lower F0 RPA and higher RMSE than StyleTTS2* and ProMode;
+      Emotion2Vec* underperforms Wav2Vec2-SER* despite training on more labeled emotion data, suggesting the SER
+      pre-training introduces a representation bias that hinders prosody regression.
+    confidence: high
+    relevance: medium
+  - claim_id: a_dual_decoder_architecture_with_an_auxiliary_acoustic_only_loss
+    role: supports
+    claim: A dual-decoder architecture with an auxiliary acoustic-only loss prevents the prosody encoder from collapsing
+      onto text context in masked prediction, where removing the loss causes catastrophic degradation.
+    source: §4.3, Table 1
+    evidence: Ablation removing AOL drops F0 RPA from 43.9% to 25.8% (the largest degradation of any ablation),
+      confirming that without AOL the decoder attends exclusively to text and the prosody encoder's contribution
+      is suppressed.
+    confidence: high
+    relevance: medium
+  - claim_id: task_agnostic_prosody_models_that_predict_f0_independently_can_improve
+    role: supports
+    claim: Task-agnostic prosody models that predict F0 independently can improve both naturalness and prosody preference
+      in downstream TTS systems without requiring joint end-to-end training.
+    source: §4.2, Table 2, §4.2.2
+    evidence: Replacing FluentSpeech's built-in pitch predictor with ProMode-predicted pitch improves UTMOS from
+      3.00 to 3.10, WER from 4.41% to 3.99%, and AutoPCP from 2.47 to 2.64; ABX prosody preference is statistically
+      significant over all three baselines.
+    confidence: high
+    relevance: low
+  limitations:
+  - All experiments are conducted on English GigaSpeech (read and spontaneous speech); the authors identify multilingual
+    extension as future work but provide no cross-lingual evidence. ProMode requires ground-truth phoneme durations
+    from a forced aligner during evaluation, which creates a dependency on accurate alignment at inference time.
+    The downstream integration only tests replacement of the pitch predictor within FluentSpeech; whether the benefit
+    holds for other TTS backbones or for energy-conditioned synthesis is unevaluated. The model size is not reported,
+    making compute cost comparisons to baselines unclear.
+  caveats: []
+- id: interspeech-2025-2586
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: Interspeech
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  - gan_augmented_encoder_decoder_systems
+  claims:
+  - claim_id: restricting_style_quantization_to_acoustically_informative_voiced_speech_regions_improves
+    role: supports
+    claim: Restricting style quantization to acoustically informative (voiced) speech regions improves both style
+      expressiveness and prosodic accuracy in reference-based TTS.
+    source: §4.4.1, Table 4.3
+    evidence: On ESD, removing voiced extraction raises RMSE_F0 from 8.27 to 11.48 Hz and WER from 12.64 to 14.06;
+      the full model achieves the best style similarity MOS (3.84) over all baselines.
+    confidence: high
+    relevance: low
+  - claim_id: pairing_style_disentanglement_with_a_complementary_prosody_preserving_loss_stabilises
+    role: supports
+    claim: Pairing style disentanglement with a complementary prosody-preserving loss stabilises training and prevents
+      prosody degradation from aggressive content removal.
+    source: §4.4.2, Table 4.3
+    evidence: Removing only the SP loss raises pitch error to 9.74 Hz; removing both SD and SP degrades nMOS to
+      3.66 and WER to 15.38, with the SP-only-removed condition showing worse prosody than the case with no disentanglement
+      losses at all.
+    confidence: high
+    relevance: medium
+  - claim_id: asymmetric_biased_self_attention_in_unvoiced_region_filling_allowing_information
+    role: supports
+    claim: Asymmetric (biased) self-attention in unvoiced region filling, allowing information flow from voiced
+      to unvoiced positions but not the reverse, outperforms symmetric or fully blocked alternatives for prosodic
+      continuity.
+    source: §4.4.3, Table 4.4
+    evidence: Standard self-attention in the UF module degrades pitch error to 16.38 Hz and F1 v/uv to 0.6668; binary
+      masking partially recovers at 13.19 Hz versus 8.27 Hz for biased attention.
+    confidence: high
+    relevance: medium
+  - claim_id: style_transfer_quality_gains_from_region_specific_quantization_have_been
+    role: complicates
+    claim: Style transfer quality gains from region-specific quantization have been established only within a controlled
+      emotional corpus, leaving open the question of whether the approach generalises to broader speaking styles
+      or modern generative architectures.
+    source: §4.1, Table 4.1
+    evidence: All baselines are FastSpeech 2 variants evaluated solely on ESD (10 speakers, 5 discrete emotions);
+      no comparison with flow-matching, diffusion, or large-scale systems is provided.
+    confidence: high
+    relevance: medium
+  limitations:
+  - All evaluations are conducted on a single English emotional speech corpus (ESD, 10 speakers, 5 emotions). Baselines
+    are restricted to FastSpeech 2-based systems; no comparison with flow-matching or diffusion TTS is included,
+    and there is no evidence of generalisation to multilingual or out-of-domain speech.
+  - Model size is not reported. The voiced/unvoiced segmentation depends on pre-extracted V/UV flags, introducing
+    a dependency on external pitch tracking that may degrade under noisy or spontaneous speech conditions. Non-parallel
+    style transfer performance, while positive, consistently trails the parallel setting, indicating residual sensitivity
+    to content mismatch even after disentanglement. The rotation trick hyperparameters and UF module depth are fixed
+    without sensitivity analysis.
+  caveats: []
+- id: '2508.13028'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: feedback_loss_from_a_sarcasm_classifier_can_be_integrated_into
+    role: supports
+    claim: Feedback loss from a sarcasm classifier can be integrated into TTS training to bias synthesized speech
+      toward detector-recognizable sarcastic prosody.
+    source: §2.2, §4.2, Table 2
+    evidence: Feedback loss from a sarcasm classifier can be integrated into TTS training to bias synthesized speech
+      toward detector-recognizable sarcastic prosody.
+    confidence: high
+    relevance: low
+  - claim_id: bi_modal_sarcasm_detection_that_combines_acoustic_features_and_text
+    role: supports
+    claim: Bi-modal sarcasm detection that combines acoustic features and text substantially outperforms audio-only
+      detection, suggesting that sarcasm in speech is often semantically encoded and not recoverable from prosody
+      alone.
+    source: §4.1, Table 1
+    evidence: Bi-modal sarcasm detection that combines acoustic features and text substantially outperforms audio-only
+      detection, suggesting that sarcasm in speech is often semantically encoded and not recoverable from prosody
+      alone.
+    confidence: high
+    relevance: medium
+  - claim_id: two_stage_fine_tuning_from_neutral_read_speech_to_conversational
+    role: supports
+    claim: Two-stage fine-tuning — from neutral read speech to conversational speech and then to target style —
+      provides a viable data strategy for low-resource expressive speech synthesis.
+    source: §2.3, §3.1
+    evidence: Two-stage fine-tuning — from neutral read speech to conversational speech and then to target style
+      — provides a viable data strategy for low-resource expressive speech synthesis.
+    confidence: high
+    relevance: low
+  - claim_id: subjective_sarcasm_perception_in_listening_tests_is_difficult_to_isolate
+    role: supports
+    claim: Subjective sarcasm perception in listening tests is difficult to isolate from the sarcastic content of
+      the text, creating ambiguity in whether listeners respond to prosody or semantics.
+    source: §5, §4.3
+    evidence: Subjective sarcasm perception in listening tests is difficult to isolate from the sarcastic content
+      of the text, creating ambiguity in whether listeners respond to prosody or semantics.
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'The evaluation design has a critical circularity: the same detector architecture trained on the same data distribution
+    is used both as the training feedback signal and as the primary objective metric. Improvements in detection
+    score on synthesized outputs are therefore expected by construction and cannot be treated as independent evidence
+    of sarcasm-aware synthesis.'
+  - The paper does not include an ablation that isolates the contribution of the feedback loss from the two-stage
+    fine-tuning; it is therefore unclear which component drives the reported gains. The subjective study is small
+    (13 listeners) and does not report MOS confidence intervals, making statistical significance uncertain. All
+    evaluation stimuli are drawn from a sarcasm corpus, which may prime listener responses. The system has not been
+    compared against more expressive modern TTS models (e.g., flow-matching or diffusion-based systems with style
+    conditioning). Finally, the system is English-only and trained on North American sitcom speech, limiting generalizability
+    to other languages, speakers, or sarcasm conventions.
+  caveats: []
+- id: '2508.17031'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  - gan_augmented_encoder_decoder_systems
+  claims:
+  - claim_id: cross_modal_attention_between_phoneme_and_audio_representations_is_more
+    role: supports
+    claim: Cross-modal attention between phoneme and audio representations is more effective than global speaker
+      embeddings for preserving localised prosodic and acoustic context in speech insertion tasks.
+    source: §4.3, Table 3
+    evidence: Cross-modal attention between phoneme and audio representations is more effective than global speaker
+      embeddings for preserving localised prosodic and acoustic context in speech insertion tasks.
+    confidence: high
+    relevance: medium
+  - claim_id: non_autoregressive_tts_architectures_with_duration_prediction_can_infer_variable
+    role: supports
+    claim: Non-autoregressive TTS architectures with duration prediction can infer variable-length insertion segments
+      without explicit phoneme-level alignment at inference time.
+    source: §3.1, §3.2
+    evidence: Non-autoregressive TTS architectures with duration prediction can infer variable-length insertion
+      segments without explicit phoneme-level alignment at inference time.
+    confidence: high
+    relevance: low
+  - claim_id: combining_local_and_global_adversarial_losses_with_a_triplet_based
+    role: supports
+    claim: Combining local and global adversarial losses with a triplet-based style matching loss reduces perceptual
+      artefacts in synthesised speech segments that L1 reconstruction loss alone cannot eliminate.
+    source: §3.3, §4.3
+    evidence: Combining local and global adversarial losses with a triplet-based style matching loss reduces perceptual
+      artefacts in synthesised speech segments that L1 reconstruction loss alone cannot eliminate.
+    confidence: high
+    relevance: medium
+  - claim_id: speech_insertion_quality_degrades_more_gracefully_with_insertion_length_when
+    role: supports
+    claim: Speech insertion quality degrades more gracefully with insertion length when the model conditions directly
+      on local audio context rather than full-utterance speaker embeddings.
+    source: §4.2, Table 1
+    evidence: Speech insertion quality degrades more gracefully with insertion length when the model conditions
+      directly on local audio context rather than full-utterance speaker embeddings.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Code and demos are not publicly released with the preprint, and model size is not reported, making independent
+    evaluation and comparison difficult.
+  - 'Evaluation is limited to LibriTTS dev-clean and dev-other; both are clean read-speech corpora, so generalisation
+    to noisy or spontaneous speech is untested. The user study comprises only 15 utterances rated by 6 annotators
+    — a small sample that limits statistical power. MCD is used as the primary objective metric, but it is an indirect
+    measure of naturalness quality and is known to correlate imperfectly with perceptual preference. The comparison
+    set is narrow: SpeechPainter is referenced in the related work but not included in the quantitative evaluation
+    because it uses a fixed-duration formulation, leaving the question of how well RephraseTTS would perform relative
+    to more recent neural audio inpainting approaches unanswered. Duration quality of the inserted segment relative
+    to ground truth is not measured directly.'
+  caveats: []
+- id: '2509.01391'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: ssl_derived_discrete_tokens_can_substitute_phoneme_sequences_as_input
+    role: supports
+    claim: SSL-derived discrete tokens can substitute phoneme sequences as input representations in a TTS front-end
+      without a substantial naturalness penalty in automatic evaluation.
+    source: §V.B, Table II
+    evidence: SSL-derived discrete tokens can substitute phoneme sequences as input representations in a TTS front-end
+      without a substantial naturalness penalty in automatic evaluation.
+    confidence: high
+    relevance: low
+  - claim_id: g2p_free_tts_pipelines_that_learn_text_to_token_mappings
+    role: supports
+    claim: G2P-free TTS pipelines that learn text-to-token mappings from paired speech data avoid the language-specific
+      resource burden of phoneme dictionaries and morphological analysers.
+    source: §I, §III
+    evidence: G2P-free TTS pipelines that learn text-to-token mappings from paired speech data avoid the language-specific
+      resource burden of phoneme dictionaries and morphological analysers.
+    confidence: high
+    relevance: low
+  - claim_id: in_an_ssl_token_based_tts_pipeline_the_spectral_predictor
+    role: supports
+    claim: In an SSL-token-based TTS pipeline, the spectral predictor contributes more to naturalness differences
+      than the text-to-token mapping stage.
+    source: §V.B, Table II
+    evidence: In an SSL-token-based TTS pipeline, the spectral predictor contributes more to naturalness differences
+      than the text-to-token mapping stage.
+    confidence: high
+    relevance: low
+  - claim_id: ssl_based_speech_representations_preserve_sufficient_acoustic_quality_through_a
+    role: supports
+    claim: SSL-based speech representations preserve sufficient acoustic quality through a discretise-then-synthesise
+      pipeline to remain competitive with G2P-derived representations on codec-style quality metrics.
+    source: §V.C, Table II
+    evidence: SSL-based speech representations preserve sufficient acoustic quality through a discretise-then-synthesise
+      pipeline to remain competitive with G2P-derived representations on codec-style quality metrics.
+    confidence: high
+    relevance: low
+  limitations:
+  - All evaluations use automatic metrics only (UTMOS, CER, WARP-Q, SDR) on 100 utterances from a single speaker
+    subset of JVS. No subjective MOS or preference tests are reported; the conclusions about naturalness parity
+    are therefore tentative.
+  - The system is demonstrated exclusively on Japanese and does not yet extend to multilingual settings. The T5
+    tokenizer is language-specific (tohoku-BERTv3), which the authors acknowledge as a barrier to multilingual scalability.
+    Future directions involve BPE tokenizers (mT5, ByT5) to reduce this dependency. The oracle's counter-intuitive
+    lower UTMOS than the proposed system is left unexplained and may indicate an interaction between SSL token sequence
+    statistics and FastSpeech 2's duration predictor. Individual contribution analysis of duration, pitch, and accent
+    inputs to FastSpeech 2 is identified as missing.
+  caveats: []
+- id: '2509.06074'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: word_level_semantic_and_prosodic_context_modeling_in_dialogue_history
+    role: supports
+    claim: Word-level semantic and prosodic context modeling in dialogue history improves prosody expressiveness
+      in conversational TTS over utterance-level context encoders.
+    source: §3.5, Table 1; §3.6, Table 2
+    evidence: MFCIG-CSS achieves N-DMOS 3.980 and P-DMOS 3.899 on DailyTalk, outperforming seven baselines that
+      operate at the utterance level by 0.122 and 0.104 respectively; ablation removing both graph modules causes
+      the largest performance collapse across all metrics.
+    confidence: high
+    relevance: low
+  - claim_id: graph_neural_networks_with_sequential_cross_turn_aggregation_can_encode
+    role: supports
+    claim: Graph neural networks with sequential cross-turn aggregation can encode complementary semantic and prosodic
+      interaction patterns from multimodal dialogue history for prosody-aware TTS.
+    source: §3.6, Table 2
+    evidence: 'SIG and PIG are independently ablated: removing SIG reduces N-DMOS by 0.147 and P-DMOS by 0.106;
+      removing PIG produces comparable drops. Both modules contribute distinctly and their combined use provides
+      the strongest performance.'
+    confidence: high
+    relevance: low
+  - claim_id: objective_energy_error_and_subjective_prosody_quality_metrics_can_rank
+    role: complicates
+    claim: Objective energy error and subjective prosody quality metrics can rank conversational TTS systems differently.
+    source: §3.5, Table 1
+    evidence: MFCIG-CSS achieves best N-DMOS (3.980) and P-DMOS (3.899) on DailyTalk but ranks second on MAE-E (0.314
+      vs. 0.310 for MSRGCN-CSS), indicating that signal-level energy accuracy does not fully predict human prosody
+      quality judgments.
+    confidence: high
+    relevance: low
+  - claim_id: prosody_modeling_gains_demonstrated_with_acoustic_feature_based_tts_backbones
+    role: complicates
+    claim: Prosody modeling gains demonstrated with acoustic-feature-based TTS backbones may not transfer to codec-token-based
+      or flow-based architectures.
+    source: §5 Limitations
+    evidence: MFCIG-CSS is validated only on a FastSpeech 2 backbone; the authors explicitly identify extension
+      to VITS-based architectures and discrete token-based speech encoders as future work, acknowledging that the
+      current validation scope limits generalizability claims.
+    confidence: high
+    relevance: low
+  limitations:
+  - MFCIG-CSS is evaluated on a single English dialogue dataset (DailyTalk, approximately 20 hours) with a FastSpeech
+    2 backbone, leaving generalization to other languages, longer conversations, noisy conditions, and modern autoregressive
+    or codec-based TTS systems untested. The interaction graphs operate on frame-averaged acoustic features from
+    Wav2Vec 2.0 and do not yet model fine-grained intra-word acoustic cues such as emotion, emphasis, or pauses.
+    Extension to VITS-based architectures and discrete token-based speech encoders is the primary open direction
+    identified by the authors.
+  caveats: []
+- id: '2509.11084'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - flow_matching_acoustic_decoders
+  claims:
+  - claim_id: length_normalized_positional_encoding_in_cross_attention_tts_substantially_improves
+    role: supports
+    claim: Length-normalized positional encoding in cross-attention TTS substantially improves alignment accuracy
+      for long-form speech synthesis, where standard absolute-index RoPE degrades.
+    source: §4.2, Table 1
+    evidence: LARoPE with K_e=4 reduces WER on tc-long (10–30s) from 4.98% to 2.16%, while RoPE's WER on tc-long
+      is nearly double that of tc-short (2.41%), indicating progressive degradation with utterance length.
+    confidence: high
+    relevance: low
+  - claim_id: a_diagonal_inductive_bias_in_cross_attention_positional_embeddings_accelerates
+    role: supports
+    claim: A diagonal inductive bias in cross-attention positional embeddings accelerates text-speech alignment
+      learning during training.
+    source: §4.3, Figure 2
+    evidence: At 200k training iterations without batch expansion, LARoPE reduces CER from 2.00% to 1.23% versus
+      RoPE, with the performance gap maintained throughout 700k iterations.
+    confidence: high
+    relevance: medium
+  - claim_id: standard_rope_is_suboptimal_in_cross_attention_tts_because_relative
+    role: complicates
+    claim: Standard RoPE is suboptimal in cross-attention TTS because relative positional distances based on absolute
+      indices do not align diagonally when query and key sequence lengths differ, violating the monotonic text-speech
+      alignment structure.
+    source: §3, Figure 1
+    evidence: Analysis of relative upper bounds shows that RoPE's attention score map loses diagonal structure whenever
+      L_q ≠ L_k (e.g., L_q=64, L_k=256), whereas LARoPE preserves the diagonal regardless of length ratio.
+    confidence: high
+    relevance: low
+  - claim_id: compact_attention_based_tts_systems_can_achieve_pronunciation_accuracy_competitive
+    role: supports
+    claim: Compact attention-based TTS systems can achieve pronunciation accuracy competitive with models more than
+      an order of magnitude larger through improved positional embedding design rather than parameter scaling.
+    source: §4.5, Table 3
+    evidence: The 19M-parameter LARoPE model achieves 2.25% WER on LibriSpeech test-clean, outperforming E2 TTS
+      (333M params, 2.95% WER), F5-TTS (336M, 2.42%), and DiTTo-TTS (740M, 2.56%) at RTF 0.05.
+    confidence: high
+    relevance: high
+  - claim_id: existing_rope_extensions_position_interpolation_yarn_longrope_address_self_attention
+    role: refines
+    claim: Existing RoPE extensions (position interpolation, YaRN, LongRoPE) address self-attention length extrapolation
+      but leave the cross-attention alignment problem in TTS unresolved.
+    source: §5.1
+    evidence: The paper identifies that all prior RoPE extensions are designed for self-attention and do not modify
+      the relative distance formulation for cross-attention with differing query and key lengths; LARoPE specifically
+      targets this gap.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluation is conducted entirely within the SupertonicTTS framework; generalisability to other cross-attention
+    TTS architectures (such as masked diffusion or AR codec models with cross-attention) is asserted but not tested.
+    The paper does not benchmark LARoPE against alternative alignment improvement strategies such as guided attention
+    loss or diagonal priors in monotonic alignment search, leaving its relative advantage over the broader toolkit
+    unclear. The scaling hyperparameter γ is set to 10 without ablation across values. All experiments use English-language
+    data, and performance on morphologically diverse or tonal languages with different text-to-speech length ratios
+    is unknown.
+  caveats: []
+- id: '2509.19592'
+  entry_date: '2026-07-30'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_token_decoders
+  claims:
+  - claim_id: decoding_codebooks_of_a_multi_codebook_acoustic_frame_with_explicit
+    role: supports
+    claim: Decoding codebooks of a multi-codebook acoustic frame with explicit intra-frame dependencies (iteratively)
+      yields a generated token distribution closer to the ground truth than decoding all codebooks in parallel under
+      an independence assumption.
+    source: §3.3.1, Fig. 2e
+    evidence: Across all tested frame-stacking factors (1, 2, 4), every autoregressive- or MaskGIT-local-transformer
+      configuration achieves lower Fréchet Distance than every parallel-sampled configuration, including the unstacked
+      parallel baseline.
+    confidence: high
+    relevance: medium
+  - claim_id: offloading_intra_frame_codebook_decoding_to_a_small_auxiliary_transformer
+    role: supports
+    claim: Offloading intra-frame codebook decoding to a small auxiliary transformer lets a primary acoustic decoder
+      predict multiple codec frames per generation step, substantially increasing throughput without retraining
+      the underlying codec at a lower frame rate.
+    source: §2.4, §3.3.2, Table 1, Fig. 2f
+    evidence: At a frame-stacking factor of 2, the autoregressive local-transformer model reaches 2.1x throughput
+      over the unstacked parallel baseline while improving Fréchet Distance and keeping WER, speaker similarity,
+      and MOS within or better than baseline; the MaskGIT variant reaches 3.1x throughput at comparable quality.
+    confidence: high
+    relevance: low
+  - claim_id: parallel_independent_codebook_prediction_degrades_disproportionately_not_just_proportionally_as
+    role: complicates
+    claim: Parallel independent codebook prediction degrades disproportionately, not just proportionally, as more
+      codebook information is packed into a single decoding step.
+    source: §3.3.2
+    evidence: Applying parallel sampling to a 2x frame-stacked model (instead of routing through the local transformer)
+      increases unseen-speaker Fréchet Distance by 67% relative to the unstacked parallel baseline and lowers MOS.
+    confidence: high
+    relevance: medium
+  - claim_id: the_throughput_gains_of_iterative_masked_prediction_decoding_for_acoustic
+    role: complicates
+    claim: The throughput gains of iterative masked-prediction decoding for acoustic codebooks come at a quality
+      cost that grows sharply once the number of sampling steps is small relative to the number of tokens being
+      resolved per step.
+    source: §3.3.2, Fig. 2a
+    evidence: At a stacking factor of 4, the MaskGIT local transformer with 3 sampling steps decoding 32 tokens
+      per step (8 codebooks × 4 stacked frames) shows a significant MOS drop relative to baseline, while the autoregressive
+      local transformer at the same stacking factor does not exhibit this drop.
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'Robustness to unseen speakers degrades substantially at higher frame-stacking factors: unseen-speaker speaker
+    similarity falls from 0.765 at stacking factor 1 to 0.642 (AR LT) and 0.624 (MaskGIT LT) at stacking factor
+    4, which the authors themselves flag by recommending high stacking only "when not needing zero-shot functionality."'
+  - All experiments build on a single base system (Koel-TTS) and a single codec (NanoCodec, FSQ-based, 8 codebooks
+    at 21.5 fps); it is untested whether the same tradeoffs hold for RVQ-based codecs, different codebook counts,
+    or other primary-decoder architectures. The MaskGIT local transformer's degradation at high stacking is attributed
+    to using only 3 sampling steps, but the paper does not run the ablation that would confirm more steps recover
+    quality, leaving the speed-quality Pareto frontier for MaskGIT only partially characterized. Training data is
+    described only as "the same 18k hours of data as in the Koel-TTS paper," with no further specification of language,
+    speaker count, or domain in this paper itself.
+  caveats: []
+claim_clusters:
+- id: end_to_end_seq2seq_reduces_feature_engineering
+  claim: End-to-end sequence-to-sequence TTS can match conventional pipelines without hand-engineered linguistic
+    features.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '1703.10135'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Early evidence is concentrated in clean, single-speaker settings.
+  last_reviewed: '2026-07-30'
+- id: decoder_reduction_and_bottlenecks_stabilize_attention
+  claim: Decoder reduction factors and pre-net bottlenecks improve attention stability in autoregressive encoder–decoder
+    TTS.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '1703.10135'
+  - '1712.05884'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The mechanism is specific to autoregressive acoustic decoders and does not remove long-form failure modes.
+  last_reviewed: '2026-07-30'
+- id: multi_scale_encoders_and_postnets_improve_acoustics
+  claim: Multi-scale text encoders and sequence-level post-nets improve representation robustness and acoustic detail.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '1703.10135'
+  - interspeech-2025-1334
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Gains from encoder and post-net changes are often evaluated jointly.
+  last_reviewed: '2026-07-30'
+- id: mel_intermediates_simplify_waveform_generation
+  claim: Compact mel-spectrogram intermediates simplify neural waveform generation while preserving synthesis quality.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '1712.05884'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Mel intermediates can constrain phase, bandwidth, and fine temporal detail.
+  last_reviewed: '2026-07-30'
+- id: explicit_duration_prediction_improves_parallel_tts
+  claim: Explicit duration prediction enables parallel acoustic generation and reduces skipping and repetition failures.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2006.04558'
+  - '2106.15561'
+  - '2508.12001'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Duration errors can shift rather than eliminate alignment failures.
+  last_reviewed: '2026-07-30'
+- id: forced_alignment_durations_outperform_teacher_attention
+  claim: Forced-alignment durations can be more accurate than durations extracted from autoregressive teacher attention.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2006.04558'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - This advantage depends on aligner quality and language resources.
+  last_reviewed: '2026-07-30'
+- id: monotonic_alignment_supports_long_form_generalization
+  claim: Learned monotonic alignment and position tracking improve repeated-word and long-form reliability.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - 2025.naacl-long.591
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Unbounded synthetic tests do not establish robustness on unconstrained discourse.
+  last_reviewed: '2026-07-30'
+- id: positional_bias_accelerates_text_speech_alignment
+  claim: Diagonal or monotonic positional biases accelerate text–speech alignment and can reduce the model capacity
+    required for accurate pronunciation.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2509.11084'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Compact-model comparisons remain sensitive to training data and front-end normalization.
+  last_reviewed: '2026-07-30'
+- id: parallel_generation_needs_variance_modeling
+  claim: Parallel acoustic generation requires explicit modeling of duration, pitch, and other sources of speech
+    variation.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2006.04558'
+  - '2508.12001'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Better variance modeling does not guarantee fine-grained or interpretable control.
+  last_reviewed: '2026-07-30'
+- id: hierarchical_prosody_modeling_improves_expressiveness
+  claim: Hierarchical and multi-granular prosody modeling improves expressiveness and supports localized control.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2106.15561'
+  - '2507.04598'
+  - interspeech-2025-1098
+  contradicting_papers: []
+  refining_papers:
+  - '2507.04598'
+  caveats:
+  - Sequential hierarchical prediction can accumulate errors across levels.
+  last_reviewed: '2026-07-30'
+- id: stochastic_prosody_models_increase_diversity
+  claim: Stochastic prosody predictors increase acoustic diversity while retaining competitive naturalness.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - interspeech-2025-1940
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Diversity metrics may not distinguish useful expressiveness from instability.
+  last_reviewed: '2026-07-30'
+- id: discrete_ssl_features_support_prosody_control
+  claim: Discretized self-supervised speech features provide stable, transferable prosody-control signals.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2508.11273'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Token stability depends on the upstream representation, clustering, and reference domain.
+  last_reviewed: '2026-07-30'
+- id: unseen_speaker_prosody_generalization_remains_hard
+  claim: Prosody and style conditioning learned from seen speakers often generalizes poorly to unseen speakers.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2508.11273'
+  contradicting_papers: []
+  refining_papers:
+  - interspeech-2025-1098
+  caveats:
+  - Speaker encoders and reference representations are evaluated under heterogeneous enrollment conditions.
+  last_reviewed: '2026-07-30'
+- id: cross_attention_fuses_multimodal_and_local_context
+  claim: Cross-attention effectively fuses text with visual, acoustic, or local speech context for prosody prediction
+    and editing.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - interspeech-2025-1494
+  - interspeech-2025-2189
+  - '2508.17031'
+  - '2509.11084'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Additional context does not improve every acoustic dimension uniformly.
+  last_reviewed: '2026-07-30'
+- id: disentanglement_needs_complementary_preservation_losses
+  claim: Style and emotion disentanglement benefits from complementary preservation losses and targeted augmentation.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - interspeech-2025-1394
+  - interspeech-2025-2586
+  - '2508.17031'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Auxiliary labels and controlled corpora limit conclusions about broad style generalization.
+  last_reviewed: '2026-07-30'
+- id: adversarial_objectives_restore_acoustic_detail
+  claim: Frequency-aware and local adversarial objectives improve acoustic detail beyond reconstruction losses alone.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2508.12001'
+  - '2508.17031'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Adversarial gains can be entangled with stronger duration or context models.
+  last_reviewed: '2026-07-30'
+- id: compression_and_parallel_decoding_have_hardware_quality_limits
+  claim: Compression and parallel acoustic-token decoding face hardware-realization and quality limits.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - interspeech-2025-1122
+  contradicting_papers: []
+  refining_papers:
+  - '2509.19592'
+  caveats:
+  - Nominal compression and throughput gains may not translate to common integer hardware or low-step decoding.
+  last_reviewed: '2026-07-30'
+method_families:
+- id: transformer_encoder_decoder_tts
+  name: Transformer encoder–decoder TTS
+  summary: Encoder–decoder TTS maps text or auxiliary context to acoustic representations through attention, explicit
+    alignment, or parallel duration expansion.
+  papers:
+  - '1703.10135'
+  - '1712.05884'
+  - '2006.04558'
+  - '2105.06337'
+  - '2106.15561'
+  - 2025.coling-main.352
+  - iclr-2025-hQvX9MBowC
+  - 2025.naacl-long.591
+  - 2025.americasnlp-1.1
+  - '2507.04598'
+  - '2508.11273'
+  - interspeech-2025-1098
+  - interspeech-2025-1122
+  - interspeech-2025-1334
+  - interspeech-2025-1394
+  - interspeech-2025-1494
+  - interspeech-2025-1940
+  - interspeech-2025-2189
+  - interspeech-2025-2586
+  - '2508.13028'
+  - '2508.17031'
+  - '2509.01391'
+  - '2509.06074'
+  open_questions:
+  - Which alignment and conditioning mechanisms remain most reliable for long, expressive, and out-of-domain inputs?
+- id: gan_augmented_encoder_decoder_systems
+  name: GAN-augmented encoder–decoder systems
+  summary: Adversarial losses and waveform decoders sharpen acoustic detail or regularize style and reconstruction
+    in encoder–decoder pipelines.
+  papers:
+  - '2106.15561'
+  - 2025.americasnlp-1.1
+  - '2508.12001'
+  - interspeech-2025-1122
+  - interspeech-2025-2586
+  - '2508.17031'
+  open_questions:
+  - How should adversarial objectives be balanced against alignment, prosody, and reconstruction losses?
+- id: diffusion_augmented_acoustic_decoders
+  name: Diffusion-augmented acoustic decoders
+  summary: Diffusion components replace or refine deterministic acoustic decoding while retaining transformer conditioning
+    and alignment.
+  papers:
+  - '2105.06337'
+  - '2106.15561'
+  - 2025.coling-main.352
+  - iclr-2025-hQvX9MBowC
+  open_questions:
+  - When does iterative acoustic generation justify its additional inference cost?
+- id: flow_matching_acoustic_decoders
+  name: Flow-matching acoustic decoders
+  summary: Flow-matching decoders model continuous acoustic or prosodic variation conditioned by transformer text
+    representations.
+  papers:
+  - '2106.15561'
+  - 2025.coling-main.518
+  - interspeech-2025-1940
+  - '2509.11084'
+  open_questions:
+  - Can flow decoders improve variation without weakening explicit alignment or controllability?
+- id: autoregressive_token_decoders
+  name: Autoregressive token decoders
+  summary: Autoregressive systems decode acoustic frames or codebooks sequentially, preserving dependencies at a
+    throughput cost.
+  papers:
+  - '2106.15561'
+  - '2509.19592'
+  open_questions:
+  - Which dependencies require serial decoding and which can be parallelized safely?
+- id: vae_latent_encoder_decoder_systems
+  name: VAE latent encoder–decoder systems
+  summary: Variational encoder–decoder systems represent speaker, style, or prosody through learned latent variables.
+  papers:
+  - '2106.15561'
+  - '2508.12001'
+  open_questions:
+  - How can latent factors remain interpretable and controllable without posterior collapse or leakage?
+- id: hybrid_acoustic_generation_pipelines
+  name: Hybrid acoustic-generation pipelines
+  summary: Hybrid systems combine explicit predictors, neural acoustic models, and generative or adversarial decoders.
+  papers:
+  - 2025.coling-main.518
+  - '2508.12001'
+  open_questions:
+  - Which module boundaries provide the best balance of quality, diagnosability, and end-to-end optimization?
+reassessment_queue:
+- id: end_to_end_seq2seq_reduces_feature_engineering
+  type: claim_status
+  reason: Foundational evidence predates modern multilingual and expressive benchmarks.
+  trigger: Controlled modern studies isolate encoder–decoder design from data and vocoder scale.
+  due: 2026-10
+  current_assessment: emerging
+  watch_for:
+  - Modern Tacotron-style replications
+  - Matched conventional-pipeline comparisons
+- id: monotonic_alignment_supports_long_form_generalization
+  type: claim_status
+  reason: Long synthetic sequences and repeated-word tests may not represent unconstrained discourse.
+  trigger: Independent systems reproduce long-form gains on multilingual paragraph and dialogue tests.
+  due: 2026-10
+  current_assessment: emerging
+  watch_for:
+  - Long-form multilingual tests
+  - Repeated-token alignment benchmarks
+- id: explicit_duration_prediction_improves_parallel_tts
+  type: claim_status
+  reason: Duration supervision quality and prosody coupling remain confounded.
+  trigger: Matched studies compare learned, teacher-derived, and forced-aligned durations across languages.
+  due: 2026-10
+  current_assessment: strongly_supported
+  watch_for:
+  - Matched duration-source ablations
+  - Low-resource alignment studies
+- id: discrete_ssl_features_support_prosody_control
+  type: claim_status
+  reason: Evidence is concentrated in a small number of representations and emotion-transfer tasks.
+  trigger: Independent systems show stable cross-speaker and cross-language control with discrete SSL features.
+  due: 2026-10
+  current_assessment: emerging
+  watch_for:
+  - Cross-language SSL prosody tests
+  - Tokenizer and clustering ablations
+- id: compression_and_parallel_decoding_have_hardware_quality_limits
+  type: benchmark_validity
+  reason: Reported efficiency depends on packing support, decoding schedule, and deployment hardware.
+  trigger: Hardware-normalized benchmarks jointly report storage, throughput, and listener quality.
+  due: 2026-10
+  current_assessment: emerging
+  watch_for:
+  - On-device packing benchmarks
+  - Quality–throughput codebook studies
+open_questions:
+- Which alignment mechanism is most robust to repeated text, long-form synthesis, and low-resource languages?
+- When should encoder–decoder TTS use explicit durations rather than latent or attention-based alignment?
+- How should prosody be represented across phoneme, word, phrase, and utterance timescales?
+- Can discrete SSL controls transfer across speakers and languages without leaking identity or content?
+- Which transformer components remain useful when diffusion, flow, or codec-token decoders replace mel prediction?
+- How should compact encoder–decoder systems be evaluated under real hardware and memory constraints?
+trend_notes:
+- Encoder–decoder TTS has shifted from autoregressive attention toward explicit duration and monotonic alignment
+  mechanisms.
+- Transformer conditioning increasingly persists as a front end while diffusion, flow, GAN, or token decoders replace
+  deterministic mel generation.
+- Prosody work is moving from utterance-level style vectors toward hierarchical, stochastic, and context-aware predictors.
+- Cross-attention is expanding beyond text–speech alignment to visual context, local acoustic editing, and neural-signal
+  decoding.
+- Compact and quantized systems increasingly expose the difference between theoretical efficiency and realizable
+  hardware gains.
