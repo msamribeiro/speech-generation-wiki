@@ -1,0 +1,123 @@
+concept: fine-tuning
+last_updated: '2026-08-02'
+paper_count: 1
+papers:
+- id: '2508.18006'
+  entry_date: '2026-08-02'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: adapter_based_fine_tuning_prevents_catastrophic_forgetting_in_tts_models
+    role: supports
+    claim: Adapter-based fine-tuning prevents catastrophic forgetting in TTS models while achieving better naturalness
+      and speaker similarity than full fine-tuning.
+    source: §4.3, Table 1; §4.4, Table 2
+    evidence: Adapter-based fine-tuning prevents catastrophic forgetting in TTS models while achieving better naturalness
+      and speaker similarity than full fine-tuning.
+    confidence: high
+    relevance: high
+  - claim_id: in_gan_based_tts_language_agnostic_speaker_representations_are_encoded
+    role: supports
+    claim: In GAN-based TTS, language-agnostic speaker representations are encoded primarily in the vocoder rather
+      than the acoustic model, as evidenced by the outsized impact of vocoder-only adapters on accent nativeness.
+    source: §4.4, Table 2
+    evidence: In GAN-based TTS, language-agnostic speaker representations are encoded primarily in the vocoder rather
+      than the acoustic model, as evidenced by the outsized impact of vocoder-only adapters on accent nativeness.
+    confidence: high
+    relevance: low
+  - claim_id: the_number_and_diversity_of_speakers_in_target_language_pre
+    role: supports
+    claim: The number and diversity of speakers in target-language pre-training data is a critical prerequisite
+      for high-quality cross-lingual speaker adaptation; single-speaker pre-training leads to severe degradation.
+    source: §4.4, Table 2
+    evidence: The number and diversity of speakers in target-language pre-training data is a critical prerequisite
+      for high-quality cross-lingual speaker adaptation; single-speaker pre-training leads to severe degradation.
+    confidence: high
+    relevance: high
+  - claim_id: phoneme_substitution_rate_derived_from_a_mispronunciation_detection_model_provides
+    role: supports
+    claim: Phoneme substitution rate, derived from a mispronunciation detection model, provides a reliable and reproducible
+      objective proxy for accent nativeness in cross-lingual TTS, correlating well with human MUSHRA accent judgements.
+    source: §3.3
+    evidence: Phoneme substitution rate, derived from a mispronunciation detection model, provides a reliable and
+      reproducible objective proxy for accent nativeness in cross-lingual TTS, correlating well with human MUSHRA
+      accent judgements.
+    confidence: high
+    relevance: low
+  limitations:
+  - All evaluations are purely objective — no subjective listening test (MOS, MUSHRA) is reported for the proposed
+    systems. The NORESQA-MOS (TorchAudio-SQUIM) values used as "MOS" are automatic predictions, not human ratings;
+    the paper's decision to discard subjective evaluation limits the strength of quality claims.
+  - The study is restricted to two languages (British English and Castilian Spanish) and a single source speaker
+    per adaptation direction. It is unclear whether the findings generalise to phonologically more distant language
+    pairs, accents, or speakers with more unusual voice characteristics. The backbone model is proprietary and not
+    publicly released, limiting reproducibility. Adapter hyperparameters (bottleneck dimension 16, kernel sizes
+    [3, 5, 3]) were chosen via early experiments but no systematic search is reported.
+  caveats: []
+claim_clusters:
+- id: adapter_tuning_preserves_tts_capability_better_than_full_fine_tuning
+  claim: Adapter-based fine-tuning can preserve existing TTS capability while improving target-speaker and target-language
+    adaptation relative to full fine-tuning.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2508.18006'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Current support comes from one GAN-based multilingual TTS system, so the result is not yet architecture-independent.
+  - The comparison does not establish which adapter placement or capacity transfers best across tasks.
+  last_reviewed: '2026-08-02'
+- id: diverse_target_language_pretraining_supports_cross_lingual_adaptation
+  claim: Cross-lingual speaker adaptation depends strongly on the number and diversity of speakers represented during
+    target-language pre-training.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2508.18006'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The evidence does not yet separate speaker diversity from total target-language data volume.
+  - Generalization beyond the evaluated language and speaker distributions remains untested.
+  last_reviewed: '2026-08-02'
+method_families: []
+reassessment_queue:
+- id: adapter_tuning_preserves_tts_capability_better_than_full_fine_tuning
+  type: claim_status
+  reason: The claim is supported by a single GAN-based multilingual TTS study.
+  trigger: Independent architectures reproduce the advantage over full fine-tuning under matched adaptation budgets.
+  due: 2026-11
+  current_assessment: emerging
+  watch_for:
+  - Matched adapter-versus-full-fine-tuning studies
+  - Codec and flow-model adaptation results
+- id: diverse_target_language_pretraining_supports_cross_lingual_adaptation
+  type: claim_status
+  reason: Speaker diversity and target-language data volume are confounded in the available evidence.
+  trigger: Controlled studies vary speaker diversity while holding language, hours, and model capacity fixed.
+  due: 2026-11
+  current_assessment: emerging
+  watch_for:
+  - Controlled speaker-diversity ablations
+  - Low-resource multilingual adaptation studies
+open_questions:
+- Which TTS components should be adapted for speaker, language, style, and domain transfer?
+- How should adapter capacity and placement scale with the amount and type of adaptation data?
+- When does parameter-efficient tuning outperform full fine-tuning after controlling for training budget?
+- How can target-language speaker diversity be separated from total data volume in adaptation studies?
+trend_notes:
+- The Q3 evidence introduces parameter-efficient adapters as an alternative to full multilingual TTS fine-tuning.
+- The available evidence suggests adaptation quality depends on pre-training speaker coverage as well as the tuning
+  method itself.
