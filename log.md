@@ -1237,3 +1237,8 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - render | field overview and reader navigation | formats: field-overview, index, start | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | speech-to-speech | formats: in-depth | mode: light | runtime: codex | provider: openai | model: gpt-5
 - render | 5 concepts | formats: overview, in-depth, field-overview, navigation | mode: light | runtime: codex | provider: openai | model: gpt-5
+- render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- render | 4 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5

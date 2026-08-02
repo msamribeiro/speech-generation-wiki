@@ -15,6 +15,22 @@ structured claim YAML.
 | Evaluation Metrics | [[concepts/evaluation-metrics\|Overview]] | [[concepts/evaluation-metrics-in-depth\|In Depth]] | 285 | 2026-07-24 |
 | RLHF for Speech | [[concepts/rlhf-speech\|Overview]] | [[concepts/rlhf-speech-in-depth\|In Depth]] | 29 | 2026-07-24 |
 | Disentanglement | [[concepts/disentanglement\|Overview]] | [[concepts/disentanglement-in-depth\|In Depth]] | 100 | 2026-07-24 |
+| Zero-Shot Text-to-Speech | [[concepts/zero-shot-tts\|Overview]] | [[concepts/zero-shot-tts-in-depth\|In Depth]] | 203 | 2026-08-02 |
+| Neural Audio Codecs | [[concepts/neural-codec\|Overview]] | [[concepts/neural-codec-in-depth\|In Depth]] | 183 | 2026-08-02 |
+| Subjective Evaluation of Generated Speech | [[concepts/subjective-evaluation\|Overview]] | [[concepts/subjective-evaluation-in-depth\|In Depth]] | 180 | 2026-08-02 |
+| Autoregressive Codec TTS | [[concepts/autoregressive-codec-tts\|Overview]] | [[concepts/autoregressive-codec-tts-in-depth\|In Depth]] | 165 | 2026-08-02 |
+| Self-Supervised Speech Representations | [[concepts/self-supervised-speech\|Overview]] | [[concepts/self-supervised-speech-in-depth\|In Depth]] | 146 | 2026-08-02 |
+| Spoken Language Models | [[concepts/spoken-language-model\|Overview]] | [[concepts/spoken-language-model-in-depth\|In Depth]] | 127 | 2026-08-02 |
+| Prosody Control | [[concepts/prosody-control\|Overview]] | [[concepts/prosody-control-in-depth\|In Depth]] | 94 | 2026-08-02 |
+| Voice Conversion | [[concepts/voice-conversion\|Overview]] | [[concepts/voice-conversion-in-depth\|In Depth]] | 87 | 2026-08-02 |
+| Speaker Adaptation | [[concepts/speaker-adaptation\|Overview]] | [[concepts/speaker-adaptation-in-depth\|In Depth]] | 79 | 2026-08-02 |
+| Multilingual Text-to-Speech | [[concepts/multilingual-tts\|Overview]] | [[concepts/multilingual-tts-in-depth\|In Depth]] | 75 | 2026-08-02 |
+| Emotional and Expressive Speech Synthesis | [[concepts/emotion-synthesis\|Overview]] | [[concepts/emotion-synthesis-in-depth\|In Depth]] | 73 | 2026-08-02 |
+| GAN Vocoders | [[concepts/gan-vocoder\|Overview]] | [[concepts/gan-vocoder-in-depth\|In Depth]] | 60 | 2026-08-02 |
+| Streaming Text-to-Speech | [[concepts/streaming-tts\|Overview]] | [[concepts/streaming-tts-in-depth\|In Depth]] | 54 | 2026-08-02 |
+| Diffusion Text-to-Speech | [[concepts/diffusion-tts\|Overview]] | [[concepts/diffusion-tts-in-depth\|In Depth]] | 46 | 2026-08-02 |
+| Instruction-Conditioned Text-to-Speech | [[concepts/instruction-conditioned-tts\|Overview]] | [[concepts/instruction-conditioned-tts-in-depth\|In Depth]] | 44 | 2026-08-02 |
+| Transformer Encoder–Decoder TTS | [[concepts/transformer-enc-dec-tts\|Overview]] | [[concepts/transformer-enc-dec-tts-in-depth\|In Depth]] | 28 | 2026-08-02 |
 
 ## Pending Integration
 
@@ -22,21 +38,5 @@ These pages contain no synthesized claims or paper counts. Each will be rendered
 
 | Concept | Status |
 |---------|--------|
-| [[concepts/autoregressive-codec-tts\|Autoregressive Codec TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/diffusion-tts\|Diffusion Models for TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/emotion-synthesis\|Emotion Synthesis]] | Awaiting Q3 2025 integration |
 | [[concepts/fine-tuning\|Fine-Tuning Foundation Models for Speech Generation]] | Awaiting Q3 2025 integration |
-| [[concepts/gan-vocoder\|GAN Vocoder]] | Awaiting Q3 2025 integration |
-| [[concepts/instruction-conditioned-tts\|Instruction-Conditioned TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/multilingual-tts\|Multilingual TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/neural-codec\|Neural Audio Codec]] | Awaiting Q3 2025 integration |
-| [[concepts/prosody-control\|Prosody Control]] | Awaiting Q3 2025 integration |
-| [[concepts/self-supervised-speech\|Self-Supervised Speech Representations and Foundation Models]] | Awaiting Q3 2025 integration |
 | [[concepts/singing\|Singing Voice Synthesis and Conversion]] | Awaiting Q3 2025 integration |
-| [[concepts/speaker-adaptation\|Speaker Adaptation]] | Awaiting Q3 2025 integration |
-| [[concepts/spoken-language-model\|Spoken Language Model]] | Awaiting Q3 2025 integration |
-| [[concepts/streaming-tts\|Streaming TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/subjective-evaluation\|Subjective Evaluation]] | Awaiting Q3 2025 integration |
-| [[concepts/transformer-enc-dec-tts\|Transformer Encoder-Decoder TTS]] | Awaiting Q3 2025 integration |
-| [[concepts/voice-conversion\|Voice Conversion]] | Awaiting Q3 2025 integration |
-| [[concepts/zero-shot-tts\|Zero-Shot TTS]] | Awaiting Q3 2025 integration |
