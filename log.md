@@ -4,6 +4,42 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-02
+
+- ingest | 2512.23808 | MiMo-Audio: Audio Language Models are Few-Shot Learners | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.22491 | ManchuTTS: Towards High-Quality Manchu Speech Synthesis via Flow Matching and Hierarchical Text Representation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.21706 | Enabling Conversational Behavior Reasoning Capabilities in Full-Duplex Speech | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.21653 | Semantic Codebooks as Effective Priors for Neural Speech Compression | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.20944 | SACodec: Asymmetric Quantization with Semantic Anchoring for Low-Bitrate High-Fidelity Neural Speech Codecs | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.20296 | TAVID: Text-Driven Audio-Visual Interactive Dialogue Generation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.20211 | Aliasing-Free Neural Audio Synthesis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.20156 | Fun-Audio-Chat Technical Report | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.19090 | JoyVoice: Long-Context Conditioning for Anthropomorphic Multi-Speaker Conversational Synthesis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.18706 | X-Talk: On the Underestimated Potential of Modular Speech-to-Speech Dialogue System | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.18699 | Task Vector in TTS: Toward Emotionally Expressive Dialectal Speech Synthesis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13910 | Synthetic Singers: A Review of Deep-Learning-based Singing Voice Synthesis Approaches | IJCNLP-AACL 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.17356 | Training Text-to-Speech Model with Purely Synthetic Data: Feasibility, Sensitivity, and Generalization Capability | NCMMSC 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.17293 | Robust TTS Training via Self-Purifying Flow Matching for the WildSpoof 2026 TTS Track | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.16832 | What Do Prosody and Text Convey? Characterizing How Meaningful Information is Distributed Across Multiple Channels | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.16519 | Pseudo-Cepstrum: Pitch Modification for Mel-Based Neural Vocoders | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.14865 | Audio MultiChallenge: A Multi-Turn Evaluation of Spoken Dialogue Systems on Natural Human Interaction | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.14653 | Robust Training of Singing Voice Synthesis Using Prior and Posterior Uncertainty | ASRU 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.12297 | F5-TTS-RO: Extending F5-TTS to Romanian TTS via Lightweight Input Adaptation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.12129 | A comparative study of generative models for child voice conversion | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-vhPy3NMsO5 | OmniResponse: Online Multimodal Conversational Response Generation in Dyadic Interactions | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-pDWwz9F7Zh | Efficient Speech Language Modeling via Energy Distance in Continuous Latent Space | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-SoRe80Tg48 | Shallow Flow Matching for Coarse-to-Fine Text-to-Speech Synthesis | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-SYcggdxX6W | Word-Level Emotional Expression Control in Zero-Shot Text-to-Speech Synthesis | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-RTjr4DnS79 | Metis: A Foundation Speech Generation Model with Masked Generative Pre-training | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-AsRB5nmlOD | SALMONN-omni: A Standalone Speech LLM without Codec Injection for Full-duplex Conversation | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-7Z3wQSu3mH | FocalCodec: Low-Bitrate Speech Coding via Focal Modulation Networks | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-4iehXI36QG | OpenOmni: Advancing Open-Source Omnimodal Large Language Models with Progressive Multimodal Alignment and Real-time Emotional Speech Synthesis | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | neurips-2025-1cURNMriee | StreamFlow: Streaming Audio Generation from Discrete Tokens via Streaming Flow Matching | NeurIPS 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.09504 | DMP-TTS: Disentangled multi-modal Prompting for Controllable Text-to-Speech with Chained Guidance | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.08006 | Beyond Unified Models: A Service-Oriented Approach to Low Latency, Context Aware Phonemization for Real Time TTS | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.07168 | JEPA as a Neural Tokenizer: Learning Robust Speech Representations with Density Adaptive Attention | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2512.06304 | Degrading Voice: A Comprehensive Overview of Robust Voice Conversion Through Input Manipulation | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-07-30
 
 - integrate | 20 papers | transformer-enc-dec-tts | Phase 1 batch 1 | first integration pass for this concept; Q3-scoped (`published_date < 2025-10-01`) oldest-first; authoritative discovery found 28 eligible papers, skipped 0 Tier 2 pages, and excluded 5 Q4-or-later pages; processed 1703.10135, 1712.05884, 2006.04558, 2105.06337, 2106.15561, 2025.coling-main.352, 2025.coling-main.518, iclr-2025-hQvX9MBowC, 2025.naacl-long.591, 2025.americasnlp-1.1, 2507.04598, 2025.conll-1.9, 2508.11273, 2508.12001, interspeech-2025-1098, interspeech-2025-1122, interspeech-2025-1334, interspeech-2025-1394, interspeech-2025-1494, interspeech-2025-1940; 86 claims preserved from 9 structured and 11 legacy pages, all with source citations; 8 papers remain; Phase 1 only, with method families and claim clusters left empty; concept-scoped health check passed with 0 errors and 0 warnings; corpus-wide papers_not_in_any_yaml remained 142 | runtime: codex | provider: openai | model: gpt-5

@@ -718,3 +718,36 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2512.04552]] | [RRPO: Robust Reward Policy Optimization for LLM-based Emotional TTS](papers/2512.04552.md) | Alibaba Group (Tongyi Lab) | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-07-30 |
 | [[2512.04779]] | [YingMusic-Singer: Zero-shot Singing Voice Synthesis and Editing with Annotation-free Melody Guidance](papers/2512.04779.md) | GiantNetwork AI Lab | arXiv | 2025 | singing | flow-matching | 2026-07-30 |
 | [[2512.04793]] | [YingMusic-SVC: Real-World Robust Zero-Shot Singing Voice Conversion with Flow-GRPO and Singing-Specific Inductive Biases](papers/2512.04793.md) | GiantNetwork AI Lab | arXiv | 2025 | singing, VC | flow-matching | 2026-07-30 |
+| [[2512.06304]] | [Degrading Voice: A Comprehensive Overview of Robust Voice Conversion Through Input Manipulation](papers/2512.06304.md) |  | arXiv | 2025 | VC |  | 2026-08-02 |
+| [[2512.07168]] | [JEPA as a Neural Tokenizer: Learning Robust Speech Representations with Density Adaptive Attention](papers/2512.07168.md) |  | arXiv | 2025 | codec | hybrid | 2026-08-02 |
+| [[2512.08006]] | [Beyond Unified Models: A Service-Oriented Approach to Low Latency, Context Aware Phonemization for Real Time TTS](papers/2512.08006.md) |  | arXiv | 2025 | TTS | hybrid | 2026-08-02 |
+| [[2512.09504]] | [DMP-TTS: Disentangled multi-modal Prompting for Controllable Text-to-Speech with Chained Guidance](papers/2512.09504.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[neurips-2025-1cURNMriee]] | [StreamFlow: Streaming Audio Generation from Discrete Tokens via Streaming Flow Matching](papers/neurips-2025-1cURNMriee.md) |  | NeurIPS | 2025 | TTS, codec | flow-matching, GAN | 2026-08-02 |
+| [[neurips-2025-4iehXI36QG]] | [OpenOmni: Advancing Open-Source Omnimodal Large Language Models with Progressive Multimodal Alignment and Real-time Emotional Speech Synthesis](papers/neurips-2025-4iehXI36QG.md) |  | NeurIPS | 2025 | TTS, SCA | hybrid | 2026-08-02 |
+| [[neurips-2025-7Z3wQSu3mH]] | [FocalCodec: Low-Bitrate Speech Coding via Focal Modulation Networks](papers/neurips-2025-7Z3wQSu3mH.md) |  | NeurIPS | 2025 | codec, VC, TTS | VAE, GAN | 2026-08-02 |
+| [[neurips-2025-AsRB5nmlOD]] | [SALMONN-omni: A Standalone Speech LLM without Codec Injection for Full-duplex Conversation](papers/neurips-2025-AsRB5nmlOD.md) |  | NeurIPS | 2025 | TTS, SCA | hybrid | 2026-08-02 |
+| [[neurips-2025-RTjr4DnS79]] | [Metis: A Foundation Speech Generation Model with Masked Generative Pre-training](papers/neurips-2025-RTjr4DnS79.md) |  | NeurIPS | 2025 | TTS, VC | diffusion | 2026-08-02 |
+| [[neurips-2025-SYcggdxX6W]] | [Word-Level Emotional Expression Control in Zero-Shot Text-to-Speech Synthesis](papers/neurips-2025-SYcggdxX6W.md) |  | NeurIPS | 2025 | TTS | autoregressive-LM, flow-matching | 2026-08-02 |
+| [[neurips-2025-SoRe80Tg48]] | [Shallow Flow Matching for Coarse-to-Fine Text-to-Speech Synthesis](papers/neurips-2025-SoRe80Tg48.md) |  | NeurIPS | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[neurips-2025-pDWwz9F7Zh]] | [Efficient Speech Language Modeling via Energy Distance in Continuous Latent Space](papers/neurips-2025-pDWwz9F7Zh.md) |  | NeurIPS | 2025 | TTS, SCA | autoregressive-LM | 2026-08-02 |
+| [[neurips-2025-vhPy3NMsO5]] | [OmniResponse: Online Multimodal Conversational Response Generation in Dyadic Interactions](papers/neurips-2025-vhPy3NMsO5.md) |  | NeurIPS | 2025 | TTS, SCA | autoregressive-LM | 2026-08-02 |
+| [[2512.12129]] | [A comparative study of generative models for child voice conversion](papers/2512.12129.md) |  | arXiv | 2025 | VC | GAN, VAE, diffusion, flow-matching | 2026-08-02 |
+| [[2512.12297]] | [F5-TTS-RO: Extending F5-TTS to Romanian TTS via Lightweight Input Adaptation](papers/2512.12297.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[2512.14653]] | [Robust Training of Singing Voice Synthesis Using Prior and Posterior Uncertainty](papers/2512.14653.md) |  | ASRU | 2025 | singing | VAE, GAN | 2026-08-02 |
+| [[2512.14865]] | [Audio MultiChallenge: A Multi-Turn Evaluation of Spoken Dialogue Systems on Natural Human Interaction](papers/2512.14865.md) |  | arXiv | 2025 | SCA, evaluation |  | 2026-08-02 |
+| [[2512.16519]] | [Pseudo-Cepstrum: Pitch Modification for Mel-Based Neural Vocoders](papers/2512.16519.md) |  | arXiv | 2025 | TTS | GAN, flow-matching | 2026-08-02 |
+| [[2512.16832]] | [What Do Prosody and Text Convey? Characterizing How Meaningful Information is Distributed Across Multiple Channels](papers/2512.16832.md) |  | arXiv | 2025 | evaluation |  | 2026-08-02 |
+| [[2512.17293]] | [Robust TTS Training via Self-Purifying Flow Matching for the WildSpoof 2026 TTS Track](papers/2512.17293.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[2512.17356]] | [Training Text-to-Speech Model with Purely Synthetic Data: Feasibility, Sensitivity, and Generalization Capability](papers/2512.17356.md) |  | NCMMSC | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[2601.13910]] | [Synthetic Singers: A Review of Deep-Learning-based Sing](papers/2601.13910.md) |  | IJCNLP-AACL | 2025 | singing |  | 2026-08-02 |
+| [[2512.18699]] | [Task Vector in TTS: Toward Emotionally Expressive Diale](papers/2512.18699.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[2512.18706]] | [X-Talk: On the Underestimated Potential of Modular Spee](papers/2512.18706.md) |  | arXiv | 2025 | SCA |  | 2026-08-02 |
+| [[2512.19090]] | [JoyVoice: Long-Context Conditioning for Anthropomorphic](papers/2512.19090.md) |  | arXiv | 2025 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-08-02 |
+| [[2512.20156]] | [Fun-Audio-Chat Technical Report](papers/2512.20156.md) |  | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, GAN, hybrid | 2026-08-02 |
+| [[2512.20211]] | [Aliasing-Free Neural Audio Synthesis](papers/2512.20211.md) |  | arXiv | 2025 | TTS, codec | GAN | 2026-08-02 |
+| [[2512.20296]] | [TAVID: Text-Driven Audio-Visual Interactive Dialogue Ge](papers/2512.20296.md) |  | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching, hybrid | 2026-08-02 |
+| [[2512.20944]] | [SACodec: Asymmetric Quantization with Semantic Anchorin](papers/2512.20944.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-08-02 |
+| [[2512.21653]] | [Semantic Codebooks as Effective Priors for Neural Speec](papers/2512.21653.md) |  | arXiv | 2025 | codec | GAN, VAE | 2026-08-02 |
+| [[2512.21706]] | [Enabling Conversational Behavior Reasoning Capabilities](papers/2512.21706.md) |  | arXiv | 2025 | SCA | autoregressive-LM | 2026-08-02 |
+| [[2512.22491]] | [ManchuTTS: Towards High-Quality Manchu Speech Synthesis](papers/2512.22491.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
+| [[2512.23808]] | [MiMo-Audio: Audio Language Models are Few-Shot Learners](papers/2512.23808.md) |  | arXiv | 2025 | TTS, SCA | autoregressive-LM, GAN, hybrid | 2026-08-02 |
