@@ -751,3 +751,27 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2512.21706]] | [Enabling Conversational Behavior Reasoning Capabilities](papers/2512.21706.md) |  | arXiv | 2025 | SCA | autoregressive-LM | 2026-08-02 |
 | [[2512.22491]] | [ManchuTTS: Towards High-Quality Manchu Speech Synthesis](papers/2512.22491.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-08-02 |
 | [[2512.23808]] | [MiMo-Audio: Audio Language Models are Few-Shot Learners](papers/2512.23808.md) |  | arXiv | 2025 | TTS, SCA | autoregressive-LM, GAN, hybrid | 2026-08-02 |
+| [[2601.00217]] | [Mitigating Latent Mismatch in cVAE-Based Singing Voice ](papers/2601.00217.md) | Kwangwoon University | arXiv | 2026 | singing | flow-matching, VAE, GAN | 2026-08-03 |
+| [[2601.00303]] | [DepFlow: Disentangled Speech Generation to Mitigate Sem](papers/2601.00303.md) | Nanyang Technological University | arXiv | 2026 | TTS | flow-matching | 2026-08-03 |
+| [[2601.01459]] | [OV-InstructTTS: Towards Open-Vocabulary Instruct Text-t](papers/2601.01459.md) | Institute of Automation, Chinese Academy of Sciences | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-03 |
+| [[2601.01568]] | [MM-Sonate: Multimodal Controllable Audio-Video Generati](papers/2601.01568.md) | Kuaishou Technology | arXiv | 2026 | TTS, VC | flow-matching | 2026-08-03 |
+| [[2601.04233]] | [LEMAS: Large A 150K-Hour Large-scale Extensible Multili](papers/2601.04233.md) | International Digital Economy Academy (IDEA) | arXiv | 2026 | TTS | flow-matching, autoregressive-LM | 2026-08-03 |
+| [[2601.02073]] | [Towards Prosodically Informed Mizo TTS without Explicit](papers/2601.02073.md) | Indian Institute of Technology Guwahati | arXiv | 2026 | TTS | VAE, GAN | 2026-08-03 |
+| [[2601.02753]] | [Vclip: Face-based Speaker Generation by Face-voice Asso](papers/2601.02753.md) | OPPO | arXiv | 2026 | TTS | VAE, GAN | 2026-08-03 |
+| [[2601.02776]] | [UniSRCodec: Unified and Low-Bitrate Single Codebook Cod](papers/2601.02776.md) | Tsinghua University | arXiv | 2026 | codec | VAE, GAN | 2026-08-03 |
+| [[2601.03170]] | [TED-TTS: Training-Free Intra-Utterance Emotion and Dura](papers/2601.03170.md) | National University of Singapore | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-03 |
+| [[2601.03632]] | [ReStyle-TTS: Relative and Continuous Style Control for ](papers/2601.03632.md) | Ant Group | arXiv | 2026 | TTS | flow-matching | 2026-08-03 |
+| [[2601.03892]] | [Lightweight and perceptually-guided voice conversion fo](papers/2601.03892.md) | Graz University of Technology | arXiv | 2026 | VC | GAN | 2026-08-03 |
+| [[2601.05329]] | [CosyEdit: Unlocking End-to-End Speech Editing Capabilit](papers/2601.05329.md) | Nankai University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-08-03 |
+| [[2601.05554]] | [SPAM: Style Prompt Adherence Metric for Prompt-based TT](papers/2601.05554.md) | Chung-Ang University | arXiv | 2026 | TTS, evaluation |  | 2026-08-03 |
+| [[2601.05564]] | [The ICASSP 2026 HumDial Challenge: Benchmarking Human-l](papers/2601.05564.md) | Northwestern Polytechnical University (ASLP@NPU) | arXiv | 2026 | SCA, evaluation |  | 2026-08-03 |
+| [[2505.15727]] | [VocalBench: Benchmarking the Vocal Conversational Abili](papers/2505.15727.md) | Shanghai Jiao Tong University | arXiv | 2026 | SCA, evaluation |  | 2026-08-03 |
+| [[2601.08450]] | [Decoding Order Matters in Autoregressive Speech Synthes](papers/2601.08450.md) | University of Sheffield | arXiv | 2026 | TTS | autoregressive-LM, diffusion, hybrid | 2026-08-03 |
+| [[2601.09239]] | [DSA-Tokenizer: Disentangled Semantic-Acoustic Tokenizat](papers/2601.09239.md) | City University of Hong Kong | arXiv | 2026 | codec, TTS | flow-matching | 2026-08-03 |
+| [[2602.06053]] | [PersonaPlex: Voice and Role Control for Full Duplex Con](papers/2602.06053.md) | NVIDIA | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-03 |
+| [[2601.10629]] | [VoiceSculptor: Your Voice, Designed By You](papers/2601.10629.md) | Northwestern Polytechnical University (ASLP@NPU) | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-03 |
+| [[2506.12537]] | [What Makes a Good Speech Tokenizer for LLM-Centric Spee](papers/2506.12537.md) |  | arXiv | 2026 | TTS, codec | autoregressive-LM | 2026-08-03 |
+| [[2601.11141]] | [FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dia](papers/2601.11141.md) |  | arXiv | 2026 | SCA, TTS | autoregressive-LM | 2026-08-03 |
+| [[2601.16225]] | [ES4R: Speech Encoding Based on Prepositive Affective Mo](papers/2601.16225.md) |  | arXiv | 2026 | SCA | autoregressive-LM, hybrid | 2026-08-03 |
+| [[2601.12205]] | [Do Neural Codecs Generalize? A Controlled Study Across ](papers/2601.12205.md) |  | arXiv | 2026 | codec, evaluation | GAN, VAE | 2026-08-03 |
+| [[2601.12289]] | [ParaMETA: Towards Learning Disentangled Paralinguistic ](papers/2601.12289.md) |  | arXiv | 2026 | TTS |  | 2026-08-03 |
