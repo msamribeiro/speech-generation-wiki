@@ -4,6 +4,21 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-11
+
+- ingest | 2601.13802 | Habibi: Laying the Open-Source Foundation of Unified-Dialectal Arabic Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.12480 | A Unified Neural Codec Language Model for Selective Editable Text to Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2409.16681 | Emotional Dimension Control in Language Model-Based Text-to-Speech: Spanning a Broad Spectrum of Human Emotions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.12966 | Lombard Speech Synthesis for Any Voice with Controllable Style Embeddings | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13055 | VoCodec: An Efficient Lightweight Low-Bitrate Speech Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.11172 | Synthesizing the Virtual Advocate: A Multi-Persona Speech Generation Framework for Diverse Linguistic Jurisdictions in Indic Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13758 | GOMPSNR: Reflourish the Signal-to-Noise Ratio Metric for Audio Generation Tasks | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13835 | The Role of Prosodic and Lexical Cues in Turn-Taking with Self-Supervised Speech Representations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13948 | Stream-Voice-Anon: Enhancing Utility of Real-Time Speaker Anonymization via Neural Audio Codec and Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.14472 | Prosody-Guided Harmonic Attention for Phase-Coherent Neural Vocoding in the Complex Spectrum | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.14960 | VCNAC: A Variable-Channel Neural Audio Codec for Mono, Stereo, and Surround Sound | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.15596 | DeepASMR: LLM-Based Zero-Shot ASMR Speech Generation for Anyone of Any Voice | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-03
 
 - ingest | 2601.00217 | Mitigating Latent Mismatch in cVAE-Based Singing Voice Synthesis via Flow Matching | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5

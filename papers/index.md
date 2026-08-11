@@ -775,3 +775,15 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2601.16225]] | [ES4R: Speech Encoding Based on Prepositive Affective Mo](papers/2601.16225.md) |  | arXiv | 2026 | SCA | autoregressive-LM, hybrid | 2026-08-03 |
 | [[2601.12205]] | [Do Neural Codecs Generalize? A Controlled Study Across ](papers/2601.12205.md) |  | arXiv | 2026 | codec, evaluation | GAN, VAE | 2026-08-03 |
 | [[2601.12289]] | [ParaMETA: Towards Learning Disentangled Paralinguistic ](papers/2601.12289.md) |  | arXiv | 2026 | TTS |  | 2026-08-03 |
+| [[2601.12480]] | [A Unified Neural Codec Language Model for Selective Editable Text to Speech Generation](papers/2601.12480.md) | Microsoft | arXiv | 2026 | TTS, VC | autoregressive-LM, hybrid | 2026-08-11 |
+| [[2409.16681]] | [Emotional Dimension Control in Language Model-Based Text-to-Speech: Spanning a Broad Spectrum of Human Emotions](papers/2409.16681.md) | Alibaba Group | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-08-11 |
+| [[2601.12966]] | [Lombard Speech Synthesis for Any Voice with Controllable Style Embeddings](papers/2601.12966.md) | KIT / CMU | arXiv | 2026 | TTS | flow-matching | 2026-08-11 |
+| [[2601.13055]] | [VoCodec: An Efficient Lightweight Low-Bitrate Speech Codec](papers/2601.13055.md) | Nanjing University / Horizon Robotics | arXiv | 2026 | codec | GAN | 2026-08-11 |
+| [[2602.11172]] | [Synthesizing the Virtual Advocate: A Multi-Persona Speech Generation Framework for Diverse Linguistic Jurisdictions in Indic Languages](papers/2602.11172.md) | IIT Delhi | arXiv | 2026 | TTS, evaluation |  | 2026-08-11 |
+| [[2601.13758]] | [GOMPSNR: Reflourish the Signal-to-Noise Ratio Metric for Audio Generation Tasks](papers/2601.13758.md) | Institute of Acoustics, Chinese Academy of Sciences | arXiv | 2026 | evaluation, codec | GAN | 2026-08-11 |
+| [[2601.13802]] | [Habibi: Laying the Open-Source Foundation of Unified-Dialectal Arabic Speech Synthesis](papers/2601.13802.md) | SJTU | arXiv | 2026 | TTS, evaluation | flow-matching | 2026-08-11 |
+| [[2601.13835]] | [The Role of Prosodic and Lexical Cues in Turn-Taking with Self-Supervised Speech Representations](papers/2601.13835.md) | Trinity College Dublin | arXiv | 2026 | SCA | hybrid | 2026-08-11 |
+| [[2601.13948]] | [Stream-Voice-Anon: Enhancing Utility of Real-Time Speaker Anonymization via Neural Audio Codec and Language Models](papers/2601.13948.md) | NTU / A*STAR / PolyU (HK) | arXiv | 2026 | VC | autoregressive-LM, hybrid | 2026-08-11 |
+| [[2601.14472]] | [Prosody-Guided Harmonic Attention for Phase-Coherent Neural Vocoding in the Complex Spectrum](papers/2601.14472.md) | BME | arXiv | 2026 | TTS | GAN | 2026-08-11 |
+| [[2601.14960]] | [VCNAC: A Variable-Channel Neural Audio Codec for Mono, Stereo, and Surround Sound](papers/2601.14960.md) | Amazon AGI | arXiv | 2026 | codec | GAN | 2026-08-11 |
+| [[2601.15596]] | [DeepASMR: LLM-Based Zero-Shot ASMR Speech Generation for Anyone of Any Voice](papers/2601.15596.md) | Shanghai Jiao Tong University / VUI Labs | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-08-11 |
