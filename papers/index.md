@@ -787,3 +787,27 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2601.14472]] | [Prosody-Guided Harmonic Attention for Phase-Coherent Neural Vocoding in the Complex Spectrum](papers/2601.14472.md) | BME | arXiv | 2026 | TTS | GAN | 2026-08-11 |
 | [[2601.14960]] | [VCNAC: A Variable-Channel Neural Audio Codec for Mono, Stereo, and Surround Sound](papers/2601.14960.md) | Amazon AGI | arXiv | 2026 | codec | GAN | 2026-08-11 |
 | [[2601.15596]] | [DeepASMR: LLM-Based Zero-Shot ASMR Speech Generation for Anyone of Any Voice](papers/2601.15596.md) | Shanghai Jiao Tong University / VUI Labs | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-08-11 |
+| [[2601.16023]] | [Timbre-Aware LLM-based Direct Speech-to-Speech Translat](papers/2601.16023.md) | IIT Jammu | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, GAN, hybrid | 2026-08-12 |
+| [[2601.16618]] | [PROST-LLM: Progressively Enhancing the Speech-to-Speech](papers/2601.16618.md) | The Chinese University of Hong Kong / Huawei Artificial Intelligence Laboratory (Leibniz) | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-12 |
+| [[2601.17086]] | [SonoEdit: Null-Space Constrained Knowledge Editing for ](papers/2601.17086.md) | TU Darmstadt / UMD / Smallest AI | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-12 |
+| [[2601.13742]] | [Hearing Between the Lines: Unlocking the Reasoning Powe](papers/2601.13742.md) | Boston University / Amazon AGI | arXiv | 2026 | SCA, evaluation |  | 2026-08-12 |
+| [[2601.18094]] | [OneVoice: One Model, Triple Scenarios-Towards Unified Z](papers/2601.18094.md) | China Mobile (JIUTIAN Research) | arXiv | 2026 | VC, singing | autoregressive-LM, flow-matching, hybrid | 2026-08-12 |
+| [[2601.18281]] | [Reflecting Twice before Speaking with Empathy: Self-Ref](papers/2601.18281.md) | Nankai University / Meituan LongCat Interaction Team | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-12 |
+| [[2601.18438]] | [UrgentMOS: Unified Multi-Metric and Preference Learning](papers/2601.18438.md) | Shanghai Jiao Tong University / Carnegie Mellon University / TU Braunschweig / Meta / Waseda University / VUI Labs | arXiv | 2026 | evaluation |  | 2026-08-12 |
+| [[2601.18694]] | [Neural Multi-Speaker Voice Cloning for Nepali in Low-Re](papers/2601.18694.md) | IOE, Thapathali Campus (Institute of Engineering, Nepal) | arXiv | 2026 | TTS | transformer-enc-dec | 2026-08-12 |
+| [[2601.17761]] | [AR-Omni: A Unified Autoregressive Model for Any-to-Any ](papers/2601.17761.md) | The Hong Kong Polytechnic University / University of Science and Technology of China / Harbin Institute of Technology (Shenzhen) | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-08-12 |
+| [[2601.19952]] | [LTS-VoiceAgent: A Listen-Think-Speak Framework for Effi](papers/2601.19952.md) | Meituan / University of Chinese Academy of Sciences | arXiv | 2026 | SCA, TTS | autoregressive-LM | 2026-08-12 |
+| [[2601.19063]] | [Optimizing Conversational Quality in Spoken Dialogue Sy](papers/2601.19063.md) | Carnegie Mellon University / Sony Group Corporation | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-12 |
+| [[2601.19781]] | [Phonological Tokenizer: Prosody-Aware Phonetic Token vi](papers/2601.19781.md) | The University of Tokyo / Sony Group Corporation / Carnegie Mellon University | arXiv | 2026 | codec, TTS | GAN | 2026-08-12 |
+| [[2601.19786]] | [Rethinking Discrete Speech Representation Tokens for Ac](papers/2601.19786.md) | University of Edinburgh (Centre for Speech Technology Research) | arXiv | 2026 | TTS, VC | GAN | 2026-08-12 |
+| [[2601.20094]] | [T-Mimi: A Transformer-based Mimi Decoder for Real-Time ](papers/2601.20094.md) | Meta | arXiv | 2026 | TTS, codec | GAN | 2026-08-12 |
+| [[2601.14417]] | [Quantifying Speaker Embedding Phonological Rule Interac](papers/2601.14417.md) | University of Southern California | arXiv | 2026 | TTS |  | 2026-08-12 |
+| [[2601.20481]] | [Erasing Your Voice Before It's Heard: Training-free Spe](papers/2601.20481.md) | Ewha Womans University | arXiv | 2026 | TTS | flow-matching | 2026-08-12 |
+| [[2601.20230]] | [Unit-Based Agent for Semi-Cascaded Full-Duplex Dialogue](papers/2601.20230.md) | Hunan University | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-12 |
+| [[2601.21886]] | [Speech Quality-Based Localization of Low-Quality Speech](papers/2601.21886.md) | Paderborn University | arXiv | 2026 | TTS, evaluation |  | 2026-08-12 |
+| [[2601.22661]] | [Evaluating and Rewarding LALMs for Expressive Role-Play](papers/2601.22661.md) |  | arXiv | 2026 | TTS, evaluation | autoregressive-LM | 2026-08-12 |
+| [[2601.22873]] | [EmoShift: Lightweight Activation Steering for Enhanced ](papers/2601.22873.md) | The Chinese University of Hong Kong, Shenzhen / The Hong Kong Polytechnic University / Tianjin University | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-12 |
+| [[2601.22889]] | [DiffuSpeech: Silent Thought, Spoken Answer via Unified ](papers/2601.22889.md) |  | arXiv | 2026 | SCA, TTS | diffusion | 2026-08-12 |
+| [[2601.23174]] | [Beyond Fixed Frames: Dynamic Character-Aligned Speech T](papers/2601.23174.md) |  | arXiv | 2026 | codec, TTS | GAN | 2026-08-12 |
+| [[2602.00269]] | [VoxServe: Streaming-Centric Serving System for Speech L](papers/2602.00269.md) |  | arXiv | 2026 | SCA, TTS |  | 2026-08-12 |
+| [[2602.00443]] | [RVCBench: Benchmarking the Robustness of Voice Cloning ](papers/2602.00443.md) |  | arXiv | 2026 | VC, evaluation |  | 2026-08-12 |

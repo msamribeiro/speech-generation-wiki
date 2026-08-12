@@ -4,6 +4,33 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-12
+
+- ingest | 2601.16023 | Timbre-Aware LLM-based Direct Speech-to-Speech Translation Extendable to Multiple Language Pairs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.16618 | PROST-LLM: Progressively Enhancing the Speech-to-Speech Translation Capability in LLMs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.17086 | SonoEdit: Null-Space Constrained Knowledge Editing for Pronunciation Correction in LLM-Based TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.13742 | Hearing Between the Lines: Unlocking the Reasoning Power of LLMs for Speech Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.18094 | OneVoice: One Model, Triple Scenarios-Towards Unified Zero-shot Voice Conversion | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.18281 | Reflecting Twice before Speaking with Empathy: Self-Reflective Alternating Inference for Empathy-Aware End-to-End Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.18438 | UrgentMOS: Unified Multi-Metric and Preference Learning for Robust Speech Quality Assessment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.18694 | Neural Multi-Speaker Voice Cloning for Nepali in Low-Resource Settings | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.17761 | AR-Omni: A Unified Autoregressive Model for Any-to-Any Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.19952 | LTS-VoiceAgent: A Listen-Think-Speak Framework for Efficient Streaming Voice Interaction via Semantic Triggering and Incremental Reasoning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.19063 | Optimizing Conversational Quality in Spoken Dialogue Systems with Reinforcement Learning from AI Feedback | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.19781 | Phonological Tokenizer: Prosody-Aware Phonetic Token via Multi-Objective Fine-Tuning with Differentiable K-Means | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.19786 | Rethinking Discrete Speech Representation Tokens for Accent Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.20094 | T-Mimi: A Transformer-based Mimi Decoder for Real-Time On-Phone TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.14417 | Quantifying Speaker Embedding Phonological Rule Interactions in Accented Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.20481 | Erasing Your Voice Before It's Heard: Training-free Speaker Unlearning for Zero-shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.20230 | Unit-Based Agent for Semi-Cascaded Full-Duplex Dialogue Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.21886 | Speech Quality-Based Localization of Low-Quality Speech and Text-to-Speech Synthesis Artefacts | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.22661 | Evaluating and Rewarding LALMs for Expressive Role-Play TTS via Mean Continuation Log-Probability | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.22873 | EmoShift: Lightweight Activation Steering for Enhanced Emotion-Aware Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.22889 | DiffuSpeech: Silent Thought, Spoken Answer via Unified Speech-Text Diffusion | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2601.23174 | Beyond Fixed Frames: Dynamic Character-Aligned Speech Tokenization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.00269 | VoxServe: Streaming-Centric Serving System for Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.00443 | RVCBench: Benchmarking the Robustness of Voice Cloning Across Modern Audio Generation Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-11
 
 - ingest | 2601.13802 | Habibi: Laying the Open-Source Foundation of Unified-Dialectal Arabic Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
