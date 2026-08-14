@@ -4,6 +4,18 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-14
+
+- ingest | 2602.18104 | MeanVoiceFlow: One-step Nonparallel Voice Conversion with Mean Flows | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.19574 | CTC-TTS: LLM-based dual-streaming text-to-speech with CTC alignment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23068 | TADA: A Generative Framework for Speech Modeling via Text-Acoustic Dual Alignment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23266 | Discourse-Aware Dual-Track Streaming Response for Low-Latency Spoken Dialogue Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23765 | DashengTokenizer: One layer is enough for unified audio understanding and generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.01467 | Conversational Speech Naturalness Predictor | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.01476 | Entropy-Guided GRVQ for Ultra-Low Bitrate Neural Speech Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.02022 | CodecFlow: Efficient Bandwidth Extension via Conditional Flow Matching in Neural Codec Latent Space | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.04145 | VietNormalizer: An Open-Source, Dependency-Free Python Library for Vietnamese Text Normalization in TTS and NLP Applications | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-13
 
 - ingest | 2602.00594 | Kanade: A Simple Disentangled Tokenizer for Spoken Language Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
