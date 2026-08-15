@@ -844,3 +844,29 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2603.01476]] | [Entropy-Guided GRVQ for Ultra-Low Bitrate Neural Speech Codec](papers/2603.01476.md) | Waseda University / NTT, Inc. | arXiv | 2026 | codec | GAN, VAE | 2026-08-14 |
 | [[2603.02022]] | [CodecFlow: Efficient Bandwidth Extension via Conditional Flow Matching in Neural Codec Latent Space](papers/2603.02022.md) | Singapore Institute of Technology / Nanyang Technological University / National University of Singapore | arXiv | 2026 | codec | flow-matching, GAN | 2026-08-14 |
 | [[2603.04145]] | [VietNormalizer: An Open-Source, Dependency-Free Python Library for Vietnamese Text Normalization in TTS and NLP Applications](papers/2603.04145.md) | Australian Catholic University / ICMS / FPT University / KETEMU / RMIT University Vietnam / NGHI Studio / Phuong Hai JSC | arXiv | 2026 | TTS |  | 2026-08-14 |
+| [[2603.04219]] | [ZeSTA: Zero-Shot TTS Augmentation with Domain-Condition](papers/2603.04219.md) | Maum AI Inc., Humelo Inc. | arXiv | 2026 | TTS | VAE, GAN | 2026-08-15 |
+| [[2603.05299]] | [WavSLM: Single-Stream Speech Language Modeling via WavLM Distillation](papers/2603.05299.md) | Concordia University / Mila-Quebec AI Institute / Université Laval | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-15 |
+| [[2603.05373]] | [Hierarchical Decoding for Discrete Speech Synthesis with Multi-Resolution Spoof Detection](papers/2603.05373.md) | National University of Singapore | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
+| [[2603.05413]] | [Building Enterprise Realtime Voice Agents from Scratch:](papers/2603.05413.md) | Salesforce AI Research | arXiv | 2026 | SCA, TTS |  | 2026-08-15 |
+| [[2603.05887]] | [Reconstruct! Don't Encode: Self-Supervised Representati](papers/2603.05887.md) |  | arXiv | 2026 | codec | GAN, VAE | 2026-08-15 |
+| [[2603.05977]] | [Activation Steering for Accent-Neutralized Zero-Shot Te](papers/2603.05977.md) | University of Texas at Dallas | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
+| [[2603.06079]] | [StreamVoiceAnon+: Emotion-Preserving Streaming Speaker ](papers/2603.06079.md) |  | arXiv | 2026 | VC | autoregressive-LM, hybrid | 2026-08-15 |
+| [[2603.06444]] | [Prosodic Boundary-Aware Streaming Generation for LLM-Ba](papers/2603.06444.md) |  | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-08-15 |
+| [[2603.07513]] | [Bolbosh: Script-Aware Flow Matching for Kashmiri Text-t](papers/2603.07513.md) | KAUST / University of Kashmir / Gaash Lab, NIT Srinagar | arXiv | 2026 | TTS | flow-matching | 2026-08-15 |
+| [[2603.07534]] | [Accent Vector: Controllable Accent Manipulation for Mul](papers/2603.07534.md) | University of Southern California | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
+| [[2603.07550]] | [Learning-free L2-Accented Speech Generation using Phono](papers/2603.07550.md) | University of Southern California | arXiv | 2026 | TTS |  | 2026-08-15 |
+| [[2603.07551]] | [Targeted Speaker Poisoning Framework in Zero-Shot Text-to-Speech](papers/2603.07551.md) | University of Southern California | arXiv | 2026 | TTS | diffusion, GAN, hybrid | 2026-08-15 |
+| [[2603.07599]] | [StyleBench: Evaluating Speech Language Models on Conver](papers/2603.07599.md) | Northeastern University / NiuTrans Research | arXiv | 2026 | SCA, evaluation |  | 2026-08-15 |
+| [[2603.08216]] | [DualTurn: Learning Turn-Taking from Dual-Channel Genera](papers/2603.08216.md) |  | arXiv | 2026 | SCA | autoregressive-LM, hybrid | 2026-08-15 |
+| [[2603.08574]] | [Scalable Neural Vocoder from Range-Null Space Decomposi](papers/2603.08574.md) | Chinese Academy of Sciences, Tencent AI Lab | arXiv | 2026 | TTS | GAN | 2026-08-15 |
+| [[2603.08977]] | [Universal Speech Content Factorization](papers/2603.08977.md) | Johns Hopkins University | arXiv | 2026 | VC, TTS | hybrid | 2026-08-15 |
+| [[2603.09120]] | [Emotion-Aware Prefix: Towards Explicit Emotion Control](papers/2603.09120.md) | Center for Robust Speech Systems (CRSS), UT Dallas | arXiv | 2026 | VC | autoregressive-LM, flow-matching, hybrid | 2026-08-15 |
+| [[2603.09180]] | [DuplexCascade: Full-Duplex Speech-to-Speech Dialogue wi](papers/2603.09180.md) | SB Intuitions Corp. / The University of Tokyo | arXiv | 2026 | SCA, TTS | autoregressive-LM, hybrid | 2026-08-15 |
+| [[2603.09627]] | [Speech-Omni-Lite: Portable Speech Interfaces for Vision](papers/2603.09627.md) |  | arXiv | 2026 | TTS, SCA | autoregressive-LM, flow-matching | 2026-08-15 |
+| [[2603.10371]] | [Speech Codec Probing from Semantic and Phonetic Perspectives](papers/2603.10371.md) | University of Southern California / Dolby Laboratories | arXiv | 2026 | codec, evaluation |  | 2026-08-15 |
+| [[2603.10904]] | [When Fine-Tuning Fails and when it Generalises: Role of](papers/2603.10904.md) | Sprinklr AI | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
+| [[2603.16924]] | [SimulU: Training-free Policy for Long-form Simultaneous](papers/2603.16924.md) | MBZUAI / FBK | arXiv | 2026 | TTS | transformer-enc-dec, GAN | 2026-08-15 |
+| [[2603.11678]] | [RAF: Relativistic Adversarial Feedback For Universal Sp](papers/2603.11678.md) | KAIST | arXiv | 2026 | TTS | GAN | 2026-08-15 |
+| [[2603.11683]] | [Causal Prosody Mediation for Text-to-Speech: Counterfa](papers/2603.11683.md) |  | arXiv | 2026 | TTS | transformer-enc-dec | 2026-08-15 |
+| [[2603.11947]] | [Resurfacing Paralinguistic Awareness in Large Audio Lan](papers/2603.11947.md) | Monash University / University College London | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-15 |
+| [[2603.12342]] | [MamTra: A Hybrid Mamba-Transformer Backbone for Speech ](papers/2603.12342.md) | KAIST, Chung-Ang University | arXiv | 2026 | TTS | hybrid, autoregressive-LM | 2026-08-15 |

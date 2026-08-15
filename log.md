@@ -4,6 +4,35 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-15
+
+- ingest | 2603.04219 | ZeSTA: Zero-Shot TTS Augmentation with Domain-Conditioned Training for Data-Efficient Personalized Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05299 | WavSLM: Single-Stream Speech Language Modeling via WavLM Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05373 | Hierarchical Decoding for Discrete Speech Synthesis with Multi-Resolution Spoof Detection | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05413 | Building Enterprise Realtime Voice Agents from Scratch: A Technical Tutorial | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05887 | Reconstruct! Don't Encode: Self-Supervised Representation Reconstruction Loss for High-Intelligibility and Low-Latency Streaming Neural Audio Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05977 | Activation Steering for Accent-Neutralized Zero-Shot Text-To-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.06079 | StreamVoiceAnon+: Emotion-Preserving Streaming Speaker Anonymization via Frame-Level Acoustic Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.06444 | Prosodic Boundary-Aware Streaming Generation for LLM-Based TTS with Streaming Text Input | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07513 | Bolbosh: Script-Aware Flow Matching for Kashmiri Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07534 | Accent Vector: Controllable Accent Manipulation for Multilingual TTS Without Accented Data | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07550 | Learning-free L2-Accented Speech Generation using Phonological Rules | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07551 | Targeted Speaker Poisoning Framework in Zero-Shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07599 | StyleBench: Evaluating Speech Language Models on Conversational Speaking Style Control | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08216 | DualTurn: Learning Turn-Taking from Dual-Channel Generative Speech Pretraining | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08574 | Scalable Neural Vocoder from Range-Null Space Decomposition | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08977 | Universal Speech Content Factorization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09120 | Emotion-Aware Prefix: Towards Explicit Emotion Control in Voice Conversion Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09180 | DuplexCascade: Full-Duplex Speech-to-Speech Dialogue with VAD-Free Cascaded ASR-LLM-TTS Pipeline and Micro-Turn Optimization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09627 | Speech-Omni-Lite: Portable Speech Interfaces for Vision-Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.10371 | Speech Codec Probing from Semantic and Phonetic Perspectives | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.10904 | When Fine-Tuning Fails and when it Generalises: Role of Data Diversity and Mixed Training in LLM-based TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.16924 | SimulU: Training-free Policy for Long-form Simultaneous Speech-to-Speech Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11678 | RAF: Relativistic Adversarial Feedback For Universal Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11683 | Causal Prosody Mediation for Text-to-Speech:Counterfactual Training of Duration, Pitch, and Energy in FastSpeech2 | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11947 | Resurfacing Paralinguistic Awareness in Large Audio Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.12342 | MamTra: A Hybrid Mamba-Transformer Backbone for Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-14
 
 - ingest | 2602.18104 | MeanVoiceFlow: One-step Nonparallel Voice Conversion with Mean Flows | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
