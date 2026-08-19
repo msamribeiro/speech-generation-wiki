@@ -3,6 +3,7 @@ last_updated: '2026-08-02'
 paper_count: 10
 papers:
 - id: '2304.09116'
+  published_date: "2023-04-18"
   entry_date: '2026-08-02'
   year: 2023
   venue: arXiv
@@ -81,6 +82,7 @@ papers:
     limiting reproducibility.
   caveats: []
 - id: interspeech-2025-0347
+  published_date: "2025-08-17"
   entry_date: '2026-08-02'
   year: 2025
   venue: Interspeech
@@ -145,6 +147,7 @@ papers:
     reported.'
   caveats: []
 - id: interspeech-2025-0816
+  published_date: "2025-08-17"
   entry_date: '2026-08-02'
   year: 2025
   venue: Interspeech
@@ -212,6 +215,7 @@ papers:
     in languages where such data does not exist.
   caveats: []
 - id: interspeech-2025-1364
+  published_date: "2025-08-17"
   entry_date: '2026-08-02'
   year: 2025
   venue: Interspeech
@@ -280,6 +284,7 @@ papers:
     environments.
   caveats: []
 - id: interspeech-2025-1397
+  published_date: "2025-08-17"
   entry_date: '2026-08-02'
   year: 2025
   venue: Interspeech
@@ -351,6 +356,7 @@ papers:
     suggesting that joint timbre and style conversion remains a meaningful challenge.
   caveats: []
 - id: interspeech-2025-1531
+  published_date: "2025-08-17"
   entry_date: '2026-08-02'
   year: 2025
   venue: Interspeech
@@ -421,6 +427,7 @@ papers:
     dataset recording conditions.
   caveats: []
 - id: '2509.07038'
+  published_date: "2025-09-08"
   entry_date: '2026-08-02'
   year: 2025
   venue: arXiv
@@ -487,6 +494,7 @@ papers:
     in skilled vocal performance.
   caveats: []
 - id: '2509.15629'
+  published_date: "2025-09-19"
   entry_date: '2026-08-02'
   year: 2025
   venue: arXiv
@@ -566,6 +574,7 @@ papers:
     listening tests at scale.
   caveats: []
 - id: '2509.19883'
+  published_date: "2025-09-24"
   entry_date: '2026-08-02'
   year: 2025
   venue: arXiv
@@ -636,6 +645,7 @@ papers:
     corpora used here provide but which may not hold for less structured or lower-resource singing data.
   caveats: []
 - id: '2509.22718'
+  published_date: "2025-09-24"
   entry_date: '2026-08-02'
   year: 2025
   venue: arXiv

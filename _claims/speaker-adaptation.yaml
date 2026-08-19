@@ -3,6 +3,7 @@ last_updated: '2026-07-29'
 paper_count: 79
 papers:
 - id: '1609.03499'
+  published_date: "2016-09-12"
   entry_date: '2026-07-29'
   year: 2016
   venue: arXiv
@@ -79,6 +80,7 @@ papers:
     external modules.
   caveats: []
 - id: '1904.02882'
+  published_date: "2019-04-05"
   entry_date: '2026-07-29'
   year: 2019
   venue: arXiv
@@ -143,6 +145,7 @@ papers:
     and is attributed tentatively to model configuration rather than corpus issues.
   caveats: []
 - id: '2301.02111'
+  published_date: "2023-01-05"
   entry_date: '2026-07-29'
   year: 2023
   venue: arXiv
@@ -221,6 +224,7 @@ papers:
     acknowledges but does not experimentally mitigate.
   caveats: []
 - id: '2305.07243'
+  published_date: "2023-05-12"
   entry_date: '2026-07-29'
   year: 2023
   venue: arXiv
@@ -292,6 +296,7 @@ papers:
     relative to what the paper''s own training curves suggest would still improve results.'
   caveats: []
 - id: '2406.04904'
+  published_date: "2024-06-07"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -368,6 +373,7 @@ papers:
     speaker and prosody for cross-speaker prosody transfer, which the current architecture does not support.
   caveats: []
 - id: '2406.05370'
+  published_date: "2024-06-08"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -441,6 +447,7 @@ papers:
     inference procedure, which may complicate deployment in latency-sensitive applications.
   caveats: []
 - id: '2406.07855'
+  published_date: "2024-06-12"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -507,6 +514,7 @@ papers:
     assessment with concurrent work incomplete.
   caveats: []
 - id: '2406.18009'
+  published_date: "2024-06-26"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -583,6 +591,7 @@ papers:
     leaks through the audio prompt's transcription. Whether this matters in practice depends on the application.
   caveats: []
 - id: '2407.08551'
+  published_date: "2024-07-11"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -647,6 +656,7 @@ papers:
     with VALL-E 2 or Voicebox.
   caveats: []
 - id: '2409.03283'
+  published_date: "2024-09-05"
   entry_date: '2026-07-29'
   year: 2024
   venue: arXiv
@@ -722,6 +732,7 @@ papers:
     and more complex prosodic phenomena is not addressed.
   caveats: []
 - id: '2502.18924'
+  published_date: "2025-02-26"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -798,6 +809,7 @@ papers:
     at time of writing.
   caveats: []
 - id: iclr-2025-cuFzE8Jlvb
+  published_date: "2025-04-24"
   entry_date: '2026-07-29'
   year: 2025
   venue: ICLR
@@ -880,6 +892,7 @@ papers:
   - Code and pre-trained models are planned for release but were not available at submission time.
   caveats: []
 - id: 2025.findings-naacl.130
+  published_date: "2025-04-29"
   entry_date: '2026-07-29'
   year: 2025
   venue: NAACL
@@ -952,6 +965,7 @@ papers:
     accuracy/speed trade-off the paper surfaces but does not resolve.
   caveats: []
 - id: 2025.findings-naacl.279
+  published_date: "2025-04-29"
   entry_date: '2026-07-29'
   year: 2025
   venue: NAACL
@@ -1025,6 +1039,7 @@ papers:
     speaker-adaptation setting, and dialectal variation within Bangla is not addressed.
   caveats: []
 - id: 2025.naacl-short.65
+  published_date: "2025-04-29"
   entry_date: '2026-07-29'
   year: 2025
   venue: NAACL
@@ -1091,6 +1106,7 @@ papers:
     ablated and found completely ineffective, confirming the dependency on WavLM's particular representational structure.
   caveats: []
 - id: 2025.americasnlp-1.1
+  published_date: "2025-05-04"
   entry_date: '2026-07-29'
   year: 2025
   venue: AmericasNLP 2025
@@ -1155,6 +1171,7 @@ papers:
     been tested on adaptation to other Panoan or Amazonian languages yet, though the framework is intended to generalize.'
   caveats: []
 - id: '2505.07916'
+  published_date: "2025-05-12"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1236,6 +1253,7 @@ papers:
     outputs is reported.
   caveats: []
 - id: '2506.13053'
+  published_date: "2025-06-16"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1306,6 +1324,7 @@ papers:
     synthesis; end-to-end codec-native generation is not explored.
   caveats: []
 - id: '2507.00808'
+  published_date: "2025-07-02"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1375,6 +1394,7 @@ papers:
     more sensitive evaluation methods are needed.'
   caveats: []
 - id: '2507.02380'
+  published_date: "2025-07-03"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1431,6 +1451,7 @@ papers:
     current system.
   caveats: []
 - id: '2507.08319'
+  published_date: "2025-07-11"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1494,6 +1515,7 @@ papers:
     not independently verified.
   caveats: []
 - id: '2507.09282'
+  published_date: "2025-07-12"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1567,6 +1589,7 @@ papers:
     subjective listening tests.
   caveats: []
 - id: '2506.18296'
+  published_date: "2025-07-15"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -1621,6 +1644,7 @@ papers:
     validation of the corpus's utility for model development open.
   caveats: []
 - id: '2507.15272'
+  published_date: "2025-07-21"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1688,6 +1712,7 @@ papers:
     speakers and recording conditions not well represented in IndicSUPERB training data.
   caveats: []
 - id: '2507.16875'
+  published_date: "2025-07-22"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1755,6 +1780,7 @@ papers:
     checkpoints are publicly released.
   caveats: []
 - id: '2505.15670'
+  published_date: "2025-07-25"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -1822,6 +1848,7 @@ papers:
     conversational speech remains an open question.
   caveats: []
 - id: 2025.acl-industry.42
+  published_date: "2025-07-27"
   entry_date: '2026-07-29'
   year: 2025
   venue: ACL
@@ -1882,6 +1909,7 @@ papers:
     collection from TikTok and YouTube raises questions about license and long-term data availability.'
   caveats: []
 - id: 2025.acl-long.790
+  published_date: "2025-07-27"
   entry_date: '2026-07-29'
   year: 2025
   venue: ACL
@@ -1948,6 +1976,7 @@ papers:
     methods (FACodec-VC RTF 0.10).
   caveats: []
 - id: 2025.acl-long.87
+  published_date: "2025-07-27"
   entry_date: '2026-07-29'
   year: 2025
   venue: ACL
@@ -2026,6 +2055,7 @@ papers:
     noted but no technical mitigations are proposed.
   caveats: []
 - id: '2507.20140'
+  published_date: "2025-07-27"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2110,6 +2140,7 @@ papers:
     More sophisticated inversion attacks or embedding-space reconstruction are left as open questions.
   caveats: []
 - id: '2503.11026'
+  published_date: "2025-07-30"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2187,6 +2218,7 @@ papers:
     tonal languages, right-to-left scripts) is untested.
   caveats: []
 - id: 2025.ccl-1.77
+  published_date: "2025-08-01"
   entry_date: '2026-07-29'
   year: 2025
   venue: workshop
@@ -2249,6 +2281,7 @@ papers:
     which may not be robust in natural video production environments.
   caveats: []
 - id: '2508.14049'
+  published_date: "2025-08-05"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2314,6 +2347,7 @@ papers:
     results.'
   caveats: []
 - id: '2508.04141'
+  published_date: "2025-08-06"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2381,6 +2415,7 @@ papers:
     quantitative disentanglement assessment as an open question.
   caveats: []
 - id: '2508.04996'
+  published_date: "2025-08-07"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2454,6 +2489,7 @@ papers:
   - Singing voice conversion is mentioned as a capability but receives no quantitative evaluation.
   caveats: []
 - id: '2508.07426'
+  published_date: "2025-08-10"
   entry_date: '2026-07-29'
   year: 2025
   venue: ASRU
@@ -2535,6 +2571,7 @@ papers:
     microphone speech.'
   caveats: []
 - id: '2508.08399'
+  published_date: "2025-08-11"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2598,6 +2635,7 @@ papers:
     energy, duration, speaking rate) is not investigated.
   caveats: []
 - id: '2508.08715'
+  published_date: "2025-08-12"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2668,6 +2706,7 @@ papers:
     child-speech settings is undemonstrated.
   caveats: []
 - id: '2508.09702'
+  published_date: "2025-08-13"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2740,6 +2779,7 @@ papers:
     is validated only on Italian; its reliability for more distant language pairs is unknown.
   caveats: []
 - id: '2508.09767'
+  published_date: "2025-08-13"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -2803,6 +2843,7 @@ papers:
     to other prosodically complex languages — Mandarin tones, Scandinavian pitch accent — is left for future work.
   caveats: []
 - id: interspeech-2025-0047
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -2872,6 +2913,7 @@ papers:
     models may improve face-voice matching. - No multilingual evaluation.'
   caveats: []
 - id: interspeech-2025-0596
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -2940,6 +2982,7 @@ papers:
     with codec-based or diffusion-based TTS backbones.
   caveats: []
 - id: interspeech-2025-0787
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3005,6 +3048,7 @@ papers:
     background noise scenarios are left as future work.'
   caveats: []
 - id: interspeech-2025-0816
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3072,6 +3116,7 @@ papers:
     in languages where such data does not exist.
   caveats: []
 - id: interspeech-2025-0854
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3155,6 +3200,7 @@ papers:
     interactions between prosody control and spectrogram naturalness are not fully resolved.
   caveats: []
 - id: interspeech-2025-1034
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3217,6 +3263,7 @@ papers:
     raised but not operationalized into concrete safeguards.
   caveats: []
 - id: interspeech-2025-1344
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3280,6 +3327,7 @@ papers:
     more robust text conditioning and improved alignment methods to reduce hallucinations.
   caveats: []
 - id: interspeech-2025-1434
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3348,6 +3396,7 @@ papers:
     learned dynamic weighting conditioned on the input utterance.'
   caveats: []
 - id: interspeech-2025-1440
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3411,6 +3460,7 @@ papers:
     is not complete.
   caveats: []
 - id: interspeech-2025-1478
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3474,6 +3524,7 @@ papers:
     difficult.
   caveats: []
 - id: interspeech-2025-1536
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3543,6 +3594,7 @@ papers:
     or severity-adaptive training objectives is suggested but not pursued here.
   caveats: []
 - id: interspeech-2025-1538
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3608,6 +3660,7 @@ papers:
     or emotional speech conversion, where prosody is not captured by a pure transcription, remains an open question.
   caveats: []
 - id: interspeech-2025-1638
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3677,6 +3730,7 @@ papers:
     is left open.
   caveats: []
 - id: interspeech-2025-1726
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3743,6 +3797,7 @@ papers:
     or fine-tuning approaches that have emerged in parallel.
   caveats: []
 - id: interspeech-2025-1747
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3812,6 +3867,7 @@ papers:
     Future directions suggested include accent conversion and real-time VC applications.
   caveats: []
 - id: interspeech-2025-2679
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3875,6 +3931,7 @@ papers:
     speech therapists, for which no established protocol currently exists.'
   caveats: []
 - id: interspeech-2025-2765
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3947,6 +4004,7 @@ papers:
     platform) has not been demonstrated.
   caveats: []
 - id: interspeech-2025-2815
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -3990,6 +4048,7 @@ papers:
     concerns that the modular design aims to accommodate but does not resolve.
   caveats: []
 - id: interspeech-2025-raju25_interspeech
+  published_date: "2025-08-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: Interspeech
@@ -4043,6 +4102,7 @@ papers:
     the acknowledgement that nuanced prosodic transfer across typologically distant language pairs remains unsolved.'
   caveats: []
 - id: '2508.15565'
+  published_date: "2025-08-21"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4109,6 +4169,7 @@ papers:
     unlinkability.
   caveats: []
 - id: '2508.15931'
+  published_date: "2025-08-21"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4170,6 +4231,7 @@ papers:
     group, raising questions about attribute definition consistency and cultural transferability.
   caveats: []
 - id: '2508.17031'
+  published_date: "2025-08-23"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4236,6 +4298,7 @@ papers:
     to ground truth is not measured directly.'
   caveats: []
 - id: '2508.18006'
+  published_date: "2025-08-25"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4300,6 +4363,7 @@ papers:
     [3, 5, 3]) were chosen via early experiments but no systematic search is reported.
   caveats: []
 - id: '2411.19770'
+  published_date: "2025-08-28"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4365,6 +4429,7 @@ papers:
     (diarization, speaker counting) is not explored.
   caveats: []
 - id: '2509.00675'
+  published_date: "2025-08-31"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4443,6 +4508,7 @@ papers:
     may not hold for speakers whose acoustic characteristics fall outside the training distribution.'
   caveats: []
 - id: '2509.04667'
+  published_date: "2025-09-04"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4520,6 +4586,7 @@ papers:
     and generalization to accented or code-switched speech is untested.'
   caveats: []
 - id: '2509.04702'
+  published_date: "2025-09-04"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4584,6 +4651,7 @@ papers:
     and Mandarin support is listed as under development.
   caveats: []
 - id: '2509.07376'
+  published_date: "2025-09-09"
   entry_date: '2026-07-29'
   year: 2025
   venue: EMNLP
@@ -4662,6 +4730,7 @@ papers:
     zero-shot TTS systems, so absolute quality relative to the broader field is unclear.
   caveats: []
 - id: '2506.04077'
+  published_date: "2025-09-11"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4728,6 +4797,7 @@ papers:
     produces convincing non-native-sounding speech or whether the scoring model is robust to low-fidelity synthesis.
   caveats: []
 - id: '2509.09631'
+  published_date: "2025-09-11"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4802,6 +4872,7 @@ papers:
     research direction.
   caveats: []
 - id: '2509.14270'
+  published_date: "2025-09-15"
   entry_date: '2026-07-29'
   year: 2025
   venue: ACL
@@ -4868,6 +4939,7 @@ papers:
     the automated MOS and SNR scores.
   caveats: []
 - id: '2412.16846'
+  published_date: "2025-09-17"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -4947,6 +5019,7 @@ papers:
     architecture from data quality as the source of WER gains.'
   caveats: []
 - id: '2509.15253'
+  published_date: "2025-09-18"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5013,6 +5086,7 @@ papers:
     may not capture the full distribution of visual complexity encountered in complete volumes.
   caveats: []
 - id: '2509.15462'
+  published_date: "2025-09-18"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5089,6 +5163,7 @@ papers:
     different network conditions.
   caveats: []
 - id: '2509.15629'
+  published_date: "2025-09-19"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5168,6 +5243,7 @@ papers:
     listening tests at scale.
   caveats: []
 - id: '2509.15969'
+  published_date: "2025-09-19"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5241,6 +5317,7 @@ papers:
     in adverse or spontaneous speech conditions (outside the training domain) is untested.
   caveats: []
 - id: '2509.16010'
+  published_date: "2025-09-19"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5318,6 +5395,7 @@ papers:
     sets remains untested.
   caveats: []
 - id: '2509.22718'
+  published_date: "2025-09-24"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv
@@ -5387,6 +5465,7 @@ papers:
     datasets to more singers or languages will be labor-intensive.
   caveats: []
 - id: '2509.22727'
+  published_date: "2025-09-25"
   entry_date: '2026-07-29'
   year: 2025
   venue: arXiv

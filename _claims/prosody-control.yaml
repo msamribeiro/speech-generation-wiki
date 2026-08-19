@@ -3,6 +3,7 @@ last_updated: '2026-07-25'
 paper_count: 94
 papers:
 - id: '1609.03499'
+  published_date: "2016-09-12"
   entry_date: '2026-07-25'
   year: 2016
   venue: arXiv
@@ -76,6 +77,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '1703.10135'
+  published_date: "2017-03-29"
   entry_date: '2026-07-25'
   year: 2017
   venue: arXiv
@@ -135,6 +137,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '1712.05884'
+  published_date: "2017-12-16"
   entry_date: '2026-07-25'
   year: 2017
   venue: arXiv
@@ -205,6 +208,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2006.04558'
+  published_date: "2020-06-08"
   entry_date: '2026-07-25'
   year: 2020
   venue: arXiv
@@ -277,6 +281,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2104.00355'
+  published_date: "2021-04-01"
   entry_date: '2026-07-25'
   year: 2021
   venue: arXiv
@@ -345,6 +350,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2304.09116'
+  published_date: "2023-04-18"
   entry_date: '2026-07-25'
   year: 2023
   venue: arXiv
@@ -425,6 +431,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2402.01912'
+  published_date: "2024-02-02"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -492,6 +499,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2402.08093'
+  published_date: "2024-02-12"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -565,6 +573,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2403.03100'
+  published_date: "2024-03-05"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -643,6 +652,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2406.07855'
+  published_date: "2024-06-12"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -707,6 +717,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: 2025.coling-main.352
+  published_date: "2025-01-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: COLING
@@ -783,6 +794,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.coling-main.518
+  published_date: "2025-01-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: COLING
@@ -849,6 +861,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2502.04128'
+  published_date: "2025-02-06"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -921,6 +934,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2502.18924'
+  published_date: "2025-02-26"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -995,6 +1009,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: 2025.nodalida-1.32
+  published_date: "2025-03-02"
   entry_date: '2026-07-25'
   year: 2025
   venue: NoDaLiDa/Baltic-HLT 2025
@@ -1048,6 +1063,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2503.01710'
+  published_date: "2025-03-03"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1121,6 +1137,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: 2025.findings-naacl.38
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -1189,6 +1206,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: 2025.findings-naacl.471
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -1252,6 +1270,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.naacl-long.242
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -1325,6 +1344,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: 2025.naacl-long.484
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -1397,6 +1417,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2507.06235'
+  published_date: "2025-05-20"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1464,6 +1485,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.01611'
+  published_date: "2025-07-02"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1531,6 +1553,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.03912'
+  published_date: "2025-07-05"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1593,6 +1616,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.08012'
+  published_date: "2025-07-05"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1658,6 +1682,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.04598'
+  published_date: "2025-07-07"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1721,6 +1746,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.04817'
+  published_date: "2025-07-07"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1792,6 +1818,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2507.09310'
+  published_date: "2025-07-12"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1856,6 +1883,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: 2025.acl-industry.42
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1923,6 +1951,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.acl-long.1471
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1992,6 +2021,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.acl-long.346
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -2074,6 +2104,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: 2025.acl-long.790
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -2138,6 +2169,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.unlp-1.11
+  published_date: "2025-07-31"
   entry_date: '2026-07-25'
   year: 2025
   venue: UNLP
@@ -2202,6 +2234,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.ccl-1.77
+  published_date: "2025-08-01"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -2266,6 +2299,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.sigdial-1.27
+  published_date: "2025-08-01"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -2332,6 +2366,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2508.03543'
+  published_date: "2025-08-05"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2404,6 +2439,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2508.04585'
+  published_date: "2025-08-06"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACM MM
@@ -2478,6 +2514,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2507.20091'
+  published_date: "2025-08-07"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2553,6 +2590,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.06890'
+  published_date: "2025-08-09"
   entry_date: '2026-07-25'
   year: 2025
   venue: ASRU
@@ -2623,6 +2661,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.07426'
+  published_date: "2025-08-10"
   entry_date: '2026-07-25'
   year: 2025
   venue: ASRU
@@ -2699,6 +2738,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2508.08399'
+  published_date: "2025-08-11"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2765,6 +2805,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.09702'
+  published_date: "2025-08-13"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2845,6 +2886,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2508.09767'
+  published_date: "2025-08-13"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2908,6 +2950,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2508.11224'
+  published_date: "2025-08-15"
   entry_date: '2026-07-25'
   year: 2025
   venue: ASRU
@@ -2983,6 +3026,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.11273'
+  published_date: "2025-08-15"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -3050,6 +3094,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.12001'
+  published_date: "2025-08-16"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -3122,6 +3167,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0047
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3195,6 +3241,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: interspeech-2025-0143
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3277,6 +3324,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: interspeech-2025-0253
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3342,6 +3390,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: interspeech-2025-0347
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3407,6 +3456,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0383
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3476,6 +3526,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: interspeech-2025-0408
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3535,6 +3586,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0433
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3598,6 +3650,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: interspeech-2025-0464
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3665,6 +3718,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0723
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3725,6 +3779,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0754
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3803,6 +3858,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0762
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3871,6 +3927,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: interspeech-2025-0815
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -3953,6 +4010,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-0902
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4015,6 +4073,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: interspeech-2025-0948
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4093,6 +4152,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-1020
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4155,6 +4215,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-1098
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4222,6 +4283,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-1192
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4286,6 +4348,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: interspeech-2025-1334
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4350,6 +4413,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: interspeech-2025-1494
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4418,6 +4482,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-1726
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4484,6 +4549,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: interspeech-2025-1940
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4548,6 +4614,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-2032
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4614,6 +4681,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-2159
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4682,6 +4750,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-2189
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4747,6 +4816,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: interspeech-2025-2684
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -4822,6 +4892,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.13028'
+  published_date: "2025-08-18"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -4893,6 +4964,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.16332'
+  published_date: "2025-08-22"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -4974,6 +5046,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.17031'
+  published_date: "2025-08-23"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5040,6 +5113,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2508.17494'
+  published_date: "2025-08-24"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -5108,6 +5182,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.00675'
+  published_date: "2025-08-31"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5190,6 +5265,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: 2025.clicit-1.27
+  published_date: "2025-09-01"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -5257,6 +5333,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.01391'
+  published_date: "2025-09-01"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5318,6 +5395,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2506.21619'
+  published_date: "2025-09-03"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5396,6 +5474,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2506.23367'
+  published_date: "2025-09-03"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5464,6 +5543,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.03940'
+  published_date: "2025-09-04"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5527,6 +5607,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2509.04072'
+  published_date: "2025-09-04"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5603,6 +5684,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.06074'
+  published_date: "2025-09-07"
   entry_date: '2026-07-25'
   year: 2025
   venue: EMNLP
@@ -5666,6 +5748,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.07038'
+  published_date: "2025-09-08"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5732,6 +5815,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2505.17093'
+  published_date: "2025-09-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5794,6 +5878,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.15626'
+  published_date: "2025-09-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5867,6 +5952,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.17143'
+  published_date: "2025-09-21"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -5935,6 +6021,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.17516'
+  published_date: "2025-09-22"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6004,6 +6091,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.18531'
+  published_date: "2025-09-23"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6066,6 +6154,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.19231'
+  published_date: "2025-09-23"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6138,6 +6227,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.19883'
+  published_date: "2025-09-24"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6209,6 +6299,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.22718'
+  published_date: "2025-09-24"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6280,6 +6371,7 @@ papers:
   caveats:
   - Prosodic control is central to the paper's speech-generation contribution.
 - id: '2509.24570'
+  published_date: "2025-09-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6353,6 +6445,7 @@ papers:
   caveats:
   - Prosodic control is an evaluated capability but not the paper's sole contribution.
 - id: '2509.24650'
+  published_date: "2025-09-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -6427,6 +6520,7 @@ papers:
   caveats:
   - The connection to prosodic control is contextual rather than a direct conditioning contribution.
 - id: '2509.26514'
+  published_date: "2025-09-30"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv

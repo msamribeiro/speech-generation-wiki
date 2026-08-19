@@ -3,6 +3,7 @@ last_updated: '2026-07-30'
 paper_count: 28
 papers:
 - id: '1703.10135'
+  published_date: "2017-03-29"
   entry_date: '2026-07-30'
   year: 2017
   venue: arXiv
@@ -64,6 +65,7 @@ papers:
     abbreviations, punctuation) is handled by a rule-based preprocessing step rather than learned normalisation.
   caveats: []
 - id: '1712.05884'
+  published_date: "2017-12-16"
   entry_date: '2026-07-30'
   year: 2017
   venue: arXiv
@@ -145,6 +147,7 @@ papers:
   - Real-time synthesis is not addressed; WaveNet inference was known to be slow at the time of publication.
   caveats: []
 - id: '2006.04558'
+  published_date: "2020-06-08"
   entry_date: '2026-07-30'
   year: 2020
   venue: arXiv
@@ -222,6 +225,7 @@ papers:
     which makes it harder to assess the magnitude of individual component contributions in absolute terms.
   caveats: []
 - id: '2105.06337'
+  published_date: "2021-05-13"
   entry_date: '2026-07-30'
   year: 2021
   venue: arXiv
@@ -289,6 +293,7 @@ papers:
     design and loss weighting are open questions that could improve sample quality and training efficiency.
   caveats: []
 - id: '2106.15561'
+  published_date: "2021-06-29"
   entry_date: '2026-07-30'
   year: 2021
   venue: arXiv
@@ -380,6 +385,7 @@ papers:
     training and inference.'
   caveats: []
 - id: 2025.coling-main.352
+  published_date: "2025-01-19"
   entry_date: '2026-07-30'
   year: 2025
   venue: COLING
@@ -458,6 +464,7 @@ papers:
     or highly emotional speech remains untested.
   caveats: []
 - id: 2025.coling-main.518
+  published_date: "2025-01-19"
   entry_date: '2026-07-30'
   year: 2025
   venue: COLING
@@ -522,6 +529,7 @@ papers:
     modeling.
   caveats: []
 - id: iclr-2025-hQvX9MBowC
+  published_date: "2025-04-24"
   entry_date: '2026-07-30'
   year: 2025
   venue: ICLR
@@ -600,6 +608,7 @@ papers:
     with very different phonological properties.
   caveats: []
 - id: 2025.naacl-long.591
+  published_date: "2025-04-29"
   entry_date: '2026-07-30'
   year: 2025
   venue: NAACL
@@ -674,6 +683,7 @@ papers:
     but not systematically ablated.
   caveats: []
 - id: 2025.americasnlp-1.1
+  published_date: "2025-05-04"
   entry_date: '2026-07-30'
   year: 2025
   venue: AmericasNLP 2025
@@ -738,6 +748,7 @@ papers:
     been tested on adaptation to other Panoan or Amazonian languages yet, though the framework is intended to generalize.'
   caveats: []
 - id: '2507.04598'
+  published_date: "2025-07-07"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -802,6 +813,7 @@ papers:
     any system other than FastSpeech2. Model size and computational cost are not reported.
   caveats: []
 - id: 2025.conll-1.9
+  published_date: "2025-07-31"
   entry_date: '2026-07-30'
   year: 2025
   venue: CoNLL
@@ -868,6 +880,7 @@ papers:
     data experiment suggests that semantic disambiguation remains out of reach even with targeted exposure.'
   caveats: []
 - id: '2508.11273'
+  published_date: "2025-08-15"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -930,6 +943,7 @@ papers:
     scenarios are listed as future work.'
   caveats: []
 - id: '2508.12001'
+  published_date: "2025-08-16"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -1002,6 +1016,7 @@ papers:
     that operate on the same hardware, making efficiency claims difficult to contextualize.'
   caveats: []
 - id: interspeech-2025-1098
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1068,6 +1083,7 @@ papers:
     language models as a direction requiring future methodological work.
   caveats: []
 - id: interspeech-2025-1122
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1132,6 +1148,7 @@ papers:
     simultaneously requires dedicated hardware or kernel-level support that is not demonstrated.
   caveats: []
 - id: interspeech-2025-1334
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1197,6 +1214,7 @@ papers:
     intermediate representations and integration of diffusion-based waveform generation.
   caveats: []
 - id: interspeech-2025-1394
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1260,6 +1278,7 @@ papers:
     English and to larger multi-emotion multi-speaker datasets remains undemonstrated.
   caveats: []
 - id: interspeech-2025-1494
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1327,6 +1346,7 @@ papers:
     at inference time, which limits its applicability to scenarios where visual input is always present.
   caveats: []
 - id: interspeech-2025-1940
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1391,6 +1411,7 @@ papers:
     predictor modules could close this gap.
   caveats: []
 - id: interspeech-2025-2189
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1455,6 +1476,7 @@ papers:
     making compute cost comparisons to baselines unclear.
   caveats: []
 - id: interspeech-2025-2586
+  published_date: "2025-08-17"
   entry_date: '2026-07-30'
   year: 2025
   venue: Interspeech
@@ -1522,6 +1544,7 @@ papers:
     without sensitivity analysis.
   caveats: []
 - id: '2508.13028'
+  published_date: "2025-08-18"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -1590,6 +1613,7 @@ papers:
     to other languages, speakers, or sarcasm conventions.
   caveats: []
 - id: '2508.17031'
+  published_date: "2025-08-23"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -1657,6 +1681,7 @@ papers:
     to ground truth is not measured directly.'
   caveats: []
 - id: '2509.01391'
+  published_date: "2025-09-01"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -1721,6 +1746,7 @@ papers:
     inputs to FastSpeech 2 is identified as missing.
   caveats: []
 - id: '2509.06074'
+  published_date: "2025-09-07"
   entry_date: '2026-07-30'
   year: 2025
   venue: EMNLP
@@ -1785,6 +1811,7 @@ papers:
     identified by the authors.
   caveats: []
 - id: '2509.11084'
+  published_date: "2025-09-14"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv
@@ -1856,6 +1883,7 @@ papers:
     is unknown.
   caveats: []
 - id: '2509.19592'
+  published_date: "2025-09-23"
   entry_date: '2026-07-30'
   year: 2025
   venue: arXiv

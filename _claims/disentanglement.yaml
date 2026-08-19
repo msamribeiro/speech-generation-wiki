@@ -4,6 +4,7 @@ paper_count: 100
 
 papers:
   - id: "2010.05646"
+    published_date: "2020-10-12"
     entry_date: "2026-07-22"
     year: 2020
     venue: arXiv
@@ -57,6 +58,7 @@ papers:
       - "The paper does not explicitly evaluate or optimize for disentangling speaker identity from content; the unseen-speaker generalization result is used here only as indirect evidence that mel-spectrogram conditioning does not require explicit speaker-disentanglement mechanisms."
 
   - id: "2104.00355"
+    published_date: "2021-04-01"
     entry_date: "2026-07-22"
     year: 2021
     venue: arXiv
@@ -103,6 +105,7 @@ papers:
       - "Disentanglement is evaluated indirectly through proxy metrics (EER for speaker leakage, VDE/FFE for pitch) rather than a direct information-theoretic measure of attribute separation."
 
   - id: "2209.03143"
+    published_date: "2022-09-07"
     entry_date: "2026-07-22"
     year: 2022
     venue: arXiv
@@ -156,6 +159,7 @@ papers:
       - "Speaker/content separation is measured only via a speaker-classification proxy metric (3.2% accuracy on semantic-token-conditioned generations vs. 100% on codec reconstructions), not a direct information-theoretic disentanglement measure; the paper's central contribution is the generation cascade, not disentanglement per se."
 
   - id: "2304.09116"
+    published_date: "2023-04-18"
     entry_date: "2026-07-22"
     year: 2023
     venue: arXiv
@@ -208,6 +212,7 @@ papers:
       - "The paper does not explicitly evaluate content/speaker/prosody disentanglement; its controllability claims rely on the speech-prompting mechanism rather than a decomposed latent space with measured attribute leakage."
 
   - id: "2308.16692"
+    published_date: "2023-08-31"
     entry_date: "2026-07-22"
     year: 2023
     venue: arXiv
@@ -261,6 +266,7 @@ papers:
       - "Voice conversion via layer-swapping (§5.2) is characterised in the paper itself as a single-shot demonstration rather than a full evaluation against dedicated VC baselines, so the disentanglement quality it implies is not rigorously quantified beyond this qualitative use case."
 
   - id: "2312.01479"
+    published_date: "2023-12-03"
     entry_date: "2026-07-22"
     year: 2023
     venue: arXiv
@@ -307,6 +313,7 @@ papers:
       - "The framework's disentanglement claims rely entirely on qualitative demonstrations; no MOS, EER, or other quantitative disentanglement metric is reported anywhere in the paper."
 
   - id: "2402.05755"
+    published_date: "2024-02-08"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -359,6 +366,7 @@ papers:
       - "The three token streams (HuBERT content, pitch VQ-VAE, style clusters) are extracted by separately pre-trained components merged by timestamp rather than jointly optimized for disentanglement, so cross-stream leakage between the streams is not directly measured."
 
   - id: "2403.03100"
+    published_date: "2024-03-05"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -412,6 +420,7 @@ papers:
       - "The acoustic-detail subspace still exhibits measurable content and prosody leakage without gradient reversal (verified qualitatively in Appendix B.4), so the factorization is not fully complete even within this system's own attribute taxonomy; background sounds and other fine-grained characteristics are also explicitly not captured (Appendix C)."
 
   - id: "2406.02430"
+    published_date: "2024-06-04"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -465,6 +474,7 @@ papers:
       - "Self-distillation for timbre disentanglement is validated only via voice-conversion speaker-similarity metrics; no direct measurement of residual timbre leakage in the token stream itself is reported."
 
   - id: "2408.16532"
+    published_date: "2024-08-29"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -518,6 +528,7 @@ papers:
       - "WavTokenizer packs semantic and acoustic information into a single undifferentiated quantizer rather than disentangling them into separate subspaces; its semantic-richness result is evidence that some semantic content can coexist with acoustic detail without explicit separation, which complicates (rather than supports) the case for architectural disentanglement as a necessary design choice."
 
   - id: "2411.09943"
+    published_date: "2024-11-15"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -564,6 +575,7 @@ papers:
       - "Disentanglement quality is validated only via downstream VC speaker-similarity and WER metrics; the paper does not directly measure residual timbre leakage in the Whisper-derived semantic features themselves."
 
   - id: "2412.04724"
+    published_date: "2024-12-06"
     entry_date: "2026-07-22"
     year: 2024
     venue: arXiv
@@ -617,6 +629,7 @@ papers:
       - "The style extractor (a third-party factorized codec) is not described in detail in the paper, limiting exact reproducibility of the disentanglement pipeline's style-extraction stage."
 
   - id: "2409.09098"
+    published_date: "2025-01-09"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -670,6 +683,7 @@ papers:
       - "GenAID's speaker-accent disentanglement is validated via classification accuracy and clustering metrics (SCSC) rather than a direct evaluation of downstream TTS accent fidelity in isolation from naturalness."
 
   - id: "2025.coling-main.352"
+    published_date: "2025-01-19"
     entry_date: "2026-07-22"
     year: 2025
     venue: COLING
@@ -723,6 +737,7 @@ papers:
       - "The paper explicitly reports that speaker timbre and prosody are not disentangled: the model can transfer prosodic style but cannot fully separate it from speaker identity, and GST token t-SNE visualizations show partial overlap indicating incomplete independence — a negative result for prosody/timbre disentanglement in GST-based systems."
 
   - id: "2502.06490"
+    published_date: "2025-02-10"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -776,6 +791,7 @@ papers:
       - "As a survey, this paper's claims aggregate cross-system comparisons rather than presenting a novel disentanglement mechanism; the unified vocoder used for the controlled experiment (CTX-vec2wav) is itself optimized for semantic tokens, which may bias reconstruction comparisons in favor of disentangled/semantic representations."
 
   - id: "2502.07243"
+    published_date: "2025-02-11"
     entry_date: "2026-07-22"
     year: 2025
     venue: ICLR
@@ -829,6 +845,7 @@ papers:
       - "Vevo's vocabulary-size ablation (Table 2) is the paper's main direct evidence for progressive attribute stripping, but the specific vocabulary sizes (K_s=4096, K_c=32) are empirically selected rather than derived from a principled information-theoretic criterion."
 
   - id: "2503.01710"
+    published_date: "2025-03-03"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -882,6 +899,7 @@ papers:
       - "BiCodec's disentanglement into semantic and global speaker tokens trades off speaker-similarity fidelity relative to multi-stage systems (SIM 0.672 vs. 0.774 for MaskGCT on test-zh), a limitation the paper attributes to AR variability without explicit disentanglement constraints between the two token streams."
 
   - id: "2025.findings-naacl.130"
+    published_date: "2025-04-29"
     entry_date: "2026-07-22"
     year: 2025
     venue: NAACL
@@ -928,6 +946,7 @@ papers:
       - "The paper's central finding concerns vocoder representation choice (discrete units vs. continuous mel-spectrogram) rather than a novel disentanglement mechanism; it is best read as diagnostic/negative evidence about a common disentanglement-adjacent design choice (unit-based tokenization) rather than a new disentanglement method."
 
   - id: "2025.naacl-long.242"
+    published_date: "2025-04-29"
     entry_date: "2026-07-22"
     year: 2025
     venue: NAACL
@@ -973,6 +992,7 @@ papers:
       - "The architecture separates global style (timbre) from time-varying style (prosody) as two distinct representations, but no claim in the paper directly measures cross-leakage between these two streams; the disentanglement design is implicit in the architecture rather than empirically validated as a standalone result."
 
   - id: "2505.07916"
+    published_date: "2025-05-12"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1026,6 +1046,7 @@ papers:
       - "The paper's disentanglement claim rests on the speaker encoder being jointly trained end-to-end rather than through an explicit architectural bottleneck or adversarial objective; no direct information-leakage metric (e.g., content-from-speaker-embedding classification) is reported."
 
   - id: "2506.10274"
+    published_date: "2025-06-12"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1078,6 +1099,7 @@ papers:
       - "The survey discusses disentanglement-based auxiliary objectives (semantic distillation, speaker-content separation) only as part of a broader tokenizer taxonomy; it does not propose or evaluate a new disentanglement mechanism, and none of its five claims center on disentanglement as the primary variable."
 
   - id: "2507.01348"
+    published_date: "2025-07-08"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1131,6 +1153,7 @@ papers:
       - "SpeechCodeVAE's disentanglement (content/speaker/prosody separation via a frozen Whisper encoder, CTC regularization, and a frozen ECAPA-TDNN speaker encoder) is validated indirectly through zero-shot VC quality and a locality metric, not through a direct information-leakage probe between content and speaker representations."
 
   - id: "2506.23325"
+    published_date: "2025-07-09"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1184,6 +1207,7 @@ papers:
       - "The disentanglement mechanism (minimal parameter sharing between towers) is validated only against a single-channel ablation baseline; no direct information-leakage probe (e.g., classifying semantic content from the acoustic channel or vice versa) is reported."
 
   - id: "2507.09070"
+    published_date: "2025-07-11"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1230,6 +1254,7 @@ papers:
       - "Evaluation is English-only with a modest baseline set (three systems); no ablation isolates the contribution of the flow matching acoustic model relative to SemAlign itself."
 
   - id: "2507.12197"
+    published_date: "2025-07-16"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1283,6 +1308,7 @@ papers:
       - "The semantic-isolation claim rests on the first codebook's reconstruction WER approaching ground truth, not on a direct measurement of speaker or acoustic information leaking into that codebook; no cross-codebook information-leakage probe is reported."
 
   - id: "2025.acl-demo.37"
+    published_date: "2025-07-27"
     entry_date: "2026-07-22"
     year: 2025
     venue: ACL
@@ -1329,6 +1355,7 @@ papers:
       - "The articulatory-space content-speaker disentanglement is inherited from prior SPARC work (Cho et al. 2024); RT-VC's own contribution is a streaming-capable causal adaptation, not a new disentanglement mechanism."
 
   - id: "2025.acl-long.1043"
+    published_date: "2025-07-27"
     entry_date: "2026-07-22"
     year: 2025
     venue: ACL
@@ -1381,6 +1408,7 @@ papers:
       - "OZSpeech uses FACodec's factorized representation as a frozen, off-the-shelf disentangled codec; the paper does not modify or evaluate the disentanglement mechanism itself, only builds a flow-matching generator on top of it."
 
   - id: "2025.acl-long.346"
+    published_date: "2025-07-27"
     entry_date: "2026-07-22"
     year: 2025
     venue: ACL
@@ -1434,6 +1462,7 @@ papers:
       - "The core disentanglement mechanism (FACodec's frozen prosody/content/acoustic-detail/timbre factorization) is reused from NaturalSpeech 3 rather than newly proposed here; ControlSpeech's own contribution is the SMSD module and the joint conditioning architecture built on top of that pre-trained disentangled codec."
 
   - id: "2025.acl-long.87"
+    published_date: "2025-07-27"
     entry_date: "2026-07-22"
     year: 2025
     venue: ACL
@@ -1487,6 +1516,7 @@ papers:
       - "The paper does not include targeted evaluation of paralinguistic preservation (breathing, crying, emotion transfer), despite listing this as a primary contribution; NMOS and SMOS measure general naturalness and speaker similarity but are not designed to capture expressive fidelity or disentanglement quality specifically."
 
   - id: "2025.ccl-1.77"
+    published_date: "2025-08-01"
     entry_date: "2026-07-22"
     year: 2025
     venue: workshop
@@ -1532,6 +1562,7 @@ papers:
       - "Disentanglement in this paper is achieved via separate auxiliary losses (speaker timbre binding, prosody/emotion consistency, duration alignment) rather than an explicit architectural bottleneck or information-theoretic objective; no direct leakage metric between speaker, prosody, and content representations is reported."
 
   - id: "2508.02038"
+    published_date: "2025-08-04"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1585,6 +1616,7 @@ papers:
       - "The cross-orthogonal constraint is validated through downstream naturalness/similarity/expression scores rather than a direct information-leakage metric between the speaker and emotion embedding spaces; disentanglement quality is inferred from generation quality, not measured directly."
 
   - id: "2508.02849"
+    published_date: "2025-08-04"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1638,6 +1670,7 @@ papers:
       - "Codebook utilisation of 98.06% is reported for the VAE-FSQ variant but without a direct connection to downstream LM or TTS training quality being demonstrated empirically; the disentanglement claim rests on the voice-conversion ablation (Table IV) rather than a dedicated information-leakage probe."
 
   - id: "2508.04141"
+    published_date: "2025-08-06"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1684,6 +1717,7 @@ papers:
       - "The subjective decoupling evaluation (§V.C) relies on 90% evaluator agreement rather than a standardized quantitative metric, leaving rigorous assessment of the semantic/acoustic/speaker disentanglement as an open question."
 
   - id: "2507.20091"
+    published_date: "2025-08-07"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1736,6 +1770,7 @@ papers:
       - "The decoder is frozen at StyleTTS2 pre-trained weights, which bounds output quality regardless of prosody-content disentanglement quality; the paper's disentanglement claim is architectural (separate [Text] and [Prosody] token sections) rather than validated via a direct cross-leakage probe between the two."
 
   - id: "2508.06890"
+    published_date: "2025-08-09"
     entry_date: "2026-07-22"
     year: 2025
     venue: ASRU
@@ -1782,6 +1817,7 @@ papers:
       - "The small, parallel ESD corpus makes it difficult to assess whether the content/speaker/emotion disentanglement holds under more naturalistic or non-parallel conditions; the ablation study evaluates only the seen scenario, leaving unclear whether ablated variants degrade similarly for unseen speakers and emotions."
 
   - id: "2508.07426"
+    published_date: "2025-08-10"
     entry_date: "2026-07-22"
     year: 2025
     venue: ASRU
@@ -1834,6 +1870,7 @@ papers:
       - "Speaker-accent disentanglement here is pursued through data augmentation (kNN-VC timbre diversification) rather than an architectural or objective-level disentanglement mechanism; no direct information-leakage metric between speaker and accent representations is reported."
 
   - id: "2508.08095"
+    published_date: "2025-08-11"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1880,6 +1917,7 @@ papers:
       - "ERR assumes each task type primarily relies on one information type, but in practice multi-dimensional emotional speech may engage both simultaneously; the degree to which the disentanglement generalises beyond the training task taxonomy is untested, and the paper does not report adapter parameter counts, limiting efficiency comparisons."
 
   - id: "2508.08399"
+    published_date: "2025-08-11"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -1926,6 +1964,7 @@ papers:
       - "The model is not tested on any downstream application (TTS, ASR, speech LM); whether the disentangled discrete tokens actually improve over non-disentangled tokens on downstream tasks remains open future work per the authors' own acknowledgment."
 
   - id: "2508.11224"
+    published_date: "2025-08-15"
     entry_date: "2026-07-22"
     year: 2025
     venue: ASRU
@@ -1978,6 +2017,7 @@ papers:
       - "The benchmark evaluates only semantic (SSL-derived) tokens, not acoustic codec tokens, and uses a single read-speech corpus (TIMIT); duration is excluded from the prosody analysis because deduplication collapses durational information, so the benchmark does not cover the full prosody space relevant to disentanglement claims."
 
   - id: "interspeech-2025-0115"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2024,6 +2064,7 @@ papers:
       - "The bidirectional AnCoGen-Codec is compared only against the Melspectrogram baseline and not against dedicated disentanglement-oriented codec frameworks such as FreeCodec or SpeechFlow, which would provide stronger context for how the interpretability findings apply to purpose-built disentangled codecs."
 
   - id: "interspeech-2025-0196"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2069,6 +2110,7 @@ papers:
       - "The disentanglement mechanism here is spectral (low/high frequency partitioning), not the speaker/content/prosody disentanglement more commonly evaluated in this concept; whether the spectral supervision approach generalizes to attribute-level disentanglement is untested."
 
   - id: "interspeech-2025-0203"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2114,6 +2156,7 @@ papers:
       - "The AIG module is the paper's only genuine disentanglement mechanism, isolating emotion intensity from the fused content-emotion representation; the remaining claims concern conditioning modality (natural language vs. reference speech) and training objective rather than disentanglement per se."
 
   - id: "interspeech-2025-0246"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2167,6 +2210,7 @@ papers:
       - "The speaker-invariance claim is validated primarily through downstream SLM benchmark performance and reduced resynthesis WER rather than through a direct probe of residual speaker information remaining in the tokens themselves."
 
   - id: "interspeech-2025-0347"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2214,6 +2258,7 @@ papers:
       - "The GRL-based pitch disentanglement module, the paper's explicit disentanglement mechanism, did not improve naturalness in subjective evaluation and in some conditions worsened it, an unresolved negative result for gradient-reversal approaches to pitch-content separation in codecs."
 
   - id: "interspeech-2025-0383"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2267,6 +2312,7 @@ papers:
       - "The system explicitly targets disentanglement of likability from speaker identity and linguistic content using separate conditioning signals, making this a clean test case for the identity-attribute control tension that recurs across disentanglement-oriented VC systems."
 
   - id: "interspeech-2025-0433"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2313,6 +2359,7 @@ papers:
       - "The style-isolation modification (excluding style from the posterior encoder and decoder) is the paper's genuine disentanglement contribution, adapted here to a domain (non-human vocalization) far outside the concept's typical human-speech scope."
 
   - id: "interspeech-2025-0438"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2359,6 +2406,7 @@ papers:
       - "The SVD factorization and constrained-transformation ablation provide unusually clean, model-agnostic evidence for the orthogonal content-speaker subspace hypothesis that underlies much of this concept's SSL-based disentanglement work."
 
   - id: "interspeech-2025-0455"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2411,6 +2459,7 @@ papers:
       - "Disentanglement is only a peripheral aspect of this paper (pitch separation within the VAE latent, per the Wiki Connections note); none of the paper's Claims are primarily about content-speaker or content-prosody disentanglement, so its relevance to this concept is low across the board."
 
   - id: "interspeech-2025-0464"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2457,6 +2506,7 @@ papers:
       - "The paper does not ablate the number of RVQ codebooks or the sensitivity of the MI-minimisation trade-off weight, leaving the robustness of the disentanglement objective itself undercharacterised beyond the single reported configuration."
 
   - id: "interspeech-2025-0468"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2503,6 +2553,7 @@ papers:
       - "The residual subtraction between the SSL-derived RVQ-1 stream and the waveform-derived residual stream is the paper's explicit disentanglement mechanism (semantic content vs. acoustic residual); the 12.5 Hz variant's lower semantic accuracy indicates this decomposition is not lossless under aggressive downsampling."
 
   - id: "interspeech-2025-0575"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2549,6 +2600,7 @@ papers:
       - "This paper does not propose a new disentanglement mechanism; it exploits an existing codec's speaker/content separation (SpeechTokenizer's RVQ layering) as infrastructure for a watermarking application, making it evidence for the practical consequences of codec-level disentanglement rather than a contribution to disentanglement methodology itself."
 
   - id: "interspeech-2025-0596"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2594,6 +2646,7 @@ papers:
       - "The disentanglement here is between speaker timbre and articulation distortion (via the knowledge-anchoring teacher-student objective), a narrower and more applied framing than the content-speaker-prosody disentanglement more typical of this concept."
 
   - id: "interspeech-2025-0656"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2640,6 +2693,7 @@ papers:
       - "The alignment module explicitly maps EEG features into a shared speaker embedding space, a cross-modal disentanglement scheme distinct from the within-speech content-speaker disentanglement more typical of this concept; the EEG recordings used (intracranial, high SNR) may not transfer to consumer-grade scalp EEG."
 
   - id: "interspeech-2025-0723"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2686,6 +2740,7 @@ papers:
       - "This is a post-hoc, retraining-free disentanglement approach (editing pre-trained encoder activations in a compressed latent space) rather than a training-time architectural mechanism, offering a distinct methodological angle within the concept."
 
   - id: "interspeech-2025-0815"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2740,6 +2795,7 @@ papers:
       - "This paper's title frames source timbre leakage explicitly as a disentanglement problem, making it a directly central paper for the concept; the acknowledged and unresolved intelligibility regression from discrete units is a clear negative data point for the disentanglement-via-quantization approach."
 
   - id: "interspeech-2025-0816"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2785,6 +2841,7 @@ papers:
       - "The disentanglement/alignment problem addressed here is cross-domain (speech vs. singing) speaker embedding alignment rather than the within-utterance content-speaker-prosody disentanglement more typical of this concept."
 
   - id: "interspeech-2025-0948"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2837,6 +2894,7 @@ papers:
       - "The F0-constrained speaker encoder is the paper's genuine disentanglement mechanism, isolating speaker identity from emotion-driven pitch manipulation; the remaining claims concern the natural-language conditioning interface rather than disentanglement per se."
 
   - id: "interspeech-2025-1081"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2883,6 +2941,7 @@ papers:
       - "The SNCR module's entropy-based dual restoration loss is a genuinely distinct disentanglement mechanism from mutual-information or gradient-reversal approaches elsewhere in this concept, offering an instance-normalization-residual framing of the content-speaker separation problem."
 
   - id: "interspeech-2025-1101"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2936,6 +2995,7 @@ papers:
       - "The MI-minimisation disentanglement mechanism (vCLUB) and the paired auxiliary supervised heads together give this paper a well-controlled ablation isolating the specific contribution of disentanglement from that of inference-time guidance, a useful methodological separation for the concept."
 
   - id: "interspeech-2025-1106"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -2989,6 +3049,7 @@ papers:
       - "LSCodec's explicit speaker-perturbation-plus-bottleneck design provides a clean, well-ablated single-codebook counterpoint to the SSL-distillation-based disentanglement approaches (e.g., DualCodec, SpeechTokenizer) elsewhere in this concept."
 
   - id: "interspeech-2025-1115"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3042,6 +3103,7 @@ papers:
       - "The hierarchical disentanglement strategy separates attributes primarily by granularity (coarse global vs. frame-level) rather than by an explicit information-theoretic or adversarial bottleneck; SSMOS stability across the three prompt modalities is the paper's main indirect evidence for successful timbre-emotion separation."
 
   - id: "interspeech-2025-1192"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3088,6 +3150,7 @@ papers:
       - "No ablation isolates the GRL component from the 0.8-dropout component, so the paper does not cleanly attribute disentanglement quality to the adversarial mechanism alone versus the dropout regularisation."
 
   - id: "interspeech-2025-1210"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3141,6 +3204,7 @@ papers:
       - "The orthogonality loss is framed explicitly as a stability improvement over mutual-information-based disentanglement losses used in prior emotional voice conversion work, providing a direct methodological comparison point for this concept."
 
   - id: "interspeech-2025-1394"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3187,6 +3251,7 @@ papers:
       - "Directly critiques GRL, VQ, and orthogonal-loss disentanglement approaches as relying on explicit speaker labels and introducing a tension between feature separation and synthesis quality, offering a comparative framing distinct from papers that only report their own method's ablations."
 
   - id: "interspeech-2025-1397"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3240,6 +3305,7 @@ papers:
       - "Demonstrates disentanglement specifically for F0 sub-components (melody vs. vibrato) via discrete wavelet transform rather than the more common content/timbre/prosody split, broadening the range of attributes addressed under this concept."
 
   - id: "interspeech-2025-1434"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3286,6 +3352,7 @@ papers:
       - "Offers a novel signal-level (non-architectural) disentanglement mechanism — time reversal as data augmentation — distinct from the adversarial, VQ, and orthogonality-based approaches otherwise dominant in this concept's evidence base."
 
   - id: "interspeech-2025-1440"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3332,6 +3399,7 @@ papers:
       - "The paper explicitly acknowledges (via t-SNE visualisation) that its own prosody/speaker separation is incomplete, providing a rare self-reported limitation on disentanglement completeness rather than a claim of clean separation."
 
   - id: "interspeech-2025-1531"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3378,6 +3446,7 @@ papers:
       - "Frames disentanglement as a purely geometric/statistical property of pretrained SSL embedding dimensions rather than an explicit architectural or loss-based mechanism, an unusual framing relative to most disentanglement papers in this concept."
 
   - id: "interspeech-2025-1538"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3424,6 +3493,7 @@ papers:
       - "The disentanglement mechanism here is joint ASR-VC training with separate encoder streams (Whisper for content, ERes2Net for speaker) reinforcing content-speaker separation, rather than an explicit adversarial or information-theoretic bottleneck; the paper does not directly ablate the disentanglement quality of the two streams in isolation."
 
   - id: "interspeech-2025-1638"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3470,6 +3540,7 @@ papers:
       - "Uses a gradient-reversal loss specifically to strip emotional content from the 'non-emotion style' branch, providing another GRL-based disentanglement data point alongside the voice-impression-control (interspeech-2025-1192) and DiEmo-TTS (interspeech-2025-1394) papers in this batch."
 
   - id: "interspeech-2025-1639"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3523,6 +3594,7 @@ papers:
       - "Provides a direct empirical contrast between codec-level (RVQ distillation) and surface-level (VC conditioning) disentanglement for the same style attribute and encoder, finding the codec-level route succeeds while the conditioning route fails — a useful architectural datapoint for the concept."
 
   - id: "interspeech-2025-1684"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3569,6 +3641,7 @@ papers:
       - "Uses a pretrained VC model (Seed-VC) as an off-the-shelf timbre-stripping preprocessing step to generate disentangled training targets, rather than training a dedicated disentanglement module end-to-end — a lightweight, reusable pattern distinct from other papers in this batch."
 
   - id: "interspeech-2025-1779"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3614,6 +3687,7 @@ papers:
       - "Disentanglement here (content/pitch/timbre as separate encoder streams recombined via cross-attention fusion) is a supporting architectural element rather than the paper's primary contribution, which is the rectified-flow generative backbone; the speaker-similarity gain is best attributed jointly to the fusion module and the flow backbone rather than isolated to disentanglement alone."
 
   - id: "interspeech-2025-2586"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3660,6 +3734,7 @@ papers:
       - "Introduces the SD (orthogonality) + SP (prosody-preserving cosine) loss pairing as an explicit remedy for the failure mode where aggressive content removal also strips prosody, directly relevant to the disentanglement-completeness open question raised by other papers in this batch (e.g. FreeCodec's incomplete prosody/speaker separation)."
 
   - id: "interspeech-2025-2684"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3713,6 +3788,7 @@ papers:
       - "Provides a direct empirical demonstration of an incomplete disentanglement failure mode: the same-speaker training assumption for the prosody encoder causes residual speaker information to leak into prosody tokens, producing the largest ablation degradation of any component tested."
 
   - id: "interspeech-2025-cho25c_interspeech"
+    published_date: "2025-08-17"
     entry_date: "2026-07-22"
     year: 2025
     venue: Interspeech
@@ -3751,6 +3827,7 @@ papers:
       - "Reiterates the same H2NH architecture's content/style separation (style applied only to the prior and flow modules, not the posterior encoder) as the already-integrated companion research paper (interspeech-2025-0433), without adding new disentanglement-specific ablations or metrics."
 
   - id: "2508.15565"
+    published_date: "2025-08-21"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -3796,6 +3873,7 @@ papers:
       - "This paper is only tangentially related to disentanglement: it perturbs the speech signal to fool a speaker verification system rather than explicitly separating speaker identity from content or style in a learned representation."
 
   - id: "2508.15931"
+    published_date: "2025-08-21"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -3842,6 +3920,7 @@ papers:
       - "The disentanglement mechanism here (differential attention suppressing shared identity information between paired speaker embeddings) targets attribute detection rather than attribute generation, making this an evaluation-side rather than synthesis-side contribution to the concept."
 
   - id: "2508.16188"
+    published_date: "2025-08-22"
     entry_date: "2026-07-22"
     year: 2025
     venue: EMNLP
@@ -3887,6 +3966,7 @@ papers:
       - "Disentanglement here refers to SMIRK's separation of facial expression and jaw parameters in the visual modality (chosen specifically for this property over larger visual encoders), rather than any disentanglement mechanism applied to the speech signal itself; relevance to this concept is peripheral."
 
   - id: "2508.16332"
+    published_date: "2025-08-22"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -3938,6 +4018,7 @@ papers:
     caveats:
       - "The content-style tokenizer's timbre disentanglement (via an information bottleneck, reconstructing chromagram and Whisper features while excluding speaker identity) is described only briefly in the Method section and is not directly ablated in this paper; the more thoroughly evidenced contributions (chromagram prosody bridging, EPL/IPL unification, multi-objective GRPO) are captured under prosody-control and rlhf-speech rather than disentanglement specifically."
   - id: "2508.17031"
+    published_date: "2025-08-23"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -3982,6 +4063,7 @@ papers:
     caveats:
       - "Disentanglement here is implicit: the cross-modal attention mechanism separates phoneme content from audio-derived speaker style only as a byproduct of the style-transfer task, not as an explicit or directly measured disentanglement objective; no dedicated metric isolates content-style separation quality."
   - id: "2508.19205"
+    published_date: "2025-08-26"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4033,6 +4115,7 @@ papers:
     caveats:
       - "The semantic/acoustic tokenizer split is inherited from established SpeechTokenizer-style disentanglement rather than introduced as a novel mechanism here, and the paper does not directly ablate or measure the quality of the separation itself; relevance to this concept is peripheral relative to the paper's core contribution (ultra-low-frame-rate compression and next-token diffusion)."
   - id: "2411.19770"
+    published_date: "2025-08-28"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4077,6 +4160,7 @@ papers:
     caveats:
       - "Noro's core contribution is a genuine, directly validated speaker-noise disentanglement objective (the noise-agnostic contrastive loss), confirmed via t-SNE visualisation showing clean/noisy representation clusters merging under the proposed loss rather than assumed from architecture alone."
   - id: "2507.14534"
+    published_date: "2025-08-30"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4121,6 +4205,7 @@ papers:
     caveats:
       - "Disentanglement here is limited to the Adaptive Style Encoder's clustering-VQ filtering of non-style content into a style codebook; the paper does not explicitly frame or measure content-style-timbre separation as a primary contribution, so relevance to this concept is secondary to the paper's main streaming-engineering focus."
   - id: "2509.00503"
+    published_date: "2025-08-30"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4165,6 +4250,7 @@ papers:
     caveats:
       - "The paper frames token compression as an implicit form of disentangling redundant from informative content, but does not explicitly separate semantic from paralinguistic or speaker attributes; relevance to this concept is analogical rather than a direct disentanglement mechanism."
   - id: "2506.21619"
+    published_date: "2025-09-03"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4216,6 +4302,7 @@ papers:
     caveats:
       - "The GRL-based emotion-speaker disentanglement is a real architectural mechanism but is not directly ablated in isolation in this paper; its validation is inferred from the three-stage curriculum results (which combine disentanglement and staged-training effects) rather than a dedicated GRL on/off comparison."
   - id: "2509.09201"
+    published_date: "2025-09-11"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4267,6 +4354,7 @@ papers:
     caveats:
       - "DeCodec's SOP+RST design is one of the more rigorous disentanglement contributions in this batch, with an explicit orthogonality constraint and swap-training procedure that directly proves non-leakage between speech and background subspaces rather than relying on downstream task performance alone."
   - id: "2509.13068"
+    published_date: "2025-09-16"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4318,6 +4406,7 @@ papers:
     caveats:
       - "MSR-Codec is presented explicitly as a structural alternative to adversarial disentanglement methods such as NaturalSpeech 3, directly relevant to the concept's distinction between architectural and adversarial disentanglement approaches."
   - id: "2509.14684"
+    published_date: "2025-09-18"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4369,6 +4458,7 @@ papers:
     caveats:
       - "DAIEN-TTS's SES module is a genuine speech/environment separation mechanism validated via ablation (cross-attention vs. concatenation), directly relevant to representation-level disentanglement even though its downstream framing is environment-aware TTS rather than speaker/content separation."
   - id: "2509.15626"
+    published_date: "2025-09-19"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4420,6 +4510,7 @@ papers:
     caveats:
       - "This paper is notable within the concept for demonstrating that leakage reduction can be achieved purely through training-data decoupling (different reference utterances, or no reference at all) rather than an architectural or adversarial mechanism, complementing MSR-Codec's structural approach and Noro's contrastive approach."
   - id: "2509.16010"
+    published_date: "2025-09-19"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4471,6 +4562,7 @@ papers:
     caveats:
       - "Fed-PISA's ID-LoRA/Style-LoRA split is a clean instance of identity-style disentanglement implemented via separate, non-overlapping-gradient adapter modules rather than a shared representation regularised by a disentanglement loss."
   - id: "2509.17006"
+    published_date: "2025-09-21"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4515,6 +4607,7 @@ papers:
     caveats:
       - "MBCodec's contribution is the operationalisation of semantic-acoustic disentanglement via explicit PQMF frequency-band codebook assignment, extending SpeechTokenizer's residual-distillation approach to a more granular, per-codebook functional separation."
   - id: "2509.17516"
+    published_date: "2025-09-22"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4559,6 +4652,7 @@ papers:
     caveats:
       - "The decoupled prompt/target training strategy is a training-recipe-level disentanglement mechanism (separating what the prompt teaches about identity from what the target teaches about prosody), distinct from the architectural or adversarial mechanisms used by codec-focused papers in this concept."
   - id: "2509.18060"
+    published_date: "2025-09-22"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4603,6 +4697,7 @@ papers:
     caveats:
       - "TMD-TTS's DSDR-Net routes dialect-specific acoustic patterns through dedicated FFN sub-networks, a conditional-computation form of attribute disentanglement distinct from the semantic/acoustic or speaker/style separations more commonly seen in this concept; relevance is real but narrower in scope, confined to a single low-resource dialect continuum."
   - id: "2509.19231"
+    published_date: "2025-09-23"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4647,6 +4742,7 @@ papers:
     caveats:
       - "This paper applies, rather than proposes, an acoustic/prosodic/identity style disentanglement inherited from StyleTTS2; its contribution to this concept is evidence that an existing disentangled representation transfers usefully to a novel clinical application (pediatric speech disorder reconstruction) via targeted fine-tuning rather than a new disentanglement mechanism."
   - id: "2509.19883"
+    published_date: "2025-09-24"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4691,6 +4787,7 @@ papers:
     caveats:
       - "CoMelSinger's diagnostic experiment provides direct, general evidence, beyond its own singing-synthesis application, that prosody leakage from acoustic prompts is a real phenomenon in prompt-based masked generative TTS models broadly, generalizing beyond the paper's singing-synthesis framing."
   - id: "2509.22718"
+    published_date: "2025-09-24"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4735,6 +4832,7 @@ papers:
     caveats:
       - "Disentanglement here is entirely inherited from StyleSinger's RVQ-based style extractor, used as a frozen or lightly adapted component; PerformSinger itself does not introduce a new disentanglement mechanism, so relevance to this concept is peripheral."
   - id: "2505.10599"
+    published_date: "2025-09-25"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4779,6 +4877,7 @@ papers:
     caveats:
       - "The speaker/emotion separation in UDDETTS (a fixed neutral-utterance speaker embedding versus ADV/label emotion tokens) is a design detail supporting the paper's semi-supervised training scheme rather than a directly evidenced or ablated disentanglement contribution; none of the paper's extracted claims address this separation directly."
   - id: "2509.22062"
+    published_date: "2025-09-26"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv
@@ -4823,6 +4922,7 @@ papers:
     caveats:
       - "S3Codec's split-RVQ design (an ASR-distilled semantic codebook plus parallel, non-residual acoustic levels) follows Mimi/SpeechTokenizer's semantic-acoustic disentanglement pattern with a different teacher signal (Whisper ASR instead of SSL); the paper's ablation directly isolates this substitution's effect on downstream TTS intelligibility."
   - id: "2509.24650"
+    published_date: "2025-09-29"
     entry_date: "2026-07-22"
     year: 2025
     venue: arXiv

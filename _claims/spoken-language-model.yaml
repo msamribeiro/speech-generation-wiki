@@ -3,6 +3,7 @@ last_updated: '2026-07-27'
 paper_count: 127
 papers:
 - id: '2209.03143'
+  published_date: "2022-09-07"
   entry_date: '2026-07-27'
   year: 2022
   venue: arXiv
@@ -131,6 +132,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2301.02111'
+  published_date: "2023-01-05"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -206,6 +208,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2301.11325'
+  published_date: "2023-01-26"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -285,6 +288,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2305.09636'
+  published_date: "2023-05-16"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -360,6 +364,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2305.11000'
+  published_date: "2023-05-18"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -426,6 +431,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2305.15255'
+  published_date: "2023-05-24"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -483,6 +489,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2306.12925'
+  published_date: "2023-06-22"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -558,6 +565,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2310.00704'
+  published_date: "2023-10-01"
   entry_date: '2026-07-27'
   year: 2023
   venue: arXiv
@@ -633,6 +641,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2402.05755'
+  published_date: "2024-02-08"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -707,6 +716,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2402.13236'
+  published_date: "2024-02-20"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -783,6 +793,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2408.02622'
+  published_date: "2024-08-05"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -845,6 +856,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2408.16532'
+  published_date: "2024-08-29"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -924,6 +936,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2408.16725'
+  published_date: "2024-08-29"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -985,6 +998,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2409.06666'
+  published_date: "2024-09-10"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1060,6 +1074,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2410.00037'
+  published_date: "2024-09-17"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1135,6 +1150,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2410.03751'
+  published_date: "2024-10-01"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1231,6 +1247,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2410.11190'
+  published_date: "2024-10-15"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1296,6 +1313,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2410.17196'
+  published_date: "2024-10-22"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1366,6 +1384,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2410.17799'
+  published_date: "2024-10-23"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1433,6 +1452,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2411.00774'
+  published_date: "2024-11-01"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1507,6 +1527,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2411.13577'
+  published_date: "2024-11-15"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1588,6 +1609,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2411.17607'
+  published_date: "2024-11-26"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1672,6 +1694,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2411.18803'
+  published_date: "2024-11-27"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1730,6 +1753,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2411.19842'
+  published_date: "2024-11-29"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1812,6 +1836,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2412.02612'
+  published_date: "2024-12-03"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1895,6 +1920,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2412.15649'
+  published_date: "2024-12-20"
   entry_date: '2026-07-27'
   year: 2024
   venue: arXiv
@@ -1975,6 +2001,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2501.06282'
+  published_date: "2025-01-10"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2053,6 +2080,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.coling-industry.29
+  published_date: "2025-01-19"
   entry_date: '2026-07-27'
   year: 2025
   venue: COLING Industry Track
@@ -2111,6 +2139,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2409.20007'
+  published_date: "2025-01-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2172,6 +2201,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2502.06490'
+  published_date: "2025-02-10"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2257,6 +2287,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2502.11946'
+  published_date: "2025-02-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2344,6 +2375,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2502.17239'
+  published_date: "2025-02-24"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2429,6 +2461,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2503.14345'
+  published_date: "2025-03-18"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2514,6 +2547,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2504.08528'
+  published_date: "2025-04-11"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2589,6 +2623,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2504.10344'
+  published_date: "2025-04-14"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -2670,6 +2705,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: iclr-2025-868masI331
+  published_date: "2025-04-24"
   entry_date: '2026-07-27'
   year: 2025
   venue: ICLR
@@ -2745,6 +2781,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: iclr-2025-dGSOn7sdWg
+  published_date: "2025-04-24"
   entry_date: '2026-07-27'
   year: 2025
   venue: ICLR
@@ -2824,6 +2861,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: iclr-2025-tQ1PmLfPBL
+  published_date: "2025-04-24"
   entry_date: '2026-07-27'
   year: 2025
   venue: ICLR
@@ -2896,6 +2934,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.naacl-demo.12
+  published_date: "2025-04-29"
   entry_date: '2026-07-27'
   year: 2025
   venue: NAACL
@@ -2980,6 +3019,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.naacl-demo.21
+  published_date: "2025-04-29"
   entry_date: '2026-07-27'
   year: 2025
   venue: NAACL
@@ -3056,6 +3096,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.naacl-long.484
+  published_date: "2025-04-29"
   entry_date: '2026-07-27'
   year: 2025
   venue: NAACL
@@ -3124,6 +3165,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2505.02625'
+  published_date: "2025-05-05"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3208,6 +3250,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2505.09558'
+  published_date: "2025-05-14"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3281,6 +3324,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2506.10274'
+  published_date: "2025-06-12"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3361,6 +3405,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.02380'
+  published_date: "2025-07-03"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3418,6 +3463,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2506.23325'
+  published_date: "2025-07-09"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3500,6 +3546,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2412.18603'
+  published_date: "2025-07-10"
   entry_date: '2026-07-27'
   year: 2025
   venue: ICML
@@ -3560,6 +3607,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.16632'
+  published_date: "2025-07-22"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3641,6 +3689,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2505.15670'
+  published_date: "2025-07-25"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3704,6 +3753,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.18119'
+  published_date: "2025-07-25"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3779,6 +3829,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.18897'
+  published_date: "2025-07-25"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -3845,6 +3896,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.1252
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -3908,6 +3960,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.388
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -3975,6 +4028,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.65
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4060,6 +4114,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.654
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4143,6 +4198,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.681
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4205,6 +4261,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.682
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4293,6 +4350,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.817
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4366,6 +4424,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.912
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4449,6 +4508,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.acl-long.997
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4519,6 +4579,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.101
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4598,6 +4659,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.1051
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4673,6 +4735,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.115
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4743,6 +4806,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.470
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4804,6 +4868,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.534
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4863,6 +4928,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.631
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL Findings
@@ -4931,6 +4997,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.75
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -4998,6 +5065,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.findings-ijcnlp.49
+  published_date: "2025-07-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACL
@@ -5066,6 +5134,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.23159'
+  published_date: "2025-07-30"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5132,6 +5201,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: 2025.iwslt-1.5
+  published_date: "2025-07-31"
   entry_date: '2026-07-27'
   year: 2025
   venue: IWSLT
@@ -5193,6 +5263,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.02013'
+  published_date: "2025-08-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5257,6 +5328,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.02849'
+  published_date: "2025-08-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5329,6 +5401,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.04585'
+  published_date: "2025-08-06"
   entry_date: '2026-07-27'
   year: 2025
   venue: ACM MM
@@ -5410,6 +5483,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2507.20091'
+  published_date: "2025-08-07"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5488,6 +5562,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.07273'
+  published_date: "2025-08-10"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5554,6 +5629,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.07375'
+  published_date: "2025-08-10"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5624,6 +5700,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.08095'
+  published_date: "2025-08-11"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5687,6 +5764,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.08961'
+  published_date: "2025-08-12"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5760,6 +5838,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.09600'
+  published_date: "2025-08-13"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5832,6 +5911,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.11224'
+  published_date: "2025-08-15"
   entry_date: '2026-07-27'
   year: 2025
   venue: ASRU
@@ -5908,6 +5988,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2503.04721'
+  published_date: "2025-08-16"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -5979,6 +6060,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0166
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6042,6 +6124,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0246
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6115,6 +6198,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0310
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6180,6 +6264,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0468
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6251,6 +6336,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0739
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6321,6 +6407,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0756
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6383,6 +6470,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-0874
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6466,6 +6554,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-1289
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6532,6 +6621,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-1538
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6601,6 +6691,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-1595
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6663,6 +6754,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-1641
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6730,6 +6822,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-1873
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6790,6 +6883,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-2328
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6859,6 +6953,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-2564
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6930,6 +7025,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-2660
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -6992,6 +7088,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: interspeech-2025-bokkahallisatish25_interspeech
+  published_date: "2025-08-17"
   entry_date: '2026-07-27'
   year: 2025
   venue: Interspeech
@@ -7045,6 +7142,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.15827'
+  published_date: "2025-08-18"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7138,6 +7236,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.16188'
+  published_date: "2025-08-22"
   entry_date: '2026-07-27'
   year: 2025
   venue: EMNLP
@@ -7201,6 +7300,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.16790'
+  published_date: "2025-08-22"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7284,6 +7384,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.17623'
+  published_date: "2025-08-25"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7346,6 +7447,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.19205'
+  published_date: "2025-08-26"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7424,6 +7526,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.20660'
+  published_date: "2025-08-28"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7495,6 +7598,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.02020'
+  published_date: "2025-09-02"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7574,6 +7678,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.05359'
+  published_date: "2025-09-03"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7638,6 +7743,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.03940'
+  published_date: "2025-09-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7701,6 +7807,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.04093'
+  published_date: "2025-09-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7757,6 +7864,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.04685'
+  published_date: "2025-09-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7837,6 +7945,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.04702'
+  published_date: "2025-09-04"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7895,6 +8004,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.06502'
+  published_date: "2025-09-08"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -7968,6 +8078,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.09716'
+  published_date: "2025-09-09"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8032,6 +8143,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.09174'
+  published_date: "2025-09-11"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8110,6 +8222,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2508.18240'
+  published_date: "2025-09-15"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8182,6 +8295,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.12171'
+  published_date: "2025-09-15"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8245,6 +8359,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.14882'
+  published_date: "2025-09-18"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8324,6 +8439,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.16589'
+  published_date: "2025-09-20"
   entry_date: '2026-07-27'
   year: 2025
   venue: EMNLP
@@ -8397,6 +8513,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.17765'
+  published_date: "2025-09-22"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8467,6 +8584,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2501.04561'
+  published_date: "2025-09-23"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8533,6 +8651,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.19186'
+  published_date: "2025-09-23"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8602,6 +8721,7 @@ papers:
   - For spoken language models, this paper provides medium-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.20410'
+  published_date: "2025-09-24"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8667,6 +8787,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2506.21875'
+  published_date: "2025-09-26"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8729,6 +8850,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.22243'
+  published_date: "2025-09-26"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8791,6 +8913,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2510.02352'
+  published_date: "2025-09-27"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8854,6 +8977,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.23938'
+  published_date: "2025-09-28"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8918,6 +9042,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.25131'
+  published_date: "2025-09-29"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -8989,6 +9114,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.26276'
+  published_date: "2025-09-30"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv
@@ -9053,6 +9179,7 @@ papers:
   - For spoken language models, this paper provides high-relevance evidence; claims primarily concerning
     other concepts remain included but are marked low relevance.
 - id: '2509.26542'
+  published_date: "2025-09-30"
   entry_date: '2026-07-27'
   year: 2025
   venue: arXiv

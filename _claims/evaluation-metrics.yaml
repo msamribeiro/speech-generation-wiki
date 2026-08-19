@@ -3,6 +3,7 @@ last_updated: "2026-07-21"
 paper_count: 285
 papers:
 - id: "1703.10135"
+  published_date: "2017-03-29"
   entry_date: "2026-07-20"
   year: 2017
   venue: arXiv
@@ -62,6 +63,7 @@ papers:
     reported MOS, making this an early but methodologically thin example of the crowdsourced-MOS protocol
     later standardised across TTS papers.
 - id: "1712.05884"
+  published_date: "2017-12-16"
   entry_date: "2026-07-20"
   year: 2017
   venue: arXiv
@@ -135,6 +137,7 @@ papers:
     Tacotron/Griffin-Lim, concatenative, parametric) are not conducted directly side-by-side, limiting
     numerical comparisons to relative ordering within this single paper rather than across the literature.
 - id: "1904.02882"
+  published_date: "2019-04-05"
   entry_date: "2026-07-20"
   year: 2019
   venue: arXiv
@@ -196,6 +199,7 @@ papers:
     versions can be misattributed to segmentation or punctuation improvements when the underlying training
     data volume also changed.
 - id: "2006.04558"
+  published_date: "2020-06-08"
   entry_date: "2026-07-20"
   year: 2020
   venue: arXiv
@@ -265,6 +269,7 @@ papers:
     rather than the more interpretable absolute MOS, making it harder to assess the magnitude of individual
     component contributions in absolute perceptual terms.
 - id: "2010.05646"
+  published_date: "2020-10-12"
   entry_date: "2026-07-20"
   year: 2020
   venue: arXiv
@@ -333,6 +338,7 @@ papers:
     reported elsewhere (different raters, different test sets) should be treated with caution; this is
     a widely-cited methodological caution in the vocoder literature.
 - id: "2105.06337"
+  published_date: "2021-05-13"
   entry_date: "2026-07-20"
   year: 2021
   venue: arXiv
@@ -392,6 +398,7 @@ papers:
     comparison, though the FastSpeech baseline used an unofficial reimplementation that the authors acknowledge
     may understate that system's true quality.
 - id: "2106.15561"
+  published_date: "2021-06-29"
   entry_date: "2026-07-20"
   year: 2021
   venue: arXiv
@@ -470,6 +477,7 @@ papers:
     mutual disagreement, which limits its direct utility as an evaluation-metrics reference beyond serving
     as a historical catalogue of what metrics (MOS, RTF, likelihood) were standard as of 2021.
 - id: "2204.02152"
+  published_date: "2022-04-05"
   entry_date: "2026-07-20"
   year: 2022
   venue: arXiv
@@ -528,6 +536,7 @@ papers:
     reused automatic speech-quality proxy in downstream TTS evaluation pipelines, directly shaping how
     the field substitutes automatic scoring for costly human listening tests.
 - id: "2206.04658"
+  published_date: "2022-06-09"
   entry_date: "2026-07-20"
   year: 2022
   venue: arXiv
@@ -600,6 +609,7 @@ papers:
     native English-speaking Mechanical Turk workers even for non-English and OOD test conditions, which
     may introduce evaluator-language bias into the reported scores.
 - id: "2210.13438"
+  published_date: "2022-10-24"
   entry_date: "2026-07-20"
   year: 2022
   venue: arXiv
@@ -668,6 +678,7 @@ papers:
     outlier filtering) that has become a methodological reference point for subsequent codec evaluation,
     though none of its own claims directly address metric validity or cross-paper comparability.
 - id: "2212.04356"
+  published_date: "2022-12-06"
   entry_date: "2026-07-20"
   year: 2022
   venue: arXiv
@@ -731,6 +742,7 @@ papers:
     the authors flag (§4.4) as a risk of overfitting the normalizer to Whisper-specific output patterns
     when using it as a WER scoring tool.'
 - id: "2301.11325"
+  published_date: "2023-01-26"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -801,6 +813,7 @@ papers:
     than a speech-generation system, so its contribution to this concept is limited to this generalisable
     evaluation-methodology lesson rather than to TTS-specific evidence.
 - id: "2301.12503"
+  published_date: "2023-01-29"
   entry_date: "2026-07-20"
   year: 2023
   venue: ICML
@@ -863,6 +876,7 @@ papers:
     select it. AudioLDM is a general-audio generation system rather than a speech-specific one, so its
     relevance to this concept is limited to this generalisable metric-divergence lesson.
 - id: "2305.02765"
+  published_date: "2023-05-04"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -925,6 +939,7 @@ papers:
     flag that objective metrics alone are insufficient to characterise codec quality, a caution echoed
     across the codec literature.'
 - id: "2305.09636"
+  published_date: "2023-05-16"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -993,6 +1008,7 @@ papers:
     AudioLM papers rather than re-run under matched conditions, so direct perceptual comparisons between
     SoundStorm and AudioLM by human raters are not reported.
 - id: "2305.15255"
+  published_date: "2023-05-24"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -1051,6 +1067,7 @@ papers:
     for speech-continuation systems, contributing reusable evaluation infrastructure for the spoken-language-model
     subfield even though its own ## Claims are primarily architectural.'
 - id: "2306.00814"
+  published_date: "2023-06-01"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -1120,6 +1137,7 @@ papers:
     filtering may limit the discriminative power of the subjective test, and that the reported statistical
     equivalence with BigVGAN may reflect an underpowered test rather than genuine parity.
 - id: "2308.16692"
+  published_date: "2023-08-31"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -1193,6 +1211,7 @@ papers:
     model, so absolute scores are not directly comparable across different evaluation setups, an important
     caveat for anyone reusing SLMTokBench as a standard metric.
 - id: "2312.15821"
+  published_date: "2023-12-25"
   entry_date: "2026-07-20"
   year: 2023
   venue: arXiv
@@ -1262,6 +1281,7 @@ papers:
     the failure of standard CLAP on fine-grained speech attributes; the paper's own Limitations note that
     Joint-CLAP has not been independently validated as a general benchmark metric outside this paper.
 - id: "2403.16973"
+  published_date: "2024-03-25"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1336,6 +1356,7 @@ papers:
     of the in-the-wild REALEDIT benchmark specifically to expose gaps hidden by audiobook-only evaluation,
     makes this one of the more direct and field-relevant evaluation-metrics contributions in this batch.
 - id: "2404.03204"
+  published_date: "2024-04-04"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1398,6 +1419,7 @@ papers:
     adversarial test set rather than a standardized evaluation protocol, but it demonstrates that standard
     LibriSpeech WER substantially understates AR TTS robustness failures on structurally unusual inputs.
 - id: "2406.00654"
+  published_date: "2024-06-02"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1473,6 +1495,7 @@ papers:
     is also acknowledged by the authors as partially unfair since SpeechAlign uses ground-truth speech
     as positive samples.
 - id: "2406.04904"
+  published_date: "2024-06-07"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1544,6 +1567,7 @@ papers:
     exposing that prior multilingual-vs-monolingual TTS comparisons used an artificially imbalanced YourTTS
     baseline, inflating the apparent advantage of English-only systems.'
 - id: "2406.05370"
+  published_date: "2024-06-08"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1611,6 +1635,7 @@ papers:
     on clean audiobook-style benchmarks, illustrating a broader evaluation-metrics concern about what
     such claims do and do not establish outside controlled read-speech conditions.
 - id: "2406.18009"
+  published_date: "2024-06-26"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1682,6 +1707,7 @@ papers:
     of a known evaluation-metrics limitation: standard speaker-similarity metrics can reward within-generation
     consistency rather than genuine perceptual speaker identity.'
 - id: "2407.05361"
+  published_date: "2024-07-07"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1755,6 +1781,7 @@ papers:
     similarity, FSD via emotion2vec features for naturalness) that is reused across its own scaling and
     multilingual experiments and by later corpus papers.'
 - id: "2407.08551"
+  published_date: "2024-07-11"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1814,6 +1841,7 @@ papers:
     the same speaker-similarity-metric ceiling effect documented explicitly in other papers in this batch
     (e.g. E2 TTS), an open question for evaluation-metrics synthesis.
 - id: "2408.16532"
+  published_date: "2024-08-29"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1883,6 +1911,7 @@ papers:
   - Codebook utilisation plateaus below 2^12 even at 4000 hours of training, leaving the ceiling of useful
     codebook expansion, and the generality of the ARCH-benchmark semantic-classification results, uncharacterised.
 - id: "2409.05377"
+  published_date: "2024-09-09"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -1953,6 +1982,7 @@ papers:
     perceptual enhancement, an open evaluation-metrics question the authors themselves raise but do not
     resolve.
 - id: "2410.03751"
+  published_date: "2024-10-01"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -2027,6 +2057,7 @@ papers:
     VoiceBench, MMAU), providing a taxonomic reference for evaluation-metrics even though none of its
     five headline claims are evaluation-specific.
 - id: "2410.17196"
+  published_date: "2024-10-22"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -2098,6 +2129,7 @@ papers:
     advancing the evaluation-metrics concept rather than merely using existing metrics; its text-form-vs-speech-form
     separation methodology is a reusable diagnostic pattern.
 - id: "2411.13577"
+  published_date: "2024-11-15"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -2176,6 +2208,7 @@ papers:
     is a direct, reusable evaluation-metrics contribution documenting where SDM evaluation infrastructure
     is thin, independent of the survey's non-evaluation taxonomic claims.
 - id: "2411.19842"
+  published_date: "2024-11-29"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -2245,6 +2278,7 @@ papers:
   - None of the paper's headline claims directly concern evaluation methodology; its evaluation-metrics
     relevance is limited to standard use of PESQ/STOI/MUSHRA/MOSNet as reconstruction-quality benchmarks.
 - id: "2412.15649"
+  published_date: "2024-12-20"
   entry_date: "2026-07-20"
   year: 2024
   venue: arXiv
@@ -2317,6 +2351,7 @@ papers:
     by its five headline claims, though the benchmark itself is built on synthetic TTS-generated test
     inputs rather than real end-to-end voice interactions.
 - id: "2409.09098"
+  published_date: "2025-01-09"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -2391,6 +2426,7 @@ papers:
     a methodological choice that limits comparability with other work but is itself a documented evaluation-metrics
     caution.
 - id: "2025.chipsal-1.18"
+  published_date: "2025-01-19"
   entry_date: "2026-07-20"
   year: 2025
   venue: CHiPSAL 2025
@@ -2452,6 +2488,7 @@ papers:
     TTS setting, and documents that vocoder benchmarks calibrated on English do not transfer numerically
     to other languages.
 - id: "2025.coling-industry.29"
+  published_date: "2025-01-19"
   entry_date: "2026-07-20"
   year: 2025
   venue: COLING Industry Track
@@ -2511,6 +2548,7 @@ papers:
     speech generation quality; its relevance to evaluation-metrics is narrow and adjacent (task-specific
     benchmark design for SCA memory components) rather than core to TTS/VC evaluation.
 - id: "2025.coling-main.685"
+  published_date: "2025-01-19"
   entry_date: "2026-07-20"
   year: 2025
   venue: COLING
@@ -2570,6 +2608,7 @@ papers:
     data raising measured WER independent of true intelligibility), but the paper does not isolate or
     further investigate this effect beyond noting it.
 - id: "2409.20007"
+  published_date: "2025-01-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -2631,6 +2670,7 @@ papers:
     near-tie with Qwen2-Audio on AIR-Bench-Chat (7.16 vs. 7.18) raises unaddressed questions about the
     reproducibility and reliability of LLM-judged speech evaluation.
 - id: "2502.04128"
+  published_date: "2025-02-06"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -2702,6 +2742,7 @@ papers:
     without reporting inter-rater reliability, limiting comparability of that portion of the evaluation
     across papers.
 - id: "2502.06490"
+  published_date: "2025-02-10"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -2781,6 +2822,7 @@ papers:
     cross-paradigm rankings rest on a single vocoder and English-only training data, so
     generalization of the rankings themselves is untested."
 - id: "2025.computel-main.6"
+  published_date: "2025-03-01"
   entry_date: "2026-07-20"
   year: 2025
   venue: ComputEL
@@ -2846,6 +2888,7 @@ papers:
     complementary evaluation mode alongside, not a replacement for, standard MOS-style listening
     tests."
 - id: "2025.nodalida-1.32"
+  published_date: "2025-03-02"
   entry_date: "2026-07-20"
   year: 2025
   venue: NoDaLiDa/Baltic-HLT 2025
@@ -2900,6 +2943,7 @@ papers:
     specialist-curated homograph set, the paper's \"very good\" performance claims should be scoped
     narrowly to disambiguation accuracy rather than treated as evidence of general speech quality."
 - id: "2504.08528"
+  published_date: "2025-04-11"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -2978,6 +3022,7 @@ papers:
     meta-finding synthesised across surveyed systems rather than a controlled ablation, so causal
     claims about why these capabilities trade off should be treated cautiously."
 - id: "iclr-2025-868masI331"
+  published_date: "2025-04-24"
   entry_date: "2026-07-20"
   year: 2025
   venue: ICLR
@@ -3052,6 +3097,7 @@ papers:
     coherence, but this metric's own generalizability beyond the MinutesSpeech benchmark is
     untested."
 - id: "iclr-2025-cuFzE8Jlvb"
+  published_date: "2025-04-24"
   entry_date: "2026-07-20"
   year: 2025
   venue: ICLR
@@ -3128,6 +3174,7 @@ papers:
     parameter-efficiency claim relative to VALL-E's RVQ codec; the total system size (VAE + LM) is
     larger than the headline 51.5M figure suggests when reporting parameter-based comparisons."
 - id: "iclr-2025-dGSOn7sdWg"
+  published_date: "2025-04-24"
   entry_date: "2026-07-20"
   year: 2025
   venue: ICLR
@@ -3202,6 +3249,7 @@ papers:
     speech-unit tokenizers, but base-encoder quality (Data2Vec2 vs. newer models) is acknowledged as
     a confound in cross-model comparisons."
 - id: "iclr-2025-uxDFlPGRLX"
+  published_date: "2025-04-24"
   entry_date: "2026-07-20"
   year: 2025
   venue: ICLR
@@ -3269,6 +3317,7 @@ papers:
     metrics (SI-SDR, fwSSNR), a caution against relying on any single metric family to characterize
     codec quality."
 - id: "2025.findings-naacl.130"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3337,6 +3386,7 @@ papers:
     intelligibility rankings observed elsewhere, illustrating that evaluation context (presence or
     absence of speaker cues) can flip relative rankings between systems."
 - id: "2025.findings-naacl.298"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3403,6 +3453,7 @@ papers:
     instrument specific to this operationalization of gender rather than a general-purpose fairness
     benchmark."
 - id: "2025.findings-naacl.471"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3466,6 +3517,7 @@ papers:
     relevant to any evaluation methodology that relies on synthetic speech as a stand-in for natural
     recordings."
 - id: "2025.naacl-demo.21"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3548,6 +3600,7 @@ papers:
     illustrating how domain mismatch can produce misleading automated evaluation numbers unrelated
     to genuine architecture differences."
 - id: "2025.naacl-long.242"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3619,6 +3672,7 @@ papers:
     proxy for perceptual speaker similarity across architecturally different (codec vs. codec-free)
     TTS systems."
 - id: "2025.naacl-long.464"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3681,6 +3735,7 @@ papers:
     1.68/1.34) is evaluated against weak comparators, so the finding should be read as establishing
     corpus usability rather than an absolute quality ceiling for Persian TTS."
 - id: "2025.naacl-long.484"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3752,6 +3807,7 @@ papers:
     distributions, providing a template for evaluating conversational dynamics beyond standard
     MOS-style naturalness scoring."
 - id: "2025.naacl-long.619"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3815,6 +3871,7 @@ papers:
     illustrating that objective distortion metrics can understate perceptual quality improvements in
     speech enhancement."
 - id: "2025.naacl-short.69"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3877,6 +3934,7 @@ papers:
     naturalness, which the authors attribute to cultural reluctance to judge negatively; this raises
     a caution about the cross-cultural validity of standard MOS listening-test protocols."
 - id: "2025.naacl-srw.6"
+  published_date: "2025-04-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: NAACL
@@ -3957,6 +4015,7 @@ papers:
     while slightly worsening Mel-L1), a concrete caution against using codec reconstruction fidelity
     as a proxy for downstream generative system quality."
 - id: "2025.iwsds-1.11"
+  published_date: "2025-05-01"
   entry_date: "2026-07-20"
   year: 2025
   venue: IWSDS
@@ -4021,6 +4080,7 @@ papers:
     on the same test material, providing a calibrated reference point rather than an arbitrary
     threshold for judging model performance."
 - id: "2025.iwsds-1.27"
+  published_date: "2025-05-01"
   entry_date: "2026-07-20"
   year: 2025
   venue: IWSDS
@@ -4090,6 +4150,7 @@ papers:
     against prior methods and one third use no public corpus, is a direct, quantified diagnosis of a
     reproducibility and benchmark-standardization gap in the field."
 - id: "2025.americasnlp-1.1"
+  published_date: "2025-05-04"
   entry_date: "2026-07-20"
   year: 2025
   venue: AmericasNLP 2025
@@ -4155,6 +4216,7 @@ papers:
     objective reference-based metrics."
 
 - id: "2505.09558"
+  published_date: "2025-05-14"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4233,6 +4295,7 @@ papers:
     TTS/VC quality metrics this concept page otherwise centers on."
 
 - id: "2505.14648"
+  published_date: "2025-05-20"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4309,6 +4372,7 @@ papers:
     evaluation axes."
 
 - id: "2507.06235"
+  published_date: "2025-05-20"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4373,6 +4437,7 @@ papers:
     target dimension."
 
 - id: "2505.15772"
+  published_date: "2025-05-21"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4435,6 +4500,7 @@ papers:
     metrics such as MOS or WER."
 
 - id: "2505.17589"
+  published_date: "2025-05-23"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4516,6 +4582,7 @@ papers:
     direct evaluation-methodology contribution alongside the TTS system itself."
 
 - id: "2506.10274"
+  published_date: "2025-06-12"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4599,6 +4666,7 @@ papers:
     rather than an incidental user of existing benchmarks."
 
 - id: "2506.16381"
+  published_date: "2025-06-19"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4678,6 +4746,7 @@ papers:
     self-evaluator bias concern should be weighed against that scalability."
 
 - id: "2506.23049"
+  published_date: "2025-06-29"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4740,6 +4809,7 @@ papers:
     established benchmarks."
 
 - id: "2507.01611"
+  published_date: "2025-07-02"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4805,6 +4875,7 @@ papers:
     vocoder quality assessment."
 
 - id: "2507.02176"
+  published_date: "2025-07-02"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4870,6 +4941,7 @@ papers:
     rhythm-specific measure."
 
 - id: "2507.03887"
+  published_date: "2025-07-05"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4934,6 +5006,7 @@ papers:
     proposing new measurement methodology."
 
 - id: "2507.03912"
+  published_date: "2025-07-05"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -4992,6 +5065,7 @@ papers:
     quality metrics such as MOS or WER."
 
 - id: "2507.04817"
+  published_date: "2025-07-07"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5060,6 +5134,7 @@ papers:
     evaluation-metrics concept."
 
 - id: "2507.06116"
+  published_date: "2025-07-08"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5124,6 +5199,7 @@ papers:
     concept independent of whether the specific MoE architecture is adopted."
 
 - id: "2506.23325"
+  published_date: "2025-07-09"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5198,6 +5274,7 @@ papers:
     evaluation technique for codec design relevant beyond this specific tokenizer."
 
 - id: "2412.18603"
+  published_date: "2025-07-10"
   entry_date: "2026-07-20"
   year: 2025
   venue: ICML
@@ -5264,6 +5341,7 @@ papers:
     for long-form generation, a direct evaluation-metrics contribution."
 
 - id: "2506.09874"
+  published_date: "2025-07-10"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5328,6 +5406,7 @@ papers:
     audio, though the paper does not itself propose new metrics."
 
 - id: "2507.07799"
+  published_date: "2025-07-10"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5401,6 +5480,7 @@ papers:
     that could affect other anonymization evaluations using the same protocol."
 
 - id: "2507.08319"
+  published_date: "2025-07-11"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5463,6 +5543,7 @@ papers:
     rather than a methodological contribution to evaluation-metrics itself."
 
 - id: "2507.09282"
+  published_date: "2025-07-12"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5529,6 +5610,7 @@ papers:
     perceptual judgment in privacy-sensitive evaluation contexts."
 
 - id: "2507.09310"
+  published_date: "2025-07-12"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5597,6 +5679,7 @@ papers:
     than full-scale subjective evaluation of the main VC systems."
 
 - id: "2506.18296"
+  published_date: "2025-07-15"
   entry_date: "2026-07-20"
   year: 2025
   venue: Interspeech
@@ -5656,6 +5739,7 @@ papers:
     protocols beyond this corpus."
 
 - id: "2507.10985"
+  published_date: "2025-07-15"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5708,6 +5792,7 @@ papers:
     reliability of the metric's decision boundaries unclear."
 
 - id: "2507.14988"
+  published_date: "2025-07-20"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5783,6 +5868,7 @@ papers:
     do not typically report."
 
 - id: "2507.16632"
+  published_date: "2025-07-22"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5863,6 +5949,7 @@ papers:
     this literature."
 
 - id: "2507.16875"
+  published_date: "2025-07-22"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -5932,6 +6019,7 @@ papers:
     included, limiting the evaluation's comparative value."
 
 - id: "2505.15670"
+  published_date: "2025-07-25"
   entry_date: "2026-07-20"
   year: 2025
   venue: arXiv
@@ -6000,6 +6088,7 @@ papers:
     speech quality scores."
 
 - id: "2025.acl-industry.42"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6066,6 +6155,7 @@ papers:
     that specific claim."
 
 - id: "2025.acl-long.1252"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6132,6 +6222,7 @@ papers:
     automatic-metric cross-check."
 
 - id: "2025.acl-long.1471"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6200,6 +6291,7 @@ papers:
     within TTS papers themselves, only within this linguistics-oriented analysis."
 
 - id: "2025.acl-long.1498"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6282,6 +6374,7 @@ papers:
     downstream WER across codecs."
 
 - id: "2025.acl-long.313"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6361,6 +6454,7 @@ papers:
     incompatible, often unreleased test subsets, precluding fair cross-paper comparison."
 
 - id: "2025.acl-long.598"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6439,6 +6533,7 @@ papers:
     coverage remains concentrated in English/Chinese for the primary INTP dataset."
 
 - id: "2025.acl-long.681"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6507,6 +6602,7 @@ papers:
     four explicit claims focus on the benchmark design itself."
 
 - id: "2025.acl-long.682"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6593,6 +6689,7 @@ papers:
     explicit Claims-section propositions."
 
 - id: "2025.acl-long.911"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6661,6 +6758,7 @@ papers:
     from generic naturalness/similarity MOS."
 
 - id: "2025.acl-long.937"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6735,6 +6833,7 @@ papers:
     design that is uncommon in codec papers, which typically evaluate a single domain."
 
 - id: "2025.acl-short.81"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6804,6 +6903,7 @@ papers:
     characterize zero-shot TTS quality in low-resource, short-utterance settings."
 
 - id: "2025.findings-acl.1226"
+  published_date: "2025-07-27"
   entry_date: "2026-07-20"
   year: 2025
   venue: ACL
@@ -6869,6 +6969,7 @@ papers:
     validated only against a single alternative system (WavJourney) rather than human-produced
     podcasts."
 - id: "2025.findings-acl.470"
+  published_date: "2025-07-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: ACL
@@ -6916,6 +7017,7 @@ papers:
   caveats:
   - "ContextDialog is the first speech-to-speech benchmark explicitly designed so correct answers require access to prior conversational turns, filling a gap in earlier spoken dialogue benchmarks that allowed single-turn-derivable answers; the paper validates its LLM-as-judge protocol against human evaluation on Amazon Mechanical Turk (180 participants) confirming the same system ordering."
 - id: "2025.findings-acl.534"
+  published_date: "2025-07-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: ACL
@@ -6961,6 +7063,7 @@ papers:
   caveats:
   - "The paper's SIM metric (averaged cosine similarity across three embedding models) is proposed specifically as a more robust alternative to WER for evaluating linguistic fidelity of TTS-synthesized training data, directly extending standard evaluation practice for data curation pipelines rather than end-system quality."
 - id: "2025.findings-acl.71"
+  published_date: "2025-07-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: ACL
@@ -7014,6 +7117,7 @@ papers:
   caveats:
   - "The paper's ASK-QA introduces a dynamic multi-turn evaluation pipeline where an LLM-based action classifier and user simulator interactively extend spoken dialogue, a distinct evaluation methodology contribution alongside DAMSEL's training approach, though it adds unquantified evaluation variance from ASR and simulator errors."
 - id: "2507.17527"
+  published_date: "2025-07-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7069,6 +7173,7 @@ papers:
   caveats:
   - "The paper's most durable evaluation-metrics contribution is SVIP, a composite human evaluation metric spanning translation quality, latency, speech rate, pronunciation, and fluency, proposed specifically because automated MT metrics (BLEURT, COMET) were judged insufficient for simultaneous speech interpretation; the metric's sub-components are not individually validated against isolated ground truth."
 - id: "2507.20140"
+  published_date: "2025-07-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7123,6 +7228,7 @@ papers:
   caveats:
   - "The paper's spk-ZRF metric (adapted from Zero Retrain Forgetting) is a genuine evaluation-methodology contribution: it distinguishes genuine speaker-identity randomization from consistent patterned failure that speaker-similarity metrics alone cannot detect, exposing a diagnostic gap in existing unlearning evaluation."
 - id: "2507.20731"
+  published_date: "2025-07-28"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7176,6 +7282,7 @@ papers:
   caveats:
   - "The paper uses a broad multi-metric evaluation suite (PESQ, MCD, periodicity RMSE, V/UV F1, pitch RMSE, VISQOL, MUSHRA) spanning both objective and subjective axes, providing a thorough comparison template across time-domain and T-F domain vocoder baselines; the MUSHRA panel (35 participants) is drawn from an audio signal processing background rather than general listeners."
 - id: "2507.23159"
+  published_date: "2025-07-30"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7223,6 +7330,7 @@ papers:
   caveats:
   - "The benchmark covers English only and uses a single synthesized speaker voice for most scenarios; behavioral classification relies on GPT-4o applied to ASR output, introducing two unquantified error sources (ASR errors, LLM judgment errors)."
 - id: "2025.conll-1.9"
+  published_date: "2025-07-31"
   entry_date: "2026-07-21"
   year: 2025
   venue: CoNLL
@@ -7270,6 +7378,7 @@ papers:
   caveats:
   - "The paper's Syntactic Sensitivity Score (precision/recall/F1 at syntactic boundary positions) is a concrete evaluation-metrics contribution that complements MOS by measuring prosodic linguistic adequacy rather than general naturalness, though it is validated on only three TTS systems trained on audiobook speech."
 - id: "2025.iwslt-1.5"
+  published_date: "2025-07-31"
   entry_date: "2026-07-21"
   year: 2025
   venue: IWSLT
@@ -7317,6 +7426,7 @@ papers:
   caveats:
   - "The paper introduces Speech-MMLU, a cross-modal benchmark synthesizing MMLU question text to speech, filling a gap in evaluating speech LMs on knowledge-intensive reasoning tasks; the benchmark excludes domains with synthesis quality issues (e.g. algebra), limiting its breadth as a general evaluation tool."
 - id: "2025.unlp-1.11"
+  published_date: "2025-07-31"
   entry_date: "2026-07-21"
   year: 2025
   venue: UNLP
@@ -7363,6 +7473,7 @@ papers:
   caveats:
   - "This paper's evaluation-metrics contribution is the first publicly available sentence-level benchmark dataset for Ukrainian lexical stress prediction, a narrowly scoped but reusable resource; it does not propose a general-purpose TTS evaluation metric applicable beyond Ukrainian."
 - id: "2025.icnlsp-1.34"
+  published_date: "2025-08-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: workshop
@@ -7409,6 +7520,7 @@ papers:
   caveats:
   - "The paper's automatic metrics (WER via Whisper, speaker similarity via ECAPA2, UTMOS) are used both to construct the DPO preference dataset and to evaluate the fine-tuned models, creating a closed-loop relationship between the training signal and evaluation signal that could bias reported gains toward the same metrics used for supervision."
 - id: "2025.sigdial-1.21"
+  published_date: "2025-08-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: workshop
@@ -7455,6 +7567,7 @@ papers:
   caveats:
   - "The paper's evaluation-metrics contribution is a precision-recall/AUC framework for TRP detection combined with a human preference test methodology, providing a template for evaluating response-timing naturalness independent of downstream dialogue content quality."
 - id: "2025.sigdial-1.27"
+  published_date: "2025-08-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: workshop
@@ -7502,6 +7615,7 @@ papers:
   caveats:
   - "The paper's principal evaluation-metrics contribution is a seven-item Likert questionnaire targeting emotion appropriateness and engagement in spoken dialogue systems, addressing a real gap in standardised assessment for socio-conversational agents, though validated on only 20 conversations with no independent replication."
 - id: "2025.sigdial-1.51"
+  published_date: "2025-08-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: workshop
@@ -7540,6 +7654,7 @@ papers:
   caveats:
   - "This is a demo/system-description paper with no quantitative metrics of its own; its relevance to evaluation-metrics is limited to the ongoing difficulty of benchmarking real-time, multimodal spoken dialogue toolkits, as noted directly on the paper's Wiki Connections."
 - id: "2508.00317"
+  published_date: "2025-08-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7586,6 +7701,7 @@ papers:
   caveats:
   - "As a perspective/retrospective review rather than a system paper, this paper's contribution to evaluation-metrics is curatorial: it consolidates four years of VoiceMOS/AudioMOS Challenge findings and surveys open-source SQA toolkits (MOSNet, DNSMOS, NISQA, SSL-MOS, UTMOS, TorchAudio-Squim, SHEET, VERSA), identifying cross-domain MOS prediction and near-human-quality discrimination as still-unsolved problems."
 - id: "2508.01796"
+  published_date: "2025-08-03"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7633,6 +7749,7 @@ papers:
   caveats:
   - "The paper's evaluation protocol combining a neural classifier for spectrogram realism, human visual-realism judgment, and subjective MOS is unusually thorough for a vocoder paper and introduces spectrogram visual realism as a quality axis distinct from standard perceptual audio quality metrics."
 - id: "2508.02013"
+  published_date: "2025-08-04"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7680,6 +7797,7 @@ papers:
   caveats:
   - "SpeechRole-Eval's pairwise LLM-judge protocol (Gemini-2.5-Pro comparing candidates against three synthesised TTS references, validated via Spearman's ρ 0.67-0.98 against human experts) is the paper's central evaluation-methodology contribution, providing the first large-scale automated benchmark for Speech Role-Playing Agents."
 - id: "2508.04195"
+  published_date: "2025-08-06"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7727,6 +7845,7 @@ papers:
   caveats:
   - "The paper introduces paralinguistic-specific evaluation metrics (Para Detection Rate, paralinguistic F1, NMOS, QMOS) to complement standard MOS and CER for expressive speech assessment; the finding that subjective preference remains high despite imperfect tag recall (61.9%) suggests these objective and subjective axes can diverge."
 - id: "2508.05385"
+  published_date: "2025-08-07"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7773,6 +7892,7 @@ papers:
   caveats:
   - "The paper's TSA (Temporal-Semantic Alignment) annotation method is evaluated via Tag Position Distance (TPD) and Normalized Tag Distance (NTD) metrics, which the paper introduces specifically to measure annotation positional accuracy, distinct from standard TTS naturalness or intelligibility metrics."
 - id: "2508.06870"
+  published_date: "2025-08-09"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7813,6 +7933,7 @@ papers:
   caveats:
   - "No prior TTS system exists for Meitei Mayek, so all reported MOS values (naturalness 3.34, pronunciation accuracy 3.51, overall 3.43) are self-assessed absolute scores rather than comparative results, limiting their value as evaluation-metrics evidence beyond establishing an existence proof."
 - id: "2508.06890"
+  published_date: "2025-08-09"
   entry_date: "2026-07-21"
   year: 2025
   venue: ASRU
@@ -7860,6 +7981,7 @@ papers:
   caveats:
   - "Evaluation relies on a small, parallel corpus (ESD: 350 utterances, 10 speakers, 5 emotions) with both objective metrics and a 25-participant subjective MOS study; the paper does not test whether the same metric suite would generalize to spontaneous or multilingual emotional speech."
 - id: "2508.07273"
+  published_date: "2025-08-10"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7907,6 +8029,7 @@ papers:
   caveats:
   - "The LLM-judge validation methodology, converting open-ended answers to classification labels via keyword/embedding matching to compute accuracy and F1, is a practical contribution to evaluation methodology for open-ended speech-LLM assessment, though it is validated only within the paper's own CPQA and emotion-PQA benchmarks."
 - id: "2508.07375"
+  published_date: "2025-08-10"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -7961,6 +8084,7 @@ papers:
   caveats:
   - "The corpus-level Pearson correlation analysis (Table 7) shows TurnGuide is at parity with baselines on turn-taking statistics but does not establish whether the GPT-score improvement translates to user preference in live interaction, illustrating a gap between automated proxy metrics and behavioural benchmarks."
 - id: "2508.07426"
+  published_date: "2025-08-10"
   entry_date: "2026-07-21"
   year: 2025
   venue: ASRU
@@ -8016,6 +8140,7 @@ papers:
   caveats:
   - "The paper uses two objective accent-similarity metrics (raw cosine similarity and a DCF/Gaussian-backend aggregate) specifically because a single metric was found insufficiently robust to speaker and content confounds, illustrating a broader accent-evaluation methodology gap."
 - id: "2508.07711"
+  published_date: "2025-08-11"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8062,6 +8187,7 @@ papers:
   caveats:
   - "The paper explicitly notes that UTMOS and subjective MOS rankings do not always agree across baselines on this corpus, directly cautioning against relying on a single automatic predictor for vocoder naturalness comparisons."
 - id: "2508.08715"
+  published_date: "2025-08-12"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8110,6 +8236,7 @@ papers:
   caveats:
   - "MOS scores are explicitly noted as not cross-language comparable in this study, since baselines differ by language (VITS for Malay/Tamil, CosyBase for Mandarin), limiting the value of raw MOS comparison across the three reported languages."
 - id: "2508.08957"
+  published_date: "2025-08-12"
   entry_date: "2026-07-21"
   year: 2025
   venue: ASRU
@@ -8155,6 +8282,7 @@ papers:
   caveats:
   - "The paper evaluates only system-level SRCC, which averages predictions over all clips per system; utterance-level accuracy and failure modes for individual clips are not examined, and the pairwise ranking strategy's quadratic batch-size scaling is untested beyond a fixed batch size of 256."
 - id: "2504.12867"
+  published_date: "2025-08-13"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8210,6 +8338,7 @@ papers:
   caveats:
   - "The paper's most durable contribution to evaluation-metrics may be its negative finding: neither automatic emotion similarity metrics nor multimodal LLM judges reliably track human perception of emotional speech at the sentence level."
 - id: "2508.09600"
+  published_date: "2025-08-13"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8264,6 +8393,7 @@ papers:
   caveats:
   - "The EChat-eval automatic scoring pipeline (GPT-4o + emotion2vec-Large) produces rankings consistent with human evaluation but absolute scores that diverge meaningfully, making the benchmark more reliable for ranking systems than for measuring absolute empathy."
 - id: "2508.09702"
+  published_date: "2025-08-13"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8317,6 +8447,7 @@ papers:
   caveats:
   - "The relationship between M3PDB's automatic predictors and actual perceptual quality in the prompt-selection context is not validated against human judgments, and comparisons across the paper's experiments use different test sets that are not directly comparable numerically."
 - id: "2508.11224"
+  published_date: "2025-08-15"
   entry_date: "2026-07-21"
   year: 2025
   venue: ASRU
@@ -8370,6 +8501,7 @@ papers:
   caveats:
   - "The paper's core methodological contribution to evaluation-metrics is a controlled, TER-based direct token-comparison benchmark for prosodic sensitivity, decoupled from any downstream decoder, filling a gap left by prior downstream-task-based token evaluations; it evaluates only semantic tokens on a single corpus (TIMIT), not acoustic codec tokens."
 - id: "2503.04721"
+  published_date: "2025-08-16"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8423,6 +8555,7 @@ papers:
   caveats:
   - "The metrics are explicitly framed as descriptive rather than prescriptive: a model with low pause-handling TOR is assumed better, but the benchmark does not currently capture human preference directly, and backchannel detection relies on a heuristic duration/word-count rule that may not generalise across speaking styles or languages."
 - id: "2508.12001"
+  published_date: "2025-08-16"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -8471,6 +8604,7 @@ papers:
   caveats:
   - "The proposed MFA-based phoneme duration classification accuracy metric requires ground-truth phoneme duration annotations from forced alignment, limiting its generalizability as a standalone prosody evaluation tool compared to WER, which needs no such annotation."
 - id: "interspeech-2025-0063"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8517,6 +8651,7 @@ papers:
   caveats:
   - "UTMOS is used as both the RL reward model and (implicitly) a headline evaluation metric, creating reward-hacking risk that the paper mitigates but does not fully eliminate via the separate NISQA predictor and human preference study."
 - id: "interspeech-2025-0115"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8563,6 +8698,7 @@ papers:
   caveats:
   - "The paper's probing methodology (token co-occurrence with HuBERT classes, CLUB mutual information estimation, t-SNE visualization) is an analytical toolkit for auditing what codec tokens encode, rather than a new codec architecture or a new standardized benchmark metric."
 - id: "interspeech-2025-0143"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8609,6 +8745,7 @@ papers:
   caveats:
   - "The finding that ASR-derived (WHISPER) punctuation is an unreliable proxy for exclamatory sentence mode is directly relevant to any TTS or prosody-labeling pipeline that relies on ASR transcripts as ground-truth prosody labels."
 - id: "interspeech-2025-0166"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8655,6 +8792,7 @@ papers:
   caveats:
   - "LLM-judged metrics (Llama 3 70B as scorer) have not been validated against human listener judgments for empathy or response quality in this setup, and the test set is constructed to control for linguistic content in a way that may not reflect realistic distribution."
 - id: "interspeech-2025-0196"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8702,6 +8840,7 @@ papers:
   caveats:
   - "Cross-codec MOS/POLQA comparisons in the paper mix sampling rates (16kHz vs. 24kHz vs. 32kHz) and bitrates, so direct comparison between SPCODEC and baselines such as Encodec requires care; the 30-sample multilingual test set is also small for a codec evaluation claiming state-of-the-art status."
 - id: "interspeech-2025-0246"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8755,6 +8894,7 @@ papers:
   caveats:
   - "The paper explicitly challenges reliance on ABX error rate as a proxy metric for SLM tokenizer quality, proposing n-gram predictability and mutual information measures as stronger alternatives, a direct contribution to evaluation methodology for discrete speech tokenizers."
 - id: "interspeech-2025-0305"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8803,6 +8943,7 @@ papers:
   caveats:
   - "The subjective evaluation is small (20 samples, 15 listeners), and the paper uses F0CORR, Loudness RMSE, SSIM, and MCD alongside MOS-Naturalness/Similarity as its objective/subjective metric suite for singing voice conversion, a scope that remains narrow relative to standard VC evaluation practice."
 - id: "interspeech-2025-0310"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8851,6 +8992,7 @@ papers:
   - "The paper's five-benchmark SLU suite (sBLIMP, sWUGGY, ProsAudit, TopicStoryCloze) is used to evaluate tokenization design choices rather than to advance evaluation methodology itself, so its bearing on evaluation-metrics is primarily as a demonstration of benchmark sensitivity to upstream tokenization decisions."
 
 - id: "interspeech-2025-0347"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8900,6 +9042,7 @@ papers:
   - "The paper's evaluation metrics (F0-RMSE in semitones, V/UV error rate, MOS) are used to validate the proposed codec rather than to advance evaluation methodology; its relevance to evaluation-metrics is as an application of standard pitch-accuracy and perceptual-quality metrics to a codec-reconstruction task."
 
 - id: "interspeech-2025-0355"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -8947,6 +9090,7 @@ papers:
   - "This paper is a direct evaluation-methodology contribution: it demonstrates that standard clean-speech reconstruction metrics (PESQ, Mel Distance) are insufficient indicators of codec robustness, motivating multi-metric evaluation across phonetic, speaker, and emotional axes for codec benchmarking."
 
 - id: "interspeech-2025-0383"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9001,6 +9145,7 @@ papers:
   - "The likability predictor's moderate correlation with human ratings (LCC 0.46) means a substantial portion of subjective likability variance is not captured, and since this predictor is the sole source of training supervision, any systematic biases in its predictions propagate to the VC model — a caution relevant to any automated-proxy evaluation metric."
 
 - id: "interspeech-2025-0401"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9047,6 +9192,7 @@ papers:
   - "The paper distinguishes reproducibility (identical inputs/code/conditions) from replicability (same scientific question, different data) and argues replicability is the correct target for inherently unreproducible subjective speech evaluations — a conceptual framing directly relevant to how evaluation-metrics claims should be interpreted across papers."
 
 - id: "interspeech-2025-0406"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9094,6 +9240,7 @@ papers:
   - "The paper's introduction of the TUT Mono-to-Binaural (TMB) dataset as an out-of-distribution benchmark is its main evaluation-methodology contribution, exposing brittleness in supervised binaural synthesis that standard in-distribution evaluation conceals."
 
 - id: "interspeech-2025-0433"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9141,6 +9288,7 @@ papers:
   - "The paper's evaluation protocol (MOS-Q, MOS-N, MOS-S alongside energy-based PCC-E/RMSE-E and ASR-based CER/WER) is an adapted metric suite for a domain (non-human VC) where standard speaker-similarity metrics may not apply directly, but the paper does not otherwise advance evaluation methodology as a primary contribution."
 
 - id: "interspeech-2025-0438"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9188,6 +9336,7 @@ papers:
   - "The paper's direct observation that objective EER and subjective similarity ratings diverge is a concrete, generalisable caution for speaker-similarity metric design in voice conversion evaluation."
 
 - id: "interspeech-2025-0464"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9236,6 +9385,7 @@ papers:
   - "The paper's use of ASV-score, WER, F0 distance, and MOSNET alongside human ratings is an application of established multi-metric VC evaluation practice rather than a contribution to evaluation methodology itself."
 
 - id: "interspeech-2025-0469"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9291,6 +9441,7 @@ papers:
   - "The paper's phoneme-level DRT/MRT testing methodology is a concrete evaluation-metrics contribution demonstrating that aggregate perceptual scores (MOS, SUS) can conceal systematic articulatory failure modes that phoneme-feature-level testing reveals."
 
 - id: "interspeech-2025-0506"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9345,6 +9496,7 @@ papers:
   - "The paper's use of the HEAREval benchmark (global normalised score across 6 tasks) and the SUPERB ASR protocol provides a reproducible multi-domain evaluation framework, though the paper's central contribution is representation learning rather than evaluation methodology."
 
 - id: "interspeech-2025-0551"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9392,6 +9544,7 @@ papers:
   - "The paper's evaluation across multiple hard-case test sets (Seed-ZH-Hard, Seed-EN, ELLA-V-Hard) with WER, CER, and SPK-SIM applies established robustness-benchmarking practice rather than proposing new evaluation methodology."
 
 - id: "interspeech-2025-0554"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9440,6 +9593,7 @@ papers:
   - "The paper's evaluation framework (MOS + WER + RTF) is a standard application of established TTS evaluation practice rather than a contribution to evaluation methodology itself."
 
 - id: "interspeech-2025-0648"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9488,6 +9642,7 @@ papers:
   - "The paper's central insight, that annotation consistency (Fleiss kappa) matters more than raw accuracy for downstream TTS training utility, is a direct and generalisable finding for evaluation-metrics regarding how dataset labeling quality should be assessed."
 
 - id: "interspeech-2025-0656"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9535,6 +9690,7 @@ papers:
   - "The paper does not report intelligibility metrics (WER/CER), making it impossible to assess from the reported evaluation whether semantic content is preserved faithfully alongside the reported speaker-similarity and MOS metrics."
 
 - id: "interspeech-2025-0704"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9590,6 +9746,7 @@ papers:
   - "The paper's Multi-Task Reward model operationalizes multiple evaluation dimensions (ASR/WER, SER, SQA/MOS proxy, audio events) as differentiable training rewards, illustrating how evaluation-metrics concepts can be repurposed as optimization targets rather than only as post-hoc assessment tools."
 
 - id: "interspeech-2025-0706"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9637,6 +9794,7 @@ papers:
   - "The near-parity between LLM-generated and human-authored QA sets across two independent judges is a direct evaluation-methodology finding relevant to scalable, low-cost benchmark construction for speech LLMs."
 
 - id: "interspeech-2025-0739"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9692,6 +9850,7 @@ papers:
   - "FD-Bench is itself an evaluation-methodology contribution: it defines a new suite of timing-based interrupt-handling metrics (SRRate, SIRate, SRIRate, IRD, FSED) that did not previously exist for full-duplex dialogue systems, filling a genuine benchmarking gap."
 
 - id: "interspeech-2025-0756"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9739,6 +9898,7 @@ papers:
   - "The paper's own acknowledgment that its evaluation suite lacks human perceptual validation is a direct, self-identified evaluation-metrics limitation relevant to how automated empathy/emotion-alignment scoring should be weighed in spoken dialogue research."
 
 - id: "interspeech-2025-0779"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9794,6 +9954,7 @@ papers:
   - "This paper is a direct evaluation-metrics contribution: it introduces domain-specific transcription-based intelligibility metrics (Count-of-Correct, LaTeX Character Error Rate, TeXBLEU) and demonstrates that standard ASR-cascade metrics are an inadequate proxy for human intelligibility in a specialized TTS content domain."
 
 - id: "interspeech-2025-0816"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9842,6 +10003,7 @@ papers:
   - "The paper's own evaluation surfaces a divergence between objective speaker-similarity gains and small-panel subjective ratings, a caution relevant beyond this specific VC system."
 
 - id: "interspeech-2025-0854"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9899,6 +10061,7 @@ papers:
   - "The rigorous RBE/Plackett-Luce evaluation methodology, and its finding that standard MUSHRA can miss cases where synthetic speech exceeds vocoded reference quality, is a direct methodological contribution to subjective TTS evaluation practice."
 
 - id: "interspeech-2025-0902"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9947,6 +10110,7 @@ papers:
   - "The paper's subjective evaluation targets paralinguistic perception (intimacy, valence) rather than synthesis quality, so its contribution to evaluation-metrics is narrow: it demonstrates a listening-test design for perceptual attributes rather than a naturalness or intelligibility benchmark."
 
 - id: "interspeech-2025-0973"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -9995,6 +10159,7 @@ papers:
   - "This paper is a direct evaluation-metrics contribution: it introduces the first Spanish-language MOS corpus and automatic naturalness predictors, and provides a methodology replicable for other under-resourced languages."
 
 - id: "interspeech-2025-0984"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10044,6 +10209,7 @@ papers:
   - "This paper is a direct evaluation-metrics contribution: it introduces SITool, an open crowdsourcing-ready DRT/MRT platform, and provides a systematic correlation analysis between objective intelligibility proxies and subjective test outcomes, including a concrete negative result on WER."
 
 - id: "interspeech-2025-0989"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10092,6 +10258,7 @@ papers:
   - "The dataset comparison table (VCTK, HiFiTTS, LibriTTS, MLS, HiFiTTS-2 scale and bandwidth) is a useful reference for evaluation-metrics discussions about training data requirements for zero-shot TTS, though the paper's own validation relies entirely on objective metrics without human listening tests."
 
 - id: "interspeech-2025-0998"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10140,6 +10307,7 @@ papers:
   - "This paper is an explicit example of a speech generation system validated entirely through automatic perceptual metrics with no human MOS study, a caveat the paper itself acknowledges as a gap."
 
 - id: "interspeech-2025-1020"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10189,6 +10357,7 @@ papers:
   - "This paper's contribution to evaluation-metrics is methodological: it applies VDE/FFE reconstruction metrics at scale to characterize a prosody codebook, but explicitly does not validate whether reconstruction-metric gains translate into perceptual synthesis improvements."
 
 - id: "interspeech-2025-1066"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10237,6 +10406,7 @@ papers:
   - "The observed UTMOSv2/MOS divergence for delta loss is an explicit evaluation-metrics caution: automatic MOS predictors trained on conventional TTS output may not track quality dimensions specific to novel synthesis paradigms like EBMs."
 
 - id: "interspeech-2025-1081"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10284,6 +10454,7 @@ papers:
   - "The VQMIVC train-test overlap finding is a direct, generalizable evaluation-metrics caution about speaker-similarity benchmark validity in zero-shot VC comparisons."
 
 - id: "interspeech-2025-1084"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10332,6 +10503,7 @@ papers:
   - "The SECS/SMOS divergence is a direct, reusable evaluation-metrics caution: embedding-based speaker similarity metrics do not always track human-perceived similarity, with practical implications for zero-shot TTS benchmarking."
 
 - id: "interspeech-2025-1098"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10379,6 +10551,7 @@ papers:
   - "The finding that prosody-metric gains (MSE, accent correctness) and MOS diverge is a concept-relevant caution about the limits of single-metric TTS evaluation."
 
 - id: "interspeech-2025-1115"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10434,6 +10607,7 @@ papers:
   - "The reliance on an unofficial reproduction of the MM-TTS baseline, rather than the original released system, is a reproducibility caveat relevant to cross-paper comparison in this concept area."
 
 - id: "interspeech-2025-1122"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10482,6 +10656,7 @@ papers:
   - "The 15-rater MOS listening test is small by field standards (confidence intervals of ±0.09-0.11 MOS), so modest differences between quantisation configurations should be treated with caution, as the paper itself notes."
 
 - id: "interspeech-2025-1229"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10530,6 +10705,7 @@ papers:
   - "This paper makes an explicit evaluation-metrics argument, motivating background-specific subjective protocols (BS-MOS) because standard VC metrics fail to capture background-preserving system capability."
 
 - id: "interspeech-2025-1334"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10577,6 +10753,7 @@ papers:
   - "This paper reports metric rankings that diverge across systems (MCD favors a Seq2Seq baseline while STOI and HNR favor MiSTR), and its evaluation-metrics relevance is bounded by the specialized iEEG-to-speech task rather than standard TTS/VC."
 
 - id: "interspeech-2025-1364"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10626,6 +10803,7 @@ papers:
   - "This paper introduces domain-specific spatial audio metrics (Left-Right Energy Ratio Error, RT60 Error) that are not yet established evaluation-metrics conventions in TTS/singing synthesis, and notes their evaluation does not include specialist spatial-audio perceptual tests."
 
 - id: "interspeech-2025-1394"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10673,6 +10851,7 @@ papers:
   - "The paper reports a mixed panel of subjective (nMOS, sMOS, eMOS) and objective (WER, CER, SECS, EECS) metrics to assess emotion transfer, illustrating the multi-axis evaluation typically required for expressive TTS."
 
 - id: "interspeech-2025-1478"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10721,6 +10900,7 @@ papers:
   - "This paper's UTMOS-vs-ground-truth and UTMOS-vs-subjective-naturalness divergences are a direct evaluation-metrics caution about the reliability of automated quality proxies in the lip-to-speech setting."
 
 - id: "interspeech-2025-1494"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10767,6 +10947,7 @@ papers:
   caveats:
   - "This paper is an explicit example of a TTS system validated entirely on objective prosody metrics with no human listening study, a gap the paper itself acknowledges."
 - id: "interspeech-2025-1531"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10815,6 +10996,7 @@ papers:
   caveats:
   - "For evaluation-metrics, this paper's main relevance is its cross-lingual CMOS evaluation protocol (train on one language, test on several others) as a stress test for content-encoder generalization, rather than any claim about metric validity."
 - id: "interspeech-2025-1536"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10863,6 +11045,7 @@ papers:
   caveats:
   - "This paper adapts algorithmic-fairness metrics (Disparate Impact, Parity Difference) to disaggregate standard TTS objective metrics (WER, CER, SIM-o, AutoPCP) by subgroup, directly demonstrating that aggregate quality scores can mask severity- and gender-dependent evaluation blind spots."
 - id: "interspeech-2025-1550"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10913,6 +11096,7 @@ papers:
   caveats:
   - "For evaluation-metrics, this paper's contribution is using Arabic ASR models (ArTST, Whisper, Nvidia CTC-large) as a WER-based automated intelligibility proxy for TTS output, applied as a standard cross-check alongside pairwise preference tests rather than as a new evaluation method."
 - id: "interspeech-2025-1726"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -10960,6 +11144,7 @@ papers:
   caveats:
   - "The central evaluation-metrics finding is that SECS (embedding-based objective speaker similarity) diverges sharply from MUSHRA-rated perceptual AAC suitability, particularly for atypical/dysarthric reference speech."
 - id: "interspeech-2025-1747"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11007,6 +11192,7 @@ papers:
   caveats:
   - "This paper contributes a concrete case of SECS-sMOS divergence: automatic speaker-similarity metrics improved while human-rated speaker similarity declined, attributed to source-speaker residuals invisible to the encoder."
 - id: "interspeech-2025-1763"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11054,6 +11240,7 @@ papers:
   caveats:
   - "The paper applies a standard suite of objective metrics (UTMOS, DNSMOS, CER, SECS) alongside MOS/SMOS to compare discriminator variants systematically, but does not itself contribute new evaluation methodology."
 - id: "interspeech-2025-1776"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11100,6 +11287,7 @@ papers:
   caveats:
   - "For evaluation-metrics, this paper's contribution is reporting WER/CER/MOS/speaker-similarity consistently across three tasks (synthesis, editing, continuation) via ablation, though continuation lacks WER/CER by design since it has no ground-truth transcript."
 - id: "interspeech-2025-1819"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11154,6 +11342,7 @@ papers:
   caveats:
   - "The paper's central evaluation-metrics contribution is the RTF-vs-chunk-size profiling methodology, showing batch-averaged RTF fails to predict streaming throughput ranking and can even reverse it."
 - id: "interspeech-2025-1873"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11201,6 +11390,7 @@ papers:
   caveats:
   - "MSPB is a new evaluation benchmark for evaluation-metrics: an eight-task Mandarin prosodic comprehension battery designed specifically to expose failure modes invisible to general-purpose audio benchmarks."
 - id: "interspeech-2025-1940"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11248,6 +11438,7 @@ papers:
   caveats:
   - "This paper's evaluation-metrics relevance is its use of Jensen-Shannon divergence between KDE-estimated prosodic distributions as an objective proxy for prosodic diversity/naturalness, complementing the subjective Kruskal-Wallis-tested listening study."
 - id: "interspeech-2025-1993"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11295,6 +11486,7 @@ papers:
   caveats:
   - "For evaluation-metrics, this paper introduces a silence-ratio-style detection accuracy measure alongside standard TTS quality metrics (MOS, WER, SIM, PESQ, STOI) to characterise both defense efficacy and reconstruction cost; source citations are inferred from Method/Key Results since the paper page uses the legacy claims format without explicit section tags."
 - id: "interspeech-2025-2031"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11348,6 +11540,7 @@ papers:
   caveats:
   - "For evaluation-metrics, the paper's Limitations section flags that its own anomalous MCD result may indicate MCD is unreliable for measuring synthesis quality under phonotactic-family mismatch, though this observation is not elevated to a formal Claim."
 - id: "interspeech-2025-2032"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11394,6 +11587,7 @@ papers:
   caveats:
   - "This paper's evaluation-metrics relevance is the finding that supervised (DNN) and unsupervised (K-Means) automatic stress-detection classifiers can disagree substantially about whether a stress-conditioning method improves over baseline."
 - id: "interspeech-2025-2043"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11440,6 +11634,7 @@ papers:
   caveats:
   - "For evaluation-metrics, the paper introduces a composite total score combining WER, CER, and SPK-SIM as distance to an ideal point (Eq. 3), used to rank VC systems on both monolingual and cross-lingual conditions; source citations are inferred from Method/Key Results since this paper page uses the legacy claims format."
 - id: "interspeech-2025-2151"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11487,6 +11682,7 @@ papers:
   caveats:
   - "FaVC's central evaluation-metrics contribution is establishing that dataset parallelism is a hard prerequisite for standard reference-based VC metrics (MCD, F0-RMSE, FFE, GPE), which were previously inapplicable to Farsi."
 - id: "interspeech-2025-2159"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11534,6 +11730,7 @@ papers:
   caveats:
   - "This paper's evaluation-metrics relevance is its qualitative Consensual Qualitative Research (CQR) protocol for assessing prosodic boundary accuracy across five open-source TTS systems, complementing quantitative pause-duration measurement."
 - id: "interspeech-2025-2189"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11580,6 +11777,7 @@ papers:
   caveats:
   - "This paper's evaluation-metrics relevance is its systematic use of frame- and phoneme-level F0/energy metrics (RPA, RCA, RMSE, MAE) alongside AutoPCP for downstream TTS prosody assessment, rather than a contribution to evaluation methodology itself."
 - id: "interspeech-2025-2283"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11627,6 +11825,7 @@ papers:
   caveats:
   - "This paper is a direct evaluation-metrics contribution: it introduces VF RMSE and DTW-aligned PPG distance metrics for accent similarity and systematically demonstrates that WER and UTMOS are statistically unreliable for evaluating underrepresented accents."
 - id: "interspeech-2025-2328"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11674,6 +11873,7 @@ papers:
   caveats:
   - "This paper establishes TPR@controlled-FPR and FAD as the evaluation protocol for speech watermark assessment, and its central evaluation-metrics finding is that pre-decoding detection strength does not predict post-decoding (deployed) detection accuracy."
 - id: "interspeech-2025-2447"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11721,6 +11921,7 @@ papers:
   - "This paper's link to evaluation-metrics is its systematic WER/MOS/SIM-MOS comparison of the speculative-decoding speedup against the CosyVoice 2 baseline, isolating a quality-preserving speedup from a data-scale-driven WER regression; source citations are inferred from Method/Key Results since this paper page uses the legacy claims format and the paper's Wiki Connections section does not explicitly discuss evaluation-metrics despite the frontmatter tag."
 
 - id: "interspeech-2025-2449"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11767,6 +11968,7 @@ papers:
   caveats:
   - "Cross-system comparisons to Seed-TTS DiT, MaskGCT, and CosyVoice 2 are taken from those systems' original papers under potentially non-identical test conditions, a caution the paper itself flags; the paper's own metric battery (WER, SPK-SIM, UTMOS, RTF) is otherwise standard and not critiqued."
 - id: "interspeech-2025-2536"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11814,6 +12016,7 @@ papers:
   caveats:
   - "The paper adopts UTMOS, DNSMOS, MCD, and WER as a multi-dimensional quality battery and introduces TITW-KSKT and TITW-KSUT as evaluation protocols for in-the-wild TTS, while also showing DNSMOS understates a large WER-measured intelligibility gap between training conditions."
 - id: "interspeech-2025-2573"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11863,6 +12066,7 @@ papers:
   caveats:
   - "The paper employs MOS (intelligibility, naturalness, pronunciation), MCD, and F0-RMSE to evaluate Arabic TTS baselines, demonstrating that objective metrics like MCD miss phonemizer-related improvements that are perceptible to listeners."
 - id: "interspeech-2025-2595"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11902,6 +12106,7 @@ papers:
   caveats:
   - "This paper's multi-dimensional perceptual evaluation methodology (MOS-X2 quality ratings plus psychometric function characterisation across SNR levels, plus speaker-identity discrimination) demonstrates complementary diagnostic value over single-score evaluations for TTS assessment."
 - id: "interspeech-2025-2660"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11948,6 +12153,7 @@ papers:
   caveats:
   - "The next-speaker prediction accuracy metric is evaluated only during periods of mutual silence, and its behavior differs substantially between spontaneous and attentive-listening evaluation conditions, a domain-sensitivity relevant to how turn-taking metrics should be interpreted."
 - id: "interspeech-2025-2679"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -11987,6 +12193,7 @@ papers:
   caveats:
   - "The paper's most reusable finding is the evaluation contribution: it demonstrates that UTMOS and Resemblyzer behave very differently on dysarthric speech, establishing that standard automatic evaluation metrics require validation before use in atypical speech domains."
 - id: "interspeech-2025-2726"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12034,6 +12241,7 @@ papers:
   caveats:
   - "The paper evaluates codec reconstruction quality using UTMOS, PESQ, STOI, and voiced/unvoiced F1 score, following the Vocos evaluation methodology, without any subjective validation of the reported gains."
 - id: "interspeech-2025-2739"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12081,6 +12289,7 @@ papers:
   caveats:
   - "The paper demonstrates a case where objective periodicity and spectral-distance metrics improve while perceptual UTMOS (and observed audible artifacts) worsen under SAN training, illustrating a concrete objective-perceptual metric divergence in vocoder evaluation."
 - id: "interspeech-2025-2765"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12135,6 +12344,7 @@ papers:
   caveats:
   - "HFR is proposed as a binary forced-choice deception metric that is more efficient (24.3s vs. 42.5s per sample) than MUSHRA and directly measures human-machine indistinguishability, addressing a gap where CMOS/MUSHRA can be inflated by reference-matching bias against low-expressivity benchmarks."
 - id: "interspeech-2025-2787"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12182,6 +12392,7 @@ papers:
   caveats:
   - "The paper directly compares ASR-based WER (wav2vec 2.0) against 35 human listeners' transcription performance across SNR/noise conditions, finding human perception diverges from ASR especially near threshold SNRs and in speech-like masking, a concrete case of automatic intelligibility proxy vs. human perception mismatch."
 - id: "interspeech-2025-bokkahallisatish25_interspeech"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12222,6 +12433,7 @@ papers:
   caveats:
   - "The platform's automated metrics panel (speech rate, pitch statistics, sentiment via AudioFlamingo2, AudioboxAesthetics quality dimensions, semantic similarity) is explicitly positioned as complementary to, not a replacement for, human interactive bias evaluation."
 - id: "interspeech-2025-gourav25_interspeech"
+  published_date: "2025-08-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: Interspeech
@@ -12269,6 +12481,7 @@ papers:
   caveats:
   - "The paper relies exclusively on NISQA automated MOS (A-MOS) for quality assessment, illustrating both the utility and the limitations of automated metrics as a substitute for human listening panels in multilingual/code-mixed evaluation."
 - id: "2508.13028"
+  published_date: "2025-08-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12315,6 +12528,7 @@ papers:
   caveats:
   - "Automatic sarcasm detection used as an objective proxy is a variant of the proxy-metric pattern relevant to evaluation-metrics; the subjective study (13 listeners, no MOS value or confidence interval reported, stimuli drawn only from a sarcasm-labelled dataset) compounds the evaluation weakness."
 - id: "2507.16835"
+  published_date: "2025-08-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12361,6 +12575,7 @@ papers:
   caveats:
   - "This paper validates an LLM-as-a-Judge scoring framework applied to voice-based conversational transcripts and demonstrates a systematic and severe divergence (Pearson r < 0.11) between automated quality scores and real user satisfaction ratings, a cautionary finding for automated evaluation reliance in production voice AI."
 - id: "2508.15442"
+  published_date: "2025-08-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: EMNLP
@@ -12414,6 +12629,7 @@ papers:
   caveats:
   - "The entropy-based hallucination detection methodology, validated only via correlation analysis rather than causal intervention, offers a candidate unsupervised diagnostic signal that could complement standard CER/WER/UTMOS evaluation for autoregressive TTS."
 - id: "2508.15565"
+  published_date: "2025-08-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12460,6 +12676,7 @@ papers:
   caveats:
   - "The evaluation methodology spans perceptual quality (PESQ, SMOS), ASR intelligibility (WER), and EER for speaker verification; the paper's own black-box/adaptive-attack results show that white-box EER substantially overstates real-world anonymization strength, a caution for interpreting EER-only anonymization evaluations."
 - id: "2508.15931"
+  published_date: "2025-08-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12507,6 +12724,7 @@ papers:
   caveats:
   - "The model targets classification accuracy but does not demonstrate downstream impact on any generation task; whether improved timbre attribute detection actually produces better controllable TTS or voice editing remains an open question."
 - id: "2508.16188"
+  published_date: "2025-08-22"
   entry_date: "2026-07-21"
   year: 2025
   venue: EMNLP
@@ -12554,6 +12772,7 @@ papers:
   caveats:
   - "This paper's emotion-recognition and expressive-generation gains are measured entirely through automated classifiers (IEMOCAP F1, Qwen2-Audio F1) without any subjective listening evaluation, illustrating reliance on automated judges as a substitute for perceptual quality assessment."
 - id: "2508.17494"
+  published_date: "2025-08-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: workshop
@@ -12600,6 +12819,7 @@ papers:
   caveats:
   - "The paper's central MOS improvement (3.20 to 3.87) is measured entirely within the same 14-hour proprietary corpus and the same commercial TTS voice used for training-data derivation, so the perceptual gain cannot be attributed to cross-domain or cross-engine generalisation."
 - id: "2508.17623"
+  published_date: "2025-08-25"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12647,6 +12867,7 @@ papers:
   caveats:
   - "This paper introduces a unified metric suite (ECS/EBS/ESS/ERS with cross-turn CT- variants, plus categorical rationality scoring and human perceptual ratings) that is its central evaluation-metrics contribution, revealing a systematic divergence between automatic emotion metrics and human perception on atypical-output systems."
 - id: "2508.18006"
+  published_date: "2025-08-25"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12694,6 +12915,7 @@ papers:
   caveats:
   - "PSR's validation covers only five language variants against historical MUSHRA tests, and using automated predicted-MOS as the primary quality metric undercuts the paper's own naturalness claims."
 - id: "2508.20660"
+  published_date: "2025-08-28"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12748,6 +12970,7 @@ papers:
   caveats:
   - "The self-collected stress-condition dataset (400 entries from Bilibili) is small and may not generalise beyond its specific content sources, and downsampling all audio to 16 kHz for fair comparison disadvantages high-sample-rate codecs (DAC-44k, FlowDec-48k)."
 - id: "2509.00685"
+  published_date: "2025-08-31"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12795,6 +13018,7 @@ papers:
   caveats:
   - "The three scoring axes (CER, SPK-SIM, F0-RMSE) are used to construct training preference pairs, not merely to report post-hoc quality, illustrating a case where evaluation metrics double as optimization reward signals with their own trade-off structure."
 - id: "2509.01391"
+  published_date: "2025-09-01"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12841,6 +13065,7 @@ papers:
   caveats:
   - "The oracle's UTMOS being lower than the proposed system's is counter-intuitive and left unexplained, undermining the oracle's reliability as a ceiling estimate for automatic-metric-based comparisons in this pipeline."
 - id: "2509.02244"
+  published_date: "2025-09-02"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12888,6 +13113,7 @@ papers:
   caveats:
   - "MCD comparisons across differing sampling rates (16kHz proposed vs. 24kHz baselines) may be confounded and not reflect true perceptual quality, illustrating a general risk in cross-architecture, cross-sampling-rate codec benchmarking."
 - id: "2506.23367"
+  published_date: "2025-09-03"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12935,6 +13161,7 @@ papers:
   caveats:
   - "The paper demonstrates a systematic divergence between ASR-based WER, human objective WER, and subjective self-rated intelligibility for L2-directed TTS evaluation, arguing that objective human-listener WER should be the gold standard rather than automated ASR proxies or self-report alone."
 - id: "2509.03292"
+  published_date: "2025-09-03"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -12982,6 +13209,7 @@ papers:
   caveats:
   - "Comparison is limited to the official AudioMOS Challenge 2025 baseline system; other submitted challenge systems are not compared, and code/weights are not released as of the preprint."
 - id: "2509.05359"
+  published_date: "2025-09-03"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13028,6 +13256,7 @@ papers:
   caveats:
   - "The paper treats NLL on LibriSpeech as its sole evaluation criterion across 51 model configurations, arguing without direct downstream validation that it correlates with downstream semantic speech understanding performance."
 - id: "2509.03940"
+  published_date: "2025-09-04"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13075,6 +13304,7 @@ papers:
   caveats:
   - "The acoustically-aware LLM judge, which augments transcribed text with pitch/energy/speaking-rate bins and emotion labels, is validated against human ratings only on a small 20-instance sample, so its Pearson r=0.762 correlation should be treated as a promising but not yet robust validation of LLM-based paralinguistic evaluation."
 - id: "2509.04072"
+  published_date: "2025-09-04"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13130,6 +13360,7 @@ papers:
   caveats:
   - "The paper introduces two novel evaluation metrics for contextual expressivity, ContextMOS (an LLM-judge 1-5 rating of intent-context match) and Win-Rate (pairwise comparison against ground truth), adapting the LALM-as-a-judge framework to audiobook expressivity; these metrics reveal expressivity gaps invisible to standard naturalness MOS, though ground-truth LibriVox narration itself shows only marginal ContextMOS (3.55) above the best TTS systems."
 - id: "2509.04093"
+  published_date: "2025-09-04"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13171,6 +13402,7 @@ papers:
   caveats:
   - "Four acoustic distance metrics (spectrum l2, F0/ZCR/energy Wasserstein distance) are used alongside MOS and A/B preference for objective validation, but the metrics disagree across languages (English spectrum l2 worsened while F0 and ZCR improved), illustrating that acoustic-distance metrics do not move consistently even for a single fine-tuning intervention."
 - id: "2509.06502"
+  published_date: "2025-09-08"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13225,6 +13457,7 @@ papers:
   caveats:
   - "The system-level metrics (barge-in T90/false rate, EoT accuracy, P50/P95 latency) are a genuine methodological contribution for evaluating full-duplex interaction holistically, but they are validated only on proprietary, author-constructed test sets rather than an open shared benchmark."
 - id: "2509.07376"
+  published_date: "2025-09-09"
   entry_date: "2026-07-21"
   year: 2025
   venue: EMNLP
@@ -13278,6 +13511,7 @@ papers:
   caveats:
   - "The paper introduces face-to-voice (F2V) alignment as a structured subjective ABX task alongside age and gender classification, broadening the FTV evaluation toolkit, but SECS scores broken down by demographic group reveal the metric itself can mask fairness gaps (lower SECS for Middle Eastern and African American speakers) even under an architecture optimized for overall SECS."
 - id: "2509.09716"
+  published_date: "2025-09-09"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13325,6 +13559,7 @@ papers:
   caveats:
   - "Despite strong aggregate Spearman correlation with human judgment, the LALM-as-a-Judge evaluator remains prone to hallucination; the paper mitigates but does not eliminate this risk through step-by-step prompting."
 - id: "2509.08696"
+  published_date: "2025-09-10"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13372,6 +13607,7 @@ papers:
   caveats:
   - "The paper reports WER, SIM-o, UTMOS, and NISQA jointly across caching configurations, illustrating that objective automatic metrics alone can appear stable (within measurement noise) even where a small but perceptible subjective quality difference exists, as captured by the separate A/B user study."
 - id: "2506.04077"
+  published_date: "2025-09-11"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13418,6 +13654,7 @@ papers:
   caveats:
   - "The paper's evaluation criterion is pass/fail classification accuracy of a downstream automated speaking assessment model, not a speech-generation quality metric; the absence of any TTS-side perceptual evaluation is itself a gap relevant to interpreting whether the augmentation pipeline's benefits stem from synthesis fidelity or from data diversity alone."
 - id: "2509.09550"
+  published_date: "2025-09-11"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13466,6 +13703,7 @@ papers:
   caveats:
   - "The binary symmetric channel simulation for measuring bit-level perturbation robustness is a new evaluation methodology for codec resilience that does not yet have an established protocol in the literature, distinct from standard reconstruction-fidelity metrics."
 - id: "2509.09631"
+  published_date: "2025-09-11"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13513,6 +13751,7 @@ papers:
   caveats:
   - "The clear divergence between SIM-O ranking (third of five) and perceptual similarity MOS ranking (best of five) is flagged by the authors as evidence of known deficiencies in embedding-based automatic speaker similarity metrics, motivating the need for better zero-shot speaker identity evaluation frameworks."
 - id: "2509.09748"
+  published_date: "2025-09-11"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13567,6 +13806,7 @@ papers:
   caveats:
   - "The paper introduces RTF and FLOPs ratio alongside SIM-o and WER as primary evaluation axes, foregrounding computational efficiency metrics jointly with quality metrics, but the abstract's headline FLOPs reduction figure (75.4%) is not directly reconcilable with Table 1's Ops Ratio column, illustrating a reporting-consistency risk in efficiency benchmarking."
 - id: "2509.11084"
+  published_date: "2025-09-14"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13620,6 +13860,7 @@ papers:
   caveats:
   - "Evaluation uses WER (CTC-based HuBERT-large ASR), SPK-SIM (WavLM-TDNN cosine distance), and UTMOSv2 as objective proxies, stratified into tc-short and tc-long duration splits derived from LibriSpeech test-clean; this duration-stratified evaluation protocol reveals degradation patterns that a single aggregate WER figure would mask."
 - id: "2509.11425"
+  published_date: "2025-09-14"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13675,6 +13916,7 @@ papers:
   caveats:
   - "The paper evaluates codec quality with a broad multi-metric suite (WER, WIL, STOI, ViSQOL, PESQ, UTMOS, Similarity) spanning reconstruction and downstream tasks, but contributes no new evaluation methodology of its own; the metrics are used purely to compare codec variants."
 - id: "2508.18240"
+  published_date: "2025-09-15"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13729,6 +13971,7 @@ papers:
   caveats:
   - "MTalk-Bench's dual Arena-plus-Rubrics protocol, combined with its documentation of LLM-as-judge failure on raw-audio non-verbal cues, provides direct methodological guidance for evaluation design in speech-to-speech systems: automated judges require text-annotated paralinguistic cues to be reliable."
 - id: "2509.12171"
+  published_date: "2025-09-15"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13777,6 +14020,7 @@ papers:
   caveats:
   - "C3T's overall-fairness, conditional-fairness, and cross-modal-robustness metrics decompose what a single accuracy number would hide, demonstrating that evaluation protocols for speech-aware LLMs need speaker-demographic disaggregation to avoid overstating population-level robustness."
 - id: "2509.14270"
+  published_date: "2025-09-15"
   entry_date: "2026-07-21"
   year: 2025
   venue: ACL
@@ -13823,6 +14067,7 @@ papers:
   caveats:
   - "The paper's explicit caution that NISQA-predicted MOS should not be equated with human MOS is a concrete, generalizable data-hygiene point for any TTS pipeline reporting automated quality scores in place of listening tests."
 - id: "2504.20581"
+  published_date: "2025-09-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13863,6 +14108,7 @@ papers:
   caveats:
   - "ClonEval standardizes voice cloning evaluation into a deterministic protocol, open-source library, and public leaderboard, directly filling a reproducibility gap that prior landmark systems (VALL-E, Voicebox) left open by each using slightly different metric implementations."
 - id: "2509.13667"
+  published_date: "2025-09-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13909,6 +14155,7 @@ papers:
   caveats:
   - "The paper relies exclusively on UTMOS plus five objective acoustic metrics (SNR, LAS-RMSE, MCD, F0-RMSE, V/UV error) to profile a quality-latency trade-off, illustrating how automated MOS prediction substitutes for listening tests in low-latency vocoder research without independent perceptual validation."
 - id: "2509.13670"
+  published_date: "2025-09-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -13955,6 +14202,7 @@ papers:
   caveats:
   - "All quality claims rest on objective reconstruction metrics without subjective validation, leaving open whether statistically significant PESQ/ViSQOL gains from distillation are perceptually meaningful for streamable codec design."
 - id: "2509.13989"
+  published_date: "2025-09-17"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14002,6 +14250,7 @@ papers:
   caveats:
   - "E-VOC extends perceptual ITTS evaluation to dimensions (word-level emphasis, speaker age) that prior work measured only with automated classifiers inheriting training-data biases, directly demonstrating why classifier-based proxies understate real controllability gaps."
 - id: "2509.14684"
+  published_date: "2025-09-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14055,6 +14304,7 @@ papers:
   caveats:
   - "The paper introduces ESMOS (environment similarity MOS) as a new subjective metric dimension for assessing background environment reconstruction fidelity, extending standard naturalness and speaker-similarity MOS protocols to a third acoustic axis."
 - id: "2509.14882"
+  published_date: "2025-09-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14108,6 +14358,7 @@ papers:
   caveats:
   - "The paper reports results on an established multi-metric suite (SALMon, sWUGGY, sBLIMP, T-Story Cloze, Audiobox-Aesthetics) without introducing new evaluation methodology, using it purely to characterize the flat-vs-hierarchical architecture trade-off."
 - id: "2509.15085"
+  published_date: "2025-09-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14154,6 +14405,7 @@ papers:
   caveats:
   - "The paper's nine-metric evaluation suite (intrusive PESQ/ESTOI/SI-SDR/MCD/LSD, ASR-based WER, and three non-intrusive MOS estimators) reveals a metric-family divergence: MelFlow wins on intrusive perceptual metrics but loses to HiFi-GAN on spectral distance metrics (LSD, MCD) at low step counts, illustrating that no single metric family fully characterizes vocoder quality under a streaming constraint."
 - id: "2509.15253"
+  published_date: "2025-09-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14199,6 +14451,7 @@ papers:
   caveats:
   - "This paper is itself an example of a generative speech pipeline evaluated exclusively via task-specific proxy metrics (speaker attribution accuracy, emotion F1) with zero standard TTS quality metrics reported, leaving the actual synthesized speech output entirely unquantified."
 - id: "2509.15462"
+  published_date: "2025-09-18"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14255,6 +14508,7 @@ papers:
   caveats:
   - "The paper's ensemble of perceptual and task-specific metrics (UTMOS, NISQA, PESQ, STOI, WER, SpkrSim) surfaces a systematic divergence between no-reference perceptual scores and full-reference signal fidelity measures for generative codecs, a distinction not visible from either metric family alone."
 - id: "2505.17093"
+  published_date: "2025-09-19"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14300,6 +14554,7 @@ papers:
   caveats:
   - "The paper reports WER, human MOS, LLM-judged MOS (Gemini), and UTMOS as complementary quality dimensions purely to validate its persona-to-voice-attribute pipeline, without proposing new evaluation methodology of its own."
 - id: "2509.15626"
+  published_date: "2025-09-19"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14353,6 +14608,7 @@ papers:
   caveats:
   - "The paper introduces VI-MSE, RVI-MSE, and a delta-V leakage measure as new domain-specific controllability metrics for reference-conditioned style control systems, alongside the first public voice impression corpus, directly extending the evaluation-metrics toolkit for controllable TTS."
 - id: "2509.15629"
+  published_date: "2025-09-19"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14408,6 +14664,7 @@ papers:
   caveats:
   - "SVCC 2025's large-scale Spearman correlation analysis across 30-plus VERSA metrics against subjective scores provides a concrete evidence base for which objective proxies (neural MOS predictors, speaker/singer embeddings) are trustworthy substitutes for costly listening tests in singing voice conversion evaluation."
 - id: "2509.15969"
+  published_date: "2025-09-19"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14461,6 +14718,7 @@ papers:
   caveats:
   - "The paper's own evaluation (WER, speaker similarity, UTMOS, MUSHRA) uses established metrics without introducing new evaluation methodology; its main relevance to this concept is as a data point in the latency-vs-quality metric trade-off across streaming TTS systems."
 - id: "2509.16195"
+  published_date: "2025-09-19"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14515,6 +14773,7 @@ papers:
   caveats:
   - "The paper's comprehensive multi-task evaluation suite (resynthesis, VC, ASR, speaker ID, SER, keyword spotting, intent classification, speech enhancement/separation) aligned with the DASB benchmark illustrates a broad codec-evaluation methodology, though it introduces no new metrics of its own."
 - id: "2509.16589"
+  published_date: "2025-09-20"
   entry_date: "2026-07-21"
   year: 2025
   venue: EMNLP
@@ -14569,6 +14828,7 @@ papers:
   caveats:
   - "CP-Bench's Unweighted Average Score and LLaMA-judge protocol, validated against human annotators at 0.71 Pearson correlation, is a concrete methodological template for evaluating integrative paralinguistic-plus-content reasoning rather than isolated attribute recognition."
 - id: "2509.20378"
+  published_date: "2025-09-20"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14623,6 +14883,7 @@ papers:
   caveats:
   - "The paper's introduction of DTW as a dynamic complement to frame-averaged Emo SIM is a direct, generalizable evaluation-metrics contribution: frame-averaging obscures intra-utterance emotional trajectory information that a time-aligned distance metric can recover."
 - id: "2509.17006"
+  published_date: "2025-09-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14669,6 +14930,7 @@ papers:
   caveats:
   - "Reports a broad multi-metric evaluation battery (PESQ, MUSHRA, WER, SI-SDR, STFT distance, Mel distance, speaker similarity) across bitrate configurations, useful as a template for comprehensive codec benchmarking, but contributes no new evaluation methodology of its own."
 - id: "2509.17021"
+  published_date: "2025-09-21"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14715,6 +14977,7 @@ papers:
   caveats:
   - "Demonstrates that standard short-utterance TTS benchmarks (e.g. Seed-TTS, under 10 seconds) can understate quality degradation from exposure bias that is more visible on longer-form test sets, a benchmark-design caution for autoregressive TTS evaluation."
 - id: "2509.17988"
+  published_date: "2025-09-22"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14762,6 +15025,7 @@ papers:
   caveats:
   - "Provides a rare same-model, cross-language comparison showing that CER/CMOS rankings can invert and that speaker-similarity metric rankings do not transfer across languages, a direct caution against generalizing single-language evaluation-metric findings."
 - id: "2509.18060"
+  published_date: "2025-09-22"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14808,6 +15072,7 @@ papers:
   caveats:
   - "Introduces a dialect-specific evaluation toolkit (dialect embedding cosine similarity, dialect classification accuracy) alongside standard speech-quality metrics, but the underlying dialect classifier's own reliability is not independently validated, limiting confidence in the custom metrics."
 - id: "2509.18470"
+  published_date: "2025-09-22"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14855,6 +15120,7 @@ papers:
   caveats:
   - "Reports objective (MCD, log F0 error, UTMOSv2) and subjective MOS scores across two inference-step counts for six noising variants, showing objective metrics stay stable under step reduction while subjective MOS tracks more closely with the noising process's stochasticity, a useful evaluation-robustness data point for diffusion-like TTS benchmarking."
 - id: "2509.18806"
+  published_date: "2025-09-23"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14902,6 +15168,7 @@ papers:
   caveats:
   - "Uses an eight-metric objective battery (PESQ, UTMOS, VISQOL, MCD, M-STFT, periodicity RMSE, V/UV F1, pitch RMSE) to isolate an architectural failure mode, but the paper's own limitations section flags the complete absence of subjective validation as a gap for its reported gains."
 - id: "2509.18823"
+  published_date: "2025-09-23"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -14950,6 +15217,7 @@ papers:
   caveats:
   - "Directly validates FAD and MMD as reference-free generative-audio quality metrics against MUSHRA ground truth across multiple embedding spaces, providing controlled evidence for metric choice even though the validation setting (lossy coding) is a proxy for, not identical to, true generative-model evaluation."
 - id: "2509.19231"
+  published_date: "2025-09-23"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15000,6 +15268,7 @@ papers:
   caveats:
   - "Proposes and validates, against real clinician annotations rather than only automated proxies, an automatic phone-recognition-based intelligibility metric (PCC) as a lower-cost substitute for manual clinical transcription, and demonstrates a concrete case where WER/CER diverge from clinically-relevant reconstruction quality."
 - id: "2509.19668"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15046,6 +15315,7 @@ papers:
   caveats:
   - "Adopts the standard SIM/WER evaluation protocol established by Seed-TTS rather than proposing new evaluation methodology; its evaluation-metrics relevance is as a systematic negative-result benchmark rather than a metrics contribution."
 - id: "2509.19812"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15093,6 +15363,7 @@ papers:
   caveats:
   - "Introduces a systematic bit-error-rate and detection-F1 evaluation protocol across 14 distortion types (9 basic, 5 advanced) for speech watermarking robustness, and its own results show that basic-distortion-only test suites (as used by some baselines) can substantially overstate real-world robustness."
 - id: "2509.19928"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15146,6 +15417,7 @@ papers:
   caveats:
   - "Introduces both a validated objective metric (DS-WED) and a reusable 2000-rating human-annotated benchmark (ProsodyEval) for prosody diversity, filling a previously unvalidated measurement gap, and separately demonstrates that a strong general-purpose LLM judge fails to substitute for this dedicated metric."
 - id: "2509.20086"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15192,6 +15464,7 @@ papers:
   caveats:
   - "Demonstrates that a standard G2P benchmark (WikiPron) contains transcription inconsistencies that inflate error rates for at least one language (English) across every system tested, a direct caution for interpreting cross-system PER comparisons on this benchmark."
 - id: "2509.20321"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15240,6 +15513,7 @@ papers:
   caveats:
   - "Introduces DRES, a factorized precision-recall evaluation framework that isolates language-backbone editing behavior from acoustic transcription error, directly addressing an attribution gap in prior end-to-end SpeechLLM robustness benchmarks."
 - id: "2509.20410"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15287,6 +15561,7 @@ papers:
   caveats:
   - "Constructs its own precision/recall/F1/accuracy benchmark for semantic endpoint detection because no standard evaluation protocol existed for the task, but the benchmark itself is entirely synthetic and the comparison to prior methods is not a controlled head-to-head."
 - id: "2509.20485"
+  published_date: "2025-09-24"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15333,6 +15608,7 @@ papers:
   caveats:
   - "Proposes two reference-free, aspect-specific objective metrics (TTScore-int for intelligibility, TTScore-pro for prosody) validated across three independent subjective benchmarks (SOMOS, VoiceMOS22, TTS Arena), directly addressing the gap between narrow WER/CER-style metrics and broad MOS ratings."
 - id: "2506.21875"
+  published_date: "2025-09-26"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15380,6 +15656,7 @@ papers:
   caveats:
   - "Introduces the first benchmark scoring end-to-end speech LLM output directly on generated speech rather than its transcript, and demonstrates via ablation that query-aware, hand-authored checklists measurably improve automatic-judge alignment with human ratings over generic rubrics."
 - id: "2509.21968"
+  published_date: "2025-09-26"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15428,6 +15705,7 @@ papers:
   caveats:
   - "Reports a broad objective reconstruction metric set (WER, STOI, PESQ, SPK-SIM, UTMOS, Audiobox Aesthetics) across speech, vocal, music, and sound domains, and its own results demonstrate that codec-level reconstruction metrics do not reliably predict downstream generative-model usability."
 - id: "2509.22243"
+  published_date: "2025-09-26"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15474,6 +15752,7 @@ papers:
   caveats:
   - "Introduces scenario-specific metrics (Takeover Rate, Jump-in Rate, Turn-Taking Rate, Topic Shift Score, Emergency Detection Score, Jensen-Shannon Divergence for backchannel timing) for full-duplex conversational behavior, extending prior turn-taking benchmarks to a broader scenario set including model-initiated emergency interruption."
 - id: "2509.23147"
+  published_date: "2025-09-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15520,6 +15799,7 @@ papers:
   caveats:
   - "Extends typical forced-alignment evaluation (recall/precision at fixed tolerances) with an explicit dual onset/offset boundary formulation and inter-phoneme gap statistics, but this same design choice mechanically depresses precision scores relative to onset-only aligners, complicating direct cross-aligner precision comparison."
 - id: "2510.02352"
+  published_date: "2025-09-27"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15566,6 +15846,7 @@ papers:
   caveats:
   - "Adapts group-unfairness and ranking-similarity metrics from the text/recommendation fairness literature into new audio-specific fairness measures (GUS, SNSR, SNSV), and its multi-turn protocol shows single-turn evaluation alone can miss bias that later evaluation rounds surface."
 - id: "2509.23938"
+  published_date: "2025-09-28"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15613,6 +15894,7 @@ papers:
   caveats:
   - "Releases a manually annotated, four-state Easy Turn testset, giving the field a reproducible benchmark for turn-taking detection where prior evaluation relied on closed or single-vendor setups; the paper's own evaluation is restricted to this self-built benchmark with no independent third-party comparison."
 - id: "2509.24457"
+  published_date: "2025-09-29"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15659,6 +15941,7 @@ papers:
   caveats:
   - "Provides the largest-scale controlled correlation study to date of objective codec-quality metrics against MUSHRA-1S human ratings (45 metrics x 17 conditions x 100 files), giving direct, evidence-based guidance for metric selection in neural codec evaluation."
 - id: "2509.26276"
+  published_date: "2025-09-30"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15706,6 +15989,7 @@ papers:
   caveats:
   - "Relies entirely on existing benchmarks (SALMON, sWUGGY, sBLiMP, ARCH linear probes) rather than proposing new evaluation methodology; its own linear-probe analysis reveals that SSL-based embedding initialization trades prosody-probe accuracy for content-probe accuracy."
 - id: "2509.26542"
+  published_date: "2025-09-30"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv
@@ -15760,6 +16044,7 @@ papers:
   caveats:
   - "Introduces the first benchmark to combine multi-step reasoning difficulty, explicit real-time latency constraints, and matched text-voice comparison on identical items, plus a formal Voice Reasoning Gap metric and a 16-category failure taxonomy validated against human ratings."
 - id: "2510.00264"
+  published_date: "2025-09-30"
   entry_date: "2026-07-21"
   year: 2025
   venue: arXiv

@@ -3,6 +3,7 @@ last_updated: '2026-07-26'
 paper_count: 203
 papers:
 - id: '1712.05884'
+  published_date: "2017-12-16"
   entry_date: '2026-07-26'
   year: 2017
   venue: arXiv
@@ -74,6 +75,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '1904.02882'
+  published_date: "2019-04-05"
   entry_date: '2026-07-26'
   year: 2019
   venue: arXiv
@@ -132,6 +134,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2010.05646'
+  published_date: "2020-10-12"
   entry_date: '2026-07-26'
   year: 2020
   venue: arXiv
@@ -202,6 +205,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2206.04658'
+  published_date: "2022-06-09"
   entry_date: '2026-07-26'
   year: 2022
   venue: arXiv
@@ -273,6 +277,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2209.03143'
+  published_date: "2022-09-07"
   entry_date: '2026-07-26'
   year: 2022
   venue: arXiv
@@ -400,6 +405,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2301.02111'
+  published_date: "2023-01-05"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -474,6 +480,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2303.03926'
+  published_date: "2023-03-07"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -539,6 +546,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2304.09116'
+  published_date: "2023-04-18"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -610,6 +618,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2305.07243'
+  published_date: "2023-05-12"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -678,6 +687,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2305.09636'
+  published_date: "2023-05-16"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -754,6 +764,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2306.12925'
+  published_date: "2023-06-22"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -829,6 +840,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2308.16692'
+  published_date: "2023-08-31"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -909,6 +921,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2310.00704'
+  published_date: "2023-10-01"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -984,6 +997,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2312.01479'
+  published_date: "2023-12-03"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -1046,6 +1060,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2312.15821'
+  published_date: "2023-12-25"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -1115,6 +1130,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2401.07333'
+  published_date: "2024-01-14"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1180,6 +1196,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2402.01912'
+  published_date: "2024-02-02"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1247,6 +1264,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2402.08093'
+  published_date: "2024-02-12"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1322,6 +1340,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2402.13236'
+  published_date: "2024-02-20"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1397,6 +1416,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2403.03100'
+  published_date: "2024-03-05"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1467,6 +1487,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2403.16973'
+  published_date: "2024-03-25"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1542,6 +1563,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2404.03204'
+  published_date: "2024-04-04"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1614,6 +1636,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.00654'
+  published_date: "2024-06-02"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1693,6 +1716,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.02430'
+  published_date: "2024-06-04"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1783,6 +1807,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.04904'
+  published_date: "2024-06-07"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1859,6 +1884,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.05370'
+  published_date: "2024-06-08"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1929,6 +1955,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.05551'
+  published_date: "2024-06-08"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -1990,6 +2017,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.07855'
+  published_date: "2024-06-12"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2054,6 +2082,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.18009'
+  published_date: "2024-06-26"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2128,6 +2157,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2407.05361'
+  published_date: "2024-07-07"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2199,6 +2229,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2407.05407'
+  published_date: "2024-07-07"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2280,6 +2311,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2407.08551'
+  published_date: "2024-07-11"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2341,6 +2373,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2409.00750'
+  published_date: "2024-09-01"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2412,6 +2445,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2409.03283'
+  published_date: "2024-09-05"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2488,6 +2522,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2411.01156'
+  published_date: "2024-11-02"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2559,6 +2594,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2411.09943'
+  published_date: "2024-11-15"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2623,6 +2659,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2412.04724'
+  published_date: "2024-12-06"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2695,6 +2732,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2412.10117'
+  published_date: "2024-12-13"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2773,6 +2811,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2412.15649'
+  published_date: "2024-12-20"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -2853,6 +2892,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2409.09098'
+  published_date: "2025-01-09"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2928,6 +2968,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2501.06282'
+  published_date: "2025-01-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3005,6 +3046,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.coling-main.685
+  published_date: "2025-01-19"
   entry_date: '2026-07-26'
   year: 2025
   venue: COLING
@@ -3064,6 +3106,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.04128'
+  published_date: "2025-02-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3143,6 +3186,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.05512'
+  published_date: "2025-02-08"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3209,6 +3253,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.07243'
+  published_date: "2025-02-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -3300,6 +3345,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.18924'
+  published_date: "2025-02-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3371,6 +3417,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2503.01710'
+  published_date: "2025-03-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3448,6 +3495,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2503.14345'
+  published_date: "2025-03-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3533,6 +3581,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2504.02407'
+  published_date: "2025-04-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3611,6 +3660,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: iclr-2025-868masI331
+  published_date: "2025-04-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -3687,6 +3737,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: iclr-2025-cuFzE8Jlvb
+  published_date: "2025-04-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -3764,6 +3815,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: iclr-2025-hQvX9MBowC
+  published_date: "2025-04-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -3836,6 +3888,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.findings-naacl.279
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -3912,6 +3965,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.naacl-demo.12
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -3995,6 +4049,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: 2025.naacl-demo.21
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -4070,6 +4125,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: 2025.naacl-long.242
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -4138,6 +4194,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.naacl-short.65
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -4202,6 +4259,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.naacl-srw.6
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -4286,6 +4344,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2505.07916'
+  published_date: "2025-05-12"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4366,6 +4425,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2505.13000'
+  published_date: "2025-05-19"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4438,6 +4498,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2505.17589'
+  published_date: "2025-05-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4524,6 +4585,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2506.13053'
+  published_date: "2025-06-16"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4593,6 +4655,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.02176'
+  published_date: "2025-07-02"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4653,6 +4716,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.02380'
+  published_date: "2025-07-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4710,6 +4774,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.03887'
+  published_date: "2025-07-05"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4772,6 +4837,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.04349'
+  published_date: "2025-07-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4844,6 +4910,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.01348'
+  published_date: "2025-07-08"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4923,6 +4990,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2506.09874'
+  published_date: "2025-07-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -4985,6 +5053,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.07799'
+  published_date: "2025-07-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5055,6 +5124,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.08319'
+  published_date: "2025-07-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5113,6 +5183,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2507.09282'
+  published_date: "2025-07-12"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5177,6 +5248,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2506.18296'
+  published_date: "2025-07-15"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -5229,6 +5301,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.10985'
+  published_date: "2025-07-15"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5276,6 +5349,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2507.12197'
+  published_date: "2025-07-16"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5357,6 +5431,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.14988'
+  published_date: "2025-07-20"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5431,6 +5506,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.15272'
+  published_date: "2025-07-21"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5491,6 +5567,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.16875'
+  published_date: "2025-07-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5555,6 +5632,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.21138'
+  published_date: "2025-07-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -5633,6 +5711,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-demo.37
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -5695,6 +5774,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-industry.42
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -5759,6 +5839,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.1043
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -5831,6 +5912,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.1252
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -5895,6 +5977,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.1498
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -5978,6 +6061,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.313
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6054,6 +6138,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.346
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6132,6 +6217,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.598
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6207,6 +6293,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.65
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6291,6 +6378,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.654
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6374,6 +6462,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-long.790
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6437,6 +6526,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.acl-short.81
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6505,6 +6595,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.115
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6576,6 +6667,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.findings-acl.1226
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6636,6 +6728,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: 2025.findings-acl.687
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACL
@@ -6713,6 +6806,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.17527'
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -6783,6 +6877,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.20140'
+  published_date: "2025-07-27"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -6858,6 +6953,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2503.11026'
+  published_date: "2025-07-30"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -6931,6 +7027,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.ccl-1.77
+  published_date: "2025-08-01"
   entry_date: '2026-07-26'
   year: 2025
   venue: workshop
@@ -6990,6 +7087,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.icnlsp-1.34
+  published_date: "2025-08-01"
   entry_date: '2026-07-26'
   year: 2025
   venue: workshop
@@ -7066,6 +7164,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.22746'
+  published_date: "2025-08-01"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7134,6 +7233,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.02038'
+  published_date: "2025-08-04"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7207,6 +7307,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2504.10352'
+  published_date: "2025-08-05"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7288,6 +7389,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.03543'
+  published_date: "2025-08-05"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7364,6 +7466,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.14049'
+  published_date: "2025-08-05"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7434,6 +7537,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.04141'
+  published_date: "2025-08-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7503,6 +7607,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.04195'
+  published_date: "2025-08-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7570,6 +7675,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.04585'
+  published_date: "2025-08-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: ACM MM
@@ -7651,6 +7757,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.04996'
+  published_date: "2025-08-07"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7722,6 +7829,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.06262'
+  published_date: "2025-08-08"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7794,6 +7902,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.07302'
+  published_date: "2025-08-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -7866,6 +7975,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.07426'
+  published_date: "2025-08-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: ASRU
@@ -7942,6 +8052,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.09702'
+  published_date: "2025-08-13"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -8007,6 +8118,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-0047
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8083,6 +8195,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0305
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8146,6 +8259,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0319
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8229,6 +8343,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0406
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8290,6 +8405,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-0455
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8365,6 +8481,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0464
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8435,6 +8552,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0468
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8505,6 +8623,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0551
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8573,6 +8692,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0575
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8636,6 +8756,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0596
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8703,6 +8824,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0656
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8766,6 +8888,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0787
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8826,6 +8949,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-0815
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8899,6 +9023,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0989
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -8967,6 +9092,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-1081
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9030,6 +9156,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1084
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9098,6 +9225,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1101
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9171,6 +9299,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1115
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9246,6 +9375,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1192
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9311,6 +9441,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1229
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9375,6 +9506,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1236
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9437,6 +9569,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1344
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9499,6 +9632,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1440
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9563,6 +9697,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1531
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9628,6 +9763,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-1536
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9690,6 +9826,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1638
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9751,6 +9888,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1641
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9819,6 +9957,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1684
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9880,6 +10019,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1726
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -9942,6 +10082,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1779
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10005,6 +10146,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1993
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10078,6 +10220,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2031
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10147,6 +10290,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2189
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10205,6 +10349,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2283
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10262,6 +10407,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-2447
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10333,6 +10479,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2449
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10393,6 +10540,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2595
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10445,6 +10593,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-2765
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10516,6 +10665,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-2787
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10578,6 +10728,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-2815
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10618,6 +10769,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-raju25_interspeech
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -10672,6 +10824,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.15442'
+  published_date: "2025-08-21"
   entry_date: '2026-07-26'
   year: 2025
   venue: EMNLP
@@ -10751,6 +10904,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.16332'
+  published_date: "2025-08-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -10836,6 +10990,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.16790'
+  published_date: "2025-08-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -10918,6 +11073,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.17031'
+  published_date: "2025-08-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -10982,6 +11138,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.19098'
+  published_date: "2025-08-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11072,6 +11229,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.19205'
+  published_date: "2025-08-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11151,6 +11309,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2411.19770'
+  published_date: "2025-08-28"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11214,6 +11373,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.14534'
+  published_date: "2025-08-30"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11277,6 +11437,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.02020'
+  published_date: "2025-09-02"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11357,6 +11518,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.11128'
+  published_date: "2025-09-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11427,6 +11589,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2506.21619'
+  published_date: "2025-09-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11507,6 +11670,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.04072'
+  published_date: "2025-09-04"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11583,6 +11747,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.04685'
+  published_date: "2025-09-04"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11663,6 +11828,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.05863'
+  published_date: "2025-09-06"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11734,6 +11900,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.07376'
+  published_date: "2025-09-09"
   entry_date: '2026-07-26'
   year: 2025
   venue: EMNLP
@@ -11807,6 +11974,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.08379'
+  published_date: "2025-09-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11878,6 +12046,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.08696'
+  published_date: "2025-09-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -11941,6 +12110,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2506.04077'
+  published_date: "2025-09-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12006,6 +12176,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2509.09631'
+  published_date: "2025-09-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12074,6 +12245,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.09748'
+  published_date: "2025-09-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12143,6 +12315,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.11084'
+  published_date: "2025-09-14"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12217,6 +12390,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.11425'
+  published_date: "2025-09-14"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12299,6 +12473,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.12171'
+  published_date: "2025-09-15"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12362,6 +12537,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2509.12831'
+  published_date: "2025-09-16"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12415,6 +12591,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.13068'
+  published_date: "2025-09-16"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12497,6 +12674,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2412.16846'
+  published_date: "2025-09-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12579,6 +12757,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2504.20581'
+  published_date: "2025-09-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12630,6 +12809,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.14579'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12695,6 +12875,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.14684'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12767,6 +12948,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.14784'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12845,6 +13027,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.15253'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12906,6 +13089,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.15462'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -12978,6 +13162,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.15845'
+  published_date: "2025-09-19"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13053,6 +13238,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.15969'
+  published_date: "2025-09-19"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13132,6 +13318,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.17021'
+  published_date: "2025-09-21"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13197,6 +13384,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.17516'
+  published_date: "2025-09-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13275,6 +13463,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.17765'
+  published_date: "2025-09-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13345,6 +13534,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.17988'
+  published_date: "2025-09-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13412,6 +13602,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2509.18928'
+  published_date: "2025-09-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13484,6 +13675,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.19231'
+  published_date: "2025-09-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13555,6 +13747,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.19592'
+  published_date: "2025-09-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13631,6 +13824,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.19668'
+  published_date: "2025-09-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13694,6 +13888,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.19883'
+  published_date: "2025-09-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13762,6 +13957,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.19928'
+  published_date: "2025-09-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13837,6 +14033,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.22718'
+  published_date: "2025-09-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13902,6 +14099,7 @@ papers:
   - For zero-shot TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2509.20802'
+  published_date: "2025-09-25"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -13970,6 +14168,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.22727'
+  published_date: "2025-09-25"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -14034,6 +14233,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.22062'
+  published_date: "2025-09-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -14104,6 +14304,7 @@ papers:
   - For zero-shot TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.22167'
+  published_date: "2025-09-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -14185,6 +14386,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.24650'
+  published_date: "2025-09-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -14268,6 +14470,7 @@ papers:
   - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.25131'
+  published_date: "2025-09-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv

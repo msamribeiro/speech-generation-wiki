@@ -4,6 +4,7 @@ paper_count: 165
 
 papers:
   - id: "1609.03499"
+    published_date: "2016-09-12"
     entry_date: "2026-07-25"
     year: 2016
     venue: "arXiv"
@@ -57,6 +58,7 @@ papers:
       - "WaveNet predates codec-token TTS; it is included as the foundational autoregressive speech-generation precursor."
 
   - id: "1703.10135"
+    published_date: "2017-03-29"
     entry_date: "2026-07-25"
     year: 2017
     venue: "arXiv"
@@ -103,6 +105,7 @@ papers:
       - "Tacotron is an autoregressive acoustic model rather than a codec-token model, so its relevance is historical."
 
   - id: "2106.15561"
+    published_date: "2021-06-29"
     entry_date: "2026-07-25"
     year: 2021
     venue: "arXiv"
@@ -156,6 +159,7 @@ papers:
       - "The survey predates the neural-codec LM paradigm and provides taxonomy rather than direct codec-TTS evidence."
 
   - id: "2209.03143"
+    published_date: "2022-09-07"
     entry_date: "2026-07-25"
     year: 2022
     venue: "arXiv"
@@ -210,6 +214,7 @@ papers:
       - "AudioLM is an audio-continuation model rather than text-conditioned TTS, but establishes hierarchical semantic/acoustic token generation."
 
   - id: "2210.13438"
+    published_date: "2022-10-24"
     entry_date: "2026-07-25"
     year: 2022
     venue: "arXiv"
@@ -263,6 +268,7 @@ papers:
       - "EnCodec contributes the discrete acoustic representation used by later codec language models rather than a TTS generator."
 
   - id: "2301.02111"
+    published_date: "2023-01-05"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -316,6 +322,7 @@ papers:
       - "VALL-E directly establishes autoregressive neural-codec language modeling for zero-shot TTS."
 
   - id: "2301.11325"
+    published_date: "2023-01-26"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -369,6 +376,7 @@ papers:
       - "MusicLM validates hierarchical codec-token autoregression in music, providing adjacent rather than speech-specific evidence."
 
   - id: "2303.03926"
+    published_date: "2023-03-07"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -416,6 +424,7 @@ papers:
       - "The system directly extends codec language-model TTS to cross-lingual speaker and accent transfer."
 
   - id: "2305.02765"
+    published_date: "2023-05-04"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -462,6 +471,7 @@ papers:
       - "HiFi-Codec targets the codec representation and downstream token burden rather than performing TTS itself."
 
   - id: "2305.07243"
+    published_date: "2023-05-12"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -508,6 +518,7 @@ papers:
       - "The paper directly studies scale in autoregressive speech-token generation."
 
   - id: "2305.09636"
+    published_date: "2023-05-16"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -562,6 +573,7 @@ papers:
       - "SoundStorm replaces slow acoustic-token autoregression with parallel masked generation while retaining an autoregressive semantic stage."
 
   - id: "2305.11000"
+    published_date: "2023-05-18"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -609,6 +621,7 @@ papers:
       - "SpeechGPT applies discrete speech-unit language modeling to spoken conversational generation."
 
   - id: "2306.00814"
+    published_date: "2023-06-01"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -662,6 +675,7 @@ papers:
       - "Vocos is a codec/vocoder decoder contribution rather than an autoregressive token generator."
 
   - id: "2306.12925"
+    published_date: "2023-06-22"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -716,6 +730,7 @@ papers:
       - "AudioPaLM directly unifies text and audio token prediction for speech generation and translation."
 
   - id: "2308.16692"
+    published_date: "2023-08-31"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -770,6 +785,7 @@ papers:
       - "SpeechTokenizer directly studies how codec-token structure affects downstream autoregressive speech language modeling."
 
   - id: "2310.00704"
+    published_date: "2023-10-01"
     entry_date: "2026-07-25"
     year: 2023
     venue: "arXiv"
@@ -824,6 +840,7 @@ papers:
       - "UniAudio directly evaluates autoregressive codec modeling across TTS and other audio-generation tasks."
 
   - id: "2401.07333"
+    published_date: "2024-01-14"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -871,6 +888,7 @@ papers:
       - "ELLA-V directly addresses alignment failures in autoregressive codec-language-model TTS."
 
   - id: "2402.01912"
+    published_date: "2024-02-02"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -918,6 +936,7 @@ papers:
       - "The system directly uses autoregressive codec modeling for language-guided expressive TTS."
 
   - id: "2402.05755"
+    published_date: "2024-02-08"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -972,6 +991,7 @@ papers:
       - "Spirit LM uses interleaved discrete speech and text tokens for unified generation, with TTS as one evaluated direction."
 
   - id: "2402.08093"
+    published_date: "2024-02-12"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1026,6 +1046,7 @@ papers:
       - "BASE TTS directly studies scaled autoregressive speech-token prediction and streamable decoding."
 
   - id: "2402.13236"
+    published_date: "2024-02-20"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1072,6 +1093,7 @@ papers:
       - "This overview supplies taxonomy and comparative context rather than a new codec-TTS system."
 
   - id: "2403.16973"
+    published_date: "2024-03-25"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1126,6 +1148,7 @@ papers:
       - "VoiceCraft directly advances autoregressive codec-token generation for both TTS and speech editing."
 
   - id: "2404.03204"
+    published_date: "2024-04-04"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1173,6 +1196,7 @@ papers:
       - "RALL-E directly targets robustness and alignment in autoregressive codec-language-model TTS."
 
   - id: "2406.00654"
+    published_date: "2024-06-02"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1227,6 +1251,7 @@ papers:
       - "The work directly applies human-preference optimization to an autoregressive codec-TTS model."
 
   - id: "2406.02430"
+    published_date: "2024-06-04"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1280,6 +1305,7 @@ papers:
       - "Seed-TTS directly combines autoregressive token generation with a diffusion renderer in a scaled TTS family."
 
   - id: "2406.04904"
+    published_date: "2024-06-07"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1334,6 +1360,7 @@ papers:
       - "XTTS directly extends autoregressive codec-language-model TTS to multilingual zero-shot synthesis."
 
   - id: "2406.05370"
+    published_date: "2024-06-08"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1388,6 +1415,7 @@ papers:
       - "VALL-E 2 directly improves the robustness and sampling strategy of autoregressive codec TTS."
 
   - id: "2406.07855"
+    published_date: "2024-06-12"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1435,6 +1463,7 @@ papers:
       - "VALL-E R directly introduces monotonic alignment constraints for autoregressive codec TTS."
 
   - id: "2406.18009"
+    published_date: "2024-06-26"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1489,6 +1518,7 @@ papers:
       - "E2 TTS is a fully non-autoregressive alternative and contributes comparative evidence against codec-LM complexity."
 
   - id: "2407.05407"
+    published_date: "2024-07-07"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1542,6 +1572,7 @@ papers:
       - "CosyVoice directly combines autoregressive supervised semantic-token generation with flow-based acoustic rendering."
 
   - id: "2407.08551"
+    published_date: "2024-07-11"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1589,6 +1620,7 @@ papers:
       - "The paper directly tests autoregressive speech generation without vector-quantized codec tokens."
 
   - id: "2408.02622"
+    published_date: "2024-08-05"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1636,6 +1668,7 @@ papers:
       - "The system extends autoregressive speech-token generation to simultaneous listening and speaking."
 
   - id: "2408.16532"
+    published_date: "2024-08-29"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1689,6 +1722,7 @@ papers:
       - "WavTokenizer contributes an efficient codec representation for downstream audio language models rather than a TTS model."
 
   - id: "2408.16725"
+    published_date: "2024-08-29"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1736,6 +1770,7 @@ papers:
       - "Mini-Omni directly uses autoregressive speech-token generation for streaming spoken interaction."
 
   - id: "2409.00750"
+    published_date: "2024-09-01"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1790,6 +1825,7 @@ papers:
       - "MaskGCT replaces autoregressive codec decoding with masked generation and therefore provides a direct competing architecture."
 
   - id: "2409.03283"
+    published_date: "2024-09-05"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1844,6 +1880,7 @@ papers:
       - "FireRedTTS directly evaluates autoregressive and flow-based branches within an industrial TTS framework."
 
   - id: "2409.05377"
+    published_date: "2024-09-09"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1897,6 +1934,7 @@ papers:
       - "BigCodec advances the low-bitrate codec substrate used by speech language models rather than generating TTS itself."
 
   - id: "2410.00037"
+    published_date: "2024-09-17"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -1951,6 +1989,7 @@ papers:
       - "Moshi establishes a real-time full-duplex speech language model using hierarchical autoregressive audio tokens."
 
   - id: "2410.03751"
+    published_date: "2024-10-01"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2004,6 +2043,7 @@ papers:
       - "The survey provides taxonomy and trend evidence rather than a new autoregressive codec-TTS system."
 
   - id: "2410.11190"
+    published_date: "2024-10-15"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2050,6 +2090,7 @@ papers:
     caveats:
       - "Mini-Omni2 extends autoregressive speech-token generation to multimodal and duplex interaction."
   - id: "2410.17799"
+    published_date: "2024-10-23"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2096,6 +2137,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2411.00774"
+    published_date: "2024-11-01"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2142,6 +2184,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2411.01156"
+    published_date: "2024-11-02"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2188,6 +2231,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2411.17607"
+    published_date: "2024-11-26"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2241,6 +2285,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2411.19842"
+    published_date: "2024-11-29"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2294,6 +2339,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2412.02612"
+    published_date: "2024-12-03"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2347,6 +2393,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2412.10117"
+    published_date: "2024-12-13"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2399,6 +2446,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2412.15649"
+    published_date: "2024-12-20"
     entry_date: "2026-07-25"
     year: 2024
     venue: "arXiv"
@@ -2452,6 +2500,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2502.04128"
+    published_date: "2025-02-06"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2505,6 +2554,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2502.05512"
+    published_date: "2025-02-08"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2551,6 +2601,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2502.06490"
+    published_date: "2025-02-10"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2604,6 +2655,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2502.07243"
+    published_date: "2025-02-11"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ICLR"
@@ -2657,6 +2709,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2502.11946"
+    published_date: "2025-02-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2710,6 +2763,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2502.17239"
+    published_date: "2025-02-24"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2763,6 +2817,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2503.01710"
+    published_date: "2025-03-03"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2816,6 +2871,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2503.14345"
+    published_date: "2025-03-18"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2869,6 +2925,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2504.02407"
+    published_date: "2025-04-03"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2923,6 +2980,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2504.10344"
+    published_date: "2025-04-14"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -2976,6 +3034,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "iclr-2025-868masI331"
+    published_date: "2025-04-24"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ICLR"
@@ -3029,6 +3088,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "iclr-2025-cuFzE8Jlvb"
+    published_date: "2025-04-24"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ICLR"
@@ -3082,6 +3142,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "iclr-2025-dGSOn7sdWg"
+    published_date: "2025-04-24"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ICLR"
@@ -3135,6 +3196,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2025.findings-naacl.184"
+    published_date: "2025-04-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "NAACL"
@@ -3187,6 +3249,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.findings-naacl.279"
+    published_date: "2025-04-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "NAACL"
@@ -3233,6 +3296,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.naacl-demo.12"
+    published_date: "2025-04-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "NAACL"
@@ -3285,6 +3349,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.naacl-long.591"
+    published_date: "2025-04-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "NAACL"
@@ -3338,6 +3403,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2025.naacl-srw.6"
+    published_date: "2025-04-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "NAACL"
@@ -3391,6 +3457,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2505.02625"
+    published_date: "2025-05-05"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3444,6 +3511,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2505.07916"
+    published_date: "2025-05-12"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3497,6 +3565,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2505.13000"
+    published_date: "2025-05-19"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3543,6 +3612,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2505.17589"
+    published_date: "2025-05-23"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3596,6 +3666,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2506.10274"
+    published_date: "2025-06-12"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3649,6 +3720,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2507.02380"
+    published_date: "2025-07-03"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3687,6 +3759,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.01348"
+    published_date: "2025-07-08"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3740,6 +3813,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2506.23325"
+    published_date: "2025-07-09"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3793,6 +3867,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2507.09070"
+    published_date: "2025-07-11"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3839,6 +3914,7 @@ papers:
       - "The connection to autoregressive codec TTS is contextual rather than a direct system contribution."
 
   - id: "2507.12197"
+    published_date: "2025-07-16"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3892,6 +3968,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.16632"
+    published_date: "2025-07-22"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3945,6 +4022,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.21138"
+    published_date: "2025-07-22"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -3998,6 +4076,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.18897"
+    published_date: "2025-07-25"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -4043,6 +4122,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2025.acl-long.1043"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4096,6 +4176,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2025.acl-long.1498"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4149,6 +4230,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.acl-long.65"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4201,6 +4283,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.acl-long.654"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4253,6 +4336,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2025.acl-long.682"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4305,6 +4389,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.acl-long.912"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4357,6 +4442,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.acl-long.937"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4410,6 +4496,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2025.acl-short.81"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4455,6 +4542,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.findings-acl.101"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4508,6 +4596,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.findings-acl.1051"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4560,6 +4649,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.findings-ijcnlp.49"
+    published_date: "2025-07-27"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACL"
@@ -4606,6 +4696,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2025.conll-1.9"
+    published_date: "2025-07-31"
     entry_date: "2026-07-25"
     year: 2025
     venue: "CoNLL"
@@ -4653,6 +4744,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2025.ccl-1.80"
+    published_date: "2025-08-01"
     entry_date: "2026-07-25"
     year: 2025
     venue: "workshop"
@@ -4698,6 +4790,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2025.icnlsp-1.34"
+    published_date: "2025-08-01"
     entry_date: "2026-07-25"
     year: 2025
     venue: "workshop"
@@ -4744,6 +4837,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.22746"
+    published_date: "2025-08-01"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -4791,6 +4885,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2504.10352"
+    published_date: "2025-08-05"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -4843,6 +4938,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.14049"
+    published_date: "2025-08-05"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -4889,6 +4985,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.04141"
+    published_date: "2025-08-06"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -4934,6 +5031,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.04585"
+    published_date: "2025-08-06"
     entry_date: "2026-07-25"
     year: 2025
     venue: "ACM MM"
@@ -4987,6 +5085,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2507.20091"
+    published_date: "2025-08-07"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5040,6 +5139,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.06262"
+    published_date: "2025-08-08"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5092,6 +5192,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.08715"
+    published_date: "2025-08-12"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5138,6 +5239,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.08961"
+    published_date: "2025-08-12"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5184,6 +5286,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2504.12867"
+    published_date: "2025-08-13"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5237,6 +5340,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.09767"
+    published_date: "2025-08-13"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5283,6 +5387,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.11326"
+    published_date: "2025-08-15"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -5329,6 +5434,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-0253"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5374,6 +5480,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-0319"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5426,6 +5533,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-0355"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5471,6 +5579,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "interspeech-2025-0464"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5517,6 +5626,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "interspeech-2025-0468"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5563,6 +5673,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "interspeech-2025-0551"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5608,6 +5719,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-0669"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5660,6 +5772,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "interspeech-2025-0704"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5712,6 +5825,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-0874"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5765,6 +5879,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "interspeech-2025-0989"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5810,6 +5925,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-1084"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5855,6 +5971,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-1289"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5901,6 +6018,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "interspeech-2025-1538"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5947,6 +6065,7 @@ papers:
       - "The connection to autoregressive codec TTS is contextual rather than a direct system contribution."
 
   - id: "interspeech-2025-1641"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -5993,6 +6112,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-1776"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6039,6 +6159,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "interspeech-2025-1993"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6085,6 +6206,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-2328"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6131,6 +6253,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-2447"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6177,6 +6300,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "interspeech-2025-2536"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6224,6 +6348,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "interspeech-2025-2564"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6270,6 +6395,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "interspeech-2025-2726"
+    published_date: "2025-08-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "Interspeech"
@@ -6316,6 +6442,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2508.15827"
+    published_date: "2025-08-18"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6369,6 +6496,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2508.15442"
+    published_date: "2025-08-21"
     entry_date: "2026-07-25"
     year: 2025
     venue: "EMNLP"
@@ -6421,6 +6549,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.16332"
+    published_date: "2025-08-22"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6473,6 +6602,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.16790"
+    published_date: "2025-08-22"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6526,6 +6656,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.19098"
+    published_date: "2025-08-26"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6578,6 +6709,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2508.19205"
+    published_date: "2025-08-26"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6632,6 +6764,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2509.00503"
+    published_date: "2025-08-30"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6678,6 +6811,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.00685"
+    published_date: "2025-08-31"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6723,6 +6857,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.02020"
+    published_date: "2025-09-02"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6775,6 +6910,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2502.11128"
+    published_date: "2025-09-03"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6820,6 +6956,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2506.21619"
+    published_date: "2025-09-03"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6872,6 +7009,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.04685"
+    published_date: "2025-09-04"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6925,6 +7063,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.05863"
+    published_date: "2025-09-06"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -6971,6 +7110,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.09174"
+    published_date: "2025-09-11"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7024,6 +7164,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2509.09550"
+    published_date: "2025-09-11"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7070,6 +7211,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.11425"
+    published_date: "2025-09-14"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7122,6 +7264,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.13068"
+    published_date: "2025-09-16"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7175,6 +7318,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2412.16846"
+    published_date: "2025-09-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7227,6 +7371,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.13670"
+    published_date: "2025-09-17"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7272,6 +7417,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.14784"
+    published_date: "2025-09-18"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7326,6 +7472,7 @@ papers:
       - "This non-autoregressive or hybrid TTS system provides direct comparative evidence for the concept."
 
   - id: "2509.14882"
+    published_date: "2025-09-18"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7379,6 +7526,7 @@ papers:
       - "This paper applies autoregressive speech-token generation in a spoken-agent architecture."
 
   - id: "2509.14946"
+    published_date: "2025-09-18"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7432,6 +7580,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.15845"
+    published_date: "2025-09-19"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7485,6 +7634,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.15969"
+    published_date: "2025-09-19"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7537,6 +7687,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.20378"
+    published_date: "2025-09-20"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7589,6 +7740,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.17021"
+    published_date: "2025-09-21"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7634,6 +7786,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.17516"
+    published_date: "2025-09-22"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7680,6 +7833,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.18531"
+    published_date: "2025-09-23"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7725,6 +7879,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.19025"
+    published_date: "2025-09-23"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7770,6 +7925,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.19186"
+    published_date: "2025-09-23"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7815,6 +7971,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.19592"
+    published_date: "2025-09-23"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7861,6 +8018,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2505.10599"
+    published_date: "2025-09-25"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7906,6 +8064,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.20802"
+    published_date: "2025-09-25"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7951,6 +8110,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.21968"
+    published_date: "2025-09-26"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -7996,6 +8156,7 @@ papers:
       - "This paper contributes codec infrastructure used by speech language models rather than a complete TTS system."
 
   - id: "2509.22062"
+    published_date: "2025-09-26"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -8042,6 +8203,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.24570"
+    published_date: "2025-09-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -8087,6 +8249,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.24650"
+    published_date: "2025-09-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -8139,6 +8302,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.25131"
+    published_date: "2025-09-29"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"
@@ -8184,6 +8348,7 @@ papers:
       - "This paper directly evaluates an autoregressive speech-token or codec-language-model TTS system."
 
   - id: "2509.26514"
+    published_date: "2025-09-30"
     entry_date: "2026-07-25"
     year: 2025
     venue: "arXiv"

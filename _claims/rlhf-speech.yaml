@@ -4,6 +4,7 @@ paper_count: 29
 
 papers:
   - id: "2406.00654"
+    published_date: "2024-06-02"
     entry_date: "2026-07-20"
     year: 2024
     venue: arXiv
@@ -58,6 +59,7 @@ papers:
       - "The comparison against SpeechAlign is partially unfair by the authors' own admission: SpeechAlign-DPO requires ground-truth speech as positive samples, additional supervision UNO does not use."
 
   - id: "2406.02430"
+    published_date: "2024-06-04"
     entry_date: "2026-07-20"
     year: 2024
     venue: arXiv
@@ -111,6 +113,7 @@ papers:
       - "RL post-training is described at a high level (REINFORCE with WER+SIM or SER rewards, plus a DPO exploration) without extensive ablation of reward design choices, so the RLHF-specific contribution is thinner than in papers dedicated to alignment methodology."
 
   - id: "2412.10117"
+    published_date: "2024-12-13"
     entry_date: "2026-07-20"
     year: 2024
     venue: arXiv
@@ -163,6 +166,7 @@ papers:
       - "The differentiable ASR reward mechanism is demonstrated only for speaker fine-tuning; it is not evaluated as a general-purpose alignment technique across the model's other capabilities (streaming, instruction-following)."
 
   - id: "2502.11946"
+    published_date: "2025-02-17"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -216,6 +220,7 @@ papers:
       - "The RLHF post-training targets the AQTA chat/dialogue model, not the TTS decoder itself; its transferability to pure TTS alignment (as in UNO or F5R-TTS) is untested."
 
   - id: "2504.02407"
+    published_date: "2025-04-03"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -270,6 +275,7 @@ papers:
       - "As the first RL application to a NAR/flow-matching TTS architecture, the probabilistic-output reformulation technique has not yet been validated on other flow-matching or diffusion TTS backbones beyond F5-TTS."
 
   - id: "2025.naacl-demo.12"
+    published_date: "2025-04-29"
     entry_date: "2026-07-20"
     year: 2025
     venue: NAACL
@@ -322,6 +328,7 @@ papers:
       - "The paper's relevance to rlhf-speech is purely infrastructural: it states the toolkit 'also supports RLHF fine-tuning for speech LMs' but presents no RLHF-trained model, reward design, or evaluation."
 
   - id: "2505.09558"
+    published_date: "2025-05-14"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -376,6 +383,7 @@ papers:
       - "WavReward trains a reward *evaluator* via RL rather than applying RLHF to a TTS/SCA generation model directly; its relevance to rlhf-speech is as a reusable reward-model methodology and potential future reward source, not as a demonstrated RLHF-tuned generation system."
 
   - id: "2505.17589"
+    published_date: "2025-05-23"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -429,6 +437,7 @@ papers:
       - "DiffRO's generality across other LLM-based TTS pipelines is asserted by the authors but demonstrated only within the CosyVoice architecture family."
 
   - id: "2507.14988"
+    published_date: "2025-07-20"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -483,6 +492,7 @@ papers:
       - "RL is applied narrowly to the duration predictor subcomponent rather than the full synthesis pipeline; this scope decision is motivated by compute cost, not a general claim that narrow RL scope is preferable."
 
   - id: "2507.21138"
+    published_date: "2025-07-22"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -536,6 +546,7 @@ papers:
       - "The composite GRPO reward (WER + SIM + DNSMOS) is reported at a system level without an ablation isolating a single-reward variant against the full three-way reward, so the marginal contribution of each reward term to RL-specific gains is not separable."
 
   - id: "2025.acl-long.598"
+    published_date: "2025-07-27"
     entry_date: "2026-07-20"
     year: 2025
     venue: ACL
@@ -591,6 +602,7 @@ papers:
       - "All evaluation uses SeedTTS test sets (English/Chinese); no evaluation on truly out-of-distribution natural speech (radio or phone call recordings) is provided."
 
   - id: "2025.acl-long.682"
+    published_date: "2025-07-27"
     entry_date: "2026-07-20"
     year: 2025
     venue: ACL
@@ -643,6 +655,7 @@ papers:
       - "Coverage of post-alignment work is limited to citing AlignSLM and SpeechAlign as examples rather than providing a systematic comparison of preference-optimization approaches for speech, so this entry contributes context rather than new evidence to rlhf-speech."
 
   - id: "2025.acl-long.997"
+    published_date: "2025-07-27"
     entry_date: "2026-07-20"
     year: 2025
     venue: ACL
@@ -696,6 +709,7 @@ papers:
       - "Only the semantic dimension of SLM quality is addressed via preference optimization; paralinguistic aspects (prosody, speaking style, emotion) are explicitly out of scope for this alignment framework."
 
   - id: "2025.findings-acl.631"
+    published_date: "2025-07-27"
     entry_date: "2026-07-20"
     year: 2025
     venue: ACL Findings
@@ -748,6 +762,7 @@ papers:
       - "DPO here uses fully synthetic preference pairs (SpokenSwag, derived from a text commonsense corpus) rather than paired human or model-judged speech preferences, and allocating more DPO budget beyond roughly 30 minutes can degrade results rather than continuing to improve them."
 
   - id: "2507.17527"
+    published_date: "2025-07-27"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -801,6 +816,7 @@ papers:
       - "The RL framework is specialized for the simultaneous-translation task (chunk-level read-write policy, duration-matching rewards); its transferability to general TTS or open-domain SCA alignment beyond simultaneous interpretation is untested."
 
   - id: "2025.icnlsp-1.34"
+    published_date: "2025-08-01"
     entry_date: "2026-07-20"
     year: 2025
     venue: workshop
@@ -847,6 +863,7 @@ papers:
       - "The human-labeled baseline starts from the same pre-trained xTTSv2 checkpoint rather than a randomly initialised model, which limits conclusions about the true cost of label-free DPO training relative to a from-scratch comparison."
 
   - id: "2508.08957"
+    published_date: "2025-08-12"
     entry_date: "2026-07-20"
     year: 2025
     venue: ASRU
@@ -892,6 +909,7 @@ papers:
       - "QAMRO trains an automatic MOS predictor, not an RLHF-tuned generation system; its relevance to rlhf-speech is only as a potential future reward-model architecture, since the paper does not connect QAMRO to any RL training loop."
 
   - id: "interspeech-2025-0063"
+    published_date: "2025-08-17"
     entry_date: "2026-07-20"
     year: 2025
     venue: Interspeech
@@ -938,6 +956,7 @@ papers:
       - "UTMOS as reward model introduces reward hacking risk; the NISQA cross-check and human study mitigate but do not fully eliminate this risk."
 
   - id: "interspeech-2025-0704"
+    published_date: "2025-08-17"
     entry_date: "2026-07-20"
     year: 2025
     venue: Interspeech
@@ -992,6 +1011,7 @@ papers:
       - "Validated only on Mandarin-focused data with CosyVoice 2.0 as the base system; generalization to languages with distinct phonological properties beyond Japanese/Korean needs further study."
 
   - id: "2508.15442"
+    published_date: "2025-08-21"
     entry_date: "2026-07-20"
     year: 2025
     venue: EMNLP
@@ -1045,6 +1065,7 @@ papers:
       - "Reward temperature (a key hyperparameter controlling reward sharpness and reward-hacking suppression) was tuned empirically to 0.825 and may not transfer to other backbones; the assumption that the backbone LM assigns higher probability to higher-quality sequences is acknowledged by the authors as a hypothesis, not a proven property."
 
   - id: "2508.16332"
+    published_date: "2025-08-22"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1098,6 +1119,7 @@ papers:
       - "The GRPO multi-objective post-training stage is one component of a larger unified speech-singing architecture; the RLHF-specific contribution (composite intelligibility + prosody-similarity reward) is narrower in scope than papers dedicated to preference-alignment methodology, and reward construction details (e.g. Bradley-Terry model over the INTP preference corpus) are described only briefly."
 
   - id: "2509.00685"
+    published_date: "2025-08-31"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1145,6 +1167,7 @@ papers:
       - "The optimal value of λ (set to 10) and the preference margin thresholds (0.1 for SPK-SIM and prosody) are not ablated, so sensitivity of the regularization and preference-set construction to these hyperparameters is unknown; comparison against SpeechAlign, UNO, and RIO is only qualitative."
 
   - id: "2509.05863"
+    published_date: "2025-09-06"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1192,6 +1215,7 @@ papers:
       - "The preference labeling is fully automated via Pareto-dominance on WER and speaker similarity with no human verification of winner/loser assignments; the Romanian SMOS results (exceeding real audio) rest on very small, predominantly non-native rater counts and should be treated cautiously."
 
   - id: "2509.14946"
+    published_date: "2025-09-18"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1246,6 +1270,7 @@ papers:
       - "The RLHF-relevant contribution is a natural-pairing DPO application enabled by the dataset's structure (clean vs. paralinguistic-event speech as a ready-made preference pair) rather than a new alignment algorithm; the paper's primary contribution is the dataset construction pipeline, not preference-optimization methodology."
 
   - id: "2501.04561"
+    published_date: "2025-09-23"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1292,6 +1317,7 @@ papers:
       - "The CTC-DPO contribution is one component of a broader omnimodal LLM system; the preference dataset (EO2S-9K) is synthesized rather than human-labeled, and the DPO reference policy is the frozen post-CTC-training model rather than an independently validated baseline."
 
   - id: "2509.18531"
+    published_date: "2025-09-23"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1340,6 +1366,7 @@ papers:
       - "Open-source TTS systems were deliberately excluded from the human-preference comparison after a preliminary screening judged them to produce floor-effect prosody, which removes a category of baseline from the headline ELO comparison; the GRPO speaker-similarity failure is reported as a single run rather than across multiple reward-weighting configurations."
 
   - id: "2509.18928"
+    published_date: "2025-09-23"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1387,6 +1414,7 @@ papers:
       - "The preference signals used (F0 variance, CTC-model negative log-likelihood) are automatic proxies for expressiveness and intelligibility rather than direct human preference judgments, so the method is validated against these specific proxies rather than against a broader notion of listener preference."
 
   - id: "2509.19928"
+    published_date: "2025-09-24"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv
@@ -1440,6 +1468,7 @@ papers:
       - "This is primarily an evaluation-methodology paper; its only claim bearing directly on RLHF for speech (that DPO for intelligibility measurably reduces prosody diversity as a side effect) is a secondary application of the paper's core metric contribution rather than a proposed alignment method."
 
   - id: "2509.25416"
+    published_date: "2025-09-29"
     entry_date: "2026-07-20"
     year: 2025
     venue: arXiv

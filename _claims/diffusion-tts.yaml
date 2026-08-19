@@ -3,6 +3,7 @@ last_updated: '2026-07-26'
 paper_count: 46
 papers:
 - id: '2105.06337'
+  published_date: "2021-05-13"
   entry_date: '2026-07-26'
   year: 2021
   venue: arXiv
@@ -62,6 +63,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2106.15561'
+  published_date: "2021-06-29"
   entry_date: '2026-07-26'
   year: 2021
   venue: arXiv
@@ -142,6 +144,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2207.12598'
+  published_date: "2022-07-26"
   entry_date: '2026-07-26'
   year: 2022
   venue: arXiv
@@ -213,6 +216,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2210.02747'
+  published_date: "2022-10-06"
   entry_date: '2026-07-26'
   year: 2022
   venue: arXiv
@@ -275,6 +279,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2301.12503'
+  published_date: "2023-01-29"
   entry_date: '2026-07-26'
   year: 2023
   venue: ICML
@@ -336,6 +341,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2304.09116'
+  published_date: "2023-04-18"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -418,6 +424,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2305.07243'
+  published_date: "2023-05-12"
   entry_date: '2026-07-26'
   year: 2023
   venue: arXiv
@@ -486,6 +493,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2403.03100'
+  published_date: "2024-03-05"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -569,6 +577,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2406.02430'
+  published_date: "2024-06-04"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -660,6 +669,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2411.09943'
+  published_date: "2024-11-15"
   entry_date: '2026-07-26'
   year: 2024
   venue: arXiv
@@ -726,6 +736,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.coling-main.352
+  published_date: "2025-01-19"
   entry_date: '2026-07-26'
   year: 2025
   venue: COLING
@@ -808,6 +819,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2502.18924'
+  published_date: "2025-02-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -880,6 +892,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: iclr-2025-hQvX9MBowC
+  published_date: "2025-04-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -952,6 +965,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: iclr-2025-uxDFlPGRLX
+  published_date: "2025-04-24"
   entry_date: '2026-07-26'
   year: 2025
   venue: ICLR
@@ -1019,6 +1033,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: 2025.naacl-long.110
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -1082,6 +1097,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: 2025.naacl-long.242
+  published_date: "2025-04-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: NAACL
@@ -1160,6 +1176,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2507.15272'
+  published_date: "2025-07-21"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -1220,6 +1237,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: 2025.ccl-1.77
+  published_date: "2025-08-01"
   entry_date: '2026-07-26'
   year: 2025
   venue: workshop
@@ -1286,6 +1304,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2508.01796'
+  published_date: "2025-08-03"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -1354,6 +1373,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-0063
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1417,6 +1437,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0554
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1480,6 +1501,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-0998
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1542,6 +1564,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1066
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1606,6 +1629,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1101
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1679,6 +1703,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1115
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1749,6 +1774,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1210
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1821,6 +1847,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1236
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1883,6 +1910,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1364
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -1944,6 +1972,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1397
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2016,6 +2045,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-1434
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2080,6 +2110,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1684
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2140,6 +2171,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1747
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2201,6 +2233,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: interspeech-2025-1763
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2260,6 +2293,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-2536
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2321,6 +2355,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: interspeech-2025-gourav25_interspeech
+  published_date: "2025-08-17"
   entry_date: '2026-07-26'
   year: 2025
   venue: Interspeech
@@ -2384,6 +2419,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2508.19205'
+  published_date: "2025-08-26"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2462,6 +2498,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2411.19770'
+  published_date: "2025-08-28"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2525,6 +2562,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.07038'
+  published_date: "2025-09-08"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2594,6 +2632,7 @@ papers:
   - For diffusion TTS, this paper provides low-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
 - id: '2509.08379'
+  published_date: "2025-09-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2665,6 +2704,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.08696'
+  published_date: "2025-09-10"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2728,6 +2768,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.09748'
+  published_date: "2025-09-11"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2798,6 +2839,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.12831'
+  published_date: "2025-09-16"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2850,6 +2892,7 @@ papers:
   - For diffusion TTS, this paper provides medium-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.14784'
+  published_date: "2025-09-18"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2927,6 +2970,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.18470'
+  published_date: "2025-09-22"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -2992,6 +3036,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.18928'
+  published_date: "2025-09-23"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv
@@ -3064,6 +3109,7 @@ papers:
   - For diffusion TTS, this paper provides high-relevance evidence; claims primarily concerning other
     concepts remain included but are marked low relevance.
 - id: '2509.25416'
+  published_date: "2025-09-29"
   entry_date: '2026-07-26'
   year: 2025
   venue: arXiv

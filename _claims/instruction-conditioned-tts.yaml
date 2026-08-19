@@ -3,6 +3,7 @@ last_updated: '2026-07-25'
 paper_count: 44
 papers:
 - id: '2305.11000'
+  published_date: "2023-05-18"
   entry_date: '2026-07-25'
   year: 2023
   venue: arXiv
@@ -68,6 +69,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2310.00704'
+  published_date: "2023-10-01"
   entry_date: '2026-07-25'
   year: 2023
   venue: arXiv
@@ -161,6 +163,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2312.15821'
+  published_date: "2023-12-25"
   entry_date: '2026-07-25'
   year: 2023
   venue: arXiv
@@ -241,6 +244,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2402.01912'
+  published_date: "2024-02-02"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -310,6 +314,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: '2407.05407'
+  published_date: "2024-07-07"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -411,6 +416,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: '2408.16725'
+  published_date: "2024-08-29"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -476,6 +482,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2409.03283'
+  published_date: "2024-09-05"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -554,6 +561,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: '2409.06666'
+  published_date: "2024-09-10"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -623,6 +631,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2410.17196'
+  published_date: "2024-10-22"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -693,6 +702,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2412.02612'
+  published_date: "2024-12-03"
   entry_date: '2026-07-25'
   year: 2024
   venue: arXiv
@@ -770,6 +780,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2501.06282'
+  published_date: "2025-01-10"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -839,6 +850,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2502.11946'
+  published_date: "2025-02-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -913,6 +925,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: 2025.findings-naacl.298
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -980,6 +993,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: 2025.findings-naacl.38
+  published_date: "2025-04-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: NAACL
@@ -1046,6 +1060,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2506.16381'
+  published_date: "2025-06-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1124,6 +1139,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2507.00808'
+  published_date: "2025-07-02"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1192,6 +1208,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2507.08012'
+  published_date: "2025-07-05"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1257,6 +1274,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2507.07799'
+  published_date: "2025-07-10"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1329,6 +1347,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: 2025.acl-long.346
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1410,6 +1429,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: 2025.acl-long.681
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1472,6 +1492,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: 2025.acl-long.911
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1547,6 +1568,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: 2025.findings-acl.101
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1625,6 +1647,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: 2025.findings-acl.1226
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1690,6 +1713,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: 2025.findings-acl.534
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1750,6 +1774,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: 2025.findings-acl.687
+  published_date: "2025-07-27"
   entry_date: '2026-07-25'
   year: 2025
   venue: ACL
@@ -1823,6 +1848,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2508.07273'
+  published_date: "2025-08-10"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1891,6 +1917,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2508.08095'
+  published_date: "2025-08-11"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -1954,6 +1981,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2504.12867'
+  published_date: "2025-08-13"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2028,6 +2056,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2508.09600'
+  published_date: "2025-08-13"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2104,6 +2133,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2508.11326'
+  published_date: "2025-08-15"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2169,6 +2199,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: interspeech-2025-0047
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -2241,6 +2272,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: interspeech-2025-0203
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -2306,6 +2338,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: interspeech-2025-0948
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -2381,6 +2414,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: interspeech-2025-1192
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -2446,6 +2480,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: interspeech-2025-2679
+  published_date: "2025-08-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: Interspeech
@@ -2501,6 +2536,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2508.17494'
+  published_date: "2025-08-24"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -2567,6 +2603,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: 2025.clicit-1.27
+  published_date: "2025-09-01"
   entry_date: '2026-07-25'
   year: 2025
   venue: workshop
@@ -2632,6 +2669,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2509.09716'
+  published_date: "2025-09-09"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2696,6 +2734,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: '2509.13989'
+  published_date: "2025-09-17"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2762,6 +2801,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2505.17093'
+  published_date: "2025-09-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2825,6 +2865,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2509.15845'
+  published_date: "2025-09-19"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2898,6 +2939,7 @@ papers:
   caveats:
   - Instruction conditioning is an evaluated capability but not the paper's sole architectural contribution.
 - id: '2509.17516'
+  published_date: "2025-09-22"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -2967,6 +3009,7 @@ papers:
   - The connection to instruction-conditioned speech generation is contextual or benchmark-oriented rather than a direct conditioning
     contribution.
 - id: '2509.24570'
+  published_date: "2025-09-29"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv
@@ -3039,6 +3082,7 @@ papers:
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
 - id: '2509.26514'
+  published_date: "2025-09-30"
   entry_date: '2026-07-25'
   year: 2025
   venue: arXiv

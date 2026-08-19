@@ -4,6 +4,7 @@ paper_count: 97
 
 papers:
   - id: "2207.12598"
+    published_date: "2022-07-26"
     entry_date: 2026-06-24
     year: 2022
     venue: arXiv
@@ -57,6 +58,7 @@ papers:
       - "CFG is adopted by flow-matching TTS systems (e.g. Voicebox, E2 TTS) as an analogous conditioning mechanism, but this paper predates flow matching and does not address it; the connection is indirect and established by downstream work."
 
   - id: "2210.02747"
+    published_date: "2022-10-06"
     entry_date: 2026-06-24
     year: 2022
     venue: arXiv
@@ -104,6 +106,7 @@ papers:
       - "Concurrent independent work (Liu et al. Rectified Flow; Albergo & Vanden-Eijnden Stochastic Interpolants) arrived at closely related objectives; relative priority is fuzzy."
 
   - id: "2312.15821"
+    published_date: "2023-12-25"
     entry_date: 2026-06-24
     year: 2023
     venue: arXiv
@@ -159,6 +162,7 @@ papers:
       - "Joint-CLAP evaluation model is introduced by the same paper and has not been independently validated as a general benchmark metric."
 
   - id: "2406.05551"
+    published_date: "2024-06-08"
     entry_date: 2026-06-24
     year: 2024
     venue: arXiv
@@ -207,6 +211,7 @@ papers:
       - "The DMD distillation framing is specific to flow-matching velocity fields; its improvement over teacher naturalness requires independent replication."
 
   - id: "2406.18009"
+    published_date: "2024-06-26"
     entry_date: 2026-06-24
     year: 2024
     venue: arXiv
@@ -261,6 +266,7 @@ papers:
       - "Inference uses midpoint ODE solver with 32 NFE; no inference acceleration experiments are reported in this paper."
 
   - id: "2407.05407"
+    published_date: "2024-07-07"
     entry_date: 2026-06-24
     year: 2024
     venue: arXiv
@@ -315,6 +321,7 @@ papers:
       - "CFG is applied by randomly dropping all conditions (p=0.2); guidance strength 0.7 at inference. This follows standard practice established by prior work."
 
   - id: "2412.04724"
+    published_date: "2024-12-06"
     entry_date: 2026-06-24
     year: 2024
     venue: arXiv
@@ -370,6 +377,7 @@ papers:
       - "Results on real-world noisy conditions are not reported; training was filtered by DNSMOS quality."
 
   - id: "2412.10117"
+    published_date: "2024-12-13"
     entry_date: 2026-06-24
     year: 2024
     venue: arXiv
@@ -425,6 +433,7 @@ papers:
       - "Japanese synthesis degrades due to character set overlap with Chinese (CER 18.79% test-ja vs. 7.98% test-ko), indicating data distribution limits the architecture's multilingual scope."
 
   - id: "2025.acl-long.313"
+    published_date: "2025-07-27"
     entry_date: 2026-06-24
     year: 2025
     venue: ACL
@@ -481,6 +490,7 @@ papers:
       - "The ConvNeXt fix is shown to be DiT-specific and cannot transfer to E2 TTS's U-Net backbone, limiting its applicability as a general recipe."
 
   - id: "2025.acl-long.598"
+    published_date: "2025-07-27"
     entry_date: 2026-06-24
     year: 2025
     venue: ACL
@@ -536,6 +546,7 @@ papers:
       - "All preference pairs are WER-based or LLM-guided; the relationship between WER-optimized alignment and perceptual naturalness is not fully characterized."
 
   - id: "2025.acl-long.1043"
+    published_date: "2025-07-27"
     entry_date: 2026-06-24
     year: 2025
     venue: ACL
@@ -593,6 +604,7 @@ papers:
       - "Training data is 500 hours of LibriTTS only; scale and generalization to in-the-wild or multilingual settings are not tested."
 
   - id: "2502.07243"
+    published_date: "2025-02-11"
     entry_date: 2026-06-24
     year: 2025
     venue: ICLR
@@ -648,6 +660,7 @@ papers:
       - "The AR content-style model (463M parameters) introduces sequential decoding latency; the overall system is not optimized for real-time inference."
 
   - id: "2502.17239"
+    published_date: "2025-02-24"
     entry_date: 2026-06-24
     year: 2025
     venue: arXiv
@@ -702,6 +715,7 @@ papers:
       - "Results for the flow-matching decoder are measured only on UTMOS and WER on LibriSpeech-dev; no speaker similarity, naturalness MOS, or comparison to dedicated TTS systems is reported."
 
   - id: "2503.14345"
+    published_date: "2025-03-18"
     entry_date: 2026-06-24
     year: 2025
     venue: arXiv
@@ -756,6 +770,7 @@ papers:
       - "Training data (~515K hours) is entirely proprietary, restricting reproducibility and generalization assessment."
 
   - id: "2106.15561"
+    published_date: "2021-06-29"
     entry_date: 2026-07-15
     year: 2021
     venue: arXiv
@@ -810,6 +825,7 @@ papers:
       - "None of the survey's claims are specific to flow matching; all five extracted claims are general TTS pipeline findings included here for completeness and cross-concept traceability."
 
   - id: "2411.09943"
+    published_date: "2024-11-15"
     entry_date: 2026-07-15
     year: 2024
     venue: arXiv
@@ -857,6 +873,7 @@ papers:
       - "None of the four extracted claims characterise flow-matching mechanics specifically; they are VC-domain findings that happen to use a flow-matching-objective backbone."
 
   - id: "2025.coling-main.518"
+    published_date: "2025-01-19"
     entry_date: 2026-07-15
     year: 2025
     venue: COLING
@@ -905,6 +922,7 @@ papers:
       - "The StyleTTS 2 base architecture and GAN discriminators are retained; flow matching replaces only the prosody-sampling component of an otherwise established two-stage TTS pipeline."
 
   - id: "2502.18924"
+    published_date: "2025-02-26"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -960,6 +978,7 @@ papers:
       - "The primary novelty (sparse alignment) is orthogonal to flow matching; only the PeRFlow acceleration finding and the CFG accent-control finding bear directly on this concept."
 
   - id: "2504.02407"
+    published_date: "2025-04-03"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1015,6 +1034,7 @@ papers:
       - "The probabilistic output reformulation is a general technique applicable to any deterministic continuous-output generative model with a final linear layer, not specific to F5-TTS."
 
   - id: "iclr-2025-tQ1PmLfPBL"
+    published_date: "2025-04-24"
     entry_date: 2026-07-15
     year: 2025
     venue: ICLR
@@ -1070,6 +1090,7 @@ papers:
       - "The multi-period generator architecture is a structural innovation orthogonal to the flow-matching objective itself; the CFM-vs-DDPM comparison isolates the objective's contribution, while the pitch/periodicity gains are attributable to the period-aware UNet structure."
 
   - id: "iclr-2025-uxDFlPGRLX"
+    published_date: "2025-04-24"
     entry_date: 2026-07-15
     year: 2025
     venue: ICLR
@@ -1118,6 +1139,7 @@ papers:
       - "The application domain (postfiltering a codec's output) is narrower than full generative TTS or VC; findings about the coupled-prior formulation may not generalise to full mel-spectrogram or waveform generation from scratch."
 
   - id: "2025.findings-naacl.184"
+    published_date: "2025-04-29"
     entry_date: 2026-07-15
     year: 2025
     venue: NAACL
@@ -1172,6 +1194,7 @@ papers:
       - "None of the five extracted claims characterise flow-matching mechanics; all concern the continuous tokenizer design."
 
   - id: "2025.naacl-long.110"
+    published_date: "2025-04-29"
     entry_date: 2026-07-15
     year: 2025
     venue: NAACL
@@ -1220,6 +1243,7 @@ papers:
       - "Comparisons are primarily against GAN and diffusion vocoder baselines (HiFi-GAN, BigVGAN, DiffWave, PriorGrad, FastDiff, FreGrad); no comparison against other flow-matching vocoders (e.g. PeriodWave) is reported."
 
   - id: "2025.naacl-short.69"
+    published_date: "2025-04-29"
     entry_date: 2026-07-15
     year: 2025
     venue: NAACL
@@ -1267,6 +1291,7 @@ papers:
       - "The attention-free sequence-mixer finding (Hydra matching self-attention) is architecture-general and not specific to flow matching, though it is demonstrated within a flow-matching TTS decoder."
 
   - id: "2505.07916"
+    published_date: "2025-05-12"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1321,6 +1346,7 @@ papers:
       - "Most of the paper's claims concern the jointly-trained speaker encoder and zero-shot/one-shot distinction, which are AR-model-level contributions largely orthogonal to the flow-matching decoder."
 
   - id: "2505.17589"
+    published_date: "2025-05-23"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1375,6 +1401,7 @@ papers:
       - "None of the five extracted claims characterise flow-matching mechanics specifically; they concern the AR LM, the speech tokenizer, and RL post-training."
 
   - id: "2506.13053"
+    published_date: "2025-06-16"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1424,6 +1451,7 @@ papers:
       - "The CFG-strength-conditioned distillation technique is a distinct acceleration mechanism from the Bespoke Solver (Audiobox), DMD (ARDiT), and learned-prior (OZSpeech) mechanisms already tracked in the fm_inference_acceleration cluster."
 
   - id: "2507.03887"
+    published_date: "2025-07-05"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1471,6 +1499,7 @@ papers:
       - "The differentiability-precondition finding (claim 4) is the one point of genuine relevance to flow matching's comparative architecture advantages: it identifies end-to-end differentiability as an advantage of flow-matching/diffusion TTS over discrete-token AR TTS for this specific application."
 
   - id: "2507.04349"
+    published_date: "2025-07-06"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1526,6 +1555,7 @@ papers:
       - "The ControlNet mechanism itself is adapted directly from image diffusion (Zhang et al. 2023); this paper's novelty is the flow-matching-specific design choices (selective block connection, emotion-specific flow step, SER window smoothing), not the adapter paradigm itself."
 
   - id: "2506.09874"
+    published_date: "2025-07-10"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1573,6 +1603,7 @@ papers:
       - "This is the first paper in this corpus to apply flow-matching TTS to joint speech-plus-background-audio generation rather than clean speech alone."
 
   - id: "2507.09070"
+    published_date: "2025-07-11"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1620,6 +1651,7 @@ papers:
       - "No ablation isolates the contribution of the flow-matching acoustic model relative to the SemAlign semantic encoder; none of the four extracted claims characterise flow-matching mechanics specifically."
 
   - id: "2507.14988"
+    published_date: "2025-07-20"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1675,6 +1707,7 @@ papers:
       - "The teacher-guided sampling mechanism (claim 5) provides a partial remedy but does not fully recover teacher-level diversity, and doubles memory requirements relative to student-only inference."
 
   - id: "2507.16875"
+    published_date: "2025-07-22"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1722,6 +1755,7 @@ papers:
       - "This paper's own field_significance rating is low; findings are narrow in scope (five Indian languages, infilling task only) and language-dependent rather than generalisable flow-matching principles."
 
   - id: "2507.18119"
+    published_date: "2025-07-25"
     entry_date: 2026-07-15
     year: 2025
     venue: arXiv
@@ -1776,6 +1810,7 @@ papers:
       - "None of the five extracted claims characterise flow-matching mechanics; all concern the dual-modality head architecture, training curriculum, and paralinguistic capability evaluation."
 
   - id: "2025.acl-long.1252"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -1822,6 +1857,7 @@ papers:
       - "F5-TTS (a flow-matching diffusion-transformer) is used entirely off-the-shelf as a deployed TTS backbone with a single reference clip; the paper develops no flow-matching methodology, and three of its four claims concern dialect/accent perception rather than flow-matching mechanics."
 
   - id: "2025.acl-long.790"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -1869,6 +1905,7 @@ papers:
       - "This is the first application in the corpus of shortcut-model self-consistency training (from image generation) to a DiT-based flow-matching TTS/VC decoder, directly relevant to the flow-matching acceleration literature."
 
   - id: "2025.acl-long.87"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -1922,6 +1959,7 @@ papers:
       - "The OT-CFM decoder is adopted unmodified from prior flow-matching practice; the paper's own novelty assessment states this architectural choice 'is not novel in this paper.' Only one claim (RTF comparison against diffusion baselines) speaks directly to flow-matching's field-level properties."
 
   - id: "2025.acl-long.912"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -1975,6 +2013,7 @@ papers:
       - "Flow matching enters this system only as the unmodified, pretrained CosyVoice 2 chunk-aware causal decoder converting speech tokens to mel spectrograms; none of the five extracted claims characterise flow-matching mechanics."
 
   - id: "2025.findings-acl.101"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -2028,6 +2067,7 @@ papers:
       - "The Synthesizer's OT-CFM stage is adopted directly from the CosyVoice framework and is not itself modified or characterised; none of the five claims describe flow-matching mechanics, all concern the chain-modeling architecture and emotion captioning."
 
   - id: "2025.findings-acl.115"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -2081,6 +2121,7 @@ papers:
       - "Flow matching enters only as the pretrained vocoder converting semantic tokens to mel spectrograms; the paper's five claims concern token grouping, pretraining curriculum, and dialogue history compression, not flow-matching mechanics."
 
   - id: "2025.findings-acl.687"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: ACL
@@ -2135,6 +2176,7 @@ papers:
       - "The mixture-of-experts routing and F0 supervision are implemented directly inside the flow-matching transformer's blocks, making this one of the more architecturally direct flow-matching contributions among singing-synthesis papers in this concept, rather than a case of flow matching used as an unmodified downstream component."
 
   - id: "2507.20140"
+    published_date: "2025-07-27"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2188,6 +2230,7 @@ papers:
       - "This is the first paper in the concept YAML to modify the CFM training objective for a privacy/unlearning purpose rather than a quality or speed purpose; its generalizability claim is explicitly tied to flow-matching, mel-spectrogram architectures by the paper's own novelty assessment."
 
   - id: "2503.11026"
+    published_date: "2025-07-30"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2242,6 +2285,7 @@ papers:
       - "The OT-CFM formulation itself is taken directly from Matcha-TTS and related work per the paper's own novelty assessment; the contribution relevant to flow-matching is the dual audio-visual conditioning scheme injected into the CFM Transformer decoder, not a new training objective."
 
   - id: "2507.22746"
+    published_date: "2025-08-01"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2290,6 +2334,7 @@ papers:
       - "The chunk-wise AR-plus-within-chunk-flow-matching design and the use of continuous FSQ embeddings as a flow-matching denoising target are both genuinely novel architectural contributions per the paper's own novelty assessment, though evaluation is confined to internal data without MOS comparisons against published baselines."
 
   - id: "2508.02038"
+    published_date: "2025-08-04"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2343,6 +2388,7 @@ papers:
       - "The cross-attention mechanism injecting the orthogonally-constrained emotion embedding into the flow-matching module (query = emotion embedding, keys/values = LM token sequence) is the one component that modifies flow-matching conditioning directly; the paper's own novelty assessment otherwise describes the contribution as 'primarily engineering and recipe rather than fundamentally new methodology.'"
 
   - id: "2508.03543"
+    published_date: "2025-08-05"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2397,6 +2443,7 @@ papers:
       - "This paper's central finding, that flow-matching DiT activations encode emotion as linear, steerable directions, is a genuine characterisation of flow-matching internal representations rather than an application built on top of an unmodified flow-matching backbone."
 
   - id: "2508.14049"
+    published_date: "2025-08-05"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2443,6 +2490,7 @@ papers:
       - "The flow-matching acoustic stage (M2) is described by the paper's own novelty assessment as one of several 'established components' assembled into the pipeline; none of the four claims characterise flow-matching mechanics beyond the single generic claim that it is a viable diffusion substitute."
 
   - id: "2508.04996"
+    published_date: "2025-08-07"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2496,6 +2544,7 @@ papers:
       - "The Shortcut Models acceleration technique (a step-size-conditioned flow-matching estimator with self-consistency training) is applied here to voice conversion rather than TTS, extending an acceleration approach seen elsewhere in this concept's corpus (e.g. 2025.acl-long.790) to a new task."
 
   - id: "2508.07302"
+    published_date: "2025-08-10"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2549,6 +2598,7 @@ papers:
       - "The flow-matching alignment module is described by the paper's own novelty assessment as 'a fairly conventional transformer U-Net replacing an existing codec alignment,' but the ablation showing its removal causes the largest single-component quality drop (EMOS 4.65 to 4.20, SIM 0.89 to 0.74) is a substantive empirical result about flow matching's necessity in this pipeline."
 
   - id: "2508.08715"
+    published_date: "2025-08-12"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -2595,6 +2645,7 @@ papers:
       - "CosyVoice-300M's LLM + flow-matching + HiFi-GAN architecture is adopted wholesale with no architectural modification; the paper's own novelty assessment states 'no architectural modifications are made to the base CosyVoice model,' and none of the four claims characterise flow-matching mechanics."
 
   - id: "interspeech-2025-0203"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2641,6 +2692,7 @@ papers:
       - "The conditional flow-matching decoder itself (6 CFM blocks with ResNet, self-attention, FiLM conditioning) is used as an established backbone; the paper's own novelty assessment locates the contribution in the CLAP-based conditioning and intensity-gating scheme feeding it, not in the flow-matching formulation."
 
   - id: "interspeech-2025-0305"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2687,6 +2739,7 @@ papers:
       - "The flow-matching decoder (adapted from RFWave's ConvNeXtV2 backbone and rectified-flow objective) directly replaces a GAN-based decoder in an existing SVC pipeline, providing a controlled within-paper comparison of flow matching against GAN decoding for singing synthesis."
 
   - id: "interspeech-2025-0455"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2741,6 +2794,7 @@ papers:
       - "This paper's adversarial post-training technique and RapFlow-TTS's consistency flow matching (interspeech-2025-0554, also in this batch) both converge on the finding that flow matching's straight trajectories enable aggressive inference-step reduction, via different mechanisms (adversarial discrimination vs. consistency constraints); the paper's own Wiki Connections section draws this comparison explicitly."
 
   - id: "interspeech-2025-0554"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2787,6 +2841,7 @@ papers:
     caveats:
       - "This is the first application of consistency-model training to flow matching specifically for TTS (as distinct from diffusion consistency distillation, e.g. Comospeech); the paper's own field-significance assessment (high) credits the insight that straight FM trajectories are a superior foundation for consistency training compared to curved diffusion trajectories."
   - id: "interspeech-2025-0762"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2832,6 +2887,7 @@ papers:
       - "The paper's contribution (psychometric accentedness calibration) is orthogonal to the flow-matching method itself; Matcha-TTS serves only as an unmodified synthesis backbone for a per-phoneme conditioning parameter."
 
   - id: "interspeech-2025-0854"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2885,6 +2941,7 @@ papers:
       - "The flow-matching component here is a spectrogram postfiltering module (adapted from FlowMAC) rather than a full end-to-end TTS acoustic model, placing this paper's evidence closer to the fm_vocoder family than to mel-spectrogram acoustic modeling."
 
   - id: "interspeech-2025-1066"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2931,6 +2988,7 @@ papers:
       - "This paper's architecture tag is diffusion, not flow-matching; its relevance to this concept is the theoretical bridge it draws between its delta-loss EBM objective and the flow-matching objective, not an implementation of flow matching itself."
 
   - id: "interspeech-2025-1229"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -2978,6 +3036,7 @@ papers:
       - "The flow-matching model here is an 8-layer Transformer encoder predicting mel spectrograms via the standard ODE formulation; the paper's novelty is the mask-and-reconstruct task design rather than a change to the flow-matching mechanism itself."
 
   - id: "interspeech-2025-1236"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3025,6 +3084,7 @@ papers:
       - "A-DMA accelerates training-time convergence rather than inference-time NFE; its evidence_role classification as acceleration_evidence should be read as training acceleration, distinct from the inference-step-reduction acceleration evidence (e.g. Bespoke Solvers, EPSS) more typical of this concept's fm_acceleration family."
 
   - id: "interspeech-2025-1344"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3071,6 +3131,7 @@ papers:
       - "The paper's contribution is an adapter-based fine-tuning recipe layered onto a frozen F5-TTS backbone; it does not modify the flow-matching objective or the DiT architecture itself, only which of its existing components receive gradient updates."
 
   - id: "interspeech-2025-1536"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3118,6 +3179,7 @@ papers:
       - "This paper evaluates F5-TTS as a downstream subject rather than proposing or modifying a flow-matching method; its relevance to this concept is as evidence of a fairness failure mode in zero-shot flow-matching cloning, not as a methodological contribution to flow matching."
 
   - id: "interspeech-2025-1779"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3165,6 +3227,7 @@ papers:
       - "This is a direct domain transfer of rectified flow from the same group's prior TTS work (ReFlow-TTS) to voice conversion rather than a new theoretical contribution to the flow-matching objective itself."
 
   - id: "interspeech-2025-1940"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3212,6 +3275,7 @@ papers:
       - "The flow-matching (CFM) and rectified-flow (RF) predictors here are applied as modular variance predictors for pitch/energy/duration within a FastSpeech2-style pipeline, not as the primary acoustic-modeling mechanism; the CFM postnet inherited from Matcha-TTS is held at zero temperature throughout so all measured stochasticity originates from the prosody predictors."
 
   - id: "interspeech-2025-2159"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3258,6 +3322,7 @@ papers:
       - "Matcha-TTS was selected as the best-performing system among five candidates specifically because it was the only one with RTF below 1.0 and stable, controllable output, an indirect but relevant data point on flow-matching TTS's inference-time controllability relative to autoregressive alternatives (Parler-TTS, Coqui-XTTS, VoiceCraft)."
 
   - id: "interspeech-2025-2449"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3305,6 +3370,7 @@ papers:
       - "EPSS's time-step configuration is determined empirically by visual trajectory inspection rather than a principled search procedure, and the paper does not explore combining it with distillation-based acceleration (DMD, consistency distillation), leaving open whether the two acceleration classes stack."
 
   - id: "interspeech-2025-2573"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3350,6 +3416,7 @@ papers:
       - "Matcha-TTS (paired with HiFi-GAN) is used here purely as an unmodified baseline generator to validate a new benchmark corpus; the paper makes no methodological contribution to flow matching itself."
 
   - id: "interspeech-2025-2684"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3404,6 +3471,7 @@ papers:
       - "The flow-matching transformer's role in Discl-VC is acoustic generation from disentangled content/prosody tokens plus in-context speaker conditioning; the paper's primary novelty is the disentanglement and prosody-mask-transformer design around it, not a change to the flow-matching objective itself."
 
   - id: "interspeech-2025-raju25_interspeech"
+    published_date: "2025-08-17"
     entry_date: "2026-07-19"
     year: 2025
     venue: Interspeech
@@ -3443,6 +3511,7 @@ papers:
       - "This is a system-description paper with no formal evaluation; its evidentiary weight for this concept is limited to an existence proof that flow-matching TTS (F5-TTS) can be fine-tuned across ten languages via vocabulary and tokenisation changes, source: not specified for quantitative synthesis quality."
 
   - id: "2508.16332"
+    published_date: "2025-08-22"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3497,6 +3566,7 @@ papers:
       - "Vevo2's core novelty (chromagram prosody tokenizer, EPL/IPL unification, multi-objective GRPO) sits at the AR/tokenizer and post-training stages; the flow-matching acoustic stage itself is architecturally unchanged from prior AR+FM systems (Vevo, CosyVoice), consistent with this concept YAML's existing trend_note that recent hybrid papers increasingly direct their contributions away from the FM stage."
 
   - id: "2508.16790"
+    published_date: "2025-08-22"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3551,6 +3621,7 @@ papers:
       - "This paper's architecture tag does not include flow-matching, but its decoder training objective is explicitly a flow-matching loss; its relevance to this concept is the finding that a single FM objective can jointly train quantization and reconstruction, a novel application of the FM training paradigm to the codec-design problem rather than to acoustic modeling."
 
   - id: "2508.19098"
+    published_date: "2025-08-26"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3606,6 +3677,7 @@ papers:
       - "CLEAR's rectified-flow head is architecturally distinct from DiT-based continuous-AR heads (ARDiT, DiTAR, FELLE's per-token flow matching) in that it denoises each AR hidden state independently via a lightweight MLP rather than a transformer, which is the mechanism enabling its streaming capability; comparisons to DiTAR/F5-TTS use different training data (Libri-50k vs. Emilia-100k), partially confounding direct WER comparison."
 
   - id: "2502.11128"
+    published_date: "2025-09-03"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3653,6 +3725,7 @@ papers:
       - "FELLE is cited as a direct comparison baseline by later continuous-AR-FM papers in this corpus (CLEAR, Dragon-FM), indicating its previous-frame-prior and coarse-to-fine flow-matching design has become a reference point for this architectural sub-line."
 
   - id: "2506.21619"
+    published_date: "2025-09-03"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3707,6 +3780,7 @@ papers:
       - "IndexTTS2's headline contributions (duration-embedding tying, GRL emotion-speaker disentanglement, LLM-distilled emotion routing) sit primarily at the AR text-to-semantic stage; the flow-matching S2M module's own design change (GPT-latent fusion) is a secondary, narrower contribution, following the same pattern as other AR+FM hybrid papers in this corpus whose FM stage is not the locus of innovation."
 
   - id: "2506.23367"
+    published_date: "2025-09-03"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3753,6 +3827,7 @@ papers:
       - "No new flow-matching model training occurs in this paper; the contribution is an inference-time phoneme-selective duration multiplier applied via a Hadamard product on Matcha-TTS's existing duration-predictor output, with no change to the flow-matching backbone itself."
 
   - id: "2509.08379"
+    published_date: "2025-09-10"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3807,6 +3882,7 @@ papers:
       - "FM's step-efficiency advantage is demonstrated specifically within the VoiceGrad VC latent-diffusion framework; whether the r=0.7 noise-mixing ratio and 3-5 step regime generalize to other flow-matching architectures or to TTS is untested."
 
   - id: "2509.08696"
+    published_date: "2025-09-10"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3854,6 +3930,7 @@ papers:
       - "The technique is an inference-time wrapper (SmoothCache) applied unchanged from image/video diffusion acceleration work; it does not modify the flow-matching training objective or model weights."
 
   - id: "2509.09748"
+    published_date: "2025-09-11"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3907,6 +3984,7 @@ papers:
       - "The FLOPs reduction figure cited in the abstract (75.4%) is inconsistent with the paper's own Table 1 Ops Ratio values, making the headline efficiency claim difficult to verify precisely."
 
   - id: "2509.09631"
+    published_date: "2025-09-11"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -3953,6 +4031,7 @@ papers:
       - "This is the first published baseline for discrete flow matching in speech, framed explicitly by the authors as an entry point rather than a finished production system; comparisons to continuous-space flow-matching baselines (e.g. F5-TTS) use heterogeneous training data scales (470h vs. up to 100K h), complicating direct quality attribution to the discrete-flow-matching design itself."
 
   - id: "2509.11084"
+    published_date: "2025-09-14"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4006,6 +4085,7 @@ papers:
       - "The contribution is a positional-embedding modification orthogonal to the flow-matching generative objective; it targets the cross-attention alignment problem shared by any cross-attention TTS architecture, not something specific to flow matching."
 
   - id: "2509.12171"
+    published_date: "2025-09-15"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4051,6 +4131,7 @@ papers:
       - "Flow matching appears only as an infrastructural component (a Voicebox-style conditional flow matching TTS model used to synthesize speaker-diverse audio prompts); the paper contributes no new flow-matching architecture or objective."
 
   - id: "2509.14684"
+    published_date: "2025-09-18"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4105,6 +4186,7 @@ papers:
       - "The environment-conditioning contribution sits in the conditioning and cross-attention injection design layered on F5-TTS's existing CFM training objective and DiT backbone, which are adopted unchanged."
 
   - id: "2509.15085"
+    published_date: "2025-09-18"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4152,6 +4234,7 @@ papers:
       - "The contribution targets flow-matching vocoding (mel-to-waveform) specifically in a streaming-latency setting, not text-to-speech synthesis itself; the mel-generation stage of a TTS pipeline is unaffected."
 
   - id: "2509.14579"
+    published_date: "2025-09-18"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4199,6 +4282,7 @@ papers:
       - "The duration-estimation fix addresses a limitation specific to F5-TTS-style flow-matching infilling TTS (duration as a length-ratio of target-to-reference text), rather than a general property of flow matching as a generative objective."
 
   - id: "2509.14946"
+    published_date: "2025-09-18"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4251,6 +4335,7 @@ papers:
       - "Flow matching (via F5-TTS) is one of two TTS backbones used only to validate the dataset's downstream utility; the paper introduces no new flow-matching architecture or training objective, and the DPO alignment experiments target the autoregressive CosyVoice2 backbone rather than F5-TTS."
 
   - id: "2509.15629"
+    published_date: "2025-09-19"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4303,6 +4388,7 @@ papers:
       - "Flow matching appears as the decoder in several of the strongest baselines and submissions (Serenade, Vevo1.5, NU-SVC) but the paper itself contributes no new flow-matching architecture; its role for this concept is comparative evidence that ARLM+flow-matching hybrids are competitive with pure diffusion systems in singing voice conversion."
 
   - id: "2509.15845"
+    published_date: "2025-09-19"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4357,6 +4443,7 @@ papers:
       - "The genuine flow-matching-specific novelty is the TTT module's application of OT-CFM to speaker-embedding synthesis (a continuous but non-waveform target space); the CA-Instruct-TTS module's own flow-matching decoder is a largely unmodified component from the CosyVoice-style architecture it follows."
 
   - id: "2509.17988"
+    published_date: "2025-09-22"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4404,6 +4491,7 @@ papers:
       - "The paper's primary contribution is dataset construction; its flow-matching-relevant findings (explicit MAS alignment vs. implicit DiT-based alignment trade-offs) are a validation exercise using existing published systems rather than a new architectural contribution."
 
   - id: "2509.18060"
+    published_date: "2025-09-22"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4450,6 +4538,7 @@ papers:
       - "TMD-TTS is built directly on Matcha-TTS's conditional flow-matching decoder without modification to the flow-matching objective itself; the concept-relevant contribution is limited to how dialect conditioning is injected into the encoder and flow-prediction network."
 
   - id: "2509.18470"
+    published_date: "2025-09-22"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4497,6 +4586,7 @@ papers:
       - "The rectified-flow-style discrete-time variants (RFAG, RFMG) are discretized approximations built for comparison purposes within this paper's controlled framework, not a proposal to replace standard continuous-time flow matching in production TTS systems."
 
   - id: "2509.19928"
+    published_date: "2025-09-24"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4550,6 +4640,7 @@ papers:
       - "Flow matching (via F5-TTS, E2 TTS, ZipVoice) is the paradigm found to have the lowest prosody diversity among the three architecture classes tested, a negative-evidence finding rather than a proposed fix; the paper attributes the shortfall to implicit text-speech alignment rather than to the flow-matching objective itself."
 
   - id: "2509.19668"
+    published_date: "2025-09-24"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4597,6 +4688,7 @@ papers:
       - "This is a systematic empirical evaluation of existing flow-matching models' inference-time behavior under various CFG strategies; no new flow-matching training or architecture is proposed."
 
   - id: "2505.10599"
+    published_date: "2025-09-25"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4643,6 +4735,7 @@ papers:
       - "The OT-CFM module's concept-relevant contribution is its emotional mixture encoder (cross-attention fusion of ADV and label tokens with semi-supervised gating), applied to a comparatively standard mel-spectrogram reconstruction role; the paper's more foundational novelty (semi-supervised annotation-agnostic training) lives primarily at the neural codec LM stage."
 
   - id: "2509.22727"
+    published_date: "2025-09-25"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4688,6 +4781,7 @@ papers:
       - "DiaMoE-TTS inherits F5-TTS's flow-matching DiT backbone unchanged; none of the paper's four claims concern the flow-matching objective or architecture itself, only the dialect-conditioning and low-resource-adaptation layers built on top of it."
 
   - id: "2509.22167"
+    published_date: "2025-09-26"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4742,6 +4836,7 @@ papers:
       - "Semantic-VAE itself is architecturally a VAE/codec contribution rather than a flow-matching model; its concept relevance for flow-matching lies entirely in its use as a drop-in replacement latent target for existing flow-matching TTS backbones (F5-TTS, E2 TTS), with the flow-matching objective itself left unchanged."
 
   - id: "2509.24650"
+    published_date: "2025-09-29"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4794,6 +4889,7 @@ papers:
       - "Flow-matching is used only as the end-to-end training objective for the hierarchical FSQ+RALM+LocDiT stack; four of the paper's five claims concern the FSQ bottleneck, RALM residual pathway, or training schedule rather than the flow-matching objective itself, with the CFG-scale ablation (Table 9) the one finding directly informative for flow-matching-based decoders generally."
 
   - id: "2509.24773"
+    published_date: "2025-09-29"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv
@@ -4839,6 +4935,7 @@ papers:
       - "VSSFlow's flow-matching DiT backbone and training objective are standard (follows Stable Audio Open's block design); its contribution to the flow-matching literature specifically is the conditioning-routing rule (cross-attention for sparse/global signals, concatenation for temporally-dense signals), not a new flow-matching formulation, and the paper's scope is a narrow video-conditioned sub-area rather than mainstream text-only TTS."
 
   - id: "2509.26514"
+    published_date: "2025-09-30"
     entry_date: "2026-07-19"
     year: 2025
     venue: arXiv

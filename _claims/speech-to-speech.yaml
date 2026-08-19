@@ -3,6 +3,7 @@ last_updated: '2026-07-19'
 paper_count: 60
 papers:
 - id: '2303.03926'
+  published_date: "2023-03-07"
   entry_date: '2026-07-19'
   year: 2023
   venue: arXiv
@@ -65,6 +66,7 @@ papers:
     model; it fits the cascade/direct-translation boundary of the S2S taxonomy rather than the end-to-end
     dialogue sub-paradigm.
 - id: '2305.11000'
+  published_date: "2023-05-18"
   entry_date: '2026-07-19'
   year: 2023
   venue: arXiv
@@ -133,6 +135,7 @@ papers:
     Freeze-Omni, OmniFlatten), not because its own evaluation is strong; treat its own claims as low-confidence,
     historical evidence.
 - id: '2305.15255'
+  published_date: "2023-05-24"
   entry_date: '2026-07-19'
   year: 2023
   venue: arXiv
@@ -195,6 +198,7 @@ papers:
     it is included under the end-to-end sub-paradigm as an early continuous-representation alternative,
     not as a full dialogue system.
 - id: '2402.05755'
+  published_date: "2024-02-08"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -267,6 +271,7 @@ papers:
     is included here as core infrastructure for the end-to-end speech-to-speech sub-paradigm rather than
     as a deployed conversational agent.
 - id: '2408.02622'
+  published_date: "2024-08-05"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -332,6 +337,7 @@ papers:
     explicitly left as future work; this paper establishes a fusion-strategy taxonomy rather than a complete
     dialogue system.
 - id: '2408.16725'
+  published_date: "2024-08-29"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -393,6 +399,7 @@ papers:
   - The VoiceAssistant-400K training dataset is entirely synthesised by GPT-4o, which may introduce systematic
     biases in prosody and topic coverage that are not assessed.
 - id: '2409.06666'
+  published_date: "2024-09-10"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -456,6 +463,7 @@ papers:
   - Training data is synthesised from text corpora via instruction rewriting, which may not capture the
     naturalness and variability of real spoken dialogue.
 - id: '2410.00037'
+  published_date: "2024-09-17"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -534,6 +542,7 @@ papers:
     live interactions, which may underrepresent real conversational dynamics; the instruction fine-tuning
     pipeline also relies heavily on synthetic TTS-generated speech.
 - id: '2410.03751'
+  published_date: "2024-10-01"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -607,6 +616,7 @@ papers:
     treat confidence as bounded by the quality of the underlying papers it summarises, not independently
     verified here.
 - id: '2410.11190'
+  published_date: "2024-10-15"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -669,6 +679,7 @@ papers:
   - The paper is explicitly positioned as a reference implementation with deferred evaluation; its speech-to-speech
     contribution is primarily the semantic-interruption mechanism rather than validated dialogue quality.
 - id: '2410.17196'
+  published_date: "2024-10-22"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -741,6 +752,7 @@ papers:
     speech-to-speech systems; its cascade-vs-E2E gap finding should anchor any claim cluster about paradigm
     comparison.
 - id: '2410.17799'
+  published_date: "2024-10-23"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -803,6 +815,7 @@ papers:
     at the harder 25-token evaluation point, so neither system should be read as having solved interruption
     handling.
 - id: '2411.00774'
+  published_date: "2024-11-01"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -865,6 +878,7 @@ papers:
   - The system supports a limited number of output speakers and does not yet support style or voice instruct-following,
     which the authors flag as future work.
 - id: '2411.13577'
+  published_date: "2024-11-15"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -942,6 +956,7 @@ papers:
   - As with the other survey in this batch, treat these claims as literature synthesis rather than the
     paper's own new experimental evidence.
 - id: '2411.17607'
+  published_date: "2024-11-26"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -1019,6 +1034,7 @@ papers:
     chatbot's output speech may inherit MeloTTS's quality characteristics rather than reflecting the model's
     own generative capacity.
 - id: '2412.15649'
+  published_date: "2024-12-20"
   entry_date: '2026-07-19'
   year: 2024
   venue: arXiv
@@ -1096,6 +1112,7 @@ papers:
     whether timbre control and speech quality generalise to natural in-the-wild audio at inference time
     is untested.
 - id: '2501.06282'
+  published_date: "2025-01-10"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1167,6 +1184,7 @@ papers:
     turns, and code/model weights were unreleased at time of publication, limiting external verification
     of the headline style-control numbers.
 - id: '2502.17239'
+  published_date: "2025-02-24"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1244,6 +1262,7 @@ papers:
     or data-driven explanation, and the OpenAudioBench GPT-4o-as-judge evaluation may introduce evaluation
     bias.
 - id: '2504.08528'
+  published_date: "2025-04-11"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1315,6 +1334,7 @@ papers:
     confidence should be read as bounded by the quality of the underlying papers it summarises, not independently
     verified here.
 - id: 2025.naacl-long.484
+  published_date: "2025-04-29"
   entry_date: '2026-07-19'
   year: 2025
   venue: NAACL
@@ -1387,6 +1407,7 @@ papers:
     manual verification recommended on whether this changes its weight relative to interactive S2S systems
     in this concept's synthesis.
 - id: 2025.naacl-demo.21
+  published_date: "2025-04-29"
   entry_date: '2026-07-19'
   year: 2025
   venue: NAACL
@@ -1467,6 +1488,7 @@ papers:
     the reported findings should be read as a demonstration of the toolkit's evaluation capability rather
     than a generalizable cascade-vs-E2E benchmark.
 - id: 2025.iwsds-1.27
+  published_date: "2025-05-01"
   entry_date: '2026-07-19'
   year: 2025
   venue: IWSDS
@@ -1536,6 +1558,7 @@ papers:
     E2E systems rather than direct S2S system evidence. Manual verification recommended on whether this
     paper should remain tagged to speech-to-speech versus living solely under evaluation-metrics/subjective-evaluation.
 - id: '2505.02625'
+  published_date: "2025-05-05"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1617,6 +1640,7 @@ papers:
     data point, not two, when assessing claim-cluster support thresholds. Recommend an ingest-side dedup
     review per the arXiv-full-version-dedup precedent.
 - id: '2506.23049'
+  published_date: "2025-06-29"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1679,6 +1703,7 @@ papers:
     ESPnet-SDS in this same batch; treat as corroborating rather than independent new evidence for the
     cascade-vs-E2E cluster.
 - id: '2507.16632'
+  published_date: "2025-07-22"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1755,6 +1780,7 @@ papers:
   - Evaluation is primarily Chinese-English bilingual, and the tool-calling evaluation uses synthesized
     speech conversations generated from text scripts rather than natural speech.
 - id: '2507.18119'
+  published_date: "2025-07-25"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1830,6 +1856,7 @@ papers:
   - The paper does not ablate LLM-initialized speech branch weights versus random initialization in a
     controlled experiment, leaving the primary architectural design claim without direct causal evidence.
 - id: '2505.15670'
+  published_date: "2025-07-25"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -1894,6 +1921,7 @@ papers:
     dialogue tasks likely reflects both compounding ASR-pathway error and limited LLM capacity, somewhat
     confounding the E2E-vs-cascade comparison.
 - id: 2025.findings-acl.470
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -1959,6 +1987,7 @@ papers:
     voice interaction currently exists, so whether the RAG failure is fundamental or an artifact of text-only
     retrieval remains unresolved.
 - id: 2025.findings-acl.1051
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2030,6 +2059,7 @@ papers:
     this concept is as cascade-pipeline infrastructure (the TTS stage of ASR+LLM+TTS) rather than direct
     evidence about end-to-end dialogue or S2S translation.
 - id: 2025.acl-long.817
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2105,6 +2135,7 @@ papers:
     (Appendix E) uses roughly 9,300 hours of S2ST data versus 70-174 hours for SimulS2S-LLM; direct numerical
     comparison across these baselines should be treated with caution, per the paper''s own note.'
 - id: 2025.acl-long.912
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2182,6 +2213,7 @@ papers:
     should treat this pair as one independent data point, not two, when assessing claim-cluster support
     thresholds. Recommend an ingest-side dedup review per the arXiv-full-version-dedup precedent.
 - id: '2507.17527'
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2254,6 +2286,7 @@ papers:
     paper's headline comparisons against commercial competitors should be treated as a frontier claim
     pending independent replication, not as established fact.
 - id: 2025.findings-ijcnlp.49
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2318,6 +2351,7 @@ papers:
   - The experiment covers only JMultiWOZ's travel-planning domain; extension to diverse or open-domain
     task-oriented settings is planned but not yet evaluated.
 - id: 2025.findings-acl.115
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2395,6 +2429,7 @@ papers:
     vs. 7B), and this tension should be surfaced as a contested cluster in Phase 2 rather than silently
     reconciled.
 - id: 2025.acl-long.997
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2466,6 +2501,7 @@ papers:
   - Only the semantic dimension of SLM quality is addressed; paralinguistic aspects (prosody, speaking
     style, emotion) are explicitly out of scope.
 - id: 2025.findings-acl.75
+  published_date: "2025-07-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: ACL
@@ -2532,6 +2568,7 @@ papers:
   - As a direct S2S translation system, this paper's contribution is at the sequence-representation and
     training-objective level rather than the dialogue or duplex dimension of speech-to-speech.
 - id: '2507.23159'
+  published_date: "2025-07-30"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2598,6 +2635,7 @@ papers:
   - Extends the same authors' original Full-Duplex-Bench (already in this concept's paper list) with prosodic
     analysis and more controlled non-addressee simulation, rather than introducing a new evaluation paradigm.
 - id: '2508.02013'
+  published_date: "2025-08-04"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2663,6 +2701,7 @@ papers:
   - The dataset and benchmark target speech-based role-playing dialogue specifically, providing direct
     sub-paradigm-1 (E2E spoken dialogue) evidence via both cascaded and end-to-end system comparisons.
 - id: '2508.07375'
+  published_date: "2025-08-10"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2736,6 +2775,7 @@ papers:
     checkpoint, so cross-system comparisons in this paper are not directly comparable to Moshi's original
     reported numbers.
 - id: '2508.09600'
+  published_date: "2025-08-13"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2814,6 +2854,7 @@ papers:
     claims about the text-LM reasoning trade-off are specific to the empathy/paralinguistic dimension
     rather than general dialogue coherence.
 - id: '2503.04721'
+  published_date: "2025-08-16"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -2886,6 +2927,7 @@ papers:
   - This is the original Full-Duplex-Bench (ASRU 2025); [[2507.23159]] (Full-Duplex-Bench v1.5, already
     integrated above) is the same authors' follow-up extending it with prosodic analysis.
 - id: interspeech-2025-1595
+  published_date: "2025-08-17"
   entry_date: '2026-07-19'
   year: 2025
   venue: Interspeech
@@ -2948,6 +2990,7 @@ papers:
   - This is direct sub-paradigm-2 (S2S translation) evidence at the LLM fine-tuning level; the paper explicitly
     notes extension to spoken dialogue systems as future work rather than current scope.
 - id: interspeech-2025-bokkahallisatish25_interspeech
+  published_date: "2025-08-17"
   entry_date: '2026-07-19'
   year: 2025
   venue: Interspeech
@@ -3000,6 +3043,7 @@ papers:
   - A system demonstration rather than an empirical study; evaluates end-to-end speech-to-speech conversational
     systems (sub-paradigm 1) using voice conversion as a bias probe rather than proposing a new S2S architecture.
 - id: interspeech-2025-0739
+  published_date: "2025-08-17"
   entry_date: '2026-07-19'
   year: 2025
   venue: Interspeech
@@ -3074,6 +3118,7 @@ papers:
     independent full-duplex evaluation pipeline, focused specifically on interruption-type taxonomy and
     noise robustness.
 - id: interspeech-2025-0874
+  published_date: "2025-08-17"
   entry_date: '2026-07-19'
   year: 2025
   venue: Interspeech
@@ -3147,6 +3192,7 @@ papers:
   - Comparisons with Moshi use shared test sets but different backbone sizes and training data, so cross-system
     comparisons in this paper are not fully controlled.
 - id: interspeech-2025-2564
+  published_date: "2025-08-17"
   entry_date: '2026-07-19'
   year: 2025
   venue: Interspeech
@@ -3211,6 +3257,7 @@ papers:
   - First publicly available full-duplex S2S system for Japanese, extending the Moshi architecture (already
     represented in this concept's paper list) to a new language rather than introducing a new architecture.
 - id: '2508.15827'
+  published_date: "2025-08-18"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3283,6 +3330,7 @@ papers:
   - Direct sub-paradigm-1 evidence for reasoning-latency trade-offs in E2E spoken dialogue; the finding
     is specific to structured maths reasoning and has not been validated on open-domain dialogue.
 - id: '2507.16835'
+  published_date: "2025-08-21"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3344,6 +3392,7 @@ papers:
   - This is production-scale sub-paradigm-3 (cascade) evidence; no new model is trained, and all components
     evaluated are proprietary commercial APIs, limiting reproducibility.
 - id: '2508.16188'
+  published_date: "2025-08-22"
   entry_date: '2026-07-19'
   year: 2025
   venue: EMNLP
@@ -3410,6 +3459,7 @@ papers:
     system; its relevance to speech-to-speech is as a multimodal conditioning variant on the response-generation
     side of E2E dialogue, not a complete duplex or turn-taking system.
 - id: '2508.17623'
+  published_date: "2025-08-25"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3473,6 +3523,7 @@ papers:
     paper list (Moshi, GLM-4-Voice, Freeze-Omni); its multi-turn degradation finding is a genuinely new
     diagnostic not previously quantified in this concept's evidence base.
 - id: '2509.03940'
+  published_date: "2025-09-04"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3536,6 +3587,7 @@ papers:
     (SpeechRole, already integrated above) as an independently constructed benchmark for the same task
     family.
 - id: '2509.06502'
+  published_date: "2025-09-08"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3610,6 +3662,7 @@ papers:
   - Directly compares cascade, semi-cascade, and (by argument) end-to-end sub-paradigms within a single
     deployable system, making it unusually direct cross-sub-paradigm evidence for this concept.
 - id: '2509.09174'
+  published_date: "2025-09-11"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3682,6 +3735,7 @@ papers:
   - Core sub-paradigm-1 architectural/training evidence addressing acoustic-semantic conflict, a known
     bottleneck already central to this concept (paralinguistic variability in speech tokens).
 - id: '2508.18240'
+  published_date: "2025-09-15"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3753,6 +3807,7 @@ papers:
   - First holistic multi-turn, audio-grounded evaluation covering ten S2S systems (sub-paradigm 1) across
     semantic, paralinguistic, and ambient dimensions simultaneously.
 - id: '2509.17765'
+  published_date: "2025-09-22"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3824,6 +3879,7 @@ papers:
     (voice-instruction-following) and zero-shot TTS/voice-cloning scores rather than dedicated turn-taking,
     duplex-interaction, or conversational-latency benchmarks used elsewhere in this concept.
 - id: '2501.04561'
+  published_date: "2025-09-23"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3889,6 +3945,7 @@ papers:
     spoken answer), not a duplex or turn-taking dialogue system; it does not address interruption, backchanneling,
     or full-duplex interaction.
 - id: '2509.22243'
+  published_date: "2025-09-26"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -3952,6 +4009,7 @@ papers:
   - Findings are specific to full-duplex dialogue interaction (turn-taking, interruption, backchanneling);
     the benchmark does not evaluate S2S translation or cascade-specific latency/quality trade-offs.
 - id: '2506.21875'
+  published_date: "2025-09-26"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -4014,6 +4072,7 @@ papers:
     primarily via one case study (Kimi-Audio); broader generality across other architectures is not exhaustively
     tested.
 - id: '2510.02352'
+  published_date: "2025-09-27"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
@@ -4075,6 +4134,7 @@ papers:
   - Bias evaluation is specific to decision-making/recommendation tasks; it does not address dialogue
     interaction mechanics (turn-taking, latency) that define other sub-paradigm comparisons in this concept.
 - id: '2509.26542'
+  published_date: "2025-09-30"
   entry_date: '2026-07-19'
   year: 2025
   venue: arXiv
