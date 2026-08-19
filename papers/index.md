@@ -870,3 +870,27 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2603.11683]] | [Causal Prosody Mediation for Text-to-Speech: Counterfa](papers/2603.11683.md) |  | arXiv | 2026 | TTS | transformer-enc-dec | 2026-08-15 |
 | [[2603.11947]] | [Resurfacing Paralinguistic Awareness in Large Audio Lan](papers/2603.11947.md) | Monash University / University College London | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-15 |
 | [[2603.12342]] | [MamTra: A Hybrid Mamba-Transformer Backbone for Speech ](papers/2603.12342.md) | KAIST, Chung-Ang University | arXiv | 2026 | TTS | hybrid, autoregressive-LM | 2026-08-15 |
+| [[2603.12565]] | [Speech-Worthy Alignment for Japanese SpeechLLMs via Dir](papers/2603.12565.md) | SB Intuitions | arXiv | 2026 | SCA, evaluation | hybrid | 2026-08-19 |
+| [[2603.13518]] | [VoXtream2: Full-stream TTS with dynamic speaking r](papers/2603.13518.md) | KTH Royal Institute of Technology | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-19 |
+| [[2603.14032]] | [Beyond Two-stage Diffusion TTS: Joint Structure and Con](papers/2603.14032.md) |  | arXiv | 2026 | TTS | diffusion, transformer-enc-dec | 2026-08-19 |
+| [[2603.14035]] | [Probing neural audio codecs for distinctions among Engl](papers/2603.14035.md) | Northwestern University | arXiv | 2026 | codec, evaluation |  | 2026-08-19 |
+| [[2603.14267]] | [DiFlowDubber: Discrete Flow Matching for Automated Vide](papers/2603.14267.md) | FPT Software AI Center | arXiv | 2026 | TTS | flow-matching, hybrid | 2026-08-19 |
+| [[2603.14328]] | [CodecMOS-Accent: A MOS Benchmark of Resynthesized and T](papers/2603.14328.md) | Nagoya University, University of Edinburgh, NICT | arXiv | 2026 | codec, evaluation |  | 2026-08-19 |
+| [[2603.14432]] | [Affectron: Emotional Speech Synthesis with Affective an](papers/2603.14432.md) | Korea University | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-19 |
+| [[2603.14853]] | [WhispSynth: Scaling Multilingual Whisper Corpus through](papers/2603.14853.md) | Nanjing University, Fudan University, ByteDance | arXiv | 2026 | TTS, VC | flow-matching, GAN, hybrid | 2026-08-19 |
+| [[2603.14877]] | [SoulX-Duplug: Plug-and-Play Streaming State Prediction ](papers/2603.14877.md) | Shanghai Jiao Tong University; Soul AI Lab; Northwestern Polytechnical University | arXiv | 2026 | SCA, evaluation | autoregressive-LM | 2026-08-19 |
+| [[2603.14889]] | [SDiaReward: Modeling and Benchmarking Spoken Dialogue R](papers/2603.14889.md) |  | arXiv | 2026 | SCA, evaluation | autoregressive-LM | 2026-08-19 |
+| [[2603.15352]] | [NV-Bench: Benchmark of Nonverbal Vocalization Synthesis](papers/2603.15352.md) | The Chinese University of Hong Kong, Shenzhen | arXiv | 2026 | TTS, evaluation | autoregressive-LM, flow-matching, hybrid | 2026-08-19 |
+| [[2603.15981]] | [Aligning Paralinguistic Understanding and Generation in](papers/2603.15981.md) | Meta Reality Labs | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-19 |
+| [[2603.16280]] | [CAST-TTS: A Simple Cross-Attention Framework for Unifie](papers/2603.16280.md) | Shanghai AI Lab / Shanghai Jiao Tong University | arXiv | 2026 | TTS | flow-matching | 2026-08-19 |
+| [[2603.16483]] | [On the Emotion Understanding of Synthesized Speech](papers/2603.16483.md) | Northeastern University / NiuTrans Research | arXiv | 2026 | TTS, evaluation |  | 2026-08-19 |
+| [[2603.16783]] | [SpokenUS: A Spoken User Simulator for Task-Oriented Dia](papers/2603.16783.md) | Seoul National University, Hanyang University | arXiv | 2026 | SCA | autoregressive-LM, flow-matching | 2026-08-19 |
+| [[2603.17061]] | [Collecting Prosody in the Wild: A Content-Controlled, P](papers/2603.17061.md) | University of St. Gallen / LMU Munich / University of Mannheim / Charlotte Fresenius Hochschule | arXiv | 2026 |  |  | 2026-08-19 |
+| [[2604.08558]] | [WAND: Windowed Attention and Knowledge Distillation for](papers/2604.08558.md) | KAIST, Sungkyunkwan University | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-19 |
+| [[2604.08562]] | [Neural networks for Text-to-Speech evaluation](papers/2604.08562.md) |  | arXiv | 2026 | TTS, evaluation | hybrid | 2026-08-19 |
+| [[2603.17231]] | [Neuron-Level Emotion Control in Speech-Generative Large](papers/2603.17231.md) | Johns Hopkins University / Imperial College London | arXiv | 2026 | VC | autoregressive-LM | 2026-08-19 |
+| [[2603.17837]] | [The Silent Thought: Modeling Internal Cognition in Full](papers/2603.17837.md) |  | arXiv | 2026 | SCA | autoregressive-LM, flow-matching | 2026-08-19 |
+| [[2603.18359]] | [Towards Interpretable Framework for Neural Audio Codecs](papers/2603.18359.md) |  | arXiv | 2026 | codec |  | 2026-08-19 |
+| [[2603.19798]] | [Borderless Long Speech Synthesis](papers/2603.19798.md) | Xiaomi (MiLM Plus) / Nanjing University | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-19 |
+| [[2603.19831]] | [Gesture2Speech: How Far Can Hand Movements Shape Expres](papers/2603.19831.md) | Sony Research India | arXiv | 2026 | TTS | autoregressive-LM, GAN | 2026-08-19 |
+| [[2603.25750]] | [Sommelier: Scalable Open Multi-turn Audio Pre-processin](papers/2603.25750.md) | KAIST AI, NAVER Cloud | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-19 |
