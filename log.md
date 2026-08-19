@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-08-19
 
+- reconcile | 2025-Q3 candidate generation | 23 concepts and 406 clusters | 78,475 cross-concept pairs scored | 4,233 pre-cap candidates | 2,049 shared-evidence candidates emitted as pending | 0 relationships accepted | evidence cutoff: 2025-09-30 | assessment as of: 2026-08-19 | runtime: codex | provider: openai | model: gpt-5
 - integrate | temporal migration | 2,226 concept paper entries across 23 concepts | added canonical published_date only | 0 conflicts | idempotence verified | runtime: codex | provider: openai | model: gpt-5
 
 ## 2026-08-12
