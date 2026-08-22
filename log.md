@@ -4,6 +4,21 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `render` (Overview and In Depth concept pages regenerated from YAML), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-22
+
+- ingest | 2603.20638 | OmniCodec: Low Frame Rate Universal Audio Codec with Semantic-Acoustic Disentanglement | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.20743 | The Binding Effect: Analyzing How Multi-Dimensional Cues Form Gender Bias in Instruction TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.21078 | Assessing the Ability of Neural TTS Systems to Model Consonant-Induced F0 Perturbation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.22252 | SelfTTS: cross-speaker style transfer through explicit embedding disentanglement and self-refinement using self-augmentation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.22267 | TiCo: Time-Controllable Spoken Dialogue Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.03279 | Rewriting TTS Inference Economics: Lightning V2 on Tenstorrent Achieves 4x Lower Cost Than NVIDIA L40S | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.23938 | OmniACBench: A Benchmark for Evaluating Context-Grounded Acoustic Control in Omni-Modal Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24116 | How Open is Open TTS? A Practical Evaluation of Open Source TTS Tools | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24144 | Semantic-Aware Interruption Detection in Spoken Dialogue Systems: Benchmark, Metric, and Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24430 | Iterate to Differentiate: Enhancing Discriminability and Reliability in Zero-Shot TTS Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24589 | YingMusic-Singer-Plus: Controllable Singing Voice Synthesis with Flexible Lyric Manipulation and Annotation-free Melody Guidance | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.01247 | Combining Masked Language Modeling and Cross-Modal Contrastive Learning for Prosody-Aware TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-19
 
 - ingest | 2603.12565 | Speech-Worthy Alignment for Japanese SpeechLLMs via Direct Preference Optimization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5

@@ -894,3 +894,15 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2603.19798]] | [Borderless Long Speech Synthesis](papers/2603.19798.md) | Xiaomi (MiLM Plus) / Nanjing University | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-19 |
 | [[2603.19831]] | [Gesture2Speech: How Far Can Hand Movements Shape Expres](papers/2603.19831.md) | Sony Research India | arXiv | 2026 | TTS | autoregressive-LM, GAN | 2026-08-19 |
 | [[2603.25750]] | [Sommelier: Scalable Open Multi-turn Audio Pre-processin](papers/2603.25750.md) | KAIST AI, NAVER Cloud | arXiv | 2026 | SCA | autoregressive-LM | 2026-08-19 |
+| [[2603.20638]] | [OmniCodec: Low Frame Rate Universal Audio Codec with Se](papers/2603.20638.md) | Northwestern Polytechnical University | arXiv | 2026 | codec | GAN, VAE | 2026-08-22 |
+| [[2603.20743]] | [The Binding Effect: Analyzing How Multi-Dimensional Cue](papers/2603.20743.md) | National Taiwan University, Inventec Corporation | arXiv | 2026 | TTS, evaluation |  | 2026-08-22 |
+| [[2603.21078]] | [Assessing the Ability of Neural TTS Systems to Model Co](papers/2603.21078.md) | University at Buffalo / Australian National University | arXiv | 2026 | TTS, evaluation |  | 2026-08-22 |
+| [[2603.22252]] | [SelfTTS: cross-speaker style transfer through explicit ](papers/2603.22252.md) | UNICAMP, CPQD | arXiv | 2026 | TTS | hybrid | 2026-08-22 |
+| [[2603.22267]] | [TiCo: Time-Controllable Spoken Dialogue Model](papers/2603.22267.md) | MIT, National Taiwan University | arXiv | 2026 | SCA | autoregressive-LM, hybrid | 2026-08-22 |
+| [[2604.03279]] | [Rewriting TTS Inference Economics: Lightning V2 on Tens](papers/2604.03279.md) | Smallest AI | arXiv | 2026 | TTS | diffusion | 2026-08-22 |
+| [[2603.23938]] | [OmniACBench: A Benchmark for Evaluating Context-Grounde](papers/2603.23938.md) | Hanyang University / Seoul National University / KAIST AI / NAVER Cloud | arXiv | 2026 | TTS, SCA, evaluation |  | 2026-08-22 |
+| [[2603.24116]] | [How Open is Open TTS? A Practical Evaluation of Open So](papers/2603.24116.md) | POLITEHNICA Bucharest / Technical University of Cluj-Napoca | arXiv | 2026 | TTS, evaluation | transformer-enc-dec, VAE, GAN, diffusion, flow-matching | 2026-08-22 |
+| [[2603.24144]] | [Semantic-Aware Interruption Detection in Spoken Dialogu](papers/2603.24144.md) | Qwen Team, Alibaba | arXiv | 2026 | SCA, evaluation | hybrid | 2026-08-22 |
+| [[2603.24430]] | [Iterate to Differentiate: Enhancing Discriminability an](papers/2603.24430.md) | Nanjing University, MiLM Plus (Xiaomi), HKUST | arXiv | 2026 | TTS, evaluation |  | 2026-08-22 |
+| [[2603.24589]] | [YingMusic-Singer-Plus: Controllable Singing Voice Synth](papers/2603.24589.md) | Northwestern Polytechnical University (ASLP@NPU) / GiantNetwork AI Lab | arXiv | 2026 | singing | flow-matching, VAE | 2026-08-22 |
+| [[2604.01247]] | [Combining Masked Language Modeling and Cross-Modal Cont](papers/2604.01247.md) | MTUCI, Moscow, Russia | arXiv | 2026 | TTS | diffusion | 2026-08-22 |
