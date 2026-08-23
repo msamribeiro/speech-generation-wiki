@@ -25,6 +25,14 @@ relationships:
     advantage.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_1a4586ef04193eb2
+  source: transformer-enc-dec-tts#parallel_generation_needs_variance_modeling
+  target: prosody-control#explicit_pitch_energy_duration_enable_controllability
+  type: supports
+  rationale: The need for explicit duration and pitch modeling in parallel TTS supports the broader controllability role of
+    those interpretable prosodic variables.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_1b6a20de587131eb
   source: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
   target: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
@@ -79,6 +87,14 @@ relationships:
   type: specialization
   rationale: The streaming claim is the latency-sensitive specialization of the broader spoken-system finding that cascaded
     and end-to-end architectures retain complementary strengths.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_43ad32dc4d5683b9
+  source: transformer-enc-dec-tts#explicit_duration_prediction_improves_parallel_tts
+  target: prosody-control#explicit_pitch_energy_duration_enable_controllability
+  type: refines
+  rationale: Explicit duration prediction refines the broader prosody-control claim by linking one variance factor to parallel
+    generation and alignment robustness.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_4b22c174cef17670
@@ -207,6 +223,14 @@ relationships:
     can preserve usable quality.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_d795e870d058d1b0
+  source: subjective-evaluation#fine_grained_style_and_prosody_need_dimension_specific_tests
+  target: diffusion-tts#diffusion_supports_expressive_style_and_emotion
+  type: supports
+  rationale: Dimension-specific perceptual tests supply the evaluation condition needed to substantiate diffusion-based style
+    and emotion control.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_e6b0093f2569a674
   source: rlhf-speech#rlhf_training_instability_requires_regularization_or_early_stopping
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
@@ -237,6 +261,14 @@ relationships:
   type: specialization
   rationale: The autoregressive-codec claim is a narrower synthesis setting for the perceptual finding that preference optimization
     can improve targeted listener-relevant attributes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_57a4b8c4d65e3d80
+  source: prosody-control#disentanglement_enables_independent_prosody_transfer
+  target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
+  type: related
+  rationale: The prosody-transfer claim and the zero-shot style-control claim overlap in controllable expression, but they
+    address different mechanisms and scopes, so a direct related link is warranted rather than shared broader membership.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 broader_claims:

@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-08-23
 
+- reconcile | 2025-Q3 | theme: controllability | 20 concepts and 136 clusters reviewed | 319 candidates | 14 accepted | 305 rejected | 0 deferred | 4 direct relationships recorded and 2 existing broader claims extended by reviewed candidate links | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: speaker | 20 concepts and 163 clusters reviewed | 522 candidates | 19 accepted | 503 rejected | 0 deferred | 6 direct relationships and 2 broader claims recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: efficiency | 15 concepts and 65 clusters reviewed | 90 candidates | 10 accepted | 80 rejected | 0 deferred | 10 direct relationships recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: evaluation pilot | 21 concepts and 181 clusters reviewed | 351 candidates | 28 accepted | 323 rejected | 0 deferred | 14 direct relationships and 3 broader claims recorded | field-render projection validated with 38 duplicate supporting-paper occurrences removed while preserving local caveats | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
