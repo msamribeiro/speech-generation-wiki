@@ -104,6 +104,14 @@ relationships:
   rationale: Parallel voice conversion is a task-specific realization of low-step flow-matching acceleration.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_57a4b8c4d65e3d80
+  source: prosody-control#disentanglement_enables_independent_prosody_transfer
+  target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
+  type: related
+  rationale: The prosody-transfer claim and the zero-shot style-control claim overlap in controllable expression, but they
+    address different mechanisms and scopes, so a direct related link is warranted rather than shared broader membership.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_583eed0f1d70062f
   source: diffusion-tts#preference_optimization_can_steer_diffusion
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
@@ -261,14 +269,6 @@ relationships:
   type: specialization
   rationale: The autoregressive-codec claim is a narrower synthesis setting for the perceptual finding that preference optimization
     can improve targeted listener-relevant attributes.
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-- id: rel_57a4b8c4d65e3d80
-  source: prosody-control#disentanglement_enables_independent_prosody_transfer
-  target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
-  type: related
-  rationale: The prosody-transfer claim and the zero-shot style-control claim overlap in controllable expression, but they
-    address different mechanisms and scopes, so a direct related link is warranted rather than shared broader membership.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 broader_claims:
@@ -945,6 +945,80 @@ broader_claims:
   review_rationale: The clusters independently show that speech quality is multi-axis and that text or aggregate proxies conceal
     acoustic and interaction failures. The broader claim preserves those task-specific scopes while preventing field synthesis
     from repeating the same evaluation principle.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_training_diversity_drives_unseen_voice_generalization
+  proposition: Training-speaker and acoustic diversity are major drivers of generalization to unseen voices across adaptation,
+    conversion, and zero-shot synthesis.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: speaker-adaptation#data_scale_and_diversity_drive_unseen_speaker_generalization
+    relationship: specialization
+    rationale: This local cluster contributes its speaker-adaptation-specific evidence and scope to the reviewed broader proposition.
+  - claim: voice-conversion#data_diversity_drives_unseen_speaker_generalization
+    relationship: specialization
+    rationale: This local cluster contributes its voice-conversion-specific evidence and scope to the reviewed broader proposition.
+  - claim: zero-shot-tts#data_scale_and_diversity_improve_generalization
+    relationship: specialization
+    rationale: This local cluster contributes its zero-shot-tts-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - 2025.acl-long.654
+  - 2025.acl-short.81
+  - 2025.coling-main.685
+  - 2025.findings-naacl.279
+  - 2025.naacl-short.65
+  - '2301.02111'
+  - '2303.03926'
+  - '2305.07243'
+  - '2310.00704'
+  - '2312.01479'
+  - '2312.15821'
+  - '2402.01912'
+  - '2402.08093'
+  - '2403.03100'
+  - '2406.02430'
+  - '2406.04904'
+  - '2407.05361'
+  - '2409.03283'
+  - '2411.19770'
+  - '2502.18924'
+  - '2504.02407'
+  - '2505.17589'
+  - '2507.09282'
+  - '2508.02038'
+  - '2508.07426'
+  - '2509.04702'
+  - '2509.14784'
+  - '2509.15969'
+  - '2509.17765'
+  - '2509.18060'
+  - interspeech-2025-0455
+  - interspeech-2025-0596
+  - interspeech-2025-1101
+  - interspeech-2025-1344
+  - interspeech-2025-1726
+  - interspeech-2025-raju25_interspeech
+  contradicting_papers: []
+  refining_papers:
+  - 2025.findings-naacl.279
+  - '2312.01479'
+  - '2409.09098'
+  - '2507.01348'
+  - '2507.08319'
+  - '2508.07426'
+  - '2509.22727'
+  - '2509.24570'
+  - interspeech-2025-0406
+  - interspeech-2025-0656
+  - interspeech-2025-1115
+  - interspeech-2025-1536
+  caveats:
+  - Dataset scale alone is not sufficient; coverage, recording conditions, language balance, and representation design affect
+    transfer.
+  review_rationale: The task-local clusters share a direct generalization proposition and independent evidence across three
+    unseen-voice settings.
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3

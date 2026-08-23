@@ -823,10 +823,11 @@ candidates:
     - major
     - unseen-speaker
     aggregate_score: 0.384912
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_training_diversity_drives_unseen_voice_generalization;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_bc82d0f5466fda6f
   left: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
@@ -2904,10 +2905,11 @@ candidates:
     - diversity
     - generalization
     aggregate_score: 0.306706
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_training_diversity_drives_unseen_voice_generalization;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_c91bc8af629ce4c0
   left: flow-matching#fm_velocity_space_alignment
@@ -4215,10 +4217,14 @@ candidates:
     - multilingual
     - pronunciation
     aggregate_score: 0.287658
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Explicit text and pronunciation modeling improves intelligibility
+    on difficult or multilingual inputs”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_9f0f20e22c56f389
   left: diffusion-tts#distillation_and_caching_accelerate_diffusion
@@ -4931,10 +4937,11 @@ candidates:
     - diversity
     - speaker
     aggregate_score: 0.281266
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_training_diversity_drives_unseen_voice_generalization;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_8073539c0af36d87
   left: spoken-language-model#multidimensional_benchmarks_expose_spoken_model_gaps
@@ -5090,10 +5097,14 @@ candidates:
     - fine-tuning
     - low-resource
     aggregate_score: 0.278963
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Continued
+    pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages”, whereas
+    speaker-adaptation concerns “Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive,
+    low-resource, or out-of-domain voices”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_9ce0282c7f866992
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -6670,10 +6681,13 @@ candidates:
     - cross-lingual
     - multilingual
     aggregate_score: 0.263697
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas self-supervised-speech
+    concerns “Multilingual SSL representations support cross-lingual transfer, but performance remains sensitive to pretraining-language
+    coverage”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4a47c28f7e07d9d6
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -6811,10 +6825,13 @@ candidates:
     shared_terms:
     - generalization
     aggregate_score: 0.26235
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e0ebf2d70ddf1f42
   left: neural-codec#speaker_prosody_entanglement_is_persistent
@@ -7904,10 +7921,13 @@ candidates:
     - multilingual
     - text
     aggregate_score: 0.2528
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas zero-shot-tts concerns “Explicit text and pronunciation modeling improves intelligibility on difficult or
+    multilingual inputs”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a93dd3d3faa88127
   left: multilingual-tts#training_imbalance_biases_multilingual_quality
@@ -8217,10 +8237,14 @@ candidates:
     shared_terms:
     - zero-shot
     aggregate_score: 0.251719
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves
+    zero-shot generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_4783ba8e0a9e1508
   left: voice-conversion#robust_conversion_requires_domain_invariance
@@ -8506,10 +8530,14 @@ candidates:
     shared_terms:
     - diverse
     aggregate_score: 0.250609
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: instruction-conditioned-tts concerns
+    “Diverse, fine-grained instruction supervision generalizes better than narrow templates or single-task instruction corpora”,
+    whereas spoken-language-model concerns “Large, diverse speech-instruction and conversational datasets expand spoken-language-model
+    task coverage and generalization”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_db826ccc5e355114
   left: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
@@ -12696,10 +12724,13 @@ candidates:
     shared_terms:
     - unseen-speaker
     aggregate_score: 0.229411
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Training-speaker
+    and acoustic diversity is a major determinant of unseen-speaker voice-conversion generalization”, whereas zero-shot-tts
+    concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f54d2b7014659ea3
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -13825,10 +13856,14 @@ candidates:
     shared_terms:
     - low-resource
     aggregate_score: 0.224962
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure
+    from better-resourced languages”, whereas subjective-evaluation concerns “Subjective conclusions from clean, high-resource,
+    or single-language evaluations often fail to transfer to low-resource and in-the-wild conditions”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7921eb619d92f131
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -13952,10 +13987,14 @@ candidates:
     shared_terms:
     - multilingual
     aggregate_score: 0.224647
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure
+    from better-resourced languages”, whereas self-supervised-speech concerns “Multilingual SSL representations support cross-lingual
+    transfer, but performance remains sensitive to pretraining-language coverage”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8a0a27567ddff585
   left: spoken-language-model#speech_modality_introduces_reasoning_and_robustness_gaps
@@ -14152,10 +14191,14 @@ candidates:
     - alignment
     - text
     aggregate_score: 0.224166
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained
+    text language models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_833bad11199245be
   left: gan-vocoder#frequency_domain_generation_improves_phase_and_efficiency
@@ -14426,10 +14469,14 @@ candidates:
     shared_terms:
     - low-resource
     aggregate_score: 0.223431
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas prosody-control concerns “Tonal, stress-marked, low-resource, and historical languages require language-specific
+    representations or preprocessing for reliable prosody”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_98729e6e3f24a05a
   left: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -14677,10 +14724,13 @@ candidates:
     shared_terms:
     - improve
     aggregate_score: 0.22259
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    zero-shot-tts concerns “Parameter-efficient and low-resource adaptation can improve cloning with limited target-speaker
+    data”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d28b91543344df2e
   left: spoken-language-model#speech_modality_introduces_reasoning_and_robustness_gaps
@@ -14904,10 +14954,13 @@ candidates:
     shared_terms:
     - multilingual
     aggregate_score: 0.221898
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Flow-matching
+    and diffusion models provide scalable parallel acoustic generation for multilingual TTS”, whereas self-supervised-speech
+    concerns “Multilingual SSL representations support cross-lingual transfer, but performance remains sensitive to pretraining-language
+    coverage”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_782bdd1abfa715e4
   left: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
@@ -15374,10 +15427,13 @@ candidates:
     - speaker
     - training
     aggregate_score: 0.220199
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “SSL representations retain varying amounts of speaker, pitch, prosody, and paralinguistic information despite content-oriented
+    training”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot
+    generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f820857652391d96
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -15848,10 +15904,14 @@ candidates:
     shared_terms:
     - bottlenecks
     aggregate_score: 0.218975
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas neural-codec concerns “Codebook collapse and uneven token utilization are recurring bottlenecks that require
+    explicit training or pruning strategies”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_928630e3b7208d11
   left: gan-vocoder#discriminator_design_is_central_to_gan_vocoder_quality
@@ -16274,10 +16334,14 @@ candidates:
     shared_terms:
     - generalization
     aggregate_score: 0.217743
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas multilingual-tts concerns “Larger and more diverse multilingual corpora improve
+    language coverage, robustness, and cross-lingual generalization”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a5642ebf16a56f54
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -17397,10 +17461,14 @@ candidates:
     shared_terms:
     - text
     aggregate_score: 0.214857
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas spoken-language-model concerns “Interleaving speech and text during training improves cross-modal transfer
+    and supports models that reason in text while communicating in speech”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_89083a49742b7bd0
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -17756,10 +17824,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.21424
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Few-shot
+    speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain
+    voices”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_637607209a11d080
   left: neural-codec#residual_quantization_supports_scalable_bitrate
@@ -18137,10 +18208,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.213255
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: gan-vocoder concerns “GAN vocoders
+    remain effective in low-resource, cross-lingual, voice-conversion, and non-standard acoustic settings”, whereas voice-conversion
+    concerns “Adversarial objectives can suppress source-speaker leakage and improve perceptual conversion quality”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_0ed3753711c314f3
   left: voice-conversion#diffusion_supports_flexible_voice_conversion
@@ -18488,10 +18562,14 @@ candidates:
     shared_terms:
     - coverage
     aggregate_score: 0.212087
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Robust voice cloning requires training and evaluation coverage
+    for noisy and out-of-domain references”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_6d9256c91ede147c
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -18852,10 +18930,14 @@ candidates:
     shared_terms:
     - low-resource
     aggregate_score: 0.211296
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas subjective-evaluation concerns “Subjective conclusions from clean, high-resource, or single-language evaluations
+    often fail to transfer to low-resource and in-the-wild conditions”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4c3e9587e8df6413
   left: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
@@ -19026,10 +19108,14 @@ candidates:
     shared_terms:
     - language
     aggregate_score: 0.211104
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas spoken-language-model
+    concerns “Explicit speech–text alignment and modality connectors allow pretrained text language models to acquire speech
+    capabilities while preserving much of their linguistic reasoning”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8916d4a185450d16
   left: neural-codec#codec_bottlenecks_shape_intelligibility
@@ -19126,10 +19212,13 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.210757
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Cross-lingual
+    and multilingual adaptation can preserve speaker identity, but language coverage and duration modeling create persistent
+    variability”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot
+    generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8162127bdfc75d1d
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -19302,10 +19391,13 @@ candidates:
     shared_terms:
     - zero-shot
     aggregate_score: 0.21042
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Zero-shot
+    and any-to-any conversion can generalize to unseen speakers without per-speaker retraining”, whereas zero-shot-tts concerns
+    “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7185fbf84cfff1ab
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -20013,10 +20105,14 @@ candidates:
     shared_terms:
     - representations
     aggregate_score: 0.208924
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic
+    overlap”, whereas prosody-control concerns “Tonal, stress-marked, low-resource, and historical languages require language-specific
+    representations or preprocessing for reliable prosody”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_eaeea60a4c86ac6d
   left: flow-matching#fm_implicit_alignment_feasibility
@@ -20350,10 +20446,13 @@ candidates:
     shared_terms:
     - multilingual
     aggregate_score: 0.207922
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming performance remains
+    uneven”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a0d245e56b704f55
   left: spoken-language-model#unified_models_support_joint_understanding_and_generation
@@ -20471,10 +20570,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.207635
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas spoken-language-model
+    concerns “Interleaving speech and text during training improves cross-modal transfer and supports models that reason in
+    text while communicating in speech”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a6c11e123fdd347e
   left: neural-codec#codec_representations_enable_multilingual_transfer
@@ -21135,10 +21238,13 @@ candidates:
     shared_terms:
     - acoustic
     aggregate_score: 0.205701
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: streaming-tts concerns “Incremental
+    acoustic or speech-token generation can substantially reduce first-packet and response latency”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3d61a912753f0e0e
   left: disentanglement#disentanglement_reconstruction_fidelity_tradeoff
@@ -22047,10 +22153,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.20356
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: instruction-conditioned-tts concerns
+    “Automatic labeling, LLM captioning or rewriting, and synthetic-speech pipelines can scale instruction-speech supervision
+    beyond manual annotation”, whereas spoken-language-model concerns “Large, diverse speech-instruction and conversational
+    datasets expand spoken-language-model task coverage and generalization”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f19221e24e2fc161
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -22093,10 +22203,13 @@ candidates:
     shared_terms:
     - acoustic
     aggregate_score: 0.203326
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Speaker-cloning
+    quality is sensitive to prompt duration, acoustic quality, and where the prompt enters the generation pipeline”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e76ab9fad12d13b6
   left: speech-to-speech#semantic_acoustic_token_tradeoff
@@ -22138,10 +22251,13 @@ candidates:
     shared_terms:
     - acoustic
     aggregate_score: 0.203027
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Flow-matching
+    and diffusion models provide scalable parallel acoustic generation for multilingual TTS”, whereas zero-shot-tts concerns
+    “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d439f68d913a1ae2
   left: autoregressive-codec-tts#sampling_controls_diversity_but_reduces_determinism
@@ -22580,10 +22696,14 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.202346
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas speaker-adaptation concerns “Training-data scale and speaker diversity are major
+    drivers of unseen-speaker similarity and robustness”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c20551f340b188ac
   left: emotion-synthesis#cross_lingual_emotion_control_remains_uneven
@@ -22750,10 +22870,14 @@ candidates:
     shared_terms:
     - transfer
     aggregate_score: 0.202085
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “Multilingual SSL representations support cross-lingual transfer, but performance remains sensitive to pretraining-language
+    coverage”, whereas spoken-language-model concerns “Interleaving speech and text during training improves cross-modal transfer
+    and supports models that reason in text while communicating in speech”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ede0e5246d8446e5
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -23205,10 +23329,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.201227
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Few-shot
+    speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain
+    voices”, whereas zero-shot-tts concerns “Explicit text and pronunciation modeling improves intelligibility on difficult
+    or multilingual inputs”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_e3fadfc0821c7f6e
   left: self-supervised-speech#ssl_units_support_low_bitrate_neural_codecs
@@ -23760,10 +23888,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.200101
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    speaker-adaptation concerns “Adapters, LoRA, speaker vectors, and other parameter-efficient updates can personalize voices
+    while limiting catastrophic forgetting”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_3e7753dabee7c1a1
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -24105,10 +24237,13 @@ candidates:
     shared_terms:
     - fine-tuning
     aggregate_score: 0.199299
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Continued
+    pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages”, whereas
+    zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific fine-tuning”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1ad181b027b1de05
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -24498,10 +24633,13 @@ candidates:
     shared_terms:
     - training
     aggregate_score: 0.198201
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Robust training
+    and representation design improve diffusion speech generation under noisy or mismatched conditions”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_25e987ff9c0be36f
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -24708,10 +24846,13 @@ candidates:
     shared_terms:
     - acoustic
     aggregate_score: 0.19782
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Continuous
+    and discrete speech representations trade modeling convenience and compression against retained acoustic detail and generation
+    stability”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot
+    generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f84e5e2c1271e654
   left: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
@@ -26192,10 +26333,14 @@ candidates:
     shared_terms:
     - transfer
     aggregate_score: 0.194919
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic
+    overlap”, whereas subjective-evaluation concerns “Subjective conclusions from clean, high-resource, or single-language
+    evaluations often fail to transfer to low-resource and in-the-wild conditions”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3a18f8724f6f3605
   left: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
@@ -27328,10 +27473,13 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.192362
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Robust
+    voice conversion requires content and speaker representations that tolerate noise, channel, and domain mismatch”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_be5e7d6723aa3966
   left: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
@@ -28819,10 +28967,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.189717
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity
+    without speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_0458a035c5ff3502
   left: instruction-conditioned-tts#natural_language_prompts_enable_multidimensional_style_control
@@ -29900,10 +30052,14 @@ candidates:
     shared_terms:
     - data
     aggregate_score: 0.187999
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: disentanglement concerns “Data-level
+    interventions, such as perturbation augmentation, decoupled training-pair construction, or self-distillation on synthetically
+    perturbed data, can achieve competitive attribute disentanglement without introducing new architectural or adversarial
+    loss mechanisms”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot
+    generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_b529fa5de2af3a7e
   left: neural-codec#learned_codec_low_bitrate_quality
@@ -31285,10 +31441,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185733
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas zero-shot-tts
+    concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_96c27bb1d844cb16
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -31824,10 +31983,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184824
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    speaker-adaptation concerns “Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive,
+    low-resource, or out-of-domain voices”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_f27affa37bf35008
   left: emotion-synthesis#dialogue_context_supports_appropriate_emotional_responses
@@ -32184,10 +32347,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184286
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Compressed
+    latent targets reduce diffusion generation complexity without necessarily sacrificing speech quality”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e2f19600b748cbfa
   left: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
@@ -32515,10 +32681,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.183709
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “SSL representations retain varying amounts of speaker, pitch, prosody, and paralinguistic information despite content-oriented
+    training”, whereas voice-conversion concerns “Training-speaker and acoustic diversity is a major determinant of unseen-speaker
+    voice-conversion generalization”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_1ab493387376b561
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -32605,10 +32775,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.183552
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic
+    overlap”, whereas zero-shot-tts concerns “Explicit text and pronunciation modeling improves intelligibility on difficult
+    or multilingual inputs”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_fe3868bf4a79c02e
   left: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
@@ -33884,10 +34058,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.180968
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9ab29d7be1fcbb93
   left: neural-codec#learned_codec_low_bitrate_quality
@@ -33955,10 +34132,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.18082
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Laughter,
+    sighs, fillers, emphasis, and other paralinguistic events require dedicated data and objectives beyond ordinary TTS training”,
+    whereas spoken-language-model concerns “Multi-turn spoken interaction requires explicit mechanisms for conversational
+    context, memory, and long-horizon state”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_90c606904a68c976
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -35186,10 +35367,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.179043
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Parameter-efficient and low-resource adaptation can improve cloning
+    with limited target-speaker data”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_b6888c73bcee6805
   left: autoregressive-codec-tts#explicit_alignment_constraints_improve_robustness
@@ -35662,10 +35847,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178432
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Replacing
+    text with speech input introduces measurable reasoning, robustness, and instruction-following gaps even when the underlying
+    language model is capable”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming
+    performance remains uneven”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_2e76b82bef7a6019
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -35929,10 +36118,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178071
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_2ddaf705469c115d
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -37106,10 +37298,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.176036
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Flow-matching
+    and diffusion models provide scalable parallel acoustic generation for multilingual TTS”, whereas subjective-evaluation
+    concerns “Subjective conclusions from clean, high-resource, or single-language evaluations often fail to transfer to low-resource
+    and in-the-wild conditions”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_9622481e24791b55
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -37400,10 +37596,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.175503
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas speaker-adaptation concerns “Few-shot speaker-specific fine-tuning generally improves identity
+    and naturalness for distinctive, low-resource, or out-of-domain voices”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_b84fab97f6bd4e92
   left: self-supervised-speech#ssl_conditioning_improves_speech_generation
@@ -38545,10 +38745,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173669
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: streaming-tts concerns “Flow and
+    diffusion streaming decoders trade integration steps, caching, and algorithmic delay against generation quality”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_73802ffaafdaf0b4
   left: emotion-synthesis#flow_and_diffusion_support_flexible_emotion_control
@@ -38911,10 +39114,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173077
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Codec-token
+    language models provide a shared generative interface for multilingual and cross-lingual speech synthesis”, whereas zero-shot-tts
+    concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms that limit error
+    accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c3c378c6af50e652
   left: prosody-control#ssl_representations_are_useful_but_entangled_for_prosody
@@ -39030,10 +39236,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.172804
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Few-shot
+    speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain
+    voices”, whereas voice-conversion concerns “Zero-shot and any-to-any conversion can generalize to unseen speakers without
+    per-speaker retraining”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_6b4c5864cf747f7c
   left: neural-codec#ssl_guidance_improves_codec_semantics
@@ -39557,10 +39767,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.171951
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speaker-adaptation concerns “Reference-audio
+    conditioning enables synthesis or conversion for unseen speakers without full speaker-specific retraining”, whereas zero-shot-tts
+    concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ee09ccf39f9304ba
   left: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
@@ -40006,10 +40219,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.1713
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Adapters,
+    LoRA, vocabulary expansion, and lightweight language modules support parameter-efficient multilingual extension”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3e8365b92b084ae8
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -40391,10 +40607,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.170455
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow-matching
+    speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
+    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes to
+    the base model”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot
+    generalization”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_90733497a68c434b
   left: self-supervised-speech#semantic_acoustic_hierarchies_balance_coherence_and_fidelity
@@ -40673,10 +40893,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.170039
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “Multilingual SSL representations support cross-lingual transfer, but performance remains sensitive to pretraining-language
+    coverage”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained
+    text language models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8aaddcf685b21526
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -40741,10 +40965,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.170003
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Continued
+    pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_861a4637f7d84006
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -40925,10 +41152,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.169893
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Distillation,
+    caching, and progressive calibration can reduce diffusion-TTS inference steps while retaining useful quality”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_5c0c3972515a2b9d
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -43218,10 +43448,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166788
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic
+    overlap”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_95698dde2401f3eb
   left: diffusion-tts#diffusion_enables_high_fidelity_synthesis
@@ -43284,10 +43517,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166719
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_48edfe499a126df0
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -43498,10 +43734,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166474
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Self-supervised
+    speech representations provide speaker-reduced content units that improve conversion intelligibility and transfer”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9771100a7987ac58
   left: diffusion-tts#diffusion_supports_zero_shot_voice_transfer
@@ -43547,10 +43786,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166438
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker similarity rather than improving
+    both monotonically”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a1a31c2f4689ab94
   left: neural-codec#codec_evaluation_lacks_metric_consensus
@@ -46470,10 +46712,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.159091
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure
+    from better-resourced languages”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker
+    identity without speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_dcf1bfb4b76cba15
   left: diffusion-tts#factorized_conditioning_improves_control
@@ -47880,10 +48126,13 @@ candidates:
     - cross-lingual
     - language
     aggregate_score: 0.101309
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Larger
+    and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization”, whereas
+    zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language, accent, and prosody leakage from the
+    reference”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_154bcf62cc6629c0
   left: speaker-adaptation#cross_lingual_adaptation_remains_language_sensitive
@@ -47967,10 +48216,14 @@ candidates:
     shared_terms:
     - language
     aggregate_score: 0.095793
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Large
+    multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive
+    to language coverage”, whereas zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language, accent,
+    and prosody leakage from the reference”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a74484b820857fec
   left: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
@@ -49381,10 +49634,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.031087
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Continued
+    pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages”, whereas
+    zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language, accent, and prosody leakage from the
+    reference”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c5fabf5447e19fbe
   left: multilingual-tts#shared_multilingual_training_improves_low_resource_tts
@@ -49402,10 +49658,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.03026
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Shared
+    multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure
+    from better-resourced languages”, whereas zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language,
+    accent, and prosody leakage from the reference”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1397dada6909ad3b
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -49952,10 +50212,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.022636
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language, accent, and prosody
+    leakage from the reference”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_c4db00a0c76c3957
   left: speaker-adaptation#learned_speaker_encoders_outperform_fixed_global_embeddings
