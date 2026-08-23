@@ -1,6 +1,14 @@
 schema_version: 1
 last_updated: 2026-08-23
 relationships:
+- id: rel_016688937e9ac602
+  source: zero-shot-tts#hybrid_semantic_acoustic_generation_balances_quality
+  target: spoken-language-model#semantic_acoustic_token_tradeoff
+  type: refines
+  rationale: Hybrid semantic-acoustic generation is a mitigation strategy that refines the persistent tokenizer trade-off
+    for zero-shot cloning.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_046c952dc60de46e
   source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
   target: zero-shot-tts#inference_acceleration_preserves_usable_quality
@@ -25,12 +33,26 @@ relationships:
     advantage.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_191b714790ab2daa
+  source: gan-vocoder#gan_decoders_support_low_bitrate_neural_codecs
+  target: neural-codec#adversarial_objectives_improve_perceptual_reconstruction
+  type: specialization
+  rationale: GAN decoding is the architectural specialization of adversarial objectives improving aggressive-compression reconstruction.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_1a4586ef04193eb2
   source: transformer-enc-dec-tts#parallel_generation_needs_variance_modeling
   target: prosody-control#explicit_pitch_energy_duration_enable_controllability
   type: supports
   rationale: The need for explicit duration and pitch modeling in parallel TTS supports the broader controllability role of
     those interpretable prosodic variables.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_1adaeccff245be52
+  source: streaming-tts#interleaved_text_speech_generation_supports_streaming
+  target: spoken-language-model#interleaved_training_bridges_modalities
+  type: specialization
+  rationale: Interleaved text-speech streaming is a deployment-specific instance of interleaving bridging modalities.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_1b6a20de587131eb
@@ -104,6 +126,14 @@ relationships:
   rationale: Parallel voice conversion is a task-specific realization of low-step flow-matching acceleration.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_4ce4566192ee1588
+  source: neural-codec#quantizer_structure_affects_downstream_modelability
+  target: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
+  type: refines
+  rationale: Quantizer and codebook structure refine the broader tokenizer bottleneck by identifying factors that jointly
+    affect reconstruction and downstream prediction difficulty.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_57a4b8c4d65e3d80
   source: prosody-control#disentanglement_enables_independent_prosody_transfer
   target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
@@ -128,6 +158,14 @@ relationships:
     in semantic and reasoning accuracy while preserving end-to-end latency and paralinguistic qualifications.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_6b7ed25949c91ff1
+  source: neural-codec#codec_tokens_enable_language_model_generation
+  target: self-supervised-speech#discrete_ssl_units_enable_language_modeling
+  type: related
+  rationale: Codec and SSL units both make speech token language modeling possible, but differ materially in acoustic reconstruction,
+    semantic abstraction, and downstream task scope.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_6d2daece6c8dd81b
   source: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
   target: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
@@ -142,6 +180,22 @@ relationships:
   type: tradeoff
   rationale: SSL representations provide useful speaker-reduced content units for conversion while still retaining prosody
     and identity leakage, so the pair records a representation trade-off rather than equivalence.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_7776326e26ccabe2
+  source: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
+  target: neural-codec#codec_tokens_enable_language_model_generation
+  type: specialization
+  rationale: In-context voice cloning is a task-specific consequence of representing speech as codec tokens compatible with
+    language modeling.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_7857d88c03b66725
+  source: speech-to-speech#speech_text_interleaving_improves_alignment
+  target: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
+  type: specialization
+  rationale: Speech-text interleaving is a specific alignment strategy for adding speech while preserving text-language-model
+    capabilities.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_7b385ee219f15061
@@ -173,6 +227,14 @@ relationships:
   type: specialization
   rationale: Masked codec speech generation is a narrower application of parallel latent generation reducing sequential cost
     and autoregressive failure modes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_8939888837be78c4
+  source: speech-to-speech#speech_text_interleaving_improves_alignment
+  target: spoken-language-model#interleaved_training_bridges_modalities
+  type: equivalent
+  rationale: Both clusters state that interleaving speech and text improves cross-modal alignment and transfers text-language-model
+    capabilities into spoken generation.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_89dacaf271d5c5e2
@@ -213,6 +275,14 @@ relationships:
   type: tradeoff
   rationale: Incremental streaming reduces first-packet delay specifically by relaxing the fully causal token-by-token deployment
     cost identified for autoregressive codec generation.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_c68079cab0600245
+  source: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
+  target: spoken-language-model#unified_models_support_joint_understanding_and_generation
+  type: specialization
+  rationale: A shared autoregressive speech-text vocabulary is a specific architecture for the broader unified-understanding-and-generation
+    capability.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_ca7119696b25a48c
@@ -269,6 +339,14 @@ relationships:
   type: specialization
   rationale: The autoregressive-codec claim is a narrower synthesis setting for the perceptual finding that preference optimization
     can improve targeted listener-relevant attributes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_f7d1924b1ac12654
+  source: multilingual-tts#codec_language_models_enable_multilingual_generation
+  target: neural-codec#codec_representations_enable_multilingual_transfer
+  type: specialization
+  rationale: Multilingual codec language modeling is a task-specific realization of shared codec representations enabling
+    cross-lingual transfer.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 broader_claims:
@@ -814,6 +892,95 @@ broader_claims:
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3
+- id: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+  proposition: Combining semantic representations with acoustic token detail balances linguistic coherence and intelligibility
+    against speaker, prosodic, and waveform fidelity.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
+    relationship: equivalent
+    rationale: This local cluster contributes its autoregressive-codec-tts-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
+    relationship: equivalent
+    rationale: This local cluster contributes its neural-codec-specific evidence and scope to the reviewed broader proposition.
+  - claim: self-supervised-speech#semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+    relationship: equivalent
+    rationale: This local cluster contributes its self-supervised-speech-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: zero-shot-tts#hybrid_semantic_acoustic_generation_balances_quality
+    relationship: specialization
+    rationale: This local cluster contributes its zero-shot-tts-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - 2025.acl-long.1043
+  - 2025.acl-long.1498
+  - 2025.acl-long.682
+  - 2025.findings-acl.101
+  - '2209.03143'
+  - '2301.02111'
+  - '2301.11325'
+  - '2303.03926'
+  - '2305.09636'
+  - '2308.16692'
+  - '2402.13236'
+  - '2406.05551'
+  - '2410.00037'
+  - '2410.03751'
+  - '2411.01156'
+  - '2412.10117'
+  - '2412.18603'
+  - '2501.06282'
+  - '2502.06490'
+  - '2502.07243'
+  - '2502.11128'
+  - '2502.11946'
+  - '2502.17239'
+  - '2503.01710'
+  - '2505.13000'
+  - '2505.17589'
+  - '2506.10274'
+  - '2506.21619'
+  - '2506.23325'
+  - '2508.02849'
+  - '2508.04141'
+  - '2508.14049'
+  - '2508.19205'
+  - '2508.20660'
+  - '2509.09174'
+  - '2509.09201'
+  - '2509.11425'
+  - '2509.13068'
+  - '2509.15969'
+  - '2509.16195'
+  - '2509.17006'
+  - '2509.17021'
+  - '2509.19928'
+  - '2509.22167'
+  - '2509.24650'
+  - interspeech-2025-0468
+  - interspeech-2025-1115
+  - interspeech-2025-1639
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.1043
+  - '2410.03751'
+  - '2411.13577'
+  - '2502.06490'
+  - '2509.14882'
+  - '2509.22062'
+  - '2509.22167'
+  - '2509.26276'
+  - iclr-2025-dGSOn7sdWg
+  - interspeech-2025-1236
+  - interspeech-2025-1776
+  caveats:
+  - The optimal hierarchy, token rate, and semantic-acoustic allocation remain architecture- and task-dependent.
+  review_rationale: The member clusters describe the same hierarchical design principle from generator, codec, SSL, and cloning
+    perspectives and share extensive role-consistent evidence.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
 - id: broader_speech_evaluation_requires_multidimensional_coverage
   proposition: Speech-system evaluation requires separate coverage of semantics, naturalness, identity, prosody, and interaction
     behavior because transcript-only and aggregate scores hide material capability gaps.
@@ -945,6 +1112,55 @@ broader_claims:
   review_rationale: The clusters independently show that speech quality is multi-axis and that text or aggregate proxies conceal
     acoustic and interaction failures. The broader claim preserves those task-specific scopes while preventing field synthesis
     from repeating the same evaluation principle.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_speech_tokens_trade_semantics_against_acoustic_fidelity
+  proposition: Speech tokenizers face a persistent trade-off between semantic alignment and retention of fine acoustic, speaker,
+    and prosodic information.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: speech-to-speech#semantic_acoustic_token_tradeoff
+    relationship: equivalent
+    rationale: This local cluster contributes its speech-to-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: spoken-language-model#semantic_acoustic_token_tradeoff
+    relationship: equivalent
+    rationale: This local cluster contributes its spoken-language-model-specific evidence and scope to the reviewed broader
+      proposition.
+  supporting_papers:
+  - 2025.acl-long.681
+  - 2025.acl-long.817
+  - 2025.findings-acl.101
+  - 2025.findings-acl.115
+  - '2209.03143'
+  - '2410.00037'
+  - '2410.03751'
+  - '2411.13577'
+  - '2411.18803'
+  - '2412.02612'
+  - '2412.15649'
+  - '2412.18603'
+  - '2502.06490'
+  - '2502.11946'
+  - '2504.08528'
+  - '2507.20091'
+  - '2507.23159'
+  - '2508.19205'
+  - '2508.20660'
+  - '2509.09174'
+  - '2509.14882'
+  - '2509.26276'
+  - interspeech-2025-0246
+  contradicting_papers: []
+  refining_papers:
+  - '2410.00037'
+  - '2509.14882'
+  - '2509.26276'
+  caveats:
+  - Hybrid and hierarchical token systems can mitigate but do not eliminate the trade-off.
+  review_rationale: The duplicated local cluster ID resolves to materially equivalent propositions with matching polarity
+    and scope over speech-LM tokenizer design.
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3
