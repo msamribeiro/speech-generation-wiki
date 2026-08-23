@@ -9,6 +9,14 @@ relationships:
     finding.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_06f012f2c74a14fb
+  source: speaker-adaptation#speaker_privacy_conflicts_with_identity_preservation
+  target: voice-conversion#privacy_conversion_trades_utility_for_unlinkability
+  type: tradeoff
+  rationale: 'The claims jointly expose the same privacy–personalization tension: removing linkable identity conflicts with
+    adaptation goals, while privacy conversion also pays intelligibility and naturalness costs.'
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_0ef5d7332dfb8c42
   source: diffusion-tts#iterative_sampling_limits_latency
   target: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -57,6 +65,14 @@ relationships:
     designs can approach offline quality after explicit adaptation.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_3a387fd465397d09
+  source: voice-conversion#robust_conversion_requires_domain_invariance
+  target: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
+  type: specialization
+  rationale: Voice conversion is a narrower reference-conditioned setting in which noise, channel, and domain invariance are
+    required for robust identity transfer.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_42f1a17a289b494b
   source: streaming-tts#modular_and_end_to_end_systems_have_distinct_tradeoffs
   target: spoken-language-model#cascaded_and_end_to_end_systems_have_complementary_strengths
@@ -88,12 +104,36 @@ relationships:
     in semantic and reasoning accuracy while preserving end-to-end latency and paralinguistic qualifications.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_6d2daece6c8dd81b
+  source: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
+  target: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
+  type: refines
+  rationale: The zero-shot leakage finding refines the broader multilingual identity–language trade-off by naming reference-language,
+    accent, and prosody leakage as failure modes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_6f05c3f2b97253d7
+  source: prosody-control#ssl_representations_are_useful_but_entangled_for_prosody
+  target: voice-conversion#ssl_units_improve_content_representation
+  type: tradeoff
+  rationale: SSL representations provide useful speaker-reduced content units for conversion while still retaining prosody
+    and identity leakage, so the pair records a representation trade-off rather than equivalence.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_7b385ee219f15061
   source: voice-conversion#flow_matching_improves_parallel_conversion
   target: flow-matching#fm_surpasses_diffusion_speed_quality
   type: specialization
   rationale: The voice-conversion result is a task-specific instance of flow matching reducing sequential generation cost
     relative to diffusion while retaining quality.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_8286c4f407836da9
+  source: evaluation-metrics#embedding_speaker_similarity_diverges_from_human_perception
+  target: speaker-adaptation#automatic_similarity_metrics_do_not_replace_listener_judgments
+  type: equivalent
+  rationale: Both claims state that embedding-based speaker-similarity scores can diverge from listener-perceived identity;
+    the adaptation wording adds no material scope or polarity difference.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_87621803d5e0e99a
@@ -109,6 +149,14 @@ relationships:
   type: specialization
   rationale: Masked codec speech generation is a narrower application of parallel latent generation reducing sequential cost
     and autoregressive failure modes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_89dacaf271d5c5e2
+  source: voice-conversion#cross_lingual_conversion_requires_accent_control
+  target: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
+  type: specialization
+  rationale: Cross-lingual voice conversion is a narrower setting of the identity, language, and accent-separation problem
+    observed in cross-lingual cloning.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_99f8e997b4289728
@@ -320,6 +368,215 @@ broader_claims:
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3
+- id: broader_disentanglement_improves_multiattribute_control
+  proposition: Explicitly separating linguistic content, speaker identity, prosody, and style improves independent control
+    and transfer, while residual entanglement remains a fidelity and identity constraint.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
+    relationship: refines
+    rationale: This local cluster contributes its autoregressive-codec-tts-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: disentanglement#codecs_ssl_entangle_content_speaker_by_default
+    relationship: supports
+    rationale: This local cluster contributes its disentanglement-specific evidence and scope to the reviewed broader proposition.
+  - claim: disentanglement#emotion_speaker_disentanglement_enables_crossspeaker_transfer
+    relationship: specialization
+    rationale: This local cluster contributes its disentanglement-specific evidence and scope to the reviewed broader proposition.
+  - claim: disentanglement#explicit_disentanglement_enables_independent_multiattribute_control
+    relationship: equivalent
+    rationale: This local cluster contributes its disentanglement-specific evidence and scope to the reviewed broader proposition.
+  - claim: diffusion-tts#factorized_conditioning_improves_control
+    relationship: specialization
+    rationale: This local cluster contributes its diffusion-tts-specific evidence and scope to the reviewed broader proposition.
+  - claim: emotion-synthesis#speaker_emotion_disentanglement_enables_independent_control
+    relationship: specialization
+    rationale: This local cluster contributes its emotion-synthesis-specific evidence and scope to the reviewed broader proposition.
+  - claim: neural-codec#speaker_prosody_entanglement_is_persistent
+    relationship: supports
+    rationale: This local cluster contributes its neural-codec-specific evidence and scope to the reviewed broader proposition.
+  - claim: prosody-control#disentanglement_enables_independent_prosody_transfer
+    relationship: specialization
+    rationale: This local cluster contributes its prosody-control-specific evidence and scope to the reviewed broader proposition.
+  - claim: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
+    relationship: equivalent
+    rationale: This local cluster contributes its self-supervised-speech-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: speaker-adaptation#disentangling_identity_and_style_improves_control
+    relationship: specialization
+    rationale: This local cluster contributes its speaker-adaptation-specific evidence and scope to the reviewed broader proposition.
+  - claim: voice-conversion#content_speaker_disentanglement_enables_conversion
+    relationship: specialization
+    rationale: This local cluster contributes its voice-conversion-specific evidence and scope to the reviewed broader proposition.
+  - claim: voice-conversion#prosody_timbre_factorization_improves_control
+    relationship: specialization
+    rationale: This local cluster contributes its voice-conversion-specific evidence and scope to the reviewed broader proposition.
+  - claim: zero-shot-tts#disentangling_content_speaker_and_prosody_improves_control
+    relationship: specialization
+    rationale: This local cluster contributes its zero-shot-tts-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - 2025.acl-demo.37
+  - 2025.acl-long.346
+  - 2025.acl-long.654
+  - 2025.acl-long.790
+  - 2025.acl-long.87
+  - 2025.findings-naacl.130
+  - 2025.findings-naacl.184
+  - 2025.naacl-long.242
+  - '2104.00355'
+  - '2209.03143'
+  - '2301.02111'
+  - '2305.09636'
+  - '2308.16692'
+  - '2312.01479'
+  - '2402.08093'
+  - '2403.03100'
+  - '2406.02430'
+  - '2406.04904'
+  - '2406.05370'
+  - '2406.07855'
+  - '2407.05407'
+  - '2407.08551'
+  - '2411.09943'
+  - '2412.04724'
+  - '2412.10117'
+  - '2412.15649'
+  - '2412.16846'
+  - '2502.04128'
+  - '2502.06490'
+  - '2502.07243'
+  - '2503.01710'
+  - '2505.07916'
+  - '2505.13000'
+  - '2505.15670'
+  - '2506.18296'
+  - '2506.21619'
+  - '2507.01348'
+  - '2507.02176'
+  - '2507.04817'
+  - '2507.09070'
+  - '2507.09310'
+  - '2507.12197'
+  - '2507.14534'
+  - '2507.15272'
+  - '2507.20091'
+  - '2507.22746'
+  - '2508.02038'
+  - '2508.04141'
+  - '2508.04195'
+  - '2508.04996'
+  - '2508.06890'
+  - '2508.07426'
+  - '2508.08399'
+  - '2508.16332'
+  - '2508.19205'
+  - '2509.09201'
+  - '2509.13068'
+  - '2509.14684'
+  - '2509.15462'
+  - '2509.15629'
+  - '2509.16010'
+  - '2509.17006'
+  - '2509.17143'
+  - '2509.18928'
+  - '2509.19231'
+  - '2509.19592'
+  - '2509.19883'
+  - '2509.22727'
+  - interspeech-2025-0203
+  - interspeech-2025-0246
+  - interspeech-2025-0305
+  - interspeech-2025-0319
+  - interspeech-2025-0347
+  - interspeech-2025-0433
+  - interspeech-2025-0438
+  - interspeech-2025-0455
+  - interspeech-2025-0464
+  - interspeech-2025-0575
+  - interspeech-2025-0787
+  - interspeech-2025-0815
+  - interspeech-2025-0874
+  - interspeech-2025-0902
+  - interspeech-2025-0948
+  - interspeech-2025-0989
+  - interspeech-2025-1081
+  - interspeech-2025-1101
+  - interspeech-2025-1106
+  - interspeech-2025-1115
+  - interspeech-2025-1192
+  - interspeech-2025-1210
+  - interspeech-2025-1229
+  - interspeech-2025-1394
+  - interspeech-2025-1434
+  - interspeech-2025-1440
+  - interspeech-2025-1531
+  - interspeech-2025-1538
+  - interspeech-2025-1638
+  - interspeech-2025-1639
+  - interspeech-2025-1684
+  - interspeech-2025-1747
+  - interspeech-2025-1779
+  - interspeech-2025-2043
+  - interspeech-2025-2684
+  - interspeech-2025-cho25c_interspeech
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.1043
+  - 2025.acl-long.681
+  - 2025.acl-long.87
+  - 2025.findings-naacl.130
+  - 2025.naacl-short.65
+  - '2402.13236'
+  - '2411.19770'
+  - '2502.04128'
+  - '2502.07243'
+  - '2506.09874'
+  - '2507.02176'
+  - '2507.04817'
+  - '2507.08012'
+  - '2507.09070'
+  - '2507.09310'
+  - '2507.21138'
+  - '2508.04996'
+  - '2508.08399'
+  - '2508.16332'
+  - '2509.09201'
+  - '2509.14882'
+  - '2509.15253'
+  - '2509.15845'
+  - '2509.17006'
+  - '2509.17143'
+  - '2509.24570'
+  - '2509.24650'
+  - iclr-2025-dGSOn7sdWg
+  - iclr-2025-hQvX9MBowC
+  - interspeech-2025-0115
+  - interspeech-2025-0305
+  - interspeech-2025-0433
+  - interspeech-2025-0464
+  - interspeech-2025-0575
+  - interspeech-2025-0815
+  - interspeech-2025-1101
+  - interspeech-2025-1106
+  - interspeech-2025-1210
+  - interspeech-2025-1397
+  - interspeech-2025-1531
+  - interspeech-2025-1538
+  - interspeech-2025-1639
+  - interspeech-2025-1747
+  - interspeech-2025-2043
+  - interspeech-2025-2684
+  - interspeech-2025-2787
+  caveats:
+  - The factors are not perfectly independent; stronger control can still reduce naturalness, intelligibility, or identity
+    fidelity.
+  review_rationale: The member evidence converges across codecs, SSL features, conversion, cloning, adaptation, emotion, and
+    prosody control. The broader node captures the shared control principle while retaining application-specific trade-offs
+    locally.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
 - id: broader_learned_quality_metrics_are_useful_but_domain_sensitive
   proposition: Learned speech-quality predictors generally improve on classical signal metrics, but their rankings remain
     sensitive to language, domain, granularity, and synthesis paradigm and therefore do not replace subjective evaluation.
@@ -377,6 +634,151 @@ broader_claims:
   review_rationale: 'Positive results for SSL-based predictors and repeated cross-domain failures jointly support a qualified
     field-level assessment: learned metrics are useful improvements over classical proxies, not universal substitutes for
     listeners.'
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_reference_conditioning_enables_unseen_voice_transfer
+  proposition: Reference-audio conditioning enables unseen-speaker synthesis and conversion without per-speaker retraining,
+    although fidelity remains bounded by reference quality and domain match.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: diffusion-tts#diffusion_supports_zero_shot_voice_transfer
+    relationship: specialization
+    rationale: This local cluster contributes its diffusion-tts-specific evidence and scope to the reviewed broader proposition.
+  - claim: speaker-adaptation#reference_conditioning_enables_unseen_speaker_adaptation
+    relationship: equivalent
+    rationale: This local cluster contributes its speaker-adaptation-specific evidence and scope to the reviewed broader proposition.
+  - claim: voice-conversion#zero_shot_any_to_any_conversion_is_feasible
+    relationship: specialization
+    rationale: This local cluster contributes its voice-conversion-specific evidence and scope to the reviewed broader proposition.
+  - claim: zero-shot-tts#reference_conditioning_preserves_speaker_identity
+    relationship: equivalent
+    rationale: This local cluster contributes its zero-shot-tts-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - '2010.05646'
+  - 2025.acl-demo.37
+  - 2025.acl-industry.42
+  - 2025.acl-long.1043
+  - 2025.acl-long.790
+  - 2025.acl-long.87
+  - 2025.ccl-1.77
+  - 2025.naacl-short.65
+  - '2209.03143'
+  - '2301.02111'
+  - '2301.12503'
+  - '2303.03926'
+  - '2304.09116'
+  - '2305.07243'
+  - '2308.16692'
+  - '2312.01479'
+  - '2401.07333'
+  - '2406.02430'
+  - '2406.04904'
+  - '2406.05370'
+  - '2406.07855'
+  - '2407.05407'
+  - '2411.09943'
+  - '2411.19770'
+  - '2412.04724'
+  - '2412.10117'
+  - '2412.15649'
+  - '2412.16846'
+  - '2502.05512'
+  - '2502.07243'
+  - '2502.18924'
+  - '2503.01710'
+  - '2503.11026'
+  - '2504.02407'
+  - '2505.07916'
+  - '2505.17589'
+  - '2506.04077'
+  - '2506.18296'
+  - '2507.02380'
+  - '2507.04349'
+  - '2507.07799'
+  - '2507.08319'
+  - '2507.09070'
+  - '2507.09282'
+  - '2507.14534'
+  - '2507.15272'
+  - '2507.20140'
+  - '2508.02038'
+  - '2508.04141'
+  - '2508.04585'
+  - '2508.07302'
+  - '2508.17031'
+  - '2508.19205'
+  - '2509.07376'
+  - '2509.08379'
+  - '2509.09631'
+  - '2509.12171'
+  - '2509.12831'
+  - '2509.13068'
+  - '2509.14579'
+  - '2509.15462'
+  - '2509.15845'
+  - '2509.17143'
+  - '2509.19231'
+  - interspeech-2025-0305
+  - interspeech-2025-0319
+  - interspeech-2025-0455
+  - interspeech-2025-0575
+  - interspeech-2025-0596
+  - interspeech-2025-0656
+  - interspeech-2025-0787
+  - interspeech-2025-0815
+  - interspeech-2025-0816
+  - interspeech-2025-1081
+  - interspeech-2025-1101
+  - interspeech-2025-1192
+  - interspeech-2025-1434
+  - interspeech-2025-1684
+  - interspeech-2025-1726
+  - interspeech-2025-1779
+  - interspeech-2025-2684
+  - interspeech-2025-2815
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.346
+  - 2025.acl-long.87
+  - 2025.ccl-1.77
+  - 2025.naacl-long.242
+  - 2025.naacl-short.65
+  - '2409.09098'
+  - '2411.09943'
+  - '2411.19770'
+  - '2412.16846'
+  - '2503.11026'
+  - '2505.07916'
+  - '2505.17589'
+  - '2506.04077'
+  - '2506.09874'
+  - '2507.09282'
+  - '2507.10985'
+  - '2507.12197'
+  - '2507.15272'
+  - '2507.21138'
+  - '2509.05863'
+  - '2509.07376'
+  - '2509.09631'
+  - '2509.12831'
+  - '2509.14784'
+  - '2509.15845'
+  - '2509.18928'
+  - interspeech-2025-0305
+  - interspeech-2025-0656
+  - interspeech-2025-0998
+  - interspeech-2025-1081
+  - interspeech-2025-1236
+  - interspeech-2025-1538
+  - interspeech-2025-2595
+  - interspeech-2025-2787
+  caveats:
+  - Unseen-speaker feasibility does not guarantee robust identity preservation for noisy, short, atypical, or cross-lingual
+    references.
+  review_rationale: The four concepts independently encode the same reference-conditioned generalization mechanism at different
+    task scopes; their local quality and robustness boundaries remain intact.
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3
