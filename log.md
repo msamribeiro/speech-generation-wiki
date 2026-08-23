@@ -6,6 +6,8 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-08-23
 
+- reconcile | 2025-Q3 | finalized | 23 concepts and 406 clusters | 2,049 candidates reviewed | 110 accepted | 1,939 rejected | 0 deferred | registry: 49 direct relationships and 11 broader claims | 0 pending | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
+- reconcile | 2025-Q3 | theme: post-training | 17 concepts and 55 clusters reviewed | 60 candidates | 12 accepted | 48 rejected | 0 deferred | 2 direct relationships and 1 broader claim recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: streaming-agents | 10 concepts and 42 clusters reviewed | 89 candidates | 9 accepted | 80 rejected | 0 deferred | 3 direct relationships and 2 broader claims recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: codecs-language-modeling | 20 concepts and 136 clusters reviewed | 541 candidates | 15 accepted | 526 rejected | 0 deferred | 10 direct relationships and 2 broader claims recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: robustness | 17 concepts and 53 clusters reviewed | 77 candidates | 3 accepted | 74 rejected | 0 deferred | 1 broader claim recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5

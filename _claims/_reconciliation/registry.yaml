@@ -230,6 +230,14 @@ relationships:
     the adaptation wording adds no material scope or polarity difference.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_8631901a4131f377
+  source: spoken-language-model#long_context_and_memory_are_required_for_conversation
+  target: zero-shot-tts#long_form_generation_needs_alignment_and_memory_controls
+  type: related
+  rationale: Conversational context memory and long-form synthesis alignment are related long-horizon requirements, but their
+    interaction state and acoustic error-accumulation scopes remain distinct.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_87621803d5e0e99a
   source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
   target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -299,6 +307,14 @@ relationships:
   type: tradeoff
   rationale: Incremental streaming reduces first-packet delay specifically by relaxing the fully causal token-by-token deployment
     cost identified for autoregressive codec generation.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_b8b765b94012465a
+  source: spoken-language-model#long_form_speech_generation_needs_hierarchical_coherence
+  target: zero-shot-tts#long_form_generation_needs_alignment_and_memory_controls
+  type: related
+  rationale: Both claims require long-horizon structure, but spoken-language-model hierarchical planning and zero-shot TTS
+    alignment or memory controls address different failure mechanisms.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_c68079cab0600245
@@ -860,6 +876,104 @@ broader_claims:
   review_rationale: 'Positive results for SSL-based predictors and repeated cross-domain failures jointly support a qualified
     field-level assessment: learned metrics are useful improvements over classical proxies, not universal substitutes for
     listeners.'
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_preference_posttraining_improves_targeted_speech_attributes
+  proposition: Preference- and reward-based post-training can improve targeted speech attributes beyond supervised fine-tuning
+    across autoregressive and continuous generators, but outcomes depend on reward design, base capability, and training stability.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
+    relationship: specialization
+    rationale: This local cluster contributes its autoregressive-codec-tts-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: diffusion-tts#preference_optimization_can_steer_diffusion
+    relationship: specialization
+    rationale: This local cluster contributes its diffusion-tts-specific evidence and scope to the reviewed broader proposition.
+  - claim: emotion-synthesis#preference_optimization_can_improve_emotional_alignment
+    relationship: specialization
+    rationale: This local cluster contributes its emotion-synthesis-specific evidence and scope to the reviewed broader proposition.
+  - claim: flow-matching#fm_velocity_space_alignment
+    relationship: specialization
+    rationale: This local cluster contributes its flow-matching-specific evidence and scope to the reviewed broader proposition.
+  - claim: rlhf-speech#rlhf_posttraining_beats_sft_baseline
+    relationship: equivalent
+    rationale: This local cluster contributes its rlhf-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: rlhf-speech#preference_optimization_extends_to_continuous_generative_tts
+    relationship: supports
+    rationale: This local cluster contributes its rlhf-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: rlhf-speech#composite_multiobjective_rewards_outperform_single_metric_but_need_balancing
+    relationship: refines
+    rationale: This local cluster contributes its rlhf-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: rlhf-speech#rlhf_reward_hacking_risk
+    relationship: refines
+    rationale: This local cluster contributes its rlhf-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: rlhf-speech#rlhf_alignment_bounded_by_base_model_capability
+    relationship: refines
+    rationale: This local cluster contributes its rlhf-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: spoken-language-model#reward_and_preference_alignment_improve_spoken_behavior
+    relationship: specialization
+    rationale: This local cluster contributes its spoken-language-model-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: subjective-evaluation#preference_optimization_improves_targeted_perception
+    relationship: supports
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  supporting_papers:
+  - 2025.acl-long.598
+  - 2025.acl-long.682
+  - 2025.acl-long.997
+  - 2025.coling-industry.29
+  - 2025.coling-main.352
+  - 2025.findings-acl.631
+  - 2025.icnlsp-1.34
+  - '2105.06337'
+  - '2406.00654'
+  - '2406.02430'
+  - '2410.03751'
+  - '2412.10117'
+  - '2501.04561'
+  - '2502.04128'
+  - '2502.11946'
+  - '2504.02407'
+  - '2505.09558'
+  - '2505.17589'
+  - '2507.14988'
+  - '2507.16632'
+  - '2507.17527'
+  - '2507.21138'
+  - '2508.16332'
+  - '2509.00685'
+  - '2509.04093'
+  - '2509.05863'
+  - '2509.14946'
+  - '2509.18531'
+  - '2509.18928'
+  - '2509.19928'
+  - '2509.25416'
+  - interspeech-2025-0063
+  - interspeech-2025-0704
+  - interspeech-2025-2189
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.598
+  - 2025.acl-long.997
+  - 2025.coling-industry.29
+  - 2025.icnlsp-1.34
+  - '2508.07375'
+  - '2509.05863'
+  - '2509.18531'
+  - '2509.18928'
+  - '2509.25416'
+  - interspeech-2025-0063
+  caveats:
+  - Metric gains can hide degradation on untargeted perceptual dimensions; reward hacking and capability collapse remain material
+    risks.
+  review_rationale: The evidence spans several generator families and perceptual targets. The broader proposition records
+    the replicated improvement while incorporating the local constraints on reward construction, optimization stability, and
+    base-model ceilings.
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3

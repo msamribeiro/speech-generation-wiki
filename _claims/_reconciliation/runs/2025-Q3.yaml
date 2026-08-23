@@ -3,7 +3,7 @@ run_id: 2025-Q3
 trigger: quarterly-integration
 evidence_cutoff: 2025-09-30
 assessment_as_of: 2026-08-19
-status: in_progress
+status: finalized
 supersedes_run: null
 source:
   infra_commit: 081567b
@@ -1091,10 +1091,11 @@ candidates:
     - preference
     - supervised
     aggregate_score: 0.366641
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_ce1bfcdb3e45a77e
   left: multilingual-tts#parameter_efficient_modules_support_language_extension
@@ -1587,10 +1588,11 @@ candidates:
     - preference
     - supervised
     aggregate_score: 0.352561
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_f7ca63b00b737977
   left: neural-codec#continuous_discrete_representation_tradeoff
@@ -1792,10 +1794,11 @@ candidates:
     - optimization
     - supervised
     aggregate_score: 0.341345
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_f67b802b677ee1de
   left: speech-to-speech#speech_text_interleaving_improves_alignment
@@ -2501,10 +2504,11 @@ candidates:
     - benefits
     - long-form
     aggregate_score: 0.317585
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_b8b765b94012465a
+  rationale: Both claims require long-horizon structure, but spoken-language-model hierarchical planning and zero-shot TTS
+    alignment or memory controls address different failure mechanisms.
   reconsideration_trigger: null
 - id: cand_193d0d2b7b3c077e
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -3005,10 +3009,11 @@ candidates:
     - post-training
     - preference
     aggregate_score: 0.305518
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_f53833f05563eb83
   left: diffusion-tts#preference_optimization_can_steer_diffusion
@@ -3029,10 +3034,11 @@ candidates:
     - optimization
     - preference
     aggregate_score: 0.305503
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_76590e44926c1b08
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -4740,10 +4746,11 @@ candidates:
     - mechanisms
     - memory
     aggregate_score: 0.285562
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_8631901a4131f377
+  rationale: Conversational context memory and long-form synthesis alignment are related long-horizon requirements, but their
+    interaction state and acoustic error-accumulation scopes remain distinct.
   reconsideration_trigger: null
 - id: cand_c78c55b4bdc0f919
   left: disentanglement#codecs_ssl_entangle_content_speaker_by_default
@@ -5172,10 +5179,11 @@ candidates:
     - similarity
     - speaker
     aggregate_score: 0.280268
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_931866c290bea457
   left: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -6155,10 +6163,11 @@ candidates:
     shared_terms:
     - optimization
     aggregate_score: 0.268942
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_260e25e28d87ee55
   left: flow-matching#fm_crosslingual_lowresource_adaptation
@@ -6508,10 +6517,15 @@ candidates:
     - reasoning
     - text
     aggregate_score: 0.266088
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas spoken-language-model concerns “Replacing text with speech input introduces measurable reasoning,
+    robustness, and instruction-following gaps even when the underlying language model is capable”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_acd23b2493dfe76c
   left: autoregressive-codec-tts#multilingual_codec_lms_transfer_voice_across_languages
@@ -8429,10 +8443,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.252088
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Continued
+    pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages”, whereas
+    speaker-adaptation concerns “Adapters, LoRA, speaker vectors, and other parameter-efficient updates can personalize voices
+    while limiting catastrophic forgetting”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_28a8e6ecc2b8d55e
   left: multilingual-tts#flow_and_diffusion_support_multilingual_scaling
@@ -9783,10 +9801,14 @@ candidates:
     - duration
     - modeling
     aggregate_score: 0.244394
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas transformer-enc-dec-tts concerns “Parallel acoustic generation requires explicit modeling of duration, pitch,
+    and other sources of speech variation”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_29a5f899bab23332
   left: neural-codec#quantizer_structure_affects_downstream_modelability
@@ -14128,10 +14150,14 @@ candidates:
     - similarity
     - speaker
     aggregate_score: 0.226396
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Preference-
+    or reward-based post-training (DPO, KTO, GRPO, differentiable-reward optimization) for TTS/SLM generation consistently
+    improves intelligibility, speaker similarity, or naturalness beyond what supervised fine-tuning alone achieves”, whereas
+    zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker similarity rather than improving
+    both monotonically”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9e451af0dfaacbac
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -14912,10 +14938,11 @@ candidates:
     - perceptual
     - post-training
     aggregate_score: 0.223961
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_082967994c802289
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -15347,10 +15374,14 @@ candidates:
     shared_terms:
     - low-resource
     aggregate_score: 0.222662
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas speaker-adaptation concerns “Few-shot speaker-specific fine-tuning generally improves identity and naturalness
+    for distinctive, low-resource, or out-of-domain voices”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_6967e140d501be63
   left: disentanglement#disentanglement_reconstruction_fidelity_tradeoff
@@ -16050,10 +16081,15 @@ candidates:
     shared_terms:
     - text
     aggregate_score: 0.220432
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas spoken-language-model concerns “Interleaving speech and text during training improves cross-modal
+    transfer and supports models that reason in text while communicating in speech”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ad7729af01777241
   left: multilingual-tts#training_imbalance_biases_multilingual_quality
@@ -16558,10 +16594,14 @@ candidates:
     shared_terms:
     - duration
     aggregate_score: 0.219125
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas transformer-enc-dec-tts concerns “Explicit duration prediction enables parallel acoustic generation and reduces
+    skipping and repetition failures”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_a24e64827665c0dc
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -16852,10 +16892,15 @@ candidates:
     - reasoning
     - text
     aggregate_score: 0.218208
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained
+    text language models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_64d1d762538ed177
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -17014,10 +17059,15 @@ candidates:
     - intelligibility
     - speaker
     aggregate_score: 0.21796
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas rlhf-speech concerns “Preference- or reward-based post-training (DPO, KTO, GRPO,
+    differentiable-reward optimization) for TTS/SLM generation consistently improves intelligibility, speaker similarity,
+    or naturalness beyond what supervised fine-tuning alone achieves”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c47844ea7f672083
   left: speaker-adaptation#data_scale_and_diversity_drive_unseen_speaker_generalization
@@ -17336,10 +17386,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.217327
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Preference
+    or reward-based post-training for speech generation can achieve substantial quality gains using only a small fraction
+    of pretraining-scale data, compute, or update steps, and a single fine-tuning run can match or exceed the gains from inference-time
+    best-of-K sampling or iterative rejection-sampling fine-tuning (RAFT)”, whereas subjective-evaluation concerns “Preference-based
+    optimization can improve targeted perceptual attributes beyond supervised or metric-only training”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_18b035fce6cffb57
   left: spoken-language-model#paralinguistic_reasoning_remains_weaker_than_semantics
@@ -18591,10 +18646,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.214286
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Preference and reinforcement-learning post-training can improve intelligibility, speaker similarity, and perceptual quality
+    beyond supervised autoregressive TTS”, whereas rlhf-speech concerns “Backpropagating gradients from a frozen differentiable
+    reward/critic model through discrete speech tokens via Gumbel-Softmax achieves comparable or better alignment gains than
+    PPO-style policy-gradient RL or standard DPO, at lower computational cost, by avoiding multi-sample rollout or multi-forward-pass
+    overhead”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_170ea28e20a85f67
   left: disentanglement#data_level_disentanglement_without_new_architecture
@@ -19239,10 +19299,15 @@ candidates:
     shared_terms:
     - quality
     aggregate_score: 0.212612
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Preference
+    or reward-based post-training for speech generation can achieve substantial quality gains using only a small fraction
+    of pretraining-scale data, compute, or update steps, and a single fine-tuning run can match or exceed the gains from inference-time
+    best-of-K sampling or iterative rejection-sampling fine-tuning (RAFT)”, whereas zero-shot-tts concerns “Reference quality,
+    duration, and selection materially bound zero-shot cloning fidelity”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7e22eca4be72e3a2
   left: evaluation-metrics#subjective_protocols_saturating_for_modern_tts
@@ -19741,10 +19806,11 @@ candidates:
     shared_terms:
     - perceptual
     aggregate_score: 0.211529
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_c6b9010c32e6bd12
   left: spoken-language-model#low_frame_rate_and_variable_rate_tokens_reduce_sequence_cost
@@ -19974,10 +20040,11 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.211105
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_preference_posttraining_improves_targeted_speech_attributes;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_1f2e6bc1e79466fb
   left: multilingual-tts#codec_language_models_enable_multilingual_generation
@@ -23080,10 +23147,15 @@ candidates:
     shared_terms:
     - reasoning
     aggregate_score: 0.203885
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Spoken
+    dialogue models, under both cascade and end-to-end architectures, consistently lag same-scale text-only LLMs in semantic
+    content quality, dialog-state tracking, and reasoning, and speech-specific fine-tuning can further degrade general reasoning
+    capability”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained
+    text language models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_157b34de4287aadd
   left: emotion-synthesis#emotion_strength_trades_off_with_intelligibility_and_identity
@@ -23470,10 +23542,15 @@ candidates:
     shared_terms:
     - tokens
     aggregate_score: 0.202847
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Backpropagating
+    gradients from a frozen differentiable reward/critic model through discrete speech tokens via Gumbel-Softmax achieves
+    comparable or better alignment gains than PPO-style policy-gradient RL or standard DPO, at lower computational cost, by
+    avoiding multi-sample rollout or multi-forward-pass overhead”, whereas zero-shot-tts concerns “Speech tokens with explicit
+    semantic structure improve intelligibility in codec-based zero-shot TTS”. Shared supporting papers do not establish a
+    direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8c18eb58292d88b0
   left: spoken-language-model#semantic_acoustic_token_tradeoff
@@ -24376,10 +24453,13 @@ candidates:
     shared_terms:
     - zero-shot
     aggregate_score: 0.201394
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “The amount
+    and representation of target-speaker reference audio strongly controls zero-shot conversion fidelity”, whereas zero-shot-tts
+    concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms that limit error
+    accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e4978a4cd69ae1de
   left: disentanglement#rvq_semantic_content_concentrates_early_layers
@@ -25872,10 +25952,13 @@ candidates:
     shared_terms:
     - zero-shot
     aggregate_score: 0.198038
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Zero-shot
+    and any-to-any conversion can generalize to unseen speakers without per-speaker retraining”, whereas zero-shot-tts concerns
+    “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms that limit error accumulation”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e058e93952177475
   left: subjective-evaluation#automatic_metrics_diverge_from_human_perception
@@ -25972,10 +26055,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.197996
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas spoken-language-model concerns “Natural full-duplex speech interaction requires models to listen
+    while speaking and explicitly handle overlap, interruption, and turn transitions”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_cf5f48ab49c3bfc4
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -26339,10 +26427,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.197143
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve autoregressive TTS robustness”,
+    whereas speech-to-speech concerns “Keeping the backbone LLM frozen, or decoupling speech generation into a separate module
+    trained without updating LLM weights, better preserves the LLM''s original text reasoning and instruction-following capability
+    than end-to-end fine-tuning on speech data”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_9055723547ff87af
   left: self-supervised-speech#semantic_acoustic_hierarchies_balance_coherence_and_fidelity
@@ -26520,10 +26613,14 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.196926
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Preference-
+    or reward-based post-training (DPO, KTO, GRPO, differentiable-reward optimization) for TTS/SLM generation consistently
+    improves intelligibility, speaker similarity, or naturalness beyond what supervised fine-tuning alone achieves”, whereas
+    zero-shot-tts concerns “Broader speaker and acoustic diversity in training data improves zero-shot generalization”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_cfc0bc373be5a810
   left: rlhf-speech#preference_pair_construction_determines_dpo_success
@@ -27391,10 +27488,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.195242
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Adapters,
+    LoRA, vocabulary expansion, and lightweight language modules support parameter-efficient multilingual extension”, whereas
+    speaker-adaptation concerns “Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive,
+    low-resource, or out-of-domain voices”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_e7fd07ad8e873d3b
   left: neural-codec#codec_evaluation_lacks_metric_consensus
@@ -28108,10 +28209,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.193526
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Diffusion
+    generators can transfer unseen-speaker identity from reference speech without speaker-specific fine-tuning”, whereas flow-matching
+    concerns “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_cb645af1003fa068
   left: autoregressive-codec-tts#multistream_autoregression_enables_full_duplex_dialogue
@@ -28647,10 +28753,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.192735
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Automatic
+    annotation and synthetic augmentation can expand emotional-speech training data when curated labels are scarce”, whereas
+    prosody-control concerns “Duration, pause, and alignment modeling are central to intelligible rhythm, stress, phrasing,
+    and cross-modal synchronization”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_339636cc0f641219
   left: neural-codec#token_rate_drives_sequence_cost
@@ -30957,10 +31067,15 @@ candidates:
     shared_terms:
     - perceptual
     aggregate_score: 0.188865
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “RL/RLHF post-training
+    for speech generation optimized against an automatically measured proxy reward is prone to reward hacking, degrading unmeasured
+    or complementary perceptual qualities (prosody naturalness, emotional appropriateness, non-targeted objectives) unless
+    explicitly counteracted”, whereas subjective-evaluation concerns “Automatic speech-quality and task metrics frequently
+    rank systems differently from human perceptual judgments”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d733307af6bed83a
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -31108,10 +31223,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188597
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Diffusion
+    generators can transfer unseen-speaker identity from reference speech without speaker-specific fine-tuning”, whereas zero-shot-tts
+    concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms that limit error
+    accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_b2cac5e3903b2c33
   left: speech-to-speech#model_scale_doesnt_predict_quality
@@ -31755,10 +31873,14 @@ candidates:
     shared_terms:
     - alignment
     aggregate_score: 0.187645
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas zero-shot-tts concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms
+    that limit error accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_e83428f2e05002c4
   left: speech-to-speech#semantic_acoustic_token_tradeoff
@@ -32702,10 +32824,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.186249
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “A shared autoregressive vocabulary over speech and text enables unified understanding and spoken generation in one language-model
+    backbone”, whereas zero-shot-tts concerns “Long-form zero-shot generation benefits from explicit alignment, chunking,
+    or memory mechanisms that limit error accumulation”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_860f37a137a8b224
   left: voice-conversion#prosody_timbre_factorization_improves_control
@@ -33270,10 +33396,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185333
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow-matching
+    speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
+    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes to
+    the base model”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without
+    speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_3567f214741f5a89
   left: subjective-evaluation#quality_control_tradeoffs_are_perceptually_nonmonotonic
@@ -33648,10 +33779,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184791
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas speaker-adaptation concerns “Adapters, LoRA, speaker vectors, and other parameter-efficient updates can
+    personalize voices while limiting catastrophic forgetting”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_aa9d5989099f2c3f
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -33932,10 +34067,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184297
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas transformer-enc-dec-tts concerns “Frequency-aware and local adversarial objectives improve acoustic detail beyond
+    reconstruction losses alone”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_48aa13bd6f54717e
   left: emotion-synthesis#dialogue_context_supports_appropriate_emotional_responses
@@ -36090,10 +36229,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.180436
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas rlhf-speech concerns “RL/RLHF post-training for speech generation optimized against
+    an automatically measured proxy reward is prone to reward hacking, degrading unmeasured or complementary perceptual qualities
+    (prosody naturalness, emotional appropriateness, non-targeted objectives) unless explicitly counteracted”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_200c8d784b38f7f3
   left: speaker-adaptation#data_scale_and_diversity_drive_unseen_speaker_generalization
@@ -36916,10 +37060,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.179459
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas voice-conversion concerns “Zero-shot and any-to-any conversion can generalize to unseen speakers without per-speaker
+    retraining”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7a9f159e8c2f7102
   left: spoken-language-model#long_form_speech_generation_needs_hierarchical_coherence
@@ -36963,10 +37110,15 @@ candidates:
     shared_terms:
     - against
     aggregate_score: 0.179426
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “RL/RLHF post-training
+    for speech generation optimized against an automatically measured proxy reward is prone to reward hacking, degrading unmeasured
+    or complementary perceptual qualities (prosody naturalness, emotional appropriateness, non-targeted objectives) unless
+    explicitly counteracted”, whereas zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker
+    similarity rather than improving both monotonically”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_47886afe4c995ece
   left: flow-matching#fm_velocity_space_alignment
@@ -36985,10 +37137,16 @@ candidates:
     shared_terms:
     - intelligibility
     aggregate_score: 0.179421
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Preference
+    and reinforcement-learning-based post-training alignment can be formulated for flow-matching TTS architectures — either
+    as a direct DPO objective in the velocity space, or via Gaussian reparameterization of the deterministic output combined
+    with policy-gradient methods (GRPO) — enabling post-training intelligibility and speaker-similarity improvements without
+    full retraining”, whereas zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker similarity
+    rather than improving both monotonically”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_f2059a56a5a18d29
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -38326,10 +38484,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.177491
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Semantic,
+    acoustic, or duration alignment supervision can improve diffusion-TTS training and intelligibility”, whereas zero-shot-tts
+    concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_16b91f6dcdc0029f
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -38960,10 +39121,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.176558
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas zero-shot-tts concerns “Long-form zero-shot generation benefits from explicit alignment, chunking,
+    or memory mechanisms that limit error accumulation”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3d91e97d320def31
   left: multilingual-tts#text_front_ends_remain_a_low_resource_bottleneck
@@ -39231,10 +39396,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.175999
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Separating semantic and acoustic token prediction improves linguistic coherence while retaining high-fidelity waveform
+    detail”, whereas spoken-language-model concerns “Reward modeling and preference alignment can improve spoken-language-model
+    helpfulness, naturalness, and behavioral control beyond supervised training alone”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f8060246ead996fc
   left: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
@@ -40440,10 +40609,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.174293
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve
+    unseen-speaker identity without speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1cd554cef66c7c24
   left: evaluation-metrics#cascaded_vs_endtoend_sca_tradeoffs
@@ -40589,10 +40762,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173913
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Conditional language modeling over discrete speech tokens enables zero-shot voice cloning through in-context acoustic
+    prompting”, whereas rlhf-speech concerns “RL/RLHF post-training for speech generation optimized against an automatically
+    measured proxy reward is prone to reward hacking, degrading unmeasured or complementary perceptual qualities (prosody
+    naturalness, emotional appropriateness, non-targeted objectives) unless explicitly counteracted”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_cea4f0d2d706413a
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -42155,10 +42333,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.171429
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “Self-supervised speech features encode phonetic, lexical, and semantic content useful across downstream tasks”, whereas
+    zero-shot-tts concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms
+    that limit error accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_769811af1d3ca2c0
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -46437,10 +46619,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.165789
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks”, whereas zero-shot-tts
+    concerns “Long-form zero-shot generation benefits from explicit alignment, chunking, or memory mechanisms that limit error
+    accumulation”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_fcf21907ae811b34
   left: rlhf-speech#grpo_extends_to_non_autoregressive_tts
@@ -46610,10 +46795,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.165385
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: prosody-control concerns “Duration,
+    pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization”,
+    whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific
+    fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_937072da741bde25
   left: self-supervised-speech#speaker_and_prosody_leakage_persists_in_ssl_features
@@ -46731,10 +46919,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.165281
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: instruction-conditioned-tts concerns
+    “Automatic labeling, LLM captioning or rewriting, and synthetic-speech pipelines can scale instruction-speech supervision
+    beyond manual annotation”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors
+    allow pretrained text language models to acquire speech capabilities while preserving much of their linguistic reasoning”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_101bf6fcc5c3027e
   left: speech-to-speech#llm_judge_automated_eval_limits
@@ -47203,10 +47395,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.164286
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: instruction-conditioned-tts concerns
+    “Diverse, fine-grained instruction supervision generalizes better than narrow templates or single-task instruction corpora”,
+    whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained text language
+    models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting papers do
+    not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_fb6b62e97b6f6c76
   left: multilingual-tts#text_front_ends_remain_a_low_resource_bottleneck
@@ -47226,10 +47422,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.164286
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: multilingual-tts concerns “Text
+    normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource
+    TTS”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific
+    fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_93d97e6dd95cff95
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -48938,10 +49137,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.159524
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “Backpropagating
+    gradients from a frozen differentiable reward/critic model through discrete speech tokens via Gumbel-Softmax achieves
+    comparable or better alignment gains than PPO-style policy-gradient RL or standard DPO, at lower computational cost, by
+    avoiding multi-sample rollout or multi-forward-pass overhead”, whereas zero-shot-tts concerns “Reference-conditioned models
+    can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7beaa6b57f49634e
   left: autoregressive-codec-tts#sampling_controls_diversity_but_reduces_determinism
@@ -49155,10 +49359,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.158824
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Autoregressive codec TTS remains vulnerable to omissions, repetitions, insertions, and runaway decoding caused by text–speech
+    alignment failures”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity
+    without speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a3e677fc0d382dcb
   left: emotion-synthesis#flow_and_diffusion_support_flexible_emotion_control
@@ -49866,10 +50074,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.158
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Tokenizer semantic alignment, bitrate, and reconstruction quality materially constrain downstream speech-language-model
+    performance”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without
+    speaker-specific fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_8541d008a1122eb3
   left: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
@@ -51922,10 +52134,15 @@ candidates:
     shared_terms:
     - prosody
     aggregate_score: 0.033819
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: rlhf-speech concerns “RL/RLHF post-training
+    for speech generation optimized against an automatically measured proxy reward is prone to reward hacking, degrading unmeasured
+    or complementary perceptual qualities (prosody naturalness, emotional appropriateness, non-targeted objectives) unless
+    explicitly counteracted”, whereas zero-shot-tts concerns “Cross-lingual voice cloning remains vulnerable to language,
+    accent, and prosody leakage from the reference”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_fa4b899612309126
   left: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -54088,6 +54305,10 @@ candidates:
   reconsideration_trigger: null
 review:
   completed_on: 2026-08-23
+  candidates_reviewed: 2049
+  accepted: 110
+  rejected: 1939
+  deferred: 0
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent
