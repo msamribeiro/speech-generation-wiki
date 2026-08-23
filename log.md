@@ -4,6 +4,10 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-23
+
+- reconcile | 2025-Q3 | theme: evaluation pilot | 21 concepts and 181 clusters reviewed | 351 candidates | 28 accepted | 323 rejected | 0 deferred | 14 direct relationships and 3 broader claims recorded | field-render projection validated with 38 duplicate supporting-paper occurrences removed while preserving local caveats | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-08-19
 
 - reconcile | 2025-Q3 candidate generation | 23 concepts and 406 clusters | 78,475 cross-concept pairs scored | 4,233 pre-cap candidates | 2,049 shared-evidence candidates emitted as pending | 0 relationships accepted | evidence cutoff: 2025-09-30 | assessment as of: 2026-08-19 | runtime: codex | provider: openai | model: gpt-5

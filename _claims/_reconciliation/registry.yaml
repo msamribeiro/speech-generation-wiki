@@ -1,4 +1,438 @@
 schema_version: 1
-last_updated: '2026-08-19'
-relationships: []
-broader_claims: []
+last_updated: 2026-08-23
+relationships:
+- id: rel_1b6a20de587131eb
+  source: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
+  target: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
+  type: related
+  rationale: Both claims establish the same limitation of automatic intelligibility and identity metrics, but retain distinct
+    voice-conversion and zero-shot-cloning populations, so a related link is warranted rather than equivalence.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_20d9d582181c57af
+  source: gan-vocoder#causal_streaming_vocoders_can_approach_offline_quality
+  target: streaming-tts#causality_and_lookahead_trade_latency_for_quality
+  type: refines
+  rationale: The GAN-vocoder evidence refines the general causality trade-off by identifying limited lookahead, normalization
+    changes, and distillation as conditions under which quality loss can be mitigated.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_22890ef4dd862881
+  source: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
+  target: rlhf-speech#rlhf_posttraining_beats_sft_baseline
+  type: specialization
+  rationale: The autoregressive-codec result is a task-and-architecture-specific instance of the broader speech preference-post-training
+    improvement over supervised fine-tuning.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_22a9897138fc1b1f
+  source: rlhf-speech#preference_pair_construction_determines_dpo_success
+  target: subjective-evaluation#preference_optimization_improves_targeted_perception
+  type: refines
+  rationale: The preference-pair construction result refines the general perceptual-improvement claim by identifying data-pair
+    design as a first-order boundary on whether optimization succeeds.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_3733fe08a5fc7076
+  source: gan-vocoder#causal_streaming_vocoders_can_approach_offline_quality
+  target: streaming-tts#causal_codecs_and_vocoders_can_approach_offline_quality
+  type: specialization
+  rationale: The GAN-vocoder result is a narrower architectural instance of the streaming claim that causal codec and vocoder
+    designs can approach offline quality after explicit adaptation.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_42f1a17a289b494b
+  source: streaming-tts#modular_and_end_to_end_systems_have_distinct_tradeoffs
+  target: spoken-language-model#cascaded_and_end_to_end_systems_have_complementary_strengths
+  type: specialization
+  rationale: The streaming claim is the latency-sensitive specialization of the broader spoken-system finding that cascaded
+    and end-to-end architectures retain complementary strengths.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_583eed0f1d70062f
+  source: diffusion-tts#preference_optimization_can_steer_diffusion
+  target: subjective-evaluation#preference_optimization_improves_targeted_perception
+  type: specialization
+  rationale: Diffusion trajectory steering is an architecture-specific instance of preference optimization improving targeted
+    perceptual attributes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_6a2203a04cbad29b
+  source: speech-to-speech#cascade_outperforms_e2e_on_benchmarks
+  target: evaluation-metrics#cascaded_vs_endtoend_sca_tradeoffs
+  type: refines
+  rationale: The speech-to-speech benchmark claim refines the broader evaluation trade-off by locating current cascade advantages
+    in semantic and reasoning accuracy while preserving end-to-end latency and paralinguistic qualifications.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_99f8e997b4289728
+  source: flow-matching#fm_vocoder_speed_gan_gap
+  target: gan-vocoder#flow_and_diffusion_trade_speed_for_iterative_quality
+  type: tradeoff
+  rationale: 'Together the claims express the same vocoder design trade-off: iterative flow or diffusion refinement can improve
+    perceptual quality while GAN decoding retains a substantial inference-speed advantage.'
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_9e1a1a69a10a7308
+  source: neural-codec#codec_evaluation_lacks_metric_consensus
+  target: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
+  type: specialization
+  rationale: The neural-codec claim specializes the general metric-divergence result to codec reconstruction and downstream
+    generation utility.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_ca7119696b25a48c
+  source: autoregressive-codec-tts#automatic_metrics_do_not_fully_predict_perceived_quality
+  target: subjective-evaluation#automatic_metrics_diverge_from_human_perception
+  type: specialization
+  rationale: The autoregressive-codec finding is a task-specific instance of automatic metrics ranking systems differently
+    from human perceptual judgments.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_e6b0093f2569a674
+  source: rlhf-speech#rlhf_training_instability_requires_regularization_or_early_stopping
+  target: subjective-evaluation#preference_optimization_improves_targeted_perception
+  type: tradeoff
+  rationale: 'The pair records a material trade-off: preference optimization can improve targeted perception, but extended
+    RL or DPO training can destabilize or collapse held-out quality without regularization or early stopping.'
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_e9f5d208f55b1720
+  source: neural-codec#codec_evaluation_lacks_metric_consensus
+  target: evaluation-metrics#no_single_metric_suffices_multidimensional_evaluation_needed
+  type: specialization
+  rationale: Codec evaluation is a domain-specific instance of the broader finding that no single metric captures all relevant
+    speech-generation quality dimensions.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_f727d5f51b38c24f
+  source: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
+  target: subjective-evaluation#preference_optimization_improves_targeted_perception
+  type: specialization
+  rationale: The autoregressive-codec claim is a narrower synthesis setting for the perceptual finding that preference optimization
+    can improve targeted listener-relevant attributes.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+broader_claims:
+- id: broader_automatic_judges_require_scoped_human_validation
+  proposition: Automatic speech judges can approximate some human assessments, but fine-grained prosodic, paralinguistic,
+    emotional, and near-tied judgments still require scope-specific human validation.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: evaluation-metrics#llm_audio_judge_reliability_is_contested
+    relationship: specialization
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: subjective-evaluation#llm_and_audio_language_judges_are_not_uniformly_reliable
+    relationship: specialization
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: subjective-evaluation#automatic_metrics_diverge_from_human_perception
+    relationship: supports
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: instruction-conditioned-tts#automatic_judges_do_not_fully_replace_human_evaluation
+    relationship: specialization
+    rationale: This local cluster contributes its instruction-conditioned-tts-specific evidence and scope to the reviewed
+      broader proposition.
+  - claim: emotion-synthesis#automatic_emotion_metrics_do_not_replace_human_evaluation
+    relationship: specialization
+    rationale: This local cluster contributes its emotion-synthesis-specific evidence and scope to the reviewed broader proposition.
+  - claim: speech-to-speech#llm_judge_automated_eval_limits
+    relationship: specialization
+    rationale: This local cluster contributes its speech-to-speech-specific evidence and scope to the reviewed broader proposition.
+  - claim: evaluation-metrics#emotion_evaluation_diverges_from_human_at_finegrained_level
+    relationship: specialization
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - '1609.03499'
+  - 2025.icnlsp-1.34
+  - 2025.sigdial-1.27
+  - '2402.01912'
+  - '2403.16973'
+  - '2406.18009'
+  - '2503.04721'
+  - '2504.12867'
+  - '2505.14648'
+  - '2506.09874'
+  - '2506.16381'
+  - '2506.21619'
+  - '2506.21875'
+  - '2507.16835'
+  - '2508.02013'
+  - '2508.04195'
+  - '2508.07273'
+  - '2508.07375'
+  - '2508.08095'
+  - '2508.09600'
+  - '2508.17623'
+  - '2508.18240'
+  - '2509.03940'
+  - '2509.04072'
+  - '2509.04093'
+  - '2509.09716'
+  - '2509.13989'
+  - '2509.18470'
+  - '2509.18531'
+  - '2509.18823'
+  - '2509.18928'
+  - '2509.19928'
+  - '2509.20378'
+  - '2509.24457'
+  - interspeech-2025-0166
+  - interspeech-2025-0383
+  - interspeech-2025-0706
+  - interspeech-2025-0754
+  - interspeech-2025-0756
+  - interspeech-2025-1084
+  - interspeech-2025-1101
+  - interspeech-2025-1434
+  - interspeech-2025-2573
+  - interspeech-2025-bokkahallisatish25_interspeech
+  contradicting_papers:
+  - '2504.12867'
+  - '2508.18240'
+  - '2509.13989'
+  - '2509.19928'
+  - '2509.26514'
+  refining_papers:
+  - 2025.chipsal-1.18
+  - '2506.23367'
+  - '2507.00808'
+  - '2507.01611'
+  - '2507.06235'
+  - '2508.00317'
+  - '2508.07375'
+  - '2508.07711'
+  - '2508.09600'
+  - '2508.17623'
+  - '2508.18240'
+  - '2509.00675'
+  - '2509.05863'
+  - '2509.06074'
+  - '2509.14946'
+  - '2509.15253'
+  - '2509.16589'
+  - '2509.19812'
+  - '2509.19928'
+  - '2509.24457'
+  - '2509.26514'
+  - interspeech-2025-0438
+  - interspeech-2025-0469
+  - interspeech-2025-0739
+  - interspeech-2025-0756
+  - interspeech-2025-0779
+  - interspeech-2025-1084
+  - interspeech-2025-1192
+  - interspeech-2025-1434
+  - interspeech-2025-1478
+  - interspeech-2025-1638
+  - interspeech-2025-1639
+  - interspeech-2025-1726
+  - interspeech-2025-1747
+  - interspeech-2025-2679
+  - interspeech-2025-2787
+  - interspeech-2025-bokkahallisatish25_interspeech
+  caveats:
+  - Reliability depends on the evaluated attribute, score separation, judge modality, and test domain; this claim does not
+    reject automatic judges for coarse screening.
+  review_rationale: The member clusters converge on the same bounded conclusion across general speech quality, dialogue, instruction
+    adherence, and emotion evaluation. Their deduplicated evidence supports usefulness for some coarse judgments and repeated
+    failure on fine-grained or non-verbal attributes.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_learned_quality_metrics_are_useful_but_domain_sensitive
+  proposition: Learned speech-quality predictors generally improve on classical signal metrics, but their rankings remain
+    sensitive to language, domain, granularity, and synthesis paradigm and therefore do not replace subjective evaluation.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: evaluation-metrics#ssl_features_effective_basis_for_mos_prediction
+    relationship: supports
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: evaluation-metrics#mos_predictors_generalize_poorly_across_language_domain_or_granularity
+    relationship: refines
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: evaluation-metrics#automatic_mos_predictors_diverge_from_subjective_mos
+    relationship: refines
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
+    relationship: supports
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: subjective-evaluation#learned_quality_metrics_outperform_classical_metrics
+    relationship: equivalent
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  supporting_papers:
+  - '2204.02152'
+  - '2305.02765'
+  - '2506.18296'
+  - '2507.01611'
+  - '2507.06116'
+  - '2508.00317'
+  - '2508.07711'
+  - '2508.08957'
+  - '2509.02244'
+  - '2509.03292'
+  - '2509.14270'
+  - '2509.15629'
+  - '2509.18823'
+  - '2509.20485'
+  - '2509.24457'
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0973
+  - interspeech-2025-0984
+  - interspeech-2025-1066
+  - interspeech-2025-2536
+  contradicting_papers: []
+  refining_papers:
+  - '2204.02152'
+  - '2507.01611'
+  - '2507.06116'
+  - '2509.18823'
+  - '2509.24457'
+  - interspeech-2025-1747
+  caveats:
+  - Relative performance depends on predictor training data and evaluation scale; system-level correlation does not guarantee
+    utterance-level reliability.
+  review_rationale: 'Positive results for SSL-based predictors and repeated cross-domain failures jointly support a qualified
+    field-level assessment: learned metrics are useful improvements over classical proxies, not universal substitutes for
+    listeners.'
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_speech_evaluation_requires_multidimensional_coverage
+  proposition: Speech-system evaluation requires separate coverage of semantics, naturalness, identity, prosody, and interaction
+    behavior because transcript-only and aggregate scores hide material capability gaps.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: evaluation-metrics#no_single_metric_suffices_multidimensional_evaluation_needed
+    relationship: equivalent
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
+    relationship: supports
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: subjective-evaluation#benchmark_design_needs_multidimensional_coverage
+    relationship: equivalent
+    rationale: This local cluster contributes its subjective-evaluation-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: evaluation-metrics#text_asr_based_sca_eval_misses_paralinguistic_signal
+    relationship: specialization
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: spoken-language-model#multidimensional_benchmarks_expose_spoken_model_gaps
+    relationship: specialization
+    rationale: This local cluster contributes its spoken-language-model-specific evidence and scope to the reviewed broader
+      proposition.
+  supporting_papers:
+  - 2025.acl-long.598
+  - 2025.acl-long.911
+  - 2025.acl-long.912
+  - 2025.americasnlp-1.1
+  - 2025.coling-industry.29
+  - 2025.computel-main.6
+  - 2025.findings-acl.534
+  - 2025.findings-naacl.298
+  - 2025.naacl-demo.12
+  - 2025.naacl-long.242
+  - '2209.03143'
+  - '2305.02765'
+  - '2402.05755'
+  - '2406.18009'
+  - '2409.05377'
+  - '2411.17607'
+  - '2502.11946'
+  - '2502.17239'
+  - '2503.04721'
+  - '2504.08528'
+  - '2505.09558'
+  - '2506.10274'
+  - '2506.21875'
+  - '2506.23049'
+  - '2507.04817'
+  - '2507.09310'
+  - '2507.14988'
+  - '2507.20140'
+  - '2507.23159'
+  - '2508.00317'
+  - '2508.02013'
+  - '2508.06870'
+  - '2508.07375'
+  - '2508.09702'
+  - '2508.15827'
+  - '2508.17623'
+  - '2508.18240'
+  - '2508.19205'
+  - '2508.20660'
+  - '2509.00685'
+  - '2509.03940'
+  - '2509.04093'
+  - '2509.04685'
+  - '2509.09174'
+  - '2509.09716'
+  - '2509.12171'
+  - '2509.15629'
+  - '2509.16589'
+  - '2509.17143'
+  - '2509.17765'
+  - '2509.18928'
+  - '2509.19928'
+  - '2509.20485'
+  - '2509.20802'
+  - iclr-2025-dGSOn7sdWg
+  - iclr-2025-uxDFlPGRLX
+  - interspeech-2025-0310
+  - interspeech-2025-0355
+  - interspeech-2025-0438
+  - interspeech-2025-0739
+  - interspeech-2025-1434
+  - interspeech-2025-1873
+  - interspeech-2025-2151
+  - interspeech-2025-bokkahallisatish25_interspeech
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.388
+  - 2025.americasnlp-1.1
+  - 2025.chipsal-1.18
+  - 2025.coling-industry.29
+  - 2025.icnlsp-1.34
+  - 2025.naacl-demo.21
+  - '2407.05361'
+  - '2409.20007'
+  - '2411.13577'
+  - '2505.15772'
+  - '2507.04817'
+  - '2507.16632'
+  - '2507.16875'
+  - '2508.17494'
+  - '2508.18240'
+  - '2509.04072'
+  - '2509.04667'
+  - '2509.04702'
+  - '2509.05863'
+  - '2509.12171'
+  - '2509.16010'
+  - '2509.17143'
+  - '2509.18928'
+  - '2509.20802'
+  - '2509.26542'
+  - interspeech-2025-0310
+  - interspeech-2025-0406
+  - interspeech-2025-0438
+  - interspeech-2025-0756
+  - interspeech-2025-0984
+  - interspeech-2025-1229
+  - interspeech-2025-1478
+  - interspeech-2025-2595
+  - interspeech-2025-2765
+  caveats:
+  - The necessary dimensions and protocols remain task-specific; multidimensional coverage does not imply that every benchmark
+    needs every metric.
+  review_rationale: The clusters independently show that speech quality is multi-axis and that text or aggregate proxies conceal
+    acoustic and interaction failures. The broader claim preserves those task-specific scopes while preventing field synthesis
+    from repeating the same evaluation principle.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
