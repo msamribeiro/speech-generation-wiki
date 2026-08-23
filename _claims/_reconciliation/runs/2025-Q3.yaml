@@ -1194,10 +1194,11 @@ candidates:
     - incremental
     - latency
     aggregate_score: 0.363961
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_ee75c5c22795ee28
+  rationale: Incremental acoustic generation is a concrete mechanism supporting the broader interactive-latency claim for
+    spoken language models.
   reconsideration_trigger: null
 - id: cand_59f6b25a46601f93
   left: speaker-adaptation#disentangling_identity_and_style_improves_control
@@ -3060,10 +3061,11 @@ candidates:
     - flow
     - matching
     aggregate_score: 0.301925
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_7b385ee219f15061
+  rationale: The voice-conversion result is a task-specific instance of flow matching reducing sequential generation cost
+    relative to diffusion while retaining quality.
   reconsideration_trigger: null
 - id: cand_3d6b6c9075c02107
   left: speech-to-speech#paralinguistic_semantic_capability_gap
@@ -3709,10 +3711,14 @@ candidates:
     - decoding
     - latency
     aggregate_score: 0.290961
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken language
+    models to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_e791168113c7a4ba
   left: diffusion-tts#preference_optimization_can_steer_diffusion
@@ -4138,10 +4144,11 @@ candidates:
     - reduce
     - retaining
     aggregate_score: 0.287355
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_d772e894cb743c16
+  rationale: Diffusion distillation and caching are architecture-specific routes to the broader zero-shot finding that acceleration
+    can preserve usable quality.
   reconsideration_trigger: null
 - id: cand_e7466f17ab58ee83
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -4982,10 +4989,13 @@ candidates:
     - latency
     - reduce
     aggregate_score: 0.277382
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: streaming-tts concerns “Incremental
+    acoustic or speech-token generation can substantially reduce first-packet and response latency”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_dee0bd033ea01248
   left: autoregressive-codec-tts#multilingual_codec_lms_transfer_voice_across_languages
@@ -5602,10 +5612,14 @@ candidates:
     - intelligibility
     - speaker
     aggregate_score: 0.269042
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while
+    retaining usable intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_582391a9e7b811d0
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -6197,10 +6211,11 @@ candidates:
     - decoding
     - reduce
     aggregate_score: 0.264747
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_046c952dc60de46e
+  rationale: Parallel and speculative streaming decoding are specific acceleration mechanisms within the broader usable-quality
+    finding.
   reconsideration_trigger: null
 - id: cand_90b06c6787d0f010
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -6299,10 +6314,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.263854
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas voice-conversion concerns “Diffusion models
+    support high-fidelity voice conversion under speaker, pitch, and style conditioning”. Shared supporting papers do not
+    establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4cf0619deaa8e447
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -7774,10 +7793,14 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.251725
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas streaming-tts concerns “Chunk size and read–write policy create a direct trade-off among latency, alignment,
+    and acoustic quality”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_d5355ee517f2f54c
   left: multilingual-tts#zero_shot_models_generalize_to_unseen_languages_imperfectly
@@ -8058,10 +8081,10 @@ candidates:
     shared_terms:
     - decoding
     aggregate_score: 0.25103
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_87621803d5e0e99a
+  rationale: Reducing serial speech-token cost supplies a mechanism that supports interactive spoken-model latency.
   reconsideration_trigger: null
 - id: cand_bf72c081aa4e9737
   left: instruction-conditioned-tts#instruction_diversity_improves_generalization
@@ -8103,10 +8126,11 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.250377
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: tradeoff
+  registry_target: rel_b4e92d33e3545823
+  rationale: Incremental streaming reduces first-packet delay specifically by relaxing the fully causal token-by-token deployment
+    cost identified for autoregressive codec generation.
   reconsideration_trigger: null
 - id: cand_e4070e7b1e6fd40b
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -8323,10 +8347,14 @@ candidates:
     - decoding
     - latency
     aggregate_score: 0.24911
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable
+    intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_4a9173c6c2b73743
   left: self-supervised-speech#semantic_acoustic_hierarchies_balance_coherence_and_fidelity
@@ -8605,10 +8633,13 @@ candidates:
     shared_terms:
     - zero-shot
     aggregate_score: 0.248009
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Zero-shot
+    and any-to-any conversion can generalize to unseen speakers without per-speaker retraining”, whereas zero-shot-tts concerns
+    “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_b7c921db4358aeb9
   left: neural-codec#codec_tokens_enable_language_model_generation
@@ -9047,10 +9078,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.243428
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Incremental acoustic or speech-token generation can substantially reduce first-packet
+    and response latency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_5ee63cb492becbb6
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -11094,10 +11129,13 @@ candidates:
     shared_terms:
     - diffusion
     aggregate_score: 0.232421
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas voice-conversion concerns
+    “Diffusion models support high-fidelity voice conversion under speaker, pitch, and style conditioning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f9f6edb604382b4e
   left: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
@@ -11117,10 +11155,14 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.23223
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs
+    among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_365e32fa6d22a1f7
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -11190,10 +11232,14 @@ candidates:
     shared_terms:
     - cost
     aggregate_score: 0.231935
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Low-
+    and variable-frame-rate speech tokenization reduces language-model sequence cost while preserving useful content when
+    allocation follows acoustic information density”, whereas streaming-tts concerns “Parallel, multi-token, and speculative
+    decoding reduce serial speech-token generation cost”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a917b0c6d9fedb9d
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -11238,10 +11284,13 @@ candidates:
     shared_terms:
     - vocoder
     aggregate_score: 0.231815
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: gan-vocoder concerns “Explicit signal-processing
+    structure can improve vocoder extrapolation, parameter efficiency, and data efficiency”, whereas subjective-evaluation
+    concerns “Codec and vocoder design choices impose perceptual ceilings and artifacts that propagate into downstream speech-generation
+    evaluations”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_50e09eed31c1a8bd
   left: emotion-synthesis#paralinguistic_events_require_dedicated_modeling
@@ -11358,10 +11407,10 @@ candidates:
     shared_terms:
     - steps
     aggregate_score: 0.231397
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_4b22c174cef17670
+  rationale: Parallel voice conversion is a task-specific realization of low-step flow-matching acceleration.
   reconsideration_trigger: null
 - id: cand_19463efab0faa646
   left: disentanglement#codecs_ssl_entangle_content_speaker_by_default
@@ -12056,10 +12105,14 @@ candidates:
     shared_terms:
     - synthesis
     aggregate_score: 0.229025
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas subjective-evaluation
+    concerns “Human listening tests are necessary to establish whether efficiency gains preserve perceived quality across
+    synthesis architectures”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_4aa8abb3fbae1d42
   left: diffusion-tts#alignment_supervision_improves_training
@@ -12619,10 +12672,13 @@ candidates:
     shared_terms:
     - intelligibility
     aggregate_score: 0.226617
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Semantic,
+    acoustic, or duration alignment supervision can improve diffusion-TTS training and intelligibility”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_66fcc5e172cf905e
   left: neural-codec#codec_bottlenecks_shape_intelligibility
@@ -13107,10 +13163,14 @@ candidates:
     shared_terms:
     - intelligibility
     aggregate_score: 0.22466
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Non-autoregressive
+    flow-matching TTS achieves competitive or superior intelligibility compared to autoregressive codec-LM systems at training
+    scales of 100K hours or more, while generating speech at substantially lower real-time factors”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_5d9c9108d7f3507e
   left: multilingual-tts#shared_multilingual_training_improves_low_resource_tts
@@ -13957,10 +14017,14 @@ candidates:
     - fidelity
     - speaker
     aggregate_score: 0.222092
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Separating linguistic content, speaker identity, and style in codec tokens improves controllability but introduces fidelity
+    and identity trade-offs”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while
+    retaining usable intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_06991ff0189ae4c2
   left: diffusion-tts#diffusion_supports_zero_shot_voice_transfer
@@ -15623,10 +15687,15 @@ candidates:
     shared_terms:
     - acceleration
     aggregate_score: 0.216937
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow-matching
+    speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
+    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes to
+    the base model”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining
+    usable intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_ae50bd21e04baefd
   left: diffusion-tts#iterative_sampling_limits_latency
@@ -15645,10 +15714,11 @@ candidates:
     shared_terms:
     - synthesis
     aggregate_score: 0.21692
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_0ef5d7332dfb8c42
+  rationale: The iterative diffusion bottleneck supports the comparative explanation for flow matching's inference-efficiency
+    advantage.
   reconsideration_trigger: null
 - id: cand_7f96f9b212f9c0a9
   left: gan-vocoder#data_diversity_drives_universal_vocoding
@@ -15861,10 +15931,13 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.215963
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Chunk size and read–write policy create a direct trade-off among latency, alignment, and acoustic quality”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8a373a07bee90f13
   left: multilingual-tts#shared_phonetic_representations_enable_transfer
@@ -15953,10 +16026,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.215845
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas zero-shot-tts concerns “Decoding acceleration
+    can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_6ac0b91a2f63e57e
   left: disentanglement#disentanglement_reconstruction_fidelity_tradeoff
@@ -16127,10 +16204,11 @@ candidates:
     shared_terms:
     - flow
     aggregate_score: 0.215496
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_b31f3b4b3b5056c3
+  rationale: Lower-step flow and consistency alternatives support the finding that flow-like formulations offer faster paths
+    than conventional diffusion sampling.
   reconsideration_trigger: null
 - id: cand_b0a7663d4c76e21b
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -17077,10 +17155,13 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.213254
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Diffusion
+    models support high-fidelity voice conversion under speaker, pitch, and style conditioning”, whereas zero-shot-tts concerns
+    “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_39bb7b4660fba21a
   left: diffusion-tts#latent_diffusion_reduces_generation_complexity
@@ -17170,10 +17251,14 @@ candidates:
     shared_terms:
     - diffusion
     aggregate_score: 0.212866
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas speaker-adaptation
+    concerns “Flow-matching and diffusion generators support high-quality speaker adaptation with parallel generation and
+    effective distillation”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_af77974887d66e2b
   left: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
@@ -17569,10 +17654,14 @@ candidates:
     shared_terms:
     - spoken
     aggregate_score: 0.211747
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “A shared autoregressive vocabulary over speech and text enables unified understanding and spoken generation in one language-model
+    backbone”, whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken language
+    models to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_c899f89c6b4cd972
   left: emotion-synthesis#dialogue_context_supports_appropriate_emotional_responses
@@ -17683,10 +17772,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.211476
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Low-
+    and variable-frame-rate speech tokenization reduces language-model sequence cost while preserving useful content when
+    allocation follows acoustic information density”, whereas streaming-tts concerns “Streaming evaluation should measure
+    first-packet delay, interaction timing, chunk throughput, and cache behavior in addition to batch real-time factor”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_2f2c0e775253a6e9
   left: self-supervised-speech#ssl_conditioning_improves_speech_generation
@@ -17773,10 +17866,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.211254
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “A shared language-model backbone can support both speech understanding
+    and speech generation across conversational tasks”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_21a99d11980332ad
   left: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
@@ -18425,10 +18522,14 @@ candidates:
     shared_terms:
     - language
     aggregate_score: 0.210012
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “Discrete SSL-derived speech units make speech compatible with token language modeling and textless generation”, whereas
+    spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken language models to operate
+    at interactive latency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_b411da197f4b8af3
   left: evaluation-metrics#codec_reconstruction_metrics_dont_predict_downstream_generation_quality
@@ -19104,10 +19205,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.208336
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Codec frame
+    rate and token hierarchy directly govern language-model sequence length, inference cost, and streaming latency”, whereas
+    prosody-control concerns “Model scale and broad training data improve implicit prosody rendering even without explicit
+    prosodic annotation”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_2459e48d8f3f203b
   left: neural-codec#quantizer_structure_affects_downstream_modelability
@@ -19448,10 +19552,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.206798
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas multilingual-tts concerns “Flow-matching and
+    diffusion models provide scalable parallel acoustic generation for multilingual TTS”. Shared supporting papers do not
+    establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7dc3722dcfe16365
   left: subjective-evaluation#naturalness_intelligibility_and_identity_are_distinct_axes
@@ -19850,10 +19958,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.205738
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Flow, consistency,
+    and bridge formulations offer lower-step alternatives to conventional diffusion sampling”, whereas flow-matching concerns
+    “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_3d9e2cef77baef63
   left: streaming-tts#incremental_generation_reduces_first_packet_latency
@@ -20267,10 +20380,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.204591
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks”, whereas flow-matching
+    concerns “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_d41c950cfe78545c
   left: diffusion-tts#factorized_conditioning_improves_control
@@ -20469,10 +20587,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.204145
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4cf80a2a9ae47c0e
   left: flow-matching#fm_vocoder_speed_gan_gap
@@ -20929,10 +21050,14 @@ candidates:
     shared_terms:
     - speaker
     aggregate_score: 0.202879
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: self-supervised-speech concerns
+    “Explicitly separating content from speaker and style information improves controllable speech generation and conversion”,
+    whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility
+    and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_91051eb547980680
   left: rlhf-speech#differentiable_reward_backprop_cheaper_than_policy_gradient
@@ -22426,10 +22551,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.199796
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Low-frame-rate and compact speech tokenizers shorten sequences and improve streaming efficiency”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f0adc4d00bf8d6f5
   left: autoregressive-codec-tts#explicit_alignment_constraints_improve_robustness
@@ -22640,10 +22768,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.199372
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Diffusion
+    generators can transfer unseen-speaker identity from reference speech without speaker-specific fine-tuning”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_5af23aa887a8bb08
   left: multilingual-tts#continued_pretraining_and_fine_tuning_extend_language_coverage
@@ -22793,10 +22924,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.198896
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas speech-to-speech concerns “Parameter count and model scale do not reliably predict speech-to-speech
+    / spoken dialogue quality; smaller, well-trained or well-designed models can match or exceed much larger counterparts
+    on naturalness and task performance”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_1327e4c0cb9392a8
   left: speech-to-speech#semantic_acoustic_token_tradeoff
@@ -22908,10 +23044,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.198668
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “Replacing text with speech input introduces measurable reasoning, robustness,
+    and instruction-following gaps even when the underlying language model is capable”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_73fe4969e92c0176
   left: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
@@ -22929,10 +23069,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.198441
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas neural-codec concerns “Shared codec and semantic representations support multilingual and cross-lingual
+    speech generation, but language coverage can trade against speaker fidelity”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ecbb35a7395e05f4
   left: prosody-control#duration_and_alignment_are_central_to_rhythm_control
@@ -25501,10 +25645,11 @@ candidates:
     - decoding
     - masked
     aggregate_score: 0.192803
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_88454dccfd9d8da1
+  rationale: Masked codec speech generation is a narrower application of parallel latent generation reducing sequential cost
+    and autoregressive failure modes.
   reconsideration_trigger: null
 - id: cand_dc6b4dbc06962256
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -25703,10 +25848,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.192301
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas streaming-tts concerns “Flow and diffusion streaming decoders trade integration steps, caching, and
+    algorithmic delay against generation quality”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_606a83ae610acdb8
   left: emotion-synthesis#explicit_emotion_conditioning_improves_expressiveness
@@ -26248,10 +26397,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.19139
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “The target
+    representation materially shapes diffusion-TTS quality, efficiency, and controllability”, whereas flow-matching concerns
+    “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_90a6707a929ba4ed
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -26481,10 +26635,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.191065
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Transformer
+    backbones support scalable diffusion modeling of speech and long-range conditioning”, whereas flow-matching concerns “Flow-matching
+    speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
+    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes to
+    the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_948a9c1a0eb31ca9
   left: speaker-adaptation#speaker_adaptation_supports_personalized_assistive_voices
@@ -26546,10 +26704,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.190949
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Parallel, multi-token, and speculative decoding reduce serial speech-token generation
+    cost”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_96833c2a496053fc
   left: neural-codec#ssl_guidance_improves_codec_semantics
@@ -26590,10 +26751,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.190909
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Codec frame
+    rate and token hierarchy directly govern language-model sequence length, inference cost, and streaming latency”, whereas
+    self-supervised-speech concerns “SSL-derived discrete units support low-bitrate speech coding while retaining task-relevant
+    linguistic information”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_74e5b8ed18e5d3aa
   left: streaming-tts#causal_codecs_and_vocoders_can_approach_offline_quality
@@ -26744,10 +26909,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.190667
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas flow-matching concerns
+    “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_ef89a476f4e5d705
   left: prosody-control#ssl_representations_are_useful_but_entangled_for_prosody
@@ -26969,10 +27139,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.189945
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Large,
+    diverse speech-instruction and conversational datasets expand spoken-language-model task coverage and generalization”,
+    whereas streaming-tts concerns “Incremental acoustic or speech-token generation can substantially reduce first-packet
+    and response latency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_594353c47cba9ab7
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -27596,10 +27770,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188834
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken
+    language models to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d8123a924fb00962
   left: self-supervised-speech#speaker_and_prosody_leakage_persists_in_ssl_features
@@ -28013,10 +28192,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188129
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow-matching
+    speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
+    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes to
+    the base model”, whereas voice-conversion concerns “Zero-shot and any-to-any conversion can generalize to unseen speakers
+    without per-speaker retraining”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_f707208f10823a71
   left: spoken-language-model#interleaved_training_bridges_modalities
@@ -28503,10 +28687,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.187431
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Robust training
+    and representation design improve diffusion speech generation under noisy or mismatched conditions”, whereas flow-matching
+    concerns “Flow-matching speech models admit substantial inference acceleration — to as few as 1–4 steps — through post-training
+    solver optimisation, distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural
+    changes to the base model”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_3226efd08a8c20b5
   left: spoken-language-model#speech_modality_introduces_reasoning_and_robustness_gaps
@@ -28567,10 +28756,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.187269
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve autoregressive TTS robustness”,
+    whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility
+    and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_9555599a45f8859e
   left: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
@@ -28823,10 +29016,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.186656
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Incremental acoustic or speech-token generation can substantially reduce first-packet
+    and response latency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_ecd2dfdb24c3c16c
   left: rlhf-speech#rlhf_posttraining_beats_sft_baseline
@@ -29236,10 +29433,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.186
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: voice-conversion concerns “Flow
+    matching enables high-quality voice conversion with fewer sequential generation steps than diffusion or autoregressive
+    alternatives”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining
+    usable intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a8c047d79d605f8c
   left: emotion-synthesis#dialogue_context_supports_appropriate_emotional_responses
@@ -30036,10 +30237,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184615
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas voice-conversion concerns “Zero-shot and any-to-any
+    conversion can generalize to unseen speakers without per-speaker retraining”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_60a4099ee70009fc
   left: speaker-adaptation#reference_conditioning_enables_unseen_speaker_adaptation
@@ -30507,10 +30712,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.183831
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas subjective-evaluation
+    concerns “Greater control strength, compression, guidance, or transformation does not produce monotonic perceptual gains
+    and often exposes quality trade-offs”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_ccb4ff764f5ff4a3
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -30796,10 +31005,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.183307
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “The target
+    representation materially shapes diffusion-TTS quality, efficiency, and controllability”, whereas zero-shot-tts concerns
+    “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_6fe4933392cd8df7
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -30960,10 +31172,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.18265
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Tokenizer semantic alignment, bitrate, and reconstruction quality materially constrain downstream speech-language-model
+    performance”, whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken
+    language models to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_a0a540c83f38138e
   left: streaming-tts#causality_and_lookahead_trade_latency_for_quality
@@ -31736,10 +31952,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.181123
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas neural-codec concerns “Residual vector quantization provides a hierarchical and scalable representation
+    whose active codebooks can trade bitrate against reconstruction detail”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_872e6baa54ffe6bd
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -32222,10 +32442,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.180234
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained
+    text language models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_0830e95211c5c5ae
   left: voice-conversion#reference_conditioning_controls_zero_shot_fidelity
@@ -32641,10 +32865,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.179623
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “Multi-turn spoken interaction requires explicit mechanisms for conversational
+    context, memory, and long-horizon state”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_c6932df7942c97f7
   left: speaker-adaptation#cross_lingual_adaptation_remains_language_sensitive
@@ -32984,10 +33212,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.179182
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Robust training
+    and representation design improve diffusion speech generation under noisy or mismatched conditions”, whereas zero-shot-tts
+    concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility and speaker fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e67bb5d1a1868ac8
   left: voice-conversion#diffusion_supports_flexible_voice_conversion
@@ -33114,10 +33345,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178843
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Multi-turn
+    spoken interaction requires explicit mechanisms for conversational context, memory, and long-horizon state”, whereas streaming-tts
+    concerns “Incremental acoustic or speech-token generation can substantially reduce first-packet and response latency”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f96288a927bd30a3
   left: diffusion-tts#diffusion_enables_high_fidelity_synthesis
@@ -33380,10 +33614,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178556
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: gan-vocoder concerns “Time–frequency-domain
+    vocoders can improve phase modeling, artifact control, and efficiency relative to direct waveform generation”, whereas
+    subjective-evaluation concerns “Codec and vocoder design choices impose perceptual ceilings and artifacts that propagate
+    into downstream speech-generation evaluations”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_beb91defbd350e48
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -33554,10 +33792,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178259
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining usable intelligibility
+    and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_2245c47aa27fd117
   left: disentanglement#codecs_ssl_entangle_content_speaker_by_default
@@ -33596,10 +33838,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178155
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Cascaded
+    and end-to-end spoken systems retain complementary advantages in reasoning quality, acoustic expressiveness, controllability,
+    and latency”, whereas streaming-tts concerns “Low-frame-rate and compact speech tokenizers shorten sequences and improve
+    streaming efficiency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_159c1e488f022f9f
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -33775,10 +34021,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.177949
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Codec frame
+    rate and token hierarchy directly govern language-model sequence length, inference cost, and streaming latency”, whereas
+    self-supervised-speech concerns “SSL representations retain varying amounts of speaker, pitch, prosody, and paralinguistic
+    information despite content-oriented training”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_bb13083345817c22
   left: speech-to-speech#internal_interruption_detection_beats_external_vad
@@ -34579,10 +34829,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.176615
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Quantizer
+    and codebook structure materially affects both reconstruction quality and the difficulty of downstream token prediction”,
+    whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken language models
+    to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_7603e0c88fa41516
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -35019,10 +35273,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.175679
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas self-supervised-speech concerns “Explicitly
+    separating content from speaker and style information improves controllable speech generation and conversion”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e333dffdab5c1604
   left: speech-to-speech#cascade_outperforms_e2e_on_benchmarks
@@ -35040,10 +35298,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.175601
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Cascaded
+    ASR+LLM+TTS pipelines currently achieve stronger performance than end-to-end speech-to-speech systems on general spoken-instruction-following
+    and reasoning benchmarks, though the gap is narrowing with backbone LLM quality and is concentrated in semantic/task accuracy
+    rather than paralinguistic fidelity”, whereas spoken-language-model concerns “Incremental tokenization, generation, and
+    decoding enable spoken language models to operate at interactive latency”. Shared supporting papers do not establish a
+    direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3c096748399620b0
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -35172,10 +35435,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.175461
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Causal constraints and limited lookahead reduce delay but can degrade quality unless the model is adapted explicitly”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9ed478e15356d045
   left: evaluation-metrics#wer_cer_unreliable_intelligibility_proxy
@@ -35705,10 +35971,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.174632
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Cascaded
+    and end-to-end spoken systems retain complementary advantages in reasoning quality, acoustic expressiveness, controllability,
+    and latency”, whereas streaming-tts concerns “Parallel, multi-token, and speculative decoding reduce serial speech-token
+    generation cost”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_52aaa1473a249e0d
   left: voice-conversion#ssl_units_improve_content_representation
@@ -36295,10 +36564,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173444
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Natural
+    full-duplex speech interaction requires models to listen while speaking and explicitly handle overlap, interruption, and
+    turn transitions”, whereas streaming-tts concerns “Incremental acoustic or speech-token generation can substantially reduce
+    first-packet and response latency”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_b2cd7bd7dccf11a8
   left: emotion-synthesis#explicit_emotion_conditioning_improves_expressiveness
@@ -36578,10 +36851,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.172901
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: flow-matching concerns “Flow matching
+    surpasses diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
+    it the preferred backbone for continuous-output speech synthesis”, whereas zero-shot-tts concerns “Reference-conditioned
+    models can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d29c6354171a68ae
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -36862,10 +37139,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.17225
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Parallel, multi-token, and speculative decoding reduce serial speech-token
+    generation cost”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_b48ed8573f550b1a
   left: disentanglement#data_level_disentanglement_without_new_architecture
@@ -37366,10 +37646,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.171432
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Streaming evaluation should measure first-packet
+    delay, interaction timing, chunk throughput, and cache behavior in addition to batch real-time factor”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e6411f367a01b753
   left: autoregressive-codec-tts#multilingual_codec_lms_transfer_voice_across_languages
@@ -37968,10 +38252,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.17032
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Codec frame
+    rate and token hierarchy directly govern language-model sequence length, inference cost, and streaming latency”, whereas
+    zero-shot-tts concerns “Separating linguistic content, speaker identity, and prosody improves controllability and speaker
+    transfer”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3e8cfe9d7ab02f18
   left: autoregressive-codec-tts#sampling_controls_diversity_but_reduces_determinism
@@ -38207,10 +38494,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.170027
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Residual
+    vector quantization provides a hierarchical and scalable representation whose active codebooks can trade bitrate against
+    reconstruction detail”, whereas zero-shot-tts concerns “Decoding acceleration can reduce zero-shot TTS latency while retaining
+    usable intelligibility and speaker fidelity”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_6ed7be9f5e939616
   left: multilingual-tts#continued_pretraining_and_fine_tuning_extend_language_coverage
@@ -40190,10 +40481,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.167235
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas zero-shot-tts concerns
+    “Separating linguistic content, speaker identity, and prosody improves controllability and speaker transfer”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_25b2c5cff78d0bcb
   left: spoken-language-model#unified_models_support_joint_understanding_and_generation
@@ -40397,10 +40691,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166959
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas spoken-language-model concerns “Discrete speech tokens make large-scale language modeling of audio
+    tractable by converting waveforms into compact prediction sequences”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_602246f6b2041b6f
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -41049,10 +41347,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.166023
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Parallel, multi-token, and speculative
+    decoding reduce serial speech-token generation cost”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d117a6e7ffd20cfb
   left: neural-codec#residual_quantization_supports_scalable_bitrate
@@ -42767,10 +43069,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.162
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: neural-codec concerns “Codec frame
+    rate and token hierarchy directly govern language-model sequence length, inference cost, and streaming latency”, whereas
+    zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker similarity rather than improving
+    both monotonically”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3eecfa6c9eb1707d
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -43720,10 +44025,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.158571
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas zero-shot-tts concerns “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific
+    fine-tuning”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_0a3c9a7846ed0640
   left: rlhf-speech#rlhf_alignment_is_data_and_compute_efficient
@@ -44017,10 +44325,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.158219
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: diffusion-tts concerns “Iterative
+    denoising remains a central latency and compute bottleneck for diffusion speech synthesis”, whereas zero-shot-tts concerns
+    “Reference-conditioned models can preserve unseen-speaker identity without speaker-specific fine-tuning”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c63164387498f763
   left: diffusion-tts#transformer_backbones_scale_diffusion_tts
@@ -44227,10 +44538,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.157895
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel
+    decoding”, whereas zero-shot-tts concerns “Zero-shot TTS frequently trades intelligibility against speaker similarity
+    rather than improving both monotonically”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_f2852fab12e6c7cd
   left: flow-matching#fm_surpasses_diffusion_speed_quality

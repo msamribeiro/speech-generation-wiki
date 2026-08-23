@@ -1,6 +1,22 @@
 schema_version: 1
 last_updated: 2026-08-23
 relationships:
+- id: rel_046c952dc60de46e
+  source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
+  target: zero-shot-tts#inference_acceleration_preserves_usable_quality
+  type: specialization
+  rationale: Parallel and speculative streaming decoding are specific acceleration mechanisms within the broader usable-quality
+    finding.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_0ef5d7332dfb8c42
+  source: diffusion-tts#iterative_sampling_limits_latency
+  target: flow-matching#fm_surpasses_diffusion_speed_quality
+  type: supports
+  rationale: The iterative diffusion bottleneck supports the comparative explanation for flow matching's inference-efficiency
+    advantage.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_1b6a20de587131eb
   source: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
   target: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
@@ -49,6 +65,13 @@ relationships:
     and end-to-end architectures retain complementary strengths.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_4b22c174cef17670
+  source: voice-conversion#flow_matching_improves_parallel_conversion
+  target: flow-matching#fm_inference_acceleration
+  type: specialization
+  rationale: Parallel voice conversion is a task-specific realization of low-step flow-matching acceleration.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_583eed0f1d70062f
   source: diffusion-tts#preference_optimization_can_steer_diffusion
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
@@ -63,6 +86,29 @@ relationships:
   type: refines
   rationale: The speech-to-speech benchmark claim refines the broader evaluation trade-off by locating current cascade advantages
     in semantic and reasoning accuracy while preserving end-to-end latency and paralinguistic qualifications.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_7b385ee219f15061
+  source: voice-conversion#flow_matching_improves_parallel_conversion
+  target: flow-matching#fm_surpasses_diffusion_speed_quality
+  type: specialization
+  rationale: The voice-conversion result is a task-specific instance of flow matching reducing sequential generation cost
+    relative to diffusion while retaining quality.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_87621803d5e0e99a
+  source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
+  target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
+  type: supports
+  rationale: Reducing serial speech-token cost supplies a mechanism that supports interactive spoken-model latency.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_88454dccfd9d8da1
+  source: autoregressive-codec-tts#parallel_and_masked_models_challenge_full_autoregression
+  target: neural-codec#parallel_latent_generation_improves_robustness
+  type: specialization
+  rationale: Masked codec speech generation is a narrower application of parallel latent generation reducing sequential cost
+    and autoregressive failure modes.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_99f8e997b4289728
@@ -81,12 +127,36 @@ relationships:
     generation utility.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_b31f3b4b3b5056c3
+  source: diffusion-tts#flow_and_consistency_offer_faster_paths
+  target: flow-matching#fm_surpasses_diffusion_speed_quality
+  type: supports
+  rationale: Lower-step flow and consistency alternatives support the finding that flow-like formulations offer faster paths
+    than conventional diffusion sampling.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_b4e92d33e3545823
+  source: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
+  target: streaming-tts#incremental_generation_reduces_first_packet_latency
+  type: tradeoff
+  rationale: Incremental streaming reduces first-packet delay specifically by relaxing the fully causal token-by-token deployment
+    cost identified for autoregressive codec generation.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_ca7119696b25a48c
   source: autoregressive-codec-tts#automatic_metrics_do_not_fully_predict_perceived_quality
   target: subjective-evaluation#automatic_metrics_diverge_from_human_perception
   type: specialization
   rationale: The autoregressive-codec finding is a task-specific instance of automatic metrics ranking systems differently
     from human perceptual judgments.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_d772e894cb743c16
+  source: diffusion-tts#distillation_and_caching_accelerate_diffusion
+  target: zero-shot-tts#inference_acceleration_preserves_usable_quality
+  type: specialization
+  rationale: Diffusion distillation and caching are architecture-specific routes to the broader zero-shot finding that acceleration
+    can preserve usable quality.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_e6b0093f2569a674
@@ -103,6 +173,14 @@ relationships:
   type: specialization
   rationale: Codec evaluation is a domain-specific instance of the broader finding that no single metric captures all relevant
     speech-generation quality dimensions.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_ee75c5c22795ee28
+  source: streaming-tts#incremental_generation_reduces_first_packet_latency
+  target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
+  type: specialization
+  rationale: Incremental acoustic generation is a concrete mechanism supporting the broader interactive-latency claim for
+    spoken language models.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_f727d5f51b38c24f
