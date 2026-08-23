@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-08-23
 
+- reconcile | 2025-Q3-corrective-review opened | prior 2025-Q3 decisions identified as agent adjudication, not human review | 110 AI-proposed acceptances reset to pending human decisions | registry: 49 relationships and 11 broader claims marked agent_proposed | propositions and rationales rewritten for explicit scope and meaning | snapshot blocked until human approval | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | finalized | 23 concepts and 406 clusters | 2,049 candidates reviewed | 110 accepted | 1,939 rejected | 0 deferred | registry: 49 direct relationships and 11 broader claims | 0 pending | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: post-training | 17 concepts and 55 clusters reviewed | 60 candidates | 12 accepted | 48 rejected | 0 deferred | 2 direct relationships and 1 broader claim recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3 | theme: streaming-agents | 10 concepts and 42 clusters reviewed | 89 candidates | 9 accepted | 80 rejected | 0 deferred | 3 direct relationships and 2 broader claims recorded | evidence cutoff: 2025-09-30 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
