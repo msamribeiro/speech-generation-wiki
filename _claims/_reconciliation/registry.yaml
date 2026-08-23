@@ -87,6 +87,14 @@ relationships:
     design as a first-order boundary on whether optimization succeeds.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_305006a27a5bbd20
+  source: evaluation-metrics#backchannel_generation_remains_unsolved
+  target: speech-to-speech#full_duplex_backchannel_interruption_unsolved
+  type: equivalent
+  rationale: Both claims identify current backchannel generation and timing as an unresolved full-duplex capability with matching
+    system scope and polarity.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_3733fe08a5fc7076
   source: gan-vocoder#causal_streaming_vocoders_can_approach_offline_quality
   target: streaming-tts#causal_codecs_and_vocoders_can_approach_offline_quality
@@ -206,6 +214,14 @@ relationships:
     relative to diffusion while retaining quality.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
+- id: rel_802f90e81782a85b
+  source: speech-to-speech#internal_interruption_detection_beats_external_vad
+  target: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
+  type: specialization
+  rationale: Internal interruption detection is a specific mechanism for the broader requirement to model turn-taking and
+    barge-in explicitly.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
 - id: rel_8286c4f407836da9
   source: evaluation-metrics#embedding_speaker_similarity_diverges_from_human_perception
   target: speaker-adaptation#automatic_similarity_metrics_do_not_replace_listener_judgments
@@ -243,6 +259,14 @@ relationships:
   type: specialization
   rationale: Cross-lingual voice conversion is a narrower setting of the identity, language, and accent-separation problem
     observed in cross-lingual cloning.
+  reviewed_on: 2026-08-23
+  accepted_in: 2025-Q3
+- id: rel_9661ee198d10a663
+  source: speech-to-speech#full_duplex_responsiveness_floorholding_tradeoff
+  target: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
+  type: related
+  rationale: Joint listening and speaking is an architectural prerequisite for the responsiveness–floor-holding trade-off,
+    but does not itself assert the same performance limitation.
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
 - id: rel_99f8e997b4289728
@@ -684,6 +708,98 @@ broader_claims:
   review_rationale: The member evidence converges across codecs, SSL features, conversion, cloning, adaptation, emotion, and
     prosody control. The broader node captures the shared control principle while retaining application-specific trade-offs
     locally.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_full_duplex_requires_joint_interaction_modeling
+  proposition: Natural full-duplex spoken interaction requires simultaneous listening and speaking plus explicit modeling
+    of turn transitions, interruption, overlap, and response timing.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: autoregressive-codec-tts#multistream_autoregression_enables_full_duplex_dialogue
+    relationship: supports
+    rationale: This local cluster contributes its autoregressive-codec-tts-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
+    relationship: equivalent
+    rationale: This local cluster contributes its spoken-language-model-specific evidence and scope to the reviewed broader
+      proposition.
+  - claim: streaming-tts#full_duplex_requires_simultaneous_listening_and_speaking
+    relationship: equivalent
+    rationale: This local cluster contributes its streaming-tts-specific evidence and scope to the reviewed broader proposition.
+  - claim: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
+    relationship: specialization
+    rationale: This local cluster contributes its streaming-tts-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - 2025.findings-ijcnlp.49
+  - 2025.naacl-long.484
+  - '2209.03143'
+  - '2408.02622'
+  - '2410.00037'
+  - '2410.03751'
+  - '2410.11190'
+  - '2410.17799'
+  - '2411.00774'
+  - '2411.13577'
+  - '2501.06282'
+  - '2503.04721'
+  - '2505.15670'
+  - '2507.23159'
+  - '2508.07375'
+  - '2509.04093'
+  - '2509.06502'
+  - '2509.22243'
+  - interspeech-2025-0739
+  - interspeech-2025-0874
+  - interspeech-2025-2564
+  - interspeech-2025-2660
+  contradicting_papers: []
+  refining_papers:
+  - 2025.acl-long.682
+  - 2025.findings-ijcnlp.49
+  - 2025.naacl-demo.21
+  - '2504.08528'
+  - '2505.15670'
+  - '2509.04702'
+  - '2509.06502'
+  - '2509.22243'
+  - interspeech-2025-0874
+  - interspeech-2025-2564
+  caveats:
+  - Architectural support for concurrent streams does not by itself establish human-like backchannel timing or interruption
+    robustness.
+  review_rationale: The clusters connect the architectural requirement for concurrent speech streams to the interaction behaviors
+    that make duplex operation useful.
+  evidence_cutoff: 2025-09-30
+  assessment_date: 2026-08-23
+  reviewed_in: 2025-Q3
+- id: broader_full_duplex_responsiveness_trades_against_floor_holding
+  proposition: Full-duplex dialogue systems trade rapid interruption responsiveness against stable floor holding and semantic
+    coherence, with current systems not dominating both axes.
+  status: strongly_supported
+  confidence: high
+  members:
+  - claim: evaluation-metrics#fullduplex_dialogue_has_fundamental_responsiveness_tradeoffs
+    relationship: equivalent
+    rationale: This local cluster contributes its evaluation-metrics-specific evidence and scope to the reviewed broader proposition.
+  - claim: speech-to-speech#full_duplex_responsiveness_floorholding_tradeoff
+    relationship: equivalent
+    rationale: This local cluster contributes its speech-to-speech-specific evidence and scope to the reviewed broader proposition.
+  supporting_papers:
+  - '2410.17799'
+  - '2503.04721'
+  - '2507.23159'
+  - '2509.06502'
+  - '2509.22243'
+  - interspeech-2025-0739
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The operating point depends on interaction scenario, thresholding, and the latency and error characteristics of the underlying
+    model.
+  review_rationale: The evaluation and system-level clusters state the same trade-off with matching scope and polarity and
+    shared direct evidence.
   evidence_cutoff: 2025-09-30
   assessment_date: 2026-08-23
   reviewed_in: 2025-Q3

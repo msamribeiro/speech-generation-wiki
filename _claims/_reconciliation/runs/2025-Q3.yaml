@@ -121,10 +121,11 @@ candidates:
     - spoken
     - trade-off
     aggregate_score: 0.531842
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_responsiveness_trades_against_floor_holding
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_responsiveness_trades_against_floor_holding;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_31d848f2cf2d5339
   left: evaluation-metrics#llm_audio_judge_reliability_is_contested
@@ -564,10 +565,11 @@ candidates:
     - streaming
     - turn
     aggregate_score: 0.435192
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_requires_joint_interaction_modeling;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_298329dc3edc248a
   left: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
@@ -687,10 +689,11 @@ candidates:
     - requires
     - turn
     aggregate_score: 0.400103
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_requires_joint_interaction_modeling;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_c6b8c6c75295ed07
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -906,10 +909,11 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.380258
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: equivalent
+  registry_target: rel_305006a27a5bbd20
+  rationale: Both claims identify current backchannel generation and timing as an unresolved full-duplex capability with matching
+    system scope and polarity.
   reconsideration_trigger: null
 - id: cand_deb1f425242f0029
   left: speaker-adaptation#reference_conditioning_enables_unseen_speaker_adaptation
@@ -1454,10 +1458,15 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.355668
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Current
+    full-duplex spoken dialogue models generate listener backchannels rarely and with poor timing alignment to human-judged
+    reference positions”, whereas speech-to-speech concerns “Commercial/closed-source full-duplex and spoken dialogue systems
+    currently show better-calibrated turn-taking, lower paralinguistic decision bias, and more topically coherent interruption
+    handling than open-source research systems”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a39ec188a90b99f0
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -1510,10 +1519,16 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.353164
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas speech-to-speech concerns “Backchannel generation and robust interruption handling remain largely
+    unsolved in current full-duplex spoken dialogue systems, with most systems showing near-zero or poorly-timed backchannel
+    behavior and degraded turn-taking accuracy under realistic conditions”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f6409d701a08558f
   left: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
@@ -1745,10 +1760,15 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.341536
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Current
+    full-duplex spoken dialogue models generate listener backchannels rarely and with poor timing alignment to human-judged
+    reference positions”, whereas speech-to-speech concerns “Full-duplex spoken dialogue systems face an inherent trade-off
+    between fast, low-latency responsiveness/interruption handling and semantic coherence or floor-holding robustness; no
+    current system achieves strong performance on both simultaneously across interaction scenarios”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_54f3c453231c35fe
   left: rlhf-speech#rlhf_posttraining_beats_sft_baseline
@@ -1826,10 +1846,11 @@ candidates:
     - full-duplex
     - speaking
     aggregate_score: 0.337719
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_requires_joint_interaction_modeling;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_1bc1f5c3e74f9e08
   left: multilingual-tts#flow_and_diffusion_support_multilingual_scaling
@@ -2847,10 +2868,11 @@ candidates:
     shared_terms:
     - full-duplex
     aggregate_score: 0.309409
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_requires_joint_interaction_modeling;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_7d33fd65375c0d3a
   left: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
@@ -3064,10 +3086,11 @@ candidates:
     - full-duplex
     - turn
     aggregate_score: 0.304881
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: Both reviewed local clusters materially contribute distinct scoped evidence to broader_full_duplex_requires_joint_interaction_modeling;
+    the broader node preserves their local assessments while presenting the shared field conclusion once.
   reconsideration_trigger: null
 - id: cand_53cbd621d2969f72
   left: disentanglement#explicit_disentanglement_enables_independent_multiattribute_control
@@ -3651,10 +3674,14 @@ candidates:
     - multi-turn
     - spoken
     aggregate_score: 0.295633
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Current
+    spoken dialogue systems degrade across multi-turn interactions, failing to sustain emotional coherence, informational
+    density, or long-range context recall as conversations lengthen”, whereas spoken-language-model concerns “Multi-turn spoken
+    interaction requires explicit mechanisms for conversational context, memory, and long-horizon state”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_abb5f18bd3f416cc
   left: spoken-language-model#interleaved_training_bridges_modalities
@@ -4182,10 +4209,11 @@ candidates:
     - interaction
     - interruption
     aggregate_score: 0.289327
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_9661ee198d10a663
+  rationale: Joint listening and speaking is an architectural prerequisite for the responsiveness–floor-holding trade-off,
+    but does not itself assert the same performance limitation.
   reconsideration_trigger: null
 - id: cand_be17308b8d7f8e1c
   left: multilingual-tts#explicit_language_conditioning_reduces_confusion
@@ -4259,10 +4287,16 @@ candidates:
     - full-duplex
     - semantic
     aggregate_score: 0.287986
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Automatic,
+    reproducible metrics combining ASR transcription, LLM-based semantic classification, VAD-based timing measurement, and
+    acoustic feature analysis can meaningfully evaluate full-duplex/turn-taking dialogue behavior without requiring human
+    annotation”, whereas speech-to-speech concerns “Full-duplex spoken dialogue systems face an inherent trade-off between
+    fast, low-latency responsiveness/interruption handling and semantic coherence or floor-holding robustness; no current
+    system achieves strong performance on both simultaneously across interaction scenarios”. Shared supporting papers do not
+    establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_2c8ac23011516139
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -4621,10 +4655,16 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.286177
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas speech-to-speech concerns “Commercial/closed-source full-duplex and spoken dialogue systems currently
+    show better-calibrated turn-taking, lower paralinguistic decision bias, and more topically coherent interruption handling
+    than open-source research systems”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_1e27a1aeead5a4d7
   left: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
@@ -5159,10 +5199,14 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.279311
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency, semantics, controllability,
+    and paralinguistic fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_c4b2dfeb45269b87
   left: neural-codec#token_rate_drives_sequence_cost
@@ -5635,10 +5679,13 @@ candidates:
     shared_terms:
     - full-duplex
     aggregate_score: 0.274919
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas streaming-tts concerns “Staged curricula, aligned duplex data, and joint component adaptation improve full-duplex
+    training”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_491e6aaffa08fa88
   left: speaker-adaptation#codec_prompting_supports_in_context_voice_cloning
@@ -5906,10 +5953,14 @@ candidates:
     shared_terms:
     - dialogue
     aggregate_score: 0.270911
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas speech-to-speech concerns “Integrating interruption / turn-taking detection internally within the dialogue model
+    (rather than relying on an external VAD module) yields more robust barge-in and interruption handling”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8614ec6dc1d27993
   left: multilingual-tts#dialect_identity_requires_explicit_modeling
@@ -7396,10 +7447,11 @@ candidates:
     - barge-in
     - dialogue
     aggregate_score: 0.259946
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_802f90e81782a85b
+  rationale: Internal interruption detection is a specific mechanism for the broader requirement to model turn-taking and
+    barge-in explicitly.
   reconsideration_trigger: null
 - id: cand_750b5685cf0a471d
   left: neural-codec#codec_representations_enable_multilingual_transfer
@@ -7477,10 +7529,15 @@ candidates:
     shared_terms:
     - both
     aggregate_score: 0.2588
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Full-duplex
+    spoken dialogue systems face an inherent trade-off between fast, low-latency responsiveness/interruption handling and
+    semantic coherence or floor-holding robustness; no current system achieves strong performance on both simultaneously across
+    interaction scenarios”, whereas spoken-language-model concerns “A shared language-model backbone can support both speech
+    understanding and speech generation across conversational tasks”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_72d0578722729b43
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -8100,10 +8157,15 @@ candidates:
     - full-duplex
     - interruption
     aggregate_score: 0.25311
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Backchannel
+    generation and robust interruption handling remain largely unsolved in current full-duplex spoken dialogue systems, with
+    most systems showing near-zero or poorly-timed backchannel behavior and degraded turn-taking accuracy under realistic
+    conditions”, whereas spoken-language-model concerns “Natural full-duplex speech interaction requires models to listen
+    while speaking and explicitly handle overlap, interruption, and turn transitions”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d84e1e8d2d9b5eec
   left: neural-codec#ssl_guidance_improves_codec_semantics
@@ -10744,10 +10806,15 @@ candidates:
     shared_terms:
     - full-duplex
     aggregate_score: 0.23938
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas spoken-language-model concerns “Natural full-duplex speech interaction requires models to listen while
+    speaking and explicitly handle overlap, interruption, and turn transitions”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_5e215147ab177cf2
   left: speech-to-speech#model_scale_doesnt_predict_quality
@@ -11379,10 +11446,14 @@ candidates:
     shared_terms:
     - interruption
     aggregate_score: 0.236807
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Integrating
+    interruption / turn-taking detection internally within the dialogue model (rather than relying on an external VAD module)
+    yields more robust barge-in and interruption handling”, whereas spoken-language-model concerns “Natural full-duplex speech
+    interaction requires models to listen while speaking and explicitly handle overlap, interruption, and turn transitions”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_26de0072f10d7ef1
   left: prosody-control#explicit_pitch_energy_duration_enable_controllability
@@ -11676,10 +11747,15 @@ candidates:
     shared_terms:
     - both
     aggregate_score: 0.234496
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas spoken-language-model concerns “A shared language-model backbone can support both speech understanding
+    and speech generation across conversational tasks”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e69748d24219d0b5
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -12380,10 +12456,15 @@ candidates:
     shared_terms:
     - paralinguistic
     aggregate_score: 0.231644
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Laughter,
+    sighs, fillers, emphasis, and other paralinguistic events require dedicated data and objectives beyond ordinary TTS training”,
+    whereas speech-to-speech concerns “Current speech-to-speech and spoken dialogue systems exhibit a persistent capability
+    gap between semantic/content understanding and paralinguistic or non-verbal audio understanding (emotion, ambient sound,
+    speaker traits), with paralinguistic dimensions consistently underperforming”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_dd5c64165958d51e
   left: diffusion-tts#iterative_sampling_limits_latency
@@ -12540,10 +12621,15 @@ candidates:
     - interaction
     - semantic
     aggregate_score: 0.231392
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Full-duplex
+    spoken dialogue systems face an inherent trade-off between fast, low-latency responsiveness/interruption handling and
+    semantic coherence or floor-holding robustness; no current system achieves strong performance on both simultaneously across
+    interaction scenarios”, whereas subjective-evaluation concerns “Speech-system benchmarks need multidimensional rubrics
+    that separate semantic success, naturalness, identity, prosody, and interaction behavior”. Shared supporting papers do
+    not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_38345a41360e0c87
   left: subjective-evaluation#preference_alignment_has_cross_dimension_tradeoffs
@@ -12865,10 +12951,15 @@ candidates:
     shared_terms:
     - spoken
     aggregate_score: 0.230578
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Current
+    speech-to-speech and spoken dialogue systems exhibit a persistent capability gap between semantic/content understanding
+    and paralinguistic or non-verbal audio understanding (emotion, ambient sound, speaker traits), with paralinguistic dimensions
+    consistently underperforming”, whereas spoken-language-model concerns “Multi-turn spoken interaction requires explicit
+    mechanisms for conversational context, memory, and long-horizon state”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4d41d70d58cc6b63
   left: streaming-tts#causality_and_lookahead_trade_latency_for_quality
@@ -13467,10 +13558,15 @@ candidates:
     - full-duplex
     - interruption
     aggregate_score: 0.228415
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Commercial/closed-source
+    full-duplex and spoken dialogue systems currently show better-calibrated turn-taking, lower paralinguistic decision bias,
+    and more topically coherent interruption handling than open-source research systems”, whereas spoken-language-model concerns
+    “Natural full-duplex speech interaction requires models to listen while speaking and explicitly handle overlap, interruption,
+    and turn transitions”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_6d74611e13073339
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -13705,10 +13801,14 @@ candidates:
     shared_terms:
     - spoken
     aggregate_score: 0.227489
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Parameter
+    count and model scale do not reliably predict speech-to-speech / spoken dialogue quality; smaller, well-trained or well-designed
+    models can match or exceed much larger counterparts on naturalness and task performance”, whereas spoken-language-model
+    concerns “Incremental tokenization, generation, and decoding enable spoken language models to operate at interactive latency”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_461eccdfa7d3b7d2
   left: flow-matching#fm_inference_acceleration
@@ -13999,10 +14099,14 @@ candidates:
     shared_terms:
     - enable
     aggregate_score: 0.226587
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas spoken-language-model concerns “Incremental tokenization, generation, and decoding enable spoken language models
+    to operate at interactive latency”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_6da1fee1dc65e044
   left: rlhf-speech#rlhf_posttraining_beats_sft_baseline
@@ -14534,10 +14638,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.224624
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Replacing
+    text with speech input introduces measurable reasoning, robustness, and instruction-following gaps even when the underlying
+    language model is capable”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different
+    trade-offs among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_7a64728adf8fe9f8
   left: autoregressive-codec-tts#rvq_structure_supports_staged_generation
@@ -14880,10 +14988,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.223753
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Parameter
+    count and model scale do not reliably predict speech-to-speech / spoken dialogue quality; smaller, well-trained or well-designed
+    models can match or exceed much larger counterparts on naturalness and task performance”, whereas streaming-tts concerns
+    “Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency, semantics, controllability,
+    and paralinguistic fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_21eb74948ee46d85
   left: evaluation-metrics#text_asr_based_sca_eval_misses_paralinguistic_signal
@@ -14955,10 +15068,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.223574
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Automatic
+    annotation and synthetic augmentation can expand emotional-speech training data when curated labels are scarce”, whereas
+    instruction-conditioned-tts concerns “Dialogue, scene, and narrative context improve expressive or coherent speech generation,
+    but gains diminish or reverse when context becomes too long”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3c2be9269a2df130
   left: disentanglement#emotion_speaker_disentanglement_enables_crossspeaker_transfer
@@ -15037,10 +15154,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.223245
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Flow and diffusion streaming decoders trade integration steps, caching, and algorithmic delay against generation
+    quality”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_0e9eea368635d10c
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -15492,10 +15612,14 @@ candidates:
     shared_terms:
     - explicit
     aggregate_score: 0.221901
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve autoregressive TTS robustness”,
+    whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions,
+    barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_c296edc2c967bcd7
   left: multilingual-tts#flow_and_diffusion_support_multilingual_scaling
@@ -15898,10 +16022,15 @@ candidates:
     shared_terms:
     - behavior
     aggregate_score: 0.220631
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Backchannel
+    generation and robust interruption handling remain largely unsolved in current full-duplex spoken dialogue systems, with
+    most systems showing near-zero or poorly-timed backchannel behavior and degraded turn-taking accuracy under realistic
+    conditions”, whereas subjective-evaluation concerns “Speech-system benchmarks need multidimensional rubrics that separate
+    semantic success, naturalness, identity, prosody, and interaction behavior”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_6dcc3861f774fff3
   left: speech-to-speech#frozen_decoupled_llm_preserves_text_capability
@@ -16051,10 +16180,13 @@ candidates:
     shared_terms:
     - context
     aggregate_score: 0.220162
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Dialogue
+    and narrative context improve the emotional appropriateness and cross-turn coherence of generated speech”, whereas spoken-language-model
+    concerns “Multi-turn spoken interaction requires explicit mechanisms for conversational context, memory, and long-horizon
+    state”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_20efa35abaef269c
   left: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
@@ -16554,10 +16686,15 @@ candidates:
     shared_terms:
     - end-to-end
     aggregate_score: 0.218794
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs
+    among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ad32fa962d67509c
   left: self-supervised-speech#semantic_acoustic_hierarchies_balance_coherence_and_fidelity
@@ -17377,10 +17514,15 @@ candidates:
     - latency
     - spoken
     aggregate_score: 0.216874
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas spoken-language-model concerns “Cascaded and end-to-end spoken systems retain complementary advantages
+    in reasoning quality, acoustic expressiveness, controllability, and latency”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f8e3702b767338c3
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -17967,10 +18109,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.21529
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Backchannel
+    generation and robust interruption handling remain largely unsolved in current full-duplex spoken dialogue systems, with
+    most systems showing near-zero or poorly-timed backchannel behavior and degraded turn-taking accuracy under realistic
+    conditions”, whereas spoken-language-model concerns “A shared language-model backbone can support both speech understanding
+    and speech generation across conversational tasks”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_64a8c7465d218ade
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -18980,10 +19127,16 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.213072
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas speech-to-speech concerns “Cascaded ASR+LLM+TTS pipelines currently achieve stronger performance than
+    end-to-end speech-to-speech systems on general spoken-instruction-following and reasoning benchmarks, though the gap is
+    narrowing with backbone LLM quality and is concentrated in semantic/task accuracy rather than paralinguistic fidelity”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_70d4091cc189c3e1
   left: diffusion-tts#latent_diffusion_reduces_generation_complexity
@@ -19739,10 +19892,14 @@ candidates:
     shared_terms:
     - full-duplex
     aggregate_score: 0.211197
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Natural
+    full-duplex speech interaction requires models to listen while speaking and explicitly handle overlap, interruption, and
+    turn transitions”, whereas streaming-tts concerns “Staged curricula, aligned duplex data, and joint component adaptation
+    improve full-duplex training”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_511142e35c84f7b6
   left: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
@@ -20703,10 +20860,14 @@ candidates:
     shared_terms:
     - streaming
     aggregate_score: 0.209707
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas streaming-tts concerns “Flow and diffusion streaming decoders trade integration steps, caching, and algorithmic
+    delay against generation quality”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_8eade9c7a112fd23
   left: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -21121,10 +21282,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.208424
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Laughter,
+    sighs, fillers, emphasis, and other paralinguistic events require dedicated data and objectives beyond ordinary TTS training”,
+    whereas self-supervised-speech concerns “SSL representations help unify speech understanding, generation, translation,
+    and dialogue within shared models”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_b740dd8fee39e49e
   left: self-supervised-speech#ssl_features_encode_linguistic_content
@@ -21272,10 +21437,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.207863
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency,
+    semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_85a89f1877abba4d
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -22358,10 +22527,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.204833
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Full-duplex speech systems require generation to incorporate an incoming audio
+    stream while speaking”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_8eea5af2c7083981
   left: spoken-language-model#discrete_tokens_enable_scalable_speech_language_modeling
@@ -22461,10 +22634,14 @@ candidates:
     shared_terms:
     - modeling
     aggregate_score: 0.20462
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Discrete
+    speech tokens make large-scale language modeling of audio tractable by converting waveforms into compact prediction sequences”,
+    whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions,
+    barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_165c9e3b724d99a3
   left: disentanglement#explicit_disentanglement_enables_independent_multiattribute_control
@@ -22801,10 +22978,14 @@ candidates:
     shared_terms:
     - explicit
     aggregate_score: 0.204043
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit
+    modeling of turn boundaries, interruptions, barge-in, and response timing”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_60d4d93aa9bc5703
   left: voice-conversion#zero_shot_any_to_any_conversion_is_feasible
@@ -23186,10 +23367,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.20292
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming performance remains uneven”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1698a7e089464848
   left: speaker-adaptation#flow_and_diffusion_support_scalable_adaptation
@@ -23464,10 +23648,14 @@ candidates:
     shared_terms:
     - training
     aggregate_score: 0.202703
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Staged curricula, aligned duplex data, and joint component adaptation improve
+    full-duplex training”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_03cf2bd9a517a794
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -23941,10 +24129,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.201815
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Full-duplex speech systems require generation
+    to incorporate an incoming audio stream while speaking”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_766d5c4f96c3f01d
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -24104,10 +24296,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.201464
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Keeping
+    the backbone LLM frozen, or decoupling speech generation into a separate module trained without updating LLM weights,
+    better preserves the LLM''s original text reasoning and instruction-following capability than end-to-end fine-tuning on
+    speech data”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries,
+    interruptions, barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_61b12b3b9f72f037
   left: evaluation-metrics#cascaded_vs_endtoend_sca_tradeoffs
@@ -24492,10 +24689,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.200915
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Full-duplex speech systems require generation to incorporate an incoming audio stream
+    while speaking”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8f17b454454bb026
   left: disentanglement#explicit_disentanglement_enables_independent_multiattribute_control
@@ -24909,10 +25109,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.199919
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Staged curricula, aligned duplex data, and joint component adaptation improve full-duplex training”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1b6f1c9e203ca89f
   left: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -25246,10 +25449,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.199159
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Full-duplex speech systems require generation to incorporate an incoming audio stream while speaking”. Shared
+    supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_3d6532c9bc4fe279
   left: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
@@ -26779,10 +26985,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.196154
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Current
+    spoken dialogue systems degrade across multi-turn interactions, failing to sustain emotional coherence, informational
+    density, or long-range context recall as conversations lengthen”, whereas subjective-evaluation concerns “Speech-system
+    benchmarks need multidimensional rubrics that separate semantic success, naturalness, identity, prosody, and interaction
+    behavior”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c6618933ed28902f
   left: self-supervised-speech#speaker_and_prosody_leakage_persists_in_ssl_features
@@ -27156,10 +27366,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.195252
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Dialogue
+    and narrative context improve the emotional appropriateness and cross-turn coherence of generated speech”, whereas spoken-language-model
+    concerns “Low- and variable-frame-rate speech tokenization reduces language-model sequence cost while preserving useful
+    content when allocation follows acoustic information density”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_8b67281bea1f7d30
   left: multilingual-tts#parameter_efficient_modules_support_language_extension
@@ -27692,10 +27906,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.194021
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Replacing
+    text with speech input introduces measurable reasoning, robustness, and instruction-following gaps even when the underlying
+    language model is capable”, whereas streaming-tts concerns “Low-frame-rate and compact speech tokenizers shorten sequences
+    and improve streaming efficiency”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_702b3f0eb1945770
   left: disentanglement#aggressive_disentanglement_intelligibility_tradeoff
@@ -27912,10 +28130,14 @@ candidates:
     shared_terms:
     - explicit
     aggregate_score: 0.193479
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas spoken-language-model concerns “Explicit speech–text alignment and modality connectors allow pretrained text language
+    models to acquire speech capabilities while preserving much of their linguistic reasoning”. Shared supporting papers do
+    not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_2915ef6a3bccfbd5
   left: flow-matching#fm_step_scheduling_improves_fidelity
@@ -28218,10 +28440,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.192873
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: instruction-conditioned-tts concerns
+    “Dialogue, scene, and narrative context improve expressive or coherent speech generation, but gains diminish or reverse
+    when context becomes too long”, whereas zero-shot-tts concerns “Long-form zero-shot generation benefits from explicit
+    alignment, chunking, or memory mechanisms that limit error accumulation”. Shared supporting papers do not establish a
+    direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_1ae3fd5ff4444df6
   left: disentanglement#aggressive_disentanglement_intelligibility_tradeoff
@@ -28680,10 +28906,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.192225
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Commercial/closed-source
+    full-duplex and spoken dialogue systems currently show better-calibrated turn-taking, lower paralinguistic decision bias,
+    and more topically coherent interruption handling than open-source research systems”, whereas spoken-language-model concerns
+    “A shared language-model backbone can support both speech understanding and speech generation across conversational tasks”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9df7d562581be10a
   left: neural-codec#codec_representations_enable_multilingual_transfer
@@ -28883,10 +29113,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.191881
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Staged curricula, aligned duplex data, and joint component adaptation improve full-duplex
+    training”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ee6bc94847c322fd
   left: spoken-language-model#semantic_acoustic_token_tradeoff
@@ -28933,10 +29166,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.191836
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Large,
+    diverse speech-instruction and conversational datasets expand spoken-language-model task coverage and generalization”,
+    whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency,
+    semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_f4a74972439e870b
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -29321,10 +29558,15 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.191324
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: evaluation-metrics concerns “Full-duplex
+    spoken dialogue systems face a fundamental trade-off between responsiveness (low latency, quick barge-in / jump-in) and
+    stability (avoiding false interruptions, floor-holding, or premature takeover), with no evaluated system dominating on
+    both axes”, whereas subjective-evaluation concerns “Speech-system benchmarks need multidimensional rubrics that separate
+    semantic success, naturalness, identity, prosody, and interaction behavior”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_9c877a30ddf94582
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -29859,10 +30101,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.190355
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation”,
+    whereas spoken-language-model concerns “A shared language-model backbone can support both speech understanding and speech
+    generation across conversational tasks”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_4f05fef0a5ab8420
   left: diffusion-tts#factorized_conditioning_improves_control
@@ -30556,10 +30802,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.189022
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “A shared autoregressive vocabulary over speech and text enables unified understanding and spoken generation in one language-model
+    backbone”, whereas emotion-synthesis concerns “Dialogue and narrative context improve the emotional appropriateness and
+    cross-turn coherence of generated speech”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_9604216a6c1b93d2
   left: rlhf-speech#preference_pair_construction_determines_dpo_success
@@ -31068,10 +31318,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188424
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Incremental
+    tokenization, generation, and decoding enable spoken language models to operate at interactive latency”, whereas streaming-tts
+    concerns “Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions, barge-in, and response
+    timing”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c72701f86edf8c72
   left: speaker-adaptation#identity_and_expressiveness_trade_off_during_adaptation
@@ -31116,10 +31369,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188373
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs
+    among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_595a77f9db42f2e9
   left: evaluation-metrics#text_asr_based_sca_eval_misses_paralinguistic_signal
@@ -31242,10 +31499,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.188049
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Low-frame-rate and compact speech tokenizers shorten sequences and improve
+    streaming efficiency”. Shared supporting papers do not establish a direct proposition-level relationship across those
+    scopes.'
   reconsideration_trigger: null
 - id: cand_a7dad8cf1709de42
   left: neural-codec#codec_tokens_support_unified_speech_systems
@@ -31590,10 +31851,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.1875
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve autoregressive TTS robustness”,
+    whereas streaming-tts concerns “Full-duplex speech systems require generation to incorporate an incoming audio stream
+    while speaking”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ebcf265485a9c162
   left: evaluation-metrics#automatic_mos_predictors_diverge_from_subjective_mos
@@ -31786,10 +32050,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.187342
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Replacing
+    text with speech input introduces measurable reasoning, robustness, and instruction-following gaps even when the underlying
+    language model is capable”, whereas streaming-tts concerns “Staged curricula, aligned duplex data, and joint component
+    adaptation improve full-duplex training”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_bcec1114a4d2a8af
   left: voice-conversion#prosody_timbre_factorization_improves_control
@@ -32609,10 +32877,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185908
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Dialogue
+    and narrative context improve the emotional appropriateness and cross-turn coherence of generated speech”, whereas spoken-language-model
+    concerns “Explicit speech–text alignment and modality connectors allow pretrained text language models to acquire speech
+    capabilities while preserving much of their linguistic reasoning”. Shared supporting papers do not establish a direct
+    proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_e85d83f1102c97a3
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -32713,10 +32985,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185752
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Natural
+    full-duplex speech interaction requires models to listen while speaking and explicitly handle overlap, interruption, and
+    turn transitions”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming systems make different
+    trade-offs among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting papers do not establish
+    a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_fff2cf3090624e90
   left: multilingual-tts#codec_language_models_enable_multilingual_generation
@@ -32787,10 +33063,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185669
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Low-
+    and variable-frame-rate speech tokenization reduces language-model sequence cost while preserving useful content when
+    allocation follows acoustic information density”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker,
+    and cross-domain streaming performance remains uneven”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_ebfcba680022a6f4
   left: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
@@ -32811,10 +33091,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185631
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Modular, cascaded, and end-to-end streaming
+    systems make different trade-offs among latency, semantics, controllability, and paralinguistic fidelity”. Shared supporting
+    papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_be5dc35ae48af0b5
   left: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
@@ -33084,10 +33368,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.185256
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Natural
+    full-duplex speech interaction requires models to listen while speaking and explicitly handle overlap, interruption, and
+    turn transitions”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming performance
+    remains uneven”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_dbbf47aa75a70c0d
   left: autoregressive-codec-tts#semantic_acoustic_hierarchy_balances_coherence_and_fidelity
@@ -33335,10 +33622,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.184804
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: emotion-synthesis concerns “Dialogue
+    and narrative context improve the emotional appropriateness and cross-turn coherence of generated speech”, whereas spoken-language-model
+    concerns “Interleaving speech and text during training improves cross-modal transfer and supports models that reason in
+    text while communicating in speech”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_a4267b93229f25c9
   left: multilingual-tts#text_front_ends_remain_a_low_resource_bottleneck
@@ -34123,10 +34414,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.183649
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions,
+    barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_78088a2f76a7259c
   left: multilingual-tts#shared_phonetic_representations_enable_transfer
@@ -35641,10 +35936,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.180591
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Cascaded
+    and end-to-end spoken systems retain complementary advantages in reasoning quality, acoustic expressiveness, controllability,
+    and latency”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries,
+    interruptions, barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_61210a599db7d5f3
   left: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -35765,10 +36064,14 @@ candidates:
     shared_terms:
     - quality
     aggregate_score: 0.180496
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Parameter
+    count and model scale do not reliably predict speech-to-speech / spoken dialogue quality; smaller, well-trained or well-designed
+    models can match or exceed much larger counterparts on naturalness and task performance”, whereas streaming-tts concerns
+    “Flow and diffusion streaming decoders trade integration steps, caching, and algorithmic delay against generation quality”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_29ce1fa6d1026ce8
   left: autoregressive-codec-tts#scaling_data_and_models_improves_ar_codec_tts
@@ -36202,10 +36505,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.179963
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Multi-turn
+    spoken interaction requires explicit mechanisms for conversational context, memory, and long-horizon state”, whereas streaming-tts
+    concerns “Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency, semantics, controllability,
+    and paralinguistic fidelity”. Shared supporting papers do not establish a direct proposition-level relationship across
+    those scopes.'
   reconsideration_trigger: null
 - id: cand_ba5166a5622bdd03
   left: rlhf-speech#rlhf_posttraining_beats_sft_baseline
@@ -37028,10 +37335,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178684
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming performance
+    remains uneven”. Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_baca010bc168da37
   left: multilingual-tts#zero_shot_models_generalize_to_unseen_languages_imperfectly
@@ -37251,10 +37561,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.178545
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Low-frame-rate and compact speech tokenizers
+    shorten sequences and improve streaming efficiency”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c64ab11590bd9315
   left: speaker-adaptation#parameter_efficient_adaptation_limits_forgetting
@@ -37657,10 +37971,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.177966
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: autoregressive-codec-tts concerns
+    “Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization
+    in autoregressive codec TTS”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of
+    turn boundaries, interruptions, barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_34ea5c7c988f4767
   left: neural-codec#token_rate_drives_sequence_cost
@@ -37704,10 +38022,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.177946
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: speech-to-speech concerns “Integrating
+    interruption / turn-taking detection internally within the dialogue model (rather than relying on an external VAD module)
+    yields more robust barge-in and interruption handling”, whereas spoken-language-model concerns “A shared language-model
+    backbone can support both speech understanding and speech generation across conversational tasks”. Shared supporting papers
+    do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_5b88ebf41d57e8bc
   left: spoken-language-model#interleaved_training_bridges_modalities
@@ -37726,10 +38048,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.177943
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Interleaving
+    speech and text during training improves cross-modal transfer and supports models that reason in text while communicating
+    in speech”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries,
+    interruptions, barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_d8b6c8082977d843
   left: speech-to-speech#speech_text_interleaving_improves_alignment
@@ -40285,10 +40611,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173889
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Staged curricula, aligned duplex data,
+    and joint component adaptation improve full-duplex training”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_4cbe4be172036b44
   left: neural-codec#semantic_acoustic_hierarchy_balances_coherence_fidelity
@@ -40691,10 +41021,13 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.173149
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “A
+    shared language-model backbone can support both speech understanding and speech generation across conversational tasks”,
+    whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and cross-domain streaming performance remains uneven”.
+    Shared supporting papers do not establish a direct proposition-level relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_d20ca9953da31b1d
   left: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -41844,10 +42177,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.171367
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Explicit
+    speech–text alignment and modality connectors allow pretrained text language models to acquire speech capabilities while
+    preserving much of their linguistic reasoning”, whereas streaming-tts concerns “Multilingual, noisy, unseen-speaker, and
+    cross-domain streaming performance remains uneven”. Shared supporting papers do not establish a direct proposition-level
+    relationship across those scopes.'
   reconsideration_trigger: null
 - id: cand_c75d8032e1ef7954
   left: diffusion-tts#transformer_backbones_scale_diffusion_tts
@@ -42995,10 +43332,14 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.169804
-  disposition: pending
+  disposition: rejected
   relationship: null
   registry_target: null
-  rationale: null
+  rationale: 'Rejected after comparing the full local records and role-specific evidence: spoken-language-model concerns “Spoken
+    language models remain less reliable on prosody, emotion, speaker traits, and non-verbal cues than on transcript-level
+    semantics”, whereas streaming-tts concerns “Natural streaming dialogue requires explicit modeling of turn boundaries,
+    interruptions, barge-in, and response timing”. Shared supporting papers do not establish a direct proposition-level relationship
+    across those scopes.'
   reconsideration_trigger: null
 - id: cand_b1aae4f1ce5091cc
   left: neural-codec#speaker_prosody_entanglement_is_persistent
