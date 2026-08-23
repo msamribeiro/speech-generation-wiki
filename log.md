@@ -22,6 +22,116 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - reconcile | 2025-Q3 candidate generation | 23 concepts and 406 clusters | 78,475 cross-concept pairs scored | 4,233 pre-cap candidates | 2,049 shared-evidence candidates emitted as pending | 0 relationships accepted | evidence cutoff: 2025-09-30 | assessment as of: 2026-08-19 | runtime: codex | provider: openai | model: gpt-5
 - integrate | temporal migration | 2,226 concept paper entries across 23 concepts | added canonical published_date only | 0 conflicts | idempotence verified | runtime: codex | provider: openai | model: gpt-5
 
+## 2026-08-22
+
+- ingest | 2603.20638 | OmniCodec: Low Frame Rate Universal Audio Codec with Semantic-Acoustic Disentanglement | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.20743 | The Binding Effect: Analyzing How Multi-Dimensional Cues Form Gender Bias in Instruction TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.21078 | Assessing the Ability of Neural TTS Systems to Model Consonant-Induced F0 Perturbation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.22252 | SelfTTS: cross-speaker style transfer through explicit embedding disentanglement and self-refinement using self-augmentation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.22267 | TiCo: Time-Controllable Spoken Dialogue Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.03279 | Rewriting TTS Inference Economics: Lightning V2 on Tenstorrent Achieves 4x Lower Cost Than NVIDIA L40S | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.23938 | OmniACBench: A Benchmark for Evaluating Context-Grounded Acoustic Control in Omni-Modal Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24116 | How Open is Open TTS? A Practical Evaluation of Open Source TTS Tools | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24144 | Semantic-Aware Interruption Detection in Spoken Dialogue Systems: Benchmark, Metric, and Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24430 | Iterate to Differentiate: Enhancing Discriminability and Reliability in Zero-Shot TTS Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.24589 | YingMusic-Singer-Plus: Controllable Singing Voice Synthesis with Flexible Lyric Manipulation and Annotation-free Melody Guidance | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.01247 | Combining Masked Language Modeling and Cross-Modal Contrastive Learning for Prosody-Aware TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
+## 2026-08-19
+
+- ingest | 2603.12565 | Speech-Worthy Alignment for Japanese SpeechLLMs via Direct Preference Optimization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.13518 | VoXtream2: Full-stream TTS with dynamic speaking rate control | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14032 | Beyond Two-stage Diffusion TTS: Joint Structure and Content Refinement via Jump Diffusion | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14035 | Probing neural audio codecs for distinctions among English nuclear tunes | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14267 | DiFlowDubber: Discrete Flow Matching for Automated Video Dubbing via Cross-Modal Alignment and Synchronization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14328 | CodecMOS-Accent: A MOS Benchmark of Resynthesized and TTS Speech from Neural Codecs Across English Accents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14432 | Affectron: Emotional Speech Synthesis with Affective and Contextually Aligned Nonverbal Vocalizations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14853 | WhispSynth: Scaling Multilingual Whisper Corpus through Real Data Curation and A Novel Pitch-free Generative Framework | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14877 | SoulX-Duplug: Plug-and-Play Streaming State Prediction Module for Realtime Full-Duplex Speech Conversation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.14889 | SDiaReward: Modeling and Benchmarking Spoken Dialogue Rewards with Modality and Colloquialness | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.15352 | NV-Bench: Benchmark of Nonverbal Vocalization Synthesis for Expressive Text-to-Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.15981 | Aligning Paralinguistic Understanding and Generation in Speech LLMs via Multi-Task Reinforcement Learning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.16280 | CAST-TTS: A Simple Cross-Attention Framework for Unified Timbre Control in TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.16483 | On the Emotion Understanding of Synthesized Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.16783 | SpokenUS: A Spoken User Simulator for Task-Oriented Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.17061 | Collecting Prosody in the Wild: A Content-Controlled, Privacy-First Smartphone Protocol and Empirical Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.08558 | WAND: Windowed Attention and Knowledge Distillation for Efficient Autoregressive Text-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2604.08562 | Neural networks for Text-to-Speech evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.17231 | Neuron-Level Emotion Control in Speech-Generative Large Audio-Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.17837 | The Silent Thought: Modeling Internal Cognition in Full-Duplex Spoken Dialogue Models via Latent Reasoning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.18359 | Towards Interpretable Framework for Neural Audio Codecs via Sparse Autoencoders: A Case Study on Accent Information | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.19798 | Borderless Long Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.19831 | Gesture2Speech: How Far Can Hand Movements Shape Expressive Speech? | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.25750 | Sommelier: Scalable Open Multi-turn Audio Pre-processing for Full-duplex Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
+## 2026-08-15
+
+- ingest | 2603.04219 | ZeSTA: Zero-Shot TTS Augmentation with Domain-Conditioned Training for Data-Efficient Personalized Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05299 | WavSLM: Single-Stream Speech Language Modeling via WavLM Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05373 | Hierarchical Decoding for Discrete Speech Synthesis with Multi-Resolution Spoof Detection | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05413 | Building Enterprise Realtime Voice Agents from Scratch: A Technical Tutorial | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05887 | Reconstruct! Don't Encode: Self-Supervised Representation Reconstruction Loss for High-Intelligibility and Low-Latency Streaming Neural Audio Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.05977 | Activation Steering for Accent-Neutralized Zero-Shot Text-To-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.06079 | StreamVoiceAnon+: Emotion-Preserving Streaming Speaker Anonymization via Frame-Level Acoustic Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.06444 | Prosodic Boundary-Aware Streaming Generation for LLM-Based TTS with Streaming Text Input | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07513 | Bolbosh: Script-Aware Flow Matching for Kashmiri Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07534 | Accent Vector: Controllable Accent Manipulation for Multilingual TTS Without Accented Data | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07550 | Learning-free L2-Accented Speech Generation using Phonological Rules | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07551 | Targeted Speaker Poisoning Framework in Zero-Shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.07599 | StyleBench: Evaluating Speech Language Models on Conversational Speaking Style Control | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08216 | DualTurn: Learning Turn-Taking from Dual-Channel Generative Speech Pretraining | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08574 | Scalable Neural Vocoder from Range-Null Space Decomposition | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.08977 | Universal Speech Content Factorization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09120 | Emotion-Aware Prefix: Towards Explicit Emotion Control in Voice Conversion Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09180 | DuplexCascade: Full-Duplex Speech-to-Speech Dialogue with VAD-Free Cascaded ASR-LLM-TTS Pipeline and Micro-Turn Optimization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.09627 | Speech-Omni-Lite: Portable Speech Interfaces for Vision-Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.10371 | Speech Codec Probing from Semantic and Phonetic Perspectives | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.10904 | When Fine-Tuning Fails and when it Generalises: Role of Data Diversity and Mixed Training in LLM-based TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.16924 | SimulU: Training-free Policy for Long-form Simultaneous Speech-to-Speech Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11678 | RAF: Relativistic Adversarial Feedback For Universal Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11683 | Causal Prosody Mediation for Text-to-Speech:Counterfactual Training of Duration, Pitch, and Energy in FastSpeech2 | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.11947 | Resurfacing Paralinguistic Awareness in Large Audio Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.12342 | MamTra: A Hybrid Mamba-Transformer Backbone for Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
+## 2026-08-14
+
+- ingest | 2602.18104 | MeanVoiceFlow: One-step Nonparallel Voice Conversion with Mean Flows | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.19574 | CTC-TTS: LLM-based dual-streaming text-to-speech with CTC alignment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23068 | TADA: A Generative Framework for Speech Modeling via Text-Acoustic Dual Alignment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23266 | Discourse-Aware Dual-Track Streaming Response for Low-Latency Spoken Dialogue Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.23765 | DashengTokenizer: One layer is enough for unified audio understanding and generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.01467 | Conversational Speech Naturalness Predictor | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.01476 | Entropy-Guided GRVQ for Ultra-Low Bitrate Neural Speech Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.02022 | CodecFlow: Efficient Bandwidth Extension via Conditional Flow Matching in Neural Codec Latent Space | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2603.04145 | VietNormalizer: An Open-Source, Dependency-Free Python Library for Vietnamese Text Normalization in TTS and NLP Applications | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
+## 2026-08-13
+
+- ingest | 2602.00594 | Kanade: A Simple Disentangled Tokenizer for Spoken Language Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.02591 | VividVoice: A Unified Framework for Scene-Aware Visually-Driven Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.03420 | CoCoEmo: Composable and Controllable Human-Like Emotional TTS via Activation Steering | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.09041 | DSFlow: Dual Supervision and Step-Aware Architecture for One-Step Flow Matching Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.04160 | PFluxTTS: Hybrid Flow-Matching TTS with Robust Cross-Lingual Voice Cloning and Inference-Time Model Fusion | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.04683 | UniAudio 2.0: A Unified Audio Language Model with Text-Aligned Factorized Audio Tokenization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.05207 | ARCHI-TTS: A Flow-Matching-Based TTS Model with Self-Supervised Semantic Aligner and Accelerated Inference | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.05443 | Wave-Trainer-Fit: Neural Vocoder with Trainable Prior and Fixed-Point Iteration towards High-Quality Speech Generation from SSL features | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.05770 | Zero-Shot TTS With Enhanced Audio Prompts: BSc Submission For The 2026 Wildspoof Challenge TTS Track | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.06180 | STACodec: Semantic Token Assignment for Balancing Acoustic Fidelity and Semantic Information in Audio Codecs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.07803 | SoulX-Singer: Towards High-Quality Zero-Shot Singing Voice Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.09823 | Covo-Audio Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.10164 | Emotion-Coherent Speech Data Augmentation and Self-Supervised Contrastive Style Training for Enhancing Kids's Story Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2506.04518 | Towards Efficient Speech-Text Jointly Decoding within One Speech Language Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.10735 | Calliope: A TTS-based Narrated E-book Creator Ensuring Exact Synchronization, Privacy, and Layout Fidelity | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.10934 | MOSS-Audio-Tokenizer: Scaling Audio Tokenizers for Future Audio Foundation Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.11072 | Simultaneous Speech-to-Speech Translation Without Aligned Data | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.11477 | SLD-L2S: Hierarchical Subspace Latent Diffusion for High-Fidelity Lip to Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.12135 | WavBench: Benchmarking Reasoning, Colloquialism, and Paralinguistics for End-to-End Spoken Dialogue Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.13891 | GSRM: Generative Speech Reward Model for Speech RLHF | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.14664 | Probing Human Articulatory Constraints in End-to-End TTS with Reverse and Mismatched Speech-Text Directions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.14686 | Disentangling Pitch and Creak for Speaker Identity Preservation in Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.15491 | The Equalizer: Introducing Shape-Gain Decomposition in Neural Audio Codecs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2602.17157 | CC-G2PnP: Streaming Grapheme-to-Phoneme and Prosody with Conformer-CTC for Unsegmented Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-08-12
 
 - ingest | 2601.16023 | Timbre-Aware LLM-based Direct Speech-to-Speech Translation Extendable to Multiple Language Pairs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
