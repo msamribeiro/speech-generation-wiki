@@ -99,60 +99,42 @@ relationships:
   source: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
   target: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
   type: related
-  rationale: 'The source cluster states: "Automatic intelligibility, signal, and speaker metrics do not fully capture
-    listener-perceived voice-conversion quality." The target cluster states: "Automatic intelligibility and speaker-similarity
-    metrics do not fully capture perceived cloning quality." The proposed related relation means that the clusters
-    share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is not justified.
-    The original agent adjudication further noted: Both claims establish the same limitation of automatic intelligibility
-    and identity metrics, but retain distinct voice-conversion and zero-shot-cloning populations, so a related link
-    is warranted rather than equivalence.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Both clusters report that intelligibility and speaker-related automatic metrics do not fully capture
+    listener-perceived quality. They are related rather than equivalent because one concerns voice-conversion systems
+    and the other concerns zero-shot voice cloning, with different application populations and evaluation conditions.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_20d9d582181c57af
   source: gan-vocoder#causal_streaming_vocoders_can_approach_offline_quality
   target: streaming-tts#causality_and_lookahead_trade_latency_for_quality
   type: refines
-  rationale: 'The source cluster states: "Causal GAN vocoders can approach offline quality with limited lookahead,
-    normalization changes, or teacher distillation." The target cluster states: "Causal constraints and limited
-    lookahead reduce delay but can degrade quality unless the model is adapted explicitly." The proposed refines
-    relation means that the source adds a boundary, condition, failure mode, or more precise formulation to the
-    target. The original agent adjudication further noted: The GAN-vocoder evidence refines the general causality
-    trade-off by identifying limited lookahead, normalization changes, and distillation as conditions under which
-    quality loss can be mitigated.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The causal GAN-vocoder evidence refines the general causality-and-lookahead trade-off by identifying
+    limited lookahead, normalization changes, and teacher distillation as concrete ways to mitigate the quality
+    loss associated with lower-delay operation.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_22890ef4dd862881
   source: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
   target: rlhf-speech#rlhf_posttraining_beats_sft_baseline
   type: specialization
-  rationale: 'The source cluster states: "Preference and reinforcement-learning post-training can improve intelligibility,
-    speaker similarity, and perceptual quality beyond supervised autoregressive TTS." The target cluster states:
-    "Preference- or reward-based post-training (DPO, KTO, GRPO, differentiable-reward optimization) for TTS/SLM
-    generation consistently improves intelligibility, speaker similarity, or naturalness beyond what supervised
-    fine-tuning alone achieves." The proposed specialization relation means that the source is a narrower task,
-    architecture, or deployment instance of the target. The original agent adjudication further noted: The autoregressive-codec
-    result is a task-and-architecture-specific instance of the broader speech preference-post-training improvement
-    over supervised fine-tuning.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'The autoregressive-codec TTS claim is an architecture-specific instance of the broader speech post-training
+    result: preference or reward optimization improves intelligibility, speaker similarity, or perceptual quality
+    beyond supervised fine-tuning.'
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_22a9897138fc1b1f
   source: rlhf-speech#preference_pair_construction_determines_dpo_success
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
   type: refines
-  rationale: 'The source cluster states: "The construction strategy for DPO/preference training pairs in speech
-    generation (checkpoint diversity, cross-model vs. self-comparison sourcing, natural vs. synthetic pairing, automatic
-    scoring of noisy intermediate states) has a first-order effect on alignment outcome quality, independent of
-    the DPO objective itself." The target cluster states: "Preference-based optimization can improve targeted perceptual
-    attributes beyond supervised or metric-only training." The proposed refines relation means that the source adds
-    a boundary, condition, failure mode, or more precise formulation to the target. The original agent adjudication
-    further noted: The preference-pair construction result refines the general perceptual-improvement claim by identifying
-    data-pair design as a first-order boundary on whether optimization succeeds.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The preference-pair construction claim refines the general perceptual-improvement result by identifying
+    checkpoint diversity, comparison source, natural-versus-synthetic pairing, and treatment of noisy intermediate
+    states as conditions that materially determine whether preference optimization succeeds.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_305006a27a5bbd20
   source: evaluation-metrics#backchannel_generation_remains_unsolved
   target: speech-to-speech#full_duplex_backchannel_interruption_unsolved
@@ -171,15 +153,12 @@ relationships:
   source: gan-vocoder#causal_streaming_vocoders_can_approach_offline_quality
   target: streaming-tts#causal_codecs_and_vocoders_can_approach_offline_quality
   type: specialization
-  rationale: 'The source cluster states: "Causal GAN vocoders can approach offline quality with limited lookahead,
-    normalization changes, or teacher distillation." The target cluster states: "Causal codecs and vocoders can
-    approach offline reconstruction quality with suitable architecture and training." The proposed specialization
-    relation means that the source is a narrower task, architecture, or deployment instance of the target. The original
-    agent adjudication further noted: The GAN-vocoder result is a narrower architectural instance of the streaming
-    claim that causal codec and vocoder designs can approach offline quality after explicit adaptation.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The causal GAN-vocoder claim is a narrower architectural instance of the result that causal codecs
+    and vocoders can approach offline reconstruction quality when their architecture and training are adapted explicitly
+    for streaming operation.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_3a387fd465397d09
   source: voice-conversion#robust_conversion_requires_domain_invariance
   target: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
@@ -197,16 +176,12 @@ relationships:
   source: streaming-tts#modular_and_end_to_end_systems_have_distinct_tradeoffs
   target: spoken-language-model#cascaded_and_end_to_end_systems_have_complementary_strengths
   type: specialization
-  rationale: 'The source cluster states: "Modular, cascaded, and end-to-end streaming systems make different trade-offs
-    among latency, semantics, controllability, and paralinguistic fidelity." The target cluster states: "Cascaded
-    and end-to-end spoken systems retain complementary advantages in reasoning quality, acoustic expressiveness,
-    controllability, and latency." The proposed specialization relation means that the source is a narrower task,
-    architecture, or deployment instance of the target. The original agent adjudication further noted: The streaming
-    claim is the latency-sensitive specialization of the broader spoken-system finding that cascaded and end-to-end
-    architectures retain complementary strengths.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The streaming-system claim specializes the broader spoken-system architecture comparison to latency-sensitive
+    operation, where modular, cascaded, and end-to-end designs make different trade-offs among latency, semantics,
+    controllability, and paralinguistic fidelity.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_43ad32dc4d5683b9
   source: transformer-enc-dec-tts#explicit_duration_prediction_improves_parallel_tts
   target: prosody-control#explicit_pitch_energy_duration_enable_controllability
@@ -266,33 +241,21 @@ relationships:
   source: diffusion-tts#preference_optimization_can_steer_diffusion
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
   type: specialization
-  rationale: 'The source cluster states: "Preference optimization can steer diffusion trajectories toward human-aligned
-    speech attributes." The target cluster states: "Preference-based optimization can improve targeted perceptual
-    attributes beyond supervised or metric-only training." The proposed specialization relation means that the source
-    is a narrower task, architecture, or deployment instance of the target. The original agent adjudication further
-    noted: Diffusion trajectory steering is an architecture-specific instance of preference optimization improving
-    targeted perceptual attributes.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Steering diffusion trajectories with preference optimization is an architecture-specific instance of
+    using preference-based training to improve targeted, listener-relevant speech attributes.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_6a2203a04cbad29b
   source: speech-to-speech#cascade_outperforms_e2e_on_benchmarks
   target: evaluation-metrics#cascaded_vs_endtoend_sca_tradeoffs
   type: refines
-  rationale: 'The source cluster states: "Cascaded ASR+LLM+TTS pipelines currently achieve stronger performance
-    than end-to-end speech-to-speech systems on general spoken-instruction-following and reasoning benchmarks, though
-    the gap is narrowing with backbone LLM quality and is concentrated in semantic/task accuracy rather than paralinguistic
-    fidelity." The target cluster states: "Cascaded (ASR+LLM+TTS) spoken dialogue pipelines and end-to-end speech
-    LLMs show complementary rather than uniformly dominant strengths: cascades tend to win on semantic/content quality
-    and output audio quality, while end-to-end systems tend to win on latency, with the paralinguistic-handling
-    gap re-emerging for cascades regardless of overall parity." The proposed refines relation means that the source
-    adds a boundary, condition, failure mode, or more precise formulation to the target. The original agent adjudication
-    further noted: The speech-to-speech benchmark claim refines the broader evaluation trade-off by locating current
-    cascade advantages in semantic and reasoning accuracy while preserving end-to-end latency and paralinguistic
-    qualifications.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The speech-to-speech benchmark claim refines the broader cascade-versus-end-to-end comparison by locating
+    current cascade advantages in semantic instruction-following and reasoning, while preserving end-to-end latency
+    advantages and the separate limitations of cascades for paralinguistic fidelity.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_6b7ed25949c91ff1
   source: neural-codec#codec_tokens_enable_language_model_generation
   target: self-supervised-speech#discrete_ssl_units_enable_language_modeling
@@ -500,6 +463,16 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_8cabbbc9cd73fcf3
+  source: flow-matching#fm_vocoder_speed_gan_gap
+  target: gan-vocoder#flow_and_diffusion_trade_speed_for_iterative_quality
+  type: specialization
+  rationale: 'The flow-matching vocoder claim is a narrower instance of the general iterative-refinement trade-off:
+    flow matching can match or improve perceptual, pitch, or periodicity measures, while GAN decoding retains a
+    substantial inference-speed advantage.'
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_9e1a1a69a10a7308
   source: neural-codec#codec_evaluation_lacks_metric_consensus
   target: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
@@ -511,9 +484,20 @@ relationships:
     means that the source is a narrower task, architecture, or deployment instance of the target. The original agent
     adjudication further noted: The neural-codec claim specializes the general metric-divergence result to codec
     reconstruction and downstream generation utility.'
-  reviewed_on: 2026-08-23
+  reviewed_on: '2026-08-23'
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_1988fe83b976e2f3
+  source: evaluation-metrics#intrusive_spectral_distance_metrics_diverge_from_perceptual_quality
+  target: neural-codec#codec_evaluation_lacks_metric_consensus
+  type: related
+  rationale: The clusters overlap in showing that objective codec-quality measurements can disagree with listener
+    perception. They are related rather than a specialization because the neural-codec claim also covers subjective
+    protocols and downstream generation utility, whereas the evaluation-metrics claim is specifically about intrusive
+    reference-based distortion metrics across codec and vocoder conditions.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_b31f3b4b3b5056c3
   source: diffusion-tts#flow_and_consistency_offer_faster_paths
   target: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -572,15 +556,12 @@ relationships:
   source: autoregressive-codec-tts#automatic_metrics_do_not_fully_predict_perceived_quality
   target: subjective-evaluation#automatic_metrics_diverge_from_human_perception
   type: specialization
-  rationale: 'The source cluster states: "Automatic intelligibility and signal-quality metrics do not reliably predict
-    perceived naturalness for autoregressive codec speech." The target cluster states: "Automatic speech-quality
-    and task metrics frequently rank systems differently from human perceptual judgments." The proposed specialization
-    relation means that the source is a narrower task, architecture, or deployment instance of the target. The original
-    agent adjudication further noted: The autoregressive-codec finding is a task-specific instance of automatic
-    metrics ranking systems differently from human perceptual judgments.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'The autoregressive-codec finding is a specialization of the broader human-perception discrepancy:
+    it identifies a particular synthesis architecture in which intelligibility and signal-quality metrics do not
+    reliably predict perceived naturalness.'
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_d772e894cb743c16
   source: diffusion-tts#distillation_and_caching_accelerate_diffusion
   target: zero-shot-tts#inference_acceleration_preserves_usable_quality
@@ -611,31 +592,22 @@ relationships:
   source: rlhf-speech#rlhf_training_instability_requires_regularization_or_early_stopping
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
   type: tradeoff
-  rationale: 'The source cluster states: "RL or DPO fine-tuning of speech generation models (autoregressive or diffusion-based)
-    is prone to training instability, capability collapse, or monotonic degradation of held-out quality metrics
-    without explicit regularization (e.g. cross-entropy penalty) or early stopping, particularly as training progresses
-    beyond an optimal point." The target cluster states: "Preference-based optimization can improve targeted perceptual
-    attributes beyond supervised or metric-only training." The proposed tradeoff relation means that the clusters
-    describe coupled benefits and costs that must be interpreted together. The original agent adjudication further
-    noted: The pair records a material trade-off: preference optimization can improve targeted perception, but extended
-    RL or DPO training can destabilize or collapse held-out quality without regularization or early stopping.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'The claims describe a coupled benefit and risk in the same optimization process: preference training
+    can improve its targeted perceptual attribute, while extended or insufficiently regularized RL or DPO training
+    can degrade held-out quality, speaker similarity, or broader capabilities.'
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_e9f5d208f55b1720
   source: neural-codec#codec_evaluation_lacks_metric_consensus
   target: evaluation-metrics#no_single_metric_suffices_multidimensional_evaluation_needed
   type: specialization
-  rationale: 'The source cluster states: "Neural codec evaluation lacks a single reliable proxy for listener-perceived
-    quality and downstream generation utility." The target cluster states: "No single automatic or subjective metric
-    captures overall speech-generation quality; gains on one evaluated dimension (naturalness, intelligibility,
-    similarity, diversity) frequently trade off against another, so multi-metric, multi-dimensional evaluation is
-    necessary." The proposed specialization relation means that the source is a narrower task, architecture, or
-    deployment instance of the target. The original agent adjudication further noted: Codec evaluation is a domain-specific
-    instance of the broader finding that no single metric captures all relevant speech-generation quality dimensions.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'The neural-codec claim is a domain-specific instance of the broader multidimensional-evaluation claim:
+    codec reconstruction quality, listener perception, and downstream generation utility expose different failure
+    modes and cannot be represented reliably by one aggregate proxy.'
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_ee75c5c22795ee28
   source: streaming-tts#incremental_generation_reduces_first_packet_latency
   target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -653,15 +625,12 @@ relationships:
   source: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
   type: specialization
-  rationale: 'The source cluster states: "Preference and reinforcement-learning post-training can improve intelligibility,
-    speaker similarity, and perceptual quality beyond supervised autoregressive TTS." The target cluster states:
-    "Preference-based optimization can improve targeted perceptual attributes beyond supervised or metric-only training."
-    The proposed specialization relation means that the source is a narrower task, architecture, or deployment instance
-    of the target. The original agent adjudication further noted: The autoregressive-codec claim is a narrower synthesis
-    setting for the perceptual finding that preference optimization can improve targeted listener-relevant attributes.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The autoregressive-codec TTS finding is a specialization of the perceptual-evaluation claim because
+    it shows preference or reinforcement-learning post-training improving listener-relevant attributes in one synthesis
+    architecture beyond supervised training.
+  reviewed_on: '2026-08-29'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_f7d1924b1ac12654
   source: multilingual-tts#codec_language_models_enable_multilingual_generation
   target: neural-codec#codec_representations_enable_multilingual_transfer
@@ -677,10 +646,12 @@ relationships:
   review_status: agent_proposed
 broader_claims:
 - id: broader_automatic_judges_require_scoped_human_validation
-  proposition: Automatic LLM, audio-language-model, and learned-metric judges sometimes reproduce coarse or clearly
-    separated human rankings of speech systems. They remain unreliable for utterance-level prosody, emotion, other
-    paralinguistic behavior, and comparisons between near-tied systems, so each judge must be validated against
-    human ratings in the same task, domain, and scoring granularity before it replaces listener evaluation.
+  proposition: Automatic speech evaluators—including LLM or audio-language-model judges and learned task- or quality-specific
+    metrics—can reproduce some human rankings when systems are clearly separated and evaluation conditions match
+    the evaluator’s validation domain. Their agreement degrades for near-tied systems, utterance-level prosody or
+    emotion, non-verbal or paralinguistic cues, and domain shifts. They should therefore be validated against human
+    ratings for the same task, domain, attribute, and scoring granularity before their scores are treated as substitutes
+    for listener evaluation.
   status: strongly_supported
   confidence: high
   members:
@@ -817,15 +788,16 @@ broader_claims:
   - interspeech-2025-2787
   - interspeech-2025-bokkahallisatish25_interspeech
   caveats:
-  - Reliability depends on the evaluated attribute, score separation, judge modality, and test domain; this claim
-    does not reject automatic judges for coarse screening.
-  review_rationale: The member clusters converge on the same bounded conclusion across general speech quality, dialogue,
-    instruction adherence, and emotion evaluation. Their deduplicated evidence supports usefulness for some coarse
-    judgments and repeated failure on fine-grained or non-verbal attributes.
+  - Reliability depends on the evaluated attribute, score separation, evaluator modality, and test domain; the claim
+    does not reject automatic evaluators for validated coarse screening or comparisons between clearly separated
+    systems.
+  review_rationale: 'The member clusters converge on a bounded conclusion across speech quality, dialogue, instruction
+    adherence, and emotion evaluation: automatic evaluators can reproduce some human rankings under matched or clearly
+    separated conditions, but repeatedly diverge for fine-grained, non-verbal, near-tied, or shifted-domain judgments.'
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-08-29'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_disentanglement_improves_multiattribute_control
   proposition: Representing linguistic content, speaker identity or timbre, prosody, emotion, and style as separate
     factors allows a system to change or transfer one attribute with less unintended change to the others. Current
@@ -1264,9 +1236,9 @@ broader_claims:
     a qualified field-level assessment: learned metrics are useful improvements over classical proxies, not universal
     substitutes for listeners.'
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-08-29'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_preference_posttraining_improves_targeted_speech_attributes
   proposition: Preference- and reward-based post-training can improve explicitly targeted attributes such as intelligibility,
     speaker similarity, naturalness, emotion, or instruction adherence beyond supervised fine-tuning in autoregressive,
@@ -1664,10 +1636,11 @@ broader_claims:
   reviewed_in: 2025-Q3
   review_status: agent_proposed
 - id: broader_speech_evaluation_requires_multidimensional_coverage
-  proposition: Speech-system evaluation must score semantic correctness, intelligibility, naturalness, speaker identity,
-    prosody or expression, and interaction behavior separately. A transcript-only score or one aggregate quality
-    number can conceal a failure on any of these other dimensions and cannot show whether an improvement on one
-    dimension degraded another.
+  proposition: Speech-system evaluations should report separately the dimensions material to the task—for example,
+    semantic correctness and intelligibility, naturalness, speaker identity, prosody or expression, and, for interactive
+    systems, turn-taking or other interaction behavior. Transcript-only scores or a single aggregate quality score
+    can conceal failures on unmeasured dimensions and cannot reveal when an improvement on one dimension degrades
+    another.
   status: strongly_supported
   confidence: high
   members:
@@ -1806,13 +1779,13 @@ broader_claims:
   caveats:
   - The necessary dimensions and protocols remain task-specific; multidimensional coverage does not imply that every
     benchmark needs every metric.
-  review_rationale: The clusters independently show that speech quality is multi-axis and that text or aggregate
-    proxies conceal acoustic and interaction failures. The broader claim preserves those task-specific scopes while
-    preventing field synthesis from repeating the same evaluation principle.
+  review_rationale: The member clusters independently show that speech quality is multi-axis and that transcript-only
+    or aggregate proxies conceal acoustic, perceptual, and interaction failures. The revised proposition makes the
+    required dimensions task-specific while retaining the need to report material dimensions separately.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-08-29'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_speech_tokens_trade_semantics_against_acoustic_fidelity
   proposition: Speech tokens optimized for linguistic or text alignment are easier for language models to use for
     intelligible, coherent generation, but they discard more speaker, prosodic, and fine acoustic detail. Tokens

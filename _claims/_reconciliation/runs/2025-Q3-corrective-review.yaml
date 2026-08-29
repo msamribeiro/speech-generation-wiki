@@ -183,10 +183,21 @@ candidates:
     - non-verbal
     - some
     aggregate_score: 0.513634
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "LLM- or audio-LM-based automatic judges can approximate human evaluation
+    well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
+    or non-verbal/paralinguistic judgments." The right cluster states: "Automated LLM and audio-language-model judges
+    can approximate some human speech judgments but are not uniformly reliable for fine-grained or non-verbal attributes."
+    Both are proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+    judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+    separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied
+    systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should
+    therefore be validated against human ratings for the same task, domain, attribute, and scoring granularity before
+    their scores are treated as substitutes for listener evaluation." The proposed related classification means
+    that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+    is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -196,13 +207,15 @@ candidates:
       well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
       or non-verbal/paralinguistic judgments." The right cluster states: "Automated LLM and audio-language-model
       judges can approximate some human speech judgments but are not uniformly reliable for fine-grained or non-verbal
-      attributes." Both are proposed as members of the broader proposition: "Automatic LLM, audio-language-model,
-      and learned-metric judges sometimes reproduce coarse or clearly separated human rankings of speech systems.
-      They remain unreliable for utterance-level prosody, emotion, other paralinguistic behavior, and comparisons
-      between near-tied systems, so each judge must be validated against human ratings in the same task, domain,
-      and scoring granularity before it replaces listener evaluation." The proposed related classification means
-      that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger
-      relation is not justified, while each local cluster retains its own scope and evidence.'
+      attributes." Both are proposed as members of the broader proposition: "Automatic speech evaluators—including
+      LLM or audio-language-model judges and learned task- or quality-specific metrics—can reproduce some human
+      rankings when systems are clearly separated and evaluation conditions match the evaluator’s validation domain.
+      Their agreement degrades for near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic
+      cues, and domain shifts. They should therefore be validated against human ratings for the same task, domain,
+      attribute, and scoring granularity before their scores are treated as substitutes for listener evaluation."
+      The proposed related classification means that the clusters share a decision-relevant issue but differ enough
+      in mechanism or scope that a stronger relation is not justified, while each local cluster retains its own
+      scope and evidence.'
 - id: cand_8194d81e627f9448
   left: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
   right: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
@@ -228,10 +241,12 @@ candidates:
     - not
     - quality
     aggregate_score: 0.501735
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_1b6a20de587131eb
+  rationale: Both clusters report that intelligibility and speaker-related automatic metrics do not fully capture
+    listener-perceived quality. They are related rather than equivalent because one concerns voice-conversion systems
+    and the other concerns zero-shot voice cloning, with different application populations and evaluation conditions.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -313,10 +328,12 @@ candidates:
     - quality
     - vocoders
     aggregate_score: 0.491416
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_3733fe08a5fc7076
+  rationale: The causal GAN-vocoder claim is a narrower architectural instance of the result that causal codecs
+    and vocoders can approach offline reconstruction quality when their architecture and training are adapted explicitly
+    for streaming operation.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -754,10 +771,12 @@ candidates:
     - speaker
     - supervised
     aggregate_score: 0.43201
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_22890ef4dd862881
+  rationale: 'The autoregressive-codec TTS claim is an architecture-specific instance of the broader speech post-training
+    result: preference or reward optimization improves intelligibility, speaker similarity, or perceptual quality
+    beyond supervised fine-tuning.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -793,10 +812,21 @@ candidates:
     - human
     - judges
     aggregate_score: 0.413679
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "LLM- or audio-LM-based automatic judges can approximate human evaluation
+    well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
+    or non-verbal/paralinguistic judgments." The right cluster states: "Automatic judges can approximate human instruction-adherence
+    ratings, but they do not reliably capture all perceptual alignment, naturalness, or domain-specific failure
+    modes." Both are proposed as members of the broader proposition: "Automatic speech evaluators—including LLM
+    or audio-language-model judges and learned task- or quality-specific metrics—can reproduce some human rankings
+    when systems are clearly separated and evaluation conditions match the evaluator’s validation domain. Their
+    agreement degrades for near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues,
+    and domain shifts. They should therefore be validated against human ratings for the same task, domain, attribute,
+    and scoring granularity before their scores are treated as substitutes for listener evaluation." The proposed
+    related classification means that the clusters share a decision-relevant issue but differ enough in mechanism
+    or scope that a stronger relation is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -806,13 +836,15 @@ candidates:
       well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
       or non-verbal/paralinguistic judgments." The right cluster states: "Automatic judges can approximate human
       instruction-adherence ratings, but they do not reliably capture all perceptual alignment, naturalness, or
-      domain-specific failure modes." Both are proposed as members of the broader proposition: "Automatic LLM, audio-language-model,
-      and learned-metric judges sometimes reproduce coarse or clearly separated human rankings of speech systems.
-      They remain unreliable for utterance-level prosody, emotion, other paralinguistic behavior, and comparisons
-      between near-tied systems, so each judge must be validated against human ratings in the same task, domain,
-      and scoring granularity before it replaces listener evaluation." The proposed related classification means
-      that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger
-      relation is not justified, while each local cluster retains its own scope and evidence.'
+      domain-specific failure modes." Both are proposed as members of the broader proposition: "Automatic speech
+      evaluators—including LLM or audio-language-model judges and learned task- or quality-specific metrics—can
+      reproduce some human rankings when systems are clearly separated and evaluation conditions match the evaluator’s
+      validation domain. Their agreement degrades for near-tied systems, utterance-level prosody or emotion, non-verbal
+      or paralinguistic cues, and domain shifts. They should therefore be validated against human ratings for the
+      same task, domain, attribute, and scoring granularity before their scores are treated as substitutes for listener
+      evaluation." The proposed related classification means that the clusters share a decision-relevant issue but
+      differ enough in mechanism or scope that a stronger relation is not justified, while each local cluster retains
+      its own scope and evidence.'
 - id: cand_83a051f873cff265
   left: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
   right: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
@@ -1267,10 +1299,12 @@ candidates:
     - rather
     - semantic
     aggregate_score: 0.369516
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_6a2203a04cbad29b
+  rationale: The speech-to-speech benchmark claim refines the broader cascade-versus-end-to-end comparison by locating
+    current cascade advantages in semantic instruction-following and reasoning, while preserving end-to-end latency
+    advantages and the separate limitations of cascades for paralinguistic fidelity.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1351,10 +1385,12 @@ candidates:
     - end-to-end
     - latency
     aggregate_score: 0.365524
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_42f1a17a289b494b
+  rationale: The streaming-system claim specializes the broader spoken-system architecture comparison to latency-sensitive
+    operation, where modular, cascaded, and end-to-end designs make different trade-offs among latency, semantics,
+    controllability, and paralinguistic fidelity.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1583,10 +1619,12 @@ candidates:
     - lookahead
     - quality
     aggregate_score: 0.356524
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_20d9d582181c57af
+  rationale: The causal GAN-vocoder evidence refines the general causality-and-lookahead trade-off by identifying
+    limited lookahead, normalization changes, and teacher distillation as concrete ways to mitigate the quality
+    loss associated with lower-delay operation.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1620,10 +1658,12 @@ candidates:
     - perceptual
     - supervised
     aggregate_score: 0.355871
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_f727d5f51b38c24f
+  rationale: The autoregressive-codec TTS finding is a specialization of the perceptual-evaluation claim because
+    it shows preference or reinforcement-learning post-training improving listener-relevant attributes in one synthesis
+    architecture beyond supervised training.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2015,10 +2055,12 @@ candidates:
     - quality
     - vocoders
     aggregate_score: 0.331113
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_8cabbbc9cd73fcf3
+  rationale: 'The flow-matching vocoder claim is a narrower instance of the general iterative-refinement trade-off:
+    flow matching can match or improve perceptual, pitch, or periodicity measures, while GAN decoding retains a
+    substantial inference-speed advantage.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2433,10 +2475,13 @@ candidates:
     - codec
     - quality
     aggregate_score: 0.31583
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_1988fe83b976e2f3
+  rationale: The clusters overlap in showing that objective codec-quality measurements can disagree with listener
+    perception. They are related rather than a specialization because the neural-codec claim also covers subjective
+    protocols and downstream generation utility, whereas the evaluation-metrics claim is specifically about intrusive
+    reference-based distortion metrics across codec and vocoder conditions.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2540,10 +2585,20 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.308277
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_learned_quality_metrics_are_useful_but_domain_sensitive
+  rationale: 'The left cluster states: "Fine-tuned self-supervised (SSL) speech representations are an effective,
+    data-efficient basis for automatic MOS/quality prediction, with listener-dependent modeling, contrastive/pairwise
+    ranking losses, and reward-shaped training objectives each providing further, additive accuracy gains." The
+    right cluster states: "Learned perceptual-quality models generally correlate with human ratings better than
+    classical signal-based metrics, but remain domain- and scale-sensitive." Both are proposed as members of the
+    broader proposition: "Learned speech-quality predictors usually agree with human ratings more closely than classical
+    signal-distortion metrics on evaluation data similar to their training data. Their system rankings can change
+    across languages, recording domains, utterance-versus-system scoring, quality ceilings, and synthesis architectures,
+    so matched human listening tests remain necessary when those conditions change." The proposed related classification
+    means that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger
+    relation is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2813,10 +2868,12 @@ candidates:
     shared_terms:
     - training
     aggregate_score: 0.298432
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_22a9897138fc1b1f
+  rationale: The preference-pair construction claim refines the general perceptual-improvement result by identifying
+    checkpoint diversity, comparison source, natural-versus-synthetic pairing, and treatment of noisy intermediate
+    states as conditions that materially determine whether preference optimization succeeds.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2953,10 +3010,11 @@ candidates:
     - attributes
     - optimization
     aggregate_score: 0.290683
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_583eed0f1d70062f
+  rationale: Steering diffusion trajectories with preference optimization is an architecture-specific instance of
+    using preference-based training to improve targeted, listener-relevant speech attributes.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3059,10 +3117,12 @@ candidates:
     - beyond
     - training
     aggregate_score: 0.286915
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: tradeoff
+  registry_target: rel_e6b0093f2569a674
+  rationale: 'The claims describe a coupled benefit and risk in the same optimization process: preference training
+    can improve its targeted perceptual attribute, while extended or insufficiently regularized RL or DPO training
+    can degrade held-out quality, speaker similarity, or broader capabilities.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3133,10 +3193,21 @@ candidates:
     - evaluation
     - human
     aggregate_score: 0.282089
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "Automatic emotion and style metrics can diverge from human judgments and
+    do not replace perceptual evaluation." The right cluster states: "Automatic emotion/paralinguistic evaluation
+    (embedding similarity, discrete SER classifiers, LLM-based empathy scoring) correlates with human judgment at
+    the aggregate/system level but diverges at the fine-grained, utterance-level, or dynamic level." Both are proposed
+    as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model judges
+    and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly separated
+    and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied systems,
+    utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should therefore
+    be validated against human ratings for the same task, domain, attribute, and scoring granularity before their
+    scores are treated as substitutes for listener evaluation." The proposed related classification means that the
+    clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is
+    not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3146,13 +3217,14 @@ candidates:
       do not replace perceptual evaluation." The right cluster states: "Automatic emotion/paralinguistic evaluation
       (embedding similarity, discrete SER classifiers, LLM-based empathy scoring) correlates with human judgment
       at the aggregate/system level but diverges at the fine-grained, utterance-level, or dynamic level." Both are
-      proposed as members of the broader proposition: "Automatic LLM, audio-language-model, and learned-metric judges
-      sometimes reproduce coarse or clearly separated human rankings of speech systems. They remain unreliable for
-      utterance-level prosody, emotion, other paralinguistic behavior, and comparisons between near-tied systems,
-      so each judge must be validated against human ratings in the same task, domain, and scoring granularity before
-      it replaces listener evaluation." The proposed related classification means that the clusters share a decision-relevant
-      issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local
-      cluster retains its own scope and evidence.'
+      proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+      judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+      separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for
+      near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts.
+      They should therefore be validated against human ratings for the same task, domain, attribute, and scoring
+      granularity before their scores are treated as substitutes for listener evaluation." The proposed related
+      classification means that the clusters share a decision-relevant issue but differ enough in mechanism or scope
+      that a stronger relation is not justified, while each local cluster retains its own scope and evidence.'
 - id: cand_4372017c9430d237
   left: speaker-adaptation#data_scale_and_diversity_drive_unseen_speaker_generalization
   right: zero-shot-tts#data_scale_and_diversity_improve_generalization
@@ -3212,10 +3284,19 @@ candidates:
     - benchmarks
     - multidimensional
     aggregate_score: 0.281149
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_speech_evaluation_requires_multidimensional_coverage
+  rationale: 'The left cluster states: "Multidimensional benchmarks reveal spoken-language-model failures that text-only
+    accuracy and aggregate speech-quality scores miss." The right cluster states: "Speech-system benchmarks need
+    multidimensional rubrics that separate semantic success, naturalness, identity, prosody, and interaction behavior."
+    Both are proposed as members of the broader proposition: "Speech-system evaluations should report separately
+    the dimensions material to the task—for example, semantic correctness and intelligibility, naturalness, speaker
+    identity, prosody or expression, and, for interactive systems, turn-taking or other interaction behavior. Transcript-only
+    scores or a single aggregate quality score can conceal failures on unmeasured dimensions and cannot reveal when
+    an improvement on one dimension degrades another." The proposed related classification means that the clusters
+    share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is not justified,
+    while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3224,12 +3305,13 @@ candidates:
     rationale: 'The left cluster states: "Multidimensional benchmarks reveal spoken-language-model failures that
       text-only accuracy and aggregate speech-quality scores miss." The right cluster states: "Speech-system benchmarks
       need multidimensional rubrics that separate semantic success, naturalness, identity, prosody, and interaction
-      behavior." Both are proposed as members of the broader proposition: "Speech-system evaluation must score semantic
-      correctness, intelligibility, naturalness, speaker identity, prosody or expression, and interaction behavior
-      separately. A transcript-only score or one aggregate quality number can conceal a failure on any of these
-      other dimensions and cannot show whether an improvement on one dimension degraded another." The proposed related
-      classification means that the clusters share a decision-relevant issue but differ enough in mechanism or scope
-      that a stronger relation is not justified, while each local cluster retains its own scope and evidence.'
+      behavior." Both are proposed as members of the broader proposition: "Speech-system evaluations should report
+      separately the dimensions material to the task—for example, semantic correctness and intelligibility, naturalness,
+      speaker identity, prosody or expression, and, for interactive systems, turn-taking or other interaction behavior.
+      Transcript-only scores or a single aggregate quality score can conceal failures on unmeasured dimensions and
+      cannot reveal when an improvement on one dimension degrades another." The proposed related classification
+      means that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger
+      relation is not justified, while each local cluster retains its own scope and evidence.'
 - id: cand_9ed15d7da5622900
   left: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
   right: rlhf-speech#composite_multiobjective_rewards_outperform_single_metric_but_need_balancing
@@ -3336,10 +3418,22 @@ candidates:
     - judgment
     - paralinguistic
     aggregate_score: 0.27692
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "Automatic emotion/paralinguistic evaluation (embedding similarity, discrete
+    SER classifiers, LLM-based empathy scoring) correlates with human judgment at the aggregate/system level but
+    diverges at the fine-grained, utterance-level, or dynamic level." The right cluster states: "Automated LLM-as-judge
+    and other automatic metrics for spoken dialogue quality correlate with human judgment only under certain conditions
+    (large score gaps, text-only cues) and are unreliable for paralinguistic, non-verbal, or near-tied comparisons."
+    Both are proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+    judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+    separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied
+    systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should
+    therefore be validated against human ratings for the same task, domain, attribute, and scoring granularity before
+    their scores are treated as substitutes for listener evaluation." The proposed related classification means
+    that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+    is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3350,13 +3444,14 @@ candidates:
       diverges at the fine-grained, utterance-level, or dynamic level." The right cluster states: "Automated LLM-as-judge
       and other automatic metrics for spoken dialogue quality correlate with human judgment only under certain conditions
       (large score gaps, text-only cues) and are unreliable for paralinguistic, non-verbal, or near-tied comparisons."
-      Both are proposed as members of the broader proposition: "Automatic LLM, audio-language-model, and learned-metric
-      judges sometimes reproduce coarse or clearly separated human rankings of speech systems. They remain unreliable
-      for utterance-level prosody, emotion, other paralinguistic behavior, and comparisons between near-tied systems,
-      so each judge must be validated against human ratings in the same task, domain, and scoring granularity before
-      it replaces listener evaluation." The proposed related classification means that the clusters share a decision-relevant
-      issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local
-      cluster retains its own scope and evidence.'
+      Both are proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+      judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+      separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for
+      near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts.
+      They should therefore be validated against human ratings for the same task, domain, attribute, and scoring
+      granularity before their scores are treated as substitutes for listener evaluation." The proposed related
+      classification means that the clusters share a decision-relevant issue but differ enough in mechanism or scope
+      that a stronger relation is not justified, while each local cluster retains its own scope and evidence.'
 - id: cand_35c30bcca7d1bc36
   left: rlhf-speech#preference_optimization_extends_to_continuous_generative_tts
   right: subjective-evaluation#preference_optimization_improves_targeted_perception
@@ -3517,10 +3612,20 @@ candidates:
     shared_terms:
     - domain
     aggregate_score: 0.252861
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_learned_quality_metrics_are_useful_but_domain_sensitive
+  rationale: 'The left cluster states: "Automatic MOS predictors trained on one language, domain, or evaluation
+    granularity (e.g. system-level) generalize poorly when applied to a different language, out-of-domain content,
+    or a finer granularity (e.g. utterance-level)." The right cluster states: "Learned perceptual-quality models
+    generally correlate with human ratings better than classical signal-based metrics, but remain domain- and scale-sensitive."
+    Both are proposed as members of the broader proposition: "Learned speech-quality predictors usually agree with
+    human ratings more closely than classical signal-distortion metrics on evaluation data similar to their training
+    data. Their system rankings can change across languages, recording domains, utterance-versus-system scoring,
+    quality ceilings, and synthesis architectures, so matched human listening tests remain necessary when those
+    conditions change." The proposed related classification means that the clusters share a decision-relevant issue
+    but differ enough in mechanism or scope that a stronger relation is not justified, while each local cluster
+    retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3556,10 +3661,21 @@ candidates:
     - human
     - metrics
     aggregate_score: 0.251907
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "Automatic emotion and style metrics can diverge from human judgments and
+    do not replace perceptual evaluation." The right cluster states: "Automated LLM-as-judge and other automatic
+    metrics for spoken dialogue quality correlate with human judgment only under certain conditions (large score
+    gaps, text-only cues) and are unreliable for paralinguistic, non-verbal, or near-tied comparisons." Both are
+    proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+    judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+    separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied
+    systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should
+    therefore be validated against human ratings for the same task, domain, attribute, and scoring granularity before
+    their scores are treated as substitutes for listener evaluation." The proposed related classification means
+    that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+    is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3569,13 +3685,14 @@ candidates:
       do not replace perceptual evaluation." The right cluster states: "Automated LLM-as-judge and other automatic
       metrics for spoken dialogue quality correlate with human judgment only under certain conditions (large score
       gaps, text-only cues) and are unreliable for paralinguistic, non-verbal, or near-tied comparisons." Both are
-      proposed as members of the broader proposition: "Automatic LLM, audio-language-model, and learned-metric judges
-      sometimes reproduce coarse or clearly separated human rankings of speech systems. They remain unreliable for
-      utterance-level prosody, emotion, other paralinguistic behavior, and comparisons between near-tied systems,
-      so each judge must be validated against human ratings in the same task, domain, and scoring granularity before
-      it replaces listener evaluation." The proposed related classification means that the clusters share a decision-relevant
-      issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local
-      cluster retains its own scope and evidence.'
+      proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+      judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+      separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for
+      near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts.
+      They should therefore be validated against human ratings for the same task, domain, attribute, and scoring
+      granularity before their scores are treated as substitutes for listener evaluation." The proposed related
+      classification means that the clusters share a decision-relevant issue but differ enough in mechanism or scope
+      that a stronger relation is not justified, while each local cluster retains its own scope and evidence.'
 - id: cand_90dd8c93319f04a8
   left: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
   right: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
@@ -3660,10 +3777,20 @@ candidates:
     - metrics
     - ratings
     aggregate_score: 0.250084
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_learned_quality_metrics_are_useful_but_domain_sensitive
+  rationale: 'The left cluster states: "Intrusive, reference-based objective distortion metrics (PESQ, STOI, MCD)
+    frequently disagree with subjective perceptual quality ratings or with each other, especially across codec/vocoder
+    architectures and sampling rates." The right cluster states: "Learned perceptual-quality models generally correlate
+    with human ratings better than classical signal-based metrics, but remain domain- and scale-sensitive." Both
+    are proposed as members of the broader proposition: "Learned speech-quality predictors usually agree with human
+    ratings more closely than classical signal-distortion metrics on evaluation data similar to their training data.
+    Their system rankings can change across languages, recording domains, utterance-versus-system scoring, quality
+    ceilings, and synthesis architectures, so matched human listening tests remain necessary when those conditions
+    change." The proposed related classification means that the clusters share a decision-relevant issue but differ
+    enough in mechanism or scope that a stronger relation is not justified, while each local cluster retains its
+    own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3699,10 +3826,12 @@ candidates:
     - automatic
     - metrics
     aggregate_score: 0.247621
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_ca7119696b25a48c
+  rationale: 'The autoregressive-codec finding is a specialization of the broader human-perception discrepancy:
+    it identifies a particular synthesis architecture in which intelligibility and signal-quality metrics do not
+    reliably predict perceived naturalness.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3733,10 +3862,12 @@ candidates:
     - quality
     - single
     aggregate_score: 0.236526
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_e9f5d208f55b1720
+  rationale: 'The neural-codec claim is a domain-specific instance of the broader multidimensional-evaluation claim:
+    codec reconstruction quality, listener perception, and downstream generation utility expose different failure
+    modes and cannot be represented reliably by one aggregate proxy.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3842,10 +3973,20 @@ candidates:
     shared_terms:
     - text-only
     aggregate_score: 0.223622
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_speech_evaluation_requires_multidimensional_coverage
+  rationale: 'The left cluster states: "Evaluating spoken dialogue/SCA systems via text-only transcripts or ASR-derived
+    proxies systematically misses acoustic-level and paralinguistic information that materially affects true system
+    quality or capability." The right cluster states: "Multidimensional benchmarks reveal spoken-language-model
+    failures that text-only accuracy and aggregate speech-quality scores miss." Both are proposed as members of
+    the broader proposition: "Speech-system evaluations should report separately the dimensions material to the
+    task—for example, semantic correctness and intelligibility, naturalness, speaker identity, prosody or expression,
+    and, for interactive systems, turn-taking or other interaction behavior. Transcript-only scores or a single
+    aggregate quality score can conceal failures on unmeasured dimensions and cannot reveal when an improvement
+    on one dimension degrades another." The proposed related classification means that the clusters share a decision-relevant
+    issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local cluster
+    retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3855,12 +3996,13 @@ candidates:
       proxies systematically misses acoustic-level and paralinguistic information that materially affects true system
       quality or capability." The right cluster states: "Multidimensional benchmarks reveal spoken-language-model
       failures that text-only accuracy and aggregate speech-quality scores miss." Both are proposed as members of
-      the broader proposition: "Speech-system evaluation must score semantic correctness, intelligibility, naturalness,
-      speaker identity, prosody or expression, and interaction behavior separately. A transcript-only score or one
-      aggregate quality number can conceal a failure on any of these other dimensions and cannot show whether an
-      improvement on one dimension degraded another." The proposed related classification means that the clusters
-      share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is not justified,
-      while each local cluster retains its own scope and evidence.'
+      the broader proposition: "Speech-system evaluations should report separately the dimensions material to the
+      task—for example, semantic correctness and intelligibility, naturalness, speaker identity, prosody or expression,
+      and, for interactive systems, turn-taking or other interaction behavior. Transcript-only scores or a single
+      aggregate quality score can conceal failures on unmeasured dimensions and cannot reveal when an improvement
+      on one dimension degrades another." The proposed related classification means that the clusters share a decision-relevant
+      issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local
+      cluster retains its own scope and evidence.'
 - id: cand_ae50bd21e04baefd
   left: diffusion-tts#iterative_sampling_limits_latency
   right: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -4162,10 +4304,20 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.195871
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_speech_evaluation_requires_multidimensional_coverage
+  rationale: 'The left cluster states: "Evaluating spoken dialogue/SCA systems via text-only transcripts or ASR-derived
+    proxies systematically misses acoustic-level and paralinguistic information that materially affects true system
+    quality or capability." The right cluster states: "Speech-system benchmarks need multidimensional rubrics that
+    separate semantic success, naturalness, identity, prosody, and interaction behavior." Both are proposed as members
+    of the broader proposition: "Speech-system evaluations should report separately the dimensions material to the
+    task—for example, semantic correctness and intelligibility, naturalness, speaker identity, prosody or expression,
+    and, for interactive systems, turn-taking or other interaction behavior. Transcript-only scores or a single
+    aggregate quality score can conceal failures on unmeasured dimensions and cannot reveal when an improvement
+    on one dimension degrades another." The proposed related classification means that the clusters share a decision-relevant
+    issue but differ enough in mechanism or scope that a stronger relation is not justified, while each local cluster
+    retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4175,11 +4327,12 @@ candidates:
       proxies systematically misses acoustic-level and paralinguistic information that materially affects true system
       quality or capability." The right cluster states: "Speech-system benchmarks need multidimensional rubrics
       that separate semantic success, naturalness, identity, prosody, and interaction behavior." Both are proposed
-      as members of the broader proposition: "Speech-system evaluation must score semantic correctness, intelligibility,
-      naturalness, speaker identity, prosody or expression, and interaction behavior separately. A transcript-only
-      score or one aggregate quality number can conceal a failure on any of these other dimensions and cannot show
-      whether an improvement on one dimension degraded another." The proposed related classification means that
-      the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+      as members of the broader proposition: "Speech-system evaluations should report separately the dimensions
+      material to the task—for example, semantic correctness and intelligibility, naturalness, speaker identity,
+      prosody or expression, and, for interactive systems, turn-taking or other interaction behavior. Transcript-only
+      scores or a single aggregate quality score can conceal failures on unmeasured dimensions and cannot reveal
+      when an improvement on one dimension degrades another." The proposed related classification means that the
+      clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
       is not justified, while each local cluster retains its own scope and evidence.'
 - id: cand_8e5beb35dd34848a
   left: autoregressive-codec-tts#parallel_and_masked_models_challenge_full_autoregression
@@ -4233,10 +4386,20 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.1875
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_learned_quality_metrics_are_useful_but_domain_sensitive
+  rationale: 'The left cluster states: "Automatic/neural MOS predictors (e.g. UTMOS-style SSL-based predictors,
+    DNSMOS) can rank systems differently from actual subjective MOS, particularly near the quality ceiling, out-of-domain,
+    or for non-standard synthesis paradigms." The right cluster states: "Learned perceptual-quality models generally
+    correlate with human ratings better than classical signal-based metrics, but remain domain- and scale-sensitive."
+    Both are proposed as members of the broader proposition: "Learned speech-quality predictors usually agree with
+    human ratings more closely than classical signal-distortion metrics on evaluation data similar to their training
+    data. Their system rankings can change across languages, recording domains, utterance-versus-system scoring,
+    quality ceilings, and synthesis architectures, so matched human listening tests remain necessary when those
+    conditions change." The proposed related classification means that the clusters share a decision-relevant issue
+    but differ enough in mechanism or scope that a stronger relation is not justified, while each local cluster
+    retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4273,10 +4436,20 @@ candidates:
     - judgments
     - not
     aggregate_score: 0.158478
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "Automatic emotion and style metrics can diverge from human judgments and
+    do not replace perceptual evaluation." The right cluster states: "Automated LLM and audio-language-model judges
+    can approximate some human speech judgments but are not uniformly reliable for fine-grained or non-verbal attributes."
+    Both are proposed as members of the broader proposition: "Automatic speech evaluators—including LLM or audio-language-model
+    judges and learned task- or quality-specific metrics—can reproduce some human rankings when systems are clearly
+    separated and evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied
+    systems, utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should
+    therefore be validated against human ratings for the same task, domain, attribute, and scoring granularity before
+    their scores are treated as substitutes for listener evaluation." The proposed related classification means
+    that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+    is not justified, while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4285,13 +4458,15 @@ candidates:
     rationale: 'The left cluster states: "Automatic emotion and style metrics can diverge from human judgments and
       do not replace perceptual evaluation." The right cluster states: "Automated LLM and audio-language-model judges
       can approximate some human speech judgments but are not uniformly reliable for fine-grained or non-verbal
-      attributes." Both are proposed as members of the broader proposition: "Automatic LLM, audio-language-model,
-      and learned-metric judges sometimes reproduce coarse or clearly separated human rankings of speech systems.
-      They remain unreliable for utterance-level prosody, emotion, other paralinguistic behavior, and comparisons
-      between near-tied systems, so each judge must be validated against human ratings in the same task, domain,
-      and scoring granularity before it replaces listener evaluation." The proposed related classification means
-      that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger
-      relation is not justified, while each local cluster retains its own scope and evidence.'
+      attributes." Both are proposed as members of the broader proposition: "Automatic speech evaluators—including
+      LLM or audio-language-model judges and learned task- or quality-specific metrics—can reproduce some human
+      rankings when systems are clearly separated and evaluation conditions match the evaluator’s validation domain.
+      Their agreement degrades for near-tied systems, utterance-level prosody or emotion, non-verbal or paralinguistic
+      cues, and domain shifts. They should therefore be validated against human ratings for the same task, domain,
+      attribute, and scoring granularity before their scores are treated as substitutes for listener evaluation."
+      The proposed related classification means that the clusters share a decision-relevant issue but differ enough
+      in mechanism or scope that a stronger relation is not justified, while each local cluster retains its own
+      scope and evidence.'
 - id: cand_e44d199db28a249b
   left: evaluation-metrics#llm_audio_judge_reliability_is_contested
   right: subjective-evaluation#automatic_metrics_diverge_from_human_perception
@@ -4312,10 +4487,21 @@ candidates:
     - judgments
     - speech-quality
     aggregate_score: 0.156078
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_automatic_judges_require_scoped_human_validation
+  rationale: 'The left cluster states: "LLM- or audio-LM-based automatic judges can approximate human evaluation
+    well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
+    or non-verbal/paralinguistic judgments." The right cluster states: "Automatic speech-quality and task metrics
+    frequently rank systems differently from human perceptual judgments." Both are proposed as members of the broader
+    proposition: "Automatic speech evaluators—including LLM or audio-language-model judges and learned task- or
+    quality-specific metrics—can reproduce some human rankings when systems are clearly separated and evaluation
+    conditions match the evaluator’s validation domain. Their agreement degrades for near-tied systems, utterance-level
+    prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should therefore be validated
+    against human ratings for the same task, domain, attribute, and scoring granularity before their scores are
+    treated as substitutes for listener evaluation." The proposed related classification means that the clusters
+    share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is not justified,
+    while each local cluster retains its own scope and evidence.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4325,10 +4511,25 @@ candidates:
       well for some speech-quality and dialogue-quality judgments, but become unreliable for fine-grained, prosodic,
       or non-verbal/paralinguistic judgments." The right cluster states: "Automatic speech-quality and task metrics
       frequently rank systems differently from human perceptual judgments." Both are proposed as members of the
-      broader proposition: "Automatic LLM, audio-language-model, and learned-metric judges sometimes reproduce coarse
-      or clearly separated human rankings of speech systems. They remain unreliable for utterance-level prosody,
-      emotion, other paralinguistic behavior, and comparisons between near-tied systems, so each judge must be validated
-      against human ratings in the same task, domain, and scoring granularity before it replaces listener evaluation."
-      The proposed related classification means that the clusters share a decision-relevant issue but differ enough
-      in mechanism or scope that a stronger relation is not justified, while each local cluster retains its own
-      scope and evidence.'
+      broader proposition: "Automatic speech evaluators—including LLM or audio-language-model judges and learned
+      task- or quality-specific metrics—can reproduce some human rankings when systems are clearly separated and
+      evaluation conditions match the evaluator’s validation domain. Their agreement degrades for near-tied systems,
+      utterance-level prosody or emotion, non-verbal or paralinguistic cues, and domain shifts. They should therefore
+      be validated against human ratings for the same task, domain, attribute, and scoring granularity before their
+      scores are treated as substitutes for listener evaluation." The proposed related classification means that
+      the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
+      is not justified, while each local cluster retains its own scope and evidence.'
+review:
+  started_on: '2026-08-29'
+  candidates_reviewed: 28
+  accepted: 28
+  rejected: 0
+  deferred: 0
+  pending: 82
+  runtime: codex
+  provider: openai
+  agent: speech-generation-reconciliation-agent
+  model: gpt-5
+  commit: b2cbe57
+  human_reviewer: project_owner
+  decision_source: chat
