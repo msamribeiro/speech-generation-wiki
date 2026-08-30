@@ -1426,10 +1426,13 @@ candidates:
     - incremental
     - latency
     aggregate_score: 0.363961
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_8fb877f8ca4d4191
+  rationale: Incremental acoustic or speech-token generation supplies a concrete mechanism supporting interactive
+    latency in spoken language models. The relation is supporting rather than a specialization because streaming
+    TTS and spoken language models are intersecting application scopes, and reported latency depends on hardware,
+    buffering, endpointing, and included upstream processing.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2832,10 +2835,12 @@ candidates:
     - flow
     - matching
     aggregate_score: 0.301925
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_7b385ee219f15061
+  rationale: 'The voice-conversion claim is a task-specific instance of flow matching''s comparative efficiency
+    advantage: it reports high-quality conversion with fewer sequential generation steps than diffusion or autoregressive
+    alternatives, subject to solver, hardware, decoder, and latent-space differences.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3083,10 +3088,13 @@ candidates:
     - reduce
     - retaining
     aggregate_score: 0.287355
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_c084f3b53d7340c9
+  rationale: Distillation, caching, and progressive calibration provide concrete mechanisms supporting lower-latency
+    zero-shot TTS with usable intelligibility and speaker fidelity. The relation is supporting rather than a specialization
+    because diffusion TTS is an architecture family and zero-shot TTS is an intersecting task setting; neither claim's
+    full scope contains the other.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3510,10 +3518,13 @@ candidates:
     - decoding
     - reduce
     aggregate_score: 0.264747
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_717ab705d3330843
+  rationale: Parallel, multi-token, and speculative decoding provide mechanisms supporting lower-latency zero-shot
+    TTS while retaining usable intelligibility and speaker fidelity. The relation is supporting rather than a specialization
+    because streaming decoding and zero-shot synthesis are intersecting scopes, and verification, codec decoding,
+    and deployment batch size can reduce realized speedups.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3711,10 +3722,12 @@ candidates:
     shared_terms:
     - decoding
     aggregate_score: 0.25103
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_87621803d5e0e99a
+  rationale: Reducing serial speech-token generation through parallel, multi-token, or speculative decoding supports
+    interactive spoken-model latency without making the mechanism and end-to-end latency claim identical. Verification,
+    codec decoding, and small-batch deployment can reduce the observed gain.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3744,10 +3757,12 @@ candidates:
     shared_terms:
     - latency
     aggregate_score: 0.250377
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_5ea55292502acd36
+  rationale: 'Incremental generation refines the autoregressive-latency claim by separating time to first audio
+    from total sequential decoding cost: an autoregressive system can emit an initial packet sooner while retaining
+    token-by-token throughput and completion-latency costs.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3900,10 +3915,12 @@ candidates:
     shared_terms:
     - steps
     aggregate_score: 0.231397
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_4b22c174cef17670
+  rationale: Low-step flow-matching voice conversion is a task-specific realization of flow-model inference acceleration.
+    The shared result is reduced sequential generation cost; the particular acceleration mechanism can differ among
+    solver optimization, distillation, learned priors, source-distribution design, and other techniques.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4020,10 +4037,12 @@ candidates:
     shared_terms:
     - synthesis
     aggregate_score: 0.21692
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_0ef5d7332dfb8c42
+  rationale: The latency and compute cost of repeated diffusion denoising supplies a mechanism supporting flow matching's
+    inference-efficiency advantage, without making the diffusion bottleneck and the comparative flow-matching result
+    the same proposition.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4053,10 +4072,12 @@ candidates:
     shared_terms:
     - flow
     aggregate_score: 0.215496
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_b31f3b4b3b5056c3
+  rationale: Evidence that flow, consistency, and bridge formulations use fewer sampling steps than conventional
+    diffusion supports the comparative efficiency claim for flow-like generation, while remaining conditional on
+    matched architectures, solver budgets, and target representations.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4354,10 +4375,12 @@ candidates:
     - decoding
     - masked
     aggregate_score: 0.192803
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_88454dccfd9d8da1
+  rationale: Masked and parallel codec-TTS generation is a narrower application of parallel generation over codec
+    latents to reduce sequential cost and autoregressive failure modes. The local TTS result remains contested because
+    comparisons often differ in data, compute, tokenizer, or prompting conditions.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4521,11 +4544,11 @@ candidates:
       is not justified, while each local cluster retains its own scope and evidence.'
 review:
   started_on: '2026-08-29'
-  candidates_reviewed: 28
-  accepted: 28
+  candidates_reviewed: 38
+  accepted: 38
   rejected: 0
   deferred: 0
-  pending: 82
+  pending: 72
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent

@@ -4,6 +4,11 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-08-30
+
+- reconcile | 2025-Q3-corrective-review | efficiency bundle: streaming and parallel decoding | human review | 5 candidates accepted | 5 direct relationships approved | 3 corrected directed relationships recorded separately while preserving prior agent proposals | efficiency theme complete | 72 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+- reconcile | 2025-Q3-corrective-review | efficiency bundle: flow and diffusion acceleration | human review | 5 candidates accepted | 5 direct relationships approved | corrected supports relationship recorded as rel_c084f3b53d7340c9 while preserving the prior agent proposal | 77 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-08-29
 
 - reconcile | 2025-Q3-corrective-review | evaluation bundle: architecture and latency trade-offs | human review | 5 candidates accepted | 5 direct relationships approved | corrected specialization recorded as rel_8cabbbc9cd73fcf3 while preserving the prior agent-proposed tradeoff | evaluation theme complete | 82 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5

@@ -1,5 +1,5 @@
 schema_version: 1
-last_updated: 2026-08-23
+last_updated: '2026-08-30'
 relationships:
 - id: rel_016688937e9ac602
   source: zero-shot-tts#hybrid_semantic_acoustic_generation_balances_quality
@@ -27,6 +27,17 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_717ab705d3330843
+  source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
+  target: zero-shot-tts#inference_acceleration_preserves_usable_quality
+  type: supports
+  rationale: Parallel, multi-token, and speculative decoding provide mechanisms supporting lower-latency zero-shot
+    TTS while retaining usable intelligibility and speaker fidelity. The relation is supporting rather than a specialization
+    because streaming decoding and zero-shot synthesis are intersecting scopes, and verification, codec decoding,
+    and deployment batch size can reduce realized speedups.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_06f012f2c74a14fb
   source: speaker-adaptation#speaker_privacy_conflicts_with_identity_preservation
   target: voice-conversion#privacy_conversion_trades_utility_for_unlinkability
@@ -45,16 +56,12 @@ relationships:
   source: diffusion-tts#iterative_sampling_limits_latency
   target: flow-matching#fm_surpasses_diffusion_speed_quality
   type: supports
-  rationale: 'The source cluster states: "Iterative denoising remains a central latency and compute bottleneck for
-    diffusion speech synthesis." The target cluster states: "Flow matching surpasses diffusion-based generative
-    models in inference efficiency while maintaining or exceeding sample quality, making it the preferred backbone
-    for continuous-output speech synthesis." The proposed supports relation means that the source supplies a compatible
-    mechanism or evidence for the target without claiming that the propositions are identical. The original agent
-    adjudication further noted: The iterative diffusion bottleneck supports the comparative explanation for flow
-    matching''s inference-efficiency advantage.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The latency and compute cost of repeated diffusion denoising supplies a mechanism supporting flow matching's
+    inference-efficiency advantage, without making the diffusion bottleneck and the comparative flow-matching result
+    the same proposition.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_191b714790ab2daa
   source: gan-vocoder#gan_decoders_support_low_bitrate_neural_codecs
   target: neural-codec#adversarial_objectives_improve_perceptual_reconstruction
@@ -200,16 +207,12 @@ relationships:
   source: voice-conversion#flow_matching_improves_parallel_conversion
   target: flow-matching#fm_inference_acceleration
   type: specialization
-  rationale: 'The source cluster states: "Flow matching enables high-quality voice conversion with fewer sequential
-    generation steps than diffusion or autoregressive alternatives." The target cluster states: "Flow-matching speech
-    models admit substantial inference acceleration — to as few as 1–4 steps — through post-training solver optimisation,
-    distillation, learned priors, or coupled/conditioned source distributions, without requiring architectural changes
-    to the base model." The proposed specialization relation means that the source is a narrower task, architecture,
-    or deployment instance of the target. The original agent adjudication further noted: Parallel voice conversion
-    is a task-specific realization of low-step flow-matching acceleration.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Low-step flow-matching voice conversion is a task-specific realization of flow-model inference acceleration.
+    The shared result is reduced sequential generation cost; the particular acceleration mechanism can differ among
+    solver optimization, distillation, learned priors, source-distribution design, and other techniques.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_4ce4566192ee1588
   source: neural-codec#quantizer_structure_affects_downstream_modelability
   target: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
@@ -328,16 +331,12 @@ relationships:
   source: voice-conversion#flow_matching_improves_parallel_conversion
   target: flow-matching#fm_surpasses_diffusion_speed_quality
   type: specialization
-  rationale: 'The source cluster states: "Flow matching enables high-quality voice conversion with fewer sequential
-    generation steps than diffusion or autoregressive alternatives." The target cluster states: "Flow matching surpasses
-    diffusion-based generative models in inference efficiency while maintaining or exceeding sample quality, making
-    it the preferred backbone for continuous-output speech synthesis." The proposed specialization relation means
-    that the source is a narrower task, architecture, or deployment instance of the target. The original agent adjudication
-    further noted: The voice-conversion result is a task-specific instance of flow matching reducing sequential
-    generation cost relative to diffusion while retaining quality.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'The voice-conversion claim is a task-specific instance of flow matching''s comparative efficiency
+    advantage: it reports high-quality conversion with fewer sequential generation steps than diffusion or autoregressive
+    alternatives, subject to solver, hardware, decoder, and latent-space differences.'
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_802f90e81782a85b
   source: speech-to-speech#internal_interruption_detection_beats_external_vad
   target: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
@@ -384,29 +383,22 @@ relationships:
   source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
   target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
   type: supports
-  rationale: 'The source cluster states: "Parallel, multi-token, and speculative decoding reduce serial speech-token
-    generation cost." The target cluster states: "Incremental tokenization, generation, and decoding enable spoken
-    language models to operate at interactive latency." The proposed supports relation means that the source supplies
-    a compatible mechanism or evidence for the target without claiming that the propositions are identical. The
-    original agent adjudication further noted: Reducing serial speech-token cost supplies a mechanism that supports
-    interactive spoken-model latency.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Reducing serial speech-token generation through parallel, multi-token, or speculative decoding supports
+    interactive spoken-model latency without making the mechanism and end-to-end latency claim identical. Verification,
+    codec decoding, and small-batch deployment can reduce the observed gain.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_88454dccfd9d8da1
   source: autoregressive-codec-tts#parallel_and_masked_models_challenge_full_autoregression
   target: neural-codec#parallel_latent_generation_improves_robustness
   type: specialization
-  rationale: 'The source cluster states: "Masked and parallel codec generators can match autoregressive quality
-    while reducing decoding latency, challenging the need for fully causal generation." The target cluster states:
-    "Diffusion, flow-matching, and masked non-autoregressive generation over codec latents can reduce sequential
-    decoding cost and autoregressive failure modes." The proposed specialization relation means that the source
-    is a narrower task, architecture, or deployment instance of the target. The original agent adjudication further
-    noted: Masked codec speech generation is a narrower application of parallel latent generation reducing sequential
-    cost and autoregressive failure modes.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Masked and parallel codec-TTS generation is a narrower application of parallel generation over codec
+    latents to reduce sequential cost and autoregressive failure modes. The local TTS result remains contested because
+    comparisons often differ in data, compute, tokenizer, or prompting conditions.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_8939888837be78c4
   source: speech-to-speech#speech_text_interleaving_improves_alignment
   target: spoken-language-model#interleaved_training_bridges_modalities
@@ -502,16 +494,12 @@ relationships:
   source: diffusion-tts#flow_and_consistency_offer_faster_paths
   target: flow-matching#fm_surpasses_diffusion_speed_quality
   type: supports
-  rationale: 'The source cluster states: "Flow, consistency, and bridge formulations offer lower-step alternatives
-    to conventional diffusion sampling." The target cluster states: "Flow matching surpasses diffusion-based generative
-    models in inference efficiency while maintaining or exceeding sample quality, making it the preferred backbone
-    for continuous-output speech synthesis." The proposed supports relation means that the source supplies a compatible
-    mechanism or evidence for the target without claiming that the propositions are identical. The original agent
-    adjudication further noted: Lower-step flow and consistency alternatives support the finding that flow-like
-    formulations offer faster paths than conventional diffusion sampling.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Evidence that flow, consistency, and bridge formulations use fewer sampling steps than conventional
+    diffusion supports the comparative efficiency claim for flow-like generation, while remaining conditional on
+    matched architectures, solver budgets, and target representations.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_b4e92d33e3545823
   source: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
   target: streaming-tts#incremental_generation_reduces_first_packet_latency
@@ -525,6 +513,16 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_5ea55292502acd36
+  source: streaming-tts#incremental_generation_reduces_first_packet_latency
+  target: autoregressive-codec-tts#autoregressive_decoding_creates_latency_cost
+  type: refines
+  rationale: 'Incremental generation refines the autoregressive-latency claim by separating time to first audio
+    from total sequential decoding cost: an autoregressive system can emit an initial packet sooner while retaining
+    token-by-token throughput and completion-latency costs.'
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_b8b765b94012465a
   source: spoken-language-model#long_form_speech_generation_needs_hierarchical_coherence
   target: zero-shot-tts#long_form_generation_needs_alignment_and_memory_controls
@@ -575,6 +573,17 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_c084f3b53d7340c9
+  source: diffusion-tts#distillation_and_caching_accelerate_diffusion
+  target: zero-shot-tts#inference_acceleration_preserves_usable_quality
+  type: supports
+  rationale: Distillation, caching, and progressive calibration provide concrete mechanisms supporting lower-latency
+    zero-shot TTS with usable intelligibility and speaker fidelity. The relation is supporting rather than a specialization
+    because diffusion TTS is an architecture family and zero-shot TTS is an intersecting task setting; neither claim's
+    full scope contains the other.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_d795e870d058d1b0
   source: subjective-evaluation#fine_grained_style_and_prosody_need_dimension_specific_tests
   target: diffusion-tts#diffusion_supports_expressive_style_and_emotion
@@ -621,6 +630,17 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_8fb877f8ca4d4191
+  source: streaming-tts#incremental_generation_reduces_first_packet_latency
+  target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
+  type: supports
+  rationale: Incremental acoustic or speech-token generation supplies a concrete mechanism supporting interactive
+    latency in spoken language models. The relation is supporting rather than a specialization because streaming
+    TTS and spoken language models are intersecting application scopes, and reported latency depends on hardware,
+    buffering, endpointing, and included upstream processing.
+  reviewed_on: '2026-08-30'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_f727d5f51b38c24f
   source: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
