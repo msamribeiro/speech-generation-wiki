@@ -1,19 +1,17 @@
 schema_version: 1
-last_updated: '2026-08-30'
+last_updated: '2026-09-03'
 relationships:
 - id: rel_016688937e9ac602
   source: zero-shot-tts#hybrid_semantic_acoustic_generation_balances_quality
   target: spoken-language-model#semantic_acoustic_token_tradeoff
   type: refines
-  rationale: 'The source cluster states: "Separating semantic planning from acoustic reconstruction can balance
-    intelligibility and speaker fidelity." The target cluster states: "Speech tokenizers face a persistent trade-off
-    between semantic intelligibility and fine acoustic, speaker, and prosodic fidelity." The proposed refines relation
-    means that the source adds a boundary, condition, failure mode, or more precise formulation to the target. The
-    original agent adjudication further noted: Hybrid semantic-acoustic generation is a mitigation strategy that
-    refines the persistent tokenizer trade-off for zero-shot cloning.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'Separating semantic planning from acoustic reconstruction refines the persistent tokenizer trade-off
+    by providing a concrete mitigation in zero-shot synthesis: semantic guidance supports intelligibility while
+    acoustic reconstruction supports speaker fidelity. It does not eliminate the trade-off, and stage interfaces
+    can introduce additional errors.'
+  reviewed_on: '2026-09-03'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_046c952dc60de46e
   source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
   target: zero-shot-tts#inference_acceleration_preserves_usable_quality
@@ -66,15 +64,12 @@ relationships:
   source: gan-vocoder#gan_decoders_support_low_bitrate_neural_codecs
   target: neural-codec#adversarial_objectives_improve_perceptual_reconstruction
   type: specialization
-  rationale: 'The source cluster states: "Adversarial decoders improve perceptual reconstruction in low-bitrate
-    neural audio codecs." The target cluster states: "Adversarial and multi-scale spectral objectives improve perceptual
-    codec reconstruction under aggressive compression." The proposed specialization relation means that the source
-    is a narrower task, architecture, or deployment instance of the target. The original agent adjudication further
-    noted: GAN decoding is the architectural specialization of adversarial objectives improving aggressive-compression
-    reconstruction.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Using a GAN decoder for a low-bitrate neural codec is an architectural specialization of applying adversarial
+    and multi-scale spectral objectives to improve perceptual reconstruction under aggressive compression. The outcome
+    remains sensitive to discriminator design, quantizer rate, decoder capacity, and evaluation domain.
+  reviewed_on: '2026-09-02'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_1a4586ef04193eb2
   source: transformer-enc-dec-tts#parallel_generation_needs_variance_modeling
   target: prosody-control#explicit_pitch_energy_duration_enable_controllability
@@ -102,6 +97,16 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_fbb44447353fe0c1
+  source: spoken-language-model#interleaved_training_bridges_modalities
+  target: streaming-tts#interleaved_text_speech_generation_supports_streaming
+  type: related
+  rationale: Interleaving text and speech during generation to produce streaming output is related to interleaving
+    the modalities during training to improve cross-modal transfer. Some systems use both, but generation- and training-stage
+    interleaving have different mechanisms and outcomes, so neither claim specializes the other.
+  reviewed_on: '2026-09-03'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_1b6a20de587131eb
   source: voice-conversion#automatic_metrics_do_not_fully_capture_vc_quality
   target: zero-shot-tts#automatic_metrics_do_not_fully_capture_cloning_quality
@@ -217,15 +222,12 @@ relationships:
   source: neural-codec#quantizer_structure_affects_downstream_modelability
   target: autoregressive-codec-tts#tokenizer_quality_is_downstream_generation_bottleneck
   type: refines
-  rationale: 'The source cluster states: "Quantizer and codebook structure materially affects both reconstruction
-    quality and the difficulty of downstream token prediction." The target cluster states: "Tokenizer semantic alignment,
-    bitrate, and reconstruction quality materially constrain downstream speech-language-model performance." The
-    proposed refines relation means that the source adds a boundary, condition, failure mode, or more precise formulation
-    to the target. The original agent adjudication further noted: Quantizer and codebook structure refine the broader
-    tokenizer bottleneck by identifying factors that jointly affect reconstruction and downstream prediction difficulty.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The quantizer claim refines the downstream tokenizer-bottleneck claim by identifying codebook and quantizer
+    structure as factors that jointly affect reconstruction quality and token-prediction difficulty. Many comparisons
+    remain confounded because codebook size, token rate, decoder, and training loss change together.
+  reviewed_on: '2026-09-02'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_57a4b8c4d65e3d80
   source: prosody-control#disentanglement_enables_independent_prosody_transfer
   target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
@@ -263,16 +265,12 @@ relationships:
   source: neural-codec#codec_tokens_enable_language_model_generation
   target: self-supervised-speech#discrete_ssl_units_enable_language_modeling
   type: related
-  rationale: 'The source cluster states: "Discrete codec tokens make speech generation compatible with language-model
-    training and in-context conditioning." The target cluster states: "Discrete SSL-derived speech units make speech
-    compatible with token language modeling and textless generation." The proposed related relation means that the
-    clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is
-    not justified. The original agent adjudication further noted: Codec and SSL units both make speech token language
-    modeling possible, but differ materially in acoustic reconstruction, semantic abstraction, and downstream task
-    scope.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Discrete codec tokens and discrete self-supervised speech units both make token-based speech language
+    modeling possible. They are related rather than equivalent because they differ in semantic abstraction, waveform
+    reconstructability, speaker retention, code rate, and downstream task scope.
+  reviewed_on: '2026-09-02'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_6d2daece6c8dd81b
   source: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
   target: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
@@ -304,29 +302,22 @@ relationships:
   source: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
   target: neural-codec#codec_tokens_enable_language_model_generation
   type: specialization
-  rationale: 'The source cluster states: "Conditional language modeling over discrete speech tokens enables zero-shot
-    voice cloning through in-context acoustic prompting." The target cluster states: "Discrete codec tokens make
-    speech generation compatible with language-model training and in-context conditioning." The proposed specialization
-    relation means that the source is a narrower task, architecture, or deployment instance of the target. The original
-    agent adjudication further noted: In-context voice cloning is a task-specific consequence of representing speech
-    as codec tokens compatible with language modeling.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Zero-shot voice cloning through in-context acoustic prompting is a task-specific application of conditional
+    language modeling over discrete codec tokens. Codec-token compatibility enables the method, while prompt duration,
+    recording quality, and training-speaker coverage still constrain identity fidelity.
+  reviewed_on: '2026-09-02'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_7857d88c03b66725
   source: speech-to-speech#speech_text_interleaving_improves_alignment
   target: spoken-language-model#speech_text_alignment_preserves_language_model_capabilities
   type: specialization
-  rationale: 'The source cluster states: "Interleaving or jointly training on speech and text tokens (rather than
-    speech-only training) measurably improves cross-modal semantic alignment and transfers text-LLM reasoning capability
-    to the speech modality." The target cluster states: "Explicit speech–text alignment and modality connectors
-    allow pretrained text language models to acquire speech capabilities while preserving much of their linguistic
-    reasoning." The proposed specialization relation means that the source is a narrower task, architecture, or
-    deployment instance of the target. The original agent adjudication further noted: Speech-text interleaving is
-    a specific alignment strategy for adding speech while preserving text-language-model capabilities.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Speech–text interleaving is a specific alignment strategy for adding speech capabilities to a pretrained
+    text language model while preserving much of its linguistic reasoning. Transcript-accessible knowledge can transfer
+    even when acoustic-only information remains underrepresented.
+  reviewed_on: '2026-09-03'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_7b385ee219f15061
   source: voice-conversion#flow_matching_improves_parallel_conversion
   target: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -403,16 +394,13 @@ relationships:
   source: speech-to-speech#speech_text_interleaving_improves_alignment
   target: spoken-language-model#interleaved_training_bridges_modalities
   type: equivalent
-  rationale: 'The source cluster states: "Interleaving or jointly training on speech and text tokens (rather than
-    speech-only training) measurably improves cross-modal semantic alignment and transfers text-LLM reasoning capability
-    to the speech modality." The target cluster states: "Interleaving speech and text during training improves cross-modal
-    transfer and supports models that reason in text while communicating in speech." The proposed equivalent relation
-    means that the two clusters make the same material assertion at matching scope and polarity. The original agent
-    adjudication further noted: Both clusters state that interleaving speech and text improves cross-modal alignment
-    and transfers text-language-model capabilities into spoken generation.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: 'Both clusters make the same material claim at matching scope and polarity: interleaving or jointly
+    training on speech and text improves cross-modal alignment and transfers text-language-model reasoning into
+    spoken generation. Synthetic interleaving can still preserve teacher errors and miss natural timing or paralinguistic
+    behavior.'
+  reviewed_on: '2026-09-03'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_89dacaf271d5c5e2
   source: voice-conversion#cross_lingual_conversion_requires_accent_control
   target: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
@@ -541,15 +529,12 @@ relationships:
   source: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
   target: spoken-language-model#unified_models_support_joint_understanding_and_generation
   type: specialization
-  rationale: 'The source cluster states: "A shared autoregressive vocabulary over speech and text enables unified
-    understanding and spoken generation in one language-model backbone." The target cluster states: "A shared language-model
-    backbone can support both speech understanding and speech generation across conversational tasks." The proposed
-    specialization relation means that the source is a narrower task, architecture, or deployment instance of the
-    target. The original agent adjudication further noted: A shared autoregressive speech-text vocabulary is a specific
-    architecture for the broader unified-understanding-and-generation capability.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: A shared autoregressive vocabulary over speech and text is a specific architecture for implementing
+    a language-model backbone that supports both speech understanding and spoken generation. Unified capability
+    does not imply equal competence across semantic, acoustic, and interaction dimensions.
+  reviewed_on: '2026-09-03'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_ca7119696b25a48c
   source: autoregressive-codec-tts#automatic_metrics_do_not_fully_predict_perceived_quality
   target: subjective-evaluation#automatic_metrics_diverge_from_human_perception
@@ -664,6 +649,16 @@ relationships:
   reviewed_on: 2026-08-23
   accepted_in: 2025-Q3
   review_status: agent_proposed
+- id: rel_593924c48b6f759b
+  source: multilingual-tts#codec_language_models_enable_multilingual_generation
+  target: neural-codec#codec_representations_enable_multilingual_transfer
+  type: supports
+  rationale: Codec-token language models provide a shared generative interface that supports multilingual and cross-lingual
+    speech generation. The relation is supporting rather than a specialization because the multilingual-TTS claim
+    does not establish the neural-codec claim's additional trade-off between language coverage and speaker fidelity.
+  reviewed_on: '2026-09-02'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 broader_claims:
 - id: broader_automatic_judges_require_scoped_human_validation
   proposition: Automatic speech evaluators—including LLM or audio-language-model judges and learned task- or quality-specific
@@ -1556,10 +1551,11 @@ broader_claims:
   reviewed_in: 2025-Q3
   review_status: agent_proposed
 - id: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
-  proposition: In hierarchical speech generation, semantic representations guide word content, intelligibility,
-    and longer-range coherence, while acoustic codec tokens reconstruct speaker timbre, prosody, and fine waveform
-    detail. Predicting a semantic plan and then acoustic detail can preserve both sets of properties better than
-    relying on either representation alone, although errors in the semantic stage still constrain the acoustic reconstruction.
+  proposition: 'In hierarchical speech generation, semantic representations carry word content and longer-range
+    linguistic structure, while acoustic codec tokens carry speaker, prosodic, and waveform detail. Conditioning
+    acoustic reconstruction on semantic representations can improve linguistic coherence without discarding all
+    fine acoustic information, but the separation is incomplete: errors in the semantic stage constrain later reconstruction,
+    and overly strong semantic objectives can suppress prosody or speaker cues.'
   status: strongly_supported
   confidence: high
   members:
@@ -1648,13 +1644,18 @@ broader_claims:
   - interspeech-2025-1236
   - interspeech-2025-1776
   caveats:
-  - The optimal hierarchy, token rate, and semantic-acoustic allocation remain architecture- and task-dependent.
-  review_rationale: The member clusters describe the same hierarchical design principle from generator, codec, SSL,
-    and cloning perspectives and share extensive role-consistent evidence.
+  - The optimal hierarchy, token rate, and allocation of semantic and acoustic information remain architecture-
+    and task-dependent.
+  - Semantic and acoustic factors are not cleanly separable; interface errors and overly strong semantic objectives
+    can reduce prosody, speaker identity, or other non-verbal detail.
+  review_rationale: The member clusters converge on the same hierarchical design principle from autoregressive generation,
+    codec, self-supervised representation, and zero-shot synthesis perspectives. Deduplicated evidence supports
+    semantic guidance as a way to improve coherence while preserving acoustic detail, with consistent evidence that
+    the separation remains porous and architecture-dependent.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-08-30'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_speech_evaluation_requires_multidimensional_coverage
   proposition: Speech-system evaluations should report separately the dimensions material to the task—for example,
     semantic correctness and intelligibility, naturalness, speaker identity, prosody or expression, and, for interactive
@@ -1807,10 +1808,11 @@ broader_claims:
   reviewed_in: 2025-Q3-corrective-review
   review_status: human_approved
 - id: broader_speech_tokens_trade_semantics_against_acoustic_fidelity
-  proposition: Speech tokens optimized for linguistic or text alignment are easier for language models to use for
-    intelligible, coherent generation, but they discard more speaker, prosodic, and fine acoustic detail. Tokens
-    optimized for waveform reconstruction retain that detail but provide weaker semantic abstraction and are harder
-    to model over long sequences.
+  proposition: Speech tokens optimized for linguistic discrimination or text alignment are easier for language models
+    to use for intelligible, semantically coherent generation, but retain less speaker, prosodic, and other fine
+    acoustic information. Tokens optimized for waveform reconstruction retain more acoustic detail but offer weaker
+    semantic abstraction. Frame rate, codebook structure, training objective, and decoder capacity determine where
+    a tokenizer lies on this trade-off.
   status: strongly_supported
   confidence: high
   members:
@@ -1858,12 +1860,16 @@ broader_claims:
   - '2509.26276'
   caveats:
   - Hybrid and hierarchical token systems can mitigate but do not eliminate the trade-off.
-  review_rationale: The duplicated local cluster ID resolves to materially equivalent propositions with matching
-    polarity and scope over speech-LM tokenizer design.
+  - Evidence in the speech-to-speech cluster includes overlapping surveys, so confidence depends materially on the
+    independent primary evidence represented in the spoken-language-model cluster.
+  review_rationale: Both member clusters describe the same tokenizer-design trade-off. After deduplicating shared
+    and survey evidence, the combined record still supports the conclusion across speech-to-speech and spoken-language-model
+    settings, while showing that frame rate, codebook design, training objective, and decoder capacity shift its
+    operating point.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-08-30'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_training_diversity_drives_unseen_voice_generalization
   proposition: Across speaker adaptation, voice conversion, and zero-shot synthesis, training on more speakers and
     a wider range of accents, languages, recording channels, and acoustic conditions improves identity transfer

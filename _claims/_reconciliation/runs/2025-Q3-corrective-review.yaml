@@ -89,10 +89,12 @@ candidates:
     - token
     - waveform
     aggregate_score: 0.556228
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+  rationale: 'The autoregressive-codec and neural-codec clusters express the same hierarchical design principle:
+    separate semantic guidance from acoustic token prediction to improve linguistic coherence while retaining fine
+    waveform detail, subject to incomplete separation.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -376,10 +378,12 @@ candidates:
     - semantic
     - waveform
     aggregate_score: 0.482134
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+  rationale: 'The neural-codec and self-supervised-speech clusters describe equivalent contributions to the broader
+    claim: semantic representations guide linguistic structure while codec tokens retain acoustic detail, with prosody
+    and speaker information remaining partly entangled.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -467,10 +471,11 @@ candidates:
     - semantic
     - waveform
     aggregate_score: 0.475216
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+  rationale: The autoregressive-codec and self-supervised-speech clusters converge on the same semantic-guidance
+    plus acoustic-reconstruction hierarchy from generator and representation perspectives.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -913,10 +918,12 @@ candidates:
     - semantic
     - separating
     aggregate_score: 0.397823
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
+  rationale: 'Hybrid semantic–acoustic zero-shot synthesis is a task-specific instance of the broader hierarchy:
+    semantic planning supports intelligibility while acoustic reconstruction supports speaker fidelity, and the
+    stage interface can introduce errors.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -998,10 +1005,12 @@ candidates:
     - shared
     - understanding
     aggregate_score: 0.393941
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_c68079cab0600245
+  rationale: A shared autoregressive vocabulary over speech and text is a specific architecture for implementing
+    a language-model backbone that supports both speech understanding and spoken generation. Unified capability
+    does not imply equal competence across semantic, acoustic, and interaction dimensions.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1146,10 +1155,12 @@ candidates:
     - discrete
     - make
     aggregate_score: 0.383743
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_6b7ed25949c91ff1
+  rationale: Discrete codec tokens and discrete self-supervised speech units both make token-based speech language
+    modeling possible. They are related rather than equivalent because they differ in semantic abstraction, waveform
+    reconstructability, speaker retention, code rate, and downstream task scope.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1258,10 +1269,12 @@ candidates:
     - perceptual
     - reconstruction
     aggregate_score: 0.37681
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_191b714790ab2daa
+  rationale: Using a GAN decoder for a low-bitrate neural codec is an architectural specialization of applying adversarial
+    and multi-scale spectral objectives to improve perceptual reconstruction under aggressive compression. The outcome
+    remains sensitive to discriminator design, quantizer rate, decoder capacity, and evaluation domain.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1948,10 +1961,13 @@ candidates:
     - text
     - training
     aggregate_score: 0.33869
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: equivalent
+  registry_target: rel_8939888837be78c4
+  rationale: 'Both clusters make the same material claim at matching scope and polarity: interleaving or jointly
+    training on speech and text improves cross-modal alignment and transfers text-language-model reasoning into
+    spoken generation. Synthetic interleaving can still preserve teacher errors and miss natural timing or paralinguistic
+    behavior.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2024,10 +2040,12 @@ candidates:
     - multilingual
     - shared
     aggregate_score: 0.33331
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: supports
+  registry_target: rel_593924c48b6f759b
+  rationale: Codec-token language models provide a shared generative interface that supports multilingual and cross-lingual
+    speech generation. The relation is supporting rather than a specialization because the multilingual-TTS claim
+    does not establish the neural-codec claim's additional trade-off between language coverage and speaker fidelity.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2330,10 +2348,12 @@ candidates:
     - quality
     - reconstruction
     aggregate_score: 0.325198
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_4ce4566192ee1588
+  rationale: The quantizer claim refines the downstream tokenizer-bottleneck claim by identifying codebook and quantizer
+    structure as factors that jointly affect reconstruction quality and token-prediction difficulty. Many comparisons
+    remain confounded because codebook size, token rate, decoder, and training loss change together.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2367,10 +2387,13 @@ candidates:
     - semantic
     - speaker
     aggregate_score: 0.322745
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_016688937e9ac602
+  rationale: 'Separating semantic planning from acoustic reconstruction refines the persistent tokenizer trade-off
+    by providing a concrete mitigation in zero-shot synthesis: semantic guidance supports intelligibility while
+    acoustic reconstruction supports speaker fidelity. It does not eliminate the trade-off, and stage interfaces
+    can introduce additional errors.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2403,10 +2426,11 @@ candidates:
     - semantic
     - trade-off
     aggregate_score: 0.320001
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_speech_tokens_trade_semantics_against_acoustic_fidelity
+  rationale: The speech-to-speech and spoken-language-model clusters state the same tokenizer trade-off between
+    linguistic or text alignment and retention of speaker, prosodic, and fine acoustic information.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2638,10 +2662,12 @@ candidates:
     - in-context
     - tokens
     aggregate_score: 0.307421
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_7776326e26ccabe2
+  rationale: Zero-shot voice cloning through in-context acoustic prompting is a task-specific application of conditional
+    language modeling over discrete codec tokens. Codec-token compatibility enables the method, while prompt duration,
+    recording quality, and training-speaker coverage still constrain identity fidelity.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2913,10 +2939,12 @@ candidates:
     - reasoning
     - text
     aggregate_score: 0.296932
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_7857d88c03b66725
+  rationale: Speech–text interleaving is a specific alignment strategy for adding speech capabilities to a pretrained
+    text language model while preserving much of its linguistic reasoning. Transcript-accessible knowledge can transfer
+    even when acoustic-only information remains underrepresented.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2982,10 +3010,12 @@ candidates:
     - interleaving
     - text
     aggregate_score: 0.294777
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_fbb44447353fe0c1
+  rationale: Interleaving text and speech during generation to produce streaming output is related to interleaving
+    the modalities during training to improve cross-modal transfer. Some systems use both, but generation- and training-stage
+    interleaving have different mechanisms and outcomes, so neither claim specializes the other.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4544,11 +4574,11 @@ candidates:
       is not justified, while each local cluster retains its own scope and evidence.'
 review:
   started_on: '2026-08-29'
-  candidates_reviewed: 38
-  accepted: 38
+  candidates_reviewed: 53
+  accepted: 53
   rejected: 0
   deferred: 0
-  pending: 72
+  pending: 57
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent
