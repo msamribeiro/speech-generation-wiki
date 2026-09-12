@@ -2,67 +2,72 @@
 title: "Start Here"
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-09-13"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "41ab852"
 ---
 
 → [[index|Home]]
 
-The wiki presents the same concept-level research at two human-readable depths. Choose based on
-the question you are trying to answer.
+Choose a route based on what you want to learn. You can move between the field overview, concept
+guides, quarterly reports, and individual papers without losing the evidence trail.
 
 > [!warning]
-> **Work in progress.** Concept synthesis currently covers research through Q3 2025. Later papers
-> may already appear in the paper catalog but are not yet reflected in concept conclusions. The
-> integration boundary will move forward chronologically until it reaches current research.
+> **Current synthesis boundary.** The integrated evidence runs through Q3 2025. Later papers may
+> already appear in the catalog, but they will not affect field or concept conclusions until their
+> quarter has been integrated and reconciled.
 
-## I want a quick view of the current research
+## I want a gentle introduction to the field
 
-Start with a **Concept Overview**. Each one defines the concept, summarizes the current state,
-maps the main method families, and surfaces the trade-offs and open questions that matter most.
-They are designed to be read together when surveying many topics.
+Read the [[overview|Field Overview]]. It brings together all 23 integrated concepts and explains
+the main connections and trade-offs in familiar language: what speech tokens preserve, where
+latency comes from, how control interacts with identity, and why evaluation needs several
+dimensions.
 
-- [[concepts/flow-matching|Flow Matching]]
-- [[concepts/speech-to-speech|Speech-to-Speech Systems]]
-- [[concepts/evaluation-metrics|Evaluation Metrics]]
-- [[concepts/rlhf-speech|RLHF for Speech]]
-- [[concepts/disentanglement|Disentanglement]]
+## I want to understand what changed during a quarter
 
-For connections across these five completed integrations, read the [[overview|Field Overview]].
+Open the [[reports/index|reports catalog]]. The first published report,
+[[reports/quarterly/2025-Q3|Speech Generation — Q3 2025]], compares Q3 activity with the pre-Q3
+baseline. It distinguishes papers published during the quarter from evidence that strengthened,
+qualified, or contested an existing conclusion.
 
-## I want to understand one concept in detail
+Quarterly reports are frozen to reviewed snapshots. Later changes to the living concept pages do
+not rewrite them.
 
-Choose an **In Depth** page. These reviews explain where evidence converges, where comparisons are
-confounded, how method families relate, and what the literature still cannot establish.
+## I want a quick view of one topic
 
-- [[concepts/flow-matching-in-depth|Flow Matching: In Depth]]
-- [[concepts/speech-to-speech-in-depth|Speech-to-Speech Systems: In Depth]]
-- [[concepts/evaluation-metrics-in-depth|Evaluation Metrics: In Depth]]
-- [[concepts/rlhf-speech-in-depth|RLHF for Speech: In Depth]]
-- [[concepts/disentanglement-in-depth|Disentanglement: In Depth]]
+Choose a Concept Overview. Each one defines its topic, summarizes the current evidence, maps the
+main method families, and surfaces practical trade-offs and open questions.
+
+→ [[concepts/index|Browse the concept catalog]]
+
+Twenty-one concepts currently have complete Overview and In Depth pairs. Singing and fine-tuning
+already contribute to the field-level synthesis, while their standalone rendered pairs remain
+pending.
+
+## I want to examine one topic in depth
+
+From the same [[concepts/index|concept catalog]], choose an **In Depth** page. These guides explain
+where evidence converges, where comparisons are confounded, how method families relate, and what
+the literature cannot yet establish.
 
 ## I want to find a paper
 
-Use the [[papers/index|paper catalog]] to browse all 640 paper pages, or use search to find a title,
-author, system, benchmark, or paper ID.
+Use the [[papers/index|paper catalog]] to browse all 900 paper pages, or search for a title, author,
+system, benchmark, venue, or paper ID.
 
 ## I want to inspect the complete evidence structure
 
-The Markdown pages are reader-oriented selections, not full exports of the claim graph. The
-machine-readable records live in `_claims/{concept}.yaml` in the content repository and retain
-paper-level claims, support roles, method families, caveats, and reassessment state.
+The reader-facing pages select representative findings rather than reproduce the full evidence
+graph. The machine-readable records live in `_claims/{concept}.yaml`. Reviewed cross-concept
+relationships live in `_claims/_reconciliation/registry.yaml`, and immutable historical
+assessments live in `_claims/_reconciliation/snapshots/`.
 
-## I want to see what is available
-
-The [[concepts/index|concept catalog]] is the authoritative list of completed and pending concept
-integrations. Five of the 23 tracked concepts currently have both reading depths; the others remain
-navigation placeholders until integration and rendering are complete.
-
-As coverage expands, the wiki is also planned to add time-based comparisons, venue-level research
-reports, and citation analyses of influential and highly cited papers.
+The Q3 snapshot records the publication cutoff, retrospective assessment date, paper set, local
+claim assessments, method families, and human-approved broader relationships used by the quarterly
+report.

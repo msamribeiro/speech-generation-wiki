@@ -1,5 +1,15 @@
 ---
 title: "Concepts"
+generation:
+  schema_version: 2
+  date: "2026-09-13"
+  stage: render
+  mode: light
+  runtime: codex
+  provider: openai
+  agent: speech-generation-render-agent
+  model: "gpt-5"
+  commit: "41ab852"
 ---
 
 Each integrated concept can be read at two depths: an Overview for rapid state-of-the-art scanning
@@ -32,11 +42,13 @@ structured claim YAML.
 | Instruction-Conditioned Text-to-Speech | [[concepts/instruction-conditioned-tts\|Overview]] | [[concepts/instruction-conditioned-tts-in-depth\|In Depth]] | 44 | 2026-08-02 |
 | Transformer Encoder–Decoder TTS | [[concepts/transformer-enc-dec-tts\|Overview]] | [[concepts/transformer-enc-dec-tts-in-depth\|In Depth]] | 28 | 2026-08-02 |
 
-## Pending Integration
+## Integrated Concepts Awaiting Standalone Rendering
 
-These pages contain no synthesized claims or paper counts. Each will be rendered from `_claims/{slug}.yaml` after its Q3 2025 integration pass is complete.
+These concepts are included in the 23-concept field overview, reconciliation, snapshot, and Q3
+report. Their dedicated Overview and In Depth pages remain pending because the current evidence is
+not yet sufficient for a useful standalone production pair.
 
 | Concept | Status |
 |---------|--------|
-| [[concepts/fine-tuning\|Fine-Tuning Foundation Models for Speech Generation]] | Awaiting Q3 2025 integration |
-| [[concepts/singing\|Singing Voice Synthesis and Conversion]] | Awaiting Q3 2025 integration |
+| [[concepts/fine-tuning\|Fine-Tuning Foundation Models for Speech Generation]] | Integrated; standalone rendering pending |
+| [[concepts/singing\|Singing Voice Synthesis and Conversion]] | Integrated; standalone rendering pending |

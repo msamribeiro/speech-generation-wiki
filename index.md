@@ -2,83 +2,74 @@
 title: "Speech Generation Wiki"
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-09-13"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "9bf1473"
+  commit: "41ab852"
 ---
 
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
 
 > [!abstract]
 > A living systematic review of synthetic speech, covering **text-to-speech (TTS)**,
-> **voice conversion (VC)**, and **spoken conversational agents**. The wiki currently contains
-> 900 paper pages and tracks 23 concepts.
+> **voice conversion (VC)**, and **spoken conversational agents**. The wiki contains 900 paper
+> pages and integrates research across 23 concepts.
 
-The wiki turns a growing paper corpus into three complementary ways to read the research:
+The wiki offers four complementary ways to read the research:
 
-- **Concept Overviews** give a concise account of what matters now, for readers scanning the field.
-- **Concept In Depth pages** explain what the reviewed research collectively shows, where findings
-  disagree, and which conclusions remain uncertain.
-- **Structured claim YAML** preserves the complete machine-readable links among claims, evidence,
-  method families, and papers.
+- The [[overview|Field Overview]] gives a gentle introduction to the current evidence across the
+  whole field.
+- The [[concepts/index|concept catalog]] provides focused Overview and In Depth guides to individual
+  methods and capabilities.
+- [[reports/index|Quarterly reports]] preserve what changed within a fixed publication period.
+- The [[papers/index|paper catalog]] and structured claim records provide the underlying evidence.
 
-Concept conclusions describe the literature integrated into this corpus. They are not claims of
-exhaustive coverage of the field.
+→ [[start|Choose the best place to start]]
 
 > [!warning]
-> **Work in progress.** Concept integration and synthesis currently cover research through
-> Q3 2025. The paper catalog may contain later work that has been ingested but not yet incorporated
-> into concept conclusions. Coverage will advance chronologically until it catches up with current
-> research, then continue on a rolling basis.
+> **Current synthesis boundary.** The integrated concepts and field overview use research published
+> through Q3 2025. The paper catalog contains later work that has been ingested but is not yet part
+> of these conclusions. Q4 2025 is the next integration and reconciliation cycle.
 
-→ [[start|Choose how to explore the wiki]]
+## Start with the field
 
-## Read the Integrated Concepts
+The [[overview|Field Overview]] connects all 23 concepts. It explains the recurring choices around
+speech representations, generation speed, control, voice transfer, evaluation, and spoken
+interaction without requiring readers to begin with one architecture.
 
-Five concepts have completed integration and are available at both reading depths.
+To understand what specifically changed during the latest completed period, read
+[[reports/quarterly/2025-Q3|Speech Generation — Q3 2025]]. The report separates publication
+activity from changes in assessed knowledge and is frozen to its Q3 evidence boundary.
 
-| Concept | Overview | In Depth | Papers reviewed |
-|---------|----------|----------|-----------------|
-| Flow Matching | [[concepts/flow-matching\|Overview]] | [[concepts/flow-matching-in-depth\|In Depth]] | 97 |
-| Speech-to-Speech Systems | [[concepts/speech-to-speech\|Overview]] | [[concepts/speech-to-speech-in-depth\|In Depth]] | 60 |
-| Evaluation Metrics | [[concepts/evaluation-metrics\|Overview]] | [[concepts/evaluation-metrics-in-depth\|In Depth]] | 285 |
-| RLHF for Speech | [[concepts/rlhf-speech\|Overview]] | [[concepts/rlhf-speech-in-depth\|In Depth]] | 29 |
-| Disentanglement | [[concepts/disentanglement\|Overview]] | [[concepts/disentanglement-in-depth\|In Depth]] | 100 |
+## Explore a concept
 
-Paper counts overlap because one paper can inform several concepts.
+Twenty-one concepts have both a concise Overview and a detailed In Depth page. These include
+generation architectures, neural codecs and speech representations, speaker and style control,
+multilingual and zero-shot synthesis, streaming and spoken agents, and evaluation.
 
-→ [[concepts/index|See all 23 concepts and their integration status]]
+The `singing` and `fine-tuning` evidence is already included in the field overview and Q3 report;
+their standalone rendered pairs remain pending.
 
-## Cross-Concept View
+→ [[concepts/index|Browse all 23 concepts]]
 
-The [[overview|Field Overview]] connects findings across the five completed concept integrations.
-It highlights shared design pressures in generation, control, alignment, interaction, and
-evaluation while keeping its conclusions bounded to the reviewed corpus.
-
-## Browse the Papers
+## Browse the papers
 
 The corpus contains 900 paper pages from arXiv, Interspeech, ACL, EMNLP, NAACL, ICLR, NeurIPS,
-ASRU, workshops, and industry technical reports.
+ASRU, workshops, and industry technical reports. Search by title, author, system, benchmark, venue,
+or paper ID.
 
 → [[papers/index|Browse all 900 papers]]
 
-## Project Status
+## How to read the dates
 
-The remaining 18 concepts are awaiting their Q3 2025 integration pass. Their existing pages are
-navigation placeholders rather than current research syntheses.
+The field overview is a replaceable account of the latest integrated evidence. Quarterly reports
+are immutable historical views derived from reviewed snapshots. The current Q3 materials were
+assessed retrospectively on 2026-09-12 using evidence published through 2025-09-30; they do not
+claim that the assessment itself was made at the end of that quarter.
 
-After Q3 integration is complete across the concept catalog, the project will continue through
-Q4 2025 and subsequent periods until the synthesis layer catches up with the live research corpus.
-Broader analysis is planned alongside that expansion:
-
-- **Time-based reports** will compare how methods, evidence, and open questions change between
-  periods such as Q3 and Q4 2025.
-- **Venue reports** will synthesize the research represented at venues such as Interspeech,
-  NeurIPS, ICLR, and ACL when coverage is sufficient for a meaningful analysis.
-- **Citation analysis** will track the most-cited and most influential papers in the corpus,
-  including changes in their relative position over time.
+Paper counts show corpus coverage and research attention. They do not by themselves establish
+evidence strength, consensus, or adoption.
