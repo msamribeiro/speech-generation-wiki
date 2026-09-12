@@ -137,10 +137,12 @@ candidates:
     - spoken
     - trade-off
     aggregate_score: 0.531842
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_responsiveness_trades_against_floor_holding
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -745,10 +747,12 @@ candidates:
     - streaming
     - turn
     aggregate_score: 0.435192
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -891,10 +895,12 @@ candidates:
     - requires
     - turn
     aggregate_score: 0.400103
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1215,10 +1221,12 @@ candidates:
     - full-duplex
     - spoken
     aggregate_score: 0.380258
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_0aa422d48c79f223
+  rationale: 'The evaluation claim is a narrower instance of the speech-to-speech capability assessment: it documents
+    rare and poorly timed listener backchannels, whereas the target also covers robust interruption handling and
+    turn-taking accuracy under realistic conditions.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2042,10 +2050,12 @@ candidates:
     - full-duplex
     - speaking
     aggregate_score: 0.337719
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2633,10 +2643,12 @@ candidates:
     shared_terms:
     - full-duplex
     aggregate_score: 0.309409
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2882,10 +2894,12 @@ candidates:
     - full-duplex
     - turn
     aggregate_score: 0.304881
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_full_duplex_requires_joint_interaction_modeling
+  rationale: The two local clusters contribute complementary evidence to the reviewed full-duplex synthesis. Their
+    concept-specific propositions, evidence, status, and caveats remain authoritative, while the broader claim records
+    the shared field-level conclusion without counting overlapping papers more than once.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3145,10 +3159,12 @@ candidates:
     - interaction
     - interruption
     aggregate_score: 0.289327
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_9661ee198d10a663
+  rationale: Concurrent listening and speaking together with explicit overlap and turn-transition handling are prerequisites
+    for full-duplex interaction, but they do not themselves assert the observed performance tradeoff between responding
+    quickly to genuine interruptions and avoiding premature stopping or yielding.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3687,10 +3703,12 @@ candidates:
     - barge-in
     - dialogue
     aggregate_score: 0.259946
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_802f90e81782a85b
+  rationale: Integrating interruption detection within the dialogue model is a specific mechanism for satisfying
+    the broader requirement to model turn boundaries, interruptions, barge-in, and response timing. The source does
+    not imply that internal detection is the only valid implementation.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4650,11 +4668,11 @@ candidates:
       is not justified, while each local cluster retains its own scope and evidence.'
 review:
   started_on: '2026-08-29'
-  candidates_reviewed: 89
-  accepted: 89
+  candidates_reviewed: 98
+  accepted: 98
   rejected: 0
   deferred: 0
-  pending: 21
+  pending: 12
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent

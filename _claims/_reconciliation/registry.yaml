@@ -319,16 +319,12 @@ relationships:
   source: speech-to-speech#internal_interruption_detection_beats_external_vad
   target: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
   type: specialization
-  rationale: 'The source cluster states: "Integrating interruption / turn-taking detection internally within the
-    dialogue model (rather than relying on an external VAD module) yields more robust barge-in and interruption
-    handling." The target cluster states: "Natural streaming dialogue requires explicit modeling of turn boundaries,
-    interruptions, barge-in, and response timing." The proposed specialization relation means that the source is
-    a narrower task, architecture, or deployment instance of the target. The original agent adjudication further
-    noted: Internal interruption detection is a specific mechanism for the broader requirement to model turn-taking
-    and barge-in explicitly.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Integrating interruption detection within the dialogue model is a specific mechanism for satisfying
+    the broader requirement to model turn boundaries, interruptions, barge-in, and response timing. The source does
+    not imply that internal detection is the only valid implementation.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_8286c4f407836da9
   source: evaluation-metrics#embedding_speaker_similarity_diverges_from_human_perception
   target: speaker-adaptation#automatic_similarity_metrics_do_not_replace_listener_judgments
@@ -405,17 +401,12 @@ relationships:
   source: speech-to-speech#full_duplex_responsiveness_floorholding_tradeoff
   target: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
   type: related
-  rationale: 'The source cluster states: "Full-duplex spoken dialogue systems face an inherent trade-off between
-    fast, low-latency responsiveness/interruption handling and semantic coherence or floor-holding robustness; no
-    current system achieves strong performance on both simultaneously across interaction scenarios." The target
-    cluster states: "Natural full-duplex speech interaction requires models to listen while speaking and explicitly
-    handle overlap, interruption, and turn transitions." The proposed related relation means that the clusters share
-    a decision-relevant issue but differ enough in mechanism or scope that a stronger relation is not justified.
-    The original agent adjudication further noted: Joint listening and speaking is an architectural prerequisite
-    for the responsiveness–floor-holding trade-off, but does not itself assert the same performance limitation.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Concurrent listening and speaking together with explicit overlap and turn-transition handling are prerequisites
+    for full-duplex interaction, but they do not themselves assert the observed performance tradeoff between responding
+    quickly to genuine interruptions and avoiding premature stopping or yielding.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_99f8e997b4289728
   source: flow-matching#fm_vocoder_speed_gan_gap
   target: gan-vocoder#flow_and_diffusion_trade_speed_for_iterative_quality
@@ -705,6 +696,16 @@ relationships:
   rationale: Both claims concern separating speaker identity from language and accent in cross-lingual transfer,
     but voice conversion and zero-shot synthesis are parallel task settings rather than nested scopes. Evidence
     of leakage in one setting does not by itself establish the required mechanism or outcome in the other.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_0aa422d48c79f223
+  source: evaluation-metrics#backchannel_generation_remains_unsolved
+  target: speech-to-speech#full_duplex_backchannel_interruption_unsolved
+  type: specialization
+  rationale: 'The evaluation claim is a narrower instance of the speech-to-speech capability assessment: it documents
+    rare and poorly timed listener backchannels, whereas the target also covers robust interruption handling and
+    turn-taking accuracy under realistic conditions.'
   reviewed_on: '2026-09-12'
   accepted_in: 2025-Q3-corrective-review
   review_status: human_approved
@@ -1097,36 +1098,29 @@ broader_claims:
   reviewed_in: 2025-Q3-corrective-review
   review_status: human_approved
 - id: broader_full_duplex_requires_joint_interaction_modeling
-  proposition: A full-duplex spoken dialogue system must continue processing incoming speech while generating its
-    own output and must model when to keep speaking, yield the speaking turn, respond to an interruption, or handle
-    overlapping speech. Concurrent listening and generation without these interaction decisions is insufficient
-    for natural turn-taking.
+  proposition: 'Natural full-duplex dialogue requires two distinct capabilities: concurrently processing incoming
+    audio while generating speech, and controlling the interaction by deciding whether to continue speaking, yield
+    the turn, respond to an interruption, or interpret overlapping speech as a backchannel. An architecture that
+    merely permits simultaneous input and output does not by itself establish effective turn-taking.'
   status: strongly_supported
   confidence: high
   members:
   - claim: autoregressive-codec-tts#multistream_autoregression_enables_full_duplex_dialogue
     relationship: supports
-    rationale: 'The autoregressive-codec-tts cluster states: "Parallel or delayed autoregressive speech streams
-      enable streaming and full-duplex dialogue without explicit turn segmentation." It is proposed as a supports
-      member because the source supplies a compatible mechanism or evidence for the target without claiming that
-      the propositions are identical relative to the broader proposition.'
+    rationale: Parallel or delayed autoregressive streams provide a concrete architecture for concurrent listening
+      and generation, but their existence alone does not establish correct interruption or turn-transition behavior.
   - claim: spoken-language-model#full_duplex_requires_joint_listening_speaking_and_turn_taking
     relationship: equivalent
-    rationale: 'The spoken-language-model cluster states: "Natural full-duplex speech interaction requires models
-      to listen while speaking and explicitly handle overlap, interruption, and turn transitions." It is proposed
-      as a equivalent member because the two clusters make the same material assertion at matching scope and polarity
-      relative to the broader proposition.'
+    rationale: This local claim covers both concurrent listening while speaking and explicit handling of overlap,
+      interruptions, and turn transitions at the same scope as the broader proposition.
   - claim: streaming-tts#full_duplex_requires_simultaneous_listening_and_speaking
-    relationship: equivalent
-    rationale: 'The streaming-tts cluster states: "Full-duplex speech systems require generation to incorporate
-      an incoming audio stream while speaking." It is proposed as a equivalent member because the two clusters make
-      the same material assertion at matching scope and polarity relative to the broader proposition.'
+    relationship: supports
+    rationale: This claim establishes the concurrent input-and-output requirement, but does not by itself cover
+      the interaction policy needed for turn-taking and interruption handling.
   - claim: streaming-tts#turn_taking_and_barge_in_need_explicit_modeling
-    relationship: specialization
-    rationale: 'The streaming-tts cluster states: "Natural streaming dialogue requires explicit modeling of turn
-      boundaries, interruptions, barge-in, and response timing." It is proposed as a specialization member because
-      the source is a narrower task, architecture, or deployment instance of the target relative to the broader
-      proposition.'
+    relationship: supports
+    rationale: This claim establishes the need to model turn boundaries, interruptions, barge-in, and response timing,
+      but does not by itself establish concurrent listening and generation.
   supporting_papers:
   - 2025.findings-ijcnlp.49
   - 2025.naacl-long.484
@@ -1163,37 +1157,35 @@ broader_claims:
   - interspeech-2025-0874
   - interspeech-2025-2564
   caveats:
-  - Architectural support for concurrent streams does not by itself establish human-like backchannel timing or interruption
-    robustness.
-  review_rationale: The clusters connect the architectural requirement for concurrent speech streams to the interaction
-    behaviors that make duplex operation useful.
+  - Architectural support for concurrent streams does not by itself establish human-like backchannel timing, interruption
+    recognition, or turn-transition robustness.
+  - Interaction decisions may be learned implicitly or implemented explicitly; the evidence supports the required
+    behavior, not one universal control architecture.
+  review_rationale: 'After deduplicating shared papers, the member clusters jointly support two separable requirements
+    for natural full-duplex interaction: concurrent audio processing and generation, and reliable decisions about
+    overlap, interruptions, and speaking turns. Evidence for only one requirement is not treated as evidence for
+    the other.'
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-12'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_full_duplex_responsiveness_trades_against_floor_holding
-  proposition: Across the evaluated full-duplex dialogue systems, reacting more quickly to user speech or barge-ins
-    makes it harder to distinguish genuine interruptions from brief overlaps or backchannels, which can cause the
+  proposition: Across evaluated full-duplex dialogue systems, reacting more quickly to user speech or barge-ins
+    makes it harder to distinguish genuine interruptions from brief overlaps or backchannels. This can cause the
     system to stop speaking or yield its turn prematurely. Systems that preserve their ongoing response and semantic
-    coherence react more slowly to genuine interruptions; no evaluated system performs strongly on both behaviors
-    across interaction scenarios.
+    coherence tend to react more slowly to genuine interruptions; no evaluated system performs strongly on both
+    behaviors across interaction scenarios.
   status: strongly_supported
   confidence: high
   members:
   - claim: evaluation-metrics#fullduplex_dialogue_has_fundamental_responsiveness_tradeoffs
     relationship: equivalent
-    rationale: 'The evaluation-metrics cluster states: "Full-duplex spoken dialogue systems face a fundamental trade-off
-      between responsiveness (low latency, quick barge-in / jump-in) and stability (avoiding false interruptions,
-      floor-holding, or premature takeover), with no evaluated system dominating on both axes." It is proposed as
-      a equivalent member because the two clusters make the same material assertion at matching scope and polarity
-      relative to the broader proposition.'
+    rationale: This claim states the same evaluated tradeoff between fast interruption response and avoiding false
+      interruptions or premature yielding, with matching system scope and polarity.
   - claim: speech-to-speech#full_duplex_responsiveness_floorholding_tradeoff
     relationship: equivalent
-    rationale: 'The speech-to-speech cluster states: "Full-duplex spoken dialogue systems face an inherent trade-off
-      between fast, low-latency responsiveness/interruption handling and semantic coherence or floor-holding robustness;
-      no current system achieves strong performance on both simultaneously across interaction scenarios." It is
-      proposed as a equivalent member because the two clusters make the same material assertion at matching scope
-      and polarity relative to the broader proposition.'
+    rationale: This claim states the same system-level tradeoff between rapid interruption handling and preserving
+      the system's ongoing speaking turn and semantic coherence, with matching scope and polarity.
   supporting_papers:
   - '2410.17799'
   - '2503.04721'
@@ -1204,14 +1196,15 @@ broader_claims:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - The operating point depends on interaction scenario, thresholding, and the latency and error characteristics
-    of the underlying model.
-  review_rationale: The evaluation and system-level clusters state the same trade-off with matching scope and polarity
-    and shared direct evidence.
+  - The operating point depends on the interaction scenario, interruption threshold, and the latency and error characteristics
+    of the underlying speech model.
+  review_rationale: 'After deduplicating their substantially overlapping evidence, the evaluation and speech-to-speech
+    clusters state the same bounded tradeoff: faster interruption response increases premature stopping or yielding,
+    while stronger continuation behavior delays responses to genuine interruptions.'
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-12'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_learned_quality_metrics_are_useful_but_domain_sensitive
   proposition: Learned speech-quality predictors usually agree with human ratings more closely than classical signal-distortion
     metrics on evaluation data similar to their training data. Their system rankings can change across languages,
