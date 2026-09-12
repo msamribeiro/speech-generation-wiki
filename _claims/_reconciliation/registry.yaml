@@ -343,16 +343,13 @@ relationships:
   source: spoken-language-model#long_context_and_memory_are_required_for_conversation
   target: zero-shot-tts#long_form_generation_needs_alignment_and_memory_controls
   type: related
-  rationale: 'The source cluster states: "Multi-turn spoken interaction requires explicit mechanisms for conversational
-    context, memory, and long-horizon state." The target cluster states: "Long-form zero-shot generation benefits
-    from explicit alignment, chunking, or memory mechanisms that limit error accumulation." The proposed related
-    relation means that the clusters share a decision-relevant issue but differ enough in mechanism or scope that
-    a stronger relation is not justified. The original agent adjudication further noted: Conversational context
-    memory and long-form synthesis alignment are related long-horizon requirements, but their interaction state
-    and acoustic error-accumulation scopes remain distinct.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Both claims require state to persist over a long horizon, but conversational memory preserves relevant
+    information across dialogue turns, while zero-shot long-form controls preserve alignment and acoustic continuity
+    within an extended generated utterance. The shared term memory does not make these mechanisms or objectives
+    equivalent.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_87621803d5e0e99a
   source: streaming-tts#parallel_and_speculative_decoding_accelerate_streaming
   target: spoken-language-model#streaming_spoken_models_can_reach_interactive_latency
@@ -493,16 +490,13 @@ relationships:
   source: spoken-language-model#long_form_speech_generation_needs_hierarchical_coherence
   target: zero-shot-tts#long_form_generation_needs_alignment_and_memory_controls
   type: related
-  rationale: 'The source cluster states: "Long-form speech generation benefits from hierarchical or multiscale planning
-    that separates linguistic continuity from acoustic rendering." The target cluster states: "Long-form zero-shot
-    generation benefits from explicit alignment, chunking, or memory mechanisms that limit error accumulation."
-    The proposed related relation means that the clusters share a decision-relevant issue but differ enough in mechanism
-    or scope that a stronger relation is not justified. The original agent adjudication further noted: Both claims
-    require long-horizon structure, but spoken-language-model hierarchical planning and zero-shot TTS alignment
-    or memory controls address different failure mechanisms.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Both claims address maintaining coherence over long generated speech, but they identify different mechanisms
+    and failure scopes. Hierarchical or multiscale planning separates linguistic continuity from acoustic rendering,
+    whereas alignment, chunking, and memory controls limit sequence-level error accumulation in zero-shot synthesis;
+    neither proposition contains the other.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_c68079cab0600245
   source: autoregressive-codec-tts#unified_speech_text_lms_enable_spoken_generation
   target: spoken-language-model#unified_models_support_joint_understanding_and_generation
@@ -1287,88 +1281,60 @@ broader_claims:
   reviewed_in: 2025-Q3-corrective-review
   review_status: human_approved
 - id: broader_preference_posttraining_improves_targeted_speech_attributes
-  proposition: Preference- and reward-based post-training can improve explicitly targeted attributes such as intelligibility,
-    speaker similarity, naturalness, emotion, or instruction adherence beyond supervised fine-tuning in autoregressive,
-    diffusion, flow-matching, and spoken-language generators. The gain depends on the base model, preference pairs
-    or reward definition, and training stability; optimizing a proxy too aggressively can degrade untargeted perceptual
-    qualities or collapse held-out quality.
+  proposition: 'Across the reviewed TTS and spoken-language-model evidence, preference- or reward-based post-training
+    has improved attributes explicitly represented in the training signal—such as intelligibility, speaker similarity,
+    naturalness, emotional alignment, or instruction following—relative to the reported supervised or metric-only
+    baselines. These gains do not imply overall perceptual improvement: outcomes depend on base-model capability,
+    preference-pair or reward construction, multi-objective weighting, and optimization stability, while aggressive
+    proxy optimization can degrade untargeted qualities.'
   status: strongly_supported
   confidence: high
   members:
   - claim: autoregressive-codec-tts#preference_optimization_improves_multiple_quality_dimensions
     relationship: specialization
-    rationale: 'The autoregressive-codec-tts cluster states: "Preference and reinforcement-learning post-training
-      can improve intelligibility, speaker similarity, and perceptual quality beyond supervised autoregressive TTS."
-      It is proposed as a specialization member because the source is a narrower task, architecture, or deployment
-      instance of the target relative to the broader proposition.'
+    rationale: Autoregressive codec TTS provides an architecture-specific instance in which preference or reinforcement
+      learning improves explicitly targeted intelligibility, speaker-similarity, or perceptual-quality measures.
   - claim: diffusion-tts#preference_optimization_can_steer_diffusion
     relationship: specialization
-    rationale: 'The diffusion-tts cluster states: "Preference optimization can steer diffusion trajectories toward
-      human-aligned speech attributes." It is proposed as a specialization member because the source is a narrower
-      task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Diffusion TTS provides an architecture-specific instance in which preference optimization steers
+      iterative generation toward the speech attributes represented by the preference signal.
   - claim: emotion-synthesis#preference_optimization_can_improve_emotional_alignment
     relationship: specialization
-    rationale: 'The emotion-synthesis cluster states: "Preference optimization can improve emotional coherence and
-      expressive alignment beyond supervised fine-tuning alone." It is proposed as a specialization member because
-      the source is a narrower task, architecture, or deployment instance of the target relative to the broader
-      proposition.'
+    rationale: Emotion synthesis provides an attribute-specific instance in which preference optimization improves
+      reported emotional coherence and expressive alignment relative to supervised fine-tuning.
   - claim: flow-matching#fm_velocity_space_alignment
     relationship: specialization
-    rationale: 'The flow-matching cluster states: "Preference and reinforcement-learning-based post-training alignment
-      can be formulated for flow-matching TTS architectures — either as a direct DPO objective in the velocity space,
-      or via Gaussian reparameterization of the deterministic output combined with policy-gradient methods (GRPO)
-      — enabling post-training intelligibility and speaker-similarity improvements without full retraining." It
-      is proposed as a specialization member because the source is a narrower task, architecture, or deployment
-      instance of the target relative to the broader proposition.'
+    rationale: Flow-matching TTS provides an architecture-specific formulation of preference or reward optimization
+      in velocity space, with reported gains in targeted intelligibility and speaker similarity.
   - claim: rlhf-speech#rlhf_posttraining_beats_sft_baseline
-    relationship: equivalent
-    rationale: 'The rlhf-speech cluster states: "Preference- or reward-based post-training (DPO, KTO, GRPO, differentiable-reward
-      optimization) for TTS/SLM generation consistently improves intelligibility, speaker similarity, or naturalness
-      beyond what supervised fine-tuning alone achieves." It is proposed as a equivalent member because the two
-      clusters make the same material assertion at matching scope and polarity relative to the broader proposition.'
+    relationship: supports
+    rationale: This cross-task RLHF cluster supplies direct evidence that several preference- and reward-based methods
+      improve targeted speech attributes over reported supervised baselines, without matching every scope and qualification
+      of the broader proposition.
   - claim: rlhf-speech#preference_optimization_extends_to_continuous_generative_tts
     relationship: supports
-    rationale: 'The rlhf-speech cluster states: "DPO-style preference optimization, originally formulated for discrete
-      autoregressive token sequences, can be reformulated for continuous or iterative-denoising generative TTS architectures
-      (flow-matching, diffusion, autoregressive-diffusion hybrids) by operating in velocity space, marginalizing
-      over intermediate diffusion states, or applying local win/lose preference supervision at each denoising step,
-      without requiring an external reward model." It is proposed as a supports member because the source supplies
-      a compatible mechanism or evidence for the target without claiming that the propositions are identical relative
-      to the broader proposition.'
+    rationale: Reformulations for continuous and iterative-denoising generators provide the technical mechanism
+      by which preference objectives can be applied beyond discrete autoregressive token models.
   - claim: rlhf-speech#composite_multiobjective_rewards_outperform_single_metric_but_need_balancing
     relationship: refines
-    rationale: 'The rlhf-speech cluster states: "RL or preference-optimization reward functions that jointly target
-      multiple speech quality dimensions (intelligibility, speaker similarity, emotion, prosody) outperform single-metric
-      rewards, which improve only their targeted dimension and can degrade complementary ones, but balancing multiple
-      reward terms remains a nontrivial, often under-ablated engineering problem." It is proposed as a refines member
-      because the source adds a boundary, condition, failure mode, or more precise formulation to the target relative
-      to the broader proposition.'
+    rationale: This claim refines the broader result by showing that single-metric rewards can improve only their
+      target while degrading complementary qualities, and that multi-objective rewards require careful weighting.
   - claim: rlhf-speech#rlhf_reward_hacking_risk
     relationship: refines
-    rationale: 'The rlhf-speech cluster states: "RL/RLHF post-training for speech generation optimized against an
-      automatically measured proxy reward is prone to reward hacking, degrading unmeasured or complementary perceptual
-      qualities (prosody naturalness, emotional appropriateness, non-targeted objectives) unless explicitly counteracted."
-      It is proposed as a refines member because the source adds a boundary, condition, failure mode, or more precise
-      formulation to the target relative to the broader proposition.'
+    rationale: This claim adds the failure condition that aggressive optimization of an automatic proxy can reward-hack
+      the measured attribute while degrading unmeasured perceptual qualities.
   - claim: rlhf-speech#rlhf_alignment_bounded_by_base_model_capability
     relationship: refines
-    rationale: 'The rlhf-speech cluster states: "Gains from preference or reward-based alignment are ultimately
-      bounded by the base model''s underlying capability: iterative alignment rounds show diminishing returns, and
-      RL-optimized systems approach but do not fully close the gap to oracle best-of-N or cascaded-system toplines."
-      It is proposed as a refines member because the source adds a boundary, condition, failure mode, or more precise
-      formulation to the target relative to the broader proposition.'
+    rationale: This claim bounds achievable post-training gains by the base model's underlying capabilities and
+      documents diminishing returns across repeated alignment rounds.
   - claim: spoken-language-model#reward_and_preference_alignment_improve_spoken_behavior
     relationship: specialization
-    rationale: 'The spoken-language-model cluster states: "Reward modeling and preference alignment can improve
-      spoken-language-model helpfulness, naturalness, and behavioral control beyond supervised training alone."
-      It is proposed as a specialization member because the source is a narrower task, architecture, or deployment
-      instance of the target relative to the broader proposition.'
+    rationale: Spoken-language models provide a task-specific instance in which reward modeling or preference alignment
+      improves reported helpfulness, naturalness, or behavioral control over supervised training.
   - claim: subjective-evaluation#preference_optimization_improves_targeted_perception
     relationship: supports
-    rationale: 'The subjective-evaluation cluster states: "Preference-based optimization can improve targeted perceptual
-      attributes beyond supervised or metric-only training." It is proposed as a supports member because the source
-      supplies a compatible mechanism or evidence for the target without claiming that the propositions are identical
-      relative to the broader proposition.'
+    rationale: Subjective evaluation supplies perceptual evidence that preference optimization can improve the attributes
+      explicitly targeted by its comparisons or reward, without implying uniform improvement across other qualities.
   supporting_papers:
   - 2025.acl-long.598
   - 2025.acl-long.682
@@ -1417,15 +1383,20 @@ broader_claims:
   - '2509.25416'
   - interspeech-2025-0063
   caveats:
-  - Metric gains can hide degradation on untargeted perceptual dimensions; reward hacking and capability collapse
-    remain material risks.
-  review_rationale: The evidence spans several generator families and perceptual targets. The broader proposition
-    records the replicated improvement while incorporating the local constraints on reward construction, optimization
-    stability, and base-model ceilings.
+  - Reported improvements are relative to each study's supervised or metric-only baseline and are not necessarily
+    comparable across architectures, datasets, reward definitions, or perceptual tests.
+  - Optimizing one measured attribute can degrade untargeted qualities; multi-objective rewards reduce but do not
+    eliminate dependence on reward weighting and validation coverage.
+  - Post-training cannot reliably create capabilities absent from the base model, and repeated alignment rounds
+    can show diminishing returns or unstable held-out quality.
+  review_rationale: After deduplicating shared papers, the evidence spans autoregressive, diffusion, flow-matching,
+    and spoken-language generators and multiple targeted attributes. It consistently supports improvement on attributes
+    represented in the preference or reward signal, while the reviewed synthesis explicitly retains the limits imposed
+    by baseline choice, reward construction, proxy optimization, training stability, and base-model capability.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-12'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_reference_conditioning_enables_unseen_voice_transfer
   proposition: 'Reference-audio conditioning enables a synthesis or voice-conversion system to produce speech in
     the identity of a speaker excluded from the system’s training set, without speaker-specific parameter updates

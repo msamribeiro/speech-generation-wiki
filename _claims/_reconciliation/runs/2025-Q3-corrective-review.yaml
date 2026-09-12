@@ -2,8 +2,8 @@ schema_version: 1
 run_id: 2025-Q3-corrective-review
 trigger: corrective-review
 evidence_cutoff: 2025-09-30
-assessment_as_of: '2026-08-23'
-status: in_progress
+assessment_as_of: '2026-09-12'
+status: finalized
 review_mode: human_review
 supersedes_run: 2025-Q3
 source:
@@ -1386,10 +1386,12 @@ candidates:
     - preference
     - supervised
     aggregate_score: 0.366641
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1799,10 +1801,12 @@ candidates:
     - preference
     - supervised
     aggregate_score: 0.352561
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1968,10 +1972,12 @@ candidates:
     - optimization
     - supervised
     aggregate_score: 0.341345
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2530,10 +2536,13 @@ candidates:
     - benefits
     - long-form
     aggregate_score: 0.317585
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_b8b765b94012465a
+  rationale: Both claims address maintaining coherence over long generated speech, but they identify different mechanisms
+    and failure scopes. Hierarchical or multiscale planning separates linguistic continuity from acoustic rendering,
+    whereas alignment, chunking, and memory controls limit sequence-level error accumulation in zero-shot synthesis;
+    neither proposition contains the other.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2809,10 +2818,12 @@ candidates:
     - post-training
     - preference
     aggregate_score: 0.305518
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2851,10 +2862,12 @@ candidates:
     - optimization
     - preference
     aggregate_score: 0.305503
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3272,10 +3285,13 @@ candidates:
     - mechanisms
     - memory
     aggregate_score: 0.285562
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_8631901a4131f377
+  rationale: Both claims require state to persist over a long horizon, but conversational memory preserves relevant
+    information across dialogue turns, while zero-shot long-form controls preserve alignment and acoustic continuity
+    within an extended generated utterance. The shared term memory does not make these mechanisms or objectives
+    equivalent.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3452,10 +3468,12 @@ candidates:
     - similarity
     - speaker
     aggregate_score: 0.280268
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3590,10 +3608,12 @@ candidates:
     shared_terms:
     - optimization
     aggregate_score: 0.268942
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4067,10 +4087,12 @@ candidates:
     - perceptual
     - post-training
     aggregate_score: 0.223961
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4223,10 +4245,12 @@ candidates:
     shared_terms:
     - perceptual
     aggregate_score: 0.211529
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4260,10 +4284,12 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.211105
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_preference_posttraining_improves_targeted_speech_attributes
+  rationale: The two local clusters contribute complementary evidence to the reviewed, bounded conclusion about
+    targeted preference- or reward-based post-training. Their architecture-specific outcomes, evidence, status,
+    and caveats remain authoritative, and overlapping papers are counted only once in the broader assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4668,11 +4694,11 @@ candidates:
       is not justified, while each local cluster retains its own scope and evidence.'
 review:
   started_on: '2026-08-29'
-  candidates_reviewed: 98
-  accepted: 98
+  candidates_reviewed: 110
+  accepted: 110
   rejected: 0
   deferred: 0
-  pending: 12
+  pending: 0
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent
@@ -4680,3 +4706,4 @@ review:
   commit: b2cbe57
   human_reviewer: project_owner
   decision_source: chat
+  completed_on: '2026-09-12'
