@@ -290,10 +290,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.498599
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -420,10 +422,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.476777
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -515,10 +519,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.471016
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -567,10 +573,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.450522
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -606,10 +614,12 @@ candidates:
     - speaker-specific
     - unseen-speaker
     aggregate_score: 0.445718
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -643,10 +653,12 @@ candidates:
     - identity
     - speaker
     aggregate_score: 0.443297
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: tradeoff
+  registry_target: rel_06f012f2c74a14fb
+  rationale: Speaker anonymization intentionally suppresses identity cues that personalized adaptation seeks to
+    preserve. Privacy-oriented conversion can also reduce intelligibility or naturalness, so stronger unlinkability
+    and the resulting losses in personalization and speech utility are coupled outcomes that must be evaluated together.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -690,10 +702,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.436312
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -966,10 +980,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.395468
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1045,10 +1061,12 @@ candidates:
     - controllability
     - speaker
     aggregate_score: 0.391682
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1082,10 +1100,12 @@ candidates:
     - major
     - unseen-speaker
     aggregate_score: 0.384912
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: The two task-local clusters provide complementary evidence for the bounded association between broader
+    training-set coverage and unseen-voice generalization. Their concept-specific evidence, confounds, and caveats
+    remain authoritative; acceptance does not attribute the reported gains to data diversity alone.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1121,10 +1141,12 @@ candidates:
     - noise
     - speaker
     aggregate_score: 0.384132
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_bfda62d805bebd5c
+  rationale: Both claims identify noise, channel, and domain mismatch as threats to identity transfer, but speaker
+    adaptation and voice conversion are intersecting tasks with different conditioning and conversion objectives.
+    Neither task claim is a narrower instance of the other, so a related relationship is warranted.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1230,10 +1252,12 @@ candidates:
     - speakers
     - unseen
     aggregate_score: 0.376812
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1478,10 +1502,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.36164
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1517,10 +1543,12 @@ candidates:
     - metrics
     - speaker-similarity
     aggregate_score: 0.361203
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: specialization
+  registry_target: rel_00345695a268d456
+  rationale: The speaker-adaptation claim is a task-specific instance of the broader metric-validity finding. It
+    concerns whether embedding scores reflect perceptual identity and adaptation suitability, while the evaluation-metrics
+    claim also covers zero-shot TTS, voice conversion, anonymization, unlearning, and assistive communication.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1555,10 +1583,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.360419
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1596,10 +1626,12 @@ candidates:
     - information
     - speaker
     aggregate_score: 0.358856
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1717,10 +1749,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.354631
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1799,10 +1833,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.347689
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1840,10 +1876,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.347438
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -1879,10 +1917,12 @@ candidates:
     - speaker
     - style
     aggregate_score: 0.344702
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2115,10 +2155,12 @@ candidates:
     - linguistic
     - speaker
     aggregate_score: 0.328681
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2155,10 +2197,12 @@ candidates:
     - separating
     - speaker
     aggregate_score: 0.327384
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2194,10 +2238,13 @@ candidates:
     - prediction
     - reduces
     aggregate_score: 0.327355
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_ad402a8070976dce
+  rationale: Both claims concern explicit duration modeling, but they establish different outcomes. The prosody-control
+    claim concerns interpretable manipulation of pitch, energy, and duration, whereas the transformer TTS claim
+    concerns parallel generation and fewer skipping or repetition failures. Alignment evidence does not by itself
+    establish user-controllable prosody, so only a related relationship is justified.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2231,10 +2278,13 @@ candidates:
     - representations
     - self-supervised
     aggregate_score: 0.327107
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: tradeoff
+  registry_target: rel_6f05c3f2b97253d7
+  rationale: Self-supervised representations can suppress enough speaker information to provide useful content units
+    for voice conversion and improve intelligibility or transfer, while still retaining varying amounts of pitch,
+    style, speaker identity, and task-specific information. Their content utility and residual entanglement therefore
+    require joint interpretation.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2270,10 +2320,12 @@ candidates:
     - speaker
     - tokens
     aggregate_score: 0.325993
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_disentanglement_improves_multiattribute_control
+  rationale: The two local clusters provide complementary evidence for the reviewed synthesis that factor separation
+    can improve targeted control while remaining incomplete and potentially costly. Their distinct application scope,
+    epistemic status, evidence, and caveats remain authoritative in their concept-local records.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2309,10 +2361,13 @@ candidates:
     - pitch
     - variation
     aggregate_score: 0.325864
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_1dc035153445f0ca
+  rationale: The claims share explicit duration and pitch modeling, but the transformer TTS claim establishes an
+    architectural requirement for representing variation in parallel generation, not independent or interpretable
+    user control. Its own caveat states that better variance modeling does not guarantee fine-grained control, so
+    the relationship is related rather than supports.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2541,10 +2596,13 @@ candidates:
     - timbre
     - transfer
     aggregate_score: 0.315721
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_57a4b8c4d65e3d80
+  rationale: Prosody disentanglement supplies a representation mechanism for more independent style transfer, while
+    explicit expressive conditioning describes a broader zero-shot cloning capability. The claims overlap in controllable
+    expression but differ in mechanism and task scope, so neither is a specialization or direct supporting proposition
+    for the other.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2698,10 +2756,12 @@ candidates:
     - diversity
     - generalization
     aggregate_score: 0.306706
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: The two task-local clusters provide complementary evidence for the bounded association between broader
+    training-set coverage and unseen-voice generalization. Their concept-specific evidence, confounds, and caveats
+    remain authoritative; acceptance does not attribute the reported gains to data diversity alone.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -2977,10 +3037,12 @@ candidates:
     - prosody
     - style
     aggregate_score: 0.295741
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_3e07f2a5dedeb7fc
+  rationale: 'The evaluation claim does not demonstrate that diffusion models possess expressive controls. It refines
+    the capability claim by specifying the evidence needed to substantiate it: emotion, style, prosody, or singing
+    control must be tested on the claimed dimension rather than inferred from holistic naturalness ratings alone.'
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3285,10 +3347,12 @@ candidates:
     - diversity
     - speaker
     aggregate_score: 0.281266
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_training_diversity_drives_unseen_voice_generalization
+  rationale: The two task-local clusters provide complementary evidence for the bounded association between broader
+    training-set coverage and unseen-voice generalization. Their concept-specific evidence, confounds, and caveats
+    remain authoritative; acceptance does not attribute the reported gains to data diversity alone.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3418,10 +3482,12 @@ candidates:
     shared_terms:
     - speaker-specific
     aggregate_score: 0.277998
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -3583,10 +3649,12 @@ candidates:
     shared_terms:
     - speaker-specific
     aggregate_score: 0.261689
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4219,10 +4287,12 @@ candidates:
     - cross-lingual
     - voice
     aggregate_score: 0.205983
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: refines
+  registry_target: rel_6d2daece6c8dd81b
+  rationale: The zero-shot TTS claim refines the broader multilingual identity-language tradeoff by identifying
+    reference-language, accent, and prosody leakage as concrete failure modes. Its contested local status and contradictory
+    evidence remain intact rather than being replaced by the strongly supported broader multilingual assessment.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4250,10 +4320,12 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.203918
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4287,10 +4359,12 @@ candidates:
     technical_vocabulary_score: 0.0
     shared_terms: []
     aggregate_score: 0.202763
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: broader_reference_conditioning_enables_unseen_voice_transfer
+  rationale: The two local clusters provide complementary evidence for the reviewed conclusion that reference audio
+    can condition synthesis or conversion on an identity absent from training without speaker-specific inference-time
+    updates. Their task-specific fidelity limits and evaluation caveats remain authoritative locally.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4324,10 +4398,12 @@ candidates:
     - language
     - voice
     aggregate_score: 0.199536
-  disposition: pending
-  relationship: null
-  registry_target: null
-  rationale: null
+  disposition: accepted
+  relationship: related
+  registry_target: rel_94fc866f7ff9d905
+  rationale: Both claims concern separating speaker identity from language and accent in cross-lingual transfer,
+    but voice conversion and zero-shot synthesis are parallel task settings rather than nested scopes. Evidence
+    of leakage in one setting does not by itself establish the required mechanism or outcome in the other.
   reconsideration_trigger: null
   proposal:
     review_status: agent_proposed
@@ -4574,11 +4650,11 @@ candidates:
       is not justified, while each local cluster retains its own scope and evidence.'
 review:
   started_on: '2026-08-29'
-  candidates_reviewed: 53
-  accepted: 53
+  candidates_reviewed: 89
+  accepted: 89
   rejected: 0
   deferred: 0
-  pending: 57
+  pending: 21
   runtime: codex
   provider: openai
   agent: speech-generation-reconciliation-agent

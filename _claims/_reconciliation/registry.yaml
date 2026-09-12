@@ -1,5 +1,5 @@
 schema_version: 1
-last_updated: '2026-09-03'
+last_updated: '2026-09-12'
 relationships:
 - id: rel_016688937e9ac602
   source: zero-shot-tts#hybrid_semantic_acoustic_generation_balances_quality
@@ -40,16 +40,12 @@ relationships:
   source: speaker-adaptation#speaker_privacy_conflicts_with_identity_preservation
   target: voice-conversion#privacy_conversion_trades_utility_for_unlinkability
   type: tradeoff
-  rationale: 'The source cluster states: "Speaker anonymization removes identity cues that adaptation systems otherwise
-    seek to preserve, exposing a privacy–personalization tension." The target cluster states: "Speaker anonymization
-    and privacy-oriented conversion trade identity unlinkability against intelligibility and naturalness." The proposed
-    tradeoff relation means that the clusters describe coupled benefits and costs that must be interpreted together.
-    The original agent adjudication further noted: The claims jointly expose the same privacy–personalization tension:
-    removing linkable identity conflicts with adaptation goals, while privacy conversion also pays intelligibility
-    and naturalness costs.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Speaker anonymization intentionally suppresses identity cues that personalized adaptation seeks to
+    preserve. Privacy-oriented conversion can also reduce intelligibility or naturalness, so stronger unlinkability
+    and the resulting losses in personalization and speech utility are coupled outcomes that must be evaluated together.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_0ef5d7332dfb8c42
   source: diffusion-tts#iterative_sampling_limits_latency
   target: flow-matching#fm_surpasses_diffusion_speed_quality
@@ -232,16 +228,13 @@ relationships:
   source: prosody-control#disentanglement_enables_independent_prosody_transfer
   target: zero-shot-tts#explicit_style_and_prosody_control_extends_cloning
   type: related
-  rationale: 'The source cluster states: "Separating prosody from linguistic content and speaker timbre enables
-    more independent transfer and manipulation of speaking style." The target cluster states: "Explicit style, emotion,
-    and prosody conditioning extends zero-shot cloning beyond timbre transfer." The proposed related relation means
-    that the clusters share a decision-relevant issue but differ enough in mechanism or scope that a stronger relation
-    is not justified. The original agent adjudication further noted: The prosody-transfer claim and the zero-shot
-    style-control claim overlap in controllable expression, but they address different mechanisms and scopes, so
-    a direct related link is warranted rather than shared broader membership.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Prosody disentanglement supplies a representation mechanism for more independent style transfer, while
+    explicit expressive conditioning describes a broader zero-shot cloning capability. The claims overlap in controllable
+    expression but differ in mechanism and task scope, so neither is a specialization or direct supporting proposition
+    for the other.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_583eed0f1d70062f
   source: diffusion-tts#preference_optimization_can_steer_diffusion
   target: subjective-evaluation#preference_optimization_improves_targeted_perception
@@ -275,29 +268,23 @@ relationships:
   source: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
   target: multilingual-tts#cross_lingual_cloning_trades_identity_against_language_fidelity
   type: refines
-  rationale: 'The source cluster states: "Cross-lingual voice cloning remains vulnerable to language, accent, and
-    prosody leakage from the reference." The target cluster states: "Cross-lingual voice cloning must balance speaker
-    identity against target-language pronunciation, accent, and intelligibility." The proposed refines relation
-    means that the source adds a boundary, condition, failure mode, or more precise formulation to the target. The
-    original agent adjudication further noted: The zero-shot leakage finding refines the broader multilingual identity–language
-    trade-off by naming reference-language, accent, and prosody leakage as failure modes.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: The zero-shot TTS claim refines the broader multilingual identity-language tradeoff by identifying
+    reference-language, accent, and prosody leakage as concrete failure modes. Its contested local status and contradictory
+    evidence remain intact rather than being replaced by the strongly supported broader multilingual assessment.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_6f05c3f2b97253d7
   source: prosody-control#ssl_representations_are_useful_but_entangled_for_prosody
   target: voice-conversion#ssl_units_improve_content_representation
   type: tradeoff
-  rationale: 'The source cluster states: "Self-supervised speech representations provide strong prosodic signals,
-    but remain entangled with speaker identity, content, or task-specific information." The target cluster states:
-    "Self-supervised speech representations provide speaker-reduced content units that improve conversion intelligibility
-    and transfer." The proposed tradeoff relation means that the clusters describe coupled benefits and costs that
-    must be interpreted together. The original agent adjudication further noted: SSL representations provide useful
-    speaker-reduced content units for conversion while still retaining prosody and identity leakage, so the pair
-    records a representation trade-off rather than equivalence.'
-  reviewed_on: 2026-08-23
-  accepted_in: 2025-Q3
-  review_status: agent_proposed
+  rationale: Self-supervised representations can suppress enough speaker information to provide useful content units
+    for voice conversion and improve intelligibility or transfer, while still retaining varying amounts of pitch,
+    style, speaker identity, and task-specific information. Their content utility and residual entanglement therefore
+    require joint interpretation.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: rel_7776326e26ccabe2
   source: autoregressive-codec-tts#codec_lm_enables_zero_shot_in_context_voice_cloning
   target: neural-codec#codec_tokens_enable_language_model_generation
@@ -659,6 +646,68 @@ relationships:
   reviewed_on: '2026-09-02'
   accepted_in: 2025-Q3-corrective-review
   review_status: human_approved
+- id: rel_ad402a8070976dce
+  source: prosody-control#explicit_pitch_energy_duration_enable_controllability
+  target: transformer-enc-dec-tts#explicit_duration_prediction_improves_parallel_tts
+  type: related
+  rationale: Both claims concern explicit duration modeling, but they establish different outcomes. The prosody-control
+    claim concerns interpretable manipulation of pitch, energy, and duration, whereas the transformer TTS claim
+    concerns parallel generation and fewer skipping or repetition failures. Alignment evidence does not by itself
+    establish user-controllable prosody, so only a related relationship is justified.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_1dc035153445f0ca
+  source: prosody-control#explicit_pitch_energy_duration_enable_controllability
+  target: transformer-enc-dec-tts#parallel_generation_needs_variance_modeling
+  type: related
+  rationale: The claims share explicit duration and pitch modeling, but the transformer TTS claim establishes an
+    architectural requirement for representing variation in parallel generation, not independent or interpretable
+    user control. Its own caveat states that better variance modeling does not guarantee fine-grained control, so
+    the relationship is related rather than supports.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_3e07f2a5dedeb7fc
+  source: subjective-evaluation#fine_grained_style_and_prosody_need_dimension_specific_tests
+  target: diffusion-tts#diffusion_supports_expressive_style_and_emotion
+  type: refines
+  rationale: 'The evaluation claim does not demonstrate that diffusion models possess expressive controls. It refines
+    the capability claim by specifying the evidence needed to substantiate it: emotion, style, prosody, or singing
+    control must be tested on the claimed dimension rather than inferred from holistic naturalness ratings alone.'
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_bfda62d805bebd5c
+  source: speaker-adaptation#noise_and_domain_mismatch_degrade_reference_adaptation
+  target: voice-conversion#robust_conversion_requires_domain_invariance
+  type: related
+  rationale: Both claims identify noise, channel, and domain mismatch as threats to identity transfer, but speaker
+    adaptation and voice conversion are intersecting tasks with different conditioning and conversion objectives.
+    Neither task claim is a narrower instance of the other, so a related relationship is warranted.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_00345695a268d456
+  source: speaker-adaptation#automatic_similarity_metrics_do_not_replace_listener_judgments
+  target: evaluation-metrics#embedding_speaker_similarity_diverges_from_human_perception
+  type: specialization
+  rationale: The speaker-adaptation claim is a task-specific instance of the broader metric-validity finding. It
+    concerns whether embedding scores reflect perceptual identity and adaptation suitability, while the evaluation-metrics
+    claim also covers zero-shot TTS, voice conversion, anonymization, unlearning, and assistive communication.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
+- id: rel_94fc866f7ff9d905
+  source: voice-conversion#cross_lingual_conversion_requires_accent_control
+  target: zero-shot-tts#cross_lingual_cloning_faces_language_leakage
+  type: related
+  rationale: Both claims concern separating speaker identity from language and accent in cross-lingual transfer,
+    but voice conversion and zero-shot synthesis are parallel task settings rather than nested scopes. Evidence
+    of leakage in one setting does not by itself establish the required mechanism or outcome in the other.
+  reviewed_on: '2026-09-12'
+  accepted_in: 2025-Q3-corrective-review
+  review_status: human_approved
 broader_claims:
 - id: broader_automatic_judges_require_scoped_human_validation
   proposition: Automatic speech evaluators—including LLM or audio-language-model judges and learned task- or quality-specific
@@ -814,86 +863,72 @@ broader_claims:
   reviewed_in: 2025-Q3-corrective-review
   review_status: human_approved
 - id: broader_disentanglement_improves_multiattribute_control
-  proposition: Representing linguistic content, speaker identity or timbre, prosody, emotion, and style as separate
-    factors allows a system to change or transfer one attribute with less unintended change to the others. Current
-    codec and self-supervised representations still leak these attributes across factors, and that residual entanglement
-    can reduce waveform fidelity, speaker-identity preservation, or independent control.
+  proposition: 'Architectures that encode linguistic content, speaker identity or timbre, prosody, emotion, and
+    style in separately conditioned representations generally permit more targeted transfer or control than a single
+    shared bottleneck. However, these factors are only partially separable: codec and self-supervised representations
+    often retain cross-factor information, and stronger separation can remove accent, timing, habitual expression,
+    or other cues that jointly encode content and identity, reducing naturalness, intelligibility, or speaker fidelity.
+    “Disentanglement” should therefore mean reduced interference under evaluated interventions, not proof that the
+    learned latent factors are statistically independent.'
   status: strongly_supported
   confidence: high
   members:
   - claim: autoregressive-codec-tts#speaker_and_style_control_conflict_with_token_disentanglement
     relationship: refines
-    rationale: 'The autoregressive-codec-tts cluster states: "Separating linguistic content, speaker identity, and
-      style in codec tokens improves controllability but introduces fidelity and identity trade-offs." It is proposed
-      as a refines member because the source adds a boundary, condition, failure mode, or more precise formulation
-      to the target relative to the broader proposition.'
+    rationale: 'The autoregressive-codec claim adds a material boundary: separating content, identity, and style
+      can improve control while reducing waveform fidelity or speaker-identity preservation.'
   - claim: disentanglement#codecs_ssl_entangle_content_speaker_by_default
     relationship: supports
-    rationale: 'The disentanglement cluster states: "Standard neural codec and self-supervised speech representations
-      entangle linguistic content with speaker identity and other paralinguistic detail unless an explicit disentanglement
-      mechanism is applied." It is proposed as a supports member because the source supplies a compatible mechanism
-      or evidence for the target without claiming that the propositions are identical relative to the broader proposition.'
+    rationale: This cluster supports the limitation in the broader claim by showing that standard codec and self-supervised
+      representations retain linguistic, speaker, and paralinguistic information across factors unless separation
+      is imposed explicitly.
   - claim: disentanglement#emotion_speaker_disentanglement_enables_crossspeaker_transfer
     relationship: specialization
-    rationale: 'The disentanglement cluster states: "Disentangling emotional or expressive representations from
-      speaker identity, via architectural separation, adversarial training, or self-supervised distillation, enables
-      emotion or style transfer across speakers that were not paired during training." It is proposed as a specialization
-      member because the source is a narrower task, architecture, or deployment instance of the target relative
-      to the broader proposition.'
+    rationale: Cross-speaker emotion and style transfer is a narrower application in which separating expression
+      from speaker identity reduces interference between the transferred attribute and the target voice.
   - claim: disentanglement#explicit_disentanglement_enables_independent_multiattribute_control
-    relationship: equivalent
-    rationale: 'The disentanglement cluster states: "Explicit disentanglement of speaker, style, emotion, and content
-      into separate representations enables independent, simultaneous control over these attributes without one
-      conditioning signal interfering with another." It is proposed as a equivalent member because the two clusters
-      make the same material assertion at matching scope and polarity relative to the broader proposition.'
+    relationship: supports
+    rationale: This cluster supplies the central positive evidence that separately represented speaker, style, emotion,
+      and content factors can improve simultaneous control, but it does not establish perfect independence or include
+      the broader claim's documented costs.
   - claim: diffusion-tts#factorized_conditioning_improves_control
     relationship: specialization
-    rationale: 'The diffusion-tts cluster states: "Factorizing content, speaker, and style conditioning improves
-      controllability in diffusion speech generation." It is proposed as a specialization member because the source
-      is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Factorized content, speaker, and style conditioning in diffusion TTS is an architecture-specific
+      instance of using separate representations to improve targeted control.
   - claim: emotion-synthesis#speaker_emotion_disentanglement_enables_independent_control
     relationship: specialization
-    rationale: 'The emotion-synthesis cluster states: "Disentangling speaker identity from emotion and style enables
-      more independent control of voice and expression." It is proposed as a specialization member because the source
-      is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Separating speaker identity from emotion and style is an emotion-synthesis specialization of the
+      broader control principle, with the qualification that habitual expression can be part of perceived identity.
   - claim: neural-codec#speaker_prosody_entanglement_is_persistent
     relationship: supports
-    rationale: 'The neural-codec cluster states: "Codec tokens frequently entangle linguistic content with speaker,
-      pitch, and prosodic information, complicating controllable generation." It is proposed as a supports member
-      because the source supplies a compatible mechanism or evidence for the target without claiming that the propositions
-      are identical relative to the broader proposition.'
+    rationale: Persistent mixing of content, speaker, pitch, and prosody in codec tokens supports the broader claim's
+      conclusion that learned factors are only partially separable and that the desired invariance is task-dependent.
   - claim: prosody-control#disentanglement_enables_independent_prosody_transfer
     relationship: specialization
-    rationale: 'The prosody-control cluster states: "Separating prosody from linguistic content and speaker timbre
-      enables more independent transfer and manipulation of speaking style." It is proposed as a specialization
-      member because the source is a narrower task, architecture, or deployment instance of the target relative
-      to the broader proposition.'
+    rationale: Separating prosody from content and speaker timbre is a narrower application that permits more targeted
+      style transfer while retaining risks to intelligibility and speaker-specific cues.
   - claim: self-supervised-speech#explicit_disentanglement_improves_controllable_generation
-    relationship: equivalent
-    rationale: 'The self-supervised-speech cluster states: "Explicitly separating content from speaker and style
-      information improves controllable speech generation and conversion." It is proposed as a equivalent member
-      because the two clusters make the same material assertion at matching scope and polarity relative to the broader
-      proposition.'
+    relationship: specialization
+    rationale: Explicit separation in self-supervised representations is a representation-specific instance of improved
+      generation and conversion control; hard separation can still discard accent, timing, and expressive cues.
   - claim: speaker-adaptation#disentangling_identity_and_style_improves_control
     relationship: specialization
-    rationale: 'The speaker-adaptation cluster states: "Separating speaker identity from style, emotion, content,
-      and prosody improves controllable personalization." It is proposed as a specialization member because the
-      source is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Separating identity from style, emotion, content, and prosody is a speaker-adaptation specialization
+      that improves controllable personalization but can erase speaker-specific phrasing or timing.
   - claim: voice-conversion#content_speaker_disentanglement_enables_conversion
     relationship: specialization
-    rationale: 'The voice-conversion cluster states: "Separating linguistic content from speaker identity is central
-      to robust voice conversion." It is proposed as a specialization member because the source is a narrower task,
-      architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Content–speaker separation is a voice-conversion specialization of the broader principle; complete
+      separation is neither demonstrated nor necessarily desirable because accent and prosody carry both kinds of
+      information.
   - claim: voice-conversion#prosody_timbre_factorization_improves_control
     relationship: specialization
-    rationale: 'The voice-conversion cluster states: "Factoring prosody, style, pitch, and timbre enables more controllable
-      conversion than a single speaker bottleneck." It is proposed as a specialization member because the source
-      is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Factorizing prosody, style, pitch, and timbre is a narrower voice-conversion instance that improves
+      control relative to a single speaker bottleneck but can reduce naturalness when the factors interact.
   - claim: zero-shot-tts#disentangling_content_speaker_and_prosody_improves_control
     relationship: specialization
-    rationale: 'The zero-shot-tts cluster states: "Separating linguistic content, speaker identity, and prosody
-      improves controllability and speaker transfer." It is proposed as a specialization member because the source
-      is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Separating content, identity, and prosody is a zero-shot-TTS specialization that improves control
+      and speaker transfer, while representation probes and similarity scores do not by themselves demonstrate causal
+      independence.
   supporting_papers:
   - 2025.acl-demo.37
   - 2025.acl-long.346
@@ -1048,15 +1083,19 @@ broader_claims:
   - interspeech-2025-2684
   - interspeech-2025-2787
   caveats:
-  - The factors are not perfectly independent; stronger control can still reduce naturalness, intelligibility, or
-    identity fidelity.
-  review_rationale: The member evidence converges across codecs, SSL features, conversion, cloning, adaptation,
-    emotion, and prosody control. The broader node captures the shared control principle while retaining application-specific
-    trade-offs locally.
+  - Most evidence measures downstream control, similarity, or probing accuracy rather than statistical independence
+    or causal isolation of latent factors.
+  - Complete separation can be undesirable when accent, timing, prosody, and habitual expression jointly carry linguistic
+    content and perceived speaker identity.
+  review_rationale: Deduplicated evidence across codec and self-supervised representations, diffusion TTS, emotion
+    synthesis, prosody control, speaker adaptation, voice conversion, and zero-shot TTS supports reduced cross-attribute
+    interference as a practical control strategy. The same evidence repeatedly shows residual leakage and losses
+    from hard separation, so the broader claim defines disentanglement operationally rather than asserting latent
+    independence.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-03'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_full_duplex_requires_joint_interaction_modeling
   proposition: A full-duplex spoken dialogue system must continue processing incoming speech while generating its
     own output and must model when to keep speaking, yield the speaking turn, respond to an interruption, or handle
@@ -1395,33 +1434,34 @@ broader_claims:
   reviewed_in: 2025-Q3
   review_status: agent_proposed
 - id: broader_reference_conditioning_enables_unseen_voice_transfer
-  proposition: Conditioning a synthesis or conversion model on reference audio can transfer the voice of a speaker
-    absent from training without updating the model for that speaker. The resulting identity fidelity and robustness
-    depend on the reference recording's noise, channel, duration, speaking style, and match to the training domain.
+  proposition: 'Reference-audio conditioning enables a synthesis or voice-conversion system to produce speech in
+    the identity of a speaker excluded from the system’s training set, without speaker-specific parameter updates
+    at inference. This establishes zero-shot feasibility, not uniform identity fidelity: performance varies with
+    reference duration, content, noise, and channel; language or accent match; expressive style; training-speaker
+    coverage; and the speaker encoder and listening protocol used to evaluate identity.'
   status: strongly_supported
   confidence: high
   members:
   - claim: diffusion-tts#diffusion_supports_zero_shot_voice_transfer
     relationship: specialization
-    rationale: 'The diffusion-tts cluster states: "Diffusion generators can transfer unseen-speaker identity from
-      reference speech without speaker-specific fine-tuning." It is proposed as a specialization member because
-      the source is a narrower task, architecture, or deployment instance of the target relative to the broader
-      proposition.'
+    rationale: Diffusion-based reference-conditioned synthesis is an architecture-specific instance of transferring
+      an unseen speaker identity without speaker-specific fine-tuning; its measured fidelity depends on prompt quality,
+      language match, and the evaluation method.
   - claim: speaker-adaptation#reference_conditioning_enables_unseen_speaker_adaptation
     relationship: equivalent
-    rationale: 'The speaker-adaptation cluster states: "Reference-audio conditioning enables synthesis or conversion
-      for unseen speakers without full speaker-specific retraining." It is proposed as a equivalent member because
-      the two clusters make the same material assertion at matching scope and polarity relative to the broader proposition.'
+    rationale: 'This cluster states the same core mechanism and scope as the broader claim: reference audio enables
+      synthesis or conversion for an unseen speaker without full speaker-specific retraining, with performance conditioned
+      on the reference and training domain.'
   - claim: voice-conversion#zero_shot_any_to_any_conversion_is_feasible
     relationship: specialization
-    rationale: 'The voice-conversion cluster states: "Zero-shot and any-to-any conversion can generalize to unseen
-      speakers without per-speaker retraining." It is proposed as a specialization member because the source is
-      a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Zero-shot any-to-any voice conversion is the conversion-specific instance of reference-conditioned
+      unseen- voice transfer; accents, expressive styles, atypical speech, and out-of-domain channels remain material
+      failure conditions.
   - claim: zero-shot-tts#reference_conditioning_preserves_speaker_identity
-    relationship: equivalent
-    rationale: 'The zero-shot-tts cluster states: "Reference-conditioned models can preserve unseen-speaker identity
-      without speaker-specific fine-tuning." It is proposed as a equivalent member because the two clusters make
-      the same material assertion at matching scope and polarity relative to the broader proposition.'
+    relationship: specialization
+    rationale: Reference-conditioned zero-shot TTS is the synthesis-specific instance of the broader mechanism.
+      Its large evidence base establishes feasibility but remains sensitive to the reference distribution, training-speaker
+      coverage, speaker encoder, and listening protocol.
   supporting_papers:
   - '2010.05646'
   - 2025.acl-demo.37
@@ -1542,14 +1582,18 @@ broader_claims:
   - interspeech-2025-2595
   - interspeech-2025-2787
   caveats:
-  - Unseen-speaker feasibility does not guarantee robust identity preservation for noisy, short, atypical, or cross-lingual
-    references.
-  review_rationale: The four concepts independently encode the same reference-conditioned generalization mechanism
-    at different task scopes; their local quality and robustness boundaries remain intact.
+  - Unseen-speaker feasibility does not guarantee robust identity preservation for noisy, short, atypical, expressive,
+    cross-lingual, or out-of-domain references.
+  - Speaker-embedding scores and listener judgments can respond differently to language, channel, and style, so
+    identity fidelity should be evaluated under matched protocols rather than inferred from one metric.
+  review_rationale: Deduplicated evidence across diffusion TTS, speaker adaptation, voice conversion, and zero-shot
+    TTS establishes reference conditioning as a cross-task mechanism for unseen-identity transfer without speaker-specific
+    parameter updates. The broader assessment separates that feasibility result from the substantial variation in
+    fidelity caused by reference, training-domain, language, style, and evaluation conditions.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-03'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved
 - id: broader_semantic_acoustic_hierarchies_balance_coherence_and_fidelity
   proposition: 'In hierarchical speech generation, semantic representations carry word content and longer-range
     linguistic structure, while acoustic codec tokens carry speaker, prosodic, and waveform detail. Conditioning
@@ -1871,28 +1915,28 @@ broader_claims:
   reviewed_in: 2025-Q3-corrective-review
   review_status: human_approved
 - id: broader_training_diversity_drives_unseen_voice_generalization
-  proposition: Across speaker adaptation, voice conversion, and zero-shot synthesis, training on more speakers and
-    a wider range of accents, languages, recording channels, and acoustic conditions improves identity transfer
-    and robustness for voices not seen during training. Increasing hours without comparable speaker and condition
-    diversity does not provide the same generalization evidence.
+  proposition: Across speaker adaptation, voice conversion, and zero-shot synthesis, broader training-set coverage
+    of speakers and acoustic conditions is consistently associated with better identity similarity and robustness
+    for unseen voices. Total training hours alone cannot be interpreted as the cause because reported scale gains
+    are confounded with speaker, language, and accent coverage; recording conditions; filtering and transcription
+    quality; pretraining; architecture; and model capacity.
   status: strongly_supported
   confidence: high
   members:
   - claim: speaker-adaptation#data_scale_and_diversity_drive_unseen_speaker_generalization
     relationship: specialization
-    rationale: 'The speaker-adaptation cluster states: "Training-data scale and speaker diversity are major drivers
-      of unseen-speaker similarity and robustness." It is proposed as a specialization member because the source
-      is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Speaker-adaptation studies provide task-specific evidence associating broader speaker and condition
+      coverage with stronger unseen-speaker similarity and robustness, while scale and diversity remain experimentally
+      confounded.
   - claim: voice-conversion#data_diversity_drives_unseen_speaker_generalization
     relationship: specialization
-    rationale: 'The voice-conversion cluster states: "Training-speaker and acoustic diversity is a major determinant
-      of unseen-speaker voice-conversion generalization." It is proposed as a specialization member because the
-      source is a narrower task, architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Voice-conversion studies provide conversion-specific evidence associating training-speaker and acoustic
+      coverage with unseen-speaker generalization, while data composition, quality, and model design remain confounded.
   - claim: zero-shot-tts#data_scale_and_diversity_improve_generalization
     relationship: specialization
-    rationale: 'The zero-shot-tts cluster states: "Broader speaker and acoustic diversity in training data improves
-      zero-shot generalization." It is proposed as a specialization member because the source is a narrower task,
-      architecture, or deployment instance of the target relative to the broader proposition.'
+    rationale: Zero-shot TTS studies provide synthesis-specific evidence associating broader training coverage with
+      unseen-voice transfer, although some evidence uses proprietary data and does not isolate diversity from scale
+      or architecture.
   supporting_papers:
   - 2025.acl-long.654
   - 2025.acl-short.81
@@ -1945,11 +1989,16 @@ broader_claims:
   - interspeech-2025-1115
   - interspeech-2025-1536
   caveats:
-  - Dataset scale alone is not sufficient; coverage, recording conditions, language balance, and representation
-    design affect transfer.
-  review_rationale: The task-local clusters share a direct generalization proposition and independent evidence across
-    three unseen-voice settings.
+  - Dataset size and diversity effects are usually not isolated experimentally; speaker coverage, language and accent
+    balance, recording conditions, filtering, transcription quality, pretraining, architecture, and model capacity
+    often change together.
+  - The association supports a data-coverage conclusion, not a universal scaling law or a claim that adding hours
+    from the same distribution will improve unseen-speaker transfer.
+  review_rationale: After deduplicating shared papers across speaker adaptation, voice conversion, and zero-shot
+    TTS, the evidence consistently associates broader speaker and acoustic-condition coverage with stronger unseen-speaker
+    similarity and robustness. Because scale, diversity, data quality, pretraining, and architecture are usually
+    confounded, the broader assessment is explicitly associative rather than a claim of isolated causality.
   evidence_cutoff: 2025-09-30
-  assessment_date: 2026-08-23
-  reviewed_in: 2025-Q3
-  review_status: agent_proposed
+  assessment_date: '2026-09-05'
+  reviewed_in: 2025-Q3-corrective-review
+  review_status: human_approved

@@ -4,9 +4,23 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-09-12
+
+- reconcile | 2025-Q3-corrective-review | speaker bundle: privacy, robustness, similarity metrics, SSL units, and cross-lingual identity transfer | human review | 6 candidates accepted | 6 direct relationships approved | proposed specialization corrected to related for domain mismatch, proposed equivalent corrected to specialization for speaker-similarity metrics, and proposed specialization corrected to related for cross-lingual VC and zero-shot TTS, while preserving prior agent proposals | speaker theme complete | 21 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+- reconcile | 2025-Q3-corrective-review | controllability bundle: explicit variance modeling, expressive control, and validation | human review | 4 candidates accepted | 4 direct relationships approved | two proposed directed links corrected to related and one proposed supports link corrected to refines, with new stable relationship records preserving the prior agent proposals | 27 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+
+## 2026-09-05
+
+- reconcile | 2025-Q3-corrective-review | robustness bundle: training diversity and unseen-speaker generalization | human review | 3 candidates accepted | broader_training_diversity_drives_unseen_voice_generalization approved with bounded associative wording | 31 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-09-03
 
+- reconcile | 2025-Q3-corrective-review | controllability and speaker bundle: reference-conditioned unseen- voice transfer | human review | 6 candidates accepted | broader_reference_conditioning_enables_unseen_voice_transfer approved with revised proposition and zero-shot- TTS member corrected to specialization | 34 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
 - reconcile | 2025-Q3-corrective-review | codecs-language-modeling bundle: joint speech–text models and interleaving | human review | 5 candidates accepted | 5 direct relationships approved | corrected related relationship recorded as rel_fbb44447353fe0c1 while preserving the prior agent proposal | codecs-language-modeling theme complete | 57 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
+
+## 2026-09-03
+
+- reconcile | 2025-Q3-corrective-review | controllability and speaker bundle: disentanglement and independent control | human review | 17 candidates accepted | broader_disentanglement_improves_multiattribute_control approved with operational definition and 2 member-role corrections | 40 pending | evidence cutoff: 2025-09-30 | trigger: corrective-review | runtime: codex | provider: openai | model: gpt-5
 
 ## 2026-09-02
 
