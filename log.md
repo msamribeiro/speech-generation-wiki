@@ -4,6 +4,10 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-09-13
+
+- render | 23 concepts | formats: field-overview | mode: full editorial revision | simplified introductory language and expanded representative citations | 56 distinct cited papers | evidence cutoff: 2025-09-30 | assessment as of: 2026-09-12 | human approved | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-09-12
 
 - render | 23 concepts | formats: field-overview | mode: full | 497 unique papers | 406 local claim clusters | 11 human-approved broader claims | evidence cutoff: 2025-09-30 | assessment as of: 2026-09-12 | runtime: codex | provider: openai | model: gpt-5
