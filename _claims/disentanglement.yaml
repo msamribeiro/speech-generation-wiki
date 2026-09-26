@@ -1,6 +1,6 @@
 concept: disentanglement
-last_updated: "2026-07-22"
-paper_count: 100
+last_updated: '2026-09-26'
+paper_count: 116
 
 papers:
   - id: "2010.05646"
@@ -4975,519 +4975,1974 @@ papers:
       - "VoxCPM's semantic/acoustic separation is validated via t-SNE analysis of learned representations and via direct ablation of the FSQ bottleneck and RALM residual pathway, giving it a genuinely evidenced disentanglement contribution, though this is secondary to the paper's primary tokenizer-free continuous-TTS narrative."
 
 
+  - id: 2025.vlsp-1.15
+    published_date: '2025-10-01'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: VLSP 2025
+    task:
+    - VC
+    architecture:
+    - diffusion
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - data_training_recipe_disentanglement
+    claims:
+    - claim_id: replacing_a_general_purpose_semantic_encoder_with_a_language_specific_as
+      role: supports
+      claim: Replacing a general-purpose semantic encoder with a language-specific ASR encoder improves content preservation
+        in zero-shot voice conversion for a low-resource target language.
+      source: §4.2, §5.2, Table 2
+      evidence: Substituting Seed-VC's original Whisper-small encoder with PhoWhisper-large (Vietnamese-adapted, 1.55B
+        params, 4.67% WER on VIVOS) is credited with the lowest WER (9.83%) among four VLSP 2025 shared-task submissions.
+      confidence: high
+      relevance: medium
+    - claim_id: perturbing_source_speech_timbre_during_training_rather_than_only_at_infe
+      role: supports
+      claim: Perturbing source-speech timbre during training (rather than only at inference) helps align the training
+        objective with the inference-time voice-conversion task and can reduce residual source-identity leakage.
+      source: §4.2
+      evidence: An external timbre shifter (OpenVoiceV2) perturbs speaker timbre during training only, so the model
+        is not simply trained to reconstruct source timbre; the resulting system achieves the lowest WER and highest
+        MOS on the shared-task leaderboard, though the isolated effect of this component alone is not measured.
+      confidence: high
+      relevance: high
+    - claim_id: mel_spectrogram_level_augmentation_used_to_improve_speaker_content_disen
+      role: complicates
+      claim: Mel-spectrogram-level augmentation used to improve speaker-content disentanglement can trade off phonetic
+        fidelity for robustness.
+      source: §6.1 "Effect of SR augmentation"
+      evidence: The authors note that Spectrogram Resize augmentation (frequency- and time-axis mel perturbation)
+        "can slightly distort phonetic details, potentially increasing WER in extreme cases," though they argue the
+        strong semantic encoder largely offsets this risk.
+      confidence: high
+      relevance: high
+    - claim_id: leaderboard_rankings_for_zero_shot_voice_conversion_do_not_agree_across
+      role: complicates
+      claim: Leaderboard rankings for zero-shot voice conversion do not agree across metrics, so a single aggregate
+        score can mask which quality dimension actually improved.
+      source: §5.2, Table 2
+      evidence: Twinkle-VC wins on MOS, WER, and Final Score but ranks second in SMOS_TGT (target-speaker similarity)
+        and third in SMOS_SRC (residual source similarity) among the four VLSP 2025 T1 submissions.
+      confidence: high
+      relevance: low
+    limitations:
+    - The four-system shared-task evaluation provides no ablations, so subjective gains cannot be attributed to individual
+      components.
+    caveats:
+    - The system-level gains cannot be attributed to individual components because no ablation is reported.
+  - id: '2510.00981'
+    published_date: '2025-10-01'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    - TTS
+    architecture:
+    - hybrid
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family:
+      - rvq_semantic_acoustic_distillation
+    claims:
+    - role: supports
+      claim: ASR-derived semantic features enable substantially better phonetic preservation at very low codec frame
+        rates than SSL-derived features.
+      source: §4.2, Table 5, Appendix D
+      evidence: Replacing ASR features with W2V-BERT 2 SSL features raises RVQ-1 WER from 4.15% to 27.3% at 6.25 Hz.
+      claim_id: q4_2510_00981_asr_derived_semantic_features_enable_substantially_better_phonetic_preservation_at_very_
+      confidence: high
+      relevance: medium
+    - role: supports
+      claim: Dynamic frame rate allocation, guided by semantic similarity, improves codec semantic preservation compared
+        to fixed low-frame-rate downsampling by adapting token density to phonetic complexity.
+      source: §4.3, Tables 3–4
+      evidence: Replacing adaptive merging with fixed-stride 6.25 Hz encoding raises RVQ-1 WER from 4.15% to 5.22%
+        and ASR-probing WER by 21% relative.
+      claim_id: q4_2510_00981_dynamic_frame_rate_allocation_guided_by_semantic_similarity_improves_codec_semantic_pres
+      confidence: high
+      relevance: low
+    - role: supports
+      claim: Dynamic codec frame rate correlates strongly with phoneme rate, with the merging boundary approximating
+        syllabic units for typical speech.
+      source: §4.3, Figure 4
+      evidence: On TIMIT, utterance phoneme rate and the codec's adaptive frame rate have Pearson correlation 0.775.
+      claim_id: q4_2510_00981_dynamic_codec_frame_rate_correlates_strongly_with_phoneme_rate_with_the_merging_boundary
+      confidence: high
+      relevance: low
+    - role: supports
+      claim: Reducing the AR codec token rate in TTS does not necessarily degrade output quality, and can yield large
+        speedups, provided the NAR stage decodes at sufficient temporal resolution.
+      source: Appendix B.2, Table 6
+      evidence: A 6.25 Hz AR stage matches the reported 3.2% WER while running 7.3 times faster than CosyVoice's AR
+        stage; a 50 Hz NAR stage preserves naturalness.
+      claim_id: q4_2510_00981_reducing_the_ar_codec_token_rate_in_tts_does_not_necessarily_degrade_output_quality_and_
+      confidence: high
+      relevance: low
+    - role: complicates
+      claim: Codec RVQ-1 semantic token quality, as measured by reconstruction WER, degrades sharply below 12.5 Hz
+        for SSL-augmented codecs using fixed-rate downsampling.
+      source: §4.2, Figure 3
+      evidence: A fixed-rate DualCodec retrained at 6.25 Hz reaches 31.5% RVQ-1 WER, compared with 4.15% for adaptive
+        FlexiCodec and 2.1% for ground-truth speech.
+      claim_id: q4_2510_00981_codec_rvq_1_semantic_token_quality_as_measured_by_reconstruction_wer_degrades_sharply_be
+      confidence: high
+      relevance: medium
+    limitations:
+    - The codec is trained on English audiobook speech (LibriLight-Large); semantic tokens fail on unseen languages
+      without fine-tuning (multilingual WER(RVQ1) ~100% for Chinese/Korean). The acoustic stream generalizes better.
+    - Maximum segment length ℓ_k is capped at 8 frames; very long silence regions or unusually slow speech may hit
+      this cap.
+    - The 216M parameter footprint is larger than simpler codecs (DAC 74M, Mimi 78M), though encoding RTF remains
+      practical (0.018).
+    - The paper does not address streaming/causal operation; the dual-stream encoder and dynamic merging require full-segment
+      processing.
+    - TTS subjective evaluations use only 6 expert listeners per system — a limited sample for establishing statistical
+      significance.
+    caveats:
+    - The codec contribution is included because the paper directly ablates a 6.25 Hz AR TTS stage; codec-only reconstruction
+      findings remain supporting context.
+  - id: '2510.01722'
+    published_date: '2025-10-02'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - transformer-enc-dec
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - mutual_information_minimization
+    claims:
+    - claim_id: explicit_classification_objectives_that_predict_target_attributes_e_g_em
+      role: supports
+      claim: Explicit classification objectives that predict target attributes (e.g., emotion, speaker identity) from
+        disentangled embeddings provide a stronger and more reliable disentanglement signal than mutual-information
+        minimization alone.
+      source: §V-F, Table II
+      evidence: Ablating both the Emotion/Speaker Predictors and MINE drops emotion-recognition UAA from 82.42% to
+        56.84% and worsens MCD from 8.23 to 9.71, a larger degradation than removing either component individually.
+      confidence: high
+      relevance: high
+    - claim_id: predicting_phoneme_level_rather_than_utterance_level_style_embeddings_fr
+      role: supports
+      claim: Predicting phoneme-level, rather than utterance-level, style embeddings from a reference signal improves
+        perceived style/emotion similarity without degrading naturalness relative to global-style-vector baselines.
+      source: §V-E, Table I
+      evidence: The proposed phoneme-aware Emotion Extractor achieves the highest SMOS (3.41 ± 0.06) among all compared
+        systems while matching the best baseline's MOS (3.63 vs. 3.62 for FS2+MIST), evaluated on the same FS2 backbone.
+      confidence: high
+      relevance: high
+    - claim_id: fine_grained_style_embeddings_derived_from_a_reference_utterance_can_lea
+      role: complicates
+      claim: Fine-grained style embeddings derived from a reference utterance can leak the reference's lexical content
+        into the synthesized output unless the conditioning pathway is explicitly constrained against it.
+      source: §V-E
+      evidence: The authors omit positional encoding from the reference mel-spectrogram features specifically to prevent
+        "content leakage," and construct evaluation reference clips from a fixed, different-text utterance matching
+        only speaker and emotion, to avoid an artificial similarity boost from shared lexical content.
+      confidence: high
+      relevance: high
+    - claim_id: discrete_codec_derived_reference_embeddings_do_not_uniformly_outperform
+      role: refines
+      claim: Discrete-codec-derived reference embeddings do not uniformly outperform continuous mel-spectrogram reference
+        embeddings for capturing emotional expressiveness.
+      source: §V-E, Table I
+      evidence: DC Comix TTS, which replaces the GST reference encoder with an EnCodec-style discrete-code encoder,
+        scores the lowest emotion-recognition UAA (58.79%) of all four baselines, below both continuous-mel-based
+        systems (FS2+GST 74.22%, FS2+MIST 76.17%) on the same evaluation protocol.
+      confidence: high
+      relevance: high
+    limitations:
+    - The closed-set study uses one English emotional-speech corpus and ten known speakers; MOS parity does not establish
+      unseen-speaker generalization.
+    caveats:
+    - Fine-grained reference conditioning improves emotion similarity but remains vulnerable to lexical-content leakage
+      and is tested in a closed speaker set.
+  - id: '2510.09061'
+    published_date: '2025-10-10'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - VC
+    architecture:
+    - VAE
+    - GAN
+    claims:
+    - role: supports
+      claim: Training a voice conversion model on frame-aligned synthetic pairs (same content, different speaker,
+        generated from a shared TTS linguistic latent) can outperform reconstruction-based disentanglement training
+        on speaker similarity and intelligibility.
+      source: §5.1, Table 1
+      evidence: Against FreeVC, KNN-VC, Diff-HierVC, DDDM-VC, and FaCodec baselines on LibriSpeech test-clean, the
+        synthetic-data-trained model achieves the best WER (1.74), CER (0.53), and SECS (86.70) among all compared
+        systems.
+      claim_id: q4_2510_09061_training_a_voice_conversion_model_on_frame_aligned_synthetic_pairs_same_content_different_speaker_ge
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Explicit F0 conditioning at the decoder helps a voice conversion model preserve pitch contours when source
+        and target utterances differ in speaker-driven pitch statistics.
+      source: §5.2, Table 2, Figure 3
+      evidence: Removing the F0 encoder increases WER (1.74→2.07) and CER (0.53→0.61); the full model also reports
+        the highest F0 Pearson correlation coefficient among compared systems, including a diffusion-based baseline
+        that also conditions on F0.
+      claim_id: q4_2510_09061_explicit_f0_conditioning_at_the_decoder_helps_a_voice_conversion_model_preserve_pitch_contours_when_
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: A voice conversion model trained purely on synthetic TTS-generated pairs from a fixed speaker pool does
+        not generalize speaker similarity to unseen speakers without additional fine-tuning on real, speaker-diverse
+        data.
+      source: §5.2, Table 2
+      evidence: Removing phase-2 real-data fine-tuning drops SECS from 86.70 to 70.78, even though the phase-1-only
+        model's NISQA naturalness score is higher (4.59 vs. 4.04), showing the synthetic-only model produces clean
+        audio but fails to transfer to out-of-domain speakers.
+      claim_id: q4_2510_09061_a_voice_conversion_model_trained_purely_on_synthetic_tts_generated_pairs_from_a_fixed_speaker_pool_d
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Content representations trained with a synthetic parallel-data objective can retain measurably less residual
+        speaker identity than representations trained via a reconstruction objective on the same backbone.
+      source: §5.2, Table 3, Figure 2
+      evidence: On clustering-based leakage metrics (Adjusted Rand Index, Normalized Mutual Information, Silhouette
+        Score) computed on content embeddings, the proposed model scores lower than FreeVC (same backbone architecture)
+        on all three metrics, and t-SNE visualization shows more speaker-dispersed content embeddings.
+      claim_id: q4_2510_09061_content_representations_trained_with_a_synthetic_parallel_data_objective_can_retain_measurably_less_
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Fine-tuning a voice conversion model to a new language using only unlabeled target-language audio narrows,
+        but does not close, the intelligibility gap to native ground-truth speech.
+      source: §Appendix A.2, Table 4
+      evidence: After phase-2 language adaptation, CER/WER against ground-truth transcriptions remains higher than
+        the ground-truth ASR baseline in all three tested languages (e.g., Vietnamese 8.83 vs. 2.53 ground truth,
+        Italian 22.62 vs. 11.96 ground truth).
+      claim_id: q4_2510_09061_fine_tuning_a_voice_conversion_model_to_a_new_language_using_only_unlabeled_target_language_audio_na
+      confidence: high
+      relevance: medium
+    limitations:
+    - 'The authors'' own stated limitation is that the approach depends on access to a high-quality, well-labeled
+      multi-speaker corpus to first train the TTS system that generates the synthetic training pairs, and the paper
+      does not explore how synthetic data quality from different TTS backbones would affect downstream voice conversion
+      performance (§Limitations). Baseline naturalness (MOS) comparisons are also confounded by training-data quality
+      differences: FreeVC is trained on the cleaner VCTK corpus while the proposed model''s phase-2 fine-tuning uses
+      LibriSpeech, which the authors themselves note likely disadvantages their MOS score independent of the method
+      itself (§5.1). Language-adaptation and emotion-preservation experiments (Appendix A) are secondary analyses
+      on relatively small evaluation sets (400 utterances per language, 400 emotional clips) rather than the paper''s
+      core evaluation.'
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - data_training_recipe_disentanglement
+    caveats:
+    - Synthetic-pair training improves alignment, but unseen-speaker transfer still requires real-data fine-tuning.
+  - id: '2510.11124'
+    published_date: '2025-10-13'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - transformer-enc-dec
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - data_training_recipe_disentanglement
+      - ssl_statistical_normalization_disentanglement
+    claims:
+    - claim_id: q4_2510_11124_perturbing_speaker_identifying_information_in_self_supervised_speech_rep
+      role: supports
+      claim: Perturbing speaker-identifying information in self-supervised speech representations during training
+        improves disentanglement of speaker timbre from other speech attributes, measurable as higher speaker-similarity
+        scores at inference when perturbation is used versus omitted.
+      source: §4.2.2, Table 7
+      evidence: Adding either formant-shift or SSL-based speaker-anonymization perturbation during vec2wav training
+        raises SECS relative to the no-perturbation ablation across all four language/speaker test combinations (e.g.,
+        0.662 vs. 0.627 for Chinese speech, Chinese speaker).
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_11124_stronger_speaker_identity_perturbation_for_disentanglement_purposes_trad
+      role: complicates
+      claim: Stronger speaker-identity perturbation for disentanglement purposes trades off against synthesized speech
+        intelligibility.
+      source: §4.2.2, Tables 6-7
+      evidence: SSL-based speaker anonymization produces a larger drop in speaker-embedding similarity of the perturbed
+        audio itself (SECS 0.354 vs. 0.514 for formant shift) but a far worse character error rate on that same perturbed
+        audio (20.57% vs. 9.07% CER), and this intelligibility gap persists in the full synthesized output (12.24%
+        vs. 7.13% CER in one test condition).
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_11124_in_cross_lingual_emotional_speech_synthesis_emotion_similarity_and_speak
+      role: complicates
+      claim: In cross-lingual emotional speech synthesis, emotion similarity and speaker similarity behave as competing
+        objectives rather than independent ones.
+      source: §4.2.3, Table 8
+      evidence: Component ablations (removing SCL, SEALN, or the pretrained emotion representation) show that gains
+        in speaker-similarity metrics (DMOS) are accompanied by losses in emotion-similarity metrics (EMOS) and vice
+        versa across the tested configurations.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_11124_combining_explicit_acoustic_features_pitch_energy_duration_with_pretrain
+      role: supports
+      claim: Combining explicit acoustic features (pitch, energy, duration) with pretrained latent SSL representations
+        improves voice-cloning quality beyond using latent representations alone.
+      source: §5, §4.1
+      evidence: The authors report that pretrained high-dimensional latent features from speaker or emotion encoders
+        cannot fully substitute for explicit acoustic feature modeling, and that incorporating explicit pitch/energy/duration
+        prediction alongside the SSL-based txt2vec pipeline improves voice-cloning performance relative to their ZMM-TTS
+        predecessor, which lacks this explicit modeling.
+      confidence: medium
+      relevance: high
+    limitations:
+    - The bilingual ESD-only evaluation does not compare against current large-scale codec or flow-matching cloning
+      systems and leaves the emotion-identity trade-off unresolved.
+    caveats:
+    - 'Perturbation improves invariance only within a trade-off: aggressive removal of speaker cues also harms intelligibility.'
+  - id: '2510.13221'
+    published_date: '2025-10-15'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    architecture:
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - data_training_recipe_disentanglement
+    claims:
+    - role: supports
+      claim: Partitioning a neural codec's latent space into task-specific streams, combined with training on reconstruction
+        and swap-based tasks, can separate speech content from acoustic-environment information without an explicit
+        disentanglement loss.
+      source: §4.5, Figure 4
+      evidence: t-SNE clustering of extracted embeddings shows acoustic embeddings cluster by room (speaker-invariant)
+        while speech embeddings cluster by speaker (room-invariant), confirmed across 10-room and 10-speaker evaluation
+        sets.
+      claim_id: q4_2510_13221_partitioning_a_neural_codec_s_latent_space_into_task_specific_streams_combined_with_trai
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Reducing the temporal resolution of a specialized latent stream to save bitrate degrades codec reconstruction
+        quality even at small compression factors.
+      source: §4.3, Figure 1
+      evidence: Two-sample t-tests show that downsampling the acoustic embedding by a factor of 2 already produces
+        a statistically significant drop in ViSQOL across all evaluation tasks (p < 0.01), with degradation increasing
+        monotonically up to a factor of 120.
+      claim_id: q4_2510_13221_reducing_the_temporal_resolution_of_a_specialized_latent_stream_to_save_bitrate_degrades
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Training a single codec on multiple competing reconstruction and manipulation objectives trades off peak
+        performance on any individual task against balanced performance across tasks.
+      source: §4.1, Table 2
+      evidence: A model trained only on acoustic-teleportation tasks achieves the best teleportation ScoreQ NR (2.95)
+        but the worst clean-reconstruction ScoreQ NR (3.96) among the ablated configurations, while the all-tasks
+        model is moderate but not best on any single task.
+      claim_id: q4_2510_13221_training_a_single_codec_on_multiple_competing_reconstruction_and_manipulation_objectives
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: Vector quantization of disentangled latent streams introduces a residual quality gap relative to continuous
+        (non-quantized) representations that does not close by adding more quantizers.
+      source: §4.1, Table 2
+      evidence: Increasing quantizers from 8 to 16 yields only a marginal ScoreQ NR gain (3.82 to 3.88), while the
+        non-quantized reference model still scores 4.12, a gap that persists at the highest tested bitrate.
+      claim_id: q4_2510_13221_vector_quantization_of_disentangled_latent_streams_introduces_a_residual_quality_gap_rel
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Transferring acoustic-environment characteristics between recordings via swapped codec embeddings degrades
+        in quality as the acoustic mismatch between source and target environments grows.
+      source: §4.4, Figure 3
+      evidence: Teleportation quality (measured by ScoreQ NR) correlates negatively with the absolute RT60 difference
+        between the source and target rooms (Pearson correlation -0.61), a relationship that holds across all ablated
+        model configurations.
+      claim_id: q4_2510_13221_transferring_acoustic_environment_characteristics_between_recordings_via_swapped_codec_e
+      confidence: high
+      relevance: high
+    limitations:
+    - Evaluation is restricted to English read speech and simulated room impulse responses with mean RT60 under 1.2s,
+      with no background noise and no real-world recordings tested; the authors state this limits generalizability
+      to real-world acoustic environments.
+    - Beyond the evaluated domain, the authors note that teleportation quality degrades substantially once the RT60
+      difference between source and target rooms exceeds 0.8s, indicating a fundamental limit on how large an acoustic
+      transformation the model can perform reliably. The paper also does not evaluate whether speaker identity is
+      fully preserved under acoustic teleportation (only qualitative t-SNE evidence of speaker-embedding independence
+      is given), and does not test multilingual speech or non-speech audio content, which the authors flag as future
+      work.
+    caveats:
+    - Disentanglement is tested on simulated rooms without background noise, and quantized streams retain a quality
+      gap to continuous representations.
+  - id: '2510.15227'
+    published_date: '2025-10-17'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    architecture:
+    - GAN
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - rvq_semantic_acoustic_distillation
+    claims:
+    - role: supports
+      claim: Decoupling semantic and acoustic information into separate encoder paths and codebooks lets a low-frame-rate
+        codec preserve intelligibility at bitrates below 1 kbps without collapsing reconstruction quality.
+      source: §4.3.3, Table 5
+      evidence: At 0.43 kbps (16.67 Hz, 2 codebooks) the codec reaches WER 2.10 and STOI 0.839, outperforming S3Tokenizer
+        (0.60 kbps, WER 2.12, STOI 0.673) and LSCodec (0.45 kbps, WER 3.33, STOI 0.688) in the same sub-0.65 kbps
+        comparison group.
+      claim_id: q4_2510_15227_decoupling_semantic_and_acoustic_information_into_separate_encoder_paths_and_codebooks_l
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Training a codec with more codebooks than will be deployed and then selecting a subset at inference time
+        produces better reconstruction than training directly at the deployed codebook count.
+      source: §4.3.2, Table 4
+      evidence: The Train-More-Use-Less ablation shows train-3-use-1 achieves lower STOI/MR-STFT/MR-MEL error than
+        train-1-use-1 on both Chinese and English in-house test data, attributed to first-layer codebooks capturing
+        dominant information more reliably under multi-codebook training.
+      claim_id: q4_2510_15227_training_a_codec_with_more_codebooks_than_will_be_deployed_and_then_selecting_a_subset_a
+      confidence: high
+      relevance: low
+    - role: complicates
+      claim: Speaker and timbre fidelity in a pretrained speech codec depends substantially on a dedicated decoder
+        fine-tuning stage rather than being fully available from generic pretraining alone.
+      source: §4.3.4, Figure 6
+      evidence: Speaker similarity (CAM++) for a held-out speaker unseen during Stage 1 rises from 0.717 after generic
+        Stage 1 pretraining to 0.860 after Stage 2 decoder retraining with the speaker mixed into high-quality data,
+        and to 0.938 after Stage 3 few-shot SFT on roughly 20 speakers.
+      claim_id: q4_2510_15227_speaker_and_timbre_fidelity_in_a_pretrained_speech_codec_depends_substantially_on_a_dedi
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: For codecs intended to feed autoregressive speech LMs, bitrate reduction via additional codebooks has
+        diminishing practical value once the codebook count grows large enough to require RQ-Transformer- or delay-pattern-style
+        mitigations for AR inference complexity.
+      source: §2.3.1, §Appendix A, Figure 7
+      evidence: The paper restricts its design to 4 acoustic-plus-semantic codebooks and reports that, in a Flow-Matching-based
+        probing experiment, the information carried by 4 codebooks reconstructs to a quality comparable to a 22–26-codebook
+        configuration when paired with a stronger decoder, arguing that further codebook scaling would not be AR-friendly.
+      claim_id: q4_2510_15227_for_codecs_intended_to_feed_autoregressive_speech_lms_bitrate_reduction_via_additional_c
+      confidence: high
+      relevance: low
+    limitations:
+    - The paper reports no end-to-end evaluation of a speech LLM trained on LongCat-Audio-Codec tokens; every result
+      is a reconstruction, intelligibility, or downstream-probe metric computed on the codec in isolation, so the
+      tokens' practical utility inside an actual autoregressive speech LM pipeline is not directly demonstrated here.
+    - The authors state that the design is optimized primarily for speech and offers insufficient support for music
+      and general sound effects, and that the current model accepts a maximum input length of 30 seconds, requiring
+      pre-slicing of longer audio (§5, Conclusion). All training data (roughly 750,000+ hours across the three stages)
+      is proprietary and in-house; while inference code and checkpoints are released, the training recipe cannot be
+      independently reproduced from public data. The music-domain codebook-sufficiency argument in Appendix A relies
+      on a separate 32-codebook music-only codec and a Flow Matching probing decoder rather than the deployed speech
+      decoder, so its generalization to the released speech codec's own decoder is not directly verified.
+    caveats:
+    - Codec results are reconstruction-only on proprietary data; utility inside a trained speech language model remains
+      untested.
+  - id: '2510.16841'
+    published_date: '2025-10-19'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    - TTS
+    architecture:
+    - GAN
+    - VAE
+    - autoregressive-LM
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - control_evidence
+    current_role: influential
+    method_family:
+      - explicit_multiencoder_factorization
+      - asr_text_alignment_disentanglement
+    claims:
+    - role: supports
+      claim: Fully separating semantic and acoustic token streams (rather than fusing semantic features into a shared
+        representation before quantization) improves semantic representation quality without sacrificing reconstruction
+        fidelity.
+      source: §5.1, §5.2, Table 1, Table 3
+      evidence: On the ARCH benchmark, SAC's dual-stream tokens reach 56.94–57.57% average accuracy, roughly 10 points
+        above the best "X-shaped" fused codec (XY-Tokenizer, 46.96%), while simultaneously achieving state-of-the-art
+        UTMOS and WER on LibriSpeech test-clean reconstruction at comparable bitrates.
+      claim_id: q4_2510_16841_fully_separating_semantic_and_acoustic_token_streams_rather_than_fusing_semantic_feature
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: A dual-stream codec can achieve near-complete disentanglement between linguistic content and speaker
+        identity purely through architectural separation, without an explicit adversarial or information-bottleneck
+        disentanglement objective.
+      source: §5.5, Table 5, Figure 4
+      evidence: Semantic-only (acoustic-masked) reconstruction reaches WER 3.99% (vs. 30.67% for the comparable dual-stream
+        codec SemantiCodec) while SIM collapses to 0.17, and mel-spectrogram analysis shows semantic-only decoding
+        retains no speaker-specific formant structure.
+      claim_id: q4_2510_16841_a_dual_stream_codec_can_achieve_near_complete_disentanglement_between_linguistic_content
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: Explicit auxiliary semantic supervision during codec decoder training is far less necessary when the
+        semantic stream is architecturally isolated from the reconstruction objective, contrary to codec designs that
+        fuse semantic and acoustic tokens before quantization.
+      source: §5.3, §Appendix H, Table 4, Table 13
+      evidence: Removing the semantic supervision loss L_sem causes only a slight PESQ drop and under 1% change in
+        ARCH semantic-representation accuracy for SAC, whereas prior "X-shaped" models (e.g., XY-Tokenizer) are reported
+        to suffer substantial ASR-probing degradation without equivalent supervision.
+      claim_id: q4_2510_16841_explicit_auxiliary_semantic_supervision_during_codec_decoder_training_is_far_less_necess
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Gains in codec-token intelligibility for downstream generative modeling can come at the cost of speaker
+        similarity when using coarser (lower frame-rate) token configurations.
+      source: §Appendix D, Table 9
+      evidence: The single-stage AR TTS model built on the 37.5 Hz SAC tokenizer achieves markedly lower WER/CER than
+        pure-AR baselines on Seed-TTS-eval, but shows a slight SIM reduction, which the authors attribute to the coarser
+        temporal granularity of the low-bitrate variant relative to the 50 Hz codecs used by the baselines.
+      claim_id: q4_2510_16841_gains_in_codec_token_intelligibility_for_downstream_generative_modeling_can_come_at_the_
+      confidence: high
+      relevance: high
+    limitations:
+    - The semantic tokenizer underlying SAC's semantic stream is trained under ASR-style supervision and aligned specifically
+      to textual/linguistic objectives; the authors state this limits SAC's generalizability beyond the speech domain
+      (e.g., to music or general sound), since semantics in those domains extend beyond linguistic alignment. *(§Limitations)*
+    - 'Additional limitations noted in the paper: the downstream AR TTS experiments use only the 37.5 Hz SAC configuration
+      due to compute constraints, leaving the higher-rate (62.5 Hz) variant''s zero-shot TTS behavior unexplored;
+      a small-scale ablation (LibriSpeech-only training) shows that reduced training-data speaker diversity causes
+      SAC to overfit to a narrow speaker distribution, substantially lowering SIM even though reconstruction-quality
+      metrics remain strong; and the subjective MOS evaluation (Appendix E) was restricted to low-bitrate models with
+      a relatively small pool of 20 listeners and 30 utterances, since high-bitrate reconstructions were judged perceptually
+      indistinguishable in pilot testing.'
+    caveats:
+    - The linguistically supervised semantic stream improves speech tokens but limits transfer to music and general
+      audio, and lower rates still weaken speaker similarity.
+  - id: '2510.18308'
+    published_date: '2025-10-21'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - VAE
+    - GAN
+    claims:
+    - role: supports
+      claim: Explicit, disentangled conditioning mechanisms for prosodic versus paralinguistic style can match the
+        perceptual quality of LLM-mediated style fusion while substantially reducing model size and inference cost.
+      source: §5.1, §5.3, Table 2, Table 4
+      evidence: ParaStyleTTS reaches I-MOS 4.65 / N-MOS 4.36 versus CosyVoice's I-MOS 4.75 / N-MOS 4.57, while using
+        8x fewer parameters (52.51M vs. 436.05M), running 30x faster (121.2ms vs. 4076.1ms), and needing 2.5x less
+        CUDA memory (763MB vs. 1852MB).
+      claim_id: q4_2510_18308_explicit_disentangled_conditioning_mechanisms_for_prosodic_versus_paralinguistic_style_can_match_the
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Acoustic-centric conditioning that directly grounds text-prompt embeddings in latent speech features
+        produces more robust style control under paraphrased prompts than approaches that route style through an autoregressive
+        language model's semantic interpretation.
+      source: §5.4, Table 6, Figure 3
+      evidence: Under ten semantically equivalent gender-describing prompt variants, ParaStyleTTS preserves 100%/100%
+        male/female classification accuracy while CosyVoice misclassifies 5 of 10 male-prompted samples as female.
+      claim_id: q4_2510_18308_acoustic_centric_conditioning_that_directly_grounds_text_prompt_embeddings_in_latent_speech_features
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Text-prompt-conditioned paralinguistic style control trained on synthetic or category-based captions
+        can still underperform LLM-based systems on raw intelligibility and naturalness, even when it outperforms
+        them on style controllability.
+      source: §5.1, §7, Table 2
+      evidence: ParaStyleTTS trails CosyVoice on both WER (15.29% vs. 10.30%) and MOS (I-MOS 4.65 vs. 4.75; N-MOS
+        4.36 vs. 4.57) despite winning on all three paralinguistic-controllability metrics.
+      claim_id: q4_2510_18308_text_prompt_conditioned_paralinguistic_style_control_trained_on_synthetic_or_category_based_captions
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: Fine-grained per-class evaluation of paralinguistic attribute control (rather than aggregate accuracy
+        alone) reveals that emotion classes with overlapping acoustic correlates, such as happiness and surprise,
+        are systematically harder to disentangle than classes with more distinct acoustic signatures.
+      source: §5.2, Figure 2
+      evidence: t-SNE visualization of emotion embeddings shows clear cluster separation for sad, neutral, and angry,
+        but noticeable overlap between happy and surprise, attributed to both sharing elevated pitch, faster speech
+        rate, and high energy.
+      claim_id: q4_2510_18308_fine_grained_per_class_evaluation_of_paralinguistic_attribute_control_rather_than_aggregate_accuracy
+      confidence: high
+      relevance: high
+    limitations:
+    - The training and evaluation corpus is limited to two languages (English, Chinese), 38 speakers, and only three
+      paralinguistic style dimensions (emotion, age, gender); style-classifier evaluation is performed with the authors'
+      own custom CLAP-based age/gender classifier rather than an independently validated benchmark. The authors acknowledge
+      that ParaStyleTTS still trails CosyVoice on overall intelligibility and subjective naturalness, and note the
+      model currently supports only three paralinguistic style categories, with extension to personality, tone, and
+      energy left to future work *(§7)*. Robustness testing is limited to a single proxy attribute (gender) with ten
+      hand-written phrasing variants; whether the robustness advantage generalizes to other attributes (emotion, age)
+      or to open-ended, unconstrained prompts is not directly tested.
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+    caveats:
+    - Prompt robustness is tested narrowly, and the compact system still trails an LLM baseline on intelligibility
+      and naturalness.
+  - id: '2510.25566'
+    published_date: '2025-10-29'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - discrete_bottleneck_disentanglement
+      - data_training_recipe_disentanglement
+      - signal_level_prosody_decomposition
+    claims:
+    - role: supports
+      claim: A simple input-perturbation-plus-bottleneck training strategy can disentangle a target speech attribute
+        from a neural codec's latent representation without requiring an adversarial loss or auxiliary predictor.
+      source: §4.1, Figure 2
+      evidence: Flattening and randomly shifting F0 at the input while conditioning the flow decoder on the true F0,
+        combined with an RVQ bottleneck, yields the lowest F0-RMSE among bottleneck-only, adversarial, and adversarial+HuBERT
+        variants tested on the same backbone.
+      claim_id: q4_2510_25566_a_simple_input_perturbation_plus_bottleneck_training_strategy_can_disentangle_a_target_s
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Disentangling one speech attribute via information bottlenecks or perturbation can degrade other attributes
+        the system is meant to preserve, such as speaker identity.
+      source: §5, Table 1
+      evidence: PitchFlower shows lower speaker similarity than SiFiGAN, attributed to distortions introduced by the
+        WORLD-based F0-flattening transformation used to perturb the training input.
+      claim_id: q4_2510_25566_disentangling_one_speech_attribute_via_information_bottlenecks_or_perturbation_can_degra
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Adding a self-supervised semantic distillation loss to a codec's training objective does not uniformly
+        improve disentanglement quality; its effect depends on which base disentanglement mechanism it is combined
+        with.
+      source: §4.1
+      evidence: Adding HuBERT distillation improved F0 controllability for the bottleneck and adversarial variants
+        but was detrimental across all metrics (WER, speaker similarity, UTMOS, and F0-RMSE) when combined with PitchFlower's
+        perturbation-based mechanism.
+      claim_id: q4_2510_25566_adding_a_self_supervised_semantic_distillation_loss_to_a_codec_s_training_objective_does
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: The controllability of a bottleneck-based disentanglement mechanism depends on the type and capacity
+        of the quantizer, not just its presence.
+      source: §6.1, Figure 4
+      evidence: At matched capacity, RVQ bottlenecks preserve pitch controllability more robustly than FSQ bottlenecks
+        as capacity increases, and controllability degrades for both as bottleneck capacity grows.
+      claim_id: q4_2510_25566_the_controllability_of_a_bottleneck_based_disentanglement_mechanism_depends_on_the_type_
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The supported F0 range is bounded by the training data distribution: on LibriTTS the effective range is roughly
+      60-700 Hz, downward transpositions from low starting F0 saturate near 60 Hz and fail to follow the target contour,
+      and extending the range requires retraining on data with a wider F0 distribution (§7).'
+    - Evaluation is confined to a single training run on a single dataset (LibriTTS) with modest compute (one consumer
+      GPU, 800k iterations), and no downstream integration with a TTS or singing-voice-synthesis system is demonstrated
+      despite that being cited as a motivating application. Speaker similarity is consistently the weakest dimension
+      for PitchFlower relative to the strongest baseline (SiFiGAN), a trade-off the authors trace to WORLD-introduced
+      artifacts in the perturbation step rather than to the flow decoder or bottleneck itself. The authors position
+      generalizing the perturbation-plus-bottleneck framework to other attributes (e.g., emotion, timbre) as future
+      work, not something demonstrated in this paper.
+    caveats:
+    - Pitch control is demonstrated within one codec and dataset, and attribute isolation can reduce speaker fidelity.
+  - id: '2511.01056'
+    published_date: '2025-11-02'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - VC
+    architecture:
+    - VAE
+    - flow-matching
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - data_training_recipe_disentanglement
+    claims:
+    - claim_id: decoupled_cross_domain_alignment_improves_low_resource_conversion_stability
+      role: supports
+      claim: Decoupling cross-domain representation alignment from downstream acoustic generation improves conversion
+        stability when paired training data across the two domains is scarce.
+      source: §3.3, Table 1
+      evidence: Removing the VAE alignment module increases CER from 16.93% to 40.16% and degrades every reported
+        quality proxy on Mandarin whisper-to-normal conversion.
+      confidence: high
+      relevance: high
+    - claim_id: structured_residual_flow_modeling_stabilizes_cross_domain_generation
+      role: supports
+      claim: Modeling a structured residual on top of a deterministic coarse acoustic prediction produces more stable
+        generation than modeling the full acoustic representation under cross-domain mismatch.
+      source: §3.3, Table 1
+      evidence: Residual OT-CFM refinement improves CER and DNSMOS over full-mel OT-CFM modeling on the same coarse
+        backbone.
+      confidence: high
+      relevance: medium
+    - claim_id: same_domain_voice_conversion_transfers_poorly_to_whispered_input
+      role: complicates
+      claim: Generic voice conversion systems trained on same-domain speech transfer poorly to severely mismatched
+        inputs such as whispered speech.
+      source: §3.3, Table 1
+      evidence: Seed-VC applied zero-shot to whispered input yields 46.42% CER, versus 16.93% for the whisper-adapted
+        system.
+      confidence: high
+      relevance: high
+    - claim_id: gated_domain_alignment_can_unify_whisper_and_standard_voice_conversion
+      role: supports
+      claim: Conditionally applying a domain-alignment module only to out-of-domain inputs can unify whisper-to-normal
+        and standard voice conversion without materially degrading either task.
+      source: §3.4, Table 2
+      evidence: Removing gated dual-path routing raises normal-to-normal VC CER from 3.33% to 4.33% while perceptual
+        quality remains similar.
+      confidence: high
+      relevance: high
+    limitations:
+    - All reported quality and speaker-similarity results are automatic proxies, and Mandarin and English use separately
+      trained pipelines.
+    caveats:
+    - Whisper-to-normal gains are based entirely on automatic quality proxies and separate monolingual models.
+  - id: 2025.findings-emnlp.1381
+    published_date: '2025-11-05'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - TTS
+    - VC
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+    claims:
+    - claim_id: q4_2025_findings_emnlp_1381_a_frozen_zero_shot_tts_vc_backbone_whose_semantic_tokens_already_separat
+      role: supports
+      claim: A frozen zero-shot TTS/VC backbone whose semantic tokens already separate content and prosody from speaker
+        identity can be repurposed as a general-purpose speaker-control interface for modalities the backbone was
+        never trained on, by learning only a lightweight adapter that produces a compatible speaker embedding.
+      source: §5.2, Table 2
+      evidence: Freezing CosyVoice's LLM and CFM while training only the MVA adapter allows the system to accept face,
+        text, and attribute-edit conditioning while matching or exceeding CosyVoice-Instruct's own speech quality
+        (MOS-Nat) on the text-conditioned task.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2025_findings_emnlp_1381_aligning_heterogeneous_conditioning_modalities_to_a_shared_speaker_embed
+      role: supports
+      claim: Aligning heterogeneous conditioning modalities to a shared speaker-embedding space through a common set
+        of learnable key-value vectors, rather than training separate pairwise alignment models per modality, improves
+        both how well the generated voice matches the intended description and how diverse the resulting voices are.
+      source: §5.3, Table 3
+      evidence: Ablating the KV-Former-based MVA reduces SST and SSC and increases SSD (worse diversity) across FaceTTS
+        and FaceVC compared to the full system.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2025_findings_emnlp_1381_injecting_a_non_reference_derived_speaker_embedding_into_a_flow_matching
+      role: complicates
+      claim: Injecting a non-reference-derived speaker embedding into a flow-matching TTS backbone that was originally
+        trained with a strong reference-audio (Mel-spectrogram) prompt is undermined by the backbone's tendency to
+        keep leaking speaker identity from the semantic-token stream unless an explicit disentangling training stage
+        is added.
+      source: §5.3, Table 3; §A.3
+      evidence: Without the self-distillation fine-tuning stage, SST drops substantially on both the FaceTTS-style
+        ablation split and the VC task (e.g., 39.37% to 31.07% for VC), and a preliminary experiment integrating face
+        embeddings directly into an unmodified CosyVoice CFM produced almost no speaker conversion at all (SSIM ≈
+        4.8).
+      confidence: high
+      relevance: high
+    - claim_id: q4_2025_findings_emnlp_1381_multimodal_one_to_many_voice_description_modalities_such_as_face_images
+      role: complicates
+      claim: Multimodal, one-to-many voice-description modalities such as face images or short text descriptions carry
+        substantially coarser speaker information than a Mel-spectrogram prompt derived from real reference audio,
+        so systems built on this kind of conditioning should be expected to under-perform true voice-cloning quality
+        even when the alignment mechanism itself is effective.
+      source: §A.1, Table 5
+      evidence: Comparing CFM speaker control with and without the Mel-spectrogram prompt on zero-shot voice conversion
+        shows the Mel-spectrogram prompt carries substantially more voice information than the speaker embedding alone,
+        motivating the paper's own framing of coarse speaker embeddings as sufficient only as an alignment anchor.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2025_findings_emnlp_1381_a_soft_distribution_matching_contrastive_objective_that_treats_within_mo
+      role: supports
+      claim: A soft, distribution-matching contrastive objective that treats within-modality (e.g., speech-to-speech)
+        similarity as a soft target for cross-modal similarity, rather than enforcing hard one-to-one contrastive
+        pairs, better handles the natural one-to-many correspondence between a voice-description modality and plausible
+        voice identities.
+      source: §5.3, Table 3
+      evidence: Removing SoftCL (leaving only standard flow-matching training of the MVA) degrades SST, SSD, and SSC
+        across every ablated task, with the largest effect on edge-case speakers such as elderly or very young faces
+        defaulting to young-adult-sounding voices.
+      confidence: high
+      relevance: high
+    limitations:
+    - Limited multimodal paired data and photographic-face-only evaluation constrain generalization to new descriptions,
+      identities, and visual styles.
+    caveats:
+    - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+      included but are marked accordingly.
+  - id: '2511.12074'
+    published_date: '2025-11-15'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - VC
+    architecture:
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - mutual_information_minimization
+    claims:
+    - role: supports
+      claim: Combining factor-specific contrastive losses with a shared post-discretization mutual-information minimization
+        constraint reduces cross-factor leakage more effectively than disentanglement strategies relying on adversarial
+        training or implicit bottlenecks alone.
+      source: §Experimental Results on MF-SpeechEncoder, Table 2
+      evidence: MF-SpeechEncoder achieves higher target-task accuracy (0.998/0.930/0.959 for timbre/emotion/content)
+        and lower non-target leakage accuracy (e.g., Acc_te = 0.262 vs. 0.54-0.59 for StyleVC/DDDM-VC/FaCodec) than
+        three prior VC disentanglement systems, while mutual-information scores remain comparable across systems
+      claim_id: q4_2511_12074_combining_factor_specific_contrastive_losses_with_a_shared_post_discretization_mutual_in
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Dynamic, per-timestep gating of independently-controlled attribute streams combined with hierarchical,
+        multi-layer style-adaptive normalization improves controllability in cross-source compositional speech generation
+        over static fusion or single-point style injection.
+      source: §Ablation Study, Figure 5
+      evidence: Removing HSAN drops SECS from 0.5685 to 0.1576 and Corr from 0.68 to 0.64 in the compositional generation
+        task, while removing dynamic fusion raises WER from 4.76% to 5.17% and lowers SECS to 0.5551, with each ablation
+        isolating a distinct, measurable degradation
+      claim_id: q4_2511_12074_dynamic_per_timestep_gating_of_independently_controlled_attribute_streams_combined_with_
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Explicit prosody-based supervision for a dedicated emotion representation does not fully decouple emotion
+        modeling from timbre modeling during training, even when the two factors are extracted by architecturally
+        separate modules.
+      source: §Ablation Study, Figure 4(h),(l)
+      evidence: Removing the prosody-prior loss (ablation M3) degrades not only emotion t-SNE clustering but also
+        timbre clustering, indicating the prosody signal contributes to timbre representation quality beyond its intended
+        emotion-modeling role
+      claim_id: q4_2511_12074_explicit_prosody_based_supervision_for_a_dedicated_emotion_representation_does_not_fully
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: Reconstruction-task performance of a disentangled multi-factor speech generation system is not a reliable
+        proxy for its performance on true compositional (cross-source) control, since the two settings can diverge
+        substantially even for the same model.
+      source: §Experimental Results on MF-Speech, Table 1
+      evidence: MF-Speech's own speaker similarity drops from SECS = 0.7401 (reconstruction, same-source factors)
+        to SECS = 0.5685 (compositional generation, cross-source factors), and WER rises from 2.83% to 4.67% under
+        the same model
+      claim_id: q4_2511_12074_reconstruction_task_performance_of_a_disentangled_multi_factor_speech_generation_system_
+      confidence: high
+      relevance: high
+    limitations:
+    - Training and evaluation are confined to a single dataset (ESD) on a single consumer GPU (RTX 4090), with no
+      cross-corpus or cross-lingual evaluation reported, so generalization beyond ESD's speaker and emotion inventory
+      is untested. Model parameter count is not reported, and code and demo availability are not stated in the paper,
+      limiting reproducibility assessment. The subjective evaluation uses 20 participants, and UTMOS for MF-Speech
+      trails StyleVC on the compositional task, a result the authors attribute to StyleVC's faster, less natural speaking
+      rate rather than to a genuine quality shortfall, but this explanation is not independently verified with a targeted
+      follow-up experiment.
+    caveats:
+    - Emotion, timbre, and prosody remain partly entangled on a single acted-emotion corpus, especially under cross-source
+      composition.
+  - id: '2511.21045'
+    published_date: 2025-11-26
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - singing
+    - TTS
+    - VC
+    architecture:
+    - transformer-enc-dec
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - asr_text_alignment_disentanglement
+      - signal_level_prosody_decomposition
+    claims:
+    - claim_id: q4_2511_21045_factorizing_singing_audio_into_disentangled_content_tokens_a_continuous
+      role: supports
+      claim: Factorizing singing audio into disentangled content tokens, a continuous F0 contour, and a timbre embedding,
+        rather than relying on phoneme-aligned score supervision, allows a synthesis and conversion system to generalize
+        to timbres well outside its human training distribution.
+      source: §4.2, Tables 1-3
+      evidence: CartoonSing, trained with this factorization, achieves consistently higher timbre similarity (SIM-A)
+        to instrumental, general-audio, and bird target timbres than SVS/SVC baselines trained only on human voices,
+        e.g. 0.603 vs. 0.493 for Chinese-instrumental SVS and 0.589 vs. 0.398 for Chinese-instrumental SVC.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_21045_transferring_a_generative_singing_voice_system_to_a_target_timbre_that_d
+      role: complicates
+      claim: Transferring a generative singing voice system to a target timbre that departs strongly from human vocal
+        acoustics trades off against perceptual audio quality and intelligibility, because baselines that fail to
+        transfer timbre retain clean human-like articulation by default.
+      source: §A.8, Table 10
+      evidence: In the subjective listening study, CartoonSing scores far higher on MOS-T (timbre similarity, 3.2
+        vs. 2.71 for SVC) but lower on MOS-C (intelligibility, 2.99 vs. 4.09) and MOS-Q (quality, 2.8 vs. 4.02) than
+        the human-timbre baseline, attributed to weakened consonantal transients when the output timbre becomes vowel-like
+        and instrument-like.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_21045_content_representations_that_explicitly_disentangle_timbre_from_linguist
+      role: supports
+      claim: Content representations that explicitly disentangle timbre from linguistic/phonetic content are more
+        robust than richer, less disentangled self-supervised representations when a system must generalize to out-of-distribution
+        timbre spaces.
+      source: §B.2, Tables 11-14
+      evidence: Replacing the ContentVec-derived (timbre-disentangled) content tokens with HuBERT tokens improved
+        timbre similarity for human singing reconstruction but reduced it for non-human timbre transfer across instrumental,
+        general, and bird targets, which the authors attribute to timbre leakage in the less disentangled HuBERT representation.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_21045_extending_a_cross_domain_human_non_human_generative_audio_system_to_a_ne
+      role: complicates
+      claim: Extending a cross-domain (human/non-human) generative audio system to a new target-timbre domain requires
+        domain-specific fine-tuning rather than transferring zero-shot from a single pretrained model.
+      source: §4.1, §4.2, Tables 1-3
+      evidence: The Stage 2 vocoder is fine-tuned separately for each of three non-human domains (instrumental, bird
+        vocalization, general audio) with domain-specific oversampling ratios, and this fine-tuning yields consistent
+        LF0 RMSE and VUV improvements over the pretrained-only model in every domain.
+      confidence: high
+      relevance: high
+    limitations:
+    - Non-human timbre gains require domain-specific fine-tuning and reduce intelligibility and audio quality, so
+      the method is not genuinely zero-shot across timbre domains.
+    caveats:
+    - Out-of-domain timbre transfer sacrifices intelligibility and requires domain-specific vocoder fine-tuning.
+  - id: '2512.09504'
+    published_date: '2025-12-10'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+    claims:
+    - claim_id: q4_2512_09504_combining_multi_task_attribute_supervision_with_contrastive_audio_text_a
+      role: supports
+      claim: Combining multi-task attribute supervision with contrastive audio-text alignment in a style encoder yields
+        stronger downstream style control than contrastive alignment alone.
+      source: §4.3.2, Table 2
+      evidence: Removing multi-task supervision (keeping only the contrastive loss) drops emotion control accuracy
+        from 0.64 to 0.54 and energy accuracy from 0.85 to 0.80, while speaker similarity and WER change negligibly.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2512_09504_distilling_acoustic_semantic_features_from_a_pretrained_asr_encoder_into
+      role: supports
+      claim: Distilling acoustic-semantic features from a pretrained ASR encoder into intermediate diffusion-transformer
+        layers can improve TTS intelligibility with little effect on style or speaker control.
+      source: §4.3.2, Table 2
+      evidence: Removing Whisper-based representation alignment (REPA) raises WER from 0.038 to 0.046, while style-accuracy
+        and speaker-similarity metrics remain nearly unchanged, and REPA is reported to reach intelligible speech
+        earlier in training.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_09504_hierarchical_condition_dropout_during_classifier_free_guidance_training
+      role: supports
+      claim: Hierarchical condition dropout during classifier-free guidance training enables each conditioning attribute's
+        guidance strength to be tuned independently at inference, rather than a single scale strengthening all conditions
+        together.
+      source: §4.3.3, Figure 2
+      evidence: Independently varying the speaker or style guidance scale from 6.0 to 21.0 produces a corresponding
+        upward trend in speaker similarity or emotion accuracy respectively, without requiring joint adjustment of
+        the other attributes' guidance scales.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2512_09504_per_attribute_guidance_decomposition_does_not_fully_eliminate_cross_attr
+      role: complicates
+      claim: 'Per-attribute guidance decomposition does not fully eliminate cross-attribute interaction: pushing a
+        single attribute''s guidance scale too high still degrades overall naturalness and can slightly reduce accuracy
+        on attributes not being adjusted.'
+      source: §4.3.3
+      evidence: Excessively high guidance scales were observed to introduce over-conditioning that degrades naturalness
+        and can slightly reduce the non-target attribute's accuracy, even under chained CFG's nominal per-attribute
+        decomposition.
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2512_09504_choice_of_style_prompting_modality_audio_vs_descriptive_text_trades_off
+      role: complicates
+      claim: Choice of style-prompting modality (audio vs. descriptive text) trades off stability of attribute control
+        against perceived naturalness, rather than one modality dominating the other.
+      source: §4.3.1, Table 1
+      evidence: Text-prompted synthesis gives more stable, generally higher style-attribute accuracy, while audio-prompted
+        synthesis gives higher naturalness MOS (3.82 vs. 3.73), attributed to audio carrying richer prosodic and acoustic
+        information than discrete text labels.
+      confidence: high
+      relevance: high
+    limitations:
+    - A small Chinese dataset and discrete style labels leave multilingual, dynamic-style, and large-scale speaker-fidelity
+      behavior unresolved.
+    caveats:
+    - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+      included but are marked accordingly.
+  - id: '2512.13251'
+    published_date: '2025-12-15'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    - codec
+    architecture:
+    - autoregressive-LM
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - explicit_multiencoder_factorization
+      - orthogonality_constraint_disentanglement
+    claims:
+    - role: supports
+      claim: Resolving timbre-prosody entanglement at the codec level enables a standard autoregressive language model
+        to perform independent prosody and timbre control without requiring multi-stream prediction or specialized
+        generation architectures.
+      source: §3, §3.1.2
+      evidence: Separating codec timbre and prosody streams enables independent control with a standard one-stage
+        autoregressive generator.
+      claim_id: q4_2512_13251_resolving_timbre_prosody_entanglement_at_the_codec_level_enables_a_standard_autoregressi
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: A two-stage codec training protocol that separates attribute disentanglement (Stage 1) from fused reconstruction
+        (Stage 2) mitigates the disentanglement-reconstruction trade-off more effectively than single-stage approaches.
+      source: §3.1, §3.1.2, Appendix B
+      evidence: The two-stage training design retains strong UTMOS and WER while limiting the reconstruction loss
+        associated with disentanglement.
+      claim_id: q4_2512_13251_a_two_stage_codec_training_protocol_that_separates_attribute_disentanglement_stage_1_fro
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Soft orthogonality constraints with attribute-specific relaxation targets outperform both unconstrained
+        and hard-orthogonality approaches in balancing speaker similarity and prosody preservation in zero-shot voice
+        conversion.
+      source: §3.1.1, Appendix B, Table 6
+      evidence: Soft orthogonality gives the best reported balance of speaker similarity and F0 correlation in the
+        codec ablation.
+      claim_id: q4_2512_13251_soft_orthogonality_constraints_with_attribute_specific_relaxation_targets_outperform_bot
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Codec-based one-stage autoregressive TTS achieves competitive but lower speaker similarity than multi-stage
+        flow-matching systems on the SEED-TTS-Eval benchmark, reflecting an inherent tension between AR variability
+        and speaker fidelity.
+      source: §4.2.2, Table 4
+      evidence: On English voice cloning, speaker similarity 0.597 trails multi-stage F5-TTS and CosyVoice2 despite
+        competitive intelligibility.
+      claim_id: q4_2512_13251_codec_based_one_stage_autoregressive_tts_achieves_competitive_but_lower_speaker_similari
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Independent disentanglement of prosody and timbre improves rhythm and speech-rate control in stylistic
+        scenarios but does not fully match the expressiveness of systems that permit partial timbre-prosody entanglement
+        in emotional conditions.
+      source: §4.2.2, Table 3
+      evidence: The model improves style rhythm and rate control but trails a partly entangled comparator on emotional
+        prosody preference.
+      claim_id: q4_2512_13251_independent_disentanglement_of_prosody_and_timbre_improves_rhythm_and_speech_rate_contro
+      confidence: high
+      relevance: high
+    limitations:
+    - '**Speaker similarity gap**: DisCo-Speech''s voice cloning SSIM (0.597 EN) trails multi-stage systems like F5-TTS
+      (0.647) and CosyVoice2 (0.652). The paper attributes this to inherent AR variability and compact codec representations
+      — reducing AR sampling variance or increasing timbre token resolution could help.'
+    - '**Expressive prosody stability**: The model shows instability with highly exaggerated prosody, likely a training-data
+      diversity limitation (the 6k fine-tuning set may not cover extreme expressiveness).'
+    - '**Disentanglement-reconstruction balance**: Despite the two-stage design, PESQ scores for DisCodec remain lower
+      than non-disentangled codecs at the same token rate (1.98 vs. 2.43 for X-Codec2), suggesting further headroom
+      remains.'
+    - '**No streaming or real-time evaluation**: Whether the LM''s autoregressive structure and BigVGANv2 decoder
+      can operate in low-latency streaming scenarios is not addressed.'
+    - '**Evaluation limited to Mandarin and English**: Multilingual generalization of the disentangled representations
+      is untested.'
+    caveats:
+    - Codec-level disentanglement improves independent control but retains a reconstruction and speaker-similarity
+      gap to less constrained systems.
 claim_clusters:
   - id: codecs_ssl_entangle_content_speaker_by_default
-    claim: "Standard neural codec and self-supervised speech representations entangle linguistic content with speaker identity and other paralinguistic detail unless an explicit disentanglement mechanism is applied."
+    claim: Standard neural codec and self-supervised speech representations entangle linguistic content with speaker
+      identity and other paralinguistic detail unless an explicit disentanglement mechanism is applied.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2308.16692"
-      - "2507.09070"
-      - "2502.06490"
-      - "interspeech-2025-1440"
+      - '2308.16692'
+      - '2507.09070'
+      - '2502.06490'
+      - interspeech-2025-1440
     contradicting_papers: []
     refining_papers:
-      - "2025.findings-naacl.130"
+      - 2025.findings-naacl.130
+      - 2025.findings-emnlp.1381
+      - '2511.12074'
     caveats:
-      - "Entanglement is documented mostly through downstream proxies (word error rate, speaker-classification accuracy) rather than a direct information-theoretic leakage measurement."
-      - "DiViSe's finding that discrete acoustic units discard speaker detail relative to continuous mel-spectrograms is evidence for the same underlying pattern in a video-to-speech setting, not a codec-design contribution."
-    last_reviewed: "2026-07-22"
+      - Entanglement is documented mostly through downstream proxies (word error rate, speaker-classification accuracy)
+        rather than a direct information-theoretic leakage measurement.
+      - DiViSe's finding that discrete acoustic units discard speaker detail relative to continuous mel-spectrograms
+        is evidence for the same underlying pattern in a video-to-speech setting, not a codec-design contribution.
+    last_reviewed: '2026-09-26'
   - id: explicit_disentanglement_enables_independent_multiattribute_control
-    claim: "Explicit disentanglement of speaker, style, emotion, and content into separate representations enables independent, simultaneous control over these attributes without one conditioning signal interfering with another."
+    claim: Explicit disentanglement of speaker, style, emotion, and content into separate representations enables
+      independent, simultaneous control over these attributes without one conditioning signal interfering with another.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2403.03100"
-      - "2025.acl-long.346"
-      - "2412.04724"
-      - "2508.02038"
-      - "interspeech-2025-1638"
-      - "2509.16010"
-      - "interspeech-2025-1684"
-      - "interspeech-2025-1210"
-      - "2312.01479"
-      - "2502.07243"
-      - "2503.01710"
-      - "2505.07916"
+      - '2403.03100'
+      - 2025.acl-long.346
+      - '2412.04724'
+      - '2508.02038'
+      - interspeech-2025-1638
+      - '2509.16010'
+      - interspeech-2025-1684
+      - interspeech-2025-1210
+      - '2312.01479'
+      - '2502.07243'
+      - '2503.01710'
+      - '2505.07916'
+      - '2510.01722'
+      - '2510.18308'
+      - '2511.12074'
+      - '2511.21045'
+      - '2512.09504'
+      - '2512.13251'
     contradicting_papers: []
-    refining_papers: []
+    refining_papers:
+      - '2510.18308'
+      - '2512.09504'
+      - '2512.13251'
     caveats:
-      - "Pitch conditioning specifically remains harder to preserve than other attributes under joint multi-attribute control (ControlSpeech)."
-      - "Most validation in this cluster is via downstream generation quality (naturalness, similarity, expressiveness scores) rather than a direct cross-attribute leakage probe; OpenVoice's decoupling claim in particular rests entirely on qualitative demonstration with no reported metrics."
-    last_reviewed: "2026-07-22"
+      - Pitch conditioning specifically remains harder to preserve than other attributes under joint multi-attribute
+        control (ControlSpeech).
+      - Most validation in this cluster is via downstream generation quality (naturalness, similarity, expressiveness
+        scores) rather than a direct cross-attribute leakage probe; OpenVoice's decoupling claim in particular rests
+        entirely on qualitative demonstration with no reported metrics.
+    last_reviewed: '2026-09-26'
   - id: grl_disentanglement_leakage_vs_quality_tradeoff
-    claim: "Gradient-reversal-based adversarial disentanglement reliably reduces cross-attribute information leakage, but its net effect on perceptual output quality is inconsistent across systems and target attributes."
+    claim: Gradient-reversal-based adversarial disentanglement reliably reduces cross-attribute information leakage,
+      but its net effect on perceptual output quality is inconsistent across systems and target attributes.
     status: contested
     confidence: medium
     supporting_papers:
-      - "2403.03100"
-      - "2412.04724"
-      - "2508.06890"
-      - "2506.21619"
-      - "interspeech-2025-1192"
+      - '2403.03100'
+      - '2412.04724'
+      - '2508.06890'
+      - '2506.21619'
+      - interspeech-2025-1192
     contradicting_papers:
-      - "interspeech-2025-0347"
+      - interspeech-2025-0347
     refining_papers:
-      - "interspeech-2025-1394"
+      - interspeech-2025-1394
     caveats:
-      - "PeriodCodec reports that its own GRL-based pitch disentanglement module did not improve, and in some conditions worsened, subjective naturalness."
-      - "DiEmoTTS argues self-supervised distillation with emotion-specific inductive biases outperforms GRL- and VQ-based disentanglement for speaker-independent emotion embeddings, directly critiquing GRL as introducing a separation-versus-quality tension."
-      - "No paper in this batch reports a controlled GRL-on/GRL-off ablation on identical architecture and data isolating the quality effect from other confounds."
-    last_reviewed: "2026-07-22"
+      - PeriodCodec reports that its own GRL-based pitch disentanglement module did not improve, and in some conditions
+        worsened, subjective naturalness.
+      - DiEmoTTS argues self-supervised distillation with emotion-specific inductive biases outperforms GRL- and
+        VQ-based disentanglement for speaker-independent emotion embeddings, directly critiquing GRL as introducing
+        a separation-versus-quality tension.
+      - No paper in this batch reports a controlled GRL-on/GRL-off ablation on identical architecture and data isolating
+        the quality effect from other confounds.
+    last_reviewed: '2026-07-22'
   - id: disentanglement_reconstruction_fidelity_tradeoff
-    claim: "Imposing explicit disentanglement constraints on codec or generative representations generally reduces reconstruction fidelity, speaker similarity, or another specific attribute's quality relative to an unconstrained system at comparable bitrate or model capacity."
+    claim: Imposing explicit disentanglement constraints on codec or generative representations generally reduces
+      reconstruction fidelity, speaker similarity, or another specific attribute's quality relative to an unconstrained
+      system at comparable bitrate or model capacity.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2508.08399"
-      - "interspeech-2025-1106"
-      - "2503.01710"
-      - "2509.09201"
-      - "2509.17006"
-      - "interspeech-2025-1639"
-      - "2506.23325"
-      - "2508.04141"
-      - "2509.13068"
-      - "2509.22062"
+      - '2508.08399'
+      - interspeech-2025-1106
+      - '2503.01710'
+      - '2509.09201'
+      - '2509.17006'
+      - interspeech-2025-1639
+      - '2506.23325'
+      - '2508.04141'
+      - '2509.13068'
+      - '2509.22062'
+      - '2510.13221'
+      - '2510.16841'
+      - '2510.25566'
+      - '2511.21045'
+      - '2512.13251'
     contradicting_papers: []
     refining_papers:
-      - "interspeech-2025-1434"
-      - "interspeech-2025-0115"
+      - interspeech-2025-1434
+      - interspeech-2025-0115
+      - '2510.13221'
+      - '2510.16841'
+      - '2510.25566'
+      - '2511.21045'
+      - '2512.13251'
     caveats:
-      - "ReWind's speaker-embedding-augmentation approach reports improved disentanglement with no measurable quality cost, suggesting the trade-off may be specific to architectural/bottleneck-based disentanglement rather than a universal property of disentanglement itself."
-      - "AnCoGen's post-hoc interpretability analysis finds the specific content-accuracy-versus-synthesis-quality trade-off differs systematically by codec design, complicating any single-number characterization of the trade-off's severity."
-    last_reviewed: "2026-07-22"
+      - ReWind's speaker-embedding-augmentation approach reports improved disentanglement with no measurable quality
+        cost, suggesting the trade-off may be specific to architectural/bottleneck-based disentanglement rather
+        than a universal property of disentanglement itself.
+      - AnCoGen's post-hoc interpretability analysis finds the specific content-accuracy-versus-synthesis-quality
+        trade-off differs systematically by codec design, complicating any single-number characterization of the
+        trade-off's severity.
+    last_reviewed: '2026-09-26'
   - id: rvq_semantic_content_concentrates_early_layers
-    claim: "In RVQ-based neural speech codecs, linguistic and semantic content concentrates in the first or lowest quantizer layers when semantic supervision or distillation is applied, allowing those layers to be used independently for content-related downstream tasks."
+    claim: In RVQ-based neural speech codecs, linguistic and semantic content concentrates in the first or lowest
+      quantizer layers when semantic supervision or distillation is applied, allowing those layers to be used independently
+      for content-related downstream tasks.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2308.16692"
-      - "interspeech-2025-0468"
-      - "2507.12197"
-      - "interspeech-2025-1639"
+      - '2308.16692'
+      - interspeech-2025-0468
+      - '2507.12197'
+      - interspeech-2025-1639
+      - '2510.15227'
     contradicting_papers: []
     refining_papers:
-      - "interspeech-2025-0115"
+      - interspeech-2025-0115
     caveats:
-      - "AnCoGen finds this concentration weakens and content leaks into higher RVQ scales when the codec's frame rate is very low, indicating the pattern is not unconditionally robust across all operating points."
-    last_reviewed: "2026-07-22"
+      - AnCoGen finds this concentration weakens and content leaks into higher RVQ scales when the codec's frame
+        rate is very low, indicating the pattern is not unconditionally robust across all operating points.
+    last_reviewed: '2026-09-26'
   - id: disentanglement_oriented_codecs_fail_on_pitch
-    claim: "Even codecs and generative systems explicitly designed for content-speaker-prosody disentanglement frequently fail to achieve clean separation of pitch/F0 from other attributes when using generic representation-level mechanisms."
+    claim: Even codecs and generative systems explicitly designed for content-speaker-prosody disentanglement frequently
+      fail to achieve clean separation of pitch/F0 from other attributes when using generic representation-level
+      mechanisms.
     status: contested
     confidence: medium
     supporting_papers:
-      - "interspeech-2025-0115"
-      - "interspeech-2025-0347"
-      - "interspeech-2025-2684"
+      - interspeech-2025-0115
+      - interspeech-2025-0347
+      - interspeech-2025-2684
     contradicting_papers:
-      - "interspeech-2025-0464"
-      - "interspeech-2025-1397"
-      - "interspeech-2025-0948"
+      - interspeech-2025-0464
+      - interspeech-2025-1397
+      - interspeech-2025-0948
     refining_papers:
-      - "interspeech-2025-1440"
+      - interspeech-2025-1440
+      - '2510.25566'
+      - '2511.21045'
     caveats:
-      - "AnCoGen's interpretability analysis explicitly reports that disentanglement-trained codecs, including SpeechTokenizer-style and Mimi-style designs, fail to cleanly separate pitch from other attributes in their token embeddings."
-      - "The papers reporting successful pitch disentanglement (PACE, VibeSVC, PromptEVC) all use a dedicated signal-level F0 mechanism rather than the generic representation-level disentanglement AnCoGen evaluated, so the two bodies of evidence may target genuinely different mechanisms rather than directly conflicting."
-      - "FreeCodec's own t-SNE visualization shows incomplete, partially overlapping prosody/speaker clustering, a self-reported limitation rather than a claim of clean separation."
-    last_reviewed: "2026-07-22"
+      - AnCoGen's interpretability analysis explicitly reports that disentanglement-trained codecs, including SpeechTokenizer-style
+        and Mimi-style designs, fail to cleanly separate pitch from other attributes in their token embeddings.
+      - The papers reporting successful pitch disentanglement (PACE, VibeSVC, PromptEVC) all use a dedicated signal-level
+        F0 mechanism rather than the generic representation-level disentanglement AnCoGen evaluated, so the two
+        bodies of evidence may target genuinely different mechanisms rather than directly conflicting.
+      - FreeCodec's own t-SNE visualization shows incomplete, partially overlapping prosody/speaker clustering,
+        a self-reported limitation rather than a claim of clean separation.
+    last_reviewed: '2026-09-26'
   - id: ssl_content_representations_incomplete_disentanglement
-    claim: "Distillation from self-supervised speech models such as HuBERT, WavLM, or w2v-BERT narrows but does not eliminate paralinguistic and speaker leakage into content representations."
-    status: emerging
-    confidence: medium
+    claim: Distillation from self-supervised speech models such as HuBERT, WavLM, or w2v-BERT narrows but does not
+      eliminate paralinguistic and speaker leakage into content representations.
+    status: strongly_supported
+    confidence: high
     supporting_papers:
-      - "2508.02849"
-      - "interspeech-2025-1440"
-      - "2104.00355"
+      - '2508.02849'
+      - interspeech-2025-1440
+      - '2104.00355'
+      - 2025.vlsp-1.15
+      - '2510.11124'
+      - '2511.21045'
     contradicting_papers: []
-    refining_papers: []
+    refining_papers:
+      - '2510.25566'
     caveats:
-      - "SeCoUSTIC reports that frame-level cross-modal contrastive learning between phoneme and speech representations produces cleaner semantic-paralinguistic separation than a phoneme-classification distillation loss, suggesting the training objective (not just the SSL source) matters."
-      - "FreeCodec's own analysis shows incomplete prosody/speaker clustering separation despite matching supervised-codec reconstruction quality, illustrating that competitive reconstruction does not guarantee complete attribute separation."
-    last_reviewed: "2026-07-22"
+      - Leakage depends on the source representation, language, perturbation strategy, and whether the content path
+        receives direct ASR supervision.
+    last_reviewed: '2026-09-26'
   - id: quantization_bottleneck_induces_attribute_separation
-    claim: "Constraining a representation through a small discrete-token vocabulary, finite scalar quantization, or a differentiable scalar-quantization bottleneck can induce beneficial attribute separation as an implicit side effect, without a dedicated adversarial or information-theoretic disentanglement objective."
+    claim: Constraining a representation through a small discrete-token vocabulary, finite scalar quantization,
+      or a differentiable scalar-quantization bottleneck can induce beneficial attribute separation as an implicit
+      side effect, without a dedicated adversarial or information-theoretic disentanglement objective.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2502.07243"
-      - "2509.24650"
-      - "2503.01710"
-      - "interspeech-2025-1106"
-      - "interspeech-2025-2684"
-      - "2508.16332"
+      - '2502.07243'
+      - '2509.24650'
+      - '2503.01710'
+      - interspeech-2025-1106
+      - interspeech-2025-2684
+      - '2508.16332'
+      - '2510.00981'
+      - '2510.25566'
     contradicting_papers: []
     refining_papers:
-      - "interspeech-2025-1531"
+      - interspeech-2025-1531
     caveats:
-      - "Discretizing speaker vectors specifically reduces speaker-identity fidelity compared to continuous speaker representations (DisentCodec), so bottleneck-based approaches still face the general reconstruction/fidelity trade-off documented elsewhere in this concept."
-      - "Vevo2's information-bottleneck content-style tokenizer follows the same pattern as its Vevo predecessor but is described only briefly and is not directly ablated in that paper."
-    last_reviewed: "2026-07-22"
+      - Discretizing speaker vectors specifically reduces speaker-identity fidelity compared to continuous speaker
+        representations (DisentCodec), so bottleneck-based approaches still face the general reconstruction/fidelity
+        trade-off documented elsewhere in this concept.
+      - Vevo2's information-bottleneck content-style tokenizer follows the same pattern as its Vevo predecessor
+        but is described only briefly and is not directly ablated in that paper.
+    last_reviewed: '2026-09-26'
   - id: asr_text_alignment_beats_ssl_distillation_for_content_isolation
-    claim: "Aligning content representations to ASR outputs or speaker-independent text embeddings isolates linguistic content and removes speaker/timbre leakage more effectively than generic self-supervised feature distillation."
+    claim: Aligning content representations to ASR outputs or speaker-independent text embeddings isolates linguistic
+      content and removes speaker/timbre leakage more effectively than generic self-supervised feature distillation.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2506.23325"
-      - "2507.09070"
-      - "2507.01348"
-      - "2507.12197"
+      - '2506.23325'
+      - '2507.09070'
+      - '2507.01348'
+      - '2507.12197'
+      - 2025.vlsp-1.15
+      - '2510.00981'
+      - '2510.16841'
+      - '2511.21045'
     contradicting_papers: []
     refining_papers:
-      - "2025.acl-long.87"
+      - 2025.acl-long.87
     caveats:
-      - "Aggressive text-alignment-based disentanglement introduces its own intelligibility trade-offs when a generic text embedding replaces phoneme-based encodings (SemAlign)."
-      - "TakinVC's refinement shows quantizing self-supervised features before content encoding, rather than replacing SSL with ASR/text alignment entirely, is itself sufficient to reduce leakage relative to continuous SSL features."
-    last_reviewed: "2026-07-22"
+      - Aggressive text-alignment-based disentanglement introduces its own intelligibility trade-offs when a generic
+        text embedding replaces phoneme-based encodings (SemAlign).
+      - TakinVC's refinement shows quantizing self-supervised features before content encoding, rather than replacing
+        SSL with ASR/text alignment entirely, is itself sufficient to reduce leakage relative to continuous SSL
+        features.
+    last_reviewed: '2026-09-26'
   - id: aggressive_disentanglement_intelligibility_tradeoff
-    claim: "Aggressively removing speaker or style information from content representations to maximize disentanglement can degrade intelligibility, especially when the substituted representation lacks phoneme-level grounding."
+    claim: Aggressively removing speaker or style information from content representations to maximize disentanglement
+      can degrade intelligibility, especially when the substituted representation lacks phoneme-level grounding.
     status: strongly_supported
     confidence: medium
     supporting_papers:
-      - "2507.09070"
-      - "interspeech-2025-0815"
-      - "interspeech-2025-1531"
+      - '2507.09070'
+      - interspeech-2025-0815
+      - interspeech-2025-1531
+      - '2510.11124'
+      - '2510.16841'
+      - '2510.25566'
+      - '2511.21045'
     contradicting_papers: []
     refining_papers:
-      - "2402.05755"
+      - '2402.05755'
+      - 2025.vlsp-1.15
+      - '2510.09061'
+      - '2512.13251'
     caveats:
-      - "Spirit LM reports an analogous trade-off one level up the stack: adding expressive speech tokens to supplement phonetic content tokens improves expressivity at the cost of moderate degradation in lexical and grammatical speech understanding."
-    last_reviewed: "2026-07-22"
+      - 'Spirit LM reports an analogous trade-off one level up the stack: adding expressive speech tokens to supplement
+        phonetic content tokens improves expressivity at the cost of moderate degradation in lexical and grammatical
+        speech understanding.'
+    last_reviewed: '2026-09-26'
   - id: emotion_speaker_disentanglement_enables_crossspeaker_transfer
-    claim: "Disentangling emotional or expressive representations from speaker identity, via architectural separation, adversarial training, or self-supervised distillation, enables emotion or style transfer across speakers that were not paired during training."
+    claim: Disentangling emotional or expressive representations from speaker identity, via architectural separation,
+      adversarial training, or self-supervised distillation, enables emotion or style transfer across speakers that
+      were not paired during training.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "2508.02038"
-      - "interspeech-2025-1210"
-      - "interspeech-2025-1394"
-      - "2506.21619"
-      - "2508.06890"
-      - "interspeech-2025-1638"
-      - "interspeech-2025-1115"
+      - '2508.02038'
+      - interspeech-2025-1210
+      - interspeech-2025-1394
+      - '2506.21619'
+      - '2508.06890'
+      - interspeech-2025-1638
+      - interspeech-2025-1115
+      - '2510.01722'
+      - '2510.11124'
+      - '2510.18308'
+      - '2511.12074'
+      - '2512.09504'
     contradicting_papers: []
     refining_papers: []
     caveats:
-      - "Nearly all validation in this cluster is indirect, via downstream emotion-transfer naturalness/similarity scores, rather than a direct information-leakage probe between speaker and emotion embedding spaces."
-      - "DiEmoTTS notes that even the most speaker-independent self-supervised emotion embeddings still depend on labeled auxiliary data to define the emotion space in the first place."
-    last_reviewed: "2026-07-22"
+      - Nearly all validation in this cluster is indirect, via downstream emotion-transfer naturalness/similarity
+        scores, rather than a direct information-leakage probe between speaker and emotion embedding spaces.
+      - DiEmoTTS notes that even the most speaker-independent self-supervised emotion embeddings still depend on
+        labeled auxiliary data to define the emotion space in the first place.
+    last_reviewed: '2026-09-26'
   - id: objective_metrics_dont_predict_subjective_disentanglement_quality
-    claim: "Objective similarity and intelligibility metrics do not reliably predict subjective perception of successful attribute disentanglement or control."
+    claim: Objective similarity and intelligibility metrics do not reliably predict subjective perception of successful
+      attribute disentanglement or control.
     status: emerging
     confidence: medium
     supporting_papers:
-      - "2409.09098"
-      - "2025.findings-naacl.130"
-      - "interspeech-2025-1081"
-    contradicting_papers: []
-    refining_papers: []
-    caveats:
-      - "AccentBox separately finds that standard zero-shot TTS evaluation protocols (naturalness and speaker similarity) fail to detect accent hallucination altogether, underrepresenting the accent-fidelity gap this cluster's core claim describes."
-      - "SNCR shows speaker-similarity metrics in zero-shot VC evaluations can be artificially inflated when test-set speakers overlap with a baseline's training set, a distinct but related measurement-validity concern."
-    last_reviewed: "2026-07-22"
-  - id: prompt_based_conditioning_causes_attribute_leakage
-    claim: "Prompt-based conditioning in codec-language and masked generative TTS models causes measurable leakage of prosodic or stylistic attributes from the acoustic prompt into the synthesized output, independent of language or domain."
-    status: strongly_supported
-    confidence: high
-    supporting_papers:
-      - "2509.19883"
-      - "2509.15626"
-      - "2509.17516"
-    contradicting_papers: []
-    refining_papers: []
-    caveats:
-      - "Decoupling prompt and target training data reduces leakage but introduces its own trade-offs: a speaker-identity-stability-versus-naturalness trade-off in AudiobookCC, and a speaker-fidelity cost in LibriTTS-VI's fully speaker-free variant."
-    last_reviewed: "2026-07-22"
-  - id: data_level_disentanglement_without_new_architecture
-    claim: "Data-level interventions, such as perturbation augmentation, decoupled training-pair construction, or self-distillation on synthetically perturbed data, can achieve competitive attribute disentanglement without introducing new architectural or adversarial loss mechanisms."
-    status: strongly_supported
-    confidence: high
-    supporting_papers:
-      - "2406.02430"
-      - "2411.09943"
-      - "2411.19770"
-      - "interspeech-2025-1434"
-      - "interspeech-2025-1531"
-      - "2509.15626"
-    contradicting_papers: []
-    refining_papers: []
-    caveats:
-      - "ReWind reports that the effectiveness of augmentation-based speaker disentanglement varies substantially across backbone architectures, complicating claims of general applicability."
-      - "Most of these approaches still require some form of paired, perturbed, or decoupled training data to be constructed in advance, rather than being applicable to arbitrary unpaired corpora."
-    last_reviewed: "2026-07-22"
-  - id: accent_speaker_entanglement_limits_generalization
-    claim: "Speaker-accent (or speaker-articulation) entanglement in conditioning representations limits generalization of accent, dialect, or articulation control to unseen speaker/attribute combinations."
-    status: emerging
-    confidence: medium
-    supporting_papers:
-      - "2409.09098"
-      - "2508.07426"
+      - '2409.09098'
+      - 2025.findings-naacl.130
+      - interspeech-2025-1081
     contradicting_papers: []
     refining_papers:
-      - "interspeech-2025-0596"
+      - '2510.18308'
+      - '2511.12074'
     caveats:
-      - "Both direct supporting papers are evaluated in narrow single-language settings (American/Irish English for AccentBox; English-only for AccentTTS)."
-      - "The dysarthric-TTS teacher-student encoder (interspeech-2025-0596) addresses a related but distinct entanglement problem, speaker timbre versus articulation distortion, rather than accent specifically."
-    last_reviewed: "2026-07-22"
-  - id: signal_level_prosody_decomposition_enables_finegrained_control
-    claim: "Explicit signal-level decomposition of prosodic sub-attributes, such as F0 sub-bands, periodic components, or wavelet-domain decomposition, enables more accurate and independently controllable prosody manipulation than implicit, representation-level style embeddings."
+      - AccentBox separately finds that standard zero-shot TTS evaluation protocols (naturalness and speaker similarity)
+        fail to detect accent hallucination altogether, underrepresenting the accent-fidelity gap this cluster's
+        core claim describes.
+      - SNCR shows speaker-similarity metrics in zero-shot VC evaluations can be artificially inflated when test-set
+        speakers overlap with a baseline's training set, a distinct but related measurement-validity concern.
+    last_reviewed: '2026-09-26'
+  - id: prompt_based_conditioning_causes_attribute_leakage
+    claim: Prompt-based conditioning in codec-language and masked generative TTS models causes measurable leakage
+      of prosodic or stylistic attributes from the acoustic prompt into the synthesized output, independent of language
+      or domain.
     status: strongly_supported
     confidence: high
     supporting_papers:
-      - "interspeech-2025-0347"
-      - "interspeech-2025-1397"
-      - "2507.20091"
+      - '2509.19883'
+      - '2509.15626'
+      - '2509.17516'
+    contradicting_papers: []
+    refining_papers:
+      - '2510.01722'
+      - 2025.findings-emnlp.1381
+      - '2512.09504'
+    caveats:
+      - 'Decoupling prompt and target training data reduces leakage but introduces its own trade-offs: a speaker-identity-stability-versus-naturalness
+        trade-off in AudiobookCC, and a speaker-fidelity cost in LibriTTS-VI''s fully speaker-free variant.'
+    last_reviewed: '2026-09-26'
+  - id: data_level_disentanglement_without_new_architecture
+    claim: Data-level interventions, such as perturbation augmentation, decoupled training-pair construction, or
+      self-distillation on synthetically perturbed data, can achieve competitive attribute disentanglement without
+      introducing new architectural or adversarial loss mechanisms.
+    status: strongly_supported
+    confidence: high
+    supporting_papers:
+      - '2406.02430'
+      - '2411.09943'
+      - '2411.19770'
+      - interspeech-2025-1434
+      - interspeech-2025-1531
+      - '2509.15626'
+      - 2025.vlsp-1.15
+      - '2510.09061'
+      - '2510.11124'
+      - '2510.13221'
+      - '2510.25566'
+      - '2511.01056'
     contradicting_papers: []
     refining_papers: []
     caveats:
-      - "The effective granularity of wavelet-based decomposition is sensitive to the decomposition level chosen, with an optimal level needed to capture the target sub-attribute (e.g. vibrato) without including unrelated high-frequency content (VibeSVC)."
-      - "Increasing style/prosody transfer accuracy via explicit decomposition still trades off against naturalness in some systems (VibeSVC); ProsodyLM similarly reports that disentangling prosodic from linguistic content trades voice-quality fidelity for prosodic expressiveness and controllability."
-    last_reviewed: "2026-07-22"
+      - ReWind reports that the effectiveness of augmentation-based speaker disentanglement varies substantially
+        across backbone architectures, complicating claims of general applicability.
+      - Most of these approaches still require some form of paired, perturbed, or decoupled training data to be
+        constructed in advance, rather than being applicable to arbitrary unpaired corpora.
+    last_reviewed: '2026-09-26'
+  - id: accent_speaker_entanglement_limits_generalization
+    claim: Speaker-accent (or speaker-articulation) entanglement in conditioning representations limits generalization
+      of accent, dialect, or articulation control to unseen speaker/attribute combinations.
+    status: emerging
+    confidence: medium
+    supporting_papers:
+      - '2409.09098'
+      - '2508.07426'
+    contradicting_papers: []
+    refining_papers:
+      - interspeech-2025-0596
+    caveats:
+      - Both direct supporting papers are evaluated in narrow single-language settings (American/Irish English for
+        AccentBox; English-only for AccentTTS).
+      - The dysarthric-TTS teacher-student encoder (interspeech-2025-0596) addresses a related but distinct entanglement
+        problem, speaker timbre versus articulation distortion, rather than accent specifically.
+    last_reviewed: '2026-07-22'
+  - id: signal_level_prosody_decomposition_enables_finegrained_control
+    claim: Explicit signal-level decomposition of prosodic sub-attributes, such as F0 sub-bands, periodic components,
+      or wavelet-domain decomposition, enables more accurate and independently controllable prosody manipulation
+      than implicit, representation-level style embeddings.
+    status: strongly_supported
+    confidence: high
+    supporting_papers:
+      - interspeech-2025-0347
+      - interspeech-2025-1397
+      - '2507.20091'
+      - '2510.25566'
+      - '2511.21045'
+      - '2512.13251'
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - The effective granularity of wavelet-based decomposition is sensitive to the decomposition level chosen,
+        with an optimal level needed to capture the target sub-attribute (e.g. vibrato) without including unrelated
+        high-frequency content (VibeSVC).
+      - Increasing style/prosody transfer accuracy via explicit decomposition still trades off against naturalness
+        in some systems (VibeSVC); ProsodyLM similarly reports that disentangling prosodic from linguistic content
+        trades voice-quality fidelity for prosodic expressiveness and controllability.
+    last_reviewed: '2026-09-26'
   - id: orthogonality_constraints_stabilize_multiattribute_disentanglement
-    claim: "Explicit orthogonality constraints between attribute embedding spaces, such as speaker, emotion, and content, provide a more stable and directly interpretable disentanglement mechanism than mutual-information-based or purely adversarial losses."
+    claim: Explicit orthogonality constraints between attribute embedding spaces, such as speaker, emotion, and
+      content, provide a more stable and directly interpretable disentanglement mechanism than mutual-information-based
+      or purely adversarial losses.
     status: strongly_supported
     confidence: medium
     supporting_papers:
-      - "2508.02038"
-      - "interspeech-2025-1210"
-      - "interspeech-2025-2586"
-      - "interspeech-2025-0438"
-      - "2509.09201"
+      - '2508.02038'
+      - interspeech-2025-1210
+      - interspeech-2025-2586
+      - interspeech-2025-0438
+      - '2509.09201'
+      - '2512.13251'
     contradicting_papers: []
     refining_papers: []
     caveats:
-      - "LinearVC's orthogonal-subspace finding is a naturally occurring geometric property discovered in a pretrained SSL representation (WavLM) rather than an imposed training objective, suggesting orthogonality may be as much a discovered structural regularity as a designed mechanism."
-      - "DiffEmotionVC frames its orthogonality loss explicitly as a stability improvement over mutual-information-based disentanglement losses used in prior emotional voice conversion work, providing a direct methodological comparison point."
-    last_reviewed: "2026-07-22"
-
+      - LinearVC's orthogonal-subspace finding is a naturally occurring geometric property discovered in a pretrained
+        SSL representation (WavLM) rather than an imposed training objective, suggesting orthogonality may be as
+        much a discovered structural regularity as a designed mechanism.
+      - DiffEmotionVC frames its orthogonality loss explicitly as a stability improvement over mutual-information-based
+        disentanglement losses used in prior emotional voice conversion work, providing a direct methodological
+        comparison point.
+    last_reviewed: '2026-09-26'
+  - id: architectural_stream_separation_can_replace_explicit_leakage_losses
+    claim: Separating semantic, acoustic, speaker, or environment information into dedicated streams can achieve
+      useful disentanglement without adversarial or information-theoretic leakage losses.
+    status: strongly_supported
+    confidence: high
+    supporting_papers:
+      - '2510.13221'
+      - '2510.15227'
+      - '2510.16841'
+      - '2512.13251'
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - Architectural separation does not eliminate reconstruction, bitrate, speaker-fidelity, or cross-domain trade-offs,
+        and some systems still need attribute-specific supervision.
+    last_reviewed: '2026-09-26'
+  - id: cross_source_composition_exposes_hidden_attribute_leakage
+    claim: Cross-source composition and per-attribute evaluation expose leakage and control failures that reconstruction
+      scores or aggregate metrics can conceal.
+    status: strongly_supported
+    confidence: high
+    supporting_papers:
+      - '2510.18308'
+      - '2511.12074'
+      - '2512.09504'
+      - '2512.13251'
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - Current demonstrations use different attribute taxonomies, datasets, and listener protocols, limiting direct
+        quantitative comparison.
+    last_reviewed: '2026-09-26'
 method_families:
   - id: explicit_multiencoder_factorization
-    name: "Explicit Multi-Encoder Attribute Factorization"
-    summary: "Dedicated encoders or conditioning streams are trained (or composed) for each target attribute (content, speaker/timbre, prosody, style, emotion, accent), with disentanglement enforced by architectural separation rather than a single shared representation. This is the largest and most heterogeneous family in the corpus, spanning the foundational FACodec/NaturalSpeech 3 factorization and its direct derivatives (ControlSpeech, OZSpeech) alongside independently-developed dedicated-encoder systems for accent, emotion, articulatory, style, and adapter-based speaker/style control. Several members explicitly report incomplete or unvalidated separation (DiffStyleTTS's GST timbre/prosody overlap, ChiresSD and CoNAN's inherited-rather-than-novel mechanisms), so membership reflects a shared architectural pattern rather than uniformly strong evidence of clean separation."
+    name: Explicit Multi-Encoder Attribute Factorization
+    summary: Dedicated encoders or conditioning streams are trained (or composed) for each target attribute (content,
+      speaker/timbre, prosody, style, emotion, accent), with disentanglement enforced by architectural separation
+      rather than a single shared representation. This is the largest and most heterogeneous family in the corpus,
+      spanning the foundational FACodec/NaturalSpeech 3 factorization and its direct derivatives (ControlSpeech,
+      OZSpeech) alongside independently-developed dedicated-encoder systems for accent, emotion, articulatory, style,
+      and adapter-based speaker/style control. Several members explicitly report incomplete or unvalidated separation
+      (DiffStyleTTS's GST timbre/prosody overlap, ChiresSD and CoNAN's inherited-rather-than-novel mechanisms),
+      so membership reflects a shared architectural pattern rather than uniformly strong evidence of clean separation.
     papers:
-      - "2025.acl-demo.37"
-      - "2025.acl-long.1043"
-      - "2025.acl-long.346"
-      - "2025.ccl-1.77"
-      - "2025.coling-main.352"
-      - "2025.naacl-long.242"
-      - "2312.01479"
-      - "2402.05755"
-      - "2403.03100"
-      - "2409.09098"
-      - "2412.04724"
-      - "2505.07916"
-      - "2507.01348"
-      - "2507.14534"
-      - "2508.02038"
-      - "2508.04141"
-      - "2508.06890"
-      - "2508.08095"
-      - "2509.14684"
-      - "2509.16010"
-      - "2509.19231"
-      - "interspeech-2025-0203"
-      - "interspeech-2025-0383"
-      - "interspeech-2025-0433"
-      - "interspeech-2025-0596"
-      - "interspeech-2025-0815"
-      - "interspeech-2025-1115"
-      - "interspeech-2025-1538"
-      - "interspeech-2025-1779"
-      - "interspeech-2025-cho25c_interspeech"
+      - 2025.acl-demo.37
+      - 2025.acl-long.1043
+      - 2025.acl-long.346
+      - 2025.ccl-1.77
+      - 2025.coling-main.352
+      - 2025.naacl-long.242
+      - '2312.01479'
+      - '2402.05755'
+      - '2403.03100'
+      - '2409.09098'
+      - '2412.04724'
+      - '2505.07916'
+      - '2507.01348'
+      - '2507.14534'
+      - '2508.02038'
+      - '2508.04141'
+      - '2508.06890'
+      - '2508.08095'
+      - '2509.14684'
+      - '2509.16010'
+      - '2509.19231'
+      - interspeech-2025-0203
+      - interspeech-2025-0383
+      - interspeech-2025-0433
+      - interspeech-2025-0596
+      - interspeech-2025-0815
+      - interspeech-2025-1115
+      - interspeech-2025-1538
+      - interspeech-2025-1779
+      - interspeech-2025-cho25c_interspeech
+      - '2510.01722'
+      - '2510.09061'
+      - '2510.13221'
+      - '2510.15227'
+      - '2510.16841'
+      - '2510.18308'
+      - '2511.01056'
+      - 2025.findings-emnlp.1381
+      - '2511.12074'
+      - '2511.21045'
+      - '2512.09504'
+      - '2512.13251'
     open_questions:
-      - "Does architectural factorization alone (without an adversarial or information-theoretic penalty) reliably prevent cross-stream leakage, or does it require a secondary mechanism (GRL, orthogonality, MI minimization) to hold under distribution shift?"
-      - "As this family absorbs increasingly attribute-specific dedicated-encoder designs (accent, articulatory, likability, dialect) and increasingly many papers that only inherit an earlier system's factorization without modifying it, is there still a shared underlying architectural principle, or has the family become a catch-all?"
+      - Does architectural factorization alone (without an adversarial or information-theoretic penalty) reliably
+        prevent cross-stream leakage, or does it require a secondary mechanism (GRL, orthogonality, MI minimization)
+        to hold under distribution shift?
+      - As this family absorbs increasingly attribute-specific dedicated-encoder designs (accent, articulatory,
+        likability, dialect) and increasingly many papers that only inherit an earlier system's factorization without
+        modifying it, is there still a shared underlying architectural principle, or has the family become a catch-all?
   - id: adversarial_grl_disentanglement
-    name: "Adversarial / Gradient-Reversal-Based Disentanglement"
-    summary: "A gradient reversal layer (or equivalent adversarial classifier) actively penalizes a representation for retaining predictable information about an attribute it should not encode, such as speaker identity in an emotion embedding or pitch in a content token."
+    name: Adversarial / Gradient-Reversal-Based Disentanglement
+    summary: A gradient reversal layer (or equivalent adversarial classifier) actively penalizes a representation
+      for retaining predictable information about an attribute it should not encode, such as speaker identity in
+      an emotion embedding or pitch in a content token.
     papers:
-      - "2403.03100"
-      - "2412.04724"
-      - "2506.21619"
-      - "2508.06890"
-      - "interspeech-2025-0347"
-      - "interspeech-2025-1192"
-      - "interspeech-2025-1638"
+      - '2403.03100'
+      - '2412.04724'
+      - '2506.21619'
+      - '2508.06890'
+      - interspeech-2025-0347
+      - interspeech-2025-1192
+      - interspeech-2025-1638
     open_questions:
-      - "Why does GRL-based disentanglement measurably degrade perceptual quality in some systems (PeriodCodec) but not others (StableVC, MaestroEVC), and is this attributable to the target attribute (pitch vs. timbre/emotion), the training curriculum, or the strength of the adversarial penalty?"
+      - Why does GRL-based disentanglement measurably degrade perceptual quality in some systems (PeriodCodec) but
+        not others (StableVC, MaestroEVC), and is this attributable to the target attribute (pitch vs. timbre/emotion),
+        the training curriculum, or the strength of the adversarial penalty?
   - id: mutual_information_minimization
-    name: "Mutual-Information-Minimization-Based Disentanglement"
-    summary: "An explicit information-theoretic objective, such as a vCLUB or variational mutual-information upper bound, is minimized between attribute representations during training, directly targeting statistical independence rather than relying on adversarial classification."
+    name: Mutual-Information-Minimization-Based Disentanglement
+    summary: An explicit information-theoretic objective, such as a vCLUB or variational mutual-information upper
+      bound, is minimized between attribute representations during training, directly targeting statistical independence
+      rather than relying on adversarial classification.
     papers:
-      - "interspeech-2025-0464"
-      - "interspeech-2025-1101"
+      - interspeech-2025-0464
+      - interspeech-2025-1101
+      - '2510.01722'
+      - '2511.12074'
     open_questions:
-      - "Only two papers in this concept use MI minimization as their primary disentanglement objective; does this remain a niche technique relative to GRL and orthogonality constraints, or is broader adoption limited primarily by the added implementation and tuning complexity of MI estimators?"
+      - Only two papers in this concept use MI minimization as their primary disentanglement objective; does this
+        remain a niche technique relative to GRL and orthogonality constraints, or is broader adoption limited primarily
+        by the added implementation and tuning complexity of MI estimators?
   - id: orthogonality_constraint_disentanglement
-    name: "Orthogonality-Constraint-Based Disentanglement"
-    summary: "Attribute embedding spaces are explicitly regularized to be geometrically orthogonal, via a cross-dot-product or similar loss, or are found to occupy naturally orthogonal subspaces within a shared pretrained representation."
+    name: Orthogonality-Constraint-Based Disentanglement
+    summary: Attribute embedding spaces are explicitly regularized to be geometrically orthogonal, via a cross-dot-product
+      or similar loss, or are found to occupy naturally orthogonal subspaces within a shared pretrained representation.
     papers:
-      - "2508.02038"
-      - "2509.09201"
-      - "interspeech-2025-0438"
-      - "interspeech-2025-1210"
-      - "interspeech-2025-2586"
+      - '2508.02038'
+      - '2509.09201'
+      - interspeech-2025-0438
+      - interspeech-2025-1210
+      - interspeech-2025-2586
+      - '2512.13251'
     open_questions:
-      - "LinearVC finds orthogonal content-speaker subspaces occur naturally within pretrained SSL representations without any imposed loss; does this mean explicit orthogonality losses in other systems are formalizing a structure the representation would develop anyway, or are they doing genuine additional work?"
+      - LinearVC finds orthogonal content-speaker subspaces occur naturally within pretrained SSL representations
+        without any imposed loss; does this mean explicit orthogonality losses in other systems are formalizing
+        a structure the representation would develop anyway, or are they doing genuine additional work?
   - id: rvq_semantic_acoustic_distillation
-    name: "Hierarchical RVQ / Codec Semantic-Acoustic Distillation"
-    summary: "A neural codec's residual quantizer layers are functionally specialized, typically by distilling semantic or linguistic supervision from SSL features or ASR into the first codebook while leaving later layers to capture acoustic and speaker detail. This is the largest codec-level family and traces its lineage to AudioLM's semantic/acoustic token split and SpeechTokenizer's per-layer distillation; several later members (VibeVoice, PerformSinger) inherit this pattern from an earlier system rather than modifying it, and WavTokenizer and AnCoGen provide direct complicating evidence that the split is incomplete or degrades under certain conditions."
+    name: Hierarchical RVQ / Codec Semantic-Acoustic Distillation
+    summary: A neural codec's residual quantizer layers are functionally specialized, typically by distilling semantic
+      or linguistic supervision from SSL features or ASR into the first codebook while leaving later layers to capture
+      acoustic and speaker detail. This is the largest codec-level family and traces its lineage to AudioLM's semantic/acoustic
+      token split and SpeechTokenizer's per-layer distillation; several later members (VibeVoice, PerformSinger)
+      inherit this pattern from an earlier system rather than modifying it, and WavTokenizer and AnCoGen provide
+      direct complicating evidence that the split is incomplete or degrades under certain conditions.
     papers:
-      - "2025.findings-naacl.130"
-      - "2209.03143"
-      - "2308.16692"
-      - "2408.16532"
-      - "2502.06490"
-      - "2506.10274"
-      - "2506.23325"
-      - "2508.02849"
-      - "2508.08399"
-      - "2508.19205"
-      - "2509.13068"
-      - "2509.17006"
-      - "2509.22062"
-      - "2509.22718"
-      - "interspeech-2025-0115"
-      - "interspeech-2025-0246"
-      - "interspeech-2025-0468"
-      - "interspeech-2025-1440"
-      - "interspeech-2025-1639"
+      - 2025.findings-naacl.130
+      - '2209.03143'
+      - '2308.16692'
+      - '2408.16532'
+      - '2502.06490'
+      - '2506.10274'
+      - '2506.23325'
+      - '2508.02849'
+      - '2508.08399'
+      - '2508.19205'
+      - '2509.13068'
+      - '2509.17006'
+      - '2509.22062'
+      - '2509.22718'
+      - interspeech-2025-0115
+      - interspeech-2025-0246
+      - interspeech-2025-0468
+      - interspeech-2025-1440
+      - interspeech-2025-1639
+      - '2510.00981'
+      - '2510.15227'
     open_questions:
-      - "Does the semantic-acoustic split degrade at very low frame rates or very low bitrates, as AnCoGen and MBCodec both suggest, and is there a principled floor below which hierarchical RVQ disentanglement breaks down regardless of distillation strength?"
+      - Does the semantic-acoustic split degrade at very low frame rates or very low bitrates, as AnCoGen and MBCodec
+        both suggest, and is there a principled floor below which hierarchical RVQ disentanglement breaks down regardless
+        of distillation strength?
   - id: asr_text_alignment_disentanglement
-    name: "ASR / Text-Alignment-Based Content Isolation"
-    summary: "Content representations are aligned to ASR outputs, phoneme sequences, or speaker-independent text embeddings via CTC, monotonic alignment search, or ASR-loss backpropagation, rather than distilled from generic self-supervised features, on the premise that linguistic supervision more directly removes non-content information."
+    name: ASR / Text-Alignment-Based Content Isolation
+    summary: Content representations are aligned to ASR outputs, phoneme sequences, or speaker-independent text
+      embeddings via CTC, monotonic alignment search, or ASR-loss backpropagation, rather than distilled from generic
+      self-supervised features, on the premise that linguistic supervision more directly removes non-content information.
     papers:
-      - "2025.acl-long.87"
-      - "2506.23325"
-      - "2507.01348"
-      - "2507.09070"
-      - "2507.12197"
-      - "2509.22062"
-      - "interspeech-2025-1538"
+      - 2025.acl-long.87
+      - '2506.23325'
+      - '2507.01348'
+      - '2507.09070'
+      - '2507.12197'
+      - '2509.22062'
+      - interspeech-2025-1538
+      - '2510.16841'
+      - '2511.21045'
     open_questions:
-      - "Does the reported advantage of ASR/text-alignment supervision over SSL distillation hold on public, open codecs, or is it currently confounded by proprietary training-data scale in the papers reporting it (SemAlign, XY-Tokenizer)?"
+      - Does the reported advantage of ASR/text-alignment supervision over SSL distillation hold on public, open
+        codecs, or is it currently confounded by proprietary training-data scale in the papers reporting it (SemAlign,
+        XY-Tokenizer)?
   - id: discrete_bottleneck_disentanglement
-    name: "Discrete / Scalar Quantization Bottleneck as Implicit Disentanglement"
-    summary: "Constraining a representation through a small VQ vocabulary, finite scalar quantization, or a differentiable scalar-quantization bottleneck is used as an implicit information bottleneck that strips non-essential (typically speaker or acoustic-detail) information, without a dedicated adversarial or distillation loss targeting that attribute."
+    name: Discrete / Scalar Quantization Bottleneck as Implicit Disentanglement
+    summary: Constraining a representation through a small VQ vocabulary, finite scalar quantization, or a differentiable
+      scalar-quantization bottleneck is used as an implicit information bottleneck that strips non-essential (typically
+      speaker or acoustic-detail) information, without a dedicated adversarial or distillation loss targeting that
+      attribute.
     papers:
-      - "2502.07243"
-      - "2503.01710"
-      - "2508.08399"
-      - "2508.16332"
-      - "2509.24650"
-      - "interspeech-2025-1106"
-      - "interspeech-2025-2684"
+      - '2502.07243'
+      - '2503.01710'
+      - '2508.08399'
+      - '2508.16332'
+      - '2509.24650'
+      - interspeech-2025-1106
+      - interspeech-2025-2684
+      - '2510.25566'
     open_questions:
-      - "Is bottleneck size the primary lever for the quality/disentanglement trade-off across this family, or do the specific quantization scheme (VQ vs. FSQ vs. SimVQ) and codebook-collapse mitigations matter as much as vocabulary size itself?"
+      - Is bottleneck size the primary lever for the quality/disentanglement trade-off across this family, or do
+        the specific quantization scheme (VQ vs. FSQ vs. SimVQ) and codebook-collapse mitigations matter as much
+        as vocabulary size itself?
   - id: signal_level_prosody_decomposition
-    name: "Explicit Signal-Level Prosody/Pitch Decomposition"
-    summary: "Prosodic sub-attributes, most often F0, are decomposed at the signal level, through periodic-component injection, discrete wavelet transform, or mutual-information-guided prosody-timbre separation, rather than relying on a learned representation to separate them implicitly."
+    name: Explicit Signal-Level Prosody/Pitch Decomposition
+    summary: Prosodic sub-attributes, most often F0, are decomposed at the signal level, through periodic-component
+      injection, discrete wavelet transform, or mutual-information-guided prosody-timbre separation, rather than
+      relying on a learned representation to separate them implicitly.
     papers:
-      - "2507.20091"
-      - "interspeech-2025-0347"
-      - "interspeech-2025-0464"
-      - "interspeech-2025-0948"
-      - "interspeech-2025-1397"
-      - "interspeech-2025-1779"
+      - '2507.20091'
+      - interspeech-2025-0347
+      - interspeech-2025-0464
+      - interspeech-2025-0948
+      - interspeech-2025-1397
+      - interspeech-2025-1779
+      - '2510.25566'
+      - '2511.21045'
     open_questions:
-      - "Signal-level pitch decomposition methods in this family report success where representation-level disentanglement methods elsewhere in the concept (GRL, generic SSL distillation) report failure on pitch specifically; is signal-level decomposition a structurally more reliable route to pitch disentanglement, or do current representation-level methods simply lack an equivalent dedicated mechanism?"
+      - Signal-level pitch decomposition methods in this family report success where representation-level disentanglement
+        methods elsewhere in the concept (GRL, generic SSL distillation) report failure on pitch specifically; is
+        signal-level decomposition a structurally more reliable route to pitch disentanglement, or do current representation-level
+        methods simply lack an equivalent dedicated mechanism?
   - id: data_training_recipe_disentanglement
-    name: "Data-Level / Training-Recipe Disentanglement"
-    summary: "Disentanglement is achieved primarily through data augmentation, perturbation, decoupled training-pair construction, or self-distillation on synthetically perturbed data, rather than through a new architectural component or loss function."
+    name: Data-Level / Training-Recipe Disentanglement
+    summary: Disentanglement is achieved primarily through data augmentation, perturbation, decoupled training-pair
+      construction, or self-distillation on synthetically perturbed data, rather than through a new architectural
+      component or loss function.
     papers:
-      - "2406.02430"
-      - "2411.09943"
-      - "2411.19770"
-      - "2508.07426"
-      - "2509.15626"
-      - "2509.17516"
-      - "2509.19883"
-      - "interspeech-2025-1106"
-      - "interspeech-2025-1394"
-      - "interspeech-2025-1434"
-      - "interspeech-2025-1684"
+      - '2406.02430'
+      - '2411.09943'
+      - '2411.19770'
+      - '2508.07426'
+      - '2509.15626'
+      - '2509.17516'
+      - '2509.19883'
+      - interspeech-2025-1106
+      - interspeech-2025-1394
+      - interspeech-2025-1434
+      - interspeech-2025-1684
+      - 2025.vlsp-1.15
+      - '2510.09061'
+      - '2510.11124'
+      - '2510.13221'
+      - '2510.25566'
+      - '2511.01056'
     open_questions:
-      - "ReWind reports substantial variance in the effectiveness of augmentation-based speaker disentanglement across backbone architectures; is data-level disentanglement backbone-agnostic in principle, or does it require re-validation for each new generative architecture it is applied to?"
+      - ReWind reports substantial variance in the effectiveness of augmentation-based speaker disentanglement across
+        backbone architectures; is data-level disentanglement backbone-agnostic in principle, or does it require
+        re-validation for each new generative architecture it is applied to?
   - id: ssl_statistical_normalization_disentanglement
-    name: "SSL-Representation Statistical & Normalization-Based Disentanglement"
-    summary: "Disentanglement is achieved by exploiting or lightly manipulating the existing statistical or geometric structure of pretrained self-supervised representations, for example dimensionality reduction, instance normalization of residual statistics, or subspace projection, rather than training a new disentangling objective from scratch."
+    name: SSL-Representation Statistical & Normalization-Based Disentanglement
+    summary: Disentanglement is achieved by exploiting or lightly manipulating the existing statistical or geometric
+      structure of pretrained self-supervised representations, for example dimensionality reduction, instance normalization
+      of residual statistics, or subspace projection, rather than training a new disentangling objective from scratch.
     papers:
-      - "2104.00355"
-      - "interspeech-2025-0438"
-      - "interspeech-2025-1081"
-      - "interspeech-2025-1531"
+      - '2104.00355'
+      - interspeech-2025-0438
+      - interspeech-2025-1081
+      - interspeech-2025-1531
+      - '2510.11124'
     open_questions:
-      - "Is the proportional timbre/content signal distribution found in SSL embedding dimensions (SVC) a general property of self-supervised speech models, or specific to the particular pretraining objective and model family tested?"
-
+      - Is the proportional timbre/content signal distribution found in SSL embedding dimensions (SVC) a general
+        property of self-supervised speech models, or specific to the particular pretraining objective and model
+        family tested?
 reassessment_queue:
   - id: explicit_multiencoder_factorization
     type: method_family
-    reason: "This is by far the largest and most heterogeneous family in the concept (30 papers spanning FACodec-lineage codecs, adapter-based speaker/style splits, and attribute-specific dedicated encoders for accent, articulation, and likability, plus several papers that only inherit an earlier system's factorization without modifying it); it risks becoming a catch-all rather than a coherent architectural pattern."
-    trigger: "A future integration pass finds the family's members no longer share a clearly identifiable common mechanism (a dedicated per-attribute representation or encoder), or a natural sub-family (e.g. accent-specific, articulatory, or adapter-based encoders) has grown large enough to warrant its own family."
-    due: "2026-10"
+    reason: This is by far the largest and most heterogeneous family in the concept (30 papers spanning FACodec-lineage
+      codecs, adapter-based speaker/style splits, and attribute-specific dedicated encoders for accent, articulation,
+      and likability, plus several papers that only inherit an earlier system's factorization without modifying
+      it); it risks becoming a catch-all rather than a coherent architectural pattern.
+    trigger: A future integration pass finds the family's members no longer share a clearly identifiable common
+      mechanism (a dedicated per-attribute representation or encoder), or a natural sub-family (e.g. accent-specific,
+      articulatory, or adapter-based encoders) has grown large enough to warrant its own family.
+    due: 2026-10
     current_assessment: influential
     watch_for:
-      - "Growth of the accent/articulation/likability-specific subset to 5+ papers, which would justify splitting into a dedicated attribute-specific conditioning family."
-      - "A survey or benchmark paper directly comparing explicit multi-encoder factorization against the other 9 families on matched systems."
+      - Growth of the accent/articulation/likability-specific subset to 5+ papers, which would justify splitting
+        into a dedicated attribute-specific conditioning family.
+      - A survey or benchmark paper directly comparing explicit multi-encoder factorization against the other 9
+        families on matched systems.
   - id: grl_disentanglement_leakage_vs_quality_tradeoff
     type: claim_status
-    reason: "Only one paper (PeriodCodec) in this batch reports a clean quality regression from GRL-based disentanglement, and only one (DiEmoTTS) directly critiques GRL as a design choice, against 5 papers reporting GRL successfully reduces leakage; the contested status rests on a small number of dissenting papers."
-    trigger: "Two or more additional papers independently replicating either a GRL-induced quality regression on a new attribute, or a clean ablation showing GRL disentanglement with no quality cost."
-    due: "2026-12"
+    reason: Only one paper (PeriodCodec) in this batch reports a clean quality regression from GRL-based disentanglement,
+      and only one (DiEmoTTS) directly critiques GRL as a design choice, against 5 papers reporting GRL successfully
+      reduces leakage; the contested status rests on a small number of dissenting papers.
+    trigger: Two or more additional papers independently replicating either a GRL-induced quality regression on
+      a new attribute, or a clean ablation showing GRL disentanglement with no quality cost.
+    due: 2026-12
     current_assessment: contested
     watch_for:
-      - "A direct head-to-head ablation of GRL vs. no-GRL on identical architecture and data, isolating the quality effect from confounds like curriculum or data scale."
+      - A direct head-to-head ablation of GRL vs. no-GRL on identical architecture and data, isolating the quality
+        effect from confounds like curriculum or data scale.
   - id: disentanglement_oriented_codecs_fail_on_pitch
     type: claim_status
-    reason: "AnCoGen's finding that disentanglement-trained codecs including SpeechTokenizer- and Mimi-style designs fail on pitch is a strong, direct claim, but the contradicting evidence (PACE, VibeSVC, PromptEVC) all use dedicated signal-level F0 mechanisms rather than the generic representation-level disentanglement AnCoGen evaluated, so the two bodies of evidence may not be in genuine conflict."
-    trigger: "A paper applying signal-level F0 decomposition inside one of the specific codecs AnCoGen evaluated (SpeechTokenizer, Mimi, EnCodec) and re-testing pitch separability, or conversely a generic representation-level method achieving clean pitch separation without dedicated signal-level machinery."
-    due: "2027-01"
+    reason: AnCoGen's finding that disentanglement-trained codecs including SpeechTokenizer- and Mimi-style designs
+      fail on pitch is a strong, direct claim, but the contradicting evidence (PACE, VibeSVC, PromptEVC) all use
+      dedicated signal-level F0 mechanisms rather than the generic representation-level disentanglement AnCoGen
+      evaluated, so the two bodies of evidence may not be in genuine conflict.
+    trigger: A paper applying signal-level F0 decomposition inside one of the specific codecs AnCoGen evaluated
+      (SpeechTokenizer, Mimi, EnCodec) and re-testing pitch separability, or conversely a generic representation-level
+      method achieving clean pitch separation without dedicated signal-level machinery.
+    due: 2027-01
     current_assessment: contested
     watch_for:
-      - "Direct pitch-leakage probes (not just downstream VC/EVC quality) applied to both signal-level and representation-level disentanglement methods on the same evaluation protocol."
-  - id: mutual_information_minimization
-    type: method_family
-    reason: "Only two papers currently instantiate this family; it is unclear whether MI-minimization is a durable third disentanglement paradigm alongside GRL and orthogonality constraints, or a narrow technique specific to voice-conversion emotion/prosody control."
-    trigger: "One additional paper adopting MI minimization as its primary disentanglement objective outside voice conversion, e.g. in TTS or codec design."
-    due: "2026-12"
-    current_assessment: frontier_probe
-    watch_for:
-      - "Adoption of vCLUB or a similar MI upper bound outside the two VC papers currently in this family."
-      - "A direct comparison paper contrasting MI minimization against GRL or orthogonality constraints on matched systems."
-  - id: prompt_based_conditioning_causes_attribute_leakage
-    type: claim_status
-    reason: "This cluster is built on three 2025 papers (CoMelSinger, LibriTTS-VI, AudiobookCC) that each independently identified prompt-based attribute leakage as a problem in masked generative or codec-LM TTS; it is a fast-emerging finding worth tracking for further replication before treating it as an established property of the paradigm."
-    trigger: "Two or more additional papers reporting prompt-based attribute leakage in a masked-generative or codec-LM TTS system not already in this cluster."
-    due: "2026-11"
-    current_assessment: strongly_supported
-    watch_for:
-      - "A systematic benchmark quantifying prompt-leakage magnitude across multiple codec-LM TTS systems on a shared evaluation protocol."
-  - id: "2508.16332"
+      - Direct pitch-leakage probes (not just downstream VC/EVC quality) applied to both signal-level and representation-level
+        disentanglement methods on the same evaluation protocol.
+  - id: '2508.16332'
     type: paper_role
-    reason: "Vevo2's information-bottleneck content-style tokenizer follows the same pattern as the discrete_bottleneck_disentanglement family (Vevo, VoxCPM, SparkTTS), but the paper's own description states the mechanism is not directly ablated; it was assigned to that family this round on architectural grounds pending clearer evidence."
-    trigger: "A follow-up paper or an updated version of Vevo2 that directly ablates the content-style tokenizer's disentanglement quality."
-    due: "2026-10"
+    reason: Vevo2's information-bottleneck content-style tokenizer follows the same pattern as the discrete_bottleneck_disentanglement
+      family (Vevo, VoxCPM, SparkTTS), but the paper's own description states the mechanism is not directly ablated;
+      it was assigned to that family this round on architectural grounds pending clearer evidence.
+    trigger: A follow-up paper or an updated version of Vevo2 that directly ablates the content-style tokenizer's
+      disentanglement quality.
+    due: 2026-10
     current_assessment: minor
     watch_for:
-      - "A dedicated ablation isolating the information bottleneck's contribution to timbre exclusion in Vevo2 or a successor system."
+      - A dedicated ablation isolating the information bottleneck's contribution to timbre exclusion in Vevo2 or
+        a successor system.
   - id: objective_metrics_dont_predict_subjective_disentanglement_quality
     type: claim_status
-    reason: "Only three papers (AccentBox, DiViSe, SNCR) directly support this cluster, each in a different sub-domain (accent conditioning, video-to-speech, zero-shot VC); it is marked emerging rather than strongly_supported pending replication within a single sub-domain."
-    trigger: "Two or more additional papers within the same sub-domain (e.g. two more zero-shot VC papers, or two more accent-conditioning papers) independently reporting objective/subjective disagreement."
-    due: "2027-01"
+    reason: Only three papers (AccentBox, DiViSe, SNCR) directly support this cluster, each in a different sub-domain
+      (accent conditioning, video-to-speech, zero-shot VC); it is marked emerging rather than strongly_supported
+      pending replication within a single sub-domain.
+    trigger: Two or more additional papers within the same sub-domain (e.g. two more zero-shot VC papers, or two
+      more accent-conditioning papers) independently reporting objective/subjective disagreement.
+    due: 2027-01
     current_assessment: emerging
     watch_for:
-      - "A systematic study directly comparing objective disentanglement metrics (EER, classifier accuracy) against controlled listening tests on the same set of systems."
-
+      - A systematic study directly comparing objective disentanglement metrics (EER, classifier accuracy) against
+        controlled listening tests on the same set of systems.
 open_questions:
-  - "Most papers in this concept validate disentanglement indirectly, through downstream voice-conversion similarity, WER, or classifier-proxy metrics, rather than a direct information-theoretic leakage probe between representations; is a standardized direct-measurement protocol feasible, or does the field need to accept indirect validation as the practical ceiling?"
-  - "Pitch/F0 disentanglement appears to be a persistent weak point across nearly every architectural family (GRL, RVQ distillation, MI minimization); does the field need a dedicated pitch-disentanglement benchmark analogous to SLMTokBench or ProsodyBench for content/speaker separation?"
-  - "The concept's ten identified method families are not mutually exclusive (14 of 100 papers combine two mechanisms); is there a natural hierarchy, for example is architectural factorization a prerequisite substrate onto which adversarial, orthogonality, or MI-based objectives are subsequently layered?"
-  - "Speaker similarity is the attribute most frequently sacrificed across the disentanglement-reconstruction fidelity trade-off cluster; is this because speaker identity is inherently harder to disentangle than content or prosody, or because speaker-similarity metrics are simply more standardized and therefore more consistently reported as a regression?"
-
+  - Most papers in this concept validate disentanglement indirectly, through downstream voice-conversion similarity,
+    WER, or classifier-proxy metrics, rather than a direct information-theoretic leakage probe between representations;
+    is a standardized direct-measurement protocol feasible, or does the field need to accept indirect validation
+    as the practical ceiling?
+  - Pitch/F0 disentanglement appears to be a persistent weak point across nearly every architectural family (GRL,
+    RVQ distillation, MI minimization); does the field need a dedicated pitch-disentanglement benchmark analogous
+    to SLMTokBench or ProsodyBench for content/speaker separation?
+  - The concept's ten identified method families are not mutually exclusive (14 of 100 papers combine two mechanisms);
+    is there a natural hierarchy, for example is architectural factorization a prerequisite substrate onto which
+    adversarial, orthogonality, or MI-based objectives are subsequently layered?
+  - Speaker similarity is the attribute most frequently sacrificed across the disentanglement-reconstruction fidelity
+    trade-off cluster; is this because speaker identity is inherently harder to disentangle than content or prosody,
+    or because speaker-similarity metrics are simply more standardized and therefore more consistently reported
+    as a regression?
+  - Which stream-separation designs preserve reconstruction fidelity while maintaining attribute isolation under
+    matched bitrate and model capacity?
+  - Can a shared cross-source compositional benchmark compare leakage across speaker, emotion, prosody, accent,
+    and acoustic-environment controls?
 trend_notes:
-  - "The 2025 Interspeech proceedings contributed the single largest concentration of disentanglement-focused papers in the corpus (over 35), with a marked shift toward emotion/style-speaker disentanglement in voice conversion and TTS relative to the 2023-2024 focus on codec-level content-speaker separation."
-  - "Explicit signal-level prosody/pitch decomposition and prompt-based-leakage diagnosis are the most recent (mid-to-late 2025) additions to the concept, suggesting the field's disentanglement frontier is moving from coarse content/speaker/prosody separation toward finer-grained sub-attribute leakage (pitch sub-components, prompt-derived style leakage)."
-  - "ASR/text-alignment-based content isolation, as opposed to generic SSL-feature distillation, has grown from a minority technique (SpeechTokenizer, 2023) to a recurring 2025 pattern across both TTS and VC systems (SemAlign, XY-Tokenizer, TakinVC, QTTS, CAT-TTS/S3Codec)."
+  - The 2025 Interspeech proceedings contributed the single largest concentration of disentanglement-focused papers
+    in the corpus (over 35), with a marked shift toward emotion/style-speaker disentanglement in voice conversion
+    and TTS relative to the 2023-2024 focus on codec-level content-speaker separation.
+  - Explicit signal-level prosody/pitch decomposition and prompt-based-leakage diagnosis are the most recent (mid-to-late
+    2025) additions to the concept, suggesting the field's disentanglement frontier is moving from coarse content/speaker/prosody
+    separation toward finer-grained sub-attribute leakage (pitch sub-components, prompt-derived style leakage).
+  - ASR/text-alignment-based content isolation, as opposed to generic SSL-feature distillation, has grown from a
+    minority technique (SpeechTokenizer, 2023) to a recurring 2025 pattern across both TTS and VC systems (SemAlign,
+    XY-Tokenizer, TakinVC, QTTS, CAT-TTS/S3Codec).
+  - Q4 2025 strengthens architectural semantic-acoustic stream separation as an alternative to adversarial or mutual-information
+    leakage objectives.
+  - Q4 2025 evaluations increasingly test cross-source composition and per-attribute control, revealing failures
+    hidden by reconstruction and aggregate scores.
+  - Disentanglement is broadening beyond speaker-content separation toward acoustic environment, multimodal identity,
+    non-human timbre, and independently guided style attributes.

@@ -1,6 +1,6 @@
 concept: singing
-last_updated: '2026-08-02'
-paper_count: 10
+last_updated: '2026-09-26'
+paper_count: 20
 papers:
 - id: '2304.09116'
   published_date: "2023-04-18"
@@ -714,6 +714,697 @@ papers:
     Manual TextGrid annotation required 40-45 human-hours per hour of audio, indicating that scaling VisualSinger-style
     datasets to more singers or languages will be labor-intensive.
   caveats: []
+- id: '2510.09016'
+  published_date: '2025-10-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_singing_generation
+  claims:
+  - claim_id: constraining_cross_attention_to_character_level_temporal_spans_via_a_fix
+    role: supports
+    claim: Constraining cross-attention to character-level temporal spans via a fixed additive attention bias can
+      substitute for explicit phoneme-level duration labels in phoneme-to-acoustic alignment for singing synthesis.
+    source: §2.3, Table 2
+    evidence: The implicit alignment mask (Eq. 6–8) is derived only from character-level start times and durations,
+      extended by a tunable offset δ, and is applied identically at training and inference under diffusion reconstruction
+      loss alone; the resulting model achieves the best MCD (3.03) and F0RMSE (11.18) among all compared systems.
+    confidence: high
+    relevance: high
+  - claim_id: diffusion_transformer_scaling_trends_observed_in_other_modalities_qualit
+    role: supports
+    claim: Diffusion transformer scaling trends observed in other modalities (quality improving with depth, width,
+      and resolution) extend to singing voice synthesis.
+    source: §3.2, Fig. 3
+    evidence: Sweeping DiTSinger from Small (depth 4, width 384) to Large (depth 16, width 768) and data from 30h
+      to 530h produces consistent MCD improvements, with a half-resolution Small variant (S2) outperforming a higher-FLOP
+      Base variant (B4), showing resolution has an outsized effect relative to raw compute.
+    confidence: high
+    relevance: high
+  - claim_id: bootstrapping_large_singing_corpora_from_a_small_number_of_melody_specia
+    role: complicates
+    claim: Bootstrapping large singing corpora from a small number of melody-specialized synthesis models has a
+      data-regime sweet spot rather than improving monotonically with the number of source models.
+    source: §3.3, Table 1
+    evidence: MOS peaks at 20 PseudoSinger groups (4.05 ± 0.06) and then falls to 3.81 at 50 groups, with MCD rising
+      from 3.12 to 3.65, as each group's melody coverage shrinks and generalization to unseen lyrics worsens.
+    confidence: high
+    relevance: medium
+  - claim_id: cross_system_comparisons_in_singing_voice_synthesis_are_hard_to_interpre
+    role: complicates
+    claim: Cross-system comparisons in singing voice synthesis are hard to interpret when baselines differ in whether
+      they are retrained on the evaluation corpus or conditioned via a reference clip.
+    source: §3.1, §3.4, Table 2
+    evidence: DiffSinger is retrained on the paper's own 530h corpus, while StyleSinger and TCSinger are instead
+      conditioned on a reference clip from the same singer rather than retrained, so the MOS/MCD gaps in Table 2
+      partly reflect this mismatch in evaluation protocol rather than architecture alone.
+    confidence: high
+    relevance: low
+  limitations:
+  - MOS results use an unreleased Chinese corpus and baselines with mismatched retraining/reference-conditioning
+    protocols.
+  caveats:
+  - For subjective evaluation, this paper provides medium-relevance evidence; claims primarily concerning other
+    concepts remain included but are marked low relevance.
+- id: '2510.20677'
+  published_date: '2025-10-23'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: q4_2510_20677_explicitly_perturbing_fundamental_frequency_during_training_and_forcing
+    role: supports
+    claim: Explicitly perturbing fundamental frequency during training and forcing reconstruction of the clean target
+      reduces a voice conversion model's reliance on noisy F0 tracking, improving robustness to real-world pitch
+      extraction errors.
+    source: §2.2, Table 1
+    evidence: 'Random jitter/glide/jump F0 perturbation applied to 2-4 segments per sample, combined with reconstruction-of-clean-target
+      training, drove the largest naturalness ablation effect: removing this module (w/o SRE) dropped SVC-Hard NMOS
+      from 2.90±0.11 to 2.23±0.21.'
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_20677_augmenting_speaker_timbre_extraction_with_domain_specific_target_style_d
+    role: supports
+    claim: Augmenting speaker/timbre extraction with domain-specific target-style data improves style preservation
+      without requiring a redesigned embedding architecture.
+    source: §2.3, Table 1
+    evidence: Extending CAM++ with clean vocals, DNSMOS-filtered separated vocals, and public singing corpora (SETSE)
+      raised SVC-Hard SMOS from 1.74±0.11 (w/o SETSE) to 2.64±0.10 in the full model.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_20677_robustness_interventions_aimed_at_noisy_real_world_conditions_can_trade
+    role: complicates
+    claim: Robustness interventions aimed at noisy real-world conditions can trade off against raw speaker-similarity
+      scores measured by automatic embedding cosine similarity.
+    source: §4.3, Table 1
+    evidence: The ablated w/o-SETSE and w/o-SRE variants achieved higher SPK-SIM than the full R2-SVC model on both
+      test sets (e.g., 78.95% vs. 75.17% on SVC-Normal), even though the full model scored better on subjective
+      naturalness and similarity (NMOS, SMOS).
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2510_20677_automatic_intelligibility_metrics_computed_with_off_the_shelf_asr_system
+    role: complicates
+    claim: Automatic intelligibility metrics computed with off-the-shelf ASR systems degrade sharply on singing
+      material with ambiguous pronunciation and complex vocal techniques, independent of the voice conversion system's
+      own quality.
+    source: §4.1
+    evidence: CER on the SVC-Hard test set (25.77% for R2-SVC) was roughly double the SVC-Normal CER (13.41%) for
+      the same system, attributed to ambiguous pronunciation and complex singing techniques in the hard set rather
+      than conversion failures.
+    confidence: medium
+    relevance: low
+  limitations:
+  - Internal data, targets, and test sets prevent independent reproduction, and robustness gains sometimes reduce
+    automatic speaker similarity without a full causal analysis.
+  caveats:
+  - Robustness and style modules improve subjective results while sometimes lowering automatic speaker similarity.
+- id: '2510.21685'
+  published_date: '2025-10-24'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: reformulating_pitch_curve_generation_as_a_masked_infilling_task_solved_w
+    role: supports
+    claim: Reformulating pitch-curve generation as a masked-infilling task solved with a flow-matching transformer
+      allows a single model to serve multiple downstream singing tasks without task-specific retraining.
+    source: §3.3, Tables 1 and 2
+    evidence: The same trained model, without modification, is applied to pitch correction, zero-shot SVS style
+      transfer, and SVC style transfer purely by changing which frames are masked, and outperforms or matches task-specific
+      baselines on each.
+    confidence: high
+    relevance: high
+  - claim_id: modeling_pitch_style_implicitly_through_unmasked_context_rather_than_thr
+    role: supports
+    claim: Modeling pitch style implicitly through unmasked context, rather than through explicit speaker or style
+      embeddings, enables generalization to singers unseen during training.
+    source: §5.1, Table 1
+    evidence: StylePitcher requires no singer labels or embeddings yet achieves lower LSTM-classifier discriminability
+      between generated and real F0 curves (51.85% accuracy, near chance) than task-specific baselines evaluated
+      on the same unseen GTSinger test set.
+    confidence: high
+    relevance: high
+  - claim_id: preserving_singer_specific_pitch_expressiveness_in_singing_voice_convers
+    role: complicates
+    claim: Preserving singer-specific pitch expressiveness in singing voice conversion can trade off against perceived
+      audio quality when the conversion pipeline lacks content-aware constraints.
+    source: §5.2, Table 2
+    evidence: Style-informed SVC improves style-transfer MOS over the unchanged-F0 baseline (2.95 vs. 2.62) but
+      loses quality MOS (2.72 vs. 3.03), which the authors attribute to expressive techniques being applied without
+      content awareness, occasionally producing unnatural results.
+    confidence: high
+    relevance: medium
+  - claim_id: a_pitch_alignment_metric_computed_strictly_against_the_target_musical_sc
+    role: complicates
+    claim: A pitch-alignment metric computed strictly against the target musical score can penalize models that
+      intentionally deviate from the score to preserve expressive style.
+    source: §5.1, Table 1
+    evidence: The ablation without the smoothing algorithm achieves slightly better RPA/PCA/OA scores than the full
+      model by adhering more strictly to musical scores, even though the smoothed model better preserves style-consistent
+      pitch bends and ornaments.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The listening study has 19 participants and uses different baselines and test sets for each singing task, limiting
+    statistical and cross-task comparability.
+  caveats: []
+- id: '2511.08496'
+  published_date: '2025-11-11'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - diffusion
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_singing_generation
+  claims:
+  - role: supports
+    claim: Combining a frozen, pre-disentangled codec's content and speaker features with explicit pitch and energy
+      conditioning can match or exceed the quality of large-scale adversarially-trained zero-shot singing voice
+      conversion systems while using substantially less training data and compute.
+    source: §Experimental Results and Analysis, Table 1
+    evidence: HQ-SVC, trained on under 80 hours of Mandarin singing data for 11 hours on a single RTX 3090, outperforms
+      SaMoye-SVC (pretrained on 1,700 hours on an A100 for 7 days) on STOI, F0-RMSE, FPC, NISQA, and NMOS.
+    claim_id: q4_2511_08496_combining_a_frozen_pre_disentangled_codec_s_content_and_speaker_features_with_explicit_p
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Whether a unified codec-derived representation or separate dedicated content/speaker encoders produce
+      better zero-shot voice conversion depends on which quality dimension is prioritized, not a uniform ranking.
+    source: §Ablation Studies, Table 5
+    evidence: The HQ-SVC-SE ablation, which replaces the shared FACodec front end with separate CAM++ (speaker)
+      and ContentVec (content) encoders, improves SECS (timbre similarity) from 0.627 to 0.668 but degrades STOI,
+      F0-RMSE, and NISQA relative to the unified-encoder design.
+    claim_id: q4_2511_08496_whether_a_unified_codec_derived_representation_or_separate_dedicated_content_speaker_enc
+    confidence: high
+    relevance: medium
+  - role: complicates
+    claim: Automatic speaker-similarity metrics derived from speaker-verification embeddings can diverge from human
+      speaker-similarity judgments when pitch consistency is altered.
+    source: §Experimental Results and Analysis
+    evidence: SaMoye-SVC scores higher SECS than HQ-SVC (0.647 vs. 0.627) despite HQ-SVC scoring higher on subjective
+      SMOS in the main comparison, and removing the speaker or F0 losses in ablation improves SMOS slightly while
+      degrading SECS, which the authors attribute to CAM++ embeddings implicitly encoding pitch information that
+      diverges from human perceptual sensitivity to pitch shifts.
+    claim_id: q4_2511_08496_automatic_speaker_similarity_metrics_derived_from_speaker_verification_embeddings_can_di
+    confidence: high
+    relevance: low
+  - role: supports
+    claim: Predicting a target speaker's pitch statistics from their speaker embedding, rather than requiring reference
+      pitch data, is a viable way to condition pitch generation in zero-shot voice conversion.
+    source: §Enhanced Voice Adaption Module, Table 5
+    evidence: The Speaker-F0 Predictor, trained with an L1 loss on predicted vs. actual F0 mean/variance from the
+      speaker embedding alone, improves F0-RMSE, SECS, and NISQA relative to an ablation without this loss.
+    claim_id: q4_2511_08496_predicting_a_target_speaker_s_pitch_statistics_from_their_speaker_embedding_rather_than_
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Feature representations designed for zero-shot singing voice conversion can transfer to audio super-resolution
+      without architectural modification when training and inference sampling rates are deliberately mismatched.
+    source: §Model Evaluation on Voice Super-resolution, Table 3
+    evidence: Because HQ-SVC extracts features at 16 kHz but optimizes against 44.1 kHz ground-truth Mel spectrograms,
+      the same trained model performs zero-shot voice super-resolution, outperforming AudioSR (trained on over 7,000
+      hours) on NMOS and SMOS despite using under 80 hours of training data.
+    claim_id: q4_2511_08496_feature_representations_designed_for_zero_shot_singing_voice_conversion_can_transfer_to_
+    confidence: high
+    relevance: low
+  limitations:
+  - The paper's own ablation acknowledges that HQ-SVC's unified-encoder design still lags a separate-encoder variant
+    (HQ-SVC-SE) on timbre-similarity (SECS), explicitly stating that "we need to get better at separating out the
+    speaker's identity" (§Ablation Studies). The comparison against SaMoye-SVC also resamples both systems' outputs
+    to a common 32 kHz for evaluation, which is a reasonable fairness adjustment but means neither system's native
+    output rate is directly evaluated. Voice super-resolution results are aggregated across four heterogeneous datasets
+    (two singing, two speech, Mandarin and English) without a per-dataset breakdown, making it hard to assess whether
+    performance is uniform across language and domain. Future work is limited to singing voice style conversion,
+    per the authors' own stated direction (§Conclusions).
+  caveats:
+  - The low-resource singing system still trails a separate-encoder variant on automatic timbre similarity and uses
+    a small listener panel.
+- id: '2511.21045'
+  published_date: 2025-11-26
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - TTS
+  - VC
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - gan_singing_conversion_systems
+  - hybrid_multimodal_singing_systems
+  claims:
+  - claim_id: q4_2511_21045_factorizing_singing_audio_into_disentangled_content_tokens_a_continuous
+    role: supports
+    claim: Factorizing singing audio into disentangled content tokens, a continuous F0 contour, and a timbre embedding,
+      rather than relying on phoneme-aligned score supervision, allows a synthesis and conversion system to generalize
+      to timbres well outside its human training distribution.
+    source: §4.2, Tables 1-3
+    evidence: CartoonSing, trained with this factorization, achieves consistently higher timbre similarity (SIM-A)
+      to instrumental, general-audio, and bird target timbres than SVS/SVC baselines trained only on human voices,
+      e.g. 0.603 vs. 0.493 for Chinese-instrumental SVS and 0.589 vs. 0.398 for Chinese-instrumental SVC.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_21045_transferring_a_generative_singing_voice_system_to_a_target_timbre_that_d
+    role: complicates
+    claim: Transferring a generative singing voice system to a target timbre that departs strongly from human vocal
+      acoustics trades off against perceptual audio quality and intelligibility, because baselines that fail to
+      transfer timbre retain clean human-like articulation by default.
+    source: §A.8, Table 10
+    evidence: In the subjective listening study, CartoonSing scores far higher on MOS-T (timbre similarity, 3.2
+      vs. 2.71 for SVC) but lower on MOS-C (intelligibility, 2.99 vs. 4.09) and MOS-Q (quality, 2.8 vs. 4.02) than
+      the human-timbre baseline, attributed to weakened consonantal transients when the output timbre becomes vowel-like
+      and instrument-like.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_21045_content_representations_that_explicitly_disentangle_timbre_from_linguist
+    role: supports
+    claim: Content representations that explicitly disentangle timbre from linguistic/phonetic content are more
+      robust than richer, less disentangled self-supervised representations when a system must generalize to out-of-distribution
+      timbre spaces.
+    source: §B.2, Tables 11-14
+    evidence: Replacing the ContentVec-derived (timbre-disentangled) content tokens with HuBERT tokens improved
+      timbre similarity for human singing reconstruction but reduced it for non-human timbre transfer across instrumental,
+      general, and bird targets, which the authors attribute to timbre leakage in the less disentangled HuBERT representation.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_21045_extending_a_cross_domain_human_non_human_generative_audio_system_to_a_ne
+    role: complicates
+    claim: Extending a cross-domain (human/non-human) generative audio system to a new target-timbre domain requires
+      domain-specific fine-tuning rather than transferring zero-shot from a single pretrained model.
+    source: §4.1, §4.2, Tables 1-3
+    evidence: The Stage 2 vocoder is fine-tuned separately for each of three non-human domains (instrumental, bird
+      vocalization, general audio) with domain-specific oversampling ratios, and this fine-tuning yields consistent
+      LF0 RMSE and VUV improvements over the pretrained-only model in every domain.
+    confidence: high
+    relevance: high
+  limitations:
+  - Non-human timbre gains require domain-specific fine-tuning and reduce intelligibility and audio quality, so
+    the method is not genuinely zero-shot across timbre domains.
+  caveats:
+  - Out-of-domain timbre transfer sacrifices intelligibility and requires domain-specific vocoder fine-tuning.
+- id: '2512.02523'
+  published_date: '2025-12-02'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: framing_generative_model_evaluation_as_multi_dimensional_language_and_audio_feedback_rather_than_a_s
+    role: supports
+    claim: Framing generative-model evaluation as multi-dimensional language-and-audio feedback, rather than a single
+      scalar reward, can preserve interpretability across separate quality dimensions while remaining usable as
+      a training signal.
+    source: §1, §2.2
+    evidence: The proposed framework generates parallel text and audio critiques spanning melody, content, and auditory-quality
+      dimensions instead of a single numeric reward, directly targeting the interpretability limits of prior scalar
+      SVS reward models.
+    confidence: high
+    relevance: medium
+  - claim_id: combining_authentic_human_generated_feedback_data_with_standardized_synthetic_mllm_generated_feedbac
+    role: supports
+    claim: Combining authentic human-generated feedback data with standardized synthetic (MLLM-generated) feedback
+      data captures complementary properties that neither source provides alone.
+    source: §3, Table 1
+    evidence: Human-only training raises SCQ accuracy to 0.60 (above GPT-4o-Audio's 0.583) but collapses OEQ average
+      to 0.375, while MLLM-only training preserves balanced OEQ (0.739) with weaker SCQ (0.375); hybrid training
+      achieves the best combined trade-off (SCQ 0.65, OEQ weighted average 0.577).
+    confidence: high
+    relevance: medium
+  - claim_id: reaction_or_commentary_data_mined_from_in_the_wild_recordings_can_leak_target_like_signal_into_the_m
+    role: complicates
+    claim: Reaction or commentary data mined from in-the-wild recordings can leak target-like signal into the model's
+      input, letting a feedback-generation model shortcut-learn instead of genuinely inferring critique from the
+      underlying performance.
+    source: §Appendix F, Figure 5
+    evidence: In the raw Human Reaction Data, the reviewer's overlapping speech closely resembled the target critique
+      text; removing it with source separation (AudioSep) produced significantly lower validation loss than training
+      on the unseparated audio.
+    confidence: high
+    relevance: low
+  - claim_id: joint_autoregressive_supervision_of_text_and_audio_outputs_from_a_shared_llm_backbone_can_induce_exp
+    role: supports
+    claim: Joint autoregressive supervision of text and audio outputs from a shared LLM backbone can induce expressive,
+      affect-laden audio-generation behavior beyond what the base model exhibits.
+    source: §3 "Multi-modal Supervision", §Appendix E
+    evidence: Case studies comparing the base Kimi-Audio model to fine-tuning checkpoints show the final model producing
+      emotionally intonated spoken reactions and, in one case, spontaneous humming in response to musical input,
+      capabilities absent from the base model.
+    confidence: high
+    relevance: low
+  limitations:
+  - The framework's own evaluation relies entirely on an LLM-as-judge benchmark (SCQ accuracy plus LLM-judged OEQ
+    completeness/accuracy/novelty) rather than human listening tests, and no experiment fine-tunes an SVS model
+    via RL using the generated feedback signal, so the paper's central motivating claim (that this feedback can
+    guide generative model improvement) is not directly demonstrated.
+  caveats:
+  - The evaluation contribution is directly relevant, but its conclusions remain bounded by the reported datasets,
+    systems, languages, judges, and validation protocol.
+- id: '2512.03486'
+  published_date: '2025-12-03'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: ASRU
+  task:
+  - TTS
+  - singing
+  architecture:
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - gan_singing_conversion_systems
+  claims:
+  - claim_id: dynamic_frequency_resolution_in_a_gan_vocoder_s_time_frequency_discriminator
+    role: supports
+    claim: Dynamic frequency resolution in a GAN vocoder's time-frequency discriminator improves synthesis quality
+      over fixed-resolution STFT discriminators, with the largest gains on signals with dense, fast-moving harmonic
+      content such as singing voice.
+    source: §IV-C1, Table I
+    evidence: On out-of-domain singing, MS-SB-CQT and the proposed UnivHD (both dynamic-resolution) outperform the
+      fixed-resolution MS-STFT discriminator on all four objective/subjective metrics for both HiFi-GAN and iSTFTNet
+      backbones.
+    confidence: high
+    relevance: high
+  - claim_id: aligning_a_discriminator_s_frequency_filters_to_exact_integer_multiples_of_a
+    role: refines
+    claim: Aligning a discriminator's frequency filters to exact integer multiples of a base frequency, rather than
+      to power-of-two-spaced bins, extends dynamic-resolution time-frequency discriminators to cover odd harmonics
+      that constant-Q-based designs systematically miss.
+    source: §III-A
+    evidence: Because CQT center frequencies are defined as f_c^k = f_min · 2^(k/B), the h-th harmonic h·f_c^k is
+      only representable when h = 2^d; the proposed harmonic filter instead scales center frequencies by integer
+      harmonic order h, so the k-th bin's h-th harmonic is exactly h times the k-th bin's first harmonic.
+    confidence: high
+    relevance: medium
+  - claim_id: combining_a_harmonic_dynamic_resolution_discriminator_with_a_fixed_resolutio
+    role: supports
+    claim: Combining a harmonic/dynamic-resolution discriminator with a fixed-resolution multi-scale STFT discriminator
+      yields complementary gains beyond either alone.
+    source: §IV-C1, Table II
+    evidence: HiFi-GAN with both MS-STFT and UnivHD (+S+H) improves PESQ and MCD on in- and out-of-domain speech
+      over HiFi-GAN with either discriminator alone, and also outperforms the MS-STFT + MS-SB-CQT combination on
+      the same test sets.
+    confidence: high
+    relevance: medium
+  - claim_id: the_number_of_harmonics_modeled_by_a_harmonic_filter_discriminator_is_not_a
+    role: complicates
+    claim: The number of harmonics modeled by a harmonic-filter discriminator is not a free hyperparameter to maximize;
+      too few harmonics under-resolves the spectrum and too many can push the modeled range past the sample's fundamental
+      frequency, degrading pitch fidelity.
+    source: §IV-C2
+    evidence: Ablation over H ∈ {2, 8, 10, 12, 15, 20} shows near-flat performance in a mid-range but clear degradation
+      at both extremes; at 24kHz sampling with H > 20 the discriminator cannot represent fundamental frequencies
+      above roughly 600Hz within the first harmonic.
+    confidence: high
+    relevance: high
+  limitations:
+  - MOS uses 15 utterances per condition and 10 raters without a stated significance test, and only two prior discriminator
+    families are compared.
+  caveats: []
+- id: '2512.04779'
+  published_date: '2025-12-04'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: annotation_free_melody_extraction_learned_end_to_end_via_teacher_student_dis
+    role: supports
+    claim: Annotation-free melody extraction, learned end-to-end via teacher-student distillation and jointly optimized
+      with the synthesis model, can substitute for manually-annotated phoneme and pitch alignment as a conditioning
+      signal for singing voice synthesis without degrading output quality.
+    source: §3.2, §4.5, Table 1
+    evidence: An online melody extractor is trained with a KL-divergence distillation loss against a frozen MIDI-pretrained
+      teacher, jointly with the DiT synthesis model, using only sentence-level-timestamped weakly-aligned data;
+      the resulting system achieves aesthetic scores (CE, CU, PC, PQ) comparable to or better than baselines trained
+      with precise phoneme/MIDI annotation.
+    confidence: high
+    relevance: high
+  - claim_id: reinforcement_learning_post_training_with_a_multi_objective_reward_combining
+    role: supports
+    claim: Reinforcement learning post-training with a multi-objective reward combining content-accuracy and melodic-similarity
+      terms can jointly improve intelligibility and melody adherence in a flow-matching-based singing synthesis
+      model, particularly in zero-shot and lyric-editing conditions.
+    source: §3.3, §4.6, Table 3
+    evidence: Flow-GRPO post-training (single-timestep stochastic noise injection into the ODE flow) reduces WER
+      from 16.75% to 15.18% and raises F0 Pearson correlation from 76.64% to 82.84% relative to the pre-trained-only
+      model.
+    confidence: high
+    relevance: high
+  - claim_id: an_explicit_representation_alignment_loss_between_a_conditioning_signal_and
+    role: complicates
+    claim: An explicit representation-alignment loss between a conditioning signal and internal model features can
+      accelerate convergence of conditional behavior, but risks degrading a competing objective unless its loss
+      weight is annealed during training.
+    source: §4.1, §4.6, Table 3
+    evidence: The CKA-alignment loss speeds early convergence of melody-following behavior, but the paper reports
+      that its weight must be gradually reduced during training; leaving it too high yields strong F0 correlation
+      at the cost of increased WER.
+    confidence: high
+    relevance: high
+  - claim_id: zero_shot_singing_voice_timbre_transfer_conditioned_on_a_short_reference_aud
+    role: supports
+    claim: Zero-shot singing-voice timbre transfer, conditioned on a short reference audio prompt, can generalize
+      to unseen speakers without dedicated fine-tuning when the synthesis backbone is initialized from a pretrained
+      zero-shot flow-matching TTS model.
+    source: §4.3, §4.5, Table 1
+    evidence: Evaluated on five unseen in-the-wild speakers absent from training, the system achieves 1.28% WER,
+      93.95% speaker similarity, and 81.28% F0 correlation in the zero-shot timbre-transfer setting, outperforming
+      TCSinger and Vevo baselines on WER.
+    confidence: high
+    relevance: high
+  - claim_id: structural_and_lyrical_editing_that_changes_phoneme_counts_and_sentence_stru
+    role: complicates
+    claim: Structural and lyrical editing that changes phoneme counts and sentence structure remains harder for
+      annotation-free singing synthesis than straightforward zero-shot synthesis, since intelligibility degrades
+      for the editing task even when melody adherence and relative comparisons to baselines remain favorable.
+    source: §4.5, Table 1
+    evidence: WER rises to 12.62-18.44% for zero-shot lyric and structural editing versus 1.28% for zero-shot synthesis
+      on the same model, though this is still far below Vevo's 67.31-73.97% WER on the identical editing tasks.
+    confidence: high
+    relevance: high
+  limitations:
+  - Subjective editing results cover a narrow Mandarin, unseen-speaker setting, while the broader annotation-free
+    claims rely heavily on automatic content and melody metrics.
+  caveats:
+  - Annotation-free flow singing synthesis improves with RL, but structural editing remains harder than zero-shot
+    generation.
+- id: '2512.04793'
+  published_date: '2025-12-04'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - negative_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: q4_2512_04793_passing_a_zero_shot_voice_singing_conversion_model_s_input_through_a_sep
+    role: supports
+    claim: Passing a zero-shot voice/singing conversion model's input through a separate, pretrained single-shot
+      conversion model to strip source-speaker identity before content-feature extraction improves the invariance
+      of the resulting content representation and downstream conversion fidelity.
+    source: §5.3.1, Table 3
+    evidence: Ablating the RVC-based timbre shifter is the single largest degradation across all three test settings,
+      e.g. under Mix Vocal SPK-SIM drops from 0.810 to 0.804 and CER rises from 15.70% to 16.30%.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_04793_making_speaker_timbre_conditioning_a_function_of_the_local_pitch_contour
+    role: supports
+    claim: Making speaker/timbre conditioning a function of the local pitch contour, rather than a single static
+      per-speaker embedding, improves perceived quality of converted singing by allowing timbre to shift with vocal
+      register.
+    source: §5.3.1, Table 3, Figure 3a
+    evidence: Removing the F0-aware timbre adaptor lowers aesthetic Content Enjoyment/Usefulness scores across all
+      settings, e.g. GT Leading CE/CU falls from 5.79/6.50 to 5.75/6.46.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_04793_reweighting_a_flow_matching_training_loss_to_emphasize_under_represented
+    role: complicates
+    claim: Reweighting a flow-matching training loss to emphasize under-represented high-frequency spectral content
+      does not uniformly improve all quality dimensions; it can trade improved spectral/aesthetic detail against
+      measured intelligibility.
+    source: §5.3.1, Table 3
+    evidence: On the clean GT Leading set, including the energy-balanced loss lowers CER (9.20% vs. 9.40% without
+      it) but very slightly reduces aesthetic CE/CU (5.79/6.50 vs. 5.81/6.54 without it), a pattern the authors
+      attribute to a spectral-detail/intelligibility trade-off.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_04793_online_rl_post_training_with_a_multi_objective_non_differentiable_percep
+    role: supports
+    claim: Online RL post-training with a multi-objective, non-differentiable perceptual reward (aesthetic quality,
+      intelligibility, speaker similarity) can improve a flow-matching voice/singing conversion model on dimensions
+      not directly optimized by its supervised training objective.
+    source: §5.2
+    evidence: After SFT, the RL stage further raises CMOS from 3.23 to 3.31 and aesthetic CE/CU from 5.73/6.35 to
+      5.75/6.40 on Mix Vocal, and yields the highest CMOS (3.91) on the full production pipeline (Ours Leading).
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2512_04793_zero_shot_svc_systems_evaluated_only_on_clean_isolated_solo_vocals_subst
+    role: complicates
+    claim: Zero-shot SVC systems evaluated only on clean, isolated solo vocals substantially overstate real-world
+      performance, because harmony bleed and F0 errors from imperfect source separation degrade intelligibility
+      and pitch stability even for otherwise strong baselines.
+    source: §5.1, Table 2
+    evidence: The Seed-VC baseline's CER rises from 10.89% (GT Leading, clean) to 17.30% (Mix Vocal, harmony-contaminated)
+      and LogF0PCC drops from 98.29% to 84.02%, a degradation the paper's own robustness-trained model only partially
+      closes (CER 15.90%, LogF0PCC 86.47%).
+    confidence: high
+    relevance: high
+  limitations:
+  - A small proprietary test suite, five target timbres, two baselines, and partially ablated training stages limit
+    reproducibility and generality.
+  caveats:
+  - Real-world singing robustness improves but remains sensitive to source-separation errors and proprietary training
+    assets.
+- id: '2601.13910'
+  published_date: '2025-12-20'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: IJCNLP-AACL
+  task:
+  - singing
+  architecture: []
+  relevance: high
+  evidence_role:
+  - historical_context
+  - infrastructure
+  - evaluation_caution
+  current_role: influential
+  method_family: []
+  claims:
+  - claim_id: cascaded_singing_pipelines_retain_low_resource_advantages
+    role: supports
+    claim: Cascaded speech and singing synthesis pipelines can retain a practical performance advantage over end-to-end
+      designs in low-resource settings because hand-crafted intermediate targets provide auxiliary supervision.
+    source: §B.2
+    evidence: The survey attributes the continued strength of cascaded SVS systems to auxiliary supervision from
+      acoustic targets, while end-to-end systems require more data and face training and alignment instability.
+    confidence: medium
+    relevance: high
+  - claim_id: continuous_and_discrete_singing_representations_remain_unsettled
+    role: complicates
+    claim: There is no settled consensus on whether continuous or discrete acoustic representations are preferable
+      for singing generation because each supports different quality, control, and deployment properties.
+    source: §B.3
+    evidence: The survey contrasts discrete representations that enable token modeling and streaming with continuous
+      representations that preserve finer acoustic texture but require stronger decoders and alignment.
+    confidence: medium
+    relevance: high
+  - claim_id: singing_controllability_can_trade_against_audio_fidelity
+    role: complicates
+    claim: Increasing singing-generation controllability does not straightforwardly improve audio fidelity, and
+      stronger inference guidance alone does not establish genuine control.
+    source: §B.3
+    evidence: The survey identifies fidelity loss from overemphasized control, persistent factor-disentanglement
+      difficulties, and the insufficiency of single encoders or stronger guidance for robust control.
+    confidence: medium
+    relevance: high
+  - claim_id: singing_data_scale_and_annotation_quality_remain_bottlenecks
+    role: supports
+    claim: Singing voice synthesis remains substantially more constrained than speech synthesis by both corpus scale
+      and annotation quality.
+    source: §B.4, Table 1
+    evidence: The survey finds that public singing corpora remain orders of magnitude smaller than speech corpora
+      and suffer from long-tail style and language gaps plus inaccurate lyric timing.
+    confidence: high
+    relevance: high
+  limitations:
+  - This is a literature survey with no original experiments, and its cross-paper conclusions are not independently
+    re-verified.
+  caveats:
+  - The survey scopes itself to deep-learning SVS and treats multimodal-LLM opportunities as forward-looking rather
+    than validated.
 claim_clusters:
 - id: shared_speech_singing_training_enables_timbre_transfer
   claim: Joint speech–singing training enables cross-modal timbre transfer from speech references to singing generation.
@@ -721,11 +1412,13 @@ claim_clusters:
   confidence: medium
   supporting_papers:
   - '2304.09116'
+  - '2512.04779'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2511.21045'
   caveats:
   - Evidence is concentrated in prompt-based systems and does not establish parity with singing references.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
 - id: singing_data_improves_high_pitch_codec_accuracy
   claim: Including singing data in codec training improves reconstruction of high-pitch vocal ranges.
   status: emerging
@@ -775,16 +1468,20 @@ claim_clusters:
 - id: explicit_signal_conditioning_improves_controllability
   claim: Explicit signal-derived conditioning provides stronger singing control than implicit auxiliary prediction
     alone.
-  status: emerging
-  confidence: medium
+  status: strongly_supported
+  confidence: high
   supporting_papers:
   - '2509.07038'
   - '2509.19883'
+  - '2510.21685'
+  - '2511.08496'
+  - '2512.04779'
+  - '2512.04793'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Ground-truth signal features may be unavailable or noisy in practical generation settings.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
 - id: frequency_decomposition_enables_singing_style_control
   claim: Frequency-domain decomposition of F0 enables localized and continuously adjustable singing-style control.
   status: emerging
@@ -799,17 +1496,21 @@ claim_clusters:
   last_reviewed: '2026-08-02'
 - id: style_accuracy_trades_off_against_naturalness
   claim: Increasing singing-style conversion accuracy can reduce naturalness.
-  status: emerging
-  confidence: medium
+  status: strongly_supported
+  confidence: high
   supporting_papers:
   - interspeech-2025-1397
   - '2509.15629'
+  - '2510.21685'
+  - '2511.21045'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1397
+  - '2512.04793'
+  - '2601.13910'
   caveats:
   - The trade-off may shift with disentanglement method and target style.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
 - id: ssl_dimension_reduction_reduces_timbre_leakage
   claim: Reducing SSL embedding dimensionality can suppress timbre leakage while preserving phonetic content.
   status: emerging
@@ -841,10 +1542,11 @@ claim_clusters:
   supporting_papers:
   - '2509.15629'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2510.21685'
   caveats:
   - Challenge results cover a limited set of techniques and recording conditions.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
 - id: joint_identity_and_style_conversion_degrades_quality
   claim: Joint singer-identity and style conversion is harder than identity-only conversion and can reduce naturalness.
   status: emerging
@@ -859,17 +1561,23 @@ claim_clusters:
 - id: singing_evaluation_metrics_have_scope_limits
   claim: Automatic singing-quality and identity metrics capture useful trends but remain sensitive to evaluation
     design.
-  status: emerging
-  confidence: medium
+  status: strongly_supported
+  confidence: high
   supporting_papers:
   - interspeech-2025-0816
   - '2509.15629'
+  - '2512.02523'
   contradicting_papers: []
   refining_papers:
   - '2509.15629'
+  - '2510.20677'
+  - '2510.21685'
+  - '2511.08496'
+  - '2512.02523'
+  - '2601.13910'
   caveats:
   - Small listener panels and single-reference identity tests can obscure metric validity.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
 - id: contrastive_regularization_reduces_prompt_attribute_leakage
   claim: Contrastive regularization between acoustic prompts and explicit controls reduces attribute leakage.
   status: emerging
@@ -915,9 +1623,94 @@ claim_clusters:
   contradicting_papers: []
   refining_papers:
   - '2509.22718'
+  - '2510.09016'
+  - '2512.04779'
+  - '2601.13910'
   caveats:
   - The evidence does not imply that shared components are unusable, only that direct transfer is insufficient.
-  last_reviewed: '2026-08-02'
+  last_reviewed: '2026-09-26'
+- id: weak_or_implicit_alignment_can_replace_detailed_singing_annotations
+  claim: Weak temporal supervision, constrained attention, or learned melody extraction can replace phoneme-duration
+    and MIDI-level annotation in singing synthesis.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2510.09016'
+  - '2512.04779'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence is currently Mandarin-centered and still depends on character spans, sentence timestamps, or a distilled
+    melody teacher.
+  last_reviewed: '2026-09-26'
+- id: factorized_representations_enable_low_resource_and_ood_timbre_transfer
+  claim: Factorizing content, pitch, style, and timbre supports low-resource zero-shot singing conversion and transfer
+    to acoustically distant target timbres.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2511.08496'
+  - '2511.21045'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Unified and separate encoders trade intelligibility against identity, while non-human timbre transfer still
+    reduces intelligibility and quality.
+  last_reviewed: '2026-09-26'
+- id: robust_training_improves_real_world_singing_conversion
+  claim: Pitch perturbation, artifact simulation, and source-timbre suppression improve singing conversion under
+    harmony bleed, reverberation, and separation errors.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2510.20677'
+  - '2512.04793'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Both studies rely heavily on internal training assets and difficulty-graded test sets, limiting independent
+    comparison.
+  last_reviewed: '2026-09-26'
+- id: multi_objective_rl_improves_singing_generation_and_conversion
+  claim: Multi-objective reinforcement-learning post-training can improve content, melody, or perceptual quality
+    in flow-based singing synthesis and conversion.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2512.04779'
+  - '2512.04793'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The evidence comes from related systems and internal or single-language evaluations; gains depend on proxy reward
+    quality and balancing.
+  last_reviewed: '2026-09-26'
+- id: harmonic_aware_discrimination_improves_singing_vocoding
+  claim: Frequency analysis aligned to integer harmonic structure improves GAN vocoder fidelity for singing more
+    than fixed-resolution discrimination alone.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2512.03486'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The result is demonstrated with two GAN generators and small listening panels, not diffusion or flow vocoders.
+  last_reviewed: '2026-09-26'
+- id: singing_data_scale_and_annotation_quality_remain_bottlenecks
+  claim: Singing generation remains constrained by limited, unevenly annotated corpora, motivating synthetic expansion
+    and weakly supervised conditioning.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2510.09016'
+  - '2601.13910'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Synthetic expansion has a non-monotonic quality regime and large private corpora make public scale comparisons
+    difficult.
+  last_reviewed: '2026-09-26'
 method_families:
 - id: diffusion_singing_generation
   name: Diffusion singing generation and conversion
@@ -929,6 +1722,8 @@ method_families:
   - interspeech-2025-1364
   - interspeech-2025-1397
   - '2509.07038'
+  - '2510.09016'
+  - '2511.08496'
   open_questions:
   - Can few-step singing diffusion retain the quality and dynamic detail of multi-step generation?
 - id: vae_singing_latent_systems
@@ -949,6 +1744,8 @@ method_families:
   papers:
   - interspeech-2025-0347
   - interspeech-2025-1531
+  - '2511.21045'
+  - '2512.03486'
   open_questions:
   - Which adversarial objectives improve singing style accuracy without amplifying naturalness trade-offs?
 - id: hybrid_multimodal_singing_systems
@@ -958,8 +1755,20 @@ method_families:
   papers:
   - '2509.19883'
   - '2509.22718'
+  - '2511.21045'
   open_questions:
   - Which external signals add controllability without leaking attributes or destabilizing acoustic training?
+- id: flow_matching_singing_generation
+  name: Flow-matching singing generation and conversion
+  summary: Diffusion-transformer and rectified-flow systems generate singing acoustics, convert timbre, or infill
+    expressive pitch trajectories with fewer solver steps and flexible conditioning.
+  papers:
+  - '2510.20677'
+  - '2510.21685'
+  - '2512.04779'
+  - '2512.04793'
+  open_questions:
+  - Can one flow backbone retain melody, lyrics, timbre, style, and robustness without task-specific post-training?
 reassessment_queue:
 - id: shared_speech_singing_training_enables_timbre_transfer
   type: claim_status
@@ -1013,6 +1822,12 @@ open_questions:
 - How few diffusion or flow steps can singing generation use without losing dynamic detail?
 - Which objective and subjective metrics reliably evaluate singer identity, style, and naturalness?
 - How should melody, lyrics, visual timing, and acoustic prompts be fused without attribute leakage?
+- Can annotation-light singing systems generalize beyond Mandarin and Western pitch conventions without task-specific
+  alignment tools?
+- How should robust singing conversion be evaluated on public mixtures with controlled harmony, reverberation, and
+  source-separation errors?
+- Can reinforcement-learning rewards improve expressive singing without optimizing ASR, pitch, or aesthetic proxies
+  at the expense of listener preference?
 trend_notes:
 - Singing generation is moving from same-domain singer conditioning toward speech-prompted and cross-modal identity
   transfer.
@@ -1023,3 +1838,9 @@ trend_notes:
   controls.
 - Evaluation is expanding beyond naturalness toward identity, style accuracy, controllability, and dynamic-technique
   fidelity.
+- Q4 2025 singing systems increasingly adapt pretrained speech diffusion and flow backbones while adding singing-specific
+  pitch, alignment, and harmonic structure.
+- Annotation-light melody conditioning, zero-shot timbre transfer, and robustness to separated real-song vocals
+  became central development targets in Q4 2025.
+- Multi-objective reinforcement learning entered both singing synthesis and conversion, but evidence remains limited
+  to two related flow-based systems.

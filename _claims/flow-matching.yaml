@@ -1,6 +1,6 @@
 concept: flow-matching
-last_updated: 2026-07-19
-paper_count: 97
+last_updated: '2026-09-26'
+paper_count: 125
 
 papers:
   - id: "2207.12598"
@@ -4980,6 +4980,1917 @@ papers:
     caveats:
       - "BatonTTS's flow-matching component is CosyVoice2's pre-trained speech decoder used entirely frozen and unmodified; none of the paper's four claims concern the flow-matching model itself, only the upstream LLM-based instruction-to-feature-plan decoupling built on top of it."
 
+  - id: 2025.vlsp-1.14
+    published_date: '2025-10-01'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: VLSP 2025
+    task:
+    - VC
+    architecture:
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - evaluation_caution
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2025_vlsp_1_14_phoneme_level_text_representations_reduce_duration_estimation_instabilit
+      role: supports
+      claim: Phoneme-level text representations reduce duration-estimation instability in diffusion-based TTS for
+        tonal languages, compared to character-level inputs.
+      source: §2.2 "Phoneme-level representations"
+      evidence: The authors describe the character-level duration heuristic in F5-TTS (ratio-based duration estimation
+        with filler-token padding) as unstable for a language where a single character can map to multiple phonetic
+        realizations, and adopt IPA-based phoneme sequences with explicit tone marking for Vietnamese instead.
+      confidence: medium
+      relevance: medium
+    - claim_id: q4_2025_vlsp_1_14_a_two_stage_asr_tts_pipeline_can_achieve_strong_target_speaker_similarit
+      role: supports
+      claim: A two-stage ASR-TTS pipeline can achieve strong target-speaker similarity in cross-lingual zero-shot
+        voice conversion by explicitly separating content transcription from speech synthesis.
+      source: §3.2, Table 1
+      evidence: The system obtained the best target-speaker similarity score (SMOS_TGT = 3.66 ± 0.21) among all four
+        teams on the VLSP 2025 Voice Conversion Task 1 leaderboard.
+      confidence: high
+      relevance: low
+    - claim_id: q4_2025_vlsp_1_14_optimizing_a_cascaded_asr_tts_voice_conversion_system_for_speaker_simila
+      role: complicates
+      claim: Optimizing a cascaded ASR-TTS voice conversion system for speaker similarity can come at the cost of
+        content accuracy relative to competing designs.
+      source: §3.2, Table 1
+      evidence: The system's WER (12.95) was the second-worst of four teams despite its best-in-class SMOS_TGT, and
+        its Final Score (67.53) trailed the top team (72.66), which achieved both a lower WER (9.83) and higher MOS
+        (4.29).
+      confidence: high
+      relevance: low
+    - claim_id: q4_2025_vlsp_1_14_diffusion_based_tts_models_retain_characteristic_failure_modes_such_as_r
+      role: complicates
+      claim: Diffusion-based TTS models retain characteristic failure modes such as repetition and hallucination on
+        long text inputs even when integrated into an otherwise well-performing cascaded voice conversion pipeline.
+      source: §3.3 "Discussion"
+      evidence: The authors state that "the known weaknesses of diffusion-based TTS models, such as repetition and
+        hallucination on long text inputs, persist in our system."
+      confidence: medium
+      relevance: medium
+    limitations:
+    - The shared-task study does not ablate phoneme routing or joint bilingual training and evaluates only one Vietnamese
+      benchmark against three competing systems.
+    caveats:
+    - The flow-based cascade is evaluated on one Vietnamese shared task and does not isolate the generator from ASR
+      and front-end effects.
+  - id: '2510.00499'
+    published_date: '2025-10-01'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - SCA
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    relevance: low
+    evidence_role:
+    - architecture_variant
+    current_role: minor
+    method_family: [ar_fm_hybrid]
+    claims:
+    - role: supports
+      claim: Freezing a pretrained LLM's original parameters while training newly added modality-specific components
+        first, before gradually unfreezing, better preserves the model's original in-modality (text) competence than
+        training all parameters jointly from the start.
+      source: §5, Table 7
+      evidence: 'Table 7 ablation: the frozen-pretrain variant (FP-Full) reaches MMLU/CMMLU of 66.5/69.15, versus
+        62.11/64.11 for the otherwise-identical no-frozen-pretrain variant (NF) trained for the same ~2 epochs.'
+      confidence: high
+      claim_id: q4_2510_00499_freezing_a_pretrained_llm_s_original_parameters_while_training_newly_added_modality_spec
+      relevance: low
+    - role: supports
+      claim: Giving each modality its own specialized output layers at the top of a shared Transformer, rather than
+        folding a new modality's tokens directly into the existing vocabulary and layer stack, improves performance
+        in both the new and original modality.
+      source: §5, Table 7
+      evidence: 'Table 7: removing the modality-based layer split (NF-NoSplit) while keeping all else equal lowers
+        speech StoryCloze accuracy (55.80 vs. 56.60) and MMLU (60.97 vs. 62.11) relative to the split variant (NF).'
+      confidence: high
+      claim_id: q4_2510_00499_giving_each_modality_its_own_specialized_output_layers_at_the_top_of_a_shared_transforme
+      relevance: low
+    - role: complicates
+      claim: Removing the text intermediate from LLM-based speech-to-speech generation does not yet uniformly close
+        the performance gap with text-guided generation on knowledge-intensive spoken question answering.
+      source: §4.3, Table 6
+      evidence: 'Table 6: on speech-to-speech TriviaQA and WebQA, the fully text-free model scores 28.8 and 36.71
+        respectively, versus 43.20 and 38.34 for the text-guided GLM-4-Voice baseline, even though the text-free model
+        leads on speech-to-text LlamaQA and WebQA.'
+      confidence: high
+      claim_id: q4_2510_00499_removing_the_text_intermediate_from_llm_based_speech_to_speech_generation_does_not_yet_u
+      relevance: low
+    - role: complicates
+      claim: Constraining a semantic speech tokenizer to be fully causal for true streaming operation costs some recognition
+        accuracy relative to a similarly-designed but non-causal or chunk-based variant.
+      source: §4.1, Table 3
+      evidence: 'Table 3: at the same frame rate and bitrate (12.5Hz, 175bps), the fully-causal streaming tokenizer
+        reaches 10.80% overall WER versus 9.17% for the chunk-based (2s block) GLM-4-Voice tokenizer it is fine-tuned
+        from.'
+      confidence: high
+      claim_id: q4_2510_00499_constraining_a_semantic_speech_tokenizer_to_be_fully_causal_for_true_streaming_operation
+      relevance: low
+    limitations:
+    - On the hardest speech-to-speech settings (TriviaQA, WebQA), the fully text-free model trails a text-guided baseline
+      by a substantial margin (e.g., TriviaQA S→S 28.8 vs. 43.20), showing the text-free paradigm has not yet closed
+      the gap for knowledge-intensive spoken dialogue.
+    - Speech quality is assessed only with the automatic UTMOS and DNSMOS proxies; no human MOS or preference listening
+      test is reported for either the tokenizer or the full dialogue system. The supervised fine-tuning data is entirely
+      synthetic (LLM-adapted text paired with TTS-generated audio from Seed-TTS and MOSS-TTSD), so robustness to spontaneous,
+      noisy, or emotionally varied real human speech is untested. Coverage is limited to English and Chinese, and
+      code/demo availability is not stated in the paper.
+    caveats:
+    - Flow matching is an acoustic component of a speech-LLM study whose claims concern modality integration rather
+      than the generative objective.
+  - id: '2510.02848'
+    published_date: '2025-10-03'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - role: supports
+      claim: Replacing self-attention with convolutional modules in a flow-matching TTS denoiser preserves competitive
+        naturalness and intelligibility when the prior distribution is semantically enriched with discrete codec representations.
+      source: § Flow Matching Attention-Free Models, Table 1
+      evidence: With a semantically enriched discrete-codec prior, the attention-free model reports WER 0.04 and UTMOS
+        3.87 on LibriSpeech test-clean with a five-second prompt.
+      claim_id: q4_2510_02848_replacing_self_attention_with_convolutional_modules_in_a_flow_matching_tts_denoiser_pres
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Probabilistic duration and silence generators allow non-autoregressive TTS models to achieve temporal
+        diversity (pause rate, pause duration, speech rate variability) approaching that of autoregressive systems.
+      source: § Probabilistic Duration and Silence Generation, Table 3
+      evidence: The probabilistic generators produce 4.47 pauses per utterance and broader speech-rate variation,
+        approaching the temporal diversity of the autoregressive baseline.
+      claim_id: q4_2510_02848_probabilistic_duration_and_silence_generators_allow_non_autoregressive_tts_models_to_ach
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Attention-free flow-matching denoisers achieve substantially lower inference latency than self-attention-based
+        counterparts without a proportional reduction in synthesis quality.
+      source: § Experiments, Table 2
+      evidence: The attention-free denoiser reaches RTF 0.016 at 16 function evaluations, versus 0.26 for the self-attention-based
+        F5-TTS comparison.
+      claim_id: q4_2510_02848_attention_free_flow_matching_denoisers_achieve_substantially_lower_inference_latency_tha
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: In zero-shot TTS trained on equal data, explicit phoneme-to-speech alignment mechanisms yield better
+        intelligibility than purely data-driven alignment, independent of the generative backbone architecture.
+      source: § Main Results, Table 1
+      evidence: In the equal-500-hour comparison, the explicit-alignment system reports WER 0.04, ahead of the purely
+        data-driven alignment baselines in the main results table.
+      claim_id: q4_2510_02848_in_zero_shot_tts_trained_on_equal_data_explicit_phoneme_to_speech_alignment_mechanisms_y
+      confidence: high
+      relevance: medium
+    limitations:
+    - Evaluated only on English LibriSpeech; multilingual and zero-shot cross-lingual performance is not assessed.
+    - Training data (500h LibriTTS) is relatively small; performance gap with SparkTTS (100k hours) in naturalness
+      is expected.
+    - The attention-free hypothesis is validated empirically but not theoretically analyzed — it is unclear whether
+      this would hold for content-less (pure noise) priors.
+    - The convolutional kernel size k may limit modeling of long-range dependencies in very long utterances.
+    - Flamed-TTS-Small shows UTMOS degradation (~5-6%) at half the model size, suggesting UTMOS is more sensitive
+      to capacity than WER or speaker similarity.
+    - No streaming deployment or real-time application evaluation.
+    caveats:
+    - The attention-free efficiency result is English-only and partly depends on semantically enriched codec priors.
+  - id: '2510.07979'
+    published_date: '2025-10-09'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - acceleration_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family: [pure_fm, fm_acceleration]
+    claims:
+    - claim_id: approximating_average_velocity_via_discrete_numerical_integration_of_tea
+      role: supports
+      claim: Approximating average velocity via discrete numerical integration of teacher displacements is a viable
+        alternative to Jacobian-vector products for MeanFlow-style distillation, avoiding GPU memory overhead and
+        flash attention incompatibility.
+      source: §3.1
+      evidence: The student is trained against averaged velocity obtained by summing a fixed teacher's instantaneous
+        velocities over intermediate states, removing JVP computation and self-bootstrap training.
+      confidence: high
+      relevance: high
+    - claim_id: flow_matching_tts_models_can_be_distilled_to_1_3_nfe_with_near_lossless
+      role: supports
+      claim: Flow-matching TTS models can be distilled to 1–3 NFE with near-lossless quality when the student is initialised
+        from the pretrained teacher with a warm-start strategy.
+      source: §3.3, §4.2, §4.3, Table 1, Table 2
+      evidence: The 3-NFE F5-TTS student reaches WER 1.60 and SIM-o 0.65 with roughly 11× lower RTF than its 32-NFE
+        teacher, while the 1-NFE CosyVoice2 student has CMOS −0.03 relative to the full system.
+      confidence: high
+      relevance: high
+    - claim_id: coordinate_wise_ternary_search_over_sampling_step_positions_consistently
+      role: supports
+      claim: Coordinate-wise ternary search over sampling step positions consistently improves both objective and
+        subjective quality metrics without increasing inference NFE.
+      source: §3.2, §4.2.1, Table 1
+      evidence: At fixed 2–3 NFE, O3S sharply lowers WER and improves speaker similarity by optimizing step placement
+        rather than adding evaluations; the reported listening scores move in the same direction.
+      confidence: high
+      relevance: high
+    - claim_id: training_instability_in_direct_meanflow_application_to_tts_manifests_as
+      role: complicates
+      claim: Training instability in direct MeanFlow application to TTS manifests as degraded subjective quality even
+        when objective metrics (WER, SIM-o) appear competitive.
+      source: §4.3, Table 2
+      evidence: Direct MeanFlow on CosyVoice2 retains competitive WER and SIM-o but yields CMOS −0.73, compared with
+        −0.03 for IntMeanFlow, despite similar automatic scores.
+      confidence: high
+      relevance: high
+    - claim_id: a_larger_teacher_model_during_distillation_improves_student_quality_even
+      role: supports
+      claim: A larger teacher model during distillation improves student quality even when the student is significantly
+        smaller, enabling efficient deployment of smaller models trained with stronger teacher guidance.
+      source: §4.2.3, Table 1
+      evidence: The model-size study compares 158M, 336M, and 592M students and reports improved student quality when
+        stronger teacher guidance is used, including for smaller deployment models.
+      confidence: high
+      relevance: high
+    limitations:
+    - Subjective conclusions depend on CMOS/SMOS tests for two flow-based backbones; O3S optimizes speaker similarity
+      only and metric sensitivity is untested.
+    caveats:
+    - Few-step distillation is sensitive to warm starts, teacher size, sampling schedules, and metric-subjective disagreement.
+  - id: '2510.08373'
+    published_date: '2025-10-09'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family: [ar_fm_hybrid]
+    claims:
+    - claim_id: q4_2510_08373_modeling_dual_speaker_dialogue_as_two_parallel_token_streams_with_explic
+      role: supports
+      claim: Modeling dual-speaker dialogue as two parallel token streams with explicit cross-stream attention allows
+        a synthesis system to represent turn-taking and overlapping speech without external timing annotations at
+        inference time.
+      source: §III.B
+      evidence: DiaLM inserts a `<SIL>` token per inactive-speaker channel and relies solely on causal cross-attention
+        between the two LLM-predicted token streams to learn when each speaker should speak, pause, or overlap, without
+        explicit timing control signals.
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2510_08373_chunked_block_wise_attention_masking_can_bound_the_memory_cost_of_flow_m
+      role: supports
+      claim: Chunked, block-wise attention masking can bound the memory cost of flow-matching-based acoustic reconstruction
+        for long, multi-turn audio without requiring a separate streaming-specific model.
+      source: §III.C
+      evidence: The block-wise guided attention mechanism partitions tokens into fixed-size blocks and applies causal/history/future
+        mask patterns to the DiT backbone, enabling chunked decoding with a fixed memory footprint at inference.
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2510_08373_training_data_efficiency_claims_for_llm_based_dialogue_tts_systems_are_d
+      role: complicates
+      claim: Training-data efficiency claims for LLM-based dialogue TTS systems are difficult to isolate from architectural
+        differences when baselines are trained on far larger, non-matched corpora.
+      source: §IV.D
+      evidence: DialoSpeech is trained on ~10,000 hours and reports competitive or superior CER/subjective scores
+        against CosyVoice2 and MoonCast, which the paper states are trained on over 1,000,000 hours, but the systems
+        also differ architecturally, so the comparison does not isolate a pure data-efficiency effect.
+      confidence: medium
+      relevance: medium
+    - claim_id: q4_2510_08373_cross_lingual_generalization_for_a_dual_speaker_llm_dialogue_model_train
+      role: complicates
+      claim: Cross-lingual generalization for a dual-speaker LLM dialogue model trained on a single, telephone-quality
+        language corpus remains uneven across intelligibility and perceptual quality metrics.
+      source: §IV.D
+      evidence: Trained on English only via the 2,000-hour Fisher corpus, DialoSpeech achieves higher UTMOS and speaker
+        similarity than a Fisher-trained CoVoMix baseline but is outperformed by CosyVoice2 on WER and UTMOS, which
+        the authors attribute to CosyVoice2's access to much larger English training data.
+      confidence: medium
+      relevance: medium
+    limitations:
+    - Training and evaluation rely on internal data, while minute-scale joint modeling remains memory-limited and
+      English tests are telephone-band.
+    caveats:
+    - Block-wise flow reconstruction supports long dialogue but remains memory-limited and relies on internal data.
+  - id: '2510.08392'
+    published_date: '2025-10-09'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - VC
+    architecture:
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_acceleration]
+    claims:
+    - claim_id: q4_2510_08392_regressing_the_average_velocity_field_of_a_flow_matching_trajectory_mean
+      role: supports
+      claim: Regressing the average velocity field of a flow-matching trajectory (mean flows) enables competitive
+        single-step (1-NFE) generation quality in speech synthesis tasks beyond the image domain in which the technique
+        was introduced.
+      source: §3.2, Table 1
+      evidence: MeanVC's mean-flow-trained DiT decoder reaches 1-NFE sampling that outperforms multi-step diffusion
+        (Seed-VC) and AR (StreamVoice) baselines on NMOS, SMOS, CER, and SSIM on the Seed-TTS Mandarin test set.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_08392_chunk_wise_causal_attention_masking_allows_non_autoregressive_decoders_t
+      role: supports
+      claim: Chunk-wise causal attention masking allows non-autoregressive decoders to retain autoregressive-style
+        long-term context consistency without paying the latency cost of full sequential decoding.
+      source: §2.2, §3.2, Table 1
+      evidence: The chunk-wise causal mask, which lets each noisy chunk attend to up to K preceding clean chunks,
+        produces a full-pipeline RTF of 0.322 and 211.52 ms latency while still improving SSIM and CER over conformer-based
+        (DualVC2) and diffusion sliding-window (Seed-VC) alternatives.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_08392_reducing_streaming_chunk_size_to_lower_latency_degrades_conversion_quali
+      role: complicates
+      claim: Reducing streaming chunk size to lower latency degrades conversion quality, indicating a hard latency-quality
+        trade-off rather than a free efficiency gain in chunk-based streaming generation.
+      source: §3.4, Table 3
+      evidence: Shrinking the chunk size from 160 ms to 80 ms halves per-chunk latency but raises CER from 5.01% to
+        9.97% and lowers DNSMOS from 3.76 to 3.56; increasing to 200 ms improves DNSMOS to 3.83 and lowers CER to
+        4.42% at a 25% latency increase.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_08392_reducing_model_parameter_count_in_a_flow_matching_based_generator_can_tr
+      role: complicates
+      claim: Reducing model parameter count in a flow-matching-based generator can trade off perceptual audio quality
+        (as measured by non-intrusive quality predictors) even when other quality metrics improve.
+      source: §3.2, Table 1
+      evidence: MeanVC's 14M-parameter model achieves higher NMOS, SMOS, CER, and SSIM than the 25M-parameter Seed-VC
+        baseline but scores lower on DNSMOS (3.76 vs. 3.84), which the authors attribute directly to its smaller parameter
+        size.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2510_08392_adversarial_post_training_initialized_from_a_generator_s_own_weights_can
+      role: refines
+      claim: Adversarial post-training initialized from a generator's own weights can mitigate the over-smoothing
+        artifacts characteristic of one-step (or few-step) flow-matching/diffusion mel-spectrogram generation.
+      source: §2.4, §3.4, Table 3
+      evidence: Ablating the diffusion adversarial post-training (DAPT) stage degrades DNSMOS (3.76 → 3.68), CER (5.01%
+        → 5.86%), and SSIM (0.687 → 0.673), attributed to reduced correction of bright-line, high-frequency artifacts
+        in the generated mel-spectrograms.
+      confidence: high
+      relevance: high
+    limitations:
+    - The Mandarin-only study reports no cross-lingual or GPU serving evaluation and leaves the quality gap of the
+      compact generator only partly diagnosed.
+    caveats:
+    - Mean-flow single-step generation retains a chunk-size quality trade-off and is evaluated only in Mandarin.
+  - id: '2510.20677'
+    published_date: '2025-10-23'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - singing
+    - VC
+    architecture:
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - evaluation_caution
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2510_20677_explicitly_perturbing_fundamental_frequency_during_training_and_forcing
+      role: supports
+      claim: Explicitly perturbing fundamental frequency during training and forcing reconstruction of the clean target
+        reduces a voice conversion model's reliance on noisy F0 tracking, improving robustness to real-world pitch
+        extraction errors.
+      source: §2.2, Table 1
+      evidence: 'Random jitter/glide/jump F0 perturbation applied to 2-4 segments per sample, combined with reconstruction-of-clean-target
+        training, drove the largest naturalness ablation effect: removing this module (w/o SRE) dropped SVC-Hard NMOS
+        from 2.90±0.11 to 2.23±0.21.'
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2510_20677_augmenting_speaker_timbre_extraction_with_domain_specific_target_style_d
+      role: supports
+      claim: Augmenting speaker/timbre extraction with domain-specific target-style data improves style preservation
+        without requiring a redesigned embedding architecture.
+      source: §2.3, Table 1
+      evidence: Extending CAM++ with clean vocals, DNSMOS-filtered separated vocals, and public singing corpora (SETSE)
+        raised SVC-Hard SMOS from 1.74±0.11 (w/o SETSE) to 2.64±0.10 in the full model.
+      confidence: high
+      relevance: low
+    - claim_id: q4_2510_20677_robustness_interventions_aimed_at_noisy_real_world_conditions_can_trade
+      role: complicates
+      claim: Robustness interventions aimed at noisy real-world conditions can trade off against raw speaker-similarity
+        scores measured by automatic embedding cosine similarity.
+      source: §4.3, Table 1
+      evidence: The ablated w/o-SETSE and w/o-SRE variants achieved higher SPK-SIM than the full R2-SVC model on both
+        test sets (e.g., 78.95% vs. 75.17% on SVC-Normal), even though the full model scored better on subjective
+        naturalness and similarity (NMOS, SMOS).
+      confidence: high
+      relevance: low
+    - claim_id: q4_2510_20677_automatic_intelligibility_metrics_computed_with_off_the_shelf_asr_system
+      role: complicates
+      claim: Automatic intelligibility metrics computed with off-the-shelf ASR systems degrade sharply on singing
+        material with ambiguous pronunciation and complex vocal techniques, independent of the voice conversion system's
+        own quality.
+      source: §4.1
+      evidence: CER on the SVC-Hard test set (25.77% for R2-SVC) was roughly double the SVC-Normal CER (13.41%) for
+        the same system, attributed to ambiguous pronunciation and complex singing techniques in the hard set rather
+        than conversion failures.
+      confidence: medium
+      relevance: low
+    limitations:
+    - Internal data, targets, and test sets prevent independent reproduction, and robustness gains sometimes reduce
+      automatic speaker similarity without a full causal analysis.
+    caveats:
+    - The flow generator is evaluated mainly through robustness interventions whose isolated interaction with the
+      flow objective is not established.
+  - id: '2510.21685'
+    published_date: '2025-10-24'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - singing
+    - VC
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family: [pure_fm, fm_auxiliary_attribute]
+    claims:
+    - claim_id: reformulating_pitch_curve_generation_as_a_masked_infilling_task_solved_w
+      role: supports
+      claim: Reformulating pitch-curve generation as a masked-infilling task solved with a flow-matching transformer
+        allows a single model to serve multiple downstream singing tasks without task-specific retraining.
+      source: §3.3, Tables 1 and 2
+      evidence: The same trained model, without modification, is applied to pitch correction, zero-shot SVS style
+        transfer, and SVC style transfer purely by changing which frames are masked, and outperforms or matches task-specific
+        baselines on each.
+      confidence: high
+      relevance: high
+    - claim_id: modeling_pitch_style_implicitly_through_unmasked_context_rather_than_thr
+      role: supports
+      claim: Modeling pitch style implicitly through unmasked context, rather than through explicit speaker or style
+        embeddings, enables generalization to singers unseen during training.
+      source: §5.1, Table 1
+      evidence: StylePitcher requires no singer labels or embeddings yet achieves lower LSTM-classifier discriminability
+        between generated and real F0 curves (51.85% accuracy, near chance) than task-specific baselines evaluated
+        on the same unseen GTSinger test set.
+      confidence: high
+      relevance: medium
+    - claim_id: preserving_singer_specific_pitch_expressiveness_in_singing_voice_convers
+      role: complicates
+      claim: Preserving singer-specific pitch expressiveness in singing voice conversion can trade off against perceived
+        audio quality when the conversion pipeline lacks content-aware constraints.
+      source: §5.2, Table 2
+      evidence: Style-informed SVC improves style-transfer MOS over the unchanged-F0 baseline (2.95 vs. 2.62) but
+        loses quality MOS (2.72 vs. 3.03), which the authors attribute to expressive techniques being applied without
+        content awareness, occasionally producing unnatural results.
+      confidence: high
+      relevance: medium
+    - claim_id: a_pitch_alignment_metric_computed_strictly_against_the_target_musical_sc
+      role: complicates
+      claim: A pitch-alignment metric computed strictly against the target musical score can penalize models that
+        intentionally deviate from the score to preserve expressive style.
+      source: §5.1, Table 1
+      evidence: The ablation without the smoothing algorithm achieves slightly better RPA/PCA/OA scores than the full
+        model by adhering more strictly to musical scores, even though the smoothed model better preserves style-consistent
+        pitch bends and ornaments.
+      confidence: high
+      relevance: low
+    limitations:
+    - The listening study has 19 participants and uses different baselines and test sets for each singing task, limiting
+      statistical and cross-task comparability.
+    caveats:
+    - Masked flow infilling supports multiple singing tasks, but content-unaware pitch changes can reduce quality.
+  - id: '2511.05516'
+    published_date: '2025-10-26'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    - codec
+    architecture:
+    - autoregressive-LM
+    - VAE
+    - flow-matching
+    - hybrid
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family: [continuous_ar_fm_head]
+    claims:
+    - role: supports
+      claim: A single continuous tokenizer can serve as a unified representation for both speech understanding and
+        generation, avoiding the acoustic detail loss that discrete quantization introduces.
+      source: §4.3.1, Table 2
+      evidence: MingTok-Audio's continuous representation outperforms seven established acoustic tokenizers, including
+        discrete codecs (Mimi, BigCodec, XCodec2.0) and other continuous tokenizers, on PESQ, speaker similarity,
+        and STOI reconstruction metrics under matched conditions.
+      claim_id: q4_2511_05516_a_single_continuous_tokenizer_can_serve_as_a_unified_representation_for_both_speech_unde
+      confidence: high
+      relevance: medium
+    - role: supports
+      claim: Freezing a semantic module derived from a pretrained model during large-scale joint pretraining stabilizes
+        representation learning shared across understanding and generation tasks.
+      source: §5.2, Table 5
+      evidence: An ablation that unfreezes the semantic module during pretraining raises average understanding WER
+        from 4.35% to 6.86% and average generation WER from 6.53% to 15.30%, with slower convergence, compared to
+        the frozen baseline.
+      claim_id: q4_2511_05516_freezing_a_semantic_module_derived_from_a_pretrained_model_during_large_scale_joint_pret
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: Joint training of speech understanding and generation objectives inside one LLM is sensitive to task
+        scheduling and initialization choices because the two task types converge at different rates.
+      source: §5.2, §5.4, Table 5, Table 6
+      evidence: The training recipe uses staged understanding:generation step ratios of 1:3 to 1:6 across pretraining
+        phases, and omitting diffusion-head initialization from a single-task checkpoint degrades average generation
+        WER from 4.43% to 11.33% while leaving understanding WER nearly unchanged.
+      claim_id: q4_2511_05516_joint_training_of_speech_understanding_and_generation_objectives_inside_one_llm_is_sensi
+      confidence: high
+      relevance: low
+    - role: supports
+      claim: Free-form, instruction-guided speech editing without timestamp or region annotation is achievable by
+        combining an autoregressive locate-then-modify chain-of-thought stage with a shared per-token generation head.
+      source: §6.1, §7.3, Table 14
+      evidence: On the proposed Ming-Freeform-Audio-Edit benchmark, the model reaches 79.31% edit accuracy (WER 3.89%)
+        for Chinese insertion and 76.62% accuracy (WER 4.56%) for Chinese substitution using only natural-language
+        instructions and a `[MASK]` token to mark the edit region.
+      claim_id: q4_2511_05516_free_form_instruction_guided_speech_editing_without_timestamp_or_region_annotation_is_ac
+      confidence: high
+      relevance: low
+    - role: complicates
+      claim: Pitch-domain acoustic editing is harder to preserve speaker identity through than other acoustic edit
+        types in a unified editing model.
+      source: §7.3, Table 14
+      evidence: Pitch alteration yields the lowest speaker-similarity scores among the acoustic editing tasks (SIM
+        0.36 zh / 0.24 en), compared to markedly higher SIM for volume alteration (0.86/0.80) and dialect conversion
+        (0.66), which the authors attribute to target data quality for pitch-shifted audio.
+      claim_id: q4_2511_05516_pitch_domain_acoustic_editing_is_harder_to_preserve_speaker_identity_through_than_other_
+      confidence: high
+      relevance: low
+    limitations:
+    - 'Speaker similarity on the zero-shot voice-cloning benchmark trails several strong baselines despite leading
+      WER: Ming-UniAudio''s SIM (0.70 zh / 0.58 en) is below Seed-TTS (0.80/0.76) and CosyVoice 3 (0.78/0.72), a trade-off
+      the authors themselves flag as an area for further improvement (§7.2). Free-form semantic editing is evaluated
+      almost entirely with automated WER/ACC/SIM metrics; no human listening test (MOS) results are reported for editing
+      quality specifically, though such tests are reported for the underlying TTS generation task via Seed-TTS-Eval''s
+      standard protocol references. English-language editing performance consistently lags Chinese across semantic
+      tasks, which the authors attribute to a smaller and lower-quality English training set (§7.3). Because most
+      existing open-source speech LLMs lack a comparable free-form, timestamp-free editing capability, the paper''s
+      editing results are validated primarily through internal analysis and the newly introduced benchmark rather
+      than head-to-head comparison against external editing baselines (§7.3).'
+    caveats:
+    - Flow matching is one generation component in a unified model, and editing results are dominated by tokenizer
+      and autoregressive planning choices.
+  - id: '2510.23541'
+    published_date: '2025-10-27'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: low
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: minor
+    method_family: [ar_fm_hybrid]
+    claims:
+    - claim_id: q4_2510_23541_an_inference_time_prompting_strategy_that_prepends_a_short_target_style
+      role: supports
+      claim: An inference-time prompting strategy that prepends a short target-style exemplar to the input text can
+        steer a zero-shot voice-cloning system toward a target speaking style even when the reference audio itself
+        does not exhibit that style.
+      source: §2.2.3
+      evidence: Dialect-Guided Prompting prepends a short dialect-typical sentence before generation, allowing a Mandarin
+        voice prompt to produce speech in Sichuanese, Henanese, or Cantonese despite the target text sharing near-identical
+        orthography with Mandarin
+      confidence: medium
+      relevance: low
+    - claim_id: q4_2510_23541_progressively_discarding_historical_acoustic_tokens_while_retaining_thei
+      role: supports
+      claim: Progressively discarding historical acoustic tokens while retaining their textual context during training
+        improves stability in long-form autoregressive speech generation.
+      source: §2.2.2
+      evidence: A context regularization mechanism that drops historical speech tokens but keeps their text is introduced
+        specifically to address long-form (90-plus minute) conversational generation, encouraging reliance on semantic
+        rather than low-level acoustic memory
+      confidence: medium
+      relevance: low
+    - claim_id: q4_2510_23541_objective_intelligibility_scores_for_dialectal_speech_synthesis_can_be_c
+      role: complicates
+      claim: Objective intelligibility scores for dialectal speech synthesis can be confounded by the reliability
+        of the dialect-specific ASR systems used to compute them, not just by TTS quality.
+      source: §3.4
+      evidence: CER for Sichuanese, Henanese, and Cantonese synthesis (3.75-9.77 monologue, 15.42-28.06 dialogue)
+        is substantially higher than for Mandarin/English, which the authors attribute partly to limitations of the
+        dialect ASR systems (Wenetspeech-Chuan-ASR, TeleSpeech, Wenetspeech-Yue-ASR) rather than to the TTS output
+        itself
+      confidence: medium
+      relevance: low
+    - claim_id: q4_2510_23541_automated_event_recognition_models_used_to_score_paralinguistic_control
+      role: complicates
+      claim: Automated event-recognition models used to score paralinguistic control are less reliable for acoustically
+        subtle nonverbal events than for salient ones.
+      source: §3.3, Table 3
+      evidence: A Qwen-2.5-Omni-FT recognizer scores near-perfect accuracy for laughter (1.00) but noticeably lower
+        accuracy for breathing (0.75) and coughing (0.70), a gap the authors attribute to the events being "more acoustically
+        subtle or ambiguous" and potentially harder for the evaluator model itself to distinguish
+      confidence: high
+      relevance: low
+    limitations:
+    - The unreleased 1.3-million-hour corpus and unnamed tokenizer limit reproducibility, while dialect and long-dialogue
+      results lack human listening tests.
+    caveats:
+    - The flow stage is not isolated from the autoregressive long-form and prompting mechanisms that drive the paper’s
+      claims.
+  - id: '2510.25566'
+    published_date: '2025-10-29'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - codec
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_vocoder]
+    claims:
+    - role: supports
+      claim: A simple input-perturbation-plus-bottleneck training strategy can disentangle a target speech attribute
+        from a neural codec's latent representation without requiring an adversarial loss or auxiliary predictor.
+      source: §4.1, Figure 2
+      evidence: Flattening and randomly shifting F0 at the input while conditioning the flow decoder on the true F0,
+        combined with an RVQ bottleneck, yields the lowest F0-RMSE among bottleneck-only, adversarial, and adversarial+HuBERT
+        variants tested on the same backbone.
+      claim_id: q4_2510_25566_a_simple_input_perturbation_plus_bottleneck_training_strategy_can_disentangle_a_target_s
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Disentangling one speech attribute via information bottlenecks or perturbation can degrade other attributes
+        the system is meant to preserve, such as speaker identity.
+      source: §5, Table 1
+      evidence: PitchFlower shows lower speaker similarity than SiFiGAN, attributed to distortions introduced by the
+        WORLD-based F0-flattening transformation used to perturb the training input.
+      claim_id: q4_2510_25566_disentangling_one_speech_attribute_via_information_bottlenecks_or_perturbation_can_degra
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Adding a self-supervised semantic distillation loss to a codec's training objective does not uniformly
+        improve disentanglement quality; its effect depends on which base disentanglement mechanism it is combined
+        with.
+      source: §4.1
+      evidence: Adding HuBERT distillation improved F0 controllability for the bottleneck and adversarial variants
+        but was detrimental across all metrics (WER, speaker similarity, UTMOS, and F0-RMSE) when combined with PitchFlower's
+        perturbation-based mechanism.
+      claim_id: q4_2510_25566_adding_a_self_supervised_semantic_distillation_loss_to_a_codec_s_training_objective_does
+      confidence: high
+      relevance: high
+    - role: refines
+      claim: The controllability of a bottleneck-based disentanglement mechanism depends on the type and capacity
+        of the quantizer, not just its presence.
+      source: §6.1, Figure 4
+      evidence: At matched capacity, RVQ bottlenecks preserve pitch controllability more robustly than FSQ bottlenecks
+        as capacity increases, and controllability degrades for both as bottleneck capacity grows.
+      claim_id: q4_2510_25566_the_controllability_of_a_bottleneck_based_disentanglement_mechanism_depends_on_the_type_
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The supported F0 range is bounded by the training data distribution: on LibriTTS the effective range is roughly
+      60-700 Hz, downward transpositions from low starting F0 saturate near 60 Hz and fail to follow the target contour,
+      and extending the range requires retraining on data with a wider F0 distribution (§7).'
+    - Evaluation is confined to a single training run on a single dataset (LibriTTS) with modest compute (one consumer
+      GPU, 800k iterations), and no downstream integration with a TTS or singing-voice-synthesis system is demonstrated
+      despite that being cited as a motivating application. Speaker similarity is consistently the weakest dimension
+      for PitchFlower relative to the strongest baseline (SiFiGAN), a trade-off the authors trace to WORLD-introduced
+      artifacts in the perturbation step rather than to the flow decoder or bottleneck itself. The authors position
+      generalizing the perturbation-plus-bottleneck framework to other attributes (e.g., emotion, timbre) as future
+      work, not something demonstrated in this paper.
+    caveats:
+    - Pitch control is demonstrated within one codec and dataset, and attribute isolation can reduce speaker fidelity.
+  - id: '2511.01056'
+    published_date: '2025-11-02'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - VC
+    architecture:
+    - VAE
+    - flow-matching
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: decoupled_cross_domain_alignment_improves_low_resource_conversion_stability
+      role: supports
+      claim: Decoupling cross-domain representation alignment from downstream acoustic generation improves conversion
+        stability when paired training data across the two domains is scarce.
+      source: §3.3, Table 1
+      evidence: Removing the VAE alignment module increases CER from 16.93% to 40.16% and degrades every reported
+        quality proxy on Mandarin whisper-to-normal conversion.
+      confidence: high
+      relevance: medium
+    - claim_id: structured_residual_flow_modeling_stabilizes_cross_domain_generation
+      role: supports
+      claim: Modeling a structured residual on top of a deterministic coarse acoustic prediction produces more stable
+        generation than modeling the full acoustic representation under cross-domain mismatch.
+      source: §3.3, Table 1
+      evidence: Residual OT-CFM refinement improves CER and DNSMOS over full-mel OT-CFM modeling on the same coarse
+        backbone.
+      confidence: high
+      relevance: high
+    - claim_id: same_domain_voice_conversion_transfers_poorly_to_whispered_input
+      role: complicates
+      claim: Generic voice conversion systems trained on same-domain speech transfer poorly to severely mismatched
+        inputs such as whispered speech.
+      source: §3.3, Table 1
+      evidence: Seed-VC applied zero-shot to whispered input yields 46.42% CER, versus 16.93% for the whisper-adapted
+        system.
+      confidence: high
+      relevance: low
+    - claim_id: gated_domain_alignment_can_unify_whisper_and_standard_voice_conversion
+      role: supports
+      claim: Conditionally applying a domain-alignment module only to out-of-domain inputs can unify whisper-to-normal
+        and standard voice conversion without materially degrading either task.
+      source: §3.4, Table 2
+      evidence: Removing gated dual-path routing raises normal-to-normal VC CER from 3.33% to 4.33% while perceptual
+        quality remains similar.
+      confidence: high
+      relevance: medium
+    limitations:
+    - All reported quality and speaker-similarity results are automatic proxies, and Mandarin and English use separately
+      trained pipelines.
+    caveats:
+    - Residual optimal-transport flow improves cross-domain generation, but all quality judgments are automatic proxies.
+  - id: 2025.emnlp-main.1730
+    published_date: '2025-11-05'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    - transformer-enc-dec
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_auxiliary_attribute]
+    claims:
+    - claim_id: adding_pitch_and_duration_style_tokens_to_a_flow_matching_tts_encoder_im
+      role: supports
+      claim: Adding pitch and duration style tokens to a flow-matching TTS encoder improves filler naturalness scores
+        but increases word error rate, indicating that prosodic conditioning and phoneme representation compete for
+        capacity in the text encoder.
+      source: §6.1, Table 1
+      evidence: The full system reaches MOS 3.84 and UTMOS 3.878 versus 3.62 and 3.354 for Matcha-TTS, while WER rises
+        from 4.56% to 6.33%.
+      confidence: high
+      relevance: medium
+    - claim_id: cross_attention_between_phoneme_level_and_word_level_pitch_representatio
+      role: supports
+      claim: Cross-attention between phoneme-level and word-level pitch representations partially recovers pronunciation
+        accuracy lost when a pitch predictor is integrated into the encoder.
+      source: §6.2, Table 1
+      evidence: The ablation reported in Table 1 shows cross-attention partially recovering the pronunciation accuracy
+        lost after adding the pitch predictor while retaining filler-style conditioning.
+      confidence: high
+      relevance: medium
+    - claim_id: llm_based_filler_prediction_substantially_outperforms_sampling_based_ins
+      role: supports
+      claim: LLM-based filler prediction substantially outperforms sampling-based insertion baselines on both position
+        accuracy and contextual naturalness, even when the LLM is fine-tuned from only 4.20M trainable LoRA parameters.
+      source: §6.3, Table 2
+      evidence: Vicuna-7B with LoRA reaches 82.56% position accuracy and 78.44% filler-type accuracy, versus 4.32%
+        and 28.87% for the random baseline.
+      confidence: high
+      relevance: low
+    - claim_id: dialogue_oriented_llm_pretraining_provides_a_stronger_prior_for_filler_i
+      role: supports
+      claim: Dialogue-oriented LLM pretraining provides a stronger prior for filler insertion than general instruction
+        tuning, suggesting that conversational context modeling is a key factor in filler placement quality.
+      source: §6.3.1, Table 3
+      evidence: Among the compared LLaMA, Qwen, and Vicuna variants, Vicuna-7B produces the strongest filler position
+        and type predictions.
+      confidence: high
+      relevance: low
+    - claim_id: duration_controllability_in_filler_synthesis_is_harder_to_achieve_than_p
+      role: complicates
+      claim: Duration controllability in filler synthesis is harder to achieve than pitch controllability; pitch conditioning
+        has negligible effect on predicted duration, pointing to a need for dedicated duration control mechanisms.
+      source: §6.2
+      evidence: The control analysis finds substantially weaker duration control than pitch control and negligible
+        influence from pitch conditioning on predicted filler duration.
+      confidence: high
+      relevance: medium
+    limitations:
+    - Listening evaluation is English-only, WER increases with filler conditioning, and the paper leaves duration
+      control and evaluation-protocol scale incompletely characterized.
+    caveats:
+    - Flow-based prosodic conditioning improves filler style but raises WER and leaves duration control weaker than
+      pitch control.
+  - id: 2025.emnlp-main.40
+    published_date: '2025-11-05'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - TTS
+    - evaluation
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - diffusion
+    - GAN
+    - VAE
+    - transformer-enc-dec
+    - hybrid
+    relevance: low
+    evidence_role:
+    - historical_context
+    - evaluation_caution
+    current_role: minor
+    method_family: []
+    claims:
+    - claim_id: instruction_guided_control_via_natural_language_while_the_most_expressive_tts_control_paradigm_remai
+      role: supports
+      claim: Instruction-guided control via natural language, while the most expressive TTS control paradigm, remains
+        the least mature, with no standardized evaluation protocol across systems.
+      source: §3.2.4, §4.2
+      evidence: The survey identifies PromptTTS, InstructTTS, VoxInstruct, and ControlSpeech as flexible instruction-guided
+        systems but finds no standardized cross-system evaluation protocol.
+      confidence: high
+      relevance: low
+    - claim_id: fine_grained_simultaneous_control_over_multiple_speech_attributes_emotion_prosody_timbre_is_not_reli
+      role: supports
+      claim: Fine-grained simultaneous control over multiple speech attributes (emotion, prosody, timbre) is not reliably
+        achieved by any existing single system, representing a fundamental open problem in controllable TTS.
+      source: §5.1
+      evidence: Across the systems surveyed, no single model reliably controls emotion, prosody, and timbre simultaneously
+        at fine granularity.
+      confidence: high
+      relevance: low
+    - claim_id: the_absence_of_a_benchmark_that_jointly_measures_naturalness_intelligibility_speaker_similarity_and
+      role: complicates
+      claim: The absence of a benchmark that jointly measures naturalness, intelligibility, speaker similarity, and
+        controllability accuracy prevents systematic progress comparison across control strategies.
+      source: §4.2, §5.1
+      evidence: The surveyed literature uses separate MOS, WER, speaker-similarity, and controllability measures rather
+        than one benchmark covering all four dimensions.
+      confidence: high
+      relevance: low
+    - claim_id: the_field_has_undergone_a_structural_shift_from_non_autoregressive_acoustic_models_toward_autoregres
+      role: supports
+      claim: The field has undergone a structural shift from non-autoregressive acoustic models toward autoregressive
+        codec language models and flow-matching systems, driven by improvements in zero-shot speaker generalization
+        and natural language control.
+      source: §3.1.3
+      evidence: The survey documents a transition from non-autoregressive acoustic models toward autoregressive codec
+        language models and flow/diffusion systems associated with stronger zero-shot and natural-language control.
+      confidence: high
+      relevance: medium
+    - claim_id: datasets_with_comprehensive_multi_attribute_annotations_covering_emotion_speaker_identity_prosody_an
+      role: complicates
+      claim: Datasets with comprehensive multi-attribute annotations covering emotion, speaker identity, prosody,
+        and style simultaneously remain scarce, constituting a practical bottleneck for developing fully controllable
+        TTS systems.
+      source: §4.1, §5.1
+      evidence: The dataset review finds that most corpora annotate either emotion or speaker identity rather than
+        comprehensive combinations of emotion, identity, prosody, and style.
+      confidence: high
+      relevance: low
+    limitations:
+    - Coverage cuts off around late 2024/early 2025; systems from mid-2025 onward (Qwen3-TTS, Marco-Voice, DiSTAR,
+      etc.) are not included. The survey focuses on single-attribute controllability; multi-attribute simultaneous
+      control is noted as an open problem but not quantitatively evaluated. Robustness to out-of-distribution prompts
+      and long-form synthesis are identified as challenges without proposed solutions. The awesome-controllable-speech-synthesis
+      GitHub list is maintained as a living update mechanism.
+    caveats:
+    - The survey identifies flow matching as a field trend but predates much of the Q4 evidence and offers no matched
+      flow-specific evaluation.
+  - id: 2025.findings-emnlp.1077
+    published_date: 2025-11-05
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - VC
+    architecture:
+    - flow-matching
+    claims:
+    - role: supports
+      claim: Combining a single off-the-shelf self-supervised speech encoder (discretized via clustering) with a flow-matching
+        speech decoder is sufficient for competitive any-to-any zero-shot voice conversion, without requiring separate
+        encoders for speaker/content disentanglement.
+      source: §3, Table 1
+      evidence: EZ-VC uses only one pretrained SSL encoder (Xeus) with k-means-quantized units for content and an
+        unmasked mel-spectrogram as the speaker reference, outperforming Seed-VC, kNN-VC, Vec2Wav 2.0, and Diff-HierVC
+        on speaker similarity (SSIM 0.71), naturalness MOS (3.91), similarity MOS (3.90), and UTMOS (3.56).
+      claim_id: q4_2025_findings_emnlp_1077_combining_a_single_off_the_shelf_self_supervised_speech_encoder_discretized_via_clustering_with_a_fl
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Flow-matching-based voice conversion decoders can generalize to languages entirely unseen during training
+        with naturalness comparable to or better than on seen languages.
+      source: §5, Table 4, Table 5
+      evidence: Against Seed-VC (also CFM-based) on unseen German and Spanish, EZ-VC achieves higher UTMOS naturalness
+        (3.71 vs. 2.83 German; 3.49 vs. 3.24 Spanish) with comparable or better speaker similarity, while its own
+        seen-language (English) UTMOS (3.76) is close to its unseen-language scores.
+      claim_id: q4_2025_findings_emnlp_1077_flow_matching_based_voice_conversion_decoders_can_generalize_to_languages_entirely_unseen_during_tra
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Removing dedicated disentanglement encoders in a voice conversion architecture does not reduce the pretrained
+        encoder's role as a bottleneck on cross-lingual generalization.
+      source: §Limitations
+      evidence: The authors note the architecture's generalization is reliant on the quality of the pretrained speech
+        encoder, and that an encoder trained on only one language would likely not achieve the same level of cross-lingual
+        generalization Xeus (trained on ~4,000 languages) provides.
+      claim_id: q4_2025_findings_emnlp_1077_removing_dedicated_disentanglement_encoders_in_a_voice_conversion_architecture_does_not_reduce_the_p
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: Simplifying a voice conversion architecture to fewer encoder modules does not necessarily reduce its
+        overall computational requirements.
+      source: §Limitations, §4.2
+      evidence: Despite dropping the multiple encoders/adapters used by systems like AdaptVC and StableVC, the authors
+        state their computational requirements remain comparable or higher, consistent with training the ~300M-parameter
+        F5-TTS-based decoder from scratch for 1.35 million updates on 12,840 hours of speech.
+      claim_id: q4_2025_findings_emnlp_1077_simplifying_a_voice_conversion_architecture_to_fewer_encoder_modules_does_not_necessarily_reduce_its
+      confidence: high
+      relevance: low
+    limitations:
+    - 'The paper''s own stated limitations are narrow: generalization depends on the linguistic coverage of the pretrained
+      SSL encoder, and despite architectural simplification, training compute remains comparable to or higher than
+      prior systems. Beyond what the authors state, the subjective evaluation is small in scale (10 audio samples
+      judged by 20 volunteers), which limits the statistical strength of the naturalness and similarity MOS comparisons,
+      and the objective cross-lingual comparison (Table 5) is restricted to a single baseline (Seed-VC) on two unseen
+      languages. The authors also flag a dual-use risk: the same cross-lingual, high-naturalness voice conversion
+      capability that enables the paper''s contribution could be used to produce deepfakes.'
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    current_role: active_evidence
+    method_family: [pure_fm]
+    caveats:
+    - The simplified flow decoder depends on a massively multilingual SSL encoder and does not reduce overall training
+      compute.
+  - id: 2025.findings-emnlp.524
+    published_date: '2025-11-05'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: EMNLP
+    task:
+    - TTS
+    architecture:
+    - diffusion
+    - flow-matching
+    - hybrid
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_auxiliary_attribute]
+    claims:
+    - role: supports
+      claim: Fixing the target sequence length at inference time, combined with a masked-diffusion decoder trained
+        on variable-length masking, gives non-autoregressive S2ST models exact duration control without post-hoc time-stretching.
+      source: §5.1, Table 2
+      evidence: Dub-S2ST reaches 100% duration compliance at both the 20% and 40% tolerance thresholds by initializing
+        decoding with a fully masked sequence whose length matches the source unit sequence, compared to 56-81% for
+        prior duration-controllable baselines under the 20% threshold.
+      claim_id: q4_2025_findings_emnlp_524_fixing_the_target_sequence_length_at_inference_time_combined_with_a_masked_diffusion_dec
+      confidence: high
+      relevance: medium
+    - role: supports
+      claim: Speaking-speed adaptation for cross-lingual translation can be learned directly from discrete unit-sequence
+        deduplication statistics, without relying on text, phonemes, or syllable counts.
+      source: §5.3, Table 4
+      evidence: The unit-based speed adaptation ratio (reduced-sequence length over original length) correlates strongly
+        with ground-truth syllable speed (correlation 0.606), and training on speed-adapted sequences raises the correlation
+        between generated and source syllable speed from 0.235 to 0.519.
+      claim_id: q4_2025_findings_emnlp_524_speaking_speed_adaptation_for_cross_lingual_translation_can_be_learned_directly_from_dis
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: Conditioning a speech synthesizer on the source speaker embedding and source mel-spectrogram to preserve
+        speaker identity in cross-lingual translation trades off against acoustic naturalness relative to a single-speaker-only
+        configuration.
+      source: §5.1, Table 1
+      evidence: The multi-speaker Dub-S2ST achieves the best speaker similarity (SPK-SIM 0.266) but a lower DNSMOS
+        (3.693) than the single-speaker Dub-S2ST-single (DNSMOS 3.945), which does not condition on source speaker
+        identity.
+      claim_id: q4_2025_findings_emnlp_524_conditioning_a_speech_synthesizer_on_the_source_speaker_embedding_and_source_mel_spectro
+      confidence: high
+      relevance: low
+    - role: complicates
+      claim: Applying a separately trained voice-conversion model to a translation system's output, rather than conditioning
+        the synthesizer jointly on speaker identity during training, can degrade translation intelligibility.
+      source: §5.4, Table 8
+      evidence: Applying a cross-lingual voice-conversion model to the single-speaker Dub-S2ST-single output raises
+        speaker similarity (SIM 0.315) but lowers ASR-BLEU from 23.88 to 23.09, which the authors attribute to oversmoothing
+        of pronunciation introduced by the voice-conversion process.
+      claim_id: q4_2025_findings_emnlp_524_applying_a_separately_trained_voice_conversion_model_to_a_translation_system_s_output_ra
+      confidence: high
+      relevance: low
+    limitations:
+    - The model also operates at sentence level and requires an external segmentation step before it could be applied
+      to longer-form video or dialogue content, which the authors note as a limitation for real-world dubbing pipelines.
+      Training data quality (studio-recorded rather than in-the-wild speech) may limit robustness to noisy or reverberant
+      source audio encountered in practical dubbing applications.
+    caveats:
+    - The flow-based synthesizer contributes exact duration control, but speaker preservation and translation quality
+      depend on the surrounding S2ST pipeline.
+  - id: '2511.09995'
+    published_date: '2025-11-13'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2511_09995_auxiliary_alignment_of_intermediate_flow_matching_representations_with_a
+      role: supports
+      claim: Auxiliary alignment of intermediate flow-matching representations with a pre-trained speaker embedding
+        improves speaker similarity in zero-shot TTS without requiring a dedicated supervised fine-tuning stage.
+      source: §4.1, Table 1
+      evidence: At matched 100k-hour training data, the proposed alignment strategy yields average absolute gains
+        of 3.0% in Sim-WavLM and 2.1% in Sim-ERes2Net over the same-data baseline with comparable CER/WER, and the
+        SFT-free model outperforms a baseline trained on 150k hours with a dedicated speaker SFT stage.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_09995_speaker_identity_information_in_flow_matching_based_speech_generation_is
+      role: supports
+      claim: Speaker identity information in flow-matching-based speech generation is not uniformly distributed across
+        denoising timesteps or network depth, concentrating in early (high-noise) denoising steps and in shallower-to-middle
+        layers while weakening toward the final layers.
+      source: §2.2, Figure 3
+      evidence: CKNNA-based probing of a converged baseline FM checkpoint's intermediate representations shows a clear,
+        non-uniform pattern across both the timestep and layer axes, with the final layers carrying comparatively
+        little speaker signal.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_09995_a_training_time_speaker_alignment_auxiliary_loss_can_generalize_across_s
+      role: supports
+      claim: A training-time speaker-alignment auxiliary loss can generalize across structurally distinct flow-matching
+        TTS decoder families, including both LM-conditioned and LM-free variants.
+      source: §4.3, Table 3
+      evidence: On LibriTTS, the alignment strategy improves Sim-WavLM from 0.510 to 0.538 on an LM-based CosyVoice-2-style
+        decoder and from 0.398 to 0.458 on an LM-free MMDiT-based decoder, with matching gains in Sim-ERes2Net.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_09995_representation_alignment_supervision_that_is_uniform_across_timesteps_or
+      role: complicates
+      claim: Representation-alignment supervision that is uniform across timesteps or layers under-exploits the non-uniform
+        structure of speaker information in flow-matching models, leaving speaker-similarity gains on the table relative
+        to jointly adaptive supervision.
+      source: §4.2, Table 2
+      evidence: Ablated alignment variants using only temporal adaptivity or only layer adaptivity underperform the
+        jointly time- and layer-adaptive strategy on LibriTTS (Sim-WavLM 0.513 and 0.524 respectively vs. 0.538 for
+        the joint strategy).
+      confidence: high
+      relevance: high
+    - claim_id: q4_2511_09995_external_representation_alignment_supervision_for_generative_speech_mode
+      role: refines
+      claim: External representation-alignment supervision for generative speech models is more effective when its
+        supervision strength is dynamically reweighted according to where in the network and denoising trajectory
+        the target attribute is actually encoded, rather than applied at fixed strength throughout.
+      source: §4.2, Figure 5
+      evidence: Visualizing the learned adaptive weights shows supervision concentrated in shallower layers and later
+        denoising stages, which the paper interprets as the regions most critical for speaker identity, consistent
+        with the earlier CKNNA-based distribution analysis.
+      confidence: high
+      relevance: high
+    limitations:
+    - The alignment signal depends on one speaker-verification encoder and is tested only on two mel-based flow decoders
+      in Mandarin and English.
+    caveats:
+    - Adaptive alignment relies on one external speaker encoder and is validated on two mel-based flow decoders.
+  - id: '2511.18487'
+    published_date: 2025-11-23
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: frontier_probe
+    method_family: [pure_fm]
+    claims:
+    - claim_id: natural_language_instruction_conditioning_can_control_timbre_and_paralinguis
+      role: supports
+      claim: Natural-language instruction conditioning can control timbre and paralinguistic attributes of synthesized
+        speech at accuracy competitive with or exceeding reference-audio-dependent methods, without requiring a reference
+        audio input.
+      source: §3.3, Table 2
+      evidence: Against CosyVoice2 (which needs reference audio for gender/age control), InstructAudio achieves 100%
+        gender and 86.67% age classification control accuracy using text-only instructions, and outperforms CosyVoice2
+        on emotion (83.33% vs. 58.33%) and style (86.67% vs. 65%) control accuracy that CosyVoice2 does support.
+      confidence: high
+      relevance: medium
+    - claim_id: conditioning_speech_synthesis_on_text_only_instructions_rather_than_referenc
+      role: complicates
+      claim: Conditioning speech synthesis on text-only instructions rather than reference audio introduces one-to-many
+        mapping ambiguity that reduces perceived naturalness relative to audio-prompted systems.
+      source: §3.3, §3.4, Table 2
+      evidence: InstructAudio's NMOS (3.46) trails CosyVoice2's NMOS (3.65) despite InstructAudio outperforming CosyVoice2
+        on nearly every objective control, similarity, and distortion metric; the authors attribute the naturalness
+        gap to the information loss inherent in text-only conditioning versus reference-audio conditioning.
+      confidence: high
+      relevance: medium
+    - claim_id: a_single_instruction_conditioned_architecture_can_jointly_serve_speech_and_m
+      role: supports
+      claim: A single instruction-conditioned architecture can jointly serve speech and music generation at competitive
+        quality in both domains, without requiring task-specific architectural branches or per-task fine-tuning.
+      source: §3.3, Tables 1 and 3
+      evidence: Trained jointly on 50K hours of speech and 20K hours of music using one standardized instruction-phoneme
+        input format and one MM-DiT model, InstructAudio achieves the best SongEval scores across all five evaluated
+        dimensions against dedicated TTM systems (DiffRhythm+, ACE-Step) while simultaneously achieving the lowest
+        Seed-TTS WER among compared TTS systems, despite using less total training data than the largest single-task
+        baselines.
+      confidence: high
+      relevance: medium
+    - claim_id: constraining_audio_clip_length_to_enable_joint_training_across_generation_do
+      role: complicates
+      claim: Constraining audio clip length to enable joint training across generation domains with different natural
+        durations limits the applicability of the resulting model to long-form generation in either domain.
+      source: §3.2, §3.4
+      evidence: To align speech and music training, clips are capped at 5–20 seconds; this disadvantages the TTM comparison
+        against DiffRhythm+, which is optimized for full-length song generation and does not natively support outputs
+        under 90 seconds, requiring the authors to generate longer sequences and truncate them for the evaluation,
+        which they acknowledge "may introduce evaluation bias."
+      confidence: high
+      relevance: low
+    limitations:
+    - Professional listening tests use proprietary datasets and test sets, and baseline-access differences may bias
+      comparisons.
+    caveats:
+    - Instruction conditioning is demonstrated in one flow architecture with proprietary evaluation and constrained
+      clip length.
+  - id: '2512.05126'
+    published_date: 2025-11-23
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2512_05126_replacing_raw_reference_audio_conditioning_with_a_distilled_global_speak
+      role: supports
+      claim: Replacing raw reference-audio conditioning with a distilled global speaker embedding reduces language
+        leakage from the reference audio into synthesized content in cross-lingual generation.
+      source: §4.2, Table 4
+      evidence: Switching from context-speech conditioning (M1) to a global speaker embedding (M2) drops WER from
+        16.78 to 4.81 on the EN-ZH cross-lingual test set, with the paper attributing M1's high WER to speech content
+        becoming "significantly influenced by the language of the reference audio."
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_05126_combining_a_pretrained_discrimination_optimized_speaker_verification_emb
+      role: supports
+      claim: Combining a pretrained, discrimination-optimized speaker-verification embedding with a separately trained,
+        synthesis-oriented embedding improves speaker identity preservation over using either alone.
+      source: §4.3, Table 6
+      evidence: An ablation shows the pretrained-encoder-only variant underperforms overall and the learnable-encoder-only
+        variant achieves low WER but poor speaker similarity (SIM-o 0.495 vs. 0.655 for the full dual encoder), attributed
+        to limited fine-tuning data.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_05126_adding_visual_conditioning_for_lip_synchronization_control_trades_off_ag
+      role: complicates
+      claim: Adding visual conditioning for lip-synchronization control trades off against intelligibility in cross-lingual
+        video translation.
+      source: §4.2, Table 4
+      evidence: The full visual-conditioning configuration (lip + face features, M4) achieves the best synchronization
+        but raises WER by 4.21 over a no-visual baseline; a face-only configuration (M5) recovers most of the synchronization
+        gain while raising WER by only 1.38.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_05126_fine_tuning_a_pretrained_zero_shot_tts_model_on_audiovisual_data_can_deg
+      role: complicates
+      claim: Fine-tuning a pretrained zero-shot TTS model on audiovisual data can degrade baseline speech generation
+        quality before any visual conditioning is added.
+      source: §4.1
+      evidence: After fine-tuning on audiovisual data with no visual features (M1), speech quality shows a slight
+        degradation relative to the original TTS model, attributed to the limited scale of the audiovisual training
+        data.
+      confidence: medium
+      relevance: medium
+    limitations:
+    - The proprietary audiovisual data and machine-translated English-Chinese test set limit reproducibility and language-pair
+      generalization.
+    caveats:
+    - The pretrained flow backbone is modified for audiovisual dubbing, but visual control trades off against intelligibility.
+  - id: '2512.04720'
+    published_date: 2025-12-04
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    - VAE
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_acceleration]
+    claims:
+    - role: supports
+      claim: Learned cross-modal attention between concatenated text and speech sequences produces more stable text-speech
+        alignment than filler-token padding or uniform upsampling in NAR TTS.
+      source: §2.3, §4.1, Table 1
+      evidence: The learned alignment variant reaches WER 1.48% on Seed-TTS English and avoids the instability of
+        padding or uniform upsampling baselines.
+      claim_id: q4_2512_04720_learned_cross_modal_attention_between_concatenated_text_and_speech_sequences_produces_mo
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: A VAE latent target with reduced temporal and feature dimensionality can accelerate flow-matching TTS
+        training by roughly 3x without architecture changes, at the cost of lower speaker similarity and naturalness.
+      source: §2.2, §4.3, Table 2
+      evidence: The VAE target reduces matched-hardware training time from 90 to 31 hours, while lowering speaker
+        similarity and naturalness relative to filterbank targets.
+      claim_id: q4_2512_04720_a_vae_latent_target_with_reduced_temporal_and_feature_dimensionality_can_accelerate_flow
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: NAR TTS systems can match or exceed the intelligibility of large autoregressive models on standard benchmarks
+        while retaining parallel inference.
+      source: §4.1, Table 1
+      evidence: The VAE variant reaches WER 1.36% on Seed-TTS English and 1.31% on Chinese while retaining parallel
+        generation.
+      claim_id: q4_2512_04720_nar_tts_systems_can_match_or_exceed_the_intelligibility_of_large_autoregressive_models_o
+      confidence: high
+      relevance: medium
+    - role: complicates
+      claim: High-sample-rate synthesis (44.1 kHz) with a VAE codec trained on mixed-rate data degrades significantly
+        in out-of-distribution evaluation, indicating codec capacity as a bottleneck for NAR fidelity.
+      source: §4.1, §4.4, Table 1
+      evidence: On 44.1-kHz AISHELL-3, the VAE variant degrades to WER 10.7%, SIM 0.540, and UTMOS 1.78 under codec-domain
+        shift.
+      claim_id: q4_2512_04720_high_sample_rate_synthesis_44_1_khz_with_a_vae_codec_trained_on_mixed_rate_data_degrades
+      confidence: high
+      relevance: high
+    limitations:
+    - The Mel-VAE was trained on a small, mixed-sampling-rate corpus; the high-rate (44.1 kHz) AISHELL-3 results show
+      clear degradation, and scaling the codec training data is an open task.
+    - Inference prepends prompt text and reference audio to the target sequence (following ZipVoice and F5-TTS), adding
+      latency and constraining zero-shot flexibility when prompts are long.
+    - Speaker similarity (SIM-o) for the VAE variant is consistently lower than the Fbank variant, suggesting that
+      the latent bottleneck discards speaker-identity detail needed for voice cloning.
+    - The model is English/Chinese only; broader multilingual evaluation is absent.
+    - No streaming or low-latency inference mechanism is described despite the NAR architecture's theoretical suitability.
+    caveats:
+    - Latent compression accelerates flow training but lowers speaker similarity and becomes a bottleneck at high
+      sampling rates.
+  - id: '2512.04779'
+    published_date: '2025-12-04'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - singing
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: annotation_free_melody_extraction_learned_end_to_end_via_teacher_student_dis
+      role: supports
+      claim: Annotation-free melody extraction, learned end-to-end via teacher-student distillation and jointly optimized
+        with the synthesis model, can substitute for manually-annotated phoneme and pitch alignment as a conditioning
+        signal for singing voice synthesis without degrading output quality.
+      source: §3.2, §4.5, Table 1
+      evidence: An online melody extractor is trained with a KL-divergence distillation loss against a frozen MIDI-pretrained
+        teacher, jointly with the DiT synthesis model, using only sentence-level-timestamped weakly-aligned data;
+        the resulting system achieves aesthetic scores (CE, CU, PC, PQ) comparable to or better than baselines trained
+        with precise phoneme/MIDI annotation.
+      confidence: high
+      relevance: high
+    - claim_id: reinforcement_learning_post_training_with_a_multi_objective_reward_combining
+      role: supports
+      claim: Reinforcement learning post-training with a multi-objective reward combining content-accuracy and melodic-similarity
+        terms can jointly improve intelligibility and melody adherence in a flow-matching-based singing synthesis
+        model, particularly in zero-shot and lyric-editing conditions.
+      source: §3.3, §4.6, Table 3
+      evidence: Flow-GRPO post-training (single-timestep stochastic noise injection into the ODE flow) reduces WER
+        from 16.75% to 15.18% and raises F0 Pearson correlation from 76.64% to 82.84% relative to the pre-trained-only
+        model.
+      confidence: high
+      relevance: high
+    - claim_id: an_explicit_representation_alignment_loss_between_a_conditioning_signal_and
+      role: complicates
+      claim: An explicit representation-alignment loss between a conditioning signal and internal model features can
+        accelerate convergence of conditional behavior, but risks degrading a competing objective unless its loss
+        weight is annealed during training.
+      source: §4.1, §4.6, Table 3
+      evidence: The CKA-alignment loss speeds early convergence of melody-following behavior, but the paper reports
+        that its weight must be gradually reduced during training; leaving it too high yields strong F0 correlation
+        at the cost of increased WER.
+      confidence: high
+      relevance: high
+    - claim_id: zero_shot_singing_voice_timbre_transfer_conditioned_on_a_short_reference_aud
+      role: supports
+      claim: Zero-shot singing-voice timbre transfer, conditioned on a short reference audio prompt, can generalize
+        to unseen speakers without dedicated fine-tuning when the synthesis backbone is initialized from a pretrained
+        zero-shot flow-matching TTS model.
+      source: §4.3, §4.5, Table 1
+      evidence: Evaluated on five unseen in-the-wild speakers absent from training, the system achieves 1.28% WER,
+        93.95% speaker similarity, and 81.28% F0 correlation in the zero-shot timbre-transfer setting, outperforming
+        TCSinger and Vevo baselines on WER.
+      confidence: high
+      relevance: medium
+    - claim_id: structural_and_lyrical_editing_that_changes_phoneme_counts_and_sentence_stru
+      role: complicates
+      claim: Structural and lyrical editing that changes phoneme counts and sentence structure remains harder for
+        annotation-free singing synthesis than straightforward zero-shot synthesis, since intelligibility degrades
+        for the editing task even when melody adherence and relative comparisons to baselines remain favorable.
+      source: §4.5, Table 1
+      evidence: WER rises to 12.62-18.44% for zero-shot lyric and structural editing versus 1.28% for zero-shot synthesis
+        on the same model, though this is still far below Vevo's 67.31-73.97% WER on the identical editing tasks.
+      confidence: high
+      relevance: high
+    limitations:
+    - Subjective editing results cover a narrow Mandarin, unseen-speaker setting, while the broader annotation-free
+      claims rely heavily on automatic content and melody metrics.
+    caveats:
+    - Annotation-free flow singing synthesis improves with RL, but structural editing remains harder than zero-shot
+      generation.
+  - id: '2512.04793'
+    published_date: '2025-12-04'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - singing
+    - VC
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2512_04793_passing_a_zero_shot_voice_singing_conversion_model_s_input_through_a_sep
+      role: supports
+      claim: Passing a zero-shot voice/singing conversion model's input through a separate, pretrained single-shot
+        conversion model to strip source-speaker identity before content-feature extraction improves the invariance
+        of the resulting content representation and downstream conversion fidelity.
+      source: §5.3.1, Table 3
+      evidence: Ablating the RVC-based timbre shifter is the single largest degradation across all three test settings,
+        e.g. under Mix Vocal SPK-SIM drops from 0.810 to 0.804 and CER rises from 15.70% to 16.30%.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_04793_making_speaker_timbre_conditioning_a_function_of_the_local_pitch_contour
+      role: supports
+      claim: Making speaker/timbre conditioning a function of the local pitch contour, rather than a single static
+        per-speaker embedding, improves perceived quality of converted singing by allowing timbre to shift with vocal
+        register.
+      source: §5.3.1, Table 3, Figure 3a
+      evidence: Removing the F0-aware timbre adaptor lowers aesthetic Content Enjoyment/Usefulness scores across all
+        settings, e.g. GT Leading CE/CU falls from 5.79/6.50 to 5.75/6.46.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_04793_reweighting_a_flow_matching_training_loss_to_emphasize_under_represented
+      role: complicates
+      claim: Reweighting a flow-matching training loss to emphasize under-represented high-frequency spectral content
+        does not uniformly improve all quality dimensions; it can trade improved spectral/aesthetic detail against
+        measured intelligibility.
+      source: §5.3.1, Table 3
+      evidence: On the clean GT Leading set, including the energy-balanced loss lowers CER (9.20% vs. 9.40% without
+        it) but very slightly reduces aesthetic CE/CU (5.79/6.50 vs. 5.81/6.54 without it), a pattern the authors
+        attribute to a spectral-detail/intelligibility trade-off.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2512_04793_online_rl_post_training_with_a_multi_objective_non_differentiable_percep
+      role: supports
+      claim: Online RL post-training with a multi-objective, non-differentiable perceptual reward (aesthetic quality,
+        intelligibility, speaker similarity) can improve a flow-matching voice/singing conversion model on dimensions
+        not directly optimized by its supervised training objective.
+      source: §5.2
+      evidence: After SFT, the RL stage further raises CMOS from 3.23 to 3.31 and aesthetic CE/CU from 5.73/6.35 to
+        5.75/6.40 on Mix Vocal, and yields the highest CMOS (3.91) on the full production pipeline (Ours Leading).
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2512_04793_zero_shot_svc_systems_evaluated_only_on_clean_isolated_solo_vocals_subst
+      role: complicates
+      claim: Zero-shot SVC systems evaluated only on clean, isolated solo vocals substantially overstate real-world
+        performance, because harmony bleed and F0 errors from imperfect source separation degrade intelligibility
+        and pitch stability even for otherwise strong baselines.
+      source: §5.1, Table 2
+      evidence: The Seed-VC baseline's CER rises from 10.89% (GT Leading, clean) to 17.30% (Mix Vocal, harmony-contaminated)
+        and LogF0PCC drops from 98.29% to 84.02%, a degradation the paper's own robustness-trained model only partially
+        closes (CER 15.90%, LogF0PCC 86.47%).
+      confidence: high
+      relevance: medium
+    limitations:
+    - A small proprietary test suite, five target timbres, two baselines, and partially ablated training stages limit
+      reproducibility and generality.
+    caveats:
+    - Flow-GRPO improves perceptual objectives, but clean-vocal tests overstate robustness to separation errors.
+  - id: neurips-2025-1cURNMriee
+    published_date: '2025-12-10'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: NeurIPS
+    task:
+    - TTS
+    - codec
+    architecture:
+    - flow-matching
+    - GAN
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - architecture_variant
+    - acceleration_evidence
+    current_role: active_evidence
+    method_family: [pure_fm, fm_vocoder]
+    claims:
+    - role: supports
+      claim: A causal, streaming reformulation of conditional flow matching that jointly estimates multiple time-indexed
+        vector fields per stream can match or exceed the quality of full-sequence, non-streaming flow-matching and
+        GAN-based waveform generation baselines while operating under real-time streaming constraints.
+      source: §4.2, Table 1
+      evidence: The non-streaming StreamFlow variant outperforms parallel baselines (Vocos, Multi-Band Diffusion,
+        RFWave) on M-STFT, PESQ, and UTMOS for EnCodec token reconstruction, and streaming StreamFlow variants outperform
+        the streaming causal EnCodec baseline across all reported metrics.
+      claim_id: q4_neurips_2025_1curnmriee_a_causal_streaming_reformulation_of_conditional_flow_matching_that_jointly_estimates_mul
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Regularizing a Diffusion Transformer's residual updates by normalizing and adaptively scaling the difference
+        between a block's output and input, before the skip connection, can stabilize training and improve quality
+        on high-resolution audio targets without increasing parameter count.
+      source: §4.3, §4.4, Tables 2 and 4
+      evidence: Replacing Scale-DiT with a vanilla DiT of the same parameter count degrades PESQ from 3.430 to 2.557
+        and UTMOS from 3.792 to 3.033 on streaming Mimi-token reconstruction, and separately improves WER from 9.59
+        to 6.23 at matched training steps before adversarial fine-tuning.
+      claim_id: q4_neurips_2025_1curnmriee_regularizing_a_diffusion_transformer_s_residual_updates_by_normalizing_and_adaptively_sc
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: A learned flow-matching decoder trained for token reconstruction can outperform a neural codec's own
+        purpose-built causal convolutional decoder on both objective quality and human comparative preference, while
+        remaining practical to substitute into an existing real-time speech-LM pipeline.
+      source: §4.5, Tables 5-6, Appendix H
+      evidence: StreamFlow outperforms the native Mimi decoder on WER, M-STFT, PESQ, pitch error, and UTMOS at matched
+        bitrates, receives a positive CMOS preference from listeners, and was integrated as a drop-in replacement
+        for the Mimi decoder in Moshi's full-duplex pipeline.
+      claim_id: q4_neurips_2025_1curnmriee_a_learned_flow_matching_decoder_trained_for_token_reconstruction_can_outperform_a_neural
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Streaming flow-matching pretraining alone is not sufficient to reach full generation quality; a subsequent
+        adversarial fine-tuning stage remains necessary, adding training cost and complexity beyond the core flow-matching
+        objective.
+      source: §4.3, Table 2
+      evidence: Ablating adversarial fine-tuning drops PESQ from 3.430 to 2.669 and UTMOS from 3.792 to 3.178, and
+        without prior flow-matching pretraining, adversarial training alone fails to produce working streaming generation,
+        resulting in discriminator collapse.
+      claim_id: q4_neurips_2025_1curnmriee_streaming_flow_matching_pretraining_alone_is_not_sufficient_to_reach_full_generation_qua
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The authors note a direct quality/latency trade-off: increasing the number of sampling steps further improves
+      quality, but the paper focuses on minimizing steps for real-time use, leaving the higher-quality, higher-latency
+      end of that trade-off curve less explored. The two-stage training pipeline (SFM pretraining followed by adversarial
+      fine-tuning with multiple discriminators) remains comparatively slow to train despite the fine-tuning stage
+      itself being short, since discriminator-based fine-tuning is inherently costly. Streaming variants also carry
+      a real latency and memory cost relative to Mimi''s much smaller native decoder (175M vs. 79M parameters, 160ms
+      vs. 80ms latency), a trade-off the paper reports but does not fully resolve.'
+    caveats:
+    - Streaming quality requires adversarial fine-tuning and higher latency and memory than the codec decoder it replaces.
+  - id: neurips-2025-SoRe80Tg48
+    published_date: '2025-12-10'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: NeurIPS
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - acceleration_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family: [pure_fm, fm_acceleration]
+    claims:
+    - claim_id: in_coarse_to_fine_flow_matching_tts_starting_the_flow_matching_sampling_proc
+      role: supports
+      claim: In coarse-to-fine flow-matching TTS, starting the flow-matching sampling process from an intermediate
+        state constructed from the weak generator's coarse output, rather than from pure Gaussian noise, improves
+        synthesis naturalness without changing the underlying flow-matching training objective's core theory.
+      source: §5.1, Table 4
+      evidence: Across four TTS backbones spanning both U-Net and DiT-based flow architectures, models trained with
+        SFM consistently outperform matched baseline and ablated counterparts on pseudo-MOS metrics and comparative/similarity
+        mean opinion scores.
+      confidence: high
+      relevance: high
+    - claim_id: the_temporal_position_of_a_coarse_generator_s_output_on_a_flow_matching_prob
+      role: supports
+      claim: The temporal position of a coarse generator's output on a flow-matching probability path can be estimated
+        adaptively during training via orthogonal projection onto the target, and this estimate benefits from a learned
+        inference-time scaling correction rather than being used as-is.
+      source: §5.1, Table 3
+      evidence: The adaptively estimated intermediate-state time tends to be small during training; scaling it up
+        at inference via the SFM strength hyperparameter improves both pseudo-MOS scores and WER up to an optimal
+        value, after which quality declines as sampling becomes overly deterministic.
+      confidence: high
+      relevance: high
+    - claim_id: skipping_the_early_stages_of_a_flow_matching_sampling_trajectory_by_starting
+      role: supports
+      claim: Skipping the early stages of a flow-matching sampling trajectory by starting from a stabilized intermediate
+        state can substantially reduce the number of adaptive-step ODE solver function evaluations needed, without
+        affecting fixed-step solvers.
+      source: §5.2, Table 5
+      evidence: With the Bosh(3) adaptive solver, increasing SFM strength progressively reduces real-time factor by
+        up to roughly 59% relative to the ablated model; the acceleration does not apply to fixed-step solvers, which
+        always run a predetermined number of steps.
+      confidence: high
+      relevance: high
+    - claim_id: feeding_a_weak_generator_s_coarse_output_directly_as_an_additional_flow_matc
+      role: complicates
+      claim: Feeding a weak generator's coarse output directly as an additional flow-matching condition, on top of
+        using it to construct the sampling start state, does not reliably improve and can degrade synthesis quality.
+      source: §5.1, Table 4
+      evidence: The SFM-c variant (coarse mel-spectrograms also used as a flow condition) causes the adaptively estimated
+        start time to collapse toward zero in U-Net-based models, making the variant inapplicable there, and underperforms
+        standard SFM in subjective evaluation for the DiT-based models where it remains applicable.
+      confidence: high
+      relevance: high
+    - claim_id: when_the_weak_generator_s_coarse_representation_carries_little_speaker_ident
+      role: complicates
+      claim: When the weak generator's coarse representation carries little speaker-identity information, using it
+        to construct the flow-matching starting state can propagate that missing information forward, since errors
+        introduced early in the flow are difficult for later sampling steps to correct.
+      source: §5.1
+      evidence: When CosyVoice's flow-module encoder receives only ASR-oriented semantic speech tokens (SFM-t) rather
+        than tokens concatenated with speaker embeddings, speaker similarity and SMOS scores drop significantly.
+      confidence: high
+      relevance: high
+    limitations:
+    - Naturalness gains are more consistent than WER or speaker-similarity gains, and acceleration applies to adaptive
+      rather than fixed-step ODE solvers.
+    caveats:
+    - Shallow-start acceleration benefits adaptive solvers, while weak coarse generators can propagate missing speaker
+      information.
+  - id: '2512.17293'
+    published_date: '2025-12-19'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: frontier_probe
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2512_17293_a_per_sample_comparison_between_a_conditional_and_unconditional_flow_mat
+      role: supports
+      claim: A per-sample comparison between a conditional and unconditional flow-matching loss, computed at the same
+        interpolation point during training, can identify unreliable text-speech pairs in noisy in-the-wild TTS training
+        data without a separate label-verification model or manual filtering.
+      source: §2.2
+      evidence: SPFM routes a sample to unconditional-only training whenever its conditional flow-matching loss exceeds
+        its unconditional loss at the same interpolation time, still extracting acoustic information from suspicious
+        samples rather than discarding them entirely.
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2512_17293_a_compact_lightweight_flow_matching_tts_architecture_fine_tuned_with_an
+      role: supports
+      claim: A compact, lightweight flow-matching TTS architecture, fine-tuned with an explicit per-sample noise-detection
+        training mechanism, can achieve better intelligibility on noisy in-the-wild data than substantially larger
+        or more complex competing systems.
+      source: §2.4, Tables 2-3
+      evidence: The SPFM-augmented Supertonic system achieved the lowest WER among all seven participating teams in
+        the WildSpoof 2026 TTS Track official leaderboard, for both seen (5.50%) and unseen (5.88%) speaker conditions,
+        while several competing teams' WER exceeded 20% or even 90%.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2512_17293_optimizing_a_tts_system_for_robustness_to_noisy_training_labels_does_not
+      role: complicates
+      claim: Optimizing a TTS system for robustness to noisy training labels does not guarantee the single best result
+        on every evaluation dimension simultaneously; a system can lead on intelligibility while trailing slightly
+        on perceptual quality metrics.
+      source: §2.4, Tables 2-3
+      evidence: The SPFM-augmented Supertonic system achieved the best WER among all teams but ranked second on UTMOS/DNSMOS
+        perceptual quality metrics, though the gap to the top-ranked team was small and its unseen-speaker UTMOS score
+        was the highest among all submissions.
+      confidence: high
+      relevance: medium
+    limitations:
+    - The challenge report lacks an ablation isolating self-purification and does not test beyond one noisy-data benchmark.
+    caveats:
+    - The self-purification result lacks an isolating ablation and is limited to one noisy-data challenge.
+  - id: '2512.18699'
+    published_date: '2025-12-21'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: frontier_probe
+    method_family: [pure_fm]
+    claims:
+    - claim_id: q4_2512_18699_a_style_specific_parameter_direction_extracted_by_subtracting_a_model_s
+      role: supports
+      claim: A style-specific parameter direction, extracted by subtracting a model's pretrained parameters from its
+        style-fine-tuned parameters, can be linearly scaled and added back to the pretrained model to enhance that
+        single expressive style without full fine-tuning.
+      source: §4.2, Table 2
+      evidence: The E-Vector method, built by scaling a dialect or emotion task vector and adding it to F5-TTS's pretrained
+        parameters, achieves higher average dialect-synthesis MOS (3.18) than both a standard fine-tune (1.85) and
+        an over-fine-tuned model (2.85), using roughly one-fifth of the over-fine-tuned model's training steps.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_18699_two_independently_learned_expressive_style_controls_can_be_combined_for
+      role: supports
+      claim: Two independently-learned expressive style controls can be combined for joint multi-style speech synthesis,
+        without any data labeled for both styles simultaneously, by applying each style's parameter modulation to
+        a disjoint subset of model layers rather than merging them into the same parameters.
+      source: §4.3, Table 3
+      evidence: The hierarchical merging strategy, which applies the dialect LoRA E-Vector to the text embedding and
+        early DiT layers and the emotion LoRA E-Vector to the later DiT layers, achieves the best average MOS (2.83)
+        on joint emotional-dialectal synthesis, ahead of a fully-merged variant (2.76) and a sequential dual-stage
+        pipeline (2.56).
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_18699_a_style_enhancement_technique_validated_on_one_tts_backbone_does_not_nec
+      role: complicates
+      claim: A style-enhancement technique validated on one TTS backbone does not necessarily transfer to another
+        backbone with a different architecture, particularly when the target model couples an LLM-based component
+        with a separate acoustic generation component.
+      source: §5
+      evidence: Applying the same E-Vector construction to CosyVoice, which combines an LLM-based text encoder with
+        a flow-matching acoustic model, produced degraded synthesis quality, attributed to interference between the
+        two components.
+      confidence: medium
+      relevance: high
+    - claim_id: q4_2512_18699_jointly_controlling_two_expressive_styles_in_speech_synthesis_remains_su
+      role: complicates
+      claim: Jointly controlling two expressive styles in speech synthesis remains substantially harder than controlling
+        either style alone, even with an interference-mitigating combination strategy.
+      source: §4.3, Table 3
+      evidence: All evaluated systems' average MOS scores on the joint emotional-dialectal synthesis task (HE-Vector
+        2.83, Fully E-Vector 2.76) are markedly lower than the best single-style dialect-synthesis MOS (E-Vector 3.18),
+        and the paper explicitly notes existing models often fail when controlling two or more expressive styles simultaneously.
+      confidence: high
+      relevance: medium
+    limitations:
+    - Private dialect data, unreliable dialect ASR, heuristic layer splits, and failure on CosyVoice constrain generalization.
+    caveats:
+    - Task-vector control is backbone-sensitive, uses private dialect data, and does not solve multi-style interference.
+  - id: '2512.19090'
+    published_date: '2025-12-22'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - control_evidence
+    current_role: active_evidence
+    method_family: [ar_fm_hybrid]
+    claims:
+    - claim_id: q4_2512_19090_conditioning_a_downstream_acoustic_detail_recovery_model_on_an_upstream
+      role: supports
+      claim: Conditioning a downstream acoustic-detail-recovery model on an upstream token-prediction model's continuous
+        hidden states, and allowing gradients to flow back from the detail-recovery loss into the token-prediction
+        model, can substantially close the quality gap between a two-stage cascaded TTS pipeline and its jointly-trained
+        end-to-end counterpart, particularly under aggressive token-rate compression.
+      source: §2.1, §4.3, Table 2
+      evidence: At a 12.5 Hz tokenizer frame rate (a 50% compression relative to 25 Hz), a cascaded two-stage baseline
+        suffers notable degradation, while the jointly-trained end-to-end JoyVoice model maintains performance comparable
+        to its own 25 Hz setting.
+      confidence: high
+      relevance: high
+    - claim_id: q4_2512_19090_a_tts_system_trained_on_continuous_unsegmented_multi_turn_dialogue_seque
+      role: supports
+      claim: A TTS system trained on continuous, unsegmented multi-turn dialogue sequences with only speaker tags
+        (rather than explicit per-utterance boundaries or forced alignment) can learn to bind speech content to the
+        correct speaker across many turns and speakers using standard attention mechanisms alone.
+      source: §2.2, §4.5, Table 5
+      evidence: JoyVoice is trained on unsegmented multi-speaker sequences using only speaker tags and speaker embeddings
+        as boundary information, and achieves the lowest WER and cpWER among compared multi-speaker systems on 2-4
+        speaker dialogues in the paper's new JoyVoice-MSMT-eval benchmark.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_19090_preference_optimization_for_tts_can_be_effectively_formulated_at_the_lev
+      role: supports
+      claim: Preference optimization for TTS can be effectively formulated at the level of discrete acoustic tokens,
+        using an automatically-computable per-sample error metric to construct chosen/rejected training pairs, without
+        requiring a learned reward model.
+      source: §2.7.3, §4.4, Table 3
+      evidence: Acoustic Preference Optimization constructs chosen/rejected sequence pairs based purely on whether
+        sampled acoustic-token sequences achieve zero character error rate, and applying it to JoyVoice-Cascade yields
+        large relative CER/WER reductions of 48.4%, 17.2%, and 8.4% on the test-zh, test-en, and test-hard Seed-TTS-Eval
+        subsets respectively.
+      confidence: high
+      relevance: medium
+    - claim_id: q4_2512_19090_multi_speaker_long_form_conversational_tts_quality_degrades_as_the_numbe
+      role: complicates
+      claim: Multi-speaker long-form conversational TTS quality degrades as the number of simultaneous speakers in
+        a single generated dialogue increases, even for a system explicitly designed to support up to eight speakers,
+        when training data for higher speaker counts is comparatively scarce.
+      source: §4.5, Table 5, Figure 4
+      evidence: On the JoyVoice-MSMT-eval benchmark, cpWER/cpCER for 4-speaker dialogues shows noticeably worse degradation
+        than 2- and 3-speaker results, attributed by the authors to under-representation of >4-speaker conversations
+        in the training data distribution.
+      confidence: high
+      relevance: low
+    limitations:
+    - Dialogue quality degrades beyond four speakers, reinforcement learning remains incomplete, and diarization-dependent
+      evaluation introduces measurement error.
+    caveats:
+    - The flow detail-recovery stage benefits from end-to-end gradients but is coupled to an upstream autoregressive
+      token model.
+  - id: '2512.22491'
+    published_date: '2025-12-27'
+    entry_date: '2026-09-26'
+    year: 2025
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - flow-matching
+    claims:
+    - role: supports
+      claim: Conditioning a flow-matching TTS model's vector field on an explicit, linguistically-motivated hierarchy
+        of phoneme, syllable/morpheme, and prosodic features improves synthesis quality and morphological pronunciation
+        accuracy for agglutinative languages beyond what phoneme-only conditioning achieves, with each additional
+        tier contributing independently and measurably.
+      source: §III.B.2, Table IV, Fig. 5
+      evidence: Progressively adding the syllable and prosody conditioning tiers raises MOS from 3.94 (phoneme-only)
+        to 4.21 (+syllable) to 4.52 (+prosody), with agglutinative word pronunciation accuracy rising from 70.8% to
+        84.7% to 92.7% and prosodic naturalness from 70.4% to 80.5% to 89.4% across the same progression.
+      claim_id: q4_2512_22491_conditioning_a_flow_matching_tts_model_s_vector_field_on_an_explicit_linguistically_motivated_hierar
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: A TTS model can achieve near-ground-truth perceptual quality for a severely low-resource, morphologically
+        complex language using only a few hours of carefully curated training data, when the model architecture is
+        explicitly designed around that language's linguistic structure rather than applied generically.
+      source: §III.B.1, Table III
+      evidence: Trained on 5.2 hours of Manchu speech, ManchuTTS achieves MOS 4.52 (± 0.11), close to the ground-truth
+        recording's MOS of 4.68, and outperforms all compared baselines (Tacotron 2, FastSpeech 2, Glow-TTS, VITS,
+        F5-TTS, CBVC) trained under identical data constraints on every objective metric.
+      claim_id: q4_2512_22491_a_tts_model_can_achieve_near_ground_truth_perceptual_quality_for_a_severely_low_resource_morphologic
+      confidence: high
+      relevance: high
+    - role: supports
+      claim: Linguistic priors learned by a hierarchically-conditioned TTS model trained on one low-resource agglutinative
+        language can transfer zero-shot to a closely related, also-endangered language, approaching the quality of
+        a model trained directly on a small amount of the target language's own data.
+      source: §III.B.2, Table V, Fig. 8
+      evidence: ManchuTTS, with no Ewenki training data, achieves MOS 3.78 on zero-shot Ewenki synthesis, only 0.23
+        points below a FastSpeech 2 model trained directly on 0.8 hours of real Ewenki speech (MOS 4.01), while preserving
+        key phonetic features such as vowel formants (r=0.87).
+      claim_id: q4_2512_22491_linguistic_priors_learned_by_a_hierarchically_conditioned_tts_model_trained_on_one_low_resource_aggl
+      confidence: high
+      relevance: high
+    - role: complicates
+      claim: Increasing training data for a low-resource agglutinative language's TTS system yields diminishing returns
+        past a modest threshold, so further quality gains for such languages likely require more diverse or higher-quality
+        recording conditions rather than simply more hours of the same studio-recorded data.
+      source: §III.B.2
+      evidence: A data-scale sensitivity analysis on 1-hour, 2-hour, and 5.2-hour training subsets shows MOS growth
+        from 3.22 to 4.52 (approaching the ground-truth ceiling of 4.68) and sharp WER reduction, but DNSMOS improvements
+        diminish after 2 hours, with the authors identifying roughly 5 hours as a practical saturation point for this
+        studio-recorded setting.
+      claim_id: q4_2512_22491_increasing_training_data_for_a_low_resource_agglutinative_language_s_tts_system_yields_diminishing_r
+      confidence: high
+      relevance: medium
+    limitations:
+    - The authors' own conclusion explicitly notes ManchuTTS remains limited to studio-recorded speech, with accuracy
+      decreasing on dialect variations, and identifies expanding data coverage to real-world recording environments
+      and different dialects, along with noise-robustness training, as necessary steps before practical deployment
+      beyond laboratory validation. The zero-shot Ewenki generalization result, while promising, is demonstrated on
+      a single related language rather than a broader typological range, leaving open how far the hierarchical linguistic
+      priors generalize to less closely related agglutinative languages. Qualitative listener feedback noted limited
+      emotional expression in long sentences and occasional stress drift, which the authors flag as a direction for
+      future prosodic modeling improvement despite the model's otherwise strong naturalness scores.
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - control_evidence
+    current_role: active_evidence
+    method_family: [pure_fm]
+    caveats:
+    - Hierarchical linguistic conditioning is validated on one primary language and one closely related transfer language
+      under studio conditions.
 claim_clusters:
   - id: fm_simulation_free_training
     claim: "Flow matching enables simulation-free training of continuous normalizing flows by regressing conditional vector fields, providing a tractable and stable alternative to score matching for generative modeling."
@@ -5063,6 +6974,11 @@ claim_clusters:
       - "2509.08696"
       - "2509.09748"
       - "2509.08379"
+      - "2510.02848"
+      - "2510.07979"
+      - "2510.08392"
+      - "2512.04720"
+      - neurips-2025-SoRe80Tg48
     contradicting_papers: []
     refining_papers:
       - "2412.10117"
@@ -5079,7 +6995,8 @@ claim_clusters:
       - "This evidence base has broadened substantially beyond mel-spectrogram TTS: shortcut self-consistency training (R-VC) and Shortcut Models both independently confirm 2-10x step reduction in voice conversion, and training-free layer/attention caching (two independent papers) confirms acceleration without any architectural change or retraining is possible for DiT-based TTS specifically, distinct from the distillation/learned-prior mechanisms that require retraining."
       - "Recursive rectification (retraining a rectified-flow model on its own generated samples, interspeech-2025-1779) yields only marginal further acceleration gains once the initial model is already well-trained, suggesting diminishing returns for iterative straightening beyond a single rectification pass."
       - "A discrete-time reformulation (2509.18470) shows that consistency between training and inference conditions, not merely the number of inference steps, determines how well a diffusion-like model generalises to fewer sampling steps — a mechanism-level nuance that applies across the acceleration techniques tracked here."
-    last_reviewed: "2026-07-19"
+      - "Q4 evidence adds attention-free denoisers, numerical-integration MeanFlow distillation, adversarially repaired one-step generation, VAE target compression, and coarse-to-fine trajectory starts. These mechanisms improve different parts of the cost profile and continue to expose quality, stability, or speaker-information trade-offs at the most aggressive settings."
+    last_reviewed: "2026-09-26"
 
   - id: fm_implicit_alignment_feasibility
     claim: "Flow-matching TTS models can learn text-speech alignment implicitly from character sequences and filler tokens, or via simple deterministic duration heuristics, without phoneme-level duration supervision, grapheme-to-phoneme converters, or explicit aligner components."
@@ -5094,13 +7011,17 @@ claim_clusters:
       - "2506.13053"
       - "2509.19928"
       - "2509.17988"
+      - 2025.vlsp-1.14
+      - "2510.02848"
+      - "2512.04720"
     caveats:
       - "Implicit alignment is prone to systematic failure modes in languages with complex scripts (e.g. Mandarin), and requires modality-specific text preprocessing (ConvNeXt refinement in F5-TTS) to be reliable."
       - "Alignment-free training is slower to converge than supervised alignment approaches in the early training phase."
       - "ZipVoice shows a parameter-free uniform-duration upsampling heuristic (assigning each token floor(T/N) frames) substantially outperforms filler-token-only padding and matches ConvNeXt refinement, suggesting the alignment-free approach generalises beyond learned refinement modules to simple deterministic heuristics."
       - "A dedicated prosody-diversity benchmark (DS-WED) finds that flow-matching NAR systems with implicit alignment (E2 TTS, F5-TTS, ZipVoice) produce measurably less prosodic diversity than autoregressive systems, and attributes the shortfall specifically to implicit alignment rather than to the flow-matching objective itself; explicit duration-perturbation partially but not fully restores the diversity gap."
       - "A separate paper reports that explicit duration/alignment modeling improves intelligibility and reduces hallucination relative to implicit alignment learned via diffusion transformers, at some cost to perceived naturalness — indicating the implicit-alignment feasibility claim understates a robustness-naturalness trade-off that explicit alignment can partially resolve."
-    last_reviewed: "2026-07-19"
+      - "Q4 reinforces that alignment choice remains language- and architecture-dependent: phoneme-level routing stabilizes duration estimation in Vietnamese, explicit alignment improves intelligibility in a matched zero-shot comparison, and learned cross-modal attention outperforms filler padding or uniform upsampling in a VAE-latent NAR system."
+    last_reviewed: "2026-09-26"
 
   - id: explicit_alignment_naturalness_ceiling
     claim: "Explicit phoneme alignment supervision in non-autoregressive TTS imposes a naturalness ceiling: removing alignment constraints and training jointly on character sequences enables flow-matching models to exceed the naturalness of alignment-supervised baselines."
@@ -5120,11 +7041,13 @@ claim_clusters:
 
   - id: fm_nar_speed_quality_competitive_ar
     claim: "Non-autoregressive flow-matching TTS achieves competitive or superior intelligibility compared to autoregressive codec-LM systems at training scales of 100K hours or more, while generating speech at substantially lower real-time factors."
-    status: emerging
+    status: strongly_supported
     confidence: high
     supporting_papers:
       - "2025.acl-long.313"
       - "2412.04724"
+      - "2510.02848"
+      - "2512.04720"
     contradicting_papers: []
     refining_papers:
       - "2406.05551"
@@ -5135,7 +7058,8 @@ claim_clusters:
       - "Intelligibility advantage over AR systems does not uniformly extend to speaker similarity, where some AR systems retain a measurable lead."
       - "The AR-vs-NAR tradeoff is modulated by task: AR systems show stronger style imitation at the cost of higher WER."
       - "The DS-WED benchmark adds a further dimension to this tradeoff: AR systems produce measurably more prosodic diversity than flow-matching NAR systems with implicit alignment, though this AR advantage does not extend to non-autoregressive masked generative modeling (MaskGCT), indicating the diversity gap is specific to implicit-alignment flow matching rather than to non-autoregressive generation in general."
-    last_reviewed: "2026-07-19"
+      - "The Q4 systems add an attention-free denoiser and a compressed VAE-latent target; both preserve parallel inference while reporting competitive intelligibility, but each introduces a separate ceiling in temporal diversity, speaker similarity, or high-sample-rate fidelity."
+    last_reviewed: "2026-09-26"
 
   - id: fm_step_scheduling_improves_fidelity
     claim: "Early steps in the flow-matching ODE trajectory (near the Gaussian prior) carry disproportionate influence over global speech attributes; densifying or restricting conditioning to these early steps improves speech fidelity, speaker similarity, or targeted attribute control (e.g. emotion) in flow-matching TTS without full retraining."
@@ -5145,6 +7069,9 @@ claim_clusters:
       - "2025.acl-long.313"
       - "2507.04349"
       - "interspeech-2025-2449"
+      - "2510.07979"
+      - "2511.09995"
+      - neurips-2025-SoRe80Tg48
     contradicting_papers: []
     refining_papers:
       - "2508.03543"
@@ -5154,30 +7081,36 @@ claim_clusters:
       - "TTS-CtrlNet independently found that emotion conditioning is concentrated in early flow steps ([0, 0.1] of the trajectory) in a different system (F5-TTS ControlNet adapter) and for a different purpose (training-time conditioning restriction rather than inference-time step scheduling); the two findings are consistent but use distinct mechanisms and have not been directly compared."
       - "At very low NFE (below 6 steps), interspeech-2025-2449 finds quality degradation becomes abrupt rather than gradual, suggesting a practical floor on how far early-step-density scheduling alone can push inference reduction without distillation."
       - "A separate interpretability paper (2508.03543) finds emotion is encoded as linear, spatially-localized directions in DiT activation space (across layers/positions rather than timesteps); this is a related but distinct finding about where attribute information concentrates in flow-matching TTS, and has not been directly reconciled with the timestep-based concentration finding in this cluster."
-    last_reviewed: "2026-07-19"
+      - "Q4 strengthens the early-trajectory interpretation from three directions: searched step positions improve few-step quality, speaker identity concentrates at early high-noise steps and shallow-to-middle layers, and coarse-to-fine initialization shows that missing speaker information in an early state is difficult for later steps to recover."
+    last_reviewed: "2026-09-26"
 
   - id: fm_velocity_space_alignment
     claim: "Preference and reinforcement-learning-based post-training alignment can be formulated for flow-matching TTS architectures — either as a direct DPO objective in the velocity space, or via Gaussian reparameterization of the deterministic output combined with policy-gradient methods (GRPO) — enabling post-training intelligibility and speaker-similarity improvements without full retraining."
-    status: emerging
+    status: strongly_supported
     confidence: high
     supporting_papers:
       - "2025.acl-long.598"
       - "2504.02407"
+      - "2512.04779"
+      - "2512.04793"
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "The DPO-FM derivation is demonstrated on a single hybrid AR+FM system (F5-TTS backbone); F5R-TTS demonstrates a distinct GRPO-based mechanism on a pure (non-hybrid) flow-matching backbone, partially addressing this gap."
       - "Preference pairs are constructed from WER-based selection in both supporting papers; the relationship between RL/preference alignment and perceptual naturalness improvements is not characterized in either."
       - "F5R-TTS shows RL post-training provides smaller relative gains on hard text (tongue twisters, repetitive phrasing) than on plain text, indicating the alignment does not resolve difficult phonetic sequences."
-    last_reviewed: 2026-07-15
+      - "Q4 independently extends online, multi-objective RL to singing synthesis and zero-shot voice/singing conversion, optimizing content, melody, aesthetics, intelligibility, and speaker similarity with non-differentiable rewards. These systems broaden the evidence beyond WER-selected TTS pairs but still report task-specific trade-offs."
+    last_reviewed: "2026-09-26"
 
   - id: fm_postvq_quality_refinement
     claim: "Flow-matching decoders applied as post-quantization refinement stages can substantially recover audio quality lost during discrete speech tokenization, enabling modular integration into codec-LM pipelines without retraining the language model."
-    status: emerging
+    status: strongly_supported
     confidence: high
     supporting_papers:
       - "2502.17239"
       - "2508.07302"
+      - neurips-2025-1cURNMriee
+      - "2512.19090"
     contradicting_papers: []
     refining_papers:
       - "2407.05407"
@@ -5187,7 +7120,8 @@ claim_clusters:
       - "Quality recovery is measured primarily on UTMOS and WER; speaker similarity and subjective naturalness MOS comparisons against dedicated TTS systems are not reported in the supporting papers."
       - "The improvement magnitude depends heavily on codec type; FACodec-based systems trade naturalness for intelligibility relative to mel-spectrogram-based systems."
       - "An independent multilingual synthesis paper (2508.07302) confirms that flow-matching alignment between discrete codec tokens and mel-spectrograms improves both speaker identity and prosodic naturalness, extending the post-quantization refinement pattern to a multilingual setting."
-    last_reviewed: "2026-07-19"
+      - "Q4 adds a causal streaming FM decoder that outperforms a codec's native convolutional decoder and a jointly trained AR-token/FM-detail cascade whose continuous hidden-state conditioning closes much of the quality gap at aggressive token compression."
+    last_reviewed: "2026-09-26"
 
   - id: ssl_pretraining_improves_fm_generalisation
     claim: "Self-supervised pretraining on large unlabeled audio corpora measurably improves the generalisation of flow-matching speech models to out-of-domain speakers and acoustic conditions."
@@ -5291,16 +7225,20 @@ claim_clusters:
 
   - id: fm_prosody_latent_diversity
     claim: "Conditional flow matching can be applied to compact latent spaces beyond mel-spectrograms or full acoustic features — such as self-supervised prosody representations — to enable diverse, reference-free generation of that specific attribute at inference."
-    status: emerging
-    confidence: medium
+    status: strongly_supported
+    confidence: high
     supporting_papers:
       - "2025.coling-main.518"
+      - "2510.21685"
+      - 2025.emnlp-main.1730
+      - "2511.18487"
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "Demonstrated on a single system (ProsodyFlow) and a single single-speaker English dataset (LJSpeech); generalisation to multi-speaker or zero-shot settings is untested."
       - "The base architecture (StyleTTS 2) retains GAN discriminators for the acoustic decoder; flow matching in this system replaces only the prosody-sampling sub-component, not the full generative pipeline."
-    last_reviewed: 2026-07-15
+      - "Q4 broadens attribute-space generation beyond a single prosody latent: masked flow matching generates pitch curves for multiple singing tasks, explicit pitch/duration tokens control conversational fillers, and text instructions control timbre and paralinguistics. The mechanisms are heterogeneous, so the status reflects repeated feasibility rather than a shared optimum."
+    last_reviewed: "2026-09-26"
 
   - id: fm_reparam_enables_auxiliary_losses
     claim: "Reparameterizing a flow-matching model to predict the clean target directly, rather than the instantaneous velocity or derivative, allows auxiliary perceptual losses (STFT, mel) and periodic activation functions to be combined with the flow-matching objective, which cannot otherwise be applied."
@@ -5324,11 +7262,13 @@ claim_clusters:
     contradicting_papers: []
     refining_papers:
       - "2509.22167"
+      - "2512.04720"
     caveats:
       - "Demonstrated on a single system (MiniMax-Speech's Flow-VAE) with a proprietary, unreleased training corpus and unreported model size, limiting independent verification."
       - "The improvement is measured via both resynthesis metrics (PESQ, MS-STFT) and downstream TTS speaker similarity, but the paper does not isolate whether the reconstruction or the downstream gain is the primary driver of the observed TTS quality improvement."
       - "A distinct latent-design technique (2509.22167) pursues the same goal — a richer VAE latent target for downstream flow-matching/diffusion TTS — via semantic regularization toward self-supervised speech features rather than a flow-augmented prior; it additionally reports that this regularization accelerates training convergence and, contrary to general expectation, does not necessarily cost reconstruction fidelity. Whether flow-augmented priors and semantic regularization are complementary or redundant latent-design techniques is untested."
-    last_reviewed: "2026-07-19"
+      - "Q4 adds a complementary efficiency result: compressing both temporal and feature dimensions of a VAE target accelerates FM-TTS training by roughly threefold, but reduces speaker similarity and naturalness. This supports latent-space leverage while making the capacity trade-off explicit."
+    last_reviewed: "2026-09-26"
 
   - id: fm_compact_architecture_efficiency
     claim: "Flow-matching TTS and VC models can match the quality of systems two to eight times larger, or an order of magnitude more parameters, when backbone architecture components are selected for per-parameter efficiency — such as repurposed ASR encoders with multi-resolution (U-Net-style) structure, in-context conditioning, or improved positional embedding design — rather than adopted by default from the image-diffusion literature."
@@ -5338,13 +7278,16 @@ claim_clusters:
       - "2506.13053"
       - "interspeech-2025-2684"
       - "2509.11084"
+      - "2510.02848"
+      - "2512.17293"
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "Demonstrated on a single system (ZipVoice's Zipformer backbone, repurposed from ASR); whether the same per-parameter efficiency gains transfer to other non-Transformer or non-U-Net backbone choices is untested."
       - "Speaker similarity for the compact model consistently trails larger baselines (F5-TTS and other NAR systems) despite matching or exceeding them on quality and intelligibility, suggesting the parameter-efficiency gain is not uniform across all quality dimensions."
       - "Two independent papers confirm the pattern generalises beyond Zipformer-style backbones: an in-context-learning voice conversion system achieves competitive zero-shot quality at substantially fewer parameters than larger autoregressive baselines, and a compact attention-based TTS system matches the pronunciation accuracy of models more than an order of magnitude larger through improved positional embedding design alone, without parameter scaling."
-    last_reviewed: "2026-07-19"
+      - "Q4 adds an attention-free convolutional denoiser and a lightweight model trained with per-sample noisy-pair detection; both outperform substantially larger systems on targeted efficiency or intelligibility measures while retaining quality trade-offs on other axes."
+    last_reviewed: "2026-09-26"
 
   - id: continuous_ar_fm_efficiency_gains
     claim: "Replacing the discrete-token interface between an autoregressive language model and its acoustic decoder with continuous representations and a flow-matching or diffusion output head — via an AR-conditioned informative prior, continuous VAE latents that shorten the AR sequence, or block-wise AR generation with parallel intra-block denoising — reduces AR decoding steps or per-token function evaluations relative to discrete-token autoregressive TTS, without sacrificing quality."
@@ -5354,13 +7297,15 @@ claim_clusters:
       - "2502.11128"
       - "2508.19098"
       - "2507.22746"
+      - "2511.05516"
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "The three supporting papers achieve the shared efficiency outcome via three distinct mechanisms (informative AR prior for per-token flow matching; continuous VAE latents replacing discrete codec tokens; block-wise AR generation with parallel flow-matching denoising per block); whether these mechanisms compose or are redundant alternatives is untested."
       - "Each paper independently reports a non-monotonic relationship between the flow-matching/diffusion head's NFE and downstream quality: moderate NFE improves intelligibility, but excessive NFE degrades both intelligibility and speaker similarity, unlike the typical acceleration-literature framing of NFE reduction as a pure quality-speed trade-off."
       - "This family is entirely composed of 2025 papers; a fourth, closely related system (VoxCPM, 2509.24650) uses an AR-conditioned diffusion decoder with a similar continuous-latent philosophy but its directly relevant claims concern classifier-free guidance behaviour rather than this specific efficiency mechanism, so it is tracked under the cfg_conditioning_mechanism_adopted cluster instead."
-    last_reviewed: "2026-07-19"
+      - "A Q4 unified speech model adds a continuous tokenizer and shared per-token generation head, extending the pattern from TTS-specific systems to joint speech understanding, generation, and editing."
+    last_reviewed: "2026-09-26"
 
   - id: fm_generalizes_to_auxiliary_latent_spaces
     claim: "The flow-matching (or rectified-flow) training and sampling framework generalises cleanly from full acoustic/waveform generation to compact auxiliary continuous target spaces — self-supervised prosody latents, stochastic prosody/duration predictors, and text-conditioned speaker embeddings — functioning as a modular, diverse-sampling sub-component within an otherwise conventional (often non-FM) TTS pipeline."
@@ -5370,13 +7315,17 @@ claim_clusters:
       - "2025.coling-main.518"
       - "interspeech-2025-1940"
       - "2509.15845"
+      - "2510.21685"
+      - 2025.emnlp-main.1730
+      - 2025.findings-emnlp.524
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "All three supporting papers are single-system demonstrations (ProsodyFlow, a FastSpeech2-style stochastic prosody predictor, and DeepDubbing's text-to-speaker-embedding module); the generalisation claim rests on convergent independent discovery of the same pattern rather than on any one paper directly comparing across target spaces."
       - "In every supporting system, the primary acoustic decoder remains a conventional (often non-FM, e.g. StyleTTS 2 or CosyVoice-style) pipeline; flow matching is applied only to the auxiliary target, not to the full generative process, so this cluster's evidence does not bear on whether FM is preferable to alternatives for the primary acoustic signal."
       - "The 'strongly_supported' status here reflects three independent confirmations of the pattern rather than three confirmations of an identical mechanism; treat with somewhat more caution than other strongly_supported clusters in this file given the mechanism diversity."
-    last_reviewed: "2026-07-19"
+      - "Q4 extends the target-space range to pitch-curve infilling, filler pitch/duration controls, and duration-controlled cross-lingual generation. Not every supporting system is FM-native end to end, so the cluster continues to describe modular transfer of the objective rather than superiority for the full acoustic pipeline."
+    last_reviewed: "2026-09-26"
 
   - id: fm_emotion_linear_representation
     claim: "Pre-trained flow-matching TTS models encode emotion as approximately linear, spatially-localized directions within DiT activation space, enabling training-free activation steering that achieves emotion control competitive with systems explicitly trained for emotion conditioning, and that generalises across architectures and scales without retraining."
@@ -5385,36 +7334,47 @@ claim_clusters:
     supporting_papers:
       - "2508.03543"
     contradicting_papers: []
-    refining_papers: []
+    refining_papers:
+      - "2512.18699"
     caveats:
       - "Demonstrated by a single paper, though validated across three different flow-matching TTS architectures (F5-TTS, E2-TTS, CosyVoice2) at three different DiT depths (8, 22, and 56 layers), which is stronger cross-architecture evidence than most single-paper emerging clusters in this file."
       - "Training-free emotion steering incurs a moderate speaker-similarity cost relative to the unsteered baseline, indicating residual speaker-emotion entanglement in DiT representations that vector arithmetic does not fully resolve."
       - "This finding is related to, but not yet reconciled with, the fm_step_scheduling_improves_fidelity cluster's finding that emotion conditioning is concentrated in early ODE timesteps (TTS-CtrlNet); the two describe emotion concentration along different axes (activation position/layer vs. sampling timestep) of the same class of models."
-    last_reviewed: "2026-07-19"
+      - "A Q4 parameter-task-vector paper reports a related linear style direction in model-weight space, but transfer fails across architectures and combining two styles remains difficult. It refines rather than independently confirms the activation-space emotion geometry claim."
+    last_reviewed: "2026-09-26"
 
   - id: fm_crosslingual_lowresource_adaptation
     claim: "Flow-matching TTS models pretrained on a multilingual foundation can be efficiently adapted to new or typologically distant languages using limited target-language data — via fine-tuning, vocabulary expansion, or low-rank adaptation — while preserving zero-shot speaker identity, though transcript-free adaptation incurs a small but consistent speaker-similarity cost."
-    status: emerging
-    confidence: medium
+    status: strongly_supported
+    confidence: high
     supporting_papers:
       - "interspeech-2025-1344"
       - "interspeech-2025-raju25_interspeech"
+      - 2025.findings-emnlp.1077
+      - "2512.05126"
+      - "2512.22491"
     contradicting_papers: []
     refining_papers:
       - "2509.14579"
+      - 2025.findings-emnlp.524
     caveats:
       - "The two supporting papers use different adaptation mechanisms (LoRA fine-tuning on under 15 hours of data vs. vocabulary expansion with phoneme-based tokenisation) and different target languages; whether a single adaptation recipe is optimal across language families is untested."
       - "LoRA-based adaptation exhibits a rank-dependent trade-off between linguistic accuracy and speaker generalisation, with the optimal rank dependent on dataset scale, and the text-conditioning module requires proportionally more adapted parameters than the acoustic generation module for typologically distant languages."
       - "The transcript-free variant (2509.14579) achieves cross-lingual zero-shot cloning without audio prompt transcripts via forced-alignment word-boundary partitioning, but this convenience costs a small, consistent speaker-similarity reduction relative to transcript-supervised conditioning."
-    last_reviewed: "2026-07-19"
+      - "Q4 adds unseen-language VC, language-leakage reduction through distilled speaker conditioning, and hierarchical linguistic transfer between endangered agglutinative languages. The evidence now spans adaptation, zero-shot transfer, and cross-lingual conditioning, though each uses a different mechanism and benchmark."
+    last_reviewed: "2026-09-26"
 
   - id: fm_handles_nonclean_acoustic_conditions
     claim: "Flow-matching TTS and VC systems can be extended to handle non-clean acoustic conditions — background noise, environmental sound, or reverberant reference prompts — through explicit environment conditioning, source separation, or noise-robust representations, though this typically introduces a competing-objective cost relative to clean-condition performance."
-    status: emerging
-    confidence: medium
+    status: strongly_supported
+    confidence: high
     supporting_papers:
       - "2509.14684"
       - "interspeech-2025-1229"
+      - "2510.20677"
+      - "2511.01056"
+      - "2512.04793"
+      - "2512.17293"
     contradicting_papers: []
     refining_papers:
       - "2508.04996"
@@ -5422,7 +7382,8 @@ claim_clusters:
       - "The two supporting systems address different problems (UmbraTTS: synthesising speech that itself contains a controllable acoustic environment; the VC paper: preserving background sound while converting timbre) united by the shared theme of moving beyond the clean-speech assumption common to most flow-matching systems in this corpus."
       - "UmbraTTS confirms that flow-matching TTS systems trained on clean speech are sensitive to acoustic environment in the speaker prompt, with degradation visible in both speaker similarity and naturalness — motivating the explicit conditioning and source-separation mechanisms both papers introduce."
       - "The VC paper explicitly reports that designing a single model to handle background preservation introduces a competing objective that slightly degrades clean-speech-only conversion quality relative to a dedicated clean-speech system, and a third paper (2508.04996) finds implicit alignment (borrowed from NAR TTS) improves noise robustness in VC as a further, distinct mechanism."
-    last_reviewed: "2026-07-19"
+      - "Q4 broadens robustness to unreliable F0, whispered-domain mismatch, imperfect vocal separation, and noisy text-speech training pairs. Across these settings, robustness interventions improve the targeted failure mode but do not uniformly preserve similarity, intelligibility, or perceptual quality."
+    last_reviewed: "2026-09-26"
 
   - id: discrete_fm_token_subspace_factorization
     claim: "Discrete flow matching defined directly over factorized speech-attribute token subspaces, using multi-head velocity prediction with a separate head per subspace, can achieve competitive naturalness and superior prosody reconstruction compared to continuous-space flow-matching and diffusion TTS baselines trained on comparable data, while matching the inference latency of single-step continuous flow-matching systems at higher NFE."
@@ -5444,11 +7405,13 @@ claim_clusters:
     supporting_papers:
       - "2508.16790"
     contradicting_papers: []
-    refining_papers: []
+    refining_papers:
+      - "2510.25566"
     caveats:
       - "Demonstrated on a single system; the paper's own current_role in this concept is frontier_probe, and the joint-training claim has not been benchmarked head-to-head against the two-stage postfiltering pattern (FlowDec) already tracked in the fm_vocoder family, which instead trains a flow-matching postfilter on top of a separately-trained deterministic codec."
       - "Whether joint end-to-end FM training or two-stage postfiltering produces better quality-latency trade-offs, or whether the two approaches could be combined, is untested."
-    last_reviewed: "2026-07-19"
+      - "A Q4 flow-codec study shows that bottleneck and quantizer design governs attribute disentanglement and controllability, while auxiliary semantic distillation is not uniformly beneficial. It refines the codec-design space without independently confirming the single-loss end-to-end claim."
+    last_reviewed: "2026-09-26"
 
   - id: discrete_time_diffusion_fm_equivalence
     claim: "Reformulating diffusion-like speech generation in fully discrete time — with either additive or multiplicative Gaussian noising — can match the quality of continuous-time diffusion formulations while eliminating the continuous/discrete mismatch inherent to continuous-time score-based samplers, provided some stochasticity is retained in the noising process."
@@ -5515,23 +7478,28 @@ claim_clusters:
     contradicting_papers: []
     refining_papers:
       - "interspeech-2025-0854"
+      - neurips-2025-1cURNMriee
     caveats:
       - "Demonstrated in emotional voice conversion and singing voice conversion respectively, both against GAN and/or autoencoder baselines; this is a distinct comparison axis from the fm_vocoder_speed_gan_gap cluster, which concerns real-time-factor rather than quality, and from fm_surpasses_diffusion_speed_quality, which compares against diffusion rather than GAN baselines."
       - "The refining paper (interspeech-2025-0854) extends this comparison to spectrogram-postprocessing rather than primary decoding, and finds the FM-vs-GAN quality advantage narrows in low-resource conditions, where FM shows smaller and statistically insignificant gains from a proposed data-augmentation strategy relative to the GAN-based postprocessor."
-    last_reviewed: "2026-07-19"
+      - "A Q4 streaming waveform decoder matches or exceeds GAN baselines under real-time constraints, but still requires adversarial fine-tuning after FM pretraining; this extends the quality comparison while complicating any claim that flow matching eliminates adversarial training."
+    last_reviewed: "2026-09-26"
 
   - id: fm_training_convergence_acceleration_techniques
     claim: "Auxiliary losses applied at intermediate transformer depths — alignment supervision or self-supervised-encoder teacher distillation — can substantially accelerate the training convergence of flow-matching TTS models without any change to the inference-time sampling procedure, and are most effective when different supervision types are applied at different network depths rather than at the same layer."
-    status: emerging
+    status: strongly_supported
     confidence: high
     supporting_papers:
       - "interspeech-2025-1236"
+      - "2511.09995"
+      - "2512.04779"
     contradicting_papers: []
     refining_papers: []
     caveats:
       - "Demonstrated on a single paper. This cluster concerns training-time convergence acceleration, which is a distinct axis from the fm_inference_acceleration cluster's inference-time step-count reduction; the two are complementary rather than competing techniques."
       - "The paper additionally finds that training-time alignment acceleration primarily improves text intelligibility and speaker similarity rather than overall naturalness, indicating faster convergence does not uniformly improve all quality dimensions."
-    last_reviewed: "2026-07-19"
+      - "Q4 independently confirms intermediate-representation supervision for speaker alignment and singing conditioning. Both papers find that supervision must be localized or dynamically weighted to avoid underusing informative layers or timesteps or degrading competing objectives."
+    last_reviewed: "2026-09-26"
 
   - id: fm_singing_multilingual_moe_f0
     claim: "Flow-matching transformers for singing voice synthesis benefit from language-conditioned mixture-of-experts routing and intermediate-layer F0 supervision, improving multilingual synthesis quality and style fidelity beyond architectures adapted directly from speech TTS without singing-specific structure."
@@ -5546,10 +7514,26 @@ claim_clusters:
       - "The same paper also reports that boundary masking during training improves zero-shot naturalness by removing reliance on precise phoneme/note alignment annotations, and that contrastive cross-modal style embeddings (singing, speech, natural language) support style transfer without modality-specific architectures; these are tracked here as supporting mechanisms rather than as separate clusters given their common source."
     last_reviewed: "2026-07-19"
 
+  - id: fm_streaming_chunked_generation
+    claim: "Flow-matching speech generators can operate causally or in bounded-memory chunks for long-form and real-time synthesis, but chunk size, adversarial refinement, and cross-chunk context remain material quality controls rather than implementation details."
+    status: strongly_supported
+    confidence: high
+    supporting_papers:
+      - "2510.08373"
+      - "2510.08392"
+      - neurips-2025-1cURNMriee
+    contradicting_papers: []
+    refining_papers: []
+    caveats:
+      - "The three systems target different settings: multi-turn dialogue reconstruction, streaming voice conversion, and causal waveform decoding. Their convergence supports feasibility of the pattern, not interchangeability of their cache and masking mechanisms."
+      - "Smaller chunks reduce latency but can degrade conversion quality, and the waveform system requires adversarial fine-tuning after streaming flow-matching pretraining to reach its best quality."
+      - "Chunked attention bounds memory and enables long sequences, but no Q4 paper establishes a universal chunk size or context-retention strategy across tasks."
+    last_reviewed: "2026-09-26"
+
 method_families:
   - id: pure_fm
     name: "Pure Flow-Matching Systems"
-    summary: "Models that use flow matching as the sole generative backbone, typically operating directly on mel spectrograms or a compact latent space, with no autoregressive component. This is now the largest and most heterogeneous family in the corpus: alongside the original OT-CFM mel-spectrogram TTS/VC pattern, it has absorbed emotion/environment/dialect control work, cross-lingual and low-resource adaptation, compact-architecture efficiency work, interpretability studies of FM DiT activations, and a first discrete-space flow-matching variant. All members share the property of achieving sub-linear RTF scaling with utterance length and requiring no separate AR token stage."
+    summary: "Models that use flow matching as the sole generative backbone, typically operating directly on mel spectrograms, waveforms, or a compact latent space, with no autoregressive token stage. Q4 2025 broadened this already heterogeneous family with attention-free and compact denoisers, streaming and long-context variants, cross-lingual and low-resource systems, codec and singing applications, representation-alignment supervision, noisy-data filtering, and coarse-to-fine priors."
     papers:
       - "2210.02747"
       - "2312.15821"
@@ -5595,6 +7579,28 @@ method_families:
       - "2509.22727"
       - "2509.22167"
       - "2509.24773"
+      - 2025.vlsp-1.14
+      - "2510.02848"
+      - "2510.07979"
+      - "2510.08392"
+      - "2510.20677"
+      - "2510.21685"
+      - "2510.25566"
+      - "2511.01056"
+      - 2025.emnlp-main.1730
+      - 2025.findings-emnlp.1077
+      - 2025.findings-emnlp.524
+      - "2511.09995"
+      - "2511.18487"
+      - "2512.05126"
+      - "2512.04720"
+      - "2512.04779"
+      - "2512.04793"
+      - neurips-2025-1cURNMriee
+      - neurips-2025-SoRe80Tg48
+      - "2512.17293"
+      - "2512.18699"
+      - "2512.22491"
     open_questions:
       - "What is the minimum data volume at which pure OT-CFM mel-spectrogram systems achieve competitive intelligibility, and can architectural changes (e.g. DiT vs. U-Net) shift this threshold?"
       - "Does the Sway Sampling step scheduling principle generalise across all pure FM architectures, or is it specific to the DiT + ConvNeXt design of F5-TTS?"
@@ -5604,7 +7610,7 @@ method_families:
 
   - id: ar_fm_hybrid
     name: "Autoregressive LM + Flow-Matching Acoustic Model"
-    summary: "Two-stage pipelines where an autoregressive language model generates discrete semantic or style tokens, and a separate flow-matching model decodes those tokens into continuous speech. The AR stage handles content and prosody at a semantic level; the FM stage handles fine-grained acoustic detail. This architecture trades the latency of AR decoding for stronger control over speaker style and paralinguistic attributes. Recent additions to this family increasingly focus their novelty on richer emotion/style conditioning of the AR-to-FM interface rather than on the FM stage itself."
+    summary: "Two-stage pipelines where an autoregressive language model generates discrete semantic or style tokens, and a separate flow-matching model decodes those tokens into continuous speech. Q4 additions extend the pattern to streaming multimodal speech, dual-speaker dialogue, long-form prompted synthesis, and hidden-state-conditioned acoustic-detail recovery; their main innovations remain concentrated at the AR-to-FM interface rather than in the flow objective itself."
     papers:
       - "2407.05407"
       - "2412.10117"
@@ -5629,6 +7635,10 @@ method_families:
       - "2509.15629"
       - "2505.10599"
       - "2509.26514"
+      - "2510.00499"
+      - "2510.08373"
+      - "2510.23541"
+      - "2512.19090"
     open_questions:
       - "What is the optimal interface between the AR token stage and the FM acoustic stage — how many semantic token levels, which codec, and how much conditioning information should flow between stages?"
       - "Can the AR stage be replaced with a non-autoregressive masked predictor while retaining the style control advantages of the hybrid architecture?"
@@ -5637,7 +7647,7 @@ method_families:
 
   - id: fm_acceleration
     name: "Accelerated / Single-Step Flow Matching"
-    summary: "Systems that specifically target reducing the inference-time ODE integration steps (or per-step compute) of flow-matching models, using distillation (DMD, DMD2, PeRFlow, consistency distillation, shortcut self-consistency training, CFG-conditioned guided distillation), learned ODE solvers, non-uniform step schedules, training-free caching, adversarial post-training, or learned prior distributions. Originally demonstrated almost exclusively on mel-spectrogram TTS, this family now has substantial independent confirmation in voice conversion and in streaming/training-free acceleration of DiT-based TTS, indicating the acceleration techniques generalise across tasks and are not tied to any single acoustic representation."
+    summary: "Systems that reduce ODE integration steps or per-step compute through distillation, learned or non-uniform solvers, caching, adversarial post-training, compressed latent targets, or informative starting states. Q4 adds MeanFlow-style one-step generation, searched step positions, attention-free denoisers, VAE target compression, and coarse-to-fine trajectory starts, while continuing to expose quality, stability, and speaker-information trade-offs at very low NFE."
     papers:
       - "2406.05551"
       - "2025.acl-long.1043"
@@ -5650,6 +7660,10 @@ method_families:
       - "interspeech-2025-2449"
       - "2509.08696"
       - "2509.09748"
+      - "2510.07979"
+      - "2510.08392"
+      - "2512.04720"
+      - neurips-2025-SoRe80Tg48
     open_questions:
       - "Do distillation-based acceleration and learned-prior acceleration achieve equivalent perceptual quality at equivalent NFE, or do they produce qualitatively different speech artefacts?"
       - "Is there a principled lower bound on the number of ODE steps required for high-fidelity mel-spectrogram synthesis, given the complexity of the speech manifold?"
@@ -5658,7 +7672,7 @@ method_families:
 
   - id: fm_vocoder
     name: "Flow-Matching Vocoders and Codecs (Raw Waveform / Postfilter)"
-    summary: "Systems that apply the flow-matching or conditional-flow-matching objective directly to raw waveform generation, to postfiltering a deterministic codec/vocoder's output, to joint codec quantization-and-reconstruction training, or to postprocessing acoustic-model spectrogram output, rather than to mel-spectrogram or semantic-token acoustic modeling proper. These systems compete directly with GAN vocoders (HiFi-GAN, BigVGAN) and diffusion vocoders, trading iterative sampling cost for gains in pitch accuracy, periodicity, and postfilter/postprocessing quality without adversarial training."
+    summary: "Systems that apply flow matching directly to raw waveforms, codec reconstruction, post-quantization refinement, or acoustic postprocessing. Q4 adds controllable flow-codec bottlenecks and a causal streaming decoder that can replace a codec's native convolutional decoder, while also showing that adversarial fine-tuning may still be needed to reach full streaming quality."
     papers:
       - "iclr-2025-tQ1PmLfPBL"
       - "2025.naacl-long.110"
@@ -5666,6 +7680,8 @@ method_families:
       - "interspeech-2025-0854"
       - "2508.16790"
       - "2509.15085"
+      - "2510.25566"
+      - neurips-2025-1cURNMriee
     open_questions:
       - "Can flow-matching vocoders close the substantial real-time-factor gap to single-step GAN vocoders (PeriodWave: 7.48x vs. HiFi-GAN's 166x at matched or better quality) through the same acceleration techniques (distillation, learned priors) already validated at the acoustic-model level?"
       - "Do the two distinct techniques identified in this family for improving one-step/few-step waveform quality — WaveFM's mel-conditioned prior and PeriodWave's period-aware architecture — compose, or are they redundant solutions to the same underlying problem?"
@@ -5681,12 +7697,13 @@ method_families:
 
   - id: continuous_ar_fm_head
     name: "Continuous Autoregressive Models with Flow-Matching/Diffusion Heads"
-    summary: "Single-stage architectures that generate continuous acoustic representations (mel frames, VAE latents, or fixed-length token blocks) autoregressively, using a flow-matching or diffusion sampling head as the per-step or per-block output distribution, rather than routing through a separate discrete-token acoustic decoder as in the ar_fm_hybrid pattern. The distinguishing property is a single jointly-trained model in which the flow-matching component is the output layer of the AR model itself, not a downstream module. Across the four papers in this family, this pattern consistently reduces AR sequence length or per-token NFE relative to discrete-token AR baselines without sacrificing — and sometimes improving — quality."
+    summary: "Single-stage architectures that generate continuous acoustic representations autoregressively, using a flow-matching or diffusion head as the per-step or per-block output distribution rather than a separate discrete-token acoustic decoder. A Q4 unified speech model adds a continuous tokenizer and shared generation head, bringing the family to five papers while preserving its efficiency and acoustic-detail motivation."
     papers:
       - "2502.11128"
       - "2507.22746"
       - "2508.19098"
       - "2509.24650"
+      - "2511.05516"
     open_questions:
       - "Three distinct mechanisms achieve the family's shared efficiency gain — an AR-conditioned informative prior replacing the Gaussian prior for per-token flow matching, continuous VAE latents replacing discrete tokens to shorten the AR sequence, and block-wise AR generation with parallel intra-block denoising; are these complementary and stackable, or do they address the same underlying redundancy from different angles?"
       - "Every paper in this family reports a non-monotonic relationship between the flow-matching/diffusion head's NFE (or FSQ/latent dimensionality) and downstream quality, with excess computation degrading rather than improving results; is there a shared theoretical account of why continuous AR heads saturate or degrade at high NFE, unlike the acceleration literature's typical framing of NFE reduction as a pure quality-speed trade-off?"
@@ -5694,11 +7711,14 @@ method_families:
 
   - id: fm_auxiliary_attribute
     name: "Flow Matching Applied to Auxiliary (Non-Acoustic) Latent Targets"
-    summary: "Systems that apply the flow-matching or rectified-flow objective not to the primary acoustic output (mel-spectrogram, waveform, or codec tokens) but to a compact auxiliary attribute space — prosody latents, stochastic prosody/duration/pitch predictors, or text-conditioned speaker embeddings — as a modular sub-component feeding into an otherwise separate, often non-FM, acoustic pipeline. This is a small but consistent pattern across three independently-authored 2025 papers, suggesting flow matching's simulation-free training and diverse-sampling properties transfer cleanly from full acoustic generation to lower-dimensional conditioning targets."
+    summary: "Systems that apply flow matching to compact auxiliary targets rather than the primary acoustic output, including prosody, duration, pitch, or speaker representations. Q4 extends this pattern to masked pitch-curve infilling, filler pitch/duration control, and duration-controlled cross-lingual synthesis, strengthening evidence that the objective transfers to lower-dimensional conditioning spaces."
     papers:
       - "2025.coling-main.518"
       - "interspeech-2025-1940"
       - "2509.15845"
+      - "2510.21685"
+      - 2025.emnlp-main.1730
+      - 2025.findings-emnlp.524
     open_questions:
       - "All three papers in this family retain a conventional (non-FM) acoustic decoder and use flow matching only for the auxiliary target; would applying the same auxiliary-latent pattern within a fully FM-native pipeline (e.g. a pure_fm acoustic model conditioned by an fm_auxiliary_attribute prosody or speaker-embedding module) compound the benefits, or is the modular separation itself load-bearing?"
       - "Prosody latents (ProsodyFlow, stochastic prosody predictors) and speaker embeddings (DeepDubbing's TTT module) are the two auxiliary target spaces demonstrated so far; what other sub-components of a TTS pipeline (e.g. duration, language ID, emotion category) would benefit from the same treatment, and does the benefit scale with the dimensionality of the target space?"
@@ -5732,6 +7752,8 @@ reassessment_queue:
       - "Any paper explicitly contrasting discrete-space and continuous-space flow matching on the same benchmark and training data."
 
 open_questions:
+  - "Q4 establishes causal and chunked flow matching across dialogue reconstruction, streaming voice conversion, and raw-waveform decoding. Which context-retention mechanism best preserves speaker identity and long-range prosody at a fixed latency and memory budget?"
+  - "MeanFlow distillation, compressed VAE targets, attention-free denoisers, and coarse-to-fine trajectory starts all reduce different components of flow-matching cost. Which combinations remain additive under matched data, model size, and evaluation protocols?"
   - "Speaker similarity in zero-shot FM-TTS consistently lags behind speaker verification ground truth, particularly for out-of-domain speakers. Is this a fundamental limitation of the mel-spectrogram representation, the OT-CFM objective, or the scale of training data?"
   - "The naturalness-intelligibility tradeoff between learned-prior (OZSpeech) and standard OT-CFM (F5-TTS) systems raises the question of whether a single FM architecture can simultaneously achieve top-tier performance on both axes, or whether codec choice forces a permanent tradeoff."
   - "Most pure FM-TTS papers train on clean audiobook-style English data. The extent to which current flow-matching architectures generalise to spontaneous, noisy, or code-switched speech remains largely uncharacterised; the Indigenous-language (Ojibwe/Mi'kmaq/Maliseet) and Indian-language duration-prediction papers are the first exceptions in this corpus, and both report language-dependent, non-uniform results."
@@ -5746,9 +7768,12 @@ open_questions:
 
 trend_notes:
   - "Flow matching has displaced diffusion as the dominant continuous-output generative backbone in TTS and VC since 2023, with adoption spanning both pure FM architectures (E2 TTS, F5-TTS) and hybrid AR+FM pipelines (CosyVoice, Vevo)."
-  - "From 2024 onward, the predominant architectural pattern is the AR-FM hybrid: an autoregressive LM generates semantic tokens, and a flow-matching model decodes them to mel spectrograms. As of this update (97 papers through Q3 2025), the ar_fm_hybrid family accounts for 23 of 97 papers in this corpus, and the pure_fm family has grown to 44 of 97 as flow matching has been applied to an increasingly wide range of control, robustness, and efficiency problems beyond its original mel-spectrogram TTS core. Several of the most recent hybrid papers (CosyVoice 3, GOAT-SLM, SemAlignVC, Marco-Voice) continue to leave the flow-matching stage itself largely unchanged and direct their contributions at the AR/tokenizer stage or at richer emotion/style conditioning of the AR-FM interface instead, reinforcing the earlier observation that the FM component of the hybrid pattern may be architecturally stabilising."
-  - "Inference acceleration for flow-matching speech models has become one of the most active subfields in this concept, now spanning at least eight distinct mechanisms across TTS and VC: learned ODE solvers, flow distillation (DMD, DMD2, PeRFlow), consistency distillation, shortcut self-consistency training, learned priors, CFG-strength-conditioned guided distillation, non-uniform step scheduling, adversarial post-training, and training-free activation/attention caching. By Q3 2025, acceleration evidence has moved decisively beyond mel-spectrogram TTS into voice conversion (R-VC, Shortcut Models for VC) and streaming/training-free DiT acceleration (two independent caching papers), with no single mechanism established as dominant."
+  - "By the end of Q4 2025, the 125-paper graph contains 66 pure_fm papers, 27 ar_fm_hybrid papers, and five continuous_ar_fm_head papers; one architecture-spanning survey remains intentionally unassigned. The pure family expanded fastest as flow matching moved into streaming, singing, low-resource language transfer, codec reconstruction, and noisy-data robustness, while most hybrid novelty remained concentrated at the AR-to-FM interface."
+  - "Inference acceleration remains one of the most active subfields. Q4 adds numerical-integration MeanFlow distillation, one-step generation with adversarial repair, attention-free denoisers, compressed VAE targets, searched sampling positions, and coarse-to-fine trajectory starts. No mechanism is dominant, and aggressive acceleration repeatedly exposes stability, prosody, speaker-information, or perceptual-quality costs."
   - "Post-training alignment and fine-tuning of flow-matching models continued to diversify through mid-2025: beyond DPO-FM's velocity-space formulation and CosyVoice 2/3's differentiable ASR reward optimisation, F5R-TTS demonstrates GRPO-based RL alignment on a pure (non-hybrid) flow-matching backbone via Gaussian output reparameterization, and DMOSpeech 2 applies GRPO specifically to the duration-prediction subcomponent rather than the full generator."
   - "The mel-spectrogram bottleneck — sequence length scaling and speaker similarity ceiling — is increasingly identified as a limitation of pure FM-TTS architectures relative to codec-token-based systems, suggesting a potential shift toward codec-native FM pipelines as the dominant paradigm. A new continuous_ar_fm_head family (four Q3 2025 papers) represents one concrete response to this bottleneck, replacing discrete codec tokens or the two-stage AR+FM interface with continuous per-token or per-block flow-matching/diffusion heads directly inside the autoregressive model."
   - "As of mid-2025, flow matching has expanded well beyond mel-spectrogram acoustic modeling into new application domains: direct raw-waveform vocoding (PeriodWave, WaveFM), neural codec postfiltering (FlowDec), self-supervised prosody-latent generation (ProsodyFlow), joint speech-plus-environment synthesis (UmbraTTS), and frozen-backbone adapter-based control (TTS-CtrlNet's ControlNet adaptation for time-varying emotion). By Q3 2025, several of these have gained independent confirmation from additional Q3 2025 papers (e.g. joint codec quantization-reconstruction training, streaming causal-cache FM vocoding, semantic-regularized VAE latents, text-conditioned speaker-embedding generation via flow matching), while others (discrete-space flow matching, discrete-time diffusion/FM unification, FM-based speaker unlearning) remain single-paper findings flagged as emerging clusters pending independent replication."
   - "A notable reversal emerged in Q3 2025: the previously strongly_supported claim that CFG transfers cleanly from diffusion to flow-matching TTS was contested by evidence that naive CFG strategies require architecture- and language-dependent tuning to be effective for zero-shot speaker similarity, the first status downgrade of a strongly_supported cluster in this concept's history."
+  - "Q4 establishes streaming and bounded-memory flow matching as a cross-task pattern: chunked dialogue reconstruction, causal streaming voice conversion, and real-time waveform decoding all succeed, but chunk size, retained context, and adversarial refinement materially affect quality."
+  - "Post-training optimization broadened from WER-oriented TTS alignment to multi-objective singing and voice-conversion rewards, while intermediate-representation supervision independently improved speaker alignment and conditional convergence. The evidence now supports both inference-time RL and training-time auxiliary alignment as recurring control layers around the base FM objective."
+  - "Cross-lingual and low-resource evidence strengthened substantially through unseen-language VC, distilled speaker conditioning that reduces language leakage, and hierarchical linguistic conditioning for endangered agglutinative languages. These gains remain mechanism-specific and do not eliminate trade-offs among identity, intelligibility, and naturalness."
