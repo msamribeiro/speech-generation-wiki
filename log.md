@@ -4,6 +4,18 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-09-27
+
+- ingest | 2026.iwsds-1.3 | Personality Expression in Spoken Dialogue Systems: From Text to Speech | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.iwsds-1.4 | Reproducing Proficiency-Conditioned Dialogue Features with Full-duplex Spoken Dialogue Models | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.iwsds-1.9 | Exploring Emotional Nuances in Spoken Dialogue: Dataset Construction and Prediction of Emotional Dialogue Breakdown | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.iwsds-1.10 | Effects of Dialogue Corpora Properties on Fine-Tuning a Moshi-Based Spoken Dialogue Model | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.iwsds-1.16 | Conversational AI for Virtual Standardized Patients using a Speech-to-Speech LLM | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.abjadnlp-1.6 | LLM-to-Speech: A Synthetic Data Pipeline for Training Dialectal Text-to-Speech Models | ABJAD-NLP 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.africanlp-main.23 | Evaluating Yoruba Text-to-Speech Systems for Accessible Computer-Based Testing in Visually Impaired Learners | AfricaNLP 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.eacl-short.16 | Exploring Cross-Lingual Voice Conversion Methods for Anonymizing Low-Resource Text-to-Speech | EACL 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+- ingest | 2026.loreslm-1.54 | Contributing to Speech-to-Speech Translation for African Low-Resource Languages: Study of French-Mooré Pair | LoResLM 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
+
 ## 2026-09-13
 
 - render | navigation | formats: index,start,concept-catalog | mode: full/light | refreshed reader routes for the 23-concept field overview, 21 rendered concept pairs, Q3 quarterly report, 900-paper catalog, and structured evidence | corrected stale five-concept, 18-pending-concept, planned-report, 640-paper, and pending-integration descriptions | evidence cutoff: 2025-09-30 | assessment as of: 2026-09-12 | runtime: codex | provider: openai | model: gpt-5
