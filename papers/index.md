@@ -8,7 +8,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 |----|-------|-----|-------|------|------|--------------|---------|
 | [[1904.02882]] | [LibriTTS: A Corpus Derived from LibriSpeech for Text-to-S](papers/1904.02882.md) | Google AI | arXiv | 2019 | TTS |  | 2026-06-10 |
 | [[2403.03100]] | [NaturalSpeech 3: Zero-Shot Speech Synthesis with Factori](papers/2403.03100.md) | Microsoft | arXiv | 2024 | TTS, VC | diffusion, hybrid | 2026-06-10 |
-| [[2504.18425]] | [Kimi-Audio Technical Report](papers/2504.18425.md) | Moonshot AI | arXiv | 2025 | TTS, VC, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
+| [[2504.18425]] | [Kimi-Audio Technical Report](papers/2504.18425.md) | Moonshot AI | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
 | [[2204.02152]] | [UTMOS: UTokyo-SaruLab System for VoiceMOS Challenge 202](papers/2204.02152.md) | University of Tokyo | arXiv | 2022 | evaluation |  | 2026-06-10 |
 | [[2509.04072]] | [Computational Narrative Understanding for Expressive Te](papers/2509.04072.md) | — | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-04 |
 | [[2508.15827]] | [Mini-Omni-Reasoner: Token-Level Thinking-in-Speaking in](papers/2508.15827.md) | — | arXiv | 2025 | SCA | autoregressive-LM | 2026-06-03 |
@@ -209,11 +209,11 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[1412.6980]] | [Adam: A Method for Stochastic Optimization](papers/1412.6980.md) |  | arXiv | 2014 |  |  | 2026-06-10 |
 | [[2308.16692]] | [SpeechTokenizer: Unified Speech Tokenizer for Speech La](papers/2308.16692.md) | Fudan University | arXiv | 2023 | TTS, codec | GAN, VAE | 2026-06-11 |
 | [[2503.01710]] | [Spark-TTS: An Efficient LLM-Based Text-to-Speech Model](papers/2503.01710.md) | HKUST | arXiv | 2025 | TTS | autoregressive-LM | 2026-06-11 |
-| [[2409.00750]] | [MaskGCT: Zero-Shot Text-to-Speech with Masked Generativ](papers/2409.00750.md) | CUHK-SZ | arXiv | 2024 | TTS, VC | autoregressive-LM | 2026-06-11 |
+| [[2409.00750]] | [MaskGCT: Zero-Shot Text-to-Speech with Masked Generativ](papers/2409.00750.md) | CUHK-SZ | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-11 |
 | [[2505.17589]] | [CosyVoice 3: Towards In-the-wild Speech Generation via](papers/2505.17589.md) | Alibaba | arXiv | 2025 | TTS | autoregressive-LM, flow-matching | 2026-06-11 |
 | [[2408.16725]] | [Mini-Omni: Language Models Can Hear, Talk While Thinki](papers/2408.16725.md) | Inspirai | arXiv | 2024 | SCA, TTS | autoregressive-LM | 2026-06-11 |
 | [[2502.04128]] | [Llasa: Scaling Train-Time and Inference-Time Compute fo](papers/2502.04128.md) |  | arXiv | 2025 | TTS | autoregressive-LM | 2026-06-11 |
-| [[2304.09116]] | [NaturalSpeech 2: Latent Diffusion Models are Natural an](papers/2304.09116.md) | Microsoft Research Asia | arXiv | 2023 | TTS, VC, singing | diffusion, VAE | 2026-06-11 |
+| [[2304.09116]] | [NaturalSpeech 2: Latent Diffusion Models are Natural an](papers/2304.09116.md) | Microsoft Research Asia | arXiv | 2023 | TTS, singing | diffusion, VAE | 2026-06-11 |
 | [[2406.05370]] | [VALL-E 2: Neural Codec Language Models are Human Parity](papers/2406.05370.md) | Microsoft | arXiv | 2024 | TTS | autoregressive-LM | 2026-06-11 |
 | [[2409.06666]] | [LLaMA-Omni: Seamless Speech Interaction with Large Lang](papers/2409.06666.md) | ICT/CAS | arXiv | 2024 | SCA | hybrid | 2026-06-11 |
 | [[2411.00774]] | [Freeze-Omni: A Smart and Low Latency Speech-to-speech D](papers/2411.00774.md) | Tencent Youtu Lab | arXiv | 2024 | SCA | autoregressive-LM, hybrid | 2026-06-11 |
@@ -419,7 +419,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2507.09282]] | [ClaritySpeech: Dementia Obfuscation in Speech](papers/2507.09282.md) | Imperial College London | arXiv | 2025 | TTS | autoregressive-LM, diffusion, VAE | 2026-07-02 |
 | [[2507.09310]] | [Voice Conversion for Lombard Speaking Style with Implic](papers/2507.09310.md) | Amazon Alexa / Imperial College London | arXiv | 2025 | VC, TTS | VAE | 2026-07-02 |
 | [[2507.10985]] | [Pronunciation Deviation Analysis Through Voice Cloning ](papers/2507.10985.md) | California State University Long Beach | arXiv | 2025 | TTS |  | 2026-07-02 |
-| [[2507.12197]] | [Quantize More, Lose Less: Autoregressive Generation fro](papers/2507.12197.md) |  | arXiv | 2025 | TTS, singing | autoregressive-LM, GAN | 2026-07-02 |
+| [[2507.12197]] | [Quantize More, Lose Less: Autoregressive Generation fro](papers/2507.12197.md) |  | arXiv | 2025 | TTS | autoregressive-LM, GAN | 2026-07-02 |
 | [[2507.14988]] | [DMOSpeech 2: Reinforcement Learning for Duration Predic](papers/2507.14988.md) | Columbia University | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |
 | [[2507.15272]] | [A2TTS: TTS for Low Resource Indian Languages](papers/2507.15272.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-02 |
 | [[2507.16875]] | [Technical report: Impact of Duration Prediction on Spea](papers/2507.16875.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-02 |
@@ -590,7 +590,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2509.23938]] | [Easy Turn: Integrating Acoustic and Linguistic Modaliti](papers/2509.23938.md) |  | arXiv | 2025 | SCA | hybrid | 2026-07-17 |
 | [[2509.24457]] | [Assessing speech quality metrics for evaluation of neur](papers/2509.24457.md) | Cisco Systems | arXiv | 2025 | codec, evaluation |  | 2026-07-17 |
 | [[2509.24570]] | [ISSE: An Instruction-Guided Speech Style Editing Dataset And Benchmark](papers/2509.24570.md) |  | arXiv | 2025 | TTS, VC, evaluation | autoregressive-LM | 2026-07-17 |
-| [[2509.24650]] | [VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning](papers/2509.24650.md) |  | arXiv | 2025 | TTS, VC | autoregressive-LM, diffusion | 2026-07-17 |
+| [[2509.24650]] | [VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning](papers/2509.24650.md) |  | arXiv | 2025 | TTS | autoregressive-LM, diffusion | 2026-07-17 |
 | [[2509.24773]] | [VSSFlow: Unifying Video-conditioned Sound and Speech Ge](papers/2509.24773.md) |  | arXiv | 2025 | TTS | flow-matching | 2026-07-17 |
 | [[2509.25131]] | [MGM-Omni: Scaling Omni LLMs to Personalized Long-Horizo](papers/2509.25131.md) | CUHK, HKUST, SmartMore | arXiv | 2025 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-07-17 |
 | [[2509.25416]] | [Emotion-Aligned Generation in Diffusion Text to Speech Models via Preference-Guided Optimization](papers/2509.25416.md) |  | arXiv | 2025 | TTS | diffusion | 2026-07-17 |

@@ -33,7 +33,7 @@ metrics:
 code_available: null
 demo_available: true
 url: "https://www.isca-archive.org/interspeech_2025/chen25d_interspeech.html"
-related_concepts: [flow-matching, voice-conversion, self-supervised-speech, zero-shot-tts, evaluation-metrics, subjective-evaluation]
+related_concepts: [flow-matching, voice-conversion, self-supervised-speech, zero-shot-tts, evaluation-metrics, subjective-evaluation, singing]
 related_papers: []
 field_significance:
   level: "moderate"
@@ -106,3 +106,4 @@ The system is trained and evaluated exclusively on high-quality Chinese singing 
 - [[zero-shot-tts|Zero-Shot TTS]] — DAFMSVC targets one-shot (any-to-any) conversion to unseen target singers at inference time using only a short reference audio clip, analogous to the zero-shot voice cloning paradigm in TTS.
 - [[evaluation-metrics|Evaluation Metrics]] — the paper uses F0CORR, Loudness RMSE, SSIM (via CAM++ speaker embeddings), and MCD as objective metrics alongside MOS-Naturalness and MOS-Similarity for singing voice conversion evaluation.
 - [[subjective-evaluation|Subjective Evaluation]] — MOS-Naturalness and MOS-Similarity scores are collected from 15 music-knowledgeable listeners on 20 samples (5 per target speaker), illustrating the scale limitations of subjective evaluation in singing conversion research.
+- [[singing|Singing]] — DAFMSVC performs one-shot singing voice conversion, so its results bear on singing voice generation as well as VC.
