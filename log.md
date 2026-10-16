@@ -4,6 +4,11 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-16
+
+- misc | paper-date rule | synced published_date/month on 39 Q1 2026 paper pages to the canonical paper-date rule (2025 and earlier left as-is) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | task/related_concepts reconciliation | added singing/voice-conversion/neural-codec slugs on 8 pages and removed unsupported VC/singing task tags on 5 pages (2409.00750, 2304.09116, 2504.18425, 2509.24650, 2507.12197) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+
 ## 2026-09-27
 
 - ingest | 2026.iwsds-1.3 | Personality Expression in Spoken Dialogue Systems: From Text to Speech | IWSDS 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5
