@@ -4,6 +4,25 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-17
+
+- ingest | 2026.propor-1.81 | Certas Palavras: A 1980s-90s Brazilian Radio Corpus to Test TTS Models in Noisy Multi-Speaker Dialogues | PROPOR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2409.18512 | Expressive Prompting: Improving Emotion Intensity and Speaker Consistency in Zero-Shot TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.06327 | A Novel Automatic Framework for Speaker Drift Detection in Synthesized Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.06356 | In-Context Learning in Speech Language Models: Analyzing the Role of Acoustic Features, Linguistic Structure, and Induction Heads | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.07467 | Lexical Tone is Hard to Quantize: Probing Discrete Speech Units in Mandarin and Yorùbá | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.16456 | EchoChain: A Full-Duplex Benchmark for State-Update Reasoning Under Interruptions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.08363 | CapTalk: Unified Voice Design for Single-Utterance and Dialogue Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.08709 | Enhancing Conversational TTS with Cascaded Prompting and ICL-Based Online Reinforcement Learning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27376 | Unlocking Fine-Grained and Within-Utterance Speaking Style Control in Prompt-Based Text-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27383 | Bridging the Stability-Expressivity Gap: Synthetic Data Scaling and Preference Alignment for Low-Resource Spoken Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.10065 | ASPIRin: Action Space Projection for Interactivity-Optimized Reinforcement Learning in Full-Duplex Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.10413 | Sign-to-Speech Prosody Transfer via Sign Reconstruction-based GAN | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.10580 | Knowing What to Stress: A Discourse-Conditioned Text-to-Speech Benchmark | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.11424 | Bridging What the Model Thinks and How It Speaks: Self-Aware Speech Language Models for Expressive Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.11803 | Saar-Voice: A Multi-Speaker Saarbrücken Dialect Speech Corpus | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.12383 | On the Distillation Loss Functions of Speech VAE for Unified Reconstruction, Understanding, and Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-16
 
 - misc | paper-date rule | synced published_date/month on 39 Q1 2026 paper pages to the canonical paper-date rule (2025 and earlier left as-is) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
