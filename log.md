@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-10-18
 
+- misc | 2509.24650 | VoxCPM: noted its ICLR 2026 published version (retitled, OpenReview h5KLpGoqzC) on the page; page, metrics and claims stay on the ingested arXiv preprint; ICLR record marked duplicate; 2604.16211 related_papers repointed to 2509.24650 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2604.22225 | TTS-PRISM: A Perceptual Reasoning and Interpretable Speech Model for Fine-Grained Diagnosis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2604.21406 | Full-Duplex Interaction in Spoken Dialogue Systems: A Comprehensive Study from the ICASSP 2026 HumDial Challenge | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2604.21481 | Preferences of a Voice-First Nation: Large-Scale Pairwise Evaluation and Preference Analysis for TTS in Indian Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
