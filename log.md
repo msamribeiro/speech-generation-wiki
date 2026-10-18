@@ -4,6 +4,25 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-18
+
+- ingest | 2604.22225 | TTS-PRISM: A Perceptual Reasoning and Interpretable Speech Model for Fine-Grained Diagnosis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.21406 | Full-Duplex Interaction in Spoken Dialogue Systems: A Comprehensive Study from the ICASSP 2026 HumDial Challenge | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.21481 | Preferences of a Voice-First Nation: Large-Scale Pairwise Evaluation and Preference Analysis for TTS in Indian Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.19055 | ATRIE: Adaptive Tuning for Robust Inference and Emotion in Persona-Driven Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.20842 | SpeechParaling-Bench: A Comprehensive Benchmark for Paralinguistic-Aware Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.12456 | X-VC: Zero-shot Streaming Voice Conversion in Codec Space | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.00861 | Voice Mapping of Text-to-Speech Systems: A Metric-Based Approach for Voice Quality Assessment | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.16211 | NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.15804 | Qwen3.5-Omni Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.17958 | MINT-Bench: A Comprehensive Multilingual Benchmark for Instruction-Following Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.14548 | VoxSafeBench: Not Just What Is Said, but Who, How, and Where | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2601.04029 | SpeakerSleuth: Can Large Audio-Language Models Judge Speaker Consistency across Multi-turn Dialogues? | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.15923 | Hierarchical Codec Diffusion for Video-to-Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- ingest | 2604.16056 | AST: Adaptive, Seamless, and Training-Free Precise Speech Editing | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- ingest | 2604.16287 | NaijaS2ST: A Multi-Accent Benchmark for Speech-to-Speech Translation in Low-Resource Nigerian Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- ingest | 2604.17435 | MoVE: Translating Laughter and Tears via Mixture of Vocalization Experts in Speech-to-Speech Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+
 ## 2026-10-17
 
 - ingest | 2026.propor-1.81 | Certas Palavras: A 1980s-90s Brazilian Radio Corpus to Test TTS Models in Noisy Multi-Speaker Dialogues | PROPOR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5

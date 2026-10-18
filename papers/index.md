@@ -931,3 +931,19 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2604.11424]] | [Bridging What the Model Thinks and How It Speaks: Self-](papers/2604.11424.md) | CUHK-Shenzhen / Tencent Ethereal Audio Lab | arXiv | 2026 | SCA, TTS | autoregressive-LM | 2026-10-17 |
 | [[2604.11803]] | [Saar-Voice: A Multi-Speaker Saarbrücken Dialect Speech ](papers/2604.11803.md) | Saarland University | arXiv | 2026 | TTS |  | 2026-10-17 |
 | [[2604.12383]] | [On the Distillation Loss Functions of Speech VAE for Un](papers/2604.12383.md) | Shanghai Jiao Tong University / ByteDance Seed | arXiv | 2026 | TTS, codec | VAE, GAN | 2026-10-17 |
+| [[2604.15923]] | [Hierarchical Codec Diffusion for Video-to-Speech Genera](papers/2604.15923.md) | Fudan University | arXiv | 2026 | TTS | diffusion | 2026-10-18 |
+| [[2604.16056]] | [AST: Adaptive, Seamless, and Training-Free Precise Spee](papers/2604.16056.md) | Zhejiang University | arXiv | 2026 | TTS | hybrid | 2026-10-18 |
+| [[2604.16287]] | [NaijaS2ST: A Multi-Accent Benchmark for Speech-to-Speec](papers/2604.16287.md) | Mila - Quebec AI Institute | arXiv | 2026 | TTS, evaluation | transformer-enc-dec | 2026-10-18 |
+| [[2604.17435]] | [MoVE: Translating Laughter and Tears via Mixture of Voc](papers/2604.17435.md) | National Taiwan University, NVIDIA | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-10-18 |
+| [[2601.04029]] | [SpeakerSleuth: Can Large Audio-Language Models Judge Sp](papers/2601.04029.md) | Seoul National University | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2604.14548]] | [VoxSafeBench: Not Just What Is Said, but Who, How, and ](papers/2604.14548.md) | The Chinese University of Hong Kong, Shenzhen | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |
+| [[2604.17958]] | [MINT-Bench: A Comprehensive Multilingual Benchmark for ](papers/2604.17958.md) | Northwestern Polytechnical University | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2604.15804]] | [Qwen3.5-Omni Technical Report](papers/2604.15804.md) | Qwen Team (Alibaba) | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-10-18 |
+| [[2604.16211]] | [NVBench: A Benchmark for Speech Synthesis with Non-Verb](papers/2604.16211.md) | Nanjing University / HKUST | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2605.00861]] | [Voice Mapping of Text-to-Speech Systems: A Metric-Based](papers/2605.00861.md) | KTH Royal Institute of Technology | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2604.12456]] | [X-VC: Zero-shot Streaming Voice Conversion in Codec Spa](papers/2604.12456.md) | Shanghai Jiao Tong University | arXiv | 2026 | VC | GAN | 2026-10-18 |
+| [[2604.20842]] | [SpeechParaling-Bench: A Comprehensive Benchmark for Par](papers/2604.20842.md) | Nanjing University / Xiaomi | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |
+| [[2604.19055]] | [ATRIE: Adaptive Tuning for Robust Inference and Emotion](papers/2604.19055.md) | Guangdong University of Technology / South China University of Technology / University of Macau / Huizhou University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-10-18 |
+| [[2604.21481]] | [Preferences of a Voice-First Nation: Large-Scale Pairwi](papers/2604.21481.md) | IIT Madras | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2604.21406]] | [Full-Duplex Interaction in Spoken Dialogue Systems: A C](papers/2604.21406.md) | Northwestern Polytechnical University (ASLP@NPU) / Nanjing University / AISHELL | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |
+| [[2604.22225]] | [TTS-PRISM: A Perceptual Reasoning and Interpretable Spe](papers/2604.22225.md) | Tsinghua University / Xiaomi | arXiv | 2026 | TTS, evaluation | autoregressive-LM | 2026-10-18 |
