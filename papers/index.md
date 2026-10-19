@@ -941,7 +941,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2604.15804]] | [Qwen3.5-Omni Technical Report](papers/2604.15804.md) | Qwen Team (Alibaba) | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-10-18 |
 | [[2604.16211]] | [NVBench: A Benchmark for Speech Synthesis with Non-Verb](papers/2604.16211.md) | Nanjing University / HKUST | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
 | [[2605.00861]] | [Voice Mapping of Text-to-Speech Systems: A Metric-Based](papers/2605.00861.md) | KTH Royal Institute of Technology | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
-| [[2604.12456]] | [X-VC: Zero-shot Streaming Voice Conversion in Codec Spa](papers/2604.12456.md) | Shanghai Jiao Tong University | arXiv | 2026 | VC | GAN | 2026-10-18 |
+| [[2604.12456]] | [X-VC: Zero-shot Streaming Voice Conversion in Codec Spa](papers/2604.12456.md) | Shanghai Jiao Tong University | arXiv | 2026 | VC | transformer-enc-dec | 2026-10-18 |
 | [[2604.20842]] | [SpeechParaling-Bench: A Comprehensive Benchmark for Par](papers/2604.20842.md) | Nanjing University / Xiaomi | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |
 | [[2604.19055]] | [ATRIE: Adaptive Tuning for Robust Inference and Emotion](papers/2604.19055.md) | Guangdong University of Technology / South China University of Technology / University of Macau / Huizhou University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-10-18 |
 | [[2604.21481]] | [Preferences of a Voice-First Nation: Large-Scale Pairwi](papers/2604.21481.md) | IIT Madras | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |

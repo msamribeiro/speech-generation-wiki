@@ -4,6 +4,16 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-19
+
+- misc | 2604.15923 | HiCoDiT: dropped the prosody-control tag (no explicit prosody control; coarse smoothed emotion class); emotion-synthesis kept | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2601.04029 | SpeakerSleuth: dropped the voice-conversion tag (VC systems only build benchmark inputs); VC link kept in the evaluation-metrics bullet | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2604.22225 | TTS-PRISM: dropped the zero-shot-tts tag (six systems are scored, not built); profiling finding kept in the evaluation-metrics bullet | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2604.14548 | VoxSafeBench: added the spoken-language-model tag and Wiki Connections bullet; added author Luchao Yao per the PDF (13 authors) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2604.12456 | X-VC: architecture corrected from GAN to transformer-enc-dec; index row updated | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2604.16287 | NaijaS2ST: field_significance downgraded from moderate to low; Field Significance paragraph rewritten | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+- misc | 2604.17435 | MoVE: objective-metric claim narrowed to the Aro-Val similarity metric and re-evidenced with Table 1 numbers (verified against the table image) | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5
+
 ## 2026-10-18
 
 - misc | 2509.24650 | VoxCPM: noted its ICLR 2026 published version (retitled, OpenReview h5KLpGoqzC) on the page; page, metrics and claims stay on the ingested arXiv preprint; ICLR record marked duplicate; 2604.16211 related_papers repointed to 2509.24650 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
