@@ -4,6 +4,26 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-20
+
+- misc | 2508.19205 | VibeVoice Technical Report: cross-linked to its peer-reviewed ICLR 2026 version iclr-2026-FihSkzyxdv (separate page per the technical-report exception); Wiki Connections line and related_papers entry added; formatting pass: dates and related_papers quoted, Wiki Connections links piped, disallowed [!note] callout and over-limit [!warning] converted to prose (two-callout limit), em dashes removed from prose; factual fixes: token-rate ratio vs WavTokenizer 40 Hz is over 5x (was 40x), LatentLM is earlier work by overlapping authors (was "concurrent"); claims and version-1 generation block unchanged | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-FihSkzyxdv | VibeVoice: Expressive Podcast Generation with Next-Token Diffusion | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-h5AiVx0Aiv | DrVoice: Parallel Speech-Text Voice Conversation Model via Dual-Resolution Speech Representations | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-eLsEjjFODE | SpeechOp: Inference-Time Task Composition for Generative Speech Processing | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-U4GXPqm3Va | Toward Complex-Valued Neural Networks for Waveform Generation | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-Tf4Lfw85lS | TVTSyn: Content-Synchronous Time-Varying Timbre for Streaming Voice Conversion and Anonymization | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-Pv5l6cvfno | Human or Machine? A Preliminary Turing Test for Speech-to-Speech Interaction | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-MFrJ3NzA5H | Continuous Audio Language Models | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-JbLmIoWwDC | Gogo: Group-wise granularity-ordered codec for stable and efficient speech generation | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-I9ED9VWZq6 | SpeechJudge: Towards Human-Level Judgment for Speech Naturalness | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-GNo1qMqgPD | VoxPrivacy: A Benchmark for Evaluating Interactional Privacy of Speech Language Models | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-F7GmbfyVg9 | FlexiVoice: Enabling Flexible Style Control in Zero-Shot TTS with Natural Language Instructions | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-CcmDDh070o | ParaS2S: Benchmarking and Aligning Spoken Language Models for Paralinguistic-aware Speech-to-Speech Interaction | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-5o0ZvYzh6B | UniSS: Unified Expressive Speech-to-Speech Translation with Your Voice | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-17DNmdQ9aU | StableToken: A Noise-Robust Semantic Speech Tokenizer for Resilient SpeechLLMs | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-0oXyMbPMtP | MambaVoiceCloning: Efficient and Expressive Text-to-Speech via State-Space Modeling and Diffusion Control | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.21164 | MAGIC-TTS: Fine-Grained Controllable Speech Synthesis with Explicit Local Duration and Pause Control | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-19
 
 - misc | 2604.15923 | HiCoDiT: dropped the prosody-control tag (no explicit prosody control; coarse smoothed emotion class); emotion-synthesis kept | runtime: claude-code | provider: anthropic | model: claude-sonnet-5-5

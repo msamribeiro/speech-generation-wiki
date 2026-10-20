@@ -16,7 +16,7 @@ generation:
 
 > [!abstract]
 > A living systematic review of synthetic speech, covering **text-to-speech (TTS)**,
-> **voice conversion (VC)**, and **spoken conversational agents**. The wiki contains 941 paper
+> **voice conversion (VC)**, and **spoken conversational agents**. The wiki contains 957 paper
 > pages and integrates research across 23 concepts.
 
 The wiki offers four complementary ways to read the research:
@@ -58,11 +58,11 @@ their standalone rendered pairs remain pending.
 
 ## Browse the papers
 
-The corpus contains 941 paper pages from arXiv, Interspeech, ACL, EMNLP, NAACL, ICLR, NeurIPS,
+The corpus contains 957 paper pages from arXiv, Interspeech, ACL, EMNLP, NAACL, ICLR, NeurIPS,
 ASRU, workshops, and industry technical reports. Search by title, author, system, benchmark, venue,
 or paper ID.
 
-→ [[papers/index|Browse all 941 papers]]
+→ [[papers/index|Browse all 957 papers]]
 
 ## How to read the dates
 
