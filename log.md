@@ -4,6 +4,22 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-21
+
+- ingest | 2026.dialres-1.18 | Speaker Normalization via Voice Conversion Reveals a Human-Machine Dissociation in Dialect Classification | workshop 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.27393 | MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.26347 | The False Resonance: A Critical Examination of Emotion Embedding Similarity for Speech Generation Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.26281 | DiffAnon: Diffusion-based Prosody Control for Voice Anonymization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.19330 | Text-To-Speech with Chain-of-Details: modeling temporal dynamics in speech generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.25476 | PSP: An Interpretable Per-Dimension Accent Benchmark for Indic Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.25441 | Praxy Voice: Voice-Prompt Recovery + BUPS for Commercial-Class Indic TTS from a Frozen Non-Indic Base at Zero Commercial-Training-Data Cost | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.22821 | Audio2Tool: Speak, Call, Act -- A Dataset for Benchmarking Speech Tool Use | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-wbttgzp7MT | EmotionThinker: Prosody-Aware Reinforcement Learning for Explainable Speech Emotion Reasoning | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-uGai5lYHlV | TTSDS2: Resources and Benchmark for Evaluating Human-Quality Text to Speech Systems | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-llMfmDtWka | Scaling Speech Tokenizers with Diffusion Autoencoders | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | iclr-2026-l5re5ppqrX | EchoMind: An Interrelated Multi-level Benchmark for Evaluating Empathetic Speech Language Models | ICLR 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- misc | 2510.00499 | MOSS-Speech: noted its ICLR 2026 published version (OpenReview zjaV5zmlkl; adds a human evaluation and a split-layer ablation) on the page; page, metrics and claims stay on the ingested arXiv preprint; ICLR record marked duplicate | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-20
 
 - misc | 2508.19205 | VibeVoice Technical Report: cross-linked to its peer-reviewed ICLR 2026 version iclr-2026-FihSkzyxdv (separate page per the technical-report exception); Wiki Connections line and related_papers entry added; formatting pass: dates and related_papers quoted, Wiki Connections links piped, disallowed [!note] callout and over-limit [!warning] converted to prose (two-callout limit), em dashes removed from prose; factual fixes: token-rate ratio vs WavTokenizer 40 Hz is over 5x (was 40x), LatentLM is earlier work by overlapping authors (was "concurrent"); claims and version-1 generation block unchanged | runtime: claude-code | provider: anthropic | model: claude-opus-5-5

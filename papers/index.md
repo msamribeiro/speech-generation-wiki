@@ -963,3 +963,15 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[iclr-2026-eLsEjjFODE]] | [SpeechOp: Inference-Time Task Composition for Generativ](papers/iclr-2026-eLsEjjFODE.md) | Cornell University / Adobe Research | ICLR | 2026 | TTS | diffusion | 2026-10-20 |
 | [[iclr-2026-h5AiVx0Aiv]] | [DrVoice: Parallel Speech-Text Voice Conversation Model ](papers/iclr-2026-h5AiVx0Aiv.md) | Alibaba Group | ICLR | 2026 | SCA, TTS | autoregressive-LM, flow-matching | 2026-10-20 |
 | [[iclr-2026-FihSkzyxdv]] | [VibeVoice: Expressive Podcast Generation with Next-Toke](papers/iclr-2026-FihSkzyxdv.md) | Microsoft Research | ICLR | 2026 | TTS | hybrid | 2026-10-20 |
+| [[iclr-2026-l5re5ppqrX]] | [EchoMind: An Interrelated Multi-level Benchmark for Eva](papers/iclr-2026-l5re5ppqrX.md) | The Chinese University of Hong Kong, Shenzhen | ICLR | 2026 | SCA, evaluation |  | 2026-10-21 |
+| [[iclr-2026-llMfmDtWka]] | [Scaling Speech Tokenizers with Diffusion Autoencoders](papers/iclr-2026-llMfmDtWka.md) | Meta Superintelligence Labs / The Chinese University of Hong Kong, Shenzhen | ICLR | 2026 | codec, TTS | flow-matching, autoregressive-LM | 2026-10-21 |
+| [[iclr-2026-uGai5lYHlV]] | [TTSDS2: Resources and Benchmark for Evaluating Human-Qu](papers/iclr-2026-uGai5lYHlV.md) | University of Edinburgh | ICLR | 2026 | TTS, evaluation |  | 2026-10-21 |
+| [[iclr-2026-wbttgzp7MT]] | [EmotionThinker: Prosody-Aware Reinforcement Learning fo](papers/iclr-2026-wbttgzp7MT.md) | The Chinese University of Hong Kong / Microsoft | ICLR | 2026 | SCA | autoregressive-LM | 2026-10-21 |
+| [[2604.22821]] | [Audio2Tool: Speak, Call, Act -- A Dataset for Benchmark](papers/2604.22821.md) | Rivian and Volkswagen Group Technologies | arXiv | 2026 | SCA, evaluation |  | 2026-10-21 |
+| [[2604.25441]] | [Praxy Voice: Voice-Prompt Recovery + BUPS for Commercia](papers/2604.25441.md) | Praxel Ventures | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-10-21 |
+| [[2604.25476]] | [PSP: An Interpretable Per-Dimension Accent Benchmark fo](papers/2604.25476.md) | Praxel Ventures | arXiv | 2026 | TTS, evaluation |  | 2026-10-21 |
+| [[2604.19330]] | [Text-To-Speech with Chain-of-Details: modeling temporal](papers/2604.19330.md) | Dolby Laboratories / Canva Research | arXiv | 2026 | TTS | autoregressive-LM | 2026-10-21 |
+| [[2604.26281]] | [DiffAnon: Diffusion-based Prosody Control for Voice Ano](papers/2604.26281.md) | Johns Hopkins University | arXiv | 2026 | VC | diffusion | 2026-10-21 |
+| [[2604.26347]] | [The False Resonance: A Critical Examination of Emotion ](papers/2604.26347.md) | National Taiwan University / University of Southern California / Gilbert AI Lab | arXiv | 2026 | evaluation, TTS |  | 2026-10-21 |
+| [[2604.27393]] | [MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal](papers/2604.27393.md) | OpenBMB | arXiv | 2026 | SCA, TTS | autoregressive-LM, flow-matching, hybrid | 2026-10-21 |
+| [[2026.dialres-1.18]] | [Speaker Normalization via Voice Conversion Reveals a Hu](papers/2026.dialres-1.18.md) | Marburg University / Lamarr Institute / University of Bonn | workshop | 2026 | VC |  | 2026-10-21 |
