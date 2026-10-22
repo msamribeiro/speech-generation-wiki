@@ -4,6 +4,25 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-22
+
+- ingest | 2604.27607 | JaiTTS: A Thai Voice Cloning Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.02496 | Tibetan-TTS:Low-Resource Tibetan Speech Synthesis with Large Model Adaptation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.09111 | PS-TTS: Phonetic Synchronization in Text-to-Speech for Achieving Natural Automated Dubbing | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2507.13563 | Balalaika: Data-Centric, Prosody-Aware Annotation Pipeline for Russian Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.01238 | SPARCLE: SPeaker-aware Aligned Representations via Contrastive Language Embeddings | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.00777 | LASE: Language-Adversarial Speaker Encoding for Indic Cross-Script Identity Preservation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.13288 | Giving Voice to the Constitution: Low-Resource Text-to-Speech for Quechua and Spanish Using a Bilingual Legal Corpus | PoliticalNLP 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2407.15828 | J-CHAT: Japanese Large-scale Spoken Dialogue Corpus for Spoken Dialogue Language Modeling | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.sigul-1.11 | Transfer Learning for Creole TTS: A Pilot Study on Whether Substrate Phonologies or Lexifier Vocabularies Matter More | SIGUL 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.859 | A Benchmark Dataset and Comparative Evaluation of Phonemized and Romanized Urdu for Text-to-Speech | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.771 | Nos_Brais-GL: A FAIR Galician TTS Corpus for Neural Speech Synthesis | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.48 | Central Kurdish Text-to-Speech and Its Application in Speech-to-Text Translation | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.465 | IMaSC: A Malayalam Speech Corpus for High-Quality Text-to-Speech Synthesis | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.437 | Automatic Prediction of Prominence and Boundary Strength from Text | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.375 | TTSVowelViz: A Tool for Visualising Text-to-Speech Model Training via Vowel Spaces | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.lrec-1.184 | Probing Discrete Speech Tokens of Spoken Language Models | LREC 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-21
 
 - ingest | 2026.dialres-1.18 | Speaker Normalization via Voice Conversion Reveals a Human-Machine Dissociation in Dialect Classification | workshop 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
