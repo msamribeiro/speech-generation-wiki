@@ -4,6 +4,13 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-23
+
+- ingest | 2605.09386 | Kinetic-Optimal Scheduling with Moment Correction for Metric-Induced Discrete Flow Matching in Zero-Shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.05611 | X-Voice: Enabling Everyone to Speak 30 Languages via Zero-Shot Cross-Lingual Voice Cloning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.05927 | Minimizing Modality Gap from the Input Side: Your Speech LLM Can Be a Prosody-Aware Text LLM | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.06407 | WavCube: Unifying Speech Representation for Understanding and Generation via Semantic-Acoustic Joint Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-22
 
 - ingest | 2604.27607 | JaiTTS: A Thai Voice Cloning Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
