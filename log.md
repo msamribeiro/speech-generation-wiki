@@ -4,6 +4,27 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-25
+
+- ingest | 2606.01905 | Advancing Electrolaryngeal Speech Enhancement Through Speech-Text Representation Learning | IEEE TBME 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.31530 | UNISON: A Unified Sound Generation and Editing Framework via Deep LLM Fusion | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.swisstext-1.7 | Text vs. Phoneme Intermediates for Low-Resource Swiss German Text-to-Speech | SwissText 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.nlpaics-1.18 | How Well Do Commodity Text-to-Speech Systems Evade Acoustic Perturbation Detection? A Multi-Engine Evaluation Across 21 Languages | NLPAICS 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.01479 | Sparse Autoencoders for Interpretable Emotion Control in Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.00851 | Sympatheia: Emotionally Adaptive Voice Assistant with Continuous Affect Conditioning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.31521 | UniAudio-Token: Empowering Semantic Speech Tokenizers with General Audio Perception | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30993 | SwanVoice: Expressive Long-Form Zero-Shot Speech Synthesis for Both Monologue and Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30792 | OpenSTBench: Beyond Semantic Evaluation for Speech Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.29859 | MELD: Mel-Spectrogram-Based Speech Language Modeling with Discrete Latent Variables | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.29209 | The WER Trap: Shattering the Illusion of Unified Tokens in Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27984 | KVoiceBench, KOpenAudioBench, and KMMAU: Agent-Driven Korean Speech Benchmarks for Evaluating SpeechLMs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27258 | PilotTTS: A Disciplined Modular Recipe for Competitive Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27772 | Do Audio LLMs Listen or Read? Analyzing and Mitigating Paralinguistic Failures with VoxParadox | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.27190 | Learning When to Think While Listening in Large Audio-Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.26978 | PashtoTTS-Bench: automated screening for low-resource non-Latin-script text-to-speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.25504 | Toward Natural Emotional Text-To-Speech System with Fine-Grained Non-Verbal Expression Control | O-COCOSDA 2025 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.18001 | Bridging the Gap: Converting Read Text to Conversational Dialogue | ICICC 2025 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-24
 
 - ingest | 2605.26812 | CFMDCTCodec: A Low-Bitrate Neural Speech Codec with Noise-Prior-aware Conditional Flow Matching for MDCT-Spectral Enhancement | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
