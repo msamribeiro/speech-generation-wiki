@@ -4,6 +4,26 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-10-26
+
+- ingest | 2606.09962 | Optimality of FSQ Tokens for Continuous Diffusion for Categorical Data with Application to Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.10029 | Interpreting and Steering a Text-to-Speech Language Model with Sparse Autoencoders | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.09553 | OpenBibleTTS: Large-Scale Speech Resources and TTS Models for Low-Resource Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.09295 | NüshuVoice: Reviving the Voice of Endangered Nüshu with Pitch-Aware Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.09234 | End-to-End Training for Discrete Token LLM based TTS System | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.09048 | BareWave: Waveform-Native Flow-Matching Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.09019 | TLDR: Compressing Audio Tokens for Efficient Autoregressive Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.07397 | Audio-Oscar: A Multi-Agent System for Complex Audio Scene Generation, Orchestration, and Refinement | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.06928 | VoxCPM2 Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.06559 | IRAF: Interference-Resilient Adaptive Fusion for Noise-Robust End-to-End Full-Duplex Spoken Dialogue Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.05889 | GLASS: GRPO-Trained LoRA for Acoustic Style Steering in Zero-Shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.05852 | UniVoice: A Unified Model for Speech and Singing Voice Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.04418 | CleanCodec: Efficient and Robust Speech Tokenization via Perceptually Guided Encoding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2502.14145 | LLM-Enhanced Dialogue Management for Full-Duplex Spoken Dialogue Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.03455 | WavTTS: Towards High-Quality Zero-Shot TTS via Direct Raw Waveform Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.03241 | Benchmarking Speech-to-Speech Translation Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- misc | paper-date rule | re-dated 32 paper pages published at Interspeech 2026 (22 Q1 2026, 10 Q2 2026) to the proceedings date 2026-09-27: published_date/month, conference_date and preprint_date set, venue Interspeech / conference, abstract card and papers/index.md venue updated; page content unchanged | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-25
 
 - ingest | 2606.01905 | Advancing Electrolaryngeal Speech Enhancement Through Speech-Text Representation Learning | IEEE TBME 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
