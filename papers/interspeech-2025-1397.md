@@ -109,3 +109,4 @@ The model is restricted to two singing styles (straight and vibrato) derived fro
 - [[diffusion-tts|Diffusion TTS]] — The SVC backbone uses a WaveNet-based diffusion decoder with DPM-Solver++ for denoising, following established diffusion-based speech generation practices.
 - [[self-supervised-speech|Self-Supervised Speech]] — HuBERT discrete units serve as the content conditioning signal for the SVC backbone, a standard SSL-based content representation in voice conversion.
 - [[subjective-evaluation|Subjective Evaluation]] — MOS and SMOS tests are conducted via Amazon MTurk with at least 20 human raters per model, evaluating naturalness and speaker similarity.
+- [[2606.17126|VibE-SVC2]] — The authors' IEEE TASLP 2026 journal extension (separate page), adding energy and zero-shot style converters, vibrato rate scaling, and a timbre style lookup table with subharmonic correction.
