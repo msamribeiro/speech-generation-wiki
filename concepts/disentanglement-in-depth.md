@@ -2,18 +2,18 @@
 concept: disentanglement
 render_type: in-depth
 title: "Disentanglement: In Depth"
-source_digest_date: 2026-07-22
-paper_count: 100
+source_digest_date: 2026-09-26
+paper_count: 116
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 ## Findings at a Glance
@@ -37,10 +37,15 @@ generation:
 8. **Evaluation remains the weakest shared infrastructure.** Most work uses downstream quality,
    WER, or classifier proxies rather than a direct and comparable measure of cross-attribute
    leakage.
+9. **Dedicated semantic, acoustic, speaker, and environment streams can replace explicit leakage
+   losses in some systems,** but stream separation still needs intervention-based validation.
+10. **Cross-source composition exposes hidden leakage.** Swapping attributes from different inputs
+    is more diagnostic than reconstruction or aggregate scores alone.
 
 ## Scope
 
-The claim graph contains 100 papers published from 2020 through September 2025. It spans neural
+The claim graph contains 116 papers through Q4 2025 and 19 clusters: 15 strongly supported, 2
+contested, and 2 emerging. It spans neural
 speech codecs, TTS, voice conversion, emotional and singing-voice generation, spoken language
 modeling, and several narrower accent or articulation-control settings. The corpus is largest in
 2025, especially Interspeech, and therefore describes a period when disentanglement shifted from
@@ -80,7 +85,7 @@ approaches can complement any architecture and sometimes avoid the instability o
 training. Fourteen papers in the graph combine two method families, which is a useful warning
 against treating the taxonomy as a menu of isolated alternatives.
 
-The largest family—explicit multi-encoder factorization—contains 30 papers and is correspondingly
+The largest family—explicit multi-encoder factorization—contains 42 papers and is correspondingly
 heterogeneous. [[2403.03100|NaturalSpeech 3]] and its FACodec lineage make content, prosody,
 speaker, and acoustic detail explicit components. Other systems use dedicated emotion, accent,
 articulation, or style encoders. Membership shows a shared structural idea, not equal evidence
@@ -290,6 +295,12 @@ generation system, information or retrieval probes, phonetic preservation, and l
 Pitch deserves a dedicated protocol because it repeatedly escapes generic content-speaker probes.
 Until then, readers should interpret “disentangled” as a task- and metric-specific finding.
 
+### Stream separation and intervention tests
+
+Q4 work strengthens a route that sits between explicit multi-encoder factorization and formal independence losses. [[2510.13221|Acoustic Teleportation]], [[2510.15227|LongCat-Audio-Codec]], and [[2510.16841|SAC]] place semantic, acoustic, speaker, or environment information in dedicated streams. [[2512.13251|DisCo-Speech]] adds a staged codec protocol and soft orthogonality constraints for timbre and prosody. Together they show that architectural separation can produce useful controllability without requiring gradient reversal or mutual-information minimization in every case.
+
+The decisive evidence comes from interventions rather than reconstruction. Cross-source composition swaps content, identity, prosody, or environment across inputs and asks whether only the intended factor changes. [[2511.12074|MF-Speech]] and [[2512.09504|DMP-TTS]] further show why per-attribute evaluation matters: a system can improve one control target while leaving residual emotion leakage or disturbing identity, intelligibility, or another guided attribute. These results make independent manipulation the practical test of disentanglement, while preserving the graph's established fidelity trade-off.
+
 ## Where Findings Disagree
 
 The first disagreement concerns **GRL and quality**. Several systems reduce measurable leakage with
@@ -331,6 +342,10 @@ emotion, speaking style, and melody. The research question is shifting from “c
 factorized?” to “which boundary should be enforced, at what representation level, and with what
 loss in correlated detail?”
 
+Q4 sharpens that shift through dual- and multi-stream codecs, cross-source composition, and
+per-attribute guidance tests. The frontier increasingly asks whether a factor can be swapped or
+edited independently, not merely whether a classifier can decode less of it.
+
 ## Implications
 
 For system design, start from the required intervention. If the product needs speaker-preserving
@@ -370,12 +385,18 @@ the same models would resolve several current tensions at once.
    diverge.
 6. Finish with [[2509.15626|LibriTTS-VI]] and [[2509.19883|CoMelSinger]] for the newer problem of
    prompt-derived attribute leakage.
+7. Add [[2510.16841|SAC]], [[2511.12074|MF-Speech]], and [[2512.13251|DisCo-Speech]] for the Q4 move
+   toward separated streams, compositional control, and intervention-based evaluation.
 
 Return to the [[concepts/disentanglement|Disentanglement Overview]] for the compact synthesis.
 
 ## Structured Source
 
-The complete machine-readable claim graph—including all 100 paper records, support roles, claim
+The complete machine-readable claim graph—including all 116 paper records, support roles, claim
 clusters, method families, caveats, and reassessment triggers—is available at
 `wiki/_claims/disentanglement.yaml`. The citations above are representative selections, not the
 complete evidence inventory.
+
+---
+
+_This page is generated from `wiki/_claims/disentanglement.yaml` (digest date: 2026-09-26)._

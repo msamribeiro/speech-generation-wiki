@@ -2,22 +2,22 @@
 slug: streaming-tts
 aliases: [incremental TTS, real-time speech generation, full-duplex speech]
 status: established
-last_reviewed: 2026-08-02
+last_reviewed: 2026-11-01
 concept: streaming-tts
 render_type: overview
 title: "Streaming Text-to-Speech"
-source_digest_date: 2026-07-30
-paper_count: 54
+source_digest_date: 2026-09-26
+paper_count: 75
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -37,6 +37,8 @@ generation:
 
 **Parallel, multi-token, and speculative decoding reduce serial speech-token generation cost.** This is strongly supported within the reviewed graph; representative evidence includes [[2408.16725|Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming]], [[2502.11946|Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction]]. Speedups can shrink when verification, codec decoding, or small-batch deployment is included.
 
+**Q4 shifts attention from component latency to concurrent work and moving bottlenecks.** Systems can reason during listening, as in [[2510.02066|Chain-of-Thought Reasoning in Streaming Full-Duplex End-to-End Spoken Dialogue Systems]], but premature reasoning can harm coherence. [[2512.18706|X-Talk]] and related modular studies show that once one component is accelerated, ASR, retrieval, acoustic decoding, vocoding, or orchestration can become dominant.
+
 ## Method Landscape
 
 - **Autoregressive streaming generation.** 32 memberships demonstrate a shared practical pattern, not matched superiority.
@@ -51,6 +53,7 @@ generation:
 - **Shared models can support both streaming and offline speech generation through masks, chunk schedules, or mode conditioning.** Joint training may underperform separately optimized models at either extreme.
 - **Full-duplex speech systems require generation to incorporate an incoming audio stream while speaking.** Many systems demonstrate interruption handling rather than unrestricted simultaneous dialogue.
 - **Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions, barge-in, and response timing.** Turn-taking benchmarks often use constrained speakers, prompts, or synthetic overlap.
+- **Component speed versus end-to-end responsiveness.** A faster tokenizer, LM, or vocoder matters only when the full pipeline and interaction policy are measured together.
 
 ## Open Questions
 
@@ -66,8 +69,8 @@ Read [[concepts/streaming-tts-in-depth|Streaming Text-to-Speech: In Depth]] for 
 
 ## Scope
 
-This synthesis covers 54 papers through Q3 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
+This synthesis covers 75 papers through Q4 2025. All 19 clusters are strongly supported within the encoded graph. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols; shared lineages and unmatched speed or quality comparisons retain narrower interpretations.
 
 ---
 
-_This page is generated from `wiki/_claims/streaming-tts.yaml` (digest date: 2026-07-30). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/streaming-tts.yaml` (digest date: 2026-09-26). For complete structured claims and paper-level provenance, use the source YAML._

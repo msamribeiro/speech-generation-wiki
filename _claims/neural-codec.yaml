@@ -1,6 +1,6 @@
 concept: neural-codec
-last_updated: '2026-09-20'
-paper_count: 239
+last_updated: '2026-10-31'
+paper_count: 240
 papers:
 - id: '1609.03499'
   published_date: "2016-09-12"
@@ -17764,6 +17764,85 @@ papers:
   caveats:
   - Large-scale tokenizer results are broad but come from a single industry report; several generative
     capabilities remain qualitative and unreplicated.
+- id: '2512.00451'
+  published_date: '2025-11-29'
+  entry_date: '2026-10-31'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - codec
+  architecture:
+  - autoregressive-LM
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - hybrid_semantic_acoustic_tokenizers
+  claims:
+  - claim_id: late_q4_2512_00451_explicit_text_prosody_timbre_decomposition_combined_with_heavily_asymmetric_per_stream_compression_can_push_a_
+    role: supports
+    claim: Explicit text-prosody-timbre decomposition combined with heavily asymmetric per-stream compression can push
+      a speech communication system's sustained bitrate close to a pure-transcript baseline while retaining perceived
+      naturalness and speaker identity.
+    source: §IV-C1, Table I, Table II
+    evidence: STCTS sustains 71.6-79.6 bps across three quality modes on LibriSpeech test-clean, a 40-50x reduction versus
+      Opus (6 kbps) and ~8x versus EnCodec (1 kbps), with NISQA-predicted MOS of 4.255-4.280 and speaker similarity of
+      0.667-0.673.
+    confidence: high
+    relevance: high
+  - claim_id: late_q4_2512_00451_the_relationship_between_prosody_update_rate_and_perceived_speech_quality_in_tts_based_reconstruction_is_not_m
+    role: complicates
+    claim: The relationship between prosody update rate and perceived speech quality in TTS-based reconstruction is not
+      monotonic with bitrate; intermediate sampling rates can perform worse than both sparser and denser sampling.
+    source: §IV-B, Figure 5
+    evidence: A sweep from 0.05 Hz to 20 Hz shows NISQA MOS peaks at 0.05-1 Hz (~4.30-4.36, 132-154 bps) and at >6 Hz
+      (4.317, 410 bps), with a "mid-frequency valley" at 1-5 Hz that the authors attribute to perceptually salient interpolation
+      discontinuities.
+    confidence: high
+    relevance: medium
+  - claim_id: late_q4_2512_00451_frame_level_intrusive_intelligibility_metrics_such_as_stoi_are_unreliable_indicators_of_quality_for_generative
+    role: complicates
+    claim: Frame-level intrusive intelligibility metrics such as STOI are unreliable indicators of quality for generative,
+      TTS-based speech reconstruction because they assume waveform-level temporal alignment that such systems do not
+      preserve.
+    source: §IV-C1, "STOI Analysis"
+    evidence: STCTS STOI scores (0.150-0.162) fall far below Opus (0.906) and EnCodec (0.805) despite high NISQA MOS
+      (4.2+) and moderate WER (~0.235), which the authors trace to independent STT/TTS timing rather than genuine intelligibility
+      loss.
+    confidence: high
+    relevance: medium
+  - claim_id: late_q4_2512_00451_speaker_identity_can_be_preserved_under_significant_channel_degradation_by_transmitting_a_compact_speaker_embe
+    role: supports
+    claim: Speaker identity can be preserved under significant channel degradation by transmitting a compact speaker
+      embedding infrequently with high delivery priority, rather than streaming continuous acoustic features.
+    source: §IV-C2, Table II
+    evidence: Speaker similarity stays within 0.658-0.669 across simulated bit error rates of 0-10%, attributed to the
+      amortized, cached, high-priority-retransmitted transmission strategy for the 384-byte ECAPA-TDNN embedding.
+    confidence: high
+    relevance: medium
+  - claim_id: late_q4_2512_00451_cascading_an_independent_speech_to_text_stage_with_a_text_to_speech_reconstruction_stage_imposes_a_transcripti
+    role: complicates
+    claim: Cascading an independent speech-to-text stage with a text-to-speech reconstruction stage imposes a transcription-accuracy
+      floor that the surrounding compression system cannot fully compensate for.
+    source: §IV-C1, §IV-C2, Table II
+    evidence: STCTS word error rate remains 0.213-0.264 across quality modes and noise conditions, substantially higher
+      than Opus (0.032) or EnCodec (0.110), since errors originate in STT decoding rather than in the compression or
+      transport layers.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Results use LibriSpeech test-clean and one receiver TTS backbone, excluding spontaneous speech, overlap, disfluencies,
+    and non-speech acoustic events.
+  - The roughly 1.5–2.0 second pipeline latency is unsuitable for rapid full-duplex interaction, and reconstruction remains
+    bounded by independent STT and TTS errors.
+  caveats:
+  - STCTS is a generative semantic-compression alternative rather than a waveform codec; bitrate and quality comparisons
+    must preserve that difference in representation, timing, and failure modes.
 claim_clusters:
 - id: learned_codec_low_bitrate_quality
   claim: Learned neural codecs can preserve intelligible and perceptually useful speech at bitrates far
@@ -17771,6 +17850,7 @@ claim_clusters:
   status: strongly_supported
   confidence: high
   supporting_papers:
+  - '2512.00451'
   - '2104.00355'
   - '2506.23325'
   - '2508.02849'
@@ -17798,11 +17878,12 @@ claim_clusters:
   - '2512.07168'
   - '2512.20211'
   caveats:
+  - STCTS reaches very low rates by transmitting text, sparse prosody, and speaker state for generative resynthesis, so it is not directly equivalent to a waveform codec.
   - Reported bitrate and quality figures are rarely measured on a shared corpus with matched listeners
     and decoder capacity.
   - Q4 systems extend convincing results below 10 Hz and into single-codebook designs, but cross-paper
     bitrate and listening comparisons remain poorly controlled.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: residual_quantization_supports_scalable_bitrate
   claim: Residual vector quantization provides a hierarchical and scalable representation whose active
     codebooks can trade bitrate against reconstruction detail.
@@ -17879,6 +17960,7 @@ claim_clusters:
   status: strongly_supported
   confidence: high
   supporting_papers:
+  - '2512.00451'
   - '2209.03143'
   - '2301.11325'
   - '2410.03751'
@@ -17916,11 +17998,12 @@ claim_clusters:
   - '2512.20944'
   - '2512.21653'
   caveats:
+  - Explicit text-prosody-timbre streams improve interpretability, but content fidelity remains bounded by the independent STT and TTS components.
   - The boundary between semantic and acoustic information is porous, especially for prosody and speaker
     identity.
   - Q4 evidence supports several incompatible placements of semantic supervision; gains do not yet identify
     one generally optimal hierarchy.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: ssl_guidance_improves_codec_semantics
   claim: Self-supervised speech representations can guide codec quantization toward tokens that carry
     stronger linguistic content for downstream generation.
@@ -18261,16 +18344,18 @@ claim_clusters:
   - '2512.13251'
   contradicting_papers: []
   refining_papers:
+  - '2512.00451'
   - '2508.08399'
   - '2511.16639'
   - '2512.07168'
   - '2512.23808'
   caveats:
+  - STCTS replaces opaque codec tokens with heterogeneous symbolic and continuous streams, trading reconstructability for interpretability and extreme compression.
   - Comparisons are often confounded by different generators, sampling procedures, and representation
     rates.
   - Q4 continuous and hybrid systems add evidence on efficiency and fidelity, yet matched representation-only
     ablations remain scarce.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: token_rate_drives_sequence_cost
   claim: Codec frame rate and token hierarchy directly govern language-model sequence length, inference
     cost, and streaming latency.
@@ -18302,14 +18387,16 @@ claim_clusters:
   - neurips-2025-7Z3wQSu3mH
   contradicting_papers: []
   refining_papers:
+  - '2512.00451'
   - iclr-2025-868masI331
   - interspeech-2025-1106
   - '2509.21968'
   - '2512.04720'
   - neurips-2025-1cURNMriee
   caveats:
+  - Sparse prosody updates show a non-monotonic quality curve, so lower update rate does not map monotonically to worse perceived quality.
   - Lower token rates can hide losses in transient detail, timing precision, or speaker similarity.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: parallel_latent_generation_improves_robustness
   claim: Diffusion, flow-matching, and masked non-autoregressive generation over codec latents can reduce
     sequential decoding cost and autoregressive failure modes.
@@ -18391,11 +18478,13 @@ claim_clusters:
   - '2512.23808'
   contradicting_papers: []
   refining_papers:
+  - '2512.00451'
   - '2509.15462'
   - '2512.20211'
   caveats:
+  - In generative semantic compression, transcription errors can dominate intelligibility even when the transport representation is extremely compact.
   - Observed errors may arise from the generator or alignment model rather than the codec alone.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: codec_representations_enable_multilingual_transfer
   claim: Shared codec and semantic representations support multilingual and cross-lingual speech generation,
     but language coverage can trade against speaker fidelity.
@@ -18494,6 +18583,7 @@ claim_clusters:
   - '2512.21653'
   contradicting_papers: []
   refining_papers:
+  - '2512.00451'
   - interspeech-2025-1538
   - '2509.05863'
   - '2509.22167'
@@ -18501,11 +18591,12 @@ claim_clusters:
   - '2510.15364'
   - '2512.23808'
   caveats:
+  - STOI can collapse under independently timed TTS resynthesis despite high predicted naturalness and moderate WER, exposing a scope failure rather than certain unintelligibility.
   - Objective, subjective, and downstream-task evaluations measure different failure modes and should
     not be collapsed into one ranking.
   - Q4 listener studies and objective-metric analyses strengthen the diagnosis, but no shared reconstruction-plus-generation
     benchmark resolves it.
-  last_reviewed: '2026-09-20'
+  last_reviewed: '2026-10-31'
 - id: codec_robustness_requires_domain_aware_training
   claim: Codec quality and token utility degrade under language, bandwidth, noise, sampling-rate, and
     real-versus-synthetic domain shifts unless training and evaluation explicitly cover those conditions.
@@ -18793,6 +18884,7 @@ method_families:
   summary: Hybrid systems combine self-supervised semantic representations with acoustic codec detail
     to separate linguistic coherence from waveform fidelity.
   papers:
+  - '2512.00451'
   - '2310.00704'
   - '2403.03100'
   - '2407.05407'

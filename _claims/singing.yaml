@@ -1,6 +1,6 @@
 concept: singing
-last_updated: '2026-09-26'
-paper_count: 20
+last_updated: '2026-10-31'
+paper_count: 21
 papers:
 - id: '2304.09116'
   published_date: "2023-04-18"
@@ -1405,6 +1405,72 @@ papers:
   caveats:
   - The survey scopes itself to deep-learning SVS and treats multimodal-LLM opportunities as forward-looking rather
     than validated.
+- id: '2512.14653'
+  published_date: '2025-12-16'
+  entry_date: '2026-10-31'
+  year: 2025
+  venue: ASRU
+  task:
+  - singing
+  architecture:
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - vae_singing_latent_systems
+  - gan_singing_conversion_systems
+  claims:
+  - claim_id: late_q4_2512_14653_applying_differentiable_stylegan_style_data_augmentation_inside_the_adversarial_training_loop_s_discriminator_
+    role: supports
+    claim: Applying differentiable, StyleGAN-style data augmentation inside the adversarial training loop's discriminator
+      feature space, rather than to the generated waveform directly, can improve pitch and timbre fidelity in singing
+      voice synthesis without shifting the model's target output distribution.
+    source: §IV-D, Table 1
+    evidence: Adding differentiable noise augmentation to VISinger2's discriminator and generator forward passes improves
+      Log F0 RMSE from 0.174 to 0.159 and MCD from 7.876 to 7.67 on Opencpop, while augmentation is applied only to discriminator-extracted
+      features, not the generated waveform.
+    confidence: high
+    relevance: high
+  - claim_id: late_q4_2512_14653_explicitly_predicting_a_singing_voice_synthesis_model_s_frame_level_posterior_uncertainty_supervised_by_recons
+    role: supports
+    claim: Explicitly predicting a singing voice synthesis model's frame-level posterior uncertainty, supervised by reconstruction
+      error, and combining it with adversarial training improves perceived naturalness beyond either technique alone.
+    source: §IV-D, Table 1
+    evidence: The combined strategy achieves the highest overall MOS (3.67 vs. 3.46 for the baseline) and the most best-or-second-best
+      scores across all 8 evaluation metrics on Opencpop, exceeding either component applied individually.
+    confidence: high
+    relevance: high
+  - claim_id: late_q4_2512_14653_among_differentiable_augmentation_strategies_for_adversarial_singing_voice_synthesis_training_additive_noise_p
+    role: supports
+    claim: Among differentiable augmentation strategies for adversarial singing-voice-synthesis training, additive noise
+      perturbation to discriminator features generalizes better than time/frequency masking or their combination.
+    source: §V-A, Table 2
+    evidence: In an ablation comparing noise, masking, and combined noise+masking augmentation, additive noise alone
+      achieves the highest number of best-or-second-best scores across the 8 evaluation metrics on Opencpop.
+    confidence: high
+    relevance: high
+  - claim_id: late_q4_2512_14653_uncertainty_driven_training_improvements_for_singing_voice_synthesis_do_not_transfer_uniformly_across_all_obje
+    role: complicates
+    claim: Uncertainty-driven training improvements for singing voice synthesis do not transfer uniformly across all
+      objective metrics when applied to a smaller-scale corpus in a different language; pitch and duration metrics can
+      improve while spectral-distortion metrics slightly degrade.
+    source: §V-B, Table 3
+    evidence: On the Japanese Ofuton-P corpus (roughly 20% the size of Opencpop), the combined strategy improves Log
+      F0 RMSE, semitone accuracy, VUV, and Sheet-SSQA relative to baseline, but shows a slight MCD degradation, attributed
+      to a pitch-versus-timbre trade-off.
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation uses two single-singer corpora, leaving multi-singer and diverse-style generalization untested.
+  - 'The smaller Japanese corpus shows a pitch-versus-timbre trade-off: several pitch and duration measures improve while
+    MCD slightly worsens.'
+  caveats:
+  - The combined uncertainty and adversarial-augmentation result is strongest on Opencpop and does not establish uniform
+    transfer across languages, corpus sizes, or augmentation families.
 claim_clusters:
 - id: shared_speech_singing_training_enables_timbre_transfer
   claim: Joint speech–singing training enables cross-modal timbre transfer from speech references to singing generation.
@@ -1711,6 +1777,18 @@ claim_clusters:
   - Synthetic expansion has a non-monotonic quality regime and large private corpora make public scale comparisons
     difficult.
   last_reviewed: '2026-09-26'
+- id: uncertainty_aware_adversarial_training_improves_singing_synthesis
+  claim: Uncertainty-aware objectives and differentiable discriminator-feature augmentation can improve singing-synthesis fidelity and naturalness, although gains may trade pitch accuracy against spectral fidelity across corpora.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2512.14653'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence comes from two single-singer corpora and one VISinger2-based system; multi-singer, multilingual, and architecture-level transfer remain untested.
+  - The smaller Japanese corpus improves several pitch and duration measures while slightly degrading MCD, so the benefit is not uniform across quality dimensions.
+  last_reviewed: '2026-10-31'
 method_families:
 - id: diffusion_singing_generation
   name: Diffusion singing generation and conversion
@@ -1731,6 +1809,7 @@ method_families:
   summary: Variational systems encode timbre, content, pitch, or style in latent spaces used for singing synthesis,
     conversion, and codec reconstruction.
   papers:
+  - '2512.14653'
   - '2304.09116'
   - interspeech-2025-0347
   - interspeech-2025-1531
@@ -1742,6 +1821,7 @@ method_families:
   summary: Adversarial singing systems regularize pitch, timbre, spectral detail, or style-transfer objectives during
     conversion and reconstruction.
   papers:
+  - '2512.14653'
   - interspeech-2025-0347
   - interspeech-2025-1531
   - '2511.21045'

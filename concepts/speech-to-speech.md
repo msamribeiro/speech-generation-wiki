@@ -5,24 +5,24 @@ render_type: overview
 title: Speech-to-Speech Systems
 aliases: [speech-to-speech, S2S, spoken dialogue systems, speech language models, end-to-end spoken agents]
 status: established
-last_reviewed: 2026-07-24
-source_digest_date: 2026-07-19
-paper_count: 60
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-20
+paper_count: 94
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
 > Speech-to-speech systems accept speech and produce spoken responses, spanning conversational
-> agents, full-duplex interaction, and speech-to-speech translation. Across the 60 papers reviewed
+> agents, full-duplex interaction, and speech-to-speech translation. Across the 94 papers reviewed
 > here, real-time interaction is increasingly practical, but the strongest systems still make
 > substantial trade-offs between reasoning, latency, turn-taking, and sensitivity to how something
 > is said rather than only what was said.
@@ -50,6 +50,15 @@ generation:
 - **Single-turn scores overstate conversational ability.** Context recall, emotional coherence,
   information density, and bias can worsen as an interaction continues
   ([[2025.findings-acl.470]], [[2508.18240|MTalk-Bench]]).
+- **Q4 moves useful work into the listening window.** [[2510.02044|Stream RAG]] and related agents
+  retrieve, reason, or plan tools from partial speech to lower response latency. Short chunks can
+  trigger premature or incoherent actions, so cancellation and full-context fallback are part of
+  the capability rather than implementation details.
+- **Direct translation benefits from structured and synthetic supervision, but multilingual
+  reliability remains uneven.** Multi-token unit prediction in [[2510.10003|MTP-S2UT]] and
+  pseudo-parallel transfer in [[2511.20974|RosettaSpeech]] reduce reliance on recorded parallel
+  speech; language choice, code-switching, voice fidelity, and low-resource coverage still produce
+  large condition-specific gaps.
 
 ## Method Landscape
 
@@ -78,6 +87,8 @@ capabilities remain independently trainable.
   speech integration while risking forgetting of text reasoning and instruction-following.
 - **Evaluation scale versus evaluation validity.** Automated judges enable broad comparisons but
   are least reliable for subtle, paralinguistic, or near-tied speech outputs.
+- **Speculative latency versus action accuracy.** Reasoning before the user finishes saves time only
+  when ambiguity and recovery costs are measured alongside successful early actions.
 
 ## Open Questions
 
@@ -91,6 +102,8 @@ capabilities remain independently trainable.
   knowledge?
 - Which evaluation protocol best combines semantic correctness, acoustic appropriateness,
   interaction quality, and multi-turn behavior?
+- Can synthetic and pseudo-parallel data close multilingual and code-switched gaps without erasing
+  voice or prosodic fidelity?
 
 ## Go Deeper
 
@@ -100,7 +113,7 @@ and retrieval, and a representative reading path.
 
 ## Scope
 
-This assessment covers 60 integrated papers through Q3 2025 and combines spoken dialogue,
+This assessment covers 94 integrated papers through Q4 2025 and combines spoken dialogue,
 full-duplex interaction, and speech-to-speech translation. These tasks share a speech-in/speech-out
 interface but not always objectives or metrics. Surveys support taxonomy rather than independent
 replication, known duplicate publication records are treated as one evidence point, and several
@@ -108,5 +121,5 @@ frontier systems rely on proprietary data or unmatched commercial comparisons.
 
 ---
 
-_This page is generated from `wiki/_claims/speech-to-speech.yaml` (digest date: 2026-07-19).
+_This page is generated from `wiki/_claims/speech-to-speech.yaml` (digest date: 2026-09-20).
 Complete structured claims and paper-level provenance remain in the source YAML._

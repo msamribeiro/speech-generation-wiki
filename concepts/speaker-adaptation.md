@@ -2,22 +2,22 @@
 slug: speaker-adaptation
 aliases: [voice adaptation, speaker personalization, voice cloning adaptation]
 status: established
-last_reviewed: 2026-08-02
+last_reviewed: 2026-11-01
 concept: speaker-adaptation
 render_type: overview
 title: "Speaker Adaptation"
-source_digest_date: 2026-07-29
-paper_count: 79
+source_digest_date: 2026-09-26
+paper_count: 98
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -35,13 +35,15 @@ generation:
 
 **Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain voices.** Within the reviewed corpus, representative evidence includes [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]], [[2409.03283|FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications]], [[2025.findings-naacl.279|BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting]]. Benefits depend on data quality and can trade against the base model's generalization.
 
+**Q4 expands adaptation beyond conventional target recordings.** Generated, pseudo-speaker, face-derived, and text-derived representations enable reference-free voice creation ([[2025.findings-emnlp.1381|UniSpeaker]], [[2511.06246|IDMap]], [[2511.07135|Generating Novel and Realistic Speakers for Voice Conversion]]). This capability is strongly supported in the graph, but fidelity to an intended person is underconstrained when the input specifies a distribution of plausible voices rather than one recorded identity. A separate emerging result from [[2511.09995|Time-Layer Adaptive Alignment]] shows that speaker information is unevenly distributed across network depth and flow timesteps, motivating location-aware rather than uniform supervision.
+
 ## Method Landscape
 
-- **Autoregressive prompt-conditioned adaptation.** This practically distinct family contains 26 graph memberships; membership shows a shared pattern, not matched superiority.
-- **Flow-matching speaker adaptation.** This practically distinct family contains 20 graph memberships; membership shows a shared pattern, not matched superiority.
-- **GAN-based speaker transfer and adaptation.** This practically distinct family contains 14 graph memberships; membership shows a shared pattern, not matched superiority.
-- **Transformer encoder–decoder adaptation.** This practically distinct family contains 13 graph memberships; membership shows a shared pattern, not matched superiority.
-- **VAE latent speaker adaptation.** This practically distinct family contains 10 graph memberships; membership shows a shared pattern, not matched superiority.
+- **Autoregressive prompt-conditioned adaptation.** This practically distinct family contains 30 graph memberships; membership shows a shared pattern, not matched superiority.
+- **Flow-matching speaker adaptation.** This practically distinct family contains 26 graph memberships; membership shows a shared pattern, not matched superiority.
+- **GAN-based speaker transfer and adaptation.** This practically distinct family contains 21 graph memberships; membership shows a shared pattern, not matched superiority.
+- **Hybrid semantic–acoustic adaptation.** This family contains 15 memberships and makes the separation between linguistic transfer and acoustic identity explicit.
+- **Transformer, VAE, and diffusion adaptation.** These families contain 14, 14, and 12 memberships respectively and remain useful alternatives where explicit alignment, latent control, or parallel continuous generation matters.
 
 ## Key Trade-offs
 
@@ -49,6 +51,7 @@ generation:
 - **Separating speaker identity from style, emotion, content, and prosody improves controllable personalization.** Identity and expressive behavior overlap, so hard separation can erase speaker-specific phrasing and timing.
 - **Speaker identity, naturalness, intelligibility, and expressive-style transfer frequently trade off during adaptation.** The apparent trade-off changes with listener task and automatic metric choice.
 - **Cross-lingual and multilingual adaptation can preserve speaker identity, but language coverage and duration modeling create persistent variability.** Language, accent, phonetic coverage, and training-data scale are rarely controlled independently.
+- **Reference freedom versus identity specificity.** Generated or cross-modal speaker embeddings increase creative range and privacy options, but a face or description does not uniquely determine a voice.
 
 ## Open Questions
 
@@ -57,6 +60,7 @@ generation:
 - When should personalization use in-context prompting, parameter-efficient adaptation, or full speaker-specific fine-tuning?
 - How can identity and expressive style be separated without erasing speaker-specific phrasing, timing, and accent?
 - What listener-calibrated metric can compare speaker identity across TTS, voice conversion, atypical speech, and assistive use?
+- Which layers and generative timesteps should receive speaker supervision, and does the optimal location transfer across architectures?
 
 ## Go Deeper
 
@@ -64,8 +68,8 @@ Read [[concepts/speaker-adaptation-in-depth|Speaker Adaptation: In Depth]] for t
 
 ## Scope
 
-This synthesis covers 79 papers represented in the claim graph through Q3 2025. Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse. Strongly supported status applies within the encoded corpus; emerging and contested findings retain their narrower scope.
+This synthesis covers 98 papers represented in the claim graph through Q4 2025. The graph contains 17 strongly supported and 2 emerging clusters. Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse. Strongly supported status applies within the encoded corpus; emerging metric and trajectory-localization findings retain their narrower scope.
 
 ---
 
-_This page is generated from `wiki/_claims/speaker-adaptation.yaml` (digest date: 2026-07-29). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/speaker-adaptation.yaml` (digest date: 2026-09-26). For complete structured claims and paper-level provenance, use the source YAML._

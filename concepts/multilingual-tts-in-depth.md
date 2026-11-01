@@ -2,18 +2,18 @@
 concept: multilingual-tts
 render_type: in-depth
 title: "Multilingual Text-to-Speech: In Depth"
-source_digest_date: 2026-07-29
-paper_count: 75
+source_digest_date: 2026-09-26
+paper_count: 105
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/multilingual-tts|Multilingual Text-to-Speech]]. Complete provenance remains in `wiki/_claims/multilingual-tts.yaml`.
@@ -25,7 +25,7 @@ For the concise view, see [[concepts/multilingual-tts|Multilingual Text-to-Speec
 - Cross-lingual voice cloning must balance speaker identity against target-language pronunciation, accent, and intelligibility. (strongly supported, high confidence.)
 - Explicit language embeddings, identifiers, prompts, or routing reduce language confusion in shared multilingual models. (strongly supported, high confidence.)
 - Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic overlap. (strongly supported, high confidence.)
-- Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity. (emerging, medium confidence.)
+- Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity. (strongly supported, high confidence.)
 - Text normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource TTS. (strongly supported, high confidence.)
 - Large multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive to language coverage. (strongly supported, high confidence.)
 - Continued pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages. (strongly supported, high confidence.)
@@ -33,7 +33,7 @@ For the concise view, see [[concepts/multilingual-tts|Multilingual Text-to-Speec
 
 ## Scope
 
-The graph contains 75 papers through Q3 2025 and 17 synthesized clusters: 15 strongly supported, 2 emerging, and 0 contested. Direct experiments are separated from infrastructure, historical framing, surveys, and downstream adoption. Numeric results are not pooled across unmatched protocols.
+The graph contains 105 papers through Q4 2025 and 19 synthesized clusters, all strongly supported within the encoded evidence. Direct experiments are separated from infrastructure, historical framing, surveys, and downstream adoption. Numeric results are not pooled across unmatched protocols, and strong status does not erase language-pair or listener-population limits.
 
 ## Research Landscape
 
@@ -67,7 +67,7 @@ The graph contains 75 papers through Q3 2025 and 17 synthesized clusters: 15 str
 
 **Current assessment:** Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic overlap. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]. Universal inventories can erase language-specific allophony and prosodic distinctions. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
-**Current assessment:** Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks are small and often cover only a few language pairs. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
+**Current assessment:** Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks remain small and often cover only a few language pairs. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
 **Current assessment:** Text normalization, grapheme-to-phoneme conversion, tokenization, and alignment remain bottlenecks for multilingual and low-resource TTS. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]. End-to-end models can shift rather than eliminate errors caused by sparse linguistic coverage. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
@@ -81,7 +81,7 @@ The graph contains 75 papers through Q3 2025 and 17 synthesized clusters: 15 str
 
 **Current assessment:** Larger and more diverse multilingual corpora improve language coverage, robustness, and cross-lingual generalization. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2407.05361|Emilia: An Extensive, Multilingual, and Diverse Speech Dataset for Large-Scale Speech Generation]]. Scale gains are confounded by filtering, transcription quality, and proprietary data. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
-**Current assessment:** Shared multilingual models can leak source-language accent or average language-specific speaking styles. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[2509.22727|DiaMoE-TTS: A Unified IPA-Based Dialect TTS Framework with Mixture-of-Experts and Parameter-Efficient Zero-Shot Adaptation]]. Accent judgments depend strongly on listener language background and reference choice. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
+**Current assessment:** Shared multilingual models can leak source-language accent or average language-specific speaking styles. The graph rates this conclusion **strongly supported** with medium confidence. Representative support comes from [[2509.22727|DiaMoE-TTS: A Unified IPA-Based Dialect TTS Framework with Mixture-of-Experts and Parameter-Efficient Zero-Shot Adaptation]]. Accent judgments depend strongly on listener language background and reference choice. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
 ### Evidence theme 4
 
@@ -97,11 +97,17 @@ The graph contains 75 papers through Q3 2025 and 17 synthesized clusters: 15 str
 
 **Current assessment:** Dialect identity and regional prosody require explicit representations or routing to avoid averaging in shared multilingual models. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[interspeech-2025-2031|Kinship in Speech: Leveraging Linguistic Relatedness for Zero-Shot TTS in Indian Languages]], [[interspeech-2025-2573|SawtArabi: A Benchmark Corpus for Arabic TTS. Standard, Dialectal and Code-Switching]]. Dialect boundaries are socially and linguistically continuous rather than fixed labels. The practical consequence is to test the mechanism under the intended speakers, languages, references, data, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, and perceptual protocol.
 
+### Synthetic and expressive transfer
+
+**Current assessment:** synthetic or pseudo-parallel speech can make low-resource cross-lingual generation viable without recorded parallel speech, while expressive transfer remains uneven across languages.
+
+[[2510.09061|O_O-VC]] uses synthetic one-to-one alignment to create otherwise unavailable supervision. Related translation and speech-generation systems construct pseudo-parallel pairs from text translation or TTS. These methods expand coverage, but teacher pronunciation, speaker leakage, and synthetic prosody can be reinforced by the student.
+
+For emotion and style, [[2510.11124|Perturbation Self-Supervised Representations for Cross-Lingual Emotion TTS]] and [[2510.18308|ParaStyleTTS]] show that explicit conditioning improves control. Identity, intelligibility, naturalness, and style do not improve uniformly across languages, so success in one high-resource pair does not establish language-independent expressiveness.
+
 ## Where Findings Disagree
 
-**Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity.** remains emerging. Code-switching benchmarks are small and often cover only a few language pairs. The uncertainty is retained rather than averaged into broader convergence.
-
-**Shared multilingual models can leak source-language accent or average language-specific speaking styles.** remains emerging. Accent judgments depend strongly on listener language background and reference choice. The uncertainty is retained rather than averaged into broader convergence.
+The graph contains no formally contested cluster, but several conclusions remain confidence- or scope-dependent. Language and accent leakage is strongly supported with medium confidence because listener background, reference choice, and dialect continua change the judgment. Code-switching is strongly supported as a joint modeling problem, while available benchmarks still cover few language pairs. Synthetic-data gains depend on teacher quality and are not equivalent to independent recorded evidence.
 
 ## How the Field Is Changing
 
@@ -114,6 +120,8 @@ Recent systems increasingly combine shared representations with explicit languag
 Parameter-efficient language extension through adapters, LoRA, and vocabulary expansion is growing.
 
 Evaluation is moving toward per-language reporting, cross-lingual speaker identity, accent fidelity, and low-resource fairness.
+
+Q4 adds synthetic parallel speech, dialect-aware routing, and cross-lingual emotion or style control. The center of gravity is shifting from merely adding languages toward preserving language-specific pronunciation, regional identity, and expressive intent inside shared foundation systems.
 
 ## Implications
 
@@ -132,6 +140,7 @@ Evaluation is moving toward per-language reporting, cross-lingual speaker identi
 4. **Start from the explicit language conditioning reduces confusion question.** Read [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.findings-acl.687|TCSinger 2: Customizable Multilingual Zero-shot Singing Voice Synthesis]]; then use the encoded caveat to evaluate transfer and disagreement.
 5. **Start from the shared phonetic representations enable transfer question.** Read [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]; then use the encoded caveat to evaluate transfer and disagreement.
 6. **Start from the code switching requires joint language and context modeling question.** Read [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]; then use the encoded caveat to evaluate transfer and disagreement.
+7. **Study Q4 synthetic and expressive transfer.** Pair [[2510.09061|O_O-VC]] with [[2510.11124|Perturbation Self-Supervised Representations for Cross-Lingual Emotion TTS]] to separate data construction from cross-language control.
 
 ## Structured Source
 
@@ -139,4 +148,4 @@ Complete structured claims and provenance are in [`wiki/_claims/multilingual-tts
 
 ---
 
-_This page is generated from `wiki/_claims/multilingual-tts.yaml` (digest date: 2026-07-29)._
+_This page is generated from `wiki/_claims/multilingual-tts.yaml` (digest date: 2026-09-26)._

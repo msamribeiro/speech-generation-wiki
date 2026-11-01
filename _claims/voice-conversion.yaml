@@ -1,6 +1,6 @@
 concept: voice-conversion
-last_updated: '2026-09-26'
-paper_count: 116
+last_updated: '2026-10-31'
+paper_count: 117
 papers:
 - id: '2104.00355'
   published_date: "2021-04-01"
@@ -8169,6 +8169,59 @@ papers:
   caveats:
   - Codec-level factorization improves independent control, but speaker similarity and extreme-prosody stability
     remain below stronger multi-stage systems.
+- id: '2605.18001'
+  published_date: '2025-10-01'
+  entry_date: '2026-10-31'
+  year: 2025
+  venue: ICICC
+  task:
+  - VC
+  architecture:
+  - GAN
+  relevance: low
+  evidence_role:
+  - control_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - gan_adversarial_voice_conversion
+  claims:
+  - claim_id: late_q4_2605_18001_fidelity_metrics_computed_against_a_reference_mcd_pesq_waveform_rmse_together_with_naturalness_mos_do_not_esta
+    role: complicates
+    claim: Fidelity metrics computed against a reference (MCD, PESQ, waveform RMSE) together with naturalness MOS do
+      not establish that a speaking-style conversion took place; style conversion claims need measures of prosodic change
+      relative to the source, such as pitch contour or rhythm statistics.
+    source: §2.4, §7.2, Table 2, §7.3
+    evidence: The pipeline vocodes mel-spectrograms of the input read speech with HiFi-GAN and reports only MCD, PESQ,
+      RMSE, and MOS. Pitch Contour Distortion is defined, but no value is reported, and no comparison against the read
+      input is given.
+    confidence: medium
+    relevance: high
+  - claim_id: late_q4_2605_18001_objective_and_subjective_quality_scores_for_synthesized_speech_need_checks_against_each_metric_s_defined_range
+    role: complicates
+    claim: Objective and subjective quality scores for synthesized speech need checks against each metric's defined range
+      and scale before they can be compared across papers.
+    source: §6, §7.2, Table 2, §2.4.1, Figure 2
+    evidence: Table 2 reports PESQ 4.64, although §6 gives the PESQ range as -0.5 to 4.5. Figure 2 plots MOS values up
+      to about 8, although §2.4.1 defines MOS on a 1 to 5 scale.
+    confidence: medium
+    relevance: medium
+  - claim_id: late_q4_2605_18001_neural_gan_vocoders_driven_by_mel_spectrograms_can_produce_output_that_listeners_rate_as_natural_but_naturalne
+    role: supports
+    claim: Neural GAN vocoders driven by mel-spectrograms can produce output that listeners rate as natural, but naturalness
+      ratings alone do not distinguish vocoder quality from conversion quality.
+    source: §7.3
+    evidence: The HiFi-GAN system receives MOS 4.2 against 3.6 for an unspecified baseline. Listener count, test material,
+      and confidence intervals are not reported.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The read-to-conversational transformation mechanism and supervision are not specified, and the unnamed baseline and
+    datasets prevent reproducible attribution of the reported conversion gains.
+  - No pitch, rhythm, stress, or source-to-target prosody measure establishes that speaking-style conversion actually
+    occurred.
+  caveats:
+  - Treat the paper as evaluation caution for speech style conversion, not as strong evidence for a conversion architecture.
 claim_clusters:
 - id: content_speaker_disentanglement_enables_conversion
   claim: Separating linguistic content from speaker identity is central to robust voice conversion.
@@ -8863,10 +8916,12 @@ claim_clusters:
   - '2511.08496'
   - '2512.06304'
   - '2512.12129'
+  - '2605.18001'
   caveats:
   - Metrics measure different properties; WER can remain useful for intelligibility even when it is insufficient
     as a global quality measure.
-  last_reviewed: '2026-09-26'
+  - The late PACC study strengthens the protocol warning but is weak evidence because its baseline, data, conversion mechanism, and score scales are underspecified.
+  last_reviewed: '2026-10-31'
 - id: data_diversity_drives_unseen_speaker_generalization
   claim: Training-speaker and acoustic diversity is a major determinant of unseen-speaker voice-conversion generalization.
   status: strongly_supported
@@ -8931,6 +8986,7 @@ method_families:
   summary: Adversarial encoders and waveform decoders learn speaker transfer while discriminators enforce realism
     or suppress source identity.
   papers:
+  - '2605.18001'
   - '2104.00355'
   - '2312.01479'
   - 2025.naacl-short.65

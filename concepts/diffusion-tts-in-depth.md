@@ -2,18 +2,18 @@
 concept: diffusion-tts
 render_type: in-depth
 title: "Diffusion Text-to-Speech: In Depth"
-source_digest_date: 2026-07-26
-paper_count: 46
+source_digest_date: 2026-10-31
+paper_count: 58
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/diffusion-tts|Diffusion Text-to-Speech]]. Complete provenance remains in `wiki/_claims/diffusion-tts.yaml`.
@@ -30,24 +30,26 @@ For the concise view, see [[concepts/diffusion-tts|Diffusion Text-to-Speech]]. C
 - Factorizing content, speaker, and style conditioning improves controllability in diffusion speech generation. (strongly supported, high confidence.)
 - Diffusion models can support explicit style, emotion, prosody, and singing control. (strongly supported, high confidence.)
 - Robust training and representation design improve diffusion speech generation under noisy or mismatched conditions. (strongly supported, high confidence.)
+- Masked diffusion over discrete units supports parallel local generation and explicit sequence-length control. (emerging, medium confidence.)
+- Structured starting signals and spectral correction can accelerate and stabilize diffusion vocoders. (emerging, medium confidence.)
 
 ## Scope
 
-The graph contains 46 papers through Q3 2025 and 15 synthesized clusters: 15 strongly supported, 0 emerging, and 0 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The graph contains 58 papers through Q4 2025 and 17 synthesized clusters: 15 strongly supported, 2 emerging, and 0 contested. Two late papers were incorporated during the Q4 correction pass. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
-**Score-based diffusion synthesis** groups 14 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Score-based diffusion synthesis** groups 17 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Flow, consistency, and bridge alternatives** groups 7 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Flow, consistency, and bridge alternatives** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Adversarial and distilled diffusion** groups 5 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Adversarial and distilled diffusion** groups 6 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Autoregressive-diffusion hybrids** groups 5 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Autoregressive-diffusion hybrids** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Diffusion-transformer acoustic models** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Diffusion-transformer acoustic models** groups 6 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Latent diffusion synthesis** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Latent diffusion synthesis** groups 6 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
 **Diffusion-flow bridge models** groups 2 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
@@ -93,6 +95,12 @@ The graph contains 46 papers through Q3 2025 and 15 synthesized clusters: 15 str
 
 ## Where Findings Disagree
 
+The graph does not contain a direct contradiction to diffusion's ability to produce high-quality speech. The disagreements are about attribution and operating point. A high-scoring diffusion system often changes its data, representation, backbone, alignment, and vocoder at the same time, so the result does not isolate the generative objective. Likewise, a low step count is not a complete efficiency claim unless the encoder, guidance passes, decoder, hardware, and utterance length are included.
+
+Representation choice creates a second boundary. Continuous acoustic or codec latents can make denoising easier, but their encoder may discard detail or entangle speaker and style. Discrete masked diffusion exposes length and parallel local prediction, yet still depends on schedules or confidence ordering. Autoregressive–diffusion hybrids can reserve global planning for an LM and local realization for diffusion, but errors can cross the interface between stages. These are design alternatives, not a settled ranking.
+
+Finally, objective families are difficult to compare fairly. Flow matching and consistency methods promise fewer evaluations, while distilled diffusion tries to inherit an iterative teacher's trajectory. Published systems rarely hold backbone, data, target, and solver budget fixed. The practical conclusion is therefore conditional: choose an objective together with its representation and deployment budget, then test the complete system at the intended operating point.
+
 ## How the Field Is Changing
 
 Diffusion TTS moved from iterative score-based acoustic generation in 2021–2022 toward latent, transformer, and hybrid formulations by 2023–2025.
@@ -105,6 +113,8 @@ Diffusion methods expanded beyond naturalness toward zero-shot cloning, emotiona
 
 Comparisons with flow matching are increasingly common, but matched objective-level evaluations remain scarce because systems often differ simultaneously in backbone, target, solver, and data.
 
+Q4 work sharpened two architectural directions. First, hybrid systems use autoregressive global planning with continuous or RVQ-space diffusion for parallel local realization and explicit duration. Second, vocoders replace pure Gaussian starts with related signals or fixed spectral correction, treating the initial condition as an engineering lever rather than a fixed assumption. Fine-grained non-verbal conditioning also extends factorization from broad style labels to type, count, and duration controls, although realized timing has not yet been measured rigorously.
+
 ## Implications
 
 - Which combinations of target representation, solver, and conditioning yield the best quality-latency frontier under matched compute; design matched evaluation that can resolve this choice.
@@ -112,6 +122,8 @@ Comparisons with flow matching are increasingly common, but matched objective-le
 - When should diffusion be preferred to flow matching or consistency objectives once architecture and inference budget are controlled; design matched evaluation that can resolve this choice.
 - How should human preference supervision be applied to noisy intermediate diffusion states without reward-model bias; design matched evaluation that can resolve this choice.
 - Which evaluation suite jointly captures naturalness, intelligibility, identity, expressiveness, diversity, and deployment latency; design matched evaluation that can resolve this choice.
+- Can masked discrete diffusion preserve its parallelism and length control without brittle schedules or confidence heuristics; test across TTS and speech translation under matched decoding budgets.
+- Do structured-start and spectrally corrected vocoders retain objective gains in perceptual tests and across acoustic representations; compare them against Gaussian initialization with identical backbones and step counts.
 
 ## Representative Reading Path
 

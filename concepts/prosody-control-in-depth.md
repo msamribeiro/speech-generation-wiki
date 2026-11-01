@@ -2,18 +2,18 @@
 concept: prosody-control
 render_type: in-depth
 title: "Prosody Control: In Depth"
-source_digest_date: 2026-07-25
-paper_count: 94
+source_digest_date: 2026-09-26
+paper_count: 115
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/prosody-control|Prosody Control]]. Complete provenance remains in `wiki/_claims/prosody-control.yaml`.
@@ -22,20 +22,22 @@ For the concise view, see [[concepts/prosody-control|Prosody Control]]. Complete
 
 - Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic control and reduces variation left unresolved by text alone. (strongly supported, high confidence.)
 - Stochastic prosody models preserve one-to-many variation better than deterministic regression while maintaining competitive synthesis quality. (strongly supported, high confidence.)
-- Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range. (emerging, medium confidence.)
+- Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range. (strongly supported, high confidence.)
 - Separating prosody from linguistic content and speaker timbre enables more independent transfer and manipulation of speaking style. (strongly supported, high confidence.)
 - Reference prompts transfer prosodic style effectively, but can leak speaker identity, content, pitch, or recording conditions into the output. (strongly supported, high confidence.)
 - Linguistic and conversational context improves prediction of phrasing, prominence, stress, pitch, and duration over sentence-isolated or word-level conditioning. (strongly supported, high confidence.)
 - Duration, pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal synchronization. (strongly supported, high confidence.)
 - Word- and phoneme-level prosodic control is less reliable than utterance-level style control because local timing and linguistic interactions must be modeled explicitly. (strongly supported, high confidence.)
-- Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce. (emerging, medium confidence.)
+- Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce. (strongly supported, high confidence.)
 - Self-supervised speech representations provide strong prosodic signals, but remain entangled with speaker identity, content, or task-specific information. (strongly supported, high confidence.)
+- Fine-grained multi-attribute control exposes cross-attribute interference unless representations and guidance explicitly separate the controlled factors. (strongly supported, high confidence.)
+- Reward-guided post-training can improve emotion, emphasis, and melody control, but evidence is still limited to a small set of reward definitions and tasks. (emerging, medium confidence.)
 
 ## Scope
 
-The graph contains 94 papers through Q3 2025 and 17 synthesized claim clusters. It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
+The graph contains 115 papers through Q4 2025 and 19 synthesized claim clusters. It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
 
-The graph records 13 strongly supported, 4 emerging, and 0 contested clusters. These labels describe encoded evidence, not complete field coverage. Single-paper findings remain emerging, and downstream adoption supports task viability rather than universal mechanism superiority.
+The graph records 18 strongly supported, 1 emerging, and 0 contested clusters. These labels describe encoded evidence, not complete field coverage. The remaining emerging cluster concerns reward-guided post-training, where encouraging control gains have not yet been matched across reward definitions and tasks.
 
 ## Research Landscape
 
@@ -79,7 +81,7 @@ The practical consequence is to evaluate this mechanism under the intended speak
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
-**Current assessment:** Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range. The graph rates this conclusion **emerging** with medium confidence. Representative evidence comes from [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. The location of the operating point depends on representation, sampling scale, and evaluation protocol.
+**Current assessment:** Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range. The graph rates this conclusion **strongly supported** with high confidence. Representative evidence comes from [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. The location of the operating point depends on representation, sampling scale, and evaluation protocol.
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
@@ -113,11 +115,11 @@ The practical consequence is to evaluate this mechanism under the intended speak
 
 ### Data, structure, and language
 
-**Current assessment:** Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce. The graph rates this conclusion **emerging** with medium confidence. Representative evidence comes from [[interspeech-2025-2159|Generating Consistent Prosodic Patterns from Open-Source TTS Systems]]. Improvements often fail to generalize uniformly across contrast types, speakers, or domains.
+**Current assessment:** Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce. The graph rates this conclusion **strongly supported** with high confidence. Representative evidence comes from [[interspeech-2025-2159|Generating Consistent Prosodic Patterns from Open-Source TTS Systems]]. Improvements often fail to generalize uniformly across contrast types, speakers, or domains.
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
-**Current assessment:** Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained free-form generation. The graph rates this conclusion **emerging** with medium confidence. Representative evidence comes from [[2508.17494|Improving French Synthetic Speech Quality via SSML Prosody Control]]. Structured plans increase precision but require an interpretation layer and may constrain unanticipated attributes.
+**Current assessment:** Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained free-form generation. The graph rates this conclusion **strongly supported** with high confidence. Representative evidence comes from [[2508.17494|Improving French Synthetic Speech Quality via SSML Prosody Control]]. Structured plans increase precision but require an interpretation layer and may constrain unanticipated attributes.
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
@@ -131,7 +133,7 @@ The practical consequence is to evaluate this mechanism under the intended speak
 
 ### Emotion and multimodal evidence
 
-**Current assessment:** Objective prosody and alignment metrics do not consistently predict perceived naturalness, expressiveness, or control success. The graph rates this conclusion **emerging** with medium confidence. Representative evidence comes from [[2509.00675|Speaker-Conditioned Phrase Break Prediction for Text-to-Speech with Phoneme-Level Pre-trained Language Model]]. Disagreement varies by task and metric; objective measures remain useful for diagnosis even when unsuitable as sole endpoints.
+**Current assessment:** Objective prosody and alignment metrics do not consistently predict perceived naturalness, expressiveness, or control success. The graph rates this conclusion **strongly supported** with high confidence. Representative evidence comes from [[2509.00675|Speaker-Conditioned Phrase Break Prediction for Text-to-Speech with Phoneme-Level Pre-trained Language Model]]. Disagreement varies by task and metric; objective measures remain useful for diagnosis even when unsuitable as sole endpoints.
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
@@ -147,15 +149,21 @@ The practical consequence is to evaluate this mechanism under the intended speak
 
 The practical consequence is to evaluate this mechanism under the intended speakers, languages, references, and operating conditions rather than infer a universal ranking from one system. Confidence would change most through matched, independently developed comparisons that preserve the same data, decoder, and perceptual protocol.
 
+### Joint control and reward guidance
+
+Q4 work shifts the control problem from changing one attribute at a time to coordinating several attributes without collateral effects. [[2512.09504|DMP-TTS]] and [[2510.25566|PitchFlower]] reinforce the graph-wide finding that manipulating pitch, emotion, emphasis, or another local factor can disturb intelligibility, identity, naturalness, or a second control target. The result is not evidence against fine-grained control; it makes factor separation, guidance calibration, and multi-dimensional evaluation part of the control method itself.
+
+Reward-guided post-training provides a complementary route. [[2510.05758|EMORL-TTS]] shows how a learned or automatic reward can sharpen emotion-oriented behavior after supervised training, while related melody and emphasis work extends the idea beyond a single attribute. The cluster remains emerging because reward definitions, training procedures, and evaluation tasks differ, and the broader alignment literature shows that optimizing a narrow proxy can displace an unmeasured quality. The practical standard is therefore a matched supervised baseline plus held-out checks for intelligibility, speaker similarity, naturalness, and untargeted prosodic dimensions.
+
 ## Where Findings Disagree
 
-**Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range.** remains emerging. The location of the operating point depends on representation, sampling scale, and evaluation protocol. This limitation is retained in both render depths rather than averaged away.
+**Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range.** is now strongly supported. What remains unresolved is where that operating point lies for each representation, sampling scale, speaker, and evaluation protocol.
 
-**Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce.** remains emerging. Improvements often fail to generalize uniformly across contrast types, speakers, or domains. This limitation is retained in both render depths rather than averaged away.
+**Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does not reliably produce.** is now strongly supported. Generalization still varies across contrast types, speakers, and domains, so the disagreement concerns transfer rather than the direction of the effect.
 
-**Objective prosody and alignment metrics do not consistently predict perceived naturalness, expressiveness, or control success.** remains emerging. Disagreement varies by task and metric; objective measures remain useful for diagnosis even when unsuitable as sole endpoints. This limitation is retained in both render depths rather than averaged away.
+**Objective prosody and alignment metrics do not consistently predict perceived naturalness, expressiveness, or control success.** is strongly supported, while disagreement remains about which diagnostic metrics transfer across tasks and how much weight they deserve beside listening tests.
 
-**Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained free-form generation.** remains emerging. Structured plans increase precision but require an interpretation layer and may constrain unanticipated attributes. This limitation is retained in both render depths rather than averaged away.
+**Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained free-form generation.** is strongly supported, while the cost of an interpretation layer and the constraint on unanticipated attributes remain design trade-offs.
 
 ## How the Field Is Changing
 
@@ -168,6 +176,8 @@ Reference prompting remains common, but 2025 work increasingly treats prompt lea
 Language models appear both as prosody predictors and as interfaces that translate free-form requests into structured tags, SSML, or numerical plans.
 
 Evaluation broadens in 2025 from contour reconstruction toward perceptual diversity, contextual appropriateness, attribute leakage, and human–metric disagreement.
+
+Q4 adds a distinct systems-level concern: control methods are increasingly judged by interactions among attributes rather than success on one requested dimension. It also introduces reward-guided post-training as a promising but not yet mature control mechanism, linking prosody control to the wider speech-alignment literature.
 
 ## Implications
 
@@ -186,6 +196,7 @@ Evaluation broadens in 2025 from contour reconstruction toward perceptual divers
 4. **Investigate disentanglement enables independent prosody transfer.** Read [[2406.07855|VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment]], [[2025.acl-long.346|ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control]], [[2508.08399|Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations]] to understand the mechanism, then use the recorded caveat to frame comparisons.
 5. **Investigate reference prompts transfer prosody but leak attributes.** Read [[2025.naacl-long.242|StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion]], [[2508.11273|EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens]], [[interspeech-2025-0948|PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts]] to understand the mechanism, then use the recorded caveat to frame comparisons.
 6. **Investigate linguistic context improves prosody prediction.** Read [[2507.03912|Prosody Labeling with Phoneme-BERT and Speech Foundation Models]], [[2025.acl-long.1471|The time scale of redundancy between prosody and linguistic context]], [[2025.unlp-1.11|Context-Aware Lexical Stress Prediction and Phonemization for Ukrainian TTS Systems]] to understand the mechanism, then use the recorded caveat to frame comparisons.
+7. **Investigate Q4 multi-attribute control and reward guidance.** Read [[2510.25566|PitchFlower]], [[2512.09504|DMP-TTS]], and [[2510.05758|EMORL-TTS]] together; compare the requested gain with interference in identity, intelligibility, naturalness, and untargeted prosodic attributes.
 
 ## Structured Source
 
@@ -193,4 +204,4 @@ Complete structured claims and provenance are in [`wiki/_claims/prosody-control.
 
 ---
 
-_This page is generated from `wiki/_claims/prosody-control.yaml` (digest date: 2026-07-25)._
+_This page is generated from `wiki/_claims/prosody-control.yaml` (digest date: 2026-09-26)._

@@ -2,18 +2,18 @@
 concept: transformer-enc-dec-tts
 render_type: in-depth
 title: "Transformer Encoder–Decoder TTS: In Depth"
-source_digest_date: 2026-07-30
-paper_count: 28
+source_digest_date: 2026-09-26
+paper_count: 33
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/transformer-enc-dec-tts|Transformer Encoder–Decoder TTS]]. Complete provenance remains in `wiki/_claims/transformer-enc-dec-tts.yaml`.
@@ -30,18 +30,20 @@ For the concise view, see [[concepts/transformer-enc-dec-tts|Transformer Encoder
 - Diagonal or monotonic positional biases accelerate text–speech alignment and can reduce the model capacity required for accurate pronunciation. (emerging, medium confidence.)
 - Parallel acoustic generation requires explicit modeling of duration, pitch, and other sources of speech variation. (emerging, medium confidence.)
 - Hierarchical and multi-granular prosody modeling improves expressiveness and supports localized control. (strongly supported, high confidence.)
+- Prosodically informed segmentation improves spontaneous-speech intelligibility and intonation. (emerging, medium confidence.)
+- Quality stratification, synthetic augmentation, and linguistically informed segmentation make established transformer pipelines viable in low-resource settings. (strongly supported, high confidence.)
 
 ## Scope
 
-The graph contains 28 papers through Q3 2025 and 17 synthesized clusters: 4 strongly supported, 13 emerging, and 0 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The graph contains 33 papers through Q4 2025 and 19 synthesized clusters: 6 strongly supported, 13 emerging, and 0 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
-**Transformer encoder–decoder TTS** groups 23 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Transformer encoder–decoder TTS** groups 28 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**GAN-augmented encoder–decoder systems** groups 6 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**GAN-augmented encoder–decoder systems** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Diffusion-augmented acoustic decoders** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Diffusion-augmented acoustic decoders** groups 5 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
 **Flow-matching acoustic decoders** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
@@ -91,11 +93,17 @@ The graph contains 28 papers through Q3 2025 and 17 synthesized clusters: 4 stro
 
 **Current assessment:** Style and emotion disentanglement benefits from complementary preservation losses and targeted augmentation. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[interspeech-2025-1394|DiEmo-TTS: Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker Emotion Transfer in Text-to-Speech]], [[interspeech-2025-2586|Spotlight-TTS: Spotlighting the Style via Voiced-Aware Style Extraction and Style Direction Adjustment for Expressive Text-to-Speech]]. Auxiliary labels and controlled corpora limit conclusions about broad style generalization. The design consequence is to test this mechanism under the intended inputs, speakers, languages, hardware, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, representation, and perceptual protocol.
 
-**Current assessment:** Frequency-aware and local adversarial objectives improve acoustic detail beyond reconstruction losses alone. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[2508.12001|FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts]], [[2508.17031|RephraseTTS: Dynamic Length Text based Speech Insertion with Speaker Style Transfer]]. Adversarial gains can be entangled with stronger duration or context models. The design consequence is to test this mechanism under the intended inputs, speakers, languages, hardware, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, representation, and perceptual protocol.
+**Current assessment:** Frequency-aware and local adversarial objectives improve acoustic detail beyond reconstruction losses alone. The graph rates this conclusion **strongly supported** with high confidence. Representative support comes from [[2508.12001|FNH-TTS: A Fast, Natural, and Human-Like Speech Synthesis System with advanced prosodic modeling based on Mixture of Experts]], [[2508.17031|RephraseTTS: Dynamic Length Text based Speech Insertion with Speaker Style Transfer]], and [[2512.00937|Arabic TTS with FastPitch]]. Adversarial gains can be entangled with stronger duration, data, or context models, so the conclusion concerns the direction of the effect rather than a universal objective.
 
 ### Evidence theme 5
 
 **Current assessment:** Compression and parallel acoustic-token decoding face hardware-realization and quality limits. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[interspeech-2025-1122|BitTTS: Highly Compact Text-to-Speech Using 1.58-bit Quantization and Weight Indexing]]. Nominal compression and throughput gains may not translate to common integer hardware or low-step decoding. The design consequence is to test this mechanism under the intended inputs, speakers, languages, hardware, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, representation, and perceptual protocol.
+
+### Data curation and modular upgrades
+
+**Current assessment:** Q4 evidence strengthens the role of data curation around established transformer backbones. [[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]] finds that prosodically meaningful boundaries improve intelligibility and intonation relative to ASR-driven segmentation, while also showing that automatic boundary recovery remains imperfect. [[2512.00937|Arabic TTS with FastPitch]] combines quality-aware data use, synthetic augmentation, and an adversarial spectrogram objective in a reproducible low-resource pipeline. [[2025.iwclul-1.3|South Sámi TTS]] shows why transparent text normalization and modular acoustic modeling remain operational advantages when data is archival, noisy, and severely limited.
+
+These papers do not establish that encoder–decoder TTS is superior to newer generative paradigms. They show that the family remains adaptable when alignment, pitch, duration, segmentation, and normalization must be inspected and corrected separately. [[2510.05984|ECTSpeech]] adds a complementary path: consistency tuning can accelerate a pretrained diffusion-augmented acoustic model without replacing the transformer conditioning stack.
 
 ## Where Findings Disagree
 
@@ -121,7 +129,7 @@ The graph contains 28 papers through Q3 2025 and 17 synthesized clusters: 4 stro
 
 **Prosody and style conditioning learned from seen speakers often generalizes poorly to unseen speakers.** remains emerging. Speaker encoders and reference representations are evaluated under heterogeneous enrollment conditions. This boundary is retained in both render depths rather than averaged into broader convergence.
 
-**Frequency-aware and local adversarial objectives improve acoustic detail beyond reconstruction losses alone.** remains emerging. Adversarial gains can be entangled with stronger duration or context models. This boundary is retained in both render depths rather than averaged into broader convergence.
+Frequency-aware and local adversarial objectives are now strongly supported within the graph, while their exact contribution remains confounded with duration modeling, curation, augmentation, and context.
 
 **Compression and parallel acoustic-token decoding face hardware-realization and quality limits.** remains emerging. Nominal compression and throughput gains may not translate to common integer hardware or low-step decoding. This boundary is retained in both render depths rather than averaged into broader convergence.
 
@@ -136,6 +144,8 @@ Prosody work is moving from utterance-level style vectors toward hierarchical, s
 Cross-attention is expanding beyond text–speech alignment to visual context, local acoustic editing, and neural-signal decoding.
 
 Compact and quantized systems increasingly expose the difference between theoretical efficiency and realizable hardware gains.
+
+Q4 emphasizes modular improvement and data curation around established FastSpeech and FastPitch backbones. Low-resource and archival-language deployments favor transparent duration, pitch, segmentation, and text-normalization components, while adversarial losses and consistency tuning extend rather than replace the transformer front end.
 
 ## Implications
 
@@ -154,6 +164,7 @@ Compact and quantized systems increasingly expose the difference between theoret
 4. **Investigate mel intermediates simplify waveform generation.** Read [[1712.05884|Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions]]; use the encoded caveat to frame replication and deployment decisions.
 5. **Investigate explicit duration prediction improves parallel tts.** Read [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2106.15561|A Survey on Neural Speech Synthesis]]; use the encoded caveat to frame replication and deployment decisions.
 6. **Investigate forced alignment durations outperform teacher attention.** Read [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]]; use the encoded caveat to frame replication and deployment decisions.
+7. **Examine Q4 data and modularity.** Read [[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]], [[2512.00937|Arabic TTS with FastPitch]], and [[2025.iwclul-1.3|South Sámi TTS]] to see how segmentation, augmentation, adversarial detail, and text normalization shape practical low-resource systems.
 
 ## Structured Source
 
@@ -161,4 +172,4 @@ Complete structured claims and provenance are in [`wiki/_claims/transformer-enc-
 
 ---
 
-_This page is generated from `wiki/_claims/transformer-enc-dec-tts.yaml` (digest date: 2026-07-30)._
+_This page is generated from `wiki/_claims/transformer-enc-dec-tts.yaml` (digest date: 2026-09-26)._

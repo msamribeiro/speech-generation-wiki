@@ -1,27 +1,25 @@
 ---
 title: "Field Overview"
-source_digest_date: "2026-09-12"
-source_registry_date: "2026-09-12"
-source_registry_digest: "sha256:530764ef596592dc955589b091e47471a7542596e911a4ebe40ca23a16b2fde5"
-source_snapshot: 2025-Q3
-source_snapshot_digest: "sha256:33ef4cf849c6e202e327b28cf39d95ea6128b78e474ae0514861b56490df463b"
-evidence_cutoff: "2025-09-30"
-assessment_as_of: "2026-09-12"
-paper_count: 497
-concept_membership_count: 2226
-claim_cluster_count: 406
+source_digest_date: "2026-10-31"
+source_registry_date: "2026-10-31"
+source_registry_digest: "sha256:00af235dc7fbbdea84f9e2780696edcaad9a54dd50e7ad1d856c5f5d026ac0e9"
+evidence_cutoff: "2025-12-31"
+assessment_as_of: "2026-11-01"
+paper_count: 668
+concept_membership_count: 2892
+claim_cluster_count: 444
 broader_claim_count: 11
 source_concepts: [autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, fine-tuning, flow-matching, gan-vocoder, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, self-supervised-speech, singing, speaker-adaptation, speech-to-speech, spoken-language-model, streaming-tts, subjective-evaluation, transformer-enc-dec-tts, voice-conversion, zero-shot-tts]
 generation:
   schema_version: 2
-  date: "2026-09-13"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "96be404"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -32,9 +30,10 @@ generation:
 > pull in different directions.
 
 > [!warning]
-> **Retrospective Q3 boundary.** This overview was assessed on 2026-09-12 using reviewed evidence
-> published through 2025-09-30. It describes what that bounded evidence supports under the later
-> review, not what researchers necessarily knew at the end of Q3 2025.
+> **Current-state Q4 boundary.** This overview was assessed on 2026-11-01 from the living concept
+> graphs and human-approved reconciliation registry, using evidence published through 2025-12-31.
+> It is a replaceable synthesis of the current graph, not the immutable Q4 historical record. A
+> quarterly snapshot and report will be created separately if approved.
 
 ## What Matters Across the Field
 
@@ -228,11 +227,12 @@ as the signal and validation used to guide it.
 
 ### Singing is a useful stress test
 
-The **singing** evidence is much smaller—ten papers, with all conclusions still emerging—but it
-tests assumptions that are easy to miss in ordinary speech. Speech references can guide singer
-identity only if the system handles the mismatch between speaking and singing. Codecs need
-training examples that cover high pitches. Identity, style, naturalness, vibrato, and musical
-timing are difficult to improve together ([[interspeech-2025-0816|Bridging Speech and Singing]],
+The **singing** evidence remains one of the smaller areas—21 papers supporting 24 local claim
+clusters, 21 of them still emerging—but it tests assumptions that are easy to miss in ordinary
+speech. Speech references can guide singer identity only if the system handles the mismatch
+between speaking and singing. Codecs need training examples that cover high pitches. Identity,
+style, naturalness, vibrato, and musical timing are difficult to improve together
+([[interspeech-2025-0816|Bridging Speech and Singing]],
 [[interspeech-2025-1397|VibE-SVC]], [[2509.15629|Singing Voice Conversion Challenge 2025]]).
 
 Explicit pitch or energy controls make some aspects easier to steer, and synchronized video can
@@ -241,6 +241,48 @@ not general solutions ([[2509.07038|Phoneme-Level Energy Control]],
 [[2509.22718|PerformSinger]]). Singing reminds us that a tokenizer, identity metric, or adaptation
 recipe that works on speech may not transfer unchanged to long pitch movements and tightly fixed
 musical timing.
+
+## What Q4 Added
+
+Q4 expanded the reviewed graph from 497 to 668 unique papers, from 2,226 to 2,892 concept
+memberships, and from 406 to 444 local claim clusters. Those are coverage changes, not a direct
+measure of scientific progress: papers can appear in several concepts, cluster boundaries can be
+revised, and the current graph was assessed later than the publication window. Likewise, the
+change from 280 strongly supported, 112 emerging, and 14 contested clusters in the Q3 rendering to
+342 strongly supported, 85 emerging, and 17 contested clusters now is not a simple promotion
+count. The denominator and some cluster definitions changed during integration.
+
+The clearest Q4 contribution is a shift from isolated speech components toward end-to-end system
+behavior. Streaming work uses the listening interval for interruptible reasoning, retrieval, and
+other computation, while showing that a fast acoustic decoder does not guarantee a responsive
+agent when the language model, ASR, retrieval, or orchestration dominates the critical path
+([[2510.02066|Chain-of-Thought Reasoning in Streaming Full-Duplex Spoken Dialogue]],
+[[2512.18706|X-Talk]]). Full-duplex evaluation correspondingly extends beyond latency to floor
+holding, interruption recognition, backchannels, and semantic recovery after overlap.
+
+Q4 also makes control failures more concrete. Dedicated semantic, acoustic, speaker, prosody, and
+environment streams make cross-source composition possible, but intervention tests still find
+residual leakage and interference ([[2510.16841|SAC]], [[2511.12074|MF-Speech]]). Instructional
+guidance improves adherence up to a point; stronger guidance can damage naturalness,
+intelligibility, identity, or untargeted content ([[2510.13293|Cross-modal Consistency Guidance]],
+[[2511.03601|Step-Audio-EditX]]). Text-only descriptions can generate plausible voices, but exact
+identity is underdetermined without a reference and can inherit demographic priors.
+
+Post-training became more localized and explicitly multi-objective. Token-level preference
+methods direct feedback toward the spans most responsible for a failure, and multi-reward
+optimization can reduce dependence on one proxy ([[2510.05799|Data-efficient Targeted Token-level
+Preference Optimization]], [[2511.21270|Multi-Reward GRPO]]). The boundary remains the same:
+coverage and weighting of the feedback determine which qualities improve, and an optimization
+signal cannot reliably protect what it never observes.
+
+Finally, Q4 strengthens the case for treating data and evaluation as part of the architecture.
+Prosodically meaningful segmentation, quality-aware curation, and transparent normalization can
+matter as much as replacing a familiar backbone in spontaneous or low-resource settings
+([[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]],
+[[2512.00937|Arabic TTS with FastPitch]]). Across the field, the central question is increasingly
+not whether a model can produce convincing audio once, but whether the whole system remains
+controllable, responsive, and measurable across speakers, languages, domains, and interaction
+conditions.
 
 ## The Recurring Trade-offs
 
@@ -282,7 +324,7 @@ musical timing.
 | Disentanglement | [[concepts/disentanglement\|Overview]] | [[concepts/disentanglement-in-depth\|In Depth]] |
 | Emotional and Expressive Speech Synthesis | [[concepts/emotion-synthesis\|Overview]] | [[concepts/emotion-synthesis-in-depth\|In Depth]] |
 | Evaluation Metrics | [[concepts/evaluation-metrics\|Overview]] | [[concepts/evaluation-metrics-in-depth\|In Depth]] |
-| Fine-Tuning Foundation Models | [[concepts/fine-tuning\|Concept page]] | Render pending |
+| Fine-Tuning Foundation Models | [[concepts/fine-tuning\|Overview]] | [[concepts/fine-tuning-in-depth\|In Depth]] |
 | Flow Matching | [[concepts/flow-matching\|Overview]] | [[concepts/flow-matching-in-depth\|In Depth]] |
 | GAN Vocoders | [[concepts/gan-vocoder\|Overview]] | [[concepts/gan-vocoder-in-depth\|In Depth]] |
 | Instruction-Conditioned Text-to-Speech | [[concepts/instruction-conditioned-tts\|Overview]] | [[concepts/instruction-conditioned-tts-in-depth\|In Depth]] |
@@ -291,7 +333,7 @@ musical timing.
 | Prosody Control | [[concepts/prosody-control\|Overview]] | [[concepts/prosody-control-in-depth\|In Depth]] |
 | RLHF for Speech | [[concepts/rlhf-speech\|Overview]] | [[concepts/rlhf-speech-in-depth\|In Depth]] |
 | Self-Supervised Speech Representations | [[concepts/self-supervised-speech\|Overview]] | [[concepts/self-supervised-speech-in-depth\|In Depth]] |
-| Singing Voice Synthesis and Conversion | [[concepts/singing\|Concept page]] | Render pending |
+| Singing Voice Synthesis and Conversion | [[concepts/singing\|Overview]] | [[concepts/singing-in-depth\|In Depth]] |
 | Speaker Adaptation | [[concepts/speaker-adaptation\|Overview]] | [[concepts/speaker-adaptation-in-depth\|In Depth]] |
 | Speech-to-Speech Systems | [[concepts/speech-to-speech\|Overview]] | [[concepts/speech-to-speech-in-depth\|In Depth]] |
 | Spoken Language Models | [[concepts/spoken-language-model\|Overview]] | [[concepts/spoken-language-model-in-depth\|In Depth]] |
@@ -303,16 +345,16 @@ musical timing.
 
 ## Scope and Traceability
 
-The 23 concept graphs contain 2,226 paper memberships but 497 unique papers. The difference—1,729
-memberships—comes from papers that inform more than one concept. The graphs contain 406 local claim
-clusters: 280 strongly supported, 112 emerging, and 14 contested. This overview presents the 11
-human-approved broader claims once and uses the 49 approved direct relationships to interpret
+The 23 concept graphs contain 2,892 paper memberships but 668 unique papers. The difference—2,224
+memberships—comes from papers that inform more than one concept. The graphs contain 444 local claim
+clusters: 342 strongly supported, 85 emerging, and 17 contested. This overview presents the 11
+human-approved broader claims once and uses the 373 approved direct relationships to interpret
 narrower connections. The 15 preserved agent proposals are not used as evidence.
 
-Evidence is limited by canonical publication dates through 2025-09-30. The retrospective
-assessment was completed on 2026-09-12 and is recorded in the published `2025-Q3` snapshot. This
-overview remains a replaceable current-state rendering of the living concept graphs and reviewed
-registry; the snapshot is the authority for the separate historical quarterly report.
+Evidence is limited by canonical publication dates through 2025-12-31. The current assessment was
+completed on 2026-11-01. This overview is a replaceable rendering of the living concept graphs and
+reviewed registry. It does not claim to reconstruct what researchers knew at the end of Q4 and is
+not a substitute for the proposed immutable `2025-Q4` snapshot and quarterly report.
 
 Every conclusion traces from a human-approved broader claim or a local claim cluster to paper-level
 evidence, then to the paper page and cited source section. Citations here are representative rather

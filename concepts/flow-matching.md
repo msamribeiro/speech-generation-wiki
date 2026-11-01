@@ -5,24 +5,24 @@ render_type: overview
 title: Flow Matching
 aliases: [conditional flow matching, CFM, OT-CFM, rectified flow, flow-based speech generation]
 status: established
-last_reviewed: 2026-07-24
-source_digest_date: 2026-07-19
-paper_count: 97
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-26
+paper_count: 125
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
 > Flow matching trains a model to transport a simple noise distribution into speech
-> representations along a continuous path. Across 97 reviewed papers, it has become one of the
+> representations along a continuous path. Across 125 reviewed papers, it has become one of the
 > main continuous-output approaches for modern TTS and voice conversion because it combines
 > high-quality generation with substantially fewer sampling steps than conventional diffusion.
 
@@ -51,6 +51,11 @@ generation:
 - **Many frontier claims remain architecture-specific.** Single-step generation, data-efficient
   learned priors, training-free emotion steering, discrete-space flow matching, and several
   low-resource adaptations need broader replication.
+- **Q4 connects flow to autoregressive planning, adaptation, streaming, and post-training.**
+  [[2502.11128|FELLE]] uses token-wise coarse-to-fine flow inside an autoregressive system;
+  [[2510.08373|DialoSpeech]] applies flow to long dialogue; and preference alignment can operate in
+  velocity space. These results broaden utility, but do not make pure flow, AR–flow hybrids, and
+  chunked causal flow interchangeable.
 
 ## Method Landscape
 
@@ -74,6 +79,9 @@ generation:
   and intelligibility while trailing them on speaker similarity.
 - **Guidance strength versus compute and stability.** CFG adds control but doubles per-step
   inference and requires careful scheduling.
+- **Fast sampling versus fast training and streaming.** Few ODE steps do not guarantee rapid
+  convergence, bounded-memory generation, or low end-to-end latency once alignment and decoding are
+  included.
 
 ## Open Questions
 
@@ -84,6 +92,8 @@ generation:
 - Can flow vocoders close the remaining throughput gap with GAN vocoders?
 - Which findings transfer across flow-matching backbones rather than one architectural lineage?
 - Can conditioning and guidance become principled rather than empirically tuned per system?
+- Which training-depth supervision and chunking strategy preserves long-form continuity without
+  sacrificing the parallel advantage?
 
 ## Go Deeper
 
@@ -93,7 +103,7 @@ applications beyond acoustic modeling.
 
 ## Scope
 
-This assessment covers 97 integrated papers through Q3 2025. It combines foundational theory with
+This assessment covers 125 integrated papers through Q4 2025. It combines foundational theory with
 downstream TTS, voice conversion, vocoder, codec, control, and adaptation evidence. The corpus is
 broad enough to support several cross-system conclusions, but many newer branches remain
 single-paper or lineage-specific. Complete provenance remains in
@@ -101,5 +111,5 @@ single-paper or lineage-specific. Complete provenance remains in
 
 ---
 
-_This page is generated from `wiki/_claims/flow-matching.yaml` (digest date: 2026-07-19).
+_This page is generated from `wiki/_claims/flow-matching.yaml` (digest date: 2026-09-26).
 Complete structured claims and paper-level provenance remain in the source YAML._

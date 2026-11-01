@@ -1,6 +1,6 @@
 concept: gan-vocoder
-last_updated: '2026-09-26'
-paper_count: 81
+last_updated: '2026-10-31'
+paper_count: 82
 papers:
 - id: '1609.03499'
   published_date: '2016-09-12'
@@ -5717,6 +5717,60 @@ papers:
     numeric results should be read as supporting evidence for the general vocoder/codec technique rather than as
     TTS-domain claims.'
   caveats: []
+- id: '2605.18001'
+  published_date: '2025-10-01'
+  entry_date: '2026-10-31'
+  year: 2025
+  venue: ICICC
+  task:
+  - VC
+  architecture:
+  - GAN
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - adversarial_waveform_vocoders
+  claims:
+  - claim_id: late_q4_2605_18001_fidelity_metrics_computed_against_a_reference_mcd_pesq_waveform_rmse_together_with_naturalness_mos_do_not_esta
+    role: complicates
+    claim: Fidelity metrics computed against a reference (MCD, PESQ, waveform RMSE) together with naturalness MOS do
+      not establish that a speaking-style conversion took place; style conversion claims need measures of prosodic change
+      relative to the source, such as pitch contour or rhythm statistics.
+    source: §2.4, §7.2, Table 2, §7.3
+    evidence: The pipeline vocodes mel-spectrograms of the input read speech with HiFi-GAN and reports only MCD, PESQ,
+      RMSE, and MOS. Pitch Contour Distortion is defined, but no value is reported, and no comparison against the read
+      input is given.
+    confidence: medium
+    relevance: medium
+  - claim_id: late_q4_2605_18001_objective_and_subjective_quality_scores_for_synthesized_speech_need_checks_against_each_metric_s_defined_range
+    role: complicates
+    claim: Objective and subjective quality scores for synthesized speech need checks against each metric's defined range
+      and scale before they can be compared across papers.
+    source: §6, §7.2, Table 2, §2.4.1, Figure 2
+    evidence: Table 2 reports PESQ 4.64, although §6 gives the PESQ range as -0.5 to 4.5. Figure 2 plots MOS values up
+      to about 8, although §2.4.1 defines MOS on a 1 to 5 scale.
+    confidence: medium
+    relevance: medium
+  - claim_id: late_q4_2605_18001_neural_gan_vocoders_driven_by_mel_spectrograms_can_produce_output_that_listeners_rate_as_natural_but_naturalne
+    role: supports
+    claim: Neural GAN vocoders driven by mel-spectrograms can produce output that listeners rate as natural, but naturalness
+      ratings alone do not distinguish vocoder quality from conversion quality.
+    source: §7.3
+    evidence: The HiFi-GAN system receives MOS 4.2 against 3.6 for an unspecified baseline. Listener count, test material,
+      and confidence intervals are not reported.
+    confidence: medium
+    relevance: high
+  limitations:
+  - The conversational prosody module, baseline, training data, and evaluation data are unspecified, so the reported
+    gains cannot be attributed beyond the off-the-shelf HiFi-GAN component.
+  - Reported PESQ and MOS values conflict with the paper's own stated scales, and the listening protocol omits listener
+    and test-set details.
+  caveats:
+  - For GAN-vocoder synthesis, this is weak evidence from an unreproducible application pipeline; its strongest contribution
+    is the warning that vocoder naturalness does not validate style conversion.
 claim_clusters:
 - id: gan_vocoders_match_autoregressive_quality_at_lower_latency
   claim: GAN vocoders can match autoregressive perceptual quality while reducing waveform-generation latency by
@@ -5999,9 +6053,11 @@ claim_clusters:
   - '2507.01611'
   - '2510.01903'
   - '2510.22241'
+  - '2605.18001'
   caveats:
   - Metric disagreement varies with sampling rate, bandwidth, phase, and intended signal transformation.
-  last_reviewed: '2026-09-26'
+  - The late PACC application reports out-of-range or underspecified scores, so it strengthens metric-validity caution rather than any absolute quality ranking.
+  last_reviewed: '2026-10-31'
 - id: vocoder_bottlenecks_interact_with_upstream_acoustic_models
   claim: Vocoder capacity and artifacts interact with upstream acoustic-model representations and prosodic diversity.
   status: strongly_supported
@@ -6040,11 +6096,13 @@ claim_clusters:
   - '2511.21045'
   - '2512.14653'
   - '2512.20211'
+  - '2605.18001'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Evidence spans heterogeneous tasks and rarely controls training data, language, and upstream models jointly.
-  last_reviewed: '2026-09-26'
+  - PACC is a weak cross-domain result because its conditioning module, data, baseline, and listening protocol are unspecified.
+  last_reviewed: '2026-10-31'
 - id: frequency_structured_representations_improve_wideband_reconstruction
   claim: Frequency-structured tokenization, band decomposition, and harmonic analysis improve wideband reconstruction
     by matching model capacity to non-uniform time-frequency structure.
@@ -6068,6 +6126,7 @@ method_families:
   summary: GAN vocoders synthesize waveforms or time–frequency representations with discriminator-guided perceptual
     training and predominantly one-pass inference.
   papers:
+  - '2605.18001'
   - '2010.05646'
   - '2104.00355'
   - '2106.15561'

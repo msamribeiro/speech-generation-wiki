@@ -5,24 +5,24 @@ render_type: overview
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 status: mature-infrastructure
-last_reviewed: 2026-07-24
-source_digest_date: 2026-07-21
-paper_count: 285
+last_reviewed: 2026-10-31
+source_digest_date: 2026-09-20
+paper_count: 346
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-10-31"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
 > Evaluation determines which speech-generation improvements the field can see—and which failures
-> remain hidden. Across 285 reviewed papers, the central conclusion is unusually consistent: no
+> remain hidden. Across 346 reviewed papers, the central conclusion is unusually consistent: no
 > single automatic score captures speech quality, and metric validity depends on the perceptual
 > dimension, domain, granularity, and downstream use being evaluated.
 
@@ -51,6 +51,11 @@ generation:
 - **Evaluation methodology is expanding from acoustic quality to behavior and social impact.**
   Recent work adds multi-turn reasoning, full-duplex timing, fairness, clinical suitability, and
   provenance robustness—dimensions that aggregate MOS or accuracy cannot expose.
+- **Q4 makes evaluation intervention-specific.** Full-duplex systems expose a responsiveness–false
+  interruption frontier in [[2507.23159|Full-Duplex-Bench v1.5]]; fairness audits show aggregate
+  scores can hide group disparities; and realistic transformations weaken watermark detection in
+  [[interspeech-2025-2328|A Watermark for Auto-Regressive Speech Generation Models]]. These are
+  separate evaluation targets, not extra columns in a universal quality score.
 
 ## Method Landscape
 
@@ -76,6 +81,9 @@ generation:
 - **Optimizing a score versus preserving unmeasured qualities.** Preference optimization,
   distillation, or explicit alignment can improve a target metric while reducing prosodic diversity
   ([[2507.14988]], [[2509.19928]]).
+- **Standardization versus population validity.** Shared protocols improve comparison, but clinical,
+  accented, low-resource, and assistive speech still require domain-specific listener and model
+  validation.
 
 ## Open Questions
 
@@ -96,7 +104,7 @@ the design of fit-for-purpose evaluation suites.
 
 ## Scope
 
-This assessment covers 285 integrated papers through Q3 2025. Evaluation metrics is a cross-cutting
+This assessment covers 346 integrated papers through Q4 2025. Evaluation metrics is a cross-cutting
 concept: many entries are TTS, VC, codec, or spoken-agent system papers that contribute one
 evaluation caution rather than proposing a metric. The reviewed graph is broad but not a formal
 meta-analysis; citations here are representative, and complete provenance remains in
@@ -104,5 +112,5 @@ meta-analysis; citations here are representative, and complete provenance remain
 
 ---
 
-_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-07-21).
+_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-09-20).
 Complete structured claims and paper-level provenance remain in the source YAML._

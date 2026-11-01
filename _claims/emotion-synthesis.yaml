@@ -1,6 +1,6 @@
 concept: emotion-synthesis
-last_updated: '2026-09-26'
-paper_count: 97
+last_updated: '2026-10-31'
+paper_count: 98
 papers:
 - id: '2312.01479'
   published_date: "2023-12-03"
@@ -6885,6 +6885,72 @@ papers:
   - Private dialect data, unreliable dialect ASR, heuristic layer splits, and failure on CosyVoice constrain generalization.
   caveats:
   - Parameter-vector emotion control is backbone-sensitive and still degrades when dialect and emotion are composed.
+- id: '2605.25504'
+  published_date: '2025-11-12'
+  entry_date: '2026-10-31'
+  year: 2025
+  venue: O-COCOSDA
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - diffusion_based_emotional_generation
+  claims:
+  - claim_id: late_q4_2605_25504_inserting_non_verbal_vocalizations_into_emotional_speech_synthesis_improves_listeners_ability_to_identify_the_
+    role: supports
+    claim: Inserting non-verbal vocalizations into emotional speech synthesis improves listeners' ability to identify
+      the intended emotion beyond what verbal prosody alone conveys.
+    source: §5.3, §5.3.1, Figure 2, Figure 3
+    evidence: On verbally ambiguous sentences, human four-way emotion identification rises from 62.1% for verbal-only
+      emotional Grad-TTS to 82.0% with fine-grained NV tags, with fear rising from 46.36% to 82.69% when screaming is
+      added.
+    confidence: medium
+    relevance: high
+  - claim_id: late_q4_2605_25504_adding_non_verbal_vocalizations_to_synthetic_speech_trades_a_small_loss_in_perceived_naturalness_for_gains_in_
+    role: complicates
+    claim: Adding non-verbal vocalizations to synthetic speech trades a small loss in perceived naturalness for gains
+      in expressiveness.
+    source: §5.3, Figure 2, Table 3
+    evidence: Naturalness MOS falls from 3.54 (verbal-only) to 3.40 (fine-grained NV) while expressiveness MOS rises
+      from 3.81 to 4.20; per emotion, the NV system has lower nMOS than verbal-only in all four categories.
+    confidence: medium
+    relevance: high
+  - claim_id: late_q4_2605_25504_the_emotional_benefit_of_a_non_verbal_vocalization_depends_on_how_specifically_that_vocalization_is_associated
+    role: refines
+    claim: The emotional benefit of a non-verbal vocalization depends on how specifically that vocalization is associated
+      with the target emotion.
+    source: §5.3.1, Figure 3, Table 3
+    evidence: Emotion-specific cues (screaming for fear, crying for sadness) yield 82.69% and 98.28% recognition, while
+      yelling, a generic high-arousal cue used for anger, reaches only 64.35% with eMOS 4.06, the lowest of the four
+      emotions; coarse laughter for happy is often misheard as sad.
+    confidence: medium
+    relevance: high
+  - claim_id: late_q4_2605_25504_annotating_non_verbal_vocalizations_with_type_count_and_duration_information_yields_more_recognizable_emotiona
+    role: supports
+    claim: Annotating non-verbal vocalizations with type, count, and duration information yields more recognizable emotional
+      synthesis than presence-only tags.
+    source: §5.1, §5.3.1, Table 3, Figure 3
+    evidence: A Grad-TTS trained with the fine-grained EARS tags outperforms one trained on coarse NonverbalTTS tags
+      in eMOS (4.21 vs 3.85 happy, 4.25 vs 4.15 sad) and happy recognition (82.50% vs 25.74%), though the two variants
+      also differ in source data and recording quality.
+    confidence: medium
+    relevance: high
+  limitations:
+  - The fine-grained and coarse systems use different source corpora and recording quality, so annotation granularity
+    is confounded with data quality.
+  - The 15-listener English female-speaker study reports no confidence intervals or significance tests and does not objectively
+    verify requested non-verbal count or duration.
+  caveats:
+  - The result supports non-verbal emotional cues and their trade-offs on one Grad-TTS setup, but not broad transfer
+    across speakers, languages, or modern large TTS backbones.
 claim_clusters:
 - id: explicit_emotion_conditioning_improves_expressiveness
   claim: Explicit emotion conditioning improves the recognizability and perceived expressiveness of synthesized
@@ -6954,6 +7020,7 @@ claim_clusters:
   status: strongly_supported
   confidence: high
   supporting_papers:
+  - '2605.25504'
   - '2505.15772'
   - '2506.16381'
   - '2507.04349'
@@ -6979,10 +7046,11 @@ claim_clusters:
   - '2505.10599'
   - '2512.14291'
   caveats:
+  - Fine-grained non-verbal tags improve recognition in one small study, but requested count and duration were not objectively verified.
   - Finer control requires reliable alignment and can accumulate prediction errors.
   - Q4 adds phoneme-aware embeddings, word-level emphasis and emotion transitions, and laughter-specific reward control;
     their gains depend on alignment, transition smoothing, and task-specific objectives.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-10-31'
 - id: speaker_emotion_disentanglement_enables_independent_control
   claim: Disentangling speaker identity from emotion and style enables more independent control of voice and expression.
   status: strongly_supported
@@ -7050,6 +7118,7 @@ claim_clusters:
   - '2512.18699'
   contradicting_papers: []
   refining_papers:
+  - '2605.25504'
   - '2402.05755'
   - '2507.04349'
   - '2507.18119'
@@ -7063,10 +7132,11 @@ claim_clusters:
   - '2511.12074'
   - neurips-2025-SYcggdxX6W
   caveats:
+  - Adding non-verbal emotion cues raised expressiveness and recognition while slightly lowering naturalness across all tested emotions.
   - Trade-offs vary with architecture, control strength, and whether vocal events count as transcription errors.
   - Q4 matched guidance and attribute-control ablations reinforce that emotion, naturalness, intelligibility, and
     identity do not improve monotonically together; stronger or composed controls can reverse earlier gains.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-10-31'
 - id: multimodal_context_improves_affect_modeling
   claim: Visual, textual, and conversational context provides complementary affect information that improves emotional
     speech modeling.
@@ -7241,6 +7311,7 @@ claim_clusters:
   status: strongly_supported
   confidence: high
   supporting_papers:
+  - '2605.25504'
   - '2407.05407'
   - '2506.16381'
   - '2507.18119'
@@ -7259,10 +7330,11 @@ claim_clusters:
   - '2508.07273'
   - interspeech-2025-0166
   caveats:
+  - The late non-verbal TTS comparison confounds annotation granularity with source-corpus quality and covers only female English speech.
   - Lexical metrics penalize intentional non-verbal events and therefore understate perceptual quality.
   - Q4 extends dedicated control to emphasis and laughter; both require specialized rewards, and laughter optimization
     directly worsens transcription and identity metrics that treat the intended event as an error.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-10-31'
 - id: preference_optimization_can_improve_emotional_alignment
   claim: Preference optimization can improve emotional coherence and expressive alignment beyond supervised fine-tuning
     alone.
@@ -7524,6 +7596,7 @@ method_families:
   summary: Diffusion systems model expressive acoustic variation through iterative denoising, multimodal conditioning,
     or trajectory-level preference optimization.
   papers:
+  - '2605.25504'
   - 2025.ccl-1.77
   - interspeech-2025-0948
   - interspeech-2025-1101

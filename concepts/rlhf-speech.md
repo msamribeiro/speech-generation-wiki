@@ -5,24 +5,24 @@ render_type: overview
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 status: emerging
-last_reviewed: 2026-07-24
-source_digest_date: 2026-07-20
-paper_count: 29
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-26
+paper_count: 49
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
 > RLHF for speech uses preferences or reward signals to improve a pretrained TTS, spoken-language,
-> or speech-to-speech model after supervised training. Across 29 reviewed papers, post-training
+> or speech-to-speech model after supervised training. Across 49 reviewed papers, post-training
 > reliably improves targeted qualities with relatively little data, but proxy rewards can damage
 > prosody, diversity, emotion, or other dimensions that the optimizer does not measure.
 
@@ -49,6 +49,11 @@ generation:
   ([[2504.02407|F5R-TTS]], [[2509.18928]], [[2509.25416]]).
 - **Alignment cannot create capability absent from the base model.** Iterative optimization shows
   diminishing returns and rarely reaches oracle best-of-N or strong cascaded toplines.
+- **Q4 localizes where alignment can and cannot act.** Token-level preference signals such as
+  [[2510.05799|Data-efficient Targeted Token-level Preference Optimization]] concentrate sparse
+  feedback, while LM-only RLHF cannot repair quality determined by a frozen flow decoder or vocoder.
+  [[2509.18531|No Verifiable Reward for Prosody]] shows that a small human-preference stage can
+  recover proxy-induced prosody loss, but repeated rounds can saturate or reverse.
 
 ## Method Landscape
 
@@ -72,6 +77,8 @@ generation:
   collapse intelligibility, identity, or held-out quality.
 - **Component-level alignment versus final audio quality.** Optimizing an LM cannot repair
   attributes controlled by a frozen downstream flow model or vocoder.
+- **Local feedback versus global coherence.** Segment-level rewards improve data efficiency but must
+  be balanced against utterance-level naturalness, identity, and dialogue behavior.
 
 ## Open Questions
 
@@ -91,13 +98,12 @@ limits imposed by the base model and downstream pipeline.
 
 ## Scope
 
-This assessment covers 29 integrated papers published between June 2024 and September 2025, with
-roughly two-thirds appearing in Q3 2025. The area is therefore fast-moving but young. Several
+This assessment covers 49 integrated papers through Q4 2025. The area is therefore fast-moving but young. Several
 strong-looking results come from a single backbone or proprietary system, and spoken-dialogue RLHF
 is much less developed than acoustic TTS alignment. Complete provenance remains in
 `wiki/_claims/rlhf-speech.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/rlhf-speech.yaml` (digest date: 2026-07-20).
+_This page is generated from `wiki/_claims/rlhf-speech.yaml` (digest date: 2026-09-26).
 Complete structured claims and paper-level provenance remain in the source YAML._

@@ -5,19 +5,19 @@ render_type: overview
 title: Disentanglement
 aliases: [attribute disentanglement, representation factorization, content-speaker separation, prosody disentanglement]
 status: established
-last_reviewed: 2026-07-24
-source_digest_date: 2026-07-22
-paper_count: 100
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-26
+paper_count: 116
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -65,6 +65,14 @@ without adding a new encoder or adversarial loss ([[2406.02430|Seed-TTS]],
 [[2411.19770|Noro]], [[2509.15626|LibriTTS-VI]]). These methods are simpler structurally, but their
 effect depends on the backbone and on constructing suitable paired or perturbed data.
 
+**Q4 strengthens stream separation and intervention-based evaluation.** Dedicated semantic,
+acoustic, speaker, and environment streams can provide useful factorization without adversarial or
+mutual-information losses ([[2510.13221|Acoustic Teleportation]], [[2510.16841|SAC]],
+[[2512.13251|DisCo-Speech]]). Cross-source composition and per-attribute tests then reveal leakage
+that reconstruction or aggregate scores conceal. These findings do not remove the fidelity cost:
+multi-stream quantization, stronger bottlenecks, and per-attribute guidance can still degrade
+speaker similarity or interfere with an untargeted attribute.
+
 ## Method Landscape
 
 - **Architectural factorization:** dedicated encoders or streams for content, speaker, emotion,
@@ -83,6 +91,9 @@ effect depends on the backbone and on constructing suitable paired or perturbed 
   and decoupled training examples teach invariance without requiring an explicit separation loss.
 - **Signal-level decomposition:** dedicated F0 or prosody decomposition addresses attributes that
   generic latent-space methods repeatedly fail to isolate.
+- **Separated streams and cross-source tests:** Q4 systems assign semantic, acoustic, identity, or
+  environment information to dedicated paths, then swap sources to test whether the separation is
+  operational rather than merely decodable.
 
 ## Key Trade-offs
 
@@ -97,6 +108,9 @@ effect depends on the backbone and on constructing suitable paired or perturbed 
 - **Proxy scores versus perceived control:** classifier accuracy, WER, and embedding similarity do
   not consistently predict whether listeners perceive the intended attribute transfer
   ([[2409.09098|AccentBox]], [[interspeech-2025-1081|SNCR]]).
+- **Independent guidance versus cross-attribute interference:** per-attribute controls improve
+  composition, but stronger guidance can change naturalness, identity, or another controlled
+  dimension ([[2512.09504|DMP-TTS]]).
 
 ## Open Questions
 
@@ -107,6 +121,8 @@ effect depends on the backbone and on constructing suitable paired or perturbed 
   rather than redundant?
 - Why is speaker similarity the attribute most often sacrificed: intrinsic difficulty, or simply
   more consistent measurement?
+- Can cross-source composition become a standardized intervention test across codecs, TTS, voice
+  conversion, and multimodal generation?
 
 ## Go Deeper
 
@@ -116,7 +132,7 @@ and the places where results disagree.
 
 ## Scope
 
-This rendering covers 100 papers represented in the claim graph, from 2020 through September 2025,
+This rendering covers 116 papers represented in the claim graph through Q4 2025,
 across TTS, voice conversion, codecs, emotional and singing-voice generation, and related spoken
-systems. Conclusions describe this corpus rather than exhaustive field coverage. Full
+systems. The graph contains 15 strongly supported, 2 contested, and 2 emerging clusters. Conclusions describe this corpus rather than exhaustive field coverage. Full
 paper-to-claim provenance is available in `wiki/_claims/disentanglement.yaml`.

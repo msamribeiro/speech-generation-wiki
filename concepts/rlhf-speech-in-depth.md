@@ -2,18 +2,18 @@
 concept: rlhf-speech
 render_type: in-depth
 title: "RLHF for Speech: In Depth"
-source_digest_date: 2026-07-20
-paper_count: 29
+source_digest_date: 2026-09-26
+paper_count: 49
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 This page explains what the reviewed speech-alignment literature collectively supports. For the
@@ -42,11 +42,17 @@ representative; the complete paper-to-claim graph remains in `wiki/_claims/rlhf-
   module.
 - Spoken conversational-agent alignment targets different failures from TTS acoustic alignment and
   remains comparatively underexplored.
+- Localizing preference or reward feedback to erroneous speech segments or tokens improves the
+  data efficiency of sparse alignment signals.
+- Reward-model domain shift and ranking brittleness limit how safely automatic speech judges can
+  be used as training objectives.
+- Small iterative human-preference stages can recover some proxy-reward damage, but the evidence
+  is narrow and gains can saturate or reverse.
 
 ## Scope
 
-The graph contains 29 papers from June 2024 through September 2025. Approximately two-thirds are
-from Q3 2025, so the literature reflects rapid experimentation rather than a settled recipe. The
+The graph contains 49 papers through Q4 2025 and 22 synthesized clusters: 15 strongly supported,
+6 emerging, and 1 contested. The literature reflects rapid experimentation rather than a settled recipe. The
 dominant families are DPO/KTO-style preference optimization on discrete speech tokens and
 policy-gradient RL with explicit rewards. Extensions to continuous flow or diffusion generators,
 differentiable critics, intrinsic rewards, and reward-model infrastructure are newer.
@@ -88,6 +94,10 @@ space, marginalize over intermediate states, or supervise individual denoising s
 **Reward infrastructure and intrinsic alignment** train reusable quality evaluators or derive
 reward from the base model itself. These directions could reduce human-label requirements but are
 the least mature in the graph.
+
+**Localized and token-level alignment** concentrates feedback on the segments or tokens that
+produce the error. Three Q4 systems use different localization signals, so the repeated benefit is
+data efficiency rather than one shared algorithm.
 
 ## What the Research Shows
 
@@ -259,6 +269,25 @@ Streaming interpretation is another specialized frontier. [[2507.17527]] reports
 in latency using process and outcome rewards, but the system is proprietary and the reward design
 is tied to simultaneous translation policies.
 
+### Alignment location and recovery
+
+Q4 work makes the location of an alignment signal more explicit. [[2510.05799|Data-efficient
+Targeted Token-level Preference Optimization]] and related timestamped or codec-token methods
+focus updates on the portion of an utterance associated with the error. Across three different
+localization schemes, the graph supports a common result: sparse preference data is used more
+efficiently when correct regions are not trained as if they were equally responsible. The methods
+are not directly interchangeable, because token importance, timestamped acoustic feedback, and
+codec rewards define different credit-assignment problems.
+
+The same quarter strengthens the warning about the evaluator. [[2510.00743|From Scores to
+Preferences]] and [[2512.04552|RRPO]] expose synthetic-speech domain shift, fine-grained ranking
+errors, long-context degradation, and exploitable reward behavior. Multi-reward methods such as
+[[2511.21270|Multi-Reward GRPO]] reduce dependence on one proxy, but they do not remove the need for
+held-out perceptual checks. [[2509.18531|No Verifiable Reward for Prosody]] provides the clearest
+recovery case: a small iterative human-preference stage restores some quality lost to a verifiable
+proxy, yet improvement is not monotonic and may reverse. The operational lesson is to treat reward
+modeling, credit assignment, pipeline placement, and recovery evaluation as one alignment system.
+
 ## Where Findings Disagree
 
 ### DPO or policy-gradient RL
@@ -289,8 +318,8 @@ treated as an important frontier probe, not an established alternative to learne
 
 ## How the Field Is Changing
 
-The literature is unusually recent. The first integrated papers appear in mid-2024; by Q3 2025,
-DPO and policy-gradient methods account for most of the 29-paper graph. The field has moved quickly
+The literature is unusually recent. The first integrated papers appear in mid-2024; by Q4 2025,
+DPO and policy-gradient methods account for most of the 49-paper graph. The field has moved quickly
 from demonstrating that preference alignment can improve codec TTS to adapting it across
 flow-matching, diffusion, CTC, spoken-language, and simultaneous-translation systems.
 
@@ -308,6 +337,11 @@ Cross-lingual transfer is another promising but narrow frontier. Two studies rep
 on languages not used for the preference stage, but they cover only a small set of additional
 languages from English-and-Chinese training bases. The evidence supports feasibility, not a general
 claim of language-independent alignment.
+
+Q4 adds a more diagnostic phase centered on credit assignment and evaluator failure. Instead of
+only asking whether post-training improves a headline metric, the new work asks where the feedback
+should enter, which tokens caused the failure, when an automatic judge has shifted out of domain,
+and whether a small human-preference stage can repair proxy-induced degradation.
 
 ## Implications
 
@@ -340,14 +374,18 @@ claim of language-independent alignment.
 6. [[2509.00685|MPO]] — multidimensional reward design and regularization.
 7. [[2509.18531]] — the clearest reward-hacking and iterative-preference caution.
 8. [[2508.15442]] — frontier intrinsic-reward alignment with GFlowNets.
+9. [[2510.05799]] and [[2510.00743]] — Q4 evidence on localized feedback and reward-model
+   brittleness.
+10. [[2511.21270]] and [[2512.04552|RRPO]] — multi-reward optimization and more robust preference
+    objectives.
 
 ## Structured Source
 
 This page selects and groups findings for human readability. The complete claim graph—including all
-29 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
+49 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
 available in `wiki/_claims/rlhf-speech.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/rlhf-speech.yaml` (digest date: 2026-07-20).
+_This page is generated from `wiki/_claims/rlhf-speech.yaml` (digest date: 2026-09-26).
 Citations are selected for human readability; complete provenance remains in the source YAML._
