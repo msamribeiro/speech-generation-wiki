@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-01
 
+- report | 2025-Q4 | quarterly retrospective | snapshot: 2025-Q4 | 668 included papers | 497 baseline | 171 Q4 activity | 23 concepts | 444 local clusters | 38 new clusters | 37 strengthened clusters | 3 newly contested clusters | 1 changed broader claim | evidence cutoff: 2025-12-31 | assessment as of: 2026-11-01 | runtime: codex | provider: openai | model: gpt-5
 - snapshot | 2025-Q4 | published retrospective snapshot | 668 unique papers | 497 baseline | 171 Q4 activity | 23 concepts | 444 local clusters | 11 broader claims | evidence cutoff: 2025-12-31 | assessment as of: 2026-11-01 | digest: sha256:97ebbcfe40a97bc05208e9c8d7209c88a77225485310e425716d83d7f5af3b4c | source run: 2025-Q4-corrective-refresh | runtime: codex | provider: openai | model: gpt-5
 - render | field overview | 23 concepts | 668 unique papers | 2,892 memberships | 444 local clusters | 373 human-approved direct relationships | 11 human-approved broader claims | evidence cutoff: 2025-12-31 | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | fine-tuning | formats: both | mode: full | 1 paper | source digest: 2026-08-02 | runtime: codex | provider: openai | model: gpt-5
