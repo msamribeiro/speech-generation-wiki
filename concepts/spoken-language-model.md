@@ -5,19 +5,19 @@ render_type: overview
 title: Spoken Language Models
 aliases: [speech language model, spoken conversational model, speech-native language model, audio language model]
 status: established
-last_reviewed: 2026-08-02
-source_digest_date: 2026-07-27
-paper_count: 127
+last_reviewed: 2026-10-31
+source_digest_date: 2026-09-20
+paper_count: 173
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -45,6 +45,11 @@ speaking, interruption handling, backchannels, and turn transitions; many result
 simulated conversations ([[2408.02622|Language Model Can Listen While Speaking]],
 [[2410.00037|Moshi]]).
 
+**Reasoning can begin during listening, but acting early is a control problem.** Q4 systems such as
+[[2510.02044|Stream RAG]] and [[2510.06917|SHANKS]] perform retrieval, reasoning, or tool work from
+partial speech to reduce response latency. Ambiguous prefixes can trigger the wrong action, so
+preemptible computation, learned trigger policies, and full-context fallbacks remain necessary.
+
 **Semantic competence exceeds paralinguistic competence.** Models perform better on transcript-level
 content than prosody, emotion, speaker traits, and non-verbal cues. Replacing text with speech also
 introduces measurable reasoning and instruction-following gaps through representation, alignment,
@@ -58,6 +63,11 @@ turn-taking, memory, latency, and safety.
 **Data breadth is capability and risk.** Large instruction and conversational corpora expand task
 coverage, while synthetic labels, demographic imbalance, and scripted interaction patterns can
 create fluent behavior that transfers poorly to live users.
+
+**Safety evaluation is becoming audio-native.** Bias, privacy, harmful-audio generation, jailbreaks,
+and provenance cannot be inferred from text safety alone. [[2511.10913|Synthetic Voices, Real
+Threats]] illustrates why deployment assessment must include the generated voice and acoustic
+context, not only the transcript.
 
 ## Method Landscape
 
@@ -80,6 +90,8 @@ create fluent behavior that transfers poorly to live users.
   cascades retain strong text reasoning and inspectable components.
 - **Low latency versus complete context:** early response improves interaction while increasing
   endpoint and interruption errors.
+- **Incremental work versus premature action:** reasoning during listening saves time, but tools and
+  commitments need confidence-aware triggers and cancellation paths.
 - **Unified breadth versus specialized quality:** one backbone supports many tasks without matching
   the best component on every dimension.
 - **Alignment gains versus reward blind spots:** post-training improves selected behavior while
@@ -92,6 +104,8 @@ create fluent behavior that transfers poorly to live users.
 - Which alignment objectives add acoustic competence without eroding text-LM reasoning?
 - When should deployment use end-to-end, cascaded, or dynamically routed hybrid systems?
 - What live multilingual protocol can jointly measure reasoning, voice, timing, memory, and safety?
+- Which audio-native safeguards and provenance mechanisms survive adversarial speech, overlap, and
+  long interrupted conversations?
 
 ## Go Deeper
 
@@ -101,10 +115,10 @@ evaluation, alignment, and deployment choices.
 
 ## Scope
 
-This synthesis covers 127 papers from 2022 through September 2025, including 101 from 2025. Spoken
+This synthesis covers 173 papers from 2022 through Q4 2025. Spoken
 agents provide most direct evidence, with TTS, codecs, and evaluation supplying infrastructure and
-controls. Sixteen clusters are strongly supported; bias, privacy, misuse, and provenance evaluation
-remain emerging. System comparisons frequently change the base LM, data, tokenizer, and decoder
+controls. All 18 clusters are strongly supported within the graph, including the Q4 additions on
+incremental reasoning and deployment safety. System comparisons frequently change the base LM, data, tokenizer, and decoder
 together. Live multilingual and full-duplex evidence remains much narrower than offline benchmark
 coverage, so deployment conclusions require additional qualification. Infrastructure and historical
 papers establish interfaces and lineage, while fluent demonstrations support feasibility rather
@@ -114,5 +128,5 @@ That distinction governs the deployment guidance here.
 
 ---
 
-_This page is generated from `wiki/_claims/spoken-language-model.yaml` (digest date: 2026-07-27).
+_This page is generated from `wiki/_claims/spoken-language-model.yaml` (digest date: 2026-09-20).
 For complete structured claims and paper-level provenance, use the source YAML._

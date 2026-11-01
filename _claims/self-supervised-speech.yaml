@@ -1,6 +1,6 @@
 concept: self-supervised-speech
-last_updated: '2026-07-29'
-paper_count: 146
+last_updated: '2026-09-26'
+paper_count: 176
 papers:
 - id: '2104.00355'
   published_date: "2021-04-01"
@@ -10401,6 +10401,2174 @@ papers:
     experiments use English-only, largely read-speech and audiobook data (LibriLight, People's Speech), leaving
     open whether the training recipe generalizes to conversational, multilingual, or noisier real-world speech.
   caveats: []
+- id: '2510.02066'
+  published_date: '2025-10-02'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  current_role: minor
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  claims:
+  - role: supports
+    claim: Incorporating chain-of-thought intermediate reasoning targets into a streaming duplex spoken dialogue
+      system substantially improves semantic coherence over a duplex baseline without intermediate reasoning.
+    source: §VII-A, Table 1
+    evidence: SCoT-Response reduces perplexity from 313.8 (Duplex E2E) to 42.3 and raises ROUGE-1 from 14.4 to 27.9
+      on Eval2000, exceeding the ROUGE/METEOR scores of a ground-truth-transcript text LLM baseline.
+    confidence: high
+    claim_id: q4_2510_02066_incorporating_chain_of_thought_intermediate_reasoning_targets_into_a_streaming_duplex_sp
+    relevance: low
+  - role: complicates
+    claim: Predicting only an intermediate ASR transcript is not, by itself, a sufficient reasoning target for improving
+      duplex dialogue coherence.
+    source: §VII-A, §VII-C, Table 1, Table 3
+    evidence: SCoT-ASR (transcript-only intermediate target) underperforms the plain Duplex E2E baseline on perplexity
+      (432.7 vs. 313.8) and has the worst emotion-alignment rank (6.54) of all systems tested.
+    confidence: high
+    claim_id: q4_2510_02066_predicting_only_an_intermediate_asr_transcript_is_not_by_itself_a_sufficient_reasoning_t
+    relevance: low
+  - role: supports
+    claim: Blockwise streaming CoT duplex systems can approach the latency of purely reactive duplex systems while
+      achieving much higher semantic coherence than latency-costly turn-by-turn CoT alternatives.
+    source: §VII-A, Table 1
+    evidence: SCoT-Response achieves an RTF of 0.56, below a standard turn-by-turn E2E model's 0.75, while scoring
+      3.24 on an LLM judge versus 2.20 for Duplex E2E; the turn-by-turn CoT model scores higher (4.02) but at RTF
+      2.95.
+    confidence: high
+    claim_id: q4_2510_02066_blockwise_streaming_cot_duplex_systems_can_approach_the_latency_of_purely_reactive_duple
+    relevance: low
+  - role: complicates
+    claim: Shrinking the processing block size to reduce interaction latency in streaming duplex CoT systems degrades
+      semantic coherence.
+    source: §VII-E, Table 5
+    evidence: Reducing block size from 2s to 1s for SCoT-Full lowers RTF from 0.85 to 0.30 but raises perplexity
+      from 55.2 to 161.2 and drops ROUGE-L from 20.3 to 7.06.
+    confidence: high
+    claim_id: q4_2510_02066_shrinking_the_processing_block_size_to_reduce_interaction_latency_in_streaming_duplex_co
+    relevance: low
+  - role: refines
+    claim: Combining both ASR-transcript and text-response intermediate targets in a duplex CoT system trades a
+      small amount of peak semantic/audio quality for more natural overlapping turn-taking behavior.
+    source: §VII, Table 1, Table 2, Table 4
+    evidence: SCoT-Response outperforms SCoT-Full on ROUGE/METEOR/perplexity and UTMOS (2.46 vs. 2.19), but SCoT-Full
+      achieves higher overlap recall (71.5% vs. 66.8%) relative to the 57.5% natural overlap rate observed in Eval2000.
+    confidence: high
+    claim_id: q4_2510_02066_combining_both_asr_transcript_and_text_response_intermediate_targets_in_a_duplex_cot_sys
+    relevance: low
+  limitations:
+  - Beyond this, absolute audio quality remains modest across all E2E and duplex systems (UTMOS 1.9-2.5) compared
+    to a dedicated single-speaker TTS ceiling (4.19), indicating a substantial synthesis-quality gap that CoT reasoning
+    narrows but does not close. Evaluation relies on automatic metrics (ROUGE, METEOR, perplexity, UTMOS) and an
+    LLM judge rather than human listening tests, and is confined to English telephone conversations (Switchboard
+    and Fisher) at a 1.7B-parameter backbone, leaving open how the approach scales to larger models, other languages,
+    or more diverse conversational domains. The authors also note adaptive block sizing and deeper analysis of how
+    different CoT paths affect performance across utterance types as open directions.
+  caveats:
+  - The paper studies streaming dialogue reasoning rather than the properties of self-supervised speech representations.
+- id: '2510.05619'
+  published_date: '2025-10-07'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: frontier_probe
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - claim_id: a_reinforcement_learning_policy_can_be_trained_to_produce_recognizable_s
+    role: supports
+    claim: A reinforcement learning policy can be trained to produce recognizable speech sounds purely from acoustic-similarity
+      feedback, without ever being given a direct acoustic reconstruction loss on the output waveform.
+    source: §3.1, §3.3, Table 1
+    evidence: Six per-syllable PPO policies, rewarded only by cosine similarity between Sylber embeddings of generated
+      and target audio, converge to similarity scores between 0.79 and 0.92, and a human transcriber correctly recognized
+      three of the six generated syllables (please, loot, cat).
+    confidence: high
+    relevance: medium
+  - claim_id: reward_signals_based_on_similarity_to_a_target_embedding_can_reinforce_p
+    role: complicates
+    claim: Reward signals based on similarity to a target embedding can reinforce partially correct articulatory
+      sequences, so a policy can achieve high similarity scores while still failing to realize the full intended
+      phonetic sequence.
+    source: §3.3, Table 1
+    evidence: Despite similarity scores of 0.87, 0.79, and 0.92 respectively, road, fan, and age were misheard by
+      the human transcriber as "roar," "fand," and "we," showing the policy learns the onset of a syllable more
+      reliably than its coda.
+    confidence: high
+    relevance: low
+  - claim_id: explicit_low_dimensional_articulatory_control_can_serve_as_an_interpreta
+    role: refines
+    claim: Explicit, low-dimensional articulatory control can serve as an interpretable intermediate representation
+      for speech generation, in which motor commands can be traced back to individual phonetic targets.
+    source: §3.2, Figure 5
+    evidence: The trained "please" policy's 13-dimensional articulator/loudness trajectory decomposes into distinguishable,
+      temporally ordered gestures corresponding to /p/, /l/, /iy/, and /z/, allowing the sequence of phonemes to
+      be read directly off the trajectory plot.
+    confidence: high
+    relevance: medium
+  - claim_id: reinforcement_learning_based_articulatory_control_frameworks_in_their_cu
+    role: complicates
+    claim: Reinforcement-learning-based articulatory control frameworks, in their current form, face a substantial
+      gap in scale and perceptual quality relative to data-driven neural speech synthesis.
+    source: §4 Discussion
+    evidence: The framework trains one independent policy per syllable over six syllables total (not a shared policy
+      or full-sentence generation), and the authors state explicitly that the model does not yet achieve the perceptual
+      quality of current data-driven neural synthesis systems.
+    confidence: high
+    relevance: low
+  limitations:
+  - Intelligibility is judged by one transcriber on six syllables, without MOS, ASR, baselines, or statistical analysis.
+  caveats:
+  - The acoustic embedding is used as reinforcement feedback; the paper does not isolate a new self-supervised pretraining
+    objective.
+- id: '2510.07096'
+  published_date: '2025-10-08'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - GAN
+  - VAE
+  relevance: low
+  evidence_role:
+  - control_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - claim_id: retrieval_augmented_conditioning_on_real_reference_exemplars_can_substit
+    role: supports
+    claim: Retrieval-augmented conditioning on real reference exemplars can substitute for a single manually chosen
+      style-reference utterance in expressive speech synthesis, without a loss in perceived naturalness.
+    source: §Sarcastic Speech Synthesis Results, Table 2
+    evidence: Prosody-only conditioning using the top-3 retrieved sarcastic exemplars (WavLM-encoded) raised sarcasm
+      MOS from 3.2±0.2 (baseline) to 3.7±0.2 while naturalness MOS stayed flat at 2.6±0.1.
+    confidence: high
+    relevance: low
+  - claim_id: task_specific_fine_tuning_of_a_general_purpose_llm_is_necessary_to_make
+    role: supports
+    claim: Task-specific fine-tuning of a general-purpose LLM is necessary to make its embeddings useful for conditioning
+      expressive speech synthesis; the pretrained embeddings alone are not sufficient and can be actively harmful.
+    source: §Sarcastic Speech Synthesis Results, Table 2
+    evidence: Conditioning on untuned LLaMA 3 embeddings degraded both naturalness (2.0±0.1 NMOS, versus 2.6±0.1
+      for baseline) and perceived sarcasm (2.6±0.2 SMOS, versus 3.2±0.2 for baseline), while the same LLaMA 3 backbone
+      after LoRA fine-tuning raised sarcasm MOS to 3.8±0.2 with naturalness restored to 2.6±0.1.
+    confidence: high
+    relevance: low
+  - claim_id: semantic_and_prosodic_cues_make_complementary_non_redundant_contribution
+    role: supports
+    claim: Semantic and prosodic cues make complementary, non-redundant contributions to a pragmatic speech phenomenon,
+      and combining them yields effects that neither cue produces alone.
+    source: §Sarcastic Speech Synthesis Results, Table 2
+    evidence: The combined LoRA+RAG condition achieved the highest downstream sarcasm-detection F1 from synthesized
+      audio (62.5%) among all six tested conditions and the lowest acoustic distortion (9.8 MCD), while matching
+      the best single-cue SMOS (3.8±0.2) at improved naturalness (2.7±0.1 NMOS) relative to either cue alone.
+    confidence: high
+    relevance: low
+  - claim_id: low_level_acoustic_fidelity_metrics_can_fail_to_reflect_meaningful_diffe
+    role: complicates
+    claim: Low-level acoustic fidelity metrics can fail to reflect meaningful differences in a system's ability
+      to convey pragmatic or paralinguistic intent, so they should not be used as proxies for expressivity.
+    source: §Sarcastic Speech Synthesis Results
+    evidence: MCD, pitch RMSE, and energy RMSE remained nearly identical across all six conditions (MCD ranging
+      9.6-10.4) even though sarcasm detection F1 varied from 59.0% to 62.5% and SMOS varied from 2.6±0.2 to 3.8±0.2
+      across the same conditions.
+    confidence: high
+    relevance: low
+  limitations:
+  - The perceptual study uses 30 listeners and eight sentences per system from one English sitcom corpus, without
+    reported significance tests.
+  caveats:
+  - Its language-model embeddings and prosody controls are relevant only indirectly to self-supervised speech representation
+    learning.
+- id: '2510.09061'
+  published_date: '2025-10-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - VC
+  architecture:
+  - VAE
+  - GAN
+  claims:
+  - role: supports
+    claim: Training a voice conversion model on frame-aligned synthetic pairs (same content, different speaker,
+      generated from a shared TTS linguistic latent) can outperform reconstruction-based disentanglement training
+      on speaker similarity and intelligibility.
+    source: §5.1, Table 1
+    evidence: Against FreeVC, KNN-VC, Diff-HierVC, DDDM-VC, and FaCodec baselines on LibriSpeech test-clean, the
+      synthetic-data-trained model achieves the best WER (1.74), CER (0.53), and SECS (86.70) among all compared
+      systems.
+    claim_id: q4_2510_09061_training_a_voice_conversion_model_on_frame_aligned_synthetic_pairs_same_content_different_speaker_ge
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Explicit F0 conditioning at the decoder helps a voice conversion model preserve pitch contours when source
+      and target utterances differ in speaker-driven pitch statistics.
+    source: §5.2, Table 2, Figure 3
+    evidence: Removing the F0 encoder increases WER (1.74→2.07) and CER (0.53→0.61); the full model also reports
+      the highest F0 Pearson correlation coefficient among compared systems, including a diffusion-based baseline
+      that also conditions on F0.
+    claim_id: q4_2510_09061_explicit_f0_conditioning_at_the_decoder_helps_a_voice_conversion_model_preserve_pitch_contours_when_
+    confidence: high
+    relevance: low
+  - role: complicates
+    claim: A voice conversion model trained purely on synthetic TTS-generated pairs from a fixed speaker pool does
+      not generalize speaker similarity to unseen speakers without additional fine-tuning on real, speaker-diverse
+      data.
+    source: §5.2, Table 2
+    evidence: Removing phase-2 real-data fine-tuning drops SECS from 86.70 to 70.78, even though the phase-1-only
+      model's NISQA naturalness score is higher (4.59 vs. 4.04), showing the synthetic-only model produces clean
+      audio but fails to transfer to out-of-domain speakers.
+    claim_id: q4_2510_09061_a_voice_conversion_model_trained_purely_on_synthetic_tts_generated_pairs_from_a_fixed_speaker_pool_d
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Content representations trained with a synthetic parallel-data objective can retain measurably less residual
+      speaker identity than representations trained via a reconstruction objective on the same backbone.
+    source: §5.2, Table 3, Figure 2
+    evidence: On clustering-based leakage metrics (Adjusted Rand Index, Normalized Mutual Information, Silhouette
+      Score) computed on content embeddings, the proposed model scores lower than FreeVC (same backbone architecture)
+      on all three metrics, and t-SNE visualization shows more speaker-dispersed content embeddings.
+    claim_id: q4_2510_09061_content_representations_trained_with_a_synthetic_parallel_data_objective_can_retain_measurably_less_
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Fine-tuning a voice conversion model to a new language using only unlabeled target-language audio narrows,
+      but does not close, the intelligibility gap to native ground-truth speech.
+    source: §Appendix A.2, Table 4
+    evidence: After phase-2 language adaptation, CER/WER against ground-truth transcriptions remains higher than
+      the ground-truth ASR baseline in all three tested languages (e.g., Vietnamese 8.83 vs. 2.53 ground truth,
+      Italian 22.62 vs. 11.96 ground truth).
+    claim_id: q4_2510_09061_fine_tuning_a_voice_conversion_model_to_a_new_language_using_only_unlabeled_target_language_audio_na
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'The authors'' own stated limitation is that the approach depends on access to a high-quality, well-labeled
+    multi-speaker corpus to first train the TTS system that generates the synthetic training pairs, and the paper
+    does not explore how synthetic data quality from different TTS backbones would affect downstream voice conversion
+    performance (§Limitations). Baseline naturalness (MOS) comparisons are also confounded by training-data quality
+    differences: FreeVC is trained on the cleaner VCTK corpus while the proposed model''s phase-2 fine-tuning uses
+    LibriSpeech, which the authors themselves note likely disadvantages their MOS score independent of the method
+    itself (§5.1). Language-adaptation and emotion-preservation experiments (Appendix A) are secondary analyses
+    on relatively small evaluation sets (400 utterances per language, 400 emotional clips) rather than the paper''s
+    core evaluation.'
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  caveats:
+  - The disentanglement result depends on synthetic parallel data and does not remove the need for target-language
+    adaptation.
+- id: '2510.09424'
+  published_date: '2025-10-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  current_role: minor
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  claims:
+  - role: supports
+    claim: Feeding an LLM the raw spoken representation of the full multi-turn dialogue history, rather than a mixed
+      representation that substitutes text for earlier turns, improves task performance in spoken-input LLM systems.
+    source: §3.4, Table 2
+    evidence: Full Spoken Context reaches 36.89%/36.29% JGA (dev/test, no post-processing) versus 31.85%/32.06%
+      for the Multimodal baseline that mixes the current spoken turn with a written history of prior turns, on SpokenWOZ.
+    confidence: high
+    claim_id: q4_2510_09424_feeding_an_llm_the_raw_spoken_representation_of_the_full_multi_turn_dialogue_history_rat
+    relevance: medium
+  - role: supports
+    claim: Per-turn attention-pooling compression of spoken history embeddings in a speech-LLM can retain most of
+      the task performance of the uncompressed full history while sharply reducing context length, provided enough
+      pooling queries are used.
+    source: §3.4, Table 2; §3.5, Figure 4
+    evidence: Compressed Spoken Context with 10 queries reaches 34.26%/33.51% JGA (dev/test) versus 36.89%/36.29%
+      for the full uncompressed spoken history, while a single-query (1-vector) compression underperforms even the
+      mixed-modality baseline (31.03%/30.99%); increasing queries from 1 to 3 yields the largest gain, with diminishing
+      returns beyond that.
+    confidence: high
+    claim_id: q4_2510_09424_per_turn_attention_pooling_compression_of_spoken_history_embeddings_in_a_speech_llm_can_
+    relevance: medium
+  - role: complicates
+    claim: Task performance in LLM systems consuming long multi-turn spoken context degrades sharply as dialogue
+      length grows, regardless of the context-management strategy used.
+    source: §3.4
+    evidence: Joint Goal Accuracy for all context-management variants (multimodal, full spoken, compressed spoken)
+      declines steeply between turns 5–30 and approaches zero by turn 40 on SpokenWOZ, attributed to growing dialogue-state
+      complexity, the strictness of the JGA metric, and the limited capacity of the small LLM used.
+    confidence: high
+    claim_id: q4_2510_09424_task_performance_in_llm_systems_consuming_long_multi_turn_spoken_context_degrades_sharpl
+    relevance: low
+  - role: complicates
+    claim: Consuming the full uncompressed spoken conversation history in an LLM-based system creates a memory and
+      latency cost that grows with dialogue length, limiting practical deployment relative to compressed or text-based
+      context representations.
+    source: §5 Limitations; §3.5
+    evidence: The authors note that attention cost scales quadratically with the number of spoken turns retained
+      in context, causing GPU memory bottlenecks even with relatively small context windows on long dialogues, and
+      that for the largest scaling experiment (Gemma2-9B) the full-context speech-embedding sequence had to be truncated
+      to 1500 tokens to fit available compute.
+    confidence: high
+    claim_id: q4_2510_09424_consuming_the_full_uncompressed_spoken_conversation_history_in_an_llm_based_system_creat
+    relevance: low
+  limitations:
+  - The proposed systems are evaluated only in an offline research setting; the paper explicitly states they remain
+    far from delivery-level and does not evaluate end-to-end latency, streaming inference, or failure modes under
+    production/streaming constraints, which are all prerequisites for real-world deployment of a Spoken DST system.
+  - Beyond the streaming/latency gap, the empirical analysis is confined to a single benchmark, SpokenWOZ, which
+    the authors describe as the main human-conversational-speech DST benchmark available; extending to other corpora
+    such as Spoken MultiWOZ is flagged as future work but complicated by those corpora's heavy use of synthesized
+    (TTS) speech for training/validation splits, which could conflate DST robustness with robustness to TTS artifacts.
+    The Full Spoken Context approach's memory and compute footprint grows with dialogue length due to quadratic
+    attention cost, and while the compression variant mitigates this, the authors note it may discard fine-grained
+    cues such as named entities, numbers, or precise time slots. Code and trained models are not yet released; the
+    authors state this as a future intention rather than a current deliverable.
+  caveats:
+  - The work consumes pretrained raw-speech features in a dialogue tracker but does not evaluate the representation
+    independently.
+- id: '2510.11124'
+  published_date: '2025-10-13'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  claims:
+  - claim_id: q4_2510_11124_perturbing_speaker_identifying_information_in_self_supervised_speech_rep
+    role: supports
+    claim: Perturbing speaker-identifying information in self-supervised speech representations during training
+      improves disentanglement of speaker timbre from other speech attributes, measurable as higher speaker-similarity
+      scores at inference when perturbation is used versus omitted.
+    source: §4.2.2, Table 7
+    evidence: Adding either formant-shift or SSL-based speaker-anonymization perturbation during vec2wav training
+      raises SECS relative to the no-perturbation ablation across all four language/speaker test combinations (e.g.,
+      0.662 vs. 0.627 for Chinese speech, Chinese speaker).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_11124_stronger_speaker_identity_perturbation_for_disentanglement_purposes_trad
+    role: complicates
+    claim: Stronger speaker-identity perturbation for disentanglement purposes trades off against synthesized speech
+      intelligibility.
+    source: §4.2.2, Tables 6-7
+    evidence: SSL-based speaker anonymization produces a larger drop in speaker-embedding similarity of the perturbed
+      audio itself (SECS 0.354 vs. 0.514 for formant shift) but a far worse character error rate on that same perturbed
+      audio (20.57% vs. 9.07% CER), and this intelligibility gap persists in the full synthesized output (12.24%
+      vs. 7.13% CER in one test condition).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_11124_in_cross_lingual_emotional_speech_synthesis_emotion_similarity_and_speak
+    role: complicates
+    claim: In cross-lingual emotional speech synthesis, emotion similarity and speaker similarity behave as competing
+      objectives rather than independent ones.
+    source: §4.2.3, Table 8
+    evidence: Component ablations (removing SCL, SEALN, or the pretrained emotion representation) show that gains
+      in speaker-similarity metrics (DMOS) are accompanied by losses in emotion-similarity metrics (EMOS) and vice
+      versa across the tested configurations.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_11124_combining_explicit_acoustic_features_pitch_energy_duration_with_pretrain
+    role: supports
+    claim: Combining explicit acoustic features (pitch, energy, duration) with pretrained latent SSL representations
+      improves voice-cloning quality beyond using latent representations alone.
+    source: §5, §4.1
+    evidence: The authors report that pretrained high-dimensional latent features from speaker or emotion encoders
+      cannot fully substitute for explicit acoustic feature modeling, and that incorporating explicit pitch/energy/duration
+      prediction alongside the SSL-based txt2vec pipeline improves voice-cloning performance relative to their ZMM-TTS
+      predecessor, which lacks this explicit modeling.
+    confidence: medium
+    relevance: high
+  limitations:
+  - The bilingual ESD-only evaluation does not compare against current large-scale codec or flow-matching cloning
+    systems and leaves the emotion-identity trade-off unresolved.
+  caveats:
+  - 'Perturbation improves invariance only within a trade-off: aggressive removal of speaker cues also harms intelligibility.'
+- id: '2510.11646'
+  published_date: '2025-10-13'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - role: supports
+    claim: Decoupling the token rate an autoregressive model must predict from the frame rate of the continuous
+      representation used for final synthesis, via a bidirectional bridging module, can reduce AR generation steps
+      while improving or maintaining intelligibility relative to systems operating on denser raw token sequences.
+    source: §3.3, Table 1
+    evidence: At a 10Hz sparse token rate, BridgeTTS achieves the lowest WER among compared systems on both the
+      LibriTTS development set (3.4% vs. 5.9-11.4% for 50Hz baselines, 6.8% for the 25Hz CosyVoice baseline) and
+      test set (4.9% vs. 8.0-18.5%), while all baselines operate at 25-50Hz token rates.
+    claim_id: q4_2510_11646_decoupling_the_token_rate_an_autoregressive_model_must_predict_from_the_frame_rate_of_th
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Adding an explicit feature-level reconstruction loss alongside token-level cross-entropy during autoregressive
+      speech token training improves synthesis quality beyond what token-classification supervision alone provides,
+      because it penalizes acoustic distance rather than treating all token mismatches equally.
+    source: §3.4, Table 2
+    evidence: Removing the feature loss (`-w/o L features`) while keeping the same 10Hz token rate degrades WER
+      from 4.9% to 7.1% and UTMOS from 3.894 to 3.471 on the LibriTTS test set.
+    claim_id: q4_2510_11646_adding_an_explicit_feature_level_reconstruction_loss_alongside_token_level_cross_entropy
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Reconstructing dense continuous features from compressed discrete tokens via a dedicated bridging network
+      preserves synthesis quality that direct low-frame-rate token compression alone cannot achieve.
+    source: §3.4, Table 2
+    evidence: Training the AR generator on compressed sparse tokens without DenseBridge reconstruction (`-w/o DenseBridge`)
+      raises WER from 4.9% to 13.8% and lowers UTMOS from 3.894 to 3.443 on the LibriTTS test set, despite the token
+      rate staying fixed at 10Hz in both conditions.
+    claim_id: q4_2510_11646_reconstructing_dense_continuous_features_from_compressed_discrete_tokens_via_a_dedicated
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Reducing an AR-TTS system's token generation rate to improve efficiency does not automatically close
+      the gap with larger, more heavily engineered systems on subjective naturalness and speaker similarity.
+    source: §3.3, Table 1
+    evidence: On the LibriTTS test set, BridgeTTS's SMOS (4.01) and QMOS (4.11) trail CosyVoice's SMOS (4.12) and
+      QMOS (4.29) even though BridgeTTS uses a lower token rate (10Hz vs. 25Hz) and achieves a lower WER (4.9% vs.
+      8.0%).
+    claim_id: q4_2510_11646_reducing_an_ar_tts_system_s_token_generation_rate_to_improve_efficiency_does_not_automat
+    confidence: high
+    relevance: medium
+  limitations:
+  - All experiments are conducted on a single English corpus (LibriTTS, 16kHz) with no cross-lingual or cross-domain
+    evaluation, so it is untested whether the sparse/dense bridging mechanism generalizes to other languages, larger-scale
+    multilingual training data, or noisier real-world speech.
+  - Beyond the single-dataset scope, the paper reports no total parameter count for the AR generator or bridging
+    modules, making direct efficiency comparisons to baselines incomplete. The bridging modules and continuous feature
+    encoder are frozen at AR-generator training time, so the system's quality ceiling is bounded by how well BridgeCode
+    reconstructs features from sparse tokens; the paper does not report headroom analysis on this bound. No code
+    repository is released, only a demo page, which limits independent reproduction of the reported numbers.
+  caveats:
+  - The continuous bridge mitigates sparse-token loss but does not establish parity with higher-rate systems in
+    subjective quality.
+- id: '2510.15227'
+  published_date: '2025-10-17'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: Decoupling semantic and acoustic information into separate encoder paths and codebooks lets a low-frame-rate
+      codec preserve intelligibility at bitrates below 1 kbps without collapsing reconstruction quality.
+    source: §4.3.3, Table 5
+    evidence: At 0.43 kbps (16.67 Hz, 2 codebooks) the codec reaches WER 2.10 and STOI 0.839, outperforming S3Tokenizer
+      (0.60 kbps, WER 2.12, STOI 0.673) and LSCodec (0.45 kbps, WER 3.33, STOI 0.688) in the same sub-0.65 kbps
+      comparison group.
+    claim_id: q4_2510_15227_decoupling_semantic_and_acoustic_information_into_separate_encoder_paths_and_codebooks_l
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Training a codec with more codebooks than will be deployed and then selecting a subset at inference time
+      produces better reconstruction than training directly at the deployed codebook count.
+    source: §4.3.2, Table 4
+    evidence: The Train-More-Use-Less ablation shows train-3-use-1 achieves lower STOI/MR-STFT/MR-MEL error than
+      train-1-use-1 on both Chinese and English in-house test data, attributed to first-layer codebooks capturing
+      dominant information more reliably under multi-codebook training.
+    claim_id: q4_2510_15227_training_a_codec_with_more_codebooks_than_will_be_deployed_and_then_selecting_a_subset_a
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Speaker and timbre fidelity in a pretrained speech codec depends substantially on a dedicated decoder
+      fine-tuning stage rather than being fully available from generic pretraining alone.
+    source: §4.3.4, Figure 6
+    evidence: Speaker similarity (CAM++) for a held-out speaker unseen during Stage 1 rises from 0.717 after generic
+      Stage 1 pretraining to 0.860 after Stage 2 decoder retraining with the speaker mixed into high-quality data,
+      and to 0.938 after Stage 3 few-shot SFT on roughly 20 speakers.
+    claim_id: q4_2510_15227_speaker_and_timbre_fidelity_in_a_pretrained_speech_codec_depends_substantially_on_a_dedi
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: For codecs intended to feed autoregressive speech LMs, bitrate reduction via additional codebooks has
+      diminishing practical value once the codebook count grows large enough to require RQ-Transformer- or delay-pattern-style
+      mitigations for AR inference complexity.
+    source: §2.3.1, §Appendix A, Figure 7
+    evidence: The paper restricts its design to 4 acoustic-plus-semantic codebooks and reports that, in a Flow-Matching-based
+      probing experiment, the information carried by 4 codebooks reconstructs to a quality comparable to a 22–26-codebook
+      configuration when paired with a stronger decoder, arguing that further codebook scaling would not be AR-friendly.
+    claim_id: q4_2510_15227_for_codecs_intended_to_feed_autoregressive_speech_lms_bitrate_reduction_via_additional_c
+    confidence: high
+    relevance: medium
+  limitations:
+  - The paper reports no end-to-end evaluation of a speech LLM trained on LongCat-Audio-Codec tokens; every result
+    is a reconstruction, intelligibility, or downstream-probe metric computed on the codec in isolation, so the
+    tokens' practical utility inside an actual autoregressive speech LM pipeline is not directly demonstrated here.
+  - The authors state that the design is optimized primarily for speech and offers insufficient support for music
+    and general sound effects, and that the current model accepts a maximum input length of 30 seconds, requiring
+    pre-slicing of longer audio (§5, Conclusion). All training data (roughly 750,000+ hours across the three stages)
+    is proprietary and in-house; while inference code and checkpoints are released, the training recipe cannot be
+    independently reproduced from public data. The music-domain codebook-sufficiency argument in Appendix A relies
+    on a separate 32-codebook music-only codec and a Flow Matching probing decoder rather than the deployed speech
+    decoder, so its generalization to the released speech codec's own decoder is not directly verified.
+  caveats:
+  - The semantic/acoustic split is validated within one codec family, and added codebooks show diminishing inference-time
+    returns.
+- id: '2503.06211'
+  published_date: '2025-10-20'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - role: supports
+    claim: Architectures that let non-text modalities undergo additional feature composition before entering a shared
+      text-pretrained backbone (late fusion), and additional decomposition after leaving it (late fission), improve
+      cross-modal transfer efficiency relative to early fusion/fission at matched model size and training compute.
+    source: §5, Table 1, Figure 2
+    evidence: SmolTolk-150M surpasses the 360M early-fusion baseline and rivals the 1.7B early-fusion baseline on
+      cross-modal StoryCloze metrics, and compute-matched scaling curves show SmolTolk dominating early-fusion baselines
+      across the tested compute range
+    confidence: high
+    claim_id: q4_2503_06211_architectures_that_let_non_text_modalities_undergo_additional_feature_composition_before
+    relevance: high
+  - role: supports
+    claim: Allowing a speech-generation output mechanism to draw on both low-level and high-level backbone representations,
+      rather than only the final layer, improves the model's ability to abstract compositional features and increases
+      the overlap between text and speech representation subspaces.
+    source: §5.1, §5.2, Table 2, Figure 3
+    evidence: Removing multi-level layer pooling ("- Layer pooling") is the ablation with the largest drop in intrinsic
+      dimensionality and cross-modal subspace overlap among non-baseline variants, and reduces tStoryCloze T→S from
+      80.9 to 77.8
+    confidence: high
+    claim_id: q4_2503_06211_allowing_a_speech_generation_output_mechanism_to_draw_on_both_low_level_and_high_level_b
+    relevance: high
+  - role: complicates
+    claim: Increasing model scale under early fusion/fission architectures narrows, but does not close, the cross-modal
+      transfer gap with architectures explicitly designed around the compositional-hierarchy mismatch between modalities.
+    source: §7, Appendix D.1, Figure 5
+    evidence: Cross-modal alignment in early-fusion baselines only emerges at the 1.7B parameter scale, yet even
+      the 7B-parameter early-fusion SpiritLM shows lower cross-modal representation alignment than the much smaller
+      SmolTolk-2B
+    confidence: high
+    claim_id: q4_2503_06211_increasing_model_scale_under_early_fusion_fission_architectures_narrows_but_does_not_clo
+    relevance: high
+  - role: complicates
+    claim: Layer-attention patterns learned for cross-modal language modeling can reflect linguistically meaningful
+      structure (e.g., word boundaries) without this translating into a competitive unsupervised segmentation method
+      as model scale increases.
+    source: §5.2, Table 3
+    evidence: A word-boundary segmentation probe derived from the layer selector's final-layer weights outperforms
+      the SCPC unsupervised baseline at all three model sizes on TIMIT, but segmentation F1 decreases from 48.4
+      (150M) to 31.2 (2B) as model size grows
+    confidence: high
+    claim_id: q4_2503_06211_layer_attention_patterns_learned_for_cross_modal_language_modeling_can_reflect_linguisti
+    relevance: medium
+  - role: complicates
+    claim: Text-speech language models trained primarily for linguistic/cross-modal competence, without instruction
+      tuning or high-expressivity speech tokenizers, have limited direct applicability as spoken conversational
+      agents.
+    source: §7 Limitations
+    evidence: The authors note SmolTolk is not instruction fine-tuned, limiting its direct use for spoken conversational
+      agent tasks, and that its HuBERT-based tokens constrain expressivity relative to cascaded ASR+TTS pipelines
+    confidence: high
+    claim_id: q4_2503_06211_text_speech_language_models_trained_primarily_for_linguistic_cross_modal_competence_with
+    relevance: low
+  limitations:
+  - All experiments are conducted at 135M-2B parameters; the paper's own scale-up evidence (Appendix D.1) is limited
+    to a representation-alignment comparison against the 7B-parameter SpiritLM, not a full re-training of SmolTolk
+    at that scale, so whether the architecture's advantages persist under full-scale training remains an extrapolation
+    rather than a demonstrated result.
+  - Beyond scale, the authors note that SmolTolk is not instruction fine-tuned, limiting its direct applicability
+    to spoken conversational agent use cases without further work. The HuBERT-based speech tokenizer used throughout
+    constrains output expressivity (e.g., prosody, non-linguistic vocalizations) relative to cascaded ASR+TTS pipelines
+    or more expressive speech representations, and the authors flag this as a direction for future work rather than
+    something the current architecture addresses. The auxiliary ASR/TTS experiment (Appendix D.4) is a single configuration
+    added on top of the main model rather than a systematically tuned ASR/TTS setup, so its WER/CER numbers should
+    be read as a feasibility check rather than an optimized result.
+  caveats:
+  - Late fusion improves transfer, but layer-level linguistic probes do not by themselves establish usable segmentation
+    or causal structure.
+- id: '2506.23670'
+  published_date: '2025-10-21'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  claims:
+  - role: supports
+    claim: Layer-aligned distillation (combining hidden-state, attention-map, and softened-logit alignment) can
+      compress a large interleaved speech-text language model to a fraction of its parameter count while retaining
+      most of its linguistic competence, outperforming an equally-sized model trained from scratch on the same data.
+    source: §3.1-3.2, Table 1, Table 2
+    evidence: The 2B TinyWave-Base student closes 85-93% of the teacher's Normalized Perplexity Score gap and scores
+      55.3%/74.8% on spoken/topic StoryCloze versus 53.6%/53.6% for a matched-size baseline trained without distillation.
+    confidence: high
+    claim_id: q4_2506_23670_layer_aligned_distillation_combining_hidden_state_attention_map_and_softened_logit_align
+    relevance: high
+  - role: complicates
+    claim: Distillation of speech language models preserves global semantic and acoustic content more reliably than
+      fine-grained speaker-identity information.
+    source: §3.4, Table 3
+    evidence: TinyWave-Expressive matches or exceeds the 7B teacher on SALMon background-domain accuracy but drops
+      8-10 percentage points relative to the teacher on gender- and speaker-consistency metrics.
+    confidence: high
+    claim_id: q4_2506_23670_distillation_of_speech_language_models_preserves_global_semantic_and_acoustic_content_mo
+    relevance: high
+  - role: refines
+    claim: Domain-adapting a teacher model with lightweight fine-tuning before distillation reduces distribution
+      mismatch and improves the quality of the supervisory signal passed to the student.
+    source: §2.1-2.2
+    evidence: The base-speech teacher is fine-tuned with LoRA adapters on a Libri-Light subset before distillation
+      begins ("teacher correction"), a step the authors report as necessary to align supervision with the target
+      domain; it is skipped for the expressive teacher, which already encodes the relevant cues.
+    confidence: high
+    claim_id: q4_2506_23670_domain_adapting_a_teacher_model_with_lightweight_fine_tuning_before_distillation_reduces
+    relevance: medium
+  - role: complicates
+    claim: Compact distilled speech language models remain limited by the naturalness ceiling of their underlying
+      discrete tokenizer and vocoder, independent of the distillation method itself.
+    source: §Limitations
+    evidence: The authors report that the HuBERT-based tokenizer and vocoder components struggle to capture conversational
+      stylistic nuance, producing flat or unnatural synthetic speech, and propose residual vector quantization tokenizers
+      as a future direction.
+    confidence: high
+    claim_id: q4_2506_23670_compact_distilled_speech_language_models_remain_limited_by_the_naturalness_ceiling_of_th
+    relevance: medium
+  limitations:
+  - The paper's own Limitations section reports constrained semantic understanding, the models prioritize phonetic
+    accuracy over deeper linguistic comprehension, and naturalness bottlenecks in the inherited HuBERT-based tokenizer
+    and vocoder, which produce flat or unexpressive synthetic speech independent of distillation quality.
+  - Training and evaluation use only the public Libri-Light corpus, a small fraction of the private data used to
+    train the SpiritLM teacher, so it is unclear how the distillation recipe would behave with access to the teacher's
+    full training distribution. The paper does not evaluate the models in an interactive dialogue setting; all benchmarks
+    (NPS, StoryCloze, sWUGGY/sBLIMP, SALMon) measure continuation quality or linguistic/acoustic consistency on
+    single-speaker prompts rather than multi-turn conversational behavior. The speaker- and gender-consistency drop
+    observed for the expressive model under SALMon is flagged by the authors as an open trade-off for future optimization
+    rather than a solved problem.
+  caveats:
+  - Distillation preserves broad competence but loses speaker identity and remains bounded by tokenizer and vocoder
+    quality.
+- id: '2510.20210'
+  published_date: '2025-10-23'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - transformer-enc-dec
+  relevance: low
+  evidence_role:
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  claims:
+  - claim_id: a_single_evaluator_that_jointly_localizes_acoustic_errors_and_predicts_h
+    role: supports
+    claim: A single evaluator that jointly localizes acoustic errors and predicts holistic quality can substitute
+      for a cascade of separate ASR, alignment, and quality-assessment tools in TTS quality control.
+    source: §Main Results, Table 2
+    evidence: Vox-Evaluator, trained on the FGES dataset, achieves a segment-localization IOU of 0.782 versus 0.653
+      for a fine-tuned wav2vec2.0 baseline, and a transcription WER of 2.64% versus 3.43%/3.05% for SenseVoice/Whisper-S,
+      with a comparable or smaller parameter count.
+    confidence: high
+    relevance: low
+  - claim_id: detecting_and_regenerating_only_the_erroneous_segments_of_zero_shot_tts_
+    role: supports
+    claim: Detecting and regenerating only the erroneous segments of zero-shot TTS output, rather than fully re-synthesizing
+      an utterance, can materially reduce word error rate on hard cases without any additional model fine-tuning.
+    source: §Main Results, Table 3
+    evidence: Evaluator-guided correction on Seed-TTS test-en reduces WER by 21% for F5-TTS (1.73% → 1.42%) and
+      by 32% for VoiceCraft (7.56% → 5.11%), consistent across LibriSpeech-PC test-clean as well.
+    confidence: high
+    relevance: low
+  - claim_id: restricting_a_preference_optimization_loss_to_timestamp_localized_error_
+    role: supports
+    claim: Restricting a preference-optimization loss to timestamp-localized error segments, rather than computing
+      it over the full utterance, improves the intelligibility and speaker-similarity gains obtainable from DPO-based
+      alignment of TTS models.
+    source: §Fine-grained Preference Alignment, Figure 3
+    evidence: Segment-level DPO guided by Vox-Evaluator lowers F5-TTS's WER from 1.73% to 1.55% and raises Sim-o
+      to 0.683 over 2000 training steps, with parallel improvement in CMOS and SMOS.
+    confidence: high
+    relevance: low
+  - claim_id: preference_alignment_gains_from_a_learned_reward_model_plateau_and_can_r
+    role: complicates
+    claim: Preference-alignment gains from a learned reward model plateau and can reverse with continued training
+      once the reward signal saturates.
+    source: §Fine-grained Preference Alignment
+    evidence: The paper reports that continued DPO training beyond the early stage decreases model performance because
+      the feedback reward saturates once high-quality samples exhibit minimal variation, increasing the difficulty
+      of further preference optimization.
+    confidence: high
+    relevance: low
+  - claim_id: the_benefit_of_automatic_error_detection_guided_correction_is_backbone_d
+    role: complicates
+    claim: The benefit of automatic error-detection-guided correction is backbone-dependent, since backbones that
+      already fail less often leave less room for the same correction mechanism to improve.
+    source: §Ablation Study, Table 4
+    evidence: Ablation on TTSDS2 shows F5-TTS's failure rate drops from 12% to 6% with error detection alone, and
+      the authors note F5-TTS is inherently less prone to speech corruption than VoiceCraft under the same pipeline.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluator is trained on synthetic induced errors and tested on only two editing-capable TTS backbones, leaving
+    real-world failure coverage and broader transfer uncertain.
+  caveats:
+  - The paper evaluates and optimizes generated speech; it does not directly test self-supervised representation
+    quality.
+- id: '2510.20513'
+  published_date: '2025-10-23'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: low
+  evidence_role:
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  claims:
+  - claim_id: decomposing_a_holistic_subjective_speech_quality_construct_into_interpre
+    role: supports
+    claim: Decomposing a holistic, subjective speech quality construct into interpretable sub-dimensions and fusing
+      them with a lightweight, separately-trained model can approximate human preference judgments with high data
+      efficiency.
+    source: §2.3, §4.1, Table 2
+    evidence: The XGBoost preference-fusion function, trained on only 480 human-annotated clips using three proxy
+      sub-scores as input, reaches SRCC = 0.86 and PCC = 0.91 against averaged human expressiveness ratings.
+    confidence: high
+    relevance: low
+  - claim_id: an_automatic_expressiveness_metric_aligned_with_human_judgment_can_relia
+    role: supports
+    claim: An automatic expressiveness metric aligned with human judgment can reliably rank competing speech generation
+      systems, offering a scalable substitute for comparative listening tests at the system level.
+    source: §4.2, Table 3
+    evidence: DeEAR ranks seven SOTA speech-to-speech dialogue systems with SRCC = 0.96 against human rankings and
+      reproduces the near-60-point gap between the highest- and lowest-scoring systems.
+    confidence: high
+    relevance: low
+  - claim_id: filtering_training_data_with_an_automatic_expressiveness_score_can_subst
+    role: supports
+    claim: Filtering training data with an automatic expressiveness score can substantially increase the expressiveness
+      of a fine-tuned speech generation model without any architectural change to that model.
+    source: §4.3.2, Table 4
+    evidence: Fine-tuning an existing speech-to-speech model on 51 hours of DeEAR-selected utterances (threshold
+      63.5) for a single epoch raised the overall expressiveness score from 2.0 to 23.4 (p < 0.001), corroborated
+      by a 78.5%-vs-10% human A/B preference for the fine-tuned model.
+    confidence: high
+    relevance: low
+  - claim_id: using_a_general_purpose_llm_as_a_scalable_proxy_annotator_for_a_subjecti
+    role: complicates
+    claim: Using a general-purpose LLM as a scalable proxy annotator for a subjective perceptual dimension yields
+      only moderate alignment with human judgment, so its labels should be treated as a noisy training signal rather
+      than as ground truth.
+    source: §2.2.2, §4.1, Table 2
+    evidence: Gemini 2.5 Pro, used to generate prosodic-richness training labels, itself reaches only SRCC = 0.73
+      against human ratings, and the resulting Prosody sub-scorer is the weakest of the three dimensions against
+      holistic human perception (PCC = 0.70, SRCC = 0.68).
+    confidence: high
+    relevance: low
+  - claim_id: heuristic_pseudo_labeling_of_a_perceptual_attribute_at_the_dataset_level
+    role: complicates
+    claim: Heuristic pseudo-labeling of a perceptual attribute at the dataset level, rather than the individual-utterance
+      level, caps the precision of any model subsequently distilled from those labels.
+    source: §2.2.3
+    evidence: The spontaneity pseudo-label heuristic assigns a single manually-set categorical base level per source
+      dataset, combined with a DNSMOS-derived acoustic-quality adjustment, so utterance-level variation in true
+      spontaneity within a dataset is not captured by the label itself.
+    confidence: high
+    relevance: low
+  limitations:
+  - Human validation uses small, narrow rater pools, and the same automatic metric both selects training data and
+    supplies the headline downstream evaluation score.
+  caveats:
+  - The learned evaluator is adjacent to SSL speech modeling but mainly contributes an expressiveness metric and
+    data-selection procedure.
+- id: 2025.findings-emnlp.1077
+  published_date: 2025-11-05
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - VC
+  architecture:
+  - flow-matching
+  claims:
+  - role: supports
+    claim: Combining a single off-the-shelf self-supervised speech encoder (discretized via clustering) with a flow-matching
+      speech decoder is sufficient for competitive any-to-any zero-shot voice conversion, without requiring separate
+      encoders for speaker/content disentanglement.
+    source: §3, Table 1
+    evidence: EZ-VC uses only one pretrained SSL encoder (Xeus) with k-means-quantized units for content and an
+      unmasked mel-spectrogram as the speaker reference, outperforming Seed-VC, kNN-VC, Vec2Wav 2.0, and Diff-HierVC
+      on speaker similarity (SSIM 0.71), naturalness MOS (3.91), similarity MOS (3.90), and UTMOS (3.56).
+    claim_id: q4_2025_findings_emnlp_1077_combining_a_single_off_the_shelf_self_supervised_speech_encoder_discretized_via_clustering_with_a_fl
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Flow-matching-based voice conversion decoders can generalize to languages entirely unseen during training
+      with naturalness comparable to or better than on seen languages.
+    source: §5, Table 4, Table 5
+    evidence: Against Seed-VC (also CFM-based) on unseen German and Spanish, EZ-VC achieves higher UTMOS naturalness
+      (3.71 vs. 2.83 German; 3.49 vs. 3.24 Spanish) with comparable or better speaker similarity, while its own
+      seen-language (English) UTMOS (3.76) is close to its unseen-language scores.
+    claim_id: q4_2025_findings_emnlp_1077_flow_matching_based_voice_conversion_decoders_can_generalize_to_languages_entirely_unseen_during_tra
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Removing dedicated disentanglement encoders in a voice conversion architecture does not reduce the pretrained
+      encoder's role as a bottleneck on cross-lingual generalization.
+    source: §Limitations
+    evidence: The authors note the architecture's generalization is reliant on the quality of the pretrained speech
+      encoder, and that an encoder trained on only one language would likely not achieve the same level of cross-lingual
+      generalization Xeus (trained on ~4,000 languages) provides.
+    claim_id: q4_2025_findings_emnlp_1077_removing_dedicated_disentanglement_encoders_in_a_voice_conversion_architecture_does_not_reduce_the_p
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Simplifying a voice conversion architecture to fewer encoder modules does not necessarily reduce its
+      overall computational requirements.
+    source: §Limitations, §4.2
+    evidence: Despite dropping the multiple encoders/adapters used by systems like AdaptVC and StableVC, the authors
+      state their computational requirements remain comparable or higher, consistent with training the ~300M-parameter
+      F5-TTS-based decoder from scratch for 1.35 million updates on 12,840 hours of speech.
+    claim_id: q4_2025_findings_emnlp_1077_simplifying_a_voice_conversion_architecture_to_fewer_encoder_modules_does_not_necessarily_reduce_its
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'The paper''s own stated limitations are narrow: generalization depends on the linguistic coverage of the pretrained
+    SSL encoder, and despite architectural simplification, training compute remains comparable to or higher than
+    prior systems. Beyond what the authors state, the subjective evaluation is small in scale (10 audio samples
+    judged by 20 volunteers), which limits the statistical strength of the naturalness and similarity MOS comparisons,
+    and the objective cross-lingual comparison (Table 5) is restricted to a single baseline (Seed-VC) on two unseen
+    languages. The authors also flag a dual-use risk: the same cross-lingual, high-naturalness voice conversion
+    capability that enables the paper''s contribution could be used to produce deepfakes.'
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - flow_matching_with_ssl_conditioning
+  caveats:
+  - Performance is bottlenecked by the selected SSL encoder and the simplified system does not necessarily reduce
+    total compute.
+- id: 2025.findings-emnlp.1394
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - codec
+  - TTS
+  architecture:
+  - GAN
+  - VAE
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: Distilling contextual representations from a pretrained language model into a neural codec's quantized
+      tokens, in addition to acoustic and semantic representations, reduces transcription error and improves perceived
+      speech quality relative to codecs that omit contextual distillation.
+    source: §5.1, Table 1
+    evidence: DM-Codec (LM+SM) achieves WER 4.05 / WIL 6.61 and MOS 3.72, outperforming SpeechTokenizer (4.49/7.10,
+      MOS 3.67), FACodec (4.68/7.33, MOS 3.70), and EnCodec (4.53/7.17, MOS 3.09) on the same LibriSpeech test-clean
+      evaluation protocol.
+    claim_id: q4_2025_findings_emnlp_1394_distilling_contextual_representations_from_a_pretrained_language_model_into_a_neural_cod
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Contextual and semantic knowledge distillation can be applied to a residual vector quantizer's output
+      without requiring temporal alignment between text/speech-model tokens and quantized frames, by matching representations
+      at the feature-dimension level via cosine similarity instead of the time-step level.
+    source: §3.1, Appendix B
+    evidence: The distillation loss maximizes cosine similarity across the feature dimension D, aggregated over
+      all time steps, rather than performing per-timestep matching; a separate [CLS]-token variant that discards
+      all temporal structure still improves WER/WIL over baselines without distillation.
+    claim_id: q4_2025_findings_emnlp_1394_contextual_and_semantic_knowledge_distillation_can_be_applied_to_a_residual_vector_quant
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Semantic-only distillation from a self-supervised speech model, without a complementary contextual (language-model)
+      signal, underperforms a combined contextual-plus-semantic approach on speech reconstruction quality.
+    source: §5.1, Discussion
+    evidence: The "SM Baseline" variant (HuBERT-only distillation) shows higher transcription error and lower quality
+      scores than DM-Codec (LM+SM) in Table 1, which the authors attribute to the missing contextual signal.
+    claim_id: q4_2025_findings_emnlp_1394_semantic_only_distillation_from_a_self_supervised_speech_model_without_a_complementary_c
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Improvements in a codec's token representation quality can transfer to downstream zero-shot text-to-speech
+      synthesis, improving both intelligibility and naturalness of generated speech relative to codecs lacking that
+      representation.
+    source: §5.2, Table 2
+    evidence: DM-Codec-TTS, using DM-Codec (LM+SM) tokens, outperforms VALL-E and USLM (built on SpeechTokenizer
+      tokens) in WER, MOS, and SMOS on both LibriSpeech and VCTK, and a version trained on the smaller LibriTTS
+      corpus still beats a comparably-trained USLM (libri) baseline across all reported metrics.
+    claim_id: q4_2025_findings_emnlp_1394_improvements_in_a_codec_s_token_representation_quality_can_transfer_to_downstream_zero_s
+    confidence: high
+    relevance: high
+  limitations:
+  - The authors also note that their distillation relies solely on masked/encoder-style language models (BERT) for
+    the contextual signal, leaving decoder-based LLMs unexplored as a contextual teacher. The reported gains over
+    baselines, while consistent, are incremental (roughly 4-13% relative reduction in WER/WIL and single-digit percentage
+    gains in quality scores) rather than a step change, and the DM-Codec-TTS comparisons partly rely on VALL-E and
+    USLM results taken from prior papers rather than fully reproduced under identical conditions for VALL-E.
+  caveats:
+  - The gains combine contextual language-model and SSL-semantic distillation, so their separate contributions require
+    the reported ablations.
+- id: '2511.06246'
+  published_date: '2025-11-09'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - hybrid
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: minor
+  method_family:
+  - diffusion_with_ssl_conditioning
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - claim_id: deterministic_identity_index_mapping_improves_pseudo_speaker_distinctiveness
+    role: supports
+    claim: Deterministically mapping a discrete identity index to a speaker embedding can produce pseudo-speakers
+      with lower mutual similarity than reference-pool, generative, or rejection-sampling generators.
+    source: §VI-E1, Table I; §VI-F–G, Table II
+    evidence: IDMap-MLP and IDMap-Diff achieve higher average ASV EERs, Gvd, and DeID than the compared pseudo-speaker
+      generators on pooled LibriSpeech dev/test.
+    confidence: high
+    relevance: low
+  - claim_id: feedforward_index_to_speaker_mapping_reduces_inference_cost
+    role: supports
+    claim: A single feedforward pass from index to speaker vector can be substantially cheaper than sampling-based
+      or distribution-estimation pseudo-speaker generation without sacrificing privacy performance.
+    source: §VI-H, Table III
+    evidence: IDMap-MLP and IDMap-Diff report real-time factors one to two orders of magnitude below the distribution-estimation
+      and GAN-based baselines.
+    confidence: high
+    relevance: low
+  - claim_id: pseudo_speaker_generator_advantage_grows_with_scale
+    role: complicates
+    claim: The privacy advantage of a pseudo-speaker generator over simpler baselines can become more pronounced
+      as the number of generated pseudo-speakers grows.
+    source: §VI-J1, Fig. 9
+    evidence: Across 50 to 10,000 speakers, IDMap EER degraded far less than random selection, averaging, and GAN-based
+      generation.
+    confidence: high
+    relevance: low
+  - claim_id: collision_free_indices_do_not_guarantee_unbounded_embedding_distinctiveness
+    role: complicates
+    claim: Collision-free identity-index assignment does not guarantee that generated speaker embeddings remain
+      acoustically distinct at very large scale.
+    source: §VI-J3, Fig. 11
+    evidence: Average pairwise cosine similarity increased and saturated near 0.5 as generation approached two million
+      vectors.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluation uses one VQ-BN, ECAPA-TDNN, GST, and HiFi-GAN anonymization pipeline, so transfer to other SSL content
+    encoders is untested.
+  caveats:
+  - Self-supervised speech is inherited through the anonymization pipeline content encoder rather than advanced
+    or evaluated by IDMap itself.
+- id: '2511.09995'
+  published_date: '2025-11-13'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_matching_with_ssl_conditioning
+  claims:
+  - claim_id: q4_2511_09995_auxiliary_alignment_of_intermediate_flow_matching_representations_with_a
+    role: supports
+    claim: Auxiliary alignment of intermediate flow-matching representations with a pre-trained speaker embedding
+      improves speaker similarity in zero-shot TTS without requiring a dedicated supervised fine-tuning stage.
+    source: §4.1, Table 1
+    evidence: At matched 100k-hour training data, the proposed alignment strategy yields average absolute gains
+      of 3.0% in Sim-WavLM and 2.1% in Sim-ERes2Net over the same-data baseline with comparable CER/WER, and the
+      SFT-free model outperforms a baseline trained on 150k hours with a dedicated speaker SFT stage.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_speaker_identity_information_in_flow_matching_based_speech_generation_is
+    role: supports
+    claim: Speaker identity information in flow-matching-based speech generation is not uniformly distributed across
+      denoising timesteps or network depth, concentrating in early (high-noise) denoising steps and in shallower-to-middle
+      layers while weakening toward the final layers.
+    source: §2.2, Figure 3
+    evidence: CKNNA-based probing of a converged baseline FM checkpoint's intermediate representations shows a clear,
+      non-uniform pattern across both the timestep and layer axes, with the final layers carrying comparatively
+      little speaker signal.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_a_training_time_speaker_alignment_auxiliary_loss_can_generalize_across_s
+    role: supports
+    claim: A training-time speaker-alignment auxiliary loss can generalize across structurally distinct flow-matching
+      TTS decoder families, including both LM-conditioned and LM-free variants.
+    source: §4.3, Table 3
+    evidence: On LibriTTS, the alignment strategy improves Sim-WavLM from 0.510 to 0.538 on an LM-based CosyVoice-2-style
+      decoder and from 0.398 to 0.458 on an LM-free MMDiT-based decoder, with matching gains in Sim-ERes2Net.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_representation_alignment_supervision_that_is_uniform_across_timesteps_or
+    role: complicates
+    claim: Representation-alignment supervision that is uniform across timesteps or layers under-exploits the non-uniform
+      structure of speaker information in flow-matching models, leaving speaker-similarity gains on the table relative
+      to jointly adaptive supervision.
+    source: §4.2, Table 2
+    evidence: Ablated alignment variants using only temporal adaptivity or only layer adaptivity underperform the
+      jointly time- and layer-adaptive strategy on LibriTTS (Sim-WavLM 0.513 and 0.524 respectively vs. 0.538 for
+      the joint strategy).
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2511_09995_external_representation_alignment_supervision_for_generative_speech_mode
+    role: refines
+    claim: External representation-alignment supervision for generative speech models is more effective when its
+      supervision strength is dynamically reweighted according to where in the network and denoising trajectory
+      the target attribute is actually encoded, rather than applied at fixed strength throughout.
+    source: §4.2, Figure 5
+    evidence: Visualizing the learned adaptive weights shows supervision concentrated in shallower layers and later
+      denoising stages, which the paper interprets as the regions most critical for speaker identity, consistent
+      with the earlier CKNNA-based distribution analysis.
+    confidence: high
+    relevance: high
+  limitations:
+  - The alignment signal depends on one speaker-verification encoder and is tested only on two mel-based flow decoders
+    in Mandarin and English.
+  caveats:
+  - The alignment gains depend on a fixed pretrained speaker embedding model and are demonstrated within flow-matching
+    TTS.
+- id: '2511.10112'
+  published_date: '2025-11-13'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - claim_id: converting_frame_level_self_supervised_content_features_to_phoneme_level_fea
+    role: supports
+    claim: Converting frame-level self-supervised content features to phoneme-level features, guided by forced-alignment
+      duration information, improves speaker disentanglement and content preservation relative to using frame-level
+      SSL features directly in voice conversion.
+    source: §4.3, Table 2
+    evidence: Removing either the pooling or attention branch of the phoneme-level SSL encoder raises CER from 6.27%
+      to 19.19% (pooling ablation) or 9.45% (attention ablation) and lowers naturalness/similarity MOS, while the
+      full phoneme-level encoder achieves the lowest CER (6.27%) and PER (2.22%) among all compared systems.
+    confidence: high
+    relevance: high
+  - claim_id: adding_an_explicit_duration_predictor_conditioned_on_the_target_speaker_s_id
+    role: supports
+    claim: Adding an explicit duration predictor conditioned on the target speaker's identity, rather than inheriting
+      the source utterance's duration by default, improves perceived speaker similarity in voice conversion.
+    source: §4.3, Table 2 and Table 3
+    evidence: Disabling the duration predictor lowers similarity MOS from 4.49 to 4.25 in the aishell-to-aishell
+      scenario, and a Relative Duration Deviation analysis shows converted speech shifts from an average 20.85%
+      RDD relative to the target (source duration unchanged) to 11.34% RDD when the predictor is enabled.
+    confidence: high
+    relevance: high
+  - claim_id: supplementing_a_voice_conversion_system_s_content_representation_with_explic
+    role: supports
+    claim: Supplementing a voice conversion system's content representation with explicit textual features (word,
+      phoneme, tone, and pretrained text-embedding features) improves content integrity beyond what a purely acoustic
+      self-supervised representation provides.
+    source: §4.3, Table 2
+    evidence: The full text-and-SSL conditioned model achieves lower CER (6.27%) and PER (2.22%) than all six baseline
+      VC systems, including a diffusion-transformer VC system (SeedVC, CER 8.15%) and a repurposed zero-shot TTS
+      system (CosyVoice-VC, CER 10.80%) trained or evaluated on the same task.
+    confidence: high
+    relevance: medium
+  - claim_id: duration_adaptation_toward_a_target_speaker_in_voice_conversion_is_partial_r
+    role: complicates
+    claim: Duration adaptation toward a target speaker in voice conversion is partial rather than complete when
+      the source and target differ substantially in speaking style, and gains in naturalness can trade off against
+      gains in similarity.
+    source: §4.3, Table 2 and Table 3
+    evidence: In the DataBaker-to-AISHELL-3 scenario, where source and target styles differ more than in the matched
+      AISHELL-3-to-AISHELL-3 scenario, FabasedVC's naturalness MOS (3.85) falls slightly below SeedVC's (3.90) even
+      though its similarity MOS (4.27) remains the highest; the RDD toward the target speaker averages 11.34%, indicating
+      a shift toward but not full adoption of the target's duration profile.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The 20-rater study compares systems trained with mismatched data, so perceived gains cannot be attributed solely
+    to the proposed method.
+  caveats:
+  - Phoneme-level SSL features improve content/identity separation, but duration adaptation remains incomplete.
+- id: '2511.11124'
+  published_date: '2025-11-14'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - role: supports
+    claim: Fusing visual cues (e.g. lip movement) with acoustic input substantially improves the robustness of streaming
+      spoken dialogue systems to interfering speakers and background noise, compared to relying on audio alone.
+    source: §4.1, Table 1; §4.2, Table 3
+    evidence: Turn-taking Response Ratio under interference rises from 54.0% (Moshi, audio-only baseline) to 78.8%
+      (AV-Dialog, audio-visual); streaming AVSR WER under interference drops from 76.3% (AV-Dialog, audio-only)
+      to 38.8% (AV-Dialog, audio-visual) on the same test set.
+    confidence: high
+    claim_id: q4_2511_11124_fusing_visual_cues_e_g_lip_movement_with_acoustic_input_substantially_improves_the_robus
+    relevance: medium
+  - role: supports
+    claim: General-purpose acoustic tokenizers that retain raw acoustic detail, rather than speaker-invariant semantic
+      tokenizers, give spoken dialogue models better speaker differentiation and robustness in multi-speaker or
+      noisy conditions.
+    source: §4.5, Table 6
+    evidence: Replacing DAC acoustic tokens with DinoSR semantic tokens raises streaming AVSR WER under interference
+      from 30.8% to 67.0% (audio-visual) and lowers the turn-taking response ratio from 78.8% to 47.8% under the
+      same condition.
+    confidence: high
+    claim_id: q4_2511_11124_general_purpose_acoustic_tokenizers_that_retain_raw_acoustic_detail_rather_than_speaker_
+    relevance: high
+  - role: complicates
+    claim: Joint models that predict turn-taking and generate responses from a single stream require explicit supervision
+      on discrete turn-event tokens; without it, both turn-detection accuracy and downstream response quality degrade.
+    source: §4.5, Table 8
+    evidence: Removing explicit `<SOT>` turn-change supervision in the unified model drops response ratio from 75.6%
+      to 35.1% (background noise) and from 75.9% to 38.0% (interference), and the LLM-evaluator pickup ratio falls
+      in parallel.
+    confidence: high
+    claim_id: q4_2511_11124_joint_models_that_predict_turn_taking_and_generate_responses_from_a_single_stream_requir
+    relevance: medium
+  - role: complicates
+    claim: When a spoken dialogue system separates understanding from generation via a text intermediary, cascading
+      a separately pretrained, instruction-tuned or in-context-prompted text LLM for response generation yields
+      higher response quality by both automatic and human judgment than a single unified model generating turn-taking
+      decisions and response text jointly from the raw multimodal stream, at the cost of running a second model.
+    source: §4.4, Table 5; §4.3, Table 4
+    evidence: The dual model with in-context learning scores 4.14 naturalness MOS and 4.09 helpfulness MOS in human
+      evaluation with 18 participants, versus 3.54 and 3.02 for the unified model; the LLM-judge pickup ratio also
+      favors the dual in-context-learning variant over the unified model across clean, background-noise, and interference
+      conditions.
+    confidence: high
+    claim_id: q4_2511_11124_when_a_spoken_dialogue_system_separates_understanding_from_generation_via_a_text_interme
+    relevance: low
+  limitations:
+  - 'Visual robustness depends on face and lip visibility: the paper''s own limitations section notes that poor
+    lighting, occlusions (e.g. a hand covering the mouth), and extreme head poses impair lip-movement extraction,
+    degrading speaker tracking and speech understanding exactly in the conditions the system is meant to help with.'
+  - The system does not model non-verbal auditory cues (laughter, sighs) or non-lip visual cues (facial expressions,
+    gestures) beyond lip movement, which the authors note could make interactions more human-like if incorporated.
+    The dual architecture runs two 8B-parameter models in parallel, adding memory and latency overhead relative
+    to a single-model system, and the visual encoder's lookahead window increases algorithmic latency to about 120ms
+    versus roughly 80ms for the audio-only Moshi baseline. Evaluation is confined to English dyadic conversational
+    datasets (Fisher, InterAct) and a single controlled human study with 18 participants rating 15 sampled dialogues;
+    generalization to other languages, group conversations with more than two participants, or larger-scale human
+    evaluation is not established.
+  caveats:
+  - The comparison between semantic and acoustic tokenizers is embedded in an audiovisual dialogue system and may
+    not generalize beyond that task.
+- id: '2511.12074'
+  published_date: '2025-11-15'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - gan_decoders_for_ssl_units
+  claims:
+  - role: supports
+    claim: Combining factor-specific contrastive losses with a shared post-discretization mutual-information minimization
+      constraint reduces cross-factor leakage more effectively than disentanglement strategies relying on adversarial
+      training or implicit bottlenecks alone.
+    source: §Experimental Results on MF-SpeechEncoder, Table 2
+    evidence: MF-SpeechEncoder achieves higher target-task accuracy (0.998/0.930/0.959 for timbre/emotion/content)
+      and lower non-target leakage accuracy (e.g., Acc_te = 0.262 vs. 0.54-0.59 for StyleVC/DDDM-VC/FaCodec) than
+      three prior VC disentanglement systems, while mutual-information scores remain comparable across systems
+    claim_id: q4_2511_12074_combining_factor_specific_contrastive_losses_with_a_shared_post_discretization_mutual_in
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Dynamic, per-timestep gating of independently-controlled attribute streams combined with hierarchical,
+      multi-layer style-adaptive normalization improves controllability in cross-source compositional speech generation
+      over static fusion or single-point style injection.
+    source: §Ablation Study, Figure 5
+    evidence: Removing HSAN drops SECS from 0.5685 to 0.1576 and Corr from 0.68 to 0.64 in the compositional generation
+      task, while removing dynamic fusion raises WER from 4.76% to 5.17% and lowers SECS to 0.5551, with each ablation
+      isolating a distinct, measurable degradation
+    claim_id: q4_2511_12074_dynamic_per_timestep_gating_of_independently_controlled_attribute_streams_combined_with_
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Explicit prosody-based supervision for a dedicated emotion representation does not fully decouple emotion
+      modeling from timbre modeling during training, even when the two factors are extracted by architecturally
+      separate modules.
+    source: §Ablation Study, Figure 4(h),(l)
+    evidence: Removing the prosody-prior loss (ablation M3) degrades not only emotion t-SNE clustering but also
+      timbre clustering, indicating the prosody signal contributes to timbre representation quality beyond its intended
+      emotion-modeling role
+    claim_id: q4_2511_12074_explicit_prosody_based_supervision_for_a_dedicated_emotion_representation_does_not_fully
+    confidence: high
+    relevance: high
+  - role: refines
+    claim: Reconstruction-task performance of a disentangled multi-factor speech generation system is not a reliable
+      proxy for its performance on true compositional (cross-source) control, since the two settings can diverge
+      substantially even for the same model.
+    source: §Experimental Results on MF-Speech, Table 1
+    evidence: MF-Speech's own speaker similarity drops from SECS = 0.7401 (reconstruction, same-source factors)
+      to SECS = 0.5685 (compositional generation, cross-source factors), and WER rises from 2.83% to 4.67% under
+      the same model
+    claim_id: q4_2511_12074_reconstruction_task_performance_of_a_disentangled_multi_factor_speech_generation_system_
+    confidence: high
+    relevance: medium
+  limitations:
+  - Training and evaluation are confined to a single dataset (ESD) on a single consumer GPU (RTX 4090), with no
+    cross-corpus or cross-lingual evaluation reported, so generalization beyond ESD's speaker and emotion inventory
+    is untested. Model parameter count is not reported, and code and demo availability are not stated in the paper,
+    limiting reproducibility assessment. The subjective evaluation uses 20 participants, and UTMOS for MF-Speech
+    trails StyleVC on the compositional task, a result the authors attribute to StyleVC's faster, less natural speaking
+    rate rather than to a genuine quality shortfall, but this explanation is not independently verified with a targeted
+    follow-up experiment.
+  caveats:
+  - Factor separation improves through contrastive and mutual-information objectives, but emotion remains incompletely
+    disentangled.
+- id: '2511.12690'
+  published_date: '2025-11-16'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  claims:
+  - role: supports
+    claim: Self-supervised pretraining of the source-language speech encoder improves direct speech-to-speech translation
+      quality in low-resource settings, independent of architectural changes on the target side.
+    source: §5.3, Table 1
+    evidence: Adding self-supervised pretraining to the speech-to-unit baseline architecture, with no other change,
+      raises ASR BLEU from 1.6 to 2.8 on CVSS-only training, and the proposed pretrained encoder outperforms Translatotron
+      2 with pretraining (4.1 vs. 3.8 BLEU) under identical training data.
+    claim_id: q4_2511_12690_self_supervised_pretraining_of_the_source_language_speech_encoder_improves_direct_speech
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Constructing synthetic parallel speech data by machine-translating existing transcriptions with a large
+      language model and synthesizing the translated text with a zero-shot TTS system can substantially improve
+      direct speech-to-speech translation for a low-resource language pair, even though none of the synthetic target
+      audio is real recorded speech.
+    source: §5.3, Table 1
+    evidence: Training the proposed model on CVSS Fa-En augmented with the synthetic corpus (roughly six times the
+      parallel data of CVSS alone) raises ASR BLEU from 4.1 to 17.8, and produces consistent gains for every baseline
+      architecture tested (e.g. Translatotron 1.4 to 6.9, pretrained speech-to-unit 2.8 to 13.2).
+    claim_id: q4_2511_12690_constructing_synthetic_parallel_speech_data_by_machine_translating_existing_transcriptio
+    confidence: high
+    relevance: medium
+  - role: complicates
+    claim: In low-resource direct speech-to-speech translation, gains from encoder and decoder architectural refinements
+      are small relative to gains available from increasing parallel training data volume.
+    source: §5.3, Table 1
+    evidence: Under matched CVSS-only training data, the proposed architecture (Conformer encoder with relative-position
+      decoder) outperforms the strongest pretrained baseline by only 0.3 BLEU (4.1 vs. 3.8), while adding the synthetic
+      corpus to the same proposed architecture, with no architectural change, produces a 13.7 BLEU improvement (4.1
+      to 17.8).
+    claim_id: q4_2511_12690_in_low_resource_direct_speech_to_speech_translation_gains_from_encoder_and_decoder_archi
+    confidence: high
+    relevance: medium
+  - role: supports
+    claim: Representing target speech as discrete self-supervised units, rather than continuous spectrograms, lets
+      a direct speech-to-speech translation system match or exceed spectrogram-based approaches once combined with
+      source-encoder pretraining.
+    source: §6, Table 1
+    evidence: With pretraining and CVSS-only training data, the discrete-unit speech-to-unit baseline (2.8 BLEU)
+      and the proposed unit-based model (4.1 BLEU) both exceed the spectrogram-based Translatotron (1.4 BLEU), and
+      the proposed model also exceeds pretrained Translatotron 2 (3.8 BLEU).
+    claim_id: q4_2511_12690_representing_target_speech_as_discrete_self_supervised_units_rather_than_continuous_spec
+    confidence: high
+    relevance: high
+  limitations:
+  - No naturalness, speaker-similarity, or other subjective/perceptual metric is reported for the dubbed output;
+    evaluation relies entirely on ASR BLEU, which measures translation content but not speech quality or speaker
+    preservation, both stated goals of dubbing. The synthetic corpus itself inherits translation errors from the
+    LLM and voice characteristics of a single zero-shot TTS system (VoiceCraft), which could bias the trained model
+    toward that system's acoustic properties in ways not analyzed in the paper. Neither the synthetic corpus, code,
+    nor a demo appears to be released, limiting reproducibility and reuse by other low-resource language pairs.
+  caveats:
+  - The cross-lingual gains combine encoder pretraining and synthetic parallel data, and the study finds data coverage
+    can dominate architecture.
+- id: '2511.14249'
+  published_date: '2025-11-18'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: low
+  evidence_role:
+  - control_evidence
+  current_role: minor
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  claims:
+  - claim_id: retrieving_multimodal_emotional_context_from_a_reference_library_and_fusing
+    role: supports
+    claim: Retrieving multimodal emotional context from a reference library and fusing it into the generation process
+      can improve emotional expressiveness in speech synthesis beyond what direct cross-modal conditioning on the
+      target utterance alone achieves.
+    source: §Ablation Studies, Table 1, Table 2
+    evidence: Removing all three retrieval channels (scene, face, text) from the full model drops EMO-ACC from 47.21%
+      to 45.23% and MOS-SE from 3.889 to 3.527, the largest single-component degradation observed in the ablation
+      study, while the full retrieval-augmented model outperforms five prior dubbing baselines on every emotion-related
+      metric.
+    confidence: high
+    relevance: low
+  - claim_id: deriving_emotion_captions_with_a_video_understanding_llm_before_encoding_the
+    role: supports
+    claim: Deriving emotion captions with a video-understanding LLM before encoding them into an emotion vector
+      can capture richer emotional signal than encoding low-level visual features with conventional emotion recognition
+      models.
+    source: §Ablation Studies, Table 2
+    evidence: Replacing the LLM-generated scene and face emotion captions with embeddings from the conventional
+      feature extractors I3D and EmoFAN reduces EMO-ACC from 47.21% to 46.02% and both MOS-DE and MOS-SE, with the
+      largest drop occurring when both captions are replaced simultaneously.
+    confidence: high
+    relevance: low
+  - claim_id: retrieval_augmented_conditioning_for_expressive_speech_generation_is_sensiti
+    role: complicates
+    claim: Retrieval-augmented conditioning for expressive speech generation is sensitive to retrieval scale and
+      the choice of similarity metric, and excessive retrieval can degrade rather than improve output quality.
+    source: §Speaker-Agnostic vs. Speaker-Specific Retrieval, §Analysis of Similarity Metrics, Figures 4 and 6
+    evidence: Under speaker-agnostic retrieval, EMO-ACC peaks at Top-K = 3 and declines as K increases further;
+      across similarity functions, cosine similarity consistently yields the best performance while dot product
+      shows larger fluctuations and Euclidean distance a lower performance ceiling.
+    confidence: high
+    relevance: low
+  - claim_id: improving_emotional_expressiveness_in_conditioned_speech_generation_does_not
+    role: complicates
+    claim: Improving emotional expressiveness in conditioned speech generation does not automatically preserve intelligibility
+      relative to the strongest prior non-emotion-focused system.
+    source: §Results and Discussion, Table 1
+    evidence: Authentic-Dubber achieves the best EMO-ACC (47.21%) and MOS scores among all compared systems, but
+      its WER (25.95) is higher than both StyleDubber (24.70) and Speaker2Dubber (18.27), the two strongest baselines
+      on pronunciation accuracy.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluation uses 20 raters and 12 samples, and improved emotional fidelity can trade off against intelligibility.
+  caveats:
+  - The main contribution is retrieval-augmented emotional conditioning rather than self-supervised speech representation
+    learning.
+- id: '2511.16639'
+  published_date: '2025-11-20'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: Masked-prediction self-supervised objectives originally developed for continuous audio input can be applied
+      directly to discrete neural-codec token sequences as the sole model input throughout pre-training, without
+      a convolutional waveform feature extractor, and still yield representations competitive with continuous-input
+      SSL models on a broad multi-task benchmark.
+    source: §IV-A, Table I
+    evidence: Using the identical HuBERT-iter0-layer9-kmeans500 training target, the discrete-input Codec2Vec model
+      achieves near-parity with waveform-input HuBERT across all eight SUPERB tasks (e.g., 5.2 vs. 5.4 phone error
+      rate, 6.9 vs. 6.4 WER, 96.7 vs. 96.3 keyword-spotting accuracy).
+    claim_id: q4_2511_16639_masked_prediction_self_supervised_objectives_originally_developed_for_continuous_audio_i
+    confidence: high
+    relevance: high
+  - role: refines
+    claim: 'For self-supervised pre-training on discrete codec-unit input, the strategy used to derive masked-prediction
+      training targets matters more than the choice to use discrete input itself: targets built from the model''s
+      own clustered latent representations substantially outperform targets that simply reconstruct the (masked)
+      input codec codes.'
+    source: §III-B, §IV-A, Table I
+    evidence: Reconstruction-based Codec2Vec trails both iterative-clustering and online-clustering Codec2Vec by
+      a wide margin on nearly every SUPERB task (e.g., 19.6 vs. 4.2–5.5 phone error rate, 78.3 vs. 97.1–98.4 intent-classification
+      accuracy).
+    claim_id: q4_2511_16639_for_self_supervised_pre_training_on_discrete_codec_unit_input_the_strategy_used_to_deriv
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Replacing continuous waveform input with pre-quantized discrete codec-unit sequences for self-supervised
+      pre-training introduces a consistent, task-specific degradation on ASR-style content recognition, even when
+      overall representation quality is otherwise competitive.
+    source: §IV-A, §V, Table I
+    evidence: Across matched target-derivation strategies, discrete-input Codec2Vec variants show higher (worse)
+      ASR word error rate than their continuous-input counterparts (HuBERT 6.4 vs. Codec2Vec 6.9 with identical
+      targets; DinoSR 4.7 vs. Codec2Vec 6.2 with online-clustering targets), a gap the authors attribute to quantization-induced
+      information loss and the narrowband characteristics of the codec.
+    claim_id: q4_2511_16639_replacing_continuous_waveform_input_with_pre_quantized_discrete_codec_unit_sequences_for
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: The specific neural audio codec used to generate discrete input tokens materially affects the quality
+      of representations learned by a downstream self-supervised model trained on those tokens, independent of the
+      SSL training recipe.
+    source: §IV-C, Table III
+    evidence: With an identical training recipe and target (HuBERT-iter0-layer9-kmeans500), switching the input
+      codec from DAC to an unofficial 16kHz Encodec variant degrades phone error rate from 5.2 to 6.0, slot-filling
+      F1/CER from 88.6/24.5 to 87.9/26.3, and speaker-verification EER from 5.1 to 6.2.
+    claim_id: q4_2511_16639_the_specific_neural_audio_codec_used_to_generate_discrete_input_tokens_materially_affect
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Storage and compute efficiency gains from pre-computing discrete codec tokens for self-supervised pre-training
+      have not been validated under noisy or acoustically mismatched conditions, leaving open whether the efficiency
+      and performance results generalize beyond clean, read-speech pre-training corpora.
+    source: §V, Discussion and Limitations
+    evidence: The authors state they have not extensively evaluated performance in real-world noisy conditions and
+      flag the interaction between noise, codec compression, and SSL pre-training as an open research question.
+    claim_id: q4_2511_16639_storage_and_compute_efficiency_gains_from_pre_computing_discrete_codec_tokens_for_self_s
+    confidence: high
+    relevance: medium
+  limitations:
+  - Codec selection is shown to substantially affect downstream representation quality (§IV-C), but the paper does
+    not identify which codec properties drive this effect or how to select an optimal codec for representation learning;
+    the authors describe this as an open research question.
+  - Discrete-input models consistently trail continuous-input baselines on ASR specifically, even in the best-performing
+    configuration, indicating an information bottleneck that current codec-based SSL has not closed.
+  - Current mainstream SSL pre-training strategies (masked prediction, iterative and online clustering) were designed
+    for continuous input signals; the paper notes that closing remaining gaps may require SSL objectives specifically
+    tailored to discrete input sequences, which it leaves to future work.
+  - Code and demo availability are not stated in the paper.
+  caveats:
+  - Discrete-input SSL is competitive on clean read speech, but codec-dependent information loss and noisy-domain
+    robustness remain unresolved.
+- id: '2511.21045'
+  published_date: 2025-11-26
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - TTS
+  - VC
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  claims:
+  - claim_id: q4_2511_21045_factorizing_singing_audio_into_disentangled_content_tokens_a_continuous
+    role: supports
+    claim: Factorizing singing audio into disentangled content tokens, a continuous F0 contour, and a timbre embedding,
+      rather than relying on phoneme-aligned score supervision, allows a synthesis and conversion system to generalize
+      to timbres well outside its human training distribution.
+    source: §4.2, Tables 1-3
+    evidence: CartoonSing, trained with this factorization, achieves consistently higher timbre similarity (SIM-A)
+      to instrumental, general-audio, and bird target timbres than SVS/SVC baselines trained only on human voices,
+      e.g. 0.603 vs. 0.493 for Chinese-instrumental SVS and 0.589 vs. 0.398 for Chinese-instrumental SVC.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_21045_transferring_a_generative_singing_voice_system_to_a_target_timbre_that_d
+    role: complicates
+    claim: Transferring a generative singing voice system to a target timbre that departs strongly from human vocal
+      acoustics trades off against perceptual audio quality and intelligibility, because baselines that fail to
+      transfer timbre retain clean human-like articulation by default.
+    source: §A.8, Table 10
+    evidence: In the subjective listening study, CartoonSing scores far higher on MOS-T (timbre similarity, 3.2
+      vs. 2.71 for SVC) but lower on MOS-C (intelligibility, 2.99 vs. 4.09) and MOS-Q (quality, 2.8 vs. 4.02) than
+      the human-timbre baseline, attributed to weakened consonantal transients when the output timbre becomes vowel-like
+      and instrument-like.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2511_21045_content_representations_that_explicitly_disentangle_timbre_from_linguist
+    role: supports
+    claim: Content representations that explicitly disentangle timbre from linguistic/phonetic content are more
+      robust than richer, less disentangled self-supervised representations when a system must generalize to out-of-distribution
+      timbre spaces.
+    source: §B.2, Tables 11-14
+    evidence: Replacing the ContentVec-derived (timbre-disentangled) content tokens with HuBERT tokens improved
+      timbre similarity for human singing reconstruction but reduced it for non-human timbre transfer across instrumental,
+      general, and bird targets, which the authors attribute to timbre leakage in the less disentangled HuBERT representation.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_21045_extending_a_cross_domain_human_non_human_generative_audio_system_to_a_ne
+    role: complicates
+    claim: Extending a cross-domain (human/non-human) generative audio system to a new target-timbre domain requires
+      domain-specific fine-tuning rather than transferring zero-shot from a single pretrained model.
+    source: §4.1, §4.2, Tables 1-3
+    evidence: The Stage 2 vocoder is fine-tuned separately for each of three non-human domains (instrumental, bird
+      vocalization, general audio) with domain-specific oversampling ratios, and this fine-tuning yields consistent
+      LF0 RMSE and VUV improvements over the pretrained-only model in every domain.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Non-human timbre gains require domain-specific fine-tuning and reduce intelligibility and audio quality, so
+    the method is not genuinely zero-shot across timbre domains.
+  caveats:
+  - The robustness of disentangled content representations is shown for unusual singing timbres, with a quality
+    and intelligibility cost.
+- id: '2505.17320'
+  published_date: '2025-11-30'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - VAE
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - claim_id: a_tts_system_fine_tuned_from_a_pretrained_checkpoint_on_a_very_small_10_15_m
+    role: supports
+    claim: A TTS system fine-tuned from a pretrained checkpoint on a very small (10-15 minute) character-specific
+      voice dataset can reach naturalness ratings statistically indistinguishable from ground-truth human recordings
+      of the same character.
+    source: §V.A, Table I
+    evidence: SBV2JE overall MOS was 4.37 ± 0.74 versus 4.38 ± 0.77 for ground truth, with a paired t-test giving
+      p ≈ 0.91 across three fine-tuned character voices
+    confidence: high
+    relevance: medium
+  - claim_id: replacing_a_duration_discriminator_with_a_self_supervised_representation_bas
+    role: supports
+    claim: Replacing a duration discriminator with a self-supervised-representation-based (WavLM) discriminator
+      in an adversarially trained VAE-flow TTS system can improve intelligibility.
+    source: §V.D, Table IV; §VI
+    evidence: SBV2JE (which removes the duration discriminator and adds a WavLM-based discriminator) achieved a
+      lower average WER than VITS (0.04 ± 0.04 vs. 0.05 ± 0.04) across the same three fine-tuned characters
+    confidence: high
+    relevance: high
+  - claim_id: automatic_intra_speaker_consistency_metrics_based_on_speaker_embedding_cosin
+    role: complicates
+    claim: Automatic intra-speaker consistency metrics based on speaker-embedding cosine similarity may not distinguish
+      between TTS architectures even when naturalness and intelligibility metrics diverge.
+    source: §V.C, Table III
+    evidence: VITS and SBV2JE produced nearly identical intra-speaker similarity scores (96.43% vs. 96.24% overall,
+      per-speaker range 0.96-0.97), showing no meaningful separation despite SBV2JE's added discriminator and style-conditioning
+      changes
+    confidence: high
+    relevance: low
+  - claim_id: comparative_naturalness_evaluations_of_fine_tuned_character_voice_tts_system
+    role: complicates
+    claim: Comparative naturalness evaluations of fine-tuned character-voice TTS systems can be constrained by evaluating
+      on the same small dataset used for training, which limits how far the naturalness parity result can be generalized.
+    source: §IV; §VI Discussion
+    evidence: Because each character's dataset totaled only 10-15 minutes, SBV2JE's fine-tuning used all available
+      audio, leaving no held-out set; the paper explicitly names small per-character datasets and limited raters
+      as factors that "restrict generalization"
+    confidence: high
+    relevance: low
+  limitations:
+  - The Japanese character-voice study uses 11 MOS and five CMOS raters and does not evaluate held-out speakers
+    or domains.
+  caveats:
+  - The WavLM discriminator result comes from a small character-voice study without a held-out evaluation set.
+- id: '2512.01865'
+  published_date: '2025-12-01'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_ssl_conditioned_models
+  claims:
+  - role: supports
+    claim: Interleaving segments from different languages within a single training sequence, applied directly to
+      discrete speech tokens without any text supervision, induces cross-lingual transfer that plain multilingual
+      mixing without interleaving does not achieve.
+    source: §6.2, Table 3
+    evidence: At matched training-token budgets, the EN+FR baseline without interleaving reaches only 50.56%/51.25%
+      cross-lingual sSC accuracy (360M, EN→FR/FR→EN), barely above chance, while the interleaved model reaches 56.44%/55.37%
+      and approaches its own monolingual accuracy of 55.90%/57.08%
+    confidence: high
+    claim_id: q4_2512_01865_interleaving_segments_from_different_languages_within_a_single_training_sequence_applied
+    relevance: high
+  - role: supports
+    claim: Cross-lingual interleaving strengthens shared cross-lingual structure in a speech LM's internal representations,
+      not just its output-level accuracy.
+    source: §6.2
+    evidence: Layer-wise cosine similarity between hidden states on 1,000 aligned EN-FR sentence pairs rises from
+      0.73 (mixed baseline, no interleaving) to 0.75 (interleaving) to 0.76 (interleaving plus monolingual stabilisation)
+      for the 1B model
+    confidence: high
+    claim_id: q4_2512_01865_cross_lingual_interleaving_strengthens_shared_cross_lingual_structure_in_a_speech_lm_s_i
+    relevance: high
+  - role: complicates
+    claim: Cross-lingual interleaving without a subsequent monolingual stabilisation stage degrades low-level syntactic
+      and lexical competence in the high-resource language more than it degrades semantic competence.
+    source: §6.1, Table 3
+    evidence: For the 1B model, English sBLiMP and sWUGGY drop from 61.96%/69.92% (English-only baseline) to 52.73%/56.74%
+      after interleaving, a much larger relative drop than the corresponding sSC decrease (56.06% to 54.40%)
+    confidence: high
+    claim_id: q4_2512_01865_cross_lingual_interleaving_without_a_subsequent_monolingual_stabilisation_stage_degrades
+    relevance: high
+  - role: supports
+    claim: A brief monolingual fine-tuning stage after cross-lingual interleaving can recover most of the lost monolingual
+      quality while retaining the cross-lingual gains from interleaving.
+    source: §6.1, Table 3
+    evidence: After the stabilisation stage, the 1B model's English sBLiMP/sWUGGY recover to 61.75%/69.15% (within
+      a hair of the English-only baseline), while French sSC/sTC (58.31%/70.39%) still exceed the French-only baseline
+      (55.31%/67.07%) at the same French token budget
+    confidence: high
+    claim_id: q4_2512_01865_a_brief_monolingual_fine_tuning_stage_after_cross_lingual_interleaving_can_recover_most_
+    relevance: high
+  limitations:
+  - The evaluation covers a single, related language pair (English-French), both of which are Latin-script, high-resource
+    languages for existing MT and TTS tooling; the paper does not test whether the interleaving scheme transfers
+    to typologically distant or genuinely low-resource language pairs, which is the scenario the introduction motivates
+    the work with. Model scale is limited to 360M and 1B parameters, and all training and evaluation data is synthetic
+    speech generated by a TTS system rather than naturally recorded bilingual speech, so results may not transfer
+    directly to found (non-synthetic) cross-lingual audio. The interleaving scheme also requires sentence-level
+    cross-lingual alignment during training, which is itself a resource that had to be constructed via machine translation
+    and cannot be assumed to exist for arbitrary language pairs.
+  caveats:
+  - Cross-lingual interleaving improves shared structure but requires monolingual stabilization to recover lexical
+    and syntactic competence.
+- id: '2512.07168'
+  published_date: '2025-12-08'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - transformer_ssl_encoders_and_adapters
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: Speech tokenizers can be built by first training a self-supervised encoder purely on masked latent-space
+      prediction, with no waveform reconstruction objective, and only later attaching a quantizer and decoder for
+      reconstruction.
+    source: §2.5, §3.4
+    evidence: Stage 1 optimizes the JEPA encoder and predictor using only MSE loss on masked-region latent predictions,
+      with no reconstruction, spectral, or adversarial loss present until Stage 2 fine-tuning is introduced separately.
+    claim_id: q4_2512_07168_speech_tokenizers_can_be_built_by_first_training_a_self_supervised_encoder_purely_on_mas
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Statistical-salience gating over per-channel temporal statistics can improve self-supervised masked-prediction
+      training efficiency for speech relative to an architecturally identical encoder without such gating.
+    source: §3.1, Figure 4
+    evidence: Under matched training steps, the JEPA encoder with DAAM gating converges to a lower masked-prediction
+      MSE (~0.09) than the same encoder without DAAM (~0.17).
+    claim_id: q4_2512_07168_statistical_salience_gating_over_per_channel_temporal_statistics_can_improve_self_superv
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Combinatorial packing of multiple scalar-quantized code dimensions into a single token can substantially
+      cut a neural tokenizer's token rate without any codebook learning and while remaining exactly reversible.
+    source: §3.2, Tables 3-4
+    evidence: Packing G=7 of 128 FSQ dimensions per token via modular (mixed-radix) arithmetic reduces the raw token
+      rate from 320 tokens/sec to 47.5 tokens/sec with perfect reversibility, placing the resulting frame rate below
+      several existing codec baselines the paper tabulates.
+    claim_id: q4_2512_07168_combinatorial_packing_of_multiple_scalar_quantized_code_dimensions_into_a_single_token_c
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: A neural tokenizer's low frame rate or token rate is not sufficient on its own to establish competitiveness
+      with existing speech codecs, absent standard reconstruction-quality or downstream evaluation.
+    source: §6, §8
+    evidence: The paper explicitly states its evaluation is qualitative and preliminary due to limited computational
+      budget, reporting a frame-rate comparison table and a training-loss curve but no WER, MOS, or reconstruction-fidelity
+      comparison against any of the codec baselines it lists.
+    claim_id: q4_2512_07168_a_neural_tokenizer_s_low_frame_rate_or_token_rate_is_not_sufficient_on_its_own_to_establ
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The authors list several additional limitations: the block-masking strategy uses fixed span-length distributions
+    that may not adapt to varying speech rate or linguistic structure; experiments are monolingual (English, LibriLight
+    only), leaving generalization to tonal or morphologically rich languages untested; pretraining data scale (~9,000
+    hours) is modest relative to large-scale SSL speech systems; and the framework has not been extended to cross-modal
+    (audio-visual or audio-text) settings.'
+  caveats:
+  - The JEPA-first tokenizer has only preliminary evaluation and lacks standard reconstruction or downstream comparisons.
+- id: neurips-2025-7Z3wQSu3mH
+  published_date: '2025-12-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: NeurIPS
+  task:
+  - codec
+  - VC
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: A single binary codebook, paired with an encoder that retains both acoustic and semantic information,
+      can match or exceed the reconstruction quality of codecs relying on multiple codebooks or higher bitrates,
+      without the token-flattening complexity multi-codebook designs impose on downstream models.
+    source: §4.3, Table 2
+    evidence: At 0.65kbps with a single 8192-entry binary codebook, FocalCodec@50 achieves the lowest dWER among
+      all compared codecs, including multi-codebook EnCodec, DAC, and SpeechTokenizer and the higher-bitrate state-of-the-art
+      BigCodec, on clean LibriSpeech resynthesis.
+    claim_id: q4_neurips_2025_7z3wqsu3mh_a_single_binary_codebook_paired_with_an_encoder_that_retains_both_acoustic_and_semantic_
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Replacing self-attention with focal modulation, and standard vector quantization with binary spherical
+      quantization, in a speech codec's compression bottleneck can substantially improve reconstruction fidelity
+      and codebook utilization at matched bitrate.
+    source: §4.6, Table 5
+    evidence: Ablating focal modulation for Conformer, AMP, or linear compression blocks degrades dWER from 2.54
+      up to 9.37, and replacing BSQ with FSQ or vanilla LFQ increases dWER and lowers normalized codebook entropy
+      (99.7% for BSQ vs. 97.7% for FSQ).
+    claim_id: q4_neurips_2025_7z3wqsu3mh_replacing_self_attention_with_focal_modulation_and_standard_vector_quantization_with_bin
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: A speech codec encoder built on frozen self-supervised features, without any explicit disentanglement
+      loss, can still support effective one-shot voice conversion via post-hoc feature-space nearest-neighbor matching,
+      competitive with codecs explicitly designed to separate content and speaker into different codebooks.
+    source: §4.4, Table 3
+    evidence: FocalCodec achieves the highest speaker similarity (92.2-92.6%) of any compared codec in one-shot
+      voice conversion on VCTK, outperforming SpeechTokenizer and Mimi, both of which use explicit separate content/acoustic
+      codebooks for disentanglement.
+    claim_id: q4_neurips_2025_7z3wqsu3mh_a_speech_codec_encoder_built_on_frozen_self_supervised_features_without_any_explicit_dis
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: 'Optimizing a speech codec''s token rate for downstream generative modeling and for downstream discriminative
+      or restoration tasks pull in different directions: lower token rates ease autoregressive generation but can
+      hurt tasks that need to recover fine content or source detail.'
+    source: §4.5, Table 4
+    evidence: The lowest-bitrate FocalCodec variants (25Hz, 12.5Hz) achieve the best downstream TTS results because
+      shorter token sequences ease autoregressive next-token prediction, but the same variants show degraded ASR,
+      speaker identification, and speech-separation performance relative to the 50Hz variant.
+    claim_id: q4_neurips_2025_7z3wqsu3mh_optimizing_a_speech_codec_s_token_rate_for_downstream_generative_modeling_and_for_downst
+    confidence: high
+    relevance: high
+  limitations:
+  - The downstream TTS evaluation is trained on only 460 hours of speech, which the authors note explains why absolute
+    TTS quality is not state-of-the-art; this limits how much the TTS comparison across bitrate variants generalizes
+    to larger-scale training. Speech separation results, while the best among compared codecs, remain "far from
+    practical utility" in absolute terms, which the authors attribute to information loss during quantization being
+    especially costly for source-separation-style tasks. Emotion recognition showed no clear advantage for any codec,
+    FocalCodec included, suggesting current codec designs (including this one) may not strongly preserve the specific
+    cues needed for that task.
+  caveats:
+  - Frozen SSL features support strong low-rate coding, but the preferred token rate differs between generation
+    and discriminative tasks.
+- id: neurips-2025-RTjr4DnS79
+  published_date: '2025-12-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: NeurIPS
+  task:
+  - TTS
+  - VC
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - diffusion_with_ssl_conditioning
+  claims:
+  - claim_id: q4_neurips_2025_rtjr4dns79_unconditional_masked_generative_pre_training_on_discrete_ssl_tokens_with
+    role: supports
+    claim: Unconditional masked generative pre-training on discrete SSL tokens, with no task-specific condition
+      at all, can serve as a general-purpose foundation for diverse downstream speech generation tasks, requiring
+      only lightweight fine-tuning to specialize.
+    source: §4.2, Tables 1-5
+    evidence: A single pre-trained backbone, fine-tuned separately with task-specific conditions, achieves competitive
+      or state-of-the-art results across five distinct tasks (zero-shot TTS, voice conversion, target speaker extraction,
+      speech enhancement, lip-to-speech) using as few as 9-32M trainable LoRA parameters per task.
+    confidence: high
+    relevance: high
+  - claim_id: q4_neurips_2025_rtjr4dns79_pre_training_a_speech_generation_backbone_on_large_scale_unlabeled_data
+    role: supports
+    claim: Pre-training a speech generation backbone on large-scale unlabeled data before task-specific fine-tuning
+      yields both faster convergence and better final performance than training the same architecture from scratch
+      on the same fine-tuning data.
+    source: §4.2.1, Table 1
+    evidence: On zero-shot TTS with 10K hours of fine-tuning data, the pre-trained model achieves WER 2.28 versus
+      4.91 for the same architecture trained from scratch for the same number of steps without pre-training.
+    confidence: high
+    relevance: high
+  - claim_id: q4_neurips_2025_rtjr4dns79_a_speech_generation_foundation_model_can_be_efficiently_fine_tuned_into
+    role: supports
+    claim: A speech generation foundation model can be efficiently fine-tuned into a genuinely cross-modal task,
+      visual speech input to audio output, using the same masked generative mechanism designed for audio-only conditions,
+      without architectural changes.
+    source: §4.2.5, Table 5
+    evidence: Fine-tuning the pre-trained model on lip-to-speech nearly doubles speaker similarity over a dedicated
+      expert lip-to-speech baseline (29.34 to 59.73 on LRS2, 32.05 to 56.74 on LRS3) while also improving WER and
+      audio quality.
+    confidence: high
+    relevance: high
+  - claim_id: q4_neurips_2025_rtjr4dns79_jointly_fine_tuning_a_pre_trained_speech_generation_backbone_on_multiple
+    role: supports
+    claim: Jointly fine-tuning a pre-trained speech generation backbone on multiple tasks can produce emergent generalization
+      to task combinations the model was never explicitly trained on.
+    source: §4.3, Table 6
+    evidence: Metis-Omni, fine-tuned jointly on four tasks, generalizes to text-guided target speaker extraction,
+      a combination absent from its training data, reducing WER to 2.70, a substantial improvement over all other
+      compared models.
+    confidence: high
+    relevance: high
+  - claim_id: q4_neurips_2025_rtjr4dns79_masked_generative_pre_training_without_any_semantic_condition_captures_p
+    role: complicates
+    claim: Masked generative pre-training without any semantic condition captures prosodic style and speaker identity
+      from a prompt but does not by itself guarantee intelligible content, so task-specific conditioning remains
+      necessary even after large-scale pre-training.
+    source: §3.4
+    evidence: The unconditional pre-trained model mimics a prompt's prosodic style and timbre but "often lacks intelligibility,
+      producing random word concatenations due to the absence of semantic guidance," motivating fine-tuning with
+      task-specific conditions.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Total backbone size is unreported and several downstream tasks depend on auxiliary components, while core subjective
+    results are deferred.
+  caveats:
+  - Unconditional masked pretraining supplies a reusable backbone, but intelligible content still requires task-specific
+    semantic conditioning.
+- id: '2512.20944'
+  published_date: '2025-12-24'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: A frozen, externally pre-trained semantic codebook can be quantized against efficiently, with near-full
+      codebook utilization, if the codebook itself is first transformed into the encoder's latent space by a lightweight
+      learned projector, rather than looked up directly in its original space.
+    source: §Ablation Study, Figure 3
+    evidence: A naive direct lookup between the encoder and the fixed mHuBERT codebook yields near-zero (5%) codebook
+      utilization and a UTMOS of 3.65, while the proposed codebook-space projection achieves nearly 100% utilization
+      and a UTMOS of 4.04 on the same setup.
+    claim_id: q4_2512_20944_a_frozen_externally_pre_trained_semantic_codebook_can_be_quantized_against_efficiently_w
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Splitting quantization into a dedicated semantic stage (anchored to external linguistic knowledge) and
+      a dedicated acoustic-residual stage (using a globally-updated, collapse-resistant quantizer) allows a low-bitrate
+      codec to achieve reconstruction quality and semantic richness simultaneously, where prior single-mechanism
+      approaches had to trade one off against the other.
+    source: §Ablation Study, Table 3
+    evidence: At 1.5 kbps, SACodec achieves both a UTMOS of 4.0373 (comparable to or exceeding 6 kbps RVQ-based
+      baselines) and an ARCH reconstruction-domain semantic accuracy of 0.6311 (on par with 6 kbps DAC), while removing
+      either quantizer stage in ablation causes either a 30% collapse in semantic accuracy (removing the semantic
+      anchor) or a 12.8% drop in PESQ (removing the residual activator).
+    claim_id: q4_2512_20944_splitting_quantization_into_a_dedicated_semantic_stage_anchored_to_external_linguistic_k
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: A codec's semantic token quality measured on raw compressed tokens does not guarantee the same semantic
+      quality survives after the codec's own reconstruction pipeline, so compressed-domain-only semantic evaluation
+      can overstate a codec's practical semantic usefulness.
+    source: §Results and Analysis, Table 2
+    evidence: SpeechTokenizer achieves the highest compressed-domain ARCH accuracy (0.5099) among compared codecs
+      but drops behind SACodec after reconstruction (0.6013 vs. SACodec's 0.6311), a discrepancy the authors attribute
+      to its decoder not fully preserving the intrinsic semantics of its own tokens.
+    claim_id: q4_2512_20944_a_codec_s_semantic_token_quality_measured_on_raw_compressed_tokens_does_not_guarantee_th
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Optimizing a residual quantizer purely for semantic accuracy, by removing its dedicated acoustic-detail-recovery
+      component, can locally improve a semantic metric while substantially degrading the reconstruction quality
+      that downstream applications also depend on.
+    source: §Ablation Study, Table 3
+    evidence: Removing the Residual Activation module entirely ("semantic-only" configuration) yields the single
+      highest compressed-domain semantic accuracy (0.5065) in the ablation study, but causes reconstruction PESQ
+      to drop by 12.8% relative to the full model.
+    claim_id: q4_2512_20944_optimizing_a_residual_quantizer_purely_for_semantic_accuracy_by_removing_its_dedicated_a
+    confidence: high
+    relevance: high
+  limitations:
+  - The paper's own discussion section identifies its evaluation as confined to English, leaving cross-lingual robustness
+    untested. All evaluation is token-level (reconstruction metrics and downstream classification accuracy on the
+    ARCH benchmark) rather than validated through direct integration into a downstream speech language model or
+    TTS system, which the authors explicitly flag as necessary for ultimate validation of the tokens' practical
+    usefulness. The semantic codebook size (1,000 entries) and residual codebook size (1,024 entries) were fixed
+    by the specific publicly-available mHuBERT centroids used; the authors note scaling the semantic codebook further,
+    and exploring model compression for on-device deployment, as open future directions rather than settled questions.
+  caveats:
+  - Compressed-token semantic scores can overstate practical utility unless semantic preservation is checked after
+    reconstruction.
+- id: '2512.21653'
+  published_date: '2025-12-25'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - hybrid_semantic_acoustic_ssl_systems
+  - gan_decoders_for_ssl_units
+  - vae_and_quantized_ssl_representations
+  claims:
+  - role: supports
+    claim: Conditioning a codec's decoder directly on semantic tokens, rather than merely distilling those tokens
+      from a self-supervised teacher and passing them into the decoder as an undifferentiated input, is necessary
+      to realize the quality benefits of semantic-aware speech compression.
+    source: §Experimental Results, Table 3
+    evidence: A SemDAC variant with the same HuBERT-distilled semantic quantizer but without FiLM decoder conditioning
+      performs only comparably to the plain DAC baseline (PESQ 2.72 vs. DAC's 2.74), while adding FiLM conditioning
+      at the same bitrate raises PESQ to 3.24 and lowers WER from 4.83% to 4.20%.
+    claim_id: q4_2512_21653_conditioning_a_codec_s_decoder_directly_on_semantic_tokens_rather_than_merely_distilling
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: A neural speech codec can achieve substantially better perceptual quality and lower downstream ASR word
+      error rate than a strong RVQ baseline at less than half the bitrate, by allocating a small dedicated semantic
+      codebook and using it to actively shape acoustic reconstruction rather than increasing overall bit allocation
+      to acoustic detail.
+    source: §Experimental Results, Table 1
+    evidence: SemDAC at 0.95 kbps outperforms a retrained DAC baseline at 2.5 kbps across PESQ, STOI, ViSQOL, Si-SNR,
+      and Whisper-measured WER, and achieves quality comparable to DAC at 3 kbps.
+    claim_id: q4_2512_21653_a_neural_speech_codec_can_achieve_substantially_better_perceptual_quality_and_lower_down
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: The effectiveness of semantic-token decoder conditioning depends on where in the decoder the conditioning
+      signal is injected, with earlier injection providing consistently larger gains than later or multi-point injection.
+    source: §Experimental Results, Table 3
+    evidence: FiLM conditioning inserted between the pre-convolutional layer and the first decoder block (F0) outperforms
+      insertion later in the decoder (F1-F3), and combining multiple injection points (F0+F1, F0+F2, F0+F3) performs
+      at best on par with the single earliest-position injection, never exceeding it.
+    claim_id: q4_2512_21653_the_effectiveness_of_semantic_token_decoder_conditioning_depends_on_where_in_the_decoder
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: A semantic codebook's usefulness saturates well below the codebook sizes typically used for pure acoustic
+      quantization, so allocating additional codebook capacity to the semantic stream beyond a modest size yields
+      no further benefit.
+    source: §Experimental Results, Table 2
+    evidence: Varying the semantic codebook size across 128, 256, 512, and 1024 entries shows 256-512 entries strike
+      the best balance, with 128 substantially degrading quality and sizes beyond 512 (up to the 1024 used for acoustic
+      quantizers) offering no further improvement.
+    claim_id: q4_2512_21653_a_semantic_codebook_s_usefulness_saturates_well_below_the_codebook_sizes_typically_used_
+    confidence: high
+    relevance: high
+  limitations:
+  - All experiments are conducted on a single training and evaluation corpus (a 360-hour subset of LibriSpeech),
+    leaving cross-domain robustness (music, noisy or reverberant speech, other languages) and generalization to
+    out-of-domain speech unexamined. Evaluation relies entirely on objective metrics and a Whisper-based ASR-WER
+    proxy for intelligibility, with no subjective listening test to validate perceptual quality claims. The paper
+    does not evaluate SemDAC's tokens in an actual downstream speech-language-model or TTS pipeline, so its claimed
+    benefit for such systems remains inferred from reconstruction and ASR-proxy metrics rather than directly demonstrated.
+  caveats:
+  - Benefits depend on active decoder conditioning and saturate at modest semantic-codebook capacity.
 claim_clusters:
 - id: masked_and_contrastive_pretraining_learn_reusable_speech_features
   claim: Masked and contrastive self-supervised objectives learn reusable contextual speech representations without
@@ -10411,11 +12579,15 @@ claim_clusters:
   - '2209.03143'
   - interspeech-2025-1776
   - '2411.19770'
+  - '2511.16639'
+  - '2512.07168'
+  - neurips-2025-RTjr4DnS79
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2512.07168'
   caveats:
   - Objective comparisons often change architecture, data, and augmentation together.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_features_encode_linguistic_content
   claim: Self-supervised speech features encode phonetic, lexical, and semantic content useful across downstream
     tasks.
@@ -10447,6 +12619,27 @@ claim_clusters:
   - '2509.11425'
   - '2509.16195'
   - '2509.22167'
+  - '2510.09061'
+  - '2510.09424'
+  - '2510.11124'
+  - '2510.11646'
+  - '2510.15227'
+  - '2503.06211'
+  - '2506.23670'
+  - 2025.findings-emnlp.1077
+  - 2025.findings-emnlp.1394
+  - '2511.09995'
+  - '2511.10112'
+  - '2511.11124'
+  - '2511.12074'
+  - '2511.12690'
+  - '2511.16639'
+  - '2511.21045'
+  - '2512.01865'
+  - neurips-2025-7Z3wQSu3mH
+  - neurips-2025-RTjr4DnS79
+  - '2512.20944'
+  - '2512.21653'
   contradicting_papers: []
   refining_papers:
   - '2402.13236'
@@ -10460,9 +12653,11 @@ claim_clusters:
   - interspeech-2025-2043
   - '2509.22167'
   - '2509.26276'
+  - '2511.16639'
+  - '2511.21045'
   caveats:
   - Linguistic information varies substantially by model layer and pretraining corpus.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_layer_choice_controls_information_content
   claim: Different SSL layers specialize in acoustic, phonetic, semantic, speaker, and task-specific information.
   status: strongly_supported
@@ -10476,12 +12671,15 @@ claim_clusters:
   - interspeech-2025-1639
   - '2509.09201'
   - '2509.17006'
+  - '2503.06211'
+  - '2511.09995'
   contradicting_papers: []
   refining_papers:
   - '2509.22167'
+  - '2511.09995'
   caveats:
   - Layer probes can reflect the probe model and do not guarantee causal usefulness downstream.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: speaker_and_prosody_leakage_persists_in_ssl_features
   claim: SSL representations retain varying amounts of speaker, pitch, prosody, and paralinguistic information despite
     content-oriented training.
@@ -10518,6 +12716,11 @@ claim_clusters:
   - '2411.19770'
   - '2509.20378'
   - '2509.17143'
+  - '2510.09061'
+  - '2510.11124'
+  - '2511.10112'
+  - '2511.12074'
+  - '2511.21045'
   contradicting_papers: []
   refining_papers:
   - '2402.13236'
@@ -10534,9 +12737,12 @@ claim_clusters:
   - interspeech-2025-2043
   - interspeech-2025-2684
   - '2509.26276'
+  - '2510.11124'
+  - '2511.12074'
+  - '2511.21045'
   caveats:
   - Whether leakage is harmful depends on whether the downstream task needs invariance or expressive reconstruction.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: explicit_disentanglement_improves_controllable_generation
   claim: Explicitly separating content from speaker and style information improves controllable speech generation
     and conversion.
@@ -10567,6 +12773,12 @@ claim_clusters:
   - interspeech-2025-2684
   - '2509.09201'
   - '2509.17006'
+  - '2510.05619'
+  - '2510.09061'
+  - '2510.11124'
+  - '2511.10112'
+  - '2511.12074'
+  - '2511.21045'
   contradicting_papers: []
   refining_papers:
   - '2507.08012'
@@ -10581,9 +12793,13 @@ claim_clusters:
   - interspeech-2025-2043
   - '2509.09201'
   - '2509.17006'
+  - '2510.11124'
+  - '2511.10112'
+  - '2511.12074'
+  - '2511.21045'
   caveats:
   - Hard separation may discard accent, timing, and expressive cues that carry both content and identity.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: discrete_ssl_units_enable_language_modeling
   claim: Discrete SSL-derived speech units make speech compatible with token language modeling and textless generation.
   status: strongly_supported
@@ -10609,6 +12825,13 @@ claim_clusters:
   - '2509.01391'
   - '2509.05359'
   - '2509.20485'
+  - '2510.11646'
+  - '2503.06211'
+  - '2506.23670'
+  - '2511.11124'
+  - '2511.16639'
+  - '2512.01865'
+  - neurips-2025-RTjr4DnS79
   contradicting_papers: []
   refining_papers:
   - '2402.13236'
@@ -10617,9 +12840,10 @@ claim_clusters:
   - '2507.03887'
   - 2025.acl-long.681
   - '2509.05359'
+  - '2511.16639'
   caveats:
   - Quantization introduces codebook, rate, and reconstruction trade-offs and may weaken speaker fidelity.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: continuous_features_outperform_discrete_units_on_discrimination
   claim: Continuous SSL features often retain more information than discrete units for discriminative and speaker-sensitive
     tasks.
@@ -10627,12 +12851,15 @@ claim_clusters:
   confidence: medium
   supporting_papers:
   - '2506.10274'
+  - '2511.16639'
   contradicting_papers: []
   refining_papers:
   - '2508.08399'
+  - '2511.11124'
+  - neurips-2025-7Z3wQSu3mH
   caveats:
   - The comparison is emerging and depends on rate, layer, quantizer, and downstream model capacity.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: semantic_acoustic_hierarchies_balance_coherence_and_fidelity
   claim: Combining SSL semantic representations with acoustic codec detail balances linguistic coherence against
     waveform fidelity.
@@ -10660,6 +12887,14 @@ claim_clusters:
   - '2509.16195'
   - '2509.17006'
   - '2509.22167'
+  - '2510.11646'
+  - '2510.15227'
+  - 2025.findings-emnlp.1394
+  - '2511.11124'
+  - '2512.07168'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
+  - '2512.21653'
   contradicting_papers: []
   refining_papers:
   - '2410.03751'
@@ -10669,21 +12904,29 @@ claim_clusters:
   - interspeech-2025-1236
   - '2509.22167'
   - '2509.26276'
+  - '2510.11646'
+  - '2510.15227'
+  - '2512.20944'
+  - '2512.21653'
   caveats:
   - Semantic and acoustic information are not cleanly separable for prosody and non-verbal vocal events.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_pretraining_improves_low_resource_transfer
   claim: SSL pretraining improves data efficiency and transfer in low-resource or few-shot speech tasks.
-  status: emerging
-  confidence: medium
+  status: strongly_supported
+  confidence: high
   supporting_papers:
   - '2402.05755'
   - '2509.00675'
+  - '2505.17320'
+  - neurips-2025-RTjr4DnS79
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2505.17320'
   caveats:
-  - Reported gains vary with language coverage and the amount of supervised adaptation.
-  last_reviewed: '2026-07-29'
+  - Transfer gains remain sensitive to language coverage, adaptation budget, and whether pretraining matches the
+    downstream generation task.
+  last_reviewed: '2026-09-26'
 - id: multilingual_ssl_supports_cross_lingual_transfer
   claim: Multilingual SSL representations support cross-lingual transfer, but performance remains sensitive to pretraining-language
     coverage.
@@ -10699,13 +12942,20 @@ claim_clusters:
   - interspeech-2025-0143
   - interspeech-2025-0166
   - interspeech-2025-1639
+  - '2510.09061'
+  - '2510.11124'
+  - 2025.findings-emnlp.1077
+  - '2511.12690'
+  - '2512.01865'
   contradicting_papers: []
   refining_papers:
   - 2025.findings-acl.75
   - '2503.11026'
+  - '2510.09061'
+  - '2512.01865'
   caveats:
   - High-resource languages dominate most pretraining mixtures and evaluation suites.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_features_improve_noise_and_domain_robustness
   claim: Pretrained speech representations improve robustness to noise, channel, speaker, and domain mismatch.
   status: strongly_supported
@@ -10720,12 +12970,15 @@ claim_clusters:
   - interspeech-2025-1531
   - '2509.09201'
   - '2509.21968'
+  - '2510.11124'
+  - '2511.21045'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-0506
+  - '2511.16639'
   caveats:
   - Robustness on simulated corruption may not transfer to spontaneous or atypical speech.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: pretraining_scale_benefits_are_not_universal
   claim: Larger SSL pretraining scale generally improves transfer, but simple scaling laws do not reliably predict
     all speech-model regimes.
@@ -10747,11 +13000,16 @@ claim_clusters:
   - '2408.02622'
   - '2507.04349'
   - 2025.findings-acl.75
+  - '2510.09061'
+  - '2511.21045'
+  - '2512.01865'
+  - neurips-2025-RTjr4DnS79
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - neurips-2025-RTjr4DnS79
   caveats:
   - Adaptation results are difficult to compare because parameter budgets and supervision differ.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_representations_enable_unified_speech_models
   claim: SSL representations help unify speech understanding, generation, translation, and dialogue within shared
     models.
@@ -10761,12 +13019,17 @@ claim_clusters:
   - '2410.03751'
   - '2503.11026'
   - '2508.09600'
+  - '2503.06211'
+  - '2510.09424'
+  - '2511.11124'
+  - neurips-2025-RTjr4DnS79
   contradicting_papers: []
   refining_papers:
   - '2509.24773'
+  - '2511.11124'
   caveats:
   - Unified coverage can trade against specialized task performance and frequently relies on proprietary data.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_conditioning_improves_speech_generation
   claim: SSL content and semantic features provide effective conditioning for TTS, voice conversion, and speech-to-speech
     generation.
@@ -10791,6 +13054,24 @@ claim_clusters:
   - '2509.20378'
   - '2509.21968'
   - '2509.22167'
+  - '2510.05619'
+  - '2510.09061'
+  - '2510.11124'
+  - '2510.11646'
+  - '2503.06211'
+  - '2506.23670'
+  - 2025.findings-emnlp.1077
+  - 2025.findings-emnlp.1394
+  - '2511.09995'
+  - '2511.10112'
+  - '2511.12074'
+  - '2511.12690'
+  - '2511.21045'
+  - '2505.17320'
+  - neurips-2025-7Z3wQSu3mH
+  - neurips-2025-RTjr4DnS79
+  - '2512.20944'
+  - '2512.21653'
   contradicting_papers: []
   refining_papers:
   - '2507.08012'
@@ -10799,9 +13080,11 @@ claim_clusters:
   - interspeech-2025-1531
   - interspeech-2025-2043
   - interspeech-2025-2684
+  - '2511.21045'
+  - '2505.17320'
   caveats:
   - Generation gains depend on the acoustic decoder and may not isolate the representation contribution.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: ssl_units_support_low_bitrate_neural_codecs
   claim: SSL-derived discrete units support low-bitrate speech coding while retaining task-relevant linguistic information.
   status: strongly_supported
@@ -10822,14 +13105,26 @@ claim_clusters:
   - '2509.11425'
   - '2509.21968'
   - '2509.22167'
+  - '2510.11646'
+  - '2510.15227'
+  - 2025.findings-emnlp.1394
+  - '2511.16639'
+  - '2512.07168'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
+  - '2512.21653'
   contradicting_papers: []
   refining_papers:
   - '2402.13236'
   - 2025.acl-long.87
   - interspeech-2025-2043
+  - '2511.16639'
+  - '2512.07168'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
   caveats:
   - Content-oriented units can underrepresent speaker identity, prosody, and fine acoustic detail.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: automatic_judges_are_unreliable_for_fine_grained_prosody
   claim: General-purpose audio-language-model judges are not yet reliable substitutes for fine-grained human evaluation
     of prosody and paralinguistics.
@@ -10897,6 +13192,14 @@ method_families:
   - '2509.20378'
   - '2509.17143'
   - '2509.26276'
+  - '2510.02066'
+  - '2510.09424'
+  - '2510.11646'
+  - '2503.06211'
+  - '2506.23670'
+  - 2025.findings-emnlp.1394
+  - '2511.11124'
+  - '2512.01865'
   open_questions:
   - Which SSL representation rate and layer best balance semantic reasoning, acoustic detail, and sequence cost?
 - id: transformer_ssl_encoders_and_adapters
@@ -10932,6 +13235,13 @@ method_families:
   - '2509.00675'
   - '2509.01391'
   - '2509.06074'
+  - '2510.11124'
+  - '2510.20210'
+  - '2510.20513'
+  - '2511.12690'
+  - '2511.16639'
+  - '2511.21045'
+  - '2512.07168'
   open_questions:
   - How much task adaptation is needed before pretrained features outperform purpose-built supervised encoders?
 - id: hybrid_semantic_acoustic_ssl_systems
@@ -10963,6 +13273,20 @@ method_families:
   - '2509.04667'
   - '2509.09550'
   - '2509.16195'
+  - '2510.05619'
+  - '2510.07096'
+  - '2510.11124'
+  - '2510.11646'
+  - '2510.15227'
+  - '2503.06211'
+  - 2025.findings-emnlp.1394
+  - '2511.06246'
+  - '2511.11124'
+  - '2511.14249'
+  - '2511.21045'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
+  - '2512.21653'
   open_questions:
   - Can semantic and acoustic pathways be separated without losing timing, style, or speaker cues needed downstream?
 - id: gan_decoders_for_ssl_units
@@ -10993,6 +13317,18 @@ method_families:
   - '2509.11425'
   - '2509.17006'
   - '2509.21968'
+  - '2510.07096'
+  - '2510.09061'
+  - '2510.11124'
+  - '2510.15227'
+  - 2025.findings-emnlp.1394
+  - '2511.10112'
+  - '2511.12074'
+  - '2511.21045'
+  - '2505.17320'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
+  - '2512.21653'
   open_questions:
   - Which adversarial objectives preserve perceptual detail without reintroducing source-speaker leakage?
 - id: flow_matching_with_ssl_conditioning
@@ -11022,6 +13358,8 @@ method_families:
   - interspeech-2025-2684
   - '2509.04072'
   - '2509.24773'
+  - 2025.findings-emnlp.1077
+  - '2511.09995'
   open_questions:
   - Do flow-matching gains persist when SSL layer, decoder capacity, and inference budget are matched?
 - id: vae_and_quantized_ssl_representations
@@ -11046,6 +13384,17 @@ method_families:
   - '2509.15626'
   - '2509.21968'
   - '2509.22167'
+  - '2510.07096'
+  - '2510.09061'
+  - '2510.15227'
+  - 2025.findings-emnlp.1394
+  - '2511.10112'
+  - '2511.16639'
+  - '2505.17320'
+  - '2512.07168'
+  - neurips-2025-7Z3wQSu3mH
+  - '2512.20944'
+  - '2512.21653'
   open_questions:
   - When does quantization improve modelability enough to offset its loss of speaker and acoustic detail?
 - id: diffusion_with_ssl_conditioning
@@ -11062,6 +13411,8 @@ method_families:
   - interspeech-2025-1434
   - '2508.16790'
   - '2411.19770'
+  - '2511.06246'
+  - neurips-2025-RTjr4DnS79
   open_questions:
   - How few denoising steps can preserve the benefits of SSL conditioning in real-time settings?
 reassessment_queue:
@@ -11124,6 +13475,9 @@ open_questions:
   or supervised fine-tuning?
 - What evaluation protocol can measure semantic content, acoustic fidelity, speaker information, robustness, and
   generative usefulness jointly?
+- Can discrete-token SSL match continuous-input representations under noisy and acoustically mismatched conditions?
+- Where should semantic conditioning enter a codec or generator decoder to preserve content without sacrificing
+  acoustic detail?
 trend_notes:
 - SSL speech representations have shifted from recognition-oriented encoders toward core interfaces for generative
   and conversational models.
@@ -11133,3 +13487,7 @@ trend_notes:
   unresolved.
 - Evaluation is moving beyond linear probes toward generation quality, robustness, information leakage, and task-specific
   adaptation behavior.
+- Q4 2025 work increasingly trains directly on discrete codec tokens or uses self-supervised objectives to initialize
+  low-rate tokenizers and general-purpose generation backbones.
+- Semantic representations are increasingly injected into acoustic decoders through explicit bridges, projection
+  layers, or feature-wise conditioning rather than treated as passive auxiliary targets.

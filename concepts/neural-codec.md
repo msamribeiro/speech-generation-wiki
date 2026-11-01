@@ -5,19 +5,19 @@ render_type: overview
 title: Neural Audio Codecs
 aliases: [neural speech codec, speech tokenizer, audio tokenizer, codec tokens]
 status: mature-infrastructure
-last_reviewed: 2026-08-02
-source_digest_date: 2026-07-28
-paper_count: 183
+last_reviewed: 2026-10-31
+source_digest_date: 2026-10-31
+paper_count: 240
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -64,6 +64,13 @@ representations can transfer across languages. Coverage is concentrated in high-
 conditions, while broader task support can reduce specialized quality; “unified” describes the
 interface, not equal competence on every task.
 
+**Robustness now has to be treated as a codec property, not only a decoder property.** Q4 studies
+show degradation across language, bandwidth, noise, sampling rate, and real-versus-synthetic
+audio. Streaming spectrum-domain coding in [[2510.21209|SpecTokenizer]], residual-entropy designs
+in [[2511.22687|PURE Codec]], and anti-aliasing synthesis in [[2512.20211|Aliasing-Free Neural
+Audio Synthesis]] attack different parts of this problem. None establishes one codec that transfers
+uniformly across all shifts.
+
 ## Method Landscape
 
 - **RVQ and vector-quantized codecs** use one or more discrete codebooks for scalable compression.
@@ -89,6 +96,8 @@ interface, not equal competence on every task.
   does not guarantee that listeners or downstream systems benefit.
 - **Universal interface versus task specialization:** TTS, VC, dialogue, music, and reconstruction
   require different invariances and details.
+- **Nominal bitrate versus domain robustness:** very compact streams can look competitive on clean
+  speech while losing their advantage under noise, bandwidth, language, or sampling-rate shift.
 
 ## Open Questions
 
@@ -99,6 +108,8 @@ interface, not equal competence on every task.
 - Can one universal codec remain competitive across speech, music, environments, and non-verbal
   vocalization?
 - How much long-form robustness comes from the tokenizer rather than the generator and aligner?
+- Can ultra-low-rate or single-codebook systems avoid deep residual stacks without erasing detail
+  needed by restoration and discriminative tasks?
 
 ## Go Deeper
 
@@ -108,13 +119,13 @@ and evaluation.
 
 ## Scope
 
-This synthesis covers 183 papers from 2016 through September 2025, including 61 codec-focused
-papers and extensive downstream evidence from TTS, spoken systems, VC, and evaluation. All 17
+This synthesis covers 240 papers from 2016 through Q4 2025, including codec-focused systems and
+extensive downstream evidence from TTS, spoken systems, VC, and evaluation. All 18
 clusters are strongly supported, but comparisons frequently change codec, decoder, generator, data,
 and metric together. Method families overlap because many systems combine vector quantization,
 semantic supervision, adversarial decoding, and continuous generation.
 
 ---
 
-_This page is generated from `wiki/_claims/neural-codec.yaml` (digest date: 2026-07-28).
+_This page is generated from `wiki/_claims/neural-codec.yaml` (digest date: 2026-10-31).
 For complete structured claims and paper-level provenance, use the source YAML._

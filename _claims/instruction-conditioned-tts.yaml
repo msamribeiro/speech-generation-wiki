@@ -1,6 +1,6 @@
 concept: instruction-conditioned-tts
-last_updated: '2026-07-25'
-paper_count: 44
+last_updated: '2026-09-26'
+paper_count: 57
 papers:
 - id: '2305.11000'
   published_date: "2023-05-18"
@@ -3155,10 +3155,996 @@ papers:
     more typologically distant from English or evaluated independently of the conductor/judge model.
   caveats:
   - Instruction or description conditioning is central to the paper's speech-generation contribution.
+- id: '2510.13293'
+  published_date: '2025-10-15'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - direct_prompt_conditioned_speech_lm
+  - guidance_based_instruction_control
+  claims:
+  - claim_id: in_autoregressive_tts_models_classifier_free_guidance_can_be_made_more_e
+    role: supports
+    claim: In autoregressive TTS models, classifier-free guidance can be made more effective at resolving competing
+      conditioning signals by contrasting the target condition against the specific opposing signal rather than
+      against an uninformative unconditional baseline.
+    source: §2.2.1, §4.1, Table 3
+    evidence: CCG-CFG, which substitutes the CFG dropout branch with the text-implied emotion when inconsistency
+      is detected, raises EmoACC over CosyVoice2-CFG at the same nominal guidance-scale setting (e.g., CCG-CFG (H)
+      reaches 64.79% EmoACC vs. 56.40% for CosyVoice2-CFG (H)) while WER is comparable.
+    confidence: high
+    relevance: high
+  - claim_id: increasing_emotional_expressiveness_in_autoregressive_tts_via_inference
+    role: complicates
+    claim: Increasing emotional expressiveness in autoregressive TTS via inference-time guidance amplification tends
+      to trade off against intelligibility and perceived naturalness.
+    source: §4.1, §4.2, Table 3, Table 5
+    evidence: DS-CCG-CFG raises EmoACC to 64.83% over the 50.63% neutral-reference baseline but nearly doubles WER
+      (from 4.61% to 7.86%) and lowers human-rated naturalness (NMOS 3.31) and quality (MOS 3.91) below the unguided
+      baseline (NMOS 3.6, MOS 4.2).
+    confidence: high
+    relevance: high
+  - claim_id: distilling_an_inference_time_guidance_signal_into_a_tts_model_s_weights
+    role: supports
+    claim: Distilling an inference-time guidance signal into a TTS model's weights via preference optimization can
+      recover much of the guidance's expressiveness benefit while removing its synthesis-artifact cost and its two-pass
+      decoding overhead.
+    source: §4.1, §4.2, Table 3, Table 5
+    evidence: DS-CCG-CFG-DPO+EXT. improves EmoACC to 59.55% over the 50.63% baseline while lowering WER to 3.76%
+      (better than the unguided baseline's 4.61%) and achieving the highest human MOS (4.33), NMOS (3.94), and EMOS
+      (3.67) scores of any configuration tested, without requiring inference-time two-pass CFG decoding.
+    confidence: high
+    relevance: high
+  - claim_id: providing_a_target_emotion_reference_audio_clip_to_a_zero_shot_voice_clo
+    role: complicates
+    claim: Providing a target-emotion reference audio clip to a zero-shot voice cloning TTS system, rather than
+      relying on a text-only emotion instruction, can leak style information that inflates apparent natural-language
+      emotion-control performance.
+    source: §4.1, Table 3
+    evidence: CosyVoice2 with Natural Language Emotion Control achieves 65.11% EmoACC when given a rendered-emotion
+      reference clip, dropping to 50.63% when the reference is replaced with a neutral-emotion clip, leading the
+      authors to adopt the neutral-reference condition as the realistic baseline for all subsequent experiments.
+    confidence: high
+    relevance: high
+  limitations:
+  - Human evaluation covers 14 samples, and automated subjective judging depends on proprietary external LLMs.
+  caveats:
+  - Guidance and preference optimization are evaluated with a small listening set and proprietary automatic judges.
+- id: '2510.18308'
+  published_date: '2025-10-21'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  claims:
+  - role: supports
+    claim: Explicit, disentangled conditioning mechanisms for prosodic versus paralinguistic style can match the
+      perceptual quality of LLM-mediated style fusion while substantially reducing model size and inference cost.
+    source: §5.1, §5.3, Table 2, Table 4
+    evidence: ParaStyleTTS reaches I-MOS 4.65 / N-MOS 4.36 versus CosyVoice's I-MOS 4.75 / N-MOS 4.57, while using
+      8x fewer parameters (52.51M vs. 436.05M), running 30x faster (121.2ms vs. 4076.1ms), and needing 2.5x less
+      CUDA memory (763MB vs. 1852MB).
+    claim_id: q4_2510_18308_explicit_disentangled_conditioning_mechanisms_for_prosodic_versus_paralinguistic_style_can_match_the
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Acoustic-centric conditioning that directly grounds text-prompt embeddings in latent speech features
+      produces more robust style control under paraphrased prompts than approaches that route style through an autoregressive
+      language model's semantic interpretation.
+    source: §5.4, Table 6, Figure 3
+    evidence: Under ten semantically equivalent gender-describing prompt variants, ParaStyleTTS preserves 100%/100%
+      male/female classification accuracy while CosyVoice misclassifies 5 of 10 male-prompted samples as female.
+    claim_id: q4_2510_18308_acoustic_centric_conditioning_that_directly_grounds_text_prompt_embeddings_in_latent_speech_features
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Text-prompt-conditioned paralinguistic style control trained on synthetic or category-based captions
+      can still underperform LLM-based systems on raw intelligibility and naturalness, even when it outperforms
+      them on style controllability.
+    source: §5.1, §7, Table 2
+    evidence: ParaStyleTTS trails CosyVoice on both WER (15.29% vs. 10.30%) and MOS (I-MOS 4.65 vs. 4.75; N-MOS
+      4.36 vs. 4.57) despite winning on all three paralinguistic-controllability metrics.
+    claim_id: q4_2510_18308_text_prompt_conditioned_paralinguistic_style_control_trained_on_synthetic_or_category_based_captions
+    confidence: high
+    relevance: high
+  - role: refines
+    claim: Fine-grained per-class evaluation of paralinguistic attribute control (rather than aggregate accuracy
+      alone) reveals that emotion classes with overlapping acoustic correlates, such as happiness and surprise,
+      are systematically harder to disentangle than classes with more distinct acoustic signatures.
+    source: §5.2, Figure 2
+    evidence: t-SNE visualization of emotion embeddings shows clear cluster separation for sad, neutral, and angry,
+      but noticeable overlap between happy and surprise, attributed to both sharing elevated pitch, faster speech
+      rate, and high energy.
+    claim_id: q4_2510_18308_fine_grained_per_class_evaluation_of_paralinguistic_attribute_control_rather_than_aggregate_accuracy
+    confidence: high
+    relevance: high
+  limitations:
+  - The training and evaluation corpus is limited to two languages (English, Chinese), 38 speakers, and only three
+    paralinguistic style dimensions (emotion, age, gender); style-classifier evaluation is performed with the authors'
+    own custom CLAP-based age/gender classifier rather than an independently validated benchmark. The authors acknowledge
+    that ParaStyleTTS still trails CosyVoice on overall intelligibility and subjective naturalness, and note the
+    model currently supports only three paralinguistic style categories, with extension to personality, tone, and
+    energy left to future work *(§7)*. Robustness testing is limited to a single proxy attribute (gender) with ten
+    hand-written phrasing variants; whether the robustness advantage generalizes to other attributes (emotion, age)
+    or to open-ended, unconstrained prompts is not directly tested.
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - description_embedding_style_control
+  caveats:
+  - Prompt robustness is tested narrowly, and the compact system still trails an LLM baseline on intelligibility
+    and naturalness.
+- id: '2510.22588'
+  published_date: '2025-10-26'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - multimodal_spoken_instruction_model
+  - instruction_data_and_annotation_pipeline
+  claims:
+  - role: supports
+    claim: Training data lacking authentic paralinguistic variation constrains spoken dialogue models to homogeneous,
+      expressively flat delivery independent of the underlying architecture.
+    source: §4.2, Table 10
+    evidence: Fine-tuning four dialogue models (SLAM-Omni-0.5B, VocalNet-1B/7B/8B) on a style-annotated dialogue
+      dataset raises instruction-following rate by 14.61-40.09 percentage points relative to the same base models
+      trained only on unstyled dialogue data.
+    confidence: high
+    claim_id: q4_2510_22588_training_data_lacking_authentic_paralinguistic_variation_constrains_spoken_dialogue_mode
+    relevance: high
+  - role: supports
+    claim: Supervised fine-tuning on a style-annotated dialogue dataset can improve fine-grained expressive controllability
+      without degrading general dialogue competence.
+    source: §4.3, Table 5
+    evidence: All four SFT models show simultaneous gains on URO-Bench (Understanding, Reasoning, Oral Conversation;
+      +10.84% average on Basic, +7.87% on Pro) and on stylistic MOS (+29.12% to +42.33% relative).
+    confidence: high
+    claim_id: q4_2510_22588_supervised_fine_tuning_on_a_style_annotated_dialogue_dataset_can_improve_fine_grained_ex
+    relevance: high
+  - role: complicates
+    claim: Fine-grained language-switching control transfers unevenly via supervised fine-tuning, depending on the
+      multilingual pretraining exposure of the underlying LLM backbone.
+    source: §4.2, "Cross-Metric Consistency and Limitations"
+    evidence: LLaMA-backbone models (VocalNet-1B, VocalNet-8B) show a slight MOS decline and near-zero IFR gain
+      on the Language control dimension, while Qwen-backbone models (SLAM-Omni-0.5B, VocalNet-7B) show clear gains
+      on the same dimension and dataset.
+    confidence: high
+    claim_id: q4_2510_22588_fine_grained_language_switching_control_transfers_unevenly_via_supervised_fine_tuning_de
+    relevance: medium
+  - role: supports
+    claim: Fine-grained, style-annotated speech data constructed for dialogue training also generalizes to standalone
+      controllable TTS fine-tuning.
+    source: §4.4, Tables 6-7
+    evidence: Repurposing five of UltraVoice's stylistic dimensions as instruction-speech pairs to fine-tune a pre-trained
+      EmoVoice-0.5B checkpoint reduces in-domain WER from 19.82 to 3.97 while improving MOS and IFR across accent,
+      speed, volume, emotion, and composite dimensions relative to the pre-trained baseline.
+    confidence: high
+    claim_id: q4_2510_22588_fine_grained_style_annotated_speech_data_constructed_for_dialogue_training_also_generali
+    relevance: high
+  - role: complicates
+    claim: Reported "MOS" scores from automatic audio-language-model judges substitute for, rather than replicate,
+      human perceptual evaluation, and should be interpreted as automated-judge scores rather than listening-test
+      outcomes.
+    source: §4.1, "Audio-Language Model (ALM) based Metric"
+    evidence: Both MOS and instruction-following rate are generated by prompting Gemini-2.5-Flash as an automatic
+      evaluator on the audio output, justified only by a cited correlation between such judges and human ratings
+      in prior work, with no human listening test reported in this paper.
+    confidence: high
+    claim_id: q4_2510_22588_reported_mos_scores_from_automatic_audio_language_model_judges_substitute_for_rather_tha
+    relevance: low
+  limitations:
+  - 'Further limitations acknowledged or evident in the paper:'
+  - Language-switching control is unreliable and backbone-dependent, likely because the underlying LLM's multilingual
+    pretraining exposure, not the dataset, is the bottleneck; the authors note the dataset's own multilingual diversity
+    and volume are also limited (three languages, comparatively small sample counts).
+  - 'The dataset is single-turn: each dialogue sample is one instruction-response exchange, with no multi-turn evolution
+    of style within a conversation. The one clear regression observed (SLAM-Omni-0.5B Pro Reasoning on URO-Bench,
+    24.72 → 20.07) is attributed to this single-turn focus limiting complex multi-turn reasoning transfer.'
+  - 'The entire pipeline is fully synthetic: text is generated by GPT-4o and speech by TTS/VC systems (GPT-4o-audio-preview,
+    Edge TTS, CosyVoice-300M), so the paralinguistic variation the dataset provides is itself model-generated rather
+    than drawn from real human speakers, which could bound how much authentic human expressive nuance it can transmit
+    to downstream models.'
+  - Quality filtering relies solely on ASR-based CER and duration thresholds (Whisper-large-v3), which screens for
+    transcription accuracy and length but does not directly verify that the intended style (e.g., correct emotion
+    or accent) was actually rendered in the synthesized audio.
+  caveats:
+  - The style-rich training data are fully synthetic and automatic judges substitute for human listening tests.
+- id: '2511.05516'
+  published_date: '2025-10-26'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - codec
+  architecture:
+  - autoregressive-LM
+  - VAE
+  - flow-matching
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - direct_prompt_conditioned_speech_lm
+  - multimodal_spoken_instruction_model
+  claims:
+  - role: supports
+    claim: A single continuous tokenizer can serve as a unified representation for both speech understanding and
+      generation, avoiding the acoustic detail loss that discrete quantization introduces.
+    source: §4.3.1, Table 2
+    evidence: MingTok-Audio's continuous representation outperforms seven established acoustic tokenizers, including
+      discrete codecs (Mimi, BigCodec, XCodec2.0) and other continuous tokenizers, on PESQ, speaker similarity,
+      and STOI reconstruction metrics under matched conditions.
+    claim_id: q4_2511_05516_a_single_continuous_tokenizer_can_serve_as_a_unified_representation_for_both_speech_unde
+    confidence: high
+    relevance: low
+  - role: supports
+    claim: Freezing a semantic module derived from a pretrained model during large-scale joint pretraining stabilizes
+      representation learning shared across understanding and generation tasks.
+    source: §5.2, Table 5
+    evidence: An ablation that unfreezes the semantic module during pretraining raises average understanding WER
+      from 4.35% to 6.86% and average generation WER from 6.53% to 15.30%, with slower convergence, compared to
+      the frozen baseline.
+    claim_id: q4_2511_05516_freezing_a_semantic_module_derived_from_a_pretrained_model_during_large_scale_joint_pret
+    confidence: high
+    relevance: low
+  - role: complicates
+    claim: Joint training of speech understanding and generation objectives inside one LLM is sensitive to task
+      scheduling and initialization choices because the two task types converge at different rates.
+    source: §5.2, §5.4, Table 5, Table 6
+    evidence: The training recipe uses staged understanding:generation step ratios of 1:3 to 1:6 across pretraining
+      phases, and omitting diffusion-head initialization from a single-task checkpoint degrades average generation
+      WER from 4.43% to 11.33% while leaving understanding WER nearly unchanged.
+    claim_id: q4_2511_05516_joint_training_of_speech_understanding_and_generation_objectives_inside_one_llm_is_sensi
+    confidence: high
+    relevance: low
+  - role: supports
+    claim: Free-form, instruction-guided speech editing without timestamp or region annotation is achievable by
+      combining an autoregressive locate-then-modify chain-of-thought stage with a shared per-token generation head.
+    source: §6.1, §7.3, Table 14
+    evidence: On the proposed Ming-Freeform-Audio-Edit benchmark, the model reaches 79.31% edit accuracy (WER 3.89%)
+      for Chinese insertion and 76.62% accuracy (WER 4.56%) for Chinese substitution using only natural-language
+      instructions and a `[MASK]` token to mark the edit region.
+    claim_id: q4_2511_05516_free_form_instruction_guided_speech_editing_without_timestamp_or_region_annotation_is_ac
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Pitch-domain acoustic editing is harder to preserve speaker identity through than other acoustic edit
+      types in a unified editing model.
+    source: §7.3, Table 14
+    evidence: Pitch alteration yields the lowest speaker-similarity scores among the acoustic editing tasks (SIM
+      0.36 zh / 0.24 en), compared to markedly higher SIM for volume alteration (0.86/0.80) and dialect conversion
+      (0.66), which the authors attribute to target data quality for pitch-shifted audio.
+    claim_id: q4_2511_05516_pitch_domain_acoustic_editing_is_harder_to_preserve_speaker_identity_through_than_other_
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'Speaker similarity on the zero-shot voice-cloning benchmark trails several strong baselines despite leading
+    WER: Ming-UniAudio''s SIM (0.70 zh / 0.58 en) is below Seed-TTS (0.80/0.76) and CosyVoice 3 (0.78/0.72), a trade-off
+    the authors themselves flag as an area for further improvement (§7.2). Free-form semantic editing is evaluated
+    almost entirely with automated WER/ACC/SIM metrics; no human listening test (MOS) results are reported for editing
+    quality specifically, though such tests are reported for the underlying TTS generation task via Seed-TTS-Eval''s
+    standard protocol references. English-language editing performance consistently lags Chinese across semantic
+    tasks, which the authors attribute to a smaller and lower-quality English training set (§7.3). Because most
+    existing open-source speech LLMs lack a comparable free-form, timestamp-free editing capability, the paper''s
+    editing results are validated primarily through internal analysis and the newly introduced benchmark rather
+    than head-to-head comparison against external editing baselines (§7.3).'
+  caveats:
+  - Continuous-token gains are broad but joint training is schedule-sensitive, and voice identity and English editing
+    lag the strongest task-specific systems.
+- id: 2025.emnlp-demos.70
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - multimodal_spoken_instruction_model
+  - instruction_data_and_annotation_pipeline
+  claims:
+  - role: supports
+    claim: Competitive empathetic spoken conversational agent performance can be achieved with substantially less
+      training data than resource-intensive proprietary systems, when combined with a targeted automated data construction
+      pipeline.
+    source: §4.1, Table 2
+    evidence: OpenS2S is competitive with several larger closed systems on VoiceBench and URO-Bench while using
+      a targeted bilingual empathetic-data pipeline, although Kimi-Audio remains stronger overall.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_competitive_empathetic_spoken_conversational_agent_performance_can_be_achieved_with_subs
+    relevance: medium
+  - role: supports
+    claim: Automated synthesis of empathetic speech dialogue data using LLMs for content generation and controllable
+      TTS for speech rendering provides a scalable alternative to large-scale human annotation in building spoken
+      conversational agent training corpora.
+    source: §3.2
+    evidence: The pipeline generates 50,000 English and 50,000 Chinese empathetic speech instruction-response pairs
+      using an LLM plus controllable zero-shot TTS.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_automated_synthesis_of_empathetic_speech_dialogue_data_using_llms_for_content_generation
+    relevance: high
+  - role: supports
+    claim: Interleaved decoding, where speech tokens are generated in fixed-ratio bursts relative to consumed LLM
+      hidden states, enables streaming speech generation in end-to-end spoken conversational agents without a separate
+      parallel decoding module.
+    source: §2.1
+    evidence: The decoder consumes four LLM hidden states and emits eight speech tokens per step before chunk-aware
+      causal flow reconstruction.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_interleaved_decoding_where_speech_tokens_are_generated_in_fixed_ratio_bursts_relative_to
+    relevance: low
+  - role: supports
+    claim: Open-source release of training data and code for empathetic spoken conversational agents remains rare,
+      despite broad availability of model weights across the ecosystem.
+    source: §1, Table 1
+    evidence: The comparison table identifies OpenS2S as releasing training data, pretraining and fine-tuning code,
+      and model weights while the compared systems release only subsets.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_open_source_release_of_training_data_and_code_for_empathetic_spoken_conversational_agent
+    relevance: low
+  limitations:
+  - Performance still trails Kimi-Audio on all evaluated benchmarks; the data volume gap (less data = lower ceiling)
+    is acknowledged.
+  - The model simulates empathy through learned associations rather than cognitive understanding; subtle emotional
+    nuances may be missed.
+  - Output speech emotion is constrained to a fixed young-female voice for all responses in the current SFT dataset,
+    limiting response speaker diversity.
+  - Cultural and cross-linguistic empathy variation is not addressed; the model may exhibit culturally specific
+    empathetic patterns.
+  - No human subjective evaluation of speech naturalness (MOS) is reported; evaluation is benchmark-based.
+  - Potential bias inheritance from the underlying Qwen3-32B-Instruct data is unanalyzed.
+  caveats:
+  - Open-source empathetic dialogue performance remains below the strongest closed system, uses a fixed response
+    voice, and lacks human listening evaluation.
+- id: 2025.emnlp-main.180
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - description_embedding_style_control
+  - instruction_data_and_annotation_pipeline
+  claims:
+  - claim_id: rich_abstract_style_descriptions_improve_the_consistency_and_naturalness_of
+    role: supports
+    claim: Rich abstract style descriptions improve the consistency and naturalness of prompt-conditioned expressive
+      speech synthesis.
+    source: §5, Table 3
+    evidence: ParaSpeechCaps Scaled outperforms simpler caption and prompt baselines in the paper's crowdsourced
+      style-consistency and naturalness evaluation.
+    confidence: high
+    relevance: high
+  - claim_id: a_speech_similarity_representation_can_retrieve_perceptually_matching_voices
+    role: supports
+    claim: A speech-similarity representation can retrieve perceptually matching voices more effectively than a
+      conventional speaker-verification embedding.
+    source: §4, Table 2
+    evidence: VoxSim obtains 50.3 recall in the intrinsic retrieval evaluation versus 45.3 for the speaker-verification
+      baseline.
+    confidence: high
+    relevance: medium
+  - claim_id: situational_context_paralinguistic_description_and_speaker_description_make
+    role: supports
+    claim: Situational context, paralinguistic description, and speaker description make complementary contributions
+      to expressive-speech captioning.
+    source: §5, ablation study
+    evidence: Removing each stage of the three-stage captioning pipeline reduces retrieval recall, indicating that
+      no single description component substitutes for the others.
+    confidence: high
+    relevance: high
+  - claim_id: greater_style_fidelity_in_expressive_synthesis_can_coincide_with_worse_intel
+    role: complicates
+    claim: Greater style fidelity in expressive synthesis can coincide with worse intelligibility, so naturalness
+      and content accuracy must be evaluated separately.
+    source: §5, Table 3
+    evidence: The more expressive ParaSpeechCaps Scaled system records WER 8.63 compared with 4.47 for a less expressive
+      baseline while improving style-oriented human judgments.
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_expressive_style_evaluation_still_depends_heavily_on_costly_hum
+    role: complicates
+    claim: Fine-grained expressive-style evaluation still depends heavily on costly human judgments because automatic
+      metrics do not cover attributes such as accent, slurring, and emotion reliably.
+    source: §5, Limitations
+    evidence: The paper evaluates style consistency through crowdsourced judgments on 246 examples and identifies
+      the absence of adequate automatic style metrics as a limitation.
+    confidence: high
+    relevance: high
+  limitations:
+  - The human study uses a 246-sample in-domain holdout, and its crowdsourced style judgments may inherit demographic
+    and annotation biases.
+  caveats:
+  - Style fidelity is shown on an in-domain holdout and still trades against intelligibility, with fine-grained
+    judgment relying on humans.
+- id: 2025.emnlp-main.40
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - diffusion
+  - GAN
+  - VAE
+  - transformer-enc-dec
+  - hybrid
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - instruction_following_benchmark_and_audit
+  claims:
+  - claim_id: instruction_guided_control_via_natural_language_while_the_most_expressive_tts_control_paradigm_remai
+    role: supports
+    claim: Instruction-guided control via natural language, while the most expressive TTS control paradigm, remains
+      the least mature, with no standardized evaluation protocol across systems.
+    source: §3.2.4, §4.2
+    evidence: The survey identifies PromptTTS, InstructTTS, VoxInstruct, and ControlSpeech as flexible instruction-guided
+      systems but finds no standardized cross-system evaluation protocol.
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_simultaneous_control_over_multiple_speech_attributes_emotion_prosody_timbre_is_not_reli
+    role: supports
+    claim: Fine-grained simultaneous control over multiple speech attributes (emotion, prosody, timbre) is not reliably
+      achieved by any existing single system, representing a fundamental open problem in controllable TTS.
+    source: §5.1
+    evidence: Across the systems surveyed, no single model reliably controls emotion, prosody, and timbre simultaneously
+      at fine granularity.
+    confidence: high
+    relevance: high
+  - claim_id: the_absence_of_a_benchmark_that_jointly_measures_naturalness_intelligibility_speaker_similarity_and
+    role: complicates
+    claim: The absence of a benchmark that jointly measures naturalness, intelligibility, speaker similarity, and
+      controllability accuracy prevents systematic progress comparison across control strategies.
+    source: §4.2, §5.1
+    evidence: The surveyed literature uses separate MOS, WER, speaker-similarity, and controllability measures rather
+      than one benchmark covering all four dimensions.
+    confidence: high
+    relevance: high
+  - claim_id: the_field_has_undergone_a_structural_shift_from_non_autoregressive_acoustic_models_toward_autoregres
+    role: supports
+    claim: The field has undergone a structural shift from non-autoregressive acoustic models toward autoregressive
+      codec language models and flow-matching systems, driven by improvements in zero-shot speaker generalization
+      and natural language control.
+    source: §3.1.3
+    evidence: The survey documents a transition from non-autoregressive acoustic models toward autoregressive codec
+      language models and flow/diffusion systems associated with stronger zero-shot and natural-language control.
+    confidence: high
+    relevance: medium
+  - claim_id: datasets_with_comprehensive_multi_attribute_annotations_covering_emotion_speaker_identity_prosody_an
+    role: complicates
+    claim: Datasets with comprehensive multi-attribute annotations covering emotion, speaker identity, prosody,
+      and style simultaneously remain scarce, constituting a practical bottleneck for developing fully controllable
+      TTS systems.
+    source: §4.1, §5.1
+    evidence: The dataset review finds that most corpora annotate either emotion or speaker identity rather than
+      comprehensive combinations of emotion, identity, prosody, and style.
+    confidence: high
+    relevance: high
+  limitations:
+  - Coverage cuts off around late 2024/early 2025; systems from mid-2025 onward (Qwen3-TTS, Marco-Voice, DiSTAR,
+    etc.) are not included. The survey focuses on single-attribute controllability; multi-attribute simultaneous
+    control is noted as an open problem but not quantitatively evaluated. Robustness to out-of-distribution prompts
+    and long-form synthesis are identified as challenges without proposed solutions. The awesome-controllable-speech-synthesis
+    GitHub list is maintained as a living update mechanism.
+  caveats:
+  - Interpret the evaluation evidence within the paper's stated dataset, language, model, and judge scope; broader
+    generalization is not established.
+- id: 2025.findings-emnlp.1381
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  - VC
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - description_embedding_style_control
+  - prompt_conditioned_identity_and_privacy
+  claims:
+  - claim_id: q4_2025_findings_emnlp_1381_a_frozen_zero_shot_tts_vc_backbone_whose_semantic_tokens_already_separat
+    role: supports
+    claim: A frozen zero-shot TTS/VC backbone whose semantic tokens already separate content and prosody from speaker
+      identity can be repurposed as a general-purpose speaker-control interface for modalities the backbone was
+      never trained on, by learning only a lightweight adapter that produces a compatible speaker embedding.
+    source: §5.2, Table 2
+    evidence: Freezing CosyVoice's LLM and CFM while training only the MVA adapter allows the system to accept face,
+      text, and attribute-edit conditioning while matching or exceeding CosyVoice-Instruct's own speech quality
+      (MOS-Nat) on the text-conditioned task.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_aligning_heterogeneous_conditioning_modalities_to_a_shared_speaker_embed
+    role: supports
+    claim: Aligning heterogeneous conditioning modalities to a shared speaker-embedding space through a common set
+      of learnable key-value vectors, rather than training separate pairwise alignment models per modality, improves
+      both how well the generated voice matches the intended description and how diverse the resulting voices are.
+    source: §5.3, Table 3
+    evidence: Ablating the KV-Former-based MVA reduces SST and SSC and increases SSD (worse diversity) across FaceTTS
+      and FaceVC compared to the full system.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_injecting_a_non_reference_derived_speaker_embedding_into_a_flow_matching
+    role: complicates
+    claim: Injecting a non-reference-derived speaker embedding into a flow-matching TTS backbone that was originally
+      trained with a strong reference-audio (Mel-spectrogram) prompt is undermined by the backbone's tendency to
+      keep leaking speaker identity from the semantic-token stream unless an explicit disentangling training stage
+      is added.
+    source: §5.3, Table 3; §A.3
+    evidence: Without the self-distillation fine-tuning stage, SST drops substantially on both the FaceTTS-style
+      ablation split and the VC task (e.g., 39.37% to 31.07% for VC), and a preliminary experiment integrating face
+      embeddings directly into an unmodified CosyVoice CFM produced almost no speaker conversion at all (SSIM ≈
+      4.8).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_multimodal_one_to_many_voice_description_modalities_such_as_face_images
+    role: complicates
+    claim: Multimodal, one-to-many voice-description modalities such as face images or short text descriptions carry
+      substantially coarser speaker information than a Mel-spectrogram prompt derived from real reference audio,
+      so systems built on this kind of conditioning should be expected to under-perform true voice-cloning quality
+      even when the alignment mechanism itself is effective.
+    source: §A.1, Table 5
+    evidence: Comparing CFM speaker control with and without the Mel-spectrogram prompt on zero-shot voice conversion
+      shows the Mel-spectrogram prompt carries substantially more voice information than the speaker embedding alone,
+      motivating the paper's own framing of coarse speaker embeddings as sufficient only as an alignment anchor.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_a_soft_distribution_matching_contrastive_objective_that_treats_within_mo
+    role: supports
+    claim: A soft, distribution-matching contrastive objective that treats within-modality (e.g., speech-to-speech)
+      similarity as a soft target for cross-modal similarity, rather than enforcing hard one-to-one contrastive
+      pairs, better handles the natural one-to-many correspondence between a voice-description modality and plausible
+      voice identities.
+    source: §5.3, Table 3
+    evidence: Removing SoftCL (leaving only standard flow-matching training of the MVA) degrades SST, SSD, and SSC
+      across every ablated task, with the largest effect on edge-case speakers such as elderly or very young faces
+      defaulting to young-adult-sounding voices.
+    confidence: high
+    relevance: high
+  limitations:
+  - Limited multimodal paired data and photographic-face-only evaluation constrain generalization to new descriptions,
+    identities, and visual styles.
+  caveats:
+  - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+    included but are marked accordingly.
+- id: '2511.03601'
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - direct_prompt_conditioned_speech_lm
+  - structured_intermediate_control
+  - guidance_based_instruction_control
+  claims:
+  - claim_id: q4_2511_03601_data_driven_contrastive_pair_construction_with_margin_filtering_can_subs
+    role: supports
+    claim: Data-driven contrastive pair construction with margin filtering can substitute for explicit representation-level
+      disentanglement mechanisms (adversarial training, factorized encoders) as a route to independent attribute
+      control in speech generation.
+    source: §3.1.2, §1
+    evidence: Emotion/style triplets are built by zero-shot cloning the same speaker's neutral vs. target-attribute
+      prompt, filtered by a margin-scoring model with a universal minimum score of 6/10, and produce accurate attribute
+      editing without any auxiliary disentanglement module or adversarial loss.
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2511_03601_reformulating_attribute_editing_as_multiple_iterative_regeneration_passe
+    role: supports
+    claim: Reformulating attribute editing as multiple iterative regeneration passes over the same audio increases
+      control strength beyond what a single generation pass achieves.
+    source: §5.2.1, Table 1
+    evidence: Average emotion accuracy on the benchmark rises from 55.0 (Iter0) to 71.0 (Iter3) and speaking-style
+      accuracy from 44.6 to 66.2, with the gain persisting under a prompt-audio-fixed ablation that isolates the
+      iterative token-editing effect from prompt changes.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_03601_token_level_reward_modeling_on_discrete_audio_codec_sequences_bypassing
+    role: supports
+    claim: Token-level reward modeling on discrete audio codec sequences, bypassing waveform decoding during reward
+      computation, is a viable strategy for applying RLHF to speech generation, including editing tasks with large
+      source-target attribute divergence.
+    source: §4.2
+    evidence: A Bradley-Terry reward model trained directly on dual-codebook token pairs (no audio decoder needed
+      for scoring) is used for PPO fine-tuning, which the authors report most noticeably improves stability and
+      expressiveness on cases such as generating sad speech from a happy prompt or whispered speech from loud input.
+    confidence: medium
+    relevance: medium
+  - claim_id: q4_2511_03601_systems_that_implement_attribute_editing_as_full_sequence_conditional_re
+    role: complicates
+    claim: Systems that implement attribute editing as full-sequence conditional regeneration rather than localized
+      token editing face a trade-off between control strength and precise preservation of unedited content.
+    source: §7
+    evidence: The authors note their editing process "is not strictly conventional editing... it functions as a
+      form of conditional regeneration or transfer," and propose a separate, only briefly described mask-based reconstruction
+      approach for tasks requiring partial modification while preserving the rest of the sequence.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Editing is full-sequence regeneration rather than localized modification, and proprietary data plus an unvalidated
+    LLM judge limit reproducibility.
+  caveats:
+  - Full-sequence regeneration strengthens attribute editing but weakens preservation of untargeted content, and
+    evaluation depends partly on an unvalidated LLM judge.
+- id: '2511.11104'
+  published_date: '2025-11-14'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - structured_intermediate_control
+  - instruction_following_benchmark_and_audit
+  claims:
+  - claim_id: q4_2511_11104_retrieval_based_selection_of_speech_prompts_guided_jointly_by_an_accent
+    role: supports
+    claim: Retrieval-based selection of speech prompts, guided jointly by an accent-confidence score and text-content
+      similarity, substantially improves accent fidelity in zero-shot instruction-guided TTS compared to selecting
+      prompts without such signals.
+    source: §III-B.3, Table I
+    evidence: In the ablation, accent accuracy rises from 45.6% (no accent or text-similarity signal in prompt selection)
+      to 61.74% once accent-confidence-guided selection is added, a roughly 16-point gain before any text adaptation
+      is applied.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_11104_jointly_adapting_the_input_text_toward_the_target_dialect_on_top_of_acce
+    role: supports
+    claim: Jointly adapting the input text toward the target dialect on top of accent-consistent prompt retrieval
+      yields a further, though comparatively smaller, gain in accent fidelity beyond acoustic conditioning alone.
+    source: §III-B.3, Table I
+    evidence: Adding GPT-adapted text on top of accent-score-guided RAAP raises accent accuracy from 61.74% to 63.36%
+      (about 1.6 points), a smaller increment than the gain contributed by retrieval-based prompt selection itself;
+      NISQA quality is not harmed by the addition (4.25 to 4.31).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_11104_instruction_guided_zero_shot_tts_backbones_trained_on_accent_imbalanced
+    role: complicates
+    claim: Instruction-guided zero-shot TTS backbones trained on accent-imbalanced data exhibit strong, statistically
+      significant bias toward majority accents that persists even when explicit contrary accent instructions are
+      given, and an input-side mitigation framework can reduce but not eliminate this bias for some accents.
+    source: §III-D, Table II/VII
+    evidence: A binomial test against a 1/12 random-chance baseline shows the CosyVoice2 backbone has extreme, consistent
+      bias toward US/CA accents across all ten tested non-US/CA accents (p as low as 3.6e-67); CLARITY's mitigation
+      lowers the bias substantially but remains statistically significant for Chinese, Spanish, Korean, and Portuguese
+      accents.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_11104_automatic_accent_classifiers_used_both_to_drive_retrieval_based_conditio
+    role: complicates
+    claim: Automatic accent classifiers used both to drive retrieval-based conditioning and to evaluate accent fidelity
+      are less reliable for accents that are phonetically or prosodically close to other accent groups, which limits
+      both the conditioning signal quality and the trustworthiness of the resulting evaluation.
+    source: §Appendix B.1, Fig. 10
+    evidence: The fine-tuned ECAPA-TDNN accent classifier reaches 89-99% accuracy for Indian, Singaporean, and British
+      accents but drops to 50-59% for Japanese, Chinese, and Portuguese accents, with confusion concentrated within
+      phonetically related regional clusters (East Asian, North American, European).
+    confidence: medium
+    relevance: high
+  limitations:
+  - Small listening panels, residual majority-accent bias, and uneven accent-classifier quality limit the strength
+    and fairness of the conclusions.
+  caveats:
+  - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+    included but are marked accordingly.
+- id: '2511.18487'
+  published_date: 2025-11-23
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - description_embedding_style_control
+  claims:
+  - claim_id: natural_language_instruction_conditioning_can_control_timbre_and_paralinguis
+    role: supports
+    claim: Natural-language instruction conditioning can control timbre and paralinguistic attributes of synthesized
+      speech at accuracy competitive with or exceeding reference-audio-dependent methods, without requiring a reference
+      audio input.
+    source: §3.3, Table 2
+    evidence: Against CosyVoice2 (which needs reference audio for gender/age control), InstructAudio achieves 100%
+      gender and 86.67% age classification control accuracy using text-only instructions, and outperforms CosyVoice2
+      on emotion (83.33% vs. 58.33%) and style (86.67% vs. 65%) control accuracy that CosyVoice2 does support.
+    confidence: high
+    relevance: high
+  - claim_id: conditioning_speech_synthesis_on_text_only_instructions_rather_than_referenc
+    role: complicates
+    claim: Conditioning speech synthesis on text-only instructions rather than reference audio introduces one-to-many
+      mapping ambiguity that reduces perceived naturalness relative to audio-prompted systems.
+    source: §3.3, §3.4, Table 2
+    evidence: InstructAudio's NMOS (3.46) trails CosyVoice2's NMOS (3.65) despite InstructAudio outperforming CosyVoice2
+      on nearly every objective control, similarity, and distortion metric; the authors attribute the naturalness
+      gap to the information loss inherent in text-only conditioning versus reference-audio conditioning.
+    confidence: high
+    relevance: high
+  - claim_id: a_single_instruction_conditioned_architecture_can_jointly_serve_speech_and_m
+    role: supports
+    claim: A single instruction-conditioned architecture can jointly serve speech and music generation at competitive
+      quality in both domains, without requiring task-specific architectural branches or per-task fine-tuning.
+    source: §3.3, Tables 1 and 3
+    evidence: Trained jointly on 50K hours of speech and 20K hours of music using one standardized instruction-phoneme
+      input format and one MM-DiT model, InstructAudio achieves the best SongEval scores across all five evaluated
+      dimensions against dedicated TTM systems (DiffRhythm+, ACE-Step) while simultaneously achieving the lowest
+      Seed-TTS WER among compared TTS systems, despite using less total training data than the largest single-task
+      baselines.
+    confidence: high
+    relevance: medium
+  - claim_id: constraining_audio_clip_length_to_enable_joint_training_across_generation_do
+    role: complicates
+    claim: Constraining audio clip length to enable joint training across generation domains with different natural
+      durations limits the applicability of the resulting model to long-form generation in either domain.
+    source: §3.2, §3.4
+    evidence: To align speech and music training, clips are capped at 5–20 seconds; this disadvantages the TTM comparison
+      against DiffRhythm+, which is optimized for full-length song generation and does not natively support outputs
+      under 90 seconds, requiring the authors to generate longer sequences and truncate them for the evaluation,
+      which they acknowledge "may introduce evaluation bias."
+    confidence: high
+    relevance: low
+  limitations:
+  - Professional listening tests use proprietary datasets and test sets, and baseline-access differences may bias
+    comparisons.
+  caveats:
+  - Text-only emotion and style instructions improve control but introduce one-to-many ambiguity and lower naturalness
+    than audio prompting.
+- id: '2512.09504'
+  published_date: '2025-12-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - description_embedding_style_control
+  - guidance_based_instruction_control
+  claims:
+  - claim_id: q4_2512_09504_combining_multi_task_attribute_supervision_with_contrastive_audio_text_a
+    role: supports
+    claim: Combining multi-task attribute supervision with contrastive audio-text alignment in a style encoder yields
+      stronger downstream style control than contrastive alignment alone.
+    source: §4.3.2, Table 2
+    evidence: Removing multi-task supervision (keeping only the contrastive loss) drops emotion control accuracy
+      from 0.64 to 0.54 and energy accuracy from 0.85 to 0.80, while speaker similarity and WER change negligibly.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_09504_distilling_acoustic_semantic_features_from_a_pretrained_asr_encoder_into
+    role: supports
+    claim: Distilling acoustic-semantic features from a pretrained ASR encoder into intermediate diffusion-transformer
+      layers can improve TTS intelligibility with little effect on style or speaker control.
+    source: §4.3.2, Table 2
+    evidence: Removing Whisper-based representation alignment (REPA) raises WER from 0.038 to 0.046, while style-accuracy
+      and speaker-similarity metrics remain nearly unchanged, and REPA is reported to reach intelligible speech
+      earlier in training.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2512_09504_hierarchical_condition_dropout_during_classifier_free_guidance_training
+    role: supports
+    claim: Hierarchical condition dropout during classifier-free guidance training enables each conditioning attribute's
+      guidance strength to be tuned independently at inference, rather than a single scale strengthening all conditions
+      together.
+    source: §4.3.3, Figure 2
+    evidence: Independently varying the speaker or style guidance scale from 6.0 to 21.0 produces a corresponding
+      upward trend in speaker similarity or emotion accuracy respectively, without requiring joint adjustment of
+      the other attributes' guidance scales.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_09504_per_attribute_guidance_decomposition_does_not_fully_eliminate_cross_attr
+    role: complicates
+    claim: 'Per-attribute guidance decomposition does not fully eliminate cross-attribute interaction: pushing a
+      single attribute''s guidance scale too high still degrades overall naturalness and can slightly reduce accuracy
+      on attributes not being adjusted.'
+    source: §4.3.3
+    evidence: Excessively high guidance scales were observed to introduce over-conditioning that degrades naturalness
+      and can slightly reduce the non-target attribute's accuracy, even under chained CFG's nominal per-attribute
+      decomposition.
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2512_09504_choice_of_style_prompting_modality_audio_vs_descriptive_text_trades_off
+    role: complicates
+    claim: Choice of style-prompting modality (audio vs. descriptive text) trades off stability of attribute control
+      against perceived naturalness, rather than one modality dominating the other.
+    source: §4.3.1, Table 1
+    evidence: Text-prompted synthesis gives more stable, generally higher style-attribute accuracy, while audio-prompted
+      synthesis gives higher naturalness MOS (3.82 vs. 3.73), attributed to audio carrying richer prosodic and acoustic
+      information than discrete text labels.
+    confidence: high
+    relevance: high
+  limitations:
+  - A small Chinese dataset and discrete style labels leave multilingual, dynamic-style, and large-scale speaker-fidelity
+    behavior unresolved.
+  caveats:
+  - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+    included but are marked accordingly.
+- id: '2512.23808'
+  published_date: '2025-12-29'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - GAN
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: influential
+  method_family:
+  - direct_prompt_conditioned_speech_lm
+  - multimodal_spoken_instruction_model
+  claims:
+  - role: supports
+    claim: Scaling next-token-prediction pretraining on massive-scale, information-preserving speech data induces
+      few-shot in-context learning capabilities for tasks entirely absent from the training data, emerging as a
+      sharp, non-linear phase transition at a specific data-scale threshold rather than through gradual improvement.
+    source: §3.4, Figure 1
+    evidence: Performance on 5-shot SpeechMMLU (T2S/S2S) and 16-shot voice conversion and speech-to-speech translation
+      remains near zero until pretraining data crosses approximately 0.7 trillion tokens, after which it undergoes
+      a sharp non-linear surge before stabilizing, tracked directly across the pretraining trajectory rather than
+      measured only at a final checkpoint.
+    confidence: high
+    claim_id: q4_2512_23808_scaling_next_token_prediction_pretraining_on_massive_scale_information_preserving_speech
+    relevance: medium
+  - role: supports
+    claim: An audio tokenizer that jointly optimizes semantic alignment and acoustic reconstruction fidelity, trained
+      at sufficient scale from scratch rather than distilled from a separate pretrained semantic model, can close
+      the modality gap between speech and text performance in a downstream language model more effectively than
+      prior semantic-distillation or dual-encoder tokenizer designs.
+    source: §2.1.3, §3.4, Table 1, Table 6
+    evidence: MiMo-Audio's modality gap (the difference between text-to-text and speech-to-speech SpeechMMLU scores)
+      is 3.4 points, versus 22.3 points for Step-Audio2-mini-base, 39.2 for Baichuan-Audio-base, and 58.9 for Kimi-Audio-base,
+      while MiMo-Audio-Tokenizer also achieves the best reconstruction fidelity (PESQ, STOI, speaker similarity)
+      among six compared tokenizers on the exact codebooks used for downstream modeling.
+    confidence: high
+    claim_id: q4_2512_23808_an_audio_tokenizer_that_jointly_optimizes_semantic_alignment_and_acoustic_reconstruction
+    relevance: low
+  - role: supports
+    claim: A single unified audio-language model can be trained to follow complex natural-language style-control
+      instructions for text-to-speech synthesis well enough to outperform a specialized closed-source instruction-following
+      TTS system on its own benchmark.
+    source: §4.4, Table 9
+    evidence: MiMo-Audio-7B-Instruct outperforms GPT-4o-mini-tts on the InstructTTSEval benchmark in both English
+      (72.59 vs. 68.50 overall) and Chinese (70.52 vs. 51.07 overall).
+    confidence: high
+    claim_id: q4_2512_23808_a_single_unified_audio_language_model_can_be_trained_to_follow_complex_natural_language_
+    relevance: high
+  - role: complicates
+    claim: Introducing an explicit chain-of-thought "thinking" mechanism into an audio-language model does not uniformly
+      improve audio understanding; it can help speech-specific reasoning while degrading performance on non-speech
+      audio domains due to hallucination during the thinking process.
+    source: §6, Limitations and Future Work
+    evidence: The authors report that enabling thinking yields performance improvements exclusively on speech-related
+      understanding tasks while inducing degradation on sound and music understanding tasks, attributed in failure-case
+      analysis to hallucinations introduced during the thinking process.
+    confidence: high
+    claim_id: q4_2512_23808_introducing_an_explicit_chain_of_thought_thinking_mechanism_into_an_audio_language_model
+    relevance: low
+  limitations:
+  - As a single-lab industry technical report without independent third-party replication, its SOTA and "GPT-3 moment"
+    claims rest on the authors' own benchmark selection, evaluation protocol, and baseline reproduction. Several
+    less-automatable capabilities (general speech-to-speech task generalization, speech continuation quality for
+    singing, debate, and talk-show scenarios) are demonstrated only via qualitative demo-page samples rather than
+    quantitative metrics in the paper itself. Standard ASR and TTS results (LibriSpeech, AISHELL-1, Seed-TTS-Eval)
+    are reported as competitive with, but not consistently superior to, existing open-source systems like Step-Audio2-mini
+    and Kimi-Audio-Instruct, indicating the model's primary advantage lies in generalization breadth and instruction-following
+    rather than uniformly leading on every conventional metric.
+  caveats:
+  - The reported few-shot phase transition and broad benchmark gains come from one lab without independent replication;
+    spoken dialogue still shows timbre, quality, pronunciation, and prompt-following instability.
 claim_clusters:
 - id: natural_language_prompts_enable_multidimensional_style_control
-  claim: Natural-language instructions can control multiple speech attributes within one synthesis system, including emotion,
-    accent, speaking rate, prosody, and vocal identity.
+  claim: Natural-language instructions can control multiple speech attributes within one synthesis system, including
+    emotion, accent, speaking rate, prosody, and vocal identity.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -3170,17 +4156,30 @@ claim_clusters:
   - interspeech-2025-0203
   - interspeech-2025-0948
   - 2025.clicit-1.27
+  - '2510.13293'
+  - '2510.18308'
+  - 2025.emnlp-main.180
+  - 2025.findings-emnlp.1381
+  - '2511.18487'
+  - '2512.09504'
+  - '2512.23808'
   contradicting_papers: []
   refining_papers:
   - '2506.16381'
   - '2509.13989'
+  - '2510.13293'
+  - '2510.18308'
+  - 2025.emnlp-main.180
+  - 2025.findings-emnlp.1381
+  - '2511.18487'
+  - '2512.09504'
   caveats:
-  - Control accuracy varies sharply by attribute and instruction abstraction; success on emotion or rate does not imply reliable
-    control of age, timbre, non-verbal events, or local emphasis.
-  last_reviewed: '2026-07-25'
+  - Control accuracy varies sharply by attribute and instruction abstraction; success on emotion or rate does not
+    imply reliable control of age, timbre, non-verbal events, or local emphasis.
+  last_reviewed: '2026-09-26'
 - id: small_instruction_finetuning_adapts_pretrained_tts
-  claim: Instruction fine-tuning can add useful controllability to a pretrained speech generator with substantially less data
-    than full pretraining.
+  claim: Instruction fine-tuning can add useful controllability to a pretrained speech generator with substantially
+    less data than full pretraining.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -3188,13 +4187,14 @@ claim_clusters:
   - '2409.03283'
   - '2501.06282'
   - interspeech-2025-2679
+  - '2510.22588'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.681
   caveats:
-  - Small-data adaptation is demonstrated for bounded domains or attribute sets; diverse instruction tuning can reduce performance
-    on foundational tasks.
-  last_reviewed: '2026-07-25'
+  - Small-data adaptation is demonstrated for bounded domains or attribute sets; diverse instruction tuning can
+    reduce performance on foundational tasks.
+  last_reviewed: '2026-09-26'
 - id: instruction_diversity_improves_generalization
   claim: Diverse, fine-grained instruction supervision generalizes better than narrow templates or single-task instruction
     corpora.
@@ -3205,15 +4205,21 @@ claim_clusters:
   - 2025.acl-long.681
   - 2025.findings-acl.534
   - '2509.24570'
+  - '2510.18308'
+  - '2510.22588'
+  - 2025.emnlp-main.180
+  - '2512.23808'
   contradicting_papers: []
   refining_papers:
   - '2409.06666'
+  - '2510.22588'
+  - 2025.emnlp-main.180
   caveats:
   - Instruction diversity is often confounded with dataset scale, source-domain diversity, and filtering quality.
-  last_reviewed: '2026-07-25'
+  last_reviewed: '2026-09-26'
 - id: automatic_instruction_data_construction_scales_supervision
-  claim: Automatic labeling, LLM captioning or rewriting, and synthetic-speech pipelines can scale instruction-speech supervision
-    beyond manual annotation.
+  claim: Automatic labeling, LLM captioning or rewriting, and synthetic-speech pipelines can scale instruction-speech
+    supervision beyond manual annotation.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -3223,16 +4229,19 @@ claim_clusters:
   - 2025.findings-acl.1226
   - 2025.findings-acl.534
   - '2509.24570'
+  - '2510.22588'
+  - 2025.emnlp-demos.70
+  - 2025.emnlp-main.180
   contradicting_papers: []
   refining_papers:
   - 2025.findings-acl.687
   caveats:
-  - Automatically generated labels inherit classifier, LLM, TTS, and voice-conversion errors; several studies do not isolate
-    scale from annotation quality.
-  last_reviewed: '2026-07-25'
+  - Automatically generated labels inherit classifier, LLM, TTS, and voice-conversion errors; several studies do
+    not isolate scale from annotation quality.
+  last_reviewed: '2026-09-26'
 - id: structured_intermediates_decouple_interpretation_and_rendering
-  claim: Explicit intermediate representations can decouple instruction interpretation from speech rendering and make controllability
-    more modular.
+  claim: Explicit intermediate representations can decouple instruction interpretation from speech rendering and
+    make controllability more modular.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -3241,16 +4250,19 @@ claim_clusters:
   - 2025.findings-acl.1226
   - '2505.17093'
   - '2509.26514'
+  - '2511.05516'
+  - '2511.03601'
+  - '2511.11104'
   contradicting_papers: []
   refining_papers:
   - '2508.17494'
   caveats:
-  - 'The best representation is unsettled: free-form descriptions are accessible, while categorical, SSML, and numerical plans
-    are usually more precise.'
-  last_reviewed: '2026-07-25'
+  - 'The best representation is unsettled: free-form descriptions are accessible, while categorical, SSML, and numerical
+    plans are usually more precise.'
+  last_reviewed: '2026-09-26'
 - id: global_embeddings_limit_local_and_compositional_control
-  claim: Global style embeddings are insufficient for instructions that specify local timing, linguistic position, or independently
-    composable acoustic attributes.
+  claim: Global style embeddings are insufficient for instructions that specify local timing, linguistic position,
+    or independently composable acoustic attributes.
   status: emerging
   confidence: medium
   supporting_papers:
@@ -3260,13 +4272,15 @@ claim_clusters:
   refining_papers:
   - 2025.acl-long.346
   - '2509.24570'
+  - '2511.03601'
+  - '2512.09504'
   caveats:
-  - Evidence comes from different tasks and representation families, so the boundary between embedding limitations and training-data
-    limitations is not yet isolated.
-  last_reviewed: '2026-07-25'
+  - Evidence comes from different tasks and representation families, so the boundary between embedding limitations
+    and training-data limitations is not yet isolated.
+  last_reviewed: '2026-09-26'
 - id: style_and_timbre_control_remain_entangled
-  claim: Instruction-driven style changes can unintentionally alter speaker identity unless style and timbre are explicitly
-    separated or corrected.
+  claim: Instruction-driven style changes can unintentionally alter speaker identity unless style and timbre are
+    explicitly separated or corrected.
   status: emerging
   confidence: medium
   supporting_papers:
@@ -3276,13 +4290,15 @@ claim_clusters:
   refining_papers:
   - '2506.16381'
   - '2509.15845'
+  - 2025.findings-emnlp.1381
+  - '2512.09504'
   caveats:
   - Explicit separation improves controllability, but its necessity has not been established across all prompt-conditioned
     architectures.
-  last_reviewed: '2026-07-25'
+  last_reviewed: '2026-09-26'
 - id: open_source_systems_lag_on_abstract_instruction_following
-  claim: Open-source instruction-conditioned speech systems lag closed commercial systems most clearly on abstract, compositional,
-    and degree-scaled control.
+  claim: Open-source instruction-conditioned speech systems lag closed commercial systems most clearly on abstract,
+    compositional, and degree-scaled control.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -3290,29 +4306,36 @@ claim_clusters:
   - '2509.09716'
   - '2509.13989'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - 2025.emnlp-demos.70
   caveats:
   - Commercial systems are opaque and change over time, while evaluations cover different languages and prompt taxonomies.
-  last_reviewed: '2026-07-25'
+  last_reviewed: '2026-09-26'
 - id: fine_grained_control_is_attribute_dependent
-  claim: 'Fine-grained instruction following remains attribute-dependent: models that control emotion or speaking rate may
-    fail on age, timbre, phonemic length, emphasis, or non-verbal vocal events.'
+  claim: 'Fine-grained instruction following remains attribute-dependent: models that control emotion or speaking
+    rate may fail on age, timbre, phonemic length, emphasis, or non-verbal vocal events.'
   status: emerging
   confidence: high
   supporting_papers:
   - 2025.clicit-1.27
+  - 2025.emnlp-main.40
   contradicting_papers: []
   refining_papers:
   - '2506.16381'
   - interspeech-2025-2679
   - '2509.09716'
   - '2509.13989'
+  - '2510.18308'
+  - '2510.22588'
+  - 2025.emnlp-main.180
+  - '2511.11104'
+  - '2512.09504'
   caveats:
   - Most evidence is diagnostic or complicating rather than a controlled comparison over a shared attribute inventory.
-  last_reviewed: '2026-07-25'
+  last_reviewed: '2026-09-26'
 - id: automatic_judges_do_not_fully_replace_human_evaluation
-  claim: Automatic judges can approximate human instruction-adherence ratings, but they do not reliably capture all perceptual
-    alignment, naturalness, or domain-specific failure modes.
+  claim: Automatic judges can approximate human instruction-adherence ratings, but they do not reliably capture
+    all perceptual alignment, naturalness, or domain-specific failure modes.
   status: contested
   confidence: high
   supporting_papers:
@@ -3326,29 +4349,36 @@ claim_clusters:
   refining_papers:
   - '2507.00808'
   - interspeech-2025-2679
+  - '2510.22588'
+  - 2025.emnlp-main.180
+  - 2025.emnlp-main.40
+  - '2511.03601'
+  - '2511.11104'
   caveats:
-  - Agreement depends on task subjectivity, judge model, prompt design, and whether the target domain resembles the judge's
-    calibration data.
-  last_reviewed: '2026-07-25'
+  - Agreement depends on task subjectivity, judge model, prompt design, and whether the target domain resembles
+    the judge's calibration data.
+  last_reviewed: '2026-09-26'
 - id: prompt_interpretation_can_amplify_demographic_bias
-  claim: Natural-language style and identity prompts can reproduce or amplify demographic stereotypes through both TTS training
-    data and LLM-mediated prompt interpretation.
+  claim: Natural-language style and identity prompts can reproduce or amplify demographic stereotypes through both
+    TTS training data and LLM-mediated prompt interpretation.
   status: strongly_supported
   confidence: medium
   supporting_papers:
   - 2025.findings-naacl.298
   - '2508.11326'
   - '2505.17093'
+  - '2511.11104'
   contradicting_papers: []
   refining_papers:
   - '2509.13989'
+  - '2511.11104'
   caveats:
-  - Bias profiles vary across models trained on similar data, and naive fairness prompting can introduce compensatory rather
-    than neutral behavior.
-  last_reviewed: '2026-07-25'
+  - Bias profiles vary across models trained on similar data, and naive fairness prompting can introduce compensatory
+    rather than neutral behavior.
+  last_reviewed: '2026-09-26'
 - id: situated_context_improves_expressive_speech_with_bounded_returns
-  claim: Dialogue, scene, and narrative context improve expressive or coherent speech generation, but gains diminish or reverse
-    when context becomes too long.
+  claim: Dialogue, scene, and narrative context improve expressive or coherent speech generation, but gains diminish
+    or reverse when context becomes too long.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -3356,15 +4386,17 @@ claim_clusters:
   - 2025.findings-acl.101
   - 2025.findings-acl.1226
   - '2509.17516'
+  - 2025.emnlp-demos.70
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.911
   caveats:
-  - The optimal context window is benchmark-dependent, and some evidence uses automatically derived emotion or scene labels.
-  last_reviewed: '2026-07-25'
+  - The optimal context window is benchmark-dependent, and some evidence uses automatically derived emotion or scene
+    labels.
+  last_reviewed: '2026-09-26'
 - id: instruction_control_transfers_to_low_resource_and_clinical_domains
-  claim: General instruction-conditioned TTS can be adapted or prompted for low-resource, historical-language, and atypical-speech
-    domains with limited task-specific data.
+  claim: General instruction-conditioned TTS can be adapted or prompted for low-resource, historical-language, and
+    atypical-speech domains with limited task-specific data.
   status: emerging
   confidence: medium
   supporting_papers:
@@ -3373,8 +4405,8 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Evidence covers isolated languages and one clinical speech domain; phonological interference and metric validity remain
-    unresolved.
+  - Evidence covers isolated languages and one clinical speech domain; phonological interference and metric validity
+    remain unresolved.
   last_reviewed: '2026-07-25'
 - id: instruction_conditioning_enables_audio_free_anonymization
   claim: Textual speaker descriptions can support speech anonymisation without passing source-speaker audio or embeddings
@@ -3386,26 +4418,59 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Prompt-based identities vary across utterances, and privacy conclusions depend strongly on attacker and evaluation design.
+  - Prompt-based identities vary across utterances, and privacy conclusions depend strongly on attacker and evaluation
+    design.
   last_reviewed: '2026-07-25'
 - id: stronger_interpreters_improve_fixed_renderers
-  claim: A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan
-    without retraining the downstream renderer.
-  status: emerging
+  claim: A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control
+    plan without retraining the downstream renderer.
+  status: contested
   confidence: medium
   supporting_papers:
   - '2509.26514'
   - '2505.17093'
+  contradicting_papers:
+  - '2510.18308'
+  refining_papers: []
+  caveats:
+  - Stronger language models can improve explicit planning, but direct acoustic grounding may be more robust to
+    paraphrases and can avoid semantic over-interpretation.
+  last_reviewed: '2026-09-26'
+- id: guidance_strength_trades_control_against_output_fidelity
+  claim: Stronger inference-time or iterative guidance improves instruction adherence but can reduce naturalness,
+    intelligibility, or preservation of untargeted content.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2510.13293'
+  - '2511.03601'
+  - '2512.09504'
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - The strongest result depends on a proprietary external LLM, so cost, reproducibility, and portability remain open.
-  last_reviewed: '2026-07-25'
+  - Preference distillation can recover part of the fidelity loss, while the optimal guidance strength remains attribute-
+    and model-dependent.
+  last_reviewed: '2026-09-26'
+- id: text_only_voice_control_is_flexible_but_underconstrained
+  claim: Text-only instructions enable flexible voice, accent, and style control without reference audio, but their
+    one-to-many ambiguity and training-data priors limit fidelity and reliability.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.findings-emnlp.1381
+  - '2511.11104'
+  - '2511.18487'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - 'The severity of underconstraint varies by attribute: broad style and timbre descriptions may work well, while
+    exact identity and minority-accent control remain less reliable.'
+  last_reviewed: '2026-09-26'
 method_families:
 - id: direct_prompt_conditioned_speech_lm
   name: Direct prompt-conditioned speech language models
-  summary: Autoregressive or hybrid speech language models consume natural-language style or interaction instructions alongside
-    text and generate speech tokens directly.
+  summary: Autoregressive or hybrid speech language models consume natural-language style or interaction instructions
+    alongside text and generate speech tokens directly.
   papers:
   - '2305.11000'
   - '2402.01912'
@@ -3418,13 +4483,17 @@ method_families:
   - interspeech-2025-2679
   - 2025.clicit-1.27
   - '2509.24570'
+  - '2510.13293'
+  - '2511.05516'
+  - '2511.03601'
+  - '2512.23808'
   open_questions:
-  - Which instruction representations retain fine-grained acoustic control without weakening content accuracy or base-model
-    capabilities?
+  - Which instruction representations retain fine-grained acoustic control without weakening content accuracy or
+    base-model capabilities?
 - id: multimodal_spoken_instruction_model
   name: Multimodal spoken-instruction models
-  summary: Speech-capable LLMs learn instruction following across comprehension, dialogue, and generation, often using interleaved
-    or parallel text and speech outputs.
+  summary: Speech-capable LLMs learn instruction following across comprehension, dialogue, and generation, often
+    using interleaved or parallel text and speech outputs.
   papers:
   - '2305.11000'
   - '2408.16725'
@@ -3433,12 +4502,17 @@ method_families:
   - '2412.02612'
   - '2501.06282'
   - '2508.09600'
+  - '2510.22588'
+  - '2511.05516'
+  - 2025.emnlp-demos.70
+  - '2512.23808'
   open_questions:
-  - Can native spoken-instruction models match text-pipeline reasoning and safety while preserving low response latency?
+  - Can native spoken-instruction models match text-pipeline reasoning and safety while preserving low response
+    latency?
 - id: description_embedding_style_control
   name: Description-embedding style control
-  summary: Text descriptions are embedded into a continuous conditioning space that controls emotion, prosody, speaker attributes,
-    or singing style in encoder-decoder, flow-matching, diffusion, and hybrid generators.
+  summary: Text descriptions are embedded into a continuous conditioning space that controls emotion, prosody, speaker
+    attributes, or singing style in encoder-decoder, flow-matching, diffusion, and hybrid generators.
   papers:
   - '2312.15821'
   - '2507.00808'
@@ -3449,12 +4523,18 @@ method_families:
   - interspeech-2025-0948
   - interspeech-2025-1192
   - '2509.15845'
+  - '2510.18308'
+  - 2025.emnlp-main.180
+  - 2025.findings-emnlp.1381
+  - '2511.18487'
+  - '2512.09504'
   open_questions:
-  - How should description encoders represent local timing and compositional attributes that global embeddings routinely blur?
+  - How should description encoders represent local timing and compositional attributes that global embeddings routinely
+    blur?
 - id: structured_intermediate_control
   name: Structured intermediate control
-  summary: An LLM or analysis stage converts free-form requests into emotion captions, style tags, SSML, or numerical vocal
-    plans before a separate speech renderer applies them.
+  summary: An LLM or analysis stage converts free-form requests into emotion captions, style tags, SSML, or numerical
+    vocal plans before a separate speech renderer applies them.
   papers:
   - 2025.findings-naacl.38
   - 2025.findings-acl.101
@@ -3462,23 +4542,26 @@ method_families:
   - '2508.17494'
   - '2505.17093'
   - '2509.26514'
+  - '2511.03601'
+  - '2511.11104'
   open_questions:
   - Which intermediate representation best balances user accessibility, precision, and portability across renderers?
 - id: context_conditioned_situated_tts
   name: Context-conditioned situated TTS
-  summary: Dialogue history, narrative context, scene descriptions, or inferred interlocutor state condition speech generation
-    beyond the current sentence.
+  summary: Dialogue history, narrative context, scene descriptions, or inferred interlocutor state condition speech
+    generation beyond the current sentence.
   papers:
   - 2025.acl-long.911
   - 2025.findings-acl.101
   - 2025.findings-acl.1226
   - '2509.17516'
   open_questions:
-  - Why does additional dialogue context help only up to a bounded window, and how should longer context be selected or compressed?
+  - Why does additional dialogue context help only up to a bounded window, and how should longer context be selected
+    or compressed?
 - id: instruction_data_and_annotation_pipeline
   name: Instruction-data and annotation pipelines
-  summary: Automatic acoustic labels, LLM rewriting or captioning, synthetic speech, and filtering pipelines create instruction-speech
-    supervision at scales impractical for manual annotation.
+  summary: Automatic acoustic labels, LLM rewriting or captioning, synthetic speech, and filtering pipelines create
+    instruction-speech supervision at scales impractical for manual annotation.
   papers:
   - '2305.11000'
   - '2402.01912'
@@ -3488,12 +4571,15 @@ method_families:
   - 2025.findings-acl.534
   - '2508.11326'
   - '2509.24570'
+  - '2510.22588'
+  - 2025.emnlp-demos.70
+  - 2025.emnlp-main.180
   open_questions:
   - How much of the observed gain comes from instruction diversity, raw scale, label quality, or the filtering policy?
 - id: instruction_following_benchmark_and_audit
   name: Instruction-following benchmarks and audits
-  summary: Benchmarks and audits test compositional acoustic control, human alignment, robustness, demographic bias, and the
-    validity of automatic judges rather than proposing a new renderer.
+  summary: Benchmarks and audits test compositional acoustic control, human alignment, robustness, demographic bias,
+    and the validity of automatic judges rather than proposing a new renderer.
   papers:
   - 2025.findings-naacl.298
   - '2506.16381'
@@ -3503,45 +4589,52 @@ method_families:
   - '2509.09716'
   - '2509.13989'
   - '2505.17093'
+  - 2025.emnlp-main.40
+  - '2511.11104'
   open_questions:
-  - Can a benchmark jointly measure instruction adherence, naturalness, identity preservation, fairness, and robustness without
-    relying on the evaluated model family?
+  - Can a benchmark jointly measure instruction adherence, naturalness, identity preservation, fairness, and robustness
+    without relying on the evaluated model family?
 - id: prompt_conditioned_identity_and_privacy
   name: Prompt-conditioned identity and privacy control
-  summary: Natural-language speaker descriptions or attributes are used for anonymisation, voice creation, cloning, and identity-preserving
-    style transfer.
+  summary: Natural-language speaker descriptions or attributes are used for anonymisation, voice creation, cloning,
+    and identity-preserving style transfer.
   papers:
   - '2507.07799'
   - 2025.acl-long.346
   - interspeech-2025-0047
   - '2509.15845'
+  - 2025.findings-emnlp.1381
   open_questions:
   - How can prompt-defined identity remain consistent across utterances without reproducing protected speaker information
     or demographic stereotypes?
+- id: guidance_based_instruction_control
+  name: Guidance-Based Instruction Control
+  summary: Inference-time guidance, iterative regeneration, or preference-distilled guidance strengthens instruction
+    adherence without changing the underlying speech renderer.
+  papers:
+  - '2510.13293'
+  - '2511.03601'
+  - '2512.09504'
+  open_questions:
+  - Can guidance strength be calibrated per attribute without degrading naturalness, intelligibility, or preservation
+    of untargeted content?
 reassessment_queue:
 - id: automatic_judges_do_not_fully_replace_human_evaluation
   type: benchmark_validity
-  reason: The current evidence is genuinely mixed between high judge-human agreement and systematic perceptual blind spots.
-  trigger: An independently validated multilingual benchmark reports per-attribute judge-human agreement and naturalness correlations
-    across open and closed systems.
+  reason: The current evidence is genuinely mixed between high judge-human agreement and systematic perceptual blind
+    spots.
+  trigger: An independently validated multilingual benchmark reports per-attribute judge-human agreement and naturalness
+    correlations across open and closed systems.
   due: 2026-10
   current_assessment: contested
   watch_for:
   - Independent human validation of audio-language-model judges
   - Attribute-level disagreement analyses
-- id: direct_prompt_conditioned_speech_lm
-  type: method_family
-  reason: The family spans direct TTS, spoken dialogue, editing, and domain adaptation and may become too broad as evidence
-    grows.
-  trigger: At least three additional papers form a coherent architectural subgroup with distinct conditioning placement.
-  due: 2026-10
-  current_assessment: active_evidence
-  watch_for:
-  - Stable separation between instruction encoders, prompt tokens, and in-context conditioning
 - id: prompt_interpretation_can_amplify_demographic_bias
   type: claim_status
   reason: Three papers support the risk, but model-specific bias profiles and mitigation behavior vary.
-  trigger: A cross-model, multilingual audit separates training-data bias from LLM interpretation bias and tests mitigation.
+  trigger: A cross-model, multilingual audit separates training-data bias from LLM interpretation bias and tests
+    mitigation.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -3550,7 +4643,8 @@ reassessment_queue:
 - id: global_embeddings_limit_local_and_compositional_control
   type: claim_status
   reason: The claim is supported by only two direct studies and may depend on the embedding architecture or data.
-  trigger: A controlled comparison holds renderer and data fixed while varying global, sequence-level, and structured conditioning.
+  trigger: A controlled comparison holds renderer and data fixed while varying global, sequence-level, and structured
+    conditioning.
   due: 2026-10
   current_assessment: emerging
   watch_for:
@@ -3566,21 +4660,31 @@ reassessment_queue:
   - Matched-scale template-versus-free-form comparisons
   - Cross-domain instruction-following tests
 open_questions:
-- Which instruction representation provides the best balance of free-form usability, local temporal precision, and compositional
-  control?
-- How can instruction-conditioned systems preserve speaker identity while independently changing style, emotion, and non-verbal
-  events?
+- Which instruction representation provides the best balance of free-form usability, local temporal precision, and
+  compositional control?
+- How can instruction-conditioned systems preserve speaker identity while independently changing style, emotion,
+  and non-verbal events?
 - Which automatic evaluation protocol predicts human judgments across abstract prompts, atypical speech, and multilingual
   settings?
 - How much instruction diversity is needed before gains saturate, and can it be separated from raw data scale?
-- Can open systems close the commercial-system gap on abstract and degree-scaled control without relying on proprietary data
-  or judge models?
+- Can open systems close the commercial-system gap on abstract and degree-scaled control without relying on proprietary
+  data or judge models?
+- Can instruction-guidance strength be calibrated automatically per attribute while preserving naturalness and untargeted
+  content?
+- How should text-only voice descriptions be evaluated when multiple acoustically valid realizations satisfy the
+  same instruction?
 trend_notes:
-- The evidence shifts from broad multimodal instruction tuning in 2023–2024 toward dedicated controllable-TTS datasets, benchmarks,
-  and audits in 2025.
-- By 2025, instruction conditioning increasingly uses LLM-generated descriptions or structured intermediate plans rather than
-  fixed categorical style labels alone.
-- Evaluation work in 2025 moves beyond emotion accuracy toward compositional attributes, human alignment, demographic bias,
-  and domain robustness.
-- A recurring 2025 pattern separates instruction interpretation from rendering, allowing stronger language models or explicit
-  vocal plans to improve a fixed speech generator.
+- The evidence shifts from broad multimodal instruction tuning in 2023–2024 toward dedicated controllable-TTS datasets,
+  benchmarks, and audits in 2025.
+- By 2025, instruction conditioning increasingly uses LLM-generated descriptions or structured intermediate plans
+  rather than fixed categorical style labels alone.
+- Evaluation work in 2025 moves beyond emotion accuracy toward compositional attributes, human alignment, demographic
+  bias, and domain robustness.
+- A recurring 2025 pattern separates instruction interpretation from rendering, allowing stronger language models
+  or explicit vocal plans to improve a fixed speech generator.
+- Q4 2025 expands instruction-conditioned speech from global style prompts toward per-attribute guidance, iterative
+  editing, accent retrieval, and multimodal voice creation.
+- Instruction supervision is increasingly synthesized through LLM captioning, controllable TTS, retrieval, and automated
+  filtering rather than manual annotation alone.
+- Text-only conditioning reduces dependence on reference audio but exposes one-to-many ambiguity, demographic and
+  accent priors, and persistent fidelity trade-offs.

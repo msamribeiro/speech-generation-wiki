@@ -2,18 +2,18 @@
 concept: self-supervised-speech
 render_type: in-depth
 title: "Self-Supervised Speech Representations: In Depth"
-source_digest_date: 2026-07-29
-paper_count: 146
+source_digest_date: 2026-09-26
+paper_count: 176
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the short view, see [[concepts/self-supervised-speech|Self-Supervised Speech Representations]].
@@ -38,7 +38,7 @@ Complete provenance remains in `wiki/_claims/self-supervised-speech.yaml`.
 
 ## Scope
 
-The graph contains 146 papers from 2021 through September 2025, with 124 from 2025. Evidence spans
+The graph contains 176 papers from 2021 through Q4 2025. Evidence spans
 TTS, voice conversion, spoken conversational agents, codecs, evaluation, and singing. Most entries
 use SSL as a component in a larger architecture rather than studying pretraining objectives in a
 matched experiment. Their results demonstrate adoption and task utility, not independent proof that
@@ -315,6 +315,11 @@ Automatic prosody judging is also contested. [[2507.16632|Step-Audio 2]] support
 evaluation, while [[2509.19928|Prosody Diversity Benchmark]] reports failures for fine-grained
 prosody. Reliability depends on rubric, modality, and attribute; human calibration remains required.
 
+Q4 sharpens the cross-lingual boundary. [[2512.01865|Cross-Lingual Interleaving for Speech Language
+Models]] shows that interleaving can bridge languages and modalities, while coverage and allocation
+still determine which phonetic and prosodic distinctions survive. This reinforces the graph's
+broader result: multilingual SSL enables transfer, not language-independent equivalence.
+
 ## Where Findings Disagree
 
 The scale disagreement narrows claims from “larger is always better” to “scale often helps within a
@@ -332,6 +337,12 @@ decoders.
 Multilingual and multimodal pretraining expanded rapidly in 2024–2025, without resolving balanced
 low-resource coverage. Evaluation is moving beyond probes toward generation, leakage, robustness,
 and adaptation behavior.
+
+Q4 systems increasingly use SSL features as explicit control and alignment interfaces inside flow,
+diffusion, autoregressive, and unified speech models. That broad adoption strengthens utility
+claims while making matched representation-only attribution harder. Fine-grained prosody judging
+remains contested precisely because the downstream models now manipulate information that broad
+semantic judges were not designed to measure.
 
 ## Implications
 
@@ -357,6 +368,8 @@ and adaptation behavior.
    [[2506.10274|Discrete Audio Tokens: More Than a Survey!]].
 6. **Audit evaluation limits.** Read [[2507.16632|Step-Audio 2]] with
    [[2509.19928|Prosody Diversity Benchmark]].
+7. **Test cross-lingual interleaving.** Read [[2512.01865|Cross-Lingual Interleaving for Speech
+   Language Models]] and compare its coverage assumptions with multilingual SSL transfer results.
 
 ## Structured Source
 
@@ -365,4 +378,4 @@ Complete structured claims and provenance are in
 
 ---
 
-_This page is generated from `wiki/_claims/self-supervised-speech.yaml` (digest date: 2026-07-29)._
+_This page is generated from `wiki/_claims/self-supervised-speech.yaml` (digest date: 2026-09-26)._

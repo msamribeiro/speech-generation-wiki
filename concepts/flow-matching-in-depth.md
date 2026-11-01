@@ -2,18 +2,18 @@
 concept: flow-matching
 render_type: in-depth
 title: "Flow Matching: In Depth"
-source_digest_date: 2026-07-19
-paper_count: 97
+source_digest_date: 2026-09-26
+paper_count: 125
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 This page explains what the reviewed flow-matching literature collectively supports. For the short
@@ -40,11 +40,13 @@ the complete paper-to-claim graph remains in `wiki/_claims/flow-matching.yaml`.
   continuous AR latents, and other targets beyond mel spectrograms.
 - Compact backbones and continuous AR interfaces show that efficiency depends on representation
   and architecture as much as the generative objective.
+- Q4 systems extend flow matching into streaming chunks, low-resource adaptation, intermediate-layer
+  training supervision, and velocity-space preference alignment.
 - Many newest branches remain single-system demonstrations and should be read as frontier probes.
 
 ## Scope
 
-The graph contains 97 papers through Q3 2025. It combines foundational generative-modeling theory
+The graph contains 125 papers through Q4 2025. It combines foundational generative-modeling theory
 with downstream TTS, voice conversion, vocoding, codec refinement, spoken-system components,
 multilingual adaptation, emotion control, and acceleration work.
 
@@ -271,6 +273,28 @@ This evidence cautions against attributing all speed or quality gains to flow ma
 Backbone, text representation, alignment, latent sequence length, and solver jointly determine the
 system frontier.
 
+### Q4 broadens integration and deployment
+
+**Current assessment:** flow matching is increasingly a modular acoustic or latent component inside
+autoregressive, multilingual, aligned, and streaming systems rather than only a standalone
+non-autoregressive TTS objective.
+
+[[2502.11128|FELLE]] performs token-wise coarse-to-fine flow under autoregressive planning, while
+[[2511.05516|Ming-UniAudio]] uses a unified representation across understanding, generation, and
+editing. Low-resource and cross-lingual adaptations show that a multilingual flow foundation can be
+extended with limited target data, but language coverage and speaker preservation remain
+condition-dependent.
+
+Training and deployment now have separate acceleration questions. [[2511.09995|Time-Layer Adaptive
+Alignment]] applies supervision at selected depths to speed convergence, whereas
+[[2510.08373|DialoSpeech]] tests long dialogue generation where chunk size and cross-chunk context
+govern streaming quality. Preference alignment in velocity space adds a third axis: it improves
+targeted attributes without changing the base sampler, but inherits reward and metric limitations.
+
+These results establish breadth, not a universal flow recipe. Pure parallel generation, AR–flow
+hybrids, auxiliary-latent flow, and causal chunks retain different latency, control, and error
+propagation profiles.
+
 ## Where Findings Disagree
 
 ### Removing explicit alignment
@@ -308,6 +332,11 @@ generation, codec reconstruction, continuous autoregressive heads, auxiliary lat
 control, multilingual transfer, and training-free steering. Some of these branches already have
 independent confirmation; others remain one-paper probes.
 
+Q4 adds bounded-memory streaming, cross-lingual adaptation, singing-specific routing, training
+convergence objectives, and preference alignment. The focus is moving from the abstract objective
+to where flow sits in a larger pipeline and which costs remain in alignment, autoregression,
+conditioning, or rendering.
+
 The most important correction in the recent evidence is methodological: optimization targets can
 hide diversity loss, naive CFG transfer can fail, and excessive denoising can become harmful. The
 field is moving from “flow versus diffusion” toward understanding which path, representation,
@@ -343,14 +372,16 @@ solver, conditioning scheme, and evaluation suite produce the desired behavior.
 6. [[2507.14988|DMOSpeech 2]] — why acceleration must evaluate prosodic diversity.
 7. [[2509.19668]] — the key negative result on naive CFG transfer.
 8. [[iclr-2025-tQ1PmLfPBL|PeriodWave]] — extension to high-fidelity waveform generation.
+9. [[2502.11128|FELLE]] and [[2510.08373|DialoSpeech]] — Q4 examples of autoregressive integration
+   and chunked long-form generation.
 
 ## Structured Source
 
 This page selects and groups findings for human readability. The complete claim graph—including all
-97 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
+125 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
 available in `wiki/_claims/flow-matching.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/flow-matching.yaml` (digest date: 2026-07-19).
+_This page is generated from `wiki/_claims/flow-matching.yaml` (digest date: 2026-09-26).
 Citations are selected for human readability; complete provenance remains in the source YAML._

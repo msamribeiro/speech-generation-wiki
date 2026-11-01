@@ -1,6 +1,6 @@
 concept: speaker-adaptation
-last_updated: '2026-07-29'
-paper_count: 79
+last_updated: '2026-09-26'
+paper_count: 98
 papers:
 - id: '1609.03499'
   published_date: "2016-09-12"
@@ -5534,6 +5534,1348 @@ papers:
     to specific dialects are not detailed in the text, and no comparison is given for how the dialect-classification
     auxiliary loss weight (λ) was chosen or how sensitive results are to it.'
   caveats: []
+- id: 2025.vlsp-1.13
+  published_date: '2025-10-01'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: VLSP 2025
+  task:
+  - VC
+  - evaluation
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: combining_multilingual_training_data_with_a_language_specific_semantic_e
+    role: supports
+    claim: Combining multilingual training data with a language-specific semantic encoder improves zero-shot voice
+      conversion generalization to a target low-resource language.
+    source: §5.2, Table 6
+    evidence: The winning submission trains an end-to-end diffusion-transformer system on a mix of VCTK, JVS, Zeroth-Korean,
+      and Vietnamese PhoAudioBook/VLSP2025 data together with a PhoWhisper-large (Vietnamese-tuned) semantic encoder,
+      and achieves the best composite score among four systems evaluated on unseen Vietnamese speakers across three
+      regional accents.
+    confidence: high
+    relevance: medium
+  - claim_id: cascade_asr_tts_voice_conversion_pipelines_can_achieve_stronger_target_s
+    role: complicates
+    claim: Cascade ASR-TTS voice conversion pipelines can achieve stronger target-speaker similarity than end-to-end
+      systems, but remain vulnerable to content-accuracy degradation from upstream ASR errors.
+    source: §5.2, Table 6
+    evidence: The cascade ChunkFormer+F5-TTS submission attains the highest SMOS_TGT (3.66) of all four evaluated
+      systems but a higher WER (12.95) than the top-ranked end-to-end system (9.83), with the organizers attributing
+      the naturalness gap to ASR error propagation.
+    confidence: high
+    relevance: high
+  - claim_id: evaluating_voice_conversion_by_the_difference_between_reference_and_sour
+    role: refines
+    claim: Evaluating voice conversion by the difference between reference- and source-speaker similarity, rather
+      than target similarity alone, better isolates a system's ability to remove source-speaker identity.
+    source: §5.1, Figure 5
+    evidence: The composite scoring formula weights SMOS(ref,out) minus SMOS(src,out) at 40%, and the two cascade
+      submissions' lower SMOS_SRC scores are interpreted as evidence of stronger source-speaker disentanglement
+      despite one of them scoring lower overall.
+    confidence: high
+    relevance: high
+  - claim_id: for_voice_conversion_corpus_construction_defining_speaker_identity_by_sp
+    role: refines
+    claim: For voice-conversion corpus construction, defining "speaker" identity by speaking style rather than biometric
+      identity alone changes what counts as a distinct training class.
+    source: §4.1, Figure 3, Figure 4
+    evidence: The diarization and labeling pipeline explicitly treats intentional style shifts (impersonation, joking,
+      acting) as a different speaker label from the same individual's default voice, validating resulting clusters
+      with t-SNE separation and embedding-similarity thresholds of 0.75 (within-episode) and 0.97 (cross-episode).
+    confidence: high
+    relevance: medium
+  limitations:
+  - The shared-task rankings are preliminary, the test set has 33 samples, and MOS/SMOS use 13 student raters from
+    one institution.
+  caveats:
+  - The shared-task ranking is preliminary and rests on a small test set and geographically narrow listener panel.
+- id: 2025.vlsp-1.15
+  published_date: '2025-10-01'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: VLSP 2025
+  task:
+  - VC
+  architecture:
+  - diffusion
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_based_speaker_adaptation
+  claims:
+  - claim_id: replacing_a_general_purpose_semantic_encoder_with_a_language_specific_as
+    role: supports
+    claim: Replacing a general-purpose semantic encoder with a language-specific ASR encoder improves content preservation
+      in zero-shot voice conversion for a low-resource target language.
+    source: §4.2, §5.2, Table 2
+    evidence: Substituting Seed-VC's original Whisper-small encoder with PhoWhisper-large (Vietnamese-adapted, 1.55B
+      params, 4.67% WER on VIVOS) is credited with the lowest WER (9.83%) among four VLSP 2025 shared-task submissions.
+    confidence: high
+    relevance: medium
+  - claim_id: perturbing_source_speech_timbre_during_training_rather_than_only_at_infe
+    role: supports
+    claim: Perturbing source-speech timbre during training (rather than only at inference) helps align the training
+      objective with the inference-time voice-conversion task and can reduce residual source-identity leakage.
+    source: §4.2
+    evidence: An external timbre shifter (OpenVoiceV2) perturbs speaker timbre during training only, so the model
+      is not simply trained to reconstruct source timbre; the resulting system achieves the lowest WER and highest
+      MOS on the shared-task leaderboard, though the isolated effect of this component alone is not measured.
+    confidence: high
+    relevance: high
+  - claim_id: mel_spectrogram_level_augmentation_used_to_improve_speaker_content_disen
+    role: complicates
+    claim: Mel-spectrogram-level augmentation used to improve speaker-content disentanglement can trade off phonetic
+      fidelity for robustness.
+    source: §6.1 "Effect of SR augmentation"
+    evidence: The authors note that Spectrogram Resize augmentation (frequency- and time-axis mel perturbation)
+      "can slightly distort phonetic details, potentially increasing WER in extreme cases," though they argue the
+      strong semantic encoder largely offsets this risk.
+    confidence: high
+    relevance: medium
+  - claim_id: leaderboard_rankings_for_zero_shot_voice_conversion_do_not_agree_across
+    role: complicates
+    claim: Leaderboard rankings for zero-shot voice conversion do not agree across metrics, so a single aggregate
+      score can mask which quality dimension actually improved.
+    source: §5.2, Table 2
+    evidence: Twinkle-VC wins on MOS, WER, and Final Score but ranks second in SMOS_TGT (target-speaker similarity)
+      and third in SMOS_SRC (residual source similarity) among the four VLSP 2025 T1 submissions.
+    confidence: high
+    relevance: low
+  limitations:
+  - The four-system shared-task evaluation provides no ablations, so subjective gains cannot be attributed to individual
+    components.
+  caveats:
+  - The system-level gains cannot be attributed to individual components because no ablation is reported.
+- id: '2510.09061'
+  published_date: '2025-10-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - VC
+  architecture:
+  - VAE
+  - GAN
+  claims:
+  - role: supports
+    claim: Training a voice conversion model on frame-aligned synthetic pairs (same content, different speaker,
+      generated from a shared TTS linguistic latent) can outperform reconstruction-based disentanglement training
+      on speaker similarity and intelligibility.
+    source: §5.1, Table 1
+    evidence: Against FreeVC, KNN-VC, Diff-HierVC, DDDM-VC, and FaCodec baselines on LibriSpeech test-clean, the
+      synthetic-data-trained model achieves the best WER (1.74), CER (0.53), and SECS (86.70) among all compared
+      systems.
+    claim_id: q4_2510_09061_training_a_voice_conversion_model_on_frame_aligned_synthetic_pairs_same_content_different_speaker_ge
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Explicit F0 conditioning at the decoder helps a voice conversion model preserve pitch contours when source
+      and target utterances differ in speaker-driven pitch statistics.
+    source: §5.2, Table 2, Figure 3
+    evidence: Removing the F0 encoder increases WER (1.74→2.07) and CER (0.53→0.61); the full model also reports
+      the highest F0 Pearson correlation coefficient among compared systems, including a diffusion-based baseline
+      that also conditions on F0.
+    claim_id: q4_2510_09061_explicit_f0_conditioning_at_the_decoder_helps_a_voice_conversion_model_preserve_pitch_contours_when_
+    confidence: high
+    relevance: medium
+  - role: complicates
+    claim: A voice conversion model trained purely on synthetic TTS-generated pairs from a fixed speaker pool does
+      not generalize speaker similarity to unseen speakers without additional fine-tuning on real, speaker-diverse
+      data.
+    source: §5.2, Table 2
+    evidence: Removing phase-2 real-data fine-tuning drops SECS from 86.70 to 70.78, even though the phase-1-only
+      model's NISQA naturalness score is higher (4.59 vs. 4.04), showing the synthetic-only model produces clean
+      audio but fails to transfer to out-of-domain speakers.
+    claim_id: q4_2510_09061_a_voice_conversion_model_trained_purely_on_synthetic_tts_generated_pairs_from_a_fixed_speaker_pool_d
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Content representations trained with a synthetic parallel-data objective can retain measurably less residual
+      speaker identity than representations trained via a reconstruction objective on the same backbone.
+    source: §5.2, Table 3, Figure 2
+    evidence: On clustering-based leakage metrics (Adjusted Rand Index, Normalized Mutual Information, Silhouette
+      Score) computed on content embeddings, the proposed model scores lower than FreeVC (same backbone architecture)
+      on all three metrics, and t-SNE visualization shows more speaker-dispersed content embeddings.
+    claim_id: q4_2510_09061_content_representations_trained_with_a_synthetic_parallel_data_objective_can_retain_measurably_less_
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Fine-tuning a voice conversion model to a new language using only unlabeled target-language audio narrows,
+      but does not close, the intelligibility gap to native ground-truth speech.
+    source: §Appendix A.2, Table 4
+    evidence: After phase-2 language adaptation, CER/WER against ground-truth transcriptions remains higher than
+      the ground-truth ASR baseline in all three tested languages (e.g., Vietnamese 8.83 vs. 2.53 ground truth,
+      Italian 22.62 vs. 11.96 ground truth).
+    claim_id: q4_2510_09061_fine_tuning_a_voice_conversion_model_to_a_new_language_using_only_unlabeled_target_language_audio_na
+    confidence: high
+    relevance: medium
+  limitations:
+  - 'The authors'' own stated limitation is that the approach depends on access to a high-quality, well-labeled
+    multi-speaker corpus to first train the TTS system that generates the synthetic training pairs, and the paper
+    does not explore how synthetic data quality from different TTS backbones would affect downstream voice conversion
+    performance (§Limitations). Baseline naturalness (MOS) comparisons are also confounded by training-data quality
+    differences: FreeVC is trained on the cleaner VCTK corpus while the proposed model''s phase-2 fine-tuning uses
+    LibriSpeech, which the authors themselves note likely disadvantages their MOS score independent of the method
+    itself (§5.1). Language-adaptation and emotion-preservation experiments (Appendix A) are secondary analyses
+    on relatively small evaluation sets (400 utterances per language, 400 emotional clips) rather than the paper''s
+    core evaluation.'
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - vae_latent_speaker_adaptation
+  - gan_based_speaker_transfer
+  caveats:
+  - Synthetic-pair training improves alignment, but unseen-speaker transfer still requires real-data fine-tuning.
+- id: '2510.10774'
+  published_date: '2025-10-12'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_prompt_conditioned_adaptation
+  - gan_based_speaker_transfer
+  claims:
+  - claim_id: automated_pipelines_combining_voice_activity_detection_asr_based_re_tran
+    role: supports
+    claim: Automated pipelines combining voice-activity detection, ASR-based re-transcription, and a linguistic
+      completeness classifier can convert long-form audiobook recordings into TTS-ready segments at large scale
+      without manual sentence-boundary annotation.
+    source: §3.2, §4.1, Table 1
+    evidence: The three-phase segmentation pipeline (WebRTC VAD, Google STT transcription, ParsBERT-based sentence-completion
+      classifier with iterative 0.1-second boundary extension) processed 2,000 audiobooks into 5,158,344 initial
+      segments, yielding 3,526 hours of clean speech before quality filtering.
+    confidence: high
+    relevance: low
+  - claim_id: fine_tuning_an_existing_zero_shot_multilingual_tts_model_on_a_newly_cons
+    role: supports
+    claim: Fine-tuning an existing zero-shot multilingual TTS model on a newly constructed low-resource-language
+      corpus can produce naturalness and speaker-similarity quality comparable to native single-language TTS systems
+      trained on smaller proprietary datasets.
+    source: §5, Table 3
+    evidence: XTTS fine-tuned on the 1,804-hour ParsVoice subset achieves MOS 3.6/5 and SMOS 4.0/5 on unseen Persian
+      speakers, compared to MOS 3.72/SMOS 4.02 and MOS 3.34/SMOS 3.81 for two FastSpeech2 systems trained on the
+      separate DeepMine corpus.
+    confidence: high
+    relevance: high
+  - claim_id: automatic_asr_based_intelligibility_metrics_can_understate_the_quality_o
+    role: complicates
+    claim: Automatic ASR-based intelligibility metrics can understate the quality of synthesized speech in low-resource
+      languages when the scoring ASR system itself is undertrained on synthetic voices in that language.
+    source: §5
+    evidence: The fine-tuned system scores WER 22.57% and CER 12.78% via Google STT, yet human raters scored text
+      accuracy at 4.0/5; the authors attribute the gap to Google STT's limited exposure to synthetic Persian speech.
+    confidence: high
+    relevance: low
+  - claim_id: speaker_identity_labels_derived_from_unsupervised_diarization_and_cluste
+    role: complicates
+    claim: Speaker identity labels derived from unsupervised diarization and clustering over large multi-narrator
+      audiobook corpora do not perfectly recover ground-truth narrator identity, so speaker-conditioned training
+      data built this way carries residual label noise.
+    source: §3.5, §4.1
+    evidence: The two-stage ECAPA-TDNN diarization-and-clustering pipeline achieves 97.0% consistency with known
+      narrator labels only on the subset of audiobooks that had usable narrator metadata (roughly 60% of the corpus),
+      with the remainder unverifiable against ground truth.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Cross-paper MOS comparisons use different corpora, raters, and protocols; corpus speaker labels remain partly
+    unverifiable.
+  caveats:
+  - For subjective evaluation, this paper provides high-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: '2510.12964'
+  published_date: '2025-10-14'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - GAN
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - gan_based_speaker_transfer
+  - hybrid_semantic_acoustic_adaptation
+  claims:
+  - claim_id: augmenting_adversarial_voice_conversion_generators_with_a_global_self_attention_branch_alongside
+    role: supports
+    claim: Augmenting adversarial voice conversion generators with a global self-attention branch alongside local
+      convolutional processing can improve speaker similarity over purely convolutional generators, without necessarily
+      increasing computational cost.
+    source: §4.1, Table 1, Table 2
+    evidence: The hybrid convolution-transformer generator outperforms CycleGAN-VC, CVC (CUT), and CNEG-VC baselines
+      in voice similarity across most one-to-one and many-to-one VCTK conditions, while reporting lower generator
+      MACs (10.2G vs. 12.8G) and parameters (8.5 vs. 11.4) than the CNN-based CVC baseline.
+    confidence: high
+    relevance: high
+  - claim_id: in_hybrid_cnn_transformer_generators_for_voice_conversion_both_the_local_convolutional
+    role: refines
+    claim: In hybrid CNN-transformer generators for voice conversion, both the local convolutional branch and the
+      global self-attention branch contribute independently to output quality, and normalizing attention scores
+      before softmax is critical for maintaining that quality.
+    source: §4.2, Table 3
+    evidence: Ablation shows removing either the DPSA (global) branch or the local perception branch lowers the
+      voice similarity score, and removing token-wise L2 normalization on queries and keys causes the largest drop
+      among the tested ablations (0.937/0.948 vs. 0.963/0.973 for the full model).
+    confidence: high
+    relevance: medium
+  - claim_id: adversarial_contrastive_learning_approaches_to_voice_conversion_can_remain_prone_to_training
+    role: complicates
+    claim: Adversarial contrastive-learning approaches to voice conversion can remain prone to training instability
+      regardless of padding strategy, requiring output-level fixes rather than standard stabilization techniques.
+    source: §4.1, Figure 3
+    evidence: The authors observed loss spikes during male-to-female one-to-one training across different padding
+      strategies; gradient clipping did not resolve the instability, but adding a Tanh output activation did.
+    confidence: high
+    relevance: low
+  - claim_id: efficient_transformer_augmented_generators_do_not_by_themselves_eliminate_mode_collapse_in
+    role: complicates
+    claim: Efficient transformer-augmented generators do not by themselves eliminate mode collapse in many-to-one
+      non-parallel voice conversion, and fixed-length training constrains adaptability to natural speaking-rate
+      variation.
+    source: §Limitations
+    evidence: The paper's limitations state that mode collapse persists in many-to-one scenarios despite the Tanh-activation
+      fix, and that the architecture requires fixed-length input/output audio, restricting accommodation of speaking-rate
+      variation across speakers.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The evaluation relies on a single automatic metric (Resemblyzer speaker-embedding cosine similarity) with no
+    naturalness, intelligibility, or subjective listening test reported, and is conducted on one dataset (VCTK)
+    with no cross-corpus or cross-lingual evaluation. The authors themselves report that mode collapse persists
+    in many-to-one voice conversion despite their output-activation fix, and that the fixed-length input/output
+    requirement restricts the model's ability to accommodate natural speaking-rate variation across speakers (§Limitations).
+    The model is trained per source-target domain pair rather than supporting arbitrary zero-shot target speakers.
+  caveats:
+  - The transformer-enhanced GAN is evaluated with one automatic similarity metric and remains vulnerable to mode
+    collapse.
+- id: '2510.20677'
+  published_date: '2025-10-23'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_speaker_adaptation
+  claims:
+  - claim_id: q4_2510_20677_explicitly_perturbing_fundamental_frequency_during_training_and_forcing
+    role: supports
+    claim: Explicitly perturbing fundamental frequency during training and forcing reconstruction of the clean target
+      reduces a voice conversion model's reliance on noisy F0 tracking, improving robustness to real-world pitch
+      extraction errors.
+    source: §2.2, Table 1
+    evidence: 'Random jitter/glide/jump F0 perturbation applied to 2-4 segments per sample, combined with reconstruction-of-clean-target
+      training, drove the largest naturalness ablation effect: removing this module (w/o SRE) dropped SVC-Hard NMOS
+      from 2.90±0.11 to 2.23±0.21.'
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2510_20677_augmenting_speaker_timbre_extraction_with_domain_specific_target_style_d
+    role: supports
+    claim: Augmenting speaker/timbre extraction with domain-specific target-style data improves style preservation
+      without requiring a redesigned embedding architecture.
+    source: §2.3, Table 1
+    evidence: Extending CAM++ with clean vocals, DNSMOS-filtered separated vocals, and public singing corpora (SETSE)
+      raised SVC-Hard SMOS from 1.74±0.11 (w/o SETSE) to 2.64±0.10 in the full model.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_20677_robustness_interventions_aimed_at_noisy_real_world_conditions_can_trade
+    role: complicates
+    claim: Robustness interventions aimed at noisy real-world conditions can trade off against raw speaker-similarity
+      scores measured by automatic embedding cosine similarity.
+    source: §4.3, Table 1
+    evidence: The ablated w/o-SETSE and w/o-SRE variants achieved higher SPK-SIM than the full R2-SVC model on both
+      test sets (e.g., 78.95% vs. 75.17% on SVC-Normal), even though the full model scored better on subjective
+      naturalness and similarity (NMOS, SMOS).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_20677_automatic_intelligibility_metrics_computed_with_off_the_shelf_asr_system
+    role: complicates
+    claim: Automatic intelligibility metrics computed with off-the-shelf ASR systems degrade sharply on singing
+      material with ambiguous pronunciation and complex vocal techniques, independent of the voice conversion system's
+      own quality.
+    source: §4.1
+    evidence: CER on the SVC-Hard test set (25.77% for R2-SVC) was roughly double the SVC-Normal CER (13.41%) for
+      the same system, attributed to ambiguous pronunciation and complex singing techniques in the hard set rather
+      than conversion failures.
+    confidence: medium
+    relevance: low
+  limitations:
+  - Internal data, targets, and test sets prevent independent reproduction, and robustness gains sometimes reduce
+    automatic speaker similarity without a full causal analysis.
+  caveats:
+  - Robustness and style modules improve subjective results while sometimes lowering automatic speaker similarity.
+- id: '2511.00256'
+  published_date: '2025-10-31'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: a_voice_conversion_dataset_that_reflects_real_spontaneous_and_emotional_
+    role: supports
+    claim: A voice conversion dataset that reflects real spontaneous and emotional variability, rather than acted
+      or scripted speech, can serve as reference audio of comparable or higher perceived naturalness than a widely
+      used acted emotional-speech benchmark.
+    source: §V.C.5, Table VII
+    evidence: Ground-truth listening tests rate NaturalVoices reference audio as more natural than ESD reference
+      audio (MOS 4.51 ± 0.18 vs. 4.39 ± 0.17), despite NaturalVoices being unscripted, in-the-wild podcast speech.
+    confidence: high
+    relevance: medium
+  - claim_id: increasing_the_amount_of_spontaneous_in_the_wild_training_data_does_not_
+    role: complicates
+    claim: Increasing the amount of spontaneous, in-the-wild training data does not uniformly improve voice conversion
+      model performance; some architectures degrade rather than benefit from scale.
+    source: §V.C.5, Table VI
+    evidence: DDDM-VC's out-of-domain speaker-verification accuracy on ESD falls from 0.933 (50% training data)
+      to 0.768 (100% training data), and its objective WER/CER also worsen at 100% relative to 50%, while TriAAN-VC
+      and ConsistencyVC scale more consistently.
+    confidence: high
+    relevance: medium
+  - claim_id: models_trained_for_emotional_voice_conversion_on_spontaneous_naturalisti
+    role: complicates
+    claim: Models trained for emotional voice conversion on spontaneous, naturalistic emotional speech transfer
+      emotion more faithfully in-domain but at a substantial cost to intelligibility on that same in-domain data,
+      compared to conversion evaluated on acted, cleaner emotional speech.
+    source: §V.D.4, Table IX
+    evidence: DISSC trained on the emotion-balanced NaturalVoices subset achieves higher emotion category accuracy
+      (0.617 vs. 0.255) and emotion embedding cosine similarity (0.724 vs. 0.286) on NaturalVoices than on ESD,
+      but WER is far worse on NaturalVoices (0.454) than on ESD (0.112).
+    confidence: high
+    relevance: medium
+  - claim_id: segment_level_multi_dimensional_automatic_annotation_speech_quality_emot
+    role: supports
+    claim: Segment-level, multi-dimensional automatic annotation (speech quality, emotion category and attributes,
+      speaker identity, sound events) applied at scale to in-the-wild recordings can substitute for costly manual
+      annotation while still supporting flexible, task-specific subset construction for voice conversion.
+    source: §III, §V.B, Table V
+    evidence: The four-stage pipeline (ASR/diarization, speaker mapping against MSP-Podcast human labels, multi-metric
+      speech-quality scoring, emotion category/attribute prediction, sound-event detection) produces the filtered
+      870.26-hour VC subset and 340-hour emotion-balanced subset used directly to train and validate four different
+      baseline VC/EVC systems.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Subjective tests use twelve raters, while speaker and emotion annotations across most of the corpus are automatically
+    inferred and may propagate model bias.
+  caveats:
+  - Automatic emotion and speaker annotations may propagate bias, and more spontaneous training data does not help
+    every VC architecture.
+- id: '2511.01056'
+  published_date: '2025-11-02'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - VAE
+  - flow-matching
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - vae_latent_speaker_adaptation
+  - flow_matching_speaker_adaptation
+  - gan_based_speaker_transfer
+  - hybrid_semantic_acoustic_adaptation
+  claims:
+  - claim_id: decoupled_cross_domain_alignment_improves_low_resource_conversion_stability
+    role: supports
+    claim: Decoupling cross-domain representation alignment from downstream acoustic generation improves conversion
+      stability when paired training data across the two domains is scarce.
+    source: §3.3, Table 1
+    evidence: Removing the VAE alignment module increases CER from 16.93% to 40.16% and degrades every reported
+      quality proxy on Mandarin whisper-to-normal conversion.
+    confidence: high
+    relevance: high
+  - claim_id: structured_residual_flow_modeling_stabilizes_cross_domain_generation
+    role: supports
+    claim: Modeling a structured residual on top of a deterministic coarse acoustic prediction produces more stable
+      generation than modeling the full acoustic representation under cross-domain mismatch.
+    source: §3.3, Table 1
+    evidence: Residual OT-CFM refinement improves CER and DNSMOS over full-mel OT-CFM modeling on the same coarse
+      backbone.
+    confidence: high
+    relevance: high
+  - claim_id: same_domain_voice_conversion_transfers_poorly_to_whispered_input
+    role: complicates
+    claim: Generic voice conversion systems trained on same-domain speech transfer poorly to severely mismatched
+      inputs such as whispered speech.
+    source: §3.3, Table 1
+    evidence: Seed-VC applied zero-shot to whispered input yields 46.42% CER, versus 16.93% for the whisper-adapted
+      system.
+    confidence: high
+    relevance: high
+  - claim_id: gated_domain_alignment_can_unify_whisper_and_standard_voice_conversion
+    role: supports
+    claim: Conditionally applying a domain-alignment module only to out-of-domain inputs can unify whisper-to-normal
+      and standard voice conversion without materially degrading either task.
+    source: §3.4, Table 2
+    evidence: Removing gated dual-path routing raises normal-to-normal VC CER from 3.33% to 4.33% while perceptual
+      quality remains similar.
+    confidence: high
+    relevance: high
+  limitations:
+  - All reported quality and speaker-similarity results are automatic proxies, and Mandarin and English use separately
+    trained pipelines.
+  caveats:
+  - Whisper-to-normal gains are based entirely on automatic quality proxies and separate monolingual models.
+- id: 2025.findings-emnlp.1381
+  published_date: '2025-11-05'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  - VC
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_prompt_conditioned_adaptation
+  - flow_matching_speaker_adaptation
+  - hybrid_semantic_acoustic_adaptation
+  claims:
+  - claim_id: q4_2025_findings_emnlp_1381_a_frozen_zero_shot_tts_vc_backbone_whose_semantic_tokens_already_separat
+    role: supports
+    claim: A frozen zero-shot TTS/VC backbone whose semantic tokens already separate content and prosody from speaker
+      identity can be repurposed as a general-purpose speaker-control interface for modalities the backbone was
+      never trained on, by learning only a lightweight adapter that produces a compatible speaker embedding.
+    source: §5.2, Table 2
+    evidence: Freezing CosyVoice's LLM and CFM while training only the MVA adapter allows the system to accept face,
+      text, and attribute-edit conditioning while matching or exceeding CosyVoice-Instruct's own speech quality
+      (MOS-Nat) on the text-conditioned task.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_aligning_heterogeneous_conditioning_modalities_to_a_shared_speaker_embed
+    role: supports
+    claim: Aligning heterogeneous conditioning modalities to a shared speaker-embedding space through a common set
+      of learnable key-value vectors, rather than training separate pairwise alignment models per modality, improves
+      both how well the generated voice matches the intended description and how diverse the resulting voices are.
+    source: §5.3, Table 3
+    evidence: Ablating the KV-Former-based MVA reduces SST and SSC and increases SSD (worse diversity) across FaceTTS
+      and FaceVC compared to the full system.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_injecting_a_non_reference_derived_speaker_embedding_into_a_flow_matching
+    role: complicates
+    claim: Injecting a non-reference-derived speaker embedding into a flow-matching TTS backbone that was originally
+      trained with a strong reference-audio (Mel-spectrogram) prompt is undermined by the backbone's tendency to
+      keep leaking speaker identity from the semantic-token stream unless an explicit disentangling training stage
+      is added.
+    source: §5.3, Table 3; §A.3
+    evidence: Without the self-distillation fine-tuning stage, SST drops substantially on both the FaceTTS-style
+      ablation split and the VC task (e.g., 39.37% to 31.07% for VC), and a preliminary experiment integrating face
+      embeddings directly into an unmodified CosyVoice CFM produced almost no speaker conversion at all (SSIM ≈
+      4.8).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_multimodal_one_to_many_voice_description_modalities_such_as_face_images
+    role: complicates
+    claim: Multimodal, one-to-many voice-description modalities such as face images or short text descriptions carry
+      substantially coarser speaker information than a Mel-spectrogram prompt derived from real reference audio,
+      so systems built on this kind of conditioning should be expected to under-perform true voice-cloning quality
+      even when the alignment mechanism itself is effective.
+    source: §A.1, Table 5
+    evidence: Comparing CFM speaker control with and without the Mel-spectrogram prompt on zero-shot voice conversion
+      shows the Mel-spectrogram prompt carries substantially more voice information than the speaker embedding alone,
+      motivating the paper's own framing of coarse speaker embeddings as sufficient only as an alignment anchor.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2025_findings_emnlp_1381_a_soft_distribution_matching_contrastive_objective_that_treats_within_mo
+    role: supports
+    claim: A soft, distribution-matching contrastive objective that treats within-modality (e.g., speech-to-speech)
+      similarity as a soft target for cross-modal similarity, rather than enforcing hard one-to-one contrastive
+      pairs, better handles the natural one-to-many correspondence between a voice-description modality and plausible
+      voice identities.
+    source: §5.3, Table 3
+    evidence: Removing SoftCL (leaving only standard flow-matching training of the MVA) degrades SST, SSD, and SSC
+      across every ablated task, with the largest effect on edge-case speakers such as elderly or very young faces
+      defaulting to young-adult-sounding voices.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Limited multimodal paired data and photographic-face-only evaluation constrain generalization to new descriptions,
+    identities, and visual styles.
+  caveats:
+  - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+    included but are marked accordingly.
+- id: '2511.06246'
+  published_date: '2025-11-09'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - diffusion
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - control_evidence
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_based_speaker_adaptation
+  - hybrid_semantic_acoustic_adaptation
+  claims:
+  - claim_id: deterministic_identity_index_mapping_improves_pseudo_speaker_distinctiveness
+    role: supports
+    claim: Deterministically mapping a discrete identity index to a speaker embedding can produce pseudo-speakers
+      with lower mutual similarity than reference-pool, generative, or rejection-sampling generators.
+    source: §VI-E1, Table I; §VI-F–G, Table II
+    evidence: IDMap-MLP and IDMap-Diff achieve higher average ASV EERs, Gvd, and DeID than the compared pseudo-speaker
+      generators on pooled LibriSpeech dev/test.
+    confidence: high
+    relevance: high
+  - claim_id: feedforward_index_to_speaker_mapping_reduces_inference_cost
+    role: supports
+    claim: A single feedforward pass from index to speaker vector can be substantially cheaper than sampling-based
+      or distribution-estimation pseudo-speaker generation without sacrificing privacy performance.
+    source: §VI-H, Table III
+    evidence: IDMap-MLP and IDMap-Diff report real-time factors one to two orders of magnitude below the distribution-estimation
+      and GAN-based baselines.
+    confidence: high
+    relevance: medium
+  - claim_id: pseudo_speaker_generator_advantage_grows_with_scale
+    role: complicates
+    claim: The privacy advantage of a pseudo-speaker generator over simpler baselines can become more pronounced
+      as the number of generated pseudo-speakers grows.
+    source: §VI-J1, Fig. 9
+    evidence: Across 50 to 10,000 speakers, IDMap EER degraded far less than random selection, averaging, and GAN-based
+      generation.
+    confidence: high
+    relevance: medium
+  - claim_id: collision_free_indices_do_not_guarantee_unbounded_embedding_distinctiveness
+    role: complicates
+    claim: Collision-free identity-index assignment does not guarantee that generated speaker embeddings remain
+      acoustically distinct at very large scale.
+    source: §VI-J3, Fig. 11
+    evidence: Average pairwise cosine similarity increased and saturated near 0.5 as generation approached two million
+      vectors.
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation uses one VQ-BN, ECAPA-TDNN, GST, and HiFi-GAN anonymization pipeline, so transfer to other SSL content
+    encoders is untested.
+  caveats:
+  - Privacy and distinctiveness are evaluated within one anonymization pipeline, and embedding distinctiveness saturates
+    at very large scale.
+- id: '2511.07135'
+  published_date: '2025-11-10'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - vae_latent_speaker_adaptation
+  claims:
+  - claim_id: a_generative_model_of_a_voice_conversion_system_s_own_speaker_embedding_space_can_synthesize_novel_u
+    role: supports
+    claim: A generative model of a voice conversion system's own speaker-embedding space can synthesize novel, unseen
+      speaker identities that the same system renders at audio quality comparable to real training speakers, without
+      needing any target-speaker utterance at inference.
+    source: §4, Fig. 2
+    evidence: SpeakerVAE, trained only on speaker embeddings extracted from a pretrained VC system's speaker module,
+      produces sampled embeddings that yield WER/CER and UTMOSv2 scores comparable to speech synthesized from real
+      training speakers' embeddings, for both the FACodec and CosyVoice2 backbones.
+    confidence: high
+    relevance: high
+  - claim_id: a_lightweight_speaker_generation_module_can_be_attached_to_different_voice_conversion_backbones_as_a
+    role: supports
+    claim: A lightweight speaker-generation module can be attached to different voice conversion backbones as a
+      plug-in without co-training or fine-tuning the base system, as long as it operates in the same latent domain
+      as the backbone's own speaker embedding space.
+    source: §2.2, §2.3
+    evidence: The same SpeakerVAE training and inference procedure, re-trained only on backbone-specific embeddings,
+      is applied unmodified to FACodec's 1024-d disentangled timbre space and to CosyVoice2's 192-d CAM++ speaker-verification
+      embedding.
+    confidence: high
+    relevance: high
+  - claim_id: cosine_similarity_based_diversity_and_stability_metrics_for_generated_speaker_embeddings_can_rank_co
+    role: complicates
+    claim: Cosine-similarity-based diversity and stability metrics for generated speaker embeddings can rank competing
+      generation methods inconsistently across voice conversion backbones, complicating claims that one speaker-generation
+      method is uniformly superior.
+    source: §4, Table 1
+    evidence: For FACodec, a GMM baseline achieved higher stability (0.90±0.06) than SpeakerVAE (0.85±0.10), but
+      for CosyVoice2 the ranking reversed (SpeakerVAE 0.90±0.06 vs. GMM 0.86±0.09); SpeakerVAE achieved better distribution
+      coverage than GMM on FACodec (Pairwise(G_syn,S_syn) 0.70 vs. 0.64) but comparable diversity to GMM on CosyVoice2.
+    confidence: high
+    relevance: medium
+  - claim_id: evaluating_generated_speaker_naturalness_and_diversity_using_ground_truth_and_resynthesis_sets_drawn
+    role: complicates
+    claim: Evaluating generated-speaker naturalness and diversity using ground-truth and resynthesis sets drawn
+      only from the training corpus, rather than a held-out test split, leaves open whether apparent fidelity generalizes
+      beyond the training distribution.
+    source: §3.4.1
+    evidence: All evaluation sets (GT, GT-SameSpeaker, S_syn, S_recon, G_syn) are constructed by sampling m=1000
+      utterances "from the train dataset," with no separately held-out evaluation corpus reported.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Speaker generation quality and diversity are evaluated only against ground-truth and resynthesized utterances
+    sampled from the same training corpus used to fit SpeakerVAE, rather than a held-out test set; the paper does
+    not report whether the generated-speaker distribution generalizes to out-of-corpus speakers or acoustic conditions.
+  caveats:
+  - Generated speakers are evaluated against training-corpus samples, leaving out-of-corpus generalization unresolved.
+- id: '2511.08496'
+  published_date: '2025-11-11'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - diffusion
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - diffusion_based_speaker_adaptation
+  - hybrid_semantic_acoustic_adaptation
+  claims:
+  - role: supports
+    claim: Combining a frozen, pre-disentangled codec's content and speaker features with explicit pitch and energy
+      conditioning can match or exceed the quality of large-scale adversarially-trained zero-shot singing voice
+      conversion systems while using substantially less training data and compute.
+    source: §Experimental Results and Analysis, Table 1
+    evidence: HQ-SVC, trained on under 80 hours of Mandarin singing data for 11 hours on a single RTX 3090, outperforms
+      SaMoye-SVC (pretrained on 1,700 hours on an A100 for 7 days) on STOI, F0-RMSE, FPC, NISQA, and NMOS.
+    claim_id: q4_2511_08496_combining_a_frozen_pre_disentangled_codec_s_content_and_speaker_features_with_explicit_p
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Whether a unified codec-derived representation or separate dedicated content/speaker encoders produce
+      better zero-shot voice conversion depends on which quality dimension is prioritized, not a uniform ranking.
+    source: §Ablation Studies, Table 5
+    evidence: The HQ-SVC-SE ablation, which replaces the shared FACodec front end with separate CAM++ (speaker)
+      and ContentVec (content) encoders, improves SECS (timbre similarity) from 0.627 to 0.668 but degrades STOI,
+      F0-RMSE, and NISQA relative to the unified-encoder design.
+    claim_id: q4_2511_08496_whether_a_unified_codec_derived_representation_or_separate_dedicated_content_speaker_enc
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Automatic speaker-similarity metrics derived from speaker-verification embeddings can diverge from human
+      speaker-similarity judgments when pitch consistency is altered.
+    source: §Experimental Results and Analysis
+    evidence: SaMoye-SVC scores higher SECS than HQ-SVC (0.647 vs. 0.627) despite HQ-SVC scoring higher on subjective
+      SMOS in the main comparison, and removing the speaker or F0 losses in ablation improves SMOS slightly while
+      degrading SECS, which the authors attribute to CAM++ embeddings implicitly encoding pitch information that
+      diverges from human perceptual sensitivity to pitch shifts.
+    claim_id: q4_2511_08496_automatic_speaker_similarity_metrics_derived_from_speaker_verification_embeddings_can_di
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Predicting a target speaker's pitch statistics from their speaker embedding, rather than requiring reference
+      pitch data, is a viable way to condition pitch generation in zero-shot voice conversion.
+    source: §Enhanced Voice Adaption Module, Table 5
+    evidence: The Speaker-F0 Predictor, trained with an L1 loss on predicted vs. actual F0 mean/variance from the
+      speaker embedding alone, improves F0-RMSE, SECS, and NISQA relative to an ablation without this loss.
+    claim_id: q4_2511_08496_predicting_a_target_speaker_s_pitch_statistics_from_their_speaker_embedding_rather_than_
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Feature representations designed for zero-shot singing voice conversion can transfer to audio super-resolution
+      without architectural modification when training and inference sampling rates are deliberately mismatched.
+    source: §Model Evaluation on Voice Super-resolution, Table 3
+    evidence: Because HQ-SVC extracts features at 16 kHz but optimizes against 44.1 kHz ground-truth Mel spectrograms,
+      the same trained model performs zero-shot voice super-resolution, outperforming AudioSR (trained on over 7,000
+      hours) on NMOS and SMOS despite using under 80 hours of training data.
+    claim_id: q4_2511_08496_feature_representations_designed_for_zero_shot_singing_voice_conversion_can_transfer_to_
+    confidence: high
+    relevance: low
+  limitations:
+  - The paper's own ablation acknowledges that HQ-SVC's unified-encoder design still lags a separate-encoder variant
+    (HQ-SVC-SE) on timbre-similarity (SECS), explicitly stating that "we need to get better at separating out the
+    speaker's identity" (§Ablation Studies). The comparison against SaMoye-SVC also resamples both systems' outputs
+    to a common 32 kHz for evaluation, which is a reasonable fairness adjustment but means neither system's native
+    output rate is directly evaluated. Voice super-resolution results are aggregated across four heterogeneous datasets
+    (two singing, two speech, Mandarin and English) without a per-dataset breakdown, making it hard to assess whether
+    performance is uniform across language and domain. Future work is limited to singing voice style conversion,
+    per the authors' own stated direction (§Conclusions).
+  caveats:
+  - The low-resource singing system still trails a separate-encoder variant on automatic timbre similarity and uses
+    a small listener panel.
+- id: '2511.09995'
+  published_date: '2025-11-13'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_matching_speaker_adaptation
+  claims:
+  - claim_id: q4_2511_09995_auxiliary_alignment_of_intermediate_flow_matching_representations_with_a
+    role: supports
+    claim: Auxiliary alignment of intermediate flow-matching representations with a pre-trained speaker embedding
+      improves speaker similarity in zero-shot TTS without requiring a dedicated supervised fine-tuning stage.
+    source: §4.1, Table 1
+    evidence: At matched 100k-hour training data, the proposed alignment strategy yields average absolute gains
+      of 3.0% in Sim-WavLM and 2.1% in Sim-ERes2Net over the same-data baseline with comparable CER/WER, and the
+      SFT-free model outperforms a baseline trained on 150k hours with a dedicated speaker SFT stage.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_speaker_identity_information_in_flow_matching_based_speech_generation_is
+    role: supports
+    claim: Speaker identity information in flow-matching-based speech generation is not uniformly distributed across
+      denoising timesteps or network depth, concentrating in early (high-noise) denoising steps and in shallower-to-middle
+      layers while weakening toward the final layers.
+    source: §2.2, Figure 3
+    evidence: CKNNA-based probing of a converged baseline FM checkpoint's intermediate representations shows a clear,
+      non-uniform pattern across both the timestep and layer axes, with the final layers carrying comparatively
+      little speaker signal.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_a_training_time_speaker_alignment_auxiliary_loss_can_generalize_across_s
+    role: supports
+    claim: A training-time speaker-alignment auxiliary loss can generalize across structurally distinct flow-matching
+      TTS decoder families, including both LM-conditioned and LM-free variants.
+    source: §4.3, Table 3
+    evidence: On LibriTTS, the alignment strategy improves Sim-WavLM from 0.510 to 0.538 on an LM-based CosyVoice-2-style
+      decoder and from 0.398 to 0.458 on an LM-free MMDiT-based decoder, with matching gains in Sim-ERes2Net.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_representation_alignment_supervision_that_is_uniform_across_timesteps_or
+    role: complicates
+    claim: Representation-alignment supervision that is uniform across timesteps or layers under-exploits the non-uniform
+      structure of speaker information in flow-matching models, leaving speaker-similarity gains on the table relative
+      to jointly adaptive supervision.
+    source: §4.2, Table 2
+    evidence: Ablated alignment variants using only temporal adaptivity or only layer adaptivity underperform the
+      jointly time- and layer-adaptive strategy on LibriTTS (Sim-WavLM 0.513 and 0.524 respectively vs. 0.538 for
+      the joint strategy).
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_09995_external_representation_alignment_supervision_for_generative_speech_mode
+    role: refines
+    claim: External representation-alignment supervision for generative speech models is more effective when its
+      supervision strength is dynamically reweighted according to where in the network and denoising trajectory
+      the target attribute is actually encoded, rather than applied at fixed strength throughout.
+    source: §4.2, Figure 5
+    evidence: Visualizing the learned adaptive weights shows supervision concentrated in shallower layers and later
+      denoising stages, which the paper interprets as the regions most critical for speaker identity, consistent
+      with the earlier CKNNA-based distribution analysis.
+    confidence: high
+    relevance: high
+  limitations:
+  - The alignment signal depends on one speaker-verification encoder and is tested only on two mel-based flow decoders
+    in Mandarin and English.
+  caveats:
+  - Adaptive alignment relies on one external speaker encoder and is validated on two mel-based flow decoders.
+- id: '2511.12347'
+  published_date: 2025-11-15
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_prompt_conditioned_adaptation
+  claims:
+  - claim_id: q4_2511_12347_jointly_reordering_text_and_speech_tokens_into_a_prefix_suffix_middle_la
+    role: supports
+    claim: Jointly reordering text and speech tokens into a prefix-suffix-middle layout is essential for intelligible
+      autoregressive multilingual TTS, with or without this mechanism representing the difference between near-random
+      and functional output in low-resource training scenarios.
+    source: §3.4, §D.1, Table 9
+    evidence: Removing the prefix-suffix-middle token reordering makes low-resource autoregressive outputs nearly
+      unintelligible, while the full layout yields functional multilingual synthesis.
+    confidence: high
+    relevance: low
+  - claim_id: q4_2511_12347_replacing_per_language_phoneme_lexicons_with_a_pretrained_multilingual_l
+    role: supports
+    claim: Replacing per-language phoneme lexicons with a pretrained multilingual LLM backbone enables a single
+      autoregressive codec model to cover 11 languages with a shared tokenizer, substantially reducing engineering
+      overhead for multilingual TTS.
+    source: §3.1
+    evidence: A Qwen3 multilingual backbone and shared tokenizer support eleven languages without maintaining separate
+      phoneme lexicons.
+    confidence: medium
+    relevance: low
+  - claim_id: q4_2511_12347_multilingual_joint_training_provides_substantially_better_cross_lingual
+    role: supports
+    claim: Multilingual joint training provides substantially better cross-lingual transfer than training from scratch,
+      with pre-training reducing WER by 5–10x for low-resource languages.
+    source: §4.3, Table 2
+    evidence: Multilingual pretraining reduces low-resource WER by roughly five- to ten-fold compared with training
+      from scratch, including Italian 15.46 versus 142.30.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2511_12347_speaker_similarity_scores_in_zero_shot_multilingual_tts_are_more_consist
+    role: supports
+    claim: Speaker similarity scores in zero-shot multilingual TTS are more consistent across languages than intelligibility
+      metrics, suggesting that speaker identity capture generalizes better across languages than pronunciation accuracy.
+    source: §4.2, Table 1
+    evidence: Across languages, speaker-similarity variation is smaller than WER or CER variation, particularly
+      where training data are scarce.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2511_12347_competitive_subjective_naturalness_in_english_zero_shot_tts_is_achievabl
+    role: supports
+    claim: Competitive subjective naturalness in English zero-shot TTS is achievable with 14K hours of training
+      data when architecture and token layout are well-designed, even when larger systems trained on 30K–130K hours
+      achieve lower objective error rates.
+    source: §4.2, Table 1
+    evidence: On English Seed-TTS test-en, the 14.5K-hour model reaches CMOS 0.63 and outperforms larger-data competitors
+      in perceived naturalness despite higher objective error than some systems.
+    confidence: high
+    relevance: medium
+  limitations:
+  - Eleven-language coverage remains data-imbalanced, with incomplete subjective evaluation and no scaling study
+    beyond a 0.6B backbone.
+  caveats:
+  - Eleven-language results remain imbalanced and identity transfers better than pronunciation.
+- id: '2512.05126'
+  published_date: '2025-11-23'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_speaker_adaptation
+  claims:
+  - claim_id: q4_2512_05126_replacing_raw_reference_audio_conditioning_with_a_distilled_global_speak
+    role: supports
+    claim: Replacing raw reference-audio conditioning with a distilled global speaker embedding reduces language
+      leakage from the reference audio into synthesized content in cross-lingual generation.
+    source: §4.2, Table 4
+    evidence: Switching from context-speech conditioning (M1) to a global speaker embedding (M2) drops WER from
+      16.78 to 4.81 on the EN-ZH cross-lingual test set, with the paper attributing M1's high WER to speech content
+      becoming "significantly influenced by the language of the reference audio."
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_05126_combining_a_pretrained_discrimination_optimized_speaker_verification_emb
+    role: supports
+    claim: Combining a pretrained, discrimination-optimized speaker-verification embedding with a separately trained,
+      synthesis-oriented embedding improves speaker identity preservation over using either alone.
+    source: §4.3, Table 6
+    evidence: An ablation shows the pretrained-encoder-only variant underperforms overall and the learnable-encoder-only
+      variant achieves low WER but poor speaker similarity (SIM-o 0.495 vs. 0.655 for the full dual encoder), attributed
+      to limited fine-tuning data.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_05126_adding_visual_conditioning_for_lip_synchronization_control_trades_off_ag
+    role: complicates
+    claim: Adding visual conditioning for lip-synchronization control trades off against intelligibility in cross-lingual
+      video translation.
+    source: §4.2, Table 4
+    evidence: The full visual-conditioning configuration (lip + face features, M4) achieves the best synchronization
+      but raises WER by 4.21 over a no-visual baseline; a face-only configuration (M5) recovers most of the synchronization
+      gain while raising WER by only 1.38.
+    confidence: high
+    relevance: low
+  - claim_id: q4_2512_05126_fine_tuning_a_pretrained_zero_shot_tts_model_on_audiovisual_data_can_deg
+    role: complicates
+    claim: Fine-tuning a pretrained zero-shot TTS model on audiovisual data can degrade baseline speech generation
+      quality before any visual conditioning is added.
+    source: §4.1
+    evidence: After fine-tuning on audiovisual data with no visual features (M1), speech quality shows a slight
+      degradation relative to the original TTS model, attributed to the limited scale of the audiovisual training
+      data.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The proprietary audiovisual data and machine-translated English-Chinese test set limit reproducibility and language-pair
+    generalization.
+  caveats:
+  - For zero-shot TTS, this paper provides high-relevance evidence; claims primarily concerning other concepts remain
+    included but are marked accordingly.
+- id: '2512.00451'
+  published_date: '2025-11-29'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - codec
+  architecture:
+  - autoregressive-LM
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_prompt_conditioned_adaptation
+  - gan_based_speaker_transfer
+  claims:
+  - claim_id: explicit_text_prosody_timbre_decomposition_combined_with_heavily_asymmetric_per_stream_compression_c
+    role: supports
+    claim: Explicit text-prosody-timbre decomposition combined with heavily asymmetric per-stream compression can
+      push a speech communication system's sustained bitrate close to a pure-transcript baseline while retaining
+      perceived naturalness and speaker identity.
+    source: §IV-C1, Table I, Table II
+    evidence: STCTS sustains 71.6-79.6 bps across three quality modes on LibriSpeech test-clean, a 40-50x reduction
+      versus Opus (6 kbps) and ~8x versus EnCodec (1 kbps), with NISQA-predicted MOS of 4.255-4.280 and speaker
+      similarity of 0.667-0.673.
+    confidence: high
+    relevance: medium
+  - claim_id: the_relationship_between_prosody_update_rate_and_perceived_speech_quality_in_tts_based_reconstructio
+    role: complicates
+    claim: The relationship between prosody update rate and perceived speech quality in TTS-based reconstruction
+      is not monotonic with bitrate; intermediate sampling rates can perform worse than both sparser and denser
+      sampling.
+    source: §IV-B, Figure 5
+    evidence: A sweep from 0.05 Hz to 20 Hz shows NISQA MOS peaks at 0.05-1 Hz (~4.30-4.36, 132-154 bps) and at
+      >6 Hz (4.317, 410 bps), with a "mid-frequency valley" at 1-5 Hz that the authors attribute to perceptually
+      salient interpolation discontinuities.
+    confidence: high
+    relevance: low
+  - claim_id: frame_level_intrusive_intelligibility_metrics_such_as_stoi_are_unreliable_indicators_of_quality_for
+    role: complicates
+    claim: Frame-level intrusive intelligibility metrics such as STOI are unreliable indicators of quality for generative,
+      TTS-based speech reconstruction because they assume waveform-level temporal alignment that such systems do
+      not preserve.
+    source: §IV-C1, "STOI Analysis"
+    evidence: STCTS STOI scores (0.150-0.162) fall far below Opus (0.906) and EnCodec (0.805) despite high NISQA
+      MOS (4.2+) and moderate WER (~0.235), which the authors trace to independent STT/TTS timing rather than genuine
+      intelligibility loss.
+    confidence: high
+    relevance: low
+  - claim_id: speaker_identity_can_be_preserved_under_significant_channel_degradation_by_transmitting_a_compact_sp
+    role: supports
+    claim: Speaker identity can be preserved under significant channel degradation by transmitting a compact speaker
+      embedding infrequently with high delivery priority, rather than streaming continuous acoustic features.
+    source: §IV-C2, Table II
+    evidence: Speaker similarity stays within 0.658-0.669 across simulated bit error rates of 0-10%, attributed
+      to the amortized, cached, high-priority-retransmitted transmission strategy for the 384-byte ECAPA-TDNN embedding.
+    confidence: high
+    relevance: high
+  - claim_id: cascading_an_independent_speech_to_text_stage_with_a_text_to_speech_reconstruction_stage_imposes_a_t
+    role: complicates
+    claim: Cascading an independent speech-to-text stage with a text-to-speech reconstruction stage imposes a transcription-accuracy
+      floor that the surrounding compression system cannot fully compensate for.
+    source: §IV-C1, §IV-C2, Table II
+    evidence: STCTS word error rate remains 0.213-0.264 across quality modes and noise conditions, substantially
+      higher than Opus (0.032) or EnCodec (0.110), since errors originate in STT decoding rather than in the compression
+      or transport layers.
+    confidence: high
+    relevance: low
+  limitations:
+  - Evaluated only on read audiobook speech from a single corpus and receiver TTS backbone All reported results
+    use LibriSpeech test-clean, which the authors themselves note does not capture spontaneous conversational phenomena
+    (turn-taking, interruptions, overlapping speech, disfluencies) that a real deployment would encounter, and every
+    reconstruction result depends on a single TTS backbone (XTTS-v2), so the bimodal prosody-sampling finding is
+    not shown to generalize to other synthesis architectures.
+  caveats:
+  - The paper contributes evaluation evidence alongside a primary system or method contribution; metric results
+    should not be generalized beyond its reported datasets and comparison protocol.
+- id: '2505.17320'
+  published_date: '2025-11-30'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - vae_latent_speaker_adaptation
+  - gan_based_speaker_transfer
+  claims:
+  - claim_id: a_tts_system_fine_tuned_from_a_pretrained_checkpoint_on_a_very_small_10_15_m
+    role: supports
+    claim: A TTS system fine-tuned from a pretrained checkpoint on a very small (10-15 minute) character-specific
+      voice dataset can reach naturalness ratings statistically indistinguishable from ground-truth human recordings
+      of the same character.
+    source: §V.A, Table I
+    evidence: SBV2JE overall MOS was 4.37 ± 0.74 versus 4.38 ± 0.77 for ground truth, with a paired t-test giving
+      p ≈ 0.91 across three fine-tuned character voices
+    confidence: high
+    relevance: high
+  - claim_id: replacing_a_duration_discriminator_with_a_self_supervised_representation_bas
+    role: supports
+    claim: Replacing a duration discriminator with a self-supervised-representation-based (WavLM) discriminator
+      in an adversarially trained VAE-flow TTS system can improve intelligibility.
+    source: §V.D, Table IV; §VI
+    evidence: SBV2JE (which removes the duration discriminator and adds a WavLM-based discriminator) achieved a
+      lower average WER than VITS (0.04 ± 0.04 vs. 0.05 ± 0.04) across the same three fine-tuned characters
+    confidence: high
+    relevance: low
+  - claim_id: automatic_intra_speaker_consistency_metrics_based_on_speaker_embedding_cosin
+    role: complicates
+    claim: Automatic intra-speaker consistency metrics based on speaker-embedding cosine similarity may not distinguish
+      between TTS architectures even when naturalness and intelligibility metrics diverge.
+    source: §V.C, Table III
+    evidence: VITS and SBV2JE produced nearly identical intra-speaker similarity scores (96.43% vs. 96.24% overall,
+      per-speaker range 0.96-0.97), showing no meaningful separation despite SBV2JE's added discriminator and style-conditioning
+      changes
+    confidence: high
+    relevance: medium
+  - claim_id: comparative_naturalness_evaluations_of_fine_tuned_character_voice_tts_system
+    role: complicates
+    claim: Comparative naturalness evaluations of fine-tuned character-voice TTS systems can be constrained by evaluating
+      on the same small dataset used for training, which limits how far the naturalness parity result can be generalized.
+    source: §IV; §VI Discussion
+    evidence: Because each character's dataset totaled only 10-15 minutes, SBV2JE's fine-tuning used all available
+      audio, leaving no held-out set; the paper explicitly names small per-character datasets and limited raters
+      as factors that "restrict generalization"
+    confidence: high
+    relevance: medium
+  limitations:
+  - The Japanese character-voice study uses 11 MOS and five CMOS raters and does not evaluate held-out speakers
+    or domains.
+  caveats:
+  - For subjective evaluation, this paper provides high-relevance evidence; claims primarily concerning other concepts
+    remain included but are marked low relevance.
+- id: '2512.00937'
+  published_date: '2025-11-30'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_adaptation
+  - gan_based_speaker_transfer
+  claims:
+  - claim_id: a_lightweight_adversarial_spectrogram_loss_with_a_spectrally_normalized_convolutional_discriminator
+    role: supports
+    claim: A lightweight adversarial spectrogram loss with a spectrally-normalized convolutional discriminator can
+      substantially reduce oversmoothing in mel-spectrogram-based TTS acoustic models without degrading pitch or
+      duration accuracy, at negligible inference-time cost.
+    source: §3.2, §4.2, Figures 8-9
+    evidence: Cepstral oversmoothing metrics (HQER, CSlope, CCentroid, CRoll95) are consistently and substantially
+      lower for the adversarially-trained FastPitch model than for the default L2-loss baseline throughout training,
+      while pitch RMSE, pitch correlation, and V/UV error rate remain comparable between the two configurations;
+      the discriminator only participates at training time and does not add inference cost.
+    confidence: high
+    relevance: low
+  - claim_id: synthetic_speech_from_a_zero_shot_multilingual_tts_system_can_be_used_to_augment_a_scarce_single_spe
+    role: supports
+    claim: Synthetic speech from a zero-shot multilingual TTS system can be used to augment a scarce single-speaker
+      corpus into a multi-speaker training set without degrading synthesis quality for the original real speaker.
+    source: §3.3, §4.3, Figure 10
+    evidence: Adding three XTTSv2-synthesized voices (one male, two female, resynthesized from the same ASC transcripts)
+      to the real Arabic Speech Corpus speaker, the multi-speaker FastPitch model's performance on the original
+      speaker (mel L2, pitch RMSE, correlation, V/UV error, and cepstral oversmoothing metrics) stayed within the
+      same range as the single-speaker adversarial baseline.
+    confidence: high
+    relevance: high
+  - claim_id: standard_lp_l1_l2_regression_losses_on_mel_spectrograms_induce_a_persistent_systematic_reduction_in
+    role: complicates
+    claim: Standard Lp (L1/L2) regression losses on mel-spectrograms induce a persistent, systematic reduction in
+      predicted pitch and duration variance relative to the ground truth, even after long training.
+    source: §3.1, §4.1, Figures 5-6
+    evidence: With the default L2 loss, the learned duration predictor shows a lower mean and reduced variance versus
+      the alignment-network-derived targets (mu=6.75 vs. 7.31, sigma=2.33 vs. 3.44), and the pitch predictor similarly
+      shows a lower mean and reduced variance versus ground-truth pitch (mu=125.7 Hz vs. 127.3 Hz, sigma=12.4 vs.
+      17.2), both persisting after 1000 epochs of training.
+    confidence: high
+    relevance: low
+  - claim_id: cepstral_domain_metrics_computed_via_an_fft_across_mel_frequency_bins_provide_a_more_sensitive_proxy
+    role: refines
+    claim: Cepstral-domain metrics computed via an FFT across mel-frequency bins provide a more sensitive proxy
+      for spectral detail loss during TTS training than pointwise Lp reconstruction distances, remaining informative
+      after reconstruction losses have plateaued.
+    source: §3.1, Table 3
+    evidence: In the default-loss baseline, L1/L2/spectral-convergence distances plateau within roughly the first
+      50 training epochs, while the four cepstral oversmoothing metrics (HQER, CSlope, CCentroid, CRoll95) continue
+      to decrease for several hundred additional epochs, reaching their best values between epochs 620 and 936.
+    confidence: high
+    relevance: low
+  limitations:
+  - The paper reports no subjective or perceptual evaluation. All results (reconstruction distances, pitch metrics,
+    and the proposed cepstral oversmoothing metrics) are objective proxy measures computed against reference audio;
+    no listening tests or MOS-style human ratings are used to confirm that the observed reduction in oversmoothing
+    translates into perceived quality improvements.
+  caveats:
+  - The paper contributes evaluation evidence alongside a primary system or method contribution; metric results
+    should not be generalized beyond its reported datasets and comparison protocol.
+- id: '2512.04793'
+  published_date: '2025-12-04'
+  entry_date: '2026-09-26'
+  year: 2025
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_speaker_adaptation
+  claims:
+  - claim_id: q4_2512_04793_passing_a_zero_shot_voice_singing_conversion_model_s_input_through_a_sep
+    role: supports
+    claim: Passing a zero-shot voice/singing conversion model's input through a separate, pretrained single-shot
+      conversion model to strip source-speaker identity before content-feature extraction improves the invariance
+      of the resulting content representation and downstream conversion fidelity.
+    source: §5.3.1, Table 3
+    evidence: Ablating the RVC-based timbre shifter is the single largest degradation across all three test settings,
+      e.g. under Mix Vocal SPK-SIM drops from 0.810 to 0.804 and CER rises from 15.70% to 16.30%.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_04793_making_speaker_timbre_conditioning_a_function_of_the_local_pitch_contour
+    role: supports
+    claim: Making speaker/timbre conditioning a function of the local pitch contour, rather than a single static
+      per-speaker embedding, improves perceived quality of converted singing by allowing timbre to shift with vocal
+      register.
+    source: §5.3.1, Table 3, Figure 3a
+    evidence: Removing the F0-aware timbre adaptor lowers aesthetic Content Enjoyment/Usefulness scores across all
+      settings, e.g. GT Leading CE/CU falls from 5.79/6.50 to 5.75/6.46.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2512_04793_reweighting_a_flow_matching_training_loss_to_emphasize_under_represented
+    role: complicates
+    claim: Reweighting a flow-matching training loss to emphasize under-represented high-frequency spectral content
+      does not uniformly improve all quality dimensions; it can trade improved spectral/aesthetic detail against
+      measured intelligibility.
+    source: §5.3.1, Table 3
+    evidence: On the clean GT Leading set, including the energy-balanced loss lowers CER (9.20% vs. 9.40% without
+      it) but very slightly reduces aesthetic CE/CU (5.79/6.50 vs. 5.81/6.54 without it), a pattern the authors
+      attribute to a spectral-detail/intelligibility trade-off.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2512_04793_online_rl_post_training_with_a_multi_objective_non_differentiable_percep
+    role: supports
+    claim: Online RL post-training with a multi-objective, non-differentiable perceptual reward (aesthetic quality,
+      intelligibility, speaker similarity) can improve a flow-matching voice/singing conversion model on dimensions
+      not directly optimized by its supervised training objective.
+    source: §5.2
+    evidence: After SFT, the RL stage further raises CMOS from 3.23 to 3.31 and aesthetic CE/CU from 5.73/6.35 to
+      5.75/6.40 on Mix Vocal, and yields the highest CMOS (3.91) on the full production pipeline (Ours Leading).
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2512_04793_zero_shot_svc_systems_evaluated_only_on_clean_isolated_solo_vocals_subst
+    role: complicates
+    claim: Zero-shot SVC systems evaluated only on clean, isolated solo vocals substantially overstate real-world
+      performance, because harmony bleed and F0 errors from imperfect source separation degrade intelligibility
+      and pitch stability even for otherwise strong baselines.
+    source: §5.1, Table 2
+    evidence: The Seed-VC baseline's CER rises from 10.89% (GT Leading, clean) to 17.30% (Mix Vocal, harmony-contaminated)
+      and LogF0PCC drops from 98.29% to 84.02%, a degradation the paper's own robustness-trained model only partially
+      closes (CER 15.90%, LogF0PCC 86.47%).
+    confidence: high
+    relevance: medium
+  limitations:
+  - A small proprietary test suite, five target timbres, two baselines, and partially ablated training stages limit
+    reproducibility and generality.
+  caveats:
+  - Real-world singing robustness improves but remains sensitive to source-separation errors and proprietary training
+    assets.
 claim_clusters:
 - id: multi_speaker_training_learns_shared_voice_structure
   claim: Multi-speaker training learns shared acoustic structure that improves synthesis and generalization across
@@ -5546,12 +6888,15 @@ claim_clusters:
   - 2025.naacl-short.65
   - '2507.15272'
   - interspeech-2025-0596
+  - '2510.10774'
+  - '2511.00256'
+  - '2512.00937'
   contradicting_papers: []
   refining_papers:
   - '2509.00675'
   caveats:
   - Dataset balance, recording quality, and speaker coverage often vary together.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: reference_conditioning_enables_unseen_speaker_adaptation
   claim: Reference-audio conditioning enables synthesis or conversion for unseen speakers without full speaker-specific
     retraining.
@@ -5570,15 +6915,24 @@ claim_clusters:
   - interspeech-2025-1726
   - interspeech-2025-2815
   - '2509.09631'
+  - 2025.vlsp-1.15
+  - '2510.20677'
+  - 2025.findings-emnlp.1381
+  - '2511.08496'
+  - '2511.12347'
+  - '2512.05126'
+  - '2512.04793'
   contradicting_papers: []
   refining_papers:
   - 2025.naacl-short.65
   - '2505.07916'
   - 2025.acl-long.87
   - interspeech-2025-1538
+  - 2025.findings-emnlp.1381
+  - '2512.05126'
   caveats:
   - Performance depends on reference duration, cleanliness, content, and match to the training domain.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: learned_speaker_encoders_outperform_fixed_global_embeddings
   claim: Task-trained or locally conditioned speaker representations can preserve identity better than fixed global
     verification embeddings.
@@ -5591,13 +6945,20 @@ claim_clusters:
   - interspeech-2025-1434
   - '2509.07376'
   - '2509.09631'
+  - '2510.20677'
+  - '2511.08496'
+  - '2511.09995'
+  - '2512.05126'
+  - '2512.04793'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.87
   - interspeech-2025-1538
+  - '2511.08496'
+  - '2511.09995'
   caveats:
   - Dedicated encoders may improve synthesis while becoming less comparable to verification embeddings.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: prompt_length_and_quality_control_cloning_quality
   claim: Speaker-cloning quality is sensitive to prompt duration, acoustic quality, and where the prompt enters
     the generation pipeline.
@@ -5636,14 +6997,18 @@ claim_clusters:
   - '2412.16846'
   - '2509.16010'
   - '2509.22727'
+  - '2510.10774'
+  - '2505.17320'
   contradicting_papers: []
   refining_papers:
   - 2025.findings-naacl.279
   - '2507.20140'
   - '2509.16010'
+  - '2510.09061'
+  - '2505.17320'
   caveats:
   - Benefits depend on data quality and can trade against the base model's generalization.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: parameter_efficient_adaptation_limits_forgetting
   claim: Adapters, LoRA, speaker vectors, and other parameter-efficient updates can personalize voices while limiting
     catastrophic forgetting.
@@ -5656,11 +7021,12 @@ claim_clusters:
   - '2508.18006'
   - '2509.16010'
   - '2509.22727'
+  - 2025.findings-emnlp.1381
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Lightweight updates may underfit highly expressive voices or new linguistic coverage.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: disentangling_identity_and_style_improves_control
   claim: Separating speaker identity from style, emotion, content, and prosody improves controllable personalization.
   status: strongly_supported
@@ -5669,11 +7035,16 @@ claim_clusters:
   - '2508.08399'
   - interspeech-2025-1440
   - '2509.16010'
+  - 2025.vlsp-1.15
+  - '2510.09061'
+  - '2512.04793'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - 2025.vlsp-1.13
+  - 2025.findings-emnlp.1381
   caveats:
   - Identity and expressive behavior overlap, so hard separation can erase speaker-specific phrasing and timing.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: identity_and_expressiveness_trade_off_during_adaptation
   claim: Speaker identity, naturalness, intelligibility, and expressive-style transfer frequently trade off during
     adaptation.
@@ -5688,6 +7059,7 @@ claim_clusters:
   - 2025.acl-long.87
   - '2509.15969'
   - '2509.16010'
+  - '2512.04793'
   contradicting_papers: []
   refining_papers:
   - '2406.04904'
@@ -5696,9 +7068,14 @@ claim_clusters:
   - '2508.08399'
   - interspeech-2025-0596
   - '2509.16010'
+  - '2510.20677'
+  - '2511.00256'
+  - '2511.08496'
+  - '2512.04793'
+  - '2510.12964'
   caveats:
   - The apparent trade-off changes with listener task and automatic metric choice.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: cross_lingual_adaptation_remains_language_sensitive
   claim: Cross-lingual and multilingual adaptation can preserve speaker identity, but language coverage and duration
     modeling create persistent variability.
@@ -5712,13 +7089,21 @@ claim_clusters:
   - interspeech-2025-1344
   - interspeech-2025-raju25_interspeech
   - '2509.22727'
+  - 2025.vlsp-1.13
+  - 2025.vlsp-1.15
+  - '2510.10774'
+  - '2511.12347'
+  - '2512.05126'
   contradicting_papers: []
   refining_papers:
   - '2406.04904'
   - 2025.findings-naacl.279
+  - '2510.09061'
+  - '2511.12347'
+  - '2512.05126'
   caveats:
   - Language, accent, phonetic coverage, and training-data scale are rarely controlled independently.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: continuous_representations_preserve_speaker_detail
   claim: Continuous acoustic representations often preserve speaker detail better than discrete content-oriented
     units in adaptation systems.
@@ -5731,23 +7116,26 @@ claim_clusters:
   - 2025.findings-naacl.130
   - '2509.04667'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2511.08496'
   caveats:
   - Representation comparisons depend on token rate, decoder capacity, and whether semantic invariance is desirable.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: codec_prompting_supports_in_context_voice_cloning
   claim: Codec-token language modeling supports in-context voice cloning through acoustic prompts without explicit
     speaker-specific training.
-  status: emerging
-  confidence: medium
+  status: strongly_supported
+  confidence: high
   supporting_papers:
   - '2301.02111'
   - '2406.05370'
+  - '2511.12347'
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Codec hierarchy and prompt placement affect how identity and acoustic detail are distributed.
-  last_reviewed: '2026-07-29'
+  - Speaker identity transfers more reliably than pronunciation across languages, and prompt layout and data coverage
+    still constrain intelligibility.
+  last_reviewed: '2026-09-26'
 - id: flow_and_diffusion_support_scalable_adaptation
   claim: Flow-matching and diffusion generators support high-quality speaker adaptation with parallel generation
     and effective distillation.
@@ -5766,12 +7154,19 @@ claim_clusters:
   - interspeech-2025-1434
   - interspeech-2025-1747
   - interspeech-2025-raju25_interspeech
+  - 2025.vlsp-1.15
+  - '2510.20677'
+  - '2511.01056'
+  - '2511.08496'
+  - '2511.09995'
+  - '2512.05126'
+  - '2512.04793'
   contradicting_papers: []
   refining_papers:
   - '2507.15272'
   caveats:
   - Matched comparisons against autoregressive systems remain limited across data scale and inference budgets.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: data_scale_and_diversity_drive_unseen_speaker_generalization
   claim: Training-data scale and speaker diversity are major drivers of unseen-speaker similarity and robustness.
   status: strongly_supported
@@ -5785,13 +7180,17 @@ claim_clusters:
   - '2411.19770'
   - '2509.04702'
   - '2509.15969'
+  - '2510.10774'
+  - '2512.00937'
   contradicting_papers: []
   refining_papers:
   - '2507.08319'
   - interspeech-2025-1536
+  - '2510.09061'
+  - '2511.00256'
   caveats:
   - Scale effects are confounded by filtering, transcription quality, architecture, and proprietary data.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: automatic_similarity_metrics_do_not_replace_listener_judgments
   claim: Automatic speaker-similarity metrics can diverge from perceptual identity and adaptation suitability judgments.
   status: emerging
@@ -5805,10 +7204,16 @@ claim_clusters:
   - interspeech-2025-1538
   - interspeech-2025-1726
   - '2412.16846'
+  - 2025.vlsp-1.13
+  - 2025.vlsp-1.15
+  - '2510.20677'
+  - '2511.07135'
+  - '2511.08496'
+  - '2505.17320'
   caveats:
   - Embedding metrics reward consistency in their own representation space and may miss identity, style, or assistive
     suitability.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: noise_and_domain_mismatch_degrade_reference_adaptation
   claim: Noise, channel, domain, and atypical-speech mismatch degrade reference-conditioned speaker adaptation unless
     explicitly addressed.
@@ -5824,13 +7229,22 @@ claim_clusters:
   - interspeech-2025-1638
   - interspeech-2025-1726
   - '2411.19770'
+  - '2510.20677'
+  - '2511.01056'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1536
   - '2411.19770'
+  - '2510.09061'
+  - '2510.20677'
+  - '2511.00256'
+  - '2511.01056'
+  - '2512.05126'
+  - '2512.04793'
+  - '2512.00451'
   caveats:
   - Robustness interventions can alter timbre or normalize speaker-specific characteristics.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
 - id: speaker_adaptation_supports_personalized_assistive_voices
   claim: Speaker adaptation enables personalized assistive voices from limited or atypical reference speech.
   status: strongly_supported
@@ -5858,12 +7272,43 @@ claim_clusters:
   - '2506.18296'
   - '2508.15565'
   - '2509.04667'
+  - '2511.06246'
+  - '2511.07135'
   contradicting_papers: []
   refining_papers:
   - '2507.20140'
+  - '2511.06246'
+  - '2511.07135'
   caveats:
   - Privacy gains can collapse under adaptive attacks and may not transfer across speaker extractors.
-  last_reviewed: '2026-07-29'
+  last_reviewed: '2026-09-26'
+- id: generated_speaker_representations_enable_reference_free_voice_creation
+  claim: Generated or cross-modally inferred speaker representations enable controllable voice creation without
+    a conventional target-speaker recording.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - 2025.findings-emnlp.1381
+  - '2511.06246'
+  - '2511.07135'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Reference-free identities remain coarser than audio-prompt cloning, and embedding diversity does not guarantee
+    perceptual distinctiveness or out-of-domain generalization.
+  last_reviewed: '2026-09-26'
+- id: speaker_information_is_nonuniform_across_generation_trajectories
+  claim: Speaker information is distributed unevenly across network depth and generative timesteps, so adaptation
+    benefits from location-aware supervision.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2511.09995'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The finding currently depends on one external speaker encoder and two flow-matching decoder families.
+  last_reviewed: '2026-09-26'
 method_families:
 - id: autoregressive_prompt_conditioned_adaptation
   name: Autoregressive prompt-conditioned adaptation
@@ -5896,6 +7341,10 @@ method_families:
   - '2412.16846'
   - '2509.15462'
   - '2509.15969'
+  - '2510.10774'
+  - 2025.findings-emnlp.1381
+  - '2511.12347'
+  - '2512.00451'
   open_questions:
   - How can prompt-conditioned autoregressive models preserve identity without inheriting prompt noise, content,
     or prosody?
@@ -5924,6 +7373,12 @@ method_families:
   - '2509.09631'
   - '2509.15462'
   - '2509.22727'
+  - '2510.20677'
+  - '2511.01056'
+  - 2025.findings-emnlp.1381
+  - '2511.09995'
+  - '2512.05126'
+  - '2512.04793'
   open_questions:
   - Which conditioning placement best preserves speaker identity at low inference cost across languages and recording
     domains?
@@ -5946,6 +7401,13 @@ method_families:
   - '2508.17031'
   - '2508.18006'
   - '2509.04667'
+  - '2510.09061'
+  - '2510.10774'
+  - '2510.12964'
+  - '2511.01056'
+  - '2512.00451'
+  - '2505.17320'
+  - '2512.00937'
   open_questions:
   - How can adversarial training suppress source-speaker leakage while maintaining stable reconstruction and naturalness?
 - id: transformer_encoder_decoder_adaptation
@@ -5966,6 +7428,7 @@ method_families:
   - '2508.17031'
   - '2509.00675'
   - '2509.09631'
+  - '2512.00937'
   open_questions:
   - When do local reference features outperform global speaker embeddings for identity and prosody preservation?
 - id: vae_latent_speaker_adaptation
@@ -5983,6 +7446,10 @@ method_families:
   - interspeech-2025-1440
   - '2509.07376'
   - '2412.16846'
+  - '2510.09061'
+  - '2511.01056'
+  - '2511.07135'
+  - '2505.17320'
   open_questions:
   - How should latent regularization balance reconstruction fidelity, speaker separability, and downstream modelability?
 - id: hybrid_semantic_acoustic_adaptation
@@ -6000,6 +7467,11 @@ method_families:
   - '2509.04667'
   - '2509.16010'
   - '2509.22718'
+  - '2510.12964'
+  - '2511.01056'
+  - 2025.findings-emnlp.1381
+  - '2511.06246'
+  - '2511.08496'
   open_questions:
   - Can identity, style, prosody, and content be separated without discarding speaker-specific timing and expression?
 - id: diffusion_based_speaker_adaptation
@@ -6016,6 +7488,9 @@ method_families:
   - interspeech-2025-1434
   - interspeech-2025-1747
   - '2411.19770'
+  - 2025.vlsp-1.15
+  - '2511.06246'
+  - '2511.08496'
   open_questions:
   - Can distilled diffusion retain speaker fidelity and robustness under the inference budgets required for interactive
     use?
@@ -6076,6 +7551,10 @@ open_questions:
 - What listener-calibrated metric can compare speaker identity across TTS, voice conversion, atypical speech, and
   assistive use?
 - How should speaker adaptation systems balance personalization with consent, privacy, misuse resistance, and revocation?
+- Can reference-free generated speaker representations remain perceptually distinct, controllable, and privacy-preserving
+  as the identity pool scales?
+- Does time- and layer-adaptive speaker supervision transfer across languages, acoustic representations, and non-flow
+  generative architectures?
 trend_notes:
 - Speaker adaptation has shifted from speaker-ID lookup and fixed embeddings toward reference-conditioned zero-shot
   and few-shot generation.
@@ -6087,3 +7566,9 @@ trend_notes:
   modules.
 - Evaluation is moving beyond verification embeddings toward perceptual identity, robustness, expressive suitability,
   fairness, and privacy.
+- Q4 2025 work increasingly treats speaker adaptation as representation alignment inside the generator, including
+  dynamic supervision across layers, timesteps, pitch, and modality.
+- Q4 2025 expands speaker control beyond recorded target prompts through synthetic speaker identities, deterministic
+  pseudo-speakers, and face- or text-conditioned voice descriptions.
+- Robust speaker adaptation is broadening from clean read speech to whispered, spontaneous, cross-lingual, and singing
+  inputs, with persistent identity-intelligibility and metric-perception trade-offs.

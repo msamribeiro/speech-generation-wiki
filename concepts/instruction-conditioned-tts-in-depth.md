@@ -2,18 +2,18 @@
 concept: instruction-conditioned-tts
 render_type: in-depth
 title: "Instruction-Conditioned Text-to-Speech: In Depth"
-source_digest_date: 2026-07-25
-paper_count: 44
+source_digest_date: 2026-09-26
+paper_count: 57
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/instruction-conditioned-tts|Instruction-Conditioned Text-to-Speech]]. Complete provenance remains in `wiki/_claims/instruction-conditioned-tts.yaml`.
@@ -30,28 +30,32 @@ For the concise view, see [[concepts/instruction-conditioned-tts|Instruction-Con
 - Open-source instruction-conditioned speech systems lag closed commercial systems most clearly on abstract, compositional, and degree-scaled control. (strongly supported, medium confidence.)
 - Fine-grained instruction following remains attribute-dependent: models that control emotion or speaking rate may fail on age, timbre, phonemic length, emphasis, or non-verbal vocal events. (emerging, high confidence.)
 - Automatic judges can approximate human instruction-adherence ratings, but they do not reliably capture all perceptual alignment, naturalness, or domain-specific failure modes. (contested, high confidence.)
+- Stronger inference-time or iterative guidance improves instruction adherence but can reduce naturalness, intelligibility, or preservation of untargeted content. (strongly supported, high confidence.)
+- Text-only voice instructions are flexible and reference-free, but their one-to-many ambiguity and training-data priors limit fidelity and reliability. (strongly supported, high confidence.)
 
 ## Scope
 
-The graph contains 44 papers through Q3 2025 and 15 synthesized clusters: 8 strongly supported, 6 emerging, and 1 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The graph contains 57 papers through Q4 2025 and 17 synthesized clusters: 10 strongly supported, 5 emerging, and 2 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
-**Direct prompt-conditioned speech language models** groups 11 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Direct prompt-conditioned speech language models** groups 15 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Description-embedding style control** groups 9 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Description-embedding style control** groups 14 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Instruction-data and annotation pipelines** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Instruction-data and annotation pipelines** groups 11 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Instruction-following benchmarks and audits** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Instruction-following benchmarks and audits** groups 10 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Multimodal spoken-instruction models** groups 7 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Multimodal spoken-instruction models** groups 11 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Structured intermediate control** groups 6 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Structured intermediate control** groups 8 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
 **Context-conditioned situated TTS** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
 
-**Prompt-conditioned identity and privacy control** groups 4 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+**Prompt-conditioned identity and privacy control** groups 5 memberships around a shared mechanism. Overlap is expected when systems combine conditioning, alignment, representation, and generation choices. Family size indicates adoption in this graph rather than a quality ranking.
+
+**Guidance-based instruction control** groups 3 memberships that strengthen a requested attribute during inference or iterative editing. The family exposes a direct adherence–fidelity operating point.
 
 ## What the Research Shows
 
@@ -91,7 +95,13 @@ The graph contains 44 papers through Q3 2025 and 15 synthesized clusters: 8 stro
 
 **Current assessment:** Textual speaker descriptions can support speech anonymisation without passing source-speaker audio or embeddings to the generator. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[2507.07799|SecureSpeech: Prompt-based Speaker and Content Protection]]. Prompt-based identities vary across utterances, and privacy conclusions depend strongly on attacker and evaluation design. The design consequence is to test this mechanism under the intended inputs, speakers, languages, hardware, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, representation, and perceptual protocol.
 
-**Current assessment:** A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan without retraining the downstream renderer. The graph rates this conclusion **emerging** with medium confidence. Representative support comes from [[2509.26514|BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs]], [[2505.17093|P2VA: Converting Persona Descriptions into Voice Attributes for Fair and Controllable Text-to-Speech]]. The strongest result depends on a proprietary external LLM, so cost, reproducibility, and portability remain open. The design consequence is to test this mechanism under the intended inputs, speakers, languages, hardware, and operating point. Confidence would change most through matched independent comparisons that preserve data, compute, representation, and perceptual protocol.
+**Current assessment:** A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan without retraining the downstream renderer, but the graph rates this conclusion **contested** with medium confidence. Representative support comes from [[2509.26514|BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs]], [[2505.17093|P2VA: Converting Persona Descriptions into Voice Attributes for Fair and Controllable Text-to-Speech]]. Contradicting evidence shows that interpretation gains do not always survive a fixed renderer’s control limits. Cost, reproducibility, portability, and the renderer ceiling remain open.
+
+### Guidance and text-only voice control
+
+**Current assessment:** Stronger inference-time or iterative guidance improves instruction adherence, but it can reduce naturalness, intelligibility, identity, or preservation of untargeted content. [[2510.13293|Cross-modal Consistency Guidance]] sharpens emotional control in an autoregressive model; [[2511.03601|Step-Audio-EditX]] turns editing into iterative regeneration with token-level rewards; and [[2512.09504|DMP-TTS]] decomposes guidance by attribute. Across these distinct mechanisms, the recurring result is an operating curve rather than a free gain: stronger control can move speech away from an otherwise faithful sample.
+
+Text-only voice control changes the ambiguity rather than eliminating it. [[2511.18487|InstructAudio]] and [[2025.findings-emnlp.1381|UniSpeaker]] demonstrate flexible timbre, style, or identity conditioning without a conventional reference clip. The graph strongly supports that capability, while also showing that descriptions are one-to-many, shaped by annotation and demographic priors, and unsuitable for claiming exact recovery of an intended person. Reference-free control should therefore be evaluated for instruction adherence, diversity, bias, and acoustic quality rather than speaker similarity alone.
 
 ## Where Findings Disagree
 
@@ -107,7 +117,7 @@ The graph contains 44 papers through Q3 2025 and 15 synthesized clusters: 8 stro
 
 **Textual speaker descriptions can support speech anonymisation without passing source-speaker audio or embeddings to the generator.** remains emerging. Prompt-based identities vary across utterances, and privacy conclusions depend strongly on attacker and evaluation design. This boundary is retained in both render depths rather than averaged into broader convergence.
 
-**A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan without retraining the downstream renderer.** remains emerging. The strongest result depends on a proprietary external LLM, so cost, reproducibility, and portability remain open. This boundary is retained in both render depths rather than averaged into broader convergence.
+**A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan without retraining the downstream renderer.** is now contested. Stronger interpretation can help, but a fixed renderer may not express the plan; the strongest positive result also depends on a proprietary external LLM.
 
 ## How the Field Is Changing
 
@@ -116,6 +126,8 @@ The evidence shifts from broad multimodal instruction tuning in 2023–2024 towa
 By 2025, instruction conditioning increasingly uses LLM-generated descriptions or structured intermediate plans rather than fixed categorical style labels alone.
 
 Evaluation work in 2025 moves beyond emotion accuracy toward compositional attributes, human alignment, demographic bias, and domain robustness.
+
+Q4 moves instruction conditioning toward per-attribute guidance, iterative full-sequence editing, accent retrieval, multimodal identity creation, and text-only voice control. It also makes the adherence–fidelity trade-off explicit and turns the interpreter-versus-renderer boundary into a contested systems question.
 
 A recurring 2025 pattern separates instruction interpretation from rendering, allowing stronger language models or explicit vocal plans to improve a fixed speech generator.
 
@@ -135,6 +147,7 @@ A recurring 2025 pattern separates instruction interpretation from rendering, al
 4. **Investigate automatic instruction data construction scales supervision.** Read [[2305.11000|SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities]], [[2402.01912|Natural language guidance of high-fidelity text-to-speech with synthetic annotations]]; use the encoded caveat to frame replication and deployment decisions.
 5. **Investigate structured intermediates decouple interpretation and rendering.** Read [[2305.11000|SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities]], [[2025.findings-acl.101|Chain-Talker: Chain Understanding and Rendering for Empathetic Conversational Speech Synthesis]]; use the encoded caveat to frame replication and deployment decisions.
 6. **Investigate global embeddings limit local and compositional control.** Read [[2507.00808|Multi-interaction TTS toward professional recording reproduction]], [[2509.26514|BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs]]; use the encoded caveat to frame replication and deployment decisions.
+7. **Study Q4 guidance and reference-free control.** Compare [[2510.13293|Cross-modal Consistency Guidance]], [[2511.03601|Step-Audio-EditX]], and [[2025.findings-emnlp.1381|UniSpeaker]] to see how stronger adherence, iterative editing, and voice-description ambiguity interact.
 
 ## Structured Source
 
@@ -142,4 +155,4 @@ Complete structured claims and provenance are in [`wiki/_claims/instruction-cond
 
 ---
 
-_This page is generated from `wiki/_claims/instruction-conditioned-tts.yaml` (digest date: 2026-07-25)._
+_This page is generated from `wiki/_claims/instruction-conditioned-tts.yaml` (digest date: 2026-09-26)._

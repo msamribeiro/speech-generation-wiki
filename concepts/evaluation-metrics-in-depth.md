@@ -2,18 +2,18 @@
 concept: evaluation-metrics
 render_type: in-depth
 title: "Evaluation Metrics: In Depth"
-source_digest_date: 2026-07-21
-paper_count: 285
+source_digest_date: 2026-09-20
+paper_count: 346
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-10-31"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
 This page explains what the reviewed evaluation literature collectively supports. For the short
@@ -42,10 +42,14 @@ representative; the complete paper-to-claim graph remains in
   evaluation rather than another aggregate quality score.
 - Optimizing a single measured property can degrade diversity or another unmeasured perceptual
   dimension.
+- Watermark robustness, demographic fairness, accent, and clinical or assistive speech each need
+  population- and transformation-specific validation.
+- Spoken systems still trail comparable text LMs on semantic coherence, so audio quality alone can
+  hide a reasoning and dialogue-state gap.
 
 ## Scope
 
-The claim graph contains 285 papers through Q3 2025, making this the broadest integrated concept in
+The claim graph contains 346 papers through Q4 2025, making this the broadest integrated concept in
 the current wiki. It spans TTS, voice conversion, neural codecs, vocoders, spoken conversational
 agents, full-duplex systems, clinical and accessibility applications, watermarking, and
 low-resource language evaluation.
@@ -280,6 +284,29 @@ suite excludes diversity, the optimizer has no reason to preserve it. Held-out h
 untargeted diagnostic dimensions are therefore essential when a system is trained directly against
 automatic rewards.
 
+### Q4 broadens consequential evaluation
+
+**Current assessment:** fairness, accessibility, provenance, and spoken reasoning require dedicated
+protocols because aggregate quality scores systematically hide their most consequential failures.
+
+Demographic evaluation must stratify speakers, tasks, languages, and turns rather than report one
+average. [[2509.12171|Preservation of Language Understanding Capabilities in Speech-aware Large
+Language Models]] shows that adding speech can change language understanding unevenly, while
+[[2510.02352]] treats bias as a multi-turn spoken-system property. Clinical and assistive settings
+add a different scope boundary: speaker embeddings and quality predictors calibrated on typical
+speech may not represent suitability for a target user, as illustrated by
+[[interspeech-2025-1726|Voice Reconstruction through Large-Scale TTS Models]].
+
+Provenance metrics likewise need realistic transformations. [[interspeech-2025-2328|A Watermark
+for Auto-Regressive Speech Generation Models]] and related work show detection degradation after
+re-encoding, time stretching, pitch shift, or reverberation. Passing basic additive-noise tests is
+not evidence of robust provenance in distribution channels.
+
+Finally, spoken-agent evaluation must keep semantic competence visible. Systems can sound natural
+while lagging same-scale text models in reasoning, dialogue state, or instruction following;
+[[2412.15649|SLAM-Omni]] is part of this comparison surface. The evaluation suite therefore needs
+content and state measures alongside voice, latency, and interaction quality.
+
 ## Where Findings Disagree
 
 ### Learned and human judgment
@@ -320,6 +347,12 @@ The field is moving from asking “Which system has the highest score?” toward
 does this protocol actually observe?” That shift is most visible in codec co-design, wild
 benchmarks, multi-turn evaluation, and tests built around concrete interaction failures.
 
+Q4 reinforces this modular direction. Full-duplex tests separate stop latency from false yielding;
+fairness and clinical protocols identify the population for which a score is valid; provenance
+tests enumerate transformations; and optimization studies explicitly monitor diversity lost while
+improving a target reward. The common core remains useful, but validity increasingly comes from the
+task-specific module.
+
 ## Implications
 
 - **Define the construct before choosing the metric.** Naturalness, intelligibility, identity,
@@ -347,14 +380,16 @@ benchmarks, multi-turn evaluation, and tests built around concrete interaction f
 6. [[2508.18240|MTalk-Bench]] — multi-turn, paralinguistic, and judge-validity evidence.
 7. [[2507.23159|Full-Duplex-Bench v1.5]] — interaction evaluation beyond latency.
 8. [[2510.02352]] — why fairness evaluation must be task- and turn-specific.
+9. [[interspeech-2025-2328|A Watermark for Auto-Regressive Speech Generation Models]] — why
+   provenance evaluation must include realistic transformations.
 
 ## Structured Source
 
 This page selects and groups findings for human readability. The complete claim graph—including all
-285 paper entries, roles, source sections, caveats, method-family memberships, and reassessment
+346 paper entries, roles, source sections, caveats, method-family memberships, and reassessment
 state—is available in `wiki/_claims/evaluation-metrics.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-07-21).
+_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-09-20).
 Citations are selected for human readability; complete provenance remains in the source YAML._

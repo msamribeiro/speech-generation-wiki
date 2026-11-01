@@ -5,19 +5,19 @@ render_type: overview
 title: Autoregressive Codec Text-to-Speech
 aliases: [codec language model TTS, neural codec language model, speech-token autoregression, VALL-E-style TTS]
 status: established
-last_reviewed: 2026-08-02
-source_digest_date: 2026-07-25
-paper_count: 165
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-26
+paper_count: 196
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -61,6 +61,12 @@ exploit imperfect evaluators.
 naturalness, looping, identity drift, and sampling variability. Listener tests and repeated
 generations remain necessary, especially when tuning decoding or preference rewards.
 
+**Q4 acceleration reduces token steps without removing every bottleneck.** Multi-token, patchwise,
+and speculative decoding reduce language-model iterations, as in [[2510.12210|DiSTAR]] and
+[[2511.13732|Principled Coarse-Grained Acceptance for Speculative Decoding in Speech]]. Lower-rate
+codecs such as [[2510.00981|FlexiCodec]] shorten sequences, but residual decoding, reconstruction,
+and within-group dependencies can prevent proportional wall-clock gains.
+
 ## Method Landscape
 
 - **Hierarchical AR plus parallel acoustics** predicts a semantic or first-codebook stream
@@ -86,6 +92,8 @@ generations remain necessary, especially when tuning decoding or preference rewa
   aligners, duration labels, or language-specific assumptions.
 - **Unified capability versus specialization:** one speech–text backbone broadens tasks but may trail
   cascades on reasoning or task-specific quality.
+- **Fewer prediction steps versus equivalence:** grouped or speculative decoding is useful only if
+  the acceptance rule preserves acoustically equivalent alternatives without hiding regressions.
 
 ## Open Questions
 
@@ -96,6 +104,8 @@ generations remain necessary, especially when tuning decoding or preference rewa
   separately?
 - Can preference training improve several perceptual dimensions without reward hacking or diversity
   collapse?
+- Which combination of token rate, group size, speculation, and renderer cost minimizes end-to-end
+  latency rather than only language-model steps?
 
 ## Go Deeper
 
@@ -105,13 +115,12 @@ preference optimization, and alternatives to full autoregression.
 
 ## Scope
 
-This synthesis covers 165 papers from 2016 through September 2025, including 117 from 2025. The
-graph spans TTS, spoken agents, codecs, VC, and evaluation. Fifteen clusters are strongly supported,
-one is contested, and continuous-token autoregression remains emerging. Results from shared VALL-E,
+This synthesis covers 196 papers from 2016 through Q4 2025. The graph spans TTS, spoken agents,
+codecs, VC, and evaluation. Eighteen clusters are strongly supported and one is contested. Results from shared VALL-E,
 codec, or organizational lineages are not treated as independent replication. System-level gains
 are interpreted separately from infrastructure, historical, and survey evidence.
 
 ---
 
-_This page is generated from `wiki/_claims/autoregressive-codec-tts.yaml` (digest date: 2026-07-25).
+_This page is generated from `wiki/_claims/autoregressive-codec-tts.yaml` (digest date: 2026-09-26).
 For complete structured claims and paper-level provenance, use the source YAML._

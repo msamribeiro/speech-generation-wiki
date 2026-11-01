@@ -2,22 +2,22 @@
 slug: diffusion-tts
 aliases: [diffusion speech synthesis, score-based TTS, latent diffusion TTS]
 status: established
-last_reviewed: 2026-08-02
+last_reviewed: 2026-10-31
 concept: diffusion-tts
 render_type: overview
 title: "Diffusion Text-to-Speech"
-source_digest_date: 2026-07-26
-paper_count: 46
+source_digest_date: 2026-10-31
+paper_count: 58
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -39,11 +39,11 @@ generation:
 
 ## Method Landscape
 
-- **Score-based diffusion synthesis.** 14 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Flow, consistency, and bridge alternatives.** 7 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Adversarial and distilled diffusion.** 5 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Autoregressive-diffusion hybrids.** 5 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Diffusion-transformer acoustic models.** 4 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Score-based diffusion synthesis.** 17 memberships establish the main iterative denoising lineage, from acoustic models to vocoders and editing systems.
+- **Flow, consistency, and bridge alternatives.** 8 memberships pursue straighter or directly calibrated generation paths with fewer evaluations.
+- **Autoregressive-diffusion hybrids.** 8 memberships use an autoregressive stage for global structure and diffusion for local acoustic detail.
+- **Diffusion-transformer acoustic models.** 6 memberships combine long-range conditioning with scalable denoisers.
+- **Latent diffusion and distilled diffusion.** Six memberships in each family reduce target dimensionality or inference steps, but move error into the representation or teacher–student transfer.
 
 ## Key Trade-offs
 
@@ -51,6 +51,8 @@ generation:
 - **Factorizing content, speaker, and style conditioning improves controllability in diffusion speech generation.** Representation separation is often inferred from downstream metrics rather than verified causally.
 - **Diffusion models can support explicit style, emotion, prosody, and singing control.** Control accuracy, naturalness, and speaker preservation are rarely evaluated jointly under matched conditions.
 - **Robust training and representation design improve diffusion speech generation under noisy or mismatched conditions.** Noise types and recording channels vary substantially, limiting generalization from individual robustness tests.
+- **Masked diffusion can generate discrete local units in parallel while exposing sequence length as an explicit control.** This is an emerging result across TTS and speech translation; decoding schedules and confidence heuristics remain task-specific.
+- **Structured starting signals and fixed spectral corrections can shorten diffusion-vocoder sampling.** Evidence is currently confined to vocoders and objective measures, so perceptual transfer to broader acoustic representations is not yet established.
 
 ## Open Questions
 
@@ -59,6 +61,7 @@ generation:
 - When should diffusion be preferred to flow matching or consistency objectives once architecture and inference budget are controlled?
 - How should human preference supervision be applied to noisy intermediate diffusion states without reward-model bias?
 - Which evaluation suite jointly captures naturalness, intelligibility, identity, expressiveness, diversity, and deployment latency?
+- Do masked discrete diffusion and structured vocoder surrogates retain their gains under matched listening tests and out-of-domain speech?
 
 ## Go Deeper
 
@@ -66,8 +69,8 @@ Read [[concepts/diffusion-tts-in-depth|Diffusion Text-to-Speech: In Depth]] for 
 
 ## Scope
 
-This synthesis covers 46 papers through Q3 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
+This synthesis covers 58 papers through Q4 2025, plus two late papers incorporated during the Q4 correction pass. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
 
 ---
 
-_This page is generated from `wiki/_claims/diffusion-tts.yaml` (digest date: 2026-07-26). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/diffusion-tts.yaml` (digest date: 2026-10-31). For complete structured claims and paper-level provenance, use the source YAML._

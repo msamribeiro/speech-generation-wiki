@@ -2,18 +2,18 @@
 concept: neural-codec
 render_type: in-depth
 title: "Neural Audio Codecs: In Depth"
-source_digest_date: 2026-07-28
-paper_count: 183
+source_digest_date: 2026-10-31
+paper_count: 240
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/neural-codec|Neural Audio Codecs]]. This page interprets the
@@ -40,16 +40,17 @@ decision-relevant evidence; the exhaustive graph remains in `wiki/_claims/neural
   winner.
 - Codec evaluation requires reconstruction, perception, intelligibility, identity, and downstream
   generation tests; no single metric predicts all of them.
+- Codec quality and token utility degrade across language, bandwidth, noise, sample rate, and
+  real-versus-synthetic shifts unless training and evaluation cover those conditions.
 
 ## Scope
 
-The graph contains 183 papers from 2016 through September 2025: 134 from 2025, 32 from 2024, and 13
-from 2023. Sixty-one papers directly study codec tasks, while TTS, spoken conversational agents,
+The graph contains 240 papers from 2016 through Q4 2025. Codec studies supply direct evidence, while TTS, spoken conversational agents,
 voice conversion, evaluation, and singing supply downstream evidence about how representations
 behave inside generators. This breadth is a strength for utility claims but complicates causal
 attribution: a downstream failure can originate in the tokenizer, generator, aligner, or decoder.
 
-All seventeen claim clusters are strongly supported with high confidence within the encoded
+All eighteen claim clusters are strongly supported with high confidence within the encoded
 evidence. That does not make numeric comparisons universal. Bitrate, frame rate, sample rate,
 codebook count, decoder size, training corpus, and evaluation protocol often change together.
 Historical and survey papers establish lineage or taxonomy; successor systems that share a
@@ -63,7 +64,7 @@ on voice fidelity or expressiveness.
 
 ## Research Landscape
 
-The dominant family is **autoregressive codec-language modeling**, with 110 associated papers.
+The dominant family is **autoregressive codec-language modeling**, with 128 associated papers.
 These systems serialize speech tokens and use language-model objectives for TTS, continuation,
 dialogue, or translation. Their scale reflects downstream adoption, not proof that autoregression
 is the best codec design.
@@ -283,6 +284,25 @@ representation and prevents codec redesign from being blamed for alignment failu
 systems, the control should additionally match lookahead and packet-loss conditions, because an
 offline reconstruction ceiling can overstate what the deployed codec supplies.
 
+### Robustness is representation-dependent
+
+**Current assessment:** codec reconstruction and token utility degrade under language, bandwidth,
+noise, sample-rate, and real-versus-synthetic domain shifts unless those conditions are represented
+in training and evaluation.
+
+Q4 evidence separates several mechanisms that clean-speech averages collapse. [[2510.21209|SpecTokenizer]]
+targets a lightweight streaming representation in the compressed spectrum domain;
+[[2511.22687|PURE Codec]] progressively unfolds residual entropy; and
+[[2512.20211|Aliasing-Free Neural Audio Synthesis]] targets decoder artifacts caused by sampling
+operations. These systems address different failure surfaces, so their gains do not establish one
+universally robust codec.
+
+Robustness must also be measured twice: at reconstruction and after a downstream generator consumes
+the representation. A tokenizer may reconstruct noisy speech acceptably while exposing unstable
+units to a language model, or it may normalize noise in ways that erase speaker or environmental
+information needed by the task. Most studies isolate one shift, leaving joint noise, language,
+channel, and rate changes under-tested.
+
 ## Where Findings Disagree
 
 No cluster is formally contested, but several design tensions resist a universal answer. Semantic
@@ -305,6 +325,12 @@ models expanded from TTS into understanding and dialogue.
 Flow and diffusion decoders increasingly reconstruct audio from compact representations without
 fully autoregressive acoustic decoding. Evaluation is also moving from reconstruction-only scores
 toward downstream intelligibility, identity, dialogue capability, and listener studies.
+
+Q4 pushes token rates below 10 Hz through single-codebook, geometry-aware, focal, and dynamically
+allocated quantization. Semantic–acoustic separation is becoming explicit in factorized streams
+and conditioned decoders rather than only auxiliary distillation. This lowers sequence cost but
+makes decoder compute, streaming lookahead, and domain robustness first-class parts of the codec
+definition.
 
 ## Implications
 
@@ -332,6 +358,9 @@ toward downstream intelligibility, identity, dialogue capability, and listener s
 6. **Follow the unified-system frontier.** Read [[2025.findings-acl.115|SLAM-Omni]] and
    [[2508.19205|VibeVoice]] while tracking the trade-off between task breadth and specialized
    generation quality.
+7. **Test the Q4 robustness frontier.** Compare [[2510.21209|SpecTokenizer]] and
+   [[2512.20211|Aliasing-Free Neural Audio Synthesis]] to separate streaming representation choices
+   from decoder-side artifact control.
 
 ## Structured Source
 
@@ -340,4 +369,4 @@ Complete structured claims and provenance are in
 
 ---
 
-_This page is generated from `wiki/_claims/neural-codec.yaml` (digest date: 2026-07-28)._
+_This page is generated from `wiki/_claims/neural-codec.yaml` (digest date: 2026-10-31)._

@@ -2,21 +2,21 @@
 concept: speech-to-speech
 render_type: in-depth
 title: "Speech-to-Speech Systems: In Depth"
-source_digest_date: 2026-07-19
-paper_count: 60
+source_digest_date: 2026-09-20
+paper_count: 94
 generation:
   schema_version: 2
-  date: "2026-07-24"
+  date: "2026-11-01"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "39007c6"
+  commit: "b672c6b"
 ---
 
-This review asks what the 60 papers currently encoded for speech-to-speech systems collectively
+This review asks what the 94 papers currently encoded for speech-to-speech systems collectively
 show, where independent studies converge, and where comparisons remain too confounded to support a
 firm conclusion. For a concise introduction and practical recommendations, see
 [[concepts/speech-to-speech|Speech-to-Speech Systems]]. For record-level provenance, use
@@ -44,6 +44,11 @@ firm conclusion. For a concise introduction and practical recommendations, see
 - **Two apparent contradictions remain genuinely unsettled.** The evidence disagrees about whether
   staged ASR/TTS pretraining helps instruction-following, and retrieval helps factual knowledge more
   clearly than it helps conversational memory.
+- **Incremental reasoning reduces response latency but creates premature-action risk.** Retrieval,
+  planning, and tools can start during user speech only when ambiguity, cancellation, and recovery
+  are part of the evaluation.
+- **Structured and synthetic training improves direct translation, while multilingual and
+  code-switched reliability remains condition-dependent.**
 
 ## Scope
 
@@ -59,6 +64,10 @@ small number of historical systems. Primary experiments carry the most weight fo
 claims. Surveys help establish taxonomy but are not independent replications. Known arXiv and
 conference versions of the same work are treated as one underlying evidence point even when both
 records remain in the graph.
+
+The current graph contains nineteen clusters: sixteen strongly supported, two contested, and one
+emerging. The emerging cross-lingual voice-preservation result rests on one direct supporting paper
+and several refiners; it is not promoted by the strength of adjacent translation evidence.
 
 ## Research Landscape
 
@@ -214,6 +223,35 @@ properties, and human listening or interaction tests for paralinguistic behavior
 comparisons. The current evidence does not justify treating an LLM judge as a general substitute for
 human evaluation of spoken interaction.
 
+### Reasoning during listening changes latency
+
+**Assessment: strongly supported for latency benefit, conditional on action control.**
+
+Q4 systems begin retrieval, reasoning, or tool planning before the user finishes speaking.
+[[2510.02044|Stream RAG]] streams retrieval from partial speech, while [[2510.06917|SHANKS]] reasons
+concurrently with listening. This removes some post-endpoint delay and can improve response content
+when early speech already identifies the task.
+
+Short chunks are also ambiguous. An early query or tool call can be wrong even when final dialogue
+quality looks acceptable after recovery. The meaningful frontier therefore combines time saved,
+premature actions, cancellation cost, final task success, and acoustic coherence. A full-context
+fallback is part of the method, not an unfair advantage.
+
+### Direct translation needs structured supervision
+
+**Assessment: strongly supported for structured or synthetic training; multilingual reliability
+remains uneven.**
+
+[[2510.10003|MTP-S2UT]] uses multi-token unit prediction to improve direct speech translation,
+while [[2511.20974|RosettaSpeech]] uses synthetic or pseudo-parallel structure to avoid requiring
+recorded parallel speech. These approaches expand feasible language coverage and can preserve
+voice cues that text-only cascades discard.
+
+Their gains do not erase language-pair effects. Code-switching, low-resource inputs, speaker
+preservation, duration, and prosody remain uneven, and aggregate translation scores can hide which
+language or modality failed. Evaluation should report language-pair, mixed-language, voice, and
+latency results separately.
+
 ## Where Findings Disagree
 
 ### Staged pretraining
@@ -268,6 +306,11 @@ architecture. Native joint models remain important for direct audio interaction;
 offer a pragmatic route to stronger reasoning; and diagnostic benchmarks are exposing weaknesses
 that neither family can currently claim to have solved.
 
+Q4 adds incremental and concurrent agents, synthetic direct translation, and multilingual
+code-switching as first-class design axes. It also sharpens the commercial/open-source observation:
+closed systems often show better-calibrated turn-taking, but undisclosed data and tuning prevent
+clean architectural attribution.
+
 ## Implications
 
 - **Treat architecture labels as incomplete explanations.** Compare backbone scale, training data,
@@ -306,10 +349,12 @@ This is a curated route through the evidence, not a strength ranking or full inv
 7. **Finish with simultaneous speech translation.** Compare [[2303.03926|VALL-E X]],
    [[2025.acl-long.817]], and [[interspeech-2025-1595]] for voice prompting, boundary-aware
    decoding, and interleaved training.
+8. **Inspect Q4 incremental and direct-translation systems.** Pair [[2510.02044|Stream RAG]] with
+   [[2510.10003|MTP-S2UT]] to compare speculation during listening with structured parallel output.
 
 ## Limits of This Review
 
-- The 60-paper graph is a reviewed corpus, not proof of complete field coverage.
+- The 94-paper graph is a reviewed corpus, not proof of complete field coverage.
 - Spoken dialogue, full-duplex interaction, and speech translation use different evaluation regimes;
   results are not freely transferable between them.
 - Several comparisons confound architecture with model scale, data, component maturity, or
@@ -318,7 +363,7 @@ This is a curated route through the evidence, not a strength ranking or full inv
   checked explicitly.
 - Some frontier results rely on proprietary training data, undisclosed commercial baselines, or
   author-created benchmarks without independent validation.
-- Two claim clusters in the source graph have only one supporting paper and should remain emerging.
+- One cross-lingual voice-preservation cluster remains emerging despite stronger adjacent evidence.
 
 ## Structured Source
 
@@ -333,5 +378,5 @@ not exhaustive at the level of records.
 
 ---
 
-_This page is generated from `wiki/_claims/speech-to-speech.yaml` (digest date: 2026-07-19).
+_This page is generated from `wiki/_claims/speech-to-speech.yaml` (digest date: 2026-09-20).
 Citations are selected for human readability; complete provenance remains in the source YAML._

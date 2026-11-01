@@ -2,22 +2,22 @@
 slug: instruction-conditioned-tts
 aliases: [prompt-conditioned TTS, instruction-following speech synthesis, descriptive style control]
 status: emerging
-last_reviewed: 2026-08-02
+last_reviewed: 2026-11-01
 concept: instruction-conditioned-tts
 render_type: overview
 title: "Instruction-Conditioned Text-to-Speech"
-source_digest_date: 2026-07-25
-paper_count: 44
+source_digest_date: 2026-09-26
+paper_count: 57
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -37,13 +37,15 @@ generation:
 
 **Global style embeddings are insufficient for instructions that specify local timing, linguistic position, or independently composable acoustic attributes.** This is emerging within the reviewed graph; representative evidence includes [[2507.00808|Multi-interaction TTS toward professional recording reproduction]], [[2509.26514|BatonVoice: An Operationalist Framework for Enhancing Controllable Speech Synthesis with Linguistic Intelligence from LLMs]]. Evidence comes from different tasks and representation families, so the boundary between embedding limitations and training-data limitations is not yet isolated.
 
+**Q4 makes guidance strength and text-only voice control explicit design boundaries.** Cross-modal, chained, and iterative guidance can improve adherence to emotion, style, or editing instructions, but stronger guidance can reduce naturalness, intelligibility, or preservation of untargeted content ([[2510.13293|Cross-modal Consistency Guidance]], [[2511.03601|Step-Audio-EditX]], [[2512.09504|DMP-TTS]]). Text descriptions and multimodal identity prompts remove the need for reference audio and support broad creative control ([[2511.18487|InstructAudio]], [[2025.findings-emnlp.1381|UniSpeaker]]), yet their one-to-many ambiguity and demographic priors make exact identity fidelity inherently underconstrained.
+
 ## Method Landscape
 
-- **Direct prompt-conditioned speech language models.** 11 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Description-embedding style control.** 9 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Instruction-data and annotation pipelines.** 8 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Instruction-following benchmarks and audits.** 8 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Multimodal spoken-instruction models.** 7 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Direct prompt-conditioned speech language models.** 15 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Description-embedding style control.** 14 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Multimodal spoken-instruction models.** 11 memberships combine text, speech, scene, or identity inputs.
+- **Instruction-data pipelines and audits.** These families contain 11 and 10 memberships and expose how supervision quality and evaluation determine apparent instruction following.
+- **Structured and guidance-based control.** Eight structured-intermediate and three guidance-based systems trade free-form flexibility for more explicit planning or stronger inference-time adherence.
 
 ## Key Trade-offs
 
@@ -51,6 +53,7 @@ generation:
 - **Open-source instruction-conditioned speech systems lag closed commercial systems most clearly on abstract, compositional, and degree-scaled control.** Commercial systems are opaque and change over time, while evaluations cover different languages and prompt taxonomies.
 - **Fine-grained instruction following remains attribute-dependent: models that control emotion or speaking rate may fail on age, timbre, phonemic length, emphasis, or non-verbal vocal events.** Most evidence is diagnostic or complicating rather than a controlled comparison over a shared attribute inventory.
 - **Automatic judges can approximate human instruction-adherence ratings, but they do not reliably capture all perceptual alignment, naturalness, or domain-specific failure modes.** Agreement depends on task subjectivity, judge model, prompt design, and whether the target domain resembles the judge's calibration data.
+- **Adherence versus fidelity.** Increasing guidance or repeating edits can strengthen the requested attribute while degrading untargeted content, identity, or acoustic quality.
 
 ## Open Questions
 
@@ -59,6 +62,7 @@ generation:
 - Which automatic evaluation protocol predicts human judgments across abstract prompts, atypical speech, and multilingual settings?
 - How much instruction diversity is needed before gains saturate, and can it be separated from raw data scale?
 - Can open systems close the commercial-system gap on abstract and degree-scaled control without relying on proprietary data or judge models?
+- How should systems express uncertainty when a text-only voice description admits many perceptually plausible realizations?
 
 ## Go Deeper
 
@@ -66,8 +70,8 @@ Read [[concepts/instruction-conditioned-tts-in-depth|Instruction-Conditioned Tex
 
 ## Scope
 
-This synthesis covers 44 papers through Q3 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
+This synthesis covers 57 papers through Q4 2025. The graph contains 10 strongly supported, 5 emerging, and 2 contested clusters. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Contested automatic judging and interpreter–renderer conclusions are retained rather than averaged into broader convergence.
 
 ---
 
-_This page is generated from `wiki/_claims/instruction-conditioned-tts.yaml` (digest date: 2026-07-25). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/instruction-conditioned-tts.yaml` (digest date: 2026-09-26). For complete structured claims and paper-level provenance, use the source YAML._
