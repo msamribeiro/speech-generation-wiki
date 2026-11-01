@@ -6,6 +6,8 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[2605.25504]] | [Toward Natural Emotional Text-To-Speech System with Fine-Grained Non-Verbal Expression Control](papers/2605.25504.md) | Nara Institute of Science and Technology | O-COCOSDA | 2025 | TTS | diffusion, GAN | 2026-10-25 |
+| [[2605.18001]] | [Bridging the Gap: Converting Read Text to Conversational Dialogue](papers/2605.18001.md) | Thapar Institute of Engineering and Technology / Samsung Research and Development Institute Bangalore | ICICC | 2025 | VC | GAN | 2026-10-25 |
 | [[1904.02882]] | [LibriTTS: A Corpus Derived from LibriSpeech for Text-to-S](papers/1904.02882.md) | Google AI | arXiv | 2019 | TTS |  | 2026-06-10 |
 | [[2403.03100]] | [NaturalSpeech 3: Zero-Shot Speech Synthesis with Factori](papers/2403.03100.md) | Microsoft | arXiv | 2024 | TTS, VC | diffusion, hybrid | 2026-06-10 |
 | [[2504.18425]] | [Kimi-Audio Technical Report](papers/2504.18425.md) | Moonshot AI | arXiv | 2025 | TTS, VC, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
