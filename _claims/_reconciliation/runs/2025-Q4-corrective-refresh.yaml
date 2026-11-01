@@ -1,0 +1,72 @@
+schema_version: 1
+run_id: 2025-Q4-corrective-refresh
+trigger: corrective-review
+evidence_cutoff: '2025-12-31'
+assessment_as_of: '2026-11-01'
+status: finalized
+review_mode: human_review
+supersedes_run: 2025-Q4
+source:
+  infra_commit: 4c0d8c3
+  content_commit: 8d105dc
+  concept_digests:
+    autoregressive-codec-tts: sha256:f01aa0a91355c87669935b9ce0712829368e6d465b16d6d11a20f31d293e7645
+    diffusion-tts: sha256:9cd66fa8f85526f1029f05c0e3777808cf2235cffa78f085e771a825866f7a60
+    disentanglement: sha256:23b1064250d0b8981b5127011e44931f454aac1670c5f95acd75600de7091861
+    emotion-synthesis: sha256:245223ee110f1c752043044e9ea3eeb5b23ec54c957105a3e54e14cb523b36c0
+    evaluation-metrics: sha256:fab944018529965c09eacaffa721f58c39956e3465808a0cdeb927429f9bb6ce
+    fine-tuning: sha256:4ab077da7b5118a10fa8c9ef9b124109c198b8111d4248a62e96004ba5398d0f
+    flow-matching: sha256:2d319beec1c7bd161c173301920e398607c0622462579e93873744ef1c801715
+    gan-vocoder: sha256:a885992c303ab61555d16fe1591f2c42c8e90e4e9dacc6776a9b070670ae3b61
+    instruction-conditioned-tts: sha256:d5116987efa8fd8043e58c27efe7d619fbf656586dc4ebf94314a840d36ee17c
+    multilingual-tts: sha256:56c68d61bc8392253beb117f8c96b4c8cb189b922fd38484ccfe5301acab4d9a
+    neural-codec: sha256:99c201f95a92d2acac81bfca952b87aa130c28367acf7d14f67add475d3858b3
+    prosody-control: sha256:eaadfe172bfb10a8a871ed1f8fbdb89d0548973bea7b8c52c37c73a604a29b9f
+    rlhf-speech: sha256:766c2b73052bca91ff791c7b1217559681cfc81ca71310f65201f72c85c6d566
+    self-supervised-speech: sha256:b86f39ae462eea2e3bbf18419972487b977493d83c8e92cb3f75673553a5c3a1
+    singing: sha256:f6e4b8c649f50a3602aa88ce8f9e2b42a9b313e67307749632b3328d400202dd
+    speaker-adaptation: sha256:8553347b2985ce39012d3702d4b2d9fdbbae75a1bf23ec5229d662a987c6be2d
+    speech-to-speech: sha256:558f9d55db72af701dbdce1ddc9b0893f480a3a55cc5cd2af28c4172b4c67d22
+    spoken-language-model: sha256:9f57b07c7528b1f7779431d4cc582fae2430e7c55dbf52373d5c4c0fe59fbf37
+    streaming-tts: sha256:32f776ef512706a91b758a2acbb154922e9679c827e58ea6c3bade505eaf1569
+    subjective-evaluation: sha256:d615eac86e1865f304f093928520bcdf77bc8af848f7893579a671c538b65f57
+    transformer-enc-dec-tts: sha256:79e9f2df7cb526fa0c30594b708037cb7faba2ae051312d591a2c6dd45069564
+    voice-conversion: sha256:ce781064d703b361f842f8bb5339124105da45913f8f36d8288146bdf4bbab2c
+    zero-shot-tts: sha256:2ba3066dbba761f254326b8dd833325c69460405463c218870e500e97e6a124c
+generator:
+  version: 1
+  neighbors_per_cluster: 10
+  review_cap: 500
+  shared_support_minimum: 2
+  weights:
+    text_similarity: 0.4
+    shared_evidence: 0.3
+    status_polarity: 0.15
+    technical_vocabulary: 0.15
+diagnostics:
+  cross_concept_pairs: 0
+  pre_cap_candidates: 0
+  emitted_candidates: 0
+  shared_evidence_candidates: 0
+  score_distribution:
+    minimum: null
+    median: null
+    maximum: null
+  cap_excluded_shared_evidence: false
+candidates: []
+review:
+  started_on: '2026-10-31'
+  completed_on: '2026-11-01'
+  candidates_reviewed: 0
+  accepted: 0
+  rejected: 0
+  deferred: 0
+  pending: 0
+  runtime: codex
+  provider: openai
+  agent: speech-generation-reconciliation-agent
+  model: gpt-5
+  commit: 4c0d8c3
+  human_reviewer: project_owner
+  decision_source: chat
+  note: The bounded late-evidence refresh changed only exact derived paper evidence for four already human-approved broader claims; it created no new relationship candidate or disposition.
