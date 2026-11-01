@@ -1,6 +1,6 @@
 concept: speech-to-speech
-last_updated: '2026-07-19'
-paper_count: 60
+last_updated: '2026-09-20'
+paper_count: 94
 papers:
 - id: '2303.03926'
   published_date: "2023-03-07"
@@ -1655,6 +1655,7 @@ papers:
   current_role: active_evidence
   method_family:
   - cascade_pipeline_systems
+  - retrieval_augmented_spoken_agents
   claims:
   - claim_id: aura_cascade_beats_e2e_on_voicebench
     role: supports
@@ -1721,6 +1722,7 @@ papers:
   current_role: influential
   method_family:
   - modular_gated_streaming_tts_decoder
+  - retrieval_augmented_spoken_agents
   claims:
   - claim_id: stepaudio2_interleaved_tokens_enable_paralinguistic_response
     role: supports
@@ -4208,6 +4210,2649 @@ papers:
     a systematic sweep across cascade designs; findings about which paradigm is 'better' for reasoning
     should not be over-generalized to latency or paralinguistic-preservation trade-offs covered elsewhere
     in this concept.
+- id: '2510.00499'
+  published_date: '2025-10-01'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - modular_gated_streaming_tts_decoder
+  claims:
+  - role: supports
+    claim: Freezing a pretrained LLM's original parameters while training newly added modality-specific
+      components first, before gradually unfreezing, better preserves the model's original in-modality
+      (text) competence than training all parameters jointly from the start.
+    source: §5, Table 7
+    evidence: 'Table 7 ablation: the frozen-pretrain variant (FP-Full) reaches MMLU/CMMLU of 66.5/69.15,
+      versus 62.11/64.11 for the otherwise-identical no-frozen-pretrain variant (NF) trained for the same
+      ~2 epochs.'
+    confidence: high
+    claim_id: q4_2510_00499_freezing_a_pretrained_llm_s_original_parameters_while_training_newly_added_modality_spec
+    relevance: high
+  - role: supports
+    claim: Giving each modality its own specialized output layers at the top of a shared Transformer,
+      rather than folding a new modality's tokens directly into the existing vocabulary and layer stack,
+      improves performance in both the new and original modality.
+    source: §5, Table 7
+    evidence: 'Table 7: removing the modality-based layer split (NF-NoSplit) while keeping all else equal
+      lowers speech StoryCloze accuracy (55.80 vs. 56.60) and MMLU (60.97 vs. 62.11) relative to the split
+      variant (NF).'
+    confidence: high
+    claim_id: q4_2510_00499_giving_each_modality_its_own_specialized_output_layers_at_the_top_of_a_shared_transforme
+    relevance: high
+  - role: complicates
+    claim: Removing the text intermediate from LLM-based speech-to-speech generation does not yet uniformly
+      close the performance gap with text-guided generation on knowledge-intensive spoken question answering.
+    source: §4.3, Table 6
+    evidence: 'Table 6: on speech-to-speech TriviaQA and WebQA, the fully text-free model scores 28.8
+      and 36.71 respectively, versus 43.20 and 38.34 for the text-guided GLM-4-Voice baseline, even though
+      the text-free model leads on speech-to-text LlamaQA and WebQA.'
+    confidence: high
+    claim_id: q4_2510_00499_removing_the_text_intermediate_from_llm_based_speech_to_speech_generation_does_not_yet_u
+    relevance: high
+  - role: complicates
+    claim: Constraining a semantic speech tokenizer to be fully causal for true streaming operation costs
+      some recognition accuracy relative to a similarly-designed but non-causal or chunk-based variant.
+    source: §4.1, Table 3
+    evidence: 'Table 3: at the same frame rate and bitrate (12.5Hz, 175bps), the fully-causal streaming
+      tokenizer reaches 10.80% overall WER versus 9.17% for the chunk-based (2s block) GLM-4-Voice tokenizer
+      it is fine-tuned from.'
+    confidence: high
+    claim_id: q4_2510_00499_constraining_a_semantic_speech_tokenizer_to_be_fully_causal_for_true_streaming_operation
+    relevance: medium
+  limitations:
+  - On the hardest speech-to-speech settings (TriviaQA, WebQA), the fully text-free model trails a text-guided
+    baseline by a substantial margin (e.g., TriviaQA S→S 28.8 vs. 43.20), showing the text-free paradigm
+    has not yet closed the gap for knowledge-intensive spoken dialogue.
+  - Speech quality is assessed only with the automatic UTMOS and DNSMOS proxies; no human MOS or preference
+    listening test is reported for either the tokenizer or the full dialogue system. The supervised fine-tuning
+    data is entirely synthetic (LLM-adapted text paired with TTS-generated audio from Seed-TTS and MOSS-TTSD),
+    so robustness to spontaneous, noisy, or emotionally varied real human speech is untested. Coverage
+    is limited to English and Chinese, and code/demo availability is not stated in the paper.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.02044'
+  published_date: '2025-10-02'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - incremental_concurrent_reasoning_agents
+  - retrieval_augmented_spoken_agents
+  claims:
+  - role: supports
+    claim: Augmenting speech-in speech-out dialogue systems with external tool retrieval substantially
+      improves factual question-answering accuracy over relying on internalized model knowledge alone.
+    source: §1, Table 1
+    evidence: Across Qwen2.5-7B, OpusLM, and Kimi-Audio, moving from Closed Book to Open Book tool integration
+      raises AudioCRAG-Synthetic accuracy by up to 140% relative (11.1% to 26.3% absolute for Qwen2.5-7B),
+      though at the cost of roughly 2.3x higher first-token latency.
+    confidence: high
+    claim_id: q4_2510_02044_augmenting_speech_in_speech_out_dialogue_systems_with_external_tool_retrieval_substantia
+    relevance: high
+  - role: supports
+    claim: Predicting tool queries incrementally from partial speech input, before the user finishes speaking,
+      can recover most of the latency overhead that external tool calls introduce into spoken dialogue,
+      without sacrificing accuracy.
+    source: §5.1, Table 1
+    evidence: Model-Triggered Streaming RAG post-training on Qwen2.5-7B reaches 34.2% accuracy on AudioCRAG-Synthetic
+      (higher than the non-streaming Open Book's 26.3%) while cutting first-token tool-use latency by
+      20.7% on AudioCRAG-Synthetic and 53.4% on AudioCRAG-Human.
+    confidence: high
+    claim_id: q4_2510_02044_predicting_tool_queries_incrementally_from_partial_speech_input_before_the_user_finishes
+    relevance: high
+  - role: complicates
+    claim: Generating a spoken response degrades factual QA accuracy relative to generating a text response
+      from the same tool-augmented model and identical retrieved evidence.
+    source: §5.2, Table 2
+    evidence: 'In the Open Book setting, all three evaluated models score lower for speech output than
+      text output from the same references (Qwen2.5-7B: 39.6% text vs. 26.3% speech; Kimi-Audio: 45.8%
+      text vs. 21.8% speech), and an intermediate text-then-speech self-cascade only partially closes
+      the gap.'
+    confidence: high
+    claim_id: q4_2510_02044_generating_a_spoken_response_degrades_factual_qa_accuracy_relative_to_generating_a_text_
+    relevance: high
+  - role: complicates
+    claim: Streaming tool-query generation without a learned trigger requires substantially more parallel
+      computation to achieve latency savings comparable to a model that learns when to query.
+    source: §5.4, Figure 4
+    evidence: Fixed-Interval Streaming RAG requires multiple parallel tool-call threads per query and
+      reduces Open-Book tool-use latency by only 10.7% for Qwen-Omni without any post-training, whereas
+      Model-Triggered Streaming RAG achieves larger average latency reductions using a single thread.
+    confidence: high
+    claim_id: q4_2510_02044_streaming_tool_query_generation_without_a_learned_trigger_requires_substantially_more_pa
+    relevance: high
+  limitations:
+  - All reported accuracy scores rely on automated LLM-judge evaluation (LLaMA-4-Maverick transcribing
+    and scoring Whisper transcripts of the spoken output), and no human listening study validates either
+    the naturalness of the spoken responses or the paper's central claim about reduced user-perceived
+    latency; the framework's core motivation (avoiding "awkward silences") is argued from measured latency
+    numbers rather than from subjective user studies.
+  - The evaluation is restricted to single-turn factual QA with simulated web and knowledge-graph APIs
+    drawn from the CRAG corpus; multi-turn dialogue, ambiguous follow-up queries, and real (non-mocked)
+    retrieval latency are not tested. Kimi-Audio could not be evaluated under Streaming RAG at all due
+    to an architectural limit on tool-result reference length, and OpusLM only supports tool-result conditioning
+    in speech-out mode after post-training, not zero-shot, indicating the framework's applicability still
+    depends on properties of the underlying backbone. The proposed Streaming RAG methods are demonstrated
+    only in this speech-in speech-out setting on English factual QA; the paper notes the approach is modality-agnostic
+    in principle but does not evaluate typed-input or multilingual scenarios.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.02066'
+  published_date: '2025-10-02'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  - incremental_concurrent_reasoning_agents
+  claims:
+  - role: supports
+    claim: Incorporating chain-of-thought intermediate reasoning targets into a streaming duplex spoken
+      dialogue system substantially improves semantic coherence over a duplex baseline without intermediate
+      reasoning.
+    source: §VII-A, Table 1
+    evidence: SCoT-Response reduces perplexity from 313.8 (Duplex E2E) to 42.3 and raises ROUGE-1 from
+      14.4 to 27.9 on Eval2000, exceeding the ROUGE/METEOR scores of a ground-truth-transcript text LLM
+      baseline.
+    confidence: high
+    claim_id: q4_2510_02066_incorporating_chain_of_thought_intermediate_reasoning_targets_into_a_streaming_duplex_sp
+    relevance: high
+  - role: complicates
+    claim: Predicting only an intermediate ASR transcript is not, by itself, a sufficient reasoning target
+      for improving duplex dialogue coherence.
+    source: §VII-A, §VII-C, Table 1, Table 3
+    evidence: SCoT-ASR (transcript-only intermediate target) underperforms the plain Duplex E2E baseline
+      on perplexity (432.7 vs. 313.8) and has the worst emotion-alignment rank (6.54) of all systems tested.
+    confidence: high
+    claim_id: q4_2510_02066_predicting_only_an_intermediate_asr_transcript_is_not_by_itself_a_sufficient_reasoning_t
+    relevance: high
+  - role: supports
+    claim: Blockwise streaming CoT duplex systems can approach the latency of purely reactive duplex systems
+      while achieving much higher semantic coherence than latency-costly turn-by-turn CoT alternatives.
+    source: §VII-A, Table 1
+    evidence: SCoT-Response achieves an RTF of 0.56, below a standard turn-by-turn E2E model's 0.75, while
+      scoring 3.24 on an LLM judge versus 2.20 for Duplex E2E; the turn-by-turn CoT model scores higher
+      (4.02) but at RTF 2.95.
+    confidence: high
+    claim_id: q4_2510_02066_blockwise_streaming_cot_duplex_systems_can_approach_the_latency_of_purely_reactive_duple
+    relevance: high
+  - role: complicates
+    claim: Shrinking the processing block size to reduce interaction latency in streaming duplex CoT systems
+      degrades semantic coherence.
+    source: §VII-E, Table 5
+    evidence: Reducing block size from 2s to 1s for SCoT-Full lowers RTF from 0.85 to 0.30 but raises
+      perplexity from 55.2 to 161.2 and drops ROUGE-L from 20.3 to 7.06.
+    confidence: high
+    claim_id: q4_2510_02066_shrinking_the_processing_block_size_to_reduce_interaction_latency_in_streaming_duplex_co
+    relevance: high
+  - role: refines
+    claim: Combining both ASR-transcript and text-response intermediate targets in a duplex CoT system
+      trades a small amount of peak semantic/audio quality for more natural overlapping turn-taking behavior.
+    source: §VII, Table 1, Table 2, Table 4
+    evidence: SCoT-Response outperforms SCoT-Full on ROUGE/METEOR/perplexity and UTMOS (2.46 vs. 2.19),
+      but SCoT-Full achieves higher overlap recall (71.5% vs. 66.8%) relative to the 57.5% natural overlap
+      rate observed in Eval2000.
+    confidence: high
+    claim_id: q4_2510_02066_combining_both_asr_transcript_and_text_response_intermediate_targets_in_a_duplex_cot_sys
+    relevance: high
+  limitations:
+  - Beyond this, absolute audio quality remains modest across all E2E and duplex systems (UTMOS 1.9-2.5)
+    compared to a dedicated single-speaker TTS ceiling (4.19), indicating a substantial synthesis-quality
+    gap that CoT reasoning narrows but does not close. Evaluation relies on automatic metrics (ROUGE,
+    METEOR, perplexity, UTMOS) and an LLM judge rather than human listening tests, and is confined to
+    English telephone conversations (Switchboard and Fisher) at a 1.7B-parameter backbone, leaving open
+    how the approach scales to larger models, other languages, or more diverse conversational domains.
+    The authors also note adaptive block sizing and deeper analysis of how different CoT paths affect
+    performance across utterance types as open directions.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.05150'
+  published_date: '2025-10-02'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - full_duplex_dual_stream_architectures
+  - modular_gated_streaming_tts_decoder
+  - incremental_concurrent_reasoning_agents
+  claims:
+  - role: supports
+    claim: Replacing idle silence-token prediction with structured incremental reasoning during the listening
+      phase of a full-duplex spoken dialogue model improves response quality on tasks that require multi-step
+      reasoning, with limited effect on tasks that do not.
+    source: §4.4.1, Table 3
+    evidence: Adding the chronological thinking chain improves GPT-judged response quality by 8.75% on
+      SpokenWOZ (task-oriented dialogue requiring cross-turn and logical reasoning) but only 2.09% on
+      MtBenchEval (casual multi-turn dialogue)
+    confidence: high
+    claim_id: q4_2510_05150_replacing_idle_silence_token_prediction_with_structured_incremental_reasoning_during_the
+    relevance: high
+  - role: supports
+    claim: Decoupling audio-token prediction into a separate decoder conditioned on the LLM's hidden states,
+      rather than having a single LLM backbone predict both text and audio tokens, improves response quality
+      in speech-to-speech dialogue models with an otherwise comparable architecture.
+    source: §4.4.1, Table 3; §4.4.2, Table 4
+    evidence: Both CT-Duplex variants (LLM predicts text only, separate Transformer decoder predicts speech)
+      outperform SALM-Duplex (LLM predicts both text and audio jointly) on GPT score, BLEU, and Sentence-BERT
+      similarity across SpokenWOZ and MtBenchEval, and on accuracy for Llama Questions and Web Questions
+    confidence: high
+    claim_id: q4_2510_05150_decoupling_audio_token_prediction_into_a_separate_decoder_conditioned_on_the_llm_s_hidde
+    relevance: high
+  - role: complicates
+    claim: Reasoning mechanisms added to the listening phase of a full-duplex dialogue model yield little
+      benefit on tasks that depend primarily on retrieving factual knowledge rather than performing multi-step
+      inference over the conversation.
+    source: §4.4.2, Table 4
+    evidence: Chronological thinking produces only a 1.0-point accuracy gain on Llama Questions (31.4%
+      vs. 30.4%) and a 0.1-point gain on Web Questions (13.3% vs. 13.2%) over the no-thinking ablation,
+      attributed to these benchmarks requiring minimal reasoning
+    confidence: high
+    claim_id: q4_2510_05150_reasoning_mechanisms_added_to_the_listening_phase_of_a_full_duplex_dialogue_model_yield_
+    relevance: high
+  - role: supports
+    claim: Reasoning content for a streaming dialogue agent can be amortized within an existing idle listening
+      window without introducing additional turn-taking or barge-in latency, provided the reasoning representation
+      is compact and preemptible.
+    source: §4.4.3, Table 5
+    evidence: Turn-taking latency differs by only 0.23s and barge-in latency by 0.01s between the thinking
+      and no-thinking variants, while barge-in success rate improves from 88.63% to 94.05% with thinking
+      enabled
+    confidence: high
+    claim_id: q4_2510_05150_reasoning_content_for_a_streaming_dialogue_agent_can_be_amortized_within_an_existing_idl
+    relevance: high
+  - role: complicates
+    claim: Cross-system comparisons of full-duplex spoken dialogue models against half-duplex or turn-based
+      systems on knowledge benchmarks conflate architectural duplex mode and model scale with the effect
+      of any specific mechanism under study.
+    source: §4.4.2
+    evidence: GLM-4-Voice (half-duplex, 9B parameters) outperforms CT-Duplex (full-duplex, 1.5B parameters)
+      on Llama Questions and Web Questions accuracy, a gap the authors attribute partly to GLM-4-Voice's
+      larger scale and its lack of real-time causal constraints rather than to the presence or absence
+      of chronological thinking
+    confidence: high
+    claim_id: q4_2510_05150_cross_system_comparisons_of_full_duplex_spoken_dialogue_models_against_half_duplex_or_tu
+    relevance: high
+  limitations:
+  - 'All training and evaluation dialogue audio is synthetically generated: text dialogues are produced
+    by Qwen2.5-72B-Instruct and converted to speech via voice-cloning TTS (Step-Audio-TTS-3B) rather than
+    collected from real spontaneous conversations. This leaves open whether the reported gains transfer
+    to genuine human-human or human-agent speech with natural disfluencies, overlaps, and noise.'
+  - The chronological thinking chain's supervision itself is generated offline by a large teacher LLM
+    (Qwen2.5-72B-Instruct); truncation analysis in the appendix shows that for 94.7%-98.9% of dialogue
+    turns across the three training sets, the full thinking chain fits within the available silence budget,
+    meaning a nontrivial fraction of turns receive truncated (incomplete) reasoning chains during training.
+  - Subjective validation is limited to a single A/B test with 10 English-speaking raters on SpokenWOZ-derived
+    dialogues, evaluating only the thinking vs. no-thinking ablation rather than comparing against external
+    baselines.
+  - Objective response-quality evaluation relies on an LLM judge (GPT-4o-mini) rather than large-scale
+    human MOS-style evaluation, and all reported benchmarks and training data appear to be English-only.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2506.15556'
+  published_date: '2025-10-08'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - cascade_pipeline_systems
+  - incremental_concurrent_reasoning_agents
+  claims:
+  - claim_id: q4_2506_15556_in_cascade_voice_chat_systems_the_first_sentence_generation_latency_of_t
+    role: supports
+    claim: In cascade voice-chat systems, the first-sentence generation latency of the language model,
+      not the TTS synthesis step, dominates overall user-perceived response latency when the LLM is large
+      relative to the TTS model.
+    source: §1
+    evidence: On the same hardware, Zonos TTS exhibits similar latency (around 200ms) on both an H100
+      and an RTX 3090, while the 7B-scale LLM sees roughly 4x higher throughput on the H100, showing the
+      LLM's first-sentence generation time as the dominant, hardware-sensitive bottleneck.
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2506_15556_speculative_verification_of_candidate_llm_outputs_generated_before_a_use
+    role: supports
+    claim: Speculative verification of candidate LLM outputs generated before a user's input is complete
+      can eliminate response latency entirely for a meaningful fraction of real conversational turns.
+    source: §5.1, Figure 3b
+    evidence: On MT-Bench, more than 10% of first-round conversation turns and an even higher share of
+      second-round turns achieve NFETFS = 1 (single verification step, no regeneration), allowing pre-synthesized
+      audio to be played with no added delay; up to 14% of turns reach this best case.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2506_15556_latency_reductions_from_input_time_speculative_generation_depend_heavily
+    role: complicates
+    claim: Latency reductions from input-time speculative generation depend heavily on how predictable
+      the completion of a partial prompt is, and are substantially smaller for tasks with low content
+      predictability.
+    source: §4.2, Table 1
+    evidence: Average speedups on GSM8K (1.1-2.5x) and MMLU-Pro (1.5-4.6x, high variance) are lower and
+      less consistent than on conversational benchmarks Lmsys (1.8-2.8x) and MT-Bench (1.6-2.6x), attributed
+      to prompts containing hard-to-predict content such as specific numerical values.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2506_15556_loosening_the_token_acceptance_criterion_in_speculative_verification_to
+    role: complicates
+    claim: Loosening the token-acceptance criterion in speculative verification to increase acceptance
+      rate and speedup trades off measurable output quality, even when the underlying language model is
+      unchanged.
+    source: §B.1, Figure 4
+    evidence: Increasing K in the top-K verifier yields further 10-16% speed-ups on Lmsys and MT-Bench
+      at the cost of a slight reduction in GPT-4-judged sample quality, unlike the greedy verifier, which
+      is lossless by construction.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2506_15556_adapting_a_language_model_for_accelerated_jacobi_style_decoding_to_reduc
+    role: refines
+    claim: Adapting a language model for accelerated (Jacobi-style) decoding to reduce voice-interaction
+      latency can be substantially cheaper than training an integrated end-to-end speech-language model
+      for the same purpose.
+    source: §C.1
+    evidence: CLLM fine-tuning of the 7B base model via LoRA with DeepSpeed ZeRO-3 Offload on 4 A6000
+      GPUs for 6k steps costs an estimated $384-500, versus an estimated $10,000+ (8 A100s, 40,000 steps)
+      reported for training an integrated system such as Mini-Omni.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The simulation uses streamed text rather than live speech and mostly omits ASR errors, making its
+    zero-shot TTS component peripheral to the evaluated contribution.
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.06917'
+  published_date: '2025-10-08'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - native_joint_speech_text_lm
+  - incremental_concurrent_reasoning_agents
+  claims:
+  - role: supports
+    claim: Giving a spoken dialogue model an explicit incremental reasoning mechanism over partial input
+      substantially improves its ability to correctly recognize errors in the user's speech before the
+      user finishes, compared to producing an interruption decision without an intermediate reasoning
+      step.
+    source: §5.1, Table 1
+    evidence: SHANKS-E2E reaches an 84.8% interrupt ratio and 63.9% valid interrupt ratio on the wrong
+      (erroneous-solution) subset of the constructed math-interruption test set, versus 13.8%/26.8% for
+      a "No-thinking" baseline trained on identical data to directly predict [INTERRUPT]/[NO INTERRUPT].
+    confidence: high
+    claim_id: q4_2510_06917_giving_a_spoken_dialogue_model_an_explicit_incremental_reasoning_mechanism_over_partial_
+    relevance: high
+  - role: complicates
+    claim: Fixed-duration chunking of streaming input necessarily introduces a reasoning lag proportional
+      to the chunk size, and changing that chunk size at inference time trades off latency against reasoning
+      timing without a clear, monotonic effect on decision accuracy.
+    source: §5.1, Table 1
+    evidence: Varying t_chunk from the trained value of 4.0s to 3.0s and 5.0s at inference (without retraining)
+      leaves interrupt ratio and valid interrupt ratio on the wrong subset largely unchanged, while interruption
+      latency varies non-monotonically (1.56s at t_chunk=3 vs. 8.19s at t_chunk=5).
+    confidence: high
+    claim_id: q4_2510_06917_fixed_duration_chunking_of_streaming_input_necessarily_introduces_a_reasoning_lag_propor
+    relevance: high
+  - role: complicates
+    claim: Acting on partial streaming input to reduce response latency (e.g., issuing tool calls before
+      a request is fully specified) can come at the cost of overall task success and response quality
+      relative to waiting for the complete input, unless the early actions are paired with a full-context
+      fallback pass.
+    source: §5.2, Table 2
+    evidence: SHANKS-E2E alone reaches only 71.3% total API call accuracy and 35.2% task success rate
+      versus 86.5%/63.2% for the call-after-listen baseline that waits for the full user turn; the paper
+      attributes the gap to SHANKS rarely retrying API calls that fail mid-stream, and shows that combining
+      SHANKS with a call-after-listen fallback restores success rate to 62.3% while still completing 57.3%
+      of calls early.
+    confidence: high
+    claim_id: q4_2510_06917_acting_on_partial_streaming_input_to_reduce_response_latency_e_g_issuing_tool_calls_befo
+    relevance: high
+  - role: supports
+    claim: The quality of incremental "thinking while listening" reasoning in a streamed spoken-dialogue
+      framework is governed primarily by the backbone language model's reasoning strength rather than
+      by the streaming/chunking mechanism itself.
+    source: §5.1-§5.2, Tables 1-2
+    evidence: Swapping the same chunked training and inference recipe from an end-to-end thinker-talker
+      backbone (Qwen2.5-Omni thinker) to a stronger text-only reasoning backbone (Qwen2.5-7B-Instruct,
+      in the cascade variant) improves valid interrupt ratio on the wrong subset from 63.9% to 78.3% and
+      improves total tool-call accuracy, despite the streaming mechanism being identical across both variants.
+    confidence: high
+    claim_id: q4_2510_06917_the_quality_of_incremental_thinking_while_listening_reasoning_in_a_streamed_spoken_dialo
+    relevance: high
+  limitations:
+  - All training and evaluation speech in both scenarios is synthesized with GPT-4o-mini-TTS rather than
+    recorded from real speakers, and the interruption and tool-call tasks are entirely author-constructed
+    with no prior benchmark or independent replication; the reported gains have not been tested on natural,
+    spontaneous speech with disfluencies, overlapping speech, or background noise.
+  - 'Beyond the synthetic-speech and self-constructed-benchmark limitation, the paper''s own conclusion
+    identifies three further constraints: the approach requires the user''s speech to have enough duration
+    and sequential structure for incremental reasoning to be meaningful (very short utterances give SHANKS
+    no opportunity to think while listening); the fixed chunk size means the model''s reasoning always
+    lags the true input by at least one chunk duration, and the paper explicitly leaves more sophisticated
+    (non-fixed) chunking strategies to future work; and because the user''s intent may still be ambiguous
+    mid-utterance, some generated thinking chunks may be redundant or unhelpful, while the scheme also
+    meaningfully increases inference-time compute cost relative to think-after-listening. The tool-calling
+    results additionally show that SHANKS''s lack of a retry mechanism for failed mid-stream API calls
+    is an unresolved practical gap relative to a full-context baseline.'
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.07838'
+  published_date: '2025-10-09'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: q4_2510_07838_multi_turn_performance_in_full_duplex_spoken_dialogue_systems_degrades_over_session_time
+    role: supports
+    claim: Multi-turn performance in full-duplex spoken dialogue systems degrades over session time, with
+      instruction-following declining more sharply and with greater volatility than turn-taking fluency.
+    source: §3.2.1, Table 3
+    evidence: Performance trajectories show gradual turn-taking decline and more volatile instruction-following
+      decline across sessions.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_07838_examiner_pacing_substantially_affects_model_performance_in_multi_turn_settings_with_slow
+    role: supports
+    claim: Examiner pacing substantially affects model performance in multi-turn settings, with slower
+      pacing improving instruction-following and task accuracy particularly for open-source systems on
+      memory-intensive tasks.
+    source: §3.2.2
+    evidence: Moshi gains 1.1 points on Entity Tracking and Freeze-Omni gains 0.76 on Correction under
+      Slow pacing.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_07838_entity_tracking_is_more_robust_to_multi_turn_degradation_than_correction_handling_or_dai
+    role: supports
+    claim: Entity tracking is more robust to multi-turn degradation than correction handling or daily
+      task instruction following, because explicit reference anchors help models stay grounded.
+    source: §3.2.1, §3.2.3
+    evidence: Entity Tracking stays comparatively stable while Daily and Correction tasks degrade as state
+      errors accumulate.
+    confidence: medium
+    relevance: high
+  - claim_id: q4_2510_07838_llm_based_automated_judges_can_serve_as_reliable_proxies_for_human_assessment_in_multi_t
+    role: supports
+    claim: LLM-based automated judges can serve as reliable proxies for human assessment in multi-turn
+      spoken dialogue evaluation, with moderate to strong agreement (Pearson r = 0.59-0.69) across turn-taking,
+      instruction-following, and task-specific dimensions.
+    source: §3.3, Table 2
+    evidence: Gemini scores correlate with human annotations at Pearson r = 0.59–0.69 across the reported
+      dimensions.
+    confidence: high
+    relevance: high
+  - claim_id: q4_2510_07838_correction_handling_and_entity_tracking_represent_the_hardest_capabilities_for_current_f
+    role: supports
+    claim: Correction handling and entity tracking represent the hardest capabilities for current full-duplex
+      spoken dialogue systems under fast-paced interaction, with open-source models scoring below 3.0
+      out of 5 on both dimensions.
+    source: §3.2.3, Table 1
+    evidence: Under Fast pacing, Moshi and Freeze-Omni score below 3.0 on Correction and Entity Tracking
+      while GPT-Realtime exceeds 4.0.
+    confidence: high
+    relevance: high
+  limitations:
+  - The automated examiner uses synthesized speech from GPT-Realtime, which reduces prosodic naturalness
+    and may not fully represent the variability of real human interlocutors. Evaluation depends on ASR
+    transcription quality, and LLM judge scoring is sensitive to prompt design and model biases.
+  - Scenario coverage is restricted to four task families in English; open-domain tasks, richer social
+    intents (negotiation, tutoring), and multilingual settings are excluded. The current metric suite
+    does not reward audio-expressive behaviors such as emotional prosody, entrainment, or active-listening
+    cues, meaning systems may underexpress paralinguistic adaptation. Reliance on a closed commercial
+    model (GPT-Realtime) as both the examiner and the top-performing evaluatee creates a potential circularity
+    that may favor response styles aligned with that model family.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.07881'
+  published_date: '2025-10-09'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Speech-to-speech interaction models that perform well on monolingual queries can degrade substantially
+      when the same content is presented in a code-switched (mixed-language) form, even though the underlying
+      semantic content is unchanged.
+    source: §2.3, Table 1
+    evidence: Across 7 mainstream speech-to-speech models, 6 show an absolute knowledge-accuracy drop
+      of 30 percentage points or more moving from the English monolingual version to the Mandarin-English
+      code-switched version of the same instances, with the worst case (VocalNet-ML) dropping from 75.41%
+      to 25.14% (a 66% relative drop).
+    confidence: high
+    claim_id: q4_2510_07881_speech_to_speech_interaction_models_that_perform_well_on_monolingual_queries_can_degrade
+    relevance: high
+  - role: supports
+    claim: Fine-tuning a speech-to-speech model on constructed code-switching and speech-translation data
+      measurably improves its ability to understand and correctly pronounce mixed-language content, without
+      degrading monolingual performance.
+    source: §3.1, §4.2, §4.3, Table 2, Table 3
+    evidence: Adding 19.4k code-switching and 24k speech-translation instances raises VocalNet-ML's CS3-Bench
+      knowledge accuracy from 26.24% to 41.99% and open-ended understanding from 64.5% to 86.0-89.5%,
+      while also improving scores on the monolingual VocalBench and VocalBench-zh test sets.
+    confidence: high
+    claim_id: q4_2510_07881_fine_tuning_a_speech_to_speech_model_on_constructed_code_switching_and_speech_translatio
+    relevance: high
+  - role: refines
+    claim: Explicitly conditioning the speech decoder on recognized or highlighted foreign-language keywords,
+      rather than relying on the language model's implicit understanding, further improves pronunciation
+      accuracy of code-switched speech output beyond what data augmentation alone achieves.
+    source: §3.3, §4.2, Table 2
+    evidence: Adding Keyword Highlighting on top of the language-alignment data and Chain of Recognition
+      raises knowledge accuracy from 43.37% to 46.13% and produces the largest gains specifically on semantic
+      and integrated question types, consistent with the mechanism's role in signalling which keywords
+      the speech decoder must render correctly.
+    confidence: high
+    claim_id: q4_2510_07881_explicitly_conditioning_the_speech_decoder_on_recognized_or_highlighted_foreign_language
+    relevance: high
+  - role: complicates
+    claim: Combining multiple auxiliary training objectives intended to independently improve understanding
+      and generation of mixed-language content can interfere with each other rather than compound their
+      individual gains.
+    source: §4.2
+    evidence: Applying Chain of Recognition and Keyword Highlighting simultaneously degrades performance
+      relative to applying either alone, attributed to inconsistency between the English items the model
+      recognizes during the auxiliary task and the items it ultimately generates in its response.
+    confidence: high
+    claim_id: q4_2510_07881_combining_multiple_auxiliary_training_objectives_intended_to_independently_improve_under
+    relevance: high
+  limitations:
+  - The enhancement methods are validated on a single base architecture (VocalNet-ML, a 7B-parameter model)
+    fine-tuned with comparatively small data volumes (tens of thousands of instances); the paper itself
+    attributes its remaining gap to larger commercial models (Qwen2.5-Omni, Kimi-Audio) primarily to training-data
+    scale, leaving open whether CoR and KH would transfer their benefits, or still leave a gap, at that
+    scale.
+  - The benchmark's own construction pipeline relies on Whisper-large-v3 for filtering and evaluation,
+    and the authors note that Whisper has inherent limitations recognizing code-switched content, which
+    complicates the precision of the pronunciation-quality metrics derived from it. The combination of
+    CoR and KH is reported to be unstable when applied jointly, and the paper does not resolve this interaction
+    beyond noting it as a source of degradation. CS3-Bench itself covers only Mandarin-English code-switching;
+    whether the deterioration pattern and the proposed fixes generalize to other language pairs is untested.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.09592'
+  published_date: '2025-10-10'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - acceleration_evidence
+  current_role: frontier_probe
+  method_family:
+  - full_duplex_dual_stream_architectures
+  - incremental_concurrent_reasoning_agents
+  claims:
+  - role: supports
+    claim: Decoupling reasoning generation from response generation into two separate but coordinating
+      language models can match the response quality of full chain-of-thought pre-computation while eliminating
+      most of its added latency.
+    source: §4.3.1, Table 1, Table 2
+    evidence: MPS-thkfirst reaches 93.9% average accuracy on Spoken-MQA versus 93.0% for the full pre-computed
+      CoT baseline (MPS-tbs), while needing only 80 extra tokens before the first response token compared
+      to 762 for MPS-tbs.
+    confidence: high
+    claim_id: q4_2510_09592_decoupling_reasoning_generation_from_response_generation_into_two_separate_but_coordinat
+    relevance: high
+  - role: supports
+    claim: Pacing a response-generation model with segments of an external, ongoing reasoning stream produces
+      more coherent and accurate responses than interleaving reasoning and response tokens within a single
+      autoregressive model.
+    source: §4.3.1, Table 2
+    evidence: Both MPS-thkfirst and MPS-spkfirst outperform Mini-Omni-Reasoner, a single-model interleaved
+      think-while-speaking method, on Spoken-MQA (93.9% and 92.8% vs. 68.6% average accuracy).
+    confidence: high
+    claim_id: q4_2510_09592_pacing_a_response_generation_model_with_segments_of_an_external_ongoing_reasoning_stream
+    relevance: high
+  - role: complicates
+    claim: Beginning a spoken response before any reasoning context is available measurably harms accuracy
+      on tasks that depend on precise multi-step computation, even when reasoning catches up shortly afterward.
+    source: §4.3.1, Table 1
+    evidence: MPS-spkfirst, which speaks its first response segment before any think segment exists, drops
+      to 77.3% on the Arithmetic.Avg subset of Spoken-MQA versus 86.4% for MPS-thkfirst, while the gap
+      nearly disappears on the Reasoning subtasks (94.9% vs. 94.9%).
+    confidence: high
+    claim_id: q4_2510_09592_beginning_a_spoken_response_before_any_reasoning_context_is_available_measurably_harms_a
+    relevance: high
+  - role: refines
+    claim: A model can be adapted to generate responses from incomplete reasoning traces through supervised
+      fine-tuning on truncated chain-of-thought prefixes alone, without changing the model's input-output
+      token format or architecture.
+    source: §3.3, §4.3.2, Table 3
+    evidence: Think-incomplete SFT trains the Articulation Brain on randomly truncated CoT prefixes paired
+      with full ground-truth responses, reusing the base LLM's standard next-token-prediction objective;
+      the resulting model still exceeds the full-CoT baseline on URO-Bench (89.1 vs. 87.8 Basic.Avg, English).
+    confidence: high
+    claim_id: q4_2510_09592_a_model_can_be_adapted_to_generate_responses_from_incomplete_reasoning_traces_through_su
+    relevance: high
+  limitations:
+  - 'The paper reports that the segmentation strategy is sensitive to design choices in ways that are
+    not fully explained: applying the same variable-length, per-CoT-step segmentation used during think-incomplete
+    SFT at inference time introduces "uncontrollable latency" rather than improving results, and using
+    a fixed-token-count segmentation during the SFT phase (mirroring the inference-time strategy) also
+    fails to improve performance (§3.3). Only the fixed-length inference-time segmentation (80 think tokens
+    / 100 response tokens) is reported as effective, and the paper does not explore why the alternatives
+    underperform. The comparison against the main competing think-while-speaking baseline, Mini-Omni-Reasoner,
+    relies on numbers reported in another paper rather than a reproduction under identical conditions,
+    and results are evaluated on a Step-Audio 2 backbone whose parameter count is not disclosed in this
+    paper, limiting independent assessment of how the approach scales to other backbones or model sizes.'
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.10003'
+  published_date: '2025-10-11'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - speech_to_speech_translation_systems
+  claims:
+  - role: supports
+    claim: Predicting multiple future discrete tokens during training (multi-token prediction), rather
+      than only the next token, improves the quality of discrete-unit speech generation models.
+    source: §3.4, Table 1, Table 2
+    evidence: All four MTP loss variants outperform the next-token-prediction S2UT baseline on ASR-BLEU
+      across three speech tokenizers and two language pairs, with the best variant raising greedy ASR-BLEU
+      from 17.79 to 24.36 on CVSS-C Fr-En with the S3 tokenizer.
+    claim_id: q4_2510_10003_predicting_multiple_future_discrete_tokens_during_training_multi_token_prediction_rather
+    confidence: high
+    relevance: high
+  - role: refines
+    claim: The benefit of multi-token-prediction training for discrete-unit speech generation depends
+      on which network layer the auxiliary loss is applied to, not only on predicting multiple future
+      tokens.
+    source: §3.4, Table 1
+    evidence: Applying the MTP loss to the intermediate decoder layer where CTC loss is computed (MTP-S2UT)
+      consistently outperforms applying the identical loss mechanism only at the final decoder layer (MTP-DeepSeek-V3,
+      MTP-VocalNet), e.g. 24.36 vs. 23.38 vs. 23.29 ASR-BLEU (greedy, S3 tokenizer).
+    claim_id: q4_2510_10003_the_benefit_of_multi_token_prediction_training_for_discrete_unit_speech_generation_depen
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Enriching intermediate hidden representations with future-token information reduces a discrete-unit
+      generation model's predictive uncertainty over subsequent tokens.
+    source: §3.5.2, Figure 3
+    evidence: Entropy analysis over 1.2M speech-token predictions shows all MTP variants shift probability
+      mass toward low-entropy predictions relative to the NTP baseline, with MTP-S2UT producing the largest
+      reduction.
+    claim_id: q4_2510_10003_enriching_intermediate_hidden_representations_with_future_token_information_reduces_a_di
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Feeding teacher-forced ground-truth tokens into a multi-token-prediction module can offset
+      the forward semantic-planning effect that MTP training is intended to induce.
+    source: §3.5.1, Table 3
+    evidence: MTP-DeepSeek-V3, the only variant that conditions its future-token prediction on real (teacher-forced)
+      target-token embeddings, is the sole variant that fails to show the forward shift of text-token
+      first-occurrence positions seen in CTC decoding for the other variants, and correspondingly underperforms
+      MTP-S2UT and MTP-VocalNet on ASR-BLEU.
+    claim_id: q4_2510_10003_feeding_teacher_forced_ground_truth_tokens_into_a_multi_token_prediction_module_can_offs
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation is restricted to CVSS-C on two translation directions (Fr→En, Es→En), both translating
+    into English; no results are reported for translation out of English or between non-English language
+    pairs, so it is untested whether the intermediate-layer placement advantage generalizes to typologically
+    different target languages. The paper compares only against its own re-implementations of prior MTP
+    variants (Parallel-Linear, DeepSeek-V3, VocalNet) rather than against non-MTP S2ST architectures more
+    broadly (e.g. UnitY-style two-pass models or cascaded ASR+MT+TTS pipelines), so the absolute competitiveness
+    of MTP-S2UT against the wider S2ST literature is not established. Training overhead introduced by
+    the additional MTP decoder blocks (3 layers per future-token position, N=7) is not quantified, even
+    though the paper notes MTP parameters are discarded at inference.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.13194'
+  published_date: '2025-10-15'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - speech_to_speech_translation_systems
+  - cascade_pipeline_systems
+  claims:
+  - claim_id: explicitly_generating_and_training_on_emphasis_aligned_parallel_translat
+    role: supports
+    claim: Explicitly generating and training on emphasis-aligned parallel translation data enables a
+      cascaded speech translation model to preserve source-language stress more reliably than prompting
+      general-purpose end-to-end audio LLMs.
+    source: §5.1, Table 2
+    evidence: StressTransfer achieves SSR 78.0 on EmphST-Bench, exceeding GPT-4o (47.4) and Gemini-2.5-Pro
+      (68.4) prompted directly for stress-aware translation, and a cascaded ASR+stress-detection baseline
+      (WhiStress+Qwen2.5-3B-Instruct, 72.9).
+    confidence: high
+    relevance: high
+  - claim_id: pairing_an_emphasis_aware_text_level_translation_model_with_an_off_the_s
+    role: supports
+    claim: Pairing an emphasis-aware text-level translation model with an off-the-shelf prosody-controllable
+      TTS synthesizer can transfer prosodic emphasis to synthesized target-language speech without a corresponding
+      loss in perceived audio quality or translation intelligibility.
+    source: §5.2, Table 4
+    evidence: StressTransfer+TTS reaches UTMOS 3.86 and ASR-BLEU 50.26 on the StressTest corpus, comparable
+      to or exceeding Gemini-2.5-Pro+TTS (3.91 / 48.47) and GPT-4o-audio (3.46 / 49.38), while both cascaded
+      systems substantially outperform the direct S2ST baseline SeamlessExpressive (2.63 / 35.06).
+    confidence: high
+    relevance: high
+  - claim_id: training_data_optimized_for_a_secondary_prosodic_objective_emphasis_pres
+    role: complicates
+    claim: Training data optimized for a secondary prosodic objective (emphasis preservation) can trade
+      off marginally against standard semantic translation metrics.
+    source: §5.3, Table 5
+    evidence: Training without the EmphST-Instruct emphasis-aligned data yields slightly higher BLEU (47.4
+      vs. 46.9) and COMET (0.8362 vs. 0.8347) on CoVoST2 en-to-zh, though omitting the data removes the
+      model's stress-aware translation capability entirely.
+    confidence: high
+    relevance: high
+  - claim_id: benchmarks_for_cross_lingual_prosodic_phenomena_such_as_emphasis_remain
+    role: complicates
+    claim: Benchmarks for cross-lingual prosodic phenomena such as emphasis remain small and narrow in
+      language coverage, limiting confidence in how well reported gains generalize.
+    source: §4.1, Table 1
+    evidence: EmphST-Bench, the paper's own evaluation resource, contains only 218 parallel utterances
+      restricted to a single language pair (English source, Chinese target), with average source utterances
+      of just 6.95 words.
+    confidence: high
+    relevance: high
+  limitations:
+  - Subjective SSR uses four experts, and the LLM-judge agreement check covers only two systems with seven-rater
+    majority vote on one language pair.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2503.06211'
+  published_date: '2025-10-20'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Architectures that let non-text modalities undergo additional feature composition before entering
+      a shared text-pretrained backbone (late fusion), and additional decomposition after leaving it (late
+      fission), improve cross-modal transfer efficiency relative to early fusion/fission at matched model
+      size and training compute.
+    source: §5, Table 1, Figure 2
+    evidence: SmolTolk-150M surpasses the 360M early-fusion baseline and rivals the 1.7B early-fusion
+      baseline on cross-modal StoryCloze metrics, and compute-matched scaling curves show SmolTolk dominating
+      early-fusion baselines across the tested compute range
+    confidence: high
+    claim_id: q4_2503_06211_architectures_that_let_non_text_modalities_undergo_additional_feature_composition_before
+    relevance: medium
+  - role: supports
+    claim: Allowing a speech-generation output mechanism to draw on both low-level and high-level backbone
+      representations, rather than only the final layer, improves the model's ability to abstract compositional
+      features and increases the overlap between text and speech representation subspaces.
+    source: §5.1, §5.2, Table 2, Figure 3
+    evidence: Removing multi-level layer pooling ("- Layer pooling") is the ablation with the largest
+      drop in intrinsic dimensionality and cross-modal subspace overlap among non-baseline variants, and
+      reduces tStoryCloze T→S from 80.9 to 77.8
+    confidence: high
+    claim_id: q4_2503_06211_allowing_a_speech_generation_output_mechanism_to_draw_on_both_low_level_and_high_level_b
+    relevance: medium
+  - role: complicates
+    claim: Increasing model scale under early fusion/fission architectures narrows, but does not close,
+      the cross-modal transfer gap with architectures explicitly designed around the compositional-hierarchy
+      mismatch between modalities.
+    source: §7, Appendix D.1, Figure 5
+    evidence: Cross-modal alignment in early-fusion baselines only emerges at the 1.7B parameter scale,
+      yet even the 7B-parameter early-fusion SpiritLM shows lower cross-modal representation alignment
+      than the much smaller SmolTolk-2B
+    confidence: high
+    claim_id: q4_2503_06211_increasing_model_scale_under_early_fusion_fission_architectures_narrows_but_does_not_clo
+    relevance: low
+  - role: complicates
+    claim: Layer-attention patterns learned for cross-modal language modeling can reflect linguistically
+      meaningful structure (e.g., word boundaries) without this translating into a competitive unsupervised
+      segmentation method as model scale increases.
+    source: §5.2, Table 3
+    evidence: A word-boundary segmentation probe derived from the layer selector's final-layer weights
+      outperforms the SCPC unsupervised baseline at all three model sizes on TIMIT, but segmentation F1
+      decreases from 48.4 (150M) to 31.2 (2B) as model size grows
+    confidence: high
+    claim_id: q4_2503_06211_layer_attention_patterns_learned_for_cross_modal_language_modeling_can_reflect_linguisti
+    relevance: low
+  - role: complicates
+    claim: Text-speech language models trained primarily for linguistic/cross-modal competence, without
+      instruction tuning or high-expressivity speech tokenizers, have limited direct applicability as
+      spoken conversational agents.
+    source: §7 Limitations
+    evidence: The authors note SmolTolk is not instruction fine-tuned, limiting its direct use for spoken
+      conversational agent tasks, and that its HuBERT-based tokens constrain expressivity relative to
+      cascaded ASR+TTS pipelines
+    confidence: high
+    claim_id: q4_2503_06211_text_speech_language_models_trained_primarily_for_linguistic_cross_modal_competence_with
+    relevance: medium
+  limitations:
+  - All experiments are conducted at 135M-2B parameters; the paper's own scale-up evidence (Appendix D.1)
+    is limited to a representation-alignment comparison against the 7B-parameter SpiritLM, not a full
+    re-training of SmolTolk at that scale, so whether the architecture's advantages persist under full-scale
+    training remains an extrapolation rather than a demonstrated result.
+  - Beyond scale, the authors note that SmolTolk is not instruction fine-tuned, limiting its direct applicability
+    to spoken conversational agent use cases without further work. The HuBERT-based speech tokenizer used
+    throughout constrains output expressivity (e.g., prosody, non-linguistic vocalizations) relative to
+    cascaded ASR+TTS pipelines or more expressive speech representations, and the authors flag this as
+    a direction for future work rather than something the current architecture addresses. The auxiliary
+    ASR/TTS experiment (Appendix D.4) is a single configuration added on top of the main model rather
+    than a systematically tuned ASR/TTS setup, so its WER/CER numbers should be read as a feasibility
+    check rather than an optimized result.
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2506.23670'
+  published_date: '2025-10-21'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - acceleration_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Layer-aligned distillation (combining hidden-state, attention-map, and softened-logit alignment)
+      can compress a large interleaved speech-text language model to a fraction of its parameter count
+      while retaining most of its linguistic competence, outperforming an equally-sized model trained
+      from scratch on the same data.
+    source: §3.1-3.2, Table 1, Table 2
+    evidence: The 2B TinyWave-Base student closes 85-93% of the teacher's Normalized Perplexity Score
+      gap and scores 55.3%/74.8% on spoken/topic StoryCloze versus 53.6%/53.6% for a matched-size baseline
+      trained without distillation.
+    confidence: high
+    claim_id: q4_2506_23670_layer_aligned_distillation_combining_hidden_state_attention_map_and_softened_logit_align
+    relevance: medium
+  - role: complicates
+    claim: Distillation of speech language models preserves global semantic and acoustic content more
+      reliably than fine-grained speaker-identity information.
+    source: §3.4, Table 3
+    evidence: TinyWave-Expressive matches or exceeds the 7B teacher on SALMon background-domain accuracy
+      but drops 8-10 percentage points relative to the teacher on gender- and speaker-consistency metrics.
+    confidence: high
+    claim_id: q4_2506_23670_distillation_of_speech_language_models_preserves_global_semantic_and_acoustic_content_mo
+    relevance: medium
+  - role: refines
+    claim: Domain-adapting a teacher model with lightweight fine-tuning before distillation reduces distribution
+      mismatch and improves the quality of the supervisory signal passed to the student.
+    source: §2.1-2.2
+    evidence: The base-speech teacher is fine-tuned with LoRA adapters on a Libri-Light subset before
+      distillation begins ("teacher correction"), a step the authors report as necessary to align supervision
+      with the target domain; it is skipped for the expressive teacher, which already encodes the relevant
+      cues.
+    confidence: high
+    claim_id: q4_2506_23670_domain_adapting_a_teacher_model_with_lightweight_fine_tuning_before_distillation_reduces
+    relevance: low
+  - role: complicates
+    claim: Compact distilled speech language models remain limited by the naturalness ceiling of their
+      underlying discrete tokenizer and vocoder, independent of the distillation method itself.
+    source: §Limitations
+    evidence: The authors report that the HuBERT-based tokenizer and vocoder components struggle to capture
+      conversational stylistic nuance, producing flat or unnatural synthetic speech, and propose residual
+      vector quantization tokenizers as a future direction.
+    confidence: high
+    claim_id: q4_2506_23670_compact_distilled_speech_language_models_remain_limited_by_the_naturalness_ceiling_of_th
+    relevance: medium
+  limitations:
+  - The paper's own Limitations section reports constrained semantic understanding, the models prioritize
+    phonetic accuracy over deeper linguistic comprehension, and naturalness bottlenecks in the inherited
+    HuBERT-based tokenizer and vocoder, which produce flat or unexpressive synthetic speech independent
+    of distillation quality.
+  - Training and evaluation use only the public Libri-Light corpus, a small fraction of the private data
+    used to train the SpiritLM teacher, so it is unclear how the distillation recipe would behave with
+    access to the teacher's full training distribution. The paper does not evaluate the models in an interactive
+    dialogue setting; all benchmarks (NPS, StoryCloze, sWUGGY/sBLIMP, SALMon) measure continuation quality
+    or linguistic/acoustic consistency on single-speaker prompts rather than multi-turn conversational
+    behavior. The speaker- and gender-consistency drop observed for the expressive model under SALMon
+    is flagged by the authors as an open trade-off for future optimization rather than a solved problem.
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.20513'
+  published_date: '2025-10-23'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: low
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - control_evidence
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: decomposing_a_holistic_subjective_speech_quality_construct_into_interpretable_sub_dimensions_and
+    role: supports
+    claim: Decomposing a holistic, subjective speech quality construct into interpretable sub-dimensions
+      and fusing them with a lightweight, separately-trained model can approximate human preference judgments
+      with high data efficiency.
+    source: §2.3, §4.1, Table 2
+    evidence: The XGBoost preference-fusion function, trained on only 480 human-annotated clips using
+      three proxy sub-scores as input, reaches SRCC = 0.86 and PCC = 0.91 against averaged human expressiveness
+      ratings.
+    confidence: high
+    relevance: low
+  - claim_id: an_automatic_expressiveness_metric_aligned_with_human_judgment_can_reliably_rank_competing
+    role: supports
+    claim: An automatic expressiveness metric aligned with human judgment can reliably rank competing
+      speech generation systems, offering a scalable substitute for comparative listening tests at the
+      system level.
+    source: §4.2, Table 3
+    evidence: DeEAR ranks seven SOTA speech-to-speech dialogue systems with SRCC = 0.96 against human
+      rankings and reproduces the near-60-point gap between the highest- and lowest-scoring systems.
+    confidence: high
+    relevance: low
+  - claim_id: filtering_training_data_with_an_automatic_expressiveness_score_can_substantially_increase_the
+    role: supports
+    claim: Filtering training data with an automatic expressiveness score can substantially increase the
+      expressiveness of a fine-tuned speech generation model without any architectural change to that
+      model.
+    source: §4.3.2, Table 4
+    evidence: Fine-tuning an existing speech-to-speech model on 51 hours of DeEAR-selected utterances
+      (threshold 63.5) for a single epoch raised the overall expressiveness score from 2.0 to 23.4 (p
+      < 0.001), corroborated by a 78.5%-vs-10% human A/B preference for the fine-tuned model.
+    confidence: high
+    relevance: low
+  - claim_id: using_a_general_purpose_llm_as_a_scalable_proxy_annotator_for_a
+    role: complicates
+    claim: Using a general-purpose LLM as a scalable proxy annotator for a subjective perceptual dimension
+      yields only moderate alignment with human judgment, so its labels should be treated as a noisy training
+      signal rather than as ground truth.
+    source: §2.2.2, §4.1, Table 2
+    evidence: Gemini 2.5 Pro, used to generate prosodic-richness training labels, itself reaches only
+      SRCC = 0.73 against human ratings, and the resulting Prosody sub-scorer is the weakest of the three
+      dimensions against holistic human perception (PCC = 0.70, SRCC = 0.68).
+    confidence: high
+    relevance: low
+  - claim_id: heuristic_pseudo_labeling_of_a_perceptual_attribute_at_the_dataset_level_rather
+    role: complicates
+    claim: Heuristic pseudo-labeling of a perceptual attribute at the dataset level, rather than the individual-utterance
+      level, caps the precision of any model subsequently distilled from those labels.
+    source: §2.2.3
+    evidence: The spontaneity pseudo-label heuristic assigns a single manually-set categorical base level
+      per source dataset, combined with a DNSMOS-derived acoustic-quality adjustment, so utterance-level
+      variation in true spontaneity within a dataset is not captured by the label itself.
+    confidence: medium
+    relevance: low
+  limitations:
+  - The same DeEAR metric is used both to select the ExpressiveSpeech training data and to score the resulting
+    fine-tuned model's expressiveness gains (§4.3), so the headline 2.0-to-23.4 improvement is partially
+    self-referential. The independent human A/B preference test (§4.3.2) mitigates but does not fully
+    resolve this circularity, since the curation criterion and the primary evaluation criterion are the
+    same underlying construct.
+  caveats:
+  - For speech-to-speech, this paper provides low-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2506.21864'
+  published_date: '2025-10-27'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - modular_gated_streaming_tts_decoder
+  claims:
+  - role: supports
+    claim: Native multimodal speech-text LLMs that retrain a single backbone to emit both speech and text
+      tokens suffer substantially more degradation of the backbone's original language capability than
+      modular architectures that route speech generation through a separate decoder.
+    source: §4.2, Table 3
+    evidence: On the OpenCompass LLM benchmark suite, native MLLMs show an average relative performance
+      drop of over 20% (GLM-4-Voice -44.32%, Mini-Omni -26.73%, LUCY -27.14%) compared to single-digit
+      drops for modular MLLMs like VITA-1.5 (-8.51%) and Qwen2.5-Omni (-6.47%).
+    confidence: high
+    claim_id: q4_2506_21864_native_multimodal_speech_text_llms_that_retrain_a_single_backbone_to_emit_both_speech_an
+    relevance: high
+  - role: supports
+    claim: Partitioning a shared Mixture-of-Experts backbone into modality-specific expert subsets, selected
+      adaptively by measured token load rather than assigned at random or added as new capacity, can let
+      a native multimodal speech-text LLM approach the language-preservation levels of modular architectures
+      while keeping a single unified decoding path.
+    source: §4.2, Table 3
+    evidence: The adaptive modality-specific MoE strategy limits the relative LLM benchmark drop to 5.45%
+      versus its DeepSeek-V2-Lite backbone, matching modular-system-level degradation while still outputting
+      speech directly from the backbone.
+    confidence: high
+    claim_id: q4_2506_21864_partitioning_a_shared_mixture_of_experts_backbone_into_modality_specific_expert_subsets_
+    relevance: high
+  - role: complicates
+    claim: Simply enlarging an existing MoE model with newly added experts for a new modality, without
+      adapting the pretrained router's allocation over the original experts, degrades performance relative
+      to reassigning experts already present in the model.
+    source: §4.2, Table 2
+    evidence: MoExtend, which adds six new audio experts on top of DeepSeek-V2-Lite, scores lower on speech-to-speech
+      spoken QA (avg 26.5) than DeepOmni's adaptive selection using the model's existing experts under
+      the same six-audio-expert budget (avg 36.8), because expanding the expert pool disturbs the router's
+      prior distribution.
+    confidence: high
+    claim_id: q4_2506_21864_simply_enlarging_an_existing_moe_model_with_newly_added_experts_for_a_new_modality_witho
+    relevance: medium
+  - role: complicates
+    claim: Which specific experts are designated for a new modality in a shared Mixture-of-Experts model
+      materially affects downstream task performance, independent of simply having separate modality expert
+      groups.
+    source: §B.1.3, Table 8
+    evidence: Random modality-expert assignment repeated three times on the same architecture yields spoken-QA
+      speech-to-speech averages ranging from 19.4 to 29.3, all below the 36.8 achieved by load-based adaptive
+      selection with the identical expert budget.
+    confidence: high
+    claim_id: q4_2506_21864_which_specific_experts_are_designated_for_a_new_modality_in_a_shared_mixture_of_experts_
+    relevance: medium
+  - role: complicates
+    claim: Preference pairs constructed from automatic transcription-based reward signals (e.g., ranking
+      by ASR word error rate) can improve average speech generation quality via direct preference optimization,
+      but provide little benefit on the hardest generation cases where the underlying supervised model
+      cannot produce a correct output within its search space at all.
+    source: §4.2, Table 1
+    evidence: After DPO on WER-ranked LibriSpeech preference pairs, SeedTTS test-zh CER improves from
+      1.68 to 1.41 and test-en WER improves from 6.28 to 3.25, but test-hard CER is essentially unchanged
+      (7.34 to 7.29).
+    confidence: high
+    claim_id: q4_2506_21864_preference_pairs_constructed_from_automatic_transcription_based_reward_signals_e_g_ranki
+    relevance: medium
+  limitations:
+  - The evaluation relies entirely on automatic metrics (CER/WER, benchmark accuracy); no human listening
+    tests (MOS, preference tests) are reported for speech quality or naturalness. The training data is
+    Chinese-heavy, and the paper itself notes the model performs better on Chinese TTS tasks than English
+    (§4.2). The backbone is comparatively small (2.4B activated parameters) relative to some modular baselines
+    (e.g., Step-Audio at 130B), so it remains unclear whether the adaptive modality-specific MoE strategy
+    scales favorably to larger backbones or larger expert counts; the paper's own ablation shows that
+    pushing past 24 audio experts degrades both text and speech capability (§B.1.1). The half-duplex latency
+    measurement excludes voice activity detection and full-duplex turn-taking, which are needed for naturalistic
+    conversational deployment.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2510.25577'
+  published_date: '2025-10-29'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - evaluation
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  - control_evidence
+  - infrastructure
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: Controlled variation in phonation type (voice quality), applied while holding speaker identity
+      and lexical content constant, can measurably shift a speech foundation model's open-ended generation
+      behaviour.
+    source: §4, Table 2
+    evidence: Across therapy, career advice, interview screening, and storytelling tasks, voice quality
+      had a statistically significant effect on nearly every LLM-judge-rated evaluation dimension for
+      LFMAudio2-1.5B, with effect direction varying by task (e.g. breathy/end-creak raising STEM-oriented
+      ratings, creaky raising care-oriented ratings).
+    confidence: high
+    claim_id: q4_2510_25577_controlled_variation_in_phonation_type_voice_quality_applied_while_holding_speaker_ident
+    relevance: high
+  - role: supports
+    claim: Phonation type systematically shifts the emotion-probability distribution produced by speech
+      emotion recognition models, independent of lexical content.
+    source: §4, Table 4
+    evidence: Bayesian multilevel regression on a Wav2Vec 2.0-based SER model found breathy voice increased
+      calm (+1.17) and decreased fearful (-1.21) probabilities, and creaky/end-creak voice decreased fearful
+      probabilities, all with 95% credible intervals excluding zero.
+    confidence: high
+    claim_id: q4_2510_25577_phonation_type_systematically_shifts_the_emotion_probability_distribution_produced_by_sp
+    relevance: medium
+  - role: complicates
+    claim: Multiple-choice question-answering formats used in existing paralinguistic evaluation benchmarks
+      can mask model sensitivity to non-lexical speech variation that only becomes visible under open-ended
+      generation tasks.
+    source: §1
+    evidence: The paper motivates its open-ended generation and SER probing design by noting existing
+      SFM paralinguistic benchmarks depend on MCQA formats that are "prone to failure" and constrain how
+      nuanced paralinguistic effects can surface.
+    confidence: high
+    claim_id: q4_2510_25577_multiple_choice_question_answering_formats_used_in_existing_paralinguistic_evaluation_be
+    relevance: high
+  - role: complicates
+    claim: Not all deployed speech foundation models reliably extract basic paralinguistic attributes
+      such as speaker gender from raw audio, which can confound or invalidate downstream voice-quality
+      sensitivity measurements for that model.
+    source: §4
+    evidence: The OpenAI real-time speech-to-speech API defaulted to classifying nearly all samples as
+      male and showed no systematic response variation across voice qualities, leading the authors to
+      exclude it from further analysis.
+    confidence: high
+    claim_id: q4_2510_25577_not_all_deployed_speech_foundation_models_reliably_extract_basic_paralinguistic_attribut
+    relevance: high
+  - role: supports
+    claim: Chaining a zero-shot TTS system with a dedicated voice-quality conversion system can produce
+      acoustically controlled phonation variants (e.g. modal, breathy, creaky) suitable for isolating
+      paralinguistic effects in model evaluation.
+    source: §2.1.3, Figure 1, Figure 2, Table 1
+    evidence: F5-TTS-synthesized prompts converted with VoiceQualityVC's glottal-source parameter manipulation
+      showed distinct, verified separations in H1-H2 and H1-A3 acoustic measurements across the four voice-quality
+      conditions, for speakers drawn from two disparate corpora.
+    confidence: high
+    claim_id: q4_2510_25577_chaining_a_zero_shot_tts_system_with_a_dedicated_voice_quality_conversion_system_can_pro
+    relevance: low
+  limitations:
+  - 'Additional limitations acknowledged by the authors: the analysis is restricted to binary gender categories,
+    reflecting the structure of the source corpora (Buckeye, VCTK), and does not address gender-ambiguous
+    or nonbinary voices. The study covers English speech only. The SER analysis uses only the Buckeye
+    subset, on the grounds that VCTK is designed to be affectively neutral, which limits the SER findings
+    to conversational (not read) speech. LLM-judge scoring (gemini-2.5-flash-lite) is used in place of
+    human listening tests for the long-form task, so judged dimensions reflect the judge model''s own
+    biases and calibration rather than independently verified human perception.'
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.00850'
+  published_date: '2025-11-02'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: Scoring a spoken dialogue model's own generated speech for emotional alignment, rather than
+      only its text transcript, surfaces model differences that text-only evaluation would miss.
+    source: §2.2, Table 4
+    evidence: Multi-Bench combines an acoustic-dimension score (Gemini 2.5 Pro judging the SDM's spoken
+      response for emotional alignment) with a separate text-dimension score (DeepSeek-R1); model rankings
+      and gaps (e.g., GLM-4-Voice trailing across both dimensions due to missing dialogue-history support)
+      are reported from both scores jointly.
+    confidence: high
+    claim_id: q4_2511_00850_scoring_a_spoken_dialogue_model_s_own_generated_speech_for_emotional_alignment_rather_th
+    relevance: high
+  - role: complicates
+    claim: Benchmarks that concatenate independent single-turn exchanges to simulate "multi-turn" evaluation
+      understate the difficulty of sustaining genuinely interactive spoken dialogue.
+    source: §1, Table 1
+    evidence: The paper contrasts prior benchmarks such as URO-Bench, whose multi-turn subtasks are concatenations
+      of independent single-turn exchanges rather than a true conversational loop, with Multi-Bench's
+      adaptively terminated, up-to-ten-turn interactive dialogue loop.
+    confidence: high
+    claim_id: q4_2511_00850_benchmarks_that_concatenate_independent_single_turn_exchanges_to_simulate_multi_turn_eva
+    relevance: high
+  - role: complicates
+    claim: Current spoken dialogue models show substantially larger performance gaps on emotionally-charged
+      dialogue than on casual daily conversation, making emotional intelligence a harder and more differentiating
+      capability than general dialogue competence.
+    source: §3.2, Table 4
+    evidence: On the daily-topic NVSpeech subset most models perform similarly except GLM-4-Voice, but
+      on the emotion-centric Psy subset (PsyQA/PsyDTCorpus) the spread widens substantially, with GPT-4o
+      and Step Audio 2 clearly ahead of Qwen 2.5 Omni.
+    confidence: high
+    claim_id: q4_2511_00850_current_spoken_dialogue_models_show_substantially_larger_performance_gaps_on_emotionally
+    relevance: high
+  - role: supports
+    claim: An audio-aware large language model can serve as a scalable proxy judge for human ratings of
+      emotional alignment in multi-turn spoken dialogue evaluation.
+    source: §3.2
+    evidence: The paper reports a 0.885 rank correlation between Gemini-2.5-Pro ALLM judge scores and
+      scores from ten human evaluators using the same scoring pipeline and instructions.
+    confidence: high
+    claim_id: q4_2511_00850_an_audio_aware_large_language_model_can_serve_as_a_scalable_proxy_judge_for_human_rating
+    relevance: high
+  limitations:
+  - Human validation of the ALLM judge is reported as a single aggregate rank correlation (0.885) across
+    ten evaluators rather than per-task or per-language correlations, so it is unclear whether judge reliability
+    holds uniformly across the five tasks or across English and Chinese. The evaluation covers only six
+    SDMs, several of them large closed or near-closed systems (GPT-4o, Step Audio 2, Qwen 2.5 Omni), leaving
+    open how smaller or fully open-source SDMs would perform. Coverage is limited to English and Chinese.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.01261'
+  published_date: '2025-11-03'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: A judge model fine-tuned on human-annotated perceptual ratings of generated speech can substantially
+      outperform zero-shot and few-shot audio-LLM judges at predicting those same human ratings.
+    source: §5.2, Tables 2-3
+    evidence: DRAME-Eval raises average Pearson correlation with human archetype ratings from 0.480 (zero-shot
+      Gemini2.5Pro) to 0.629, and realism ratings from 0.390 to 0.625, after LoRA fine-tuning Qwen2Audio-7B-Instruct
+      on DRAME-EvalBench.
+    confidence: high
+    claim_id: q4_2511_01261_a_judge_model_fine_tuned_on_human_annotated_perceptual_ratings_of_generated_speech_can_s
+    relevance: high
+  - role: complicates
+    claim: Evaluators trained on synthetic or curated role-play speech generalize poorly to real, unscripted
+      human performance.
+    source: §5.2, Table 4
+    evidence: On the real-recording realism test set, all models, including the fine-tuned DRAME-Eval,
+      drop to 0.04-0.25 average correlation with human ratings, versus 0.625 on the synthetic/curated
+      realism test set, with the fine-tuning advantage over few-shot prompting shrinking sharply.
+    confidence: high
+    claim_id: q4_2511_01261_evaluators_trained_on_synthetic_or_curated_role_play_speech_generalize_poorly_to_real_un
+    relevance: high
+  - role: complicates
+    claim: Coarse, stereotype-driven (archetype) evaluation and fine-grained, human-grounded (realism)
+      evaluation of speech role-play can yield different rankings and different levels of automatic-judge
+      reliability, so a single evaluation strategy is not sufficient to characterize role-play quality.
+    source: §6, "Human alignment"; Tables 5-6
+    evidence: 'Human-judgment alignment with DRAME-Eval is 0.706 Spearman correlation for archetype evaluation
+      but only 0.375 for realism evaluation, and system rankings shift: cascaded TTS pipelines lead clearly
+      on archetype scoring while end-to-end models match or exceed them on realism scoring.'
+    confidence: high
+    claim_id: q4_2511_01261_coarse_stereotype_driven_archetype_evaluation_and_fine_grained_human_grounded_realism_ev
+    relevance: high
+  - role: supports
+    claim: Cascading a text LLM with a dedicated zero-shot TTS system can still outperform end-to-end
+      spoken dialogue models on stereotype-driven role-play delivery, though the gap is narrowing.
+    source: §6, Table 5
+    evidence: On DRAME-RoleBench archetype evaluation, cascaded pipelines using IndexTTS2 (G-IndexTTS2,
+      Q-IndexTTS2) achieve the highest content pass rates (94.3%, 94.7%) and average scores, while the
+      best end-to-end model (GLM4-Voice, 88.5% content pass) trails slightly but already exceeds 3.0 average
+      rating.
+    confidence: high
+    claim_id: q4_2511_01261_cascading_a_text_llm_with_a_dedicated_zero_shot_tts_system_can_still_outperform_end_to_e
+    relevance: high
+  limitations:
+  - The single-turn evaluation formulation does not directly model multi-turn dialogue quality; the paper
+    defers a full treatment of multi-turn aggregation to an appendix and only validates single-response
+    scoring. The human-alignment study is small-scale (10% of the benchmark), and Content Pass filtering,
+    which screens for basic instruction compliance and audio validity before rubric scoring, is not itself
+    validated against human judgment in the main text. Archetype role-play data is drawn from SFM outputs
+    rather than real human archetype performances, so archetype evaluation remains partly synthetic-referenced
+    even though realism evaluation was designed to address that gap.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.emnlp-demos.70
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - architecture_variant
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Competitive empathetic spoken conversational agent performance can be achieved with substantially
+      less training data than resource-intensive proprietary systems, when combined with a targeted automated
+      data construction pipeline.
+    source: §4.1, Table 2
+    evidence: OpenS2S is competitive with several larger closed systems on VoiceBench and URO-Bench while
+      using a targeted bilingual empathetic-data pipeline, although Kimi-Audio remains stronger overall.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_competitive_empathetic_spoken_conversational_agent_performance_can_be_achieved_with_subs
+    relevance: high
+  - role: supports
+    claim: Automated synthesis of empathetic speech dialogue data using LLMs for content generation and
+      controllable TTS for speech rendering provides a scalable alternative to large-scale human annotation
+      in building spoken conversational agent training corpora.
+    source: §3.2
+    evidence: The pipeline generates 50,000 English and 50,000 Chinese empathetic speech instruction-response
+      pairs using an LLM plus controllable zero-shot TTS.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_automated_synthesis_of_empathetic_speech_dialogue_data_using_llms_for_content_generation
+    relevance: high
+  - role: supports
+    claim: Interleaved decoding, where speech tokens are generated in fixed-ratio bursts relative to consumed
+      LLM hidden states, enables streaming speech generation in end-to-end spoken conversational agents
+      without a separate parallel decoding module.
+    source: §2.1
+    evidence: The decoder consumes four LLM hidden states and emits eight speech tokens per step before
+      chunk-aware causal flow reconstruction.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_interleaved_decoding_where_speech_tokens_are_generated_in_fixed_ratio_bursts_relative_to
+    relevance: high
+  - role: supports
+    claim: Open-source release of training data and code for empathetic spoken conversational agents remains
+      rare, despite broad availability of model weights across the ecosystem.
+    source: §1, Table 1
+    evidence: The comparison table identifies OpenS2S as releasing training data, pretraining and fine-tuning
+      code, and model weights while the compared systems release only subsets.
+    confidence: high
+    claim_id: q4_2025_emnlp_demos_70_open_source_release_of_training_data_and_code_for_empathetic_spoken_conversational_agent
+    relevance: medium
+  limitations:
+  - Performance still trails Kimi-Audio on all evaluated benchmarks; the data volume gap (less data =
+    lower ceiling) is acknowledged.
+  - The model simulates empathy through learned associations rather than cognitive understanding; subtle
+    emotional nuances may be missed.
+  - Output speech emotion is constrained to a fixed young-female voice for all responses in the current
+    SFT dataset, limiting response speaker diversity.
+  - Cultural and cross-linguistic empathy variation is not addressed; the model may exhibit culturally
+    specific empathetic patterns.
+  - No human subjective evaluation of speech naturalness (MOS) is reported; evaluation is benchmark-based.
+  - Potential bias inheritance from the underlying Qwen3-32B-Instruct data is unanalyzed.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.emnlp-main.1160
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: LLM-as-a-judge evaluation of a spoken dialogue model's transcribed text response can closely
+      approximate human judgment of correctness, provided the judgment task does not require perceiving
+      audio-only information.
+    source: §4.2, Reliability Analysis; Table 4
+    evidence: Pearson, Spearman, and Kendall correlation coefficients between LLM-judge (GPT-4o and DeepSeek-R1)
+      scores and human-expert labels of GPT-4o-Audio-Preview's responses all exceed 0.87 in both the English
+      and Chinese subsets, with p < 0.001 for every coefficient.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1160_llm_as_a_judge_evaluation_of_a_spoken_dialogue_model_s_transcribed_text_response_can_clo
+    relevance: high
+  - role: complicates
+    claim: Transcript-based evaluation of spoken dialogue model outputs cannot capture whether the model
+      produces correct prosodic realizations, so assessing certain generation capabilities requires directly
+      evaluating the generated audio rather than its text.
+    source: §4.2, LLM-based Evaluation
+    evidence: For the phonological ambiguity "Generation" subtask (correcting pause placement, stress,
+      intonation, heteronym or tonal pronunciation), the authors bypass transcription and have three human
+      experts label each SDM's audio output directly, "as it requires examining phonological features
+      that cannot be captured by the transcribed text."
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1160_transcript_based_evaluation_of_spoken_dialogue_model_outputs_cannot_capture_whether_the_
+    relevance: high
+  - role: complicates
+    claim: A spoken dialogue model's relative competence ranking is language-dependent, so single-language
+      evaluation cannot be assumed to generalize to the model's overall conversational competence.
+    source: §5.2.3; Table 2
+    evidence: GPT-4o-Audio-Preview is the top performer on the English subset (55.68% overall accuracy)
+      but is outperformed by Qwen2.5-Omni on the Chinese subset (40.08% vs. GPT-4o-Audio-Preview's 29.45%);
+      the English-Chinese accuracy gap exceeds 8 percentage points in every phenomenon category, and some
+      models (e.g., Freeze-Omni, GLM-4-Voice) more than double their accuracy from Chinese to English.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1160_a_spoken_dialogue_model_s_relative_competence_ranking_is_language_dependent_so_single_la
+    relevance: high
+  - role: complicates
+    claim: Explicitly pointing out to a spoken dialogue model that a comprehension-relevant phenomenon
+      (e.g., omission, coreference) is present in the input only partially improves the model's ability
+      to correctly resolve it.
+    source: §5.2.2; Table 3
+    evidence: Comparing detection accuracy against completion/resolution accuracy for the same phenomena,
+      most SDMs score much higher on detecting the presence of omission or coreference than on completing
+      or resolving it (e.g., overall omission detection reaches 38.65% in Chinese versus 3.75% for completion,
+      and 8.57% versus 8.98% in English), showing the benefit of an explicit hint is limited or absent
+      for most models.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1160_explicitly_pointing_out_to_a_spoken_dialogue_model_that_a_comprehension_relevant_phenome
+    relevance: high
+  limitations:
+  - 'The authors themselves note two further limitations: the five complexity phenomena are studied only
+    in English and Chinese, though they are not inherently limited to these languages; and human-expert
+    audio labeling carries potential rater bias, which the paper mitigates with a three-expert majority-voting
+    scheme rather than eliminating. Additionally, cascaded ASR+LLM+TTS SDMs are excluded from evaluation
+    by design (on the reasonable grounds that ASR discards phonetic cues), so the benchmark''s findings
+    characterize only the current generation of end-to-end SDMs, and Moshi''s full-duplex interruption
+    behavior means it could not be evaluated under the same multi-turn protocol as the other nine models.'
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.emnlp-main.1492
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - cascade_pipeline_systems
+  claims:
+  - role: supports
+    claim: Providing a dedicated speaker-identity representation alongside content features to a spoken
+      dialogue LLM yields more persona-consistent responses than relying on transcribed content alone
+      or on speaker identity injected only as a text label.
+    source: §5.3.1, §5.3.2, Table 2
+    evidence: PAChat, with a separate speaker encoder and alignment channel, outperforms FunAudioLLM given
+      identity as a text prompt and outperforms all audio-input-only baselines on GPT-eval and human-eval
+      across both Persona-Dialogue and Persona-Chat.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1492_providing_a_dedicated_speaker_identity_representation_alongside_content_features_to_a_sp
+    relevance: high
+  - role: supports
+    claim: Large-scale LLM-generated synthetic dialogue with zero-shot TTS-synthesized speech can train
+      spoken dialogue systems that generalize to out-of-domain, differently-sourced conversational data.
+    source: §5.3.2, Table 2
+    evidence: A model trained only on the synthetic Persona-Dialogue corpus still achieves the best subjective
+      scores (GPT-eval 4.04, human-eval 3.45) when zero-shot evaluated on Persona-Chat, a separate text-dialogue
+      dataset reformatted into spoken form.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1492_large_scale_llm_generated_synthetic_dialogue_with_zero_shot_tts_synthesized_speech_can_t
+    relevance: high
+  - role: complicates
+    claim: Persona-aware response generation in multi-party spoken dialogue depends jointly on dialogue
+      history and static user-profile context; neither signal alone is sufficient, which constrains what
+      minimal-context deployments can achieve.
+    source: §5.5, Table 3
+    evidence: Ablating either user-profile or dialogue-history input individually drops GPT-eval from
+      3.8 to between 2.3 and 3.2, though the authors also note that scenarios requiring both signals jointly
+      are not universal in real dialogue.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1492_persona_aware_response_generation_in_multi_party_spoken_dialogue_depends_jointly_on_dial
+    relevance: high
+  - role: complicates
+    claim: Evaluating "spoken" dialogue systems primarily through text-based metrics on the LLM's output
+      can decouple the measured gains from the quality of the actual synthesized speech, since the two
+      stages are typically produced by independently trained modules.
+    source: §Appendix C.2, Table 4
+    evidence: PAChat and a Qwen2-Audio + CosyVoice2 baseline that share the identical TTS backend obtain
+      nearly identical MOS (3.87 vs. 3.88) despite PAChat's clearly better dialogue-understanding human
+      score (3.03 vs. 2.81), showing the persona-aware gains are entirely in text content, not the shared
+      downstream TTS stage.
+    confidence: high
+    claim_id: q4_2025_emnlp_main_1492_evaluating_spoken_dialogue_systems_primarily_through_text_based_metrics_on_the_llm_s_out
+    relevance: high
+  limitations:
+  - Beyond turn-taking, the authors note two further open points. First, the data-scale ablation shows
+    continued (if diminishing) gains up to the largest tested scale, so the point at which additional
+    synthetic data stops helping is not established. Second, PAChat currently generates responses only
+    as text content matched to a persona; it does not yet adapt vocal tone or prosody to the addressee
+    (e.g., a gentler tone for a child, a more careful tone for an elderly user) since speech synthesis
+    is delegated to a fixed, off-the-shelf TTS module rather than being unified into the model itself.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.findings-emnlp.241
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - acceleration_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - retrieval_augmented_spoken_agents
+  claims:
+  - role: supports
+    claim: Encoding a spoken query directly into a shared speech-text embedding space for retrieval can
+      substantially reduce end-to-end retrieval latency compared to an ASR-then-retrieve cascade, without
+      requiring speech tokenization.
+    source: §4.3, Table 1
+    evidence: End-to-end retrieval with a SONAR speech encoder reduced measured retrieval time to about
+      0.08s from about 0.3-1.2s for ASR-based cascade retrieval on both HotpotQA (en) and RGB (zh), roughly
+      a 4x speedup.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_241_encoding_a_spoken_query_directly_into_a_shared_speech_text_embedding_space_for_retrieval
+    relevance: high
+  - role: complicates
+    claim: Retrieving directly from a speech query, bypassing ASR, currently incurs a downstream answer-accuracy
+      cost relative to ASR-based text retrieval, because the accuracy gap traces to the quality of the
+      shared text embedding space rather than to the use of a speech encoder per se.
+    source: §4.3-4.4, Tables 1-2
+    evidence: End-to-end RAG trailed ASR-cascade RAG systems by about 9 points answer accuracy on HotpotQA
+      and about 15 points on RGB-zh; an ablation swapping the SONAR speech encoder for a Whisper+SONAR-text-encoder
+      pipeline produced nearly identical accuracy, isolating the gap to the SONAR text encoder's semantic
+      alignment quality.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_241_retrieving_directly_from_a_speech_query_bypassing_asr_currently_incurs_a_downstream_answ
+    relevance: high
+  - role: refines
+    claim: Not every joint speech-text embedding model provides sufficient semantic alignment for effective
+      retrieval; encoders optimized for coarse audio-text matching underperform those distilled against
+      a strong text-semantic teacher.
+    source: §4.4, Table 2
+    evidence: Replacing the SONAR encoder with CLAP as the shared embedding degraded both retrieval F1
+      and answer accuracy on both benchmarks, attributed to CLAP preserving weaker fine-grained text semantic
+      alignment than SONAR's text-encoder-distilled embedding space.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_241_not_every_joint_speech_text_embedding_model_provides_sufficient_semantic_alignment_for_e
+    relevance: high
+  limitations:
+  - The evaluation also relies on TTS-synthesized speech queries (via Azure TTS) rather than naturally
+    spoken audio, which may not fully capture retrieval robustness to real spontaneous speech, disfluencies,
+    or acoustic noise. Only two QA benchmarks in two languages (English, Chinese) were tested, and only
+    one end-to-end speech-to-speech dialogue model (GLM-4-Voice) served as the generator, so generalization
+    to other model families is untested.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.findings-emnlp.524
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - TTS
+  architecture:
+  - diffusion
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - speech_to_speech_translation_systems
+  claims:
+  - role: supports
+    claim: Fixing the target sequence length at inference time, combined with a masked-diffusion decoder
+      trained on variable-length masking, gives non-autoregressive S2ST models exact duration control
+      without post-hoc time-stretching.
+    source: §5.1, Table 2
+    evidence: Dub-S2ST reaches 100% duration compliance at both the 20% and 40% tolerance thresholds by
+      initializing decoding with a fully masked sequence whose length matches the source unit sequence,
+      compared to 56-81% for prior duration-controllable baselines under the 20% threshold.
+    claim_id: q4_2025_findings_emnlp_524_fixing_the_target_sequence_length_at_inference_time_combined_with_a_masked_diffusion_dec
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Speaking-speed adaptation for cross-lingual translation can be learned directly from discrete
+      unit-sequence deduplication statistics, without relying on text, phonemes, or syllable counts.
+    source: §5.3, Table 4
+    evidence: The unit-based speed adaptation ratio (reduced-sequence length over original length) correlates
+      strongly with ground-truth syllable speed (correlation 0.606), and training on speed-adapted sequences
+      raises the correlation between generated and source syllable speed from 0.235 to 0.519.
+    claim_id: q4_2025_findings_emnlp_524_speaking_speed_adaptation_for_cross_lingual_translation_can_be_learned_directly_from_dis
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Conditioning a speech synthesizer on the source speaker embedding and source mel-spectrogram
+      to preserve speaker identity in cross-lingual translation trades off against acoustic naturalness
+      relative to a single-speaker-only configuration.
+    source: §5.1, Table 1
+    evidence: The multi-speaker Dub-S2ST achieves the best speaker similarity (SPK-SIM 0.266) but a lower
+      DNSMOS (3.693) than the single-speaker Dub-S2ST-single (DNSMOS 3.945), which does not condition
+      on source speaker identity.
+    claim_id: q4_2025_findings_emnlp_524_conditioning_a_speech_synthesizer_on_the_source_speaker_embedding_and_source_mel_spectro
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: Applying a separately trained voice-conversion model to a translation system's output, rather
+      than conditioning the synthesizer jointly on speaker identity during training, can degrade translation
+      intelligibility.
+    source: §5.4, Table 8
+    evidence: Applying a cross-lingual voice-conversion model to the single-speaker Dub-S2ST-single output
+      raises speaker similarity (SIM 0.315) but lowers ASR-BLEU from 23.88 to 23.09, which the authors
+      attribute to oversmoothing of pronunciation introduced by the voice-conversion process.
+    claim_id: q4_2025_findings_emnlp_524_applying_a_separately_trained_voice_conversion_model_to_a_translation_system_s_output_ra
+    confidence: high
+    relevance: high
+  limitations:
+  - The model also operates at sentence level and requires an external segmentation step before it could
+    be applied to longer-form video or dialogue content, which the authors note as a limitation for real-world
+    dubbing pipelines. Training data quality (studio-recorded rather than in-the-wild speech) may limit
+    robustness to noisy or reverberant source audio encountered in practical dubbing applications.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: 2025.findings-emnlp.933
+  published_date: '2025-11-05'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: EMNLP
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: Automatic scoring of a spoken dialogue model's response, whether by transcribing and LLM-judging
+      the content or by scoring the response audio directly with an audio-aware judge or embedding model,
+      correlates strongly with human listening judgments, supporting its use as a scalable proxy for human
+      evaluation.
+    source: §4.3, Appendix B.3, Tables 10-13
+    evidence: Pairwise preference matching rates between GPT-4o mini scoring and human listeners exceed
+      70% on open-ended dialogue tasks and 90% on QA tasks, and rule-based (emotion2vec + WER) scoring
+      for emotion generation matches human preference at 80% on average.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_933_automatic_scoring_of_a_spoken_dialogue_model_s_response_whether_by_transcribing_and_llm_
+    relevance: high
+  - role: complicates
+    claim: Adapting a text-based LLM into an end-to-end speech-in speech-out dialogue model substantially
+      degrades the reasoning and knowledge-retrieval capability the backbone LLM had in text form.
+    source: §4.2, Table 4
+    evidence: On basic-track English reasoning, GLM-4-Voice scores 55.46 versus 76.29 for a cascaded Whisper
+      + GLM-4-9B-Chat-HF baseline using the identical backbone LLM; other SDMs show similarly large drops
+      relative to their backbones on datasets like MLC, Gsm8kEval, and OpenbookQA-zh.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_933_adapting_a_text_based_llm_into_an_end_to_end_speech_in_speech_out_dialogue_model_substan
+    relevance: high
+  - role: complicates
+    claim: Current end-to-end spoken dialogue models fail to leverage non-lexical acoustic information
+      (environmental sound, music, speaker identity via timbre and pitch) even when their lexical content
+      understanding is reasonable.
+    source: §4.2 Pro Track discussion, Appendix B.2, Table 8
+    evidence: All evaluated open-source SDMs perform close to random guessing on environmental sound and
+      music comprehension tasks (ClothoEval-en, MuChoEval-en), and their ability to distinguish speakers
+      by paralinguistic cues in multi-turn dialogue (SpeakerAware) is described as extremely weak; a cascaded
+      ASR + audio-captioner + LLM baseline substantially outperforms the strongest SDM (GLM-4-Voice) on
+      the same tasks, 64.00 vs 17.36 on ClothoEval.
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_933_current_end_to_end_spoken_dialogue_models_fail_to_leverage_non_lexical_acoustic_informat
+    relevance: high
+  - role: complicates
+    claim: Larger spoken dialogue models with more diverse generated output trade off speech-text alignment
+      fidelity against content quality, producing higher ASR-derived word/character error rates and lower
+      automatic speech-quality scores than smaller, less diverse models.
+    source: §4.2 Speech Quality and Speech-text Alignment, Table 5
+    evidence: GLM-4-Voice (9B backbone) reaches 11.12% English ASR-WER versus SLAM-Omni's (0.5B backbone)
+      4.05%, attributed to larger models being more prone to long pauses and repetitions in generated
+      audio; UTMOS follows the same pattern, with GLM-4-Voice (4.15) below SLAM-Omni (4.45).
+    confidence: high
+    claim_id: q4_2025_findings_emnlp_933_larger_spoken_dialogue_models_with_more_diverse_generated_output_trade_off_speech_text_a
+    relevance: high
+  limitations:
+  - Most content-quality scoring depends on an LLM judge (GPT-4o mini) applied to ASR transcriptions of
+    the SDM's response rather than on native audio understanding of the judge itself; while the paper
+    validates this against human judgments (matching rates above 70-90%), residual judge bias and ASR
+    transcription errors remain unquantified confounds for the reported task accomplish scores.
+  - The benchmark evaluates only six open-source SDMs available at the time of construction, all released
+    before mid-2025; newer or larger systems are untested. First packet latency could not be measured
+    automatically for all systems due to source-code modification requirements, limiting comparability
+    of that metric. The authors note LLM-based scoring may still exhibit bias and fluctuation, and that
+    the high API cost of audio-capable judges (Gemini 2.0 Flash, GPT-4o-Audio-Preview) constrained the
+    size of the singing/recitation test sets, which the paper flags as needing alternative evaluators
+    in future work.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.10262'
+  published_date: '2025-11-13'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: Full-duplex spoken dialogue systems that handle single-round conversational events well can
+      still degrade substantially in success rate and response latency as the number of conversational
+      rounds increases, a failure mode that single-round evaluation protocols cannot detect.
+    source: §4.2.1, Tables 3-4
+    evidence: Across all four conversational features (smooth turn-taking, interruption, pause handling,
+      background speech), every baseline's per-round success rate and latency worsen monotonically from
+      round 1 to the round 1-10 average, and combining multiple features compounds the degradation further.
+    confidence: high
+    claim_id: q4_2511_10262_full_duplex_spoken_dialogue_systems_that_handle_single_round_conversational_events_well_
+    relevance: high
+  - role: supports
+    claim: 'Full-duplex conversational capability and dialogue semantic coherence trade off against each
+      other among current systems: greater duplex sophistication (end-to-end full-duplex generation) is
+      associated with lower dialogue meaningfulness than cascaded or half-duplex alternatives.'
+    source: §4.2.2, Table 5
+    evidence: On the rescaled GPT-score dialogue-quality metric, the end-to-end FD-SLM (Moshi, 3.13) scores
+      below the cascaded FD-SLM (Freeze-Omni, 3.48), which scores below the half-duplex baseline (VocalNet,
+      3.96).
+    confidence: high
+    claim_id: q4_2511_10262_full_duplex_conversational_capability_and_dialogue_semantic_coherence_trade_off_against_
+    relevance: high
+  - role: supports
+    claim: Under multi-round and interruption stress, safety refusal behavior in speech language models
+      generalizes more robustly than instruction-following behavior for at least some current architectures.
+    source: §4.2.3, Tables 6-7
+    evidence: Refusal rates on the multi-round safety evaluation stay at or above roughly 90% across all
+      ten rounds and both interaction styles for every baseline, while Moshi's instruction-following success
+      rate drops from 68% at round 1 to 41.9% averaged over rounds 1-10 under smooth turn-taking, a decline
+      not mirrored by the other baselines.
+    confidence: high
+    claim_id: q4_2511_10262_under_multi_round_and_interruption_stress_safety_refusal_behavior_in_speech_language_mod
+    relevance: high
+  - role: complicates
+    claim: Benchmark scores for dialogue quality and task success in full-duplex speech evaluation that
+      are produced by an LLM judge rather than real human listeners require calibration and should not
+      be read as equivalent to human-rated naturalness or quality judgments.
+    source: §4.2.2, §3.2.1, §3.2.3
+    evidence: The GPT-4o judge used for the dialogue-quality metric assigns a conservative average score
+      of 2.97 out of 5 even to ground-truth human dialogues, forcing the authors to rescale all GPT-scores
+      from a 0-2.97 range to 0-5 before they are interpretable as absolute quality; conversational-feature
+      success, instruction-following success, and safety refusal are likewise all determined by a binary
+      GPT-4o decision rather than by human raters.
+    confidence: high
+    claim_id: q4_2511_10262_benchmark_scores_for_dialogue_quality_and_task_success_in_full_duplex_speech_evaluation_
+    relevance: high
+  limitations:
+  - 'The authors themselves note several additional limitations. The benchmark mixes natural (Candor)
+    and synthetic (GPT-4o-scripted, CosyVoice-2-synthesized) data, which may not capture the full diversity
+    of real-world conversation. Coverage is English-only, limiting applicability to multilingual or cross-lingual
+    FD-SLMs. The conversational-feature taxonomy is inherited from prior single-round benchmarks (Full-Duplex-Bench)
+    to preserve comparability, so some interaction dynamics, such as user backchannels, are not evaluated
+    as a model-response feature. Evaluation design is inconsistent across dimensions: dialogue-quality
+    assessment uses teacher-forced inference (grounding all rounds except the one under test in ground
+    truth), while conversational-feature, instruction-following, and safety evaluation instead let the
+    model build autoregressively on its own outputs, which the authors acknowledge introduces a gap between
+    the teacher-forced and free-running evaluation setups. Only two genuinely full-duplex, end-to-end
+    or cascaded open-source systems (Moshi and Freeze-Omni) were available for evaluation at the time
+    of writing; the half-duplex and fully cascaded baselines are included for contrast rather than as
+    full-duplex competitors.'
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.11124'
+  published_date: '2025-11-14'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Fusing visual cues (e.g. lip movement) with acoustic input substantially improves the robustness
+      of streaming spoken dialogue systems to interfering speakers and background noise, compared to relying
+      on audio alone.
+    source: §4.1, Table 1; §4.2, Table 3
+    evidence: Turn-taking Response Ratio under interference rises from 54.0% (Moshi, audio-only baseline)
+      to 78.8% (AV-Dialog, audio-visual); streaming AVSR WER under interference drops from 76.3% (AV-Dialog,
+      audio-only) to 38.8% (AV-Dialog, audio-visual) on the same test set.
+    confidence: high
+    claim_id: q4_2511_11124_fusing_visual_cues_e_g_lip_movement_with_acoustic_input_substantially_improves_the_robus
+    relevance: high
+  - role: supports
+    claim: General-purpose acoustic tokenizers that retain raw acoustic detail, rather than speaker-invariant
+      semantic tokenizers, give spoken dialogue models better speaker differentiation and robustness in
+      multi-speaker or noisy conditions.
+    source: §4.5, Table 6
+    evidence: Replacing DAC acoustic tokens with DinoSR semantic tokens raises streaming AVSR WER under
+      interference from 30.8% to 67.0% (audio-visual) and lowers the turn-taking response ratio from 78.8%
+      to 47.8% under the same condition.
+    confidence: high
+    claim_id: q4_2511_11124_general_purpose_acoustic_tokenizers_that_retain_raw_acoustic_detail_rather_than_speaker_
+    relevance: high
+  - role: complicates
+    claim: Joint models that predict turn-taking and generate responses from a single stream require explicit
+      supervision on discrete turn-event tokens; without it, both turn-detection accuracy and downstream
+      response quality degrade.
+    source: §4.5, Table 8
+    evidence: Removing explicit `<SOT>` turn-change supervision in the unified model drops response ratio
+      from 75.6% to 35.1% (background noise) and from 75.9% to 38.0% (interference), and the LLM-evaluator
+      pickup ratio falls in parallel.
+    confidence: high
+    claim_id: q4_2511_11124_joint_models_that_predict_turn_taking_and_generate_responses_from_a_single_stream_requir
+    relevance: high
+  - role: complicates
+    claim: When a spoken dialogue system separates understanding from generation via a text intermediary,
+      cascading a separately pretrained, instruction-tuned or in-context-prompted text LLM for response
+      generation yields higher response quality by both automatic and human judgment than a single unified
+      model generating turn-taking decisions and response text jointly from the raw multimodal stream,
+      at the cost of running a second model.
+    source: §4.4, Table 5; §4.3, Table 4
+    evidence: The dual model with in-context learning scores 4.14 naturalness MOS and 4.09 helpfulness
+      MOS in human evaluation with 18 participants, versus 3.54 and 3.02 for the unified model; the LLM-judge
+      pickup ratio also favors the dual in-context-learning variant over the unified model across clean,
+      background-noise, and interference conditions.
+    confidence: high
+    claim_id: q4_2511_11124_when_a_spoken_dialogue_system_separates_understanding_from_generation_via_a_text_interme
+    relevance: high
+  limitations:
+  - 'Visual robustness depends on face and lip visibility: the paper''s own limitations section notes
+    that poor lighting, occlusions (e.g. a hand covering the mouth), and extreme head poses impair lip-movement
+    extraction, degrading speaker tracking and speech understanding exactly in the conditions the system
+    is meant to help with.'
+  - The system does not model non-verbal auditory cues (laughter, sighs) or non-lip visual cues (facial
+    expressions, gestures) beyond lip movement, which the authors note could make interactions more human-like
+    if incorporated. The dual architecture runs two 8B-parameter models in parallel, adding memory and
+    latency overhead relative to a single-model system, and the visual encoder's lookahead window increases
+    algorithmic latency to about 120ms versus roughly 80ms for the audio-only Moshi baseline. Evaluation
+    is confined to English dyadic conversational datasets (Fisher, InterAct) and a single controlled human
+    study with 18 participants rating 15 sampled dialogues; generalization to other languages, group conversations
+    with more than two participants, or larger-scale human evaluation is not established.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.12690'
+  published_date: '2025-11-16'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - speech_to_speech_translation_systems
+  claims:
+  - role: supports
+    claim: Self-supervised pretraining of the source-language speech encoder improves direct speech-to-speech
+      translation quality in low-resource settings, independent of architectural changes on the target
+      side.
+    source: §5.3, Table 1
+    evidence: Adding self-supervised pretraining to the speech-to-unit baseline architecture, with no
+      other change, raises ASR BLEU from 1.6 to 2.8 on CVSS-only training, and the proposed pretrained
+      encoder outperforms Translatotron 2 with pretraining (4.1 vs. 3.8 BLEU) under identical training
+      data.
+    claim_id: q4_2511_12690_self_supervised_pretraining_of_the_source_language_speech_encoder_improves_direct_speech
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Constructing synthetic parallel speech data by machine-translating existing transcriptions
+      with a large language model and synthesizing the translated text with a zero-shot TTS system can
+      substantially improve direct speech-to-speech translation for a low-resource language pair, even
+      though none of the synthetic target audio is real recorded speech.
+    source: §5.3, Table 1
+    evidence: Training the proposed model on CVSS Fa-En augmented with the synthetic corpus (roughly six
+      times the parallel data of CVSS alone) raises ASR BLEU from 4.1 to 17.8, and produces consistent
+      gains for every baseline architecture tested (e.g. Translatotron 1.4 to 6.9, pretrained speech-to-unit
+      2.8 to 13.2).
+    claim_id: q4_2511_12690_constructing_synthetic_parallel_speech_data_by_machine_translating_existing_transcriptio
+    confidence: high
+    relevance: high
+  - role: complicates
+    claim: In low-resource direct speech-to-speech translation, gains from encoder and decoder architectural
+      refinements are small relative to gains available from increasing parallel training data volume.
+    source: §5.3, Table 1
+    evidence: Under matched CVSS-only training data, the proposed architecture (Conformer encoder with
+      relative-position decoder) outperforms the strongest pretrained baseline by only 0.3 BLEU (4.1 vs.
+      3.8), while adding the synthetic corpus to the same proposed architecture, with no architectural
+      change, produces a 13.7 BLEU improvement (4.1 to 17.8).
+    claim_id: q4_2511_12690_in_low_resource_direct_speech_to_speech_translation_gains_from_encoder_and_decoder_archi
+    confidence: high
+    relevance: high
+  - role: supports
+    claim: Representing target speech as discrete self-supervised units, rather than continuous spectrograms,
+      lets a direct speech-to-speech translation system match or exceed spectrogram-based approaches once
+      combined with source-encoder pretraining.
+    source: §6, Table 1
+    evidence: With pretraining and CVSS-only training data, the discrete-unit speech-to-unit baseline
+      (2.8 BLEU) and the proposed unit-based model (4.1 BLEU) both exceed the spectrogram-based Translatotron
+      (1.4 BLEU), and the proposed model also exceeds pretrained Translatotron 2 (3.8 BLEU).
+    claim_id: q4_2511_12690_representing_target_speech_as_discrete_self_supervised_units_rather_than_continuous_spec
+    confidence: high
+    relevance: high
+  limitations:
+  - No naturalness, speaker-similarity, or other subjective/perceptual metric is reported for the dubbed
+    output; evaluation relies entirely on ASR BLEU, which measures translation content but not speech
+    quality or speaker preservation, both stated goals of dubbing. The synthetic corpus itself inherits
+    translation errors from the LLM and voice characteristics of a single zero-shot TTS system (VoiceCraft),
+    which could bias the trained model toward that system's acoustic properties in ways not analyzed in
+    the paper. Neither the synthetic corpus, code, nor a demo appears to be released, limiting reproducibility
+    and reuse by other low-resource language pairs.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.15848'
+  published_date: '2025-11-19'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - native_joint_speech_text_lm
+  claims:
+  - role: supports
+    claim: Degraded reasoning performance in audio language models stems from textual surrogate reasoning
+      (grounding in transcripts rather than acoustic features) rather than from fundamental incompatibility
+      between extended deliberation and audio processing.
+    source: §1, §4.2
+    evidence: The iterative grounding procedure filters reasoning traces for explicit acoustic evidence,
+      logical coherence, and correctness rather than relying on transcript-like reasoning alone.
+    confidence: high
+    claim_id: q4_2511_15848_degraded_reasoning_performance_in_audio_language_models_stems_from_textual_surrogate_rea
+    relevance: medium
+  - role: supports
+    claim: Iterative self-distillation with acoustic grounding filters can progressively shift an audio
+      LM's reasoning basis from linguistic to perceptual grounding, enabling test-time compute scaling
+      to benefit audio tasks.
+    source: §4.2
+    evidence: After acoustically grounded self-distillation, Step-Audio-R1 averages 83.6% across five
+      speech-to-text benchmarks and its realtime variant reaches 96.1% on Big Bench Audio speech-to-speech.
+    confidence: high
+    claim_id: q4_2511_15848_iterative_self_distillation_with_acoustic_grounding_filters_can_progressively_shift_an_a
+    relevance: medium
+  - role: supports
+    claim: In reinforcement learning for audio reasoning, a composite reward combining answer accuracy
+      with a reasoning-presence incentive is necessary to prevent the model from collapsing to direct
+      responses and losing extended deliberation capability.
+    source: §6.1
+    evidence: Removing the reasoning-presence reward shortens reasoning chains from about 3,000 to below
+      1,500 tokens and lowers MMAU accuracy from 77.7% to 76.5%.
+    confidence: high
+    claim_id: q4_2511_15848_in_reinforcement_learning_for_audio_reasoning_a_composite_reward_combining_answer_accura
+    relevance: low
+  - role: supports
+    claim: 'Data quality and difficulty calibration matter more than dataset size in audio RL: training
+      on moderately difficult problems substantially outperforms training on consistently-failed problems,
+      and scaling to 10x more unfiltered data provides no benefit.'
+    source: §6.2
+    evidence: A curated 3,000-example moderately difficult set outperforms consistently failed examples,
+      while scaling to 200,000 unfiltered examples adds no benefit.
+    confidence: high
+    claim_id: q4_2511_15848_data_quality_and_difficulty_calibration_matter_more_than_dataset_size_in_audio_rl_traini
+    relevance: low
+  - role: supports
+    claim: Self-cognition errors (models claiming inability to process audio inputs) are learned biases
+      from text-heavy pretraining, correctable through targeted preference optimisation on a modest number
+      of contrastive pairs.
+    source: §6.3, Table 3
+    evidence: Targeted preference optimization on 8,000 pairs reduces self-cognition errors from 6.76%
+      to 0.02%.
+    confidence: high
+    claim_id: q4_2511_15848_self_cognition_errors_models_claiming_inability_to_process_audio_inputs_are_learned_bias
+    relevance: low
+  limitations:
+  - The evaluation compares against closed-source Gemini systems under conditions that cannot be fully
+    reproduced. Training data sizes, pretraining corpora, and inference settings differ across systems;
+    the reported gains over Gemini 2.5 Pro and near-parity with Gemini 3 Pro should be interpreted as
+    competitive signals rather than controlled benchmarks.
+  - The MGRD framework requires an existing audio LM with emergent (if weak) chain-of-thought capability;
+    it is not a cold-start method for models without any reasoning initialisation. The acoustic grounding
+    filter uses heuristic criteria (explicit mention of perceptual features) that may incorrectly penalise
+    valid implicit acoustic reasoning. The number of MGRD iterations T and the RL data curation threshold
+    (pass@8 in [3,6]) are hyperparameters not fully ablated. The paper focuses on audio understanding
+    tasks (question answering over speech, music, environment); it does not address speech generation
+    or voice conversion, limiting applicability to the SCA and audio comprehension domains.
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2511.20974'
+  published_date: '2025-11-26'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - speech_to_speech_translation_systems
+  claims:
+  - role: supports
+    claim: Text can serve as a semantic bridge to synthesize pseudo-parallel speech-to-speech translation
+      training targets from monolingual speech-text corpora, enabling zero-shot end-to-end S2ST without
+      any parallel speech-to-speech data.
+    source: §3.1, §4.4, Table 1
+    evidence: NMT-generated pseudo-parallel triplets, filtered by a COMET quality threshold and used to
+      jointly train a shared text/speech LLM, achieve zero-shot ASR-BLEU of 25.17 (DE→EN, +27% relative)
+      and 29.86 (ES→EN, +14% relative) on CVSS-C, surpassing the strongest zero-shot baseline (ComSpeech).
+    confidence: high
+    claim_id: q4_2511_20974_text_can_serve_as_a_semantic_bridge_to_synthesize_pseudo_parallel_speech_to_speech_trans
+    relevance: high
+  - role: complicates
+    claim: Joint multi-task training across text-generation and speech-generation objectives is necessary
+      to prevent catastrophic forgetting when a single shared model must learn both from disjoint monolingual
+      data streams.
+    source: §4.5, Table 5
+    evidence: 'Sequential training ablations collapse: training S2TT then T2ST drops S2ST ASR-BLEU to
+      0.18, and training T2ST then S2TT drops it to 0.49, versus 27.86 for joint training on the same
+      French-to-English setup.'
+    confidence: high
+    claim_id: q4_2511_20974_joint_multi_task_training_across_text_generation_and_speech_generation_objectives_is_nec
+    relevance: high
+  - role: supports
+    claim: A prompt-conditioned flow-matching resynthesis stage can preserve source speaker identity in
+      direct S2ST even when the upstream translation model itself never observes paired source-target
+      speech during training.
+    source: §4.4, Table 3
+    evidence: RosettaSpeech reaches speaker-similarity scores of approximately 0.36 across all three language
+      pairs on CVSS-C, exceeding both prior S2ST baselines (SIM < 0.05 for ComSpeech and StreamSpeech)
+      and the CVSS-C dataset's own reference targets (SIM 0.01-0.05).
+    confidence: high
+    claim_id: q4_2511_20974_a_prompt_conditioned_flow_matching_resynthesis_stage_can_preserve_source_speaker_identit
+    relevance: high
+  - role: complicates
+    claim: Training a single many-to-one speech-to-speech translation model across multiple source languages
+      trades off per-language quality relative to individually specialized models, with the trade-off
+      growing with linguistic distance from the other source languages.
+    source: §4.5
+    evidence: A unified FR/ES/DE→EN model improves French translation (+0.6 ASR-BLEU) but degrades Spanish
+      and, more substantially, German relative to per-pair fine-tuned models on a 0.6B backbone, attributed
+      to capacity dilution and negative transfer, most pronounced for German given its greater linguistic
+      distance from the Romance source languages.
+    confidence: high
+    claim_id: q4_2511_20974_training_a_single_many_to_one_speech_to_speech_translation_model_across_multiple_source_
+    relevance: high
+  - role: refines
+    claim: Direct end-to-end speech-to-speech translation on a compact LLM backbone can reduce both parameter
+      count and inference latency relative to cascaded ASR→MT→TTS pipelines while matching or exceeding
+      their translation quality.
+    source: §4.4, Table 4
+    evidence: The 0.9B end-to-end model reduces parameter count by roughly 80% and achieves a real-time
+      factor of 0.53, about 2x faster than a cascaded Whisper-medium + MADLAD-400-3B + CosyVoice2 pipeline
+      (4.3B parameters, RTF 1.04).
+    confidence: high
+    claim_id: q4_2511_20974_direct_end_to_end_speech_to_speech_translation_on_a_compact_llm_backbone_can_reduce_both
+    relevance: high
+  limitations:
+  - The pseudo-parallel training strategy inherits whatever errors exist in the NMT model used to synthesize
+    translation targets; for genuinely low-resource languages that lack even a usable text translation
+    system, the authors note the generated pseudo-labels may contain hallucinations or semantic errors
+    that would degrade final S2ST quality. This means the method's stated goal of serving "text-rich,
+    speech-poor" languages requires that "text-rich" threshold to already be met by an available NMT system,
+    which is not established as guaranteed at any particular quality floor.
+  - Experiments are confined to three high-resource European source languages (French, German, Spanish)
+    translating into English; broader applicability to more diverse or lower-resource languages is untested.
+    The system supports only one-directional, many-to-one translation into English, not bidirectional
+    or any-to-any translation. The scaling analysis varies only training data volume, not model size,
+    so the effect of scaling the 0.6B backbone itself is unexplored.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: neurips-2025-AsRB5nmlOD
+  published_date: '2025-12-10'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: NeurIPS
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - full_duplex_dual_stream_architectures
+  claims:
+  - role: supports
+    claim: A single LLM backbone can perform standalone full-duplex spoken dialogue, modeling turn-taking
+      and barge-ins without a separate listening process or external voice-activity-detection module,
+      by interleaving environment-stream and assistant-stream speech embeddings with text into one autoregressive
+      sequence.
+    source: §3.3, Table 4
+    evidence: SALMONN-omni jointly models environment and assistant speech streams within a single Llama-3-8B
+      backbone and achieves the highest turn-taking success rate among compared full-duplex systems (e.g.,
+      92.8% on TriviaQA vs. 72.0% for VAD-dependent Freeze-Omni and 37.1% for Moshi), without a separate
+      listening LLM process or VAD module.
+    confidence: high
+    claim_id: q4_neurips_2025_asrb5nmlod_a_single_llm_backbone_can_perform_standalone_full_duplex_spoken_dialogue_modeling_turn_t
+    relevance: high
+  - role: supports
+    claim: Training an LLM to generate explicit dialogue state-transition tokens that are fed back into
+      its own input, rather than withholding them from the input sequence, produces better dialogue-timing
+      behavior.
+    source: §5.1, Table 2
+    evidence: The "explicit thinking" strategy, where predicted state tokens are autoregressively fed
+      back as input, outperforms the "implicit thinking" strategy that withholds this feedback, across
+      most evaluated datasets.
+    confidence: high
+    claim_id: q4_neurips_2025_asrb5nmlod_training_an_llm_to_generate_explicit_dialogue_state_transition_tokens_that_are_fed_back_
+    relevance: high
+  - role: supports
+    claim: Applying direct preference optimization specifically to barge-in and backchanneling scenarios
+      can correct a full-duplex speech LLM's tendency to be too easily interrupted after supervised fine-tuning,
+      without redesigning the underlying architecture.
+    source: §5.3.2, Table 6
+    evidence: After SFT alone, contextual-independent barge-in precision is 0.68, reflecting over-readiness
+      to be interrupted; after DPO training, overall F1 for distinguishing genuine barge-ins improves
+      from 0.86 to 0.90, following an initial period of DPO-induced over-conservatism that later recovers.
+    confidence: high
+    claim_id: q4_neurips_2025_asrb5nmlod_applying_direct_preference_optimization_specifically_to_barge_in_and_backchanneling_scen
+    relevance: high
+  - role: complicates
+    claim: A full-duplex speech LLM's real-time responsiveness is not uniform across interaction types;
+      barge-in response latency can be substantially lower than the latency for initiating a normal spoken
+      response, since the two are governed by different architectural constraints.
+    source: §5.4
+    evidence: SALMONN-omni's average time-to-first-audio for a normal spoken response is 405ms, driven
+      by needing four time blocks of context for the synthesizer, while its response latency to barge-in
+      interruptions is only about 128-144ms.
+    confidence: high
+    claim_id: q4_neurips_2025_asrb5nmlod_a_full_duplex_speech_llm_s_real_time_responsiveness_is_not_uniform_across_interaction_ty
+    relevance: high
+  limitations:
+  - The authors identify the 405ms time-to-first-audio for normal responses as a consequence of the design
+    (waiting for four time blocks before the synthesizer has enough context) rather than a fundamental
+    limit, suggesting synthesizer optimization could reduce it, but this remains unvalidated in the paper.
+    Turn-taking and barge-in evaluation relies substantially on synthetically constructed scenarios (GPT-4o-
+    and Llama-3-generated interrupting sentences and context-dependent questions), which may not fully
+    capture the diversity of real conversational interruptions, though the paper does supplement this
+    with 60 live human-machine dialogue sessions. Training data, while smaller in scale than several baselines,
+    remains English-only across all listed corpora, leaving multilingual full-duplex behavior unassessed.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: neurips-2025-vhPy3NMsO5
+  published_date: '2025-12-10'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: NeurIPS
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - modular_gated_streaming_tts_decoder
+  claims:
+  - role: supports
+    claim: Using text as an explicit, timestamped intermediate modality between a multimodal LLM's language
+      understanding and a downstream TTS module can improve both the content quality and audio-visual
+      timing accuracy of synchronized, incrementally generated speech, compared to generating audio tokens
+      directly from LLM hidden states.
+    source: §5.3, Table 3
+    evidence: Removing TempoVoice (predicting audio tokens directly from trimmed/padded hidden states
+      via an MLP) degrades UTMOSv2 from 1.41 to 1.23 and audio-visual synchronization (LSE-D) from 9.56
+      to 11.91.
+    confidence: high
+    claim_id: q4_neurips_2025_vhpy3nmso5_using_text_as_an_explicit_timestamped_intermediate_modality_between_a_multimodal_llm_s_l
+    relevance: high
+  - role: supports
+    claim: Explicit temporal markup embedded directly into generated text tokens, rather than post-hoc
+      timestamp-window filtering of generated words, improves the semantic quality and audio-visual synchronization
+      of speech generated from a static, non-temporal text representation.
+    source: §5.3, Table 3
+    evidence: Removing Chrono-Text Markup (substituting timestamp-window filtering) degrades LSE-D from
+      9.56 to 11.51, METEOR from 0.141 to 0.122, and BERTScore F1 from 0.806 to 0.766.
+    confidence: high
+    claim_id: q4_neurips_2025_vhpy3nmso5_explicit_temporal_markup_embedded_directly_into_generated_text_tokens_rather_than_post_h
+    relevance: high
+  - role: supports
+    claim: A cross-attention mechanism using zero-initialized, positionally-encoded placeholder queries
+      over fused text-and-voiceprint representations can generate an audio-token sequence whose length
+      is decoupled from the source text-token sequence, while remaining synchronized to a parallel, independently-generated
+      visual stream.
+    source: §3.1
+    evidence: TempoVoice's decoder uses zero-initialized, sinusoidally-positioned placeholder tokens as
+      cross-attention queries over fused text-voice representations, enabling autoregressive audio-token
+      generation in lockstep with visual frames despite the differing native lengths of the audio, text,
+      and visual-frame sequences.
+    confidence: high
+    claim_id: q4_neurips_2025_vhpy3nmso5_a_cross_attention_mechanism_using_zero_initialized_positionally_encoded_placeholder_quer
+    relevance: high
+  - role: complicates
+    claim: Multimodal listener-response systems that omit text as an explicit intermediate representation
+      and instead generate audio directly from LLM hidden states struggle with both content quality and
+      audio-visual timing, even when built on the same class of pretrained LLM.
+    source: §5.1, Table 2
+    evidence: An Audio-visual LLM baseline lacking the text-intermediate design achieves substantially
+      lower speech-content quality (METEOR 0.030 vs. 0.141, BERTScore F1 0.662 vs. 0.806) and worse audio-visual
+      synchronization (LSE-D 10.03 vs. 9.56) than OmniResponse despite using a comparable pretrained LLM.
+    confidence: high
+    claim_id: q4_neurips_2025_vhpy3nmso5_multimodal_listener_response_systems_that_omit_text_as_an_explicit_intermediate_represen
+    relevance: high
+  limitations:
+  - The authors note the approach depends heavily on training data quality and diversity, requires accurate
+    speaker-listener audio segmentation (degrading in noisy or overlapping conversations), and struggles
+    with well-aligned multimodal response generation in fast-changing or emotionally rich interactions.
+    ResponseNet itself is modest in scale (696 pairs, 14.2 hours) relative to large speech corpora, and
+    the paper explicitly states it lacks a fairness analysis. The audio evaluation relies on an automated
+    MOS predictor (UTMOSv2) and a Lip-Speech Error Distance metric rather than a dedicated human listening
+    test isolating audio quality alone (the user study combines audio quality with visual and synchronization
+    judgments).
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2512.14865'
+  published_date: '2025-12-16'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - role: supports
+    claim: End-to-end spoken dialogue systems that perform reasonably on single-turn or synthetic-speech
+      benchmarks reveal substantial capability gaps when evaluated on natural, multi-turn, human-recorded
+      spoken interaction.
+    source: §3.1, Table 2
+    evidence: Even the highest-performing frontier model (Gemini 3 Pro Preview, Thinking) achieves only
+      a 54.65% pass rate on Audio MultiChallenge, with most open-source E2E speech-to-speech systems scoring
+      below 25%.
+    confidence: high
+    claim_id: q4_2512_14865_end_to_end_spoken_dialogue_systems_that_perform_reasonably_on_single_turn_or_synthetic_s
+    relevance: high
+  - role: supports
+    claim: Configuring an audio-capable dialogue model to output speech rather than text measurably degrades
+      its multi-turn task performance relative to the same model configured for text output, indicating
+      a persistent modality gap in current speech-output post-training.
+    source: §3.1
+    evidence: Across models supporting both output modes, average pass rate drops from 19.36% under text-output
+      configuration to 16.76% under audio-output configuration on the same benchmark tasks.
+    confidence: high
+    claim_id: q4_2512_14865_configuring_an_audio_capable_dialogue_model_to_output_speech_rather_than_text_measurably
+    relevance: high
+  - role: supports
+    claim: Current end-to-end spoken dialogue systems substantially underperform at recalling non-semantic
+      audio information (ambient sounds, paralinguistic cues) from earlier conversation turns relative
+      to recalling semantic spoken content, even within the same multi-turn evaluation format.
+    source: §3.1
+    evidence: Across evaluated models, Average Rubric Score on Audio-Cue-gated Inference Memory tasks
+      falls 36.5% relative to semantic Inference Memory tasks on average.
+    confidence: high
+    claim_id: q4_2512_14865_current_end_to_end_spoken_dialogue_systems_substantially_underperform_at_recalling_non_s
+    relevance: high
+  - role: complicates
+    claim: Natural, unscripted human speech with disfluencies and mid-utterance self-corrections is measurably
+      harder for current E2E spoken dialogue systems to handle than synthetic TTS-resynthesized speech
+      of the same underlying content, particularly for tasks requiring tracking of spoken self-corrections.
+    source: §3.4, Table 4
+    evidence: Replacing real human audio with ASR-then-TTS resynthesized versions of the same transcripts
+      improves text-output-configured models' pass rate by 7.5% relative, with the largest gains on the
+      Voice Editing axis.
+    confidence: high
+    claim_id: q4_2512_14865_natural_unscripted_human_speech_with_disfluencies_and_mid_utterance_self_corrections_is_
+    relevance: high
+  limitations:
+  - The benchmark's fixed-context evaluation protocol scores only the model's response to a single final
+    turn given an audited, error-free conversation history, which the authors note differs from fully
+    sequential, turn-by-turn deployment where earlier model errors could compound. All rubric-based scoring
+    is performed by an LLM judge rather than direct human rating for the reported leaderboard results,
+    validated only against a human-agreement subset rather than for every scored instance. The dataset
+    is English-only, and several duration bins used in the audio-length analysis (5-8 minutes and 8+ minutes)
+    contain very few samples (n=4 and n=2 respectively), limiting confidence in those specific trend estimates.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2512.18706'
+  published_date: '2025-12-21'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - SCA
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - acceleration_evidence
+  - negative_evidence
+  current_role: active_evidence
+  method_family:
+  - cascade_pipeline_systems
+  claims:
+  - role: contradicts
+    claim: Low-latency, paralinguistically-aware spoken dialogue does not require a single, jointly-trained
+      end-to-end model; a carefully re-engineered cascaded pipeline with streaming at every stage can
+      achieve comparable responsiveness while retaining full modularity.
+    source: §5.2, Table 2
+    evidence: X-Talk's default cascaded configuration (streaming ASR, LLM, TTS) achieves 272-610 ms end-to-end
+      response latency across 5-60 second Chinese and English inputs, using off-the-shelf ASR, LLM, and
+      TTS components connected through an event-driven architecture rather than a single jointly-trained
+      network.
+    confidence: high
+    claim_id: q4_2512_18706_low_latency_paralinguistically_aware_spoken_dialogue_does_not_require_a_single_jointly_t
+    relevance: high
+  - role: supports
+    claim: Decoupling a spoken dialogue system's speech understanding into separate specialized components
+      (recognition, speaker identification, emotion/paralinguistic captioning, acoustic scene analysis)
+      can recover paralinguistic and environmental information that a conventional ASR-only cascaded pipeline
+      discards, without requiring a unified end-to-end model.
+    source: §3.2.2
+    evidence: X-Talk's Speech Understanding module integrates dedicated ASR, speaker recognition, and
+      acoustic-scene captioning (Omni-Captioner) components whose outputs are injected into the LLM's
+      context, explicitly designed to recover paralinguistic and environmental cues that "conventional
+      cascaded systems often rely solely on ASR" and thereby lose.
+    confidence: high
+    claim_id: q4_2512_18706_decoupling_a_spoken_dialogue_system_s_speech_understanding_into_separate_specialized_com
+    relevance: high
+  - role: complicates
+    claim: Streaming-capable automatic speech recognition is important for maintaining low, duration-insensitive
+      end-to-end latency in a cascaded spoken dialogue pipeline; switching to non-streaming ASR causes
+      latency to scale sharply with input length.
+    source: §5.2, Table 2
+    evidence: Replacing streaming SenseVoice with SenseVoice in offline mode increases latency from 284
+      ms to 635 ms at 5-second inputs and from 449 ms to 3798 ms at 60-second inputs in otherwise identical
+      LLM/TTS configurations.
+    confidence: high
+    claim_id: q4_2512_18706_streaming_capable_automatic_speech_recognition_is_important_for_maintaining_low_duration
+    relevance: high
+  - role: complicates
+    claim: Reporting an end-to-end dialogue system's own absolute latency numbers is not equivalent to
+      demonstrating latency parity with competing end-to-end architectures, absent a direct head-to-head
+      comparison under matched conditions.
+    source: §5.2
+    evidence: The paper reports X-Talk's sub-second latency across multiple internal ASR/LLM/TTS configurations
+      but does not report measured latency for any specific end-to-end omni-model system under the same
+      experimental protocol, so its claim of matching or exceeding E2E latency is not directly benchmarked
+      in this version.
+    confidence: high
+    claim_id: q4_2512_18706_reporting_an_end_to_end_dialogue_system_s_own_absolute_latency_numbers_is_not_equivalent
+    relevance: high
+  limitations:
+  - The latency evaluation is entirely internal, comparing configurations of X-Talk against each other
+    rather than against measured latency of any specific end-to-end omni-model baseline (Moshi, GLM-4-Voice,
+    Qwen2.5/3-Omni, etc.), so the paper's central claim of parity or superiority relative to E2E systems
+    on latency is argued qualitatively and by absolute latency figures rather than demonstrated head-to-head.
+    No quantitative evaluation of dialogue quality, paralinguistic accuracy, empathy, or barge-in reliability
+    is reported; these capabilities are described architecturally (module design) rather than measured
+    against ground truth or human judgment. Several described components (target speaker extraction, acoustic
+    echo cancellation, additional generative models) are explicitly noted as under active development
+    rather than complete at the time of writing.
+  caveats:
+  - For speech-to-speech, this paper provides high-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
+- id: '2512.20296'
+  published_date: '2025-12-23'
+  entry_date: '2026-09-20'
+  year: 2025
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family: []
+  claims:
+  - claim_id: q4_2512_20296_a_speaker_s_vocal_identity_can_be_predicted_directly_from_a_static_refer
+    role: supports
+    claim: A speaker's vocal identity can be predicted directly from a static reference face image, without
+      any reference audio, by combining a face-recognition embedding with intermediate spatial features
+      from a face-generation network, and used to condition zero-shot speech synthesis with speaker similarity
+      that improves on prior face-driven approaches.
+    source: §5.3, §5.4, Table 4, Figure 5
+    evidence: The Speaker Mapper, trained with an L2 loss against audio-extracted speaker embeddings,
+      achieves the best VoxSim speaker-similarity score among face-driven baselines (Face-TTS, FVTTS)
+      and the best face-matching MOS among all compared methods, including audio-driven ones, on the VoxCeleb2
+      test set with unseen speakers.
+    confidence: high
+    relevance: low
+  - claim_id: q4_2512_20296_predicting_a_target_speaker_s_voice_from_a_reference_image_rather_than_f
+    role: complicates
+    claim: Predicting a target speaker's voice from a reference image rather than from reference audio
+      trades off objective speaker-similarity accuracy relative to methods that extract speaker embeddings
+      directly from a target utterance, even when perceived naturalness and face-matching are improved.
+    source: §5.3, Table 4
+    evidence: TAVID achieves the best naturalness MOS and UTMOS among all compared speech generation methods,
+      but trails audio-driven YourTTS and CoVoMix on the objective VoxSim speaker-similarity metric, since
+      those methods inject vocal characteristics directly from the target utterance rather than predicting
+      them from an image.
+    confidence: high
+    relevance: low
+  - claim_id: q4_2512_20296_jointly_conditioning_video_and_speech_generation_on_prosody_aware_semant
+    role: supports
+    claim: Jointly conditioning video and speech generation on prosody-aware semantic tokens, rather than
+      purely linguistic ones, improves the accuracy and expressiveness of generated speech-synchronized
+      facial motion, including lip synchronization specifically.
+    source: §5.4, Table 5, Table 6
+    evidence: An ablation replacing the prosody-aware XLS-R-derived semantic tokens with HuBERT-based
+      tokens (known to retain linguistic but not prosodic information) degrades lip-sync accuracy with
+      a notable margin and overall motion realism in both talking-head and listening-head generation.
+    confidence: high
+    relevance: medium
+  - claim_id: q4_2512_20296_cascading_independently_trained_tts_and_talking_listening_head_generatio
+    role: complicates
+    claim: Cascading independently-trained TTS and talking/listening-head generation systems introduces
+      measurable quality degradation relative to a jointly-designed text-driven pipeline, even when the
+      same underlying video generation backbone is used in both configurations.
+    source: §5.1, §5.2, Table 1, Table 2
+    evidence: TTS-cascaded variants of baseline systems (DIM, SadTalker, Echomimic, Hallo2) consistently
+      underperform their audio-driven counterparts and TAVID's direct text-driven approach across objective
+      video-quality metrics on both the Seamless Interaction and HDTF test sets.
+    confidence: high
+    relevance: medium
+  limitations:
+  - English-only speech tests and no latency comparison leave population, language, and deployment generalization
+    unresolved.
+  caveats:
+  - For speech-to-speech, this paper provides medium-relevance evidence; claims primarily concerning adjacent
+    concepts remain included but are marked low relevance.
 claim_clusters:
 - id: cascade_outperforms_e2e_on_benchmarks
   claim: Cascaded ASR+LLM+TTS pipelines currently achieve stronger performance than end-to-end speech-to-speech
@@ -4227,6 +6872,9 @@ claim_clusters:
   - '2509.06502'
   - '2508.02013'
   - '2402.05755'
+  - '2511.01261'
+  - '2511.11124'
+  - 2025.findings-emnlp.241
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-0874
@@ -4234,6 +6882,8 @@ claim_clusters:
   - '2509.26542'
   - '2411.13577'
   - '2504.08528'
+  - '2510.00499'
+  - '2512.18706'
   caveats:
   - The ESPnet-SDS comparison (2025.naacl-demo.21) is explicitly flagged by its own authors as not strictly
     fair (different inputs across systems), so it should be read as corroborating rather than independently
@@ -4243,7 +6893,7 @@ claim_clusters:
   - 'The gap is not uniform: WildSpeech-Bench (2506.21875) and VERA (2509.26542) both find it re-emerges
     specifically on paralinguistic understanding and reasoning depth rather than general conversational
     quality.'
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: staged_pretraining_effect_on_instruction_following
   claim: 'Whether staged, modality-specific (ASR/TTS) pretraining before joint spoken-dialogue fine-tuning
     helps or harms an end-to-end speech LM''s instruction-following ability is unresolved: some systems
@@ -4253,6 +6903,7 @@ claim_clusters:
   confidence: medium
   supporting_papers:
   - '2502.17239'
+  - '2510.00499'
   contradicting_papers:
   - '2412.15649'
   - 2025.findings-acl.115
@@ -4271,7 +6922,10 @@ claim_clusters:
     capability, broadly consistent with Baichuan-Audio's side of the tension, but their claims are about
     general text-capability forgetting rather than instruction-following specifically, so they are listed
     as refining context rather than primary support.
-  last_reviewed: '2026-07-19'
+  - The Q4 text-free system (2510.00499) adds a same-scale frozen-pretraining ablation that preserves
+    text benchmarks, but it does not directly compare dialogue-only single-stage training under the
+    instruction-following endpoint required by the reassessment trigger.
+  last_reviewed: '2026-09-20'
 - id: full_duplex_responsiveness_floorholding_tradeoff
   claim: Full-duplex spoken dialogue systems face an inherent trade-off between fast, low-latency responsiveness/interruption
     handling and semantic coherence or floor-holding robustness; no current system achieves strong performance
@@ -4284,13 +6938,19 @@ claim_clusters:
   - '2503.04721'
   - interspeech-2025-0739
   - '2509.22243'
+  - '2510.02066'
+  - '2510.05150'
+  - '2510.06917'
+  - '2510.09592'
+  - '2511.10262'
+  - neurips-2025-AsRB5nmlOD
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Full-Duplex-Bench (2503.04721) and Full-Duplex-Bench v1.5 (2507.23159) are the same authors' original
     and follow-up benchmark; treated here as two data points because v1.5 adds a genuinely new prosodic-adaptation
     dimension, but the underlying system pool overlaps substantially.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: full_duplex_backchannel_interruption_unsolved
   claim: Backchannel generation and robust interruption handling remain largely unsolved in current full-duplex
     spoken dialogue systems, with most systems showing near-zero or poorly-timed backchannel behavior
@@ -4302,12 +6962,18 @@ claim_clusters:
   - '2509.22243'
   - interspeech-2025-0739
   - '2410.17799'
+  - '2510.06917'
+  - '2511.10262'
+  - neurips-2025-AsRB5nmlOD
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2510.02066'
+  - '2510.05150'
+  - '2511.11124'
   caveats:
   - OmniFlatten's contribution here (2410.17799) is a caveat on its own headline result (user turn-taking
     accuracy below 55% at the harder evaluation point), not a dedicated turn-taking study.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: commercial_vs_opensource_duplex_gap
   claim: Commercial/closed-source full-duplex and spoken dialogue systems currently show better-calibrated
     turn-taking, lower paralinguistic decision bias, and more topically coherent interruption handling
@@ -4319,12 +6985,14 @@ claim_clusters:
   - '2509.22243'
   - '2510.02352'
   - 2025.findings-acl.470
+  - '2510.07838'
+  - '2511.10262'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - None of the four papers control for training data or compute scale between commercial and open-source
     systems, so the gap may reflect deployment-scale tuning as much as architecture.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: internal_interruption_detection_beats_external_vad
   claim: Integrating interruption / turn-taking detection internally within the dialogue model (rather
     than relying on an external VAD module) yields more robust barge-in and interruption handling.
@@ -4334,14 +7002,17 @@ claim_clusters:
   - interspeech-2025-0739
   - '2410.11190'
   - '2411.00774'
+  - '2510.06917'
+  - neurips-2025-AsRB5nmlOD
   contradicting_papers: []
   refining_papers:
   - '2509.06502'
+  - '2511.11124'
   caveats:
   - 'FireRedChat (2509.06502) is listed as refining rather than supporting: it improves VAD itself via
     speaker-conditioning rather than replacing VAD with fully internal detection, so it is a complementary
     rather than a like-for-like data point.'
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: semantic_acoustic_token_tradeoff
   claim: Semantic speech tokens provide tighter text-speech alignment and better LLM compatibility but
     sacrifice acoustic and paralinguistic fidelity relative to acoustic codec tokens, creating a persistent
@@ -4354,9 +7025,12 @@ claim_clusters:
   - '2504.08528'
   - '2412.15649'
   - 2025.findings-acl.115
+  - '2506.23670'
+  - '2511.11124'
   contradicting_papers: []
   refining_papers:
   - '2410.00037'
+  - '2510.00499'
   caveats:
   - Three of the five supporting entries (2410.03751, 2411.13577, 2504.08528) are survey papers synthesizing
     the same underlying tokenizer literature rather than independent primary evidence; treat the effective
@@ -4364,7 +7038,7 @@ claim_clusters:
   - 'Moshi (2410.00037) is listed as refining rather than contradicting: it argues joint acoustic+semantic
     modeling is necessary precisely because semantic-only tokens cannot capture paralinguistic information,
     which sharpens rather than opposes the trade-off claim.'
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: paralinguistic_semantic_capability_gap
   claim: Current speech-to-speech and spoken dialogue systems exhibit a persistent capability gap between
     semantic/content understanding and paralinguistic or non-verbal audio understanding (emotion, ambient
@@ -4376,11 +7050,20 @@ claim_clusters:
   - '2508.18240'
   - '2509.03940'
   - '2507.18119'
+  - '2510.25577'
+  - 2025.emnlp-main.1160
+  - 2025.findings-emnlp.933
+  - '2512.14865'
   contradicting_papers: []
   refining_papers:
   - '2506.21875'
+  - '2511.00850'
+  - '2511.11124'
+  - '2511.15848'
+  - '2512.18706'
+  - '2512.20296'
   caveats: []
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: multiturn_dialogue_degradation
   claim: Current spoken dialogue systems degrade across multi-turn interactions, failing to sustain emotional
     coherence, informational density, or long-range context recall as conversations lengthen.
@@ -4390,14 +7073,19 @@ claim_clusters:
   - '2508.17623'
   - '2508.18240'
   - 2025.findings-acl.470
+  - '2510.07838'
+  - '2511.00850'
+  - '2511.10262'
+  - '2512.14865'
   contradicting_papers: []
   refining_papers:
   - '2510.02352'
+  - 2025.emnlp-main.1492
   caveats:
   - 'FairDialogue (2510.02352) is listed as refining: its finding (single-turn evaluation understates
     multi-turn bias) supports the general degradation pattern but in the bias dimension specifically,
     not coherence or recall.'
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: llm_judge_automated_eval_limits
   claim: Automated LLM-as-judge and other automatic metrics for spoken dialogue quality correlate with
     human judgment only under certain conditions (large score gaps, text-only cues) and are unreliable
@@ -4410,12 +7098,18 @@ claim_clusters:
   - '2508.17623'
   - '2507.16835'
   - interspeech-2025-bokkahallisatish25_interspeech
+  - '2511.01261'
+  - 2025.emnlp-main.1160
+  - 2025.findings-emnlp.933
   contradicting_papers: []
   refining_papers:
   - '2508.07375'
   - interspeech-2025-0739
+  - '2510.07838'
+  - '2511.00850'
+  - '2511.10262'
   caveats: []
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: speech_text_interleaving_improves_alignment
   claim: Interleaving or jointly training on speech and text tokens (rather than speech-only training)
     measurably improves cross-modal semantic alignment and transfers text-LLM reasoning capability to
@@ -4426,13 +7120,15 @@ claim_clusters:
   - '2402.05755'
   - '2410.03751'
   - '2411.17607'
+  - '2503.06211'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - 2025.emnlp-demos.70
   caveats:
   - ScheduledILT (interspeech-2025-1595) demonstrates a closely related interleaving benefit but is scoped
     to S2ST fine-tuning; it is grouped instead under the s2st_streaming_training_strategies cluster to
     avoid double-counting the same paper toward two thresholds.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: frozen_decoupled_llm_preserves_text_capability
   claim: Keeping the backbone LLM frozen, or decoupling speech generation into a separate module trained
     without updating LLM weights, better preserves the LLM's original text reasoning and instruction-following
@@ -4444,10 +7140,15 @@ claim_clusters:
   - 2025.findings-acl.1051
   - '2505.15670'
   - interspeech-2025-0874
+  - '2510.00499'
+  - '2510.05150'
+  - '2506.21864'
+  - '2511.11124'
+  - neurips-2025-vhPy3NMsO5
   contradicting_papers: []
   refining_papers: []
   caveats: []
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: s2st_streaming_training_strategies
   claim: For simultaneous / streaming speech-to-speech translation, targeted training strategies, offline
     training with test-time simultaneous decoding policies, gradual modality-transition fine-tuning, or
@@ -4459,13 +7160,15 @@ claim_clusters:
   - 2025.acl-long.817
   - interspeech-2025-1595
   - '2507.17527'
+  - '2510.10003'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2511.20974'
   caveats:
   - Seed-LiveInterpret (2507.17527) is a fully proprietary system (undisclosed data, weights, and baseline
     identities); its headline comparison against commercial cascades should be treated as a frontier claim
     pending independent replication.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: cross_lingual_incontext_voice_preservation
   claim: In-context learning with acoustic token prompts, rather than speaker embeddings, provides stronger
     cross-lingual speaker/voice preservation in codec-based speech-to-speech translation.
@@ -4474,11 +7177,14 @@ claim_clusters:
   supporting_papers:
   - '2303.03926'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2510.13194'
+  - 2025.findings-emnlp.524
+  - '2511.20974'
   caveats:
   - Backed by a single paper (VALL-E X); no later paper in this concept's corpus directly tests the same
     in-context-vs-embedding comparison for cross-lingual S2ST.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: rag_tool_use_mixed_benefit
   claim: Retrieval augmentation and external tool calling can improve knowledge-intensive spoken question
     answering and reduce hallucination in spoken dialogue agents without retraining the core model, but
@@ -4488,16 +7194,19 @@ claim_clusters:
   supporting_papers:
   - '2506.23049'
   - '2507.16632'
+  - '2510.02044'
   contradicting_papers:
   - 2025.findings-acl.470
-  refining_papers: []
+  refining_papers:
+  - '2510.06917'
+  - 2025.findings-emnlp.241
   caveats:
   - 'The apparent disagreement is plausibly a scope difference rather than a true contradiction: AURA
     and Step-Audio2 test RAG for knowledge-intensive QA and tool invocation, while ContextDialog tests
     RAG specifically for recalling prior conversational turns; both may be true simultaneously. Kept as
     contested rather than silently split into two claims because both papers frame their finding as a
     general statement about RAG''s value for spoken agents.'
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
 - id: model_scale_doesnt_predict_quality
   claim: Parameter count and model scale do not reliably predict speech-to-speech / spoken dialogue quality;
     smaller, well-trained or well-designed models can match or exceed much larger counterparts on naturalness
@@ -4510,12 +7219,70 @@ claim_clusters:
   - '2409.06666'
   - '2505.02625'
   - 2025.acl-long.912
+  - 2025.emnlp-demos.70
+  - 2025.findings-emnlp.933
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2510.05150'
   caveats:
   - LLaMA-Omni 2's two paper entries (2505.02625, arXiv preprint, and 2025.acl-long.912, ACL camera-ready)
     are the same underlying work; counted as one independent data point toward this cluster, not two.
-  last_reviewed: '2026-07-19'
+  last_reviewed: '2026-09-20'
+- id: incremental_reasoning_reduces_spoken_response_latency
+  claim: Performing reasoning or tool planning incrementally during user speech, or concurrently with
+    response generation, can improve semantic quality while avoiding the full latency of turn-by-turn
+    reasoning, but short chunks and premature actions create accuracy and coherence trade-offs.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2510.02044'
+  - '2510.02066'
+  - '2510.05150'
+  - '2510.06917'
+  - '2510.09592'
+  contradicting_papers: []
+  refining_papers:
+  - '2506.15556'
+  caveats:
+  - Most demonstrations use synthetic, scripted, or benchmark speech rather than naturally interrupted
+    conversations, and the systems differ in whether they speculate on text, tool calls, latent reasoning,
+    or response tokens.
+  last_reviewed: '2026-09-20'
+- id: synthetic_and_structured_training_improves_direct_s2st
+  claim: Direct speech-to-speech translation benefits from structured prediction objectives and synthetic
+    or pseudo-parallel speech, including multi-token unit prediction, duration/prosody supervision, and
+    discrete-unit transfer, although voice fidelity and multilingual generalization remain uneven.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2510.10003'
+  - '2510.13194'
+  - 2025.findings-emnlp.524
+  - '2511.12690'
+  - '2511.20974'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The papers cover different language pairs, supervision regimes, and direct-versus-cascaded boundaries,
+    so they establish a convergent training pattern rather than a single universally superior recipe.
+  last_reviewed: '2026-09-20'
+- id: multilingual_and_codeswitched_s2s_remains_uneven
+  claim: Multilingual and code-switched speech-to-speech systems remain substantially less reliable than
+    monolingual counterparts, with language choice, mixed-language inputs, and low-resource supervision
+    affecting semantic accuracy and output quality in ways that aggregate scores can obscure.
+  status: strongly_supported
+  confidence: medium
+  supporting_papers:
+  - '2510.07881'
+  - 2025.emnlp-main.1160
+  - '2511.20974'
+  contradicting_papers: []
+  refining_papers:
+  - '2511.12690'
+  caveats:
+  - Evidence spans code-switched dialogue, multilingual judging, and low-resource translation rather than
+    a shared benchmark; the common conclusion is unevenness, not a common magnitude of degradation.
+  last_reviewed: '2026-09-20'
 method_families:
 - id: native_joint_speech_text_lm
   name: Native joint speech-text token language models
@@ -4538,6 +7305,14 @@ method_families:
   - '2508.16188'
   - '2411.17607'
   - 2025.acl-long.997
+  - '2510.02066'
+  - '2510.06917'
+  - '2510.07881'
+  - '2503.06211'
+  - '2506.23670'
+  - 2025.emnlp-demos.70
+  - '2511.11124'
+  - '2511.15848'
   open_questions:
   - Whether joint token-stream generation can close the remaining semantic and reasoning gap with cascaded
     systems without reintroducing a text bottleneck.
@@ -4553,6 +7328,9 @@ method_families:
   - '2505.15670'
   - interspeech-2025-0874
   - '2508.07375'
+  - '2510.05150'
+  - '2510.09592'
+  - neurips-2025-AsRB5nmlOD
   open_questions:
   - Whether asymmetric duplex designs scale to open-domain, high-complexity reasoning tasks as well as
     the flattened single-stream alternative.
@@ -4580,6 +7358,10 @@ method_families:
   - '2501.04561'
   - '2508.09600'
   - '2509.06502'
+  - '2510.00499'
+  - '2510.05150'
+  - '2506.21864'
+  - neurips-2025-vhPy3NMsO5
   open_questions:
   - Whether gated-fusion streaming TTS decoders will fully close the S2T-to-S2S accuracy gap or asymptote
     at a residual generation-quality penalty.
@@ -4597,6 +7379,11 @@ method_families:
   - interspeech-2025-1595
   - '2507.17527'
   - 2025.findings-acl.75
+  - '2510.10003'
+  - '2510.13194'
+  - 2025.findings-emnlp.524
+  - '2511.12690'
+  - '2511.20974'
   open_questions:
   - Whether RL-trained streaming S2ST systems generalize beyond the single proprietary configuration reported
     to date.
@@ -4614,18 +7401,56 @@ method_families:
   - '2506.23049'
   - 2025.naacl-demo.21
   - '2507.16835'
+  - '2506.15556'
+  - '2510.13194'
+  - 2025.emnlp-main.1492
+  - '2512.18706'
   open_questions:
   - Whether cascade pipelines' quality advantage on general benchmarks is intrinsic to the paradigm or
     simply reflects the current maturity gap between dedicated ASR/TTS components and jointly-trained
     audio LLMs.
   - How production cascade quality decomposes across component choice (ASR/LLM/TTS) versus system-level
     orchestration in real deployment settings.
+- id: incremental_concurrent_reasoning_agents
+  name: Incremental and concurrent reasoning spoken agents
+  summary: Spoken agents that use listening time or overlapping computation to speculate, reason, plan
+    tool calls, or prepare response content before the user finishes, reducing post-utterance delay while
+    preserving an explicit mechanism for revising premature predictions.
+  papers:
+  - '2510.02044'
+  - '2510.02066'
+  - '2510.05150'
+  - '2506.15556'
+  - '2510.06917'
+  - '2510.09592'
+  open_questions:
+  - How an agent should decide when partial speech is sufficient to trigger an external action without
+    making costly premature commitments.
+  - Whether gains measured on synthetic or scripted audio persist under disfluency, correction, overlap,
+    and unpredictable endpointing in natural conversation.
+- id: retrieval_augmented_spoken_agents
+  name: Retrieval- and tool-augmented spoken agents
+  summary: Speech-in speech-out systems that retrieve external evidence or invoke tools during a spoken
+    turn, including cascaded, modular, and direct-speech retrieval designs; they improve knowledge access
+    but expose latency, output-modality, and conversational-context limitations.
+  papers:
+  - '2506.23049'
+  - '2507.16632'
+  - '2510.02044'
+  - 2025.findings-emnlp.241
+  open_questions:
+  - Whether direct speech retrieval can match transcript-based retrieval accuracy while retaining its
+    latency advantage.
+  - How retrieval policies should preserve and distinguish long-range conversational context from external
+    factual evidence.
 reassessment_queue:
 - id: staged_pretraining_effect_on_instruction_following
   type: claim_status
   reason: SLAM-Omni and Baichuan-Audio reach opposite conclusions about whether staged ASR/TTS pretraining
     before dialogue fine-tuning helps or harms instruction-following, at different model scales (0.5B
-    vs 7B) and under different single-stage/multi-stage training regimes.
+    vs 7B) and under different regimes. Q4 paper 2510.00499 shows a same-scale frozen-pretraining benefit
+    on preserved text competence, but does not use the dialogue-only instruction-following comparison
+    required to resolve the disagreement.
   trigger: A controlled, scale-matched ablation directly comparing single-stage dialogue-only fine-tuning
     against staged modality-specific pretraining, with instruction-following held out as the primary metric.
   due: 2027-01
@@ -4681,8 +7506,9 @@ reassessment_queue:
 - id: cascade_e2e_gap_narrowing_with_backbone_quality
   type: claim_status
   reason: NVDuplex (interspeech-2025-0874) reports that the end-to-end reasoning gap versus cascaded oracles
-    narrows as backbone LLM quality increases, but no paper in this concept's corpus yet tracks this trend
-    longitudinally across backbone generations.
+    narrows as backbone LLM quality increases. Q4 adds text-free, audio-visual, retrieval, and modular-cascade
+    comparisons, but none supplies the fair matched-backbone longitudinal comparison needed to establish
+    that the gap has closed.
   trigger: A new frontier end-to-end system matching cascade performance on VoiceBench or a comparable
     general-instruction benchmark under a fair, matched-backbone comparison.
   due: 2026-12
@@ -4690,6 +7516,19 @@ reassessment_queue:
   watch_for:
   - Any end-to-end system reporting VoiceBench or equivalent scores within a small margin of a matched-backbone
     cascade.
+- id: incremental_reasoning_natural_interaction_transfer
+  type: claim_status
+  reason: Six Q4 systems converge on reasoning, retrieval, or speculation during listening as a latency-quality
+    strategy, but their mechanisms and evaluation conditions differ and mostly rely on synthetic, scripted,
+    or benchmark speech.
+  trigger: Independent evaluation showing that an incremental or concurrent reasoning agent retains both
+    its latency and semantic gains during naturally disfluent, interruptible, multi-turn human conversation.
+  due: 2027-01
+  current_assessment: strongly_supported (incremental_reasoning_reduces_spoken_response_latency cluster)
+  watch_for:
+  - Natural-conversation replications with corrections, false starts, overlap, and ambiguous endpoints.
+  - Direct comparisons of speculative text, latent reasoning, tool planning, and concurrent response generation
+    under a shared latency and task-quality protocol.
 open_questions:
 - Whether the cascade-vs-end-to-end performance gap will continue to close as end-to-end backbone LLMs
   improve, or whether it reflects a structural limitation of joint audio-token generation independent
@@ -4702,6 +7541,10 @@ open_questions:
 - Whether retrieval-augmented generation genuinely improves multi-turn conversational context recall in
   spoken dialogue agents, or only knowledge-intensive factual QA (see the rag_tool_use_mixed_benefit contested
   cluster).
+- How incremental reasoning and tool-use systems should decide when partial speech is sufficient to act,
+  while remaining able to recover from corrections and premature predictions.
+- Whether synthetic and pseudo-parallel training gains in direct S2ST generalize across low-resource and
+  typologically distant language pairs without sacrificing speaker identity, prosody, or naturalness.
 trend_notes:
 - Full-duplex evaluation infrastructure (Full-Duplex-Bench, Full-Duplex-Bench v1.5, the FD-Bench-pipeline
   paper, Flexi, WildSpeech-Bench, VERA, MTalkBench) proliferated rapidly through 2025, reflecting a shift
@@ -4714,3 +7557,12 @@ trend_notes:
 - Paralinguistic and multi-turn degradation emerged as distinct, heavily-studied evaluation axes separate
   from semantic accuracy starting around Q2-Q3 2025, with multiple independent benchmarks converging on
   the same finding that these dimensions lag well behind content understanding.
+- Q4 systems increasingly used the listening interval for incremental reasoning, speculative decoding,
+  retrieval, or tool planning, shifting latency optimization from faster post-turn generation toward
+  useful computation before endpoint detection.
+- Q4 evaluation moved further toward natural multi-turn, emotional, code-switched, and audio-visual settings;
+  these tests repeatedly exposed gaps hidden by transcript-only or single-turn benchmarks and clarified
+  when audio-aware judges are necessary.
+- Direct S2ST work diversified beyond a single streaming recipe toward multi-token unit prediction,
+  duration and prosody supervision, low-resource synthetic speech, and pseudo-parallel multilingual data,
+  while continuing to trade semantic reach against voice and acoustic fidelity.

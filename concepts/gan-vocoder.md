@@ -2,72 +2,73 @@
 slug: gan-vocoder
 aliases: [adversarial vocoder, neural waveform generator, GAN waveform decoder]
 status: mature-infrastructure
-last_reviewed: 2026-08-02
+last_reviewed: 2026-10-31
 concept: gan-vocoder
 render_type: overview
 title: "GAN Vocoders"
-source_digest_date: 2026-07-30
-paper_count: 60
+source_digest_date: 2026-10-31
+paper_count: 82
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
-> GAN vocoders reconstruct waveforms from acoustic or codec features with low latency and high perceptual quality. They are mature infrastructure, while discriminator design, phase, conditioning mismatch, causal deployment, compression artifacts, and perceptual evaluation remain active engineering frontiers.
+> GAN vocoders reconstruct waveforms from acoustic features or compressed audio representations with predominantly one-pass generation. They are mature speech-generation infrastructure, but their perceptual quality depends as much on discriminator design, conditioning fidelity, data coverage, and evaluation protocol as on the generator itself.
 
 ## Current State
 
-**GAN vocoders can match autoregressive perceptual quality while reducing waveform-generation latency by orders of magnitude.** The assessment is emerging within the reviewed corpus; representative evidence includes [[2010.05646|HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis]]. Speed comparisons depend on hardware, batching, sampling rate, and whether upstream acoustic generation is included.
+**Adversarial generation remains a strong practical default, but its speed advantage is easier to establish than universal perceptual superiority.** HiFi-GAN demonstrated that a compact adversarial generator can approach autoregressive quality at real-time-capable speeds, while later systems broadened the operating range ([[2010.05646|HiFi-GAN]], [[2206.04658|BigVGAN]]). The reviewed evidence still treats the matched quality-versus-latency comparison as emerging because hardware, sampling rate, upstream acoustic generation, and listening protocols are rarely controlled together.
 
-**Discriminator design is a primary determinant of GAN-vocoder quality and training stability.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2010.05646|HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis]], [[2210.13438|High Fidelity Neural Audio Compression]]. Discriminator gains may depend on matching generator representation, loss balance, and data scale.
+**The discriminator is a central part of the vocoder, not merely a training accessory.** Period-aware waveform critics and multi-resolution spectral critics expose complementary failures in periodic structure, transients, and spectral detail. This conclusion is strongly supported across waveform generators and codec decoders, although no discriminator set is uniformly best across representations ([[2010.05646|HiFi-GAN]], [[2210.13438|High Fidelity Neural Audio Compression]], [[2512.03486|Universal Harmonic Discriminator]]).
 
-**Periodicity-aware and multi-resolution spectral discriminators capture complementary speech structure.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2010.05646|HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis]], [[2206.04658|BigVGAN: A Universal Neural Vocoder with Large-Scale Training]]. No single discriminator family is uniformly best across waveform, spectrogram, and codec-decoder generators.
+**Signal structure is increasingly built into the model.** Frequency-domain generation, explicit phase modeling, anti-aliasing, harmonic decomposition, and band-aware representations can improve efficiency and suppress artifacts ([[2306.00814|Vocos]], [[2507.01611|QHARMA-GAN]], [[2512.20211|Aliasing-Free Neural Audio Synthesis]]). These constraints improve extrapolation only when their phase, voicing, or band assumptions remain valid; explicit phase modeling as a general replacement for adversarial supervision remains emerging ([[2508.07711|Is GAN Necessary?]]).
 
-**Time–frequency-domain vocoders can improve phase modeling, artifact control, and efficiency relative to direct waveform generation.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2306.00814|Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis]], [[2507.20731|Learning Neural Vocoder from Range-Null Space Decomposition]]. Frequency-domain systems remain sensitive to phase wrapping, representation alignment, and branch interaction.
+**A vocoder must be trained for the distribution it will actually decode.** Predicted spectrograms, quantized latents, bandwidth-limited features, and streamed chunks differ systematically from clean reference conditioning. Adaptation to those inputs is strongly supported, but can overfit one acoustic model or codec ([[1712.05884|Tacotron 2]], [[2509.02244|Spectrogram Patch Codec]]). Speaker, language, and recording diversity also improve transfer, though data scale and architecture are often confounded.
 
-**Explicit phase modeling can reduce or remove the need for adversarial training in high-quality vocoders.** The assessment is emerging within the reviewed corpus; representative evidence includes [[2508.07711|Is GAN Necessary for Mel-Spectrogram-based Neural Vocoder?]]. Evidence is strongest for architectures designed around phase prediction rather than GAN objectives removed post hoc.
+**Codec decoding and streaming have become first-class vocoder settings.** Adversarial decoders remain effective at low bitrates, while causal GANs can approach offline quality with limited lookahead or distillation. Flow and diffusion vocoders provide another refinement path, but iterative inference retains a quality–latency trade-off even as one-step and short-trajectory variants narrow it ([[2210.13438|High Fidelity Neural Audio Compression]], [[interspeech-2025-1819|Low-Latency Vocoder Analysis]], [[iclr-2025-tQ1PmLfPBL|PeriodWave]]).
 
-**Periodic activations and anti-aliasing constraints improve GAN-vocoder robustness and suppress high-frequency artifacts.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2206.04658|BigVGAN: A Universal Neural Vocoder with Large-Scale Training]], [[2306.00814|Vocos: Closing the gap between time-domain and Fourier-based neural vocoders for high-quality audio synthesis]]. Architectural robustness still depends on diverse training data and matched bandwidth.
+**Single automatic metrics are not reliable enough to rank vocoders across operating conditions.** Spectral distances and learned MOS predictors can disagree with listeners when phase, pitch, bandwidth, compression, or intended signal transformation changes. A late conversational-conversion result adds only weak refining evidence because its scores and protocol are underspecified ([[2508.07711|Is GAN Necessary?]], [[2605.18001|Bridging the Gap]]).
 
 ## Method Landscape
 
-- **Adversarial waveform vocoders.** 46 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Transformer-conditioned vocoder systems.** 13 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Flow-matching waveform generation.** 10 graph memberships show adoption of this practical pattern, not matched superiority.
-- **VAE and codec vocoder decoders.** 9 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Diffusion vocoder and restoration systems.** 7 graph memberships show adoption of this practical pattern, not matched superiority.
+- **Adversarial waveform and time–frequency vocoders** use one-pass generators with periodic, spectral, harmonic, or projected critics. They offer the clearest latency advantage, but require careful stabilization and matched conditioning.
+- **Codec and VAE decoders** reconstruct detail from compressed continuous or discrete latents. Their outcome is jointly determined by token rate, quantizer structure, and decoder capacity rather than by the vocoder alone.
+- **Flow and diffusion vocoders** iteratively transport noise or degraded audio toward a waveform. They can refine difficult reconstructions, but must be distilled or shortened for interactive use.
+- **Hybrid signal–neural systems** embed phase, source–filter, filterbank, band, or anti-aliasing structure. They can be efficient and data-aware, while introducing explicit estimation bottlenecks.
+- **Autoregressive decoders** remain a quality and historical reference where latency is secondary, rather than the default deployment choice.
 
 ## Key Trade-offs
 
-- **Vocoders benefit from training or adaptation on predicted and reconstructed conditioning features rather than clean references alone.** Adaptation can overfit the artifact distribution of one acoustic model or codec.
-- **Speaker, language, recording, and domain diversity are major drivers of universal vocoder generalization.** Architecture, model scale, filtering, and dataset diversity are often changed together.
-- **Scaling GAN-vocoder capacity improves quality only when accompanied by architectural and optimization stabilization.** Naive capacity increases can destabilize adversarial training or obscure data-quality effects.
-- **Explicit signal-processing structure can improve vocoder extrapolation, parameter efficiency, and data efficiency.** Analytic components introduce their own estimation errors, including V/UV and phase failures.
+- **Speed versus controlled comparison.** Fast generation does not by itself establish equal end-to-end quality when hardware and upstream models differ.
+- **Learned flexibility versus analytic structure.** Harmonic and phase constraints can improve robustness, but failures in voicing or phase estimation become audible model assumptions.
+- **Clean training targets versus deployment realism.** Training on predicted or quantized conditioning improves robustness to that source but may reduce portability to another front end.
+- **Compression versus reconstruction detail.** Lower token rates reduce sequence and storage cost while placing more perceptual burden on the decoder.
+- **Offline quality versus streaming latency.** Lookahead and chunk size improve continuity but delay the first usable audio and can conceal state-reset artifacts.
 
 ## Open Questions
 
-- Which discriminator combination gives the best transferable quality–compute trade-off across speech, music, and codec decoding?
-- When can explicit phase and signal-processing constraints replace adversarial supervision without reducing perceptual quality?
-- How should vocoders be trained against predicted, quantized, bandwidth-limited, and otherwise mismatched conditioning features?
-- Can one-step flow or diffusion vocoders consistently match GAN latency while retaining iterative-generation robustness?
-- Which evaluation suite reliably captures phase, pitch, bandwidth, transient, and out-of-domain vocoder artifacts?
+- Which discriminator combination transfers reliably across speech, music, sampling rates, codecs, and recording domains?
+- When can explicit phase or signal-processing structure replace adversarial supervision under matched listener tests?
+- Can one-step flow or diffusion vocoders consistently match GAN latency and quality across datasets?
+- How should training balance clean, predicted, quantized, and streamed conditioning without overfitting one upstream model?
+- Which evaluation suite captures phase, pitch, bandwidth, transient, and out-of-domain artifacts without misranking listener preference?
 
 ## Go Deeper
 
-Read [[concepts/gan-vocoder-in-depth|GAN Vocoders: In Depth]] for the detailed evidence, disagreements, implications, and reading path.
+Read [[concepts/gan-vocoder-in-depth|GAN Vocoders: In Depth]] for the research landscape, areas of convergence and uncertainty, deployment implications, and a representative reading path.
 
 ## Scope
 
-This synthesis covers 60 papers through Q3 2025. Evidence spans multiple architectures, datasets, languages or domains, and evaluation protocols. Strong status applies within the encoded graph; shared organizational lineages, infrastructure reuse, emerging findings, and contested measurements retain narrower interpretations.
+This synthesis covers 82 reviewed papers published from 2016 through the Q4 2025 evidence window. The corpus spans TTS, voice conversion, neural codecs, streaming, restoration, and non-standard acoustic domains, but many comparisons reuse common datasets or alter architecture and data together. Strong support therefore describes convergence within the encoded evidence, not a universal ranking of vocoders.
 
 ---
 
-_This page is generated from `wiki/_claims/gan-vocoder.yaml` (digest date: 2026-07-30). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/gan-vocoder.yaml` (digest date: 2026-10-31). For complete structured claims and paper-level provenance, use the source YAML._

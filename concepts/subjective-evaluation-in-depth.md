@@ -2,366 +2,219 @@
 concept: subjective-evaluation
 render_type: in-depth
 title: "Subjective Evaluation of Generated Speech: In Depth"
-source_digest_date: 2026-07-27
-paper_count: 180
+source_digest_date: 2026-10-31
+paper_count: 255
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
-For the concise view, see [[concepts/subjective-evaluation|Subjective Evaluation of Generated
-Speech]]. This page synthesizes conclusions rather than listing studies; complete provenance remains
-in `wiki/_claims/subjective-evaluation.yaml`.
+Companion to the [[concepts/subjective-evaluation|Overview]]. This page explains what the reviewed research collectively shows. Citations are representative; complete provenance is in `wiki/_claims/subjective-evaluation.yaml`.
 
 ## Findings at a Glance
 
-- Naturalness, intelligibility, identity, prosody, emotion, and interaction success are distinct
-  perceptual dimensions and should not be collapsed into one score.
-- Automatic metrics frequently rank systems differently from listeners; learned predictors improve
-  aggregate correlation but remain domain- and scale-sensitive.
-- MOS results depend on listener population, language, cultural context, instructions, references,
-  anchors, and recruitment.
-- Pairwise and ranking designs often discriminate small differences better than isolated absolute
-  ratings, while providing only relative conclusions.
-- Preference optimization improves targeted perception but can damage untargeted dimensions when
-  rewards or stopping criteria are incomplete.
-- Embedding-based speaker similarity is especially confounded and remains emerging as a direct
-  substitute for perceived identity.
-- Attribute control requires attribute-specific listening tests; naturalness alone cannot validate
-  emotion, accent, prosody, or style.
-- Domain and language shift can invalidate conclusions drawn from clean, high-resource conditions.
-- Participatory evaluation reveals cultural, educational, and usability outcomes that scalar scores
-  omit.
-- LLM and audio-language-model judges are promising for scale but contested for fine-grained and
-  non-verbal attributes.
+- **Naturalness, intelligibility, identity, expression, and interaction are distinct perceptual axes.** A single aggregate score cannot establish overall quality.
+- **Automatic metrics frequently rank systems differently from listeners.** The direction and size of disagreement depend on the task, domain, quality range, and population.
+- **Learned quality predictors are not universally superior to classical metrics.** Aggregate correlation can hide utterance-level errors, saturation, and codec- or distortion-specific reversals.
+- **MOS is useful but protocol-sensitive.** Listener composition, anchors, instructions, references, and scale interpretation can change the outcome.
+- **Pairwise and ranking designs usually improve discrimination.** Their result is relative to the selected alternatives and rated dimension.
+- **Fine-grained control requires dimension-specific tests.** Naturalness alone cannot validate emotion, accent, rate, melody, voice quality, or synchronization control.
+- **Preference optimization can improve targeted perception while degrading other dimensions.** Reward saturation and hacking make independent held-out evaluation necessary.
+- **Automated judges require scoped human validation.** Reliability is strongest for clear, rubric-grounded differences and weaker for fine-grained or non-verbal attributes.
+- **Population and domain shift affect conclusions.** High-resource panels and clean laboratory speech do not automatically transfer to low-resource, culturally specific, or in-the-wild settings.
+- **Codec, vocoder, and efficiency choices set perceptual ceilings.** Evaluation must distinguish system-level gains from artifacts introduced by the representation or decoder.
 
 ## Scope
 
-The graph contains 180 papers published from 2016 through September 2025; 160 are from 2025. TTS is
-the largest task, followed by evaluation-focused work, spoken conversational agents, voice
-conversion, codecs, and singing. Every paper supplies core evidence because subjective judgments
-are used to support system claims, but only a subset studies evaluation methodology directly.
-
-The evidence includes controlled metric studies, listening tests, preference-training experiments,
-benchmark proposals, low-resource evaluations, and participatory workshops. Fifteen clusters are
-strongly supported, one is emerging, and one is contested. Results from repeated use of the same
-metric or listener platform do not constitute independent validation of that instrument. Historical
-papers establish common protocols; surveys and benchmarks organize evidence but do not replace
-listener experiments.
-
-The synthesis distinguishes a protocol's ability to discriminate the submitted systems from its
-validity for a deployment population. A test can be statistically consistent among recruited
-listeners and still ask the wrong question, omit a relevant group, or fail under language and domain
-shift. It also distinguishes automatic prediction of ratings from human evaluation itself.
+The graph contains 255 papers published from 2016 through the Q4 2025 evidence window and synthesizes 17 claim clusters: 14 strongly supported and three contested. It covers TTS, voice conversion, spoken conversational agents, codecs, vocoders, singing, preference alignment, low-resource languages, and multimodal speech. Evidence includes method-focused evaluation research, benchmarks, system listening tests, metric studies, participatory work, and preference-training experiments. Many papers use a perceptual study as validation rather than investigate the protocol itself; those studies support task-specific conclusions but carry less weight for general claims about evaluation design. Scores are not pooled across unmatched listener groups, datasets, scales, or instructions.
 
 ## Research Landscape
 
-Subjective evaluation cuts across generation architectures rather than forming architecture-based
-method families. The claim graph records autoregressive, transformer encoder–decoder, GAN,
-diffusion, flow, variational, and hybrid systems because protocol behavior must be interpreted across
-the systems being compared. Architecture membership provides context for artifacts, not a taxonomy
-of listening methods.
+Subjective evaluation is not one method family. Absolute category ratings, pairwise preferences, rankings, reference-based attribute tests, multidimensional task rubrics, and participatory studies answer different questions. MOS-style ratings estimate an absolute-seeming quality level, while pairwise tests measure relative preference within a comparison set. Reference tests make identity, accent, emotion, or prosody explicit, but the anchor influences the judgment. Interactive and multimodal benchmarks additionally need semantic, temporal, and behavioral rubrics.
 
-The core protocol families are absolute ratings, pairwise or ranking judgments, reference-based
-attribute comparisons, task-specific rubrics, and participatory qualitative methods. Absolute MOS
-compresses an impression into a familiar scale. Pairwise tests ask which sample is preferred or
-better on one attribute. Reference-based designs compare identity, accent, emotion, or prosody
-against an anchor. Spoken-agent evaluations add semantic, interactive, and temporal rubrics.
-Participatory work asks whether the system is useful and appropriate in its community context.
+The systems under evaluation also shape the protocol. Autoregressive and transformer systems expose alignment, sampling, and long-form errors; GAN and codec systems expose waveform and compression artifacts; flow and diffusion systems trade inference budget against quality; latent systems raise diversity and identity-drift questions. A valid study chooses dimensions and stimuli around the expected failures rather than applying one naturalness score to every architecture.
 
-Automatic evaluation forms a parallel layer. Classical signal measures compare waveforms or
-spectra; learned quality predictors estimate listener ratings; ASR and speaker encoders provide
-intelligibility and identity proxies; LLM and audio-language models increasingly judge content,
-emotion, or interaction. These instruments can reduce evaluation cost, but each inherits a training
-distribution and operational definition.
+Automation cuts across these methods. Learned MOS predictors, speaker encoders, codec metrics, text-based LLM judges, and audio-language-model judges can scale evaluation. Their role is strongest when calibrated against humans for the same task, domain, attribute, and scoring granularity. They are not a separate ground truth.
 
 ## What the Research Shows
 
-### Perception is multidimensional
+### Quality is multidimensional
 
-**Current assessment:** naturalness, intelligibility, identity, expressiveness, and interaction
-behavior are separate axes; gains on one do not guarantee gains on another.
+**Current assessment:** naturalness, intelligibility, speaker identity, expressiveness, prosody, and interaction success should be reported separately because they can improve or degrade independently.
 
-This conclusion recurs from foundational TTS and vocoder work through modern zero-shot and spoken-
-agent systems. A model can be intelligible but sound unnatural, resemble a speaker while carrying
-the wrong accent, or generate fluent audio while failing the conversational task. Studies such as
-[[2406.18009|E2 TTS]] and preference-aligned TTS report multiple metrics precisely because one axis
-cannot stand in for the others.
+This conclusion recurs across synthesis, conversion, codec, dialogue, and multimodal systems. A model can produce intelligible speech that sounds unlike the intended speaker, preserve identity while flattening prosody, or improve emotional recognition while reducing naturalness. Spoken agents can deliver fluent audio while failing semantic or turn-taking objectives. Q4 benchmarks increasingly make these dimensions explicit ([[2025.emnlp-main.1160|C3]], [[2025.emnlp-main.1447|MULTIVOX]], [[2511.00850|MULTI-Bench]]).
 
-The implication is structural: evaluations should start from the system claim, then select a test
-for each relevant dimension. Composite headline scores may aid dashboards, but component results
-must remain visible. Otherwise an improvement in a high-variance or heavily weighted dimension can
-hide regression elsewhere.
+Composite scores can be useful for summary, but they conceal compensation: a small gain on several easy dimensions can hide a severe failure on one material axis. The most defensible evaluation reports each component and explains any aggregation rule. Task success, acoustic delivery, identity, and interaction should not be interchangeable weights by default.
 
-### Automatic metrics diverge from listeners
+**Most informative evidence:** [[2025.emnlp-main.1160|C3]], [[2025.emnlp-main.1447|MULTIVOX]], [[2511.05143|Selected Perceptual Voice Qualities]].
 
-**Current assessment:** automatic quality and task metrics frequently rank systems differently from
-human perceptual judgments, with disagreement varying by task, domain, and quality range.
+**What remains unresolved:** common rubrics that remain diagnostic across TTS, conversion, dialogue, singing, and multimodal output without forcing unrelated tasks onto one scale.
 
-Evidence spans classical signal metrics, ASR-based intelligibility, speaker embeddings, and learned
-quality models. Disagreement is especially consequential near high quality, where predictors can
-saturate while listeners still hear artifacts. A metric may also reward properties correlated with
-its training data rather than the intended perceptual construct.
+### MOS depends on who listens and how
 
-This does not make automatic metrics useless. They support rapid iteration, large-scale screening,
-and reproducible diagnostics. The appropriate use is calibration: validate the metric against human
-judgments under the intended domain, then retain periodic listening tests and inspect cases where
-metrics disagree.
+**Current assessment:** MOS remains useful for broad naturalness comparisons, but its result depends on listener population, cultural context, reference conditions, instructions, anchors, and scale design.
 
-### Learned quality predictors improve but do not solve validity
+An apparent absolute score is produced by a particular sample of listeners under a particular protocol. Native-language competence affects pronunciation and prosody judgments; cultural expectations affect style and social appropriateness; hearing profile and playback equipment affect artifact sensitivity. Reusing training or development listeners, changing panel composition, or comparing scores from different scales can create differences unrelated to the systems.
 
-**Current assessment:** learned perceptual predictors generally correlate better with human ratings
-than classical signal measures, but aggregate correlation conceals utterance-level errors, domain
-shift, and scale sensitivity.
+The late PACC page makes the reporting problem concrete. Its listener and test-set details are absent and its score scales are inconsistent, so it cannot support an absolute quality ranking ([[2605.18001|Bridging the Gap]]). This does not invalidate MOS itself. It reinforces the need to report recruitment, eligibility, stimuli, repetitions, anchors, instructions, scale endpoints, exclusions, uncertainty, and statistical analysis.
 
-[[2204.02152|UTMOS]] exemplifies the learned-MOS approach. Later mixture-of-experts and embedding
-models target robustness across datasets. Their advantage comes from learning perceptual patterns
-instead of assuming waveform distance equals quality.
+**Most informative evidence:** [[2605.18001|Bridging the Gap]], [[2025.iwclul-1.3|South Sámi TTS]].
 
-Correlation is not interchangeability. A predictor trained on one rating scale or language can
-shift systematically elsewhere. System-level correlation can remain high while individual samples
-are unreliable. Predicted MOS must be labeled as predicted, and a new architecture or domain should
-trigger revalidation rather than automatic trust.
-
-### MOS is context-sensitive
-
-**Current assessment:** MOS remains useful for broad naturalness comparisons when rigorously
-reported, but its numeric value depends on population and protocol.
-
-Listeners use rating scales relative to the samples, anchors, and expectations they encounter.
-Native-language competence affects pronunciation judgments; cultural experience shapes style and
-social perception; instructions determine whether “quality” means naturalness, pleasantness, or
-technical cleanliness. Reference conditions and recruitment platforms also shift scores.
-
-Low-resource work such as [[2025.americasnlp-1.1|Shipibo-Konibo TTS]] shows why importing a standard
-protocol can be inappropriate when native listeners are scarce and community goals differ. Strong
-reporting includes listener language, demographics relevant to the task, screening, compensation,
-instructions, randomization, anchors, sample assignment, uncertainty, and exclusion rules.
+**What remains unresolved:** portable reporting and analysis standards that preserve local cultural validity while enabling cross-laboratory replication.
 
 ### Pairwise tests improve discrimination
 
-**Current assessment:** pairwise preference, ranking, and contrastive designs often detect
-perceptual differences more reliably than isolated absolute scores.
+**Current assessment:** pairwise preference, ranking, and contrastive designs often resolve small perceptual differences more reliably than isolated absolute scores, but they do not establish absolute acceptability.
 
-Pairwise judgments reduce variation in how listeners use an absolute scale and focus attention on a
-specified attribute. They are central to preference training and system comparison, from
-[[2406.00654|Enhancing Zero-Shot TTS with Human Feedback]] to modern benchmark arenas.
+Relative judgments reduce the burden of mapping perception onto a numerical scale. They are especially useful for near-tied systems, attribute controls, and preference-data collection. The comparison can ask which sample is more natural, more similar, more expressive, or better aligned, making the judged dimension explicit.
 
-Their limitation is relativity. Winning against one baseline does not establish acceptable
-absolute quality, and the comparison set can change rankings. Studies should select meaningful
-baselines, balance presentation order, report ties or indifference when allowed, and avoid turning a
-pairwise win rate into an absolute quality claim.
+The result remains conditional on the candidates. A system can win against a weak baseline and still be poor, and rankings can change between naturalness and identity. Pairwise results also become expensive as the comparison set grows. Arena and adaptive designs reduce coverage cost but introduce sampling and transitivity assumptions.
 
-### Preference training exposes reward trade-offs
+**Most informative evidence:** [[interspeech-2025-2283|Pairwise Accent Evaluation]], [[2406.00654|Human-Feedback Zero-Shot TTS]].
 
-**Current assessment:** preference-based post-training can improve targeted perceptual attributes,
-while optimization against incomplete human or proxy rewards can degrade unmeasured qualities.
+**What remains unresolved:** designs that combine pairwise discrimination with interpretable absolute thresholds and efficient coverage of many systems.
 
-[[2025.acl-long.598]] improves zero-shot intelligibility through preference alignment. Other work
-targets emotion, prosody, identity, or conversational coherence. The repeated positive direction
-establishes preference optimization as more than a single-system result.
+### Automatic metrics are task-dependent tools
 
-The same literature records naturalness, identity, melody, or diversity regression when one reward
-is pushed too far. Proxy-generated preferences can amplify metric bias; even human labels cover
-only the question asked. Safe evaluation therefore reserves held-out dimensions, uses multi-
-objective checkpoint selection, and continues listening after the optimized reward improves.
+**Current assessment:** automatic quality, intelligibility, and speaker metrics provide useful diagnostics but frequently disagree with human perception and should not be treated as universal substitutes.
 
-### Speaker similarity needs perceptual calibration
+Classical signal metrics require references and may penalize harmless transformations or miss perceptually salient artifacts. Learned MOS predictors can correlate better with aggregate listener scores, as UTMOS illustrates, but can saturate near transparent quality and fail under language, domain, or distortion shift ([[2204.02152|UTMOS]]). Q4 neural-codec evidence directly contests a general learned-metric advantage: several classical measures match or outperform learned predictors for particular codec conditions ([[2511.19734|Objective Metrics for Neural Audio Codecs]]).
 
-**Current assessment:** embedding similarity is useful within controlled protocols but is an
-emerging and confounded substitute for perceived identity.
+Speaker similarity adds its own confounds. Embedding scores depend on the verification model, reference duration, language, channel, pitch, and architecture; higher cosine similarity does not guarantee stronger perceived identity ([[2507.02176|Speaker Similarity Assessment]]). The appropriate use is dimension-specific screening and diagnosis, calibrated to the transformation and operating range.
 
-[[2507.20140|Do Not Mimic My Voice]] and [[2507.02176|Analyzing and Improving Speaker Similarity
-Assessment]] show that recording conditions, language, architecture, and reference design influence
-scores. Two embeddings can rank systems differently, while neither captures every identity cue a
-listener uses.
+**Most informative evidence:** [[2204.02152|UTMOS]], [[2507.02176|Speaker Similarity Assessment]], [[2511.19734|Objective Metrics for Neural Audio Codecs]].
 
-Speaker verification and synthesis evaluation ask related but different questions. Verification
-seeks discriminative identity under its training distribution; cloning asks whether generated
-speech sounds like a reference while remaining natural and linguistically correct. Calibration
-should use listener identity judgments across languages, channels, and demographic groups.
+**What remains unresolved:** cross-domain calibration studies that identify robust metric combinations and uncertainty estimates for each task and artifact class.
 
-### Attribute control needs targeted tests
+### Automated judges need scoped validation
 
-**Current assessment:** emotion, prosody, accent, rhythm, and style require dimension-specific
-perceptual tests rather than holistic naturalness scores.
+**Current assessment:** LLM and audio-language-model judges can reproduce some human judgments under grounded, matched conditions, but reliability is contested for fine-grained, non-verbal, near-tied, and unscripted attributes.
 
-[[2025.coling-main.352|DiffStyleTTS]] and related control systems demonstrate hierarchical or
-fine-grained variation. A naturalness test can confirm that controlled output remains plausible but
-cannot show whether the intended attribute changed. Attribute labels, anchors, and listener cultural
-competence become part of construct validity.
+Text-based judges can evaluate transcript-level correctness or instruction following, while audio-capable judges can additionally inspect delivery. Task-specific tuning, explicit rubrics, repeated sampling, and reference grounding improve agreement. Spoken-dialogue benchmarks use these tools to scale complex evaluations that would be expensive for listeners ([[2025.emnlp-main.1160|C3]], [[2511.00850|MULTI-Bench]]).
 
-The strongest design measures the target attribute and preservation dimensions together. Increasing
-control strength may improve recognizability while reducing identity or naturalness. Reporting an
-operating curve reveals this non-monotonic behavior better than one selected checkpoint.
+The boundary is important. A high aggregate correlation does not establish reliable utterance-level emotion, prosody, turn-taking, or non-verbal judgment. Real unscripted audio and audio-only cues remain harder than verbal content. One Q4 prosody-diversity study provides evidence that a carefully targeted automatic measure can work, but that success narrows rather than removes the validation requirement ([[2509.19928|Prosody Diversity Benchmark]]).
 
-### Domain and language shift limit transfer
+**Most informative evidence:** [[2025.emnlp-main.1160|C3]], [[2511.00850|MULTI-Bench]], [[2509.19928|Prosody Diversity Benchmark]].
 
-**Current assessment:** subjective conclusions from clean, high-resource, single-language settings
-often fail to transfer to low-resource or in-the-wild use.
+**What remains unresolved:** prospective transfer tests that determine when calibration on one domain, model family, or quality range remains valid on another.
 
-Domain shift changes recording conditions, text, speaker population, and listener expectations at
-once. [[2025.chipsal-1.18|Nepali TTS Vocoder Study]] and low-resource dataset work show that choices
-validated on common English corpora may rank differently elsewhere. Cross-domain comparisons are
-hard precisely because several factors change together.
+### Fine-grained control needs matched questions
 
-Evaluation should sample deployment conditions and stratify results rather than rely on one pooled
-mean. Native-language listeners and context-appropriate materials are essential when pronunciation
-or cultural style is part of the claim.
+**Current assessment:** emotion, accent, prosody, speaking rate, melody, voice quality, and audiovisual timing require attribute-specific perceptual tests rather than holistic naturalness alone.
 
-### Bias and participatory validity matter
+Control claims concern whether a requested attribute changed in the intended way. Naturalness can stay high while control fails, or decline slightly while recognizability and expressiveness improve. The late non-verbal emotion study demonstrates the latter pattern: fine-grained events improve emotion recognition and expressiveness but slightly lower naturalness in a small 15-listener test ([[2605.25504|Fine-Grained Non-Verbal Expression Control]]). That result is refining evidence, not a universal operating point.
 
-**Current assessment:** demographic representation and social perception produce systematic
-differences in quality and identity judgments, while participatory methods reveal consequences that
-scalar laboratory tests omit.
+Attribute tests need validated labels and anchors. Emotion categories, accent definitions, voice-quality terms, and style instructions can be culturally or linguistically specific. Word-level and transition-level controls may require time-localized judgments rather than one utterance score.
 
-Training-data imbalance, listener composition, stereotypes, and acoustic confounds can all affect
-ratings. [[1904.02882|LibriTTS]] provides widely used data whose population shapes downstream
-systems; later studies examine perceived likability, gendered voice qualities, and disparities.
+**Most informative evidence:** [[2605.25504|Fine-Grained Non-Verbal Expression Control]], [[2511.05143|Selected Perceptual Voice Qualities]].
 
-[[2025.computel-main.6|Participatory Ojibwe TTS Evaluation]] shows a complementary objective:
-community members assess educational usefulness and cultural fit, not merely acoustic naturalness.
-Small participatory studies trade population-level generalization for contextual validity. They
-should complement, not be forced into, standard MOS aggregation.
+**What remains unresolved:** reliable time-localized protocols for controls whose success and naturalness vary within an utterance.
 
-Their reporting logic is correspondingly different. A laboratory listening test estimates a
-population response under standardized sampling assumptions; a workshop can reveal requirements,
-failure meanings, and adoption constraints that were absent from the laboratory question. Strong
-participatory reports document who set the criteria, how community members used the system, which
-themes recurred, and where views differed. They should avoid claiming population prevalence from a
-small group, while conventional studies should avoid treating a larger anonymous panel as evidence
-of cultural appropriateness. Using both methods produces complementary validity: quantitative
-comparability for perceptual differences and situated evidence about whether those differences
-matter in practice.
+### Control strength has an operating point
 
-### Automated judges remain contested
+**Current assessment:** stronger guidance, compression, transformation, or preference optimization does not produce monotonic perceptual gains; evaluation should report curves rather than one selected setting.
 
-**Current assessment:** LLM and audio-language-model judges approximate some human judgments but are
-not uniformly reliable for fine-grained, non-verbal, or paralinguistic attributes.
+Increasing a control weight can improve adherence while degrading naturalness, identity, intelligibility, or diversity. Compression can reduce bitrate until a perceptual ceiling breaks; retrieval scale can improve coverage before introducing mismatch; reward training can improve the optimized axis before saturating or exploiting the proxy. These reversals appear across architectures and tasks.
 
-Benchmarks such as [[2508.02013|SpeechRole]] and [[2508.18240|MTalk-Bench]] use rubric-based or arena
-evaluation for spoken systems. Automated judges scale semantic and interaction assessment beyond
-small panels. Repeated sampling and specific rubrics can improve stability.
+The relevant question is not whether control helps, but where the operating point lies for each dimension. A single tuned setting hides the shape of the trade-off and may be selected on the same listeners or metrics used for final reporting.
 
-The contested evidence, including [[2509.19928|Prosody Diversity Benchmark]], shows that reliability
-varies with modality and attribute. A text-capable judge may assess semantic compliance while
-missing subtle timing, voice identity, or affect. Human audits and per-dimension reliability should
-be reported before replacing listeners.
+**Most informative evidence:** [[2406.00654|Human-Feedback Zero-Shot TTS]], [[2025.acl-long.598|Preference-Aligned Zero-Shot TTS]], [[2605.25504|Fine-Grained Non-Verbal Expression Control]].
 
-### Efficiency claims require listening tests
+**What remains unresolved:** standardized multi-axis sweeps with held-out listeners and explicit stopping criteria for guidance and reward optimization.
 
-**Current assessment:** human listening is necessary to establish whether codec, vocoder, pruning,
-or acceleration gains preserve perceived quality.
+### Preference optimization changes evaluation burden
 
-Foundational systems such as [[1609.03499|WaveNet]], [[2010.05646|HiFi-GAN]],
-[[2105.06337|Grad-TTS]], and [[2210.13438|EnCodec]] pair efficiency or architectural claims with
-perception because objective measures do not capture all artifacts. Later work varies model size,
-steps, hardware, and data together, which limits causal attribution.
+**Current assessment:** preference-based optimization can improve targeted perception beyond supervised or metric-only training, but it requires independent evaluation of reward robustness and untargeted dimensions.
 
-Matched listening tests should compare operating points at explicit latency, bitrate, or compute.
-Without that control, “same quality” may mean only that one automatic metric changed little.
+Preference learning turns comparisons into training data. Human-feedback TTS and domain-focused alignment show that targeted intelligibility or quality can improve ([[2406.00654|Human-Feedback Zero-Shot TTS]], [[2025.acl-long.598|Preference-Aligned Zero-Shot TTS]]). Proxy-generated preferences can scale the process, but also make evaluation circular when the training reward and reported judge share assumptions or models.
 
-### Benchmarks need multidimensional coverage
+Cross-dimension trade-offs are recurrent. Better intelligibility can weaken identity, stronger emotional alignment can affect naturalness, and reward optimization can suppress prosodic diversity. Reward saturation and hacking mean that more optimization is not automatically better. Final studies need held-out judges, listeners, prompts, and dimensions not used for training.
 
-**Current assessment:** speech benchmarks need rubrics that separate semantic success,
-naturalness, identity, prosody, and interaction, while preserving component scores and judge
-reliability.
+**Most informative evidence:** [[2406.00654|Human-Feedback Zero-Shot TTS]], [[2025.acl-long.598|Preference-Aligned Zero-Shot TTS]].
 
-Spoken systems make the limitation of one-dimensional quality clear. A response can be semantically
-correct but interrupt the user, use an inappropriate voice, or fail to signal turn completion.
-[[2506.23049|AURA]], [[2025.acl-long.911|DNASpeech]], and full-duplex benchmark work encode
-different combinations of task completion, situated behavior, audio quality, and timing.
+**What remains unresolved:** preference pipelines whose data construction, reward model, stopping rule, and external validation can be audited independently.
 
-Hierarchical rubrics improve diagnosis by asking narrow questions at the right level. Arena-style
-comparisons can aggregate preferences without pretending every failure shares one scale. The danger
-is hidden compensation: a composite leaderboard may mask a critical identity, safety, or latency
-failure. Benchmarks should publish per-dimension scores, uncertainty, missing judgments, and judge
-reliability for each rubric.
+### Population validity is part of validity
 
-### Control strength is perceptually non-monotonic
+**Current assessment:** listener language, demographics, cultural context, and community goals affect perceived quality and should be reported rather than averaged away.
 
-**Current assessment:** stronger guidance, compression, transformation, or attribute control does
-not produce monotonic perceptual improvement; useful evaluation reports an operating curve rather
-than one selected setting.
+Demographic representation and social perceptions can produce disparities in quality and identity judgments. Majority accents and familiar voices may receive systematically different ratings because training data, evaluators, and social stereotypes interact. In low-resource or endangered-language settings, a large conventional panel may be impossible or invalid if listeners do not understand the language.
 
-Across style control, voice conversion, codecs, and preference training, increasing intervention
-strength can clarify the target attribute while degrading naturalness, identity, or intelligibility.
-[[2507.04817|Fast-VGAN]] illustrates explicit pitch and duration control, while related studies show
-that perceptual optima differ by attribute and system.
+The South Sámi study shows why participatory evaluation matters: community-scaled review adds linguistic, cultural, and revitalization context that a generic MOS panel cannot supply ([[2025.iwclul-1.3|South Sámi TTS]]). Small samples reduce population-level statistical power, but can increase construct validity for the actual community.
 
-Selecting one point after inspecting the test set can conceal the trade-off. Predefined settings,
-multiple strengths, and dimension-specific listening reveal whether gains are robust or a narrow
-optimum. When deployment exposes a user control, evaluation should cover its usable range and
-failure boundaries.
+**Most informative evidence:** [[2025.iwclul-1.3|South Sámi TTS]].
 
-Operating curves also make disagreement interpretable. Two listener groups may prefer different
-strengths without disagreeing about the underlying samples, and a deployment may select a different
-point for assistive reading than for expressive entertainment. Publishing the curve, listener
-strata, and selection rule preserves that information instead of turning a context-dependent choice
-into a universal system ranking.
+**What remains unresolved:** analysis methods that respect small-community evidence and uncertainty without treating non-native scale as a substitute for relevance.
+
+### Representation and decoder set a ceiling
+
+**Current assessment:** codec and vocoder artifacts propagate into downstream evaluation, so system-level listening tests must distinguish representation limits from generator behavior.
+
+A speech model cannot recover identity, pitch, transient, or phase detail that its codec has discarded reliably. Likewise, an acoustic model may be blamed for artifacts introduced by the vocoder, or a faster decoder may appear worse because its conditioning differs. Q4 codec and vocoder studies broaden evaluation beyond clean speech to dynamic bitrate, streaming latency, aliasing, harmonic content, singing, and downstream token usefulness.
+
+Perceptual speed comparisons need the same discipline. One-step diffusion, speculative decoding, streaming codec decoders, and adaptive solvers may reduce latency through different mechanisms. Human tests are necessary to determine whether the exact acceleration preserves quality, while matched hardware and model size are needed for causal attribution.
+
+**Most informative evidence:** [[2511.19734|Objective Metrics for Neural Audio Codecs]], [[2512.12129|Child Voice Conversion Study]].
+
+**What remains unresolved:** evaluations that jointly report representation reconstruction, downstream generation, human perception, latency, and resource use under matched conditions.
 
 ## Where Findings Disagree
 
-The primary contested cluster concerns automated LLM and audio-language-model judges. Some studies
-find useful agreement on structured semantic or role-playing rubrics; others show unreliable
-fine-grained prosody judgments. The narrow conclusion is task-specific substitutability, not a
-general replacement for listeners.
+### Are learned metrics better than classical metrics?
 
-Speaker embedding similarity is emerging rather than contested because direct support is still
-thin. MOS and pairwise tests are not universal competitors: MOS supports broad absolute
-interpretation, while pairwise tests support discrimination. The appropriate design depends on the
-claim and quality range.
+Often, but not uniformly. Learned predictors tend to correlate better on the distributions and scales they were trained to model. Classical measures can remain competitive for codec-specific distortions or signal properties. The current assessment is task-dependent: use matched human calibration rather than selecting a metric family by reputation.
+
+### Can automated judges replace listeners?
+
+They can reduce human workload for validated coarse screening, transcript-level criteria, and clearly separated systems. Evidence remains mixed for near ties, prosody, emotion, non-verbal cues, unscripted audio, and domain transfer. Replacement is therefore a scoped empirical claim, not a property of the judge model alone.
+
+### Is MOS too flawed to use?
+
+No. MOS is efficient and interpretable for broad naturalness judgments under a well-reported common protocol. It becomes misleading when scales, listeners, contexts, or rated attributes differ, or when one aggregate score is used to validate fine-grained control.
+
+### Do pairwise tests solve protocol sensitivity?
+
+They reduce scale-mapping difficulty and improve discrimination, but remain sensitive to the candidate set, presentation order, question wording, and rated axis. They complement rather than eliminate absolute and multidimensional evaluation.
 
 ## How the Field Is Changing
 
-Subjective evaluation has expanded from aggregate naturalness MOS toward multidimensional identity,
-prosody, emotion, interaction, and social-perception tests. Pairwise preferences became prominent
-in 2024–2025 as both evaluation data and training signals, exposing cross-dimension reward trade-offs.
+Subjective evaluation has expanded from aggregate naturalness MOS toward multidimensional tests of identity, prosody, emotion, interaction, synchronization, voice quality, accent, and social perception. Pairwise preference and ranking became central both for measurement and for preference-based training during 2024–2025.
 
-Learned predictors and multimodal judges increasingly scale evaluation, while evidence of domain
-shift and saturation has grown alongside them. Low-resource and participatory studies adapt
-protocols to native-listener availability and cultural goals. Spoken-agent benchmarks add
-hierarchical rubrics, arenas, and query-specific checklists beyond audio quality.
+Automation is growing in parallel. Learned MOS predictors, embeddings, LLM judges, and audio-language-model judges enable larger studies, while the evidence base increasingly documents domain shift, saturation, and fine-grained reliability failures. Q4 benchmarks directly evaluate generated audio from spoken-dialogue and multimodal systems rather than relying on transcripts alone. Low-resource and participatory studies are also adapting protocols to native-listener availability and cultural goals instead of importing standard MOS unchanged.
 
 ## Implications
 
-- Define perceptual constructs before selecting metrics or listener questions.
-- Report naturalness, intelligibility, identity, expressiveness, and interaction separately.
-- Calibrate automatic metrics and speaker encoders against the intended population and domain.
-- Use pairwise tests for discrimination without overstating absolute quality.
-- Reserve held-out perceptual dimensions when preferences become training rewards.
-- Report listener recruitment, language, instructions, anchors, assignment, and uncertainty.
-- Stratify demographic and language results where pooling could conceal disparities.
-- Combine laboratory listening with participatory or in-context evaluation when social use matters.
-- Audit automated judges by attribute and retain human review for paralinguistic claims.
+- **Define the decision before selecting the test.** Naturalness, identity, emotion, accent, task success, and interaction require different questions and references.
+- **Report the full protocol.** Include recruitment, language competence, demographics where relevant, playback controls, stimuli, anchors, instructions, exclusions, uncertainty, and analysis.
+- **Keep dimensions visible.** Do not let a composite score conceal failure on a material axis.
+- **Calibrate automation locally.** Validate metrics and judges on the same domain, attribute, quality range, and scoring granularity before reducing human evaluation.
+- **Evaluate preference systems externally.** Separate training rewards and proxy judges from final listeners, prompts, and held-out perceptual dimensions.
+- **Report operating-point curves.** Guidance, compression, reward duration, retrieval scale, and transformation strength should be evaluated across settings.
+- **Treat community relevance as evidence quality.** A smaller competent or affected population may provide more valid judgments than a larger convenient panel.
+- **Attribute system bottlenecks carefully.** Separate codec, vocoder, generator, and acceleration effects wherever the design permits.
 
 ## Representative Reading Path
 
-1. **Understand the naturalness baseline.** Read [[1609.03499|WaveNet]] and
-   [[2010.05646|HiFi-GAN]] for the role of listening tests in foundational synthesis and vocoding.
-2. **Study learned quality prediction.** Read [[2204.02152|UTMOS]] while separating system-level
-   correlation from utterance-level validity.
-3. **Compare absolute and preference protocols.** Pair [[2105.06337|Grad-TTS]] with
-   [[2406.00654|Enhancing Zero-Shot TTS with Human Feedback]].
-4. **Examine multidimensional alignment.** Read [[2025.acl-long.598]] and
-   [[2507.02176|Analyzing Speaker Similarity Assessment]].
-5. **Add community context.** Read [[2025.americasnlp-1.1|Shipibo-Konibo TTS]] and
-   [[2025.computel-main.6|Participatory Ojibwe TTS Evaluation]].
-6. **Evaluate spoken agents and automated judges.** Use [[2508.02013|SpeechRole]],
-   [[2508.18240|MTalk-Bench]], and [[2509.19928|Prosody Diversity Benchmark]].
+1. **Start with scalable perceptual prediction.** Read [[2204.02152|UTMOS]] to understand why learned quality models became attractive and what their correlation claims do and do not establish.
+2. **Study identity as a distinct perceptual axis.** Use [[2507.02176|Speaker Similarity Assessment]] to see how speaker metrics depend on model, language, reference, and protocol.
+3. **Connect evaluation to training.** Compare [[2406.00654|Human-Feedback Zero-Shot TTS]] and [[2025.acl-long.598|Preference-Aligned Zero-Shot TTS]] to understand targeted gains and cross-dimension evaluation burdens.
+4. **Examine automated spoken-system evaluation.** Read [[2025.emnlp-main.1160|C3]], [[2025.emnlp-main.1447|MULTIVOX]], and [[2511.00850|MULTI-Bench]] for multidimensional rubrics and judge-calibration problems.
+5. **Test metric-family assumptions.** Read [[2511.19734|Objective Metrics for Neural Audio Codecs]] for evidence that learned predictors are not uniformly superior.
+6. **See why fine-grained control changes the protocol.** Read [[2511.05143|Selected Perceptual Voice Qualities]] and [[2605.25504|Fine-Grained Non-Verbal Expression Control]] for attribute-specific and non-monotonic perceptual outcomes.
+7. **Add community and cultural validity.** Read [[2025.iwclul-1.3|South Sámi TTS]] for a setting where participatory, native-listener evidence matters more than conventional panel scale.
+8. **Close with a reporting failure case.** Use [[2605.18001|Bridging the Gap]] to see why underspecified listeners and score scales cannot support an absolute system ranking.
 
 ## Structured Source
 
-Complete structured claims and provenance are in
-[`wiki/_claims/subjective-evaluation.yaml`](../_claims/subjective-evaluation.yaml).
+This page selects citations for human readability. The complete claim graph, paper roles, source sections, caveats, and reassessment state are available in `wiki/_claims/subjective-evaluation.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/subjective-evaluation.yaml` (digest date: 2026-07-27)._
+_This page is generated from `wiki/_claims/subjective-evaluation.yaml` (digest date: 2026-10-31)._

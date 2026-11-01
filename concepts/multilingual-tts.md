@@ -2,22 +2,22 @@
 slug: multilingual-tts
 aliases: [cross-lingual TTS, multilingual speech synthesis, low-resource TTS]
 status: established
-last_reviewed: 2026-08-02
+last_reviewed: 2026-11-01
 concept: multilingual-tts
 render_type: overview
 title: "Multilingual Text-to-Speech"
-source_digest_date: 2026-07-29
-paper_count: 75
+source_digest_date: 2026-09-26
+paper_count: 105
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -35,15 +35,17 @@ generation:
 
 **Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic overlap.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]. Universal inventories can erase language-specific allophony and prosodic distinctions.
 
-**Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity.** The assessment is emerging within the reviewed corpus; representative evidence includes [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks are small and often cover only a few language pairs.
+**Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks remain small and often cover only a few language pairs.
+
+**Q4 strengthens synthetic transfer and exposes expressive limits.** Synthetic or pseudo-parallel speech can support low-resource cross-lingual generation without recorded parallel speech, as in [[2510.09061|O_O-VC]]. Explicit emotion and paralinguistic conditioning improve control, but [[2510.11124|Perturbation Self-Supervised Representations for Cross-Lingual Emotion TTS]] and related systems show that style, identity, intelligibility, and naturalness still transfer unevenly across languages.
 
 ## Method Landscape
 
-- **Autoregressive multilingual codec models.** 33 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Flow-matching multilingual TTS.** 25 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Transformer encoder–decoder multilingual TTS.** 16 graph memberships show adoption of this practical pattern, not matched superiority.
-- **GAN-based multilingual synthesis.** 13 graph memberships show adoption of this practical pattern, not matched superiority.
-- **Hybrid multilingual semantic–acoustic systems.** 9 graph memberships show adoption of this practical pattern, not matched superiority.
+- **Autoregressive multilingual codec models.** 45 graph memberships show adoption of this practical pattern, not matched superiority.
+- **Flow-matching multilingual TTS.** 39 graph memberships show adoption of this practical pattern, not matched superiority.
+- **Transformer encoder–decoder multilingual TTS.** 20 graph memberships show adoption of this practical pattern, not matched superiority.
+- **GAN-based multilingual synthesis.** 18 graph memberships show adoption of this practical pattern, not matched superiority.
+- **Hybrid multilingual semantic–acoustic systems.** 16 graph memberships show adoption of this practical pattern, not matched superiority.
 
 ## Key Trade-offs
 
@@ -51,6 +53,9 @@ generation:
 - **Large multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility remain sensitive to language coverage.** Unseen-language demonstrations often use related languages or external phonetic resources.
 - **Continued pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource languages.** Adaptation can cause forgetting or reduce performance on the original language set.
 - **Adapters, LoRA, vocabulary expansion, and lightweight language modules support parameter-efficient multilingual extension.** Small modules may not supply missing acoustic or phonetic coverage in the base model.
+- **Dialect and regional prosody require explicit structure.** IPA-based routing or experts such as
+  [[2509.22727|DiaMoE-TTS]] can prevent averaging, but dialect identity remains sensitive to data,
+  listener familiarity, and the boundary between dialect, accent, and speaker style.
 
 ## Open Questions
 
@@ -66,8 +71,8 @@ Read [[concepts/multilingual-tts-in-depth|Multilingual Text-to-Speech: In Depth]
 
 ## Scope
 
-This synthesis covers 75 papers through Q3 2025. Evidence spans multiple architectures, datasets, languages or domains, and evaluation protocols. Strong status applies within the encoded graph; shared organizational lineages, infrastructure reuse, emerging findings, and contested measurements retain narrower interpretations.
+This synthesis covers 105 papers through Q4 2025. All 19 clusters are strongly supported within the encoded graph, but evidence spans unmatched architectures, datasets, languages, and evaluation protocols. Shared organizational lineages, infrastructure reuse, synthetic-data dependence, and language-specific measurements retain narrower interpretations.
 
 ---
 
-_This page is generated from `wiki/_claims/multilingual-tts.yaml` (digest date: 2026-07-29). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/multilingual-tts.yaml` (digest date: 2026-09-26). For complete structured claims and paper-level provenance, use the source YAML._

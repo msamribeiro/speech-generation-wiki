@@ -2,22 +2,22 @@
 slug: transformer-enc-dec-tts
 aliases: [sequence-to-sequence TTS, transformer acoustic model, duration-based TTS]
 status: established
-last_reviewed: 2026-08-02
+last_reviewed: 2026-11-01
 concept: transformer-enc-dec-tts
 render_type: overview
 title: "Transformer Encoder–Decoder TTS"
-source_digest_date: 2026-07-30
-paper_count: 28
+source_digest_date: 2026-09-26
+paper_count: 33
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -37,11 +37,13 @@ generation:
 
 **Forced-alignment durations can be more accurate than durations extracted from autoregressive teacher attention.** This is emerging within the reviewed graph; representative evidence includes [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]]. This advantage depends on aligner quality and language resources.
 
+**Q4 reinforces the family as a transparent, data-efficient backbone rather than a closed historical chapter.** Prosodically informed segmentation improves spontaneous-speech intelligibility and intonation ([[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]]), while quality stratification, synthetic augmentation, and text normalization make FastPitch-style systems viable for Arabic and severely low-resource archival languages ([[2512.00937|Arabic TTS with FastPitch]], [[2025.iwclul-1.3|South Sámi TTS]]). Adversarial spectrogram losses and consistency tuning sharpen or accelerate established acoustic models, but they do not remove the family’s dependence on alignment and variance modeling.
+
 ## Method Landscape
 
-- **Transformer encoder–decoder TTS.** 23 memberships demonstrate a shared practical pattern, not matched superiority.
-- **GAN-augmented encoder–decoder systems.** 6 memberships demonstrate a shared practical pattern, not matched superiority.
-- **Diffusion-augmented acoustic decoders.** 4 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Transformer encoder–decoder TTS.** 28 memberships demonstrate a shared practical pattern, not matched superiority.
+- **GAN-augmented encoder–decoder systems.** 8 memberships demonstrate a shared practical pattern, not matched superiority.
+- **Diffusion-augmented acoustic decoders.** 5 memberships demonstrate a shared practical pattern, not matched superiority.
 - **Flow-matching acoustic decoders.** 4 memberships demonstrate a shared practical pattern, not matched superiority.
 - **Autoregressive token decoders.** 2 memberships demonstrate a shared practical pattern, not matched superiority.
 
@@ -51,6 +53,7 @@ generation:
 - **Diagonal or monotonic positional biases accelerate text–speech alignment and can reduce the model capacity required for accurate pronunciation.** Compact-model comparisons remain sensitive to training data and front-end normalization.
 - **Parallel acoustic generation requires explicit modeling of duration, pitch, and other sources of speech variation.** Better variance modeling does not guarantee fine-grained or interpretable control.
 - **Hierarchical and multi-granular prosody modeling improves expressiveness and supports localized control.** Sequential hierarchical prediction can accumulate errors across levels.
+- **Architectural novelty versus operational transparency.** Newer decoders may improve quality or sampling, while duration, pitch, segmentation, and text-normalization modules remain easier to diagnose and adapt in low-resource deployments.
 
 ## Open Questions
 
@@ -59,6 +62,7 @@ generation:
 - How should prosody be represented across phoneme, word, phrase, and utterance timescales?
 - Can discrete SSL controls transfer across speakers and languages without leaking identity or content?
 - Which transformer components remain useful when diffusion, flow, or codec-token decoders replace mel prediction?
+- How much of low-resource success comes from the acoustic model versus curation, segmentation, augmentation, and the text front end?
 
 ## Go Deeper
 
@@ -66,8 +70,8 @@ Read [[concepts/transformer-enc-dec-tts-in-depth|Transformer Encoder–Decoder T
 
 ## Scope
 
-This synthesis covers 28 papers through Q3 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
-The graph is unusually frontier-heavy: thirteen clusters remain emerging, so historical importance
+This synthesis covers 33 papers through Q4 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Six clusters are strongly supported and thirteen remain emerging, so shared lineages, infrastructure evidence, and unmatched speed or quality comparisons retain narrower interpretations.
+The graph is unusually frontier-heavy, so historical importance
 and broad architectural reuse should not be mistaken for mature evidence on every modern variant.
 Conclusions are strongest for explicit duration modeling, hierarchical prosody, contextual fusion,
 and preservation objectives; other mechanisms still require independent replication across
@@ -75,4 +79,4 @@ languages, speakers, and hardware.
 
 ---
 
-_This page is generated from `wiki/_claims/transformer-enc-dec-tts.yaml` (digest date: 2026-07-30). For complete structured claims and paper-level provenance, use the source YAML._
+_This page is generated from `wiki/_claims/transformer-enc-dec-tts.yaml` (digest date: 2026-09-26). For complete structured claims and paper-level provenance, use the source YAML._

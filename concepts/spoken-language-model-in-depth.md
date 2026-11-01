@@ -2,18 +2,18 @@
 concept: spoken-language-model
 render_type: in-depth
 title: "Spoken Language Models: In Depth"
-source_digest_date: 2026-07-27
-paper_count: 127
+source_digest_date: 2026-09-20
+paper_count: 173
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/spoken-language-model|Spoken Language Models]]. Complete
@@ -36,17 +36,22 @@ paper-to-claim provenance remains in `wiki/_claims/spoken-language-model.yaml`.
 - Multi-turn conversation needs memory and state management; longer context alone is insufficient.
 - Cascaded and end-to-end systems retain complementary strengths rather than one universal winner.
 - Multidimensional live evaluation and safety evidence lag rapid capability growth.
+- Incremental reasoning and tool use can move work into the listening window, while ambiguity makes
+  premature action a first-order failure mode.
+- Bias, privacy, harmful-audio generation, and provenance require audio-native evaluation rather
+  than inherited text-only safeguards.
 
 ## Scope
 
-The graph contains 127 papers from 2022 through September 2025, with 101 from 2025. Ninety-six
+The graph contains 173 papers from 2022 through Q4 2025. Spoken-agent
 papers address spoken conversational agents, while TTS, codecs, evaluation, voice conversion, and
 singing provide adjacent evidence. Forty-one papers play infrastructure roles, and four provide
 historical framing. Adoption inside a system supports viability, not independent proof that a token
 or alignment mechanism is optimal.
 
-Sixteen clusters are strongly supported. Safety, bias, privacy, misuse, and provenance form one
-emerging cluster supported by limited populations and threat models. Six method families overlap:
+All eighteen clusters are strongly supported within the encoded graph. Safety, bias, privacy,
+misuse, and provenance remain limited by populations and threat models despite the stronger recurring
+evidence. Seven method families overlap:
 autoregressive speech LMs dominate, while hybrid multistage systems and flow decoders separate
 reasoning from acoustic rendering. Transformer encoder–decoder, adversarial codec, and variational
 front ends provide alternatives or infrastructure.
@@ -307,10 +312,25 @@ and can react directly to acoustic cues. Hybrid routing can choose a path by tas
 Studies frequently compare different base LMs, data, and decoders. Matched comparisons should hold
 reasoning capacity and speech components constant and include failure attribution.
 
+### Reasoning can start before speech ends
+
+**Current assessment:** incremental reasoning, retrieval, and tool actions during user speech can
+reduce response latency, but require explicit controls against premature commitment.
+
+[[2510.02044|Stream RAG]] begins retrieval from partial speech, while [[2510.06917|SHANKS]] performs
+hearing and reasoning concurrently. Related Q4 systems schedule tool work or acoustic generation in
+the same listening window. This changes latency from a post-endpoint generation problem into a
+speculation problem.
+
+Partial speech is ambiguous. An early tool call can be irrelevant or harmful even when it saves
+hundreds of milliseconds on successful cases. Learned triggers, preemptible reasoning, cancellation,
+and a full-context fallback are therefore part of the capability. Evaluation should report time
+saved, incorrect early actions, recovery cost, and final task success—not latency alone.
+
 ### Evaluation and safety lag capability
 
 **Current assessment:** multidimensional benchmarks expose gaps missed by text accuracy or aggregate
-quality, while deployment safety evidence remains emerging.
+quality, while deployment safety requires audio-native tests across populations and attacks.
 
 Benchmarks now cover reasoning, prosody, role-playing, turn-taking, memory, and duplex behavior.
 Judge reliability, prompt coverage, language, and live versus replayed interaction affect results.
@@ -320,15 +340,20 @@ Judge reliability, prompt coverage, language, and live versus replayed interacti
 Limited populations and threat models prevent broad safety claims. Privacy, impersonation, and
 generated-speech provenance require explicit deployment testing.
 
+Q4 evidence broadens the threat model to harmful generated audio and multilingual spoken-system
+evaluation. [[2511.10913|Synthetic Voices, Real Threats]] shows that transcript safety does not
+capture the effect of voice, delivery, or acoustic context. Strong status within the graph reflects
+recurrence, not comprehensive adversarial coverage.
+
 ## Where Findings Disagree
 
 The graph contains no formally contested cluster, but architecture claims remain scope-dependent.
 Cascades and end-to-end systems optimize different strengths. Low-rate tokens help efficiency until
 they remove needed cues. Unified models provide breadth without guaranteeing specialization.
 
-The safety cluster is emerging because passing one watermark, bias, or privacy benchmark does not
-cover alternate attacks or populations. Fluent interaction should not be interpreted as deployment
-readiness.
+The safety evidence is now strongly supported within the graph, but passing one watermark, bias, or
+privacy benchmark still does not cover alternate attacks or populations. Fluent interaction should
+not be interpreted as deployment readiness.
 
 ## How the Field Is Changing
 
@@ -339,6 +364,11 @@ semantic–acoustic separation.
 Speech–text interleaving and connectors preserve pretrained text intelligence while adding speech.
 Evaluation shifted toward multi-turn, live, role-playing, prosody, and reasoning benchmarks.
 Preference alignment is increasingly common, alongside new safety trade-offs.
+
+Q4 moves reasoning and tool calls into the listening window, often running them concurrently with
+response planning. Preference optimization now targets timing, empathy, robustness, and acoustic
+behavior. At the same time, multilingual safety, jailbreak resistance, and provenance remain uneven,
+so architectural progress and deployment readiness continue to move at different speeds.
 
 ## Implications
 
@@ -363,6 +393,8 @@ Preference alignment is increasingly common, alongside new safety trade-offs.
    [[2502.11946|Step-Audio]].
 6. **Audit deployment risks.** Use [[interspeech-2025-2328|Speech Watermarking]] and
    [[2510.02352|Bias in Spoken Dialogue LLMs]].
+7. **Study reasoning during listening.** Compare [[2510.02044|Stream RAG]] and
+   [[2510.06917|SHANKS]], then inspect their premature-action controls and latency definitions.
 
 ## Structured Source
 
@@ -371,4 +403,4 @@ Complete structured claims and provenance are in
 
 ---
 
-_This page is generated from `wiki/_claims/spoken-language-model.yaml` (digest date: 2026-07-27)._
+_This page is generated from `wiki/_claims/spoken-language-model.yaml` (digest date: 2026-09-20)._

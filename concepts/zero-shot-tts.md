@@ -5,19 +5,19 @@ render_type: overview
 title: Zero-Shot Text-to-Speech
 aliases: [voice cloning, zero-shot voice cloning, reference-conditioned TTS, one-shot TTS]
 status: established
-last_reviewed: 2026-08-02
-source_digest_date: 2026-07-26
-paper_count: 203
+last_reviewed: 2026-10-31
+source_digest_date: 2026-09-20
+paper_count: 262
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -60,6 +60,13 @@ naturalness. Acceleration can preserve usable quality, but hardware and latency 
 Long-form generation additionally needs alignment, chunking, or memory controls to prevent
 repetition and omission.
 
+**Post-training and non-audio prompts broaden cloning while changing its meaning.** Preference and
+reinforcement optimization can improve quality, emotion, or prosody, but require balanced rewards
+and stopping rules to prevent cross-attribute regressions; [[2511.21270|Multi-Reward GRPO]] makes
+that trade-off explicit. Faces and textual speaker descriptions can generate plausible voices
+without reference audio, as in [[2025.findings-emnlp.1381|UniSpeaker]], but provide coarse,
+one-to-many identity control rather than verified cloning of a person.
+
 ## Method Landscape
 
 - **Autoregressive codec-language models** predict speech tokens sequentially and support
@@ -89,6 +96,8 @@ repetition and omission.
   omissions, repetition, or identity drift.
 - **Capability versus safeguards:** personalization and accessibility benefits coexist with
   unauthorized-cloning risk, which quality benchmarks rarely measure.
+- **Reward gains versus hidden regressions:** optimizing naturalness, emotion, or similarity can
+  saturate the chosen judge while reducing diversity or another unmeasured attribute.
 
 ## Open Questions
 
@@ -98,6 +107,8 @@ repetition and omission.
 - Which representation split best supports streamable, long-form, expressive cloning?
 - How much recent progress comes from architecture rather than proprietary data and filtering?
 - Which safeguards deter unauthorized cloning without blocking legitimate personalization?
+- How should face- or description-conditioned voices be tested for identity validity, demographic
+  bias, privacy, and the ambiguity of mapping one non-audio cue to many plausible voices?
 
 ## Go Deeper
 
@@ -107,13 +118,13 @@ generation, and deployment implications.
 
 ## Scope
 
-This assessment covers 203 papers from 2017 through September 2025, with 164 published in 2025.
+This assessment covers 262 papers from 2017 through Q4 2025.
 The graph spans TTS, voice conversion, spoken systems, codecs, evaluation, and singing, but is
-weighted toward recent TTS systems and often proprietary large-scale training. Sixteen clusters are
-strongly supported and two are contested; independence is strongest where findings recur across
+weighted toward recent TTS systems and often proprietary large-scale training. Seventeen clusters
+are strongly supported, two are contested, and one is emerging; independence is strongest where findings recur across
 organizations and architectures, not where successor systems share a lineage.
 
 ---
 
-_This page is generated from `wiki/_claims/zero-shot-tts.yaml` (digest date: 2026-07-26).
+_This page is generated from `wiki/_claims/zero-shot-tts.yaml` (digest date: 2026-09-20).
 For complete structured claims and paper-level provenance, use the source YAML._

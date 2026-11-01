@@ -5,19 +5,19 @@ render_type: overview
 title: Self-Supervised Speech Representations
 aliases: [speech SSL, self-supervised speech learning, discrete speech units, pretrained speech representations]
 status: mature-infrastructure
-last_reviewed: 2026-08-02
-source_digest_date: 2026-07-29
-paper_count: 146
+last_reviewed: 2026-11-01
+source_digest_date: 2026-09-26
+paper_count: 176
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 > [!abstract]
@@ -59,6 +59,13 @@ against specialized performance.
 robustness, and downstream accuracy answer different questions. No single score establishes that a
 representation is simultaneously semantic, expressive, compact, and generatively useful.
 
+**Q4 reinforces cross-lingual interleaving and evaluation boundaries.** Interleaving languages and
+modalities expands transfer, but [[2512.01865|Cross-Lingual Interleaving for Speech Language
+Models]] still finds coverage-sensitive behavior. General audio-language judges remain contested:
+[[2507.16632|Step-Audio 2]] supports scalable evaluation in some settings, while
+[[2509.19928|Measuring Prosody Diversity in Zero-Shot TTS]] shows that fine prosody requires
+specialized metrics or listeners.
+
 ## Method Landscape
 
 - **Transformer SSL encoders and adapters** expose continuous contextual layers for task-specific
@@ -84,6 +91,8 @@ representation is simultaneously semantic, expressive, compact, and generatively
   languages receive weaker features.
 - **Representation quality versus decoder compensation:** strong generation can hide what the SSL
   feature itself failed to preserve.
+- **Scalable judging versus acoustic validity:** broad automatic judges reduce evaluation cost but
+  can miss the fine-grained prosody and leakage that representation selection is meant to control.
 
 ## Open Questions
 
@@ -102,7 +111,7 @@ multilingual transfer, robustness, task adaptation, and evaluation.
 
 ## Scope
 
-This synthesis covers 146 papers from 2021 through September 2025, including 124 from 2025. It
+This synthesis covers 176 papers from 2021 through Q4 2025. It
 spans TTS, VC, spoken systems, codecs, and evaluation. Thirteen clusters are strongly supported,
 two are emerging, and two are contested. Most papers use SSL within a larger pipeline, so downstream
 success demonstrates utility but rarely isolates the representation from the decoder and training
@@ -114,5 +123,5 @@ These limits are central to method selection.
 
 ---
 
-_This page is generated from `wiki/_claims/self-supervised-speech.yaml` (digest date: 2026-07-29).
+_This page is generated from `wiki/_claims/self-supervised-speech.yaml` (digest date: 2026-09-26).
 For complete structured claims and paper-level provenance, use the source YAML._

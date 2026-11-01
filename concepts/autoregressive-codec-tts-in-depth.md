@@ -2,18 +2,18 @@
 concept: autoregressive-codec-tts
 render_type: in-depth
 title: "Autoregressive Codec Text-to-Speech: In Depth"
-source_digest_date: 2026-07-25
-paper_count: 165
+source_digest_date: 2026-09-26
+paper_count: 196
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the concise view, see [[concepts/autoregressive-codec-tts|Autoregressive Codec TTS]]. Complete
@@ -38,17 +38,18 @@ paper-to-claim provenance remains in `wiki/_claims/autoregressive-codec-tts.yaml
   reward hacking and prosodic-diversity risks.
 - Masked, parallel, and continuous alternatives show that full discrete causality is not universally
   required; matched evidence remains limited.
+- Grouped, patchwise, sparse, and speculative decoding reduce language-model steps, but renderer
+  cost and token-equivalence decisions limit proportional wall-clock gains.
 
 ## Scope
 
-The graph contains 165 papers published from 2016 through September 2025. TTS provides the majority
+The graph contains 196 papers published from 2016 through Q4 2025. TTS provides the majority
 of direct evidence, with spoken conversational agents, codecs, voice conversion, evaluation, and
-singing contributing downstream or infrastructure evidence. The 117 papers from 2025 make this a
-rapidly evolving snapshot rather than a settled ranking of systems.
+singing contributing downstream or infrastructure evidence. This remains a rapidly evolving
+snapshot rather than a settled ranking of systems.
 
-Fifteen clusters are strongly supported. One cluster—whether masked or parallel generators can
-match autoregressive quality while reducing latency—is contested. Continuous-representation
-autoregression is emerging from only two principal papers. Thirteen method families overlap because
+Eighteen clusters are strongly supported. One cluster—whether masked or parallel generators can
+match autoregressive quality while reducing latency—is contested. Fourteen method families overlap because
 modern systems commonly combine semantic autoregression, parallel acoustic generation, tokenizer
 infrastructure, alignment constraints, and preference post-training.
 
@@ -308,6 +309,22 @@ gain can be attributed to whichever component is emphasized in the paper even th
 changed. Recording the reconstructed ceiling, token rate, base LM, decoder, sampling policy, and
 training data makes later comparisons scientifically usable.
 
+### Grouping and low rates reshape acceleration
+
+**Current assessment:** multi-token, patchwise, and speculative prediction reduce sequential
+language-model steps, while lower frame rates shorten token sequences; neither guarantees the same
+reduction in end-to-end latency.
+
+[[2510.12210|DiSTAR]] combines autoregressive structure with diffusion over local representations,
+and [[2511.13732|Principled Coarse-Grained Acceptance for Speculative Decoding in Speech]] treats
+multiple acoustic token sequences as potentially equivalent rather than requiring exact token
+matches. [[2510.00981|FlexiCodec]] attacks sequence length upstream through dynamic low frame rates.
+
+These approaches expose different residual costs. Within-group token dependencies can reduce
+quality, speculative acceptance needs an acoustically meaningful equivalence rule, and low-rate
+streams may require deeper residual or waveform rendering. Reports should separate LM iterations,
+time to first audio, total real-time factor, and complete hardware-normalized latency.
+
 ## Where Findings Disagree
 
 The formal disagreement concerns whether masked and parallel models match autoregressive quality.
@@ -329,6 +346,11 @@ or parallel decoders.
 Tokenizer quality, alignment, and streaming replaced basic waveform fidelity as the main
 differentiators. Unified and duplex models broadened the task from TTS to conversation. Preference
 post-training emerged as a separate lever for improving mature base architectures.
+
+Q4 makes acceleration more granular: sparse token rates, blockwise prediction, speculative
+verification, and masked local generation each remove a different part of the sequential path.
+The practical comparison is shifting from “autoregressive or not” to which dependencies remain
+causal and which costs move into tokenization or rendering.
 
 ## Implications
 
@@ -354,6 +376,9 @@ post-training emerged as a separate lever for improving mature base architecture
    [[2408.02622|Language Model Can Listen While Speaking]], and [[2410.00037|Moshi]].
 6. **Examine post-training.** Use [[2406.00654|Enhancing Zero-Shot TTS with Human Feedback]] and
    [[2406.02430|Seed-TTS]] to connect rewards with perceptual trade-offs.
+7. **Measure Q4 acceleration honestly.** Read [[2510.12210|DiSTAR]], [[2510.00981|FlexiCodec]], and
+   [[2511.13732|Principled Coarse-Grained Acceptance]] while separating LM steps from wall-clock
+   rendering cost.
 
 ## Structured Source
 
@@ -362,4 +387,4 @@ Complete structured claims and provenance are in
 
 ---
 
-_This page is generated from `wiki/_claims/autoregressive-codec-tts.yaml` (digest date: 2026-07-25)._
+_This page is generated from `wiki/_claims/autoregressive-codec-tts.yaml` (digest date: 2026-09-26)._

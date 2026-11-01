@@ -2,18 +2,18 @@
 concept: zero-shot-tts
 render_type: in-depth
 title: "Zero-Shot Text-to-Speech: In Depth"
-source_digest_date: 2026-07-26
-paper_count: 203
+source_digest_date: 2026-09-20
+paper_count: 262
 generation:
   schema_version: 2
-  date: "2026-08-02"
+  date: "2026-10-31"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "cbed7c1"
+  commit: "b672c6b"
 ---
 
 For the short state-of-the-art view, see [[concepts/zero-shot-tts|Zero-Shot Text-to-Speech]]. This
@@ -42,17 +42,21 @@ page synthesizes decision-relevant conclusions; complete paper-to-claim provenan
   component or representation is independently superior.
 - Safety evaluation lags capability evaluation despite the direct misuse potential of voice
   cloning.
+- Preference and reinforcement optimization improve selected cloning attributes but need balanced
+  rewards, held-out judges, and stopping rules to prevent saturation or cross-attribute regression.
+- Faces and speaker descriptions enable plausible reference-free voices, but offer coarse,
+  one-to-many identity control rather than verified acoustic cloning.
 
 ## Scope
 
-The claim graph contains 203 papers published from 2017 through September 2025. It is strongly
-weighted toward recent work: 164 papers are from 2025, 24 from 2024, and ten from 2023. Most entries
+The claim graph contains 262 papers published from 2017 through Q4 2025. It is strongly
+weighted toward recent work. Most entries
 study TTS, while voice conversion, spoken conversational agents, codecs, evaluation, and singing
 provide adjacent evidence. The graph therefore captures both direct zero-shot synthesis and systems
 whose representation, conditioning, or evaluation results materially affect cloning.
 
-The evidence includes nine method families and eighteen concept-level clusters. Sixteen clusters
-are strongly supported; two are contested. Strong status means repeated support within this graph,
+The evidence includes nine method families and twenty concept-level clusters. Seventeen clusters
+are strongly supported, two are contested, and one is emerging. Strong status means repeated support within this graph,
 not that every comparison is matched. Papers often differ in prompt length, training data,
 language, speaker encoder, acoustic target, decoder, and listener protocol. Large proprietary
 corpora recur among frontier systems, and successor papers from one organization or backbone are
@@ -271,6 +275,35 @@ but the graph does not establish one safeguard that survives every architecture 
 prompt. Capability studies should test protected-speaker attacks and measure whether safeguards
 harm legitimate accessibility uses; lower average similarity alone is not a safety evaluation.
 
+### Preference optimization needs reward controls
+
+**Current assessment:** preference and reinforcement post-training can improve naturalness,
+emotion, prosody, and cloning quality, but only if rewards and stopping rules protect attributes
+that are not being optimized directly.
+
+Q4 systems use several reward signals rather than one scalar quality proxy. [[2510.13293|Cross-modal
+Consistency Guidance for Robust Emotion Control]] targets emotion while preserving other speech
+properties, and [[2511.21270|Multi-Reward GRPO for Stable and Prosodic Single-Codebook TTS LLMs at
+Scale]] makes multi-objective balancing explicit. The recurring risk is saturation: a model can
+continue improving the judge while diversity, intelligibility, or identity stops improving or
+regresses.
+
+This evidence is concentrated in a few backbone families and often uses automatic or generated
+rewards. Claims should therefore report the reward model, calibration domain, stopping criterion,
+and held-out human dimensions. Post-training is a system component, not a free quality multiplier.
+
+### Non-audio prompts provide coarse identity
+
+**Current assessment:** faces and natural-language descriptions can condition plausible unseen
+voices, but they do not specify identity as precisely as an acoustic reference.
+
+[[2025.findings-emnlp.1381|UniSpeaker]] unifies several conditioning modalities, while
+[[2512.20296|TAVID]] includes text-driven audio-visual dialogue generation. A face or description
+maps to many socially plausible voices, so success cannot be judged as reconstruction of a true
+voice unless that voice was independently observed. Evaluation instead needs appropriateness,
+diversity, demographic bias, privacy, and consistency across repeated generations. The cluster
+remains emerging because distributions and protocols are narrow.
+
 ## Where Findings Disagree
 
 The graph records two contested conclusions. Cross-lingual leakage is supported broadly but not
@@ -285,7 +318,7 @@ property of the evidence, not an invitation to average incomparable numbers.
 
 ## How the Field Is Changing
 
-From 2023 through Q3 2025, the center shifted from encoder–decoder and GAN-centered cloning toward
+From 2023 through Q4 2025, the center shifted from encoder–decoder and GAN-centered cloning toward
 autoregressive speech-token models, flow matching, and hybrid autoregressive-plus-continuous
 pipelines. The shift is architectural, but also reflects much larger and more diverse data.
 
@@ -293,6 +326,12 @@ The target has expanded from short English sentences and timbre similarity towar
 expressive, streaming, and long-form synthesis. Robust prompt handling and alignment are now first-
 class requirements. Evaluation has not advanced as uniformly: WER or CER and one speaker embedding
 still dominate many reports, while identity perception and prompt robustness remain fragmented.
+
+Q4 expands the target to multi-speaker dialogue, word-level emotion, dialect and accent, singing,
+editing, and audiovisual generation. Continuous latents, sparse token rates, bridge modules, and
+speculative decoding attack latency from different directions. Preference optimization and
+multi-teacher synthetic data are now common post-training tools, making reward saturation and
+pseudo-label diversity part of the cloning problem.
 
 ## Implications
 
@@ -322,6 +361,9 @@ still dominate many reports, while identity perception and prompt robustness rem
    to test what speaker embeddings and aggregate quality scores omit.
 6. **Extend to long-form and real time.** Read [[iclr-2025-868masI331|HALL-E]] and
    [[2025.acl-demo.37|RT-VC]] for duration and latency constraints beyond sentence-level cloning.
+7. **Inspect Q4 post-training and reference-free control.** Pair [[2511.21270|Multi-Reward GRPO]]
+   with [[2025.findings-emnlp.1381|UniSpeaker]] to distinguish reward-guided acoustic cloning from
+   coarse identity generation without an audio prompt.
 
 ## Structured Source
 
@@ -330,4 +372,4 @@ Complete structured claims and provenance are available in
 
 ---
 
-_This page is generated from `wiki/_claims/zero-shot-tts.yaml` (digest date: 2026-07-26)._
+_This page is generated from `wiki/_claims/zero-shot-tts.yaml` (digest date: 2026-09-20)._

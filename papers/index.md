@@ -6,6 +6,8 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|
+| [[2605.25504]] | [Toward Natural Emotional Text-To-Speech System with Fine-Grained Non-Verbal Expression Control](papers/2605.25504.md) | Nara Institute of Science and Technology | O-COCOSDA | 2025 | TTS | diffusion, GAN | 2026-10-25 |
+| [[2605.18001]] | [Bridging the Gap: Converting Read Text to Conversational Dialogue](papers/2605.18001.md) | Thapar Institute of Engineering and Technology / Samsung Research and Development Institute Bangalore | ICICC | 2025 | VC | GAN | 2026-10-25 |
 | [[1904.02882]] | [LibriTTS: A Corpus Derived from LibriSpeech for Text-to-S](papers/1904.02882.md) | Google AI | arXiv | 2019 | TTS |  | 2026-06-10 |
 | [[2403.03100]] | [NaturalSpeech 3: Zero-Shot Speech Synthesis with Factori](papers/2403.03100.md) | Microsoft | arXiv | 2024 | TTS, VC | diffusion, hybrid | 2026-06-10 |
 | [[2504.18425]] | [Kimi-Audio Technical Report](papers/2504.18425.md) | Moonshot AI | arXiv | 2025 | TTS, SCA | autoregressive-LM, flow-matching | 2026-06-10 |
@@ -1015,8 +1017,6 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2605.25962]] | [Continual Speaker Identity Unlearning with Minimal Inte](papers/2605.25962.md) | Sungkyunkwan University / Korea University | arXiv | 2026 | TTS | flow-matching | 2026-10-24 |
 | [[2605.25930]] | [CosyEdit2: Speech-Editing-Oriented Reinforcement Learni](papers/2605.25930.md) | Nankai University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, GAN | 2026-10-24 |
 | [[2605.26812]] | [CFMDCTCodec: A Low-Bitrate Neural Speech Codec with Noi](papers/2605.26812.md) | University of Science and Technology of China / Tsinghua University | arXiv | 2026 | codec | flow-matching, VAE | 2026-10-24 |
-| [[2605.18001]] | [Bridging the Gap: Converting Read Text to Conversationa](papers/2605.18001.md) | Thapar Institute of Engineering and Technology / Samsung Research and Development Institute Bangalore | ICICC | 2025 | VC | GAN | 2026-10-25 |
-| [[2605.25504]] | [Toward Natural Emotional Text-To-Speech System with Fin](papers/2605.25504.md) | Nara Institute of Science and Technology | O-COCOSDA | 2025 | TTS | diffusion, GAN | 2026-10-25 |
 | [[2605.26978]] | [PashtoTTS-Bench: automated screening for low-resource n](papers/2605.26978.md) | Independent Researcher | arXiv | 2026 | TTS, evaluation |  | 2026-10-25 |
 | [[2605.27190]] | [Learning When to Think While Listening in Large Audio-L](papers/2605.27190.md) | University of Pennsylvania | arXiv | 2026 | SCA | autoregressive-LM | 2026-10-25 |
 | [[2605.27772]] | [Do Audio LLMs Listen or Read? Analyzing and Mitigating ](papers/2605.27772.md) | University of Southern California | arXiv | 2026 | SCA, evaluation | autoregressive-LM | 2026-10-25 |
