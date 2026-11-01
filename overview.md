@@ -19,7 +19,7 @@ generation:
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "d13cdad"
 ---
 
 > [!abstract]
@@ -32,8 +32,8 @@ generation:
 > [!warning]
 > **Current-state Q4 boundary.** This overview was assessed on 2026-11-01 from the living concept
 > graphs and human-approved reconciliation registry, using evidence published through 2025-12-31.
-> It is a replaceable synthesis of the current graph, not the immutable Q4 historical record. A
-> quarterly snapshot and report will be created separately if approved.
+> It is a replaceable synthesis of the current graph, not the immutable Q4 historical record. The
+> frozen assessment is available in [[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]].
 
 ## What Matters Across the Field
 

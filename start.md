@@ -2,14 +2,14 @@
 title: "Start Here"
 generation:
   schema_version: 2
-  date: "2026-09-13"
+  date: "2026-11-01"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "41ab852"
+  commit: "d13cdad"
 ---
 
 → [[index|Home]]
@@ -18,7 +18,7 @@ Choose a route based on what you want to learn. You can move between the field o
 guides, quarterly reports, and individual papers without losing the evidence trail.
 
 > [!warning]
-> **Current synthesis boundary.** The integrated evidence runs through Q3 2025. Later papers may
+> **Current synthesis boundary.** The integrated evidence runs through Q4 2025. Later papers may
 > already appear in the catalog, but they will not affect field or concept conclusions until their
 > quarter has been integrated and reconciled.
 
@@ -31,10 +31,11 @@ dimensions.
 
 ## I want to understand what changed during a quarter
 
-Open the [[reports/index|reports catalog]]. The first published report,
-[[reports/quarterly/2025-Q3|Speech Generation — Q3 2025]], compares Q3 activity with the pre-Q3
-baseline. It distinguishes papers published during the quarter from evidence that strengthened,
-qualified, or contested an existing conclusion.
+Open the [[reports/index|reports catalog]]. The latest report,
+[[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]], compares Q4 activity with the evidence
+available through Q3. The earlier [[reports/quarterly/2025-Q3|Q3 2025 report]] provides the same
+kind of retrospective view against the pre-Q3 baseline. Both distinguish publication activity
+from evidence that strengthened, qualified, or contested an existing conclusion.
 
 Quarterly reports are frozen to reviewed snapshots. Later changes to the living concept pages do
 not rewrite them.
@@ -46,9 +47,7 @@ main method families, and surfaces practical trade-offs and open questions.
 
 → [[concepts/index|Browse the concept catalog]]
 
-Twenty-one concepts currently have complete Overview and In Depth pairs. Singing and fine-tuning
-already contribute to the field-level synthesis, while their standalone rendered pairs remain
-pending.
+All 23 concepts have complete Overview and In Depth pairs, including singing and fine-tuning.
 
 ## I want to examine one topic in depth
 
@@ -58,7 +57,7 @@ the literature cannot yet establish.
 
 ## I want to find a paper
 
-Use the [[papers/index|paper catalog]] to browse all 900 paper pages, or search for a title, author,
+Use the [[papers/index|paper catalog]] to browse all 1,061 paper pages, or search for a title, author,
 system, benchmark, venue, or paper ID.
 
 ## I want to inspect the complete evidence structure
@@ -68,6 +67,6 @@ graph. The machine-readable records live in `_claims/{concept}.yaml`. Reviewed c
 relationships live in `_claims/_reconciliation/registry.yaml`, and immutable historical
 assessments live in `_claims/_reconciliation/snapshots/`.
 
-The Q3 snapshot records the publication cutoff, retrospective assessment date, paper set, local
-claim assessments, method families, and human-approved broader relationships used by the quarterly
-report.
+The latest Q4 snapshot records the publication cutoff, retrospective assessment date, paper set,
+local claim assessments, method families, and human-approved broader relationships used by the Q4
+report. The Q3 snapshot remains available as the preceding historical assessment.

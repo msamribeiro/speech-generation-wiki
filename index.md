@@ -9,7 +9,7 @@ generation:
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "eed154b"
+  commit: "d13cdad"
 ---
 
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
@@ -33,7 +33,8 @@ The wiki offers four complementary ways to read the research:
 > [!abstract]
 > **Current synthesis boundary.** The integrated concepts and field overview use research published
 > through Q4 2025. The paper catalog contains later work that has been ingested but is not yet part
-> of these conclusions. The next synthesis cycle begins after the Q2 2026 ingestion frontier closes.
+> of these conclusions. The next synthesis cycle begins after the active Q3 2026 ingestion frontier
+> is ready for a bounded integration pass.
 
 ## Start with the field
 

@@ -2,14 +2,14 @@
 title: "Concepts"
 generation:
   schema_version: 2
-  date: "2026-09-13"
+  date: "2026-11-01"
   stage: render
   mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "41ab852"
+  commit: "d13cdad"
 ---
 
 Each integrated concept can be read at two depths: an Overview for rapid state-of-the-art scanning

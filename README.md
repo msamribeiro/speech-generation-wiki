@@ -36,7 +36,7 @@ Concept conclusions describe the literature integrated into this corpus. They sh
 as claims of exhaustive field coverage.
 
 > **Work in progress:** concept integration and synthesis currently cover research through
-> Q3 2025. The paper catalog may contain later work that has been ingested but not yet incorporated
+> Q4 2025. The paper catalog contains later work that has been ingested but not yet incorporated
 > into concept conclusions. Coverage will advance chronologically until it catches up with current
 > research, then continue on a rolling basis.
 
@@ -48,20 +48,19 @@ as claims of exhaustive field coverage.
 - [Concept Catalog](concepts/index.md) — Overview / In Depth links and integration status
 - [Paper Catalog](papers/index.md) — all ingested paper pages
 
-At the current production stage, five of the 23 tracked concepts have completed claim integration
-and both rendering depths: Flow Matching, Speech-to-Speech Systems, Evaluation Metrics, RLHF for
-Speech, and Disentanglement. The catalog identifies the remaining concepts as pending.
+All 23 tracked concepts have completed claim integration through Q4 2025 and have both rendering
+depths. The catalog reports each concept's current paper count and last render date.
 
-## Planned Coverage and Analysis
+## Current Coverage and Planned Analysis
 
-The current Q3 2025 boundary is a pipeline milestone, not the intended endpoint. After completing
-Q3 integration across the concept catalog, the project will continue through Q4 2025 and subsequent
-periods until the synthesis layer catches up with the research frontier.
+The completed Q4 2025 boundary is a pipeline milestone, not the intended endpoint. Q3 and Q4 2025
+now have immutable snapshots and quarterly reports. Later 2026 papers already appear in the paper
+catalog, while the next integration cycle will begin after the active ingestion frontier is ready.
 
 The wiki is also planned to extend beyond concept synthesis:
 
-- **Time-based reports** will compare periods such as Q3 and Q4 2025, showing changes in methods,
-  evidence, evaluation practice, and open questions.
+- **Time-based reports** now preserve Q3 and Q4 2025 as immutable historical assessments; future
+  reports will extend the sequence as later integration cycles close.
 - **Venue reports** will synthesize research from venues such as Interspeech, NeurIPS, ICLR, and
   ACL when enough relevant papers are available to support more than a paper listing.
 - **Citation analysis** will identify highly cited and influential papers in the corpus and track
@@ -89,7 +88,7 @@ concepts/
   {concept}-in-depth.md        Concept In Depth review
 
 venues/                        Venue reports generated on demand
-reports/                       Periodic cross-concept reports (deferred)
+reports/                       Snapshot-backed quarterly and future trend reports
 ```
 
 The former Evidence Dossier format is retired. Readers or agents that need exhaustive
@@ -117,10 +116,11 @@ the current set; static counts in documentation may lag active ingestion.
 
 ## Pipeline and Companion Repositories
 
-This repository is the content output of a six-stage pipeline:
+This repository is the content output of a staged evidence pipeline:
 
 ```text
-Fetch → Filter → Parse → Ingest → Integrate → Render
+Fetch → Filter → Parse → Ingest → Integrate → Reconcile → Render
+                                             └→ Snapshot → Report
 ```
 
 - [speech-generation-wiki-infra](https://github.com/msamribeiro/speech-generation-wiki-infra)
