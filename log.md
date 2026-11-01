@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-01
 
+- report | catalog | plain-language revision | simplified the reports introduction, table labels, dates, and paper-count notation using selected ASD-STE100 principles while preserving all report links and values | runtime: codex | provider: openai | model: gpt-5
 - report | catalog | presentation-only simplification | replaced the provenance-heavy reports table with report links, quarter date ranges, quarter and cumulative paper counts, and last-updated dates; snapshot provenance remains in each report appendix | runtime: codex | provider: openai | model: gpt-5
 - report | 2025-Q4 | presentation-only link repair | escaped wikilink pipes in the reports catalog and linked the Q4 appendix to the immutable snapshot, finalized reconciliation run, and exact source commits | no claims, evidence, dates, counts, or snapshot content changed | runtime: codex | provider: openai | model: gpt-5
 - render | Q4 reader-navigation refresh | corrected the synthesis boundary, current report and snapshot pointers, concept-pair status, paper count, and post-Q4 roadmap language across the home, start, field overview, concept catalog, and repository guide; claim graphs, snapshots, quarterly reports, and concept assessments unchanged | mode: light | runtime: codex | provider: openai | model: gpt-5
