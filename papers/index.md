@@ -846,7 +846,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2603.04145]] | [VietNormalizer: An Open-Source, Dependency-Free Python Library for Vietnamese Text Normalization in TTS and NLP Applications](papers/2603.04145.md) | Australian Catholic University / ICMS / FPT University / KETEMU / RMIT University Vietnam / NGHI Studio / Phuong Hai JSC | arXiv | 2026 | TTS |  | 2026-08-14 |
 | [[2603.04219]] | [ZeSTA: Zero-Shot TTS Augmentation with Domain-Condition](papers/2603.04219.md) | Maum AI Inc., Humelo Inc. | Interspeech | 2026 | TTS | VAE, GAN | 2026-08-15 |
 | [[2603.05299]] | [WavSLM: Single-Stream Speech Language Modeling via WavLM Distillation](papers/2603.05299.md) | Concordia University / Mila-Quebec AI Institute / Université Laval | Interspeech | 2026 | SCA | autoregressive-LM | 2026-08-15 |
-| [[2603.05373]] | [Hierarchical Decoding for Discrete Speech Synthesis with Multi-Resolution Spoof Detection](papers/2603.05373.md) | National University of Singapore | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
+| [[2603.05373]] | [Hierarchical Decoding for Discrete Speech Synthesis with Multi-Resolution Spoof Detection](papers/2603.05373.md) | National University of Singapore | Interspeech | 2026 | TTS | autoregressive-LM | 2026-08-15 |
 | [[2603.05413]] | [Building Enterprise Realtime Voice Agents from Scratch:](papers/2603.05413.md) | Salesforce AI Research | arXiv | 2026 | SCA, TTS |  | 2026-08-15 |
 | [[2603.05887]] | [Reconstruct! Don't Encode: Self-Supervised Representati](papers/2603.05887.md) |  | arXiv | 2026 | codec | GAN, VAE | 2026-08-15 |
 | [[2603.05977]] | [Activation Steering for Accent-Neutralized Zero-Shot Te](papers/2603.05977.md) | University of Texas at Dallas | arXiv | 2026 | TTS | autoregressive-LM | 2026-08-15 |
@@ -939,7 +939,7 @@ Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Conc
 | [[2604.14548]] | [VoxSafeBench: Not Just What Is Said, but Who, How, and ](papers/2604.14548.md) | The Chinese University of Hong Kong, Shenzhen | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |
 | [[2604.17958]] | [MINT-Bench: A Comprehensive Multilingual Benchmark for ](papers/2604.17958.md) | Northwestern Polytechnical University | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
 | [[2604.15804]] | [Qwen3.5-Omni Technical Report](papers/2604.15804.md) | Qwen Team (Alibaba) | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-10-18 |
-| [[2604.16211]] | [NVBench: A Benchmark for Speech Synthesis with Non-Verb](papers/2604.16211.md) | Nanjing University / HKUST | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
+| [[2604.16211]] | [NVBench: A Benchmark for Speech Synthesis with Non-Verb](papers/2604.16211.md) | Nanjing University / HKUST | Interspeech | 2026 | TTS, evaluation |  | 2026-10-18 |
 | [[2605.00861]] | [Voice Mapping of Text-to-Speech Systems: A Metric-Based](papers/2605.00861.md) | KTH Royal Institute of Technology | arXiv | 2026 | TTS, evaluation |  | 2026-10-18 |
 | [[2604.12456]] | [X-VC: Zero-shot Streaming Voice Conversion in Codec Spa](papers/2604.12456.md) | Shanghai Jiao Tong University | arXiv | 2026 | VC | transformer-enc-dec | 2026-10-18 |
 | [[2604.20842]] | [SpeechParaling-Bench: A Comprehensive Benchmark for Par](papers/2604.20842.md) | Nanjing University / Xiaomi | arXiv | 2026 | SCA, evaluation |  | 2026-10-18 |

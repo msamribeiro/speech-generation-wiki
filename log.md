@@ -4,6 +4,10 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-01
+
+- misc | paper-date rule | re-dated 2 Q2 2026 paper pages found in the Interspeech 2026 ISCA fetch, both retitled for the proceedings so missed by the 2026-10-26 title match: 2603.05373 (Interspeech title "MSpoofTTS: Multi-Resolution Spoof-Guided Inference for Discrete Speech Synthesis") and 2604.16211 ("NVV-SuperBench: Beyond Words, Beyond Quality—Benchmarking Nonverbal Vocalizations in Speech Generation"), to the proceedings date 2026-09-27 (Q2 to Q3): published_date/month, conference_date and preprint_date set, venue Interspeech / conference, abstract card and papers/index.md venue updated; page content unchanged | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-10-31
 
 - ingest | 2606.17126 | Vibrato Expression Control for Singing Voice Conversion with Improving Independent Control | IEEE TASLP 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
