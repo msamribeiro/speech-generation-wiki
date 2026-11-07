@@ -5,38 +5,37 @@ render_type: overview
 title: Flow Matching
 aliases: [conditional flow matching, CFM, OT-CFM, rectified flow, flow-based speech generation]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 source_digest_date: 2026-09-26
 paper_count: 125
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
-> Flow matching trains a model to transport a simple noise distribution into speech
-> representations along a continuous path. Across 125 reviewed papers, it has become one of the
-> main continuous-output approaches for modern TTS and voice conversion because it combines
-> high-quality generation with substantially fewer sampling steps than conventional diffusion.
+> Flow matching trains a model to move noise into a speech representation along a continuous
+> path. It is now a main continuous-output method for TTS and voice conversion. Across 125 reviewed
+> papers, it often reaches high quality with fewer sampling steps than conventional diffusion.
 
 ## Current State
 
-- **Flow matching offers a practical speed advantage over diffusion while maintaining comparable
-  or better speech quality.** The pattern appears across TTS, voice conversion, vocoding, and other
-  target representations, although the size of the advantage depends on solver and step budget
+- **Flow matching often reduces sampling cost without reducing speech quality.** This pattern
+  appears across TTS, voice conversion, vocoding, and other target representations. The size of
+  the advantage still depends on the solver and step budget
   ([[2210.02747]], [[2025.acl-long.313|F5-TTS]], [[2412.04724|StableVC]],
   [[iclr-2025-tQ1PmLfPBL|PeriodWave]]).
-- **Acceleration is now a family of strategies, not one technique.** Distillation, learned priors,
-  non-uniform scheduling, caching, coupled source distributions, and specialized solvers can reduce
-  generation to roughly one to four steps, but they trade speed against naturalness, diversity,
-  memory, or retraining cost in different ways ([[2025.acl-long.1043|OZSpeech]],
+- **Acceleration is a family of strategies, not one technique.** Distillation, learned priors,
+  non-uniform scheduling, caching, coupled source distributions, and specialized solvers can cut
+  generation to roughly one to four steps. Each method makes a different trade-off among speed,
+  naturalness, diversity, memory, and retraining cost ([[2025.acl-long.1043|OZSpeech]],
   [[2507.14988|DMOSpeech 2]]).
 - **Alignment-free non-autoregressive TTS is feasible but not free of trade-offs.**
   [[2406.18009|E2 TTS]] and [[2025.acl-long.313|F5-TTS]] learn text-speech alignment without a
@@ -104,9 +103,9 @@ applications beyond acoustic modeling.
 ## Scope
 
 This assessment covers 125 integrated papers through Q4 2025. It combines foundational theory with
-downstream TTS, voice conversion, vocoder, codec, control, and adaptation evidence. The corpus is
-broad enough to support several cross-system conclusions, but many newer branches remain
-single-paper or lineage-specific. Complete provenance remains in
+evidence from TTS, voice conversion, vocoders, codecs, control, and adaptation. Several conclusions
+hold across systems, but many newer branches still rely on one paper or one model lineage. The full
+record is in
 `wiki/_claims/flow-matching.yaml`.
 
 ---

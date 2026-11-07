@@ -6,19 +6,19 @@ source_digest_date: 2026-09-26
 paper_count: 125
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
-This page explains what the reviewed flow-matching literature collectively supports. For the short
-state-of-the-art view, see [[concepts/flow-matching|Flow Matching]]. Citations are representative;
-the complete paper-to-claim graph remains in `wiki/_claims/flow-matching.yaml`.
+This page explains what the reviewed flow-matching research supports. For the short version, see
+[[concepts/flow-matching|Flow Matching]]. The citations are representative; the complete record is
+in `wiki/_claims/flow-matching.yaml`.
 
 ## Findings at a Glance
 

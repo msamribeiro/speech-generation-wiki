@@ -5,32 +5,31 @@ render_type: overview
 title: Speech-to-Speech Systems
 aliases: [speech-to-speech, S2S, spoken dialogue systems, speech language models, end-to-end spoken agents]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 source_digest_date: 2026-09-20
 paper_count: 94
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
 > Speech-to-speech systems accept speech and produce spoken responses, spanning conversational
-> agents, full-duplex interaction, and speech-to-speech translation. Across the 94 papers reviewed
-> here, real-time interaction is increasingly practical, but the strongest systems still make
-> substantial trade-offs between reasoning, latency, turn-taking, and sensitivity to how something
-> is said rather than only what was said.
+> agents, full-duplex interaction, and speech-to-speech translation. Real-time interaction is now
+> practical in several settings. Across 94 reviewed papers, systems still trade reasoning quality
+> against latency, turn-taking, and sensitivity to how something is said.
 
 ## Current State
 
-- **Cascaded ASR–language-model–TTS systems remain the strongest general-purpose baseline.**
-  Mature components still lead many spoken-instruction, reasoning, and role-playing comparisons
+- **Cascaded ASR–language-model–TTS systems remain the strongest general baseline.** Mature
+  components still lead many spoken-instruction, reasoning, and role-playing comparisons
   ([[2410.17196|VoiceBench]], [[2506.23049|AURA]], [[2508.02013|SpeechRole]]). This is not a clean
   proof that cascades are intrinsically better: comparisons often also vary model scale, data, and
   component maturity.
@@ -70,9 +69,9 @@ generation:
 | **Dual-stream full duplex** | Separates user and agent audio so the system can listen while speaking | Evidence remains concentrated in smaller systems and restricted interaction tests |
 | **Simultaneous speech translation** | Optimizes cross-lingual content, voice transfer, and streaming together | Results depend strongly on language pair, latency policy, and proprietary evidence |
 
-These approaches increasingly overlap. The important distinction is not whether a system is called
-“end to end,” but where recognition, reasoning, timing, and speech generation are coupled and which
-capabilities remain independently trainable.
+These approaches increasingly overlap. The useful distinction is not whether a system is called
+“end to end.” It is where the system couples recognition, reasoning, timing, and speech generation,
+and which parts can still be trained separately.
 
 ## Key Trade-offs
 

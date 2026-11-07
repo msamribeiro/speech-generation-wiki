@@ -2,7 +2,7 @@
 slug: streaming-tts
 aliases: [incremental TTS, real-time speech generation, full-duplex speech]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 concept: streaming-tts
 render_type: overview
 title: "Streaming Text-to-Speech"
@@ -10,14 +10,14 @@ source_digest_date: 2026-09-26
 paper_count: 75
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -25,17 +25,17 @@ generation:
 
 ## Current State
 
-**Incremental acoustic or speech-token generation can substantially reduce first-packet and response latency.** This is strongly supported within the reviewed graph; representative evidence includes [[2402.08093|BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data]], [[2409.06666|LLaMA-Omni: Seamless Speech Interaction with Large Language Models]]. Reported latency depends on hardware, buffering policy, network assumptions, and whether upstream processing is included.
+**Incremental acoustic or speech-token generation can substantially reduce first-packet and response latency.** The evidence is strong. Examples include [[2402.08093|BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data]], [[2409.06666|LLaMA-Omni: Seamless Speech Interaction with Large Language Models]]. Reported latency depends on hardware, buffering policy, network assumptions, and whether upstream processing is included.
 
 **Chunk size and read–write policy create a direct trade-off among latency, alignment, and acoustic quality.** This is emerging within the reviewed graph; representative evidence includes [[2505.02625|LLaMA-Omni2: LLM-based Real-time Spoken Chatbot with Autoregressive Streaming Speech Synthesis]], [[2025.findings-acl.1051|LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM]]. Optimal chunks are architecture-, language-, and metric-dependent.
 
-**Causal constraints and limited lookahead reduce delay but can degrade quality unless the model is adapted explicitly.** This is strongly supported within the reviewed graph; representative evidence includes [[2411.18803|TS3-Codec: Transformer-Based Simple Streaming Single Codec]], [[2025.acl-demo.37|RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding]]. Pitch, phase, and boundary artifacts may respond differently to the same lookahead budget.
+**Causal constraints and limited lookahead reduce delay but can degrade quality unless the model is adapted explicitly.** The evidence is strong. Examples include [[2411.18803|TS3-Codec: Transformer-Based Simple Streaming Single Codec]], [[2025.acl-demo.37|RT-VC: Real-Time Zero-Shot Voice Conversion with Speech Articulatory Coding]]. Pitch, phase, and boundary artifacts may respond differently to the same lookahead budget.
 
-**Teacher distillation can recover quality lost when codecs, acoustic decoders, or vocoders are made causal.** This is strongly supported within the reviewed graph; representative evidence includes [[2411.18803|TS3-Codec: Transformer-Based Simple Streaming Single Codec]], [[2509.13667|A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction]]. The benefit may depend on access to a strong non-causal teacher and matched training data.
+**Teacher distillation can recover quality lost when codecs, acoustic decoders, or vocoders are made causal.** The evidence is strong. Examples include [[2411.18803|TS3-Codec: Transformer-Based Simple Streaming Single Codec]], [[2509.13667|A Distilled Low-Latency Neural Vocoder with Explicit Amplitude and Phase Prediction]]. The benefit may depend on access to a strong non-causal teacher and matched training data.
 
-**Interleaving or jointly generating text and speech tokens enables streaming output while retaining semantic guidance.** This is strongly supported within the reviewed graph; representative evidence includes [[2408.16725|Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming]], [[2409.06666|LLaMA-Omni: Seamless Speech Interaction with Large Language Models]]. Interleaved decoding can inherit exposure errors from both text and acoustic token streams.
+**Interleaving or jointly generating text and speech tokens enables streaming output while retaining semantic guidance.** The evidence is strong. Examples include [[2408.16725|Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming]], [[2409.06666|LLaMA-Omni: Seamless Speech Interaction with Large Language Models]]. Interleaved decoding can inherit exposure errors from both text and acoustic token streams.
 
-**Parallel, multi-token, and speculative decoding reduce serial speech-token generation cost.** This is strongly supported within the reviewed graph; representative evidence includes [[2408.16725|Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming]], [[2502.11946|Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction]]. Speedups can shrink when verification, codec decoding, or small-batch deployment is included.
+**Parallel, multi-token, and speculative decoding reduce serial speech-token generation cost.** The evidence is strong. Examples include [[2408.16725|Mini-Omni: Language Models Can Hear, Talk While Thinking in Streaming]], [[2502.11946|Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction]]. Speedups can shrink when verification, codec decoding, or small-batch deployment is included.
 
 **Q4 shifts attention from component latency to concurrent work and moving bottlenecks.** Systems can reason during listening, as in [[2510.02066|Chain-of-Thought Reasoning in Streaming Full-Duplex End-to-End Spoken Dialogue Systems]], but premature reasoning can harm coherence. [[2512.18706|X-Talk]] and related modular studies show that once one component is accelerated, ASR, retrieval, acoustic decoding, vocoding, or orchestration can become dominant.
 

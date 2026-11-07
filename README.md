@@ -5,23 +5,21 @@
 A living systematic review of synthetic speech research, covering **text-to-speech (TTS)**,
 **voice conversion (VC)**, and **spoken conversational agents**.
 
-This repository contains the wiki's published knowledge base: paper pages, structured concept
-claims, and reader-oriented research reviews. Browse the
-[live site](https://msamribeiro.github.io/speech-generation-wiki-site) for the rendered version.
+This repository stores the wiki's published content: paper pages, structured concept records, and
+research reviews. The [live site](https://msamribeiro.github.io/speech-generation-wiki-site) is the
+easiest place to read it.
 
 ## How the Knowledge Base Is Organized
 
-The repository offers three complementary ways to read concept-level research:
+Each concept has three layers:
 
-1. **Overview** — a concise account of the current state, method landscape, trade-offs, and open
-   questions for readers surveying many concepts.
-2. **In Depth** — a detailed review of what the integrated literature collectively shows, where
-   findings disagree, and which conclusions remain uncertain.
-3. **Claim YAML** — the complete machine-readable record of paper-level claims, evidence roles,
-   method families, caveats, and reassessment state.
+1. **Overview** — the current state, main method families, trade-offs, and open questions.
+2. **In Depth** — the evidence behind that account, including disagreements and uncertainty.
+3. **Claim YAML** — the complete machine-readable record of claims, paper roles, method families,
+   caveats, and reassessment state.
 
-The two Markdown formats are editorial projections of the same claim YAML. They select and explain
-decision-relevant conclusions rather than reproducing the full graph.
+The two reader pages come from the same claim YAML. They explain the findings that matter most
+without copying the whole graph into prose.
 
 ```text
 papers/{id}.md
@@ -32,39 +30,35 @@ concepts/{concept}.md
 concepts/{concept}-in-depth.md
 ```
 
-Concept conclusions describe the literature integrated into this corpus. They should not be read
-as claims of exhaustive field coverage.
+Concept conclusions cover the research integrated into this corpus. They do not claim to cover
+every paper in the field.
 
-> **Work in progress:** concept integration and synthesis currently cover research through
-> Q4 2025. The paper catalog contains later work that has been ingested but not yet incorporated
-> into concept conclusions. Coverage will advance chronologically until it catches up with current
-> research, then continue on a rolling basis.
+> **Current coverage:** concept summaries include research through Q4 2025. The paper catalog
+> contains later work that has not yet entered those summaries. New integration cycles will move
+> the boundary forward.
 
 ## Start Reading
 
-- [Home](index.md) — project summary and completed concept integrations
-- [Start Here](start.md) — reading paths for surveys, deep dives, papers, and structured evidence
-- [Field Overview](overview.md) — cross-concept synthesis of completed integrations
-- [Concept Catalog](concepts/index.md) — Overview / In Depth links and integration status
-- [Paper Catalog](papers/index.md) — all ingested paper pages
+- [Home](index.md) — a short guide to the wiki
+- [Start Here](start.md) — choose a route based on your question
+- [Field Overview](overview.md) — the main findings across all concepts
+- [Concept Catalog](concepts/index.md) — short and detailed guides to each concept
+- [Paper Catalog](papers/index.md) — every ingested paper page
 
-All 23 tracked concepts have completed claim integration through Q4 2025 and have both rendering
-depths. The catalog reports each concept's current paper count and last render date.
+All 23 concepts are integrated through Q4 2025. Each has an Overview and an In Depth page. The
+catalog also shows the current paper count and last render date.
 
 ## Current Coverage and Planned Analysis
 
-The completed Q4 2025 boundary is a pipeline milestone, not the intended endpoint. Q3 and Q4 2025
-now have immutable snapshots and quarterly reports. Later 2026 papers already appear in the paper
-catalog, while the next integration cycle will begin after the active ingestion frontier is ready.
+Q4 2025 is the current synthesis boundary, not the endpoint. Q3 and Q4 2025 have saved snapshots
+and quarterly reports. Papers from 2026 already appear in the catalog and will enter the synthesis
+in later integration cycles.
 
-The wiki is also planned to extend beyond concept synthesis:
+Planned work also includes:
 
-- **Time-based reports** now preserve Q3 and Q4 2025 as immutable historical assessments; future
-  reports will extend the sequence as later integration cycles close.
-- **Venue reports** will synthesize research from venues such as Interspeech, NeurIPS, ICLR, and
-  ACL when enough relevant papers are available to support more than a paper listing.
-- **Citation analysis** will identify highly cited and influential papers in the corpus and track
-  movement across periodic snapshots.
+- **Quarterly reports** that extend the Q3 and Q4 2025 sequence.
+- **Venue reports** for conferences with enough papers to support real synthesis, not just a list.
+- **Citation analysis** that tracks highly cited papers and changes across snapshots.
 
 ## Repository Structure
 
@@ -91,8 +85,8 @@ venues/                        Venue reports generated on demand
 reports/                       Snapshot-backed quarterly and future trend reports
 ```
 
-The former Evidence Dossier format is retired. Readers or agents that need exhaustive
-paper-to-claim structure should use `_claims/` directly.
+The former Evidence Dossier format is retired. Use `_claims/` for the complete paper-to-claim
+structure.
 
 ## Paper Pages
 
@@ -129,13 +123,12 @@ Fetch → Filter → Parse → Ingest → Integrate → Reconcile → Render
 - [speech-generation-wiki-site](https://github.com/msamribeiro/speech-generation-wiki-site)
   contains the Quartz configuration that publishes this repository to GitHub Pages.
 
-Automated content preserves generation provenance in page frontmatter. Claim status and evidence
-relationships are changed in `_claims/` through integration and then rendered into Markdown;
-rendered concept pages are replaceable outputs rather than the source of truth.
+Generated pages record their provenance in frontmatter. Integration changes claim status and
+evidence relationships in `_claims/`, then rendering turns those records into Markdown. The
+rendered concept pages can be replaced; they are not the source of truth.
 
 ## Reporting Errors or Contributing
 
-When reporting a factual issue, identify the paper or concept page and, where possible, the source
-section, table, or figure. Do not edit a rendered concept page to change an evidence assessment:
-corrections to claims, roles, or support relationships must flow through the corresponding
-`_claims/{concept}.yaml` record in the pipeline.
+When reporting an error, name the paper or concept page and, if possible, the source section,
+table, or figure. Do not correct an evidence assessment only in a rendered concept page. Changes
+to claims, roles, or support relationships must go through `_claims/{concept}.yaml`.

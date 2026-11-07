@@ -6,17 +6,19 @@ source_digest_date: 2026-10-31
 paper_count: 82
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
-Companion to the [[concepts/gan-vocoder|Overview]]. This page explains what the reviewed research collectively shows. Citations are representative; complete provenance is in `wiki/_claims/gan-vocoder.yaml`.
+For the short version, see [[concepts/gan-vocoder|GAN Vocoders]]. This page explains what the
+reviewed research shows. The citations are representative; the complete record is in
+`wiki/_claims/gan-vocoder.yaml`.
 
 ## Findings at a Glance
 

@@ -6,14 +6,14 @@ source_digest_date: 2026-09-20
 paper_count: 94
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 This review asks what the 94 papers currently encoded for speech-to-speech systems collectively

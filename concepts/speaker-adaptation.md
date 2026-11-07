@@ -2,7 +2,7 @@
 slug: speaker-adaptation
 aliases: [voice adaptation, speaker personalization, voice cloning adaptation]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 concept: speaker-adaptation
 render_type: overview
 title: "Speaker Adaptation"
@@ -10,14 +10,14 @@ source_digest_date: 2026-09-26
 paper_count: 98
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -25,15 +25,15 @@ generation:
 
 ## Current State
 
-**Multi-speaker training learns shared acoustic structure that improves synthesis and generalization across speakers.** Within the reviewed corpus, representative evidence includes [[1609.03499|WaveNet: A Generative Model for Raw Audio]], [[1904.02882|LibriTTS: A Corpus Derived from LibriSpeech for Text-to-Speech]], [[2025.naacl-short.65|kNN Retrieval for Simple and Effective Zero-Shot Multi-speaker Text-to-Speech]]. Dataset balance, recording quality, and speaker coverage often vary together.
+**Multi-speaker training learns shared acoustic structure that improves synthesis and generalization across speakers.** Examples from the reviewed papers include [[1609.03499|WaveNet: A Generative Model for Raw Audio]], [[1904.02882|LibriTTS: A Corpus Derived from LibriSpeech for Text-to-Speech]], [[2025.naacl-short.65|kNN Retrieval for Simple and Effective Zero-Shot Multi-speaker Text-to-Speech]]. Dataset balance, recording quality, and speaker coverage often vary together.
 
-**Reference-audio conditioning enables synthesis or conversion for unseen speakers without full speaker-specific retraining.** Within the reviewed corpus, representative evidence includes [[2301.02111|Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers]], [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]], [[2505.07916|MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder]]. Performance depends on reference duration, cleanliness, content, and match to the training domain.
+**Reference-audio conditioning enables synthesis or conversion for unseen speakers without full speaker-specific retraining.** Examples from the reviewed papers include [[2301.02111|Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers]], [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]], [[2505.07916|MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder]]. Performance depends on reference duration, cleanliness, content, and match to the training domain.
 
-**Task-trained or locally conditioned speaker representations can preserve identity better than fixed global verification embeddings.** Within the reviewed corpus, representative evidence includes [[2505.07916|MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder]], [[2506.18296|JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking Styles]], [[interspeech-2025-0816|Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation]]. Dedicated encoders may improve synthesis while becoming less comparable to verification embeddings.
+**Task-trained or locally conditioned speaker representations can preserve identity better than fixed global verification embeddings.** Examples from the reviewed papers include [[2505.07916|MiniMax-Speech: Intrinsic Zero-Shot Text-to-Speech with a Learnable Speaker Encoder]], [[2506.18296|JIS: A Speech Corpus of Japanese Idol Speakers with Various Speaking Styles]], [[interspeech-2025-0816|Bridging Speech and Singing: Multi-stage Speech-Prompted Singing Voice Conversion with Speaker Embedding Adaptation]]. Dedicated encoders may improve synthesis while becoming less comparable to verification embeddings.
 
-**Speaker-cloning quality is sensitive to prompt duration, acoustic quality, and where the prompt enters the generation pipeline.** Within the reviewed corpus, representative evidence includes [[2301.02111|Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers]], [[2406.05370|VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers]], [[2409.03283|FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications]]. Longer references do not uniformly help across architectures, and enhancement can damage already-clean prompts.
+**Speaker-cloning quality is sensitive to prompt duration, acoustic quality, and where the prompt enters the generation pipeline.** Examples from the reviewed papers include [[2301.02111|Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers]], [[2406.05370|VALL-E 2: Neural Codec Language Models are Human Parity Zero-Shot Text to Speech Synthesizers]], [[2409.03283|FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications]]. Longer references do not uniformly help across architectures, and enhancement can damage already-clean prompts.
 
-**Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain voices.** Within the reviewed corpus, representative evidence includes [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]], [[2409.03283|FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications]], [[2025.findings-naacl.279|BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting]]. Benefits depend on data quality and can trade against the base model's generalization.
+**Few-shot speaker-specific fine-tuning generally improves identity and naturalness for distinctive, low-resource, or out-of-domain voices.** Examples from the reviewed papers include [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]], [[2409.03283|FireRedTTS: A Foundation Text-To-Speech Framework for Industry-Level Generative Speech Applications]], [[2025.findings-naacl.279|BnTTS: Few-Shot Speaker Adaptation in Low-Resource Setting]]. Benefits depend on data quality and can trade against the base model's generalization.
 
 **Q4 expands adaptation beyond conventional target recordings.** Generated, pseudo-speaker, face-derived, and text-derived representations enable reference-free voice creation ([[2025.findings-emnlp.1381|UniSpeaker]], [[2511.06246|IDMap]], [[2511.07135|Generating Novel and Realistic Speakers for Voice Conversion]]). This capability is strongly supported in the graph, but fidelity to an intended person is underconstrained when the input specifies a distribution of plausible voices rather than one recorded identity. A separate emerging result from [[2511.09995|Time-Layer Adaptive Alignment]] shows that speaker information is unevenly distributed across network depth and flow timesteps, motivating location-aware rather than uniform supervision.
 

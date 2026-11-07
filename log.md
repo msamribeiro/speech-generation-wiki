@@ -4,8 +4,13 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-07
+
+- render | all 23 concepts plus field overview and reader navigation | formats: both | full plain-language migration | revised the concept pairs and surrounding pages for shorter sentences, direct subjects, simpler transitions, and clearer explanations for readers with a speech-processing background | preserved claims, citations, confidence assessments, paper counts, evidence boundaries, and quarterly snapshots | paper pages unchanged | mode: full | runtime: codex | provider: openai | model: gpt-5 | writing contract: 0e1aff0
+
 ## 2026-11-01
 
+- render | reader-facing shell | plain-language revision | simplified the home, Start Here, field overview, concept catalog, reports catalog, paper-catalog introduction, and repository guide while preserving all claims, citations, counts, dates, links, and evidence boundaries | paper and concept pages unchanged | mode: light | runtime: codex | provider: openai | model: gpt-5
 - report | 2025-Q3 and 2025-Q4 | plain-language revision | rewrote both published quarterly reports with shorter sentences, clearer subjects, simpler transitions, and selected ASD-STE100 principles | all claims, citations, numbers, dates, evidence boundaries, and snapshot provenance preserved | runtime: codex | provider: openai | model: gpt-5
 - report | catalog | plain-language revision | simplified the reports introduction, table labels, dates, and paper-count notation using selected ASD-STE100 principles while preserving all report links and values | runtime: codex | provider: openai | model: gpt-5
 - report | catalog | presentation-only simplification | replaced the provenance-heavy reports table with report links, quarter date ranges, quarter and cumulative paper counts, and last-updated dates; snapshot provenance remains in each report appendix | runtime: codex | provider: openai | model: gpt-5

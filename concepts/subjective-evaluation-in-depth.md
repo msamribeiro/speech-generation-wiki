@@ -6,17 +6,19 @@ source_digest_date: 2026-10-31
 paper_count: 255
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
-Companion to the [[concepts/subjective-evaluation|Overview]]. This page explains what the reviewed research collectively shows. Citations are representative; complete provenance is in `wiki/_claims/subjective-evaluation.yaml`.
+For the short version, see [[concepts/subjective-evaluation|Subjective Evaluation of Generated
+Speech]]. This page explains what the reviewed research shows. The citations are representative;
+the complete record is in `wiki/_claims/subjective-evaluation.yaml`.
 
 ## Findings at a Glance
 

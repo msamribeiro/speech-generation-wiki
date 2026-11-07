@@ -5,19 +5,19 @@ render_type: overview
 title: Autoregressive Codec Text-to-Speech
 aliases: [codec language model TTS, neural codec language model, speech-token autoregression, VALL-E-style TTS]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 source_digest_date: 2026-09-26
 paper_count: 196
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]

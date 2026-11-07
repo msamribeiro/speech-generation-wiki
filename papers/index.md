@@ -2,7 +2,8 @@
 title: "Papers"
 ---
 
-Full catalog of all ingested papers. Navigate by topic via [[concepts/index|Concepts]]. Use search to find a specific paper by title or author.
+This catalog lists every ingested paper. Browse [[concepts/index|Concepts]] to start with a topic,
+or use search to find a title, author, system, benchmark, venue, or paper ID.
 
 | ID | Title | Org | Venue | Year | Task | Architecture | Ingested |
 |----|-------|-----|-------|------|------|--------------|---------|

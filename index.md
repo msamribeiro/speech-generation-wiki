@@ -2,14 +2,14 @@
 title: "Speech Generation Wiki"
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
-  mode: light
+  mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "d13cdad"
+  commit: "0e1aff0"
 ---
 
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
@@ -19,38 +19,35 @@ generation:
 > **voice conversion (VC)**, and **spoken conversational agents**. The wiki contains 1061 paper
 > pages and integrates research across 23 concepts.
 
-The wiki offers four complementary ways to read the research:
+There are four main ways to use the wiki:
 
-- The [[overview|Field Overview]] gives a gentle introduction to the current evidence across the
-  whole field.
-- The [[concepts/index|concept catalog]] provides focused Overview and In Depth guides to individual
-  methods and capabilities.
-- [[reports/index|Quarterly reports]] preserve what changed within a fixed publication period.
-- The [[papers/index|paper catalog]] and structured claim records provide the underlying evidence.
+- Read the [[overview|Field Overview]] for the main findings across the field.
+- Use the [[concepts/index|concept catalog]] to study one method or capability.
+- Open the [[reports/index|quarterly reports]] to see what changed during a fixed period.
+- Search the [[papers/index|paper catalog]] when you want the underlying evidence.
 
 → [[start|Choose the best place to start]]
 
-> [!abstract]
-> **Current synthesis boundary.** The integrated concepts and field overview use research published
-> through Q4 2025. The paper catalog contains later work that has been ingested but is not yet part
-> of these conclusions. The next synthesis cycle begins after the active Q3 2026 ingestion frontier
-> is ready for a bounded integration pass.
+> [!warning]
+> **Current coverage.** The field and concept summaries include research published through Q4
+> 2025. The paper catalog already contains later work. Those papers will enter the summaries after
+> their integration and review cycle.
 
 ## Start with the field
 
-The [[overview|Field Overview]] connects all 23 concepts. It explains the recurring choices around
-speech representations, generation speed, control, voice transfer, evaluation, and spoken
-interaction without requiring readers to begin with one architecture.
+The [[overview|Field Overview]] connects all 23 concepts. It explains the main choices around
+speech representations, speed, control, voice transfer, evaluation, and spoken interaction. You
+do not need to start with a specific architecture.
 
-To understand what specifically changed during the latest completed period, read
+To see what changed during the latest completed period, read
 [[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]]. The report separates publication
-activity from changes in assessed knowledge and is frozen to its Q4 evidence boundary.
+activity from changes in the evidence. Its Q4 evidence boundary will not change.
 
 ## Explore a concept
 
-All 23 concepts have both a concise Overview and a detailed In Depth page. These include
-generation architectures, neural codecs and speech representations, speaker and style control,
-multilingual and zero-shot synthesis, streaming and spoken agents, and evaluation.
+All 23 concepts have a short Overview and a detailed In Depth page. Together they cover
+generation architectures, speech representations, control, multilingual and zero-shot synthesis,
+streaming, spoken agents, and evaluation.
 
 → [[concepts/index|Browse all 23 concepts]]
 
@@ -64,10 +61,9 @@ or paper ID.
 
 ## How to read the dates
 
-The field overview is a replaceable account of the latest integrated evidence. Quarterly reports
-are immutable historical views derived from reviewed snapshots. The current Q4 materials were
-assessed retrospectively on 2026-11-01 using evidence published through 2025-12-31; they do not
-claim that the assessment itself was made at the end of that quarter.
+The field overview is the current synthesis and will change after later integration cycles.
+Quarterly reports are saved historical views and do not change. The Q4 materials use evidence
+published through December 31, 2025, but the review itself was completed on November 1, 2026.
 
-Paper counts show corpus coverage and research attention. They do not by themselves establish
-evidence strength, consensus, or adoption.
+Paper counts show coverage and research activity. They do not prove that a finding is strong,
+widely accepted, or widely used.

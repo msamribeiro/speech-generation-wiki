@@ -2,7 +2,7 @@
 slug: multilingual-tts
 aliases: [cross-lingual TTS, multilingual speech synthesis, low-resource TTS]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 concept: multilingual-tts
 render_type: overview
 title: "Multilingual Text-to-Speech"
@@ -10,14 +10,14 @@ source_digest_date: 2026-09-26
 paper_count: 105
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -25,17 +25,17 @@ generation:
 
 ## Current State
 
-**Shared multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure from better-resourced languages.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.naacl-short.69|Developing multilingual speech synthesis system for Ojibwe, Mi'kmaq, and Maliseet]]. Transfer depends on linguistic relatedness, data balance, and front-end compatibility.
+**Shared multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure from better-resourced languages.** The evidence is strong. Examples include [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.naacl-short.69|Developing multilingual speech synthesis system for Ojibwe, Mi'kmaq, and Maliseet]]. Transfer depends on linguistic relatedness, data balance, and front-end compatibility.
 
-**Imbalanced multilingual corpora bias synthesis quality toward high-resource languages and dominant speakers or accents.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2025.naacl-short.69|Developing multilingual speech synthesis system for Ojibwe, Mi'kmaq, and Maliseet]], [[2507.16875|Technical report: Impact of Duration Prediction on Speaker-specific TTS for Indian Languages]]. Reported averages can hide large per-language and demographic gaps.
+**Imbalanced multilingual corpora bias synthesis quality toward high-resource languages and dominant speakers or accents.** The evidence is strong. Examples include [[2025.naacl-short.69|Developing multilingual speech synthesis system for Ojibwe, Mi'kmaq, and Maliseet]], [[2507.16875|Technical report: Impact of Duration Prediction on Speaker-specific TTS for Indian Languages]]. Reported averages can hide large per-language and demographic gaps.
 
-**Cross-lingual voice cloning must balance speaker identity against target-language pronunciation, accent, and intelligibility.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]]. Identity and accent are entangled in both listener judgments and speaker-verification embeddings.
+**Cross-lingual voice cloning must balance speaker identity against target-language pronunciation, accent, and intelligibility.** The evidence is strong. Examples include [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2406.04904|XTTS: a Massively Multilingual Zero-Shot Text-to-Speech Model]]. Identity and accent are entangled in both listener judgments and speaker-verification embeddings.
 
-**Explicit language embeddings, identifiers, prompts, or routing reduce language confusion in shared multilingual models.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.findings-acl.687|TCSinger 2: Customizable Multilingual Zero-shot Singing Voice Synthesis]]. Language labels do not by themselves capture dialect continua or code-switching.
+**Explicit language embeddings, identifiers, prompts, or routing reduce language confusion in shared multilingual models.** The evidence is strong. Examples include [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.findings-acl.687|TCSinger 2: Customizable Multilingual Zero-shot Singing Voice Synthesis]]. Language labels do not by themselves capture dialect continua or code-switching.
 
-**Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic overlap.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]. Universal inventories can erase language-specific allophony and prosodic distinctions.
+**Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer beyond orthographic overlap.** The evidence is strong. Examples include [[2312.01479|OpenVoice: Versatile Instant Voice Cloning]], [[2411.01156|Fish-Speech: Leveraging Large Language Models for Advanced Multilingual Text-to-Speech Synthesis]]. Universal inventories can erase language-specific allophony and prosodic distinctions.
 
-**Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity.** The assessment is strongly supported within the reviewed corpus; representative evidence includes [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks remain small and often cover only a few language pairs.
+**Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation, and speaker continuity.** The evidence is strong. Examples include [[2025.ccl-1.80|Lao-English Code-Switched Speech Synthesis Via Neural Codec Language Modeling]]. Code-switching benchmarks remain small and often cover only a few language pairs.
 
 **Q4 strengthens synthetic transfer and exposes expressive limits.** Synthetic or pseudo-parallel speech can support low-resource cross-lingual generation without recorded parallel speech, as in [[2510.09061|O_O-VC]]. Explicit emotion and paralinguistic conditioning improve control, but [[2510.11124|Perturbation Self-Supervised Representations for Cross-Lingual Emotion TTS]] and related systems show that style, identity, intelligibility, and naturalness still transfer unevenly across languages.
 

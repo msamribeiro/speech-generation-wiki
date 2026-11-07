@@ -6,14 +6,14 @@ source_digest_date: 2026-08-02
 paper_count: 1
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 For the concise view, see [[concepts/fine-tuning|Fine-Tuning Foundation Models for Speech Generation]]. This page interprets the complete but very small fine-tuning graph. Citations are necessarily concentrated in one study; complete provenance remains in `wiki/_claims/fine-tuning.yaml`.

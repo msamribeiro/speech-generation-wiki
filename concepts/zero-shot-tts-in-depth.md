@@ -6,14 +6,14 @@ source_digest_date: 2026-09-20
 paper_count: 262
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 For the short state-of-the-art view, see [[concepts/zero-shot-tts|Zero-Shot Text-to-Speech]]. This

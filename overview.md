@@ -12,28 +12,26 @@ broader_claim_count: 11
 source_concepts: [autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, fine-tuning, flow-matching, gan-vocoder, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, self-supervised-speech, singing, speaker-adaptation, speech-to-speech, spoken-language-model, streaming-tts, subjective-evaluation, transformer-enc-dec-tts, voice-conversion, zero-shot-tts]
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "d13cdad"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
-> Modern speech generation is about much more than making a voice sound natural. A useful system
-> must also get the words right, preserve the intended speaker, express the right style, respond
-> at the right time, and behave well outside a clean test set. This overview brings together all
-> 23 integrated concept areas to explain where those goals reinforce one another—and where they
-> pull in different directions.
+> Speech generation is about more than naturalness. A useful system must also say the right words,
+> preserve the intended voice, express the right style, respond at the right time, and work outside
+> a clean test set. This overview connects all 23 concepts and shows where those goals support one
+> another—and where they conflict.
 
 > [!warning]
-> **Current-state Q4 boundary.** This overview was assessed on 2026-11-01 from the living concept
-> graphs and human-approved reconciliation registry, using evidence published through 2025-12-31.
-> It is a replaceable synthesis of the current graph, not the immutable Q4 historical record. The
-> frozen assessment is available in [[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]].
+> **Current coverage.** This overview uses evidence published through December 31, 2025. The review
+> was completed on November 1, 2026. It will change after later integration cycles. For the saved Q4
+> record, see [[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]].
 
 ## What Matters Across the Field
 
@@ -61,11 +59,10 @@ automatic judge should be checked against people on the same task, domain, attri
 scale ([[2508.18240|MTalk-Bench]], [[2509.13989|Instruction-Perception Gap]],
 [[2509.19928|Prosody Diversity Benchmark]]).
 
-This shared lesson appears in the work on **evaluation metrics**, **subjective evaluation**,
+The same lesson appears in work on **evaluation metrics**, **subjective evaluation**,
 **instruction-conditioned TTS**, **emotion synthesis**, **speech-to-speech systems**, **spoken
-language models**, and **neural codecs**. The practical message is simple: measure each important
-quality separately, and be clear about what an automatic score has actually been validated to
-measure.
+language models**, and **neural codecs**. The practical rule is simple: measure each important
+quality separately. State exactly what an automatic score has been tested to measure.
 
 ### Speech tokens have to serve two different purposes
 
@@ -83,7 +80,7 @@ waveform. This is the basic idea behind several hierarchical systems, from codec
 to zero-shot TTS and spoken agents ([[2301.02111|VALL-E]], [[2305.09636|SoundStorm]],
 [[2403.03100|NaturalSpeech 3]]).
 
-The split helps, but it does not make the problem disappear. If the semantic stage makes an error,
+This split helps, but it does not remove the trade-off. If the semantic stage makes an error,
 the acoustic stage usually cannot repair the missing meaning. If semantic supervision is too
 strong, the representation may throw away useful speaker or prosodic information. Long-form
 generation adds another challenge: both the linguistic plan and the acoustic realization must
@@ -124,10 +121,10 @@ their representations and training are adapted for limited future context
 ([[2509.16195|FocalCodec-Stream]], [[2507.14534|Conan]],
 [[interspeech-2025-1819|Low-Latency Vocoder Analysis]]).
 
-The most useful question is therefore not “Which architecture is best?” It is “Where should this
-system spend its sequential reasoning, parallel acoustic generation, and perceptual reconstruction
-budget?” The answer depends on whether the main constraint is latency, long-form stability,
-control, compute, or final waveform quality.
+The useful question is not “Which architecture is best?” It is “Where should the system spend its
+sequential reasoning, parallel acoustic generation, and waveform reconstruction budget?” The
+answer depends on the main constraint: latency, long-form stability, control, compute, or final
+audio quality.
 
 ### Control works because factors are partly separable
 
@@ -197,12 +194,10 @@ evaluations, no system handles both sides strongly across interaction scenarios
 ([[2503.04721|Full-Duplex-Bench]], [[interspeech-2025-0739|FD-Bench]],
 [[2507.23159|Full-Duplex-Bench v1.5]], [[2509.22243|FLEXI]]).
 
-This is the concrete meaning of the responsiveness-versus-floor-holding trade-off: the system is
-balancing quick interruption response against its ability to continue speaking when it still has
-the conversational turn. The right balance depends on the setting, interruption threshold, and
-errors or delays in the underlying speech model. Time to first audio, total decoding time,
-interruption response, backchannel behavior, and turn-taking accuracy should be measured
-separately.
+This creates a direct trade-off. The agent must respond quickly to real interruptions without
+giving up the floor for harmless overlap. The right balance depends on the setting, interruption
+threshold, and errors or delays in the speech model. Time to first audio, total decoding time,
+interruption response, backchannel behavior, and turn-taking accuracy need separate tests.
 
 ### Post-training improves what the feedback can see
 
@@ -244,18 +239,16 @@ musical timing.
 
 ## What Q4 Added
 
-Q4 expanded the reviewed graph from 497 to 668 unique papers, from 2,226 to 2,892 concept
-memberships, and from 406 to 444 local claim clusters. Those are coverage changes, not a direct
-measure of scientific progress: papers can appear in several concepts, cluster boundaries can be
-revised, and the current graph was assessed later than the publication window. Likewise, the
-change from 280 strongly supported, 112 emerging, and 14 contested clusters in the Q3 rendering to
-342 strongly supported, 85 emerging, and 17 contested clusters now is not a simple promotion
-count. The denominator and some cluster definitions changed during integration.
+Q4 expanded the review from 497 to 668 unique papers. Concept memberships rose from 2,226 to 2,892,
+and local claim clusters from 406 to 444. These numbers show coverage, not scientific progress. A
+paper can appear in several concepts, and integration can change cluster boundaries. The shift
+from 280 strongly supported, 112 emerging, and 14 contested clusters in Q3 to 342, 85, and 17 now
+is therefore not a simple promotion count.
 
-The clearest Q4 contribution is a shift from isolated speech components toward end-to-end system
-behavior. Streaming work uses the listening interval for interruptible reasoning, retrieval, and
-other computation, while showing that a fast acoustic decoder does not guarantee a responsive
-agent when the language model, ASR, retrieval, or orchestration dominates the critical path
+The clearest Q4 change is a move from isolated speech components toward complete system behavior.
+Some streaming systems use listening time for reasoning, retrieval, and other work. But a fast
+acoustic decoder does not guarantee a responsive agent. The language model, ASR, retrieval, or
+system orchestration may still dominate the critical path
 ([[2510.02066|Chain-of-Thought Reasoning in Streaming Full-Duplex Spoken Dialogue]],
 [[2512.18706|X-Talk]]). Full-duplex evaluation correspondingly extends beyond latency to floor
 holding, interruption recognition, backchannels, and semantic recovery after overlap.
@@ -275,14 +268,13 @@ Preference Optimization]], [[2511.21270|Multi-Reward GRPO]]). The boundary remai
 coverage and weighting of the feedback determine which qualities improve, and an optimization
 signal cannot reliably protect what it never observes.
 
-Finally, Q4 strengthens the case for treating data and evaluation as part of the architecture.
+Q4 also strengthens the case for treating data and evaluation as part of the system design.
 Prosodically meaningful segmentation, quality-aware curation, and transparent normalization can
 matter as much as replacing a familiar backbone in spontaneous or low-resource settings
 ([[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]],
-[[2512.00937|Arabic TTS with FastPitch]]). Across the field, the central question is increasingly
-not whether a model can produce convincing audio once, but whether the whole system remains
-controllable, responsive, and measurable across speakers, languages, domains, and interaction
-conditions.
+[[2512.00937|Arabic TTS with FastPitch]]). The main question is no longer whether a model can
+produce one convincing sample. It is whether the whole system remains controllable, responsive,
+and measurable across speakers, languages, domains, and interaction conditions.
 
 ## The Recurring Trade-offs
 
@@ -345,18 +337,17 @@ conditions.
 
 ## Scope and Traceability
 
-The 23 concept graphs contain 2,892 paper memberships but 668 unique papers. The difference—2,224
-memberships—comes from papers that inform more than one concept. The graphs contain 444 local claim
-clusters: 342 strongly supported, 85 emerging, and 17 contested. This overview presents the 11
-human-approved broader claims once and uses the 373 approved direct relationships to interpret
-narrower connections. The 15 preserved agent proposals are not used as evidence.
+The 23 concept graphs contain 2,892 paper memberships from 668 unique papers. A paper can inform
+more than one concept. The graphs contain 444 local claim clusters: 342 strongly supported, 85
+emerging, and 17 contested. This overview presents 11 approved broader claims and uses 373 approved
+direct relationships between narrower claims. It does not use the 15 remaining agent proposals as
+evidence.
 
-Evidence is limited by canonical publication dates through 2025-12-31. The current assessment was
-completed on 2026-11-01. This overview is a replaceable rendering of the living concept graphs and
-reviewed registry. It does not claim to reconstruct what researchers knew at the end of Q4 and is
-not a substitute for the proposed immutable `2025-Q4` snapshot and quarterly report.
+The evidence cutoff is December 31, 2025. The review was completed on November 1, 2026. This page
+shows the current reading of the concept graphs and reviewed links. It does not claim to show what
+researchers knew at the end of Q4. The [[reports/quarterly/2025-Q4|Q4 report]] is the saved
+historical view.
 
-Every conclusion traces from a human-approved broader claim or a local claim cluster to paper-level
-evidence, then to the paper page and cited source section. Citations here are representative rather
-than exhaustive. Complete provenance remains in `wiki/_claims/*.yaml` and
-`wiki/_claims/_reconciliation/registry.yaml`.
+Every conclusion links back to an approved broader claim or local claim cluster, then to papers and
+cited source sections. The citations on this page are examples, not the complete support list. The
+full record is in `wiki/_claims/*.yaml` and `wiki/_claims/_reconciliation/registry.yaml`.

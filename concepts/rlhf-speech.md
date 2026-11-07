@@ -5,33 +5,33 @@ render_type: overview
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 status: emerging
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 source_digest_date: 2026-09-26
 paper_count: 49
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
 > RLHF for speech uses preferences or reward signals to improve a pretrained TTS, spoken-language,
 > or speech-to-speech model after supervised training. Across 49 reviewed papers, post-training
-> reliably improves targeted qualities with relatively little data, but proxy rewards can damage
-> prosody, diversity, emotion, or other dimensions that the optimizer does not measure.
+> often improves the quality named by the reward. It can also damage prosody, diversity, emotion,
+> or another quality that the reward does not measure.
 
 ## Current State
 
-- **Preference and reward post-training consistently improve over supervised fine-tuning on their
-  targeted dimensions.** DPO, KTO, GRPO, policy-gradient methods, and differentiable reward
-  optimization report gains in intelligibility, speaker similarity, naturalness, or semantic
-  coherence across discrete and continuous speech generators ([[2406.00654]],
+- **Preference and reward post-training often improve their target dimensions.** DPO, KTO, GRPO,
+  policy-gradient methods, and differentiable reward optimization report gains in intelligibility,
+  speaker similarity, naturalness, or semantic coherence. The pattern appears in both discrete and
+  continuous speech generators ([[2406.00654]],
   [[2025.acl-long.598]], [[2509.00685|MPO]]).
 - **Reward hacking is the central cross-method risk.** Optimizing WER, likelihood, or another proxy
   can produce monotone prosody, lower emotional appropriateness, reduced diversity, or evasive
@@ -98,9 +98,9 @@ limits imposed by the base model and downstream pipeline.
 
 ## Scope
 
-This assessment covers 49 integrated papers through Q4 2025. The area is therefore fast-moving but young. Several
-strong-looking results come from a single backbone or proprietary system, and spoken-dialogue RLHF
-is much less developed than acoustic TTS alignment. Complete provenance remains in
+This assessment covers 49 integrated papers through Q4 2025. The area is fast-moving but young.
+Several strong results come from one backbone or proprietary system. RLHF for spoken dialogue is
+also much less developed than acoustic TTS alignment. The full record is in
 `wiki/_claims/rlhf-speech.yaml`.
 
 ---

@@ -2,7 +2,7 @@
 slug: transformer-enc-dec-tts
 aliases: [sequence-to-sequence TTS, transformer acoustic model, duration-based TTS]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 concept: transformer-enc-dec-tts
 render_type: overview
 title: "Transformer Encoder–Decoder TTS"
@@ -10,14 +10,14 @@ source_digest_date: 2026-09-26
 paper_count: 33
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -33,7 +33,7 @@ generation:
 
 **Compact mel-spectrogram intermediates simplify neural waveform generation while preserving synthesis quality.** This is emerging within the reviewed graph; representative evidence includes [[1712.05884|Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions]]. Mel intermediates can constrain phase, bandwidth, and fine temporal detail.
 
-**Explicit duration prediction enables parallel acoustic generation and reduces skipping and repetition failures.** This is strongly supported within the reviewed graph; representative evidence includes [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2106.15561|A Survey on Neural Speech Synthesis]]. Duration errors can shift rather than eliminate alignment failures.
+**Explicit duration prediction enables parallel acoustic generation and reduces skipping and repetition failures.** The evidence is strong. Examples include [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2106.15561|A Survey on Neural Speech Synthesis]]. Duration errors can shift rather than eliminate alignment failures.
 
 **Forced-alignment durations can be more accurate than durations extracted from autoregressive teacher attention.** This is emerging within the reviewed graph; representative evidence includes [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]]. This advantage depends on aligner quality and language resources.
 

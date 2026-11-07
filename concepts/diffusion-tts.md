@@ -2,7 +2,7 @@
 slug: diffusion-tts
 aliases: [diffusion speech synthesis, score-based TTS, latent diffusion TTS]
 status: established
-last_reviewed: 2026-10-31
+last_reviewed: 2026-11-07
 concept: diffusion-tts
 render_type: overview
 title: "Diffusion Text-to-Speech"
@@ -10,14 +10,14 @@ source_digest_date: 2026-10-31
 paper_count: 58
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -25,17 +25,17 @@ generation:
 
 ## Current State
 
-**Iterative diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks.** This is strongly supported within the reviewed graph; representative evidence includes [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]]. Comparisons span different datasets, vocoders, and sampling budgets, so quality gains are not attributable to the diffusion objective alone.
+**Iterative diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks.** The evidence is strong. Examples include [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]]. Comparisons span different datasets, vocoders, and sampling budgets, so quality gains are not attributable to the diffusion objective alone.
 
-**Iterative denoising remains a central latency and compute bottleneck for diffusion speech synthesis.** This is strongly supported within the reviewed graph; representative evidence includes [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2105.06337|Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech]]. Reported speed depends on solver, hardware, target length, and whether encoder and vocoder costs are included.
+**Iterative denoising remains a central latency and compute bottleneck for diffusion speech synthesis.** The evidence is strong. Examples include [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2105.06337|Grad-TTS: A Diffusion Probabilistic Model for Text-to-Speech]]. Reported speed depends on solver, hardware, target length, and whether encoder and vocoder costs are included.
 
-**Distillation, caching, and progressive calibration can reduce diffusion-TTS inference steps while retaining useful quality.** This is strongly supported within the reviewed graph; representative evidence includes [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]], [[2406.02430|Seed-TTS: A Family of High-Quality Versatile Speech Generation Models]]. Hard-case intelligibility, diversity, and speaker similarity can degrade before aggregate naturalness metrics expose the loss.
+**Distillation, caching, and progressive calibration can reduce diffusion-TTS inference steps while retaining useful quality.** The evidence is strong. Examples include [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]], [[2406.02430|Seed-TTS: A Family of High-Quality Versatile Speech Generation Models]]. Hard-case intelligibility, diversity, and speaker similarity can degrade before aggregate naturalness metrics expose the loss.
 
-**Compressed latent targets reduce diffusion generation complexity without necessarily sacrificing speech quality.** This is strongly supported within the reviewed graph; representative evidence includes [[2301.12503|AudioLDM: Text-to-Audio Generation with Latent Diffusion Models]], [[2304.09116|NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers]]. Benefits depend on the latent encoder; reconstruction loss and semantic predictability can become new bottlenecks.
+**Compressed latent targets reduce diffusion generation complexity without necessarily sacrificing speech quality.** The evidence is strong. Examples include [[2301.12503|AudioLDM: Text-to-Audio Generation with Latent Diffusion Models]], [[2304.09116|NaturalSpeech 2: Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers]]. Benefits depend on the latent encoder; reconstruction loss and semantic predictability can become new bottlenecks.
 
-**Guidance strength provides a direct but non-monotonic control over diffusion quality, fidelity, and conditioning adherence.** This is strongly supported within the reviewed graph; representative evidence includes [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2502.18924|MegaTTS 3: Sparse Alignment Enhanced Latent Diffusion Transformer for Zero-Shot Speech Synthesis]]. Guidance optima vary by condition type and evaluation metric, and classifier-free guidance increases per-step compute.
+**Guidance strength provides a direct but non-monotonic control over diffusion quality, fidelity, and conditioning adherence.** The evidence is strong. Examples include [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2502.18924|MegaTTS 3: Sparse Alignment Enhanced Latent Diffusion Transformer for Zero-Shot Speech Synthesis]]. Guidance optima vary by condition type and evaluation metric, and classifier-free guidance increases per-step compute.
 
-**Transformer backbones support scalable diffusion modeling of speech and long-range conditioning.** This is strongly supported within the reviewed graph; representative evidence includes [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]], [[2025.naacl-long.242|StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion]]. Scaling evidence is confounded by data volume and target representation, while transformer depth increases inference cost.
+**Transformer backbones support scalable diffusion modeling of speech and long-range conditioning.** The evidence is strong. Examples include [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]], [[2025.naacl-long.242|StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion]]. Scaling evidence is confounded by data volume and target representation, while transformer depth increases inference cost.
 
 ## Method Landscape
 

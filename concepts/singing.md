@@ -2,7 +2,7 @@
 slug: singing
 aliases: [singing voice synthesis, SVS, singing voice conversion, SVC, song synthesis]
 status: emerging
-last_reviewed: 2026-10-31
+last_reviewed: 2026-11-07
 concept: singing
 render_type: overview
 title: "Singing Voice Synthesis and Conversion"
@@ -10,14 +10,14 @@ source_digest_date: 2026-10-31
 paper_count: 21
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]

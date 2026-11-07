@@ -6,172 +6,159 @@ source_digest_date: 2026-09-20
 paper_count: 346
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
-This page explains what the reviewed evaluation literature collectively supports. For the short
-state-of-the-art view, see [[concepts/evaluation-metrics|Evaluation Metrics]]. Citations are
-representative; the complete paper-to-claim graph remains in
-`wiki/_claims/evaluation-metrics.yaml`.
+This page explains what the reviewed evaluation research supports. For the short version, see
+[[concepts/evaluation-metrics|Evaluation Metrics]]. The citations are representative. The complete
+paper-to-claim graph is in `wiki/_claims/evaluation-metrics.yaml`.
 
 ## Findings at a Glance
 
-- No single metric captures overall speech-generation quality; useful evaluation is necessarily
-  multidimensional.
-- WER and CER are convenient content proxies but do not reliably measure perceived intelligibility.
-- Speaker-verification embeddings do not fully track perceived identity and can produce
-  counterintuitive rankings.
-- Automatic MOS predictors and reference-based distortion metrics become unreliable under domain
-  shift, at finer granularity, and near the quality ceiling.
-- LLM/audio-LM judges are useful for structured semantic or rubric-based evaluation but remain
-  unreliable for fine prosody and non-verbal audio.
-- Clean, in-domain benchmarks understate failures that emerge in realistic acoustic and
-  conversational conditions.
-- Codec reconstruction quality does not predict semantic retention or downstream generation
-  quality.
-- Modern subjective protocols are becoming less discriminative, but proposed replacements are not
-  yet standardized.
-- Fairness, clinical suitability, full-duplex timing, and multi-turn behavior require dedicated
-  evaluation rather than another aggregate quality score.
-- Optimizing a single measured property can degrade diversity or another unmeasured perceptual
-  dimension.
-- Watermark robustness, demographic fairness, accent, and clinical or assistive speech each need
-  population- and transformation-specific validation.
-- Spoken systems still trail comparable text LMs on semantic coherence, so audio quality alone can
-  hide a reasoning and dialogue-state gap.
+- No single metric measures overall speech-generation quality. Useful evaluation needs several
+  dimensions.
+- WER and CER are useful content checks, but they do not reliably measure human intelligibility.
+- Speaker-verification embeddings do not fully represent perceived identity.
+- Automatic MOS predictors and reference-based distortion metrics lose reliability under domain
+  shift, at fine granularity, and near the quality ceiling.
+- LLM and audio-LM judges help with structured semantic or rubric-based tests. They remain weak on
+  fine prosody and non-verbal audio.
+- Clean, in-domain benchmarks hide failures that appear in realistic conditions.
+- Codec reconstruction quality does not predict semantic retention or downstream generation.
+- Standard listening tests are becoming less able to separate high-quality systems. Proposed
+  replacements are not yet standard.
+- Fairness, clinical suitability, full-duplex timing, and multi-turn behavior need dedicated tests.
+- Improving one measured property can reduce diversity or another unmeasured quality.
+- Watermarking, accent, demographic fairness, and assistive speech need tests designed for their
+  target populations and conditions.
+- Spoken systems can sound natural while still trailing similar text models in reasoning and
+  dialogue state.
 
 ## Scope
 
-The claim graph contains 346 papers through Q4 2025, making this the broadest integrated concept in
-the current wiki. It spans TTS, voice conversion, neural codecs, vocoders, spoken conversational
-agents, full-duplex systems, clinical and accessibility applications, watermarking, and
-low-resource language evaluation.
+The graph contains 346 papers through Q4 2025. It is the largest integrated concept in the wiki.
+It covers TTS, voice conversion, neural codecs, vocoders, spoken agents, full-duplex systems,
+clinical and accessibility applications, watermarking, and low-resource languages.
 
-Most papers are not metric papers in the narrow sense. Many are system papers whose experiments
-expose an evaluation failure: a metric reverses a human ranking, an apparently strong reconstruction
-score fails downstream, or a benchmark misses a capability that matters in deployment. The method
-families therefore group papers by evaluation dimension rather than architecture.
+Most entries are not metric papers. Many are system papers whose experiments expose a test
+failure. A metric can reverse a human ranking. A strong reconstruction score can fail to predict
+downstream use. A benchmark can miss a capability that matters in deployment. The method families
+therefore group papers by evaluation purpose, not by model architecture.
 
-This breadth supports cross-task conclusions but prevents a single quantitative meta-analysis.
-Metrics, datasets, listening protocols, and target populations differ substantially. Survey entries
-support taxonomy, while primary studies provide the direct evidence. Large umbrella families such
-as objective-metric divergence and WER-based evaluation are evidence that the same caution recurs
-across unrelated systems, not one unified experimental program.
+The breadth supports conclusions across tasks, but it prevents one numerical meta-analysis.
+Metrics, datasets, listening tests, and target populations differ too much. Surveys support the
+taxonomy. Primary studies provide direct evidence. Large families such as objective-metric
+divergence show that the same warning occurs across unrelated systems; they are not one unified
+experiment.
 
 ## Research Landscape
 
-Speech evaluation can be understood as five interacting layers.
+Speech evaluation has five connected layers.
 
-**Human perceptual and interaction studies** remain the closest measure of how speech is heard and
-used. MOS, CMOS, MUSHRA, preference tests, deception tests, and interactive protocols answer
-different questions; their results depend on listener population, anchors, prompts, and test
-design.
+**Human listening and interaction tests** measure how people hear and use speech. MOS, CMOS,
+MUSHRA, preference tests, deception tests, and interactive tests answer different questions. Their
+results depend on listener populations, anchors, prompts, and test design.
 
-**Task-derived proxies** use another model to infer a target property: ASR errors for content,
-speaker-verification embeddings for identity, emotion classifiers for affect, or VAD for timing.
-They scale well but inherit the proxy model's biases and blind spots.
+**Task proxies** use another model to estimate a target property. Examples include ASR errors for
+content, speaker embeddings for identity, emotion classifiers for affect, and VAD for timing. They
+scale well, but inherit the proxy model's bias and blind spots.
 
-**Signal and perceptual metrics** such as PESQ, STOI, MCD, and spectral distances compare generated
-and reference audio or estimate distortion. They are useful diagnostics under controlled
-conditions, but they do not define holistic quality.
+**Signal and perceptual metrics** include PESQ, STOI, MCD, and spectral distances. They compare
+generated and reference audio or estimate distortion. They are useful in controlled conditions,
+but they do not define overall quality.
 
-**Learned evaluators** include SSL-based quality predictors and LLM/audio-LM judges. They can learn
-broader patterns than hand-designed metrics, yet their validity depends on training domain,
-granularity, prompting, and whether the target information is available to the model.
+**Learned evaluators** include SSL-based quality predictors and LLM or audio-LM judges. They can
+learn broader patterns than hand-designed metrics. Their validity still depends on training data,
+test granularity, prompting, and access to the information being judged.
 
-**Capability-specific benchmark suites** evaluate what generic quality scores omit: multi-turn
-memory, full-duplex overlap, paralinguistic reasoning, fairness, codec behavior under noise,
-pronunciation, clinical suitability, and provenance attacks. This is the fastest-growing part of
-the landscape.
+**Capability-specific benchmarks** measure what generic scores miss. Examples include multi-turn
+memory, overlap and interruption behavior, paralinguistic reasoning, fairness, codec performance
+under noise, pronunciation, clinical suitability, and watermark attacks. This is the fastest-
+growing part of the landscape.
 
 ## What the Research Shows
 
 ### Content intelligibility
 
-**Current assessment:** ASR-derived error rates are valuable content diagnostics but are
-insufficient as standalone measures of how intelligible speech is to people.
+**Current assessment:** ASR error rates are useful content checks, but they are not sufficient
+measures of human intelligibility.
 
-The finding recurs across autoregressive codec TTS, codec benchmarking, accent and pronunciation
-evaluation, prosody modeling, and second-language listener studies. [[2403.16973|VoiceCraft]]
-provides a particularly clear warning: synthesized speech can obtain lower ASR error than ground
-truth while receiving worse human intelligibility judgments. [[interspeech-2025-0984|SITool]]
-likewise motivates perceptually grounded codec intelligibility tests rather than relying only on
-recognizer output.
+This result appears in autoregressive codec TTS, codec benchmarks, accent and pronunciation tests,
+prosody research, and second-language listener studies. [[2403.16973|VoiceCraft]] gives a clear
+example: synthetic speech can have lower ASR error than ground truth but worse human
+intelligibility. [[interspeech-2025-0984|SITool]] also motivates perceptual codec tests instead of
+relying only on recognizer output.
 
-The problem is not that WER is meaningless. It measures whether a particular recognizer recovers
-the expected transcript under its own training biases. That is often relevant to downstream
-machine consumption. It is not equivalent to ease of understanding for listeners, robustness
-across accents, or preservation of clinically relevant speech characteristics.
+WER is not meaningless. It measures whether one recognizer recovers the expected text under its
+own training conditions. That can matter for machine use. It does not measure ease of listening,
+robustness across accents, or preservation of clinically important speech features.
 
 **Most informative evidence:** [[2403.16973|VoiceCraft]],
 [[interspeech-2025-0984|SITool]], [[2508.12001|FNH-TTS]].
 
 **What remains unresolved:** how to combine human intelligibility, recognizer performance, and
-listener-population effects in a protocol that remains affordable at benchmark scale.
+listener-population effects in an affordable benchmark.
 
 ### Speaker identity
 
-**Current assessment:** embedding cosine similarity and EER-based verification do not reliably
-represent perceived speaker identity across synthesis, conversion, anonymization, and
-accessibility settings.
+**Current assessment:** embedding similarity and EER-based verification do not reliably measure
+perceived identity across synthesis, conversion, anonymization, and accessibility settings.
 
-The reviewed evidence includes cases where automatic similarity ranks synthetic speech above the
-ground-truth reference and where systems with similar embedding scores differ perceptually.
-[[2406.18009|E2 TTS]] and [[2025.naacl-long.242|StyleTTS-ZS]] contribute to a broader pattern also
-seen in voice conversion and anonymization: embeddings emphasize the traits useful to the
-verification model, not necessarily the full identity listeners perceive.
+Some automatic metrics rank synthetic speech above the reference. Other systems receive similar
+embedding scores but sound different to listeners. [[2406.18009|E2 TTS]] and
+[[2025.naacl-long.242|StyleTTS-ZS]] are part of a pattern also seen in voice conversion and
+anonymization. The embeddings focus on traits useful to the verification model, not every identity
+cue that listeners use.
 
-This matters most when style, accent, age, pathology, or background sound interacts with identity.
-An assistive voice can be close in timbre yet feel unsuitable to its user; an anonymized voice can
-move in embedding space without eliminating every identity cue. The appropriate response is to
-pair automatic similarity with human identity or suitability judgments designed for the use case.
+The gap matters when style, accent, age, pathology, or background sound interacts with identity.
+An assistive voice can match timbre but still feel unsuitable to its user. An anonymized voice can
+move in embedding space while keeping some identity cues. Pair automatic similarity with human
+identity or suitability tests for the target use.
 
 **Most informative evidence:** [[2406.18009|E2 TTS]],
 [[2025.naacl-long.242|StyleTTS-ZS]], [[interspeech-2025-1726]].
 
 ### Automatic quality prediction
 
-**Current assessment:** SSL representations provide an effective, data-efficient foundation for
-automatic quality prediction, but predictor validity does not transfer automatically across
-languages, domains, systems, or evaluation granularity.
+**Current assessment:** SSL representations support useful and data-efficient quality predictors,
+but validity does not transfer automatically across languages, domains, systems, or levels of
+detail.
 
-[[2204.02152|UTMOS]] established the most mature learned-quality lineage in the graph. Later work
-improves it with listener modeling, pairwise or contrastive ranking, mixture-of-experts designs, and
-reward-shaped objectives. This supports learned predictors as useful infrastructure.
+[[2204.02152|UTMOS]] established the most mature learned-quality family in the graph. Later work
+adds listener models, pairwise or contrastive ranking, mixture-of-experts designs, and reward-
+shaped objectives. This makes learned predictors useful infrastructure.
 
-The same literature also establishes their limits. A predictor can correlate well with average
-system MOS while performing poorly on individual utterances ([[2507.06116]]). Models trained on
-one language or conventional TTS can fail on other languages, non-standard generation paradigms,
-or out-of-domain content. Near the quality ceiling, small predicted differences may reverse human
-rankings ([[2508.00317]]).
+The same research shows their limits. A predictor can correlate with average system MOS but fail
+on individual utterances ([[2507.06116]]). A model trained on one language or conventional TTS can
+fail on other languages, new generation methods, or out-of-domain content. Near the quality
+ceiling, small predicted differences can reverse human rankings ([[2508.00317]]).
 
-The practical distinction is between *calibrated use* and *universal substitution*. A predictor
-validated on the target domain and granularity can support iteration and screening. It should not
-be treated as human MOS merely because its output has a MOS-like scale.
+Use a predictor after validation on the target domain and granularity. Do not treat a MOS-like
+output as human MOS without that validation.
 
 **Most informative evidence:** [[2204.02152|UTMOS]], [[2508.00317]],
 [[2507.06116]], [[2509.20485]].
 
 ### Reference-based metrics
 
-**Current assessment:** PESQ, STOI, MCD, and related intrusive metrics provide diagnostic
-information but can disagree with subjective quality and with one another across vocoders, codecs,
-and sampling conditions.
+**Current assessment:** PESQ, STOI, MCD, and related metrics provide useful diagnostics. They can
+still disagree with listeners and with one another across vocoders, codecs, and sampling
+conditions.
 
-The clearest reversals occur when architectures produce different error structures. A system may
-have more sample-level distortion but smoother or more natural perceptual structure. Codec and
-vocoder comparisons show that changing sampling rate, reference alignment, or representation can
-alter a metric ranking without producing an equivalent listener preference.
+The clearest reversals occur when architectures produce different types of error. A system can
+have more sample-level distortion but smoother or more natural perceptual structure. Sampling
+rate, reference alignment, and representation can change a metric ranking without changing
+listener preference in the same way.
 
-These metrics remain useful when the distortion they measure corresponds to the research question.
-The failure comes from turning one controlled diagnostic into an overall quality label.
+These metrics remain useful when their measured distortion matches the research question. The
+problem begins when one controlled diagnostic becomes an overall quality label.
 
 **Most informative evidence:** [[2507.01611]], [[2305.02765]],
 [[iclr-2025-uxDFlPGRLX|FlowDec]], [[interspeech-2025-0984|SITool]].
@@ -179,217 +166,203 @@ The failure comes from turning one controlled diagnostic into an overall quality
 ### Learned judges
 
 > [!warning]
-> **Capability-scoped:** learned judges can approximate human evaluation for structured semantic
-> tasks, but they remain unreliable for fine-grained prosody and non-verbal or raw-waveform cues.
+> **Capability-scoped:** learned judges can match people on some structured semantic tasks. They
+> remain unreliable for fine prosody and non-verbal or raw-waveform cues.
 
-Their strongest uses include instruction following, style adherence, broad dialogue quality, and
-checklist-based rubrics.
+The strongest uses are instruction following, style adherence, broad dialogue quality, and
+checklist rubrics. [[2506.16381|InstructTTSEval]] uses structured instruction judgments.
+[[2508.02013|SpeechRole]] and [[2506.21875|WildSpeech-Bench]] show that careful rubrics can support
+useful model-based evaluation. Repeated scoring and checklist decomposition can improve stability.
 
-The positive evidence is operationally important. [[2506.16381|InstructTTSEval]] uses structured
-instruction-following judgments, while [[2508.02013|SpeechRole]] and
-[[2506.21875|WildSpeech-Bench]] show that rubric design can make broad model-based evaluation
-useful. Repeated scoring and checklist decomposition can improve stability.
+The negative evidence is direct. [[2509.19928]] shows weak judgment of fine prosodic diversity.
+[[2508.18240|MTalk-Bench]] shows weaknesses on paralinguistic and non-verbal dimensions. These
+results do not reject learned judges in general. They identify properties for which the judge
+lacks access, resolution, or calibration.
 
-The negative evidence is equally direct. [[2509.19928]] finds that judge-based evaluation does not
-adequately capture fine prosodic diversity, and [[2508.18240|MTalk-Bench]] exposes weaknesses on
-paralinguistic and non-verbal dimensions. These are not blanket refutations: they identify
-capabilities for which the judge lacks access, resolution, or calibration.
+Use model judges for structured and reproducible questions. Validate each rubric against people.
+Keep human tests for dimensions carried in the waveform rather than the transcript.
 
-The appropriate design is hierarchical. Use model judges for structured, reproducible questions;
-validate each rubric against people; and retain human evaluation for dimensions whose evidence is
-carried in the waveform rather than its transcript.
-
-**What remains unresolved:** whether audio-native judges with better temporal and perceptual
-training can close this gap, or whether fine human judgment remains an irreducible requirement.
+**What remains unresolved:** whether better audio-native training can close the gap, or whether
+fine human judgment remains necessary.
 
 ### Robustness under domain shift
 
-**Current assessment:** evaluation restricted to studio-quality, neutral, in-domain speech
-systematically understates failures under noise, reverberation, spontaneous content, unfamiliar
-speakers, and wild recording conditions.
+**Current assessment:** clean, neutral, in-domain tests understate failures under noise,
+reverberation, spontaneous content, unfamiliar speakers, and wild recordings.
 
-This pattern appears across voice cloning, intelligibility, binaural synthesis, expressive speech,
-and spoken instruction following. [[2403.16973|VoiceCraft]] shows a gap between audiobook-style and
-wild content, while [[2506.21875|WildSpeech-Bench]] demonstrates that speech-to-text benchmark
-performance does not predict speech-to-speech behavior in realistic interactions.
+The pattern appears in voice cloning, intelligibility, binaural synthesis, expressive speech, and
+spoken instruction following. [[2403.16973|VoiceCraft]] shows a gap between audiobook-style and
+wild content. [[2506.21875|WildSpeech-Bench]] shows that speech-to-text benchmark performance does
+not predict speech-to-speech behavior in realistic interactions.
 
-Robust evaluation therefore needs condition axes, not one “test set”: clean versus noisy,
-in-domain versus shifted, read versus spontaneous, short versus long, and single-turn versus
-multi-turn. Aggregate averages should not hide the worst condition that matters in deployment.
+Robust tests need separate conditions: clean and noisy, in-domain and shifted, read and
+spontaneous, short and long, single-turn and multi-turn. An average must not hide the worst
+condition that matters in deployment.
 
 ### Codec evaluation
 
-**Current assessment:** acoustic reconstruction, semantic retention, and downstream generative
-utility are partly orthogonal; no codec metric reliably predicts all three.
+**Current assessment:** acoustic reconstruction, semantic retention, and downstream generation are
+partly independent. No codec metric predicts all three.
 
-[[2508.20660|CodecBench]] shows that codecs preserving semantic content can sacrifice
-paralinguistic detail. [[2025.naacl-srw.6]] and [[2506.10274]] show that stronger reconstruction
-does not necessarily yield better tokens for a downstream language model; adding codebooks can
-improve reconstruction while increasing redundancy and degrading generative performance.
+[[2508.20660|CodecBench]] shows that semantic preservation can come at the cost of paralinguistic
+detail. [[2025.naacl-srw.6]] and [[2506.10274]] show that better reconstruction does not always
+produce better language-model tokens. More codebooks can improve reconstruction while adding
+redundancy and reducing generative performance.
 
-Noise and reverberation add a fourth axis. [[interspeech-2025-0355]] finds non-linear codec behavior
-that helps explain why rankings from clean reconstruction do not transfer to mixed or degraded
-inputs. A codec intended for generation should therefore be evaluated through the downstream model,
-not only through resynthesis.
-
-**Most informative evidence:** [[2508.20660|CodecBench]], [[2025.naacl-srw.6]],
-[[2506.10274]], [[interspeech-2025-0355]].
+Noise and reverberation add another dimension. [[interspeech-2025-0355]] shows non-linear codec
+behavior that helps explain why clean rankings do not transfer to degraded input. Test a codec
+through the downstream generator when generation is the intended use.
 
 ### Subjective-test saturation
 
-**Current assessment:** MOS, CMOS, and MUSHRA remain essential, but conventional protocols can
-struggle to separate high-quality modern systems or detect when synthetic output approaches the
-reference.
+**Current assessment:** MOS, CMOS, and MUSHRA remain essential, but standard protocols can struggle
+to separate modern high-quality systems.
 
-The issue is partly statistical and partly conceptual. Small scale differences become difficult to
-interpret near the ceiling, and reference-matching tests may not ask whether speech sounds
-genuinely human. [[interspeech-2025-0854]] shows a ranking-by-elimination protocol detecting a
-preference that a MUSHRA-style setup misses. [[interspeech-2025-2765]] proposes human-fooling or
-deception rate as a more direct test of human likeness.
+The problem is statistical and conceptual. Small scale differences are hard to interpret near the
+ceiling. Reference-matching tests also do not always ask whether speech sounds human.
+[[interspeech-2025-0854]] shows a ranking-by-elimination test finding a preference that a MUSHRA-
+style setup misses. [[interspeech-2025-2765]] proposes deception rate as a direct test of human
+likeness.
 
-Deception testing is currently a single-paper emerging direction, not a replacement standard. It
-also answers a narrower question than naturalness or usability. The more general conclusion is
-that subjective protocols must specify the construct they intend to measure and evolve as systems
-approach their anchors.
+Deception testing is a single-paper emerging direction, not a replacement standard. It also
+answers a narrower question than naturalness or usability. Subjective tests must state what they
+measure and adapt as systems approach their anchors.
 
 ### Social and interaction-specific evaluation
 
-**Current assessment:** aggregate quality and accuracy mask failures tied to demographic groups,
-clinical speech, conversational context, and timing behavior.
+**Current assessment:** aggregate scores hide failures tied to demographic groups, clinical
+speech, conversational context, and timing.
 
-Fairness studies find that rankings can change across tasks and that single-turn tests understate
-multi-turn bias ([[2509.12171]], [[2510.02352]]). Clinical and assistive applications show that
-metrics calibrated on typical speech can misjudge dysarthric or neuroprosthetic speech; a system may
-“normalize” diagnostic or identity-bearing features rather than preserve them.
+Fairness rankings can change across tasks. Single-turn tests can understate multi-turn bias
+([[2509.12171]], [[2510.02352]]). Metrics trained on typical speech can misjudge dysarthric or
+neuroprosthetic speech. A system can remove diagnostic or identity-bearing features while trying
+to “normalize” the output.
 
-Full-duplex evaluation reveals a different omission. Latency alone cannot distinguish a system that
-responds quickly from one that yields incorrectly to background speech or takes over during a
-pause. [[2507.23159|Full-Duplex-Bench v1.5]] and [[2509.22243|FLEXI]] motivate separate measures for
-interruption response, false yielding, jump-in, floor holding, and backchannel timing.
+Full-duplex tests expose a different problem. Latency alone cannot distinguish fast response from
+incorrect yielding or premature takeover. [[2507.23159|Full-Duplex-Bench v1.5]] and
+[[2509.22243|FLEXI]] use separate measures for interruption response, false yielding, jump-in,
+floor holding, and backchannel timing.
 
-These specialized protocols should not be bolted on after a generic scorecard. They define what
-success means for the application.
+These protocols define success for the application. They are not optional additions to a generic
+scorecard.
 
 ### Metric optimization
 
-**Current assessment:** optimizing intelligibility, duration accuracy, or accelerated sampling can
-reduce prosodic diversity or another unmeasured property.
+**Current assessment:** optimizing intelligibility, duration accuracy, or sampling speed can reduce
+prosodic diversity or another unmeasured property.
 
-The pattern appears in preference optimization, flow-matching distillation, and explicit duration
-modeling. [[2507.14988|DMOSpeech 2]] and [[2509.19928]] both show that improvements to a targeted
-metric can narrow output variation; teacher-guided or hybrid sampling partially recovers it.
+This pattern appears in preference optimization, flow-matching distillation, and explicit duration
+modeling. [[2507.14988|DMOSpeech 2]] and [[2509.19928]] show that gains on a target metric can
+narrow output variation. Teacher-guided or hybrid sampling can recover some of it.
 
-This makes evaluation part of the training objective, not merely a reporting choice. If the metric
-suite excludes diversity, the optimizer has no reason to preserve it. Held-out human measures and
-untargeted diagnostic dimensions are therefore essential when a system is trained directly against
-automatic rewards.
+Evaluation is therefore part of the training objective. If the test suite excludes diversity, the
+optimizer has no reason to preserve it. Use held-out human measures and untargeted diagnostics when
+training directly against automatic rewards.
 
 ### Q4 broadens consequential evaluation
 
-**Current assessment:** fairness, accessibility, provenance, and spoken reasoning require dedicated
-protocols because aggregate quality scores systematically hide their most consequential failures.
+**Current assessment:** fairness, accessibility, provenance, and spoken reasoning need dedicated
+tests because aggregate quality scores hide their most important failures.
 
-Demographic evaluation must stratify speakers, tasks, languages, and turns rather than report one
-average. [[2509.12171|Preservation of Language Understanding Capabilities in Speech-aware Large
-Language Models]] shows that adding speech can change language understanding unevenly, while
-[[2510.02352]] treats bias as a multi-turn spoken-system property. Clinical and assistive settings
-add a different scope boundary: speaker embeddings and quality predictors calibrated on typical
-speech may not represent suitability for a target user, as illustrated by
-[[interspeech-2025-1726|Voice Reconstruction through Large-Scale TTS Models]].
+Demographic tests must separate speakers, tasks, languages, and turns. [[2509.12171|Preservation
+of Language Understanding Capabilities in Speech-aware Large Language Models]] shows that adding
+speech can change language understanding unevenly. [[2510.02352]] treats bias as a multi-turn
+property. Clinical and assistive settings add another boundary: typical-speech metrics may not
+measure suitability for a target user ([[interspeech-2025-1726|Voice Reconstruction through
+Large-Scale TTS Models]]).
 
-Provenance metrics likewise need realistic transformations. [[interspeech-2025-2328|A Watermark
-for Auto-Regressive Speech Generation Models]] and related work show detection degradation after
-re-encoding, time stretching, pitch shift, or reverberation. Passing basic additive-noise tests is
-not evidence of robust provenance in distribution channels.
+Provenance tests need realistic transformations. [[interspeech-2025-2328|A Watermark for Auto-
+Regressive Speech Generation Models]] shows weaker detection after re-encoding, time stretching,
+pitch shift, or reverberation. Passing a basic additive-noise test does not prove robust
+provenance.
 
-Finally, spoken-agent evaluation must keep semantic competence visible. Systems can sound natural
-while lagging same-scale text models in reasoning, dialogue state, or instruction following;
-[[2412.15649|SLAM-Omni]] is part of this comparison surface. The evaluation suite therefore needs
-content and state measures alongside voice, latency, and interaction quality.
+Spoken-agent tests must also keep semantic ability visible. A system can sound natural while
+trailing a similar text model in reasoning, dialogue state, or instruction following.
+[[2412.15649|SLAM-Omni]] is part of this comparison. Evaluation needs content and state measures
+alongside voice, latency, and interaction quality.
 
 ## Where Findings Disagree
 
 ### Learned and human judgment
 
-The apparent disagreement is resolved by scope. Studies supporting learned judges generally target
-semantic instructions, style labels, checklists, or large quality differences. Negative studies
-target fine prosody, non-verbal cues, and near-tied systems. The current evidence supports learned
-judges as validated components of an evaluation suite, not universal human substitutes.
+The disagreement is mainly about scope. Positive studies test semantic instructions, style labels,
+checklists, or large quality differences. Negative studies test fine prosody, non-verbal cues, or
+near-tied systems. Learned judges can be validated parts of a test suite. They are not universal
+replacements for people.
 
 ### Codec reconstruction metrics
 
-No single side claims reconstruction is irrelevant. The disagreement concerns its role. Signal
-metrics are useful for resynthesis quality, while downstream studies show that a representation
-optimized for reconstruction can be worse for semantic or generative use. Codec evaluation must
-state which meaning of “quality” is intended.
+Reconstruction is not irrelevant. The disagreement concerns what it predicts. Signal metrics are
+useful for resynthesis. Downstream studies show that a representation optimized for reconstruction
+can be worse for semantic or generative use. A codec test must state which meaning of “quality” it
+targets.
 
-### Standardized or task-specific protocols
+### Standard or task-specific protocols
 
-Shared benchmarks improve comparability, but universal metrics repeatedly fail at specialized
-properties. The likely direction is a common core—content, quality, identity, robustness—combined
-with task modules for dialogue timing, emotion, fairness, clinical use, or codec downstream
-performance.
+Shared benchmarks improve comparison, but universal metrics fail on specialized properties. A
+likely design is a common core for content, quality, identity, and robustness, plus task modules
+for timing, emotion, fairness, clinical use, or downstream codec performance.
 
 ## How the Field Is Changing
 
-The older evaluation center of gravity was acoustic TTS quality: MOS, intelligibility proxies,
-speaker similarity, and signal distortion. Those measures remain important, but the 2025 corpus
-shows rapid expansion into spoken-agent diagnostics, full-duplex timing, multi-turn behavior,
-fairness, and paralinguistic reasoning.
+Earlier evaluation centered on acoustic TTS quality: MOS, intelligibility proxies, speaker
+similarity, and signal distortion. These measures remain important. The 2025 corpus adds spoken-
+agent diagnostics, full-duplex timing, multi-turn behavior, fairness, and paralinguistic reasoning.
 
-Learned evaluators are also changing the cost structure. SSL-based MOS predictors have become
-mature enough for routine screening, while LLM/audio-LM judges create a middle layer between narrow
-automatic metrics and full human studies. Their rise has been accompanied almost immediately by
-capability-specific validity studies, which is a healthy correction against assuming that language
-judgment transfers automatically to acoustic judgment.
+Learned evaluators also change the cost of testing. SSL-based MOS predictors support routine
+screening. LLM and audio-LM judges form a middle layer between narrow metrics and full human
+studies. Capability-specific validity research appeared almost immediately, which limits the risk
+of assuming that language judgment transfers to acoustic judgment.
 
-The field is moving from asking “Which system has the highest score?” toward “Which dimensions
-does this protocol actually observe?” That shift is most visible in codec co-design, wild
-benchmarks, multi-turn evaluation, and tests built around concrete interaction failures.
+The field is moving from “Which system has the highest score?” to “Which properties does this test
+actually observe?” This shift is visible in codec co-design, wild benchmarks, multi-turn tests,
+and protocols built around concrete interaction failures.
 
-Q4 reinforces this modular direction. Full-duplex tests separate stop latency from false yielding;
-fairness and clinical protocols identify the population for which a score is valid; provenance
-tests enumerate transformations; and optimization studies explicitly monitor diversity lost while
-improving a target reward. The common core remains useful, but validity increasingly comes from the
-task-specific module.
+It also changes how results should be reported. A compact scorecard can keep each number attached
+to the property it measures, show uncertainty or group-level variation, and expose hidden
+trade-offs. The aim is not a longer results table. It is a clearer argument from evidence to
+claim.
+
+Q4 strengthens this modular direction. Full-duplex tests separate stop latency from false
+yielding. Fairness and clinical tests name the population for which a score is valid. Provenance
+tests list transformations. Optimization studies monitor diversity lost while a target reward
+improves.
 
 ## Implications
 
-- **Define the construct before choosing the metric.** Naturalness, intelligibility, identity,
-  prosody, diversity, robustness, and usefulness are not interchangeable.
-- **Use a compact, justified suite.** More columns do not guarantee better evaluation; each metric
-  should have a clear interpretive role.
+- **Define the target before choosing the metric.** Naturalness, intelligibility, identity,
+  prosody, diversity, robustness, and usefulness are different properties.
+- **Use a small, justified set of metrics.** More columns do not guarantee a better test.
 - **Validate proxies on the target domain and granularity.** System-level correlation on English
-  read speech does not establish utterance-level validity elsewhere.
-- **Include the downstream system when evaluating representations.** Codec reconstruction alone is
-  insufficient for generative-token selection.
-- **Reserve human evaluation for decisions that are perceptual, consequential, or close.** Use
-  automatic methods for scale and diagnosis, not as unqualified ground truth.
-- **Report condition-wise results.** Clean averages should not conceal noise, domain, demographic,
-  clinical, or multi-turn failures.
-- **Evaluate untargeted dimensions during optimization.** This is the most direct defense against
-  reward hacking and diversity collapse.
+  read speech does not prove utterance-level validity elsewhere.
+- **Include the downstream system when testing representations.** Reconstruction alone is not
+  enough for generative-token selection.
+- **Use people for perceptual, consequential, or close decisions.** Use automatic methods for
+  scale and diagnosis, not as unqualified ground truth.
+- **Report results for each important condition.** A clean average must not hide noise, domain,
+  demographic, clinical, or multi-turn failures.
+- **Test untargeted properties during optimization.** This helps detect reward hacking and loss of
+  diversity.
 
 ## Representative Reading Path
 
-1. [[2204.02152|UTMOS]] — the foundational SSL-based automatic MOS predictor.
-2. [[2403.16973|VoiceCraft]] — a clear example of WER diverging from human intelligibility.
-3. [[2508.00317]] — a broad view of current speech-quality-assessment challenges.
-4. [[2508.20660|CodecBench]] — why codec evaluation must separate acoustic and semantic quality.
-5. [[2506.21875|WildSpeech-Bench]] — why conventional speech benchmarks miss wild behavior.
-6. [[2508.18240|MTalk-Bench]] — multi-turn, paralinguistic, and judge-validity evidence.
-7. [[2507.23159|Full-Duplex-Bench v1.5]] — interaction evaluation beyond latency.
-8. [[2510.02352]] — why fairness evaluation must be task- and turn-specific.
-9. [[interspeech-2025-2328|A Watermark for Auto-Regressive Speech Generation Models]] — why
-   provenance evaluation must include realistic transformations.
+1. **Start with learned quality prediction.** Read [[2204.02152|UTMOS]].
+2. **See a proxy fail.** Read [[2403.16973|VoiceCraft]] for WER versus human intelligibility.
+3. **Survey the evaluation problem.** Read [[2508.00317]].
+4. **Separate codec quality dimensions.** Read [[2508.20660|CodecBench]].
+5. **Move to realistic conditions.** Read [[2506.21875|WildSpeech-Bench]].
+6. **Test multi-turn and non-verbal behavior.** Read [[2508.18240|MTalk-Bench]].
+7. **Measure interaction, not only latency.** Read [[2507.23159|Full-Duplex-Bench v1.5]].
+8. **Study task-specific fairness.** Read [[2510.02352]].
+9. **Test provenance under realistic changes.** Read
+   [[interspeech-2025-2328|A Watermark for Auto-Regressive Speech Generation Models]].
 
 ## Structured Source
 
-This page selects and groups findings for human readability. The complete claim graph—including all
-346 paper entries, roles, source sections, caveats, method-family memberships, and reassessment
-state—is available in `wiki/_claims/evaluation-metrics.yaml`.
+This page selects and groups findings for readability. The complete graph contains all 346 paper
+entries, evidence roles, source sections, caveats, method families, and reassessment state. It is
+available in `wiki/_claims/evaluation-metrics.yaml`.
 
 ---
 
-_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-09-20).
-Citations are selected for human readability; complete provenance remains in the source YAML._
+_This page is generated from `wiki/_claims/evaluation-metrics.yaml` (digest date: 2026-09-20). For complete structured claims and paper-level provenance, use the source YAML._

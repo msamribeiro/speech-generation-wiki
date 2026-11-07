@@ -2,11 +2,11 @@
 title: "Reports"
 ---
 
-Each report covers one quarter. It uses a saved copy of the evidence. Later wiki updates do not
-change the report.
+Each report covers one quarter and uses a saved copy of the evidence. Later wiki updates do not
+change it.
 
-The Papers column shows papers from the quarter first. The second number is the total included by
-the end date.
+In the Papers column, the first number is new papers from that quarter. The second is the total
+included by the end of the quarter.
 
 | Report | Dates | Papers (quarter / total) | Updated |
 |---|---|---:|---|

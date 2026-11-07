@@ -5,19 +5,19 @@ render_type: overview
 title: Neural Audio Codecs
 aliases: [neural speech codec, speech tokenizer, audio tokenizer, codec tokens]
 status: mature-infrastructure
-last_reviewed: 2026-10-31
+last_reviewed: 2026-11-07
 source_digest_date: 2026-10-31
 paper_count: 240
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]

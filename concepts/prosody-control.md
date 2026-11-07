@@ -2,7 +2,7 @@
 slug: prosody-control
 aliases: [expressive prosody control, pitch and duration control, style transfer]
 status: established
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 concept: prosody-control
 render_type: overview
 title: "Prosody Control"
@@ -10,14 +10,14 @@ source_digest_date: 2026-09-26
 paper_count: 115
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
@@ -25,15 +25,15 @@ generation:
 
 ## Current State
 
-**Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic control and reduces variation left unresolved by text alone.** Within the reviewed corpus, representative evidence includes [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2104.00355|Speech Resynthesis from Discrete Disentangled Self-Supervised Representations]], [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. Evidence spans different acoustic backbones and attribute subsets; improvements in one variable do not guarantee joint control.
+**Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic control and reduces variation left unresolved by text alone.** Examples from the reviewed papers include [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2104.00355|Speech Resynthesis from Discrete Disentangled Self-Supervised Representations]], [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. Evidence spans different acoustic backbones and attribute subsets; improvements in one variable do not guarantee joint control.
 
-**Stochastic prosody models preserve one-to-many variation better than deterministic regression while maintaining competitive synthesis quality.** Within the reviewed corpus, representative evidence includes [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2025.coling-main.518|ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models]], [[2025.acl-long.346|ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control]]. Reported gains use different latent spaces, inference budgets, and diversity metrics.
+**Stochastic prosody models preserve one-to-many variation better than deterministic regression while maintaining competitive synthesis quality.** Examples from the reviewed papers include [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2025.coling-main.518|ProsodyFlow: High-fidelity Text-to-Speech through Conditional Flow Matching and Prosody Modeling with Large Speech Language Models]], [[2025.acl-long.346|ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control]]. Reported gains use different latent spaces, inference budgets, and diversity metrics.
 
 **Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker similarity beyond a task-dependent operating range.** As an emerging or contested finding, representative evidence includes [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. The location of the operating point depends on representation, sampling scale, and evaluation protocol.
 
-**Separating prosody from linguistic content and speaker timbre enables more independent transfer and manipulation of speaking style.** Within the reviewed corpus, representative evidence includes [[2406.07855|VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment]], [[2025.acl-long.346|ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control]], [[2508.08399|Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations]]. Several systems still retain speaker-correlated information or pay an intelligibility cost.
+**Separating prosody from linguistic content and speaker timbre enables more independent transfer and manipulation of speaking style.** Examples from the reviewed papers include [[2406.07855|VALL-E R: Robust and Efficient Zero-Shot Text-to-Speech Synthesis via Monotonic Alignment]], [[2025.acl-long.346|ControlSpeech: Towards Simultaneous and Independent Zero-shot Speaker Cloning and Zero-shot Language Style Control]], [[2508.08399|Exploring Disentangled Neural Speech Codecs from Self-Supervised Representations]]. Several systems still retain speaker-correlated information or pay an intelligibility cost.
 
-**Reference prompts transfer prosodic style effectively, but can leak speaker identity, content, pitch, or recording conditions into the output.** Within the reviewed corpus, representative evidence includes [[2025.naacl-long.242|StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion]], [[2508.11273|EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens]], [[interspeech-2025-0948|PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts]]. Prompt duration, pairing policy, and same-speaker training assumptions materially affect both transfer and leakage.
+**Reference prompts transfer prosodic style effectively, but can leak speaker identity, content, pitch, or recording conditions into the output.** Examples from the reviewed papers include [[2025.naacl-long.242|StyleTTS-ZS: Efficient High-Quality Zero-Shot Text-to-Speech Synthesis with Distilled Time-Varying Style Diffusion]], [[2508.11273|EmoSSLSphere: Multilingual Emotional Speech Synthesis with Spherical Vectors and Discrete Speech Tokens]], [[interspeech-2025-0948|PromptEVC: Controllable Emotional Voice Conversion with Natural Language Prompts]]. Prompt duration, pairing policy, and same-speaker training assumptions materially affect both transfer and leakage.
 
 **Q4 makes cross-attribute interference and reward control explicit.** Fine control of pitch, voice quality, emotion, or emphasis can perturb identity, intelligibility, naturalness, or another requested attribute, as illustrated by [[2512.09504|DMP-TTS]]. Reward-guided systems such as [[2510.05758|EMORL-TTS]] improve targeted emotion or emphasis, but this two-paper cluster remains emerging and depends on the reward's perceptual validity.
 

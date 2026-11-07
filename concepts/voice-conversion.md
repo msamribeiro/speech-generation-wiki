@@ -2,7 +2,7 @@
 slug: voice-conversion
 aliases: [VC, any-to-any voice conversion, zero-shot voice conversion]
 status: established
-last_reviewed: 2026-10-31
+last_reviewed: 2026-11-07
 concept: voice-conversion
 render_type: overview
 title: "Voice Conversion"
@@ -10,14 +10,14 @@ source_digest_date: 2026-10-31
 paper_count: 117
 generation:
   schema_version: 2
-  date: "2026-10-31"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]

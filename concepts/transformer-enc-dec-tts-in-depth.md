@@ -6,14 +6,14 @@ source_digest_date: 2026-09-26
 paper_count: 33
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 For the concise view, see [[concepts/transformer-enc-dec-tts|Transformer Encoder–Decoder TTS]]. Complete provenance remains in `wiki/_claims/transformer-enc-dec-tts.yaml`.

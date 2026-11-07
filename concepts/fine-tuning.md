@@ -5,41 +5,58 @@ render_type: overview
 title: "Fine-Tuning Foundation Models for Speech Generation"
 aliases: [speech model adaptation, parameter-efficient fine-tuning, TTS adapters, PEFT for speech generation]
 status: emerging
-last_reviewed: 2026-11-01
+last_reviewed: 2026-11-07
 source_digest_date: 2026-08-02
 paper_count: 1
 generation:
   schema_version: 2
-  date: "2026-11-01"
+  date: "2026-11-07"
   stage: render
   mode: full
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
   model: "gpt-5"
-  commit: "b672c6b"
+  commit: "0e1aff0"
 ---
 
 > [!abstract]
-> Fine-tuning adapts a pretrained speech generator to a new speaker, language, style, or domain without repeating pretraining. The current fine-tuning graph is an early evidence brief rather than a field-wide synthesis: one lightweight multilingual GAN-TTS study supports adapters as a promising alternative to full fine-tuning and shows that target-language speaker diversity matters, but neither conclusion is independently replicated.
+> Fine-tuning adapts a pretrained speech generator to a new speaker, language, style, or domain
+> without repeating pretraining. This concept currently contains one lightweight multilingual
+> GAN-TTS study. Its adapter results are promising, but they have not been independently replicated.
 
 ## Current State
 
-**Adapter tuning may preserve prior TTS capability better than updating the full model.** In the sole integrated study, a frozen 2M-parameter GAN-TTS backbone receives approximately 200K trainable adapter parameters distributed across its acoustic model and vocoder. Under its English–Spanish adaptation settings, adapter tuning improves most reported naturalness, signal-quality, and speaker-similarity measures relative to full fine-tuning while reducing the risk of overwriting pretrained behavior ([[2508.18006|Unseen Speaker and Language Adaptation with Adapters]]). The claim remains emerging because it comes from one proprietary backbone, two languages, and objective evaluation rather than independent replications or human listening tests on the proposed systems.
+**Adapter tuning may preserve prior TTS capability better than updating the full model.** The sole
+integrated study adds about 200K trainable adapter parameters to a frozen 2M-parameter GAN-TTS
+backbone. In its English–Spanish tests, adapters improve most reported quality and speaker metrics
+over full fine-tuning ([[2508.18006|Unseen Speaker and Language Adaptation with Adapters]]). The
+claim remains emerging because it covers one proprietary backbone, two languages, and automatic
+evaluation without independent replication.
 
-**The component selected for adaptation changes what transfers.** Vocoder-only adapters provide the best balance in one speaker-adaptation direction, while adding acoustic-model adapters increases speaker similarity at the cost of accent nativeness. This suggests that adaptation placement is not a neutral implementation detail: different modules control overlapping parts of identity, pronunciation, and acoustic rendering. The graph does not yet establish whether this division generalizes to codec language models, diffusion, flow matching, or larger transformer systems.
+**Adapter placement changes what transfers.** Vocoder-only adapters give the best balance in one
+speaker-adaptation direction. Adding acoustic-model adapters improves speaker similarity but harms
+accent nativeness. Different modules appear to control overlapping parts of identity,
+pronunciation, and acoustic rendering. We do not yet know whether this pattern transfers to codec
+language models, diffusion, flow matching, or larger transformers.
 
-**Pretraining coverage can matter as much as the tuning method.** The integrated evidence reports severe degradation when target-language pretraining is reduced from multiple speakers to one. The corresponding cluster therefore treats target-language speaker diversity as a prerequisite for robust cross-lingual adaptation, while retaining an important confound: speaker diversity and total target-language data volume were not varied independently ([[2508.18006|Unseen Speaker and Language Adaptation with Adapters]]).
+**Pretraining coverage can matter as much as the tuning method.** Performance drops sharply when
+target-language pretraining falls from several speakers to one. This result points to speaker
+diversity as an important condition for cross-lingual adaptation. However, the experiment did not
+vary speaker diversity independently from total data volume
+([[2508.18006|Unseen Speaker and Language Adaptation with Adapters]]).
 
 **The evidence does not support a general adapter-versus-full-fine-tuning ranking.** The encoded result is a controlled comparison inside one lightweight GAN pipeline. It is relevant to on-device and resource-constrained synthesis, but cannot determine whether adapters outperform LoRA, prompt tuning, partial unfreezing, or full fine-tuning across model scales and adaptation targets.
 
 ## Method Landscape
 
-The graph does not define a production method family because the project requires at least two papers before treating a pattern as a recurring family. The available study nevertheless distinguishes three practical choices:
+The graph does not define a method family because a recurring family requires at least two papers.
+The available study still distinguishes three practical choices:
 
 - **Full fine-tuning** updates the complete pretrained system. It maximizes adaptation capacity but can overwrite useful speaker- or language-general behavior.
 - **Bottleneck adapters in the acoustic model** add small trainable projections around frozen layers. They can modify linguistic, duration, pitch, and acoustic representations without changing the full backbone.
-- **Convolutional vocoder adapters** modify waveform rendering inside a frozen GAN vocoder. In the represented system, their placement and density materially affect speaker and accent outcomes.
+- **Convolutional vocoder adapters** modify waveform rendering inside a frozen GAN vocoder. Their
+  placement and density affect speaker and accent outcomes in the represented system.
 
 These are alternatives within one architecture, not independently established fine-tuning families.
 
