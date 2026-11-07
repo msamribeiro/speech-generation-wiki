@@ -15,9 +15,11 @@ generation:
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
 
 > [!abstract]
-> A living systematic review of synthetic speech, covering **text-to-speech (TTS)**,
-> **voice conversion (VC)**, and **spoken conversational agents**. The wiki contains 1061 paper
-> pages and integrates research across 23 concepts.
+> A living systematic review and knowledge graph of speech generation research. It brings together
+> 1061 paper summaries across **text-to-speech (TTS)**, **voice conversion (VC)**, **spoken
+> conversational agents**, and evaluation, and connects them through 23 concept guides. The wiki
+> shows what the current evidence supports, where findings disagree, and how the field changes over
+> time.
 
 There are four main ways to use the wiki:
 
@@ -29,9 +31,10 @@ There are four main ways to use the wiki:
 → [[start|Choose the best place to start]]
 
 > [!warning]
-> **Current coverage.** The field and concept summaries include research published through Q4
-> 2025. The paper catalog already contains later work. Those papers will enter the summaries after
-> their integration and review cycle.
+> **Coverage and dates.** The wiki includes earlier foundational papers, but its quarter-by-quarter
+> record begins with Q3 2025. The current field overview and concept pages cover research published
+> through Q4 2025. The paper catalog also includes newer publications. They are listed for
+> discovery but are not yet reflected in the current summaries.
 
 ## Start with the field
 
@@ -61,9 +64,9 @@ or paper ID.
 
 ## How to read the dates
 
-The field overview is the current synthesis and will change after later integration cycles.
-Quarterly reports are saved historical views and do not change. The Q4 materials use evidence
-published through December 31, 2025, but the review itself was completed on November 1, 2026.
+The field overview is the current synthesis and will change as new research is added. Quarterly
+reports are saved historical views and do not change. The Q4 materials cover evidence published
+through December 31, 2025; the assessment was completed on November 1, 2026.
 
 Paper counts show coverage and research activity. They do not prove that a finding is strong,
 widely accepted, or widely used.
