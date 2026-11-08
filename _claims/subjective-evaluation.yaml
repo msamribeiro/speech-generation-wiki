@@ -1,6 +1,6 @@
 concept: subjective-evaluation
-last_updated: '2026-10-31'
-paper_count: 255
+last_updated: '2026-11-08'
+paper_count: 256
 papers:
 - id: '1609.03499'
   published_date: "2016-09-12"
@@ -16622,6 +16622,68 @@ papers:
   caveats:
   - Naturalness, expressiveness, and emotion recognition move differently, reinforcing the need to report them as separate
     perceptual dimensions.
+- id: '2601.01459'
+  published_date: '2026-01-04'
+  entry_date: '2026-11-08'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: intermediate_reasoning_improves_open_vocabulary_instruction_fidelity
+    role: supports
+    claim: Explicitly generating an intermediate reasoning chain before speech synthesis improves instruction-following
+      fidelity in open-vocabulary instruction-conditioned TTS beyond directly mapping high-level instructions to acoustic
+      attributes.
+    source: §4.4, Table 3
+    evidence: Adding the reasoning step raises Gemini Score from 67.70 to 68.71, MOS from 4.23 to 4.27, and ICMOS from
+      3.74 to 3.90; combining reasoning with enriched-transcript prediction reaches Gemini Score 71.57.
+    confidence: high
+    relevance: medium
+  - claim_id: narrative_grounding_improves_instruction_following_generalization
+    role: supports
+    claim: Grounding style instructions in narrative context, rather than in reformulated acoustic or emotion labels,
+      produces training data that improves instruction-following generalization in TTS.
+    source: §4.4, Table 3
+    evidence: Fine-tuning the same backbone on OV-Speech raises Gemini Score from 61.49 to 66.34 without instructions
+      and from 63.18 to 67.70 with instructions.
+    confidence: high
+    relevance: low
+  - claim_id: reasoning_driven_text_first_conditioning_improves_perceived_consistency
+    role: supports
+    claim: A reasoning-driven, text-first conditioning strategy that predicts enriched transcript tokens with inferred
+      emotion and paralinguistic labels before audio can match or exceed the naturalness of ground-truth recordings while
+      improving instruction consistency.
+    source: §4.3, Table 2
+    evidence: Eight native Mandarin listeners rate the full system at MOS 4.28 versus 4.10 for ground truth and ICMOS
+      3.91 versus 3.00 for the strongest baseline, alongside CER 3.61% and speaker similarity 0.722.
+    confidence: medium
+    relevance: high
+  - claim_id: enriched_transcripts_without_reasoning_do_not_ensure_better_instruction_following
+    role: complicates
+    claim: Predicting enriched transcription tokens with emotion and paralinguistic tags without an explicit reasoning
+      step does not reliably improve instruction-following quality over a simpler instruction-conditioned baseline.
+    source: §4.4, Table 3
+    evidence: The enriched-transcript-only ablation scores 66.98 on Gemini Score, below 67.70 for the plain
+      instruction-conditioned baseline; the gain appears only when enriched transcripts are combined with reasoning.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The listening test uses only eight native Mandarin raters and three held-out audiobook novels, with no evidence from
+    other languages or less narratively structured domains.
+  - The evaluation uses a paper-specific Gemini judge and custom instruction-consistency MOS rather than an established
+    shared benchmark.
+  caveats:
+  - The reported naturalness and instruction-consistency gains are useful subjective evidence, but the small,
+    single-language listener panel limits generalization.
 claim_clusters:
 - id: automatic_metrics_diverge_from_human_perception
   claim: Automatic speech-quality and task metrics frequently rank systems differently from human perceptual
