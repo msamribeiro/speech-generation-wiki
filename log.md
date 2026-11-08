@@ -1928,3 +1928,4 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
 - render | 3 concepts | formats: both | mode: full | runtime: codex | provider: openai | model: gpt-5
+- misc | peer-reviewed version migration | 20 verified records | canonical dates moved only for records absent from top-level claim YAMLs | existing pages continue to summarize their ingested versions
