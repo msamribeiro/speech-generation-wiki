@@ -1,6 +1,6 @@
 concept: subjective-evaluation
 last_updated: '2026-11-08'
-paper_count: 260
+paper_count: 264
 papers:
 - id: '1609.03499'
   published_date: "2016-09-12"
@@ -16927,6 +16927,259 @@ papers:
   caveats:
   - Subjective evidence is confirmatory and low relevance here; the codec architecture and objective results carry the
     paper's main contribution.
+- id: '2601.01568'
+  published_date: '2026-01-08'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: phoneme_conditioning_improves_joint_audio_video_linguistic_alignment
+    role: supports
+    claim: Combining natural-language instructions with explicit phoneme sequences improves linguistic and temporal
+      alignment over semantic-description-only conditioning in joint audio-video generation.
+    source: §6.4.2, Table 1
+    evidence: MM-Sonate reports WER 0.020 and SyncNet Confidence 6.51, compared with WER 0.337 and 0.256 for two
+      description-conditioned unified baselines.
+    confidence: medium
+    relevance: low
+  - claim_id: timbre_injection_preserves_non_cloning_quality_in_joint_generation
+    role: supports
+    claim: Injecting a speaker embedding into phoneme representations can add zero-shot cloning to joint audio-video
+      generation without substantially degrading ordinary non-cloning generation quality.
+    source: §6.4.1
+    evidence: Human side-by-side comparisons of the full model against a no-timbre-injection variant produce GSB scores
+      of 0.89 for Chinese and 0.83 for English, favoring same-or-better judgments for most samples.
+    confidence: medium
+    relevance: high
+  - claim_id: overloaded_zero_vectors_weaken_classifier_free_guidance
+    role: complicates
+    claim: A zero-vector unconditional branch becomes unreliable when the same vector also signals a trained conditioning
+      mode, because classifier-free guidance then steers away from that mode rather than from low-quality output.
+    source: §6.4.1, Figure 4
+    evidence: Replacing the zero-vector negative speaker embedding with naturally collected noise reduces WER from 3.17%
+      in the worst setting to 2.06%.
+    confidence: medium
+    relevance: low
+  - claim_id: joint_video_generation_trades_off_voice_similarity
+    role: complicates
+    claim: Jointly generating synchronized video alongside cloned speech can trade off speaker-similarity fidelity relative
+      to specialized audio-only zero-shot TTS.
+    source: §6.4.3, Table 2
+    evidence: MM-Sonate reaches SIM-o 0.604 in English and 0.691 in Chinese, below the strongest audio-only English
+      baseline MaskGCT at 0.713 while also generating video.
+    confidence: medium
+    relevance: low
+  limitations:
+  - The 20-billion-parameter model, proprietary 100-million-pair corpus, and closed weights prevent independent
+    reproduction of the perceptual results.
+  - Human results are reported as pass rates and GSB summaries without enough protocol detail on listener counts or
+    statistical uncertainty in the paper page.
+  caveats:
+  - Subjective tests support identity preservation and non-degradation, but they do not establish superiority over the
+    strongest specialized voice-cloning systems.
+- id: '2601.05329'
+  published_date: '2026-01-08'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: post_training_can_unlock_efficient_end_to_end_speech_editing
+    role: supports
+    claim: Task-specific post-training and inference adaptation of a pretrained zero-shot TTS model can provide competitive
+      end-to-end speech editing with far fewer parameters and training hours than general speech-language-model baselines.
+    source: §IV.D, Table II
+    evidence: A 400M-parameter model fine-tuned on 250 hours achieves WER 4.5% and the best Edit MOS 4.15 on RealEdit,
+      outperforming 3B-16B end-to-end editing baselines while approaching cascade-system acoustic consistency.
+    confidence: high
+    relevance: high
+  - claim_id: full_trajectory_conditioning_improves_edit_acoustic_consistency
+    role: supports
+    claim: Conditioning flow-matching speech editing on the complete original-speech trajectory rather than only an edit
+      mask improves acoustic consistency between edited and preserved regions.
+    source: §III.B, §IV.D, Table III, Table IV
+    evidence: Adding GOT-CFM lowers mel-cepstral distortion from 6.17 to 5.59 relative to LLM-only adaptation, and the full
+      system falls below 5 dB after unedited-region replacement.
+    confidence: medium
+    relevance: low
+  - claim_id: transcript_withholding_trades_copy_avoidance_against_edit_accuracy
+    role: complicates
+    claim: Withholding the original transcript during speech-editing training avoids a copying shortcut, but withholding it
+      at inference worsens edit accuracy relative to using the transcript as an alignment reference.
+    source: §III.C, §IV.D, Table IV
+    evidence: Zero-shot inference without the original transcript preserves lower MCD but yields WER 6.41%, while one-shot
+      inference with the original text-speech pair lowers WER to 4.5% at a small MCD cost.
+    confidence: high
+    relevance: low
+  - claim_id: noisy_editing_data_can_trade_fidelity_for_perceived_quality
+    role: complicates
+    claim: Fine-tuning a studio-quality zero-shot TTS model on noisier in-the-wild editing data can improve edited-region
+      fidelity while reducing perceived quality by preserving background-noise patterns.
+    source: §IV.D, Table IV
+    evidence: Task-specific flow-matching training lowers WER from 4.49% to 4.18% and improves MCD but causes a reported
+      MOS drop attributed to GigaEdit background noise.
+    confidence: medium
+    relevance: medium
+  limitations:
+  - Ten-listener Edit MOS and Similarity MOS evaluations use only the English RealEdit benchmark and four edit types.
+  - Post-replacement comparisons correct unedited regions for all end-to-end systems, obscuring how much preservation is
+    inherent to each raw model output.
+  caveats:
+  - Edit MOS combines semantic correctness and boundary naturalness, while Similarity MOS covers timbre and preservation;
+    their different targets should remain separate in synthesis.
+- id: '2601.05554'
+  published_date: '2026-01-09'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: attribute_factorized_prompt_metrics_better_track_human_judgments
+    role: supports
+    claim: An automatic TTS style-prompt metric that factorizes speech into acoustic attributes before text alignment can
+      correlate more consistently with human judgments than an undifferentiated contrastive audio-text scorer.
+    source: §4, Table 1, Table 2
+    evidence: Against MOS from 320 annotators, SPAM reaches LCC around 0.58 versus RA-CLAP at 0.520 and 0.429 and retains
+      ground-truth-audio correlation near 0.72 on both in-distribution and unseen-style datasets.
+    confidence: high
+    relevance: high
+  - claim_id: multi_positive_contrastive_training_improves_paraphrase_faithfulness
+    role: supports
+    claim: Training a text-audio scorer with multiple positive examples per style key improves score invariance under
+      semantically equivalent prompt paraphrases.
+    source: §3.2, §4, Table 1
+    evidence: Only SPAM variants fail to reject equality between original prompts and equivalent paraphrases in paired
+      tests, while RA-CLAP changes scores significantly for paraphrases that should preserve the target style.
+    confidence: high
+    relevance: high
+  - claim_id: negative_prompt_discrimination_is_weaker_than_paraphrase_consistency
+    role: complicates
+    claim: Distinguishing semantically wrong prompts is an easier test for automatic prompt-adherence metrics than
+      remaining consistent across semantically equivalent paraphrases.
+    source: §3.2, §4, Table 1
+    evidence: Every compared metric scores dissimilar negative prompts lower at p < .001, but only SPAM passes the
+      positive-paraphrase consistency test.
+    confidence: high
+    relevance: high
+  - claim_id: attribute_supervision_supports_unseen_style_prompt_generalization
+    role: supports
+    claim: Auxiliary prediction of fine-grained acoustic attributes, paired with a large language-model prompt encoder,
+      can improve an adherence metric's robustness to unseen style vocabulary.
+    source: §4, Table 2
+    evidence: SPAM's correlation with human MOS on ground-truth audio remains 0.721 on TextrolSpeech and 0.718 on the
+      unseen-style LibriTTS-P set.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Human ground truth averages eight ratings per prompt-speech pair and has no independent replication outside the same
+    study used to validate SPAM.
+  - The automatic comparison includes only RA-CLAP, a related metric not originally designed for general prompt adherence,
+    and covers English datasets only.
+  caveats:
+  - Correlation with MOS establishes plausibility, not interchangeability with human evaluation; prompt perturbation tests
+    supply a separate faithfulness criterion.
+- id: '2505.15727'
+  published_date: '2026-01-13'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - infrastructure
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: llm_backbone_strength_does_not_ensure_acoustic_quality
+    role: supports
+    claim: A stronger language-model backbone chiefly improves semantic performance in speech interaction systems and does
+      not ensure corresponding gains in acoustic fidelity or emotional empathy.
+    source: §4.3.1, Table 2, Table 3
+    evidence: Qwen3-Omni's 30B mixture-of-experts backbone leads smaller dense models on knowledge and reasoning but is
+      comparable to or below several smaller models on acoustic fluency and empathy.
+    confidence: medium
+    relevance: medium
+  - claim_id: semantic_sophistication_can_trade_off_speech_naturalness
+    role: complicates
+    claim: Stronger semantic and linguistic capability in speech interaction models can coincide with lower acoustic
+      naturalness rather than joint improvement in response sophistication and speech fluency.
+    source: §4.3.3, Observation 6
+    evidence: Semantically strong systems including LLaMA-Omni2-Bilingual and MiMo-Audio-Instruct receive comparatively low
+      UTMOS scores, which the authors associate with complex structured responses that are harder to render naturally.
+    confidence: medium
+    relevance: medium
+  - claim_id: end_to_end_speech_models_resist_acoustic_perturbation_better_than_cascades
+    role: supports
+    claim: End-to-end speech interaction models can retain more performance under acoustic perturbation than cascaded
+      ASR-LLM-TTS pipelines that propagate transcription errors.
+    source: §4.3.5, Observation 10
+    evidence: VocalNet2 and Qwen3-Omni retain roughly 90% preserve-rate scores under perturbation in both languages, while
+      cascaded systems degrade more strongly.
+    confidence: medium
+    relevance: low
+  - claim_id: instruction_following_gains_remain_primarily_semantic
+    role: complicates
+    claim: Improvements in speech-system instruction following remain driven mainly by semantic adherence rather than
+      control of paralinguistic attributes such as speaking rate or emotional tone.
+    source: §4.3.4, Observation 8
+    evidence: The leading Mandarin systems differ substantially in overall instruction accuracy, 73.3% versus 52.4%, but
+      both remain weak at manipulating speech speed and emotional tone.
+    confidence: medium
+    relevance: medium
+  - claim_id: llm_judges_can_approximate_human_open_ended_speech_assessment
+    role: supports
+    claim: An LLM-based judge can approximate human preferences on open-ended speech-interaction assessment when its
+      agreement is explicitly validated against bilingual evaluators.
+    source: §4.4
+    evidence: Across 400 paired comparisons from three tasks, Qwen2.5-max reaches 85.9% consistency with five bilingual
+      evaluators and matches the human-majority preference in 94% of cases.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Human validation covers five evaluators, 400 comparisons, and only creativity, single-round dialogue, and empathy,
+    rather than the benchmark's full 14-dimension scope.
+  - All benchmark queries are synthetic TTS output, limiting conclusions about natural pronunciation, prosody, and live
+    dialogue variability.
+  caveats:
+  - Human agreement supports the judge for the tested open-ended tasks; it does not validate every automated metric or
+    capability dimension in VocalBench.
 claim_clusters:
 - id: automatic_metrics_diverge_from_human_perception
   claim: Automatic speech-quality and task metrics frequently rank systems differently from human perceptual

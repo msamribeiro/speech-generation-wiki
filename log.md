@@ -6,6 +6,7 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-11
 
+- integrate | 4 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 subjective-evaluation Phase 1 advanced through `2505.15727`; all page claims preserved; exact frozen IDs verified; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
 - integrate | 4 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 subjective-evaluation Phase 1 advanced through `2601.02776`; all page claims preserved; exact frozen IDs verified; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
 
 ## 2026-11-08
