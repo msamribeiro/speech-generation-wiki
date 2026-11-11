@@ -1,6 +1,6 @@
 concept: subjective-evaluation
 last_updated: '2026-11-08'
-paper_count: 256
+paper_count: 260
 papers:
 - id: '1609.03499'
   published_date: "2016-09-12"
@@ -16684,6 +16684,249 @@ papers:
   caveats:
   - The reported naturalness and instruction-consistency gains are useful subjective evidence, but the small,
     single-language listener panel limits generalization.
+- id: '2601.04233'
+  published_date: '2026-01-04'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - autoregressive-LM
+  relevance: low
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: shared_phonetic_representations_stabilize_multilingual_flow_matching_tts
+    role: supports
+    claim: Unifying diverse scripts into a shared phonetic representation, augmented with explicit language identifiers,
+      stabilizes large-scale multilingual flow-matching TTS training and improves cross-lingual intelligibility.
+    source: §6.1, Table 4
+    evidence: LEMAS-TTS combines a unified phonetic front end, CTC alignment, and accent-adversarial disentanglement and
+      reports lower WER than OpenAudio-S1-mini in all ten evaluated languages, averaging 6.39% versus 12.27%.
+    confidence: medium
+    relevance: low
+  - claim_id: accent_adversarial_training_can_reduce_cross_lingual_accent_leakage
+    role: supports
+    claim: An explicit accent-adversarial disentanglement objective, applied through a gradient-reversal accent classifier,
+      is a mechanism for reducing cross-lingual accent leakage in multilingual zero-shot TTS.
+    source: §4.1
+    evidence: The conditioning pathway uses a gradient-reversal accent classifier with language-ID pseudo-labels after the
+      authors observed higher-resource-language prosody leaking into lower-resource-language synthesis.
+    confidence: medium
+    relevance: low
+  - claim_id: prosody_conditioning_trades_pronunciation_stability_against_speaker_similarity
+    role: complicates
+    claim: Adding explicit prosody conditioning to a multilingual flow-matching TTS model improves pronunciation stability
+      at some cost to speaker similarity.
+    source: §6.1, Table 4
+    evidence: The prosody-aware variant lowers average WER from 8.06% to 6.39% but lowers average speaker similarity from
+      0.547 to 0.539 relative to the same model without its prosody encoder.
+    confidence: high
+    relevance: low
+  - claim_id: multilingual_word_alignment_enables_cross_lingual_speech_editing
+    role: supports
+    claim: Fine-grained, confidence-scored word-level alignment at large multilingual scale is a practical enabler for
+      extending an autoregressive speech-editing model beyond the single language on which it was originally trained.
+    source: §5.1, §6.2, Figure 4
+    evidence: An English VoiceCraft checkpoint fine-tuned on aligned data from seven languages supports multilingual masked
+      infilling, with six listeners giving broadly balanced A/B naturalness preferences across 20 edited utterances.
+    confidence: low
+    relevance: high
+  limitations:
+  - The multilingual editing test uses only six listeners and 20 utterances across seven languages, which provides weak
+    power for language-specific perceptual conclusions.
+  - No multilingual TTS listening test was conducted beyond Chinese and English; claims for the other eight languages rely
+    on WER and speaker-similarity metrics.
+  caveats:
+  - The small editing study supports feasibility, not perceptual superiority over a named editing baseline.
+- id: '2601.02073'
+  published_date: '2026-01-05'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: end_to_end_tts_can_reduce_tone_errors_without_explicit_tone_labels
+    role: supports
+    claim: A non-autoregressive, end-to-end TTS architecture can achieve substantially lower lexical tone error rates than
+      a conventional autoregressive two-stage architecture in a low-resource tonal language, even without explicit tone
+      annotation in the training data.
+    source: §3.3, Table 6
+    evidence: A native expert annotator measures tone error rates of 5.67% for VITS and 12.93% for Tacotron2 on Mizo even
+      though the 5.18-hour training corpus contains no explicit tone labels.
+    confidence: medium
+    relevance: medium
+  - claim_id: small_single_speaker_corpora_can_support_acceptable_tonal_tts_naturalness
+    role: supports
+    claim: Acceptable subjective naturalness for a tonal, low-resource language can be achieved with under six hours of
+      single-speaker training data using an end-to-end non-autoregressive framework.
+    source: §3.2, Table 2, Table 5
+    evidence: Thirty-five native Mizo listeners judge VITS natural in 41% of trials versus 20% for Tacotron2 and give it
+      scaled MOS 3.46 versus 2.63, a significant difference at p < 0.0001.
+    confidence: high
+    relevance: high
+  - claim_id: dnsmos_can_miss_tonal_and_prosodic_failures
+    role: complicates
+    claim: A general-purpose non-intrusive perceptual quality metric does not reliably track prosodic or tonal correctness
+      in low-resource tonal-language TTS.
+    source: §3.1, §4, Table 2, Table 3
+    evidence: DNSMOS scores of 3.90 for VITS and 3.81 for Tacotron2 do not differ significantly (p = 0.72), despite large
+      differences in tone error rate and native-listener naturalness ratings.
+    confidence: high
+    relevance: high
+  - claim_id: f0_metrics_can_diverge_from_native_listener_tone_judgments
+    role: complicates
+    claim: Objective pitch-contour metrics can remain statistically indistinguishable between systems that native listeners
+      judge to differ substantially in naturalness and tonal accuracy.
+    source: §3.1, Table 2, Table 3
+    evidence: F0 RMSE and F0 correlation do not significantly differ between Tacotron2 and VITS (p = 0.61 and p = 0.67),
+      while VITS has significantly higher MOS and less than half the measured tone error rate.
+    confidence: high
+    relevance: high
+  limitations:
+  - The listening test covers 25 held-out sentences from one female speaker and one low-resource language, limiting wider
+    claims about tonal-language TTS.
+  - Tone accuracy is judged by one expert annotator, so the study provides no inter-annotator reliability for tone error
+    rate.
+  caveats:
+  - The study's strongest contribution to subjective evaluation is the demonstrated divergence between native-listener
+    ratings and common automatic metrics, not a broad architecture comparison.
+- id: '2601.02753'
+  published_date: '2026-01-06'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: semantic_image_features_support_face_voice_association
+    role: supports
+    claim: A semantic image encoder contrastively aligned with a speaker-verification voice encoder on noisy audiovisual
+      data learns face-voice association more effectively than encoders built on supervised face-recognition features.
+    source: §4.2, Table 1
+    evidence: Vclip reaches 89.63% open-set AUC on VoxCeleb1 face-voice verification, slightly exceeding Self-Lifting at
+      89.4%, despite CLIP features underperforming supervised face encoders on ordinary face recognition.
+    confidence: medium
+    relevance: low
+  - claim_id: direct_face_to_speaker_embedding_transfer_creates_a_domain_gap
+    role: complicates
+    claim: Directly substituting a cross-modally learned face embedding for a speaker embedding in zero-shot TTS produces
+      out-of-domain speaker representations because contrastive face and voice spaces retain a modality gap.
+    source: §4.3, Table 3
+    evidence: Direct feature mapping yields speaker-embedding log-likelihood 328.82, far below 516-519 for candidates
+      sampled from and retrieved within the downstream TTS speaker distribution.
+    confidence: high
+    relevance: low
+  - claim_id: tts_signature_aware_retrieval_improves_conditioning_correspondence
+    role: supports
+    claim: Distilling a zero-shot TTS system's characteristic speaker-embedding mismatch into retrieval scoring improves
+      generated-voice correspondence with the conditioning signal beyond raw cross-modal association alone.
+    source: §4.3, Table 3
+    evidence: TTS-signature-informed retrieval achieves face-to-voice score 0.313 versus 0.301 for naive retrieval and
+      0.305 for direct feature mapping while retaining high speaker-distribution likelihood.
+    confidence: medium
+    relevance: low
+  - claim_id: transfer_based_face_conditioning_can_preserve_subjective_naturalness
+    role: complicates
+    claim: Face-conditioned synthesis built through transfer learning from noisy audiovisual data can approach ordinary
+      zero-shot cloning naturalness, while end-to-end training on a lower-quality audiovisual corpus may not.
+    source: §4.4, Table 4
+    evidence: At least 12 evaluators per sample rate the proposed system at naturalness MOS 4.14, comparable to 4.01-4.15
+      for standard zero-shot cloning and well above 2.46 for Face-TTS trained end to end on LRS3.
+    confidence: medium
+    relevance: high
+  limitations:
+  - Prior face-conditioned systems use different datasets, TTS backbones, and protocols, so the naturalness comparison is
+    not fully controlled.
+  - Generated voices remain plausible face matches rather than reconstructions; voice-to-voice similarity stays far below
+    the true zero-shot cloning reference.
+  caveats:
+  - Naturalness MOS and face-voice match MOS test different properties and should not be collapsed into one quality claim.
+- id: '2601.02776'
+  published_date: '2026-01-06'
+  entry_date: '2026-11-11'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - VAE
+  - GAN
+  relevance: low
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family: []
+  claims:
+  - claim_id: spectral_compression_improves_single_codebook_token_efficiency
+    role: supports
+    claim: Compressing audio in the Mel-spectrogram domain rather than the waveform domain enables higher token-rate
+      efficiency for single-codebook neural codecs because both time and frequency can be downsampled.
+    source: §III-A, §V-C, Table I
+    evidence: UniSRCodec-B operates at 40 tokens per second and 0.52 kbps while reporting stronger cross-domain
+      reconstruction than other single-codebook baselines that use 75 to 260 tokens per second.
+    confidence: medium
+    relevance: low
+  - claim_id: spectral_codecs_require_adversarial_training_for_perceptual_fidelity
+    role: complicates
+    claim: Discarding phase during compression and reconstructing it with a separate vocoder requires adversarial training
+      to avoid severe perceptual artifacts in high-fidelity spectral codecs.
+    source: §V-D, Table II
+    evidence: Removing the discriminator, adversarial loss, and feature matching raises AudioSet Mel-44 distance from
+      0.904 to 1.261 and produces audible electronic artifacts according to the paper's ablation discussion.
+    confidence: medium
+    relevance: low
+  - claim_id: low_frequency_weighting_improves_spectral_codec_reconstruction
+    role: supports
+    claim: Reweighting reconstruction loss toward low-frequency content improves low-frequency fidelity when a codec
+      jointly compresses the time and frequency dimensions of a spectral representation.
+    source: §V-D, Table II
+    evidence: Replacing sub-band-weighted reconstruction with full-spectrogram L1 loss worsens AudioSet Mel-16 distance
+      from 0.901/0.900 to 0.922.
+    confidence: high
+    relevance: low
+  - claim_id: unified_low_bitrate_codecs_trade_off_domain_specialization
+    role: complicates
+    claim: Single-codebook codecs optimized for unified low-bitrate cross-domain modeling can underperform much larger,
+      domain-specialized codecs within that specialist domain.
+    source: §V-C
+    evidence: The 40-token UniSRCodec-B trails speech-specialized UniCodec on speech reconstruction; the authors attribute
+      the gap to UniCodec's roughly 700,000 hours of speech-heavy data and additional semantic objective.
+    confidence: medium
+    relevance: low
+  limitations:
+  - The MUSHRA-style test uses ten experts and only nine clips, three per domain, which is a small perceptual sample for
+    comparing several codecs across speech, music, and general audio.
+  - The paper reports only aggregate subjective rankings in the page summary, limiting protocol-level interpretation of
+    individual system differences.
+  caveats:
+  - Subjective evidence is confirmatory and low relevance here; the codec architecture and objective results carry the
+    paper's main contribution.
 claim_clusters:
 - id: automatic_metrics_diverge_from_human_perception
   claim: Automatic speech-quality and task metrics frequently rank systems differently from human perceptual
