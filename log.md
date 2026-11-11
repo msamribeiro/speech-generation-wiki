@@ -4,6 +4,17 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-11
+
+- ingest | 2607.00946 | A Geometric Perspective on Composable Emotion Steering in Text-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.27380 | A Survey of Automated Presentation Coaching: Systems, Methods, and Open Challenges | BEA 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.07240 | KIT's Submission to Cross-Lingual Voice Cloning in IWSLT 2026 | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.26136 | One Voice, Many Tongues: Cross-Lingual Voice Cloning for Scientific Speech | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.iwslt-1.12 | Balancing Linguistic Intelligibility and Speaker Identity in Zero-Shot Cross-Lingual Voice Cloning | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.iwslt-1.11 | HW-TSC’s Submission to the IWSLT 2026 Cross-Lingual Voice Cloning Track | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.dravidianlangtech-1.3 | Cascaded Modular or End-to-End? : An Investigation on Speech-to-Speech Translation Task for Dravidian Languages | DravidianLangTech 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.americasnlp-6.1 | Neural Text-to-Speech for Myaamia: Speech Synthesis for an Indigenous Algonquian Language | AmericasNLP 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-07
 
 - render | all 23 concepts plus field overview and reader navigation | formats: both | full plain-language migration | revised the concept pairs and surrounding pages for shorter sentences, direct subjects, simpler transitions, and clearer explanations for readers with a speech-processing background | preserved claims, citations, confidence assessments, paper counts, evidence boundaries, and quarterly snapshots | paper pages unchanged | mode: full | runtime: codex | provider: openai | model: gpt-5 | writing contract: 0e1aff0

@@ -1068,3 +1068,11 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2606.30944]] | [Preserving Speech-to-Text LLM Capabilities in Speech-to](papers/2606.30944.md) | Microsoft | arXiv | 2026 | SCA | autoregressive-LM | 2026-10-31 |
 | [[2606.31055]] | [Reference-Based Prosody and Rhythm Evaluation for Spoke](papers/2606.31055.md) | Johns Hopkins University / Amazon | arXiv | 2026 | SCA, evaluation |  | 2026-10-31 |
 | [[2606.17126]] | [Vibrato Expression Control for Singing Voice Conversion](papers/2606.17126.md) | Korea University | IEEE TASLP | 2026 | singing, VC | diffusion, GAN | 2026-10-31 |
+| [[2026.americasnlp-6.1]] | [Neural Text-to-Speech for Myaamia: Speech Synthesis for](papers/2026.americasnlp-6.1.md) | Miami University | AmericasNLP 2026 | 2026 | TTS | transformer-enc-dec, VAE, GAN | 2026-11-11 |
+| [[2026.dravidianlangtech-1.3]] | [Cascaded Modular or End-to-End? : An Investigation on S](papers/2026.dravidianlangtech-1.3.md) | IIT Bhubaneswar | DravidianLangTech 2026 | 2026 | SCA |  | 2026-11-11 |
+| [[2026.iwslt-1.11]] | [HW-TSC’s Submission to the IWSLT 2026 Cross-Lingual Voi](papers/2026.iwslt-1.11.md) | Huawei Translation Service Center / Northwestern Polytechnical University | IWSLT 2026 | 2026 | TTS | autoregressive-LM | 2026-11-11 |
+| [[2026.iwslt-1.12]] | [Balancing Linguistic Intelligibility and Speaker Identi](papers/2026.iwslt-1.12.md) | IIT Patna / Aligarh Muslim University | IWSLT 2026 | 2026 | TTS, evaluation |  | 2026-11-11 |
+| [[2604.26136]] | [One Voice, Many Tongues: Cross-Lingual Voice Cloning fo](papers/2604.26136.md) | Shaggar Institute of Technology / Trinity College Dublin | IWSLT 2026 | 2026 | TTS | diffusion | 2026-11-11 |
+| [[2606.07240]] | [KIT's Submission to Cross-Lingual Voice Cloning in IWSL](papers/2606.07240.md) | Karlsruhe Institute of Technology / Carnegie Mellon University | IWSLT 2026 | 2026 | TTS | autoregressive-LM, GAN, hybrid | 2026-11-11 |
+| [[2606.27380]] | [A Survey of Automated Presentation Coaching: Systems, M](papers/2606.27380.md) | Columbia University / Red Hat / RoleGaku | BEA 2026 | 2026 | TTS |  | 2026-11-11 |
+| [[2607.00946]] | [A Geometric Perspective on Composable Emotion Steering ](papers/2607.00946.md) | The University of Melbourne / Monash University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, hybrid | 2026-11-11 |
