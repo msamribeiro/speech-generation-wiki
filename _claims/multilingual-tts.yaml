@@ -1,6 +1,6 @@
 concept: multilingual-tts
-last_updated: '2026-09-26'
-paper_count: 105
+last_updated: '2026-11-12'
+paper_count: 129
 papers:
 - id: '2206.04658'
   published_date: "2022-06-09"
@@ -6873,6 +6873,1710 @@ papers:
   caveats:
   - Five-hour Manchu results use studio speech, and zero-shot transfer is shown only to one closely related language.
 
+- id: '2601.04233'
+  published_date: '2026-01-04'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: unifying_diverse_scripts_into_a_shared_phonetic_representation_augmented_with
+    role: supports
+    claim: Unifying diverse scripts into a shared phonetic representation, augmented with explicit language identifiers,
+      stabilizes large-scale multilingual flow-matching TTS training and improves cross-lingual intelligibility.
+    source: §6.1, Table 4
+    evidence: LEMAS-TTS, extending F5-TTS with a unified phonetic front-end, CTC alignment loss, and accent-adversarial
+      disentanglement, achieves lower WER than the OpenAudio-S1-mini baseline in every one of 10 evaluated languages
+      (average WER 6.39% vs. 12.27%).
+    confidence: high
+    relevance: high
+  - claim_id: an_explicit_accent_adversarial_disentanglement_objective_applied_via_a_gradient
+    role: supports
+    claim: An explicit accent-adversarial disentanglement objective, applied via a gradient-reversal accent classifier,
+      is a mechanism for reducing cross-lingual accent leakage in multilingual zero-shot TTS.
+    source: §4.1
+    evidence: An accent classifier attached to the conditioning pathway via a Gradient Reversal Layer, supervised
+      with pseudo-labels from an off-the-shelf language-identification model, is introduced specifically because
+      flow-matching models without such regularization were observed to leak higher-resource-language prosody into
+      lower-resource-language synthesis.
+    confidence: high
+    relevance: high
+  - claim_id: adding_explicit_prosody_conditioning_to_a_multilingual_flow_matching_tts
+    role: complicates
+    claim: Adding explicit prosody conditioning to a multilingual flow-matching TTS model improves pronunciation
+      stability at some cost to speaker similarity.
+    source: §6.1, Table 4
+    evidence: The prosody-aware LEMAS-TTS variant achieves lower average WER than the variant without a prosody
+      encoder (6.39% vs. 8.06%) but slightly lower average speaker similarity (0.539 vs. 0.547), which the authors
+      attribute to prosodic conditioning trading expressive richness for articulation stability.
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_confidence_scored_word_level_alignment_at_large_multilingual
+    role: supports
+    claim: Fine-grained, confidence-scored word-level alignment at large multilingual scale is a practical enabler
+      for extending an autoregressive speech-editing model beyond the single language it was originally trained
+      on.
+    source: §5.1, §6.2, Figure 4
+    evidence: LEMAS-Edit, warm-started from a 330M-parameter English-only VoiceCraft checkpoint and fine-tuned on
+      word-level-aligned multilingual subsets covering 7 languages, extends VoiceCraft's masked-infilling editing
+      to multilingual audio without architectural changes, and achieves balanced A/B naturalness preference across
+      languages in human evaluation.
+    confidence: high
+    relevance: high
+  limitations:
+  - Subjective evaluation of LEMAS-TTS was not conducted for languages other than Chinese and English due to a lack
+    of native evaluators, so the paper's TTS quality claims for the other 8 languages rest on objective metrics
+    (WER, SIM) alone.
+  - The Vietnamese WER result for the OpenAudio-S1-mini baseline was excluded from the reported average as "unusually
+    high," a judgment call made by the authors rather than an independently audited exclusion criterion.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.03888'
+  published_date: '2026-01-09'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims: []
+  limitations:
+  - The paper does not report model parameter counts, making comparisons of compute per inference difficult. The
+    Spanish training set is small (~2.9K hours, largely assembled from public corpora) and performance on Spanish
+    lags all other languages. Japanese WER remains above 9% even with GRPO fine-tuning; the paper attributes some
+    of this to ASR evaluation noise but does not fully resolve it. Emotional test sets for Japanese and Spanish
+    are constructed internally and lack independent validation. The study covers four languages; extension to low-resource
+    languages, tonal languages beyond Mandarin, or agglutinative languages is not addressed. The GRPO reward is
+    WER-only; prosodic naturalness and emotional fidelity are not directly optimized by the RL signal.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.12205'
+  published_date: '2026-01-18'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  - evaluation
+  architecture:
+  - GAN
+  - VAE
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  - infrastructure
+  current_role: active_evidence
+  method_family:
+  - gan_based_multilingual_synthesis
+  - vae_multilingual_latent_models
+  claims:
+  - claim_id: neural_audio_codecs_pretrained_on_a_single_language_can_generalize
+    role: supports
+    claim: Neural audio codecs pretrained on a single language can generalize to reconstruction and downstream synthesis
+      of unseen languages without requiring multilingual pretraining coverage, unlike self-supervised speech representation
+      models, which typically degrade on unseen languages.
+    source: §4.2 Q1, Table 1, Table 3
+    evidence: The English-pretrained NAC achieves more best-metric counts than the Multilingual-pretrained NAC on
+      Spanish and German reconstruction (15/0 vs. 2/16 aggregate best/worst) and remains competitive on downstream
+      TTS for both unseen languages
+    confidence: high
+    relevance: high
+  - claim_id: neural_audio_codecs_pretrained_exclusively_on_speech_data_generalize_poorly
+    role: supports
+    claim: Neural audio codecs pretrained exclusively on speech data generalize poorly to non-speech signal reconstruction
+      relative to codecs pretrained with non-speech data included.
+    source: §4.2 Q2, Table 2
+    evidence: On AudioSet non-speech reconstruction, the Multilingual+Audio-pretrained NAC outperforms speech-only-pretrained
+      NACs on all three non-speech metrics (MCD, CI-SDR, VISQOL), which score 0/2 best/worst
+    confidence: high
+    relevance: low
+  - claim_id: including_non_speech_audio_in_a_neural_codec_s_pretraining
+    role: complicates
+    claim: Including non-speech audio in a neural codec's pretraining data does not necessarily trade off reconstruction
+      or downstream-task quality on speech, contrary to the expectation that broadening pretraining domain coverage
+      degrades in-domain performance.
+    source: §4.2 Q3, Table 1, Table 2, Table 3
+    evidence: The Multilingual+Audio-pretrained NAC improves non-speech reconstruction (3/0 best/worst) while maintaining
+      comparable speech-task performance to speech-only pretrained variants (6/6 best/worst in speech reconstruction,
+      2/3 in TTS)
+    confidence: high
+    relevance: high
+  - claim_id: comparing_off_the_shelf_neural_audio_codecs_across_studies_conflates
+    role: complicates
+    claim: Comparing off-the-shelf neural audio codecs across studies conflates architecture, training-objective,
+      and pretraining-data differences simultaneously, making it difficult to attribute any observed generalization
+      result to a single factor.
+    source: §1, §2.1
+    evidence: The paper motivates training all NACs from scratch under strictly matched architecture and loss configuration
+      specifically because prior studies relying on off-the-shelf NACs "yield limited insights due to variations
+      in NAC's implementation"
+    confidence: high
+    relevance: low
+  limitations:
+  - All findings are demonstrated on a single NAC architecture (SoundStream via ESPnet-Codec, default configuration);
+    the authors explicitly note this and plan to extend to EnCodec, DAC, and HiFi-Codec to test whether the language-
+    and domain-generalization conclusions hold across architectures.
+  - Downstream application evaluation covers only text-to-speech, an inherently speech-only task; despite the paper's
+    non-speech reconstruction findings, no non-speech downstream task (e.g., music generation, environmental sound
+    classification) is evaluated to confirm the reconstruction-level findings carry over to non-speech generation
+    applications. The TTS evaluation uses only a non-autoregressive FastSpeech2 backbone; the authors note that
+    more powerful autoregressive architectures (e.g., VALL-E-style codec language models) might interact differently
+    with codec choice and are left for future work. Reported UTMOS scores for Spanish and German TTS are notably
+    low, which the authors attribute to small per-language training data and UTMOS's own limited cross-lingual generalization
+    rather than to the codecs themselves, but this leaves some uncertainty in the downstream cross-lingual TTS quality
+    comparisons.
+  caveats:
+  - For multilingual TTS, this paper provides medium-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2602.11172'
+  published_date: '2026-01-19'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: prompting_only_persona_conditioning_natural_language_descriptions_of_professional_role
+    role: supports
+    claim: Prompting-only persona conditioning, natural-language descriptions of professional role, rhetorical style,
+      and register, can differentiate a general-purpose multilingual TTS system's output style across many distinct
+      personas without any model fine-tuning.
+    source: §3, Table 1, Table 2
+    evidence: 25 advocate profiles spanning 5 languages and varying rhetorical styles (aggressive/assertive to empathetic/analytical)
+      were each rendered through Gemini 2.5 Pro/Flash TTS using only a fixed instruction template (persona, linguistic
+      identity, voice register, rhetorical strategy), with no model retraining.
+    confidence: medium
+    relevance: high
+  - claim_id: human_perceived_tts_quality_in_a_multilingual_model_is_not
+    role: complicates
+    claim: Human-perceived TTS quality in a multilingual model is not uniform across typologically related target
+      languages, and shared model provenance does not guarantee equal performance.
+    source: §4, Table 8, Table 9
+    evidence: Within the same evaluation, Hindi scores highest on nearly every HEM dimension (e.g. QMOS 4.6 Pro
+      / 4.5 Flash), while Bengali and Gujarati trail consistently, with QMOS as low as 3.3 for Bengali under Flash,
+      despite all five languages being served by the same underlying Gemini 2.5 models.
+    confidence: medium
+    relevance: high
+  - claim_id: a_single_naturalness_or_quality_score_can_obscure_a_persistent
+    role: complicates
+    claim: A single naturalness or quality score can obscure a persistent gap between technical/procedural delivery
+      competence and expressive, persuasive delivery competence in synthesized speech.
+    source: §4, Table 8, Table 9
+    evidence: Across both Gemini model tiers and all five languages, Safety and Professionalism scores (4.1-4.9)
+      are consistently 0.5-1.5 points higher than Authenticity, Expressiveness, and Exploratoriness scores (3.2-4.3)
+      for the same audio samples.
+    confidence: medium
+    relevance: high
+  - claim_id: human_evaluation_protocols_for_domain_specific_synthetic_speech_require_disclosed
+    role: complicates
+    claim: Human evaluation protocols for domain-specific synthetic speech require disclosed evaluator counts, qualifications,
+      and inter-rater reliability to support their conclusions.
+    source: §3.1.3
+    evidence: The paper defines its Human Evaluation Metric as an average over N raters' scores but does not report
+      N, rater qualifications, or agreement statistics anywhere in the text.
+    confidence: medium
+    relevance: high
+  limitations:
+  - 'The human evaluation methodology is underspecified: the paper defines HEM as an average of N raters'' 1-5 scores
+    but never reports how many evaluators participated, their qualifications (e.g. legal or linguistic expertise,
+    native-speaker status per language), or any inter-rater reliability statistic. Given the single-author byline,
+    it is unclear whether the "human evaluation" was independent of the author.'
+  - 'Additional limitations: the study evaluates only two closed, commercial TTS systems (Gemini 2.5 Pro/Flash)
+    with no open-source or non-Gemini baseline for comparison; the legal argument texts are themselves LLM-generated
+    rather than drawn from real courtroom transcripts, so the linguistic and legal authenticity of the input text
+    is not independently verified; no automated intelligibility or speaker-fidelity metrics (WER, PESQ, SPK-SIM)
+    are reported alongside the subjective scores; and the paper''s "mathematical framework" (persona space, TTS
+    transformation function) is descriptive notation rather than an implemented or ablated mechanism, so it provides
+    no evidence about how persona conditioning actually operates inside the black-box Gemini models.'
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.15596'
+  published_date: '2026-01-22'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: minor
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: a_specialized_non_neutral_speech_style_can_be_synthesized_zero
+    role: supports
+    claim: A specialized, non-neutral speech style can be synthesized zero-shot for arbitrary speakers using only
+      their ordinary read-style speech as the reference, without requiring any style-matched training or reference
+      data from the target speaker.
+    source: §VI-A, Table I
+    evidence: DeepASMR generates ASMR speech for unseen speakers from a normal-style prompt alone, achieving 6.53%
+      WER and a +0.58 LLM-judged style score on the Normal-to-ASMR task, versus negative style scores for all cascade
+      baselines.
+    confidence: high
+    relevance: low
+  - claim_id: discrete_speech_tokens_from_an_asr_objective_tokenizer_can_exhibit
+    role: supports
+    claim: Discrete speech tokens from an ASR-objective tokenizer can exhibit a soft factorization in which variance
+      across the token space is dominated by speaking style rather than speaker identity, while still retaining
+      exploitable residual speaker information.
+    source: §III-C
+    evidence: t-SNE visualization of pre-quantized S3-tokenizer hidden states shows a clear separation between Normal
+      and ASMR clusters, while a speaker classifier trained on the same hidden states still reaches 86.4% accuracy
+      (versus 90% on mel-spectrograms and 2.8% chance), confirming reduced but non-zero speaker identity in the
+      token space.
+    confidence: high
+    relevance: low
+  - claim_id: cascaded_pipelines_that_combine_a_style_transfer_tts_stage_with
+    role: complicates
+    claim: Cascaded pipelines that combine a style-transfer TTS stage with a separate voice-conversion stage struggle
+      to jointly achieve target style intensity and speaker-identity preservation in cross-style speech generation.
+    source: §VI-A, §VI-D, Table I, Table VI
+    evidence: Cascade baselines combining CosyVoice2/F5-TTS with CosyVoiceVC/SeedVC produced negative or near-zero
+      LLM-judged style scores and lower unvoiced ratios (14–37%) on the Normal-to-ASMR task, while the integrated
+      two-stage DeepASMR reached a +0.58 style score and 74.21% unvoiced ratio.
+    confidence: high
+    relevance: low
+  - claim_id: iteratively_feeding_a_generation_pipeline_s_own_output_back_in
+    role: complicates
+    claim: Iteratively feeding a generation pipeline's own output back in as its reference prompt trades off target-style
+      intensity against speaker-identity preservation, with diminishing or reversing returns beyond a small number
+      of iterations.
+    source: §VI-C-3, Table V
+    evidence: In the Normal-to-ASMR task, iterating the inference pass from step 1 to step 3 raised the LLM-judged
+      style score from +0.58 to +0.88 but degraded speaker similarity from 0.41 to 0.25, with WER also worsening
+      on the third pass relative to the second (5.72% vs. 4.15%).
+    confidence: high
+    relevance: low
+  - claim_id: mixing_a_proportion_of_normal_style_speech_into_fine_tuning
+    role: supports
+    claim: Mixing a proportion of normal-style speech into fine-tuning data for a specialized speech style prevents
+      catastrophic forgetting of general speech synthesis ability.
+    source: §VI-C-2, Table IV
+    evidence: Fine-tuning exclusively on the 670-hour ASMR corpus raised Normal-to-Normal WER from 2.1% to 3.3%
+      and Normal-to-ASMR WER to 15.2%, whereas mixing in the Emilia normal-speech dataset restored Normal-to-Normal
+      performance and cut Normal-to-ASMR WER to 6.53%.
+    confidence: high
+    relevance: low
+  limitations:
+  - 'The authors'' own subjective-comfort evaluation rests on a fundamentally variable phenomenon: they acknowledge
+    emerging evidence of neuroanatomical differences between individuals who do and do not experience ASMR responses,
+    which limits how far MOS-style "comfort" and "tingling" ratings from a 12-person listener panel can be generalized.'
+  - 'Beyond that, the DeepASMR-DB dataset is heavily gender-imbalanced (28 female vs. 7 male speakers across 35
+    total), reflecting the demographics of available ASMR creators but constraining evaluation of the framework''s
+    generalization to male voices. The reported speaker-similarity ceiling for cross-style synthesis is itself low
+    even for ground-truth recordings (SIM of 0.47 in Chinese and 0.37 in English between a speaker''s own ASMR and
+    normal recordings), meaning SIM as a metric may understate true identity preservation after a style shift. The
+    current framework is limited to vocal speech; the authors note that broader ASMR triggers (tapping, rubbing,
+    and other non-vocal sounds) are left to future work. The paper also flags a dual-use risk: because the system
+    preserves speaker identity zero-shot, it could be misused for voice spoofing or impersonation, and the authors
+    recommend pairing future deployment with synthetic-speech detection.'
+  caveats:
+  - For multilingual TTS, this paper provides low-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.15621'
+  published_date: '2026-01-22'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims: []
+  limitations:
+  - The model relies on proprietary 5M-hour multilingual training data; results may not transfer to lower-resource
+    settings. Despite 10 languages covered, Japanese and some European languages show higher WER than Chinese/English.
+    The 25Hz variant performs better for long-form synthesis, suggesting the 12Hz variant has difficulty with long-horizon
+    dependencies — an open research question for ultra-low-bitrate streaming TTS. Voice design via natural language
+    instruction (thinking pattern) has not been rigorously benchmarked for robustness against adversarial or ambiguous
+    prompts.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.16023'
+  published_date: '2026-01-22'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - GAN
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  - gan_based_multilingual_synthesis
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims:
+  - claim_id: single_stage_end_to_end_trained_llm_based_direct_speech
+    role: supports
+    claim: Single-stage, end-to-end trained LLM-based direct speech-to-speech translation frameworks can outperform
+      cascaded ASR-MT-TTS pipelines even when both approaches use identical component models and training data.
+    source: §IV-E1, Table 1
+    evidence: With Whisper-small, Qwen2-0.5B, and CosyVoice held constant across both system types, the end-to-end
+      DS2ST-LM beats the cascaded and ST+TTS baselines on every metric (BLEU, METEOR, BLEURT, COMET) across three
+      zh-en test sets.
+    confidence: high
+    relevance: high
+  - claim_id: higher_capacity_cross_modal_projection_modules_between_a_speech_encoder
+    role: complicates
+    claim: Higher-capacity cross-modal projection modules between a speech encoder and an LLM do not necessarily
+      improve downstream translation quality, despite converging faster during training.
+    source: §IV-E2, Table 2
+    evidence: Conv1D-Linear and Q-Former (2- and 4-layer) projectors converge faster than a simple Linear projector
+      but underperform it on all four metrics (BLEU 13.33/13.10/12.05 vs. 14.71 for Linear), attributed to the higher-capacity
+      projectors disrupting frame-level temporal structure the pretrained encoder had already encoded.
+    confidence: high
+    relevance: high
+  - claim_id: semantic_tokens_derived_directly_from_target_speech_carry_translation_relevant
+    role: supports
+    claim: Semantic tokens derived directly from target speech carry translation-relevant information that text-derived
+      tokens (generated by a text-to-token LLM from the same target text) do not fully replicate.
+    source: §IV-E3, Table 3
+    evidence: Replacing S3 speech-derived tokens with text-driven LLM-generated tokens, holding all other training
+      conditions fixed, degrades BLEU by a relative 17.28% on GigaS2S-1000 (14.71 → 12.58), with the same direction
+      of effect replicated on Seamless-Align.
+    confidence: high
+    relevance: high
+  - claim_id: conditioning_a_vocoder_on_an_explicit_fixed_reference_speaker_embedding
+    role: supports
+    claim: Conditioning a vocoder on an explicit, fixed reference-speaker embedding separate from content tokens
+      preserves cross-lingual speaker timbre more reliably than continuous or entangled discrete-unit representations
+      used by prior direct S2ST systems.
+    source: §IV-E5, Table 4
+    evidence: On the fr-en evaluation set, DS2ST-LM's speaker-embedding-conditioned vocoder reaches cosine speaker
+      similarity 0.83, well above Translatotron (0.32), Translatotron 2 (0.43), DA-Speech (0.37), and TransVIP (0.40).
+    confidence: high
+    relevance: high
+  - claim_id: a_single_llm_based_s2st_system_s_translation_quality_varies
+    role: complicates
+    claim: A single LLM-based S2ST system's translation quality varies sharply across language pairs according to
+      that language's representation in the underlying LLM's pretraining data, even when trained with comparable
+      in-domain parallel data volumes.
+    source: §IV-E4, Tables 10–11; Appendix Table VI
+    evidence: The same trained DS2ST-LM system scores BLEU 24.57 on fr-en but only 5.41 on urd-en, with human adequacy
+      dropping correspondingly from 3.38 (fr-en) to 1.62 (urd-en).
+    confidence: high
+    relevance: high
+  limitations:
+  - The target-language speech in the paper's largest and best-performing training corpus (GigaS2S-1000) is entirely
+    synthetic, generated by XTTS-v2 from a single Chinese speaker's voice, not natural human recordings — the strongest
+    reported results may partly reflect this corpus's unusually clean, single-speaker acoustic-semantic alignment
+    rather than the model's ability to handle real bilingual speech variability.
+  - 'The paper''s own conclusion acknowledges that performance remains constrained by the language coverage of the
+    Whisper encoder, Qwen2 LLM, and CosyVoice vocoder, and that low-resource language pairs (Urdu, Bengali) continue
+    to lag substantially behind higher-resource pairs. The subjective evaluation is comparatively small in scale:
+    15 evaluators rating only 20 samples per model per language pair. The projector and semantic-token ablations
+    are conducted only on the GigaS2S-1000/Seamless-Align zh-en setting and are not re-verified across the other
+    six language pairs the system is extended to.'
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2602.09041'
+  published_date: '2026-02-03'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: minor
+  method_family:
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: combining_endpoint_matching_with_a_deterministic_jvp_free_estimate_of
+    role: supports
+    claim: Combining endpoint matching with a deterministic (JVP-free) estimate of the teacher's mean velocity over
+      each sampling sub-interval reduces training variance and improves one-step distillation quality relative to
+      endpoint-only supervision.
+    source: §4.4, Table 2; Appendix C.1, Table 4
+    evidence: Adding dual supervision to an endpoint-distillation baseline raises MOS-N from 3.56 to 4.21 and MOS-Q
+      from 3.42 to 4.11 on the StepTTS teacher, the largest single-component gain in the ablation; removing dual
+      supervision from the full model causes a "catastrophic" drop to MOS-N 3.95 and SMOS 3.38.
+    confidence: high
+    relevance: low
+  - claim_id: when_a_distilled_student_is_restricted_to_a_small_fixed
+    role: supports
+    claim: When a distilled student is restricted to a small, fixed set of discrete inference steps, replacing continuous-time
+      modulation-based conditioning (adaLN-Zero) with a compact set of learnable per-step tokens can match or exceed
+      distilled quality while substantially reducing parameter count.
+    source: §3.3.3, §4.4; Appendix B.1, Table 2
+    evidence: Removing adaLN-Zero (38M step-conditioning parameters) in favor of 3 step-aware tokens per step (1.5K
+      parameters) improves MOS-N from 4.25 to 4.32 while cutting overall student parameters from 154M to 118M; a
+      formal complexity argument shows adaLN requires O(L·D²) parameters versus O(K·D) for step tokens (10,923x
+      more in this configuration).
+    confidence: high
+    relevance: low
+  - claim_id: a_distilled_few_step_flow_matching_tts_model_can_retain
+    role: supports
+    claim: A distilled few-step flow-matching TTS model can retain most of a multi-step teacher's speaker-similarity
+      and prosodic fidelity, not just its naturalness/quality scores.
+    source: §4.1.4, Table 1; §4.5, Table 3
+    evidence: The 1-step StepTTS student matches the teacher's objective speaker similarity (SIM-o 0.66 for both)
+      on LibriSpeech test-clean and shows F0/HNR/jitter/shimmer correlations with the prompt comparable to or slightly
+      above the 10-step teacher, while endpoint distillation shows markedly lower correlations across the same features.
+    confidence: high
+    relevance: low
+  - claim_id: a_student_distilled_from_teacher_targets_generated_under_strong_classifier
+    role: complicates
+    claim: A student distilled from teacher targets generated under strong classifier-free guidance internalizes
+      that guidance, so its optimal inference-time CFG strength is not the same as the teacher's and further guidance
+      at teacher-like strengths can substantially harm quality.
+    source: §4.1.2; Appendix C.2, Table 5
+    evidence: The teacher performs best at guidance weight w=0.7, but the distilled student's optimal setting is
+      w=0.05 (MOS-N 4.32); increasing to w=0.20 drops MOS-N to 4.10 and w=0.50 collapses it to 3.78, and the paper
+      notes these w values are not directly comparable to guidance scales (w≥1) used in some other TTS systems such
+      as F5-TTS.
+    confidence: high
+    relevance: low
+  - claim_id: architectural_adaptations_designed_for_one_backbone_family_s_conditioning_mechanism
+    role: complicates
+    claim: Architectural adaptations designed for one backbone family's conditioning mechanism may not transfer
+      to backbones that lack that mechanism, limiting how uniformly a distillation framework's components apply
+      across architectures.
+    source: §4.3; Appendix C.4, Table 7
+    evidence: Step-aware tokenization is only applicable to adaLN-based DiT backbones (StepTTS, F5-TTS); for U-Net
+      backbones without adaLN (CosyVoice2, E2-TTS) the technique is architecturally inapplicable, and only the dual-supervision
+      and weak-CFG components could be evaluated on those systems.
+    confidence: high
+    relevance: low
+  limitations:
+  - The paper's own Conclusion flags that DSFlow has not been evaluated under extremely large-scale multilingual
+    training settings (the training corpus is bilingual English/Mandarin, not broadly multilingual), and that its
+    applicability to autoregressive architectures with different inductive biases than the flow-matching backbones
+    tested here is untested. The distillation targets are restricted to a small, fixed set of step counts (K ∈ {1,
+    2, 4}) chosen as powers of two; behavior at intermediate or larger step counts is not characterized. Step-aware
+    tokenization is explicitly inapplicable to non-adaLN backbones, so the full three-component framework is only
+    demonstrated on adaLN-based DiT architectures, with the other two components carrying the CosyVoice2/E2-TTS
+    results. The rater-recruitment and sample-selection methodology described in Appendix A.2 explicitly scopes
+    its 50-utterance, 501-rater sample to LibriSpeech test-clean; the paper does not clarify whether the MOS-N figures
+    reported for the Seed-TTS test-en/test-zh robustness benchmark (§Appendix C.5, Table 8) come from the same listening
+    protocol or a separate evaluation run.
+  caveats:
+  - For multilingual TTS, this paper provides low-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2602.11072'
+  published_date: '2026-02-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims:
+  - claim_id: simultaneous_speech_to_speech_translation_policies_can_be_learned_from
+    role: supports
+    claim: Simultaneous speech-to-speech translation policies can be learned from coarse sentence-level alignment
+      plus reinforcement learning, without requiring word-level aligned training data.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero, trained only on sentence-level aligned data followed by GRPO with BLEU-based process
+      rewards, outperforms Hibiki (trained on synthetic word-level aligned data) by roughly 3 ASR-BLEU points at
+      lower latency in the short-form French setting.
+    confidence: high
+    relevance: high
+  - claim_id: a_single_automated_reward_signal_bleu_score_computed_at_intermediate
+    role: supports
+    claim: A single automated reward signal (BLEU score computed at intermediate points during generation) is sufficient
+      to jointly optimize translation quality and latency in an RL-tuned simultaneous translation system, without
+      a multi-component or human-feedback reward.
+    source: §3.3, §2.2
+    evidence: GRPO with only a BLEU-based process reward, no KL regularization, and no human interpretation or preference
+      data, produces state-of-the-art quality/latency trade-offs across four languages, in contrast to prior RL
+      approaches (e.g. Seed LiveInterpret 2.0) that required multiple reward components and staged training to avoid
+      reward hacking.
+    confidence: high
+    relevance: high
+  - claim_id: the_degree_of_causality_permitted_in_the_base_model_s
+    role: complicates
+    claim: The degree of causality permitted in the base model's training alignments bounds how much a subsequent
+      RL stage can reduce translation latency.
+    source: §4.7, Figure 7
+    evidence: Ablation Experiment (B), which starts RL from a base model trained with fully causal alignment (δ_i
+      = d_i), reduces latency only to around 6 seconds, far worse than the reference experiment's latency, because
+      the base model was never exposed to starting translation before an input sentence ends.
+    confidence: high
+    relevance: high
+  - claim_id: joint_multistream_modeling_of_source_and_target_audio_tokens_can
+    role: supports
+    claim: Joint multistream modeling of source and target audio tokens can transfer speaker identity across languages
+      implicitly, without an explicit speaker-conditioning module.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero surpasses Seamless's speaker-similarity score by more than 30 points in the short-form
+      setting and by roughly 17-20 points in the long-form setting across all four evaluated languages, despite
+      having no dedicated speaker embedding component.
+    confidence: high
+    relevance: high
+  - claim_id: systems_trained_to_preserve_source_speaker_identity_in_cross_lingual
+    role: complicates
+    claim: Systems trained to preserve source speaker identity in cross-lingual speech translation may still fail
+      to give users control over paralinguistic transfer such as foreign accent.
+    source: §4.8
+    evidence: The paper reports that despite state-of-the-art speaker identity preservation, there is no mechanism
+      to control the intensity of the input-language accent carried into the generated target speech.
+    confidence: high
+    relevance: high
+  limitations:
+  - The paper does not provide a mechanism to control the intensity of source-language accent transferred into the
+    generated target speech, which the authors note would require accent-annotated training data and explicit conditioning.
+    Evaluation is limited to X-to-English translation directions (French, Spanish, Portuguese, German, plus an Italian
+    adaptation experiment); no results are reported for translation into non-English target languages or for many-to-many
+    translation. The training and evaluation pipeline depends on cascaded automatic tools (Whisper transcription,
+    MADLAD machine translation, a proprietary TTS for target synthesis) to build training data, so translation quality
+    is implicitly upper-bounded by the quality of these upstream components. The paper also notes (Section 4.7)
+    that BLEU scores on the held-out validation set are much higher than on the final evaluation benchmarks because
+    both train and validation data were generated by the same MADLAD-3B-based pipeline, meaning some in-domain overfitting
+    to the synthetic translation style is expected and not fully disentangled from genuine translation quality gains.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: 2026.abjadnlp-1.6
+  published_date: '2026-03-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: ABJAD-NLP 2026
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  claims:
+  - claim_id: a_fully_synthetic_construction_pipeline_llm_generated_text_converted_to
+    role: supports
+    claim: A fully synthetic construction pipeline, LLM-generated text converted to speech by a generative audio
+      tool with no human recording, can produce TTS training data sufficient to measurably improve an existing multilingual
+      TTS model's intelligibility and speaker similarity for an under-resourced dialect.
+    source: §5.2, Table 3
+    evidence: Fine-tuning XTTS v2 on NileTTS (built entirely from LLM-generated Egyptian Arabic text rendered by
+      NotebookLM's audio generation, then auto-transcribed and diarized) reduces WER from 26.8% to 18.8% and CER
+      from 8.1% to 4.1%, and raises speaker similarity from 0.713 to 0.755, relative to the pretrained baseline.
+    confidence: high
+    relevance: high
+  - claim_id: dialect_specific_fine_tuning_can_substantially_improve_target_dialect_tts
+    role: refines
+    claim: Dialect-specific fine-tuning can substantially improve target-dialect TTS quality even when the base
+      multilingual model already nominally supports the target language family.
+    source: §5.2
+    evidence: XTTS v2's pretraining already includes Arabic (MSA and Gulf dialects), yet fine-tuning on 38 hours
+      of Egyptian-Arabic-only data yields a 29.9% relative WER reduction and 49.4% relative CER reduction on Egyptian
+      Arabic evaluation data versus the untuned baseline.
+    confidence: high
+    relevance: high
+  - claim_id: automatic_intelligibility_and_speaker_similarity_metrics_can_be_inflated_by
+    role: complicates
+    claim: Automatic intelligibility and speaker-similarity metrics can be inflated by self-consistency bias when
+      the same tools used to construct the training data are reused to score the resulting model.
+    source: §6.2
+    evidence: WER/CER are scored by re-transcribing synthesized speech with Whisper Large, the same model used to
+      transcribe the training corpus, and speaker similarity uses ECAPA-TDNN embeddings, the same model used for
+      diarization during dataset construction; the authors explicitly flag this as a "form of ASR self-consistency
+      bias" and model-specific bias, with no independent ASR model or human-verified transcript subset used to cross-check.
+    confidence: high
+    relevance: high
+  - claim_id: synthetic_dialectal_speech_data_generated_through_a_commercial_ai_audio
+    role: complicates
+    claim: Synthetic dialectal speech data generated through a commercial AI audio tool inherits that tool's limited
+      voice inventory, constraining the speaker diversity available for downstream TTS training.
+    source: §6.1
+    evidence: The entire 38-hour NileTTS corpus derives from exactly two NotebookLM-generated podcast voices (one
+      male, one female); the authors note this "limits speaker diversity" and that models trained on it "may not
+      generalize well to synthesizing voices with different characteristics."
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluation relies entirely on automatic metrics computed with tools that overlap the data-construction pipeline
+    (Whisper for transcription-based WER/CER, ECAPA-TDNN for speaker similarity), with no independent ASR model,
+    human-verified transcription subset, or formal MOS/listening-test study to corroborate the gains.
+  - 'Beyond the evaluation-tooling overlap, the dataset itself has narrow scope: only two speakers (one male, one
+    female), which the authors acknowledge limits voice diversity for downstream generalization; the underlying
+    speech is entirely synthetically generated (via NotebookLM) rather than human-recorded, though the authors argue
+    the text content and rendered prosody preserve authentic dialectal properties; and domain coverage is limited
+    to medical, sales/customer-service, and general conversation, excluding specialized registers such as news broadcasting
+    or poetry. The authors propose speaker expansion, extension to other under-resourced Arabic dialects, formal
+    MOS studies, and cross-validation with independent ASR and embedding models as future work.'
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: 2026.eacl-short.16
+  published_date: '2026-03-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: EACL 2026
+  task:
+  - VC
+  - TTS
+  architecture:
+  - diffusion
+  - GAN
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_multilingual_tts
+  - gan_based_multilingual_synthesis
+  - diffusion_multilingual_tts
+  claims:
+  - claim_id: training_a_multilingual_model_with_explicit_language_identity_embeddings_rather
+    role: supports
+    claim: Training a multilingual model with explicit language-identity embeddings, rather than relying on inference-time
+      embedding manipulation alone, produces a more robust trade-off between speaker anonymization and speech quality
+      when transferring style from a higher-resource language to a low-resource target language.
+    source: §4, Tables 2-3
+    evidence: Trained models with language embeddings reduced SECS from a 0.87 no-conversion baseline to 0.61-0.69
+      while keeping MOS at 3.76-4.03, whereas inference-time "Custom" embedding substitution generalized well on
+      nêhiyawêwin (SECS 0.63) but degraded sharply on SENĆOŦEN (SECS 0.74, versus the trained STR-ENG model's 0.69).
+    confidence: high
+    relevance: high
+  - claim_id: removing_an_explicit_language_identity_signal_from_a_multilingual_voice
+    role: complicates
+    claim: Removing an explicit language-identity signal from a multilingual voice-style representation causes language
+      identity to entangle with speaker/style embeddings, leaking the higher-resource language's accent into synthesized
+      low-resource-language speech.
+    source: §4, Table 2
+    evidence: Multilingual models trained without language embeddings scored slightly better on PESQ, SI-SDR, and
+      SECS than their language-embedding counterparts, but their MMS-LID-predicted confidence that generated audio
+      was nêhiyawêwin collapsed to 0.003-0.06, compared to 0.53 for ground-truth recordings and 0.55-0.67 for the
+      language-embedding variants.
+    confidence: high
+    relevance: high
+  - claim_id: off_the_shelf_voice_conversion_models_trained_for_general_purpose
+    role: complicates
+    claim: Off-the-shelf voice conversion models trained for general-purpose or singing-voice conversion do not
+      transfer cleanly to anonymizing speech in unseen, structurally distinct low-resource languages without sacrificing
+      substantial output quality.
+    source: §3.3, §4, Table 2
+    evidence: Applying pretrained SeedVC configurations to nêhiyawêwin no-conversion output achieved the lowest
+      speaker-similarity scores in the study (SECS 0.52-0.58) but at the cost of the lowest quality scores observed,
+      with SeedVC-v1-base reaching PESQ 2.46 and predicted MOS 2.34 against a ground-truth PESQ of 3.58 and MOS
+      of 3.27.
+    confidence: high
+    relevance: high
+  - claim_id: standard_reference_based_objective_speech_quality_and_intelligibility_metrics_are
+    role: complicates
+    claim: Standard reference-based objective speech quality and intelligibility metrics are not applicable to evaluating
+      speaker-anonymized speech, and even purpose-fitted proxy metrics for similarity and accent can disagree about
+      which method anonymizes best.
+    source: §4, "Metrics"
+    evidence: The authors report they could not use PESQ or SI-SDR in their normal reference-matched form because
+      the anonymized output is deliberately produced in a different voice than the ground truth, and instead relied
+      on predicted (non-reference) variants via torchaudio-squim plus a separate MMS-LID accent-confidence proxy,
+      since high SECS-based similarity alone was judged insufficient evidence for successful anonymization when
+      accent entanglement was possible.
+    confidence: high
+    relevance: high
+  limitations:
+  - No human evaluation was conducted; all quality and similarity judgments rely on predicted proxy metrics (UTMOS,
+    torchaudio-squim, Resemblyzer, MMS-LID), which the authors themselves note may carry model-specific bias or
+    error, and this could not be validated against human raters given the small number of available Indigenous-language
+    speakers.
+  - '- All target-language test speakers were seen during training, so results characterize anonymization of known
+    training speakers rather than generalization to unseen speakers. - SENĆOŦEN evaluation is limited to two speakers
+    total, making it difficult to distinguish genuine method effects from speaker-specific idiosyncrasy. - No existing
+    language-identification classifier is trained on SENĆOŦEN, so accent leakage could only be quantified for nêhiyawêwin
+    (CRK-Conf), leaving the SENĆOŦEN accent-entanglement claims impressionistic rather than measured. - The authors
+    explicitly flag the lack of an evaluation metric tailored to cross-lingual voice conversion as an open problem,
+    rather than proposing one themselves.'
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: 2026.loreslm-1.54
+  published_date: '2026-03-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: LoResLM 2026
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - gan_based_multilingual_synthesis
+  claims:
+  - claim_id: vocabulary_extension_combined_with_full_fine_tuning_can_adapt_a
+    role: supports
+    claim: Vocabulary extension combined with full fine-tuning can adapt a multilingual autoregressive TTS model
+      to a language absent from its pretraining data more effectively than lightweight adaptation of a monolingual
+      model with far less target-language data.
+    source: §4.1, Table 5
+    evidence: XTTS-v2, fully fine-tuned on ~144 hours of Mooré data after vocabulary extension to 4,000 tokens,
+      scored 4.36 MOS and won 77.8% of A/B comparisons against Orpheus-3B, which was LoRA-adapted on only 6.48 hours
+    confidence: medium
+    relevance: high
+  - claim_id: a_large_self_supervised_multilingual_speech_encoder_can_be_fine
+    role: supports
+    claim: A large self-supervised multilingual speech encoder can be fine-tuned into an accurate ASR system for
+      a tonal, low-resource language using a comparatively modest amount of paired data.
+    source: §4.2, Table 4
+    evidence: Wav2Vec-BERT-2.0, pretrained on 4.5M hours across 140+ languages, reached 4.24% WER and 1.11% CER
+      after fine-tuning on roughly 63 hours (90% of Dataset 2) of Mooré speech
+    confidence: medium
+    relevance: high
+  - claim_id: speech_corpora_drawn_from_a_single_narrow_domain_can_still
+    role: complicates
+    claim: Speech corpora drawn from a single narrow domain can still support generalization to unrelated domains,
+      but this should be verified with out-of-domain evaluation rather than assumed from in-domain scores alone.
+    source: §4.1
+    evidence: Both TTS models were trained exclusively on Bible audio-text (jw.org, bible.com) yet were evaluated
+      by native speakers on unrelated non-religious texts (news, sport, tales, proverbs), which the authors highlight
+      as evidence the approach transfers, though no in-domain comparison score is reported to quantify any domain
+      gap
+    confidence: medium
+    relevance: high
+  - claim_id: cascaded_speech_to_speech_translation_pipelines_built_from_independently_fine
+    role: complicates
+    claim: Cascaded speech-to-speech translation pipelines built from independently fine-tuned components inherit
+      each component's error rate, which can compound end-to-end without being independently measured for the final
+      translation output.
+    source: §3, §4
+    evidence: The system chains fine-tuned French ASR (Whisper Turbo), machine translation, and TTS models, but
+      no end-to-end S2ST quality metric (e.g., translated speech intelligibility or meaning preservation) is reported,
+      only component-level MOS/UTMOS/A-B and WER/CER scores
+    confidence: medium
+    relevance: high
+  limitations:
+  - The paper reports no end-to-end evaluation of the assembled French-Mooré S2ST system itself, only isolated scores
+    for its ASR and TTS components; overall translation quality and error propagation across the cascade remain
+    unmeasured.
+  - The cascaded design, chosen due to the lack of paired French-Mooré speech data, is explicitly noted by the authors
+    as prone to error propagation across ASR, MT, and TTS stages and as computationally demanding for training and
+    inference, which the authors themselves flag as unsuitable for low-resource technological environments (§Limitations).
+    The training corpus is drawn entirely from religious sources (Bible translations), so its linguistic register
+    may not represent the full range of everyday spoken Mooré despite the out-of-domain test design. The paper also
+    does not report code or demo availability, and it does not compare against a direct (non-cascaded) S2ST baseline,
+    which the authors identify as future work.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.07513'
+  published_date: '2026-03-08'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: zero_shot_multilingual_tts_transfer_can_fail_severely_for_languages
+    role: supports
+    claim: Zero-shot multilingual TTS transfer can fail severely for languages whose script relies on diacritics
+      the source model was never trained to represent, even when the target language shares a language family with
+      better-resourced training languages.
+    source: §5.4, §5.5, Table 3, Table 4
+    evidence: The IndicParler multilingual baseline, evaluated on Kashmiri without dedicated adaptation, scores
+      a MOS of 1.864 ± 0.065 and an rWER of 46.75% (rising to 100.32% when diacritics are stripped from the input),
+      against 3.634 ± 0.061 MOS and 4.14% rWER for the adapted system.
+    confidence: high
+    relevance: high
+  - claim_id: initializing_a_flow_matching_tts_model_from_a_pretrained_checkpoint
+    role: supports
+    claim: Initializing a flow-matching TTS model from a pretrained checkpoint in a higher-resource language, combined
+      with vocabulary expansion to cover the target language's script, can enable stable alignment and competitive
+      synthesis quality under limited paired target-language data.
+    source: §4.3, §5.4, §5.5
+    evidence: Fine-tuning a pretrained English multi-speaker Matcha-TTS (OT-CFM) checkpoint on 79.9 hours of Kashmiri
+      speech, with the grapheme vocabulary expanded to 272 symbols to cover Kashmiri diacritics, yields an MCD of
+      3.73 and MOS of 3.634, described as establishing a new benchmark for the language.
+    confidence: high
+    relevance: high
+  - claim_id: combining_heterogeneous_training_corpora_of_differing_recording_quality_for_low
+    role: complicates
+    claim: Combining heterogeneous training corpora of differing recording quality for low-resource TTS requires
+      an explicit acoustic-domain-matching pipeline; naively mixing clean studio recordings with noisy spontaneous
+      recordings risks destabilizing Monotonic-Alignment-Search-based alignment.
+    source: §3.1, §3.1.1
+    evidence: The IndicVoices-R Kashmiri split (93.25% spontaneous recordings) exhibits noise, reverberation, and
+      amplitude variation that the authors state can destabilize alignment; they apply a three-stage enhancement
+      pipeline (dereverberation, silence trimming, LUFS loudness normalization) before mixing it with the studio-quality
+      RASA corpus for training.
+    confidence: high
+    relevance: high
+  - claim_id: proxy_asr_based_intelligibility_metrics_for_extremely_low_resource_languages
+    role: complicates
+    claim: Proxy ASR-based intelligibility metrics for extremely low-resource languages can themselves be unreliable,
+      limiting how much weight word error rate results can carry relative to subjective evaluation.
+    source: §5.2, §5.3, Table 2
+    evidence: All Kashmiri ASR systems benchmarked as WER proxies show high absolute error rates (41.20%-94.34%
+      depending on model and diacritic condition), which the authors cite as justification for treating WER as a
+      supplementary metric rather than a primary one, relying on MOS and MCD as the main evaluation criteria instead.
+    confidence: high
+    relevance: high
+  limitations:
+  - The evaluation compares Bolbosh against a single multilingual baseline (IndicParler); no comparison is reported
+    against other established low-resource TTS architectures discussed in the paper's own related work (e.g., VITS,
+    Grad-TTS, FastSpeech 2), so the magnitude of improvement attributable specifically to the flow-matching architecture
+    versus the adaptation recipe as a whole cannot be isolated from this paper alone.
+  - The evaluation is limited to a single language and a single training/test split drawn from two corpora, one
+    of which (RASA) supplies both training and the entire validation/test sets, so generalization to unseen Kashmiri
+    dialects or speakers outside these corpora is untested. Model size is not reported. The proxy ASR system used
+    for WER has itself has high absolute error on Kashmiri, and the paper does not report a listener demographic
+    breakdown beyond native-speaker status and count (32 listeners). The authors note future work directions of
+    multi-dialect modeling, enhanced prosody control, and extending the approach to other under-resourced languages,
+    implying prosody control was not yet explicitly modeled beyond frame-level pitch and energy prediction.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.07534'
+  published_date: '2026-03-08'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: frontier_probe
+  method_family:
+  - autoregressive_multilingual_codec_models
+  claims:
+  - claim_id: parameter_space_task_vectors_extracted_from_fine_tuning_on_native
+    role: supports
+    claim: Parameter-space task vectors extracted from fine-tuning on native speech of a target language can be
+      added back to a pretrained multilingual TTS model to induce non-native accent characteristics in synthesized
+      speech, without requiring any accented training data.
+    source: §6.1.1, Table 3
+    evidence: Fine-tuning XTTS2 with LoRA on native reference speech from a different language, while keeping the
+      language ID fixed to the base language, increased target-accent classification probability and accent-embedding
+      similarity across all six tested accents relative to the unmodified pretrained model, while speaker similarity
+      remained around 0.9
+    confidence: high
+    relevance: high
+  - claim_id: the_strength_of_a_parameter_space_accent_representation_can_be
+    role: supports
+    claim: The strength of a parameter-space accent representation can be continuously and monotonically controlled
+      by linearly scaling the vector before adding it to the base model, producing a smooth accent-strength/intelligibility
+      trade-off rather than a binary on/off effect.
+    source: §6.3.1-6.3.2, Figure 3
+    evidence: Scaling the Accent Vector coefficient α from 0 to 1 in increments of 0.2 for British- and Hindi-accented
+      English produced progressively stronger accent classification scores alongside rising WER and declining UTMOS
+    confidence: high
+    relevance: high
+  - claim_id: multiple_parameter_space_accent_vectors_can_be_linearly_composed_to
+    role: supports
+    claim: Multiple parameter-space accent vectors can be linearly composed to synthesize mixed-accent speech reflecting
+      influence from more than one target accent simultaneously.
+    source: "§6.4.1-6.4.2, Table 5, Figure 4)*.\n  > *Evidence:* One pairing failed to combine cleanly: mixing British\
+      \ with Spanish or Mandarin caused British accent probability to dominate at the expense of the other accent,\
+      \ attributed to the accent classifier's own training-data bias toward North American and British varieties\
+      \ *(§6.4.1, Table 5"
+    evidence: Combining Spanish and Hindi Accent Vectors (and other accent pairs) with weighted coefficients raised
+      both target-accent probabilities in most combinations, and per-accent strength within the mix could be tuned
+      via the individual coefficients
+    confidence: high
+    relevance: high
+  - claim_id: automatic_accent_strength_control_via_asr_based_intelligibility_metrics_conflates
+    role: complicates
+    claim: Automatic accent-strength control via ASR-based intelligibility metrics conflates genuine accent-induced
+      pronunciation shift with the ASR model's own accent bias, so WER/CER increases under accent manipulation should
+      not be read purely as quality degradation.
+    source: §6.1.2
+    evidence: Whisper-based WER/CER rose for all accented conditions relative to standard American English synthesis,
+      and the authors attribute part of this rise to Whisper's own training bias toward standard American English
+      rather than to synthesis quality loss, noting ASR errors can partially reflect stronger accentedness rather
+      than lower speech quality
+    confidence: high
+    relevance: high
+  - claim_id: the_effectiveness_of_a_parameter_space_accent_shift_depends_on
+    role: complicates
+    claim: The effectiveness of a parameter-space accent shift depends on the phonological and prosodic distance
+      between the base language and the target accent language, with larger distances (e.g., tonal vs. stress-timed
+      prosody) yielding weaker accent transfer.
+    source: §6.1.3
+    evidence: Mandarin-accented English showed the smallest relative gain in accent classification probability among
+      the six tested accents, attributed to fundamental prosodic differences between tonal, syllable-timed Mandarin
+      and stress-timed English
+    confidence: high
+    relevance: high
+  limitations:
+  - The paper's own objective accent evaluation relies entirely on pretrained proxy models (VoxProfile accent classifier,
+    a VoxLingua107 LID model, Whisper ASR, and UTMOS) that are predominantly trained on well-represented English
+    varieties and do not adequately cover many cross-lingual accent combinations; the authors caution that absolute
+    automatic scores, especially in the cross-lingual accent-transfer setting, must be interpreted with extra caution
+    *(§6.6)*.
+  - Beyond the evaluation-proxy caveat, the paper notes that Accent Vector effectiveness depends on both fine-tuning
+    data quality and linguistic distance between languages, with weaker gains observed for Mandarin due to lower
+    recording quality and substantial prosodic/phonological differences from English. The authors also note that
+    representing accent adaptation as an approximately linear parameter shift may be insufficient for complex suprasegmental
+    phenomena, particularly tonal variation *(§6.6)*. UTMOS scores for both training and evaluation sets remained
+    only moderate even after quality filtering (DNSMOS threshold), which the authors acknowledge may limit overall
+    synthesis naturalness independent of the accent manipulation itself *(§4.2)*. The training corpora used per
+    language are restricted to a single representative dialect (e.g., Peninsular Spanish, Standard Hindi, Beijing/Northeastern
+    Mandarin), so results may not generalize to other dialects of the same language.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.07550'
+  published_date: '2026-03-08'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: rule_based_phoneme_level_transformation_applied_to_a_frozen_pretrained
+    role: supports
+    claim: Rule-based phoneme-level transformation applied to a frozen pretrained multilingual TTS model can shift
+      perceived accent toward a target L1-influenced variety without any accented training data or fine-tuning.
+    source: §4.1, Table 4
+    evidence: Applying Spanish and Indian phonological rule sets to speaker-embedding-conditioned synthesis with
+      Kokoro-82M raised target-accent classification probability from 23.7% to 51.59% (Spanish) and 58.86% to 86.4%
+      (Indian), relative to speaker embedding alone.
+    confidence: medium
+    relevance: high
+  - claim_id: word_error_rate_is_an_unreliable_standalone_proxy_for_intelligibility
+    role: complicates
+    claim: Word error rate is an unreliable standalone proxy for intelligibility loss when evaluating accent-transformed
+      synthetic speech, because ASR systems penalize intended phonological substitutions as recognition errors.
+    source: §4.1
+    evidence: Applying Spanish phonological rules increased WER from 3.42% to 24.91% partly because of systematic
+      substitutions such as /θ/→/s/ ("think"→"sink"), which the ASR system marks as errors despite being the intended
+      accented outcome.
+    confidence: medium
+    relevance: high
+  - claim_id: speaker_embeddings_alone_in_a_multilingual_tts_model_are_insufficient
+    role: supports
+    claim: Speaker embeddings alone in a multilingual TTS model are insufficient to produce a strong, listener-perceptible
+      non-native accent; explicit phoneme-level substitution is needed for robust accent identification.
+    source: §4.4, Table 6
+    evidence: With only the Spanish speaker embedding, human listener accent-identification accuracy was 0.071 (most
+      listeners perceived American accent); adding Spanish phonological rules raised accuracy to 0.757.
+    confidence: medium
+    relevance: high
+  - claim_id: perceived_accentedness_in_synthesized_speech_depends_on_phoneme_level_duration
+    role: refines
+    claim: Perceived accentedness in synthesized speech depends on phoneme-level duration/rhythm patterns in addition
+      to segmental phoneme substitution, and the two can be controlled independently.
+    source: §4.2, Table 3
+    evidence: Removing forced duration alignment to American English timing (allowing accent-native rhythm) increased
+      Indian target-accent probability from 86.4% to 93.1% and UK target-accent probability from 80.28% to 81.12%,
+      holding segmental rules fixed.
+    confidence: medium
+    relevance: high
+  limitations:
+  - 'The subjective validation is small-scale: 14 listeners rating 70 total samples, which limits statistical confidence
+    in the accent-identification-accuracy and naturalness numbers reported in Table 6, and the listener pool''s
+    own L1 backgrounds (a mix of Asian and European languages) may bias which target accents are correctly identified.'
+  - Accent classification relies on Vox-Profile's general accent categories used as proxies (Romance for Spanish,
+    South Asia for Indian) since no explicit Spanish- or Indian-accented English labels exist in that classifier,
+    which may introduce measurement noise independent of the phonological rules themselves. The rule sets cover
+    only two L1 backgrounds (Spanish and Indian); generalization to other L1-influenced English accents is not evaluated.
+    Adding Indian rules also introduced some listener confusion between Spanish- and Indian-accent categories (§4.4),
+    suggesting the rule sets are not fully perceptually orthogonal.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.09627'
+  published_date: '2026-03-10'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  current_role: minor
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: keeping_a_large_pretrained_multimodal_backbone_fully_frozen_while_training
+    role: supports
+    claim: Keeping a large pretrained multimodal backbone fully frozen while training only lightweight input and
+      output adapter modules can reach spoken question-answering performance competitive with systems trained end-to-end
+      on far larger speech corpora.
+    source: §5.1, Table 2
+    evidence: With roughly 4,128 hours of ASR data and 1.45 million QTATS pairs, the 8B system attains spoken-QA
+      accuracy comparable to or exceeding Qwen2.5-Omni-7B and Baichuan-Omni-1.5, both trained on millions of hours
+      of speech, including the best LLaMA Questions S→T accuracy (85.0%) in the comparison.
+    confidence: high
+    relevance: low
+  - claim_id: spoken_question_answering_training_data_for_a_speech_generation_module
+    role: supports
+    claim: Spoken question-answering training data for a speech-generation module can be manufactured at scale from
+      ordinary ASR corpora by having an LLM generate a plausible question for each transcript, removing the need
+      for dedicated spoken-QA recording or TTS-synthesized QA corpora.
+    source: §3.2.1, §4.1
+    evidence: QTATS converts ASR speech-text pairs into ~1.45M question-answer-speech triplets via LLM-driven reverse
+      question generation, and the speech token generator trained solely on this synthetic supervision produces
+      "robust speech generation behavior" without any genuine spoken QA corpus.
+    confidence: high
+    relevance: low
+  - claim_id: a_speech_generation_module_conditioned_on_a_frozen_backbone_s
+    role: complicates
+    claim: 'A speech-generation module conditioned on a frozen backbone''s hidden states does not generalize across
+      conditioning regimes: supervision collected under one input style (e.g., ASR) does not transfer to another
+      (e.g., QA), even when the underlying text content is similar.'
+    source: §3.2.1
+    evidence: A generator trained solely under ASR-style conditioning "generalizes poorly to QA settings," which
+      the authors attribute to VL hidden states differing between ASR-style and QA-style conditioning despite similar
+      text content, motivating the QTATS construction and an auxiliary text projector.
+    confidence: high
+    relevance: low
+  - claim_id: an_adapter_trained_to_interface_a_frozen_speech_tokenizer_with
+    role: supports
+    claim: An adapter trained to interface a frozen speech tokenizer with one backbone size can be reused on backbones
+      of different capacities by retraining only a small projection layer, with downstream performance improving
+      as backbone size grows.
+    source: §5.3, Table 2
+    evidence: A speech projector trained against Qwen3-VL-8B-Instruct is adapted to Qwen3-VL-4B-Instruct and Qwen3-VL-32B-Instruct
+      by updating only the final linear layer, with LLaMA Questions S→T accuracy rising from 78.33% (4B) to 85.0%
+      (8B) to 86.0% (32B).
+    confidence: high
+    relevance: low
+  limitations:
+  - The speech token generator is trained entirely on LLM-manufactured QA supervision rather than genuine spoken
+    QA data, and the authors acknowledge this "manufactured supervision lacks genuine QA reasoning structure," producing
+    an unavoidable training-inference mismatch in the VL hidden states that condition speech generation (§5.2).
+  - Reduced ASR training data relative to large-scale omni-models leaves raw ASR accuracy noticeably behind systems
+    like Qwen2.5-Omni and Baichuan-Omni-1.5 (§5.1, Table 2). The de-tokenizer dominates end-to-end latency (over
+    1 second of a roughly 1.35-second total for a 1-second response), which the paper reports but does not attempt
+    to reduce further (§5.4, Table 4, Appendix C). The transferability experiments reuse the same VL model family
+    (Qwen3-VL) at different sizes rather than testing transfer across distinct backbone architectures, so cross-family
+    portability of the frozen-backbone design is untested.
+  caveats:
+  - For multilingual TTS, this paper provides low-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.08823'
+  published_date: '2026-03-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - gan_based_multilingual_synthesis
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims: []
+  limitations:
+  - Performance on some low-resource languages (Hindi, Greek, Romanian, Vietnamese) lags behind closed-source systems
+    like MiniMax, suggesting the 10M hour multilingual corpus has uneven coverage. The RL reward system relies on
+    proprietary quality and ASR models not released separately. The 8K/16K context limit bounds long-form synthesis
+    to roughly 185 seconds per pass. The instruction-following capability is learned implicitly via the rich-transcription
+    ASR outputs; out-of-distribution instruction formats may not generalize reliably. No ablation isolates the individual
+    contribution of the dual-purpose pipeline design vs. the multi-dimensional RL reward.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.16924'
+  published_date: '2026-03-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: high
+  evidence_role:
+  - architecture_variant
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_multilingual_tts
+  - gan_based_multilingual_synthesis
+  claims:
+  - claim_id: training_free_policies_that_repurpose_the_cross_attention_of_a
+    role: supports
+    claim: Training-free policies that repurpose the cross-attention of a pretrained end-to-end model can reach
+      a quality-latency trade-off competitive with, or better than, cascaded pipelines built from strong training-free
+      components, without any additional training.
+    source: §4, Figure 2
+    evidence: SimulU achieves the highest ASR-BLEU in six of eight MuST-C directions against StreamAtt+XTTS-v2 and
+      Local-Agreement-based cascades, at a comparable start-offset latency of roughly 1-2 seconds.
+    confidence: high
+    relevance: high
+  - claim_id: cascaded_speech_to_speech_translation_pipelines_are_highly_sensitive_to
+    role: complicates
+    claim: Cascaded speech-to-speech translation pipelines are highly sensitive to which TTS component is used downstream,
+      because streaming decoding forces the TTS module to synthesize from incomplete sentence fragments rather than
+      complete utterances.
+    source: §4, Table 2
+    evidence: Replacing XTTS-v2 with SeamlessM4T's own TTS module (Seam.TTS) in an otherwise identical StreamAtt
+      cascade drops ASR-BLEU from the low-20s to 5-10, which manual inspection attributed to Seam.TTS's degraded
+      synthesis quality when conditioned on partial rather than complete sentences.
+    confidence: high
+    relevance: high
+  - claim_id: cross_attention_alignment_scores_from_a_pretrained_multi_module_encoder
+    role: refines
+    claim: 'Cross-attention alignment scores from a pretrained multi-module encoder-decoder S2S system can serve
+      as a unified signal for three distinct simultaneous-decoding decisions: hypothesis stability, context-history
+      pruning, and output-segment boundaries.'
+    source: §2
+    evidence: SimulU's six-step policy reuses speech-text cross-attention (Steps 3-4) and text-unit cross-attention
+      (Step 6) from the same pretrained SeamlessM4T backbone to make all three decisions, requiring no retraining
+      or adaptation of the model.
+    confidence: high
+    relevance: high
+  - claim_id: evaluating_simultaneous_translation_policies_on_long_form_continuous_input_rather
+    role: complicates
+    claim: Evaluating simultaneous translation policies on long-form, continuous input rather than short, pre-segmented
+      utterances changes which failure modes and trade-offs are visible.
+    source: §1, §3.1
+    evidence: The authors simulate streaming by feeding entire MuST-C TED talks (averaging 15.7 minutes for dev
+      and 10.8 minutes for tst-COMMON) rather than the short, manually pre-segmented clips (up to 30 seconds) used
+      in prior SimulS2ST evaluation, arguing this better reflects realistic deployment.
+    confidence: high
+    relevance: high
+  limitations:
+  - The policy's applicability is tied to models with an inspectable encoder-decoder cross-attention structure.
+    SimulU's three core decisions (hypothesis stability, history pruning, output segmentation) all depend on extracting
+    meaningful, well-calibrated cross-attention scores from a jointly trained speech-to-text-to-unit backbone. It
+    is unclear whether the approach transfers to end-to-end S2S architectures without this structure, such as decoder-only
+    discrete-token speech language models, which lack an explicit encoder-decoder cross-attention signal to exploit.
+  - The method is demonstrated on a single backbone (SeamlessM4T-medium-v1) and a single benchmark family (MuST-C,
+    English-source only, eight target languages); it is not evaluated against non-English source speech or on domains
+    beyond TED-talk-style spoken content. The baselines are cascades the authors construct themselves from existing
+    components (StreamAtt, Local Agreement, Seam.TTS, XTTS-v2) rather than comparisons against other published training-free
+    or low-resource simultaneous S2ST systems, which limits how the reported gains can be interpreted relative to
+    the broader field. Latency is reported only as start offset and end offset; the paper does not report computational
+    cost or real-time factor, which matters for practical deployment.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2602.07803'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: providing_complementary_discrete_score_midi_and_continuous_melody_f0_conditioning
+    role: supports
+    claim: Providing complementary discrete (score/MIDI) and continuous (melody/F0) conditioning paths in a single
+      singing voice synthesis model yields different controllability trade-offs rather than one path dominating
+      the other.
+    source: §3.3.1, Table 1
+    evidence: Melody-control mode achieves the lowest F0 Frame Error by leveraging continuous acoustic pitch contours,
+      while score-control mode achieves the lowest WER because discrete MIDI timing constraints stabilize pronunciation
+      and rhythm.
+    confidence: high
+    relevance: low
+  - claim_id: scaling_zero_shot_singing_voice_synthesis_training_data_by_an
+    role: supports
+    claim: Scaling zero-shot singing voice synthesis training data by an order of magnitude over prior work improves
+      generalization to unseen singers.
+    source: §2.1.2, §3.3.1, §3.3.2, Table 1, Table 2
+    evidence: Trained on 42,000+ hours (versus a few hundred to a few thousand hours for StyleSinger, TCSinger,
+      and YingMusic-Singer), the system outperforms these baselines on speaker similarity and intelligibility for
+      singers unseen during training on both GMO-SVS and SoulX-Singer-Eval.
+    confidence: high
+    relevance: low
+  - claim_id: melody_driven_singing_voice_synthesis_that_conditions_on_an_acoustic
+    role: complicates
+    claim: Melody-driven singing voice synthesis that conditions on an acoustic pitch contour extracted from a reference
+      recording is more brittle to lyric edits than score-driven synthesis, because the extracted melody remains
+      entangled with the original lyrics.
+    source: §3.3.1, Table 1
+    evidence: Under the Singing Voice Editing condition (rewritten lyrics), melody-control mode shows a marked WER
+      increase relative to the unedited condition, while score-control mode, which conditions on explicit MIDI rather
+      than the original acoustic melody, better preserves pronunciation accuracy under the same lyric rewrite.
+    confidence: high
+    relevance: low
+  - claim_id: separating_language_dependent_linguistic_content_from_language_independent_timbre_in
+    role: supports
+    claim: Separating language-dependent linguistic content from language-independent timbre in the conditioning
+      representation supports cross-lingual timbre transfer in singing voice synthesis.
+    source: §3.3.3, Table 3
+    evidence: Using a Mandarin prompt to synthesize English singing, the system reaches WER 0.110 and SIM 0.898,
+      while a melody-driven baseline (Vevosing) degrades to WER 0.717 under the same cross-lingual setting, indicating
+      leakage of prompt-language linguistic patterns into the baseline's output.
+    confidence: high
+    relevance: high
+  - claim_id: adapting_a_score_melody_conditioned_singing_synthesis_backbone_into_a
+    role: complicates
+    claim: Adapting a score/melody-conditioned singing synthesis backbone into a voice conversion system by replacing
+      explicit symbolic inputs with a frozen pretrained ASR encoder's semantic features trades some intelligibility
+      for annotation-free operation.
+    source: §SoulX-Singer-SVC, Table 4
+    evidence: SoulX-Singer-SVC, which substitutes a frozen Whisper-base encoder for the score and text encoders
+      and fine-tunes the F0 encoder and flow-matching decoder from pretrained SoulX-Singer weights, reports higher
+      WER than the melody-controlled base model on GMO-SVS (0.107 vs. 0.065 Chinese, 0.267 vs. 0.151 English) at
+      comparable speaker similarity.
+    confidence: high
+    relevance: low
+  limitations:
+  - No human listening test (e.g., MOS collected from real raters) is reported anywhere in the paper. Both quality
+    metrics used (SingMOS and Sheet-SSQA) are automated, learned proxies trained to approximate human perception
+    rather than direct human judgments, so the paper's naturalness and overall-quality claims rest entirely on model-based
+    proxies.
+  - The paper reports no ablation isolating the contribution of the gating mechanism or the length regulator from
+    the effect of the much larger training corpus, leaving open how much of the reported improvement is attributable
+    to the architectural change versus data scale. SoulX-Singer-Eval, while purpose-built for training-test disentanglement,
+    is small (100 segments from 50 singers) relative to the scale of the training corpus. The SoulX-Singer-SVC variant,
+    evaluated only against two baselines (YingMusic-SVC, Vevo-SVC), consistently trails the melody-controlled base
+    model on WER, and the paper does not further analyze this intelligibility gap. No explicit code repository or
+    demo link is given in the visible text of the report, despite the paper describing the system as open-source.
+  caveats:
+  - For multilingual TTS, this paper provides medium-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2602.09823'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - GAN
+  - hybrid
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: minor
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - flow_matching_multilingual_tts
+  - gan_based_multilingual_synthesis
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims:
+  - claim_id: decoupling_dialogue_intelligence_from_speaker_identity_by_reformatting_existing_tts
+    role: supports
+    claim: Decoupling dialogue intelligence from speaker identity by reformatting existing TTS recordings into pseudo-conversations
+      with masked text-response loss enables voice customization for a dialogue model without collecting new dialogue-format
+      training data in that voice.
+    source: §2.4, §3.2, Table 5
+    evidence: Covo-Audio-Chat-TTS, whose dialogue voice is transferred directly from TTS speaker data via masked-loss
+      pseudo-conversation training rather than authentic high-quality dialogue recordings, achieves near-parity
+      bilingual dialogue scores with Covo-Audio-Chat (AlpacaEval 89.34 vs. 90.02 Chinese, 84.49 vs. 85.73 English).
+    confidence: high
+    relevance: low
+  - claim_id: interleaving_continuous_acoustic_features_discrete_audio_tokens_and_text_at
+    role: supports
+    claim: Interleaving continuous acoustic features, discrete audio tokens, and text at coarser phrase- and sentence-level
+      granularity during large-scale pretraining, rather than word/character-level alignment, can improve reasoning
+      and grammatical consistency in speech-text foundation models.
+    source: §2.2, §3.1, Table 3
+    evidence: The hierarchical tri-modal interleaving pretraining yields a foundation model (Covo-Audio-Base) that
+      outperforms character/word-level interleaved and specialized A2A baselines on sBLIMP (61.6 vs. 58.3 for SpiritLM)
+      and sWUGGY (74.90 vs. 69.00 for SpiritLM), and reaches 99.4 T2T-tSC.
+    confidence: high
+    relevance: low
+  - claim_id: folding_full_duplex_conversational_behavior_directly_into_large_scale_pretraining
+    role: complicates
+    claim: Folding full-duplex conversational behavior directly into large-scale pretraining, instead of a dedicated
+      multi-stage post-training curriculum, can preserve most dialogue quality but introduces a distinct failure
+      mode around fine-grained turn boundaries.
+    source: §3.3, Table 9
+    evidence: Covo-Audio-Chat-FD maintains dialogue scores close to the half-duplex Covo-Audio-Chat and reaches
+      99.7% turn-taking success, but its pause-handling success (97.6%) is lower, traced by the authors to an "early-response"
+      behavior where the model interrupts the user during short intra-turn pauses.
+    confidence: high
+    relevance: low
+  - claim_id: llm_as_judge_scoring_of_empathetic_speech_quality_can_diverge
+    role: complicates
+    claim: LLM-as-judge scoring of empathetic speech quality can diverge from human-perceived vocal empathy, since
+      automated judges may weight the semantic content of a response over its acoustic delivery.
+    source: §3.2, Table 7
+    evidence: Covo-Audio-Chat attains the top LLM-judged (Gemini 2.5 Pro) Mandarin empathy scores on the VStyle
+      benchmark, but the authors report that a preliminary subjective listening test found the model still underperforms
+      a leading commercial system (Doubao) on perceived voice empathy, and call for a more equitable evaluation
+      criterion.
+    confidence: high
+    relevance: low
+  - claim_id: a_discrete_speech_tokenizer_built_on_a_self_supervised_speech
+    role: supports
+    claim: A discrete speech tokenizer built on a self-supervised speech representation and trained with a combined
+      recognition, reconstruction, and prosody objective can support both accurate speech understanding and high-fidelity
+      resynthesis within a single LLM token vocabulary.
+    source: §2.1, Table 4
+    evidence: The speech tokenizer (WavLM-large plus a single VQ layer, 16,384-entry codebook, 25 Hz), trained with
+      joint ASR, TTS-reconstruction, and pitch losses, underlies a model that achieves 1.96% Aishell-1 and 1.96%/4.55%
+      LibriSpeech clean/other recognition error alongside 2.44/1.73 Seed-TTS Test-en/Test-zh generation scores from
+      the same token vocabulary.
+    confidence: high
+    relevance: low
+  limitations:
+  - Self-reported LLM-judge evaluation gap The paper's own empathy evaluation (VStyle, Table 7) uses an LLM judge
+    (Gemini 2.5 Pro) that the authors themselves note is likely to prioritize semantic content over actual vocal
+    quality; a preliminary subjective listening test reportedly found the model underperforming a leading commercial
+    system on real perceived empathy, but no quantitative subjective results are reported.
+  - Full-duplex evaluation is limited to comparison against two open-source baselines (Moshi, Freeze-Omni) rather
+    than the newer parallel-stream or Thinker-Talker full-duplex systems the paper discusses in related work. The
+    knowledge dimension of VCB Bench (general knowledge, dialogue comprehension) is explicitly reported as weaker
+    than Qwen3-Omni, attributed by the authors to a deliberate prioritization of interaction capabilities. As a
+    technical report, all comparisons are self-run and not independently verified, and the pretraining corpus (8
+    million hours of audio, 3T tokens) is not publicly named or released in detail, limiting reproducibility.
+  caveats:
+  - For multilingual TTS, this paper provides low-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.14853'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - flow-matching
+  - GAN
+  - hybrid
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - flow_matching_multilingual_tts
+  - gan_based_multilingual_synthesis
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims:
+  - claim_id: a_tts_system_trained_predominantly_on_normal_phonated_speech_can
+    role: supports
+    claim: A TTS system trained predominantly on normal (phonated) speech can be repurposed to generate a non-modal
+      vocal register when a targeted post-processing step removes the specific acoustic component (fundamental frequency
+      / harmonicity) that distinguishes the two registers.
+    source: §3.1, §5.4.1, Table 4
+    evidence: CosyVoice3, unmodified, already produces intelligible whisper-adjacent output (W-MOS 3.40) that is
+      upgraded to W-MOS 4.53 purely by detecting and replacing residual-F0 segments with DDSP-decomposed noise,
+      without retraining the TTS backbone's semantic or LLM components.
+    confidence: high
+    relevance: low
+  - claim_id: synthetic_data_produced_by_a_well_designed_generative_pipeline_can
+    role: supports
+    claim: Synthetic data produced by a well-designed generative pipeline can outperform noisy real recordings as
+      fine-tuning data for a downstream generation task, even when the pipeline's source material is the same real
+      data.
+    source: §5.5, Table 5
+    evidence: Fine-tuning CosyWhisper on WhispSynth (synthesized from WhispReal) rather than on WhispReal directly
+      reduces CER/WER by 46% and improves DNSMOS by 8% in a controlled ablation with the same base model and training
+      procedure.
+    confidence: high
+    relevance: low
+  - claim_id: standard_objective_tts_vocoder_quality_metrics_do_not_reliably_track
+    role: complicates
+    claim: Standard objective TTS/vocoder quality metrics do not reliably track the specific perceptual attribute
+      (whisper authenticity) that a specialized synthesis task targets.
+    source: §5.2
+    evidence: Objective naturalness scores (DNSMOS, UTMOS) and intelligibility (CER/WER) do not rank-order the compared
+      systems consistently with human whisper-likeness ratings (W-MOS); e.g. toWhisper scores better than SeedVC
+      on CER/WER but far worse on W-MOS (1.02 vs. 2.18), and the paper concludes existing objective metrics are
+      "poorly aligned with whisper characteristics."
+    confidence: high
+    relevance: low
+  - claim_id: a_generative_pipeline_built_around_a_general_purpose_signal_decomposition
+    role: complicates
+    claim: A generative pipeline built around a general-purpose signal-decomposition technique can trade off content
+      fidelity against register-specific quality when adapted to a specialized synthesis task.
+    source: §5.4.1, Table 4
+    evidence: Applying the paper's own pitch-free DDSP model as a standalone normal-to-whisper conversion system
+      yields lower CER/WER (21.31/45.18) than the CosyWhisper text-to-whisper pipeline it is embedded in, and lower
+      whisper-likeness (W-MOS 1.30) than the SeedVC voice-conversion baseline (W-MOS 2.18), indicating the DDSP
+      component alone is not sufficient for high-quality whisper generation without the TTS backbone.
+    confidence: high
+    relevance: low
+  limitations:
+  - 'Multilingual generalization beyond English and Mandarin is only lightly validated: the Korean and Japanese
+    results (Appendix D) use manually curated samples from four speakers per language sourced from YouTube ASMR
+    content, with no standardized training or test split and no comparison against the paper''s own main WhispReal/WhispSynth
+    pipeline for those languages.'
+  - The paper does not systematically assess the impact of recording-hardware variation (e.g., different microphones)
+    on model performance, noting only that CosyVoice3 is reported elsewhere to be relatively robust to such variation.
+    The released CosyWhisper model will embed a real-time audio watermark for responsible-use tracking, which the
+    authors acknowledge may itself affect the acoustic properties of the synthesized audio and any downstream analysis
+    of it. The standalone DDSP pitch-free model, when used directly for normal-to-whisper conversion rather than
+    as a post-processing step after TTS generation, underperforms both the full CosyWhisper pipeline and an existing
+    zero-shot voice-conversion baseline (SeedVC) on whisper-likeness, indicating the DDSP component's benefit is
+    specifically tied to cleaning up TTS-generated whisper rather than functioning as a general-purpose whisper
+    converter.
+  caveats:
+  - For multilingual TTS, this paper provides low-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.18090'
+  published_date: '2026-03-20'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - autoregressive_multilingual_codec_models
+  - hybrid_multilingual_semantic_acoustic_systems
+  claims: []
+  limitations:
+  - Speaker drift in ultra-long English generation remains the primary bottleneck; the report explicitly identifies
+    this as a failure mode rather than solving it. Japanese and Korean multilingual performance lags behind other
+    languages, suggesting insufficient low-resource training coverage. The 8B MOSS-TTS backbone underperforms the
+    1.7B Local Transformer on speaker similarity, suggesting the architectural tradeoff is not purely a size effect.
+    The report does not address latency or real-time factor, leaving streaming viability for the 8B model unclear.
+    Objective metrics only — no subjective listening tests (MOS/MUSHRA) are reported, making absolute quality comparisons
+    against perceptually evaluated baselines difficult. Whether the data pipeline scales further (e.g., to 100M+
+    hours) and whether model size beyond 8B continues to yield gains are left open.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2601.13802'
+  published_date: '2026-03-31'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_multilingual_tts
+  claims:
+  - claim_id: for_low_resource_dialectal_speech_synthesis_staging_fine_tuning_from
+    role: supports
+    claim: For low-resource dialectal speech synthesis, staging fine-tuning from a high-resource, linguistically
+      related variant before adapting to low-resource dialectal data outperforms both training from scratch on dialectal
+      data and direct dialectal fine-tuning without an intermediate stage.
+    source: §3.5, Table 8
+    evidence: An MSA-first two-stage curriculum consistently beats both from-scratch dialectal training and direct
+      fine-tuning across WER-O, WER-S, SIM, and UTMOS in both specialized and unified settings, and still outperforms
+      a variant trained with twice as many dialectal updates but no MSA stage.
+    confidence: high
+    relevance: high
+  - claim_id: a_single_unified_multi_dialect_zero_shot_tts_model_can
+    role: supports
+    claim: A single unified multi-dialect zero-shot TTS model can match or exceed the performance of dialect-specialized
+      models trained separately on each dialect.
+    source: §3.4, Table 7
+    evidence: The unified model (Uni.D2-I) matches specialized models on WER for MSA and MAR and equals or exceeds
+      them on speaker similarity across all seven dialects, with the largest gain on MAR (SIM 0.705 vs. 0.607).
+    confidence: high
+    relevance: high
+  - claim_id: zero_shot_tts_models_that_condition_on_paired_reference_speech
+    role: supports
+    claim: Zero-shot TTS models that condition on paired reference speech and transcript actively exploit that context
+      to reproduce target-language or target-dialect phonological patterns, rather than relying solely on parameters
+      learned during training.
+    source: §3.6, Table 9
+    evidence: Zeroing out the reference audio at inference degrades WER across all seven benchmarked dialects, e.g.
+      IRQ WER-O rises from 17.12 to 20.15 and UAE WER-S from 4.88 to 10.68.
+    confidence: high
+    relevance: high
+  - claim_id: automatic_asr_based_word_error_rate_is_an_unreliable_absolute
+    role: complicates
+    claim: Automatic ASR-based word error rate is an unreliable absolute quality signal for dialectal speech synthesis
+      when the available ASR systems themselves perform poorly on the target dialect.
+    source: §3.2, §3.4, Table 6
+    evidence: Ground-truth recordings for ALG and MAR yield WER-O of 41.19 and 54.42 respectively under the paper's
+      ASR evaluation setup, higher than several synthesized outputs, which the authors attribute to noise in the
+      underlying ASR-sourced ground truth data rather than genuine synthesis quality differences.
+    confidence: high
+    relevance: high
+  - claim_id: providing_explicit_categorical_conditioning_tokens_for_sub_language_variety_dialect
+    role: refines
+    claim: Providing explicit categorical conditioning tokens for sub-language variety (dialect/region) during fine-tuning
+      improves recognition-based metrics at inference even when those tokens are omitted at test time, refining
+      the general in-context-learning capability of zero-shot TTS models.
+    source: §3.8, Table 11
+    evidence: Training a unified model with regional-identifier tokens improves WER relative to a no-identifier
+      variant while leaving SIM and UTMOS largely unchanged, and the identifier-aware model remains robust across
+      plain-text, dialect-agnostic, and dialect-aware inference templates.
+    confidence: high
+    relevance: high
+  limitations:
+  - WER-based evaluation is unreliable for several dialects in this benchmark The ASR models used to compute WER-O
+    and WER-S remain weak for Arabic dialects, particularly ALG and MAR, where even ground-truth audio yields WER
+    above 40%. This limits how much confidence can be placed in absolute or cross-dialect WER comparisons, and the
+    paper compensates with (but does not fully replace this weakness with) subjective DMOS/SMOS/NMOS evaluation.
+  - The comparison against ElevenLabs' Eleven v3 (alpha) uses a single representative reference voice per dialect
+    subset (three for SAU), chosen due to a strict monthly quota on custom voice uploads in the commercial API;
+    this narrows the speaker-timbre coverage of the head-to-head comparison relative to the full benchmark. A portion
+    of the training data ("in-house" sources for ALG, IRQ, and part of UAE) is not from a named public corpus, which
+    limits third-party reproducibility of the exact training set even though the benchmark and code are released.
+    The paper's own regional-dialect terminology is explicitly stated to reflect a practical convention rather than
+    an official linguistic classification, and some dialect subsets (e.g. OMN, TUN, SDN, LBY) rely entirely on the
+    Omnilingual ASR Corpus with comparatively few hours, leaving open how well the unified model generalizes to
+    dialects with the least training data.
+  caveats:
+  - For multilingual TTS, this paper provides high-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
+- id: '2603.29339'
+  published_date: '2026-03-31'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - VAE
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - core_evidence
+  current_role: active_evidence
+  method_family:
+  - flow_matching_multilingual_tts
+  - vae_multilingual_latent_models
+  claims: []
+  limitations:
+  - The system is evaluated only on the Seed benchmark (Chinese and English); its performance on other languages
+    supported by UMT5 is not reported. Naturalness is assessed via automated metrics (UTMOS, DNSMOS) rather than
+    human listening tests, limiting direct comparability with systems reporting MOS. The organization is listed
+    as Meituan but this is inferred from author affiliations and team name, not stated in the metadata. Training
+    data is fully proprietary (200K + 1M hours internal), making reproduction difficult. The paper's ablation leaves
+    open the question of whether the mismatch fix is equally beneficial at 3.5B scale; Table 1 reports only final
+    metrics, not the contribution of individual components at that scale. Future work explicitly mentions RLHF and
+    distillation as next steps, neither of which is explored here.
+  caveats:
+  - For multilingual TTS, this paper provides medium-relevance evidence; claims primarily concerning adjacent tasks
+    remain included at lower relevance.
 claim_clusters:
 - id: shared_multilingual_training_improves_low_resource_tts
   claim: Shared multilingual training improves synthesis for low-resource languages by transferring linguistic and
@@ -6889,13 +8593,20 @@ claim_clusters:
   - '2511.12347'
   - '2511.12690'
   - '2512.22491'
+  - '2601.04233'
+  - 2026.abjadnlp-1.6
+  - 2026.loreslm-1.54
+  - '2603.07513'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1550
   - '2511.20974'
+  - '2603.07513'
+  - '2601.13802'
   caveats:
   - Transfer depends on linguistic relatedness, data balance, and front-end compatibility.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: training_imbalance_biases_multilingual_quality
   claim: Imbalanced multilingual corpora bias synthesis quality toward high-resource languages and dominant speakers
     or accents.
@@ -6916,14 +8627,18 @@ claim_clusters:
   - '2510.22588'
   - '2511.12347'
   - '2511.20974'
+  - '2602.11172'
+  - 2026.loreslm-1.54
+  - '2603.07513'
   contradicting_papers: []
   refining_papers:
   - '2507.16875'
   - '2508.14049'
   - '2508.08715'
+  - '2602.11172'
   caveats:
   - Reported averages can hide large per-language and demographic gaps.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: cross_lingual_cloning_trades_identity_against_language_fidelity
   claim: Cross-lingual voice cloning must balance speaker identity against target-language pronunciation, accent,
     and intelligibility.
@@ -6943,14 +8658,21 @@ claim_clusters:
   - '2511.12347'
   - '2512.05126'
   - '2512.12297'
+  - '2601.16023'
+  - 2026.eacl-short.16
+  - '2602.11072'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - '2406.04904'
   - '2510.25178'
   - '2511.21045'
+  - '2601.16023'
+  - 2026.eacl-short.16
+  - '2602.11072'
   caveats:
   - Identity and accent are entangled in both listener judgments and speaker-verification embeddings.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: explicit_language_conditioning_reduces_confusion
   claim: Explicit language embeddings, identifiers, prompts, or routing reduce language confusion in shared multilingual
     models.
@@ -6963,13 +8685,17 @@ claim_clusters:
   - '2510.07881'
   - '2510.22588'
   - '2510.25178'
+  - '2601.04233'
+  - 2026.eacl-short.16
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - 2025.findings-acl.687
   - '2511.12347'
+  - 2026.eacl-short.16
   caveats:
   - Language labels do not by themselves capture dialect continua or code-switching.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: shared_phonetic_representations_enable_transfer
   claim: Shared phonetic representations such as IPA and universal phone inventories enable cross-lingual transfer
     beyond orthographic overlap.
@@ -6992,11 +8718,12 @@ claim_clusters:
   - 2025.vlsp-1.14
   - '2511.12347'
   - '2512.22491'
+  - '2601.04233'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Universal inventories can erase language-specific allophony and prosodic distinctions.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: code_switching_requires_joint_language_and_context_modeling
   claim: Natural code-switching requires joint modeling of language identity, linguistic context, pronunciation,
     and speaker continuity.
@@ -7052,6 +8779,11 @@ claim_clusters:
   - '2511.03080'
   - '2511.12347'
   - '2512.22491'
+  - '2601.04233'
+  - 2026.loreslm-1.54
+  - '2603.07513'
+  - '2603.07550'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - '2507.16875'
@@ -7059,9 +8791,11 @@ claim_clusters:
   - '2509.05863'
   - '2509.20086'
   - '2510.07881'
+  - '2603.07513'
+  - '2603.07550'
   caveats:
   - End-to-end models can shift rather than eliminate errors caused by sparse linguistic coverage.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: zero_shot_models_generalize_to_unseen_languages_imperfectly
   claim: Large multilingual models show zero-shot transfer to unseen languages, but pronunciation and intelligibility
     remain sensitive to language coverage.
@@ -7087,6 +8821,10 @@ claim_clusters:
   - '2511.12347'
   - '2512.12297'
   - '2512.22491'
+  - '2601.12205'
+  - '2603.07513'
+  - '2603.07534'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - '2406.04904'
@@ -7094,9 +8832,11 @@ claim_clusters:
   - '2507.16875'
   - interspeech-2025-2031
   - '2510.09061'
+  - '2601.12205'
+  - '2603.07513'
   caveats:
   - Unseen-language demonstrations often use related languages or external phonetic resources.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: continued_pretraining_and_fine_tuning_extend_language_coverage
   claim: Continued pretraining and language-specific fine-tuning efficiently extend multilingual TTS to new low-resource
     languages.
@@ -7111,12 +8851,18 @@ claim_clusters:
   - '2509.22727'
   - '2510.09061'
   - '2512.12297'
+  - 2026.abjadnlp-1.6
+  - 2026.loreslm-1.54
+  - '2603.07513'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - '2508.08715'
+  - 2026.loreslm-1.54
+  - '2601.13802'
   caveats:
   - Adaptation can cause forgetting or reduce performance on the original language set.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: parameter_efficient_modules_support_language_extension
   claim: Adapters, LoRA, vocabulary expansion, and lightweight language modules support parameter-efficient multilingual
     extension.
@@ -7149,6 +8895,9 @@ claim_clusters:
   - '2510.22588'
   - '2511.12347'
   - '2511.21270'
+  - '2601.04233'
+  - 2026.abjadnlp-1.6
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - 2025.coling-main.685
@@ -7157,9 +8906,10 @@ claim_clusters:
   - '2510.08373'
   - '2511.20974'
   - '2512.22491'
+  - 2026.abjadnlp-1.6
   caveats:
   - Scale gains are confounded by filtering, transcription quality, and proprietary data.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: language_and_accent_leakage_persist
   claim: Shared multilingual models can leak source-language accent or average language-specific speaking styles.
   status: strongly_supported
@@ -7168,13 +8918,19 @@ claim_clusters:
   - '2509.22727'
   - '2511.12347'
   - '2512.12297'
+  - '2601.04233'
+  - 2026.eacl-short.16
+  - '2603.07534'
+  - '2603.07550'
   contradicting_papers: []
   refining_papers:
   - '2508.14049'
   - '2510.25178'
+  - '2603.07534'
+  - '2603.07550'
   caveats:
   - Accent judgments depend strongly on listener language background and reference choice.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: duration_and_alignment_are_language_sensitive
   claim: Duration modeling and text–speech alignment behave differently across languages, scripts, and prosodic
     systems.
@@ -7195,15 +8951,19 @@ claim_clusters:
   - '2511.12347'
   - '2512.04720'
   - '2512.22491'
+  - '2601.04233'
+  - '2603.07550'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - '2507.16875'
   - 2025.findings-acl.75
   - '2509.05863'
   - '2510.07881'
+  - '2603.07550'
   caveats:
   - Many comparisons change tokenization and acoustic modeling alongside alignment.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: multilingual_evaluation_requires_per_language_reporting
   claim: Multilingual TTS evaluation requires per-language subjective and objective reporting because aggregate
     metrics conceal language-specific failures.
@@ -7220,13 +8980,28 @@ claim_clusters:
   - '2510.23541'
   - '2510.25178'
   - '2511.12347'
+  - '2601.12205'
+  - '2602.11172'
+  - 2026.abjadnlp-1.6
+  - 2026.eacl-short.16
+  - '2603.07513'
+  - '2603.07534'
+  - '2603.07550'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - '2509.18060'
   - '2511.03080'
+  - '2601.12205'
+  - 2026.abjadnlp-1.6
+  - 2026.eacl-short.16
+  - '2603.07513'
+  - '2603.07534'
+  - '2603.07550'
+  - '2601.13802'
   caveats:
   - Listener proficiency and uneven test-set difficulty limit cross-language score comparability.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: codec_language_models_enable_multilingual_generation
   claim: Codec-token language models provide a shared generative interface for multilingual and cross-lingual speech
     synthesis.
@@ -7247,11 +9022,15 @@ claim_clusters:
   - '2511.12347'
   - '2511.21270'
   - '2512.20156'
+  - '2601.04233'
+  - '2601.16023'
+  - '2602.11072'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2602.11072'
   caveats:
   - Tokenizers may encode unequal phonetic and acoustic detail across languages.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: flow_and_diffusion_support_multilingual_scaling
   claim: Flow-matching and diffusion models provide scalable parallel acoustic generation for multilingual TTS.
   status: strongly_supported
@@ -7284,11 +9063,14 @@ claim_clusters:
   - '2512.19090'
   - '2512.20156'
   - '2512.22491'
+  - '2601.04233'
+  - '2603.07513'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Matched multilingual comparisons against autoregressive systems remain scarce.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: dialect_identity_requires_explicit_modeling
   claim: Dialect identity and regional prosody require explicit representations or routing to avoid averaging in
     shared multilingual models.
@@ -7298,16 +9080,25 @@ claim_clusters:
   - interspeech-2025-2031
   - interspeech-2025-2573
   - '2509.22727'
+  - '2602.11172'
+  - 2026.abjadnlp-1.6
+  - '2603.07534'
+  - '2603.07550'
+  - '2601.13802'
   contradicting_papers: []
   refining_papers:
   - '2501.06282'
   - '2510.23541'
   - '2512.22491'
+  - '2603.07534'
+  - '2603.07550'
+  - '2601.13802'
   caveats:
   - Dialect boundaries are socially and linguistically continuous rather than fixed labels.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-12'
 - id: synthetic_parallel_data_enables_low_resource_cross_lingual_generation
-  claim: Synthetic or pseudo-parallel speech constructed through TTS or text translation can make low-resource cross-lingual generation viable without recorded parallel speech.
+  claim: Synthetic or pseudo-parallel speech constructed through TTS or text translation can make low-resource cross-lingual
+    generation viable without recorded parallel speech.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -7317,10 +9108,12 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Synthetic targets inherit translation, pronunciation, speaker, and acoustic biases from the systems that generated them.
+  - Synthetic targets inherit translation, pronunciation, speaker, and acoustic biases from the systems that generated
+    them.
   last_reviewed: '2026-09-26'
 - id: cross_lingual_prosody_and_style_control_remain_uneven
-  claim: Explicit emotion, emphasis, and paralinguistic conditioning improves multilingual expressive control, but transfer remains uneven across languages and can trade off against identity, intelligibility, or naturalness.
+  claim: Explicit emotion, emphasis, and paralinguistic conditioning improves multilingual expressive control, but
+    transfer remains uneven across languages and can trade off against identity, intelligibility, or naturalness.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -7330,11 +9123,37 @@ claim_clusters:
   - '2510.22588'
   - '2510.25178'
   - '2512.22491'
+  - '2601.04233'
+  - '2602.11172'
+  - '2601.16023'
+  - '2602.11072'
+  - '2603.07534'
+  - '2603.07550'
+  - '2602.07803'
+  contradicting_papers: []
+  refining_papers:
+  - '2601.04233'
+  - '2601.16023'
+  - '2602.11072'
+  - '2603.07534'
+  - '2603.07550'
+  caveats:
+  - Evidence is concentrated in a few bilingual datasets, style categories, and expert or automated evaluation protocols.
+  last_reviewed: '2026-11-12'
+- id: accent_control_without_accented_training_data_is_feasible
+  claim: Multilingual TTS can induce controllable non-native accents without target accented recordings through
+    parameter-space or phonological interventions.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2603.07534'
+  - '2603.07550'
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Evidence is concentrated in a few bilingual datasets, style categories, and expert or automated evaluation protocols.
-  last_reviewed: '2026-09-26'
+  - Evidence covers a small set of language pairs; ASR bias confounds accent strength, and segmental rules alone
+    do not capture all rhythm and duration cues.
+  last_reviewed: '2026-11-12'
 method_families:
 - id: autoregressive_multilingual_codec_models
   name: Autoregressive multilingual codec models
@@ -7386,6 +9205,19 @@ method_families:
   - '2511.21270'
   - '2512.19090'
   - '2512.20156'
+  - '2601.04233'
+  - '2601.03888'
+  - '2601.15596'
+  - '2601.15621'
+  - '2601.16023'
+  - '2602.11072'
+  - 2026.abjadnlp-1.6
+  - 2026.loreslm-1.54
+  - '2603.07534'
+  - '2603.09627'
+  - '2603.08823'
+  - '2602.09823'
+  - '2603.18090'
   open_questions:
   - How can shared token modeling avoid language confusion while retaining cross-lingual speaker and prosodic transfer?
 - id: flow_matching_multilingual_tts
@@ -7432,6 +9264,18 @@ method_families:
   - '2512.19090'
   - '2512.20156'
   - '2512.22491'
+  - '2601.04233'
+  - '2601.03888'
+  - '2601.15596'
+  - '2601.16023'
+  - '2602.09041'
+  - '2603.07513'
+  - '2603.09627'
+  - '2602.07803'
+  - '2602.09823'
+  - '2603.14853'
+  - '2601.13802'
+  - '2603.29339'
   open_questions:
   - Do flow-matching advantages persist for low-resource languages when data scale and front-end quality are controlled?
 - id: transformer_encoder_decoder_multilingual_tts
@@ -7459,6 +9303,8 @@ method_families:
   - '2510.11124'
   - '2511.12690'
   - '2511.21045'
+  - 2026.eacl-short.16
+  - '2603.16924'
   open_questions:
   - Which encoder sharing pattern best balances positive transfer against high-resource-language dominance?
 - id: gan_based_multilingual_synthesis
@@ -7484,6 +9330,14 @@ method_families:
   - '2510.18308'
   - '2511.21045'
   - '2512.20156'
+  - '2601.12205'
+  - '2601.16023'
+  - 2026.eacl-short.16
+  - 2026.loreslm-1.54
+  - '2603.08823'
+  - '2603.16924'
+  - '2602.09823'
+  - '2603.14853'
   open_questions:
   - How much language-specific vocoder adaptation is needed for unseen phonation, prosody, and recording domains?
 - id: hybrid_multilingual_semantic_acoustic_systems
@@ -7507,6 +9361,14 @@ method_families:
   - neurips-2025-4iehXI36QG
   - '2512.19090'
   - '2512.20156'
+  - '2601.03888'
+  - '2601.15621'
+  - '2601.16023'
+  - '2602.11072'
+  - '2603.08823'
+  - '2602.09823'
+  - '2603.14853'
+  - '2603.18090'
   open_questions:
   - Can semantic and acoustic sharing be separated without losing language-specific rhythm, tone, and speaker identity?
 - id: vae_multilingual_latent_models
@@ -7522,6 +9384,8 @@ method_families:
   - '2510.09061'
   - '2510.18308'
   - '2512.04720'
+  - '2601.12205'
+  - '2603.29339'
   open_questions:
   - How should latent regularization separate language from speaker and style without suppressing cross-lingual
     transfer?
@@ -7535,6 +9399,7 @@ method_families:
   - interspeech-2025-gourav25_interspeech
   - 2025.vlsp-1.15
   - neurips-2025-RTjr4DnS79
+  - 2026.eacl-short.16
   open_questions:
   - Can diffusion systems maintain intelligibility and speaker similarity for unseen languages at practical inference
     cost?
@@ -7542,6 +9407,8 @@ reassessment_queue:
 - id: cross_lingual_cloning_trades_identity_against_language_fidelity
   type: claim_status
   reason: Speaker, accent, and language fidelity are measured with inconsistent listener and embedding protocols.
+    Q1 adds relevant evidence but does not satisfy the matched, balanced, or cross-family trigger; this item is
+    overdue as of 2026-11-12.
   trigger: Matched multilingual cloning studies jointly calibrate identity, accent, and intelligibility with listeners.
   due: 2026-10
   current_assessment: strongly_supported
@@ -7550,7 +9417,8 @@ reassessment_queue:
   - Accent-aware speaker metrics
 - id: zero_shot_models_generalize_to_unseen_languages_imperfectly
   type: claim_status
-  reason: Unseen-language evidence often uses related languages or external phonetic resources.
+  reason: Unseen-language evidence often uses related languages or external phonetic resources. Q1 adds relevant
+    evidence but does not satisfy the matched, balanced, or cross-family trigger; this item is overdue as of 2026-11-12.
   trigger: Independent tests cover typologically distant languages without target-language supervision.
   due: 2026-10
   current_assessment: strongly_supported
@@ -7559,7 +9427,8 @@ reassessment_queue:
   - No-resource language transfer
 - id: shared_phonetic_representations_enable_transfer
   type: claim_status
-  reason: IPA and universal inventories may obscure language-specific phones and prosody.
+  reason: IPA and universal inventories may obscure language-specific phones and prosody. Q1 adds relevant evidence
+    but does not satisfy the matched, balanced, or cross-family trigger; this item is overdue as of 2026-11-12.
   trigger: Matched studies separate inventory sharing from model and data scale across diverse scripts.
   due: 2026-10
   current_assessment: strongly_supported
@@ -7568,7 +9437,8 @@ reassessment_queue:
   - Tone-language evaluations
 - id: multilingual_evaluation_requires_per_language_reporting
   type: benchmark_validity
-  reason: Listener proficiency and test-set difficulty differ across languages.
+  reason: Listener proficiency and test-set difficulty differ across languages. Q1 adds relevant evidence but does
+    not satisfy the matched, balanced, or cross-family trigger; this item is overdue as of 2026-11-12.
   trigger: Balanced multilingual benchmarks standardize listener qualification and per-language difficulty.
   due: 2026-10
   current_assessment: strongly_supported
@@ -7577,7 +9447,8 @@ reassessment_queue:
   - Per-language benchmark calibration
 - id: dialect_identity_requires_explicit_modeling
   type: claim_status
-  reason: Dialect evidence remains concentrated in a small set of language families.
+  reason: Dialect evidence remains concentrated in a small set of language families. Q1 adds relevant evidence but
+    does not satisfy the matched, balanced, or cross-family trigger; this item is overdue as of 2026-11-12.
   trigger: Explicit routing or representation gains replicate across unrelated dialect continua.
   due: 2026-10
   current_assessment: strongly_supported
@@ -7586,8 +9457,10 @@ reassessment_queue:
   - Dialect routing ablations
 - id: code_switching_requires_joint_language_and_context_modeling
   type: claim_status
-  reason: Q4 adds several supporting systems, but evidence remains concentrated in Mandarin-English and orchestrated segment-level settings.
-  trigger: Independent systems reproduce gains across at least three typologically distinct language pairs with native-listener pronunciation and speaker-continuity evaluation.
+  reason: Q4 adds several supporting systems, but evidence remains concentrated in Mandarin-English and orchestrated
+    segment-level settings. Q1 adds no matched spontaneous code-switching study across the required language breadth.
+  trigger: Independent systems reproduce gains across at least three typologically distinct language pairs with
+    native-listener pronunciation and speaker-continuity evaluation.
   due: 2027-04
   current_assessment: strongly_supported
   watch_for:
@@ -7595,8 +9468,11 @@ reassessment_queue:
   - Joint pronunciation, naturalness, and speaker-continuity listening tests
 - id: synthetic_parallel_data_enables_low_resource_cross_lingual_generation
   type: claim_status
-  reason: Three Q4 systems converge on synthetic or pseudo-parallel data, but all inherit errors from upstream translation or synthesis models.
-  trigger: Matched studies compare synthetic-data generators and quantify how upstream errors propagate into downstream speech quality.
+  reason: Three Q4 systems converge on synthetic or pseudo-parallel data, but all inherit errors from upstream translation
+    or synthesis models. Q1 adds synthetic dialect data and alignment-free translation, but no matched generator
+    comparison with quantified upstream error propagation.
+  trigger: Matched studies compare synthetic-data generators and quantify how upstream errors propagate into downstream
+    speech quality.
   due: 2027-04
   current_assessment: strongly_supported
   watch_for:
@@ -7604,8 +9480,11 @@ reassessment_queue:
   - Error propagation across translation, TTS, and direct S2ST
 - id: cross_lingual_prosody_and_style_control_remain_uneven
   type: claim_status
-  reason: Q4 support spans emotion, emphasis, dialogue style, and low-resource prosody, but protocols and language pairs are heterogeneous.
-  trigger: Two matched multilingual studies jointly evaluate prosody transfer, speaker identity, intelligibility, and naturalness across the same language set.
+  reason: Q4 support spans emotion, emphasis, dialogue style, and low-resource prosody, but protocols and language
+    pairs are heterogeneous. Q1 broadens accent, timbre, and style evidence but does not provide two matched studies
+    over the same languages and outcome set.
+  trigger: Two matched multilingual studies jointly evaluate prosody transfer, speaker identity, intelligibility,
+    and naturalness across the same language set.
   due: 2027-04
   current_assessment: strongly_supported
   watch_for:
@@ -7619,9 +9498,16 @@ open_questions:
 - How should multilingual evaluation normalize listener proficiency and test-set difficulty across languages?
 - Can shared multilingual models preserve dialect continua and code-switching without discrete, potentially reductive
   labels?
-- How can synthetic and pseudo-parallel speech be quality-controlled so translation and TTS errors do not become learned multilingual biases?
-- Which code-switching architecture best preserves pronunciation, contextual language choice, and a consistent speaker within the same utterance?
-- Can emotion, emphasis, and style transfer across languages without sacrificing speaker identity or target-language intelligibility?
+- How can synthetic and pseudo-parallel speech be quality-controlled so translation and TTS errors do not become
+  learned multilingual biases?
+- Which code-switching architecture best preserves pronunciation, contextual language choice, and a consistent speaker
+  within the same utterance?
+- Can emotion, emphasis, and style transfer across languages without sacrificing speaker identity or target-language
+  intelligibility?
+- How well do training-free accent interventions transfer beyond the tested language pairs when native listeners
+  jointly rate accent, intelligibility, rhythm, and speaker identity?
+- Which script-aware representation best extends multilingual TTS to diacritic-rich and underrepresented writing
+  systems without language-specific front-end engineering?
 trend_notes:
 - Multilingual TTS has shifted from language-specific models toward shared zero-shot and few-shot foundation systems.
 - Codec language models and flow matching became prominent multilingual generation backbones in 2024–2025.
@@ -7629,6 +9515,15 @@ trend_notes:
 - Parameter-efficient language extension through adapters, LoRA, and vocabulary expansion is growing.
 - Evaluation is moving toward per-language reporting, cross-lingual speaker identity, accent fidelity, and low-resource
   fairness.
-- Q4 work expands multilingual synthesis from sentence-level language coverage toward code-switching, dialect, conversational overlap, dubbing, and explicit cross-lingual prosody.
-- Synthetic and pseudo-parallel speech becomes a recurring strategy for low-resource language pairs that lack recorded parallel data.
-- Frozen-backbone adapters and language-specific input hierarchies increasingly extend large pretrained systems while exposing persistent accent and pronunciation trade-offs.
+- Q4 work expands multilingual synthesis from sentence-level language coverage toward code-switching, dialect, conversational
+  overlap, dubbing, and explicit cross-lingual prosody.
+- Synthetic and pseudo-parallel speech becomes a recurring strategy for low-resource language pairs that lack recorded
+  parallel data.
+- Frozen-backbone adapters and language-specific input hierarchies increasingly extend large pretrained systems
+  while exposing persistent accent and pronunciation trade-offs.
+- Q1 2026 multilingual systems increasingly treated script coverage, dialect identity, accent, and language-specific
+  timing as explicit control problems rather than assuming that shared scale would absorb them.
+- Low-resource extension combined synthetic dialect data, related-language staging, vocabulary expansion, and script-aware
+  flow matching, while evaluation repeatedly exposed ASR and speaker-metric bias.
+- Cross-lingual generation expanded from voice cloning toward simultaneous translation, anonymization, singing timbre
+  transfer, and training-free accent control, but language and identity fidelity remained coupled trade-offs.
