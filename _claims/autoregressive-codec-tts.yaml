@@ -1,6 +1,6 @@
 concept: autoregressive-codec-tts
-last_updated: "2026-09-26"
-paper_count: 196
+last_updated: "2026-11-12"
+paper_count: 212
 
 papers:
   - id: "1609.03499"
@@ -10083,9 +10083,737 @@ papers:
     - English data are limited, laughter optimization trades against accuracy and identity, and synthesis beyond Chinese and English is untested.
     caveats:
     - GLM-TTS directly contributes tokenizer, RL, and customization evidence for an autoregressive text-to-token model; Vocos2D is retained as low-relevance downstream context.
+  - id: '2601.03888'
+    published_date: '2026-01-09'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+      - scaled_general_ar_codec_tts
+    claims: []
+    limitations:
+    - The paper does not report model parameter counts, making comparisons of compute per inference difficult. The Spanish training set is small (~2.9K hours, largely assembled from public corpora) and performance on Spanish lags all other languages. Japanese WER remains above 9% even with GRPO fine-tuning; the paper attributes some of this to ASR evaluation noise but does not fully resolve it. Emotional test sets for Japanese and Spanish are constructed internally and lack independent validation. The study covers four languages; extension to low-resource languages, tonal languages beyond Mandarin, or agglutinative languages is not addressed. The GRPO reward is WER-only; prosodic naturalness and emotional fidelity are not directly optimized by the RL signal.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2601.12480'
+    published_date: '2026-01-18'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    - VC
+    architecture:
+    - autoregressive-LM
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - hierarchical_ar_nar_codec_tts
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+    claims:
+    - claim_id: attribute_disentanglement_in_a_codec_language_model_can_be_induced
+      role: supports
+      claim: Attribute disentanglement in a codec language model can be induced implicitly through training-pair construction (deliberately mismatching prompt and target attributes) rather than through an explicit auxiliary loss or architectural module.
+      source: §6.1, Table 1
+      evidence: Same-speaker and cross-speaker Delta-Pair sampling, with no auxiliary disentanglement loss, yields 92% emotion classification accuracy on the Hard Task (conflicting prompt/target emotion in 80% of cases), exceeding CosyVoice 2 (79%) and IndexTTS 2 (73%), which use style-tag or dual-prompt conditioning.
+      confidence: high
+      relevance: high
+    - claim_id: direct_single_stage_attribute_conditioned_generation_can_express_fine_grained
+      role: supports
+      claim: Direct single-stage attribute-conditioned generation can express fine-grained control more effectively than iterative post-hoc editing of an already-synthesized utterance.
+      source: §6.1, Figure 4
+      evidence: Step-Audio-EditX's iterative editing raises emotion classification accuracy only from 50% (zero-shot generation) to 56.25% after one edit and 57.5% after a second, with negligible further gain, while SpeechEdit's single-stage direct emotion conditioning reaches 63.75% ECA at a comparable 2.5% WER.
+      confidence: high
+      relevance: high
+    - claim_id: adding_a_cross_speaker_voice_conversion_training_objective_to_a
+      role: complicates
+      claim: Adding a cross-speaker voice-conversion training objective to a unified selective-editing codec LM trades off speaker-similarity preservation for cross-speaker controllability.
+      source: §A.4, Task Ablation
+      evidence: A task-ablated variant trained only on same-speaker delta pairs (removing cross-speaker supervision) improves zero-shot TTS speaker similarity from 0.45 to 0.53 relative to the full model, at the cost of losing voice-conversion capability.
+      confidence: high
+      relevance: high
+    - claim_id: augmenting_a_training_corpus_with_additional_emotional_speech_from_a
+      role: complicates
+      claim: Augmenting a training corpus with additional emotional speech from a mismatched distribution (elicited, exaggerated emotion) does not reliably improve emotion-controllable synthesis and can degrade it.
+      source: §A.4, Data Ablation, Table 1
+      evidence: Mixing 708 hours of read-audiobook LibriEdit data with 30 hours of internal acted emotional speech and 47 hours of Expresso produced consistent degradation across most objective metrics relative to LibriEdit-only training, attributed to a distribution mismatch between spontaneous and elicited/exaggerated emotional expression.
+      confidence: high
+      relevance: high
+    limitations:
+    - Speaker identity is represented with a single static global embedding, which the authors acknowledge can lose time-varying vocal nuance and idiosyncratic articulation, and the model's disentanglement is entirely implicit (no auxiliary supervision), which the authors note may limit robustness on extreme or rare attribute combinations that the Delta-Pair sampling strategy does not adequately cover.
+    - The controllable attribute space is restricted to emotion, prosody, and speaker identity via a fixed categorical/ordinal instruction vocabulary; it does not support natural-language style instructions or arbitrary multi-attribute specifications. The emotion-editing evaluation sets are small (80-100 samples, four unseen speakers per condition), and no code repository is released alongside the paper, only audio samples.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2409.16681'
+    published_date: '2026-01-19'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+    claims:
+    - claim_id: a_predictor_that_maps_categorical_emotion_labels_into_a_continuous
+      role: supports
+      claim: A predictor that maps categorical emotion labels into a continuous, psychologically grounded dimensional space can supply conditioning signals for an LM-based TTS system that itself trains without any explicit emotion labels.
+      source: §2.2, §3.1
+      evidence: The ED predictor is trained separately on the ESD English subset (~10h, 5 emotions) via WavLM features and anchored dimensionality reduction, reaching 81% classification accuracy on the ESD test set, while the TTS LM trains only on LibriTTS (~600h), which contains no emotion labels
+      confidence: high
+      relevance: high
+    - claim_id: conditioning_zero_shot_lm_based_tts_on_continuous_dimensional_emotion
+      role: supports
+      claim: Conditioning zero-shot LM-based TTS on continuous dimensional emotion embeddings, rather than categorical labels, allows synthesis of emotions not present as discrete categories in the TTS training data.
+      source: §3.3, Figure 2
+      evidence: In the "Emotion Control" setting, PAD values for 9 named emotions (Table 1) absent from LibriTTS training labels are manually specified, and the resulting synthesized speech shows pitch and spectral-flux patterns consistent with established emotion-arousal correlates
+      confidence: high
+      relevance: high
+    - claim_id: a_zero_shot_label_free_emotion_conditioned_tts_system_trained
+      role: complicates
+      claim: A zero-shot, label-free emotion-conditioned TTS system trained on unlabeled expressive speech can trail a system trained directly on labeled emotional data in emotional intelligibility, even while surpassing a same-setting zero-shot baseline.
+      source: §3.4, Figure 3
+      evidence: In the E-MOS listening test, MixedEmotion (trained on emotional data) attains the highest score among the three compared systems, ahead of both the proposed zero-shot framework and the CosyVoice zero-shot baseline, though all remain below ground truth
+      confidence: high
+      relevance: high
+    - claim_id: confusability_between_synthesized_emotion_pairs_correlates_with_how_many_of
+      role: supports
+      claim: Confusability between synthesized emotion pairs correlates with how many of the three PAD dimensions the pairs share, with pairs differing on only one dimension harder to disambiguate than pairs differing on more.
+      source: §3.4, Figure 4
+      evidence: XAB test accuracy across four dimension-matched pairs (e.g., "Angry" vs. "Anxious," differing mainly in Dominance) stays above 50% for all pairs but is lowest for the most dimensionally similar pairs, consistent with Russell's three-factor theory
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The subjective evaluation is modest in scale: 10 native English listeners rated 260 synthesized samples in total, and the paper itself characterizes this as standard practice rather than a large-scale study. E-MOS results for emotional intelligibility are reported only as a figure without exact numeric values in the text, limiting the precision of any downstream comparison. The TTS backbone is trained on a single English corpus (LibriTTS), so cross-lingual or cross-domain generalization of the ED conditioning mechanism is untested. The paper compares against only two baselines (CosyVoice, MixedEmotion) rather than other explicit dimensional-emotion TTS systems it cites in related work (e.g., EmoCtrl-TTS, EmoSphere-TTS). The authors note dynamic within-utterance emotion control and multilingual adaptation as open future directions, not addressed in this work (§4).'
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2601.15596'
+    published_date: '2026-01-22'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+    claims:
+    - claim_id: a_specialized_non_neutral_speech_style_can_be_synthesized_zero
+      role: supports
+      claim: A specialized, non-neutral speech style can be synthesized zero-shot for arbitrary speakers using only their ordinary read-style speech as the reference, without requiring any style-matched training or reference data from the target speaker.
+      source: §VI-A, Table I
+      evidence: DeepASMR generates ASMR speech for unseen speakers from a normal-style prompt alone, achieving 6.53% WER and a +0.58 LLM-judged style score on the Normal-to-ASMR task, versus negative style scores for all cascade baselines.
+      confidence: high
+      relevance: high
+    - claim_id: discrete_speech_tokens_from_an_asr_objective_tokenizer_can_exhibit
+      role: supports
+      claim: Discrete speech tokens from an ASR-objective tokenizer can exhibit a soft factorization in which variance across the token space is dominated by speaking style rather than speaker identity, while still retaining exploitable residual speaker information.
+      source: §III-C
+      evidence: t-SNE visualization of pre-quantized S3-tokenizer hidden states shows a clear separation between Normal and ASMR clusters, while a speaker classifier trained on the same hidden states still reaches 86.4% accuracy (versus 90% on mel-spectrograms and 2.8% chance), confirming reduced but non-zero speaker identity in the token space.
+      confidence: high
+      relevance: high
+    - claim_id: cascaded_pipelines_that_combine_a_style_transfer_tts_stage_with
+      role: complicates
+      claim: Cascaded pipelines that combine a style-transfer TTS stage with a separate voice-conversion stage struggle to jointly achieve target style intensity and speaker-identity preservation in cross-style speech generation.
+      source: §VI-A, §VI-D, Table I, Table VI
+      evidence: Cascade baselines combining CosyVoice2/F5-TTS with CosyVoiceVC/SeedVC produced negative or near-zero LLM-judged style scores and lower unvoiced ratios (14–37%) on the Normal-to-ASMR task, while the integrated two-stage DeepASMR reached a +0.58 style score and 74.21% unvoiced ratio.
+      confidence: high
+      relevance: high
+    - claim_id: iteratively_feeding_a_generation_pipeline_s_own_output_back_in
+      role: complicates
+      claim: Iteratively feeding a generation pipeline's own output back in as its reference prompt trades off target-style intensity against speaker-identity preservation, with diminishing or reversing returns beyond a small number of iterations.
+      source: §VI-C-3, Table V
+      evidence: In the Normal-to-ASMR task, iterating the inference pass from step 1 to step 3 raised the LLM-judged style score from +0.58 to +0.88 but degraded speaker similarity from 0.41 to 0.25, with WER also worsening on the third pass relative to the second (5.72% vs. 4.15%).
+      confidence: high
+      relevance: high
+    - claim_id: mixing_a_proportion_of_normal_style_speech_into_fine_tuning
+      role: supports
+      claim: Mixing a proportion of normal-style speech into fine-tuning data for a specialized speech style prevents catastrophic forgetting of general speech synthesis ability.
+      source: §VI-C-2, Table IV
+      evidence: Fine-tuning exclusively on the 670-hour ASMR corpus raised Normal-to-Normal WER from 2.1% to 3.3% and Normal-to-ASMR WER to 15.2%, whereas mixing in the Emilia normal-speech dataset restored Normal-to-Normal performance and cut Normal-to-ASMR WER to 6.53%.
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The authors'' own subjective-comfort evaluation rests on a fundamentally variable phenomenon: they acknowledge emerging evidence of neuroanatomical differences between individuals who do and do not experience ASMR responses, which limits how far MOS-style "comfort" and "tingling" ratings from a 12-person listener panel can be generalized.'
+    - 'Beyond that, the DeepASMR-DB dataset is heavily gender-imbalanced (28 female vs. 7 male speakers across 35 total), reflecting the demographics of available ASMR creators but constraining evaluation of the framework''s generalization to male voices. The reported speaker-similarity ceiling for cross-style synthesis is itself low even for ground-truth recordings (SIM of 0.47 in Chinese and 0.37 in English between a speaker''s own ASMR and normal recordings), meaning SIM as a metric may understate true identity preservation after a style shift. The current framework is limited to vocal speech; the authors note that broader ASMR triggers (tapping, rubbing, and other non-vocal sounds) are left to future work. The paper also flags a dual-use risk: because the system preserves speaker identity zero-shot, it could be misused for voice spoofing or impersonation, and the authors recommend pairing future deployment with synthetic-speech detection.'
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2601.15621'
+    published_date: '2026-01-22'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+      - scaled_general_ar_codec_tts
+    claims: []
+    limitations:
+    - The model relies on proprietary 5M-hour multilingual training data; results may not transfer to lower-resource settings. Despite 10 languages covered, Japanese and some European languages show higher WER than Chinese/English. The 25Hz variant performs better for long-form synthesis, suggesting the 12Hz variant has difficulty with long-horizon dependencies — an open research question for ultra-low-bitrate streaming TTS. Voice design via natural language instruction (thinking pattern) has not been rigorously benchmarked for robustness against adversarial or ambiguous prompts.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2601.17086'
+    published_date: '2026-01-23'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: post_hoc_closed_form_weight_edits_constrained_to_the_null
+      role: supports
+      claim: Post-hoc, closed-form weight edits constrained to the null space of a model's general-behavior representation subspace can correct a narrow, targeted failure mode while leaving unrelated model behavior essentially unchanged, avoiding the correction-versus-preservation trade-off inherent to full fine-tuning and standard parameter-efficient fine-tuning.
+      source: §4.3, Table 2
+      evidence: SonoEdit reduces Target-WER from 86.4% to 2.8% while Global-WER on a preservation set rises only from 3.12% to 3.15% and speaker similarity stays at 0.99, versus full fine-tuning (Global-WER 18.45%, SIM 0.82) and LoRA (Global-WER 5.12%, SIM 0.91) on the same edits.
+      confidence: high
+      relevance: high
+    - claim_id: in_an_llm_based_codec_token_tts_system_pronunciation_relevant
+      role: supports
+      claim: In an LLM-based codec-token TTS system, pronunciation-relevant computation is causally concentrated in a narrow, identifiable band of mid-to-late Transformer layers rather than distributed uniformly across the network.
+      source: §4.2, Table 1
+      evidence: Three independent localization signals (causal-mediation Indirect Effect, linear-probe phoneme-classification accuracy, and gradient-norm attribution) converge on layers 15-21 of the 28-layer LLaMA-3.2-3B backbone in Orpheus-TTS, and editing exactly this range yields the lowest Target-WER (2.8%) of any layer band tested.
+      confidence: high
+      relevance: high
+    - claim_id: constraining_a_weight_editing_update_to_be_mathematically_orthogonal_to
+      role: supports
+      claim: Constraining a weight-editing update to be mathematically orthogonal to a general-behavior subspace is necessary, not merely helpful, for preventing collateral degradation of unrelated model behavior when correcting a narrow target error.
+      source: §4.4, Table 5
+      evidence: Removing only the null-space constraint from an otherwise identical editing procedure degrades Global-WER from 3.15% to 9.84% and speaker similarity from 0.99 to 0.87, even though Target-WER improves marginally (2.8% → 2.5%), showing the constraint drives preservation rather than accuracy.
+      confidence: high
+      relevance: high
+    - claim_id: knowledge_editing_techniques_originally_developed_for_correcting_factual_associations_in
+      role: supports
+      claim: Knowledge-editing techniques originally developed for correcting factual associations in text-only large language models transfer to correcting pronunciation associations in LLM-based speech generation systems.
+      source: §4.3, Tables 2-3
+      evidence: Adapting the AlphaEdit null-space-constrained closed-form estimator to Orpheus-TTS's coarse SNAC tokens achieves a 91% human-rated pronunciation-correctness rate (up from 42% baseline) on a held-out multilingual proper-noun benchmark, while ROME's unconstrained rank-one edits distort speaker identity (SIM 0.76).
+      confidence: high
+      relevance: high
+    - claim_id: one_shot_editing_methods_that_depend_on_a_null_space
+      role: complicates
+      claim: One-shot editing methods that depend on a null space precomputed offline from a fixed reference speech corpus have untested robustness to deployment-time distribution shift and untested scalability when many edits must be applied cumulatively to the same model.
+      source: §5
+      evidence: 'The authors identify both as open limitations without empirical evaluation: shifts in the deployment speech distribution could weaken the null-space orthogonality guarantee, and cumulative edits across many target words might progressively saturate the null space.'
+      confidence: high
+      relevance: high
+    limitations:
+    - SonoEdit corrects isolated, per-word pronunciation errors and is explicitly not suited to correcting global systematic errors such as accent bias, since each edit targets a single localized weight update rather than a distributional shift in the model's output; the paper does not evaluate how many simultaneous word-level edits the null-space constraint can absorb before interference emerges.
+    - The causal-tracing analysis and editing are restricted to coarse phonological tokens; the paper notes this could miss sub-phonemic errors encoded in the finer acoustic token levels of the SNAC hierarchy. The null space is computed once, offline, from LibriTTS; the authors flag that a deployment distribution meaningfully different from this reference corpus could weaken the orthogonality guarantee, though this is not tested empirically. Evaluation is limited to two LLM-based TTS backbones (Orpheus-TTS, Sesame-TTS) and does not include non-codec-token TTS architectures.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2602.03420'
+    published_date: '2026-02-03'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+    claims:
+    - claim_id: in_modular_hybrid_tts_pipelines_that_separate_a_token_generating
+      role: supports
+      claim: In modular hybrid TTS pipelines that separate a token-generating language model from an acoustic flow-matching decoder, emotional prosody is predominantly synthesized by the language-model stage rather than the acoustic decoder stage.
+      source: §2.1, Table 1, Figure 2
+      evidence: Cross-conditioning diagnostic on CosyVoice2 (N=300) shows SLM-driven conditioning produces divergent F0/energy contours across emotions (F0 CCC 0.109, energy CCC 0.308) while Flow-driven conditioning yields largely overlapping contours (F0 CCC 0.305, energy CCC 0.737), indicating the flow-matching module mainly performs acoustic rendering.
+      confidence: high
+      relevance: high
+    - claim_id: emotion_specific_directions_in_a_tts_language_model_s_internal
+      role: supports
+      claim: Emotion-specific directions in a TTS language model's internal representations are approximately linearly separable, and this separability is concentrated in mid-to-late transformer layers and attention-output activations, making them the most reliable sites for direction-vector steering.
+      source: §2.2, §4.5, Figure 3, Figure 7
+      evidence: Layer- and operation-level linear probing identifies layers 10-17 and attention outputs as most discriminative for CosyVoice2, with an analogous but shifted peak (layers 5-10) for IndexTTS2; layer-wise steering effectiveness (TEP) correlates with this discriminability (rho = 0.5078).
+      confidence: high
+      relevance: high
+    - claim_id: weighted_composition_of_single_emotion_steering_vectors_extracted_via_mean
+      role: supports
+      claim: Weighted composition of single-emotion steering vectors, extracted via mean-difference contrast between speaker- and content-matched emotional and neutral activations, enables quantitative control over mixed-emotion proportions in synthesized speech beyond what discrete emotion labels or natural-language instructions provide.
+      source: §4.2, Table 2, Figure 4
+      evidence: On CREMA-D (in-distribution) and IEMOCAP (out-of-distribution) with CosyVoice2 and IndexTTS2, CoCoEmo mixed-emotion steering improves E-SIM, H-Rate, and Spearman correlation over no-steering and over instruction-based/emotion-vector baselines, while instruction-based control biases toward the mixed direction without proportional quantitative control.
+      confidence: high
+      relevance: high
+    - claim_id: increasing_activation_steering_strength_to_strengthen_emotional_control_trades_off
+      role: complicates
+      claim: Increasing activation-steering strength to strengthen emotional control trades off against speech naturalness and intelligibility, so steering magnitude must be tuned per backbone rather than maximized freely.
+      source: §4.5, Table 2
+      evidence: The paper reports a stable operating range of alpha in [0, 4.5] without quality degradation, but notes that larger values up to alpha=6.0 may occasionally reduce intelligibility; combining steering with instruction-based conditioning at alpha=5.0 on CosyVoice2/IEMOCAP drops naturalness MOS to 2.18-2.54 from a no-steer baseline of 3.94.
+      confidence: high
+      relevance: high
+    - claim_id: steering_vectors_extracted_for_one_backbone_architecture_do_not_transfer
+      role: complicates
+      claim: Steering vectors extracted for one backbone architecture do not transfer directly to another; the optimal injection layers and steering-strength operating range must be recalibrated per backbone.
+      source: §4.5, Appendix A.1, Table 4
+      evidence: Optimal steering layers differ between CosyVoice2 (top-2 layers, 17 and 14) and IndexTTS2 (top-3 layers, 6, 8, and 1), and discriminability peaks at different depths (layers 10-17 vs. 5-10) due to differing internal architectures (Qwen2-based decoder vs. GPT2-style decoder operating directly on audio codebook tokens).
+      confidence: high
+      relevance: high
+    limitations:
+    - The method is validated on only two hybrid (autoregressive language model + flow-matching decoder) TTS backbones; both share the same broad architectural family, so it is not established from this paper whether the SLM-carries-emotion finding or the steering recipe generalizes to non-autoregressive or purely diffusion-based TTS systems. Steering layers, operations, and the stable alpha range are backbone-specific and must be re-derived (via discriminability probing) for each new model rather than transferring directly. On the IEMOCAP out-of-distribution set, layering steering on top of instruction-based conditioning produced a slight decrease in E-SIM relative to steering alone, which the authors attribute to the subtler emotional expressions in that dataset. The Impact Statement notes that stronger emotional controllability in synthetic speech increases risk for more persuasive impersonation and social-engineering misuse, and recommends consent, disclosure, and abuse-prevention safeguards
+      for deployed systems.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2602.10735'
+    published_date: '2026-02-11'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - flow-matching
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - hybrid_ar_token_continuous_renderer
+      - alignment_constrained_autoregression
+    claims:
+    - claim_id: deriving_audio_text_synchronization_timestamps_directly_from_the_tts_synthesis
+      role: supports
+      claim: Deriving audio-text synchronization timestamps directly from the TTS synthesis process, rather than aligning independently generated audio to text after the fact, can eliminate the alignment-drift failure mode that post-hoc forced-alignment methods exhibit.
+      source: §6, Table 2, Figure 3
+      evidence: On a single test e-book, Calliope's timestamp-derived synchronization showed zero drift across all evaluated sentences, while a DTW-based forced-alignment baseline (Syncabook) showed drift up to 0.96 s (over 30% of sentences exceeding the acceptable [-50, 150] ms window) and a transcription-based baseline (Storyteller) showed drift up to 34.91 s with only 6.6% of sentences within the acceptable window.
+      confidence: high
+      relevance: medium
+    - claim_id: the_fixed_context_window_limits_of_transformer_based_tts_models
+      role: complicates
+      claim: The fixed context-window limits of Transformer-based TTS models (both autoregressive and flow-matching) can cause synthesis failures or truncation on long-form, sentence-segmented input text unless explicitly mitigated at the pipeline level.
+      source: §4.2, Equations 2-3
+      evidence: 'The framework applies a two-tier handling strategy: sentences longer than ~200 characters are recursively split at the nearest whitespace, sentences shorter than ~60 characters are merged with neighbors to avoid known short-input degradation, and a runtime exception handler recursively splits any sentence that triggers a token-overflow error during decoding (e.g., from phonetically dense inputs such as spoken years).'
+      confidence: high
+      relevance: high
+    - claim_id: concatenating_independently_synthesized_sentence_level_audio_segments_into_a_continuous
+      role: complicates
+      claim: Concatenating independently synthesized sentence-level audio segments into a continuous stream introduces audible boundary artifacts that must be explicitly suppressed, a problem the authors note is common in flow-matching-based TTS output.
+      source: §4.2.1
+      evidence: A linear fade-out filter (~50 ms) is applied to the end of each synthesized segment and a fixed silence pad (~0.15 s) is inserted between segments specifically to mitigate boundary clicks and hallucinated breath sounds before concatenation.
+      confidence: high
+      relevance: medium
+    - claim_id: a_short_reference_audio_clip_can_serve_as_a_practical
+      role: supports
+      claim: A short reference audio clip can serve as a practical, low-effort conditioning signal for zero-shot voice cloning across an entire long-form document, without per-book or per-speaker fine-tuning.
+      source: §5.2
+      evidence: Calliope requires only an approximately 15-second reference WAV sample to define the narrator voice profile for an entire e-book, applied consistently across all chapters via either the XTTS-v2 or Chatterbox backend, running fully offline on consumer hardware.
+      confidence: high
+      relevance: medium
+    limitations:
+    - The synchronization-drift evaluation in §6 is conducted on a single short story ("The Gift of the Magi"), synthesized with one TTS backend (Chatterbox) and compared against two forced-alignment tools; it does not establish how drift behavior generalizes across longer books, other languages, or the XTTS-v2 backend. The Storyteller comparison also excludes roughly 15% of sentences where its independent tokenizer disagreed with Calliope's, which could bias the comparison in either direction. The paper reports no subjective evaluation (e.g., listening tests or MOS) of the narration audio quality itself, only synchronization accuracy; overall narration quality is inherited entirely from the underlying XTTS-v2 or Chatterbox models and is not separately assessed. The character-length thresholds used for sentence splitting and merging (200 and 60 characters) are stated as example values without a reported ablation showing they are optimal. The authors identify a GUI and quantized/mobile deployment
+      as future work rather than complete in this version.
+    caveats:
+    - For autoregressive codec TTS, this paper provides medium-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2602.10934'
+    published_date: '2026-02-12'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - codec
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - GAN
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - fully_autoregressive_multicodebook
+      - codec_tokenizer_infrastructure
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: a_homogeneous_fully_transformer_based_cnn_free_codec_encoder_decoder
+      role: supports
+      claim: A homogeneous, fully Transformer-based (CNN-free) codec encoder-decoder, jointly trained end-to-end with its discriminator and without a pretrained encoder or semantic teacher, can match or exceed hybrid and CNN-based codec designs in reconstruction fidelity at comparable or lower bitrates.
+      source: §4.2, Table 2
+      evidence: MOSS-Audio-Tokenizer at 2000 bps reaches SIM 0.95/0.89 and STOI 0.96/0.94 (English/Chinese), exceeding Mimi at a higher 2475 bps (SIM 0.89/0.76) and matching or beating the hybrid-architecture Qwen3-TTS-Tokenizer at 2200 bps.
+      confidence: high
+      relevance: high
+    - claim_id: freezing_the_encoder_and_quantizer_while_training_only_the_decoder
+      role: supports
+      claim: Freezing the encoder and quantizer while training only the decoder and discriminator caps a codec's achievable reconstruction quality, while joint end-to-end optimization of all components sustains improvement with additional training compute.
+      source: §5.1, Figure 4
+      evidence: An ablation comparing full end-to-end training against a partial protocol (frozen encoder/quantizer) used in several prior codecs shows the partial protocol plateaus early, while the fully end-to-end variant continues improving across all metrics without early saturation.
+      confidence: high
+      relevance: high
+    - claim_id: randomly_truncating_the_rvq_token_depth_during_autoregressive_speech_generation
+      role: supports
+      claim: Randomly truncating the RVQ token depth during autoregressive speech-generation training (a parameter-free prefix-dropout strategy) lets a single AR model generate coherent speech across a wide range of inference bitrates without architectural modification.
+      source: §4.3, Figure 3
+      evidence: Progressive Sequence Dropout keeps CAT-TTS's WER and speaker similarity stable across dropout probabilities p=0.25, 0.5, and 1.0 at reduced bitrates, whereas the model trained without dropout (p=0) shows steep WER and similarity degradation as bitrate decreases.
+      confidence: high
+      relevance: high
+    - claim_id: increasing_codec_parameter_count_alone_does_not_guarantee_better_reconstruction
+      role: complicates
+      claim: Increasing codec parameter count alone does not guarantee better reconstruction quality; quantization depth (bitrate) and model capacity are co-dependent bottlenecks that must be scaled together.
+      source: §5.2, Figure 5
+      evidence: In a parameter-scaling sweep (319M-1169M combined encoder-decoder parameters), the largest 1169M model benefits most at high bitrates but can underperform smaller models at low bitrates, indicating bitrate becomes the binding constraint independent of parameter count.
+      confidence: high
+      relevance: high
+    - claim_id: a_purely_autoregressive_discrete_token_tts_architecture_can_achieve_zero
+      role: supports
+      claim: A purely autoregressive discrete-token TTS architecture can achieve zero-shot speaker similarity competitive with, or exceeding, non-autoregressive and cascaded AR+NAR systems when built on a sufficiently strong, jointly-trained tokenizer.
+      source: §4.3, Table 3
+      evidence: CAT-TTS attains the highest speaker similarity among compared open-source systems on Seed-TTS-Eval for both English (SIM 73.1) and Chinese (SIM 78.5), with WER 1.89 and CER 1.23, outperforming cascaded systems (CosyVoice3-1.5B, IndexTTS2, GLM-TTS), non-autoregressive F5-TTS, and prior discrete-AR systems (HiggsAudio-v2, FireRedTTS2).
+      confidence: high
+      relevance: high
+    limitations:
+    - Reproducibility depends on undisclosed internal data CAT-TTS is trained on VoxBox plus "an internal dataset" (~200k hours combined) and CAT-ASR on an "internal dataset" of ~2M hours of paired audio-text data; the composition and provenance of these internal corpora are not disclosed, and the ~3M-hour tokenizer pretraining corpus is likewise described only generically as "diverse, general audio data." This limits independent reproduction of the reported speech generation and understanding results even though the codec architecture itself is fully specified.
+    - The paper does not report whether MOSS-Audio-Tokenizer's weights, code, or a public demo will be released, and none of the abstract, introduction, or conclusion state a release plan. CAT-ASR is evaluated only against systems with dedicated audio encoders and does not surpass the strongest of them (Kimi-Audio, Qwen2.5-Omni), so the "competitive ASR without an auxiliary encoder" claim is a parity result rather than a state-of-the-art one. The TTS comparison in Table 3 is restricted to open-source systems; no comparison against closed proprietary TTS systems is provided. The paper does not ablate the contribution of the auxiliary 0.5B semantic LLM head in isolation from the reconstruction and adversarial losses, so it is not established how much of the tokenizer's downstream TTS/ASR performance depends specifically on that objective versus the architecture and scale alone.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: 2026.abjadnlp-1.6
+    published_date: '2026-03-01'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: ABJAD-NLP 2026
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: a_fully_synthetic_construction_pipeline_llm_generated_text_converted_to
+      role: supports
+      claim: A fully synthetic construction pipeline, LLM-generated text converted to speech by a generative audio tool with no human recording, can produce TTS training data sufficient to measurably improve an existing multilingual TTS model's intelligibility and speaker similarity for an under-resourced dialect.
+      source: §5.2, Table 3
+      evidence: Fine-tuning XTTS v2 on NileTTS (built entirely from LLM-generated Egyptian Arabic text rendered by NotebookLM's audio generation, then auto-transcribed and diarized) reduces WER from 26.8% to 18.8% and CER from 8.1% to 4.1%, and raises speaker similarity from 0.713 to 0.755, relative to the pretrained baseline.
+      confidence: medium
+      relevance: medium
+    - claim_id: dialect_specific_fine_tuning_can_substantially_improve_target_dialect_tts
+      role: refines
+      claim: Dialect-specific fine-tuning can substantially improve target-dialect TTS quality even when the base multilingual model already nominally supports the target language family.
+      source: §5.2
+      evidence: XTTS v2's pretraining already includes Arabic (MSA and Gulf dialects), yet fine-tuning on 38 hours of Egyptian-Arabic-only data yields a 29.9% relative WER reduction and 49.4% relative CER reduction on Egyptian Arabic evaluation data versus the untuned baseline.
+      confidence: medium
+      relevance: medium
+    - claim_id: automatic_intelligibility_and_speaker_similarity_metrics_can_be_inflated_by
+      role: complicates
+      claim: Automatic intelligibility and speaker-similarity metrics can be inflated by self-consistency bias when the same tools used to construct the training data are reused to score the resulting model.
+      source: §6.2
+      evidence: WER/CER are scored by re-transcribing synthesized speech with Whisper Large, the same model used to transcribe the training corpus, and speaker similarity uses ECAPA-TDNN embeddings, the same model used for diarization during dataset construction; the authors explicitly flag this as a "form of ASR self-consistency bias" and model-specific bias, with no independent ASR model or human-verified transcript subset used to cross-check.
+      confidence: medium
+      relevance: medium
+    - claim_id: synthetic_dialectal_speech_data_generated_through_a_commercial_ai_audio
+      role: complicates
+      claim: Synthetic dialectal speech data generated through a commercial AI audio tool inherits that tool's limited voice inventory, constraining the speaker diversity available for downstream TTS training.
+      source: §6.1
+      evidence: The entire 38-hour NileTTS corpus derives from exactly two NotebookLM-generated podcast voices (one male, one female); the authors note this "limits speaker diversity" and that models trained on it "may not generalize well to synthesizing voices with different characteristics."
+      confidence: medium
+      relevance: low
+    limitations:
+    - Evaluation relies entirely on automatic metrics computed with tools that overlap the data-construction pipeline (Whisper for transcription-based WER/CER, ECAPA-TDNN for speaker similarity), with no independent ASR model, human-verified transcription subset, or formal MOS/listening-test study to corroborate the gains.
+    - 'Beyond the evaluation-tooling overlap, the dataset itself has narrow scope: only two speakers (one male, one female), which the authors acknowledge limits voice diversity for downstream generalization; the underlying speech is entirely synthetically generated (via NotebookLM) rather than human-recorded, though the authors argue the text content and rendered prosody preserve authentic dialectal properties; and domain coverage is limited to medical, sales/customer-service, and general conversation, excluding specialized registers such as news broadcasting or poetry. The authors propose speaker expansion, extension to other under-resourced Arabic dialects, formal MOS studies, and cross-validation with independent ASR and embedding models as future work.'
+    caveats:
+    - For autoregressive codec TTS, this paper provides medium-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.05977'
+    published_date: '2026-03-06'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: post_hoc_activation_steering_can_decouple_accent_from_speaker_timbre
+      role: supports
+      claim: Post-hoc activation steering can decouple accent from speaker timbre in a pretrained zero-shot TTS model without any additional training of the model itself.
+      source: §5.1, Table 1
+      evidence: Subtracting a layer-wise steering vector (computed offline from accented vs. neutral activation differences) at inference time reduces Accent Match Rate toward the accented target and raises it toward the native target for both 0.6B and 1.7B Qwen3-TTS models, while speaker-embedding similarity remains partially but not fully preserved.
+      confidence: high
+      relevance: high
+    - claim_id: activation_steering_for_one_voice_attribute_trades_off_against_preservation
+      role: complicates
+      claim: Activation steering for one voice attribute trades off against preservation of a correlated attribute, and this trade-off is layer- and strength-dependent.
+      source: §5.2, Figure 2
+      evidence: Steering strength alpha=2.0 achieves larger accent reduction than alpha=1.0 but causes a significantly larger drop in speaker similarity and, at early layers, a marked drop in Inference Success Rate; middle layers (15, 20) give the best accent/timbre balance while early and top layers under-steer the accent.
+      confidence: high
+      relevance: high
+    - claim_id: explicitly_perturbing_the_correlated_attribute_during_steering_vector_extraction_rather
+      role: supports
+      claim: Explicitly perturbing the correlated attribute during steering-vector extraction (rather than relying on natural variation in the extraction set) improves the disentanglement quality of the resulting steering direction.
+      source: §5.3, Table 2
+      evidence: Applying formant, F0, and equalizer-based speaker perturbations to reference waveforms during steering-vector extraction improves speaker similarity of the steered output relative to extraction without augmentation, across all tested extraction-set sizes (40, 1000, 4000 samples).
+      confidence: high
+      relevance: high
+    - claim_id: a_small_number_of_contrastive_extraction_samples_is_sufficient_to
+      role: refines
+      claim: A small number of contrastive extraction samples is sufficient to obtain a usable attribute-steering direction, without requiring the full available extraction set.
+      source: §5.3, Table 2
+      evidence: Steering vectors extracted from 1,000 samples produce accent/timbre trade-offs comparable to those extracted from 4,000 samples, on L2-ARCTIC with the 1.7B model at layer 15.
+      confidence: high
+      relevance: high
+    limitations:
+    - The method is validated on a single accent pair (Mandarin-accented to native US English), a single base model family (Qwen3-TTS, 0.6B/1.7B), and a small extraction pool (4 native and 4 non-native speakers), leaving open whether the same steering vectors and augmentation recipe generalize to other accent pairs, languages, or TTS architectures.
+    - 'The paper reports a consistent trade-off between accent neutralization and speaker-similarity preservation that is not fully resolved: steering strong enough to substantially reduce accent classification always costs some speaker similarity, and the authors note that steered speech sometimes exhibits audible local pitch and prosody shifts. Accent Match Rate and Inference Success Rate rely on an external pretrained accent classifier and the TTS model''s own stability under activation perturbation, respectively, rather than on human listening evaluation of accent-neutrality or naturalness. The single-layer restriction is also a design choice rather than a demonstrated optimum; the paper explicitly leaves multi-layer steering, which the framework in Figure 1 is designed to support, unexplored.'
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.08823'
+    published_date: '2026-03-11'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - GAN
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+      - scaled_general_ar_codec_tts
+    claims: []
+    limitations:
+    - Performance on some low-resource languages (Hindi, Greek, Romanian, Vietnamese) lags behind closed-source systems like MiniMax, suggesting the 10M hour multilingual corpus has uneven coverage. The RL reward system relies on proprietary quality and ASR models not released separately. The 8K/16K context limit bounds long-form synthesis to roughly 185 seconds per pass. The instruction-following capability is learned implicitly via the rich-transcription ASR outputs; out-of-distribution instruction formats may not generalize reliably. No ablation isolates the individual contribution of the dual-purpose pipeline design vs. the multi-dimensional RL reward.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.10904'
+    published_date: '2026-03-11'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: applying_parameter_efficient_fine_tuning_directly_to_the_language_model
+      role: supports
+      claim: Applying parameter-efficient fine-tuning directly to the language-model backbone of an autoregressive codec TTS system, rather than only to downstream synthesis or style layers, can improve both perceptual quality and speaker similarity for voice cloning.
+      source: §3, Table 3, Table 8
+      evidence: LoRA applied to the q/k/v projection layers of a Qwen2.5-0.5B backbone raised DNS-MOS by up to +0.424 and improved speaker similarity for all six evaluated speakers (e.g., +12.9% for speaker 11614).
+      confidence: high
+      relevance: high
+    - claim_id: training_data_acoustic_homogeneity_limits_or_reverses_the_benefit_of
+      role: complicates
+      claim: Training-data acoustic homogeneity limits or reverses the benefit of language-model backbone fine-tuning for speech generation, even when the fine-tuning objective continues to improve.
+      source: §4.4, Table 9
+      evidence: Speakers whose training data had energy standard deviation below approximately 10 dB (speakers 1401, 1212, 1259) showed DNS-MOS degradation of up to -0.414 after LoRA fine-tuning, while speakers with energy standard deviation above approximately 13 dB gained up to +0.424.
+      confidence: high
+      relevance: high
+    - claim_id: training_and_validation_loss_can_be_an_unreliable_proxy_for
+      role: complicates
+      claim: Training and validation loss can be an unreliable proxy for perceptual quality in token-likelihood-based (LM-backbone) TTS fine-tuning, so checkpoint selection guided only by loss convergence risks selecting perceptually degraded models.
+      source: §4.2, Figure 2
+      evidence: Loss curves were smooth and monotonically decreasing across all six speakers, while DNS-MOS exhibited non-monotonic trajectories, degrading sharply within the first 1,000 steps for low-diversity speakers before partially recovering at later epochs.
+      confidence: high
+      relevance: high
+    - claim_id: multi_speaker_fine_tuning_with_limited_per_speaker_data_can
+      role: supports
+      claim: Multi-speaker fine-tuning with limited per-speaker data can generalize to unseen speakers and reduce cross-speaker quality variance relative to dedicated single-speaker fine-tuning.
+      source: §4.6, Table 10
+      evidence: A model trained only on three HiFi-TTS speakers (2+2+2 FT) achieved DNS-MOS 3.806 versus 3.513 for speaker-specific fine-tuning when evaluated zero-shot on three unseen Libriheavy-HQ speakers, and had lower MOS variance across all six speakers (0.008 vs. 0.052) than the speaker-specific baseline.
+      confidence: high
+      relevance: high
+    - claim_id: optimal_inference_time_decoding_constraints_for_lm_based_tts_backbones
+      role: complicates
+      claim: Optimal inference-time decoding constraints for LM-based TTS backbones are speaker- and data-dependent rather than universal, interacting with the acoustic diversity of the fine-tuning data.
+      source: §3.1, Table 4
+      evidence: Constrained decoding (temperature 0.8, top-k 40) improved DNS-MOS for low-diversity speakers 1212 and 1401 but produced a slight DNS-MOS reduction for high-diversity speaker 2.
+      confidence: high
+      relevance: high
+    limitations:
+    - The study evaluates a single, small (0.5B-parameter) LM backbone across six speakers using synthetic (DNS-MOS) rather than human-rated MOS, and the authors explicitly caution that findings may not transfer to larger or medium-sized language models, or to language-model tasks beyond TTS.
+    - 'Additional limitations noted by the authors: only the first 5,000 samples per speaker from HiFi-TTS were used even where more data was available, leaving the effect of larger per-speaker audio volume on MOS and similarity unexplored; the acoustic-diversity analysis is limited to frequency and energy statistics rather than spectrogram-based analysis; and reference-audio-length experiments used artificially concatenated or sliced clips that introduced prosodic discontinuities, confounding the relationship between context length and synthesis quality *(§4.5)*.'
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.13518'
+    published_date: '2026-03-13'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    relevance: high
+    evidence_role:
+    - core_evidence
+    - evaluation_caution
+    current_role: active_evidence
+    method_family:
+      - fully_autoregressive_multicodebook
+      - alignment_constrained_autoregression
+      - scaled_general_ar_codec_tts
+    claims:
+    - claim_id: mid_utterance_dynamic_speaking_rate_control_can_be_implemented_as
+      role: supports
+      claim: Mid-utterance (dynamic) speaking-rate control can be implemented as a lightweight histogram reweighting step applied to an autoregressive model's own duration-token distribution, without training a separate control network.
+      source: §3.5, §5.3, Table 5
+      evidence: The distribution matching mechanism marginalizes the TT's joint semantic/duration output into a duration histogram, then reweights it toward a target SPS value using an exponential comparison against a sliding-window accumulated distribution, achieving Pearson correlations of 0.619-0.826 between the control signal and the measured generated rate across four dynamic transition scenarios.
+      confidence: high
+      relevance: high
+    - claim_id: applying_classifier_free_guidance_separately_to_text_audio_prompt_and
+      role: supports
+      claim: Applying classifier-free guidance separately to text, audio-prompt, and speaker-embedding conditioning in autoregressive zero-shot TTS improves intelligibility and speaker similarity, at a measurable cost to signal quality that must be compensated separately.
+      source: §6, Table 6
+      evidence: Ablations show text CFG reduces WER from 2.29% to 1.37%; adding audio CFG raises SPK-SIM from 0.578 to 0.661 but lowers UTMOS from 3.91 to 3.65; adding speaker-embedding CFG raises SPK-SIM further to 0.674.
+      confidence: high
+      relevance: high
+    - claim_id: speaking_rate_control_mechanisms_operating_on_top_of_an_autoregressive
+      role: complicates
+      claim: Speaking-rate control mechanisms operating on top of an autoregressive codec-token model are not fully disentangled from the speaking rate of the acoustic prompt, because the same model both encodes the prompt and continues it under a next-token objective.
+      source: §7, Figure 7
+      evidence: Even with the proposed SRC applied, prompts with a slow speaking rate increase WER when the target rate is fast and vice versa; the authors attribute this to the prompt-encoding and generation pathways sharing the same next-token-prediction model.
+      confidence: high
+      relevance: high
+    - claim_id: removing_the_acoustic_prompt_s_text_transcription_during_training_by
+      role: supports
+      claim: Removing the acoustic prompt's text transcription during training, by masking it with placeholder tokens that are still included in the gradient, can reduce a zero-shot TTS system's sensitivity to the prompt's own speaking rate without degrading average intelligibility.
+      source: §3.2, Table 3
+      evidence: On the Emilia speaking-rate test set, the prompt-text-masked model achieves more stable WER across slow/normal/fast prompt conditions (2.14/2.20/2.13%) than the transcription-dependent baseline (2.80/2.10/4.21%), which spikes sharply for fast prompts.
+      confidence: high
+      relevance: high
+    - claim_id: extending_duration_based_rate_control_to_extreme_target_rates_increases
+      role: complicates
+      claim: Extending duration-based rate control to extreme target rates increases the risk of hallucinated or repeated output, because those rate regions are underrepresented in typical training corpora.
+      source: §5.3, Table 5
+      evidence: At a very slow target rate (1 SPS) WER rises to 16.51%, versus 3.2% at a normal rate (4 SPS), attributed by manual inspection to underrepresentation of slow duration states in training data plus increased word repetition and filler insertion.
+      confidence: high
+      relevance: high
+    limitations:
+    - 'The system''s speaking-rate control is not fully disentangled from the acoustic prompt''s own rate: prompts recorded at one rate measurably bias intelligibility when the target rate diverges strongly from it (§7), so the reported rate-control ranges should be read as conditional on prompt/target rate combinations rather than uniformly reliable across the full 2-6 SPS operating range.'
+    - 'The training data pipeline is also non-trivial to reproduce: forced alignment with the Clap-IPA aligner discards roughly 35% of the initially collected 62k hours due to invalid alignments, and the paper flags this preprocessing complexity as an open problem for future work. Translingual prompt masking (any-language-to-English generation) is mentioned as an emergent capability but is not quantitatively evaluated, only demonstrated via audio samples. The reliable operating range for dynamic control is also bounded in practice (roughly 1-5/6 SPS), with WER increasing markedly outside that range and under fast-to-slow transitions specifically.'
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.18090'
+    published_date: '2026-03-20'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - autoregressive-LM
+    - hybrid
+    relevance: high
+    evidence_role:
+    - core_evidence
+    current_role: active_evidence
+    method_family:
+      - semantic_acoustic_token_cascade
+      - hybrid_ar_token_continuous_renderer
+      - scaled_general_ar_codec_tts
+    claims: []
+    limitations:
+    - Speaker drift in ultra-long English generation remains the primary bottleneck; the report explicitly identifies this as a failure mode rather than solving it. Japanese and Korean multilingual performance lags behind other languages, suggesting insufficient low-resource training coverage. The 8B MOSS-TTS backbone underperforms the 1.7B Local Transformer on speaker similarity, suggesting the architectural tradeoff is not purely a size effect. The report does not address latency or real-time factor, leaving streaming viability for the 8B model unclear. Objective metrics only — no subjective listening tests (MOS/MUSHRA) are reported, making absolute quality comparisons against perceptually evaluated baselines difficult. Whether the data pipeline scales further (e.g., to 100M+ hours) and whether model size beyond 8B continues to yield gains are left open.
+    caveats:
+    - For autoregressive codec TTS, this paper provides high-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
+  - id: '2603.26364'
+    published_date: '2026-03-27'
+    entry_date: '2026-11-12'
+    year: 2026
+    venue: arXiv
+    task:
+    - TTS
+    architecture:
+    - diffusion
+    relevance: medium
+    evidence_role:
+    - architecture_variant
+    current_role: active_evidence
+    method_family:
+      - masked_parallel_codec_alternatives
+    claims: []
+    limitations:
+    - 1. **Output length must be specified in advance** using a token-text ratio heuristic. The AR baseline predicts EOS implicitly; LLaDA-TTS lacks this capability. 2. **Non-streaming.** The bidirectional attention prevents the prefix-priority streaming used in CosyVoice 2 and later systems. The authors mention prefix-priority unmasking as future work. 3. **Speaker similarity gap.** LLaDA-TTS trails AR baselines on SPK-SIM (74.6% vs. 77-79%), suggesting bidirectional architecture may be less effective at preserving fine-grained speaker identity. 4. **Speech editing evaluated qualitatively.** The editing section does not include full Table results in the paper.md extract; quantitative editing benchmarks are noted but complete numbers are absent from the main text. 5. **Backbone limited to 0.5B.** Scaling behavior to larger models is unvalidated. 6. **Theoretical assumptions.** The ε-forward dependence assumption, while physically motivated, is not empirically validated against actual token
+      mutual information measurements.
+    caveats:
+    - For autoregressive codec TTS, this paper provides medium-relevance evidence; claims primarily concerning downstream applications or non-autoregressive comparison remain included at lower relevance.
 claim_clusters:
 - id: codec_lm_enables_zero_shot_in_context_voice_cloning
-  claim: Conditional language modeling over discrete speech tokens enables zero-shot voice cloning through in-context acoustic prompting.
+  claim: Conditional language modeling over discrete speech tokens enables zero-shot voice cloning through
+    in-context acoustic prompting.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10116,6 +10844,13 @@ claim_clusters:
   - '2506.21619'
   - '2509.15969'
   - '2511.12347'
+  - '2601.12480'
+  - '2601.15596'
+  - '2602.10735'
+  - '2602.10934'
+  - '2603.05977'
+  - '2603.10904'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - iclr-2025-cuFzE8Jlvb
@@ -10131,11 +10866,19 @@ claim_clusters:
   - '2510.04738'
   - '2510.13293'
   - '2512.13251'
+  - '2601.12480'
+  - '2601.15596'
+  - '2603.05977'
   caveats:
-  - Prompt length, prompt noise, and training-set speaker coverage remain major confounds in reported speaker-similarity gains.
-  last_reviewed: '2026-09-26'
+  - Prompt length, prompt noise, and training-set speaker coverage remain major confounds in reported
+    speaker-similarity gains.
+  - Q1 extends prompt-based cloning to selective editing, specialized styles, long-form narration, variable
+    bitrate, accent steering, mixed-speaker adaptation, and dynamic rate control; identity remains coupled
+    to style and prompt conditions.
+  last_reviewed: '2026-11-12'
 - id: semantic_acoustic_hierarchy_balances_coherence_and_fidelity
-  claim: Separating semantic and acoustic token prediction improves linguistic coherence while retaining high-fidelity waveform detail.
+  claim: Separating semantic and acoustic token prediction improves linguistic coherence while retaining
+    high-fidelity waveform detail.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10165,17 +10908,25 @@ claim_clusters:
   - '2510.16841'
   - 2025.findings-emnlp.1394
   - '2512.13251'
+  - '2601.12480'
+  - '2409.16681'
+  - '2602.03420'
   contradicting_papers: []
   refining_papers:
   - '2502.06490'
   - interspeech-2025-1776
   - '2509.14882'
   - '2510.11646'
+  - '2602.03420'
   caveats:
-  - Semantic supervision can suppress prosody or speaker information when the separation objective is too strong.
-  last_reviewed: '2026-09-26'
+  - Semantic supervision can suppress prosody or speaker information when the separation objective is
+    too strong.
+  - Q1 confirms that language-model stages can carry emotion and control structure while continuous renderers
+    preserve acoustics, but stage boundaries do not eliminate speaker–style leakage.
+  last_reviewed: '2026-11-12'
 - id: tokenizer_quality_is_downstream_generation_bottleneck
-  claim: Tokenizer semantic alignment, bitrate, and reconstruction quality materially constrain downstream speech-language-model performance.
+  claim: Tokenizer semantic alignment, bitrate, and reconstruction quality materially constrain downstream
+    speech-language-model performance.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10201,16 +10952,22 @@ claim_clusters:
   - '2511.22687'
   - '2512.01537'
   - '2512.13251'
+  - '2601.15596'
+  - '2602.10934'
   contradicting_papers: []
   refining_papers:
   - '2507.12197'
   - '2509.24650'
   - '2511.13732'
+  - '2602.10934'
   caveats:
   - Codec reconstruction rankings do not transfer consistently across TTS architectures, domains, or languages.
-  last_reviewed: '2026-09-26'
+  - Q1 shows that tokenizer factorization and joint end-to-end codec training affect both generation coherence
+    and zero-shot similarity; parameter scale alone does not remove bitrate bottlenecks.
+  last_reviewed: '2026-11-12'
 - id: rvq_structure_supports_staged_generation
-  claim: Residual-vector-quantizer structure supports staged generation in which early codebooks carry linguistic or speaker information and later codebooks refine acoustic detail.
+  claim: Residual-vector-quantizer structure supports staged generation in which early codebooks carry
+    linguistic or speaker information and later codebooks refine acoustic detail.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10227,14 +10984,19 @@ claim_clusters:
   - '2510.16718'
   - '2511.22687'
   - '2512.13251'
+  - '2602.10934'
   contradicting_papers: []
   refining_papers:
   - '2512.01537'
   caveats:
-  - The assumed semantic-to-acoustic ordering is tokenizer-dependent and is not cleanly present in every RVQ codec.
-  last_reviewed: '2026-09-26'
+  - The assumed semantic-to-acoustic ordering is tokenizer-dependent and is not cleanly present in every
+    RVQ codec.
+  - Q1 variable-depth training lets one autoregressive model operate across several RVQ bitrates, but
+    reconstruction quality remains jointly limited by quantization depth and model capacity.
+  last_reviewed: '2026-11-12'
 - id: autoregressive_decoding_creates_latency_cost
-  claim: Causal token-by-token speech generation creates a deployment-relevant latency and throughput cost relative to parallel decoding.
+  claim: Causal token-by-token speech generation creates a deployment-relevant latency and throughput
+    cost relative to parallel decoding.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10255,6 +11017,7 @@ claim_clusters:
   - '2511.13732'
   - '2502.03930'
   - neurips-2025-pDWwz9F7Zh
+  - '2602.10735'
   contradicting_papers: []
   refining_papers:
   - 2025.findings-acl.101
@@ -10262,11 +11025,15 @@ claim_clusters:
   - '2509.25131'
   - '2510.08373'
   - '2510.16718'
+  - '2602.10735'
   caveats:
   - Streaming can reduce time to first audio without eliminating total sequential decoding cost.
-  last_reviewed: '2026-09-26'
+  - Q1 long-form pipelines mitigate context and synchronization failures at the application layer, but
+    sentence segmentation and continuous rendering still add boundary and total-latency costs.
+  last_reviewed: '2026-11-12'
 - id: alignment_failures_remain_primary_ar_robustness_limit
-  claim: Autoregressive codec TTS remains vulnerable to omissions, repetitions, insertions, and runaway decoding caused by text–speech alignment failures.
+  claim: Autoregressive codec TTS remains vulnerable to omissions, repetitions, insertions, and runaway
+    decoding caused by text–speech alignment failures.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10280,15 +11047,22 @@ claim_clusters:
   - '2508.15442'
   - 2025.emnlp-main.989
   - '2502.03930'
+  - '2602.10735'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - '2507.01348'
   - '2511.12347'
+  - '2603.13518'
   caveats:
-  - WER captures only part of this failure class and can miss perceptually severe prosodic or looping errors.
-  last_reviewed: '2026-09-26'
+  - WER captures only part of this failure class and can miss perceptually severe prosodic or looping
+    errors.
+  - Q1 adds long-context truncation, sentence-boundary artifacts, and extreme-rate repetition as practical
+    alignment failures beyond ordinary omission and insertion errors.
+  last_reviewed: '2026-11-12'
 - id: explicit_alignment_constraints_improve_robustness
-  claim: Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve autoregressive TTS robustness.
+  claim: Explicit monotonic, duration, phoneme-interleaving, or sequence-reordering constraints improve
+    autoregressive TTS robustness.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10305,16 +11079,22 @@ claim_clusters:
   - interspeech-2025-2447
   - '2509.20378'
   - '2511.12347'
+  - '2602.10735'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - '2509.05863'
   - '2509.11425'
   - '2512.14291'
   caveats:
-  - Several methods depend on external aligners or duration labels that may fail on spontaneous or low-resource speech.
-  last_reviewed: '2026-09-26'
+  - Several methods depend on external aligners or duration labels that may fail on spontaneous or low-resource
+    speech.
+  - Q1 synthesis-derived timestamps and duration-token reweighting improve synchronization or rate control
+    without external alignment, but remain bounded by context and training-rate coverage.
+  last_reviewed: '2026-11-12'
 - id: scaling_data_and_models_improves_ar_codec_tts
-  claim: Increasing speech data and model capacity generally improves intelligibility, speaker fidelity, and expressive generalization in autoregressive codec TTS.
+  claim: Increasing speech data and model capacity generally improves intelligibility, speaker fidelity,
+    and expressive generalization in autoregressive codec TTS.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10351,16 +11131,25 @@ claim_clusters:
   - '2509.24570'
   - '2511.12347'
   - '2511.21270'
+  - '2602.10934'
+  - 2026.abjadnlp-1.6
+  - '2603.10904'
   contradicting_papers: []
   refining_papers:
   - '2507.01348'
   - 2025.acl-long.937
   - interspeech-2025-0989
+  - '2602.10934'
+  - '2603.10904'
   caveats:
-  - Most scaling comparisons jointly change data, model size, tokenizer, and training recipe, so causal attribution remains weak.
-  last_reviewed: '2026-09-26'
+  - Most scaling comparisons jointly change data, model size, tokenizer, and training recipe, so causal
+    attribution remains weak.
+  - Q1 shows that joint tokenizer training, synthetic dialect data, and diverse multi-speaker adaptation
+    can help, while parameter count, likelihood loss, and homogeneous data remain unreliable scaling proxies.
+  last_reviewed: '2026-11-12'
 - id: multilingual_codec_lms_transfer_voice_across_languages
-  claim: Multilingual codec language models can transfer speaker identity across languages from short acoustic prompts without paired bilingual recordings.
+  claim: Multilingual codec language models can transfer speaker identity across languages from short
+    acoustic prompts without paired bilingual recordings.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10372,14 +11161,19 @@ claim_clusters:
   - '2508.08715'
   - interspeech-2025-0551
   - '2511.12347'
+  - 2026.abjadnlp-1.6
   contradicting_papers: []
   refining_papers:
   - 2025.findings-naacl.279
   caveats:
-  - Accent naturalness and speaker similarity often trade off, and evidence is concentrated in a small set of language pairs.
-  last_reviewed: '2026-09-26'
+  - Accent naturalness and speaker similarity often trade off, and evidence is concentrated in a small
+    set of language pairs.
+  - Q1 synthetic dialect adaptation improves intelligibility and similarity, but self-consistency bias
+    and limited synthetic voice diversity weaken generalization claims.
+  last_reviewed: '2026-11-12'
 - id: unified_speech_text_lms_enable_spoken_generation
-  claim: A shared autoregressive vocabulary over speech and text enables unified understanding and spoken generation in one language-model backbone.
+  claim: A shared autoregressive vocabulary over speech and text enables unified understanding and spoken
+    generation in one language-model backbone.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10411,10 +11205,12 @@ claim_clusters:
   - '2509.21968'
   - '2506.21864'
   caveats:
-  - Unified training can introduce task interference and still trails cascades on some factual and task-specific metrics.
+  - Unified training can introduce task interference and still trails cascades on some factual and task-specific
+    metrics.
   last_reviewed: '2026-09-26'
 - id: multistream_autoregression_enables_full_duplex_dialogue
-  claim: Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without explicit turn segmentation.
+  claim: Parallel or delayed autoregressive speech streams enable streaming and full-duplex dialogue without
+    explicit turn segmentation.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10431,10 +11227,12 @@ claim_clusters:
   - interspeech-2025-0874
   - interspeech-2025-2564
   caveats:
-  - Many duplex results use synthetic conversations or offline simulations rather than live interactive evaluation.
+  - Many duplex results use synthetic conversations or offline simulations rather than live interactive
+    evaluation.
   last_reviewed: '2026-09-26'
 - id: preference_optimization_improves_multiple_quality_dimensions
-  claim: Preference and reinforcement-learning post-training can improve intelligibility, speaker similarity, and perceptual quality beyond supervised autoregressive TTS.
+  claim: Preference and reinforcement-learning post-training can improve intelligibility, speaker similarity,
+    and perceptual quality beyond supervised autoregressive TTS.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10464,10 +11262,12 @@ claim_clusters:
   - '2510.13293'
   - '2512.04552'
   caveats:
-  - Reward models can be gamed, and gains often depend on proprietary evaluators or self-generated preference data.
+  - Reward models can be gamed, and gains often depend on proprietary evaluators or self-generated preference
+    data.
   last_reviewed: '2026-09-26'
 - id: parallel_and_masked_models_challenge_full_autoregression
-  claim: Masked and parallel codec generators can match autoregressive quality while reducing decoding latency, challenging the need for fully causal generation.
+  claim: Masked and parallel codec generators can match autoregressive quality while reducing decoding
+    latency, challenging the need for fully causal generation.
   status: contested
   confidence: medium
   supporting_papers:
@@ -10487,7 +11287,8 @@ claim_clusters:
   - Comparisons are frequently unmatched in data, compute, tokenizer, or prompt conditions.
   last_reviewed: '2026-09-26'
 - id: continuous_representations_avoid_quantization_tradeoffs
-  claim: Autoregressive generation over continuous speech representations can avoid quantization loss while preserving language-model-style sequence prediction.
+  claim: Autoregressive generation over continuous speech representations can avoid quantization loss
+    while preserving language-model-style sequence prediction.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10499,10 +11300,12 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Continuous prediction avoids codec quantization but still depends on the stability and inference cost of diffusion, flow, energy-score, or other distributional output objectives.
+  - Continuous prediction avoids codec quantization but still depends on the stability and inference cost
+    of diffusion, flow, energy-score, or other distributional output objectives.
   last_reviewed: '2026-09-26'
 - id: speaker_and_style_control_conflict_with_token_disentanglement
-  claim: Separating linguistic content, speaker identity, and style in codec tokens improves controllability but introduces fidelity and identity trade-offs.
+  claim: Separating linguistic content, speaker identity, and style in codec tokens improves controllability
+    but introduces fidelity and identity trade-offs.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10529,6 +11332,12 @@ claim_clusters:
   - '2510.05758'
   - '2510.16841'
   - '2512.13251'
+  - '2601.12480'
+  - '2409.16681'
+  - '2601.15596'
+  - '2602.03420'
+  - '2603.05977'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - '2502.07243'
@@ -10542,11 +11351,21 @@ claim_clusters:
   - '2509.24650'
   - '2510.13293'
   - 2025.emnlp-main.40
+  - '2601.12480'
+  - '2601.15596'
+  - '2602.03420'
+  - '2603.05977'
+  - '2603.13518'
   caveats:
-  - Reported disentanglement is often measured by probing classifiers rather than intervention-based listening tests.
-  last_reviewed: '2026-09-26'
+  - Reported disentanglement is often measured by probing classifiers rather than intervention-based listening
+    tests.
+  - Q1 reproduces identity–style trade-offs in selective editing, ASMR generation, emotion steering, accent
+    neutralization, and rate control; intervention site and strength determine which correlated attribute
+    degrades.
+  last_reviewed: '2026-11-12'
 - id: automatic_metrics_do_not_fully_predict_perceived_quality
-  claim: Automatic intelligibility and signal-quality metrics do not reliably predict perceived naturalness for autoregressive codec speech.
+  claim: Automatic intelligibility and signal-quality metrics do not reliably predict perceived naturalness
+    for autoregressive codec speech.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -10561,17 +11380,26 @@ claim_clusters:
   - '2510.23541'
   - '2512.01537'
   - '2512.04552'
+  - '2602.10934'
+  - 2026.abjadnlp-1.6
+  - '2603.10904'
   contradicting_papers: []
   refining_papers:
   - '2412.16846'
   - '2509.14946'
   - '2511.13732'
   - 2025.emnlp-main.40
+  - 2026.abjadnlp-1.6
+  - '2603.10904'
   caveats:
-  - Metric disagreement varies by codec, dataset, listener protocol, and error type; no single replacement metric is established.
-  last_reviewed: '2026-09-26'
+  - Metric disagreement varies by codec, dataset, listener protocol, and error type; no single replacement
+    metric is established.
+  - Q1 adds objective-versus-subjective codec differences, synthetic-data self-consistency bias, and token-likelihood
+    checkpoints whose perceptual quality worsens despite improving loss.
+  last_reviewed: '2026-11-12'
 - id: sampling_controls_diversity_but_reduces_determinism
-  claim: Stochastic token sampling provides prosodic diversity but increases instability and complicates deterministic evaluation of autoregressive TTS.
+  claim: Stochastic token sampling provides prosodic diversity but increases instability and complicates
+    deterministic evaluation of autoregressive TTS.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -10582,13 +11410,20 @@ claim_clusters:
   - '2510.12210'
   - '2502.03930'
   - neurips-2025-pDWwz9F7Zh
+  - '2603.10904'
+  - '2603.13518'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2603.10904'
+  - '2603.13518'
   caveats:
   - Candidate reranking and rejection sampling improve robustness at additional inference cost.
-  last_reviewed: '2026-09-26'
+  - Q1 shows that decoding constraints and extreme duration sampling are speaker- and data-dependent and
+    can introduce repetition or hallucination.
+  last_reviewed: '2026-11-12'
 - id: grouped_prediction_reduces_sequential_steps_with_equivalence_tradeoffs
-  claim: Multi-token, patchwise, and speculative decoding can reduce autoregressive speech generation steps, but gains depend on modeling within-group dependencies and defining acceptable token equivalence.
+  claim: Multi-token, patchwise, and speculative decoding can reduce autoregressive speech generation
+    steps, but gains depend on modeling within-group dependencies and defining acceptable token equivalence.
   status: strongly_supported
   confidence: medium
   supporting_papers:
@@ -10601,36 +11436,66 @@ claim_clusters:
   refining_papers:
   - '2510.16718'
   caveats:
-  - Reported compute reductions are not directly comparable across token rates, group sizes, acceptance criteria, renderers, and hardware.
+  - Reported compute reductions are not directly comparable across token rates, group sizes, acceptance
+    criteria, renderers, and hardware.
   last_reviewed: '2026-09-26'
 - id: lower_token_rates_reduce_lm_cost_but_not_necessarily_latency
-  claim: Lower codec frame rates and sparse autoregressive token streams reduce language-model sequence cost, but reconstruction quality, residual depth, and rendering can prevent proportional wall-clock speedups.
+  claim: Lower codec frame rates and sparse autoregressive token streams reduce language-model sequence
+    cost, but reconstruction quality, residual depth, and rendering can prevent proportional wall-clock
+    speedups.
   status: strongly_supported
   confidence: medium
   supporting_papers:
   - '2510.00981'
   - '2510.11646'
   - '2510.16718'
+  - '2602.10934'
   contradicting_papers: []
   refining_papers:
   - '2510.12210'
   - 2025.emnlp-main.989
+  - '2602.10934'
   caveats:
-  - Codec rate, RVQ depth, decoder placement, and hardware parallelism must be reported separately before efficiency claims can be compared.
-  last_reviewed: '2026-09-26'
+  - Codec rate, RVQ depth, decoder placement, and hardware parallelism must be reported separately before
+    efficiency claims can be compared.
+  - Q1 variable-depth codec generation supports several inference bitrates, but parameter scale and residual
+    depth remain co-dependent and end-to-end latency accounting is absent.
+  last_reviewed: '2026-11-12'
+- id: internal_interventions_enable_posthoc_control_without_retraining
+  claim: Targeted weight edits and activation steering can correct or control specific autoregressive
+    codec-TTS behaviors without ordinary model retraining.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2601.17086'
+  - '2602.03420'
+  - '2603.05977'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence covers pronunciation, emotion, and accent in three model families, but each intervention
+    depends on layer selection, strength, reference data, or a backbone-specific subspace.
+  - Stronger intervention can damage intelligibility, naturalness, or correlated speaker attributes, and
+    cumulative weight edits remain untested.
+  last_reviewed: '2026-11-12'
 method_families:
 - id: historical_autoregressive_precursors
   name: Historical autoregressive speech precursors
-  summary: Sample-level waveform and attention-based acoustic models that established autoregressive speech generation before codec-token TTS.
+  summary: Sample-level waveform and attention-based acoustic models that established autoregressive speech
+    generation before codec-token TTS.
   papers:
   - '1609.03499'
   - '1703.10135'
   - '2106.15561'
   open_questions:
-  - Which architectural lessons from sample- and frame-level autoregression remain relevant once generation operates over compact learned tokens?
+  - Which architectural lessons from sample- and frame-level autoregression remain relevant once generation
+    operates over compact learned tokens?
 - id: hierarchical_ar_nar_codec_tts
   name: Hierarchical AR+NAR codec TTS
-  summary: A causal model predicts the first or semantic code stream, followed by non-autoregressive or staged prediction of residual acoustic codebooks.
+  summary: A causal model predicts the first or semantic code stream, followed by non-autoregressive or
+    staged prediction of residual acoustic codebooks. Q1 adds a unified selective-editing model that induces
+    attribute separation through deliberately mismatched training pairs rather than an auxiliary disentanglement
+    loss.
   papers:
   - '2301.02111'
   - '2305.09636'
@@ -10649,11 +11514,15 @@ method_families:
   - '2509.15969'
   - '2510.11646'
   - '2510.12210'
+  - '2601.12480'
   open_questions:
-  - Can a single decoder retain the quality benefits of staged RVQ prediction without the deployment complexity of separate AR and NAR models?
+  - Can a single decoder retain the quality benefits of staged RVQ prediction without the deployment complexity
+    of separate AR and NAR models?
 - id: fully_autoregressive_multicodebook
   name: Fully autoregressive multi-codebook modeling
-  summary: Inter-frame and intra-frame token dependencies are both modeled causally, often with delay patterns, depth transformers, or multi-scale factorization.
+  summary: Inter-frame and intra-frame token dependencies are both modeled causally, often with delay
+    patterns, depth transformers, or multi-scale factorization. Q1 adds variable-depth bitrate training
+    and dynamic duration-token control within fully causal codec-token generation.
   papers:
   - '2310.00704'
   - '2507.12197'
@@ -10661,11 +11530,17 @@ method_families:
   - '2509.19592'
   - '2509.22062'
   - '2510.16718'
+  - '2602.10934'
+  - '2603.13518'
   open_questions:
-  - When does strict causal dependency across codebooks justify its latency cost over delayed or parallel codebook prediction?
+  - When does strict causal dependency across codebooks justify its latency cost over delayed or parallel
+    codebook prediction?
 - id: semantic_acoustic_token_cascade
   name: Semantic–acoustic token cascades
-  summary: Separate semantic and acoustic token streams divide linguistic coherence from waveform fidelity, with a second stage rendering acoustic detail.
+  summary: Separate semantic and acoustic token streams divide linguistic coherence from waveform fidelity,
+    with a second stage rendering acoustic detail. Q1 broadens cascades with selective editing, dimensional
+    emotion control, specialized style transfer, composable activation steering, and scaled general-purpose
+    systems.
   papers:
   - '2209.03143'
   - '2301.11325'
@@ -10713,11 +11588,23 @@ method_families:
   - '2510.16841'
   - 2025.findings-emnlp.1394
   - '2512.13251'
+  - '2601.03888'
+  - '2601.12480'
+  - '2409.16681'
+  - '2601.15596'
+  - '2601.15621'
+  - '2602.03420'
+  - '2603.08823'
+  - '2603.18090'
   open_questions:
-  - How much explicit semantic supervision is needed before token disentanglement begins to sacrifice speaker and prosodic fidelity?
+  - How much explicit semantic supervision is needed before token disentanglement begins to sacrifice
+    speaker and prosodic fidelity?
 - id: hybrid_ar_token_continuous_renderer
   name: Autoregressive tokens with continuous renderers
-  summary: Autoregressive semantic or codec-token prediction is paired with diffusion, flow-matching, or continuous acoustic decoding for final waveform fidelity.
+  summary: Autoregressive semantic or codec-token prediction is paired with diffusion, flow-matching,
+    or continuous acoustic decoding for final waveform fidelity. Q1 adds emotion and accent control, long-form
+    synchronization, and scaled technical-report systems while reinforcing that semantic planning and
+    acoustic rendering have distinct failure modes.
   papers:
   - '2106.15561'
   - '2305.07243'
@@ -10777,11 +11664,22 @@ method_families:
   - '2510.12995'
   - '2511.20974'
   - '2502.03930'
+  - '2601.03888'
+  - '2601.12480'
+  - '2409.16681'
+  - '2601.15596'
+  - '2601.15621'
+  - '2602.03420'
+  - '2602.10735'
+  - '2603.08823'
+  - '2603.18090'
   open_questions:
-  - Do hybrid renderers provide consistent quality gains once latency, parameter count, and training data are matched?
+  - Do hybrid renderers provide consistent quality gains once latency, parameter count, and training data
+    are matched?
 - id: unified_speech_text_language_model
   name: Unified speech–text language models
-  summary: Speech and text tokens share a decoder-only language-model backbone for understanding, generation, translation, and conversational response.
+  summary: Speech and text tokens share a decoder-only language-model backbone for understanding, generation,
+    translation, and conversational response.
   papers:
   - '2209.03143'
   - '2305.09636'
@@ -10829,10 +11727,12 @@ method_families:
   - 2025.emnlp-main.989
   - '2511.20974'
   open_questions:
-  - How can unified models avoid speech-task interference and factual-knowledge degradation while preserving text reasoning capability?
+  - How can unified models avoid speech-task interference and factual-knowledge degradation while preserving
+    text reasoning capability?
 - id: full_duplex_multistream_generation
   name: Full-duplex and multi-stream generation
-  summary: Parallel user and agent token streams, delay schedules, or interleaving schemes enable streaming dialogue without explicit turn boundaries.
+  summary: Parallel user and agent token streams, delay schedules, or interleaving schemes enable streaming
+    dialogue without explicit turn boundaries.
   papers:
   - '2403.16973'
   - '2408.02622'
@@ -10846,10 +11746,14 @@ method_families:
   - interspeech-2025-2564
   - '2510.08373'
   open_questions:
-  - Which duplex evaluation protocols reliably separate semantic latency, acoustic latency, interruption handling, and conversational naturalness?
+  - Which duplex evaluation protocols reliably separate semantic latency, acoustic latency, interruption
+    handling, and conversational naturalness?
 - id: alignment_constrained_autoregression
   name: Alignment-constrained autoregression
-  summary: Phoneme interleaving, monotonic constraints, duration guidance, chain-of-thought plans, and sequence reordering reduce omissions, repetitions, and runaway decoding.
+  summary: Phoneme interleaving, monotonic constraints, duration guidance, chain-of-thought plans, and
+    sequence reordering reduce omissions, repetitions, and runaway decoding. Q1 adds synthesis-derived
+    document timestamps and duration-token histogram control as lightweight alternatives to external forced
+    alignment.
   papers:
   - '2401.07333'
   - '2404.03204'
@@ -10861,11 +11765,15 @@ method_families:
   - interspeech-2025-1641
   - '2509.20378'
   - '2511.12347'
+  - '2602.10735'
+  - '2603.13518'
   open_questions:
-  - Can robust monotonic alignment be learned without forced aligners or auxiliary duration labels at large multilingual scale?
+  - Can robust monotonic alignment be learned without forced aligners or auxiliary duration labels at
+    large multilingual scale?
 - id: continuous_token_autoregression
   name: Continuous-token autoregression
-  summary: Autoregressive models predict continuous speech representations or latent patches, avoiding vector-quantization distortion and codebook complexity.
+  summary: Autoregressive models predict continuous speech representations or latent patches, avoiding
+    vector-quantization distortion and codebook complexity.
   papers:
   - '2305.07243'
   - '2407.08551'
@@ -10876,10 +11784,13 @@ method_families:
   - '2502.03930'
   - neurips-2025-pDWwz9F7Zh
   open_questions:
-  - Can continuous autoregression retain stable sampling and efficient sequence lengths at production-scale speech diversity?
+  - Can continuous autoregression retain stable sampling and efficient sequence lengths at production-scale
+    speech diversity?
 - id: masked_parallel_codec_alternatives
   name: Masked and parallel codec alternatives
-  summary: Masked prediction, parallel codebook decoding, and non-autoregressive generation challenge the necessity of fully causal codec-token synthesis.
+  summary: Masked prediction, parallel codebook decoding, and non-autoregressive generation challenge
+    the necessity of fully causal codec-token synthesis. Q1 adds a masked-diffusion system designed to
+    unify zero-shot synthesis and editing as a direct non-causal alternative to autoregressive codec generation.
   papers:
   - '2408.16725'
   - '2409.00750'
@@ -10887,11 +11798,15 @@ method_families:
   - 2025.acl-long.65
   - interspeech-2025-1776
   - '2509.19592'
+  - '2603.26364'
   open_questions:
-  - Under matched data and compute, where is the crossover between autoregressive robustness and parallel decoding efficiency?
+  - Under matched data and compute, where is the crossover between autoregressive robustness and parallel
+    decoding efficiency?
 - id: codec_tokenizer_infrastructure
   name: Codec and tokenizer infrastructure
-  summary: Neural codecs and tokenizers optimize bitrate, semantic alignment, codebook utilization, and reconstruction for downstream language modeling.
+  summary: Neural codecs and tokenizers optimize bitrate, semantic alignment, codebook utilization, and
+    reconstruction for downstream language modeling. Q1 adds a jointly trained Transformer codec and variable-depth
+    prefix dropout for one autoregressive model to operate across multiple bitrates.
   papers:
   - '2210.13438'
   - '2301.02111'
@@ -10936,11 +11851,13 @@ method_families:
   - '2511.22687'
   - '2512.01537'
   - '2512.13251'
+  - '2602.10934'
   open_questions:
   - Which tokenizer properties predict downstream TTS quality better than reconstruction metrics alone?
 - id: preference_optimized_autoregression
   name: Preference- and reward-optimized autoregression
-  summary: Human feedback, learned rewards, reinforcement learning, and differentiable token-level objectives post-train autoregressive speech generators.
+  summary: Human feedback, learned rewards, reinforcement learning, and differentiable token-level objectives
+    post-train autoregressive speech generators.
   papers:
   - '2406.00654'
   - '2406.02430'
@@ -10968,10 +11885,14 @@ method_families:
   - '2512.04552'
   - '2512.14291'
   open_questions:
-  - How can multi-objective reward optimization improve intelligibility, speaker fidelity, and naturalness without reward hacking or loss of diversity?
+  - How can multi-objective reward optimization improve intelligibility, speaker fidelity, and naturalness
+    without reward hacking or loss of diversity?
 - id: scaled_general_ar_codec_tts
   name: Scaled general-purpose autoregressive codec TTS
-  summary: General-purpose decoder-only codec TTS systems rely primarily on data and model scale, prompting, and standard causal next-token prediction.
+  summary: General-purpose decoder-only codec TTS systems rely primarily on data and model scale, prompting,
+    and standard causal next-token prediction. Q1 adds large technical-report systems, synthetic dialect
+    adaptation, post-hoc model editing, activation steering, diverse fine-tuning, and dynamic speaking-rate
+    control.
   papers:
   - '2303.03926'
   - '2402.01912'
@@ -11001,11 +11922,23 @@ method_families:
   - '2510.23541'
   - '2511.12347'
   - '2512.14291'
+  - '2601.03888'
+  - '2601.15621'
+  - '2601.17086'
+  - '2602.10934'
+  - 2026.abjadnlp-1.6
+  - '2603.05977'
+  - '2603.08823'
+  - '2603.10904'
+  - '2603.13518'
+  - '2603.18090'
   open_questions:
-  - What are the compute-optimal scaling relationships among model size, speech hours, tokenizer bitrate, and sequence length?
+  - What are the compute-optimal scaling relationships among model size, speech hours, tokenizer bitrate,
+    and sequence length?
 - id: blockwise_and_speculative_autoregression
   name: Blockwise, multi-token, and speculative autoregression
-  summary: Multiple future tokens, latent patches, or proposed token groups are generated or verified per autoregressive step to reduce sequential decoding cost.
+  summary: Multiple future tokens, latent patches, or proposed token groups are generated or verified
+    per autoregressive step to reduce sequential decoding cost.
   papers:
   - '2510.10003'
   - '2510.12210'
@@ -11013,12 +11946,14 @@ method_families:
   - '2511.13732'
   - '2502.03930'
   open_questions:
-  - Which grouping and acceptance rules preserve semantic and acoustic equivalence while converting fewer decoding steps into reliable wall-clock speedups?
+  - Which grouping and acceptance rules preserve semantic and acoustic equivalence while converting fewer
+    decoding steps into reliable wall-clock speedups?
 reassessment_queue:
 - id: parallel_and_masked_models_challenge_full_autoregression
   type: claim_status
   reason: The central architecture comparison is confounded by unmatched tokenizers, data, and compute.
-  trigger: At least two controlled studies compare causal and masked/parallel decoding with the same tokenizer, data, parameter count, and evaluation protocol.
+  trigger: At least two controlled studies compare causal and masked/parallel decoding with the same tokenizer,
+    data, parameter count, and evaluation protocol.
   due: 2027-01
   current_assessment: contested
   watch_for:
@@ -11027,31 +11962,40 @@ reassessment_queue:
 - id: scaled_general_ar_codec_tts
   type: method_family
   reason: The general-purpose family may conceal distinct architectures as the corpus grows.
-  trigger: Two or more coherent subfamilies with at least five papers each become identifiable from decoder or conditioning structure.
+  trigger: Two or more coherent subfamilies with at least five papers each become identifiable from decoder
+    or conditioning structure.
   due: 2027-01
   current_assessment: active_evidence
   watch_for:
   - Repeated decoder structures currently grouped only by general causal next-token prediction.
 - id: hybrid_ar_token_continuous_renderer
   type: method_family
-  reason: Q4 adds discrete masked diffusion, dense feature bridges, dialogue flow matching, and continuous diffusion heads, increasing an already broad family's internal heterogeneity.
-  trigger: At least two stable renderer-placement subfamilies each contain five or more papers with distinct latency-quality behavior.
+  reason: Q4 adds discrete masked diffusion, dense feature bridges, dialogue flow matching, and continuous
+    diffusion heads, increasing an already broad family's internal heterogeneity.
+  trigger: At least two stable renderer-placement subfamilies each contain five or more papers with distinct
+    latency-quality behavior.
   due: 2027-04
   current_assessment: active_evidence
   watch_for:
-  - Repeated distinctions between AR semantic planning plus flow rendering, diffusion rendering, and parallel codec decoding.
+  - Repeated distinctions between AR semantic planning plus flow rendering, diffusion rendering, and parallel
+    codec decoding.
 - id: semantic_acoustic_token_cascade
   type: method_family
-  reason: Q4 strengthens separate-stream, distillation, and disentanglement branches, but their memberships still overlap too heavily for a stable split.
-  trigger: Distillation-based, supervised-ASR, and dual-tokenizer branches each reach five papers with internally consistent evidence.
+  reason: Q4 strengthens separate-stream, distillation, and disentanglement branches, but their memberships
+    still overlap too heavily for a stable split.
+  trigger: Distillation-based, supervised-ASR, and dual-tokenizer branches each reach five papers with
+    internally consistent evidence.
   due: 2027-04
   current_assessment: active_evidence
   watch_for:
-  - Replicated differences between SSL distillation, ASR-supervised semantic tokens, and independently trained semantic/acoustic tokenizers.
+  - Replicated differences between SSL distillation, ASR-supervised semantic tokens, and independently
+    trained semantic/acoustic tokenizers.
 - id: grouped_prediction_reduces_sequential_steps_with_equivalence_tradeoffs
   type: claim_status
-  reason: Five Q4 systems support grouped generation, but they use materially different multi-token, patchwise, and speculative mechanisms.
-  trigger: Two independent matched studies show end-to-end latency gains without degradation under the same tokenizer, renderer, and hardware.
+  reason: Five Q4 systems support grouped generation, but they use materially different multi-token, patchwise,
+    and speculative mechanisms.
+  trigger: Two independent matched studies show end-to-end latency gains without degradation under the
+    same tokenizer, renderer, and hardware.
   due: 2027-04
   current_assessment: strongly_supported
   watch_for:
@@ -11059,26 +12003,53 @@ reassessment_queue:
   - Human evaluation of errors accepted under codec-token equivalence criteria.
 - id: lower_token_rates_reduce_lm_cost_but_not_necessarily_latency
   type: claim_status
-  reason: The Q4 evidence agrees on lower sequence cost but exposes conflicting effects from residual depth and rendering latency.
-  trigger: Three independent systems report tokenizer rate, RVQ depth, LM MACs, renderer cost, time to first audio, and total real-time factor together.
+  reason: The Q4 evidence agrees on lower sequence cost but exposes conflicting effects from residual
+    depth and rendering latency.
+  trigger: Three independent systems report tokenizer rate, RVQ depth, LM MACs, renderer cost, time to
+    first audio, and total real-time factor together.
   due: 2027-04
   current_assessment: strongly_supported
   watch_for:
   - End-to-end efficiency accounting that separates language-model and acoustic-rendering costs.
 open_questions:
-- Can autoregressive codec TTS eliminate alignment failures without external forced alignment, duration labels, or expensive candidate reranking?
-- Which tokenizer properties best predict downstream naturalness, intelligibility, speaker fidelity, and generation efficiency across architectures?
-- Under matched data, compute, and tokenization, where does causal autoregression remain superior to masked or parallel generation?
-- How should streaming and full-duplex systems be evaluated so that semantic latency, acoustic latency, interruption handling, and naturalness are measured separately?
-- Can preference optimization improve multiple perceptual dimensions without collapsing prosodic diversity or exploiting imperfect reward models?
-- When do multi-token, patchwise, or speculative decoders convert fewer autoregressive steps into real wall-clock gains without changing perceived speech quality?
-- Can continuous-latent autoregression retain its fidelity advantage with stable stopping, streaming, and lower inference cost than diffusion- or flow-based alternatives?
+- Can autoregressive codec TTS eliminate alignment failures without external forced alignment, duration
+  labels, or expensive candidate reranking?
+- Which tokenizer properties best predict downstream naturalness, intelligibility, speaker fidelity, and
+  generation efficiency across architectures?
+- Under matched data, compute, and tokenization, where does causal autoregression remain superior to masked
+  or parallel generation?
+- How should streaming and full-duplex systems be evaluated so that semantic latency, acoustic latency,
+  interruption handling, and naturalness are measured separately?
+- Can preference optimization improve multiple perceptual dimensions without collapsing prosodic diversity
+  or exploiting imperfect reward models?
+- When do multi-token, patchwise, or speculative decoders convert fewer autoregressive steps into real
+  wall-clock gains without changing perceived speech quality?
+- Can continuous-latent autoregression retain its fidelity advantage with stable stopping, streaming,
+  and lower inference cost than diffusion- or flow-based alternatives?
+- How many targeted weight or activation interventions can be composed before pronunciation, identity,
+  style, and general synthesis quality interfere?
+- Which shared reporting standard can separate tokenizer cost, autoregressive language-model cost, continuous-renderer
+  cost, time to first audio, and total real-time factor?
 trend_notes:
-- The field moves from sample- and frame-level autoregression toward compact semantic and codec tokens after 2022, with VALL-E-style hierarchical AR+NAR generation becoming a dominant template.
-- By 2024–2025, hybrid systems increasingly retain autoregressive semantic planning while delegating acoustic rendering to flow-matching, diffusion, or parallel codec decoders.
-- Alignment robustness, streaming latency, and tokenizer quality replace basic waveform fidelity as the main differentiators among mature codec-language-model TTS systems.
-- Unified speech-text and full-duplex language models broaden autoregressive codec generation from TTS into conversational agents, but controlled comparisons with cascades remain limited.
-- Reward-based post-training and learned preference optimization emerge in 2024–2025 as a distinct strategy for improving autoregressive speech quality without changing the base decoder architecture.
-- Q4 systems increasingly reduce sequence length through sub-10-Hz codecs, dense-feature bridges, multi-token objectives, latent patches, and speculative token groups rather than abandoning autoregression outright.
-- Continuous-latent autoregression becomes independently replicated in Q4, shifting the question from feasibility toward stable distribution learning, boundary control, streaming, and renderer cost.
-- Q4 reward optimization broadens from generic preference tuning to interpretable multi-reward objectives, emotion and prosody control, and explicit defenses against reward hacking.
+- The field moves from sample- and frame-level autoregression toward compact semantic and codec tokens
+  after 2022, with VALL-E-style hierarchical AR+NAR generation becoming a dominant template.
+- By 2024–2025, hybrid systems increasingly retain autoregressive semantic planning while delegating acoustic
+  rendering to flow-matching, diffusion, or parallel codec decoders.
+- Alignment robustness, streaming latency, and tokenizer quality replace basic waveform fidelity as the
+  main differentiators among mature codec-language-model TTS systems.
+- Unified speech-text and full-duplex language models broaden autoregressive codec generation from TTS
+  into conversational agents, but controlled comparisons with cascades remain limited.
+- Reward-based post-training and learned preference optimization emerge in 2024–2025 as a distinct strategy
+  for improving autoregressive speech quality without changing the base decoder architecture.
+- Q4 systems increasingly reduce sequence length through sub-10-Hz codecs, dense-feature bridges, multi-token
+  objectives, latent patches, and speculative token groups rather than abandoning autoregression outright.
+- Continuous-latent autoregression becomes independently replicated in Q4, shifting the question from
+  feasibility toward stable distribution learning, boundary control, streaming, and renderer cost.
+- Q4 reward optimization broadens from generic preference tuning to interpretable multi-reward objectives,
+  emotion and prosody control, and explicit defenses against reward hacking.
+- Q1 2026 adds post-hoc control through null-space weight editing and activation steering, allowing pronunciation,
+  emotion, and accent changes without ordinary retraining.
+- Q1 variable-depth codecs and duration-token control make autoregressive systems more configurable at
+  inference time, while exposing non-monotonic bitrate, rate, and quality trade-offs.
+- Q1 adaptation evidence shifts attention from raw scale toward data diversity, joint tokenizer training,
+  perceptual checkpoint selection, and synthetic-data provenance.
