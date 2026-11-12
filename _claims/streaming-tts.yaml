@@ -1,6 +1,6 @@
 concept: streaming-tts
-last_updated: '2026-09-26'
-paper_count: 75
+last_updated: '2026-11-12'
+paper_count: 91
 papers:
 - id: '2402.08093'
   published_date: '2024-02-12'
@@ -5474,9 +5474,758 @@ papers:
     internal industry technical report, baseline comparisons and evaluation protocols are entirely the authors''
     own selection, with no independent third-party replication of the reported results.'
   caveats: []
+- id: '2601.11141'
+  published_date: '2026-01-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  claims:
+  - claim_id: end_to_end_spoken_dialogue_systems_can_preserve_speaker_identity
+    role: supports
+    claim: End-to-end spoken dialogue systems can preserve speaker identity in voice cloning to a degree competitive with, or exceeding, dedicated zero-shot TTS systems and human baseline recordings, without sacrificing real-time streaming.
+    source: §4.2, Table 1
+    evidence: Chroma achieves SIM = 0.81 on CommonVoice, exceeding the human baseline (0.73) and all five compared TTS systems (F5-TTS, Seed-TTS, FireRedTTS-2, Step-Audio-TTS, CosyVoice 3), while maintaining RTF = 0.43
+    confidence: high
+    relevance: high
+  - claim_id: subjective_naturalness_preference_in_comparative_listening_tests_does_not_track
+    role: complicates
+    claim: Subjective naturalness preference in comparative listening tests does not track speaker-similarity preference, complicating the interpretation of CMOS-style speaker-similarity results as a pure measure of voice-cloning fidelity.
+    source: §4.3, Table 2, Table 3
+    evidence: Listeners preferred synthesized ElevenLabs audio over actual ground-truth reference recordings 92% of the time, while Chroma's speaker-similarity preference (SCMOS 40.6%) was close to ElevenLabs's (42.4%) despite a much larger naturalness gap (NCMOS 24.4% vs. 57.2%)
+    confidence: high
+    relevance: high
+  - claim_id: decoupling_coarse_acoustic_code_generation_long_context_cross_modally_conditioned
+    role: supports
+    claim: Decoupling coarse acoustic-code generation (long-context, cross-modally conditioned) from residual-codebook refinement (frame-local, short-context) into separate autoregressive modules reduces per-frame latency in streaming speech generation.
+    source: §3.3, §4.4, Table 4
+    evidence: The frame-synchronous Decoder, conditioned only on the current Backbone timestep rather than full conversation history, generates 7 residual RVQ levels in 17.56ms average latency per frame, contributing to an overall TTFT of 146.87ms and RTF of 0.43
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_an_end_to_end_spoken_dialogue_model_for_personalized
+    role: complicates
+    claim: Optimizing an end-to-end spoken dialogue model for personalized voice-cloning fidelity can come at a measurable cost to reasoning and language-understanding performance relative to similarly- or larger-scale dialogue models that do not support voice cloning.
+    source: §4.5, Table 5
+    evidence: Chroma (4B, with voice cloning) trails GLM-4-Voice (9B, no voice cloning) on most reasoning and understanding sub-tasks in URO-Bench, e.g. GSM8K (22.74 vs. 30.93) and TruthfulQA (51.69 vs. 59.28)
+    confidence: high
+    relevance: high
+  limitations:
+  - Chroma's Reasoner supports multilingual (Chinese and English) input understanding, but the system generates speech output only in English; cross-lingual voice cloning (input and output languages differing while preserving speaker identity) is not implemented or evaluated, materially restricting the "personalized voice AI" claim to English-output use cases.
+  - The system does not incorporate RLHF or DPO post-training, which the authors note could improve dialogue quality and instruction-following. The architecture does not support batch processing, so all latency figures are measured at concurrency 1; throughput under concurrent load is not reported. The CMOS comparison against ElevenLabs uses a small evaluation set (30 comparative samples across 12 sessions per dimension), limiting the statistical power of the naturalness and speaker-similarity preference findings. The paper's ethical-considerations section acknowledges voice-cloning misuse risks (impersonation, fraud, non-consensual synthesis) and recommends safeguards such as consent requirements, detection mechanisms, and watermarking, but does not implement or evaluate any of them in the released system.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2601.15621'
+  published_date: '2026-01-22'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims: []
+  limitations:
+  - The model relies on proprietary 5M-hour multilingual training data; results may not transfer to lower-resource settings. Despite 10 languages covered, Japanese and some European languages show higher WER than Chinese/English. The 25Hz variant performs better for long-form synthesis, suggesting the 12Hz variant has difficulty with long-horizon dependencies — an open research question for ultra-low-bitrate streaming TTS. Voice design via natural language instruction (thinking pattern) has not been rigorously benchmarked for robustness against adversarial or ambiguous prompts.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2601.17761'
+  published_date: '2026-01-25'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  claims:
+  - claim_id: a_single_autoregressive_transformer_decoder_operating_over_one_joint_discrete
+    role: supports
+    claim: A single autoregressive Transformer decoder operating over one joint discrete vocabulary spanning text, image, and speech tokens, with no external diffusion or non-AR expert decoder, can achieve real-time, low-latency streaming speech generation while matching the intelligibility of prior any-to-any systems that rely on dual-codebook tokenizers or heavier generation pipelines.
+    source: §4.3, §5.2, Table 6
+    evidence: AR-Omni reaches 146ms first-token latency and 0.88 real-time factor with 6.5% zero-shot TTS WER on VCTK, matching the best token-based baseline's WER while using far fewer speech tokens per second and orders-of-magnitude lower latency than AnyGPT (6.6s) and MiO (29s).
+    confidence: high
+    relevance: high
+  - claim_id: a_purely_acoustic_single_codebook_speech_tokenizer_can_serve_as
+    role: supports
+    claim: A purely acoustic, single-codebook speech tokenizer can serve as an effective unified interface for both speech understanding and streaming speech generation within an autoregressive multimodal model, without the traditional dual-codebook semantic-then-acoustic modeling pipeline.
+    source: §5.2, Tables 5-6
+    evidence: Using a single-codebook tokenizer at 40 tokens/second for speech input, AR-Omni achieves ASR WER comparable to any-to-any baselines using dual-codebook tokenizers at higher token rates (50-200 tok/s), while enabling low-latency streamed decoding that dual-codebook designs cannot support until aligned tokens from both codebooks become available.
+    confidence: high
+    relevance: high
+  - claim_id: combining_task_aware_loss_reweighting_a_perceptual_alignment_loss_and
+    role: complicates
+    claim: Combining task-aware loss reweighting, a perceptual alignment loss, and residual-post-norm stabilization is specifically necessary, not merely incrementally helpful, to prevent late-stage training collapse in unified multimodal autoregressive training, which a plain next-token-prediction objective does not avoid.
+    source: §6.2, Table 7, Figure 3
+    evidence: Removing all three components ("Simple NTP") sharply increases ASR and TTS error and exhibits training instability with loss rebounds and abrupt late-stage spikes over an extended training horizon, while the full composite objective maintains a smooth, convergent loss trajectory across the same horizon.
+    confidence: high
+    relevance: high
+  - claim_id: normalization_choices_tuned_for_training_stability_in_a_unified_multimodal
+    role: complicates
+    claim: Normalization choices tuned for training stability in a unified multimodal model can have divergent, even opposing, effects across different output modalities, so a single stabilization technique cannot be assumed to benefit all modalities uniformly.
+    source: §6.2, Table 7
+    evidence: Removing residual-post-norm (swin-norm) improves image captioning and ASR accuracy but substantially worsens TTS quality in a component ablation at 40k training steps, indicating the technique is specifically load-bearing for speech synthesis rather than uniformly beneficial.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The authors'' own stated limitation is that diffusion-free autoregressive image generation still lags behind diffusion-based systems in image quality, with future work targeted at closing this gap while preserving AR purity. More broadly, unifying three modalities in one decoder does not yet match the best single-task specialists on every axis: AR-Omni''s 9.4% ASR WER trails dedicated ASR systems (Whisper Large V2, wav2vec 2.0: both 2.7%) by a wide margin, indicating the unification trades some single-task accuracy for architectural simplicity and cross-modal capability. The perceptual loss and swin-norm ablations were conducted only at 40k pretraining steps (an intermediate checkpoint), so whether their modality-specific trade-offs persist, narrow, or widen at full convergence is not directly reported.'
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2602.00269'
+  published_date: '2026-01-30'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: decoupling_system_level_serving_optimizations_from_model_specific_architecture_enables
+    role: supports
+    claim: Decoupling system-level serving optimizations from model-specific architecture enables a single serving framework to efficiently support heterogeneous generative speech architectures without reimplementing optimizations per model.
+    source: §3, §3.1
+    evidence: A unified model-execution interface (preprocess/forward/sampling/postprocess stages) lets one scheduler, worker, and CUDA-graph optimization path serve seven architecturally distinct SpeechLMs, differing in codebook count, continuous-vs-discrete representations, and detokenizer design, without model-specific serving code.
+    confidence: high
+    relevance: high
+  - claim_id: streaming_speech_serving_performance_requires_latency_metrics_distinct_from_standard
+    role: supports
+    claim: Streaming speech-serving performance requires latency metrics distinct from standard text-LLM serving metrics, since audio playback continuity depends on binary per-chunk deadline satisfaction rather than average per-token latency.
+    source: §2.3, §4, Figure 6
+    evidence: Introduces Time-To-First-Audio (TTFA) and a binary Streaming Viability metric (per-chunk deadline satisfaction), explicitly contrasted with TTFT/TPOT from text-LLM serving, and uses them to show baseline systems violate streaming viability at request rates where the proposed system does not.
+    confidence: high
+    relevance: high
+  - claim_id: jointly_scheduling_the_llm_backbone_and_audio_detokenizer_as_a
+    role: supports
+    claim: Jointly scheduling the LLM backbone and audio detokenizer as a single coordinated pipeline, rather than composing independently optimized LLM-serving and detokenizer engines, substantially improves streaming throughput at fixed latency.
+    source: §4, Figure 6
+    evidence: Against baselines that each combine an off-the-shelf LLM serving system with a custom detokenizer engine, the proposed system sustains up to 4.0 req/s at the same 500ms p90 TTFA where the CosyVoice baseline is limited to ≈0.4 req/s, and delivers more than 10x higher throughput at matched TTFA for Orpheus.
+    confidence: high
+    relevance: high
+  - claim_id: achieving_high_serving_throughput_for_streaming_speechlms_is_architecture_sensitive
+    role: complicates
+    claim: 'Achieving high serving throughput for streaming SpeechLMs is architecture-sensitive: detokenizer cost, token rate, and model size independently bound the achievable request rate even under an optimized serving system.'
+    source: §4
+    evidence: Orpheus 3B's streaming viability drops past 8.0 req/s due to its 86 tokens/s token rate despite low TTFA, and Step-Audio 2's 9B parameter size yields the lowest sustained request rate among the three evaluated models even with the proposed system's optimizations.
+    confidence: high
+    relevance: high
+  limitations:
+  - Direct baseline comparison is limited to three models (CosyVoice 2.0, Orpheus 3B, Step-Audio 2), the only ones with official open-source serving implementations available at time of writing; four additional supported models (Chatterbox TTS, CSM 1B, GLM-4-Voice, Zonos-v0.1) are evaluated only in isolation, without a baseline to quantify relative speedup. Multi-GPU results cover data parallelism up to four GPUs and disaggregated inference across two GPUs for a single model each (CosyVoice, Step-Audio respectively), leaving larger-scale or heterogeneous multi-GPU deployment unaddressed. The paper focuses entirely on serving-system latency and throughput; it does not evaluate whether any of its scheduling or batching optimizations affect generated audio quality relative to each model's reference (non-served) implementation.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: 2026.iwsds-1.10
+  published_date: '2026-02-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: IWSDS
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: corpus_level_turn_taking_properties_overlap_frequency_gap_duration_pause
+    role: supports
+    claim: Corpus-level turn-taking properties (overlap frequency, gap duration, pause structure) measurably shape the interactional behavior a fine-tuned full-duplex dialogue model reproduces, so training-data selection functions as a lever for controlling dialogue style, not only for improving quality or scale.
+    source: §3.3, Table 4
+    evidence: Fine-tuning on J-Chat-Clean + Tabidachi (Model 3) yielded the fewest overlaps (0.66 per 20s) and longest gaps (6.32s cumulative) in generated dialogues, tracking the calmer, less-overlapping profile already measured in those source corpora, while Model 1 (Tabidachi only) showed more overlaps (0.98) and shorter gaps (4.94s).
+    confidence: high
+    relevance: medium
+  - claim_id: combining_multiple_high_quality_but_stylistically_mismatched_corpora_in_a
+    role: complicates
+    claim: Combining multiple high-quality but stylistically mismatched corpora in a fine-tuning curriculum does not straightforwardly compound their individual behavioral benefits and can instead slightly degrade linguistic coherence relative to simpler two-corpus curricula.
+    source: §3.2, Table 3
+    evidence: Model 4 (J-Chat-Clean + CSJ + Tabidachi) did not surpass the two-corpus curricula (Models 2 and 3) on LLM-as-a-Judge Overall (4.09 vs. 4.20 / 4.11) or Coherence (4.20 vs. 4.50 / 4.39), which the authors attribute to redundancy and over-regularization from mixing stylistically mismatched high-quality data.
+    confidence: high
+    relevance: medium
+  - claim_id: automated_acoustic_quality_and_interactional_timing_metrics_can_separate_spoken
+    role: supports
+    claim: Automated acoustic-quality and interactional-timing metrics can separate spoken dialogue corpora along axes, recording/acoustic quality versus conversational turn-taking style, that vary independently and are conflated when corpora are characterized only by size or domain label.
+    source: §2.3, Tables 1-2
+    evidence: CSJ attained the highest NISQA acoustic-quality score (3.14) among the four corpora while showing far fewer overlaps (2.30 per 20s) than the chat-style J-Chat Podcast subset (5.06), demonstrating that acoustic cleanliness and interactional style are separable corpus properties.
+    confidence: high
+    relevance: medium
+  - claim_id: fine_tuning_a_full_duplex_dialogue_model_on_clean_domain
+    role: complicates
+    claim: Fine-tuning a full-duplex dialogue model on clean, domain-matched, low-overlap data alone can improve perceived orderliness and turn separation while reducing conversational spontaneity.
+    source: §3.3
+    evidence: Model 3, fine-tuned on J-Chat-Clean + Tabidachi, produced the most orderly generated turn-taking (fewest overlaps, most/longest gaps) but the authors report this suppresses mutual overlaps, which they identify as "a hallmark of lively conversation."
+    confidence: high
+    relevance: medium
+  limitations:
+  - All quality judgments in this study come from automated proxies, NISQA for acoustic quality and an LLM-as-a-Judge for linguistic/semantic quality, with no human listening test or human rater validation reported. The reliability of the reported naturalness and coherence differences therefore depends entirely on how well these automated proxies track human judgment for full-duplex Japanese dialogue speech, which the paper does not verify.
+  - The study is limited to Japanese-language corpora and a single base architecture (Moshi), so it is unclear whether the observed transfer of corpus turn-taking style into fine-tuned model behavior generalizes to other languages or full-duplex architectures. Only four curriculum variants were tested, all ending in fine-tuning on the same target corpus (Tabidachi), and the dialogue-continuation evaluation uses a single held-out split from that same corpus, limiting the diversity of dialogue styles the fine-tuned models are actually tested on. The paper also does not report model size or codec details for the fine-tuned Moshi variant, and does not test whether corpus turn-taking effects persist under longer fine-tuning or larger held-out evaluation sets.
+  caveats:
+  - For streaming TTS, this paper provides medium-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2601.13948'
+  published_date: '2026-02-05'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: neural_codec_based_causal_language_model_architectures_developed_for_streaming
+    role: supports
+    claim: Neural-codec-based causal language-model architectures developed for streaming voice conversion can be repurposed for streaming speaker anonymization, yielding substantially better intelligibility and expressiveness than prior streaming anonymization pipelines built on conventional causal encoders at comparable latency.
+    source: §4.1, Table 1
+    evidence: At matched ~180-200 ms latency, the proposed system reduces WER by up to 46% relative and improves emotion-recognition UAR by up to 28% relative versus the prior streaming SOTA, DarkStream.
+    confidence: high
+    relevance: high
+  - claim_id: sampling_the_emission_delay_per_utterance_during_training_rather_than
+    role: supports
+    claim: Sampling the emission delay per utterance during training, rather than fixing it, lets a single streaming autoregressive voice conversion model trade latency for accuracy at inference time without retraining.
+    source: §2.5, §4.3, Figure 2
+    evidence: Training with d ~ U{1,...,8} enables selecting the delay at inference; compared with a fixed-delay model at the same 240 ms latency budget, the dynamic-delay model trails slightly on WER but preserves privacy better and removes the need to retrain for different latency targets.
+    confidence: high
+    relevance: high
+  - claim_id: diversifying_speaker_prompt_conditioning_in_streaming_anonymization_mainly_strengthens_privacy
+    role: complicates
+    claim: Diversifying speaker-prompt conditioning in streaming anonymization mainly strengthens privacy against adaptive attackers, with limited additional benefit against naive attackers that already sit near chance performance.
+    source: §4.2, Table 2
+    evidence: Increasing prompt diversity from a single fixed speaker to four cross-dataset utterances raises semi-informed EER from 15.92% to 18.98%, while lazy-informed EER stays within a narrow 44.96-47.72% band across all strategies.
+    confidence: high
+    relevance: high
+  - claim_id: real_time_neural_codec_lm_anonymization_systems_that_close_the
+    role: complicates
+    claim: Real-time neural-codec-LM anonymization systems that close the intelligibility gap with offline pipelines can still trail on anonymization strength once the attacker is allowed to adapt to the anonymization scheme, leaving a residual online/offline privacy gap.
+    source: §4.1, Table 1
+    evidence: The best configuration's semi-informed EER (18.98%) is both below the prior streaming baseline's 21.83% and far below the offline baseline EASY's 45.89%, showing degradation relative to DarkStream under the harder threat model despite gains elsewhere.
+    confidence: high
+    relevance: high
+  limitations:
+  - The system requires GPU acceleration and cannot operate in real time on CPU-only hardware, restricting deployment in resource-constrained or purely CPU-based settings, by the authors' own admission.
+  - Privacy against the semi-informed (adaptive) attacker degrades relative to the prior streaming baseline even as intelligibility and emotion preservation improve, and the paper does not resolve this trade-off beyond noting it as future work. No human-listening evaluation (MOS or similar) is reported anywhere in the paper; all quality, privacy, and utility claims rest on automatic metrics (WER, UAR, EER), so perceptual naturalness of the anonymized speech is untested. The content encoder's auxiliary ASR objective requires transcript-paired training data (LibriHeavy), adding a data requirement beyond what a purely self-supervised content encoder would need. Comparisons are limited to one prior streaming baseline (DarkStream) and one offline baseline (EASY); broader comparison against other NAC-LM or DSP-based anonymization systems is not reported.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2602.11072'
+  published_date: '2026-02-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: simultaneous_speech_to_speech_translation_policies_can_be_learned_from
+    role: supports
+    claim: Simultaneous speech-to-speech translation policies can be learned from coarse sentence-level alignment plus reinforcement learning, without requiring word-level aligned training data.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero, trained only on sentence-level aligned data followed by GRPO with BLEU-based process rewards, outperforms Hibiki (trained on synthetic word-level aligned data) by roughly 3 ASR-BLEU points at lower latency in the short-form French setting.
+    confidence: high
+    relevance: high
+  - claim_id: a_single_automated_reward_signal_bleu_score_computed_at_intermediate
+    role: supports
+    claim: A single automated reward signal (BLEU score computed at intermediate points during generation) is sufficient to jointly optimize translation quality and latency in an RL-tuned simultaneous translation system, without a multi-component or human-feedback reward.
+    source: §3.3, §2.2
+    evidence: GRPO with only a BLEU-based process reward, no KL regularization, and no human interpretation or preference data, produces state-of-the-art quality/latency trade-offs across four languages, in contrast to prior RL approaches (e.g. Seed LiveInterpret 2.0) that required multiple reward components and staged training to avoid reward hacking.
+    confidence: high
+    relevance: medium
+  - claim_id: the_degree_of_causality_permitted_in_the_base_model_s
+    role: complicates
+    claim: The degree of causality permitted in the base model's training alignments bounds how much a subsequent RL stage can reduce translation latency.
+    source: §4.7, Figure 7
+    evidence: Ablation Experiment (B), which starts RL from a base model trained with fully causal alignment (δ_i = d_i), reduces latency only to around 6 seconds, far worse than the reference experiment's latency, because the base model was never exposed to starting translation before an input sentence ends.
+    confidence: high
+    relevance: high
+  - claim_id: joint_multistream_modeling_of_source_and_target_audio_tokens_can
+    role: supports
+    claim: Joint multistream modeling of source and target audio tokens can transfer speaker identity across languages implicitly, without an explicit speaker-conditioning module.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero surpasses Seamless's speaker-similarity score by more than 30 points in the short-form setting and by roughly 17-20 points in the long-form setting across all four evaluated languages, despite having no dedicated speaker embedding component.
+    confidence: high
+    relevance: medium
+  - claim_id: systems_trained_to_preserve_source_speaker_identity_in_cross_lingual
+    role: complicates
+    claim: Systems trained to preserve source speaker identity in cross-lingual speech translation may still fail to give users control over paralinguistic transfer such as foreign accent.
+    source: §4.8
+    evidence: The paper reports that despite state-of-the-art speaker identity preservation, there is no mechanism to control the intensity of the input-language accent carried into the generated target speech.
+    confidence: high
+    relevance: low
+  limitations:
+  - The paper does not provide a mechanism to control the intensity of source-language accent transferred into the generated target speech, which the authors note would require accent-annotated training data and explicit conditioning. Evaluation is limited to X-to-English translation directions (French, Spanish, Portuguese, German, plus an Italian adaptation experiment); no results are reported for translation into non-English target languages or for many-to-many translation. The training and evaluation pipeline depends on cascaded automatic tools (Whisper transcription, MADLAD machine translation, a proprietary TTS for target synthesis) to build training data, so translation quality is implicitly upper-bounded by the quality of these upstream components. The paper also notes (Section 4.7) that BLEU scores on the held-out validation set are much higher than on the final evaluation benchmarks because both train and validation data were generated by the same MADLAD-3B-based pipeline, meaning
+    some in-domain overfitting to the synthetic translation style is expected and not fully disentangled from genuine translation quality gains.
+  caveats:
+  - For streaming TTS, this paper provides medium-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2602.23266'
+  published_date: '2026-02-26'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: decoupling_low_risk_non_content_bearing_response_initiation_from_full
+    role: supports
+    claim: Decoupling low-risk, non-content-bearing response initiation from full semantic reasoning can substantially reduce perceived latency in cascaded speech-dialogue pipelines without retraining the ASR or TTS modules.
+    source: §5, Table 2
+    evidence: Connective-guided small-large model synergy plus streaming cross-modal collaboration reduces average waiting latency from 1003 ms (single-stream cascade) to 548 ms on SD-Eval with an 8B backbone, a 45.4% reduction.
+    confidence: high
+    relevance: high
+  - claim_id: triggering_downstream_generation_on_partial_still_updating_upstream_hypotheses_rather
+    role: supports
+    claim: Triggering downstream generation on partial, still-updating upstream hypotheses rather than waiting for a finalized transcript can reduce turn-initial latency independently of the main reasoning model's scale.
+    source: §5, "Effect of Model Scale and Datasets", Table 2
+    evidence: Perception latency drops from ~388 ms under sequential baselines to 102–113 ms once the lightweight model consumes streaming partial ASR hypotheses, and this reduction is consistent across both 8B and 32B backbones since early-response latency depends on the small model rather than the large one.
+    confidence: high
+    relevance: high
+  - claim_id: the_latency_benefit_of_connective_guided_early_emission_is_not
+    role: complicates
+    claim: The latency benefit of connective-guided early emission is not uniform across conversational domains and scales with how frequently ground-truth responses in that domain naturally begin with a turn-initial discourse connective.
+    source: §5, "Effect of Model Scale and Datasets"
+    evidence: SD-Eval (94% connective frequency) and SpokenNativQA (38% connective frequency) show markedly different waiting-latency reductions (45.4% vs. 17.5%), indicating the technique favors casual conversational domains over settings with fewer natural connective opportunities.
+    confidence: high
+    relevance: high
+  - claim_id: emitting_a_short_non_truth_conditional_discourse_connective_before_full
+    role: supports
+    claim: Emitting a short, non-truth-conditional discourse connective before full response reasoning completes does not measurably degrade downstream text coherence or speech naturalness relative to waiting for the complete response.
+    source: §5, Table 3
+    evidence: Consistency/coherence (G-Eval) and UTMOSv2 scores for DDTSR are nearly identical to single-stream and dual-stream cascade baselines and close to the gold-standard reference across both datasets and both backbone scales.
+    confidence: high
+    relevance: high
+  limitations:
+  - Quality preservation is assessed only with automated proxies (G-Eval LLM-as-judge for text coherence, UTMOSv2 for speech naturalness); no human listening test or human coherence rating is reported, so the claim that early connective emission does not degrade perceived quality has not been verified against human raters.
+  - 'The framework remains fundamentally cascaded: it reduces perceived latency by overlapping and masking existing ASR/LLM/TTS stages rather than eliminating the sequential dependency, and the large-model reaction-latency component itself (LLM reasoning plus first-chunk synthesis, ~430–590 ms in the reported settings) is largely unchanged by DDTSR. The connective-annotated training data is constructed by an automatic two-stage pipeline (POS-based extraction plus LLM-prompted generation) whose fidelity to genuinely natural conversational connective usage is not independently validated against human annotation. Evaluation is limited to English-language benchmarks (SD-Eval''s non-emotion subsets and SpokenNativQA''s English subset), so cross-lingual applicability, where connective frequency and discourse marker inventories differ substantially, is untested.'
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.05887'
+  published_date: '2026-03-06'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - VAE
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - gan_causal_streaming_vocoders
+  - vae_compressed_streaming_latents
+  claims:
+  - claim_id: reconstructing_self_supervised_representations_from_a_codec_s_decoded_output
+    role: supports
+    claim: Reconstructing self-supervised representations from a codec's decoded output, rather than only distilling them into the encoder, more directly enforces intelligibility because the resulting loss gradient propagates through the decoder and quantizer.
+    source: §3.4, Table 1
+    evidence: SSRR (L1 distance between SW2V features of original vs. reconstructed audio) roughly halves WER relative to the same architecture without SSRR at 300k training steps, for both DAC-style and Mimi-style RVQ configurations
+    confidence: high
+    relevance: high
+  - claim_id: applying_a_self_supervised_representation_reconstruction_loss_from_early_in
+    role: supports
+    claim: Applying a self-supervised representation reconstruction loss from early in training accelerates codec convergence, reducing the compute budget needed to reach competitive intelligibility.
+    source: §3.4, §3.5, Table 2
+    evidence: With SSRR enabled, both RVQ variants reach WER within 1% of ground truth after only 300k steps (a single H200 GPU), while the paper reports that prior competitive streaming codecs (e.g., Mimi) require multi-node budgets of 8+ A100 GPUs over comparable or longer step counts
+    confidence: high
+    relevance: high
+  - claim_id: improving_intelligibility_via_a_self_supervised_representation_reconstruction_objective_can
+    role: complicates
+    claim: Improving intelligibility via a self-supervised representation reconstruction objective can come at a small cost to perceptual quality as measured by naturalness predictors.
+    source: §3.4
+    evidence: SSRR is reported to slightly reduce UTMOS in some configurations even as WER, CER, and S-SIM improve; the paper characterizes this as a favorable but non-free trade-off
+    confidence: high
+    relevance: high
+  - claim_id: rvq_codebook_depth_remains_a_stronger_lever_than_a_semantic
+    role: complicates
+    claim: RVQ codebook depth remains a stronger lever than a semantic reconstruction loss for intelligibility and speaker similarity under acoustically challenging or noisy conditions.
+    source: §4.1, §4.2, Tables 4-5
+    evidence: On LibriSpeech test-other and TITW-Hard, Mimi-32 (32 codebooks) achieves the best WER, CER, and S-SIM among streaming models, outperforming JHCodec-M-8's 8-codebook configuration despite JHCodec's SSRR training and much smaller training budget
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The reported training-efficiency comparisons are not fully controlled: JHCodec is compared against baselines'' self-reported GPU budgets, datasets, and training schedules, which differ across models, so the single-GPU competitiveness claim should be read as directional rather than a matched ablation against any one baseline.'
+  - 'The paper also notes an unexplained optimization anomaly: gradient norms in the RVQ pathway are consistently around two orders of magnitude larger than typical Transformer decoder gradient norms, and the theoretical expectation that residual quantization error should shrink with codebook depth is not observed in practice; the authors leave analysis of this behavior to future work (§3.4). The model is trained exclusively on English speech, and while it generalizes reasonably to MLS non-English test sets, it is consistently outperformed by higher-capacity RVQ baselines (Mimi-32) on non-English intelligibility (§4.3, Table 6). Finally, evaluation relies on Whisper-based WER/CER as an intelligibility proxy and WavLM cosine similarity for speaker similarity, rather than human listening tests.'
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.09180'
+  published_date: '2026-03-10'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: converting_long_dialogue_turns_into_short_chunk_wise_micro_turns
+    role: supports
+    claim: Converting long dialogue turns into short, chunk-wise micro-turns paired with an explicit set of control tokens lets a cascaded (ASR-LLM-TTS) pipeline make VAD-free, full-duplex turn-taking decisions directly from LLM context.
+    source: §4.2, Table 1
+    evidence: DuplexCascade achieves the best Averaged Turn-Taking Accuracy (0.858) on Full-Duplex-Bench among evaluated open-source duplex systems, outperforming the VAD-driven Freeze-Omni (0.489) and the end-to-end Moshi (0.395).
+    confidence: high
+    relevance: high
+  - claim_id: adapting_a_cascaded_dialogue_system_for_full_duplex_behavior_via
+    role: supports
+    claim: Adapting a cascaded dialogue system for full-duplex behavior via text-only fine-tuning of the LLM backbone, rather than joint speech-text training, can retain most of the backbone's conversational intelligence.
+    source: §4.3, Table 2
+    evidence: DuplexCascade's VoiceBench Overall score (65.41) sits close to a naive, non-duplex DSM-ASR + Qwen2-7B-Instruct cascade (69.66) and far above end-to-end duplex baselines Moshi (29.51) and PersonaPlex (30.59).
+    confidence: high
+    relevance: medium
+  - claim_id: full_duplex_conversational_phenomena_pauses_interruptions_and_backchannels_can_be
+    role: supports
+    claim: Full-duplex conversational phenomena, pauses, interruptions, and backchannels, can be synthetically simulated from ordinary text-only multi-turn dialogue corpora to train duplex turn-taking policies, avoiding dependence on scarce annotated full-duplex speech corpora.
+    source: §3.3
+    evidence: The training pipeline dynamically converts 50k UltraChat text dialogues into micro-turn sequences by probabilistically inserting silence, interruption, and backchannel patterns (probabilities 0.10, 0.30, and 0.01 respectively), with no real full-duplex speech corpus required.
+    confidence: high
+    relevance: medium
+  - claim_id: the_turn_taking_accuracy_gains_from_finer_grained_micro_turn
+    role: complicates
+    claim: The turn-taking accuracy gains from finer-grained micro-turn segmentation trade off against response latency, and the accuracy-optimal segmentation granularity is not the latency-optimal one.
+    source: §4.4, Figure 3
+    evidence: Averaged Turn-Taking Accuracy on Full-Duplex-Bench improves as micro-turn duration Δt increases up to 1.2s and then degrades, while Smooth Turn-Taking Latency increases monotonically with Δt; the authors adopt Δt = 0.6s as a practical trade-off rather than the accuracy-maximizing setting.
+    confidence: high
+    relevance: high
+  limitations:
+  - Evaluated with a single 7B-parameter LLM backbone (Qwen2-7B-Instruct) and a single training-data recipe (50k UltraChat-derived dialogues, 5k LoRA steps); the paper does not report whether the micro-turn and control-token approach generalizes to other backbone sizes, languages, or dialogue domains.
+  - The synthetic training data construction relies on fixed, hand-set probabilities for pauses, interruptions, and backchannels (e.g., 0.10, 0.30, 0.01) and on an auxiliary LLM (Qwen2-72B-Instruct) to mark backchannel points in text-only dialogues; how well these heuristics match real conversational statistics is not directly validated against a real full-duplex corpus. Enabling the `<system backchannel>` token (DuplexCascade-β) improves backchannel-specific metrics but reduces Averaged Turn-Taking Accuracy relative to the non-backchannel variant, indicating a tension between the two objectives that is not fully resolved. The chosen micro-turn interval (Δt = 0.6s) is explicitly a trade-off rather than an optimum, and Smooth Turn-Taking latency under DuplexCascade (1.724s) is higher than several baselines, including PersonaPlex (0.24s) and Moshi (0.257s), despite DuplexCascade's stronger aggregate accuracy.
+  caveats:
+  - For streaming TTS, this paper provides medium-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.08823'
+  published_date: '2026-03-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  - gan_causal_streaming_vocoders
+  claims: []
+  limitations:
+  - Performance on some low-resource languages (Hindi, Greek, Romanian, Vietnamese) lags behind closed-source systems like MiniMax, suggesting the 10M hour multilingual corpus has uneven coverage. The RL reward system relies on proprietary quality and ASR models not released separately. The 8K/16K context limit bounds long-form synthesis to roughly 185 seconds per pass. The instruction-following capability is learned implicitly via the rich-transcription ASR outputs; out-of-distribution instruction formats may not generalize reliably. No ablation isolates the individual contribution of the dual-purpose pipeline design vs. the multi-dimensional RL reward.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.16924'
+  published_date: '2026-03-11'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_modular_streaming_systems
+  - gan_causal_streaming_vocoders
+  claims:
+  - claim_id: training_free_policies_that_repurpose_the_cross_attention_of_a
+    role: supports
+    claim: Training-free policies that repurpose the cross-attention of a pretrained end-to-end model can reach a quality-latency trade-off competitive with, or better than, cascaded pipelines built from strong training-free components, without any additional training.
+    source: §4, Figure 2
+    evidence: SimulU achieves the highest ASR-BLEU in six of eight MuST-C directions against StreamAtt+XTTS-v2 and Local-Agreement-based cascades, at a comparable start-offset latency of roughly 1-2 seconds.
+    confidence: high
+    relevance: high
+  - claim_id: cascaded_speech_to_speech_translation_pipelines_are_highly_sensitive_to
+    role: complicates
+    claim: Cascaded speech-to-speech translation pipelines are highly sensitive to which TTS component is used downstream, because streaming decoding forces the TTS module to synthesize from incomplete sentence fragments rather than complete utterances.
+    source: §4, Table 2
+    evidence: Replacing XTTS-v2 with SeamlessM4T's own TTS module (Seam.TTS) in an otherwise identical StreamAtt cascade drops ASR-BLEU from the low-20s to 5-10, which manual inspection attributed to Seam.TTS's degraded synthesis quality when conditioned on partial rather than complete sentences.
+    confidence: high
+    relevance: high
+  - claim_id: cross_attention_alignment_scores_from_a_pretrained_multi_module_encoder
+    role: refines
+    claim: 'Cross-attention alignment scores from a pretrained multi-module encoder-decoder S2S system can serve as a unified signal for three distinct simultaneous-decoding decisions: hypothesis stability, context-history pruning, and output-segment boundaries.'
+    source: §2
+    evidence: SimulU's six-step policy reuses speech-text cross-attention (Steps 3-4) and text-unit cross-attention (Step 6) from the same pretrained SeamlessM4T backbone to make all three decisions, requiring no retraining or adaptation of the model.
+    confidence: high
+    relevance: high
+  - claim_id: evaluating_simultaneous_translation_policies_on_long_form_continuous_input_rather
+    role: complicates
+    claim: Evaluating simultaneous translation policies on long-form, continuous input rather than short, pre-segmented utterances changes which failure modes and trade-offs are visible.
+    source: §1, §3.1
+    evidence: The authors simulate streaming by feeding entire MuST-C TED talks (averaging 15.7 minutes for dev and 10.8 minutes for tst-COMMON) rather than the short, manually pre-segmented clips (up to 30 seconds) used in prior SimulS2ST evaluation, arguing this better reflects realistic deployment.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The policy's applicability is tied to models with an inspectable encoder-decoder cross-attention structure. SimulU's three core decisions (hypothesis stability, history pruning, output segmentation) all depend on extracting meaningful, well-calibrated cross-attention scores from a jointly trained speech-to-text-to-unit backbone. It is unclear whether the approach transfers to end-to-end S2S architectures without this structure, such as decoder-only discrete-token speech language models, which lack an explicit encoder-decoder cross-attention signal to exploit.
+  - The method is demonstrated on a single backbone (SeamlessM4T-medium-v1) and a single benchmark family (MuST-C, English-source only, eight target languages); it is not evaluated against non-English source speech or on domains beyond TED-talk-style spoken content. The baselines are cascades the authors construct themselves from existing components (StreamAtt, Local Agreement, Seam.TTS, XTTS-v2) rather than comparisons against other published training-free or low-resource simultaneous S2ST systems, which limits how the reported gains can be interpreted relative to the broader field. Latency is reported only as start offset and end offset; the paper does not report computational cost or real-time factor, which matters for practical deployment.
+  caveats:
+  - For streaming TTS, this paper provides medium-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.13518'
+  published_date: '2026-03-13'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  claims:
+  - claim_id: mid_utterance_dynamic_speaking_rate_control_can_be_implemented_as
+    role: supports
+    claim: Mid-utterance (dynamic) speaking-rate control can be implemented as a lightweight histogram reweighting step applied to an autoregressive model's own duration-token distribution, without training a separate control network.
+    source: §3.5, §5.3, Table 5
+    evidence: The distribution matching mechanism marginalizes the TT's joint semantic/duration output into a duration histogram, then reweights it toward a target SPS value using an exponential comparison against a sliding-window accumulated distribution, achieving Pearson correlations of 0.619-0.826 between the control signal and the measured generated rate across four dynamic transition scenarios.
+    confidence: high
+    relevance: high
+  - claim_id: applying_classifier_free_guidance_separately_to_text_audio_prompt_and
+    role: supports
+    claim: Applying classifier-free guidance separately to text, audio-prompt, and speaker-embedding conditioning in autoregressive zero-shot TTS improves intelligibility and speaker similarity, at a measurable cost to signal quality that must be compensated separately.
+    source: §6, Table 6
+    evidence: Ablations show text CFG reduces WER from 2.29% to 1.37%; adding audio CFG raises SPK-SIM from 0.578 to 0.661 but lowers UTMOS from 3.91 to 3.65; adding speaker-embedding CFG raises SPK-SIM further to 0.674.
+    confidence: high
+    relevance: high
+  - claim_id: speaking_rate_control_mechanisms_operating_on_top_of_an_autoregressive
+    role: complicates
+    claim: Speaking-rate control mechanisms operating on top of an autoregressive codec-token model are not fully disentangled from the speaking rate of the acoustic prompt, because the same model both encodes the prompt and continues it under a next-token objective.
+    source: §7, Figure 7
+    evidence: Even with the proposed SRC applied, prompts with a slow speaking rate increase WER when the target rate is fast and vice versa; the authors attribute this to the prompt-encoding and generation pathways sharing the same next-token-prediction model.
+    confidence: high
+    relevance: high
+  - claim_id: removing_the_acoustic_prompt_s_text_transcription_during_training_by
+    role: supports
+    claim: Removing the acoustic prompt's text transcription during training, by masking it with placeholder tokens that are still included in the gradient, can reduce a zero-shot TTS system's sensitivity to the prompt's own speaking rate without degrading average intelligibility.
+    source: §3.2, Table 3
+    evidence: On the Emilia speaking-rate test set, the prompt-text-masked model achieves more stable WER across slow/normal/fast prompt conditions (2.14/2.20/2.13%) than the transcription-dependent baseline (2.80/2.10/4.21%), which spikes sharply for fast prompts.
+    confidence: high
+    relevance: high
+  - claim_id: extending_duration_based_rate_control_to_extreme_target_rates_increases
+    role: complicates
+    claim: Extending duration-based rate control to extreme target rates increases the risk of hallucinated or repeated output, because those rate regions are underrepresented in typical training corpora.
+    source: §5.3, Table 5
+    evidence: At a very slow target rate (1 SPS) WER rises to 16.51%, versus 3.2% at a normal rate (4 SPS), attributed by manual inspection to underrepresentation of slow duration states in training data plus increased word repetition and filler insertion.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The system''s speaking-rate control is not fully disentangled from the acoustic prompt''s own rate: prompts recorded at one rate measurably bias intelligibility when the target rate diverges strongly from it (§7), so the reported rate-control ranges should be read as conditional on prompt/target rate combinations rather than uniformly reliable across the full 2-6 SPS operating range.'
+  - 'The training data pipeline is also non-trivial to reproduce: forced alignment with the Clap-IPA aligner discards roughly 35% of the initially collected 62k hours due to invalid alignments, and the paper flags this preprocessing complexity as an open problem for future work. Translingual prompt masking (any-language-to-English generation) is mentioned as an emergent capability but is not quantitatively evaluated, only demonstrated via audio samples. The reliable operating range for dynamic control is also bounded in practice (roughly 1-5/6 SPS), with WER increasing markedly outside that range and under fast-to-slow transitions specifically.'
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.14877'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  - infrastructure
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: a_streaming_state_prediction_module_can_be_attached_to_an
+    role: supports
+    claim: A streaming state-prediction module can be attached to an existing half-duplex spoken dialogue model to grant full-duplex turn-taking behavior without modifying or retraining that model's backbone.
+    source: §5.2, §6.1.1
+    evidence: SoulX-Duplug is trained independently and then composed with an off-the-shelf Qwen2.5-7B-Instruct LLM and IndexTTS-1.5 TTS system to form a complete FD-SDS evaluated on Full-Duplex-Bench, with no modification to either downstream component.
+    confidence: high
+    relevance: high
+  - claim_id: explicitly_conditioning_dialogue_state_prediction_on_jointly_generated_streaming_asr
+    role: supports
+    claim: Explicitly conditioning dialogue-state prediction on jointly generated streaming ASR text, rather than acoustic features alone, improves turn-taking and interruption-handling accuracy over acoustic-only VAD.
+    source: §6.2, Table 5
+    evidence: Ablating ASR pretraining from the training pipeline drops Easy Turn testset (Zh) average accuracy from 84.33% to 80.50%, and removing the teacher-forced external ASR guidance at inference drops it further to 73.50%.
+    confidence: high
+    relevance: high
+  - claim_id: streaming_state_prediction_under_very_short_audio_chunks_trades_some
+    role: complicates
+    claim: Streaming state prediction under very short audio chunks trades some accuracy for latency relative to non-streaming pipelines that use larger, non-streaming ASR and turn-detection models.
+    source: §6.1.2, Table 3
+    evidence: SoulX-Duplug's average accuracy (83.32% EN, 84.33% ZH) is about 3 percentage points lower than a non-streaming pipeline combining a state-of-the-art ASR model with a 7B-parameter TEN Turn Detection model, though the non-streaming pipeline incurs additional, input-length-dependent VAD latency not reflected in its reported accuracy.
+    confidence: high
+    relevance: high
+  - claim_id: streaming_asr_at_very_small_chunk_sizes_remains_inherently_unreliable
+    role: complicates
+    claim: Streaming ASR at very small chunk sizes remains inherently unreliable for languages where word boundaries can span adjacent chunks, limiting how aggressively latency can be reduced without accuracy loss.
+    source: §6.3
+    evidence: The authors report that short chunk durations frequently cut across phoneme, syllable, or word boundaries, an effect "particularly pronounced in English," causing recognition instability, and note that LLM-based streaming ASR does not necessarily outperform conventional architectures like RNN-T under this constraint.
+    confidence: high
+    relevance: medium
+  limitations:
+  - The full downstream FD-SDS results (Table 2) evaluate SoulX-Duplug only as part of a cascaded system with a fixed external LLM (Qwen2.5-7B-Instruct) and TTS (IndexTTS-1.5); the paper does not report how much of the overall turn-management or latency improvement is attributable to the state-prediction module in isolation versus the choice of these downstream components, beyond the standalone latency measurement in Table 4.
+  - The Chinese state-prediction training data relies on a proprietary ten-thousand-hour in-house corpus rather than an open-source dataset, since the authors report no suitable open-source Mandarin equivalent to the Fisher corpus exists; this limits reproducibility of the Mandarin training pipeline outside the authors' organization. The authors also note that streaming ASR under short chunk constraints remains an open problem, particularly for English, and that current open-source streaming speech encoders and ASR models remain immature for fully real-time deployment, an issue the paper's own approach only partially mitigates via teacher-forced external ASR.
+  caveats:
+  - For streaming TTS, this paper provides medium-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.05413'
+  published_date: '2026-03-17'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_modular_streaming_systems
+  claims:
+  - claim_id: sentence_level_streaming_that_overlaps_llm_token_generation_with_downstream
+    role: supports
+    claim: Sentence-level streaming that overlaps LLM token generation with downstream TTS synthesis substantially reduces perceived response latency in cascaded speech agent pipelines relative to fully sequential, turn-based execution.
+    source: §8, Table 4
+    evidence: The measured end-to-end time-to-first-audio of 755ms undercuts the sequential sum-of-stage estimate of roughly 950-1050ms, attributed to overlapping STT, LLM first-sentence generation, and TTS time-to-first-byte across stages.
+    confidence: medium
+    relevance: high
+  - claim_id: native_speech_to_speech_models_that_jointly_generate_audio_and
+    role: complicates
+    claim: Native speech-to-speech models that jointly generate audio and text from a single backbone can face a sharp trade-off between deployment self-hostability and real-time audio-generation latency, even when the underlying architecture is designed for streaming.
+    source: §3.2-3.3, Table 3
+    evidence: Qwen3-Omni's multi-codebook Talker reaches 702ms audio-to-audio latency only via the cloud-hosted DashScope Realtime API; the same model's fully self-hosted HuggingFace Transformers deployment produces audio at roughly 145,694ms TTFA (2.91x real-time factor), and its self-hosted vLLM deployment supports text-only output (no Talker, no audio) at 516ms.
+    confidence: medium
+    relevance: high
+  - claim_id: serving_backend_efficiency_not_only_model_architecture_is_a_first
+    role: complicates
+    claim: Serving-backend efficiency, not only model architecture, is a first-order determinant of whether a speech-capable model can meet real-time latency targets.
+    source: §3.2, §B, Table 3
+    evidence: The same Qwen3-Omni model produces 4.6 tokens/second via the unoptimized HuggingFace Transformers backend versus 168 tokens/second via vLLM, a roughly 36x gap that turns an architecturally streaming-capable Talker into a non-realtime one purely because of serving-backend inefficiency.
+    confidence: medium
+    relevance: high
+  - claim_id: a_cascaded_asr_llm_tts_pipeline_built_entirely_from_independently
+    role: supports
+    claim: A cascaded ASR-LLM-TTS pipeline built entirely from independently hosted, off-the-shelf streaming components can reach sub-second time-to-first-audio with full function-calling support, without requiring an end-to-end trained model.
+    source: §7-8, Table 4
+    evidence: The pipeline combining Deepgram Nova-3 streaming STT, a vLLM-served LLM with OpenAI-compatible function calling, and ElevenLabs streaming TTS achieves a measured 755ms time-to-first-audio (729ms best case) on a hospital-receptionist enterprise agent with five callable tools.
+    confidence: medium
+    relevance: high
+  limitations:
+  - All latency numbers are a single-hardware, single-vendor-tier snapshot (one NVIDIA H200 GPU and specific Deepgram/ElevenLabs/OpenAI-API configurations) rather than a systematic sweep across hardware, model sizes, or API tiers, and the enterprise agent evaluation covers only one scenario (a five-tool hospital receptionist) with no reported functional-correctness or task-success metric for the tool-calling loop itself. *(§7-8)*
+  - The tutorial reports no formal human evaluation (no MOS or user study) of the resulting agent's conversational quality, and its VAD-based interruption/turn-taking state machine is described architecturally but not benchmarked for interruption-handling accuracy. Because the central finding, that a cascaded pipeline remains necessary, depends on the current absence of a self-hostable, optimized native speech-to-speech Talker, the paper's practical recommendation is explicitly time-sensitive and could be superseded by future serving-stack support (e.g., vLLM adding Talker support) that the authors themselves anticipate.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
+- id: '2603.18090'
+  published_date: '2026-03-20'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_streaming_generation
+  - hybrid_modular_streaming_systems
+  claims: []
+  limitations:
+  - Speaker drift in ultra-long English generation remains the primary bottleneck; the report explicitly identifies this as a failure mode rather than solving it. Japanese and Korean multilingual performance lags behind other languages, suggesting insufficient low-resource training coverage. The 8B MOSS-TTS backbone underperforms the 1.7B Local Transformer on speaker similarity, suggesting the architectural tradeoff is not purely a size effect. The report does not address latency or real-time factor, leaving streaming viability for the 8B model unclear. Objective metrics only — no subjective listening tests (MOS/MUSHRA) are reported, making absolute quality comparisons against perceptually evaluated baselines difficult. Whether the data pipeline scales further (e.g., to 100M+ hours) and whether model size beyond 8B continues to yield gains are left open.
+  caveats:
+  - For streaming TTS, this paper provides high-relevance evidence; claims primarily concerning dialogue policy, translation, privacy, or downstream applications remain included at lower relevance.
 claim_clusters:
 - id: incremental_generation_reduces_first_packet_latency
-  claim: Incremental acoustic or speech-token generation can substantially reduce first-packet and response latency.
+  claim: Incremental acoustic or speech-token generation can substantially reduce first-packet and response
+    latency.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5502,17 +6251,34 @@ claim_clusters:
   - neurips-2025-pDWwz9F7Zh
   - neurips-2025-vhPy3NMsO5
   - '2512.18706'
+  - '2601.11141'
+  - '2601.17761'
+  - '2602.00269'
+  - '2601.13948'
+  - '2602.11072'
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.16924'
+  - '2603.13518'
+  - '2603.14877'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - '2410.17799'
   - 2025.emnlp-main.989
   - '2512.20156'
+  - '2602.00269'
+  - '2603.05413'
   caveats:
-  - Reported latency depends on hardware, buffering policy, network assumptions, and whether upstream processing
-    is included.
-  last_reviewed: '2026-09-26'
+  - Reported latency depends on hardware, buffering policy, network assumptions, and whether upstream
+    processing is included.
+  - Q1 extends incremental generation to coordinated serving, partial hypotheses, discourse-first response
+    initiation, training-free translation policies, and plug-in state prediction; measurement boundaries
+    and hardware remain inconsistent.
+  last_reviewed: '2026-11-12'
 - id: chunk_size_controls_latency_quality_tradeoff
-  claim: Chunk size and read–write policy create a direct trade-off among latency, alignment, and acoustic quality.
+  claim: Chunk size and read–write policy create a direct trade-off among latency, alignment, and acoustic
+    quality.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5520,16 +6286,25 @@ claim_clusters:
   - 2025.findings-acl.1051
   - '2510.02066'
   - '2510.08392'
+  - '2602.00269'
+  - '2601.13948'
+  - '2603.09180'
+  - '2603.16924'
+  - '2603.14877'
   contradicting_papers: []
   refining_papers:
   - '2510.16718'
   - '2512.00451'
+  - '2603.09180'
+  - '2603.14877'
   caveats:
   - Optimal chunks are architecture-, language-, and metric-dependent.
-  last_reviewed: '2026-09-26'
+  - Q1 micro-turn, ASR-chunk, emission-delay, and long-form segment studies show that accuracy-optimal
+    granularity is often not latency-optimal and that language structure constrains minimum chunks.
+  last_reviewed: '2026-11-12'
 - id: causality_and_lookahead_trade_latency_for_quality
-  claim: Causal constraints and limited lookahead reduce delay but can degrade quality unless the model is adapted
-    explicitly.
+  claim: Causal constraints and limited lookahead reduce delay but can degrade quality unless the model
+    is adapted explicitly.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5548,17 +6323,25 @@ claim_clusters:
   - '2510.09245'
   - '2510.24372'
   - neurips-2025-1cURNMriee
+  - '2601.13948'
+  - '2603.05887'
+  - '2603.16924'
   contradicting_papers: []
   refining_papers:
   - '2412.10117'
   - '2509.13667'
   - '2509.13670'
   - neurips-2025-pDWwz9F7Zh
+  - '2601.13948'
+  - '2603.16924'
   caveats:
   - Pitch, phase, and boundary artifacts may respond differently to the same lookahead budget.
-  last_reviewed: '2026-09-26'
+  - Q1 adds variable emission delay, decoder-side SSL reconstruction, and cross-attention policies; smaller
+    delay can expose privacy, intelligibility, or segmentation failures.
+  last_reviewed: '2026-11-12'
 - id: distillation_recovers_causal_decoder_quality
-  claim: Teacher distillation can recover quality lost when codecs, acoustic decoders, or vocoders are made causal.
+  claim: Teacher distillation can recover quality lost when codecs, acoustic decoders, or vocoders are
+    made causal.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5571,8 +6354,8 @@ claim_clusters:
   - The benefit may depend on access to a strong non-causal teacher and matched training data.
   last_reviewed: '2026-09-26'
 - id: interleaved_text_speech_generation_supports_streaming
-  claim: Interleaving or jointly generating text and speech tokens enables streaming output while retaining semantic
-    guidance.
+  claim: Interleaving or jointly generating text and speech tokens enables streaming output while retaining
+    semantic guidance.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5582,12 +6365,17 @@ claim_clusters:
   - 2025.emnlp-demos.70
   - neurips-2025-pDWwz9F7Zh
   - '2512.20156'
+  - '2601.11141'
+  - '2601.17761'
+  - '2602.11072'
   contradicting_papers: []
   refining_papers:
   - neurips-2025-vhPy3NMsO5
   caveats:
   - Interleaved decoding can inherit exposure errors from both text and acoustic token streams.
-  last_reviewed: '2026-09-26'
+  - Q1 supports joint acoustic modules, unified multimodal tokens, and multistream source–target generation,
+    while stabilization and causality choices remain task-specific.
+  last_reviewed: '2026-11-12'
 - id: parallel_and_speculative_decoding_accelerate_streaming
   claim: Parallel, multi-token, and speculative decoding reduce serial speech-token generation cost.
   status: strongly_supported
@@ -5622,12 +6410,17 @@ claim_clusters:
   - '2510.16718'
   - '2512.00451'
   - '2512.20156'
+  - '2601.17761'
+  - '2603.05887'
   contradicting_papers: []
   refining_papers:
   - '2510.16718'
+  - '2603.05887'
   caveats:
   - Aggressive token compression can discard speaker, prosodic, or transient detail.
-  last_reviewed: '2026-09-26'
+  - Q1 single-codebook generation and decoder-supervised codecs reduce sequence or convergence cost, but
+    RVQ depth can dominate intelligibility under difficult conditions.
+  last_reviewed: '2026-11-12'
 - id: one_model_can_support_streaming_and_offline_modes
   claim: Shared models can support both streaming and offline speech generation through masks, chunk schedules,
     or mode conditioning.
@@ -5659,14 +6452,22 @@ claim_clusters:
   - '2510.05150'
   - '2510.09592'
   - neurips-2025-AsRB5nmlOD
+  - '2601.11141'
+  - 2026.iwsds-1.10
+  - '2603.09180'
+  - '2603.14877'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2603.09180'
+  - '2603.14877'
   caveats:
   - Many systems demonstrate interruption handling rather than unrestricted simultaneous dialogue.
-  last_reviewed: '2026-09-26'
+  - Q1 systems implement duplex behavior through end-to-end audio streams, corpus-shaped turn timing,
+    micro-turn control, or streaming state prediction; capability levels remain inconsistently named.
+  last_reviewed: '2026-11-12'
 - id: turn_taking_and_barge_in_need_explicit_modeling
-  claim: Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions, barge-in, and
-    response timing.
+  claim: Natural streaming dialogue requires explicit modeling of turn boundaries, interruptions, barge-in,
+    and response timing.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5684,13 +6485,21 @@ claim_clusters:
   - '2510.05150'
   - '2510.09592'
   - neurips-2025-AsRB5nmlOD
+  - 2026.iwsds-1.10
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.14877'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-2564
   - neurips-2025-AsRB5nmlOD
+  - 2026.iwsds-1.10
+  - '2603.09180'
   caveats:
   - Turn-taking benchmarks often use constrained speakers, prompts, or synthetic overlap.
-  last_reviewed: '2026-09-26'
+  - Q1 confirms that corpus timing, partial hypotheses, explicit micro-turn tokens, and state prediction
+    materially shape interruption and response behavior.
+  last_reviewed: '2026-11-12'
 - id: curricula_and_alignment_enable_full_duplex_training
   claim: Staged curricula, aligned duplex data, and joint component adaptation improve full-duplex training.
   status: strongly_supported
@@ -5702,15 +6511,20 @@ claim_clusters:
   - '2508.15827'
   - '2510.09245'
   - 2025.emnlp-demos.70
+  - 2026.iwsds-1.10
+  - '2603.09180'
   contradicting_papers: []
   refining_papers:
   - neurips-2025-AsRB5nmlOD
+  - 2026.iwsds-1.10
   caveats:
   - Synthetic or weakly aligned interaction data may encode unrealistic timing patterns.
-  last_reviewed: '2026-09-26'
+  - Q1 shows that corpus mixtures and synthetic micro-turn data can teach duplex behavior, but stylistically
+    mismatched curricula can reduce coherence or spontaneity.
+  last_reviewed: '2026-11-12'
 - id: modular_and_end_to_end_systems_have_distinct_tradeoffs
-  claim: Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency, semantics,
-    controllability, and paralinguistic fidelity.
+  claim: Modular, cascaded, and end-to-end streaming systems make different trade-offs among latency,
+    semantics, controllability, and paralinguistic fidelity.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5730,16 +6544,28 @@ claim_clusters:
   - neurips-2025-4iehXI36QG
   - neurips-2025-vhPy3NMsO5
   - '2512.18706'
+  - '2601.11141'
+  - '2602.00269'
+  - '2602.11072'
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.16924'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - '2509.26542'
   - '2510.05150'
   - '2512.00451'
+  - '2601.11141'
+  - '2603.05413'
   caveats:
   - Comparisons frequently confound architecture with model scale, data, and proprietary components.
-  last_reviewed: '2026-09-26'
+  - Q1 adds coordinated serving, discourse-first cascades, VAD-free micro-turn control, training-free
+    cross-attention policies, and enterprise cascades; end-to-end voice fidelity can trade against reasoning.
+  last_reviewed: '2026-11-12'
 - id: speech_reasoning_lags_text_and_cascaded_systems
-  claim: End-to-end speech systems often lag text-mediated or cascaded systems in reasoning and semantic reliability.
+  claim: End-to-end speech systems often lag text-mediated or cascaded systems in reasoning and semantic
+    reliability.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5748,15 +6574,21 @@ claim_clusters:
   - '2510.02044'
   - neurips-2025-4iehXI36QG
   - '2512.18706'
+  - '2601.11141'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - '2509.26542'
   - '2510.05150'
+  - '2601.11141'
   caveats:
   - Reasoning results are sensitive to backbone scale and the amount of speech instruction data.
-  last_reviewed: '2026-09-26'
+  - Q1 end-to-end voice cloning preserves identity but loses reasoning relative to dialogue baselines,
+    while deployment tutorials show that modular cascades can remain faster and more controllable.
+  last_reviewed: '2026-11-12'
 - id: causal_codecs_and_vocoders_can_approach_offline_quality
-  claim: Causal codecs and vocoders can approach offline reconstruction quality with suitable architecture and training.
+  claim: Causal codecs and vocoders can approach offline reconstruction quality with suitable architecture
+    and training.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5770,17 +6602,22 @@ claim_clusters:
   - '2510.15227'
   - '2510.21209'
   - neurips-2025-1cURNMriee
+  - '2601.13948'
+  - '2603.05887'
   contradicting_papers: []
   refining_papers:
   - '2509.13667'
   - '2509.13670'
   - '2510.16718'
+  - '2603.05887'
   caveats:
   - Near-offline averages can conceal boundary, pitch, and long-context failures.
-  last_reviewed: '2026-09-26'
+  - Q1 streaming anonymization and decoder-side SSL reconstruction improve intelligibility at low latency,
+    but privacy, naturalness, noisy-condition, and RVQ-depth gaps remain.
+  last_reviewed: '2026-11-12'
 - id: continuous_generators_trade_steps_for_streaming_quality
-  claim: Flow and diffusion streaming decoders trade integration steps, caching, and algorithmic delay against generation
-    quality.
+  claim: Flow and diffusion streaming decoders trade integration steps, caching, and algorithmic delay
+    against generation quality.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5837,8 +6674,8 @@ claim_clusters:
   - Nominal step counts do not directly determine end-to-end latency across implementations.
   last_reviewed: '2026-09-26'
 - id: streaming_evaluation_requires_interaction_metrics
-  claim: Streaming evaluation should measure first-packet delay, interaction timing, chunk throughput, and cache
-    behavior in addition to batch real-time factor.
+  claim: Streaming evaluation should measure first-packet delay, interaction timing, chunk throughput,
+    and cache behavior in addition to batch real-time factor.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5848,12 +6685,21 @@ claim_clusters:
   - '2506.15556'
   - 2025.emnlp-main.989
   - '2512.18706'
+  - '2602.00269'
+  - 2026.iwsds-1.10
+  - '2603.16924'
+  - '2603.14877'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - '2510.05150'
+  - '2602.00269'
+  - '2603.16924'
   caveats:
   - Latency definitions and measurement boundaries remain inconsistent across papers.
-  last_reviewed: '2026-09-26'
+  - Q1 adds per-chunk deadline satisfaction, corpus timing axes, long-form continuous input, streaming-ASR
+    errors, and component-attributed time-to-first-audio to the evaluation boundary.
+  last_reviewed: '2026-11-12'
 - id: multilingual_and_cross_domain_streaming_remain_uneven
   claim: Multilingual, noisy, unseen-speaker, and cross-domain streaming performance remains uneven.
   status: strongly_supported
@@ -5869,6 +6715,10 @@ claim_clusters:
   - '2509.09174'
   - '2509.17765'
   - '2509.23147'
+  - '2601.13948'
+  - '2602.11072'
+  - '2603.16924'
+  - '2603.14877'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-demo.37
@@ -5877,30 +6727,39 @@ claim_clusters:
   - '2509.17765'
   - neurips-2025-4iehXI36QG
   - '2512.20156'
+  - '2603.14877'
   caveats:
   - Coverage is sparse outside high-resource languages and read or assistant-style speech.
-  last_reviewed: '2026-09-26'
+  - Q1 exposes adaptive privacy attacks, cross-lingual accent control gaps, long-form translation failures,
+    and chunk-boundary problems in languages whose words span chunks.
+  last_reviewed: '2026-11-12'
 - id: concurrent_reasoning_during_listening_improves_streaming_responses
-  claim: Streaming dialogue systems can improve reasoning quality without adding turn latency by performing compact,
-    preemptible reasoning during the listening window or in a concurrent reasoning process.
+  claim: Streaming dialogue systems can improve reasoning quality without adding turn latency by performing
+    compact, preemptible reasoning during the listening window or in a concurrent reasoning process.
   status: strongly_supported
   confidence: high
   supporting_papers:
   - '2510.02066'
   - '2510.05150'
   - '2510.09592'
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - '2510.02066'
   - '2510.09592'
+  - '2602.23266'
   caveats:
   - Benefits concentrate on multi-step reasoning tasks; block size, reasoning availability, and synchronization
     with speech generation still affect coherence.
-  last_reviewed: '2026-09-26'
+  - Q1 partial-hypothesis triggering, discourse connectives, and micro-turn control reduce apparent delay,
+    but early commitments depend on domain frequency and segmentation granularity.
+  last_reviewed: '2026-11-12'
 - id: latency_bottlenecks_shift_across_pipeline_components
-  claim: The dominant latency bottleneck in an interactive speech system can shift among language-model inference,
-    ASR, acoustic decoding, vocoding, retrieval, and orchestration, so component-local speedups do not guarantee
-    end-to-end responsiveness.
+  claim: The dominant latency bottleneck in an interactive speech system can shift among language-model
+    inference, ASR, acoustic decoding, vocoding, retrieval, and orchestration, so component-local speedups
+    do not guarantee end-to-end responsiveness.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -5908,18 +6767,46 @@ claim_clusters:
   - 2025.emnlp-main.989
   - '2512.18706'
   - '2510.02044'
+  - '2602.00269'
+  - '2602.23266'
+  - '2603.16924'
+  - '2603.05413'
   contradicting_papers: []
   refining_papers:
   - neurips-2025-4iehXI36QG
+  - '2602.00269'
+  - '2603.05413'
   caveats:
-  - Which component dominates depends on model scale, hardware, input duration, buffering, and whether external
-    tools or multimodal synchronization are included.
-  last_reviewed: '2026-09-26'
+  - Which component dominates depends on model scale, hardware, input duration, buffering, and whether
+    external tools or multimodal synchronization are included.
+  - Q1 coordinated serving and enterprise deployments show that detokenizer, backend, ASR, TTS, and orchestration
+    costs can dominate even when the core model is designed for streaming.
+  last_reviewed: '2026-11-12'
+- id: modular_policies_add_streaming_behavior_without_backbone_retraining
+  claim: Modular policies can add low-latency, simultaneous, or full-duplex behavior without retraining
+    the core speech-generation backbone.
+  status: strongly_supported
+  confidence: high
+  supporting_papers:
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.16924'
+  - '2603.14877'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - The modules operate at different layers—partial transcripts, text micro-turns, cross-attention, and
+    dialogue state—so their latency and quality gains are not directly comparable.
+  - Backbone preservation does not remove upstream ASR errors, domain-dependent trigger frequency, or
+    chunk-size trade-offs.
+  last_reviewed: '2026-11-12'
 method_families:
 - id: autoregressive_streaming_generation
   name: Autoregressive streaming generation
-  summary: Autoregressive streaming systems emit codec or acoustic tokens incrementally, using interleaving, delayed
-    streams, or parallel heads to control response latency.
+  summary: Autoregressive streaming systems emit codec or acoustic tokens incrementally, using interleaving,
+    delayed streams, or parallel heads to control response latency. Q1 adds personalized end-to-end dialogue,
+    unified multimodal tokens, variable emission delays, simultaneous translation, micro-turn control,
+    dynamic speaking rate, and plug-in state prediction.
   papers:
   - '2402.08093'
   - '2408.02622'
@@ -5967,12 +6854,26 @@ method_families:
   - neurips-2025-pDWwz9F7Zh
   - neurips-2025-vhPy3NMsO5
   - '2512.20156'
+  - '2601.11141'
+  - '2601.15621'
+  - '2601.17761'
+  - 2026.iwsds-1.10
+  - '2601.13948'
+  - '2602.11072'
+  - '2603.09180'
+  - '2603.08823'
+  - '2603.13518'
+  - '2603.14877'
+  - '2603.18090'
   open_questions:
-  - How can autoregressive speech generation reduce serial decoding cost without losing semantic or acoustic coherence?
+  - How can autoregressive speech generation reduce serial decoding cost without losing semantic or acoustic
+    coherence?
 - id: hybrid_modular_streaming_systems
   name: Hybrid and modular streaming systems
-  summary: Hybrid systems combine streaming ASR, language modeling, TTS, codecs, VAD, or turn-taking modules to
-    preserve controllability while reducing end-to-end delay.
+  summary: Hybrid systems combine streaming ASR, language modeling, TTS, codecs, VAD, or turn-taking modules
+    to preserve controllability while reducing end-to-end delay. Q1 broadens modular streaming through
+    coordinated serving, discourse-first response tracks, VAD-free micro-turns, training-free cross-attention
+    policies, and fully hosted enterprise cascades.
   papers:
   - '2409.06666'
   - '2410.00037'
@@ -6007,13 +6908,25 @@ method_families:
   - neurips-2025-vhPy3NMsO5
   - '2512.18706'
   - '2512.20156'
+  - '2601.15621'
+  - '2602.00269'
+  - 2026.iwsds-1.10
+  - '2601.13948'
+  - '2602.11072'
+  - '2602.23266'
+  - '2603.09180'
+  - '2603.08823'
+  - '2603.16924'
+  - '2603.14877'
+  - '2603.05413'
+  - '2603.18090'
   open_questions:
-  - When does a modular or semi-cascaded design outperform end-to-end generation under matched latency and quality
-    budgets?
+  - When does a modular or semi-cascaded design outperform end-to-end generation under matched latency
+    and quality budgets?
 - id: flow_matching_streaming_decoders
   name: Flow-matching streaming decoders
-  summary: Flow-matching systems use causal masking, cached state, distillation, or few-step generation to produce
-    continuous speech chunks with bounded latency.
+  summary: Flow-matching systems use causal masking, cached state, distillation, or few-step generation
+    to produce continuous speech chunks with bounded latency.
   papers:
   - '2412.02612'
   - '2412.10117'
@@ -6032,7 +6945,9 @@ method_families:
   - Can causal flow systems retain offline quality at one-step or very small-chunk streaming budgets?
 - id: gan_causal_streaming_vocoders
   name: GAN-based causal streaming vocoders
-  summary: Causal GAN vocoders and codec decoders generate waveform chunks with limited lookahead and one-pass inference.
+  summary: Causal GAN vocoders and codec decoders generate waveform chunks with limited lookahead and
+    one-pass inference. Q1 adds decoder-supervised streaming codecs and GAN-backed technical-report or
+    simultaneous-translation systems.
   papers:
   - '2411.18803'
   - '2507.12197'
@@ -6047,27 +6962,33 @@ method_families:
   - '2510.16718'
   - '2510.21209'
   - neurips-2025-1cURNMriee
+  - '2603.05887'
+  - '2603.08823'
+  - '2603.16924'
   open_questions:
-  - Which causalization and distillation techniques best preserve pitch, phase, and naturalness at low lookahead?
+  - Which causalization and distillation techniques best preserve pitch, phase, and naturalness at low
+    lookahead?
 - id: vae_compressed_streaming_latents
   name: VAE-based compressed streaming latents
   summary: VAE and variational codec systems compress speech into short latent streams that support incremental
-    transmission or generation.
+    transmission or generation. Q1 adds a streaming codec whose decoded output reconstructs self-supervised
+    representations to improve intelligibility and convergence.
   papers:
   - '2508.02849'
   - '2508.19098'
   - '2510.15227'
   - '2510.21209'
   - '2512.00451'
+  - '2603.05887'
   open_questions:
   - How should latent rate, causality, and decoder capacity be balanced for interactive speech generation?
 reassessment_queue:
 - id: incremental_generation_reduces_first_packet_latency
   type: benchmark_validity
-  reason: Incremental retrieval, reasoning, token generation, and modular streaming reinforce the latency benefit,
-    but reporting boundaries and hardware remain inconsistent.
-  trigger: Matched end-to-end studies report first packet, sustained throughput, and listener quality on common
-    hardware.
+  reason: Incremental retrieval, reasoning, token generation, and modular streaming reinforce the latency
+    benefit, but reporting boundaries and hardware remain inconsistent.
+  trigger: Matched end-to-end studies report first packet, sustained throughput, and listener quality
+    on common hardware.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -6075,10 +6996,11 @@ reassessment_queue:
   - Hardware-normalized first-packet measurements
 - id: speech_reasoning_lags_text_and_cascaded_systems
   type: claim_status
-  reason: Q4 adds evidence that direct spoken output and end-to-end speech processing still lag text-mediated or
-    carefully modular alternatives on factuality, recognition, or component attribution, despite new concurrent-reasoning
-    mitigations.
-  trigger: End-to-end speech models match text-mediated systems on controlled reasoning and conversational evaluations.
+  reason: Q4 adds evidence that direct spoken output and end-to-end speech processing still lag text-mediated
+    or carefully modular alternatives on factuality, recognition, or component attribution, despite new
+    concurrent-reasoning mitigations.
+  trigger: End-to-end speech models match text-mediated systems on controlled reasoning and conversational
+    evaluations.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -6095,7 +7017,8 @@ reassessment_queue:
   - Pitch-sensitive causal decoder tests
 - id: full_duplex_requires_simultaneous_listening_and_speaking
   type: definition_scope
-  reason: The term full duplex is applied both to interruption handling and unconstrained simultaneous dialogue.
+  reason: The term full duplex is applied both to interruption handling and unconstrained simultaneous
+    dialogue.
   trigger: Benchmarks standardize duplex capability levels and test semantic responses during overlap.
   due: 2026-10
   current_assessment: strongly_supported
@@ -6105,7 +7028,8 @@ reassessment_queue:
 - id: continuous_generators_trade_steps_for_streaming_quality
   type: claim_status
   reason: Distillation and solver improvements are changing the quality–step frontier quickly.
-  trigger: One-step causal flow or diffusion decoders match autoregressive and GAN systems under matched latency.
+  trigger: One-step causal flow or diffusion decoders match autoregressive and GAN systems under matched
+    latency.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -6115,25 +7039,38 @@ open_questions:
 - Which latency definition and measurement boundary should be standard for streaming speech generation?
 - How small can chunks and lookahead become before intelligibility, prosody, or speaker identity fails?
 - Can native speech systems match text-mediated reasoning while preserving paralinguistic information?
-- What training data and objectives support genuine simultaneous listening, speaking, interruption, and recovery?
+- What training data and objectives support genuine simultaneous listening, speaking, interruption, and
+  recovery?
 - How should token rate, codebook structure, and parallel decoding be co-designed for interactive generation?
-- Which architectures provide the best quality–latency–energy trade-off across multilingual and noisy deployment?
-- How should concurrent reasoning be synchronized with streaming speech generation so responses can begin early
-  without committing before decisive reasoning evidence arrives?
-- How can external retrieval and tool use be scheduled from partial speech without excessive speculative compute
-  or premature queries?
-- Which component-level and end-to-end measurements best reveal when latency bottlenecks migrate between ASR, language
-  modeling, acoustic decoding, vocoding, and orchestration?
+- Which architectures provide the best quality–latency–energy trade-off across multilingual and noisy
+  deployment?
+- How should concurrent reasoning be synchronized with streaming speech generation so responses can begin
+  early without committing before decisive reasoning evidence arrives?
+- How can external retrieval and tool use be scheduled from partial speech without excessive speculative
+  compute or premature queries?
+- Which component-level and end-to-end measurements best reveal when latency bottlenecks migrate between
+  ASR, language modeling, acoustic decoding, vocoding, and orchestration?
+- Which modular streaming policies generalize across backbones and languages without inheriting ASR chunk
+  errors or domain-specific trigger assumptions?
+- How should serving benchmarks account jointly for per-chunk deadline misses, detokenizer cost, playback
+  continuity, first audio, and sustained concurrent throughput?
 trend_notes:
-- Streaming research is moving beyond causal synthesis toward full speech-in/speech-out systems that reason, retrieve
-  tools, manage interruptions, and generate speech concurrently.
-- Q4 systems increasingly exploit the listening window for blockwise or parallel reasoning, reducing the historical
-  latency penalty of chain-of-thought processing while preserving preemption.
-- Autoregressive systems reduce serial cost through multi-token prediction, low-rate or grouped tokens, interleaving,
-  and input-time speculation, but decoder and vocoder latency can become the next bottleneck.
-- Causal flow, GAN, spectral-codec, and hybrid decoders increasingly approach offline quality, although small chunks
-  and one-step generation retain quality and stability trade-offs.
-- Modular streaming systems remain competitive when every component is incremental and paralinguistic signals are
-  preserved, weakening the assumption that low latency requires a monolithic end-to-end model.
-- Evaluation is shifting toward component-attributed first-packet delay, sustained throughput, reasoning availability,
-  barge-in timing, and matched end-to-end comparisons rather than batch real-time factor alone.
+- Streaming research is moving beyond causal synthesis toward full speech-in/speech-out systems that reason,
+  retrieve tools, manage interruptions, and generate speech concurrently.
+- Q4 systems increasingly exploit the listening window for blockwise or parallel reasoning, reducing the
+  historical latency penalty of chain-of-thought processing while preserving preemption.
+- Autoregressive systems reduce serial cost through multi-token prediction, low-rate or grouped tokens,
+  interleaving, and input-time speculation, but decoder and vocoder latency can become the next bottleneck.
+- Causal flow, GAN, spectral-codec, and hybrid decoders increasingly approach offline quality, although
+  small chunks and one-step generation retain quality and stability trade-offs.
+- Modular streaming systems remain competitive when every component is incremental and paralinguistic
+  signals are preserved, weakening the assumption that low latency requires a monolithic end-to-end model.
+- Evaluation is shifting toward component-attributed first-packet delay, sustained throughput, reasoning
+  availability, barge-in timing, and matched end-to-end comparisons rather than batch real-time factor
+  alone.
+- Q1 2026 increasingly adds streaming behavior through plug-in state predictors, cross-attention policies,
+  micro-turn controllers, and early-response tracks rather than retraining the core speech model.
+- Q1 serving work treats the language model and audio detokenizer as one scheduled pipeline, making playback
+  deadlines and backend coordination first-class model-system concerns.
+- Q1 evaluation expands from utterance real-time factor toward long-form continuous input, per-chunk deadlines,
+  corpus-shaped turn timing, and language-sensitive chunk errors.
