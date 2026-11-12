@@ -1,6 +1,6 @@
 concept: emotion-synthesis
-last_updated: '2026-10-31'
-paper_count: 98
+last_updated: '2026-11-12'
+paper_count: 119
 papers:
 - id: '2312.01479'
   published_date: "2023-12-03"
@@ -6951,6 +6951,1127 @@ papers:
   caveats:
   - The result supports non-verbal emotional cues and their trade-offs on one Grad-TTS setup, but not broad transfer
     across speakers, languages, or modern large TTS backbones.
+- id: '2601.03888'
+  published_date: '2026-01-09'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  - hybrid_semantic_acoustic_emotion_systems
+  claims: []
+  limitations:
+  - The paper does not report model parameter counts, making comparisons of compute per inference difficult. The Spanish training set is small (~2.9K hours, largely assembled from public corpora) and performance on Spanish lags all other languages. Japanese WER remains above 9% even with GRPO fine-tuning; the paper attributes some of this to ASR evaluation noise but does not fully resolve it. Emotional test sets for Japanese and Spanish are constructed internally and lack independent validation. The study covers four languages; extension to low-resource languages, tonal languages beyond Mandarin, or agglutinative languages is not addressed. The GRPO reward is WER-only; prosodic naturalness and emotional fidelity are not directly optimized by the RL signal.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2505.15727'
+  published_date: '2026-01-13'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: the_strength_of_a_speech_interaction_model_s_underlying_llm
+    role: supports
+    claim: The strength of a speech interaction model's underlying LLM backbone chiefly determines semantic-quality performance, but provides little to no corresponding improvement in acoustic fidelity or emotional empathy.
+    source: §4.3.1, Table 2, Table 3
+    evidence: Qwen3-Omni's 30B mixture-of-experts backbone substantially outperforms 7-8B dense models on knowledge and reasoning, but this advantage does not carry over to acoustic fluency or empathy scores, where its performance is comparable to or below several smaller models.
+    confidence: high
+    relevance: high
+  - claim_id: speech_interaction_models_with_stronger_semantic_and_linguistic_capability_often
+    role: complicates
+    claim: Speech interaction models with stronger semantic and linguistic capability often produce lower acoustic naturalness in their speech responses, indicating a trade-off rather than joint improvement between response sophistication and speech fluency.
+    source: §4.3.3, Observation 6
+    evidence: Models with strong semantic performance, such as LLaMA-Omni2-Bilingual and MiMo-Audio-Instruct, achieve comparatively low UTMOS fluency scores, attributed to complex structured textual response patterns that are harder to convert into natural, well-paced speech.
+    confidence: high
+    relevance: high
+  - claim_id: end_to_end_speech_interaction_models_are_inherently_more_robust
+    role: supports
+    claim: End-to-end speech interaction models are inherently more robust to acoustic perturbations than cascaded ASR-LLM-TTS pipelines, because cascaded systems propagate transcription errors from degraded audio while end-to-end models process speech directly.
+    source: §4.3.5, Observation 10
+    evidence: VocalNet2 and Qwen3-Omni maintain approximately 90% preserve-rate scores under acoustic perturbation across both languages, while cascaded systems show significant degradation under the same conditions, attributed to error propagation from inaccurate transcription.
+    confidence: high
+    relevance: high
+  - claim_id: improvements_in_speech_interaction_models_instruction_following_ability_are_driven
+    role: complicates
+    claim: Improvements in speech interaction models' instruction-following ability are driven almost entirely by better adherence to semantic content, not by improved control over paralinguistic attributes such as speaking rate or emotional tone.
+    source: §4.3.4, Observation 8
+    evidence: On VocalBench-zh's instruction-following leaderboard, the leading and second-place models differ substantially in accuracy (73.3% vs. 52.4%), but this gap is driven entirely by semantic-content adherence; both models show limited ability to manipulate paralinguistic features like speech speed and emotional tone.
+    confidence: high
+    relevance: high
+  - claim_id: an_llm_based_automated_judge_can_substitute_for_costly_human
+    role: supports
+    claim: An LLM-based automated judge can substitute for costly human evaluation on open-ended speech-interaction assessment tasks with a high degree of agreement with human raters.
+    source: §4.4
+    evidence: Qwen2.5-max's automated scoring achieves an 85.9% consistency rate with five bilingual human evaluators across 400 paired-response comparisons, with the LLM's preferred response matching the human majority preference in 94% of cases and at least one human evaluator's preference in over 99% of cases.
+    confidence: high
+    relevance: high
+  limitations:
+  - The current version relies exclusively on synthetic (TTS-generated) speech queries rather than human-recorded speech; the authors state that real human recordings are needed to evaluate nuanced aspects such as subtle pronunciation variation, prosody, and natural dialogue dynamics, which synthetic speech only adequately approximates for fundamental capability dimensions.
+  - The scope of evaluated capabilities and metrics is stated by the authors as needing further expansion in future versions, including broader multilingual coverage beyond English and Mandarin.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.16225'
+  published_date: '2026-01-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: modeling_structured_affective_context_via_dedicated_attention_before_generic_speech
+    role: supports
+    claim: Modeling structured affective context via dedicated attention before generic speech encoding preserves more emotion-relevant information for downstream empathetic response generation than encoding speech first and fusing affect afterward.
+    source: §4.6.1, Table 1, Table 2
+    evidence: Removing the dual-level (intra-turn/inter-turn) prepositive attention module collapses BLEU-4 from 0.0758 to 0.0078 and reduces the human-evaluated Empathy win rate to 76.3% relative to the full model
+    confidence: high
+    relevance: high
+  - claim_id: a_lightweight_interpretable_proxy_for_affective_intensity_derived_from_acoustic
+    role: supports
+    claim: A lightweight, interpretable proxy for affective intensity derived from acoustic energy trajectories, rather than explicit emotion classification or supervision, can drive effective empathetic prosody adaptation in speech synthesis.
+    source: §4.6.1, Table 3
+    evidence: Removing the energy-based strategy-selection and style-fusion synthesis module drops empathy-expressiveness (DMOS-E) win rate to 76.2% and emotional-consistency (DMOS-C) win rate to 67.3% relative to the full ES4R system
+    confidence: high
+    relevance: high
+  - claim_id: end_to_end_sllm_systems_fine_tuned_to_maximize_semantic
+    role: complicates
+    claim: End-to-end SLLM systems fine-tuned to maximize semantic and affective accuracy on a target dataset can exhibit lower lexical response diversity than cascaded ASR+LLM pipelines evaluated on the same task.
+    source: §4.5.1, Table 1
+    evidence: ES4R scores lower on Dist-1/Dist-2 diversity metrics than several baselines despite outperforming them on BLEU/ROUGE/BERTScore and empathy dimensions, attributed to ASR-error-induced output randomness in cascaded systems and to some baselines' additional external pretraining data
+    confidence: high
+    relevance: high
+  - claim_id: affective_context_representations_learned_via_prepositive_modeling_on_one_empathetic
+    role: supports
+    claim: Affective context representations learned via prepositive modeling on one empathetic dialogue dataset can transfer zero-shot to a structurally different dialogue dataset without fine-tuning.
+    source: §4.6, Table 5
+    evidence: Zero-shot transfer from AvaMERG (counseling dialogues) to MELD (multi-party TV-show dialogue) outperforms OpenS2S and LLaMA-Omni 2 on ROUGE-L, BERTScore, and LLM-judged Empathy despite the domain shift
+    confidence: high
+    relevance: high
+  limitations:
+  - All human-evaluation results in the paper (text A/B comparisons and speech DMOS scores, spanning all reported win/tie/loss percentages) come from only three annotators, a small and non-diverse rater pool for claims about empathy and emotional-consistency perception across the full evaluation.
+  - The empathetic speech synthesis stage maps affect to only three fixed speaking strategies (comfort, encourage, neutral) via preset hyperparameter pairs, rather than continuous, fine-grained style control; the authors identify extending this as future work. The framework does not model additional paralinguistic cues (e.g., voice quality) or speaker-aware personalization. No end-to-end streaming or low-latency inference is implemented, limiting applicability to real-time interactive settings; the authors note this as a direction for future work. Speech-generation quality itself is assessed only via human evaluation (DMOS), with no objective acoustic quality metric reported, since the paper judges standard objective TTS metrics inapplicable when responses across systems are not lexically matched.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.12480'
+  published_date: '2026-01-18'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: attribute_disentanglement_in_a_codec_language_model_can_be_induced
+    role: supports
+    claim: Attribute disentanglement in a codec language model can be induced implicitly through training-pair construction (deliberately mismatching prompt and target attributes) rather than through an explicit auxiliary loss or architectural module.
+    source: §6.1, Table 1
+    evidence: Same-speaker and cross-speaker Delta-Pair sampling, with no auxiliary disentanglement loss, yields 92% emotion classification accuracy on the Hard Task (conflicting prompt/target emotion in 80% of cases), exceeding CosyVoice 2 (79%) and IndexTTS 2 (73%), which use style-tag or dual-prompt conditioning.
+    confidence: high
+    relevance: high
+  - claim_id: direct_single_stage_attribute_conditioned_generation_can_express_fine_grained
+    role: supports
+    claim: Direct single-stage attribute-conditioned generation can express fine-grained control more effectively than iterative post-hoc editing of an already-synthesized utterance.
+    source: §6.1, Figure 4
+    evidence: Step-Audio-EditX's iterative editing raises emotion classification accuracy only from 50% (zero-shot generation) to 56.25% after one edit and 57.5% after a second, with negligible further gain, while SpeechEdit's single-stage direct emotion conditioning reaches 63.75% ECA at a comparable 2.5% WER.
+    confidence: high
+    relevance: high
+  - claim_id: adding_a_cross_speaker_voice_conversion_training_objective_to_a
+    role: complicates
+    claim: Adding a cross-speaker voice-conversion training objective to a unified selective-editing codec LM trades off speaker-similarity preservation for cross-speaker controllability.
+    source: §A.4, Task Ablation
+    evidence: A task-ablated variant trained only on same-speaker delta pairs (removing cross-speaker supervision) improves zero-shot TTS speaker similarity from 0.45 to 0.53 relative to the full model, at the cost of losing voice-conversion capability.
+    confidence: high
+    relevance: high
+  - claim_id: augmenting_a_training_corpus_with_additional_emotional_speech_from_a
+    role: complicates
+    claim: Augmenting a training corpus with additional emotional speech from a mismatched distribution (elicited, exaggerated emotion) does not reliably improve emotion-controllable synthesis and can degrade it.
+    source: §A.4, Data Ablation, Table 1
+    evidence: Mixing 708 hours of read-audiobook LibriEdit data with 30 hours of internal acted emotional speech and 47 hours of Expresso produced consistent degradation across most objective metrics relative to LibriEdit-only training, attributed to a distribution mismatch between spontaneous and elicited/exaggerated emotional expression.
+    confidence: high
+    relevance: high
+  limitations:
+  - Speaker identity is represented with a single static global embedding, which the authors acknowledge can lose time-varying vocal nuance and idiosyncratic articulation, and the model's disentanglement is entirely implicit (no auxiliary supervision), which the authors note may limit robustness on extreme or rare attribute combinations that the Delta-Pair sampling strategy does not adequately cover.
+  - The controllable attribute space is restricted to emotion, prosody, and speaker identity via a fixed categorical/ordinal instruction vocabulary; it does not support natural-language style instructions or arbitrary multi-attribute specifications. The emotion-editing evaluation sets are small (80-100 samples, four unseen speakers per condition), and no code repository is released alongside the paper, only audio samples.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2409.16681'
+  published_date: '2026-01-19'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: a_predictor_that_maps_categorical_emotion_labels_into_a_continuous
+    role: supports
+    claim: A predictor that maps categorical emotion labels into a continuous, psychologically grounded dimensional space can supply conditioning signals for an LM-based TTS system that itself trains without any explicit emotion labels.
+    source: §2.2, §3.1
+    evidence: The ED predictor is trained separately on the ESD English subset (~10h, 5 emotions) via WavLM features and anchored dimensionality reduction, reaching 81% classification accuracy on the ESD test set, while the TTS LM trains only on LibriTTS (~600h), which contains no emotion labels
+    confidence: high
+    relevance: high
+  - claim_id: conditioning_zero_shot_lm_based_tts_on_continuous_dimensional_emotion
+    role: supports
+    claim: Conditioning zero-shot LM-based TTS on continuous dimensional emotion embeddings, rather than categorical labels, allows synthesis of emotions not present as discrete categories in the TTS training data.
+    source: §3.3, Figure 2
+    evidence: In the "Emotion Control" setting, PAD values for 9 named emotions (Table 1) absent from LibriTTS training labels are manually specified, and the resulting synthesized speech shows pitch and spectral-flux patterns consistent with established emotion-arousal correlates
+    confidence: high
+    relevance: high
+  - claim_id: a_zero_shot_label_free_emotion_conditioned_tts_system_trained
+    role: complicates
+    claim: A zero-shot, label-free emotion-conditioned TTS system trained on unlabeled expressive speech can trail a system trained directly on labeled emotional data in emotional intelligibility, even while surpassing a same-setting zero-shot baseline.
+    source: §3.4, Figure 3
+    evidence: In the E-MOS listening test, MixedEmotion (trained on emotional data) attains the highest score among the three compared systems, ahead of both the proposed zero-shot framework and the CosyVoice zero-shot baseline, though all remain below ground truth
+    confidence: high
+    relevance: high
+  - claim_id: confusability_between_synthesized_emotion_pairs_correlates_with_how_many_of
+    role: supports
+    claim: Confusability between synthesized emotion pairs correlates with how many of the three PAD dimensions the pairs share, with pairs differing on only one dimension harder to disambiguate than pairs differing on more.
+    source: §3.4, Figure 4
+    evidence: XAB test accuracy across four dimension-matched pairs (e.g., "Angry" vs. "Anxious," differing mainly in Dominance) stays above 50% for all pairs but is lowest for the most dimensionally similar pairs, consistent with Russell's three-factor theory
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The subjective evaluation is modest in scale: 10 native English listeners rated 260 synthesized samples in total, and the paper itself characterizes this as standard practice rather than a large-scale study. E-MOS results for emotional intelligibility are reported only as a figure without exact numeric values in the text, limiting the precision of any downstream comparison. The TTS backbone is trained on a single English corpus (LibriTTS), so cross-lingual or cross-domain generalization of the ED conditioning mechanism is untested. The paper compares against only two baselines (CosyVoice, MixedEmotion) rather than other explicit dimensional-emotion TTS systems it cites in related work (e.g., EmoCtrl-TTS, EmoSphere-TTS). The authors note dynamic within-utterance emotion control and multilingual adaptation as open future directions, not addressed in this work (§4).'
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.12289'
+  published_date: '2026-01-20'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: AAAI
+  task:
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: projecting_a_shared_speech_representation_into_independent_task_specific_subspaces
+    role: supports
+    claim: Projecting a shared speech representation into independent task-specific subspaces, each anchored by class prototypes, reduces inter-task interference relative to a single joint embedding space optimized for multiple paralinguistic attributes simultaneously.
+    source: §Speaking Styles Classification, Table 1
+    evidence: ParaMETA achieves the best result in 12 of 16 backbone-task combinations versus cross-entropy and CLAP-style joint-embedding baselines, which show pronounced negative transfer, e.g. CLAP-style objectives collapse on gender/age/language despite strong emotion recognition.
+    confidence: high
+    relevance: high
+  - claim_id: disentangled_task_specific_style_embeddings_enable_more_precise_single_attribute
+    role: supports
+    claim: Disentangled, task-specific style embeddings enable more precise single-attribute manipulation of synthesized speech than would be achievable from an entangled joint style representation.
+    source: §Speaking Styles Manipulation, Table 3
+    evidence: Replacing only the emotion or gender embedding while holding other style embeddings fixed achieves 90% and 100% manipulation accuracy respectively, with large similarity shifts toward the target prototype.
+    confidence: high
+    relevance: high
+  - claim_id: style_embedding_based_attribute_manipulation_is_far_less_effective_for
+    role: complicates
+    claim: Style-embedding-based attribute manipulation is far less effective for style attributes intrinsically tied to textual/phonetic content (e.g., language identity) than for purely paralinguistic attributes (e.g., emotion, gender).
+    source: §Speaking Styles Manipulation, Table 3
+    evidence: Language manipulation achieves only 55% accuracy with a minimal similarity shift (0.481 to 0.485) toward the target prototype, versus 90-100% for emotion and gender, since language identity is bound to the input text rather than a purely acoustic style attribute.
+    confidence: high
+    relevance: high
+  - claim_id: lightweight_disentangled_paralinguistic_style_embeddings_can_condition_a_downstream_tts
+    role: supports
+    claim: Lightweight, disentangled paralinguistic style embeddings can condition a downstream TTS model to produce more natural and expressive speech than raw or jointly-learned style embeddings, at substantially lower computational cost than large-scale contrastive language-audio pretraining.
+    source: §Style-Controllable TTS Generation, §Computational Resource Comparison, Table 2, Table 4
+    evidence: TTS conditioned on ParaMETA embeddings achieves statistically significant (p<0.05) N-MOS/E-MOS gains over text-only and raw-speech-embedding prompting, while ParaMETA's encoders run up to 30x faster and use ~70% less GPU memory than CLAP.
+    confidence: high
+    relevance: high
+  limitations:
+  - The TTS listening study used only five raters, while META-space regularization was inconsistent across backbones and language manipulation remained weak (55% accuracy).
+  - The classification comparison partly contrasts off-the-shelf zero-shot models with encoders trained on the paper's own dataset, so it is not a fully matched-data comparison.
+  caveats:
+  - For emotion synthesis, the direct evidence is the emotion-specific embedding manipulation and downstream expressive-TTS evaluation. A peer-reviewed AAAI version exists, but the page and these claims summarize the ingested version.
+- id: '2601.18281'
+  published_date: '2026-01-26'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  claims:
+  - claim_id: interleaving_spoken_response_generation_with_explicit_free_form_natural_language
+    role: supports
+    claim: Interleaving spoken response generation with explicit, free-form natural-language reflective reasoning at inference time, rather than relying purely on end-to-end supervised or scalar preference-based training signals, improves an end-to-end spoken language model's empathetic response quality.
+    source: §4.2, Table 5
+    evidence: ReEmpathy outperforms SFT, DPO, and single-step CoTBS baselines on every EmpathyEval dimension and on GPT-4-judge AB-score/MOS, and disabling the reflective mechanism while holding training data constant eliminates most of the gain.
+    confidence: high
+    relevance: high
+  - claim_id: generating_explicit_empathy_related_reasoning_as_a_single_upfront_step
+    role: complicates
+    claim: Generating explicit empathy-related reasoning as a single upfront step before response generation does not reliably improve, and can actively degrade, empathetic dialogue quality relative to direct supervised fine-tuning without any explicit reasoning step.
+    source: §4.2, Table 5
+    evidence: The CoTBS baseline underperforms plain SFT on every EmpathyEval dimension and GPT-4 judge score despite explicitly generating empathy-related reasoning before the response, indicating that alternating structure, not the mere presence of reasoning, drives improvement.
+    confidence: high
+    relevance: high
+  - claim_id: a_descriptive_natural_language_automatic_evaluator_of_empathy_obtained_by
+    role: supports
+    claim: A descriptive, natural-language automatic evaluator of empathy, obtained by fine-tuning a general audio-language model on curated dialogue-empathy annotations, can achieve human-rating correlation comparable to a large closed-model text pipeline while requiring no online API calls at evaluation time.
+    source: §4.1, Table 4
+    evidence: EmpathyEval reaches LCC 0.71 against 300 human-annotated gold-standard ratings spanning in-domain and out-of-domain samples, close to the GPT-4 text-pipeline baseline's 0.86 LCC on the in-domain test set.
+    confidence: high
+    relevance: high
+  - claim_id: the_frequency_of_alternation_between_response_generation_and_reflection_segments
+    role: supports
+    claim: The frequency of alternation between response-generation and reflection segments, and the relative attention weight a model places on recently generated reflection versus response content, both have measurable, non-monotonic effects on the empathetic quality of an alternating-inference dialogue system.
+    source: §4.3, Figure 6
+    evidence: Reducing chunk size (increasing alternation frequency) improves empathetic quality down to roughly chunk size 15, below which performance degrades; increasing cross-attention weight between reflection and response improves quality up to a peak around 1.1-1.2x before declining.
+    confidence: high
+    relevance: high
+  - claim_id: preference_optimization_using_scalar_scores_from_a_well_calibrated_automatic
+    role: complicates
+    claim: Preference optimization using scalar scores from a well-calibrated automatic evaluator is insufficient to reliably improve empathetic dialogue quality, even when that same evaluator's descriptive assessments are effective as reflective-reasoning training signal in a different mechanism.
+    source: §4.2, Table 5
+    evidence: Direct Preference Optimization, using preference pairs scored by the same EmpathyEval model that supplies ReEmpathy's reflective supervision, underperforms both plain SFT and ReEmpathy on every empathy-quality metric reported.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The authors'' own limitations note two open directions: the coupling between response and reflection streams is currently supervised only at the global dialogue level (constructed off-policy from EmpathyEval scores on existing dialogues), so individual response-reflection chunk pairs cannot yet be trained on-policy, limiting fine-grained interpretability and control; and reflective-reasoning supervision is currently limited to supervised fine-tuning, with reinforcement learning or other optimization strategies for the reflective stream left unexplored. The dataset construction, evaluation, and ReEmpathy training are all conducted in Mandarin Chinese (EmotionTalk, the self-constructed empathy dataset, and the OpenS2S Chinese subset); generalization of the approach to other languages is untested in this paper.'
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.19063'
+  published_date: '2026-01-27'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  claims:
+  - claim_id: applying_dpo_based_preference_optimization_with_a_single_targeted_reward
+    role: supports
+    claim: Applying DPO-based preference optimization with a single, targeted reward dimension to a spoken dialogue system selectively and reliably improves that specific quality dimension, without requiring simultaneous optimization of all dimensions.
+    source: §7.1-7.2, Tables 2-3
+    evidence: Single-reward RLAIF trained on audio-quality preferences raises UTMOS from 2.16 to 3.06, and single-reward RLAIF trained on intelligibility preferences reduces WER from 6.1% to 3.3%, each moving only its own targeted metric.
+    confidence: high
+    relevance: high
+  - claim_id: jointly_combining_multiple_independently_constructed_preference_datasets_within_a_single
+    role: supports
+    claim: Jointly combining multiple independently-constructed preference datasets within a single DPO training run for a spoken dialogue system yields simultaneous gains across the combined objectives, rather than the trade-offs one might expect from competing reward signals.
+    source: §7.2, Table 3
+    evidence: RLAIF (Joint-Reward-v1), combining semantic, audio-quality, and intelligibility preference data, achieves the best intelligibility of any RLAIF variant (WER 1.0%, vs. 3.3% for the intelligibility-only model) while maintaining strong UTMOS (2.85) and LLM-judge performance.
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_a_spoken_dialogue_system_for_stronger_semantic_coherence_reward
+    role: complicates
+    claim: Optimizing a spoken dialogue system for stronger semantic-coherence reward signals can come at the cost of emotional expressiveness, since semantic LLM-judge rewards tend to favor safer, more generic responses that reduce speaking-style variation.
+    source: §7.3, Table 4
+    evidence: Adding emotion-consistency preferences on top of joint semantic-audio training (Joint-Reward-v2) yields a worse emotion rank (3.00) than single-reward emotion-only training (1.98) or the non-RLAIF baseline (2.29), attributed to strong semantic rewards favoring safer, more generic responses.
+    confidence: high
+    relevance: high
+  - claim_id: a_dpo_objective_defined_over_utterance_level_preference_pairs_can
+    role: supports
+    claim: A DPO objective defined over utterance-level preference pairs can align blockwise, incrementally-decoded duplex spoken dialogue systems by aggregating per-block log-probabilities into a single sequence-level likelihood, without requiring reward labels at the partial-utterance level.
+    source: §7.4, Table 5
+    evidence: Applying this blockwise aggregation to a duplex SCoT-Response model yields consistent semantic-quality gains (ROUGE-L 19.8→23.1, perplexity 42.3→25.0, LLM-judge 5.95→6.00) relative to its non-RLAIF baseline, without per-block reward annotation.
+    confidence: high
+    relevance: high
+  - claim_id: average_score_improvements_attributed_to_rlaif_post_training_in_spoken
+    role: complicates
+    claim: Average-score improvements attributed to RLAIF post-training in spoken dialogue systems are, per the authors' own account, primarily driven by suppressing degenerate or repetitive generations rather than by a uniform upward shift in response quality.
+    source: §7.1, Table 2
+    evidence: Semantic RLAIF reduces the proportion of low-quality LLM-judge-rated responses (<5) from 10.2% to 7.1% (a 28.5% relative reduction) alongside a large drop in repetition (AutoBLEU 68.3→56.5), which the authors interpret as evidence that gains come from suppressing bad outputs rather than raising the full distribution.
+    confidence: high
+    relevance: high
+  limitations:
+  - All preference data in this study is constructed from automatic evaluators (an LLM judge for semantic quality, UTMOS for audio naturalness, ASR-based WER for intelligibility, and an embedding-similarity model for emotion), not human raters; the authors explicitly flag that this may introduce bias or noise relative to genuine human preferences, and identify human-in-the-loop preference collection as important future work rather than something this paper validates.
+  - The multi-reward formulation combines reward signals via dataset-level concatenation (jointly sampling from separately-constructed preference datasets) rather than explicitly modeling trade-offs or interactions between objectives, which the authors note may limit optimal balancing in some conversational contexts, consistent with the observed semantic-vs-emotion trade-off in Joint-Reward-v2. Experiments are conducted entirely on English conversational data (Switchboard, Eval2000); extending the framework to multilingual settings and more diverse conversational domains is left as an open direction.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.22661'
+  published_date: '2026-01-30'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - negative_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  claims:
+  - claim_id: the_in_context_learning_capability_of_a_pretrained_large_audio
+    role: supports
+    claim: The in-context learning capability of a pretrained large audio language model can be repurposed into an interpretable, reference-based metric for speaking-style consistency, by measuring the model's own likelihood of generating ground-truth audio when conditioned on a candidate utterance as stylistic context.
+    source: §6.3, Figure 5
+    evidence: 'MCLP scores correlate strongly with human MOS judgments in a pairwise win-rate analysis: when the MCLP difference between two utterances exceeds 0.1, the higher-MCLP utterance is preferred by human listeners in over 80% of comparisons, rising well above the chance-level 50% baseline as the MCLP gap increases.'
+    confidence: high
+    relevance: high
+  - claim_id: using_a_continuous_model_derived_style_consistency_signal_as_an
+    role: supports
+    claim: Using a continuous, model-derived style-consistency signal as an RL reward for expressive TTS produces more effective stylistic alignment than relying on discrete emotion-classification-based reward proxies used in prior RL-for-TTS work.
+    source: §6.2-6.3, Tables 2-3
+    evidence: RL training with the MCLP-based reward improves style-consistency scores substantially over the SFT-only checkpoint (MCLP -4.725→-4.636 with audio history) while simultaneously reducing CER, and the resulting system achieves the highest MOS (3.646) among all evaluated systems, approaching ground-truth naturalness (4.411).
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_a_style_consistency_reward_alone_without_an_explicit_content
+    role: contradicts
+    claim: Optimizing a style-consistency reward alone, without an explicit content-fidelity constraint, causes severe reward hacking in RL-trained expressive TTS systems, producing outputs that maximize the style metric while catastrophically failing basic intelligibility, contrary to the assumption that a well-designed style reward alone is sufficient for expressive alignment.
+    source: §6.3, Table 3
+    evidence: An ablation removing the CER-based content reward (style-only optimization) achieves the single highest theoretical MCLP score of any configuration (-4.590) but causes CER to skyrocket above 50%, with the model learning fixed, repetitive, linguistically meaningless acoustic patterns rather than genuine expressive speech.
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_an_expressive_tts_system_for_content_fidelity_alone_without
+    role: complicates
+    claim: Optimizing an expressive TTS system for content fidelity alone, without any explicit stylistic reward, produces a system that actively regresses in stylistic quality relative to a supervised-fine-tuning-only baseline, rather than merely failing to improve it further.
+    source: §6.3, Table 3
+    evidence: An ablation removing the MCLP-based style reward (content-only optimization) achieves the lowest CER of any configuration (0.783%) but its MCLP score (-4.752) is worse than the SFT-only baseline (-4.725), with the model losing prosodic variation and over-articulating purely to maximize ASR accuracy.
+    confidence: high
+    relevance: high
+  - claim_id: lalms_given_only_static_role_play_instructions_without_access_to
+    role: supports
+    claim: LALMs given only static role-play instructions, without access to prior turns' audio, show measurably weaker and less consistent stylistic and content adherence than when given access to the conversation's acoustic history, and RL training can substantially close this gap.
+    source: §6.2, Table 2
+    evidence: Baseline LALMs (GPT-Audio in particular) suffer catastrophic intelligibility degradation without audio history (CER rising from 11.974% to 44.679%), while the proposed RL-trained method maintains low CER in both settings (1.130% vs. 1.625%) and achieves a higher MCLP score with audio history than without (+0.051), showing it successfully leverages historical acoustic cues that baseline systems fail to exploit consistently.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The subjective evaluation supporting the paper''s headline MOS claims is comparatively small-scale: 32 professional annotators rated a curated set of only 31 samples (10 without audio history, 20 with history stratified across dialogue lengths), and after gold-standard quality-control filtering only 30 valid responses remained; the strength of the reported MOS gap (3.646 vs. baselines around 1.7-2.5) should be read against this limited sample size.'
+  - MCLP and the RP-TTS dataset are validated entirely on Mandarin Chinese drama data (WenetSpeech-derived, evaluated via CER and Pinyin WER), and the backbone LALM tested is limited to Step-Audio-2-mini-Base (7B); generalization of MCLP's information-theoretic validity and the reward-gating strategy to other languages or LALM architectures is not empirically demonstrated. The gated reward's tolerance threshold τ and CER penalty coefficient λ are set via a single empirically chosen configuration rather than a sensitivity analysis, leaving the reward formulation's robustness to these hyperparameter choices unexamined.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: 2026.iwsds-1.3
+  published_date: '2026-02-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: IWSDS
+  task:
+  - TTS
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: perceived_personality_style_traits_in_short_first_encounter_spoken_dialogue
+    role: supports
+    claim: Perceived personality/style traits in short, first-encounter spoken dialogue are not uniformly distinguishable; a subset of composite dimensions captures most of the perceptual variance that a larger nominal trait taxonomy targets.
+    source: §3.2, Table 1, Table 2
+    evidence: PCA on third-party Big Five ratings of the Hazumi corpus found the first three principal components explain 86% of variance, and Varimax-rotated EFA produced three interpretable factors (EO, AC, N) rather than five independent ones
+    confidence: medium
+    relevance: medium
+  - claim_id: prosodic_and_paralinguistic_speech_cues_can_convey_affective_personality_information
+    role: supports
+    claim: Prosodic and paralinguistic speech cues can convey affective/personality information that text-only generation cannot reliably express.
+    source: §4.5, §5.2-5.3, Table 10, Table 11
+    evidence: In the speech condition, Neuroticism became significantly and independently perceptible via fillers, alternating speech rate, and pause manipulation, whereas the same trait showed weak, inconsistent separation in the text-only condition
+    confidence: medium
+    relevance: high
+  - claim_id: independently_controlling_multiple_style_or_persona_dimensions_through_prompt_based
+    role: complicates
+    claim: Independently controlling multiple style or persona dimensions through prompt-based text generation is prone to cross-dimension interference, complicating claims of independent controllability for trait-conditioned generation.
+    source: §4.3, Table 6
+    evidence: In Experiment 1, manipulating a single Big Five trait via GPT-4 prompting significantly shifted ratings on unintended traits (e.g., controlling Extraversion or Agreeableness also raised Openness and Conscientiousness ratings), visible in the off-diagonal correlations of Table 6
+    confidence: medium
+    relevance: medium
+  - claim_id: reducing_a_high_dimensional_control_target_to_an_empirically_derived
+    role: refines
+    claim: Reducing a high-dimensional control target to an empirically-derived compressed set of dimensions improves perceptual controllability and consistency compared with attempting to control every dimension of the original taxonomy independently.
+    source: §4.4-4.5, §5.2-5.3, Table 7, Table 8, Table 10, Table 11
+    evidence: The three-trait (EO, AC, N) conditions in Experiments 2 and 3 produced significant high/low separations with lower cross-trait correlation than the five-trait condition in Experiment 1, in both text and speech modalities
+    confidence: medium
+    relevance: medium
+  limitations:
+  - The study is confined to a single language (Japanese), a single dialogue corpus (Hazumi), and a single commercial TTS engine (VoiceText); the authors themselves note that personality impressions may be influenced by the specific TTS system used and call for validation with different TTS engines in future work *(§5.3)*. Personality control in the text condition relies on prompting a single proprietary LLM (GPT-4, version gpt-4-0613) without fine-tuning, so findings about text-based controllability are tied to that model's prompt-following behavior and may not generalize to other LLMs. The speech-based prosodic manipulations (backchannel timing, pause duration, filler insertion, speech-rate scaling) are binary high/low settings drawn from a prior study rather than a learned or continuously tunable control mechanism, and the stimulus set is small (ten dialogues, six controlled speech variations). The study also evaluates perception in a single first-encounter context and does not examine
+    longer-term or repeated interactions.
+  caveats:
+  - For emotion synthesis, this paper provides medium-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: 2026.iwsds-1.9
+  published_date: '2026-02-01'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: IWSDS
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: paralinguistic_emotional_tonal_mismatch_between_a_spoken_utterance_and_its
+    role: supports
+    claim: Paralinguistic (emotional/tonal) mismatch between a spoken utterance and its textual response is a distinct dialogue-breakdown failure mode from textual inconsistency, and can be systematically constructed and measured when parallel emotional recordings of identical text are available.
+    source: §3.1, §3.3
+    evidence: paraling-dial pairs 149 fixed utterance texts with recordings in five emotions (happiness, relaxation, anger, sadness, neutral) across six professional speakers; Mismatched pairs are built by holding the utterance audio fixed and swapping in a response collected for a different emotion label.
+    confidence: high
+    relevance: high
+  - claim_id: a_speech_language_model_that_consumes_raw_audio_directly_is
+    role: complicates
+    claim: A speech language model that consumes raw audio directly is not guaranteed to exploit the paralinguistic cues present in that audio for a downstream consistency-judgment task.
+    source: §6.1
+    evidence: Qwen2-Audio, evaluated zero-shot on the emotional dialogue breakdown detection task, achieves only 50.0% accuracy, at chance level for the balanced binary task.
+    confidence: high
+    relevance: high
+  - claim_id: feature_wise_linear_modulation_of_a_text_representation_by_a
+    role: supports
+    claim: Feature-wise Linear Modulation of a text representation by a discrete emotion signal is an effective way to make a model's interpretation of response text conditional on the emotional tone of the paired utterance.
+    source: §4.1, §6.1
+    evidence: The FiLM-conditioned SentenceBERT classifier reaches 93.8% accuracy with gold emotion labels and 91.2% with predicted emotion labels, far exceeding the Qwen2-Audio chance-level baseline.
+    confidence: high
+    relevance: high
+  - claim_id: when_selecting_a_control_signal_to_represent_paralinguistic_information_for
+    role: refines
+    claim: When selecting a control signal to represent paralinguistic information for a downstream task, the appropriate level of abstraction matters more than the raw richness of the signal; a higher-abstraction categorical signal can outperform lower-level continuous features.
+    source: §6.2, Table 3
+    evidence: Accuracy is 91.2% for a one-hot emotion-label control signal, 72.0% for an intermediate emotion embedding, and 50.4% for raw low-level acoustic features (MFCC, F0, RMS, spectral centroid) used as the FiLM control signal.
+    confidence: high
+    relevance: high
+  - claim_id: conclusions_drawn_from_acted_single_annotator_emotional_speech_resources_evaluated
+    role: complicates
+    claim: Conclusions drawn from acted, single-annotator emotional speech resources evaluated only with objective accuracy metrics may not transfer directly to natural spontaneous emotional dialogue or to human judgments of conversational breakdown.
+    source: §6.3
+    evidence: The authors note paraling-dial consists of acted speech from professional voice actors instructed to emphasize emotional differences, and that the current evaluation relies solely on objective accuracy without a subjective human study of perceived breakdown.
+    confidence: high
+    relevance: high
+  limitations:
+  - The paraling-dial dataset is composed entirely of acted, deliberately exaggerated emotional speech from professional voice actors and trained-annotator-written responses, and all reported results (93.8%/91.2% accuracy) are objective classification metrics with no human perceptual validation that detected "breakdowns" correspond to how real listeners would judge conversational appropriateness.
+  - Beyond the acted-speech and objective-only-evaluation limitations the authors themselves flag, the task is restricted to five discrete emotion categories rather than continuous emotional variation, and the dataset is limited to Japanese short dialogue-style utterances drawn from a single literary source (Aozora Bunko), leaving open how the approach transfers to other languages, domains, and more fine-grained or continuous emotional representations. The authors explicitly propose extending to spontaneous speech, continuous emotion vectors, and subjective user studies as future work (§7).
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2602.03420'
+  published_date: '2026-02-03'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: in_modular_hybrid_tts_pipelines_that_separate_a_token_generating
+    role: supports
+    claim: In modular hybrid TTS pipelines that separate a token-generating language model from an acoustic flow-matching decoder, emotional prosody is predominantly synthesized by the language-model stage rather than the acoustic decoder stage.
+    source: §2.1, Table 1, Figure 2
+    evidence: Cross-conditioning diagnostic on CosyVoice2 (N=300) shows SLM-driven conditioning produces divergent F0/energy contours across emotions (F0 CCC 0.109, energy CCC 0.308) while Flow-driven conditioning yields largely overlapping contours (F0 CCC 0.305, energy CCC 0.737), indicating the flow-matching module mainly performs acoustic rendering.
+    confidence: high
+    relevance: high
+  - claim_id: emotion_specific_directions_in_a_tts_language_model_s_internal
+    role: supports
+    claim: Emotion-specific directions in a TTS language model's internal representations are approximately linearly separable, and this separability is concentrated in mid-to-late transformer layers and attention-output activations, making them the most reliable sites for direction-vector steering.
+    source: §2.2, §4.5, Figure 3, Figure 7
+    evidence: Layer- and operation-level linear probing identifies layers 10-17 and attention outputs as most discriminative for CosyVoice2, with an analogous but shifted peak (layers 5-10) for IndexTTS2; layer-wise steering effectiveness (TEP) correlates with this discriminability (rho = 0.5078).
+    confidence: high
+    relevance: high
+  - claim_id: weighted_composition_of_single_emotion_steering_vectors_extracted_via_mean
+    role: supports
+    claim: Weighted composition of single-emotion steering vectors, extracted via mean-difference contrast between speaker- and content-matched emotional and neutral activations, enables quantitative control over mixed-emotion proportions in synthesized speech beyond what discrete emotion labels or natural-language instructions provide.
+    source: §4.2, Table 2, Figure 4
+    evidence: On CREMA-D (in-distribution) and IEMOCAP (out-of-distribution) with CosyVoice2 and IndexTTS2, CoCoEmo mixed-emotion steering improves E-SIM, H-Rate, and Spearman correlation over no-steering and over instruction-based/emotion-vector baselines, while instruction-based control biases toward the mixed direction without proportional quantitative control.
+    confidence: high
+    relevance: high
+  - claim_id: increasing_activation_steering_strength_to_strengthen_emotional_control_trades_off
+    role: complicates
+    claim: Increasing activation-steering strength to strengthen emotional control trades off against speech naturalness and intelligibility, so steering magnitude must be tuned per backbone rather than maximized freely.
+    source: §4.5, Table 2
+    evidence: The paper reports a stable operating range of alpha in [0, 4.5] without quality degradation, but notes that larger values up to alpha=6.0 may occasionally reduce intelligibility; combining steering with instruction-based conditioning at alpha=5.0 on CosyVoice2/IEMOCAP drops naturalness MOS to 2.18-2.54 from a no-steer baseline of 3.94.
+    confidence: high
+    relevance: high
+  - claim_id: steering_vectors_extracted_for_one_backbone_architecture_do_not_transfer
+    role: complicates
+    claim: Steering vectors extracted for one backbone architecture do not transfer directly to another; the optimal injection layers and steering-strength operating range must be recalibrated per backbone.
+    source: §4.5, Appendix A.1, Table 4
+    evidence: Optimal steering layers differ between CosyVoice2 (top-2 layers, 17 and 14) and IndexTTS2 (top-3 layers, 6, 8, and 1), and discriminability peaks at different depths (layers 10-17 vs. 5-10) due to differing internal architectures (Qwen2-based decoder vs. GPT2-style decoder operating directly on audio codebook tokens).
+    confidence: high
+    relevance: high
+  limitations:
+  - The method is validated on only two hybrid (autoregressive language model + flow-matching decoder) TTS backbones; both share the same broad architectural family, so it is not established from this paper whether the SLM-carries-emotion finding or the steering recipe generalizes to non-autoregressive or purely diffusion-based TTS systems. Steering layers, operations, and the stable alpha range are backbone-specific and must be re-derived (via discriminability probing) for each new model rather than transferring directly. On the IEMOCAP out-of-distribution set, layering steering on top of instruction-based conditioning produced a slight decrease in E-SIM relative to steering alone, which the authors attribute to the subtler emotional expressions in that dataset. The Impact Statement notes that stronger emotional controllability in synthetic speech increases risk for more persuasive impersonation and social-engineering misuse, and recommends consent, disclosure, and abuse-prevention safeguards
+    for deployed systems.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2601.05564'
+  published_date: '2026-02-04'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: recording_professional_actors_performing_llm_generated_dialogue_scripts_rather_than
+    role: supports
+    claim: Recording professional actors performing LLM-generated dialogue scripts, rather than concatenating single-turn utterances or synthetically mixing separately recorded audio tracks, produces more naturalistic evaluation data for both long-term multi-turn emotional consistency and full-duplex interaction timing.
+    source: §2, §3.A, §4.A
+    evidence: The dataset construction pipeline (LLM-scripted dialogues performed by professional actors) is explicitly designed to address the "pseudo-multi-turn" limitation of prior context-aware emotion benchmarks and the "synthetic mixing" limitation of prior full-duplex benchmarks, which fail to place interruptions at cognitively meaningful semantic junctures like hesitations.
+    confidence: high
+    relevance: high
+  - claim_id: current_spoken_dialogue_systems_can_perform_emotional_trajectory_tracking_and
+    role: complicates
+    claim: Current spoken dialogue systems can perform emotional trajectory tracking and causal emotional reasoning at near-ceiling accuracy while still struggling substantially to generate empathetic vocal and textual responses.
+    source: §5, Table 2
+    evidence: In the Emotional Intelligence track, top teams scored near-ceiling on Task 1 (Emotional Trajectory Detection, ~4.8-5.0/5) and Task 2 (Emotional Reasoning, ~4.9-5.0/5) but markedly lower on Task 3 (Empathy Assessment, ~3.7-4.1/5 for even the top three teams).
+    confidence: high
+    relevance: high
+  - claim_id: in_full_duplex_spoken_dialogue_systems_correctly_rejecting_non_instructional
+    role: complicates
+    claim: In full-duplex spoken dialogue systems, correctly rejecting non-instructional speech without falsely interrupting is a harder capability to achieve than correctly responding to genuine user interruptions.
+    source: §5, Table 3
+    evidence: 'Rejection scores were consistently lower than Interruption scores across nearly every submitted system, including the overall winner (Cookie asr: 79.3 Interruption vs. 72.2 Rejection) and the highest raw Interruption scorer (Badcat: 89.7 Interruption vs. only 57.8 Rejection).'
+    confidence: high
+    relevance: high
+  - claim_id: a_composite_evaluation_score_combining_automated_llm_judge_scoring_for
+    role: supports
+    claim: A composite evaluation score combining automated LLM-judge scoring for semantic and reasoning tasks with human ratings for emotional appropriateness and audio naturalness can differentiate competing spoken dialogue systems across both textual and acoustic dimensions of empathetic response generation.
+    source: §3.B, Table 2
+    evidence: The Track I scoring formula combines Qwen3-Omni-30B-judged trajectory, reasoning, and textual empathy scores with separately collected human ratings (20 evaluators with bachelor's degrees and 6+ months of annotation experience) for emotional appropriateness and naturalness, and this composite scoring produced a clear final ranking across the 8 submitted teams.
+    confidence: high
+    relevance: high
+  limitations:
+  - As a challenge summary paper, deep comparative analysis of why particular systems succeeded or failed is deferred to a stated follow-up publication rather than presented here.
+  - The Emotional Intelligence track's dataset is generated via a hybrid LLM-script-plus-actor pipeline (Gemini 2.5 Pro for scripts, professional actors for performance) rather than sourced from real spontaneous human conversations, so some degree of scripted artificiality remains despite the improvement over synthetic mixing.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.07599'
+  published_date: '2026-03-08'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: multi_turn_semantic_coherence_is_a_necessary_precondition_for_evaluating
+    role: supports
+    claim: Multi-turn semantic coherence is a necessary precondition for evaluating a conversational speech system's style-control ability, and should be measured and gated before finer-grained style metrics are applied.
+    source: §3.3, Table 2
+    evidence: Only 3 of 10 evaluated SLMs exceeded a 60% Multi-turn Relevance Degree despite most scoring highly on single-turn relevance; the study applies an MRD > 40% threshold to filter which models are eligible for style-control evaluation at all.
+    confidence: high
+    relevance: high
+  - claim_id: differences_in_pretraining_data_composition_specifically_whether_a_model_is
+    role: supports
+    claim: Differences in pretraining data composition, specifically whether a model is trained mainly on conventional ASR/spoken-QA-style corpora versus unsupervised natural dialogue or style-targeted data, are a primary driver of a speech language model's ability to follow conversational style-intensity instructions, independent of parameter count.
+    source: §3.4.1, Table 3
+    evidence: Among similarly-sized 7-9B models, GLM-4-Voice (trained with unsupervised speech data) and Kimi-Audio (trained with a dataset explicitly designed for style control) substantially outperform LLaMA-Omni2 and Baichuan-Omni-1.5, which were curated mainly for ASR and spoken QA and show almost no response to emotional-style instructions.
+    confidence: high
+    relevance: high
+  - claim_id: the_design_of_the_discrete_speech_tokenizer_independently_shapes_how
+    role: supports
+    claim: The design of the discrete speech tokenizer independently shapes how well paralinguistic style cues are preserved and reproduced, separate from the waveform decoder used downstream.
+    source: §3.4.2
+    evidence: Most evaluated SLMs share a flow-matching-based decoder, yet performance still diverges sharply; GLM-4-Voice's independently trained tokenizer is found to retain more semantic and acoustic style information than tokenizers built on SpeechTokenizer or Whisper-large-v3, and speech tokens synthesized from identical text under different styles are shown to differ, indicating tokens inherently carry paralinguistic cues.
+    confidence: high
+    relevance: high
+  - claim_id: automatic_classifier_based_scoring_is_unreliable_for_quantifying_fine_grained
+    role: complicates
+    claim: Automatic classifier-based scoring is unreliable for quantifying fine-grained, graded emotional style intensity in synthesized conversational speech, limiting how much of this evaluation dimension can be fully automated.
+    source: §3.1
+    evidence: Emotion2Vec-based classification reliability drops when scoring style intensity in synthesized data, and its softmax confidence score saturates above 0.95, failing to capture fine-grained turn-to-turn changes; the authors fall back on human evaluation for the emotion dimension while using automatic acoustic metrics (SPM, RMS, F0) for speed, volume, and pitch.
+    confidence: high
+    relevance: high
+  - claim_id: strong_single_turn_instruction_following_performance_does_not_reliably_predict
+    role: complicates
+    claim: Strong single-turn instruction-following performance does not reliably predict a speech language model's ability to sustain consistent semantic and stylistic control across multi-turn dialogue.
+    source: §3.3, Table 2
+    evidence: Several models with high Single-turn Relevance Degree (e.g. Freeze-Omni at 91.94%, MiniCPM-o 2.6 at 95.07%) drop to Multi-turn Relevance Degree scores of 26.46% and 26.18% respectively, well below the study's 40% eligibility threshold for style-control evaluation.
+    confidence: high
+    relevance: high
+  limitations:
+  - The benchmark evaluates only 10 open-source SLMs and OLMs; no commercial or closed-source omni model (e.g. GPT-4o, which the paper cites as having established the interactive paradigm) is included, so the study cannot establish where the current state of the art actually stands on style-intensity control.
+  - The emotion dimension depends entirely on human evaluation because the authors found no automated classifier reliable at this granularity, which limits the scalability and exact reproducibility of that portion of the benchmark relative to the automatically-scored speed, volume, and pitch dimensions. Coverage is restricted to two languages (English and Chinese) and eight speaker timbres. The diagnostic explanations offered for the observed performance gaps (training data composition, tokenizer design) are drawn from comparing published model differences rather than from controlled ablations run by the authors themselves, so they should be read as plausible explanatory hypotheses rather than causally isolated findings.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.09120'
+  published_date: '2026-03-10'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: injecting_an_explicit_learned_emotion_conditioning_signal_into_the_sequence
+    role: supports
+    claim: Injecting an explicit, learned emotion-conditioning signal into the sequence-modulation stage of a two-stage voice conversion architecture substantially improves controllable emotion conversion accuracy without degrading speaker identity, linguistic content, or perceptual quality.
+    source: §5.1, Table 1
+    evidence: Adding the Emotion-Aware Prefix and Deep-Prefix Prompting to VEVO raises Emotion Conversion Accuracy from 42.40% to 85.50% while EER improves (5.40% -> 4.50%), WER improves (10.08% -> 6.28%), and DNSMOS overall quality improves slightly (3.093 -> 3.152).
+    confidence: high
+    relevance: high
+  - claim_id: in_two_stage_sequence_modulation_acoustic_realization_voice_conversion_architectures
+    role: refines
+    claim: In two-stage (sequence-modulation + acoustic-realization) voice conversion architectures, controllable emotional expression is primarily determined at the sequence-modulation stage, with the acoustic-realization stage acting as a faithful but subordinate renderer.
+    source: §5.2, Table 2
+    evidence: Isolating emotion prompts to each stage shows Control Sequence reaches 47.00% ECA versus Control Acoustic at 34.50% for the proposed method, and joint control of both stages yields a non-additive jump to 85.50% ECA.
+    confidence: high
+    relevance: high
+  - claim_id: explicit_emotion_conditioning_mechanisms_designed_for_two_stage_vc_backbones
+    role: complicates
+    claim: Explicit emotion-conditioning mechanisms designed for two-stage VC backbones do not transfer safely to single-stage, acoustically coupled architectures; without a decoupled acoustic stage, improving emotion control can come at the cost of severe speaker identity degradation.
+    source: §5.3, Table 3
+    evidence: Applying the same Emotion-Aware Prefix to GenVC (a single-stage architecture without acoustic decoupling) improves ECA from 32.48% to 58.35% but nearly doubles EER, from 20.87% to 44.51%, whereas the same prefix applied to VEVO's decoupled architecture preserves identity.
+    confidence: high
+    relevance: high
+  - claim_id: explicit_high_intensity_emotion_control_in_voice_conversion_can_introduce
+    role: complicates
+    claim: Explicit, high-intensity emotion control in voice conversion can introduce a small naturalness cost even when other objective and subjective quality metrics improve.
+    source: §5.1
+    evidence: The proposed method's UTMOSv2 naturalness score is slightly lower than the VEVO backbone's (2.96 vs. 3.06) despite simultaneous improvements in WER, EER, and DNSMOS.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The evaluation trains and tests on a single dataset (ESD: 10 English speakers, 5 categorical emotions), with test utterances drawn from the same speakers seen during fine-tuning rather than held-out speakers, so the paper does not directly demonstrate that the Emotion-Aware Prefix generalizes to unseen speakers or to emotions/intensities beyond ESD''s five categorical labels. The comparative acoustic-decoupling analysis uses only two VC backbones (VEVO and GenVC), which the authors treat as representative of decoupled vs. coupled designs, but this leaves open how the finding generalizes across other two-stage or end-to-end VC architectures. The subjective evaluation involved a small pool of ten listeners.'
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.11683'
+  published_date: '2026-03-12'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_emotion_control
+  claims:
+  - claim_id: explicit_counterfactual_training_constraints_that_penalize_a_direct_conditioning_to
+    role: supports
+    claim: Explicit counterfactual training constraints that penalize a direct conditioning-to-output pathway can reduce cross-attribute leakage (e.g. emotion bleeding into speaker timbre or content) more effectively than conditioning on the attribute embedding alone.
+    source: §7.3, Table 2
+    evidence: Removing the Indirect Path Constraint (IPC) loss while keeping the emotion-augmented backbone drops emotion-classification accuracy from 94% to about 88% and slightly lowers content-consistency, indicating the suppressed direct pathway reappears once the counterfactual constraint is removed.
+    confidence: high
+    relevance: high
+  - claim_id: a_prosody_mediator_limited_to_duration_pitch_and_energy_cannot
+    role: complicates
+    claim: A prosody mediator limited to duration, pitch, and energy cannot represent all emotion-relevant acoustic variation, so causal or disentanglement objectives built solely on these features leave some emotional cues unmodeled.
+    source: §7.5 Error Analysis; §8 Discussion and Limitations
+    evidence: The "disgusted" emotion category is repeatedly confused with anger by both the model and an external emotion classifier, which the authors attribute to voice-quality cues (e.g. creaky voice, spectral tilt) that are not captured by duration, pitch, or energy alone.
+    confidence: high
+    relevance: high
+  - claim_id: training_time_mechanisms_that_structurally_constrain_how_a_style_or
+    role: supports
+    claim: Training-time mechanisms that structurally constrain how a style or attribute signal reaches the output can preserve target-speaker identity better than post-hoc editing of a pretrained model's internal activations.
+    source: §7.1, Table 1
+    evidence: A post-hoc counterfactual-activation-editing baseline (CAE) applied to a pretrained emotion-conditioned FastSpeech2 model shows lower speaker-similarity cosine (0.79) than the causal-mediation model (0.88), and listeners preferred the causal model's speaker match over CAE's in 85% of ABX trials.
+    confidence: high
+    relevance: high
+  - claim_id: enforcing_counterfactual_consistency_constraints_during_training_carries_a_nontrivial_computatio
+    role: complicates
+    claim: Enforcing counterfactual consistency constraints during training carries a nontrivial computational overhead relative to standard conditioned training.
+    source: §4.4 Combined Training Objective; §8 Discussion and Limitations
+    evidence: The extra IPC and CPC forward passes roughly double per-sample computation, and total training time increases by about 1.5x compared to baseline FastSpeech2 training.
+    confidence: high
+    relevance: high
+  limitations:
+  - The central disentanglement claim rests on the assumption that all emotion-relevant acoustic effects are captured by duration, pitch, and energy alone. The authors acknowledge this is not fully true (voice quality and spectral-tilt cues are excluded by construction), so the causal constraint may suppress emotional information the mediator cannot represent rather than route it correctly.
+  - 'The evaluation is limited to a single backbone architecture, English speech, and a small emotional corpus (EmoV-DB: five emotions, four actors, about eight hours), with subjective ratings from 20 listeners and only two synthesis voices tested for cross-speaker emotion transfer. Emotion labels are coarse categorical classes rather than continuous arousal/valence descriptors, which the authors note limits the granularity of controllable expression. The counterfactual training procedure adds roughly 1.5x training time and doubles per-sample compute, a cost the paper does not evaluate at larger model or data scale. No code or demo availability is stated in the paper.'
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2602.09823'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - GAN
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  - gan_based_expressive_transfer
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: decoupling_dialogue_intelligence_from_speaker_identity_by_reformatting_existing_tts
+    role: supports
+    claim: Decoupling dialogue intelligence from speaker identity by reformatting existing TTS recordings into pseudo-conversations with masked text-response loss enables voice customization for a dialogue model without collecting new dialogue-format training data in that voice.
+    source: §2.4, §3.2, Table 5
+    evidence: Covo-Audio-Chat-TTS, whose dialogue voice is transferred directly from TTS speaker data via masked-loss pseudo-conversation training rather than authentic high-quality dialogue recordings, achieves near-parity bilingual dialogue scores with Covo-Audio-Chat (AlpacaEval 89.34 vs. 90.02 Chinese, 84.49 vs. 85.73 English).
+    confidence: high
+    relevance: low
+  - claim_id: interleaving_continuous_acoustic_features_discrete_audio_tokens_and_text_at
+    role: supports
+    claim: Interleaving continuous acoustic features, discrete audio tokens, and text at coarser phrase- and sentence-level granularity during large-scale pretraining, rather than word/character-level alignment, can improve reasoning and grammatical consistency in speech-text foundation models.
+    source: §2.2, §3.1, Table 3
+    evidence: The hierarchical tri-modal interleaving pretraining yields a foundation model (Covo-Audio-Base) that outperforms character/word-level interleaved and specialized A2A baselines on sBLIMP (61.6 vs. 58.3 for SpiritLM) and sWUGGY (74.90 vs. 69.00 for SpiritLM), and reaches 99.4 T2T-tSC.
+    confidence: high
+    relevance: low
+  - claim_id: folding_full_duplex_conversational_behavior_directly_into_large_scale_pretraining
+    role: complicates
+    claim: Folding full-duplex conversational behavior directly into large-scale pretraining, instead of a dedicated multi-stage post-training curriculum, can preserve most dialogue quality but introduces a distinct failure mode around fine-grained turn boundaries.
+    source: §3.3, Table 9
+    evidence: Covo-Audio-Chat-FD maintains dialogue scores close to the half-duplex Covo-Audio-Chat and reaches 99.7% turn-taking success, but its pause-handling success (97.6%) is lower, traced by the authors to an "early-response" behavior where the model interrupts the user during short intra-turn pauses.
+    confidence: high
+    relevance: high
+  - claim_id: llm_as_judge_scoring_of_empathetic_speech_quality_can_diverge
+    role: complicates
+    claim: LLM-as-judge scoring of empathetic speech quality can diverge from human-perceived vocal empathy, since automated judges may weight the semantic content of a response over its acoustic delivery.
+    source: §3.2, Table 7
+    evidence: Covo-Audio-Chat attains the top LLM-judged (Gemini 2.5 Pro) Mandarin empathy scores on the VStyle benchmark, but the authors report that a preliminary subjective listening test found the model still underperforms a leading commercial system (Doubao) on perceived voice empathy, and call for a more equitable evaluation criterion.
+    confidence: high
+    relevance: medium
+  - claim_id: a_discrete_speech_tokenizer_built_on_a_self_supervised_speech
+    role: supports
+    claim: A discrete speech tokenizer built on a self-supervised speech representation and trained with a combined recognition, reconstruction, and prosody objective can support both accurate speech understanding and high-fidelity resynthesis within a single LLM token vocabulary.
+    source: §2.1, Table 4
+    evidence: The speech tokenizer (WavLM-large plus a single VQ layer, 16,384-entry codebook, 25 Hz), trained with joint ASR, TTS-reconstruction, and pitch losses, underlies a model that achieves 1.96% Aishell-1 and 1.96%/4.55% LibriSpeech clean/other recognition error alongside 2.44/1.73 Seed-TTS Test-en/Test-zh generation scores from the same token vocabulary.
+    confidence: high
+    relevance: low
+  limitations:
+  - Self-reported LLM-judge evaluation gap The paper's own empathy evaluation (VStyle, Table 7) uses an LLM judge (Gemini 2.5 Pro) that the authors themselves note is likely to prioritize semantic content over actual vocal quality; a preliminary subjective listening test reportedly found the model underperforming a leading commercial system on real perceived empathy, but no quantitative subjective results are reported.
+  - Full-duplex evaluation is limited to comparison against two open-source baselines (Moshi, Freeze-Omni) rather than the newer parallel-stream or Thinker-Talker full-duplex systems the paper discusses in related work. The knowledge dimension of VCB Bench (general knowledge, dialogue comprehension) is explicitly reported as weaker than Qwen3-Omni, attributed by the authors to a deliberate prioritization of interaction capabilities. As a technical report, all comparisons are self-run and not independently verified, and the pretraining corpus (8 million hours of audio, 3T tokens) is not publicly named or released in detail, limiting reproducibility.
+  caveats:
+  - For emotion synthesis, this paper provides medium-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.16483'
+  published_date: '2026-03-17'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - control_evidence
+  current_role: active_evidence
+  method_family: []
+  claims:
+  - claim_id: ser_models_trained_exclusively_on_human_speech_exhibit_a_substantial
+    role: supports
+    claim: SER models trained exclusively on human speech exhibit a substantial and consistent accuracy drop when applied to synthesized speech, even when the target emotion is confirmed by human listeners to be clearly expressed in the synthesized audio.
+    source: §4.1, §4.1.4, Table 1, Fig. 2
+    evidence: Emotion2vec confusion matrices lose their diagonal structure on TTS-synthesized TESS/CREMA-D after manual filtering for perceptible emotion, and weighted accuracy falls from 71.28%/99.64% (human IEMOCAP/TESS) to 49.58%/15.31% (synthesized IEMOCAP/TESS) for a human-trained model.
+    confidence: high
+    relevance: high
+  - claim_id: within_a_multi_stage_neural_tts_pipeline_autoregressive_token_generation
+    role: refines
+    claim: Within a multi-stage neural TTS pipeline (autoregressive token generation, flow matching, vocoder), the dominant source of downstream understanding-model domain shift is the autoregressive token-generation stage, not the acoustic-synthesis stages that follow it.
+    source: §5.3, Fig. 9
+    evidence: Substituting ground-truth mel-spectrograms or ground-truth speech tokens for real audio degrades SER accuracy only marginally (83.93% real to 82.43%-84.07% reconstructed), while driving synthesis from AR-predicted tokens drops accuracy to approximately 30-50%.
+    confidence: high
+    relevance: high
+  - claim_id: fine_tuning_an_emotion_recognition_model_on_a_mixture_of
+    role: complicates
+    claim: Fine-tuning an emotion-recognition model on a mixture of human and synthesized speech, including with a domain-adversarial objective intended to remove synthesis-identity information from the representation, improves in-domain accuracy but does not transfer to unseen synthesis models or held-out attribute combinations, indicating the model exploits synthesis-specific shortcuts rather than learning emotion features that are invariant to how the speech was produced.
+    source: §5.2, Table 4
+    evidence: Mixed-domain MLP training reaches 73.14%/88.73% in-domain accuracy on human/synthesized speech but drops sharply on OOD CREMA-D partitions; gradient-reversal-layer domain-adversarial variants (DANN_syn/vocoder/model) do not meaningfully improve OOD generalization despite a rising domain loss confirming the adversarial objective is active.
+    confidence: high
+    relevance: high
+  - claim_id: generative_speech_language_models_infer_emotion_primarily_from_the_semantic
+    role: complicates
+    claim: Generative speech language models infer emotion primarily from the semantic content of the transcribed speech rather than from paralinguistic acoustic cues, and this text-dominant behavior is not corrected by prompt instructions to ignore textual content.
+    source: §4.3, Fig. 5, Appendix B
+    evidence: Qwen3-Omni and GPT-4o Audio average 73.3% accuracy on benchmarks where the transcript is informative of emotion but drop to 19.6% average accuracy on TESS/CREMA-D, where the same sentence is read under different emotions; adding explicit "ignore textual content, judge emotion only from acoustic characteristics" instructions does not change this result.
+    confidence: high
+    relevance: high
+  - claim_id: the_synthesized_speech_emotion_understanding_gap_is_not_confined_to
+    role: supports
+    claim: The synthesized-speech emotion-understanding gap is not confined to weaker or open-source components; it persists when both the synthesis model and the recognition model are top-tier commercial systems.
+    source: §4.2, §4.4, Table 2, Fig. 6
+    evidence: Gemini 2.5 Pro, evaluated on speech synthesized by GPT-4o mini TTS and GPT-4o Audio, still produces confusion matrices without a clear diagonal structure, and Emotion2vec accuracy on GPT-4o mini TTS/GPT-4o Audio outputs remains at 32.94%-64.16% across CREMA-D and TESS.
+    confidence: high
+    relevance: high
+  limitations:
+  - The evaluation depends on manual human filtering to establish ground truth for "clearly expressed" target emotion in synthesized clips, using only four in-house annotators; this introduces potential subjectivity and caps the scale of the synthetic test sets (only ~4k synthetic clips survive filtering versus ~40k human clips used for fine-tuning), which the authors themselves flag as a limitation.
+  - The attempted remedy (domain-adversarial fine-tuning with a gradient-reversal layer) fails to generalize to unseen synthesis models, so the paper leaves open how the synthesized-speech representation gap could actually be closed; the authors suggest pretraining better representation models as future work rather than proposing a validated fix. The three-stage pipeline decomposition is demonstrated only on CosyVoice 2 and IndexTTS 2 (both autoregressive-token-then-flow-matching architectures), so it is not established whether the same token-generation-dominant failure mode holds for TTS architectures built on different generative mechanisms (e.g., pure diffusion or GAN-based systems without a discrete token-prediction stage).
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.16783'
+  published_date: '2026-03-17'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - historical_context
+  current_role: minor
+  method_family:
+  - autoregressive_emotion_language_models
+  - flow_matching_emotional_synthesis
+  claims:
+  - claim_id: a_dedicated_turn_taking_prediction_mechanism_operating_on_streaming_speech
+    role: supports
+    claim: A dedicated turn-taking prediction mechanism operating on streaming speech tokens can give a speech-generating model the ability to proactively interrupt mid-turn, a capability that omni dialogue models built for system-side generation do not provide.
+    source: §6.1, Table 4
+    evidence: SpokenUS's turn-taking head, evaluated on 500 turn-end and 500 barge-in cases from the SpokenTOD test set, reaches 66.0%/58.6% exact-window accuracy (82.4%/69.6% for the binary speak-vs-listen decision), a capability the paper argues no baseline omni model supports architecturally.
+    confidence: high
+    relevance: low
+  - claim_id: grounding_a_speech_generation_system_in_structured_task_oriented_dialogue
+    role: supports
+    claim: Grounding a speech generation system in structured task-oriented dialogue state can substitute for scale, allowing a small model trained on limited audio to match or exceed the perceived naturalness of much larger models trained on orders of magnitude more data.
+    source: §5, Table 3
+    evidence: SpokenUS (3B params, ~1K training hours) reaches Human MOS 4.06, exceeding Qwen3-Omni-30B-A3B (3.18) despite that baseline using ~20x more parameters and ~20,000x more training audio (~20M hours).
+    confidence: high
+    relevance: low
+  - claim_id: realistic_spoken_user_behavior_disfluency_gradual_slot_disclosure_cross_turn
+    role: complicates
+    claim: Realistic spoken user behavior (disfluency, gradual slot disclosure, cross-turn slots) poses a downstream robustness challenge to dialogue agents that is largely independent of the synthesized speech's intelligibility or perceived quality.
+    source: §6.3, Table 5
+    evidence: Under a cascaded ASR pipeline, SpokenUS's behaviors caused a 24.3-point drop in a fixed GPT-4.1-mini agent's Final Slot F1, versus a 3.7-point drop for Qwen2.5-Omni-3B, even though SpokenUS achieves lower WER (11.36% vs. up to 15.68%) and higher Human MOS than that baseline.
+    confidence: high
+    relevance: low
+  - claim_id: speaker_embedding_similarity_metrics_can_be_confounded_by_degraded_speech
+    role: complicates
+    claim: Speaker-embedding similarity metrics can be confounded by degraded speech quality, since acoustically poor synthesis can appear to preserve speaker identity as strongly as natural, high-quality variation does.
+    source: §5
+    evidence: Qwen2.5-Omni-3B shows similarity scores (0.90, 0.92) comparable to SpokenUS and close to the human range, despite a substantially lower Human MOS (2.34), indicating the metric does not by itself distinguish genuine speaker consistency from generically uniform low-quality output.
+    confidence: high
+    relevance: low
+  limitations:
+  - The evaluation is constrained to 100 dialogues from a single benchmark (SpokenWOZ) and to English; the paper does not report results on other languages or TOD domains, and goal-alignment/slot metrics are scored by an LLM judge (GPT-4.1-mini) rather than human annotators, though the paper cites a prior reported MCC of 0.77 against human judgments for a comparable protocol.
+  - SpokenTOD's augmentation pipeline covers only four behavior categories (cross-turn slots, barge-in, disfluency, emotion); the authors note that laughter, overlapping speech, and code-switching are not modeled. The dataset is built primarily from TTS-synthesized speech rather than naturally recorded spoken dialogue (mitigated partly by folding in SpokenWOZ's human recordings), and does not model adverse acoustic conditions such as background noise or channel degradation, though the authors argue standard augmentation could be layered on afterward. Barge-in detection accuracy (58.6% exact-window) is markedly weaker than turn-end detection (66.0%), and the paper attributes much of this gap to confusion between the two non-listen classes rather than to detecting the moment to speak itself.
+  caveats:
+  - For emotion synthesis, this paper provides low-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.17231'
+  published_date: '2026-03-18'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - VC
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - autoregressive_emotion_language_models
+  claims:
+  - claim_id: compact_sparsely_selected_subsets_of_neurons_inside_a_speech_generative
+    role: supports
+    claim: Compact, sparsely selected subsets of neurons inside a speech-generative model's decoder feed-forward layers can be causally responsible for emotional expression, separable from generic output degradation.
+    source: §5.2.1, §5.3.1, Table 3, Figure 6
+    evidence: Contrastive-margin-selected masks (r=0.5%) produce large positive self-effects with near-zero cross-effects (+4.27/+3.60 pp self vs. +0.34/-0.05 pp cross on Qwen2.5-Omni-7B), and deactivating the same neurons consistently harms rather than helps target-emotion realization, evidencing a causal rather than correlational role.
+    confidence: high
+    relevance: high
+  - claim_id: the_criterion_used_to_rank_and_select_control_relevant_neurons
+    role: supports
+    claim: The criterion used to rank and select control-relevant neurons materially determines downstream intervention effectiveness; margin-based selection that isolates emotion-exclusive neurons outperforms frequency- or entropy-based selection.
+    source: §5.2.1, Table 3
+    evidence: Across all three evaluated LALMs, contrastive-margin (CAS) and mean-activation-deviation (MAD) selectors yield larger self-cross separation than activation-probability (LAP) or entropy-based (LAPE) selectors, with LAPE showing diffuse effects where off-target gains can rival on-target ones.
+    confidence: high
+    relevance: high
+  - claim_id: pushing_inference_time_activation_intervention_strength_to_maximize_a_target
+    role: complicates
+    claim: Pushing inference-time activation intervention strength to maximize a target behavior trades off sharply against linguistic content preservation once a moderate threshold is exceeded, without a corresponding drop in perceived naturalness.
+    source: §5.3.2, Table 4
+    evidence: Raising the steering gain from α=1.0 to α=2.0 on Qwen2.5-Omni-7B increases self-effect emotion match from +4.27/+3.60 pp to +8.89/+20.67 pp but inflates WER from 29.65% to 203.65% (+184.65 pp over baseline), while UTMOS drops only marginally (3.99 to 3.91).
+    confidence: high
+    relevance: high
+  - claim_id: in_lalms_that_couple_a_language_model_decoder_to_a
+    role: refines
+    claim: In LALMs that couple a language-model decoder to a downstream speech-synthesis module, the locus of controllable emotion modulation sits in intermediate-to-late language-model layers rather than in the synthesis-side network.
+    source: §5.5, Table 6, Figure 9
+    evidence: Applying the identical identification-and-intervention pipeline to Qwen2.5-Omni-7B's synthesis-module MLPs (same c, r, α as the language-model experiment) collapses the self-cross gap to near-zero or negative values across every selector, while ESN concentration heatmaps place the effective neurons in layers 11-15 (Qwen2.5-Omni-7B) or 19-22 (Kimi-Audio) of the language-model decoder.
+    confidence: high
+    relevance: high
+  - claim_id: training_free_neuron_level_emotion_control_identified_from_a_fixed
+    role: complicates
+    claim: Training-free neuron-level emotion control identified from a fixed speaker population does not transfer uniformly to unseen speakers; generalization is emotion-dependent.
+    source: §5.6, Figure 10
+    evidence: Under the CAS steering configuration, angry and surprise gains persist with comparable magnitude on TEST-UNSEEN speakers, whereas happy shows near-zero or slightly negative unseen-speaker effect and sad drops noticeably relative to TEST-SEEN, despite all four emotions being identified from the same protocol.
+    confidence: high
+    relevance: high
+  limitations:
+  - The core intervention-strength and intervention-method sweeps (Tables 4, and the method comparison in §5.3.1) are conducted on a single model, Qwen2.5-Omni-7B, so the reported optimal α range and the ranking of steering/additive/clamping/deactivation operators are not independently confirmed on MiniCPM-o 4.5 or Kimi-Audio.
+  - Emotion coverage is restricted to four target emotions (happy, angry, sad, surprise) converted from a neutral source, and the study only tests neutral-to-emotion conversion rather than the full bidirectional emotion-to-emotion space that EVC in principle covers. The human listening study uses 20 participants and a single anchor configuration, so it validates the chosen default setting rather than the full sweep of selectors, sparsities, and strengths reported from automatic judges. Agreement between the two automatic SER judges (emotion2vec+large and the Qwen3-Omni-30B LALM judge) is not always tight, and the paper itself notes that human- versus SER-filtered ESN identification yields only partial neuron-level overlap (Jaccard 0.118 on average) even though layer-wise distributions agree closely, leaving open how sensitive the reported effect sizes are to the specific automatic judge chosen. Codec and synthesis-module implementation details of the evaluated LALMs are not reported in the
+    paper.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence; claims primarily concerning other concepts remain included at lower relevance.
+- id: '2603.22252'
+  published_date: '2026-03-23'
+  entry_date: '2026-11-12'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - hybrid_semantic_acoustic_emotion_systems
+  claims:
+  - claim_id: applying_an_adversarial_disentanglement_loss_directly_between_two_learned_embeddings
+    role: supports
+    claim: Applying an adversarial disentanglement loss directly between two learned embeddings (rather than between each embedding and its external classification label) can more effectively suppress cross-attribute leakage when label correlations exist in the training data.
+    source: §3.1.1, Table 2
+    evidence: The proposed cosine-similarity GRL applied directly between speaker and emotion embeddings achieves the lowest CKA (0.0139, least entangled) of all tested encoder-loss/GRL configurations, while retaining the highest EECS (0.8793) and competitive SECS (0.8103), outperforming both no-GRL and label-based cross-entropy GRL variants.
+    confidence: high
+    relevance: high
+  - claim_id: using_a_generative_model_s_own_voice_conversion_output_as
+    role: supports
+    claim: Using a generative model's own voice-conversion output as a post-hoc self-augmentation stage, applied only after the base model has already learned the target task, can improve output naturalness without substantially degrading target-attribute fidelity.
+    source: §3.1.3, Tables 5-6
+    evidence: Adding a 50k-step self-augmentation refinement stage raised UTMOS from 3.4899 to 3.6104 while EECS decreased only from 0.8793 to 0.8423 and SECS improved slightly; using the synthetic samples as literal training targets (rather than as additional style references) instead degraded naturalness, attributed to VC-introduced artifacts.
+    confidence: high
+    relevance: high
+  - claim_id: cross_speaker_style_transfer_systems_trained_and_evaluated_within_a
+    role: complicates
+    claim: Cross-speaker style transfer systems trained and evaluated within a single recording corpus do not necessarily preserve intelligibility when applied across corpora with different acoustic conditions, even when speaker identity is preserved.
+    source: §3.2, Table 7
+    evidence: In a cross-corpus configuration (training on LJSpeech and VCTK speakers, evaluating against ESD-derived emotion centroids), WER rose to roughly 1.08-1.15 compared to about 0.23 in the matched-corpus setting, while SECS remained high (0.86-0.91), which the authors attribute to acoustic mismatch between the ESD emotional references and the target recording conditions.
+    confidence: high
+    relevance: high
+  - claim_id: for_emotion_embedding_leakage_suppression_the_compatibility_between_an_encoder
+    role: refines
+    claim: For emotion-embedding leakage suppression, the compatibility between an encoder's architecture and the disentanglement mechanism matters more than heuristic input perturbations applied to that encoder.
+    source: §3.1.2, Table 3
+    evidence: Adding 20-mel-bin filtering or formant-based timbre perturbation to the Reference Encoder, or substituting alternative emotion encoders (StyleSpeech, StyleTTS), monotonically reduced EECS (down to 0.48-0.59 in the most perturbed configurations) relative to the unperturbed Reference Encoder (EECS 0.8793), and no substitute encoder outperformed it.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'Cross-corpus generalization is not yet reliable: word error rate rose above 1.0 in the cross-corpus evaluation (§3.2), an order of magnitude worse than the in-domain result, indicating the transcribed output diverges substantially from the intended text when recording conditions differ from training, even though speaker-similarity metrics stay high.'
+  - Beyond the cross-corpus intelligibility gap, the evaluation is limited to two held-out target speakers within a single corpus (ESD, English subset only) and a modest 30-participant listening test. The method does not yet support zero-shot style transfer to unseen speakers; the authors state this, along with cross-lingual scalability of MPCL and self-augmentation, as future work rather than a demonstrated capability. The paper also does not report model parameter counts or inference latency, and speaker/emotion conditioning at test time uses centroid prototypes from the training style space rather than arbitrary reference audio, so behavior with freely chosen reference clips is untested.
+  caveats:
+  - For emotion synthesis, this paper provides high-relevance evidence on disentangled emotional transfer, self-augmentation, and cross-corpus limits.
 claim_clusters:
 - id: explicit_emotion_conditioning_improves_expressiveness
   claim: Explicit emotion conditioning improves the recognizability and perceived expressiveness of synthesized
@@ -6977,6 +8098,12 @@ claim_clusters:
   - '2510.22588'
   - 2025.emnlp-main.180
   - neurips-2025-SYcggdxX6W
+  - '2601.12480'
+  - '2409.16681'
+  - '2601.12289'
+  - '2602.03420'
+  - '2603.09120'
+  - '2603.17231'
   contradicting_papers: []
   refining_papers:
   - '2503.11026'
@@ -6987,9 +8114,13 @@ claim_clusters:
   - '2512.09504'
   caveats:
   - Results depend on emotion taxonomy, corpus balance, and the strength of the neutral baseline.
-  - Q4 confirms controllability across continuous intensity, dialogue style, descriptive prompts, and word-level
-    transitions, while also showing that reference leakage and over-conditioning can inflate apparent gains.
-  last_reviewed: '2026-09-26'
+  - Q4 confirms controllability across continuous intensity, dialogue style, descriptive prompts, and
+    word-level transitions, while also showing that reference leakage and over-conditioning can inflate
+    apparent gains.
+  - Q1 adds direct conditioning through selective-editing tokens, continuous dimensions, learned prefixes,
+    composable layer directions, and sparse-neuron interventions; control remains sensitive to representation
+    and intervention strength.
+  last_reviewed: '2026-11-12'
 - id: natural_language_instructions_support_rich_style_control
   claim: Natural-language descriptions and instructions support richer expressive control than fixed categorical
     labels alone.
@@ -7009,14 +8140,19 @@ claim_clusters:
   refining_papers:
   - '2504.12867'
   - 2025.emnlp-main.40
+  - '2601.12289'
+  - '2601.22661'
+  - 2026.iwsds-1.3
   caveats:
   - Instruction understanding and acoustic realization remain separable sources of failure.
-  - Text instructions improve breadth and prompt robustness, but audio prompting often retains a naturalness advantage
-    and open-ended instruction evaluation remains unstandardized.
-  last_reviewed: '2026-09-26'
+  - Text instructions improve breadth and prompt robustness, but audio prompting often retains a naturalness
+    advantage and open-ended instruction evaluation remains unstandardized.
+  - Q1 extends description-based control to prototype-anchored style spaces and role-play prompts, while
+    personality experiments show that nominally separate prompt dimensions can interfere.
+  last_reviewed: '2026-11-12'
 - id: fine_grained_temporal_conditioning_improves_emotional_dynamics
-  claim: Word-, phoneme-, frame-, and sub-sentence conditioning improves fine-grained emotional dynamics over utterance-level
-    control.
+  claim: Word-, phoneme-, frame-, and sub-sentence conditioning improves fine-grained emotional dynamics
+    over utterance-level control.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7046,13 +8182,15 @@ claim_clusters:
   - '2505.10599'
   - '2512.14291'
   caveats:
-  - Fine-grained non-verbal tags improve recognition in one small study, but requested count and duration were not objectively verified.
+  - Fine-grained non-verbal tags improve recognition in one small study, but requested count and duration
+    were not objectively verified.
   - Finer control requires reliable alignment and can accumulate prediction errors.
-  - Q4 adds phoneme-aware embeddings, word-level emphasis and emotion transitions, and laughter-specific reward control;
-    their gains depend on alignment, transition smoothing, and task-specific objectives.
+  - Q4 adds phoneme-aware embeddings, word-level emphasis and emotion transitions, and laughter-specific
+    reward control; their gains depend on alignment, transition smoothing, and task-specific objectives.
   last_reviewed: '2026-10-31'
 - id: speaker_emotion_disentanglement_enables_independent_control
-  claim: Disentangling speaker identity from emotion and style enables more independent control of voice and expression.
+  claim: Disentangling speaker identity from emotion and style enables more independent control of voice
+    and expression.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7068,18 +8206,28 @@ claim_clusters:
   - '2511.12074'
   - '2512.09504'
   - '2512.18699'
+  - '2601.12480'
+  - '2601.12289'
+  - '2603.09120'
+  - '2603.11683'
+  - '2603.22252'
   contradicting_papers: []
   refining_papers:
   - '2510.11124'
   - 2025.emnlp-main.40
+  - '2603.11683'
+  - '2603.22252'
   caveats:
   - Identity and habitual expression overlap perceptually, so complete separation may be undesirable.
-  - Q4 confirms that explicit predictors, contrastive objectives, perturbation, and hierarchical fusion improve
-    factor control, but cross-lingual and compositional tests still expose residual identity–emotion coupling.
-  last_reviewed: '2026-09-26'
+  - Q4 confirms that explicit predictors, contrastive objectives, perturbation, and hierarchical fusion
+    improve factor control, but cross-lingual and compositional tests still expose residual identity–emotion
+    coupling.
+  - Q1 strengthens architectural, adversarial, and causal-mediation evidence, but cross-corpus intelligibility
+    failures and omitted voice-quality mediators show that measured separation is incomplete.
+  last_reviewed: '2026-11-12'
 - id: emotion_strength_trades_off_with_intelligibility_and_identity
-  claim: Stronger emotion and style control frequently trades off against intelligibility, naturalness, or speaker
-    identity.
+  claim: Stronger emotion and style control frequently trades off against intelligibility, naturalness,
+    or speaker identity.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7116,6 +8264,13 @@ claim_clusters:
   - '2512.09504'
   - '2512.14291'
   - '2512.18699'
+  - '2601.12480'
+  - '2601.19063'
+  - '2601.22661'
+  - '2602.03420'
+  - '2603.09120'
+  - '2603.17231'
+  - '2603.22252'
   contradicting_papers: []
   refining_papers:
   - '2605.25504'
@@ -7131,15 +8286,22 @@ claim_clusters:
   - '2510.07096'
   - '2511.12074'
   - neurips-2025-SYcggdxX6W
+  - '2603.11683'
+  - '2602.09823'
   caveats:
-  - Adding non-verbal emotion cues raised expressiveness and recognition while slightly lowering naturalness across all tested emotions.
-  - Trade-offs vary with architecture, control strength, and whether vocal events count as transcription errors.
-  - Q4 matched guidance and attribute-control ablations reinforce that emotion, naturalness, intelligibility, and
-    identity do not improve monotonically together; stronger or composed controls can reverse earlier gains.
-  last_reviewed: '2026-10-31'
+  - Adding non-verbal emotion cues raised expressiveness and recognition while slightly lowering naturalness
+    across all tested emotions.
+  - Trade-offs vary with architecture, control strength, and whether vocal events count as transcription
+    errors.
+  - Q4 matched guidance and attribute-control ablations reinforce that emotion, naturalness, intelligibility,
+    and identity do not improve monotonically together; stronger or composed controls can reverse earlier
+    gains.
+  - Q1 reproduces the trade-off under reward optimization, voice conversion, internal activation steering,
+    and cross-corpus transfer; the exact failure mode depends on where control is injected.
+  last_reviewed: '2026-11-12'
 - id: multimodal_context_improves_affect_modeling
-  claim: Visual, textual, and conversational context provides complementary affect information that improves emotional
-    speech modeling.
+  claim: Visual, textual, and conversational context provides complementary affect information that improves
+    emotional speech modeling.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7147,17 +8309,20 @@ claim_clusters:
   - '2508.16188'
   - '2510.07096'
   - '2511.14249'
+  - '2602.09823'
   contradicting_papers: []
   refining_papers:
   - '2503.11026'
   caveats:
   - Multimodal pipelines can compound upstream recognition and attribution errors.
-  - Q4 retrieval systems show that semantic, prosodic, visual-scene, face, and text cues are complementary, but
-    excessive retrieval and weak similarity functions can reduce rather than improve affect fidelity.
-  last_reviewed: '2026-09-26'
+  - Q4 retrieval systems show that semantic, prosodic, visual-scene, face, and text cues are complementary,
+    but excessive retrieval and weak similarity functions can reduce rather than improve affect fidelity.
+  - Q1 dialogue evidence supports interleaved semantic and acoustic context, but evaluation still separates
+    linguistic coherence from vocal empathy imperfectly.
+  last_reviewed: '2026-11-12'
 - id: dialogue_context_supports_appropriate_emotional_responses
-  claim: Dialogue and narrative context improve the emotional appropriateness and cross-turn coherence of generated
-    speech.
+  claim: Dialogue and narrative context improve the emotional appropriateness and cross-turn coherence
+    of generated speech.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7174,18 +8339,31 @@ claim_clusters:
   - 2025.emnlp-demos.70
   - '2511.00850'
   - neurips-2025-4iehXI36QG
+  - '2601.18281'
+  - '2601.19063'
+  - '2601.22661'
+  - 2026.iwsds-1.9
+  - '2601.05564'
+  - '2603.07599'
+  - '2602.09823'
   contradicting_papers: []
   refining_papers:
   - 2025.sigdial-1.27
   - '2509.04072'
+  - '2601.18281'
+  - 2026.iwsds-1.9
+  - '2603.07599'
   caveats:
   - Short laboratory interactions do not establish sustained engagement or long-horizon coherence.
-  - Q4 adds style-rich dialogue tuning, empathetic response data, audio-aware emotional evaluation, and context-aware
-    preference alignment, but much of the evidence remains single-turn or synthetically constructed.
-  last_reviewed: '2026-09-26'
+  - Q4 adds style-rich dialogue tuning, empathetic response data, audio-aware emotional evaluation, and
+    context-aware preference alignment, but much of the evidence remains single-turn or synthetically
+    constructed.
+  - Q1 adds multi-turn style gating, alternating reflective strategies, acoustic-history conditioning,
+    and emotion-aware dialogue modeling, while realistic sustained coherence remains difficult.
+  last_reviewed: '2026-11-12'
 - id: emotion_representations_benefit_from_combining_categorical_and_continuous_axes
-  claim: Combining categorical emotions with continuous affect dimensions expands controllability beyond either
-    representation alone.
+  claim: Combining categorical emotions with continuous affect dimensions expands controllability beyond
+    either representation alone.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7193,16 +8371,19 @@ claim_clusters:
   - '2508.17623'
   - '2505.10599'
   - '2510.05758'
+  - '2409.16681'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Continuous controls inherit ambiguity and sparsity from human annotations and quantization choices.
-  - Q4 confirms VAD-based graded intensity control, but its continuous geometry is still discretized for training
-    and evaluated on a narrow emotion inventory.
-  last_reviewed: '2026-09-26'
+  - Q4 confirms VAD-based graded intensity control, but its continuous geometry is still discretized for
+    training and evaluated on a narrow emotion inventory.
+  - Q1 shows that continuous emotion dimensions can synthesize unseen mixtures, but nearby positions in
+    affect space remain perceptually confusable.
+  last_reviewed: '2026-11-12'
 - id: data_balance_and_taxonomy_limit_emotion_generalization
-  claim: Emotion taxonomy design, class imbalance, and annotation ambiguity materially limit generalization and
-    control quality.
+  claim: Emotion taxonomy design, class imbalance, and annotation ambiguity materially limit generalization
+    and control quality.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7216,14 +8397,21 @@ claim_clusters:
   - 2025.findings-naacl.38
   - '2509.15253'
   - 2025.emnlp-main.40
+  - '2601.12480'
+  - '2601.12289'
+  - 2026.iwsds-1.3
+  - '2603.07599'
+  - '2603.16483'
   caveats:
   - Category frequency, speaker demographics, and recording conditions are often confounded.
-  - Q4 shows that overlapping acoustic correlates, acted-versus-naturalistic data, and limited synthetic source
-    diversity can cap generalization or even reverse scaling gains.
-  last_reviewed: '2026-09-26'
+  - Q4 shows that overlapping acoustic correlates, acted-versus-naturalistic data, and limited synthetic
+    source diversity can cap generalization or even reverse scaling gains.
+  - Q1 adds evidence that mismatched acted data can reduce control quality, compressed perceptual taxonomies
+    can be easier to control, and synthetic speech creates a recognition-domain gap.
+  last_reviewed: '2026-11-12'
 - id: synthetic_and_automatic_annotations_scale_emotional_data
-  claim: Automatic annotation and synthetic augmentation can expand emotional-speech training data when curated
-    labels are scarce.
+  claim: Automatic annotation and synthetic augmentation can expand emotional-speech training data when
+    curated labels are scarce.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7246,14 +8434,19 @@ claim_clusters:
   refining_papers:
   - 2025.findings-naacl.38
   - 2025.emnlp-main.40
+  - '2601.12480'
+  - '2603.22252'
   caveats:
   - Automatically generated labels can reproduce classifier and prompt biases.
-  - Q4 confirms that automatic scoring, captioning, synthetic dialogue, and teacher-generated transitions scale
-    expressive data, but self-referential metrics and limited source diversity require independent validation.
-  last_reviewed: '2026-09-26'
+  - Q4 confirms that automatic scoring, captioning, synthetic dialogue, and teacher-generated transitions
+    scale expressive data, but self-referential metrics and limited source diversity require independent
+    validation.
+  - Q1 self-augmentation improves naturalness when synthetic speech is used as an additional style reference,
+    while direct synthetic targets or mismatched emotional corpora can degrade quality.
+  last_reviewed: '2026-11-12'
 - id: reference_and_style_transfer_enable_expressive_resynthesis
-  claim: Reference-based style and prosody transfer enables expressive resynthesis without requiring matched expressive
-    training for every target voice.
+  claim: Reference-based style and prosody transfer enables expressive resynthesis without requiring matched
+    expressive training for every target voice.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7267,19 +8460,28 @@ claim_clusters:
   - '2510.07096'
   - '2511.00256'
   - 2025.emnlp-main.180
+  - '2601.16225'
+  - '2601.12289'
+  - '2603.09120'
+  - '2603.22252'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1638
   - interspeech-2025-2075
   - interspeech-2025-2586
   - '2510.13293'
+  - '2603.22252'
   caveats:
   - Extreme transformations and mismatched references can degrade naturalness and identity.
   - Q4 retrieval and fine-grained reference methods strengthen style transfer, while showing that lexical-content
-    leakage, spontaneous-domain mismatch, and emotion-bearing references can confound claimed control gains.
-  last_reviewed: '2026-09-26'
+    leakage, spontaneous-domain mismatch, and emotion-bearing references can confound claimed control
+    gains.
+  - Q1 supports zero-shot affect transfer and disentangled reference control, but cross-corpus acoustic
+    mismatch can preserve identity while sharply reducing intelligibility.
+  last_reviewed: '2026-11-12'
 - id: flow_and_diffusion_support_flexible_emotion_control
-  claim: Flow-matching and diffusion generators support flexible emotional conditioning and preference-based refinement.
+  claim: Flow-matching and diffusion generators support flexible emotional conditioning and preference-based
+    refinement.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7297,17 +8499,23 @@ claim_clusters:
   - '2512.09504'
   - neurips-2025-SYcggdxX6W
   - '2512.18699'
+  - '2409.16681'
+  - '2602.03420'
+  - '2603.09120'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1210
   caveats:
   - Few studies compare flow, diffusion, and autoregressive systems under matched data and inference budgets.
-  - Q4 expands flow-based emotion control to text instructions, attribute editing, word-level transitions, robust
-    reward optimization, and parameter directions, but backbone transfer and multi-style composition remain uneven.
-  last_reviewed: '2026-09-26'
+  - Q4 expands flow-based emotion control to text instructions, attribute editing, word-level transitions,
+    robust reward optimization, and parameter directions, but backbone transfer and multi-style composition
+    remain uneven.
+  - Q1 adds composable steering in flow-based hybrids and emotion-aware prefix control, while direct portability
+    across backbones remains unproven.
+  last_reviewed: '2026-11-12'
 - id: paralinguistic_events_require_dedicated_modeling
-  claim: Laughter, sighs, fillers, emphasis, and other paralinguistic events require dedicated data and objectives
-    beyond ordinary TTS training.
+  claim: Laughter, sighs, fillers, emphasis, and other paralinguistic events require dedicated data and
+    objectives beyond ordinary TTS training.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7324,20 +8532,25 @@ claim_clusters:
   - '2509.14946'
   - '2510.05758'
   - '2512.14291'
+  - 2026.iwsds-1.3
   contradicting_papers: []
   refining_papers:
   - '2507.18119'
   - '2508.07273'
   - interspeech-2025-0166
   caveats:
-  - The late non-verbal TTS comparison confounds annotation granularity with source-corpus quality and covers only female English speech.
+  - The late non-verbal TTS comparison confounds annotation granularity with source-corpus quality and
+    covers only female English speech.
   - Lexical metrics penalize intentional non-verbal events and therefore understate perceptual quality.
-  - Q4 extends dedicated control to emphasis and laughter; both require specialized rewards, and laughter optimization
-    directly worsens transcription and identity metrics that treat the intended event as an error.
-  last_reviewed: '2026-10-31'
+  - Q4 extends dedicated control to emphasis and laughter; both require specialized rewards, and laughter
+    optimization directly worsens transcription and identity metrics that treat the intended event as
+    an error.
+  - Q1 personality-control evidence confirms that fillers, pauses, rate, and backchannels carry perceptual
+    information that text-only generation does not reliably express.
+  last_reviewed: '2026-11-12'
 - id: preference_optimization_can_improve_emotional_alignment
-  claim: Preference optimization can improve emotional coherence and expressive alignment beyond supervised fine-tuning
-    alone.
+  claim: Preference optimization can improve emotional coherence and expressive alignment beyond supervised
+    fine-tuning alone.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7350,16 +8563,25 @@ claim_clusters:
   - '2512.04552'
   - neurips-2025-4iehXI36QG
   - '2512.14291'
+  - '2601.19063'
+  - '2601.22661'
   contradicting_papers: []
   refining_papers:
   - '2509.25416'
+  - '2601.19063'
+  - '2601.22661'
   caveats:
-  - Reward models may favor classifier-recognizable cues or degenerate trajectories rather than natural expression.
-  - Q4 independent studies confirm gains from GRPO, DPO, token-level rewards, and CTC preference optimization, while
-    reward-hacking evidence shows that robust reward-model training and multi-axis listening tests are necessary.
-  last_reviewed: '2026-09-26'
+  - Reward models may favor classifier-recognizable cues or degenerate trajectories rather than natural
+    expression.
+  - Q4 independent studies confirm gains from GRPO, DPO, token-level rewards, and CTC preference optimization,
+    while reward-hacking evidence shows that robust reward-model training and multi-axis listening tests
+    are necessary.
+  - Q1 confirms targeted DPO and composite GRPO gains, but single-objective style rewards can produce
+    unintelligible reward-hacking outputs and combined preferences can trade away expressiveness.
+  last_reviewed: '2026-11-12'
 - id: automatic_emotion_metrics_do_not_replace_human_evaluation
-  claim: Automatic emotion and style metrics can diverge from human judgments and do not replace perceptual evaluation.
+  claim: Automatic emotion and style metrics can diverge from human judgments and do not replace perceptual
+    evaluation.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -7381,6 +8603,12 @@ claim_clusters:
   - '2511.00850'
   - '2511.01261'
   - 2025.emnlp-main.180
+  - '2505.15727'
+  - '2601.18281'
+  - '2601.05564'
+  - '2603.07599'
+  - '2602.09823'
+  - '2603.16483'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-0756
@@ -7391,11 +8619,17 @@ claim_clusters:
   - '2509.26514'
   - '2510.18308'
   - 2025.emnlp-main.40
+  - '2601.22661'
+  - '2603.07599'
+  - '2603.16483'
   caveats:
   - Agreement varies by emotion, language, system family, and whether judgments target category or trajectory.
-  - Q4 adds calibrated audio-aware judges and human-trained evaluators, yet low-level acoustic metrics, general-purpose
-    LLM labels, and archetype-oriented scores still miss fine-grained expressivity or real unscripted performance.
-  last_reviewed: '2026-09-26'
+  - Q4 adds calibrated audio-aware judges and human-trained evaluators, yet low-level acoustic metrics,
+    general-purpose LLM labels, and archetype-oriented scores still miss fine-grained expressivity or
+    real unscripted performance.
+  - Q1 benchmarks show divergence between classifiers, scalar rewards, language-model judges, and human
+    judgments of empathy or graded style; calibrated multi-axis listening tests remain necessary.
+  last_reviewed: '2026-11-12'
 - id: cross_lingual_emotion_control_remains_uneven
   claim: Emotion and speaking-style control transfer unevenly across languages, accents, and speaker groups.
   status: strongly_supported
@@ -7412,12 +8646,12 @@ claim_clusters:
   - '2512.04552'
   caveats:
   - Language coverage, demographic balance, and emotion frequency are rarely isolated.
-  - Q4 bilingual and multilingual studies reproduce uneven transfer, but backbone pretraining, speaker balance, and
-    automatic cross-language evaluation remain confounded with language effects.
+  - Q4 bilingual and multilingual studies reproduce uneven transfer, but backbone pretraining, speaker
+    balance, and automatic cross-language evaluation remain confounded with language effects.
   last_reviewed: '2026-09-26'
 - id: current_systems_lack_robust_emotional_coherence
-  claim: Current speech generators still struggle with robust, sustained emotional coherence under realistic instructions
-    and dialogue conditions.
+  claim: Current speech generators still struggle with robust, sustained emotional coherence under realistic
+    instructions and dialogue conditions.
   status: emerging
   confidence: medium
   supporting_papers: []
@@ -7426,18 +8660,58 @@ claim_clusters:
   - '2509.09716'
   - '2511.00850'
   - 2025.emnlp-demos.70
+  - '2505.15727'
+  - '2601.18281'
+  - 2026.iwsds-1.9
+  - '2601.05564'
+  - '2603.07599'
   caveats:
   - Capability varies sharply across closed and open systems, languages, and evaluation protocols.
-  - Q4 benchmarks continue to show that emotional dialogue is harder than casual conversation and that synthetic
-    empathy training remains voice-, culture-, and turn-structure-limited; direct sustained-coherence evidence is
-    still insufficient for promotion.
-  last_reviewed: '2026-09-26'
+  - Q4 benchmarks continue to show that emotional dialogue is harder than casual conversation and that
+    synthetic empathy training remains voice-, culture-, and turn-structure-limited; direct sustained-coherence
+    evidence is still insufficient for promotion.
+  - Q1 realistic dialogue and style benchmarks strengthen the evidence for persistent gaps, but capability
+    remains task- and evaluator-dependent, so the cluster remains emerging.
+  last_reviewed: '2026-11-12'
+- id: internal_representation_steering_enables_training_free_emotion_control
+  claim: Emotion-related directions and sparse internal units can provide training-free control over synthesized
+    expression.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2602.03420'
+  - '2603.17231'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence currently covers two autoregressive or hybrid systems; transfer across architectures, speakers,
+    languages, and unseen emotions is uneven or untested.
+  - Stronger interventions can damage linguistic fidelity, and steering vectors do not transfer directly
+    between models.
+  last_reviewed: '2026-11-12'
+- id: synthetic_emotion_domain_shift_limits_recognition_and_transfer
+  claim: Synthetic emotional speech remains acoustically out of domain from human emotional speech, limiting
+    recognition and cross-corpus transfer.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2603.16483'
+  contradicting_papers: []
+  refining_papers:
+  - '2603.22252'
+  caveats:
+  - The direct recognition evidence comes from one study, and the transfer evidence confounds emotion
+    references with recording-condition mismatch.
+  - Current results do not isolate which autoregressive or acoustic components create the domain gap.
+  last_reviewed: '2026-11-12'
 method_families:
 - id: autoregressive_emotion_language_models
   name: Autoregressive emotion-aware speech language models
   summary: Autoregressive speech language models generate expressive speech from emotion labels, natural-language
-    instructions, dialogue context, or learned paralinguistic tokens. Q4 adds continuous-intensity and word-level
-    control, reward-guided editing, style-rich dialogue tuning, and robust preference optimization.
+    instructions, dialogue context, or learned paralinguistic tokens. Q4 adds continuous-intensity and
+    word-level control, reward-guided editing, style-rich dialogue tuning, and robust preference optimization.
+    Q1 adds selective editing, continuous-dimensional control, empathetic dialogue strategies, preference
+    alignment, activation steering, and neuron-level causal control.
   papers:
   - '2402.05755'
   - '2407.05407'
@@ -7475,14 +8749,28 @@ method_families:
   - '2512.04552'
   - neurips-2025-SYcggdxX6W
   - '2512.14291'
+  - '2601.03888'
+  - '2601.16225'
+  - '2601.12480'
+  - '2409.16681'
+  - '2601.18281'
+  - '2601.19063'
+  - '2601.22661'
+  - '2602.03420'
+  - '2603.09120'
+  - '2602.09823'
+  - '2603.16783'
+  - '2603.17231'
   open_questions:
-  - How can autoregressive systems retain fine-grained emotional dynamics without sacrificing latency, lexical accuracy,
-    or conversational coherence?
+  - How can autoregressive systems retain fine-grained emotional dynamics without sacrificing latency,
+    lexical accuracy, or conversational coherence?
 - id: flow_matching_emotional_synthesis
   name: Flow-matching emotional synthesis
-  summary: Flow-matching systems inject global, local, reference-derived, or instruction-derived affect controls
-    into parallel acoustic generation. Q4 broadens the family with dialogue-style tuning, attribute editing,
-    text-only instruction control, reward-robust post-training, word-level transitions, and parameter-vector styles.
+  summary: Flow-matching systems inject global, local, reference-derived, or instruction-derived affect
+    controls into parallel acoustic generation. Q4 broadens the family with dialogue-style tuning, attribute
+    editing, text-only instruction control, reward-robust post-training, word-level transitions, and parameter-vector
+    styles. Q1 adds continuous affect dimensions, composable internal directions, prefix-based emotion
+    conversion, and emotionally aware dialogue hybrids.
   papers:
   - '2407.05407'
   - '2501.06282'
@@ -7514,13 +8802,22 @@ method_families:
   - '2512.09504'
   - neurips-2025-SYcggdxX6W
   - '2512.18699'
+  - '2601.03888'
+  - '2409.16681'
+  - '2602.03420'
+  - '2603.09120'
+  - '2602.09823'
+  - '2603.16783'
   open_questions:
-  - Where in the flow trajectory should affect conditioning be applied to maximize control while preserving intelligibility?
+  - Where in the flow trajectory should affect conditioning be applied to maximize control while preserving
+    intelligibility?
 - id: transformer_encoder_decoder_emotion_control
   name: Transformer encoder–decoder emotion control
-  summary: Encoder–decoder systems predict or inject emotion and style at sentence, word, phoneme, or frame level
-    through attention and hierarchical conditioning. Q4 adds phoneme-aware style embeddings and bilingual
-    emotion–speaker disentanglement with explicit acoustic and self-supervised features.
+  summary: Encoder–decoder systems predict or inject emotion and style at sentence, word, phoneme, or
+    frame level through attention and hierarchical conditioning. Q4 adds phoneme-aware style embeddings
+    and bilingual emotion–speaker disentanglement with explicit acoustic and self-supervised features.
+    Q1 adds causal-mediation losses that route emotion through explicit prosody features while exposing
+    omitted voice-quality cues.
   papers:
   - 2025.findings-naacl.38
   - '2507.00808'
@@ -7542,14 +8839,17 @@ method_families:
   - '2508.13028'
   - '2510.01722'
   - '2510.11124'
+  - '2603.11683'
   open_questions:
-  - Which temporal granularity best balances stable synthesis with perceptually accurate within-utterance emotional
-    change?
+  - Which temporal granularity best balances stable synthesis with perceptually accurate within-utterance
+    emotional change?
 - id: gan_based_expressive_transfer
   name: GAN-based expressive transfer
-  summary: Adversarial systems transfer emotional prosody or disentangle it from speaker identity through reference
-    encoders, explicit contours, and auxiliary objectives. Q4 adds retrieval-conditioned pragmatic style,
-    cross-lingual identity perturbation, compact paralinguistic control, and compositional factor gating.
+  summary: Adversarial systems transfer emotional prosody or disentangle it from speaker identity through
+    reference encoders, explicit contours, and auxiliary objectives. Q4 adds retrieval-conditioned pragmatic
+    style, cross-lingual identity perturbation, compact paralinguistic control, and compositional factor
+    gating. Q1 adds a multimodal dialogue system whose adversarial acoustic rendering is evaluated separately
+    from semantic and empathy behavior.
   papers:
   - '2312.01479'
   - '2507.04817'
@@ -7565,13 +8865,17 @@ method_families:
   - '2510.11124'
   - '2510.18308'
   - '2511.12074'
+  - '2602.09823'
   open_questions:
-  - How far can adversarial prosody transfer move from neutral speech before naturalness and identity deteriorate?
+  - How far can adversarial prosody transfer move from neutral speech before naturalness and identity
+    deteriorate?
 - id: hybrid_semantic_acoustic_emotion_systems
   name: Hybrid semantic–acoustic emotion systems
-  summary: Hybrid systems separate semantic interpretation, affect planning, acoustic rendering, and sometimes speaker
-    or dialogue pathways to retain complementary signals. Q4 extends the pattern to style-rich dialogue tuning,
-    reward-guided regeneration, multimodal retrieval, omnimodal preference alignment, and laughter-aware control.
+  summary: Hybrid systems separate semantic interpretation, affect planning, acoustic rendering, and sometimes
+    speaker or dialogue pathways to retain complementary signals. Q4 extends the pattern to style-rich
+    dialogue tuning, reward-guided regeneration, multimodal retrieval, omnimodal preference alignment,
+    and laughter-aware control. Q1 broadens hybrid systems with selective editing, continuous affect,
+    composable layer steering, emotion-aware prefixes, dialogue modeling, and self-augmentation.
   papers:
   - '2407.05407'
   - '2501.06282'
@@ -7589,12 +8893,21 @@ method_families:
   - '2511.14249'
   - neurips-2025-4iehXI36QG
   - '2512.14291'
+  - '2601.03888'
+  - '2601.16225'
+  - '2601.12480'
+  - '2409.16681'
+  - '2602.03420'
+  - '2603.09120'
+  - '2602.09823'
+  - '2603.22252'
   open_questions:
-  - Can modular affect planning improve controllability without compounding errors or adding conversational latency?
+  - Can modular affect planning improve controllability without compounding errors or adding conversational
+    latency?
 - id: diffusion_based_emotional_generation
   name: Diffusion-based emotional generation
-  summary: Diffusion systems model expressive acoustic variation through iterative denoising, multimodal conditioning,
-    or trajectory-level preference optimization.
+  summary: Diffusion systems model expressive acoustic variation through iterative denoising, multimodal
+    conditioning, or trajectory-level preference optimization.
   papers:
   - '2605.25504'
   - 2025.ccl-1.77
@@ -7604,12 +8917,13 @@ method_families:
   - interspeech-2025-1210
   - '2509.25416'
   open_questions:
-  - Can diffusion preference alignment remain stable when rewards are evaluated on noisy intermediate states?
+  - Can diffusion preference alignment remain stable when rewards are evaluated on noisy intermediate
+    states?
 - id: vae_emotion_style_latents
   name: VAE emotion and style latents
-  summary: VAE-based systems encode emotion, style, and speaker factors in continuous latent spaces for transfer,
-    interpolation, and disentangled control. Q4 adds retrieval-conditioned sarcasm and compact separation of
-    prosodic from paralinguistic style.
+  summary: VAE-based systems encode emotion, style, and speaker factors in continuous latent spaces for
+    transfer, interpolation, and disentangled control. Q4 adds retrieval-conditioned sarcasm and compact
+    separation of prosodic from paralinguistic style.
   papers:
   - '2312.01479'
   - 2025.findings-acl.687
@@ -7619,13 +8933,15 @@ method_families:
   - '2510.07096'
   - '2510.18308'
   open_questions:
-  - How should latent spaces be regularized so that emotion remains controllable without leaking speaker identity
-    or corpus artefacts?
+  - How should latent spaces be regularized so that emotion remains controllable without leaking speaker
+    identity or corpus artefacts?
 reassessment_queue:
 - id: emotion_strength_trades_off_with_intelligibility_and_identity
   type: claim_status
-  reason: Reported trade-offs vary with control strength, architecture, and transcription treatment of vocal events.
-  trigger: Matched control-strength sweeps compare intelligibility, identity, naturalness, and emotion perception.
+  reason: Reported trade-offs vary with control strength, architecture, and transcription treatment of
+    vocal events.
+  trigger: Matched control-strength sweeps compare intelligibility, identity, naturalness, and emotion
+    perception.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -7634,7 +8950,8 @@ reassessment_queue:
 - id: automatic_emotion_metrics_do_not_replace_human_evaluation
   type: benchmark_validity
   reason: Metric–listener agreement varies across categories, languages, and atypical system outputs.
-  trigger: Cross-system, multilingual studies calibrate automatic scores against fine-grained listener judgments.
+  trigger: Cross-system, multilingual studies calibrate automatic scores against fine-grained listener
+    judgments.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -7643,7 +8960,8 @@ reassessment_queue:
 - id: speaker_emotion_disentanglement_enables_independent_control
   type: claim_status
   reason: Identity and habitual expression are correlated, making independence difficult to verify.
-  trigger: Factorial listener studies isolate identity, emotion, accent, and habitual prosody across unseen speakers.
+  trigger: Factorial listener studies isolate identity, emotion, accent, and habitual prosody across unseen
+    speakers.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -7659,34 +8977,47 @@ reassessment_queue:
   - Matched-language evaluations
   - Demographically balanced emotion corpora
 open_questions:
-- Which safeguards make emotion reward models resistant to acoustic reward hacking without suppressing subtle,
-  listener-preferred expressivity?
-- Can multi-attribute emotional control compose emotion, dialect, speaker identity, rate, and paralinguistic events
-  without the quality decline seen when controls are optimized or merged independently?
-- Which combination of categorical labels, continuous affect dimensions, and natural-language descriptions gives
-  the most reliable control?
-- What temporal granularity is sufficient for natural within-utterance emotional dynamics without fragile alignment
-  or error accumulation?
-- How can systems separate speaker identity from emotion while preserving speaker-specific expressive habits?
+- Which safeguards make emotion reward models resistant to acoustic reward hacking without suppressing
+  subtle, listener-preferred expressivity?
+- Can multi-attribute emotional control compose emotion, dialect, speaker identity, rate, and paralinguistic
+  events without the quality decline seen when controls are optimized or merged independently?
+- Which combination of categorical labels, continuous affect dimensions, and natural-language descriptions
+  gives the most reliable control?
+- What temporal granularity is sufficient for natural within-utterance emotional dynamics without fragile
+  alignment or error accumulation?
+- How can systems separate speaker identity from emotion while preserving speaker-specific expressive
+  habits?
 - Which perceptual protocol can jointly evaluate emotional appropriateness, trajectory, naturalness, intelligibility,
   and identity?
 - How can emotional coherence be maintained across long, multi-turn dialogue rather than isolated utterances?
-- How should consent, cultural variation, demographic balance, and misuse risk be handled in emotional voice generation?
+- How should consent, cultural variation, demographic balance, and misuse risk be handled in emotional
+  voice generation?
+- How transferable are training-free emotion directions and neuron-level interventions across models,
+  speakers, languages, and unseen emotions without damaging linguistic fidelity?
+- Which training and evaluation changes close the acoustic domain gap between human and synthetic emotional
+  speech without overfitting to a particular emotion classifier?
 trend_notes:
-- Emotion synthesis is moving from utterance-level category labels toward natural-language, continuous, and temporally
-  localized controls.
-- Flow matching and speech language models increasingly combine semantic emotion planning with separate acoustic
-  rendering.
-- Multimodal and conversational context is becoming a primary source of affect rather than an optional auxiliary
-  feature.
-- Disentanglement objectives increasingly target independent control of identity, emotion, prosody, and paralinguistic
-  events.
-- Evaluation is broadening from emotion-classification accuracy toward listener judgments of appropriateness, trajectory,
-  coherence, and trade-offs.
-- Q4 2025 strengthens reward-based emotion control across autoregressive, flow-matching, CTC, and hybrid systems,
-  while also establishing reward hacking and reward-model robustness as first-order design concerns.
-- Retrieval, natural-language descriptions, and multimodal context increasingly replace fixed emotion labels, but
-  text-only control, audio references, and retrieved exemplars expose different naturalness and leakage trade-offs.
-- Q4 data work shifts from acted, categorical corpora toward spontaneous speech, synthetic style-rich dialogue,
-  automatic expressiveness filtering, and teacher-generated transitions; source diversity, annotation bias, and
-  self-referential evaluation remain limiting factors.
+- Emotion synthesis is moving from utterance-level category labels toward natural-language, continuous,
+  and temporally localized controls.
+- Flow matching and speech language models increasingly combine semantic emotion planning with separate
+  acoustic rendering.
+- Multimodal and conversational context is becoming a primary source of affect rather than an optional
+  auxiliary feature.
+- Disentanglement objectives increasingly target independent control of identity, emotion, prosody, and
+  paralinguistic events.
+- Evaluation is broadening from emotion-classification accuracy toward listener judgments of appropriateness,
+  trajectory, coherence, and trade-offs.
+- Q4 2025 strengthens reward-based emotion control across autoregressive, flow-matching, CTC, and hybrid
+  systems, while also establishing reward hacking and reward-model robustness as first-order design concerns.
+- Retrieval, natural-language descriptions, and multimodal context increasingly replace fixed emotion
+  labels, but text-only control, audio references, and retrieved exemplars expose different naturalness
+  and leakage trade-offs.
+- Q4 data work shifts from acted, categorical corpora toward spontaneous speech, synthetic style-rich
+  dialogue, automatic expressiveness filtering, and teacher-generated transitions; source diversity, annotation
+  bias, and self-referential evaluation remain limiting factors.
+- Q1 2026 introduces training-free emotion control through composable layer directions and sparse-neuron
+  interventions, shifting some control from explicit conditioning modules to internal representations.
+- Q1 preference studies confirm that targeted rewards can improve expressive alignment, while also making
+  content constraints and reward-hacking checks mandatory rather than optional.
+- Q1 causal and adversarial disentanglement methods improve identity–emotion separation, but synthetic-to-human
+  and cross-corpus domain gaps remain visible in recognition and intelligibility.
