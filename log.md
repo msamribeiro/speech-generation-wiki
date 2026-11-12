@@ -4,6 +4,25 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-12
+
+- ingest | 2604.15710 | VoxMind: An End-to-End Agentic Spoken Dialogue System | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.11096 | Efficient Training for Cross-lingual Speech Language Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2505.22765 | StressTest: Can YOUR Speech LM Handle the Stress? | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2503.23439 | Speculative End-Turn Detector for Efficient Speech Chatbot Assistant | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2503.05085 | S2S-Arena: Evaluating Paralinguistic Instruction Following in Speech-to-Speech Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.940 | Beyond Sentence-level Labels: Integrating Conversational Context and Personal Experience for Natural Emotional Expression | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.740 | Self-EmoQ: Plutchik-Guided Value-based Planning to Drive Streaming Emotional TTS | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.570 | VoiceStar: Robust Zero-Shot Autoregressive TTS with Duration Control and Extrapolation | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.242 | F-Actor: Controllable Conversational Behavior in Full-Duplex Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.199 | Dual-Reasoner: Bridging Interleaved Atomicity and Streaming Latency via Thinking-while-Talking | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.1622 | Hierarchical Representation Alignment Learning of Diffusion Transformers for Neural Audio Codec | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.114 | WavAlign: Enhancing Intelligence and Expressiveness in Spoken Dialogue Models via Adaptive Hybrid Post-Training | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.1004 | S2ST-Omni: Hierarchical Language-Aware SpeechLLM Adaptation for Multilingual Speech-to-Speech Translation | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.acl-long.998 | Rectifying the Emotional Flow: Aligning Priors and Dynamic Guidance for High-Arousal Text-to-Speech | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.acl-long.6 | Dual-Axis Generative Reward Model Toward Semantic and Turn-taking Robustness in Interactive Spoken Dialogue Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- misc | 2512.13251 | DisCo-Speech: peer-reviewed version (ACL 2026, 2026.acl-long.863) linked with an italic note | frozen in 6 claim YAMLs, so venue arXiv and published_date 2025-12-15 unchanged; the page still summarizes the arXiv version
+
 ## 2026-11-11
 
 - ingest | 2607.00946 | A Geometric Perspective on Composable Emotion Steering in Text-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
