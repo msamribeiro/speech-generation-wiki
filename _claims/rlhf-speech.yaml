@@ -1,6 +1,6 @@
 concept: rlhf-speech
-last_updated: '2026-09-26'
-paper_count: 49
+last_updated: '2026-11-13'
+paper_count: 57
 papers:
 - id: '2406.00654'
   published_date: '2024-06-02'
@@ -3480,6 +3480,576 @@ papers:
     internal industry technical report, baseline comparisons and evaluation protocols are entirely the authors''
     own selection, with no independent third-party replication of the reported results.'
   caveats: []
+- id: '2601.03888'
+  published_date: '2026-01-09'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  current_role: active_evidence
+  method_family:
+  - rl_policy_gradient_reward_optimization
+  claims:
+  - claim_id: halving_the_semantic_codec_frame_rate_from_50_hz_to_25_hz_reduces_autoregressive_sequence_le
+    role: supports
+    claim: Halving the semantic codec frame rate from 50 Hz to 25 Hz reduces autoregressive sequence length and
+      inference cost with no measurable degradation in synthesis quality.
+    source: §3.2, Table 4
+    evidence: Halving the semantic codec frame rate from 50 Hz to 25 Hz reduces autoregressive sequence length and
+      inference cost with no measurable degradation in synthesis quality.
+    confidence: high
+    relevance: low
+  - claim_id: for_zero_shot_cross_lingual_tts_per_token_language_conditioning_yields_stronger_speaker_simi
+    role: supports
+    claim: For zero-shot cross-lingual TTS, per-token language conditioning yields stronger speaker similarity and
+      lower WER than utterance-level boundary tokens across most languages, but instruction-guided generation better
+      handles morphologically complex languages such as Japanese.
+    source: §4.3, Table 1
+    evidence: For zero-shot cross-lingual TTS, per-token language conditioning yields stronger speaker similarity
+      and lower WER than utterance-level boundary tokens across most languages, but instruction-guided generation
+      better handles morphologically complex languages such as Japanese.
+    confidence: high
+    relevance: low
+  - claim_id: replacing_a_u_dit_backbone_with_zipformer_in_a_flow_matching_mel_generation_module_achieves
+    role: supports
+    claim: Replacing a U-DiT backbone with Zipformer in a flow-matching mel-generation module achieves faster inference
+      and higher subjective preference scores, demonstrating that ASR-optimised architectures can transfer effectively
+      to TTS.
+    source: §3.2, §4.6, Figure 4
+    evidence: Replacing a U-DiT backbone with Zipformer in a flow-matching mel-generation module achieves faster
+      inference and higher subjective preference scores, demonstrating that ASR-optimised architectures can transfer
+      effectively to TTS.
+    confidence: high
+    relevance: low
+  - claim_id: applying_grpo_with_an_asr_based_wer_reward_signal_to_post_train_an_autoregressive_tts_langua
+    role: supports
+    claim: Applying GRPO with an ASR-based WER reward signal to post-train an autoregressive TTS language model
+      produces consistent WER reductions without degrading speaker similarity.
+    source: §3.3, §4.4, Table 2
+    evidence: Applying GRPO with an ASR-based WER reward signal to post-train an autoregressive TTS language model
+      produces consistent WER reductions without degrading speaker similarity.
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.15621'
+  published_date: '2026-01-22'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - dpo_style_preference_optimization_discrete_tts
+  - rl_policy_gradient_reward_optimization
+  claims:
+  - claim_id: tokenizers_that_combine_semantic_supervision_with_acoustic_reconstruction_objectives_achieve
+    role: supports
+    claim: Tokenizers that combine semantic supervision with acoustic reconstruction objectives achieve better downstream
+      TTS quality than purely semantic or purely acoustic tokenizers.
+    source: §2.1, §4.1.1
+    evidence: Tokenizers that combine semantic supervision with acoustic reconstruction objectives achieve better
+      downstream TTS quality than purely semantic or purely acoustic tokenizers.
+    confidence: high
+    relevance: low
+  - claim_id: reducing_codec_frame_rate_from_25_hz_to_12_5_hz_improves_autoregressive_lm_stability_in_long
+    role: supports
+    claim: Reducing codec frame rate from 25 Hz to 12.5 Hz improves autoregressive LM stability in long-horizon
+      TTS generation by reducing sequence length and error accumulation.
+    source: §4.2.1
+    evidence: Reducing codec frame rate from 25 Hz to 12.5 Hz improves autoregressive LM stability in long-horizon
+      TTS generation by reducing sequence length and error accumulation.
+    confidence: high
+    relevance: low
+  - claim_id: multi_stage_post_training_combining_preference_optimisation_and_rule_based_reinforcement_lea
+    role: supports
+    claim: Multi-stage post-training combining preference optimisation and rule-based reinforcement learning improves
+      both the naturalness and instruction-following capability of large-scale TTS systems.
+    source: §3.2
+    evidence: Multi-stage post-training combining preference optimisation and rule-based reinforcement learning
+      improves both the naturalness and instruction-following capability of large-scale TTS systems.
+    confidence: high
+    relevance: high
+  - claim_id: causal_codec_decoders_with_no_lookahead_enable_first_packet_latencies_under_100_ms_in_stream
+    role: supports
+    claim: Causal codec decoders with no lookahead enable first-packet latencies under 100 ms in streaming TTS without
+      sacrificing reconstruction quality.
+    source: §3.4, Table 2
+    evidence: Causal codec decoders with no lookahead enable first-packet latencies under 100 ms in streaming TTS
+      without sacrificing reconstruction quality.
+    confidence: high
+    relevance: low
+  - claim_id: natural_language_instruction_following_in_tts_generalises_to_fine_grained_voice_design_enabl
+    role: supports
+    claim: Natural language instruction following in TTS generalises to fine-grained voice design, enabling open-source
+      systems to match or exceed commercial baselines on standardised instruction-following benchmarks.
+    source: §4.2.4, Table 8
+    evidence: Natural language instruction following in TTS generalises to fine-grained voice design, enabling open-source
+      systems to match or exceed commercial baselines on standardised instruction-following benchmarks.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.19063'
+  published_date: '2026-01-27'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - dpo_style_preference_optimization_discrete_tts
+  claims:
+  - claim_id: applying_dpo_based_preference_optimization_with_a_single_targeted_reward_dimension_to_a_spok
+    role: supports
+    claim: Applying DPO-based preference optimization with a single, targeted reward dimension to a spoken dialogue
+      system selectively and reliably improves that specific quality dimension, without requiring simultaneous optimization
+      of all dimensions.
+    source: §7.1-7.2, Tables 2-3
+    evidence: Single-reward RLAIF trained on audio-quality preferences raises UTMOS from 2.16 to 3.06, and single-reward
+      RLAIF trained on intelligibility preferences reduces WER from 6.1% to 3.3%, each moving only its own targeted
+      metric.
+    confidence: high
+    relevance: high
+  - claim_id: jointly_combining_multiple_independently_constructed_preference_datasets_within_a_single_dpo
+    role: supports
+    claim: Jointly combining multiple independently-constructed preference datasets within a single DPO training
+      run for a spoken dialogue system yields simultaneous gains across the combined objectives, rather than the
+      trade-offs one might expect from competing reward signals.
+    source: §7.2, Table 3
+    evidence: RLAIF (Joint-Reward-v1), combining semantic, audio-quality, and intelligibility preference data, achieves
+      the best intelligibility of any RLAIF variant (WER 1.0%, vs. 3.3% for the intelligibility-only model) while
+      maintaining strong UTMOS (2.85) and LLM-judge performance.
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_a_spoken_dialogue_system_for_stronger_semantic_coherence_reward_signals_can_come
+    role: complicates
+    claim: Optimizing a spoken dialogue system for stronger semantic-coherence reward signals can come at the cost
+      of emotional expressiveness, since semantic LLM-judge rewards tend to favor safer, more generic responses
+      that reduce speaking-style variation.
+    source: §7.3, Table 4
+    evidence: Adding emotion-consistency preferences on top of joint semantic-audio training (Joint-Reward-v2) yields
+      a worse emotion rank (3.00) than single-reward emotion-only training (1.98) or the non-RLAIF baseline (2.29),
+      attributed to strong semantic rewards favoring safer, more generic responses.
+    confidence: high
+    relevance: high
+  - claim_id: a_dpo_objective_defined_over_utterance_level_preference_pairs_can_align_blockwise_incrementa
+    role: supports
+    claim: A DPO objective defined over utterance-level preference pairs can align blockwise, incrementally-decoded
+      duplex spoken dialogue systems by aggregating per-block log-probabilities into a single sequence-level likelihood,
+      without requiring reward labels at the partial-utterance level.
+    source: §7.4, Table 5
+    evidence: Applying this blockwise aggregation to a duplex SCoT-Response model yields consistent semantic-quality
+      gains (ROUGE-L 19.8→23.1, perplexity 42.3→25.0, LLM-judge 5.95→6.00) relative to its non-RLAIF baseline, without
+      per-block reward annotation.
+    confidence: high
+    relevance: high
+  - claim_id: average_score_improvements_attributed_to_rlaif_post_training_in_spoken_dialogue_systems_are
+    role: complicates
+    claim: Average-score improvements attributed to RLAIF post-training in spoken dialogue systems are, per the
+      authors' own account, primarily driven by suppressing degenerate or repetitive generations rather than by
+      a uniform upward shift in response quality.
+    source: §7.1, Table 2
+    evidence: Semantic RLAIF reduces the proportion of low-quality LLM-judge-rated responses (<5) from 10.2% to
+      7.1% (a 28.5% relative reduction) alongside a large drop in repetition (AutoBLEU 68.3→56.5), which the authors
+      interpret as evidence that gains come from suppressing bad outputs rather than raising the full distribution.
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.22661'
+  published_date: '2026-01-30'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family:
+  - rl_policy_gradient_reward_optimization
+  - reward_model_infrastructure
+  claims:
+  - claim_id: the_in_context_learning_capability_of_a_pretrained_large_audio_language_model_can_be_repurpo
+    role: supports
+    claim: The in-context learning capability of a pretrained large audio language model can be repurposed into
+      an interpretable, reference-based metric for speaking-style consistency, by measuring the model's own likelihood
+      of generating ground-truth audio when conditioned on a candidate utterance as stylistic context.
+    source: §6.3, Figure 5
+    evidence: 'MCLP scores correlate strongly with human MOS judgments in a pairwise win-rate analysis: when the
+      MCLP difference between two utterances exceeds 0.1, the higher-MCLP utterance is preferred by human listeners
+      in over 80% of comparisons, rising well above the chance-level 50% baseline as the MCLP gap increases.'
+    confidence: high
+    relevance: high
+  - claim_id: using_a_continuous_model_derived_style_consistency_signal_as_an_rl_reward_for_expressive_tts
+    role: supports
+    claim: Using a continuous, model-derived style-consistency signal as an RL reward for expressive TTS produces
+      more effective stylistic alignment than relying on discrete emotion-classification-based reward proxies used
+      in prior RL-for-TTS work.
+    source: §6.2-6.3, Tables 2-3
+    evidence: RL training with the MCLP-based reward improves style-consistency scores substantially over the SFT-only
+      checkpoint (MCLP -4.725→-4.636 with audio history) while simultaneously reducing CER, and the resulting system
+      achieves the highest MOS (3.646) among all evaluated systems, approaching ground-truth naturalness (4.411).
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_a_style_consistency_reward_alone_without_an_explicit_content_fidelity_constraint
+    role: contradicts
+    claim: Optimizing a style-consistency reward alone, without an explicit content-fidelity constraint, causes
+      severe reward hacking in RL-trained expressive TTS systems, producing outputs that maximize the style metric
+      while catastrophically failing basic intelligibility, contrary to the assumption that a well-designed style
+      reward alone is sufficient for expressive alignment.
+    source: §6.3, Table 3
+    evidence: An ablation removing the CER-based content reward (style-only optimization) achieves the single highest
+      theoretical MCLP score of any configuration (-4.590) but causes CER to skyrocket above 50%, with the model
+      learning fixed, repetitive, linguistically meaningless acoustic patterns rather than genuine expressive speech.
+    confidence: high
+    relevance: high
+  - claim_id: optimizing_an_expressive_tts_system_for_content_fidelity_alone_without_any_explicit_stylisti
+    role: complicates
+    claim: Optimizing an expressive TTS system for content fidelity alone, without any explicit stylistic reward,
+      produces a system that actively regresses in stylistic quality relative to a supervised-fine-tuning-only baseline,
+      rather than merely failing to improve it further.
+    source: §6.3, Table 3
+    evidence: An ablation removing the MCLP-based style reward (content-only optimization) achieves the lowest CER
+      of any configuration (0.783%) but its MCLP score (-4.752) is worse than the SFT-only baseline (-4.725), with
+      the model losing prosodic variation and over-articulating purely to maximize ASR accuracy.
+    confidence: high
+    relevance: high
+  - claim_id: lalms_given_only_static_role_play_instructions_without_access_to_prior_turns_audio_show_meas
+    role: supports
+    claim: LALMs given only static role-play instructions, without access to prior turns' audio, show measurably
+      weaker and less consistent stylistic and content adherence than when given access to the conversation's acoustic
+      history, and RL training can substantially close this gap.
+    source: §6.2, Table 2
+    evidence: Baseline LALMs (GPT-Audio in particular) suffer catastrophic intelligibility degradation without audio
+      history (CER rising from 11.974% to 44.679%), while the proposed RL-trained method maintains low CER in both
+      settings (1.130% vs. 1.625%) and achieves a higher MCLP score with audio history than without (+0.051), showing
+      it successfully leverages historical acoustic cues that baseline systems fail to exploit consistently.
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2602.11072'
+  published_date: '2026-02-11'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - rl_policy_gradient_reward_optimization
+  - localized_token_level_reward_alignment
+  claims:
+  - claim_id: simultaneous_speech_to_speech_translation_policies_can_be_learned_from_coarse_sentence_level
+    role: supports
+    claim: Simultaneous speech-to-speech translation policies can be learned from coarse sentence-level alignment
+      plus reinforcement learning, without requiring word-level aligned training data.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero, trained only on sentence-level aligned data followed by GRPO with BLEU-based process
+      rewards, outperforms Hibiki (trained on synthetic word-level aligned data) by roughly 3 ASR-BLEU points at
+      lower latency in the short-form French setting.
+    confidence: high
+    relevance: high
+  - claim_id: a_single_automated_reward_signal_bleu_score_computed_at_intermediate_points_during_generatio
+    role: supports
+    claim: A single automated reward signal (BLEU score computed at intermediate points during generation) is sufficient
+      to jointly optimize translation quality and latency in an RL-tuned simultaneous translation system, without
+      a multi-component or human-feedback reward.
+    source: §3.3, §2.2
+    evidence: GRPO with only a BLEU-based process reward, no KL regularization, and no human interpretation or preference
+      data, produces state-of-the-art quality/latency trade-offs across four languages, in contrast to prior RL
+      approaches (e.g. Seed LiveInterpret 2.0) that required multiple reward components and staged training to avoid
+      reward hacking.
+    confidence: high
+    relevance: high
+  - claim_id: the_degree_of_causality_permitted_in_the_base_model_s_training_alignments_bounds_how_much_a
+    role: complicates
+    claim: The degree of causality permitted in the base model's training alignments bounds how much a subsequent
+      RL stage can reduce translation latency.
+    source: §4.7, Figure 7
+    evidence: Ablation Experiment (B), which starts RL from a base model trained with fully causal alignment (δ_i
+      = d_i), reduces latency only to around 6 seconds, far worse than the reference experiment's latency, because
+      the base model was never exposed to starting translation before an input sentence ends.
+    confidence: high
+    relevance: high
+  - claim_id: joint_multistream_modeling_of_source_and_target_audio_tokens_can_transfer_speaker_identity_a
+    role: supports
+    claim: Joint multistream modeling of source and target audio tokens can transfer speaker identity across languages
+      implicitly, without an explicit speaker-conditioning module.
+    source: §4.6, Table 1
+    evidence: Hibiki-Zero surpasses Seamless's speaker-similarity score by more than 30 points in the short-form
+      setting and by roughly 17-20 points in the long-form setting across all four evaluated languages, despite
+      having no dedicated speaker embedding component.
+    confidence: high
+    relevance: low
+  - claim_id: systems_trained_to_preserve_source_speaker_identity_in_cross_lingual_speech_translation_may
+    role: complicates
+    claim: Systems trained to preserve source speaker identity in cross-lingual speech translation may still fail
+      to give users control over paralinguistic transfer such as foreign accent.
+    source: §4.8
+    evidence: The paper reports that despite state-of-the-art speaker identity preservation, there is no mechanism
+      to control the intensity of the input-language accent carried into the generated target speech.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2602.13891'
+  published_date: '2026-02-14'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - evaluation
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family:
+  - reward_model_infrastructure
+  - rl_policy_gradient_reward_optimization
+  claims:
+  - claim_id: decomposing_speech_quality_judgment_into_explicit_acoustic_evidence_extraction_followed_by_g
+    role: supports
+    claim: Decomposing speech-quality judgment into explicit acoustic evidence extraction followed by grounded reasoning
+      improves agreement with human naturalness ratings over black-box scalar regressors, particularly for out-of-domain
+      generalization.
+    source: §6.2, Table 5
+    evidence: GSRM reaches OOD Pearson 0.465 versus 0.236 for the best scalar regressor baseline (AES-based) and
+      0.222–0.245 for WavLLM- and UTMOSv2-based baselines
+    confidence: high
+    relevance: high
+  - claim_id: conditioning_a_reasoning_model_on_explicitly_extracted_structured_acoustic_features_is_more
+    role: supports
+    claim: Conditioning a reasoning model on explicitly extracted, structured acoustic features is more effective
+      for eliciting reliable paralinguistic judgments than prompting a frontier model directly with raw audio.
+    source: §3, Table 2
+    evidence: Gemini-2.5-Pro prompted with textual acoustic-feature descriptions (no audio access) outperforms Gemini-2.5-Pro
+      prompted directly with speech in both in-domain and OOD naturalness prediction
+    confidence: high
+    relevance: high
+  - claim_id: a_generative_reward_model_trained_on_human_naturalness_ratings_can_serve_as_an_effective_onl
+    role: supports
+    claim: A generative reward model trained on human naturalness ratings can serve as an effective online RLHF
+      verifier, producing generation-quality gains a human panel can detect.
+    source: §6.4, Table 6
+    evidence: After GRPO training of an in-house full-duplex speech LLM against GSRM as the reward source, the RLHF-trained
+      model wins 82% of human A/B pairwise comparisons for overall naturalness against the base SFT model
+    confidence: high
+    relevance: high
+  - claim_id: for_generative_speech_reward_models_prediction_reliability_can_be_improved_at_inference_time
+    role: refines
+    claim: For generative speech reward models, prediction reliability can be improved at inference time by increasing
+      the number of sampled judgments, without any additional training.
+    source: §6.2, Figure 4b
+    evidence: OOD Pearson correlation increases monotonically as the number of test-time inference samples K grows
+      from 1 to 16, with the largest gains between K = 1 and K = 4
+    confidence: high
+    relevance: high
+  - claim_id: even_the_best_current_generative_speech_reward_models_remain_well_short_of_human_inter_rater
+    role: complicates
+    claim: Even the best current generative speech reward models remain well short of human inter-rater agreement,
+      and naively applying reinforcement learning to train the reward model itself can be unstable.
+    source: §6.2, Table 5; Appendix E.2, Table 11
+    evidence: GSRM's validation Pearson (0.401) trails the human inter-rater oracle (0.533), and an RL-trained variant
+      of GSRM using an L2-distance reward collapses to near-constant score predictions (reward hacking), underperforming
+      plain supervised fine-tuning
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.08823'
+  published_date: '2026-03-11'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - rl_policy_gradient_reward_optimization
+  claims:
+  - claim_id: reusing_the_same_quality_and_asr_models_as_both_pretraining_data_filters_and_rl_reward_signa
+    role: supports
+    claim: Reusing the same quality and ASR models as both pretraining data filters and RL reward signals eliminates
+      the distribution shift between pretraining and post-training in autoregressive TTS.
+    source: §3, §4.3
+    evidence: Reusing the same quality and ASR models as both pretraining data filters and RL reward signals eliminates
+      the distribution shift between pretraining and post-training in autoregressive TTS.
+    confidence: high
+    relevance: high
+  - claim_id: decoupling_temporal_semantic_generation_slow_ar_from_depth_wise_acoustic_generation_fast_ar
+    role: supports
+    claim: Decoupling temporal semantic generation (slow AR) from depth-wise acoustic generation (fast AR) enables
+      efficient long-sequence codec modeling without a tenfold increase in sequence length.
+    source: §2.2
+    evidence: Decoupling temporal semantic generation (slow AR) from depth-wise acoustic generation (fast AR) enables
+      efficient long-sequence codec modeling without a tenfold increase in sequence length.
+    confidence: high
+    relevance: low
+  - claim_id: multi_dimensional_rl_rewards_combining_intelligibility_acoustic_quality_and_speaker_similari
+    role: supports
+    claim: Multi-dimensional RL rewards combining intelligibility, acoustic quality, and speaker similarity provide
+      more stable and coherent training signals than single-objective RL in speech generation.
+    source: §4.3, Table 7
+    evidence: Multi-dimensional RL rewards combining intelligibility, acoustic quality, and speaker similarity provide
+      more stable and coherent training signals than single-objective RL in speech generation.
+    confidence: high
+    relevance: high
+  - claim_id: instruction_following_capability_learned_through_rich_transcription_asr_annotation_at_scale
+    role: supports
+    claim: Instruction-following capability, learned through rich-transcription ASR annotation at scale, is a key
+      driver of human-likeness as measured by Audio Turing Test scores.
+    source: §6.2.1, Table 5
+    evidence: Instruction-following capability, learned through rich-transcription ASR annotation at scale, is a
+      key driver of human-likeness as measured by Audio Turing Test scores.
+    confidence: high
+    relevance: low
+  - claim_id: open_source_multilingual_tts_systems_can_match_or_exceed_closed_source_systems_on_objective
+    role: supports
+    claim: Open-source multilingual TTS systems can match or exceed closed-source systems on objective benchmarks
+      when trained on sufficiently large and carefully curated multilingual corpora.
+    source: §6.1, Table 1, Table 2
+    evidence: Open-source multilingual TTS systems can match or exceed closed-source systems on objective benchmarks
+      when trained on sufficiently large and carefully curated multilingual corpora.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.15981'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - rl_policy_gradient_reward_optimization
+  - reward_model_infrastructure
+  claims:
+  - claim_id: coupling_sentiment_affect_understanding_and_response_generation_training_in_a_single_multi_t
+    role: supports
+    claim: Coupling sentiment/affect understanding and response-generation training in a single multi-task reinforcement
+      learning objective produces measurably more contextually appropriate responses than training generation with
+      supervised fine-tuning alone, and the two RL tasks are mutually reinforcing rather than redundant.
+    source: §4.4.1, Table 2
+    evidence: On Expresso, response appropriateness rises from 65.0% (SFT CLS+GEN) to 73.0% when only the RL generation
+      task is added, and further to 77.0% when the RL classification task is added as well, showing incremental
+      gains from each RL component.
+    confidence: high
+    relevance: high
+  - claim_id: reinforcement_learning_with_chain_of_thought_reasoning_that_requires_a_speech_llm_to_ground
+    role: supports
+    claim: Reinforcement learning with chain-of-thought reasoning that requires a speech LLM to ground sentiment
+      predictions in explicit acoustic-prosodic evidence can outperform strong general-purpose proprietary speech
+      LLMs on emotionally appropriate response generation, including on utterances whose affect is only conveyed
+      through prosody and not lexical content.
+    source: §4.4.1, §4.4.3, Table 2, Table 3
+    evidence: PALLM (CLS+GEN) reaches 77.0% response appropriateness on Expresso versus 66.1% for Gemini-2.5 Pro
+      and 67.4% for GPT-4o-Audio; qualitative examples show PALLM producing emotionally attuned responses to utterances
+      containing no explicit emotion words (e.g., "I understand. Okay." spoken fearfully).
+    confidence: high
+    relevance: high
+  - claim_id: paralinguistic_understanding_and_generation_trained_on_labeled_in_domain_emotion_corpora_gen
+    role: complicates
+    claim: Paralinguistic understanding and generation trained on labeled in-domain emotion corpora generalizes
+      only partially to unseen out-of-domain paralinguistic data, leaving a substantial performance gap despite
+      strong in-domain gains.
+    source: §4.1, §4.4.1, §6, Table 1, Table 2
+    evidence: RAVDESS is held out entirely from training to test out-of-domain generalization, and PALLM's response
+      appropriateness on RAVDESS (48.0%) remains far below its in-domain scores on Expresso (77.0%) and IEMOCAP
+      (73.0%), a gap the authors attribute to domain shift.
+    confidence: high
+    relevance: high
+  - claim_id: using_an_llm_as_judge_reward_signal_for_training_generation_quality_via_reinforcement_learni
+    role: complicates
+    claim: Using an LLM-as-judge reward signal for training generation quality via reinforcement learning introduces
+      judge-bias and reward-hacking risk that partial human-agreement checks do not fully rule out.
+    source: §4.3, §6
+    evidence: The RL response-generation reward is computed entirely by an LLM judge against a rubric; the paper
+      reports only 82% agreement between this judge and human annotators on a 100-example subset, and explicitly
+      lists judge bias and vulnerability to reward hacking as a limitation of the RL stage.
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For rlhf-speech, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
 claim_clusters:
 - id: rlhf_posttraining_beats_sft_baseline
   claim: Preference- or reward-based post-training (DPO, KTO, GRPO, differentiable-reward optimization) for TTS/SLM
@@ -3511,6 +4081,14 @@ claim_clusters:
   - neurips-2025-AsRB5nmlOD
   - '2512.14291'
   - '2512.20156'
+  - '2601.03888'
+  - '2601.15621'
+  - '2601.19063'
+  - '2601.22661'
+  - '2602.11072'
+  - '2602.13891'
+  - '2603.08823'
+  - '2603.15981'
   contradicting_papers: []
   refining_papers:
   - '2508.20916'
@@ -3518,7 +4096,7 @@ claim_clusters:
   - This is the headline result replicated across 11 independent papers spanning DPO, KTO, GRPO, and differentiable-reward
     methods, but each paper measures a different subset of WER/SIM/MOS metrics, so the effect size is not directly
     comparable across papers.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: rlhf_reward_hacking_risk
   claim: RL/RLHF post-training for speech generation optimized against an automatically measured proxy reward is
     prone to reward hacking, degrading unmeasured or complementary perceptual qualities (prosody naturalness, emotional
@@ -3539,18 +4117,22 @@ claim_clusters:
   - '2511.15848'
   - '2512.04552'
   - '2512.14291'
+  - '2601.22661'
+  - '2602.13891'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-0063
   - '2509.25416'
   - '2512.04552'
+  - '2601.19063'
+  - '2603.15981'
   caveats:
   - No paper in the corpus disputes that reward hacking is a real risk; disagreement (where it exists) is only about
     which mitigation works best, not whether the phenomenon occurs.
   - '2509.18531 (Prosody-GRPO) is the most extreme documented case: GRPO on a harmonic-mean CER/likelihood reward
     achieved the lowest CER of any tested system while producing the lowest human-preference ELO score, with pitch
     collapsing toward monotone speech.'
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: preference_pair_construction_determines_dpo_success
   claim: The construction strategy for DPO/preference training pairs in speech generation (checkpoint diversity,
     cross-model vs. self-comparison sourcing, natural vs. synthetic pairing, automatic scoring of noisy intermediate
@@ -3666,16 +4248,20 @@ claim_clusters:
   supporting_papers:
   - '2505.09558'
   - '2512.04552'
+  - '2601.22661'
+  - '2602.13891'
   contradicting_papers:
   - '2508.20916'
   refining_papers:
   - '2510.00743'
   - '2510.20210'
   - '2512.02523'
+  - '2602.13891'
+  - '2603.15981'
   caveats:
   - Single-paper finding; 2508.08957 (QAMRO) trains a comparable audio-quality predictor but with a ranking loss
     rather than RL, so it does not independently corroborate the RL-specific portion of this claim.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: composite_multiobjective_rewards_outperform_single_metric_but_need_balancing
   claim: RL or preference-optimization reward functions that jointly target multiple speech quality dimensions (intelligibility,
     speaker similarity, emotion, prosody) outperform single-metric rewards, which improve only their targeted dimension
@@ -3695,13 +4281,20 @@ claim_clusters:
   - '2512.04793'
   - '2512.14291'
   - '2512.20156'
+  - '2601.15621'
+  - '2601.19063'
+  - '2601.22661'
+  - '2603.08823'
+  - '2603.15981'
   contradicting_papers: []
   refining_papers:
   - '2512.02523'
+  - '2601.19063'
+  - '2601.22661'
   caveats:
   - '2508.16332 (Vevo2) is the clearest negative case: intelligibility-only GRPO reward dropped melody accuracy
     from 65% to 50%, only resolved by joint multi-objective reward design.'
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: rlhf_alignment_generalizes_crosslingually
   claim: Preference- or reward-based alignment trained on a small set of high-resource languages generalizes intelligibility/quality
     gains to unseen languages without requiring language- specific alignment data.
@@ -3731,6 +4324,7 @@ claim_clusters:
   - '2511.15848'
   - neurips-2025-AsRB5nmlOD
   - '2512.20156'
+  - '2601.19063'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.997
@@ -3738,7 +4332,7 @@ claim_clusters:
   caveats:
   - '2025.acl-long.997 (AlignSLM) itself refines this claim: semantic gains do not transfer uniformly to lexical/grammatical
     correctness (sBLIMP), and even the best preference-optimized variant remains behind a cascaded ASR+LLM topline.'
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: rlhf_alignment_bounded_by_base_model_capability
   claim: 'Gains from preference or reward-based alignment are ultimately bounded by the base model''s underlying
     capability: iterative alignment rounds show diminishing returns, and RL-optimized systems approach but do not
@@ -3754,10 +4348,12 @@ claim_clusters:
   contradicting_papers: []
   refining_papers:
   - '2510.05799'
+  - '2601.19063'
+  - '2602.13891'
   caveats:
   - This is a consistent qualitative pattern across three independent papers, but none directly measures the ceiling's
     location, only that alignment approaches without fully reaching an oracle or topline comparator.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: rl_posttraining_for_streaming_s2s_translation
   claim: For streaming/simultaneous end-to-end speech-to-speech translation, RL post-training combining fine-grained
     process rewards with holistic outcome rewards improves latency more substantially than translation quality,
@@ -3766,13 +4362,15 @@ claim_clusters:
   confidence: high
   supporting_papers:
   - '2507.17527'
+  - '2602.11072'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2602.11072'
   caveats:
   - Single-paper finding from a proprietary system (SeedLiveInterpret) with no public weights or reproducible baseline;
     the RL framework is specialized for chunk-level read-write policies and duration-matching rewards specific to
     simultaneous interpretation.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: rlhf_training_instability_requires_regularization_or_early_stopping
   claim: RL or DPO fine-tuning of speech generation models (autoregressive or diffusion-based) is prone to training
     instability, capability collapse, or monotonic degradation of held-out quality metrics without explicit regularization
@@ -3787,15 +4385,18 @@ claim_clusters:
   - '2508.20916'
   - '2511.15848'
   - '2512.04552'
+  - '2601.22661'
+  - '2602.13891'
   contradicting_papers: []
   refining_papers:
   - '2512.14291'
+  - '2603.15981'
   caveats:
   - 2509.00685 (MPO) documents catastrophic CER inflation (4.72 to 14.52) without CE regularization; 2509.18928
     (ARDM-DPO) documents monotonically decreasing speaker similarity across all tested beta values with no principled
     stopping criterion; 2509.18531 (Prosody-GRPO) documents non- monotonic ELO across iterative DPO rounds, peaking
     at round 2 and declining at round 3.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: sca_rlhf_addresses_distinct_failure_modes_from_tts_quality_alignment
   claim: RLHF applied to spoken conversational agents / dialogue systems targets qualitatively different failure
     modes (evasive or unhelpful responses to ambiguous input, semantic inconsistency, token- distribution mismatch)
@@ -3809,6 +4410,9 @@ claim_clusters:
   - '2511.15848'
   - neurips-2025-AsRB5nmlOD
   - '2512.20156'
+  - '2601.19063'
+  - '2602.13891'
+  - '2603.15981'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.682
@@ -3816,7 +4420,7 @@ claim_clusters:
   - 2025.acl-long.682 is a survey citing this pattern from secondary sources (AlignSLM, SpeechAlign) rather than
     presenting independent primary evidence, so this cluster currently rests on one primary-research data point
     (Step-Audio's 'deaf hacking' finding) plus one literature-review corroboration.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: intrinsic_backbone_reward_sufficient_for_alignment
   claim: An intrinsic reward signal derived from a speech LM's own output probability distribution (without an external
     reward model, human annotations, or ground-truth speech) is sufficient to drive meaningful post-training alignment,
@@ -3907,12 +4511,13 @@ claim_clusters:
   - '2510.05799'
   - '2510.20210'
   - '2511.03601'
+  - '2602.11072'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - The three systems localize different signals—token importance, timestamped acoustic errors, and codec-token
     rewards—so their gains are not directly comparable.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: reward_model_domain_shift_and_brittleness_limit_alignment
   claim: Speech reward models and audio-native judges remain vulnerable to synthetic-speech domain shift, fine-grained
     ranking errors, long-context degradation, and adversarial exploitation, limiting their reliability as alignment
@@ -3924,13 +4529,15 @@ claim_clusters:
   - '2510.20210'
   - '2508.20916'
   - '2512.04552'
+  - '2602.13891'
   contradicting_papers: []
   refining_papers:
   - '2512.02523'
+  - '2603.15981'
   caveats:
   - Failure modes depend on evaluator architecture, speech domain, response duration, reward regularization, and
     whether feedback is scalar or multidimensional.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 method_families:
 - id: dpo_style_preference_optimization_discrete_tts
   name: DPO/KTO-style preference optimization on discrete-token TTS/SLM output
@@ -3959,6 +4566,8 @@ method_families:
   - neurips-2025-AsRB5nmlOD
   - '2512.19090'
   - '2512.20156'
+  - '2601.15621'
+  - '2601.19063'
   open_questions:
   - How much of DPO's reported gain in this family depends on preference-pair construction quality (checkpoint diversity,
     cross-model sourcing) versus the DPO objective itself?
@@ -3983,6 +4592,13 @@ method_families:
   - '2512.04779'
   - '2512.04793'
   - '2512.14291'
+  - '2601.03888'
+  - '2601.15621'
+  - '2601.22661'
+  - '2602.11072'
+  - '2602.13891'
+  - '2603.08823'
+  - '2603.15981'
   open_questions:
   - Does the reward-hacking pattern documented repeatedly in this family (Seed-TTS, Prosody-GRPO, Vevo2, SeedLiveInterpret)
     have a general mitigation, or is it addressed ad hoc per paper?
@@ -4025,6 +4641,9 @@ method_families:
   - '2508.20916'
   - '2512.02523'
   - '2512.04552'
+  - '2601.22661'
+  - '2602.13891'
+  - '2603.15981'
   open_questions:
   - 'Neither WavReward nor QAMRO has yet been plugged into an end-to-end RLHF training loop as the reward source
     for a generation model in the corpus: does either transfer effectively when used that way?'
@@ -4036,6 +4655,7 @@ method_families:
   - '2510.05799'
   - '2510.20210'
   - '2511.03601'
+  - '2602.11072'
   open_questions:
   - Do localized reward signals remain reliable when errors span long-range prosody, speaker consistency, or dialogue
     context rather than isolated tokens or segments?
@@ -4082,6 +4702,10 @@ open_questions:
   or conversational timing?
 - Can a shared alignment framework balance acoustic quality, semantic reasoning, turn-taking, empathy, and instruction
   following without collapsing one dimension into a proxy for the others?
+- How should speech RLHF combine semantic, acoustic, intelligibility, speaker, emotion, and latency rewards without
+  hiding regressions behind one aggregate score?
+- Can generative speech reward models retain human-level calibration across unseen domains, long contexts, and adversarially
+  optimized outputs?
 trend_notes:
 - Speech alignment has expanded from discrete-token DPO and acoustic-quality rewards toward conversational reasoning,
   turn-taking, emotion, singing, editing, and multimodal capabilities.
@@ -4096,3 +4720,9 @@ trend_notes:
   following.
 - Evidence for policy-gradient optimization on non-autoregressive flow systems and cross-lingual transfer strengthened
   in Q4, though continuous preference methods remain fragmented across objectives and backbones.
+- Q1 2026 speech alignment increasingly uses multi-reward and multi-task objectives rather than optimizing one acoustic
+  or semantic proxy in isolation.
+- Generative reward models that extract acoustic evidence and reason over it are emerging as online verifiers, but
+  remain below human agreement and vulnerable to reward hacking.
+- RLHF is expanding from offline TTS quality into duplex dialogue, expressive role-play, paralinguistic response
+  generation, and simultaneous speech translation.
