@@ -1,6 +1,6 @@
 concept: gan-vocoder
-last_updated: '2026-10-31'
-paper_count: 82
+last_updated: '2026-11-13'
+paper_count: 92
 papers:
 - id: '1609.03499'
   published_date: '2016-09-12'
@@ -5771,6 +5771,687 @@ papers:
   caveats:
   - For GAN-vocoder synthesis, this is weak evidence from an unreproducible application pipeline; its strongest contribution
     is the warning that vocoder naturalness does not validate style conversion.
+- id: '2601.02073'
+  published_date: '2026-01-05'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: a_non_autoregressive_end_to_end_tts_architecture_can_achieve_substantially_lower_lexical_ton
+    role: supports
+    claim: A non-autoregressive, end-to-end TTS architecture can achieve substantially lower lexical tone error
+      rates than a conventional autoregressive two-stage (acoustic model plus vocoder) architecture in a low-resource
+      tonal language, even without explicit tone annotation in the training data.
+    source: §3.3, Table 6
+    evidence: VITS reduces Tone Error Rate from 12.93% (Tacotron2) to 5.67% on the Mizo evaluation set, despite
+      tones not being explicitly marked anywhere in the training transcripts or database.
+    confidence: high
+    relevance: medium
+  - claim_id: acceptable_subjective_naturalness_for_a_tonal_low_resource_language_can_be_achieved_with_und
+    role: supports
+    claim: Acceptable subjective naturalness for a tonal, low-resource language can be achieved with under 6 hours
+      of single-speaker training data using an end-to-end non-autoregressive framework.
+    source: §3.2, Table 2, Table 5
+    evidence: Native Mizo listeners judged VITS output natural in 41% of cases (vs. 20% for Tacotron2, 76% for ground
+      truth) and gave VITS a significantly higher scaled MOS (3.46) than Tacotron2 (2.63, p < 0.0001), from a training
+      corpus of only 5.18 hours.
+    confidence: high
+    relevance: medium
+  - claim_id: a_general_purpose_non_intrusive_perceptual_quality_metric_dnsmos_does_not_reliably_track_pro
+    role: complicates
+    claim: A general-purpose non-intrusive perceptual quality metric (DNSMOS) does not reliably track prosodic or
+      tonal correctness in low-resource tonal-language TTS.
+    source: §3.1, §4, Table 2, Table 3
+    evidence: DNSMOS scores for VITS (3.90) and Tacotron2 (3.81) were not statistically distinguishable (p = 0.72),
+      even though the same two systems differed sharply and significantly in tone error rate (12.93% vs. 5.67%)
+      and human-rated naturalness.
+    confidence: high
+    relevance: low
+  - claim_id: objective_pitch_contour_metrics_f0_rmse_f0_correlation_can_remain_statistically_indistinguis
+    role: complicates
+    claim: Objective pitch-contour metrics (F0 RMSE, F0 correlation) can remain statistically indistinguishable
+      between systems that native listeners judge to be substantially different in naturalness and tonal accuracy.
+    source: §3.1, Table 2, Table 3
+    evidence: Neither F0 RMSE (p = 0.61) nor F0 correlation (p = 0.67) differed significantly between Tacotron2
+      and VITS, despite VITS's large, statistically significant advantage in both tone error rate and subjective
+      MOS.
+    confidence: high
+    relevance: low
+  limitations:
+  - The training and evaluation data (5.18 curated hours from a single female speaker) is not publicly released;
+    the paper is explicitly framed as a work in progress, with only audio samples (not the corpus) made available
+    on a demo page.
+  - All evaluation is single-speaker; no multi-speaker or multi-style (teaching, news, storytelling) variation is
+    tested, though the authors list this as future work.
+  - Tone accuracy is assessed by a single expert annotator (also a native speaker) rather than multiple independent
+    raters, so inter-annotator reliability for the TER measure is not established.
+  - The authors explicitly conclude that DNSMOS should not be treated as a sufficient benchmark for TTS evaluation
+    in low-resource, tonal-language settings, since it fails to surface the segmental and prosodic quality differences
+    that MCD, tone-error analysis, and subjective ratings do detect.
+  caveats:
+  - For gan-vocoder, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.13758'
+  published_date: '2026-01-20'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: AAAI
+  task:
+  - evaluation
+  - codec
+  architecture:
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - hybrid_signal_neural_vocoders
+  claims:
+  - claim_id: a_metric_s_mathematical_decomposition_into_magnitude_and_phase_components_can_reveal_which_c
+    role: supports
+    claim: A metric's mathematical decomposition into magnitude and phase components can reveal which component
+      is responsible for its poor correlation with human perception, enabling a targeted rather than wholesale replacement.
+    source: §Generalized Omnidirectional Phase-oriented SNR
+    evidence: Visualizing magnitude and phase residuals separately shows the magnitude residual is structurally
+      informative while the raw phase residual is not, isolating inaccurate phase-distance measurement as the cause
+      of SNR's weak perceptual correlation.
+    confidence: high
+    relevance: medium
+  - claim_id: replacing_raw_instantaneous_phase_with_omnidirectional_phase_derivatives_in_a_reference_base
+    role: supports
+    claim: Replacing raw instantaneous phase with omnidirectional phase derivatives in a reference-based audio metric
+      substantially improves its correlation with perceptual quality metrics.
+    source: §Validation on GOMPSNR, Figure 4
+    evidence: On Vocos/LibriTTS, SNR shows PCC/SRCC below 0.1 against five perceptual metrics (PESQ, UTMOS, VQScore,
+      NISQA, DistillMOS), while GOMPSNR (built on the same omnidirectional phase-derivative substitution) shows
+      comparatively strong correlation with the same metrics.
+    confidence: high
+    relevance: high
+  - claim_id: magnitude_weighting_a_phase_only_reconstruction_loss_can_unlock_the_perceptual_benefit_of_ph
+    role: supports
+    claim: Magnitude-weighting a phase-only reconstruction loss can unlock the perceptual benefit of phase supervision
+      that an unweighted phase loss fails to provide.
+    source: §Phase-oriented Loss Functions, Table 2
+    evidence: On Vocos/LJSpeech, the unweighted OP phase loss gives no improvement over the baseline, but the magnitude-weighted
+      WOP loss improves PESQ, UTMOS, MCD, M-STFT, V/UV F1, periodicity RMSE, and pitch RMSE simultaneously.
+    confidence: high
+    relevance: high
+  - claim_id: the_choice_between_logarithmic_and_linear_magnitude_weighting_in_a_reconstruction_loss_trade
+    role: complicates
+    claim: The choice between logarithmic and linear magnitude weighting in a reconstruction loss trades off dataset-dependent
+      overfitting against perceptual quality, so no single weighting is uniformly best.
+    source: §Comprehensive Evaluation on Loss Functions
+    evidence: Linear-magnitude weighting degrades MCD, M-STFT, and GOMPSNR on the smaller LJSpeech dataset relative
+      to logarithmic weighting, attributed to overfitting on speech energy, even though it improves perceptual quality
+      metrics.
+    confidence: high
+    relevance: high
+  - claim_id: a_vocoder_training_loss_reformulation_validated_on_waveform_vocoders_can_transfer_to_neural
+    role: refines
+    claim: A vocoder-training loss reformulation validated on waveform vocoders can transfer to neural audio codec
+      training with larger relative gains at lower bitrates.
+    source: §Evaluation on Neural Audio Codecs, Figure 5
+    evidence: Applying the same well-chosen loss combination (linear magnitude + WOP + CORI) to WavTokenizer and
+      Vocos-as-codec on LibriTTS improves objective quality at all tested bandwidths, with more pronounced improvement
+      at lower bandwidths where compression is more aggressive.
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.14960'
+  published_date: '2026-01-21'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: a_neural_audio_codec_can_share_a_single_encoder_decoder_parametrization_and_codebook_set_acr
+    role: supports
+    claim: A neural audio codec can share a single encoder-decoder parametrization and codebook set across mono,
+      stereo, and surround channel configurations, matching or exceeding fixed-channel codecs without training a
+      separate model per configuration.
+    source: §IV.C, Tables I-III
+    evidence: VCNAC uses one checkpoint to reconstruct mono speech (PESQ 4.16), stereo music (SI-SDR 8.6 dB), and
+      5.1 surround content, outperforming fixed-channel baselines (DAC, EnCodec, Opus, SNAC) at a lower or comparable
+      bitrate of 7.9 kbit/s across all three settings.
+    confidence: high
+    relevance: medium
+  - claim_id: explicit_cross_channel_information_exchange_before_quantization_is_necessary_for_high_fideli
+    role: supports
+    claim: Explicit cross-channel information exchange before quantization is necessary for high-fidelity joint
+      coding of multiple audio channels, beyond what independent per-channel processing with a shared bottleneck
+      alone provides.
+    source: §IV.C, Table I, Table II
+    evidence: Removing the inter-channel attention mechanism while keeping the split-stream fuse/split design drops
+      speech PESQ from 4.16 to 3.07 and stereo SI-SDR from 8.6 to 8.4 dB, an ablation isolating the attention module's
+      contribution.
+    confidence: high
+    relevance: medium
+  - claim_id: applying_reconstruction_losses_on_standardized_downmixed_representations_e_g_mid_side_itu_r
+    role: supports
+    claim: Applying reconstruction losses on standardized downmixed representations (e.g., mid/side, ITU-R multichannel-to-stereo
+      downmix) during training helps a codec preserve perceptual quality when multichannel content is rendered down
+      to fewer output channels at inference.
+    source: §III.B, §IV.C, Figure 2
+    evidence: The MUSHRA study reports good perceptual quality for stereo downmixes of encoded 5.1 surround content,
+      a condition the training explicitly targets via ITU-R BS.775-4 downmix losses.
+    confidence: high
+    relevance: medium
+  - claim_id: synthetic_surround_training_data_built_from_simulated_channel_mixing_can_introduce_loudness
+    role: complicates
+    claim: Synthetic surround training data built from simulated channel mixing can introduce loudness and level
+      relationships between channels that do not match real multichannel content, degrading reconstruction accuracy
+      specifically for the channels most affected by the mismatch.
+    source: §IV.C, Table III
+    evidence: The authors attribute weak rear- and center-channel SI-SDR/SI-SNR values (e.g., VCNAC center-channel
+      SI-SDR of -1.59 dB) to imperfect loudness balance in their synthetic surround simulation relative to the real
+      Creative Commons movie test set, noting the simulated rear channels were comparatively louder than in the
+      realistic test data.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2602.06180'
+  published_date: '2026-02-05'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: assigning_an_externally_computed_semantic_token_directly_to_the_first_residual_vq_codebook_i
+    role: supports
+    claim: Assigning an externally computed semantic token directly to the first residual-VQ codebook index, rather
+      than training that codebook toward a semantic target via an auxiliary loss, can improve both reconstruction
+      fidelity and downstream semantic task performance relative to loss-based semantic distillation.
+    source: §4.1, Table 1
+    evidence: STACodec (HuBERT-base semantic tokens, direct RVQ-1 assignment) reaches PESQ 3.61 and ASR-WER 10.94%
+      on LibriSpeech test-clean, versus PESQ 2.79 (X-Codec) and PESQ 2.60 (SpeechTokenizer), both of which use an
+      auxiliary semantic loss on RVQ output.
+    confidence: high
+    relevance: medium
+  - claim_id: removing_the_dependency_on_an_external_self_supervised_semantic_tokenizer_at_inference_time
+    role: complicates
+    claim: Removing the dependency on an external self-supervised semantic tokenizer at inference time, by predicting
+      semantic tokens internally, trades reconstruction and downstream-task accuracy for inference efficiency.
+    source: §4.1, Table 1
+    evidence: Compared with the full STACodec using WavLM-large K-means semantic tokens, the SPD variant reduces
+      inference parameters by 250M and compute by 30 GFLOPs/s, but PESQ drops from 3.62 to 3.51 and ASR-WER on test-clean
+      rises from 9.35% to 15.39%.
+    confidence: high
+    relevance: medium
+  - claim_id: balancing_acoustic_fidelity_and_semantic_information_within_a_shared_rvq_codebook_space_rema
+    role: complicates
+    claim: Balancing acoustic fidelity and semantic information within a shared RVQ codebook space remains sensitive
+      to how tightly the semantic feature is coupled to the codebook, independent of which method is used.
+    source: §4.1
+    evidence: For the HASRD baseline, switching the semantic source from HuBERT-base to BestRQ+ improves ViSQOL
+      from 4.30 to 4.50 but increases ASR-WER from 11.30% to 21.00%, which the paper attributes to over-optimizing
+      the disentangled semantic feature toward acoustic similarity at the expense of semantic content.
+    confidence: high
+    relevance: medium
+  - claim_id: component_level_ablation_of_a_hybrid_codec_s_rvq_assignment_mechanism_trainable_first_layer
+    role: supports
+    claim: Component-level ablation of a hybrid codec's RVQ assignment mechanism, trainable first-layer codebook,
+      and bottleneck architecture can each be attributed a distinct, measurable effect on the acoustic/semantic
+      trade-off.
+    source: §4.3, Table 2
+    evidence: Holding the transformer bottleneck off, removing STA raises ASR-WER from 9.27% to 40.62% while also
+      raising PESQ from 3.58 to 3.88, showing STA trades some reconstruction quality for a large semantic-preservation
+      gain; separately, removing the trainable RVQ-1 codebook lowers PESQ from 3.62 to 3.46, and removing the transformer
+      bottleneck lowers PESQ from 3.62 to 3.58 while slightly improving ASR-WER from 9.35% to 9.27%.
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2602.14664'
+  published_date: '2026-02-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - hybrid
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - adversarial_waveform_vocoders
+  - transformer_conditioned_vocoder_systems
+  claims:
+  - claim_id: end_to_end_tts_training_is_a_data_driven_text_to_acoustic_sequence_mapping_whose_success_doe
+    role: supports
+    claim: End-to-end TTS training is a data-driven text-to-acoustic sequence mapping whose success does not depend
+      on the text-speech pairing reflecting natural human articulatory structure.
+    source: §3, Table 2, Table 10
+    evidence: Systems trained on reverse text/reverse speech and on mismatched reverse-text/forward-speech pairs
+      both converge and achieve equal or lower WER than the conventional forward-forward baseline on Tacotron-2
+      (10.8% and 9.0% vs. 17.3% WER, Whisper small.en).
+    confidence: high
+    relevance: low
+  - claim_id: the_benefit_of_an_unnatural_text_speech_training_pairing_over_the_conventional_pairing_is_ar
+    role: refines
+    claim: The benefit of an "unnatural" text-speech training pairing over the conventional pairing is architecture-dependent
+      in magnitude and can fail entirely under alignment mechanisms that impose strict monotonicity.
+    source: §3.2, §3.3, Table 9, Table 11
+    evidence: The reverse-pairing WER advantage is large on Tacotron-2 (17.3% to 10.8%) but small on VITS-TTS (12.4%
+      to 11.8%); the mismatched reverse-text/forward-speech condition trains successfully with Tacotron-2's soft
+      attention but fails outright with VITS-TTS's Monotonic Alignment Search, which cannot align reversed text
+      against forward speech (WER over 100%).
+    confidence: high
+    relevance: medium
+  - claim_id: text_tokenization_granularity_can_be_a_larger_determinant_of_tts_transcription_accuracy_than
+    role: complicates
+    claim: Text tokenization granularity can be a larger determinant of TTS transcription accuracy than the text-speech
+      training direction.
+    source: §3.1, Table 8
+    evidence: Switching from character to BPE tokenization lowers WER from 17.3% to 9.6% on the forward baseline,
+      a far larger change than the 6.5-point gain from using reverse pairing with character tokens; under BPE, the
+      reverse-vs-forward WER gap shrinks to just 0.2 percentage points.
+    confidence: high
+    relevance: low
+  - claim_id: large_gaps_in_automatic_asr_based_intelligibility_proxies_do_not_necessarily_correspond_to_e
+    role: complicates
+    claim: Large gaps in automatic ASR-based intelligibility proxies do not necessarily correspond to equally large
+      gaps in subjective naturalness ratings, and small-panel listening tests may need a forced-choice preference
+      format to reliably detect the difference.
+    source: §3, Table 2, Table 4, Table 5
+    evidence: A 37.6% relative WER reduction between conditions corresponds to a comparatively modest MOS gap on
+      a 5-point scale (3.75 vs. 3.40 naturalness, 3.58 vs. 3.38 intelligibility), while a forced-choice paired preference
+      test with the same five listeners cleanly separates the two systems (23/25 judgments).
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes low-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.01476'
+  published_date: '2026-03-02'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - GAN
+  - VAE
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: allocating_residual_vector_quantization_groups_by_equalizing_information_content_across_chan
+    role: supports
+    claim: Allocating residual-vector-quantization groups by equalizing information content across channels, rather
+      than splitting channels evenly, improves codebook utilization and reconstruction fidelity in low-bitrate neural
+      speech codecs.
+    source: §3.4-3.5, Tables 1-2, Figure 3
+    evidence: EG-GRVQ's variance-equalized channel split (55.3%/44.7% variance vs. an even 50/50 channel count)
+      improves PESQ, STOI, and NMSE over both plain RVQ and evenly-split GRVQ at 0.6875 kbps, and sustains higher,
+      more layer-uniform codebook utilization than either baseline.
+    confidence: high
+    relevance: medium
+  - claim_id: per_channel_activation_variance_can_serve_as_a_practical_training_time_computable_proxy_for
+    role: supports
+    claim: Per-channel activation variance can serve as a practical, training-time-computable proxy for a channel's
+      information content when designing quantizer group boundaries.
+    source: §2.2, Eq. 1-2
+    evidence: Under an assumed approximately-Gaussian channel distribution, differential entropy is shown to be
+      a monotonic function of variance, and the resulting variance-based group split (computed once over the training
+      set) yields consistent downstream quality gains.
+    confidence: high
+    relevance: medium
+  - claim_id: objective_quantizer_design_improvements_at_ultra_low_bitrate_can_be_small_in_absolute_magnit
+    role: complicates
+    claim: Objective quantizer-design improvements at ultra-low bitrate can be small in absolute magnitude even
+      when a matched subjective listening test finds a statistically significant preference.
+    source: §3.4, §3.6, Table 1, Figures 4-5
+    evidence: EG-GRVQ's PESQ gain over the retrained Mimi baseline is only 0.1 (1.881 vs. 1.779) and its STOI gain
+      is 0.01, while SDR is not improved (-7.31 vs. -6.97); the MUSHRA test is what most clearly separates EG-GRVQ
+      from the baselines.
+    confidence: high
+    relevance: medium
+  - claim_id: grouping_strategy_choices_for_residual_vector_quantization_interact_with_the_number_of_group
+    role: complicates
+    claim: Grouping-strategy choices for residual vector quantization interact with the number of groups, not just
+      how channels are partitioned within a fixed group count.
+    source: §3.5, Table 3
+    evidence: Under a fixed budget of 4 quantizers, a 2-groups-of-2 split outperforms a 4-groups-of-1 split on every
+      metric, showing that shallow quantization within many groups degrades quality independent of how those groups
+      are chosen.
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.02022'
+  published_date: '2026-03-03'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - codec
+  architecture:
+  - flow-matching
+  - GAN
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_waveform_generation
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: performing_latent_space_conversion_with_conditional_flow_matching_rather_than_direct_residua
+    role: supports
+    claim: Performing latent-space conversion with conditional flow matching, rather than direct residual regression,
+      produces more stable reconstructions under large resolution gaps between low- and high-fidelity codec embeddings.
+    source: §4.2, Table 2
+    evidence: In the ablation, CodecReg (direct residual regression) degrades severely at 8kHz→44.1kHz (LSD 4.86)
+      while CFM-based converters with the same backbone stay in the 1.0-1.3 LSD range at the same setting.
+    confidence: high
+    relevance: medium
+  - claim_id: conditioning_a_bandwidth_extension_model_on_explicit_voiced_unvoiced_state_information_impro
+    role: supports
+    claim: Conditioning a bandwidth-extension model on explicit voiced/unvoiced state information improves recovery
+      of high-frequency content, because voiced and unvoiced regions exhibit systematically different low-to-high-resolution
+      embedding similarity.
+    source: §2.2, §4.1, Figure 2, Table 1
+    evidence: The paper reports higher LR-HR codec embedding cosine similarity in voiced than unvoiced regions and
+      shows the full voicing-aware CodecFlow model achieves the lowest LSD-HF among all compared systems at both
+      16 kHz (1.27) and 44.1 kHz (0.98) targets.
+    confidence: high
+    relevance: medium
+  - claim_id: gains_from_flow_matching_based_latent_conversion_in_a_codec_pipeline_depend_substantially_on
+    role: complicates
+    claim: Gains from flow-matching-based latent conversion in a codec pipeline depend substantially on jointly
+      fine-tuning the codec encoder/decoder end-to-end, not solely on the conversion module's architecture.
+    source: §4.2, Table 2
+    evidence: In the ablation, the U-Conformer CFM variant trained without end-to-end fine-tuning ("CFM-UConf w/o
+      FT") underperforms the fully fine-tuned CodecFlow on every reported metric at both bandwidth settings.
+    confidence: high
+    relevance: medium
+  - claim_id: automated_objective_and_perceptual_metrics_for_bandwidth_extension_can_disagree_on_which_sys
+    role: complicates
+    claim: Automated objective and perceptual metrics for bandwidth extension can disagree on which system performs
+      best, complicating single-metric model selection.
+    source: §4.1, Table 1
+    evidence: At the 8kHz→44.1kHz setting, FlowHigh attains the highest VISQOL and AP-BWE the highest NISQA-predicted
+      MOS, while CodecFlow leads on LSD and LSD-HF; no single baseline dominates across all reported metrics.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes medium-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.08574'
+  published_date: '2026-03-10'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - acceleration_evidence
+  current_role: active_evidence
+  method_family:
+  - adversarial_waveform_vocoders
+  - hybrid_signal_neural_vocoders
+  claims:
+  - claim_id: explicitly_decomposing_spectrogram_reconstruction_into_a_closed_form_linear_projection_recov
+    role: supports
+    claim: Explicitly decomposing spectrogram reconstruction into a closed-form linear projection (recovering information
+      already present in the input) plus a learned residual for the remaining detail can outperform end-to-end black-box
+      mapping, both in efficiency and quality.
+    source: §V-B2, Table III
+    evidence: Removing the explicit range-null superimposition (Id8) and replacing it with an implicit mapping degrades
+      PESQ from 3.987 to 3.655 and Pitch RMSE from 21.346 to 26.012 on LJSpeech relative to the full RNDVoC-shared
+      configuration (Id5)
+    confidence: high
+    relevance: high
+  - claim_id: explicit_sub_band_wise_modeling_of_spectral_structure_rather_than_full_band_processing_impro
+    role: supports
+    claim: Explicit sub-band-wise modeling of spectral structure, rather than full-band processing, improves vocoder
+      reconstruction quality independently of parameter count.
+    source: §V-D, Table X
+    evidence: A 200M-parameter full-band baseline (N=1 sub-band) underperforms all sub-band variants (N=6 to 96)
+      on PESQ, MCD, and UTMOS on LibriTTS, despite having roughly 64x more parameters than the default RNDVoC-shared
+      configuration
+    confidence: high
+    relevance: high
+  - claim_id: a_single_vocoder_trained_with_randomized_mel_configuration_augmentation_can_generalize_to_un
+    role: supports
+    claim: A single vocoder trained with randomized mel-configuration augmentation can generalize to unseen mel-spectrogram
+      configurations (band count, max frequency) at inference without retraining, when the underlying degradation
+      is linear and known.
+    source: §V-E, Figure 14
+    evidence: Without the MCDA strategy, UTMOS on an unseen configuration (F_m=72, f_max=12kHz) falls below 2.6;
+      with MCDA (three pool variants of increasing size) scores recover and generalize across both seen and unseen
+      mel configurations, with wider pools yielding consistently better results
+    confidence: high
+    relevance: high
+  - claim_id: the_information_preserving_benefit_of_a_fixed_linear_projection_depends_on_keeping_the_proje
+    role: complicates
+    claim: The information-preserving benefit of a fixed linear projection depends on keeping the projection matrices
+      non-learnable; allowing them to adapt during training reintroduces the reconstruction error the decomposition
+      was meant to eliminate.
+    source: §V-B2, Figure 10
+    evidence: Making the pseudo-inverse or the mel-filter matrix learnable (Id11–Id13) degrades PESQ relative to
+      the fixed-matrix configuration (Id5), and visualized mel-spectrogram reconstruction error is near zero only
+      when both matrices are fixed, non-zero even with an explicit idempotent constraint added
+    confidence: high
+    relevance: high
+  - claim_id: vocoder_quality_gains_from_explicit_range_null_decomposition_diminish_as_the_underlying_netw
+    role: complicates
+    claim: Vocoder quality gains from explicit range-null decomposition diminish as the underlying network's own
+      generative capacity increases, since a stronger network can partially compensate for the black-box mapping
+      the decomposition is designed to avoid.
+    source: §V-G, Figure 16
+    evidence: Retrofitting the RND strategy into existing T-F domain vocoders shows a larger performance gap for
+      the smaller RNDVoC-UltraLite than for the larger RNDVoC-Lite, indicating the decomposition's benefit is more
+      pronounced when the network's intrinsic generation capability is limited
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes high-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2601.00217'
+  published_date: '2026-03-13'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - flow-matching
+  - VAE
+  - GAN
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  current_role: minor
+  method_family:
+  - flow_matching_waveform_generation
+  - adversarial_waveform_vocoders
+  - vae_codec_vocoder_decoders
+  claims:
+  - claim_id: latent_space_flow_matching_can_reduce_train_inference_distribution_mismatch_in_vae_based_gen
+    role: supports
+    claim: Latent-space flow matching can reduce train-inference distribution mismatch in VAE-based generative speech
+      models without modifying the decoder.
+    source: §IV.E, Table 2
+    evidence: An ablation isolating the refinement step (FM-Singer vs. VISinger2 NF, identical backbone) shows consistent
+      MOS, MCD, and F0-RMSE improvements attributable specifically to the added flow-matching module.
+    confidence: high
+    relevance: low
+  - claim_id: reducing_the_distance_between_condition_derived_and_posterior_latents_correlates_with_improv
+    role: supports
+    claim: Reducing the distance between condition-derived and posterior latents correlates with improved expressive
+      naturalness in singing voice synthesis.
+    source: §IV.E, Table 4
+    evidence: Direct latent-distance measurements show a roughly 45% mean reduction in distance to posterior latents
+      after refinement, alongside a 0.7-point MOS gain over the same-backbone ablation without refinement.
+    confidence: high
+    relevance: low
+  - claim_id: kl_regularization_alone_is_insufficient_to_align_prior_and_posterior_latent_distributions_in
+    role: complicates
+    claim: KL regularization alone is insufficient to align prior and posterior latent distributions in cVAE-based
+      speech synthesis when the posterior is highly multi-modal.
+    source: §III.A
+    evidence: The paper motivates the added flow-matching module by noting that KL regularization in the base cVAE
+      backbone leaves residual latent mismatch that degrades fine expressive detail, requiring an explicit additional
+      transport mechanism.
+    confidence: high
+    relevance: low
+  - claim_id: cross_system_comparability_of_flow_matching_based_refinement_techniques_for_singing_voice_sy
+    role: complicates
+    claim: Cross-system comparability of flow-matching-based refinement techniques for singing voice synthesis is
+      limited by pipeline-specific conditioning requirements.
+    source: §IV.B
+    evidence: TechSinger, a flow-matching-based technique-controllable SVS system, is excluded from quantitative
+      comparison because its conditioning pipeline cannot be matched to the paper's datasets and evaluation protocol
+      without substantial re-engineering.
+    confidence: high
+    relevance: low
+  limitations:
+  - Korean and Chinese results come from two separately trained models on different datasets rather than a shared
+    multilingual system, so the generalization claim rests on parallel single-language training rather than demonstrated
+    cross-lingual transfer.
+  - No empirical comparison against TechSinger (another flow-matching-based SVS system) or against diffusion-based
+    singing synthesis baselines such as DiffSinger, both discussed only in related work.
+  - The authors themselves note that the refinement uses only a linear interpolation probability path and no explicit
+    technique or style conditioning in the vector field, and flag distillation or other low-step approximations
+    as future work to reduce ODE integration cost.
+  caveats:
+  - For gan-vocoder, this paper contributes low-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
+- id: '2603.16783'
+  published_date: '2026-03-17'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  relevance: low
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: minor
+  method_family:
+  - flow_matching_waveform_generation
+  - autoregressive_waveform_and_token_decoders
+  claims:
+  - claim_id: a_dedicated_turn_taking_prediction_mechanism_operating_on_streaming_speech_tokens_can_give_a
+    role: supports
+    claim: A dedicated turn-taking prediction mechanism operating on streaming speech tokens can give a speech-generating
+      model the ability to proactively interrupt mid-turn, a capability that omni dialogue models built for system-side
+      generation do not provide.
+    source: §6.1, Table 4
+    evidence: SpokenUS's turn-taking head, evaluated on 500 turn-end and 500 barge-in cases from the SpokenTOD test
+      set, reaches 66.0%/58.6% exact-window accuracy (82.4%/69.6% for the binary speak-vs-listen decision), a capability
+      the paper argues no baseline omni model supports architecturally.
+    confidence: high
+    relevance: low
+  - claim_id: grounding_a_speech_generation_system_in_structured_task_oriented_dialogue_state_can_substitu
+    role: supports
+    claim: Grounding a speech generation system in structured task-oriented dialogue state can substitute for scale,
+      allowing a small model trained on limited audio to match or exceed the perceived naturalness of much larger
+      models trained on orders of magnitude more data.
+    source: §5, Table 3
+    evidence: SpokenUS (3B params, ~1K training hours) reaches Human MOS 4.06, exceeding Qwen3-Omni-30B-A3B (3.18)
+      despite that baseline using ~20x more parameters and ~20,000x more training audio (~20M hours).
+    confidence: high
+    relevance: low
+  - claim_id: realistic_spoken_user_behavior_disfluency_gradual_slot_disclosure_cross_turn_slots_poses_a_d
+    role: complicates
+    claim: Realistic spoken user behavior (disfluency, gradual slot disclosure, cross-turn slots) poses a downstream
+      robustness challenge to dialogue agents that is largely independent of the synthesized speech's intelligibility
+      or perceived quality.
+    source: §6.3, Table 5
+    evidence: Under a cascaded ASR pipeline, SpokenUS's behaviors caused a 24.3-point drop in a fixed GPT-4.1-mini
+      agent's Final Slot F1, versus a 3.7-point drop for Qwen2.5-Omni-3B, even though SpokenUS achieves lower WER
+      (11.36% vs. up to 15.68%) and higher Human MOS than that baseline.
+    confidence: high
+    relevance: low
+  - claim_id: speaker_embedding_similarity_metrics_can_be_confounded_by_degraded_speech_quality_since_acou
+    role: complicates
+    claim: Speaker-embedding similarity metrics can be confounded by degraded speech quality, since acoustically
+      poor synthesis can appear to preserve speaker identity as strongly as natural, high-quality variation does.
+    source: §5
+    evidence: Qwen2.5-Omni-3B shows similarity scores (0.90, 0.92) comparable to SpokenUS and close to the human
+      range, despite a substantially lower Human MOS (2.34), indicating the metric does not by itself distinguish
+      genuine speaker consistency from generically uniform low-quality output.
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For gan-vocoder, this paper contributes low-relevance evidence bounded to the ingested version and reported
+    evaluation setting.
 claim_clusters:
 - id: gan_vocoders_match_autoregressive_quality_at_lower_latency
   claim: GAN vocoders can match autoregressive perceptual quality while reducing waveform-generation latency by
@@ -5842,27 +6523,31 @@ claim_clusters:
   - '2510.03735'
   - '2511.06150'
   - '2512.03486'
+  - '2601.13758'
+  - '2603.08574'
   contradicting_papers: []
   refining_papers:
   - '2509.18806'
   - '2511.07116'
   caveats:
   - Frequency-domain systems remain sensitive to phase wrapping, representation alignment, and branch interaction.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: explicit_phase_modeling_can_reduce_adversarial_dependence
   claim: Explicit phase modeling can reduce or remove the need for adversarial training in high-quality vocoders.
   status: emerging
   confidence: medium
   supporting_papers:
   - '2508.07711'
+  - '2601.13758'
   contradicting_papers: []
   refining_papers:
   - '2507.01611'
   - '2512.16519'
+  - '2601.13758'
   caveats:
   - Evidence is strongest for architectures designed around phase prediction rather than GAN objectives removed
     post hoc.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: periodic_and_antialiasing_biases_improve_robustness
   claim: Periodic activations and anti-aliasing constraints improve GAN-vocoder robustness and suppress high-frequency
     artifacts.
@@ -5890,10 +6575,11 @@ claim_clusters:
   - '2509.02244'
   - '2510.09245'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2602.14664'
   caveats:
   - Adaptation can overfit the artifact distribution of one acoustic model or codec.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: data_diversity_drives_universal_vocoding
   claim: Speaker, language, recording, and domain diversity are major drivers of universal vocoder generalization.
   status: strongly_supported
@@ -5904,13 +6590,15 @@ claim_clusters:
   - interspeech-2025-2739
   - '2508.18006'
   - '2512.20211'
+  - '2603.08574'
   contradicting_papers: []
   refining_papers:
   - '2510.03735'
   - '2512.14653'
+  - '2601.14960'
   caveats:
   - Architecture, model scale, filtering, and dataset diversity are often changed together.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: gan_vocoder_scaling_requires_training_stabilization
   claim: Scaling GAN-vocoder capacity improves quality only when accompanied by architectural and optimization stabilization.
   status: strongly_supported
@@ -5938,12 +6626,17 @@ claim_clusters:
   - '2510.03735'
   - '2512.16519'
   - '2512.20211'
+  - '2601.14960'
+  - '2602.06180'
+  - '2603.01476'
+  - '2603.08574'
   contradicting_papers: []
   refining_papers:
   - '2509.18806'
+  - '2603.08574'
   caveats:
   - Analytic components introduce their own estimation errors, including V/UV and phase failures.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: causal_streaming_vocoders_can_approach_offline_quality
   claim: Causal GAN vocoders can approach offline quality with limited lookahead, normalization changes, or teacher
     distillation.
@@ -5976,13 +6669,15 @@ claim_clusters:
   - '2510.08392'
   - '2511.07116'
   - neurips-2025-1cURNMriee
+  - '2603.02022'
   contradicting_papers: []
   refining_papers:
   - iclr-2025-tQ1PmLfPBL
   - iclr-2025-uxDFlPGRLX
+  - '2603.02022'
   caveats:
   - One-step distillation narrows the latency gap, but matched subjective comparisons remain limited.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: gan_decoders_support_low_bitrate_neural_codecs
   claim: Adversarial decoders improve perceptual reconstruction in low-bitrate neural audio codecs.
   status: strongly_supported
@@ -6005,6 +6700,10 @@ claim_clusters:
   - '2512.07168'
   - neurips-2025-7Z3wQSu3mH
   - '2512.20211'
+  - '2601.14960'
+  - '2602.06180'
+  - '2603.01476'
+  - '2603.02022'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-0347
@@ -6012,7 +6711,7 @@ claim_clusters:
   - '2509.21968'
   caveats:
   - Codec quality depends jointly on quantizer rate, latent structure, decoder capacity, and evaluation domain.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: quantization_and_compression_disproportionately_stress_vocoders
   claim: Aggressive quantization and compressed conditioning disproportionately stress vocoder quality.
   status: strongly_supported
@@ -6029,6 +6728,8 @@ claim_clusters:
   - '2511.06150'
   - '2511.22687'
   - neurips-2025-7Z3wQSu3mH
+  - '2602.06180'
+  - '2603.01476'
   contradicting_papers: []
   refining_papers:
   - '2509.04667'
@@ -6036,9 +6737,11 @@ claim_clusters:
   - '2509.19025'
   - '2510.22241'
   - '2512.07168'
+  - '2602.06180'
+  - '2603.01476'
   caveats:
   - Objective reconstruction metrics may miss perceptually salient artifacts introduced by quantization.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: objective_metrics_can_misrank_vocoder_quality
   claim: Automatic spectral and MOS-prediction metrics can misrank vocoder perceptual quality.
   status: strongly_supported
@@ -6048,16 +6751,21 @@ claim_clusters:
   - '2509.02244'
   - '2510.15364'
   - '2511.07116'
+  - '2601.13758'
   contradicting_papers: []
   refining_papers:
   - '2507.01611'
   - '2510.01903'
   - '2510.22241'
   - '2605.18001'
+  - '2601.02073'
+  - '2603.01476'
+  - '2603.02022'
   caveats:
   - Metric disagreement varies with sampling rate, bandwidth, phase, and intended signal transformation.
-  - The late PACC application reports out-of-range or underspecified scores, so it strengthens metric-validity caution rather than any absolute quality ranking.
-  last_reviewed: '2026-10-31'
+  - The late PACC application reports out-of-range or underspecified scores, so it strengthens metric-validity caution
+    rather than any absolute quality ranking.
+  last_reviewed: '2026-11-13'
 - id: vocoder_bottlenecks_interact_with_upstream_acoustic_models
   claim: Vocoder capacity and artifacts interact with upstream acoustic-model representations and prosodic diversity.
   status: strongly_supported
@@ -6076,14 +6784,17 @@ claim_clusters:
   - '2510.09245'
   - '2512.14291'
   - '2512.16519'
+  - '2601.02073'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-2573
   - '2509.04667'
   - '2509.18806'
+  - '2602.14664'
+  - '2601.00217'
   caveats:
   - End-to-end gains cannot always be attributed cleanly to the acoustic model or vocoder alone.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: gan_vocoders_remain_effective_in_low_resource_and_cross_domain_settings
   claim: GAN vocoders remain effective in low-resource, cross-lingual, voice-conversion, and non-standard acoustic
     settings.
@@ -6097,12 +6808,15 @@ claim_clusters:
   - '2512.14653'
   - '2512.20211'
   - '2605.18001'
+  - '2601.02073'
+  - '2601.14960'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Evidence spans heterogeneous tasks and rarely controls training data, language, and upstream models jointly.
-  - PACC is a weak cross-domain result because its conditioning module, data, baseline, and listening protocol are unspecified.
-  last_reviewed: '2026-10-31'
+  - PACC is a weak cross-domain result because its conditioning module, data, baseline, and listening protocol are
+    unspecified.
+  last_reviewed: '2026-11-13'
 - id: frequency_structured_representations_improve_wideband_reconstruction
   claim: Frequency-structured tokenization, band decomposition, and harmonic analysis improve wideband reconstruction
     by matching model capacity to non-uniform time-frequency structure.
@@ -6113,13 +6827,16 @@ claim_clusters:
   - '2510.03735'
   - '2511.06150'
   - '2512.03486'
+  - '2601.14960'
+  - '2603.02022'
+  - '2603.08574'
   contradicting_papers: []
   refining_papers:
   - '2510.22241'
   caveats:
   - 'Benefits vary by domain: aggressive band splitting can fragment speech-dominant low-frequency information,
     and spatial or harmonic structure requires task-specific losses.'
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 method_families:
 - id: adversarial_waveform_vocoders
   name: Adversarial waveform vocoders
@@ -6185,6 +6902,16 @@ method_families:
   - '2512.14291'
   - '2512.14653'
   - '2512.20211'
+  - '2512.03486'
+  - '2601.02073'
+  - '2601.13758'
+  - '2601.14960'
+  - '2602.06180'
+  - '2602.14664'
+  - '2603.01476'
+  - '2603.02022'
+  - '2603.08574'
+  - '2601.00217'
   open_questions:
   - Which discriminator and generator inductive biases transfer reliably across speakers, languages, sampling rates,
     and non-speech audio?
@@ -6206,6 +6933,7 @@ method_families:
   - interspeech-2025-1122
   - interspeech-2025-2031
   - interspeech-2025-2586
+  - '2602.14664'
   open_questions:
   - How should acoustic intermediates be matched to vocoder capacity under low-resource, multilingual, and quantized
     deployment?
@@ -6226,6 +6954,9 @@ method_families:
   - '2509.24773'
   - '2510.08392'
   - neurips-2025-1cURNMriee
+  - '2603.02022'
+  - '2601.00217'
+  - '2603.16783'
   open_questions:
   - Can flow-matching vocoders retain their quality advantage at the one-step and streaming inference budgets where
     GANs are strongest?
@@ -6253,6 +6984,12 @@ method_families:
   - '2512.07168'
   - neurips-2025-7Z3wQSu3mH
   - '2512.20211'
+  - '2601.02073'
+  - '2601.14960'
+  - '2602.06180'
+  - '2603.01476'
+  - '2603.02022'
+  - '2601.00217'
   open_questions:
   - How should quantizer structure, decoder capacity, and adversarial losses be co-designed across bitrates and
     audio domains?
@@ -6284,6 +7021,8 @@ method_families:
   - '2507.14534'
   - '2509.04667'
   - '2512.16519'
+  - '2601.13758'
+  - '2603.08574'
   open_questions:
   - Which analytic constraints improve extrapolation and efficiency without imposing brittle estimation bottlenecks?
 - id: autoregressive_waveform_and_token_decoders
@@ -6297,6 +7036,7 @@ method_families:
   - '2502.05512'
   - 2025.findings-naacl.279
   - 2025.findings-acl.115
+  - '2603.16783'
   open_questions:
   - Where do autoregressive decoders remain preferable once latency, context length, and acoustic-token hierarchy
     are controlled?
@@ -6358,6 +7098,10 @@ open_questions:
 - Which evaluation suite reliably captures phase, pitch, bandwidth, transient, and out-of-domain vocoder artifacts?
 - How should causal, low-bit, and hardware-aware vocoders trade model size, lookahead, energy use, and listener
   quality?
+- Can one vocoder preserve perceptual quality across unseen mel layouts, channel counts, and bandwidths without
+  configuration-specific retraining?
+- Which phase- and bandwidth-aware metric combination best predicts listener rankings across waveform vocoders and
+  codec decoders?
 trend_notes:
 - GAN vocoders continue to move from generic waveform discrimination toward harmonic, dynamic-resolution, multi-band,
   and aliasing-aware designs.
@@ -6371,3 +7115,9 @@ trend_notes:
   and upstream conditioning mismatch preserve practical latency-quality trade-offs.
 - Evaluation is shifting toward mixed subjective, spectral, semantic, and downstream-task evidence because single
   objective reconstruction metrics repeatedly misrank perceptual and functional quality.
+- Q1 2026 evidence increasingly treats GAN vocoders as structured inverse problems, using fixed projections, sub-bands,
+  phase derivatives, and channel-aware constraints rather than only larger black-box generators.
+- Codec-oriented GAN decoders are expanding from mono speech reconstruction toward semantic token allocation, multichannel
+  audio, and ultra-low-bitrate operation.
+- Q1 2026 comparisons continue to show that spectral, ASR, and learned perceptual metrics can rank vocoder and bandwidth-extension
+  systems differently.
