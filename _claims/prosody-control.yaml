@@ -1,6 +1,6 @@
 concept: prosody-control
-last_updated: '2026-09-26'
-paper_count: 115
+last_updated: '2026-11-13'
+paper_count: 128
 papers:
 - id: '1609.03499'
   published_date: '2016-09-12'
@@ -8297,10 +8297,703 @@ papers:
   - language_and_domain_specific_prosody_modeling
   - linguistic_context_prosody_prediction
   caveats: []
+- id: '2601.04233'
+  published_date: '2026-01-04'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - stochastic_generative_prosody_model
+  - disentangled_prosody_content_timbre
+  - implicit_scale_and_data_prosody_modeling
+  - language_and_domain_specific_prosody_modeling
+  claims:
+  - claim_id: unifying_diverse_scripts_into_a_shared_phonetic_representation_augmented_with
+    role: supports
+    claim: Unifying diverse scripts into a shared phonetic representation, augmented with explicit language identifiers, stabilizes large-scale multilingual flow-matching TTS training and improves cross-lingual intelligibility.
+    source: §6.1, Table 4
+    evidence: LEMAS-TTS, extending F5-TTS with a unified phonetic front-end, CTC alignment loss, and accent-adversarial disentanglement, achieves lower WER than the OpenAudio-S1-mini baseline in every one of 10 evaluated languages (average WER 6.39% vs. 12.27%).
+    confidence: high
+    relevance: high
+  - claim_id: an_explicit_accent_adversarial_disentanglement_objective_applied_via_a_gradient
+    role: supports
+    claim: An explicit accent-adversarial disentanglement objective, applied via a gradient-reversal accent classifier, is a mechanism for reducing cross-lingual accent leakage in multilingual zero-shot TTS.
+    source: §4.1
+    evidence: An accent classifier attached to the conditioning pathway via a Gradient Reversal Layer, supervised with pseudo-labels from an off-the-shelf language-identification model, is introduced specifically because flow-matching models without such regularization were observed to leak higher-resource-language prosody into lower-resource-language synthesis.
+    confidence: high
+    relevance: high
+  - claim_id: adding_explicit_prosody_conditioning_to_a_multilingual_flow_matching_tts
+    role: complicates
+    claim: Adding explicit prosody conditioning to a multilingual flow-matching TTS model improves pronunciation stability at some cost to speaker similarity.
+    source: §6.1, Table 4
+    evidence: The prosody-aware LEMAS-TTS variant achieves lower average WER than the variant without a prosody encoder (6.39% vs. 8.06%) but slightly lower average speaker similarity (0.539 vs. 0.547), which the authors attribute to prosodic conditioning trading expressive richness for articulation stability.
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_confidence_scored_word_level_alignment_at_large_multilingual
+    role: supports
+    claim: Fine-grained, confidence-scored word-level alignment at large multilingual scale is a practical enabler for extending an autoregressive speech-editing model beyond the single language it was originally trained on.
+    source: §5.1, §6.2, Figure 4
+    evidence: LEMAS-Edit, warm-started from a 330M-parameter English-only VoiceCraft checkpoint and fine-tuned on word-level-aligned multilingual subsets covering 7 languages, extends VoiceCraft's masked-infilling editing to multilingual audio without architectural changes, and achieves balanced A/B naturalness preference across languages in human evaluation.
+    confidence: high
+    relevance: high
+  limitations:
+  - Subjective evaluation of LEMAS-TTS was not conducted for languages other than Chinese and English due to a lack of native evaluators, so the paper's TTS quality claims for the other 8 languages rest on objective metrics (WER, SIM) alone.
+  - The Vietnamese WER result for the OpenAudio-S1-mini baseline was excluded from the reported average as "unusually high," a judgment call made by the authors rather than an independently audited exclusion criterion.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2601.16225'
+  published_date: '2026-01-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - SCA
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - latent_reference_prosody_transfer
+  - linguistic_context_prosody_prediction
+  - emotion_expressive_prosody_control
+  claims:
+  - claim_id: modeling_structured_affective_context_via_dedicated_attention_before_generic_speech
+    role: supports
+    claim: Modeling structured affective context via dedicated attention before generic speech encoding preserves more emotion-relevant information for downstream empathetic response generation than encoding speech first and fusing affect afterward.
+    source: §4.6.1, Table 1, Table 2
+    evidence: Removing the dual-level (intra-turn/inter-turn) prepositive attention module collapses BLEU-4 from 0.0758 to 0.0078 and reduces the human-evaluated Empathy win rate to 76.3% relative to the full model
+    confidence: high
+    relevance: high
+  - claim_id: a_lightweight_interpretable_proxy_for_affective_intensity_derived_from_acoustic
+    role: supports
+    claim: A lightweight, interpretable proxy for affective intensity derived from acoustic energy trajectories, rather than explicit emotion classification or supervision, can drive effective empathetic prosody adaptation in speech synthesis.
+    source: §4.6.1, Table 3
+    evidence: Removing the energy-based strategy-selection and style-fusion synthesis module drops empathy-expressiveness (DMOS-E) win rate to 76.2% and emotional-consistency (DMOS-C) win rate to 67.3% relative to the full ES4R system
+    confidence: high
+    relevance: high
+  - claim_id: end_to_end_sllm_systems_fine_tuned_to_maximize_semantic
+    role: complicates
+    claim: End-to-end SLLM systems fine-tuned to maximize semantic and affective accuracy on a target dataset can exhibit lower lexical response diversity than cascaded ASR+LLM pipelines evaluated on the same task.
+    source: §4.5.1, Table 1
+    evidence: ES4R scores lower on Dist-1/Dist-2 diversity metrics than several baselines despite outperforming them on BLEU/ROUGE/BERTScore and empathy dimensions, attributed to ASR-error-induced output randomness in cascaded systems and to some baselines' additional external pretraining data
+    confidence: high
+    relevance: high
+  - claim_id: affective_context_representations_learned_via_prepositive_modeling_on_one_empathetic
+    role: supports
+    claim: Affective context representations learned via prepositive modeling on one empathetic dialogue dataset can transfer zero-shot to a structurally different dialogue dataset without fine-tuning.
+    source: §4.6, Table 5
+    evidence: Zero-shot transfer from AvaMERG (counseling dialogues) to MELD (multi-party TV-show dialogue) outperforms OpenS2S and LLaMA-Omni 2 on ROUGE-L, BERTScore, and LLM-judged Empathy despite the domain shift
+    confidence: high
+    relevance: high
+  limitations:
+  - All human-evaluation results in the paper (text A/B comparisons and speech DMOS scores, spanning all reported win/tie/loss percentages) come from only three annotators, a small and non-diverse rater pool for claims about empathy and emotional-consistency perception across the full evaluation.
+  - The empathetic speech synthesis stage maps affect to only three fixed speaking strategies (comfort, encourage, neutral) via preset hyperparameter pairs, rather than continuous, fine-grained style control; the authors identify extending this as future work. The framework does not model additional paralinguistic cues (e.g., voice quality) or speaker-aware personalization. No end-to-end streaming or low-latency inference is implemented, limiting applicability to real-time interactive settings; the authors note this as a direction for future work. Speech-generation quality itself is assessed only via human evaluation (DMOS), with no objective acoustic quality metric reported, since the paper judges standard objective TTS metrics inapplicable when responses across systems are not lexically matched.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2601.12480'
+  published_date: '2026-01-18'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - disentangled_prosody_content_timbre
+  - emotion_expressive_prosody_control
+  - structured_language_prosody_control
+  claims:
+  - claim_id: attribute_disentanglement_in_a_codec_language_model_can_be_induced
+    role: supports
+    claim: Attribute disentanglement in a codec language model can be induced implicitly through training-pair construction (deliberately mismatching prompt and target attributes) rather than through an explicit auxiliary loss or architectural module.
+    source: §6.1, Table 1
+    evidence: Same-speaker and cross-speaker Delta-Pair sampling, with no auxiliary disentanglement loss, yields 92% emotion classification accuracy on the Hard Task (conflicting prompt/target emotion in 80% of cases), exceeding CosyVoice 2 (79%) and IndexTTS 2 (73%), which use style-tag or dual-prompt conditioning.
+    confidence: high
+    relevance: high
+  - claim_id: direct_single_stage_attribute_conditioned_generation_can_express_fine_grained
+    role: supports
+    claim: Direct single-stage attribute-conditioned generation can express fine-grained control more effectively than iterative post-hoc editing of an already-synthesized utterance.
+    source: §6.1, Figure 4
+    evidence: Step-Audio-EditX's iterative editing raises emotion classification accuracy only from 50% (zero-shot generation) to 56.25% after one edit and 57.5% after a second, with negligible further gain, while SpeechEdit's single-stage direct emotion conditioning reaches 63.75% ECA at a comparable 2.5% WER.
+    confidence: high
+    relevance: high
+  - claim_id: adding_a_cross_speaker_voice_conversion_training_objective_to_a
+    role: complicates
+    claim: Adding a cross-speaker voice-conversion training objective to a unified selective-editing codec LM trades off speaker-similarity preservation for cross-speaker controllability.
+    source: §A.4, Task Ablation
+    evidence: A task-ablated variant trained only on same-speaker delta pairs (removing cross-speaker supervision) improves zero-shot TTS speaker similarity from 0.45 to 0.53 relative to the full model, at the cost of losing voice-conversion capability.
+    confidence: high
+    relevance: high
+  - claim_id: augmenting_a_training_corpus_with_additional_emotional_speech_from_a
+    role: complicates
+    claim: Augmenting a training corpus with additional emotional speech from a mismatched distribution (elicited, exaggerated emotion) does not reliably improve emotion-controllable synthesis and can degrade it.
+    source: §A.4, Data Ablation, Table 1
+    evidence: Mixing 708 hours of read-audiobook LibriEdit data with 30 hours of internal acted emotional speech and 47 hours of Expresso produced consistent degradation across most objective metrics relative to LibriEdit-only training, attributed to a distribution mismatch between spontaneous and elicited/exaggerated emotional expression.
+    confidence: high
+    relevance: high
+  limitations:
+  - Speaker identity is represented with a single static global embedding, which the authors acknowledge can lose time-varying vocal nuance and idiosyncratic articulation, and the model's disentanglement is entirely implicit (no auxiliary supervision), which the authors note may limit robustness on extreme or rare attribute combinations that the Delta-Pair sampling strategy does not adequately cover.
+  - The controllable attribute space is restricted to emotion, prosody, and speaker identity via a fixed categorical/ordinal instruction vocabulary; it does not support natural-language style instructions or arbitrary multi-attribute specifications. The emotion-editing evaluation sets are small (80-100 samples, four unseen speakers per condition), and no code repository is released alongside the paper, only audio samples.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2601.12966'
+  published_date: '2026-01-19'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - latent_reference_prosody_transfer
+  - stochastic_generative_prosody_model
+  - language_and_domain_specific_prosody_modeling
+  - voice_quality_and_paralinguistic_feature_control
+  claims:
+  - claim_id: style_embeddings_learned_from_a_large_prosodically_diverse_non_lombard
+    role: supports
+    claim: Style embeddings learned from a large, prosodically diverse (non-Lombard) dataset can encode enough structure about vocal effort and articulation clarity to support post-hoc, zero-shot control of Lombard speech attributes via simple linear (PCA) manipulation.
+    source: §2.2, Figure 2
+    evidence: PCA on the style-embedding space trained on Emilia shows the first two principal components correlate strongly with measured speech pressure level on the AVID loudness corpus, and the second component correlates with articulation clarity on the ALBA corpus, without any Lombard-labelled fine-tuning data.
+    confidence: high
+    relevance: high
+  - claim_id: loudness_and_articulation_clarity_control_serve_complementary_noise_level_dependent
+    role: supports
+    claim: Loudness and articulation-clarity control serve complementary, noise-level-dependent roles in preserving intelligibility of hyperarticulated synthetic speech under noise.
+    source: §3.2, Table 2
+    evidence: An ablation on the "very loud" condition shows removing clarity control (loudness only) raises WER especially at moderate noise (SNR=10, 5), while removing loudness control (clarity only) causes WER to diverge sharply at severe noise (SNR=1), indicating clarity dominates at moderate noise and loudness dominates at severe noise.
+    confidence: high
+    relevance: high
+  - claim_id: replacing_a_tts_model_s_in_context_reference_audio_conditioning
+    role: complicates
+    claim: Replacing a TTS model's in-context reference-audio conditioning with a compact, fixed-size style embedding trades speaker similarity and naturalness for robustness to conditions where in-context conditioning fails, such as cross-lingual prompting.
+    source: §3.1, Table 1
+    evidence: On matched-language (English) prompts, the style-embedding model shows lower SPK-SIM (89.1 vs. 95.9) and UTMOS (3.53 vs. 3.84) than the F5-TTS in-context baseline, but on cross-lingual (German) prompts it substantially outperforms the baseline on both WER (2.48 vs. 7.04) and UTMOS (3.49 vs. 3.18).
+    confidence: high
+    relevance: high
+  - claim_id: raw_wer_comparisons_between_synthesized_and_ground_truth_lombard_clear
+    role: complicates
+    claim: Raw WER comparisons between synthesized and ground-truth Lombard/clear speech can be confounded by recording-condition and accent artifacts in the reference recordings, motivating noise-normalized rather than absolute intelligibility metrics.
+    source: §3, Equation 1; §3.2
+    evidence: The synthesized speech frequently achieves lower absolute WER than ground-truth AVID recordings, which the authors attribute to recording conditions and accents in the database rather than a genuine intelligibility advantage; they introduce a relative-WER metric (WER_noisy / WER_clean) to obtain a fairer noise-robustness comparison.
+    confidence: high
+    relevance: high
+  - claim_id: controllable_lombard_tts_can_preserve_speaker_identity_consistently_across_lombardness
+    role: supports
+    claim: Controllable Lombard TTS can preserve speaker identity consistently across Lombardness levels even while it does not fully close the naturalness gap to real Lombard speech.
+    source: §3.2, §3.3, Table 4, Table 5
+    evidence: A CMOS listening study across normal-clean, loud-SNR10, and very-loud-SNR5 conditions shows ground-truth speech preferred for naturalness overall (CMOS -1.22) while the synthesized speech is rated comparably or better for intelligibility (CMOS +0.87); absolute SPK-SIM between synthesized and ground-truth clean speech stays in the 80.7-81.8% range across all Lombardness levels.
+    confidence: high
+    relevance: high
+  limitations:
+  - The evaluation is restricted to LibriSpeech, AVID, and ALBA, and to English (with one cross-lingual German-prompt condition); broader multilingual or spontaneous-speech generalization is untested. The Lombardness levels used for evaluation (soft/normal/loud/very-loud PCA coefficients and speed multipliers) are hand-set to approximate AVID's effort categories rather than derived from a validated psychoacoustic mapping, so the granularity and calibration of the control dimension is not independently verified. The CMOS study finds ground-truth speech still preferred for naturalness at higher Lombardness levels, indicating the naturalness gap to authentic Lombard speech is not closed. WER is computed with Whisper Large-v3, so absolute intelligibility numbers inherit that ASR model's own robustness characteristics under noise. The paper does not directly compare against the most similar prior zero-shot Lombardness-control method (embedding interpolation), only against the F5-TTS in-context
+    baseline.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: 2026.iwsds-1.3
+  published_date: '2026-02-01'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: IWSDS
+  task:
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - emotion_expressive_prosody_control
+  - structured_language_prosody_control
+  - language_and_domain_specific_prosody_modeling
+  - voice_quality_and_paralinguistic_feature_control
+  claims:
+  - claim_id: perceived_personality_style_traits_in_short_first_encounter_spoken_dialogue
+    role: supports
+    claim: Perceived personality/style traits in short, first-encounter spoken dialogue are not uniformly distinguishable; a subset of composite dimensions captures most of the perceptual variance that a larger nominal trait taxonomy targets.
+    source: §3.2, Table 1, Table 2
+    evidence: PCA on third-party Big Five ratings of the Hazumi corpus found the first three principal components explain 86% of variance, and Varimax-rotated EFA produced three interpretable factors (EO, AC, N) rather than five independent ones
+    confidence: medium
+    relevance: high
+  - claim_id: prosodic_and_paralinguistic_speech_cues_can_convey_affective_personality_information
+    role: supports
+    claim: Prosodic and paralinguistic speech cues can convey affective/personality information that text-only generation cannot reliably express.
+    source: §4.5, §5.2-5.3, Table 10, Table 11
+    evidence: In the speech condition, Neuroticism became significantly and independently perceptible via fillers, alternating speech rate, and pause manipulation, whereas the same trait showed weak, inconsistent separation in the text-only condition
+    confidence: medium
+    relevance: high
+  - claim_id: independently_controlling_multiple_style_or_persona_dimensions_through_prompt_based
+    role: complicates
+    claim: Independently controlling multiple style or persona dimensions through prompt-based text generation is prone to cross-dimension interference, complicating claims of independent controllability for trait-conditioned generation.
+    source: §4.3, Table 6
+    evidence: In Experiment 1, manipulating a single Big Five trait via GPT-4 prompting significantly shifted ratings on unintended traits (e.g., controlling Extraversion or Agreeableness also raised Openness and Conscientiousness ratings), visible in the off-diagonal correlations of Table 6
+    confidence: medium
+    relevance: high
+  - claim_id: reducing_a_high_dimensional_control_target_to_an_empirically_derived
+    role: refines
+    claim: Reducing a high-dimensional control target to an empirically-derived compressed set of dimensions improves perceptual controllability and consistency compared with attempting to control every dimension of the original taxonomy independently.
+    source: §4.4-4.5, §5.2-5.3, Table 7, Table 8, Table 10, Table 11
+    evidence: The three-trait (EO, AC, N) conditions in Experiments 2 and 3 produced significant high/low separations with lower cross-trait correlation than the five-trait condition in Experiment 1, in both text and speech modalities
+    confidence: medium
+    relevance: high
+  limitations:
+  - The study is confined to a single language (Japanese), a single dialogue corpus (Hazumi), and a single commercial TTS engine (VoiceText); the authors themselves note that personality impressions may be influenced by the specific TTS system used and call for validation with different TTS engines in future work *(§5.3)*. Personality control in the text condition relies on prompting a single proprietary LLM (GPT-4, version gpt-4-0613) without fine-tuning, so findings about text-based controllability are tied to that model's prompt-following behavior and may not generalize to other LLMs. The speech-based prosodic manipulations (backchannel timing, pause duration, filler insertion, speech-rate scaling) are binary high/low settings drawn from a prior study rather than a learned or continuously tunable control mechanism, and the stimulus set is small (ten dialogues, six controlled speech variations). The study also evaluates perception in a single first-encounter context and does not examine
+    longer-term or repeated interactions.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2602.14686'
+  published_date: '2026-02-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - VAE
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - disentangled_prosody_content_timbre
+  - signal_level_pitch_modification
+  - voice_quality_and_paralinguistic_feature_control
+  claims:
+  - claim_id: training_an_attribute_conditioned_speaker_embedding_manipulation_model_on_data
+    role: supports
+    claim: Training an attribute-conditioned speaker-embedding manipulation model on data where a target attribute is confounded with another correlated attribute at the population level causes the model to entangle the two, degrading speaker identity preservation when only the target attribute is edited at inference.
+    source: §4.2, Figure 3
+    evidence: The base-flow, trained on unmodified LibriTTS-R with pseudo-labeled creak probabilities that are negatively correlated with pitch, shows much larger equal-error-rate increases under creak manipulation than the pitch-decorrelated variants.
+    confidence: high
+    relevance: high
+  - claim_id: a_targeted_training_data_augmentation_that_explicitly_removes_a_known
+    role: supports
+    claim: A targeted training-data augmentation that explicitly removes a known spurious correlation between two attributes can disentangle them for a downstream conditional generative model without changing its architecture.
+    source: §3, Table 1; §4.2, Figure 3
+    evidence: Shifting each utterance's pitch contour toward the speaker's gender-mean via TD-PSOLA reduces the within-gender pitch-creak Pearson correlation from -0.7 (male) / -0.4 (female) to near zero, and the resulting adapted-flow and combined-flow models preserve speaker identity far better than the base-flow across all tested manipulation strengths.
+    confidence: high
+    relevance: high
+  - claim_id: removing_a_spurious_inter_attribute_correlation_in_training_data_does
+    role: complicates
+    claim: Removing a spurious inter-attribute correlation in training data does not eliminate all correlation, because some residual correlation can reflect a genuine population-level difference rather than a training artifact.
+    source: §3, Table 1
+    evidence: After pitch augmentation, the within-gender pitch-creak correlation is nearly removed, but an overall correlation of R = -0.6 remains, attributed to female speakers generally exhibiting lower creak probability than male speakers regardless of pitch.
+    confidence: high
+    relevance: high
+  - claim_id: decorrelating_a_conditioning_attribute_from_a_confounding_attribute_can_partially
+    role: complicates
+    claim: Decorrelating a conditioning attribute from a confounding attribute can partially weaken the conditioning model's sensitivity to the target attribute itself, trading off manipulation strength against identity preservation.
+    source: §4.1, Table 2
+    evidence: The creak-conditioning slope drops from 0.25 (base-flow) to 0.14 (adapted-flow), only partially recovered to 0.19 by training on both the original and augmented data (combined-flow).
+    confidence: high
+    relevance: high
+  limitations:
+  - The study uses objective speaker verification and acoustic slopes without a listening test, covers one voice-quality attribute and one backbone, and uses pitch shifting as a heuristic proxy for within-speaker decorrelation.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.07550'
+  published_date: '2026-03-08'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - structured_language_prosody_control
+  - signal_level_pitch_modification
+  - language_and_domain_specific_prosody_modeling
+  claims:
+  - claim_id: rule_based_phoneme_level_transformation_applied_to_a_frozen_pretrained
+    role: supports
+    claim: Rule-based phoneme-level transformation applied to a frozen pretrained multilingual TTS model can shift perceived accent toward a target L1-influenced variety without any accented training data or fine-tuning.
+    source: §4.1, Table 4
+    evidence: Applying Spanish and Indian phonological rule sets to speaker-embedding-conditioned synthesis with Kokoro-82M raised target-accent classification probability from 23.7% to 51.59% (Spanish) and 58.86% to 86.4% (Indian), relative to speaker embedding alone.
+    confidence: medium
+    relevance: high
+  - claim_id: word_error_rate_is_an_unreliable_standalone_proxy_for_intelligibility
+    role: complicates
+    claim: Word error rate is an unreliable standalone proxy for intelligibility loss when evaluating accent-transformed synthetic speech, because ASR systems penalize intended phonological substitutions as recognition errors.
+    source: §4.1
+    evidence: Applying Spanish phonological rules increased WER from 3.42% to 24.91% partly because of systematic substitutions such as /θ/→/s/ ("think"→"sink"), which the ASR system marks as errors despite being the intended accented outcome.
+    confidence: medium
+    relevance: high
+  - claim_id: speaker_embeddings_alone_in_a_multilingual_tts_model_are_insufficient
+    role: supports
+    claim: Speaker embeddings alone in a multilingual TTS model are insufficient to produce a strong, listener-perceptible non-native accent; explicit phoneme-level substitution is needed for robust accent identification.
+    source: §4.4, Table 6
+    evidence: With only the Spanish speaker embedding, human listener accent-identification accuracy was 0.071 (most listeners perceived American accent); adding Spanish phonological rules raised accuracy to 0.757.
+    confidence: medium
+    relevance: high
+  - claim_id: perceived_accentedness_in_synthesized_speech_depends_on_phoneme_level_duration
+    role: refines
+    claim: Perceived accentedness in synthesized speech depends on phoneme-level duration/rhythm patterns in addition to segmental phoneme substitution, and the two can be controlled independently.
+    source: §4.2, Table 3
+    evidence: Removing forced duration alignment to American English timing (allowing accent-native rhythm) increased Indian target-accent probability from 86.4% to 93.1% and UK target-accent probability from 80.28% to 81.12%, holding segmental rules fixed.
+    confidence: medium
+    relevance: high
+  limitations:
+  - 'The subjective validation is small-scale: 14 listeners rating 70 total samples, which limits statistical confidence in the accent-identification-accuracy and naturalness numbers reported in Table 6, and the listener pool''s own L1 backgrounds (a mix of Asian and European languages) may bias which target accents are correctly identified.'
+  - Accent classification relies on Vox-Profile's general accent categories used as proxies (Romance for Spanish, South Asia for Indian) since no explicit Spanish- or Indian-accented English labels exist in that classifier, which may introduce measurement noise independent of the phonological rules themselves. The rule sets cover only two L1 backgrounds (Spanish and Indian); generalization to other L1-influenced English accents is not evaluated. Adding Indian rules also introduced some listener confusion between Spanish- and Indian-accent categories (§4.4), suggesting the rule sets are not fully perceptually orthogonal.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.11683'
+  published_date: '2026-03-12'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - disentangled_prosody_content_timbre
+  - emotion_expressive_prosody_control
+  - signal_level_pitch_modification
+  claims:
+  - claim_id: explicit_counterfactual_training_constraints_that_penalize_a_direct_conditioning_to
+    role: supports
+    claim: Explicit counterfactual training constraints that penalize a direct conditioning-to-output pathway can reduce cross-attribute leakage (e.g. emotion bleeding into speaker timbre or content) more effectively than conditioning on the attribute embedding alone.
+    source: §7.3, Table 2
+    evidence: Removing the Indirect Path Constraint (IPC) loss while keeping the emotion-augmented backbone drops emotion-classification accuracy from 94% to about 88% and slightly lowers content-consistency, indicating the suppressed direct pathway reappears once the counterfactual constraint is removed.
+    confidence: high
+    relevance: high
+  - claim_id: a_prosody_mediator_limited_to_duration_pitch_and_energy_cannot
+    role: complicates
+    claim: A prosody mediator limited to duration, pitch, and energy cannot represent all emotion-relevant acoustic variation, so causal or disentanglement objectives built solely on these features leave some emotional cues unmodeled.
+    source: §7.5 Error Analysis; §8 Discussion and Limitations
+    evidence: The "disgusted" emotion category is repeatedly confused with anger by both the model and an external emotion classifier, which the authors attribute to voice-quality cues (e.g. creaky voice, spectral tilt) that are not captured by duration, pitch, or energy alone.
+    confidence: high
+    relevance: high
+  - claim_id: training_time_mechanisms_that_structurally_constrain_how_a_style_or
+    role: supports
+    claim: Training-time mechanisms that structurally constrain how a style or attribute signal reaches the output can preserve target-speaker identity better than post-hoc editing of a pretrained model's internal activations.
+    source: §7.1, Table 1
+    evidence: A post-hoc counterfactual-activation-editing baseline (CAE) applied to a pretrained emotion-conditioned FastSpeech2 model shows lower speaker-similarity cosine (0.79) than the causal-mediation model (0.88), and listeners preferred the causal model's speaker match over CAE's in 85% of ABX trials.
+    confidence: high
+    relevance: high
+  - claim_id: enforcing_counterfactual_consistency_constraints_during_training_carries_a_nontrivial_computatio
+    role: complicates
+    claim: Enforcing counterfactual consistency constraints during training carries a nontrivial computational overhead relative to standard conditioned training.
+    source: §4.4 Combined Training Objective; §8 Discussion and Limitations
+    evidence: The extra IPC and CPC forward passes roughly double per-sample computation, and total training time increases by about 1.5x compared to baseline FastSpeech2 training.
+    confidence: high
+    relevance: high
+  limitations:
+  - The central disentanglement claim rests on the assumption that all emotion-relevant acoustic effects are captured by duration, pitch, and energy alone. The authors acknowledge this is not fully true (voice quality and spectral-tilt cues are excluded by construction), so the causal constraint may suppress emotional information the mediator cannot represent rather than route it correctly.
+  - 'The evaluation is limited to a single backbone architecture, English speech, and a small emotional corpus (EmoV-DB: five emotions, four actors, about eight hours), with subjective ratings from 20 listeners and only two synthesis voices tested for cross-speaker emotion transfer. Emotion labels are coarse categorical classes rather than continuous arousal/valence descriptors, which the authors note limits the granularity of controllable expression. The counterfactual training procedure adds roughly 1.5x training time and doubles per-sample compute, a cost the paper does not evaluate at larger model or data scale. No code or demo availability is stated in the paper.'
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.13518'
+  published_date: '2026-03-13'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - structured_language_prosody_control
+  claims:
+  - claim_id: mid_utterance_dynamic_speaking_rate_control_can_be_implemented_as
+    role: supports
+    claim: Mid-utterance (dynamic) speaking-rate control can be implemented as a lightweight histogram reweighting step applied to an autoregressive model's own duration-token distribution, without training a separate control network.
+    source: §3.5, §5.3, Table 5
+    evidence: The distribution matching mechanism marginalizes the TT's joint semantic/duration output into a duration histogram, then reweights it toward a target SPS value using an exponential comparison against a sliding-window accumulated distribution, achieving Pearson correlations of 0.619-0.826 between the control signal and the measured generated rate across four dynamic transition scenarios.
+    confidence: high
+    relevance: high
+  - claim_id: applying_classifier_free_guidance_separately_to_text_audio_prompt_and
+    role: supports
+    claim: Applying classifier-free guidance separately to text, audio-prompt, and speaker-embedding conditioning in autoregressive zero-shot TTS improves intelligibility and speaker similarity, at a measurable cost to signal quality that must be compensated separately.
+    source: §6, Table 6
+    evidence: Ablations show text CFG reduces WER from 2.29% to 1.37%; adding audio CFG raises SPK-SIM from 0.578 to 0.661 but lowers UTMOS from 3.91 to 3.65; adding speaker-embedding CFG raises SPK-SIM further to 0.674.
+    confidence: high
+    relevance: high
+  - claim_id: speaking_rate_control_mechanisms_operating_on_top_of_an_autoregressive
+    role: complicates
+    claim: Speaking-rate control mechanisms operating on top of an autoregressive codec-token model are not fully disentangled from the speaking rate of the acoustic prompt, because the same model both encodes the prompt and continues it under a next-token objective.
+    source: §7, Figure 7
+    evidence: Even with the proposed SRC applied, prompts with a slow speaking rate increase WER when the target rate is fast and vice versa; the authors attribute this to the prompt-encoding and generation pathways sharing the same next-token-prediction model.
+    confidence: high
+    relevance: high
+  - claim_id: removing_the_acoustic_prompt_s_text_transcription_during_training_by
+    role: supports
+    claim: Removing the acoustic prompt's text transcription during training, by masking it with placeholder tokens that are still included in the gradient, can reduce a zero-shot TTS system's sensitivity to the prompt's own speaking rate without degrading average intelligibility.
+    source: §3.2, Table 3
+    evidence: On the Emilia speaking-rate test set, the prompt-text-masked model achieves more stable WER across slow/normal/fast prompt conditions (2.14/2.20/2.13%) than the transcription-dependent baseline (2.80/2.10/4.21%), which spikes sharply for fast prompts.
+    confidence: high
+    relevance: high
+  - claim_id: extending_duration_based_rate_control_to_extreme_target_rates_increases
+    role: complicates
+    claim: Extending duration-based rate control to extreme target rates increases the risk of hallucinated or repeated output, because those rate regions are underrepresented in typical training corpora.
+    source: §5.3, Table 5
+    evidence: At a very slow target rate (1 SPS) WER rises to 16.51%, versus 3.2% at a normal rate (4 SPS), attributed by manual inspection to underrepresentation of slow duration states in training data plus increased word repetition and filler insertion.
+    confidence: high
+    relevance: high
+  limitations:
+  - 'The system''s speaking-rate control is not fully disentangled from the acoustic prompt''s own rate: prompts recorded at one rate measurably bias intelligibility when the target rate diverges strongly from it (§7), so the reported rate-control ranges should be read as conditional on prompt/target rate combinations rather than uniformly reliable across the full 2-6 SPS operating range.'
+  - 'The training data pipeline is also non-trivial to reproduce: forced alignment with the Clap-IPA aligner discards roughly 35% of the initially collected 62k hours due to invalid alignments, and the paper flags this preprocessing complexity as an open problem for future work. Translingual prompt masking (any-language-to-English generation) is mentioned as an emergent capability but is not quantitatively evaluated, only demonstrated via audio samples. The reliable operating range for dynamic control is also bounded in practice (roughly 1-5/6 SPS), with WER increasing markedly outside that range and under fast-to-slow transitions specifically.'
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2602.07803'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - latent_reference_prosody_transfer
+  - speech_singing_shared_prosody
+  - language_and_domain_specific_prosody_modeling
+  claims:
+  - claim_id: providing_complementary_discrete_score_midi_and_continuous_melody_f0_conditioning
+    role: supports
+    claim: Providing complementary discrete (score/MIDI) and continuous (melody/F0) conditioning paths in a single singing voice synthesis model yields different controllability trade-offs rather than one path dominating the other.
+    source: §3.3.1, Table 1
+    evidence: Melody-control mode achieves the lowest F0 Frame Error by leveraging continuous acoustic pitch contours, while score-control mode achieves the lowest WER because discrete MIDI timing constraints stabilize pronunciation and rhythm.
+    confidence: high
+    relevance: high
+  - claim_id: scaling_zero_shot_singing_voice_synthesis_training_data_by_an
+    role: supports
+    claim: Scaling zero-shot singing voice synthesis training data by an order of magnitude over prior work improves generalization to unseen singers.
+    source: §2.1.2, §3.3.1, §3.3.2, Table 1, Table 2
+    evidence: Trained on 42,000+ hours (versus a few hundred to a few thousand hours for StyleSinger, TCSinger, and YingMusic-Singer), the system outperforms these baselines on speaker similarity and intelligibility for singers unseen during training on both GMO-SVS and SoulX-Singer-Eval.
+    confidence: high
+    relevance: high
+  - claim_id: melody_driven_singing_voice_synthesis_that_conditions_on_an_acoustic
+    role: complicates
+    claim: Melody-driven singing voice synthesis that conditions on an acoustic pitch contour extracted from a reference recording is more brittle to lyric edits than score-driven synthesis, because the extracted melody remains entangled with the original lyrics.
+    source: §3.3.1, Table 1
+    evidence: Under the Singing Voice Editing condition (rewritten lyrics), melody-control mode shows a marked WER increase relative to the unedited condition, while score-control mode, which conditions on explicit MIDI rather than the original acoustic melody, better preserves pronunciation accuracy under the same lyric rewrite.
+    confidence: high
+    relevance: high
+  - claim_id: separating_language_dependent_linguistic_content_from_language_independent_timbre_in
+    role: supports
+    claim: Separating language-dependent linguistic content from language-independent timbre in the conditioning representation supports cross-lingual timbre transfer in singing voice synthesis.
+    source: §3.3.3, Table 3
+    evidence: Using a Mandarin prompt to synthesize English singing, the system reaches WER 0.110 and SIM 0.898, while a melody-driven baseline (Vevosing) degrades to WER 0.717 under the same cross-lingual setting, indicating leakage of prompt-language linguistic patterns into the baseline's output.
+    confidence: high
+    relevance: high
+  - claim_id: adapting_a_score_melody_conditioned_singing_synthesis_backbone_into_a
+    role: complicates
+    claim: Adapting a score/melody-conditioned singing synthesis backbone into a voice conversion system by replacing explicit symbolic inputs with a frozen pretrained ASR encoder's semantic features trades some intelligibility for annotation-free operation.
+    source: §SoulX-Singer-SVC, Table 4
+    evidence: SoulX-Singer-SVC, which substitutes a frozen Whisper-base encoder for the score and text encoders and fine-tunes the F0 encoder and flow-matching decoder from pretrained SoulX-Singer weights, reports higher WER than the melody-controlled base model on GMO-SVS (0.107 vs. 0.065 Chinese, 0.267 vs. 0.151 English) at comparable speaker similarity.
+    confidence: high
+    relevance: high
+  limitations:
+  - No human listening test (e.g., MOS collected from real raters) is reported anywhere in the paper. Both quality metrics used (SingMOS and Sheet-SSQA) are automated, learned proxies trained to approximate human perception rather than direct human judgments, so the paper's naturalness and overall-quality claims rest entirely on model-based proxies.
+  - The paper reports no ablation isolating the contribution of the gating mechanism or the length regulator from the effect of the much larger training corpus, leaving open how much of the reported improvement is attributable to the architectural change versus data scale. SoulX-Singer-Eval, while purpose-built for training-test disentanglement, is small (100 segments from 50 singers) relative to the scale of the training corpus. The SoulX-Singer-SVC variant, evaluated only against two baselines (YingMusic-SVC, Vevo-SVC), consistently trails the melody-controlled base model on WER, and the paper does not further analyze this intelligibility gap. No explicit code repository or demo link is given in the visible text of the report, despite the paper describing the system as open-source.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.18090'
+  published_date: '2026-03-20'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - hybrid
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  current_role: active_evidence
+  method_family:
+  - latent_reference_prosody_transfer
+  - stochastic_generative_prosody_model
+  - implicit_scale_and_data_prosody_modeling
+  claims: []
+  limitations:
+  - Speaker drift in ultra-long English generation remains the primary bottleneck; the report explicitly identifies this as a failure mode rather than solving it. Japanese and Korean multilingual performance lags behind other languages, suggesting insufficient low-resource training coverage. The 8B MOSS-TTS backbone underperforms the 1.7B Local Transformer on speaker similarity, suggesting the architectural tradeoff is not purely a size effect. The report does not address latency or real-time factor, leaving streaming viability for the 8B model unclear. Objective metrics only — no subjective listening tests (MOS/MUSHRA) are reported, making absolute quality comparisons against perceptually evaluated baselines difficult. Whether the data pipeline scales further (e.g., to 100M+ hours) and whether model size beyond 8B continues to yield gains are left open.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.19831'
+  published_date: '2026-03-20'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - autoregressive-LM
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - multimodal_visual_prosody_conditioning
+  - prosody_analysis_and_evaluation_method
+  claims:
+  - claim_id: conditioning_tts_prosody_on_an_auxiliary_non_linguistic_non_audio
+    role: supports
+    claim: Conditioning TTS prosody on an auxiliary non-linguistic, non-audio modality can be integrated into an existing zero-shot TTS backbone via cross-attention without retraining the backbone from a different architecture family.
+    source: '§Proposed Architecture: Gesture2Speech TTS'
+    evidence: Gesture2Speech extends the XTTS-V2 architecture by concatenating gesture tokens with text and fused style representations before the LLM decoder's cross-attention, rather than redesigning the decoder.
+    confidence: high
+    relevance: high
+  - claim_id: an_explicit_cross_modal_temporal_alignment_loss_between_a_conditioning
+    role: supports
+    claim: An explicit cross-modal temporal alignment loss between a conditioning signal and predicted speech timing can improve the measured synchrony between that signal and the generated prosody.
+    source: §Gesture-Speech Alignment Loss, Table 3
+    evidence: Adding the CMTD-based gesture-speech alignment loss as part of the joint training objective yields a lower gesture offset and higher gesture-audio mutual information for the Multimodal MoE variant compared to ablated variants without the full multimodal fusion.
+    confidence: high
+    relevance: high
+  - claim_id: modality_specific_expert_routing_mixture_of_experts_can_outperform_simpler
+    role: supports
+    claim: Modality-specific expert routing (Mixture-of-Experts) can outperform simpler fusion strategies such as cross-attention or concatenation when combining heterogeneous conditioning modalities in TTS.
+    source: §Ablation Experiments, Table 4
+    evidence: The MoE Fusion strategy reduces gesture offset by 9.9% and increases mutual information by 171.7% relative to cross-attention fusion, and improves UTMOS by 19.7% relative to concatenation fusion, in a controlled fusion-strategy ablation.
+    confidence: high
+    relevance: high
+  - claim_id: improvements_from_richer_multimodal_conditioning_are_not_uniform_across_all
+    role: complicates
+    claim: Improvements from richer multimodal conditioning are not uniform across all metrics; a simpler variant can still outperform a more complex one on specific dimensions.
+    source: §Objective Evaluations
+    evidence: In the same-text evaluation setting, the Hierarchical MoE variant achieves marginally better WER (0.62%) and CER (0.40%) than the proposed Multimodal MoE variant, even though Multimodal MoE wins on gesture-alignment and perceptual metrics overall.
+    confidence: high
+    relevance: high
+  limitations:
+  - The system is trained and evaluated on a single dataset (PATS) restricted to five speakers and 4-15 second clips, so it is unclear whether the gesture-conditioning mechanism and alignment loss generalize to unseen speakers, longer utterances, or more culturally and emotionally diverse gesture styles; the authors explicitly acknowledge PATS's limited cultural and emotional scope.
+  - The paper also notes that its framework relies on upper-limb/hand pose keypoints derived from full pose tracking, which may not always be available in real-world deployment (e.g., without full-body visibility or high-resolution hand tracking). The relationship between gesture intensity/timing and prosodic prominence is noted as complex and speaker-dependent, meaning gesture cues may not correlate with prosodic prominence for all speakers. The paper is a non-archival workshop submission (AAAI 2026 BEEU workshop), and total model parameter count is not reported.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
+- id: '2603.21078'
+  published_date: '2026-03-22'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - explicit_acoustic_variance_control
+  - linguistic_context_prosody_prediction
+  - signal_level_pitch_modification
+  - language_and_domain_specific_prosody_modeling
+  - prosody_analysis_and_evaluation_method
+  claims:
+  - claim_id: a_segmental_level_phonetic_probe_based_on_articulatorily_grounded_acoustic
+    role: supports
+    claim: A segmental-level phonetic probe based on articulatorily grounded acoustic effects can reveal whether a TTS system encodes abstract phonological structure or has instead memorized lexically specific acoustic-textual associations.
+    source: §4, Figures 1-2
+    evidence: High-frequency (likely training-seen) words show f0 perturbation patterns matching natural speech in both Tacotron 2 and FastSpeech 2, while low-frequency (likely unseen) words show degraded or absent separation between onset categories for both models.
+    confidence: high
+    relevance: high
+  - claim_id: fine_grained_segmental_prosodic_generalization_is_not_resolved_by_architectural
+    role: complicates
+    claim: Fine-grained segmental-prosodic generalization is not resolved by architectural choice alone; both autoregressive and non-autoregressive TTS paradigms fail to generalize a local phonetic effect to unseen lexical items despite differing internal mechanisms for temporal and pitch modeling.
+    source: §4, §6
+    evidence: FastSpeech 2 (parallel decoding with an explicit pitch predictor) shows no systematic onset-conditioned f0 difference on low-frequency items, while Tacotron 2 (autoregressive, implicit propagation) shows only partial success, capturing the voiceless-obstruent effect but not the voiced-obstruent/sonorant contrast.
+    confidence: high
+    relevance: high
+  - claim_id: standard_overall_naturalness_metrics_such_as_mos_do_not_directly
+    role: complicates
+    claim: Standard overall naturalness metrics such as MOS do not directly surface segmental-level generalization failures in synthetic speech, since such metrics aggregate perceptual judgments without isolating local articulatory-acoustic cues.
+    source: §6, Discussion
+    evidence: The paper notes that TTS MOS has improved substantially even as small-scale models such as those tested here plausibly retain the segmental generalization gap identified by the probe, and argues establishing a causal link to perceptual naturalness would require dedicated listening experiments beyond the scope of this study.
+    confidence: high
+    relevance: high
+  - claim_id: lexical_frequency_based_generalization_failures_observed_in_a_controlled_single
+    role: supports
+    claim: Lexical-frequency-based generalization failures observed in a controlled single-speaker setting can transfer, in attenuated form, to large-scale, multi-speaker, multi-system evaluation settings such as deepfake-detection corpora.
+    source: §5, Figures 4-5
+    evidence: The In-the-Wild dataset (58 speakers, bona-fide and deepfake audio) reproduces the same qualitative high-frequency-versus-low-frequency contrast in onset-conditioned f0 separation seen in the LJSpeech-based Experiment 1, albeit with weaker group-level effects attributed to inter-speaker variability.
+    confidence: high
+    relevance: high
+  limitations:
+  - The study evaluates only two specific TTS systems (Tacotron 2 and FastSpeech 2), both trained on a single small corpus (LJSpeech), so conclusions about "TTS architectures" broadly are extrapolated from a narrow architectural sample; the authors themselves note diffusion- and flow-based models remain untested. Lexical frequency is used as a proxy for training-set membership rather than ground-truth confirmation for most of the analysis (though a seen/unseen validation check is run as a secondary confirmation). The In-the-Wild multi-speaker analysis cannot control for the exact training data or architecture of the systems that produced the deepfake audio, since these are not publicly documented, limiting causal attribution of the observed attenuation. The paper does not run a perceptual listening study to establish whether the identified segmental generalization gap actually affects listener-perceived naturalness or authenticity judgments; this connection remains speculative.
+  caveats:
+  - For prosody control, this paper provides high-relevance evidence on explicit, transferred, multimodal, or diagnostic control of pitch, timing, energy, rhythm, voice quality, or expressive style.
 claim_clusters:
 - id: explicit_pitch_energy_duration_enable_controllability
-  claim: Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic control
-    and reduces variation left unresolved by text alone.
+  claim: Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic
+    control and reduces variation left unresolved by text alone.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8334,6 +9027,15 @@ claim_clusters:
   - '2511.10112'
   - '2512.00451'
   - neurips-2025-SYcggdxX6W
+  - '2601.04233'
+  - '2601.12480'
+  - '2601.12966'
+  - 2026.iwsds-1.3
+  - '2602.14686'
+  - '2603.07550'
+  - '2603.11683'
+  - '2603.13518'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - 2025.acl-long.346
@@ -8341,12 +9043,14 @@ claim_clusters:
   - '2510.25566'
   - '2512.16519'
   caveats:
-  - Evidence spans different acoustic backbones and attribute subsets; improvements in one variable do not guarantee
-    joint control.
-  last_reviewed: '2026-09-26'
+  - Evidence spans different acoustic backbones and attribute subsets; improvements in one variable do
+    not guarantee joint control.
+  - Q1 extends explicit control to accent rhythm, pitch–creak interaction, causal duration–pitch–energy
+    mediation, dynamic rate histograms, melody paths, Lombard effort, and ordinal codec-LM instructions.
+  last_reviewed: '2026-11-13'
 - id: stochastic_models_preserve_one_to_many_prosody
-  claim: Stochastic prosody models preserve one-to-many variation better than deterministic regression while maintaining
-    competitive synthesis quality.
+  claim: Stochastic prosody models preserve one-to-many variation better than deterministic regression
+    while maintaining competitive synthesis quality.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8368,8 +9072,8 @@ claim_clusters:
   - Reported gains use different latent spaces, inference budgets, and diversity metrics.
   last_reviewed: '2026-09-26'
 - id: prosodic_diversity_trades_off_with_naturalness
-  claim: Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility, or speaker
-    similarity beyond a task-dependent operating range.
+  claim: Increasing prosodic diversity or transformation strength can reduce naturalness, intelligibility,
+    or speaker similarity beyond a task-dependent operating range.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8378,6 +9082,11 @@ claim_clusters:
   - 2025.emnlp-main.180
   - '2512.09504'
   - '2512.13251'
+  - '2601.04233'
+  - '2601.12966'
+  - '2602.14686'
+  - '2603.11683'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - 2025.coling-main.352
@@ -8385,12 +9094,16 @@ claim_clusters:
   - interspeech-2025-2684
   - '2510.18308'
   - '2512.00451'
+  - '2601.12966'
+  - '2603.13518'
   caveats:
   - The location of the operating point depends on representation, sampling scale, and evaluation protocol.
-  last_reviewed: '2026-09-26'
+  - Q1 reproduces non-monotonic trade-offs across multilingual prosody conditioning, Lombard strength,
+    pitch–creak decorrelation, causal mediation, and extreme speaking rates.
+  last_reviewed: '2026-11-13'
 - id: disentanglement_enables_independent_prosody_transfer
-  claim: Separating prosody from linguistic content and speaker timbre enables more independent transfer and manipulation
-    of speaking style.
+  claim: Separating prosody from linguistic content and speaker timbre enables more independent transfer
+    and manipulation of speaking style.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8404,16 +9117,24 @@ claim_clusters:
   - '2512.00451'
   - '2512.09504'
   - '2512.13251'
+  - '2601.04233'
+  - '2601.12480'
+  - '2602.14686'
+  - '2603.11683'
   contradicting_papers: []
   refining_papers:
   - '2511.10112'
   - '2512.13251'
+  - '2602.14686'
+  - '2603.11683'
   caveats:
   - Several systems still retain speaker-correlated information or pay an intelligibility cost.
-  last_reviewed: '2026-09-26'
+  - Q1 data, architectural, and causal separation improve control, while residual voice quality and speaker-specific
+    correlations remain outside the chosen mediators.
+  last_reviewed: '2026-11-13'
 - id: reference_prompts_transfer_prosody_but_leak_attributes
-  claim: Reference prompts transfer prosodic style effectively, but can leak speaker identity, content, pitch, or
-    recording conditions into the output.
+  claim: Reference prompts transfer prosodic style effectively, but can leak speaker identity, content,
+    pitch, or recording conditions into the output.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8429,6 +9150,11 @@ claim_clusters:
   - '2510.07096'
   - '2512.04779'
   - '2512.09504'
+  - '2601.16225'
+  - '2601.12480'
+  - '2601.12966'
+  - '2603.13518'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-2684
@@ -8436,12 +9162,17 @@ claim_clusters:
   - '2509.17516'
   - '2512.09504'
   - '2512.13251'
+  - '2601.12480'
+  - '2603.13518'
   caveats:
-  - Prompt duration, pairing policy, and same-speaker training assumptions materially affect both transfer and leakage.
-  last_reviewed: '2026-09-26'
+  - Prompt duration, pairing policy, and same-speaker training assumptions materially affect both transfer
+    and leakage.
+  - Q1 shows prompt-derived affect, Lombard style, melody, and speaking rate can transfer, but reference
+    text, speaker, lyrics, and rate still leak into output.
+  last_reviewed: '2026-11-13'
 - id: linguistic_context_improves_prosody_prediction
-  claim: Linguistic and conversational context improves prediction of phrasing, prominence, stress, pitch, and duration
-    over sentence-isolated or word-level conditioning.
+  claim: Linguistic and conversational context improves prediction of phrasing, prominence, stress, pitch,
+    and duration over sentence-isolated or word-level conditioning.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8460,17 +9191,24 @@ claim_clusters:
   - '2510.13194'
   - 2025.emnlp-main.1730
   - '2512.22491'
+  - '2601.16225'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2603.21078'
   contradicting_papers: []
   refining_papers:
   - '2507.08012'
   - interspeech-2025-1494
+  - '2603.21078'
   caveats:
-  - Different attributes depend on asymmetric past and future context windows, and longer context is not uniformly
-    beneficial.
-  last_reviewed: '2026-09-26'
+  - Different attributes depend on asymmetric past and future context windows, and longer context is not
+    uniformly beneficial.
+  - Q1 affective context, personality cues, phonological rules, and segmental probes show that prosody
+    depends on discourse and lexical-phonological structure.
+  last_reviewed: '2026-11-13'
 - id: duration_and_alignment_are_central_to_rhythm_control
-  claim: Duration, pause, and alignment modeling are central to intelligible rhythm, stress, phrasing, and cross-modal
-    synchronization.
+  claim: Duration, pause, and alignment modeling are central to intelligible rhythm, stress, phrasing,
+    and cross-modal synchronization.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8499,6 +9237,14 @@ claim_clusters:
   - '2511.10112'
   - '2512.04779'
   - neurips-2025-SYcggdxX6W
+  - '2601.04233'
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2603.11683'
+  - '2603.13518'
+  - '2602.07803'
+  - '2603.19831'
   contradicting_papers: []
   refining_papers:
   - '2507.03912'
@@ -8508,12 +9254,17 @@ claim_clusters:
   - '2509.00675'
   - '2509.22718'
   - '2512.00451'
+  - '2603.07550'
+  - '2603.13518'
+  - '2603.19831'
   caveats:
   - Fine-grained duration control can become unstable, and alignment supervision is costly or language-dependent.
-  last_reviewed: '2026-09-26'
+  - Q1 adds word alignment, pauses and fillers, accent rhythm, causal duration mediation, rate-token reweighting,
+    melody alignment, and gesture–speech synchrony.
+  last_reviewed: '2026-11-13'
 - id: fine_grained_local_control_is_harder_than_global_style
-  claim: Word- and phoneme-level prosodic control is less reliable than utterance-level style control because local
-    timing and linguistic interactions must be modeled explicitly.
+  claim: Word- and phoneme-level prosodic control is less reliable than utterance-level style control
+    because local timing and linguistic interactions must be modeled explicitly.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8534,19 +9285,31 @@ claim_clusters:
   - '2512.09504'
   - neurips-2025-SYcggdxX6W
   - '2512.13251'
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2602.14686'
+  - '2603.07550'
+  - '2603.11683'
+  - '2603.13518'
+  - '2603.19831'
+  - '2603.21078'
   contradicting_papers: []
   refining_papers:
   - '2507.04598'
   - 2025.acl-long.790
   - interspeech-2025-2159
   - '2510.18308'
+  - '2603.07550'
+  - '2603.21078'
   caveats:
-  - Local control results are concentrated in emphasis, emotion, and duration tasks rather than a shared comprehensive
-    benchmark.
-  last_reviewed: '2026-09-26'
+  - Local control results are concentrated in emphasis, emotion, and duration tasks rather than a shared
+    comprehensive benchmark.
+  - Q1 local accent, creak, rate, gesture, and consonant-F0 evidence confirms that timing and lexical
+    interactions make local control fragile.
+  last_reviewed: '2026-11-13'
 - id: targeted_data_and_finetuning_improve_prosodic_contrasts
-  claim: Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training does
-    not reliably produce.
+  claim: Targeted expressive data or fine-tuning improves prosodic contrasts that broad read-speech training
+    does not reliably produce.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8554,14 +9317,19 @@ claim_clusters:
   - '2510.22588'
   - 2025.emnlp-main.180
   - neurips-2025-SYcggdxX6W
+  - '2601.12966'
+  - '2602.14686'
+  - '2603.07550'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Improvements often fail to generalize uniformly across contrast types, speakers, or domains.
-  last_reviewed: '2026-09-26'
+  - Q1 specialized Lombard data, pitch-decorrelated augmentation, and explicit phonological rules improve
+    contrasts that general read-speech models do not express reliably.
+  last_reviewed: '2026-11-13'
 - id: ssl_representations_are_useful_but_entangled_for_prosody
-  claim: Self-supervised speech representations provide strong prosodic signals, but remain entangled with speaker
-    identity, content, or task-specific information.
+  claim: Self-supervised speech representations provide strong prosodic signals, but remain entangled
+    with speaker identity, content, or task-specific information.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8576,6 +9344,8 @@ claim_clusters:
   - '2509.17143'
   - '2510.09061'
   - '2511.10112'
+  - '2601.16225'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - 2025.findings-naacl.471
@@ -8584,10 +9354,13 @@ claim_clusters:
   - interspeech-2025-2189
   - interspeech-2025-2684
   - '2510.25566'
+  - '2602.07803'
   caveats:
-  - Which SSL layer or objective is best depends on whether the downstream task values reconstruction, transfer,
-    or factor separation.
-  last_reviewed: '2026-09-26'
+  - Which SSL layer or objective is best depends on whether the downstream task values reconstruction,
+    transfer, or factor separation.
+  - Q1 affective and singing systems use pretrained representations effectively, while language, lyric,
+    speaker, and style information remain coupled.
+  last_reviewed: '2026-11-13'
 - id: objective_prosody_metrics_do_not_fully_predict_perception
   claim: Objective prosody and alignment metrics do not consistently predict perceived naturalness, expressiveness,
     or control success.
@@ -8598,19 +9371,28 @@ claim_clusters:
   - '2510.07096'
   - '2510.21685'
   - '2512.00451'
+  - '2601.12966'
+  - '2603.07550'
+  - '2603.19831'
+  - '2603.21078'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1494
   - '2509.06074'
   - 2025.emnlp-main.40
   - 2025.emnlp-main.180
+  - '2601.12966'
+  - '2603.07550'
+  - '2603.21078'
   caveats:
   - Disagreement varies by task and metric; objective measures remain useful for diagnosis even when unsuitable
     as sole endpoints.
-  last_reviewed: '2026-09-26'
+  - Q1 exposes WER confounds for Lombard and accent speech, metric-specific multimodal gains, and segmental
+    F0 failures hidden by overall naturalness.
+  last_reviewed: '2026-11-13'
 - id: multimodal_cues_add_prosodic_information
-  claim: Visual and other multimodal cues add information for prosody, emotion, timing, or duration beyond text-only
-    conditioning.
+  claim: Visual and other multimodal cues add information for prosody, emotion, timing, or duration beyond
+    text-only conditioning.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8621,17 +9403,21 @@ claim_clusters:
   - '2509.06074'
   - '2509.22718'
   - '2512.09504'
+  - '2603.19831'
   contradicting_papers: []
   refining_papers:
   - interspeech-2025-1494
   - '2509.22718'
+  - '2603.19831'
   caveats:
-  - Benefits are dimension-specific and cross-modal fusion designs do not transfer uniformly between speech, dubbing,
-    and singing.
-  last_reviewed: '2026-09-26'
+  - Benefits are dimension-specific and cross-modal fusion designs do not transfer uniformly between speech,
+    dubbing, and singing.
+  - Q1 gesture conditioning and temporal alignment improve measured speech–gesture synchrony, though metric
+    gains vary by fusion method.
+  last_reviewed: '2026-11-13'
 - id: hierarchical_emotion_modeling_improves_expressive_prosody
-  claim: Hierarchical or localized emotion modeling improves expressive prosody compared with a single global emotion
-    representation.
+  claim: Hierarchical or localized emotion modeling improves expressive prosody compared with a single
+    global emotion representation.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8645,12 +9431,18 @@ claim_clusters:
   - '2510.18308'
   - '2512.09504'
   - neurips-2025-SYcggdxX6W
+  - '2601.16225'
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2603.11683'
   contradicting_papers: []
   refining_papers:
   - '2507.04598'
   caveats:
   - Local emotion targets are harder to infer from text and can accumulate prediction errors across levels.
-  last_reviewed: '2026-09-26'
+  - Q1 prepositive affective context, selective attributes, personality cues, and causal mediators reinforce
+    separation between affect planning and acoustic realization.
+  last_reviewed: '2026-11-13'
 - id: structured_prosody_plans_outperform_free_form_generation
   claim: Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained
     free-form generation.
@@ -8662,14 +9454,24 @@ claim_clusters:
   - '2510.18308'
   - '2510.22588'
   - 2025.emnlp-main.180
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2603.13518'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - '2505.17093'
   - '2509.26514'
   - 2025.emnlp-main.40
+  - '2603.07550'
+  - '2603.13518'
   caveats:
-  - Structured plans increase precision but require an interpretation layer and may constrain unanticipated attributes.
-  last_reviewed: '2026-09-26'
+  - Structured plans increase precision but require an interpretation layer and may constrain unanticipated
+    attributes.
+  - Q1 explicit attribute tokens, phonological rules, duration histograms, personality manipulations,
+    and score or melody paths broaden structured control.
+  last_reviewed: '2026-11-13'
 - id: language_specific_structure_matters_for_prosody
   claim: Tonal, stress-marked, low-resource, and historical languages require language-specific representations
     or preprocessing for reliable prosody.
@@ -8685,16 +9487,25 @@ claim_clusters:
   - '2510.13194'
   - '2510.25178'
   - '2512.22491'
+  - '2601.04233'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2602.07803'
+  - '2603.21078'
   contradicting_papers: []
   refining_papers:
   - 2025.sigdial-1.27
   - 2025.clicit-1.27
+  - '2603.07550'
+  - '2603.21078'
   caveats:
   - Evidence is distributed across languages and tasks with few shared evaluation sets.
-  last_reviewed: '2026-09-26'
+  - Q1 multilingual phonetic alignment, Japanese personality cues, L2 accent rules, singing lyrics, and
+    consonant-induced F0 show that language structure remains essential.
+  last_reviewed: '2026-11-13'
 - id: speech_and_singing_benefit_from_shared_prosody_learning
-  claim: Joint speech–singing learning and shared pitch or rhythm representations can improve expressive generation
-    across both domains.
+  claim: Joint speech–singing learning and shared pitch or rhythm representations can improve expressive
+    generation across both domains.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8704,14 +9515,18 @@ claim_clusters:
   - '2509.22718'
   - '2510.21685'
   - '2512.04779'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers:
   - '2509.22718'
   caveats:
   - Cross-domain gains coexist with distribution mismatch in pitch range, rhythm, and annotation conventions.
-  last_reviewed: '2026-09-26'
+  - Q1 complementary score and acoustic-melody paths support zero-shot singing and cross-lingual timbre
+    transfer, but lyric edits expose entanglement.
+  last_reviewed: '2026-11-13'
 - id: scale_and_data_improve_implicit_prosody_modeling
-  claim: Model scale and broad training data improve implicit prosody rendering even without explicit prosodic annotation.
+  claim: Model scale and broad training data improve implicit prosody rendering even without explicit
+    prosodic annotation.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8728,9 +9543,9 @@ claim_clusters:
   - Scale is confounded with data quality, architecture, and evaluation difficulty.
   last_reviewed: '2026-09-26'
 - id: multi_attribute_control_exposes_cross_attribute_interference
-  claim: Fine-grained control of one prosodic or paralinguistic attribute can perturb intelligibility, speaker identity,
-    naturalness, or other controlled attributes unless the representation and guidance mechanism explicitly separate
-    them.
+  claim: Fine-grained control of one prosodic or paralinguistic attribute can perturb intelligibility,
+    speaker identity, naturalness, or other controlled attributes unless the representation and guidance
+    mechanism explicitly separate them.
   status: strongly_supported
   confidence: high
   supporting_papers:
@@ -8738,17 +9553,27 @@ claim_clusters:
   - 2025.emnlp-main.1730
   - '2512.09504'
   - '2512.13251'
+  - '2601.04233'
+  - '2601.12480'
+  - '2602.14686'
+  - '2603.11683'
+  - '2603.13518'
   contradicting_papers: []
   refining_papers:
   - 2025.emnlp-main.40
   - '2510.18308'
+  - '2602.14686'
+  - '2603.11683'
+  - '2603.13518'
   caveats:
-  - Interference depends on attribute pairing, representation capacity, guidance scale, and whether the desired
-    style itself changes intelligibility or identity cues.
-  last_reviewed: '2026-09-26'
+  - Interference depends on attribute pairing, representation capacity, guidance scale, and whether the
+    desired style itself changes intelligibility or identity cues.
+  - Q1 prosody, identity, emotion, creak, rate, and accent controls repeatedly interfere unless training
+    data, stages, or mediators explicitly separate them.
+  last_reviewed: '2026-11-13'
 - id: reward_guided_post_training_improves_prosodic_control
-  claim: Reward-guided post-training can improve fine-grained emotion, emphasis, and melody control beyond supervised
-    generation objectives.
+  claim: Reward-guided post-training can improve fine-grained emotion, emphasis, and melody control beyond
+    supervised generation objectives.
   status: emerging
   confidence: medium
   supporting_papers:
@@ -8757,14 +9582,31 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Evidence spans different reward definitions and tasks, and matched studies have not yet established whether
-    control gains generalize without reward-specific regressions.
+  - Evidence spans different reward definitions and tasks, and matched studies have not yet established
+    whether control gains generalize without reward-specific regressions.
   last_reviewed: '2026-09-26'
+- id: segmental_prosodic_rules_fail_to_generalize_lexically
+  claim: TTS systems can reproduce local phonetic–prosodic effects in familiar words yet fail to generalize
+    them to unseen lexical items.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2603.21078'
+  contradicting_papers: []
+  refining_papers:
+  - '2603.07550'
+  - '2603.11683'
+  caveats:
+  - Direct evidence currently comes from consonant-induced F0 in English; accent rules and causal mediators
+    refine the mechanism but do not independently replicate the lexical-generalization test.
+  - Overall MOS and architecture labels do not reveal this failure, so broader segmental probes are needed.
+  last_reviewed: '2026-11-13'
 method_families:
 - id: explicit_acoustic_variance_control
   name: Explicit acoustic variance control
-  summary: Pitch, energy, duration, rate, and related interpretable variables are predicted or supplied explicitly
-    to control prosodic realization.
+  summary: Pitch, energy, duration, rate, and related interpretable variables are predicted or supplied
+    explicitly to control prosodic realization. Q1 adds selective pitch, rate, accent-rhythm, creak, melody,
+    and causal duration–pitch–energy control.
   papers:
   - '1609.03499'
   - '2006.04558'
@@ -8816,12 +9658,22 @@ method_families:
   - '2511.10112'
   - '2512.00451'
   - neurips-2025-SYcggdxX6W
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2602.14686'
+  - '2603.07550'
+  - '2603.11683'
+  - '2603.13518'
+  - '2602.07803'
+  - '2603.21078'
   open_questions:
-  - How should explicit variables be normalized across speakers and languages without suppressing expressive variation?
+  - How should explicit variables be normalized across speakers and languages without suppressing expressive
+    variation?
 - id: latent_reference_prosody_transfer
   name: Latent and reference-based prosody transfer
   summary: Reference audio or learned latent/style representations transfer global or local prosodic characteristics
-    to a target utterance.
+    to a target utterance. Q1 adds affective-context encoding, Lombard style embeddings, singing references,
+    and a scaled hybrid TTS report.
   papers:
   - '2304.09116'
   - 2025.coling-main.518
@@ -8850,12 +9702,18 @@ method_families:
   - '2512.04779'
   - '2512.09504'
   - '2512.13251'
+  - '2601.16225'
+  - '2601.12966'
+  - '2602.07803'
+  - '2603.18090'
   open_questions:
-  - How can reference conditioning transfer prosody without leaking speaker identity, content, or recording conditions?
+  - How can reference conditioning transfer prosody without leaking speaker identity, content, or recording
+    conditions?
 - id: stochastic_generative_prosody_model
   name: Stochastic generative prosody models
-  summary: Diffusion, flow matching, or other stochastic predictors model one-to-many prosodic variation rather
-    than regressing to a single contour.
+  summary: Diffusion, flow matching, or other stochastic predictors model one-to-many prosodic variation
+    rather than regressing to a single contour. Q1 adds multilingual flow generation, controllable Lombard
+    style, and a scaled hybrid system.
   papers:
   - 2025.coling-main.352
   - 2025.coling-main.518
@@ -8870,12 +9728,16 @@ method_families:
   - 2025.emnlp-main.1730
   - '2512.04779'
   - '2512.09504'
+  - '2601.04233'
+  - '2601.12966'
+  - '2603.18090'
   open_questions:
   - Where is the practical frontier between useful diversity, inference cost, and loss of naturalness?
 - id: disentangled_prosody_content_timbre
   name: Disentangled prosody, content, and timbre
-  summary: Architectures separate prosody from linguistic content and speaker timbre so attributes can be transferred
-    or manipulated independently.
+  summary: Architectures separate prosody from linguistic content and speaker timbre so attributes can
+    be transferred or manipulated independently. Q1 adds accent-adversarial training, selective attribute
+    editing, pitch–creak decorrelation, and causal mediation.
   papers:
   - '2104.00355'
   - '2403.03100'
@@ -8901,12 +9763,17 @@ method_families:
   - '2512.00451'
   - '2512.09504'
   - '2512.13251'
+  - '2601.04233'
+  - '2601.12480'
+  - '2602.14686'
+  - '2603.11683'
   open_questions:
   - Which objectives remove attribute leakage without sacrificing intelligibility or speaker similarity?
 - id: linguistic_context_prosody_prediction
   name: Linguistic and dialogue-context prosody prediction
-  summary: Textual, conversational, and speaker context is encoded to predict phrasing, prominence, stress, pauses,
-    and conversational prosody.
+  summary: Textual, conversational, and speaker context is encoded to predict phrasing, prominence, stress,
+    pauses, and conversational prosody. Q1 adds prepositive affective context and a segmental phonological-generalization
+    probe.
   papers:
   - '2507.03912'
   - 2025.acl-industry.42
@@ -8920,13 +9787,16 @@ method_families:
   - '2510.07096'
   - 2025.emnlp-main.1730
   - '2512.22491'
+  - '2601.16225'
+  - '2603.21078'
   open_questions:
-  - How much past and future context is useful for each prosodic attribute, and how should irrelevant context be
-    suppressed?
+  - How much past and future context is useful for each prosodic attribute, and how should irrelevant
+    context be suppressed?
 - id: emotion_expressive_prosody_control
   name: Emotion and expressive prosody control
-  summary: Emotion labels, intensities, learned directions, or expressive references condition prosodic realization
-    at utterance and sub-utterance levels.
+  summary: Emotion labels, intensities, learned directions, or expressive references condition prosodic
+    realization at utterance and sub-utterance levels. Q1 adds empathetic context, personality cues, selective
+    emotion editing, and causal emotion-to-prosody routing.
   papers:
   - 2025.findings-naacl.38
   - '2507.04598'
@@ -8963,12 +9833,17 @@ method_families:
   - 2025.emnlp-main.180
   - '2512.09504'
   - neurips-2025-SYcggdxX6W
+  - '2601.16225'
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2603.11683'
   open_questions:
   - Can emotion control remain perceptually coherent when intensity varies locally within an utterance?
 - id: structured_language_prosody_control
   name: Structured and language-mediated prosody control
-  summary: Natural-language requests are mapped directly or through SSML, tags, or numerical plans into controllable
-    prosodic targets.
+  summary: Natural-language requests are mapped directly or through SSML, tags, or numerical plans into
+    controllable prosodic targets. Q1 adds explicit attribute tokens, personality manipulations, phonological
+    rules, and duration histograms.
   papers:
   - '2402.01912'
   - 2025.findings-naacl.38
@@ -8983,12 +9858,18 @@ method_families:
   - '2510.18308'
   - '2510.22588'
   - 2025.emnlp-main.180
+  - '2601.12480'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2603.13518'
   open_questions:
-  - Which intermediate representation best combines user accessibility with precise timing and magnitude control?
+  - Which intermediate representation best combines user accessibility with precise timing and magnitude
+    control?
 - id: multimodal_visual_prosody_conditioning
   name: Multimodal and visual prosody conditioning
-  summary: Visual, textual, and acoustic modalities are fused to infer timing, emotion, pitch, duration, or dubbing
-    alignment.
+  summary: Visual, textual, and acoustic modalities are fused to infer timing, emotion, pitch, duration,
+    or dubbing alignment. Q1 adds gesture-conditioned prosody with explicit cross-modal temporal alignment
+    and expert routing.
   papers:
   - '2304.09116'
   - 2025.ccl-1.77
@@ -8997,12 +9878,14 @@ method_families:
   - '2508.17031'
   - '2509.06074'
   - '2509.22718'
+  - '2603.19831'
   open_questions:
   - Which visual signals genuinely add prosodic information beyond correlated text and speaker cues?
 - id: signal_level_pitch_modification
   name: Signal-level pitch and contour modification
-  summary: Vocoder or signal-level mechanisms directly modify pitch and related contours, often beyond the range
-    represented in acoustic-model training.
+  summary: Vocoder or signal-level mechanisms directly modify pitch and related contours, often beyond
+    the range represented in acoustic-model training. Q1 adds pitch–creak decorrelation, phonological
+    substitutions, causal pitch mediation, and consonant-F0 probing.
   papers:
   - '2104.00355'
   - '2507.06235'
@@ -9013,13 +9896,18 @@ method_families:
   - '2510.21685'
   - '2510.25566'
   - '2512.16519'
+  - '2602.14686'
+  - '2603.07550'
+  - '2603.11683'
+  - '2603.21078'
   open_questions:
-  - How far can pitch and contour manipulation move from the training distribution before voicing and identity failures
-    dominate?
+  - How far can pitch and contour manipulation move from the training distribution before voicing and
+    identity failures dominate?
 - id: speech_singing_shared_prosody
   name: Shared speech–singing prosody representations
-  summary: Shared or bridged representations transfer pitch, rhythm, timbre, and expressive information between
-    speech and singing synthesis.
+  summary: Shared or bridged representations transfer pitch, rhythm, timbre, and expressive information
+    between speech and singing synthesis. Q1 adds complementary score and acoustic-melody control for
+    zero-shot singing and cross-lingual timbre transfer.
   papers:
   - '2304.09116'
   - interspeech-2025-0347
@@ -9029,11 +9917,15 @@ method_families:
   - '2509.22718'
   - '2510.21685'
   - '2512.04779'
+  - '2602.07803'
   open_questions:
-  - What representation preserves speech naturalness and singing accuracy without requiring symbolic music annotation?
+  - What representation preserves speech naturalness and singing accuracy without requiring symbolic music
+    annotation?
 - id: implicit_scale_and_data_prosody_modeling
   name: Implicit scale- and data-driven prosody modeling
-  summary: Large models and broad corpora acquire prosodic rendering without explicit acoustic-variable supervision.
+  summary: Large models and broad corpora acquire prosodic rendering without explicit acoustic-variable
+    supervision. Q1 adds large multilingual data and a scaled hybrid TTS system with implicit expressive
+    rendering.
   papers:
   - '2402.08093'
   - 2025.coling-main.352
@@ -9043,12 +9935,16 @@ method_families:
   - '2509.24570'
   - '2510.22588'
   - 2025.emnlp-main.180
+  - '2601.04233'
+  - '2603.18090'
   open_questions:
-  - How much improvement comes from model capacity, data volume, data diversity, or codec and decoder choices?
+  - How much improvement comes from model capacity, data volume, data diversity, or codec and decoder
+    choices?
 - id: language_and_domain_specific_prosody_modeling
   name: Language- and domain-specific prosody modeling
-  summary: Language structure, speaking domain, and atypical speech require targeted representations, preprocessing,
-    or adaptation for prosodic fidelity.
+  summary: Language structure, speaking domain, and atypical speech require targeted representations,
+    preprocessing, or adaptation for prosodic fidelity. Q1 broadens domain-specific control across Lombard
+    speech, Japanese personality, L2 accent, singing, and segmental F0.
   papers:
   - 2025.nodalida-1.32
   - '2507.03912'
@@ -9063,48 +9959,60 @@ method_families:
   - '2510.13194'
   - '2510.25178'
   - '2512.22491'
+  - '2601.04233'
+  - '2601.12966'
+  - 2026.iwsds-1.3
+  - '2603.07550'
+  - '2602.07803'
+  - '2603.21078'
   open_questions:
   - Which prosodic mechanisms transfer across languages and domains, and which require targeted supervision?
 - id: prosody_analysis_and_evaluation_method
   name: Prosody analysis and evaluation methods
-  summary: Diagnostic and evaluation methods identify prosodic information, predict labels, or expose gaps between
-    measured and perceived behavior.
+  summary: Diagnostic and evaluation methods identify prosodic information, predict labels, or expose
+    gaps between measured and perceived behavior. Q1 adds gesture-synchrony evaluation and an articulatorily
+    grounded consonant-induced F0 probe.
   papers:
   - '2402.08093'
   - 2025.findings-naacl.471
   - '2507.03912'
   - interspeech-2025-1494
   - '2509.03940'
+  - '2603.19831'
+  - '2603.21078'
   open_questions:
   - Can a shared analysis protocol connect acoustic contours, communicative function, and perceptual quality?
 - id: voice_quality_and_paralinguistic_feature_control
   name: Voice-quality and paralinguistic feature control
-  summary: Interpretable voice-quality and paralinguistic acoustic features control phonation and perceived speaker
-    characteristics.
+  summary: Interpretable voice-quality and paralinguistic acoustic features control phonation and perceived
+    speaker characteristics. Q1 adds Lombard effort, fillers and pauses, and pitch-linked creak manipulation.
   papers:
   - '2006.04558'
   - '2507.06235'
   - '2507.20091'
   - interspeech-2025-0902
+  - '2601.12966'
+  - 2026.iwsds-1.3
+  - '2602.14686'
   open_questions:
   - How can voice-quality controls be changed independently of pitch, identity, and linguistic prosody?
 - id: reward_optimized_prosody_control
   name: Reward-optimized prosody control
-  summary: Reinforcement-learning and reward-guided post-training optimize emotion, emphasis, melody, or other prosodic
-    targets after supervised pretraining.
+  summary: Reinforcement-learning and reward-guided post-training optimize emotion, emphasis, melody,
+    or other prosodic targets after supervised pretraining.
   papers:
   - '2510.05758'
   - '2512.04779'
   open_questions:
-  - Which reward combinations improve fine-grained control without encouraging metric gaming or degrading naturalness,
-    identity, and intelligibility?
+  - Which reward combinations improve fine-grained control without encouraging metric gaming or degrading
+    naturalness, identity, and intelligibility?
 reassessment_queue:
 - id: prosodic_diversity_trades_off_with_naturalness
   type: claim_status
-  reason: Independent Q4 systems reinforce the trade-off across singing, style prompting, guidance strength, and
-    codec disentanglement, but the frontier is not yet measured under matched conditions.
-  trigger: A controlled multi-model study traces a common diversity–naturalness frontier under matched data and
-    evaluation.
+  reason: Independent Q4 systems reinforce the trade-off across singing, style prompting, guidance strength,
+    and codec disentanglement, but the frontier is not yet measured under matched conditions.
+  trigger: A controlled multi-model study traces a common diversity–naturalness frontier under matched
+    data and evaluation.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -9114,8 +10022,8 @@ reassessment_queue:
   type: benchmark_validity
   reason: Metric disagreement now recurs across pragmatic expression, expressive pitch, generative reconstruction,
     and instruction-conditioned style, while calibrated attribute-level validation remains incomplete.
-  trigger: A validated benchmark reports attribute-level correlations between objective contours, automatic judges,
-    and human perception.
+  trigger: A validated benchmark reports attribute-level correlations between objective contours, automatic
+    judges, and human perception.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -9123,8 +10031,8 @@ reassessment_queue:
   - Metric behavior under local versus global control
 - id: explicit_acoustic_variance_control
   type: method_family
-  reason: The family is broad and may need separation into predictor-based, externally specified, and post-hoc modification
-    branches.
+  reason: The family is broad and may need separation into predictor-based, externally specified, and
+    post-hoc modification branches.
   trigger: At least three additional papers establish a stable subgroup with distinct conditioning placement.
   due: 2026-10
   current_assessment: active_evidence
@@ -9141,10 +10049,10 @@ reassessment_queue:
   - Speaker-controlled leakage tests
 - id: structured_prosody_plans_outperform_free_form_generation
   type: claim_status
-  reason: Structured emphasis, attribute, and rich-style plans now have broader support, but no matched study spans
-    free-form, categorical, SSML, and numerical interfaces.
-  trigger: A matched renderer comparison evaluates free-form, categorical, SSML, and numerical controls with human
-    raters.
+  reason: Structured emphasis, attribute, and rich-style plans now have broader support, but no matched
+    study spans free-form, categorical, SSML, and numerical interfaces.
+  trigger: A matched renderer comparison evaluates free-form, categorical, SSML, and numerical controls
+    with human raters.
   due: 2026-10
   current_assessment: strongly_supported
   watch_for:
@@ -9161,37 +10069,50 @@ reassessment_queue:
   - Cross-speaker and cross-language leakage audits
 - id: emotion_expressive_prosody_control
   type: method_family
-  reason: The family spans categorical emotion, localized intensity, activation steering, dialogue affect, and reference-based
-    expression.
-  trigger: At least three additional papers reinforce a stable mechanistic subdivision rather than a task-only distinction.
+  reason: The family spans categorical emotion, localized intensity, activation steering, dialogue affect,
+    and reference-based expression.
+  trigger: At least three additional papers reinforce a stable mechanistic subdivision rather than a task-only
+    distinction.
   due: 2026-10
   current_assessment: active_evidence
   watch_for:
   - Separable localized-control, latent-steering, and reference-transfer branches
 open_questions:
-- How should prosodic control be represented so local timing, global style, and speaker identity remain independently
-  editable?
-- Which objective and automatic metrics reliably predict human judgments of prosodic naturalness, diversity, and
-  instruction adherence?
-- Where is the practical operating frontier between prosodic diversity and naturalness for stochastic generators?
+- How should prosodic control be represented so local timing, global style, and speaker identity remain
+  independently editable?
+- Which objective and automatic metrics reliably predict human judgments of prosodic naturalness, diversity,
+  and instruction adherence?
+- Where is the practical operating frontier between prosodic diversity and naturalness for stochastic
+  generators?
 - How much linguistic, dialogue, and acoustic context is needed for each prosodic attribute?
-- Can language-independent prosody models retain tonal, stress, and phonemic-length distinctions without language-specific
-  supervision?
+- Can language-independent prosody models retain tonal, stress, and phonemic-length distinctions without
+  language-specific supervision?
 - Which SSL representations and layers preserve useful prosody while minimizing speaker and content leakage?
-- How should multi-attribute controls be regularized so changing prosody does not unintentionally alter intelligibility,
-  speaker identity, or unrelated style dimensions?
-- Can reward-guided prosody post-training generalize across emotion, emphasis, rhythm, and melody without reward
-  hacking or task-specific regressions?
+- How should multi-attribute controls be regularized so changing prosody does not unintentionally alter
+  intelligibility, speaker identity, or unrelated style dimensions?
+- Can reward-guided prosody post-training generalize across emotion, emphasis, rhythm, and melody without
+  reward hacking or task-specific regressions?
+- Which segmental-level phonetic and prosodic probes best reveal failures hidden by utterance-level naturalness
+  and pitch metrics?
+- How can gesture, dialogue context, phonological rules, and reference audio be combined without conflicting
+  temporal control signals?
 trend_notes:
-- Prosody control increasingly combines explicit pitch, energy, duration, and rate variables with stochastic flow
-  or codec representations rather than relying on a single control mechanism.
-- Q4 work shifts fine-grained control toward word-level emotion, emphasis, filler style, pitch editing, and melody-conditioned
-  singing, while exposing stronger cross-attribute interference than global-style systems.
-- Disentanglement is moving into codec and bottleneck design so timbre, prosody, content, and speaker identity can
-  be edited independently before generation.
-- Natural-language and structured style interfaces are scaling through annotated expressive datasets, but rich control
-  frequently trades against intelligibility and lacks standardized automatic evaluation.
-- Reward-guided post-training appears as an emerging route to emotion, emphasis, and melody adherence, with limited
-  evidence so far on cross-task transfer and reward robustness.
-- Language-specific phonology, stress transfer, script changes, and hierarchical morphology remain important even
-  as larger multilingual and zero-shot systems improve implicit prosody.
+- Prosody control increasingly combines explicit pitch, energy, duration, and rate variables with stochastic
+  flow or codec representations rather than relying on a single control mechanism.
+- Q4 work shifts fine-grained control toward word-level emotion, emphasis, filler style, pitch editing,
+  and melody-conditioned singing, while exposing stronger cross-attribute interference than global-style
+  systems.
+- Disentanglement is moving into codec and bottleneck design so timbre, prosody, content, and speaker
+  identity can be edited independently before generation.
+- Natural-language and structured style interfaces are scaling through annotated expressive datasets,
+  but rich control frequently trades against intelligibility and lacks standardized automatic evaluation.
+- Reward-guided post-training appears as an emerging route to emotion, emphasis, and melody adherence,
+  with limited evidence so far on cross-task transfer and reward robustness.
+- Language-specific phonology, stress transfer, script changes, and hierarchical morphology remain important
+  even as larger multilingual and zero-shot systems improve implicit prosody.
+- Q1 2026 expands prosody control toward explicit causal mediators, rule-based accent rhythm, dynamic
+  duration distributions, and cross-modal gesture alignment.
+- Q1 diagnostic work moves below the utterance level, exposing lexical generalization failures in consonant-induced
+  F0 that overall naturalness scores conceal.
+- Q1 multi-attribute systems reinforce that pitch, rate, energy, emotion, speaker identity, voice quality,
+  and accent require jointly designed separation rather than independent controls.

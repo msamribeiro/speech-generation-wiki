@@ -4,6 +4,11 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-13
+
+- integrate | phase 2 only | prosody-control (128 papers) | 20 claim clusters (1 new, 16 updated, 3 unchanged) | 14 method families updated | 7 reassessment items checked, 0 triggered, 7 overdue | Q1 2026 synthesis added an emerging segmental-prosody generalization cluster covering consonant-induced F0 failures on unseen lexical items; assigned all 13 Q1 papers to 48 reciprocal family memberships; Phase 2 health passed with 0 errors and 13 expected historical method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
+- integrate | 13 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 prosody-control Phase 1 closed at 13/13 through `2603.21078`; 51 available page claims preserved and one source page with an empty Claims section retained as `claims: []`; exact frozen queue closure verified with no missing, extra, or duplicate IDs; canonical peer-reviewed IWSDS ID used without a duplicate preprint entry; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
+
 ## 2026-11-12
 
 - integrate | phase 2 only | disentanglement (130 papers) | 20 claim clusters (1 new, 19 updated) | 9 method families updated | 5 reassessment items checked, 1 triggered, 2 overdue | Q1 2026 synthesis resolved the GRL quality reassessment by narrowing the claim and changing it from contested to strongly supported, and added a strongly supported causal-subspace intervention cluster; assigned all 14 Q1 papers to 34 reciprocal family memberships; Phase 2 health passed with 0 errors and 16 expected historical method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
