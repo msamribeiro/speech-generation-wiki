@@ -8961,9 +8961,10 @@ claim_clusters:
   - '2509.05863'
   - '2510.07881'
   - '2603.07550'
+  - '2603.16924'
   caveats:
   - Many comparisons change tokenization and acoustic modeling alongside alignment.
-  last_reviewed: '2026-11-12'
+  last_reviewed: '2026-11-13'
 - id: multilingual_evaluation_requires_per_language_reporting
   claim: Multilingual TTS evaluation requires per-language subjective and objective reporting because aggregate
     metrics conceal language-specific failures.
