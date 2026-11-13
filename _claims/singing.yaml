@@ -1,6 +1,6 @@
 concept: singing
-last_updated: '2026-10-31'
-paper_count: 21
+last_updated: '2026-11-13'
+paper_count: 24
 papers:
 - id: '2304.09116'
   published_date: "2023-04-18"
@@ -1471,6 +1471,224 @@ papers:
   caveats:
   - The combined uncertainty and adversarial-augmentation result is strongest on Opencpop and does not establish uniform
     transfer across languages, corpus sizes, or augmentation families.
+- id: '2602.04683'
+  published_date: '2026-02-11'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - VC
+  - SCA
+  - codec
+  - singing
+  architecture:
+  - autoregressive-LM
+  - flow-matching
+  - hybrid
+  relevance: medium
+  evidence_role:
+  - architecture_variant
+  - infrastructure
+  current_role: active_evidence
+  method_family:
+  - hybrid_multimodal_singing_systems
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: explicitly_factorizing_a_discrete_audio_codec_into_a_text_aligned_high_level_stream_and_a_se
+    role: supports
+    claim: Explicitly factorizing a discrete audio codec into a text-aligned high-level stream and a separate low-level
+      acoustic-reconstruction stream can close much of the gap between discrete tokenizers and continuous SSL representations
+      on LLM-based audio understanding tasks.
+    source: §5.3, Table 3
+    evidence: On ASR/emotion/audio/music classification, the combined reasoning+reconstruction tokenizer scores
+      close to the fully continuous Whisper baseline (e.g., ASR 9.0 vs. Whisper's 8.5) and well ahead of purely
+      acoustic tokenizers such as DAC (ASR error 93.2)
+    confidence: high
+    relevance: low
+  - claim_id: partitioning_a_unified_autoregressive_backbone_into_layer_ranges_specialized_for_audio_under
+    role: supports
+    claim: Partitioning a unified autoregressive backbone into layer ranges specialized for audio understanding,
+      cross-modal alignment, and audio generation, rather than processing text and audio uniformly across all layers,
+      improves downstream task performance without added inference-time infrastructure complexity.
+    source: §5.7, Table 8
+    evidence: Ablating the specialized experts and training only the cross-modal block under Stage 3 causes a significant
+      performance drop across MMLU, ASR, TTS, audio/music generation, and song generation benchmarks
+    confidence: high
+    relevance: medium
+  - claim_id: reasoning_token_style_semantic_abstraction_that_improves_understanding_and_generation_token
+    role: complicates
+    claim: Reasoning-token-style semantic abstraction that improves understanding and generation-token prediction
+      accuracy does not straightforwardly transfer to solving arbitrary unseen audio tasks; task coverage in zero-shot
+      settings remains bounded by what the multi-task training data implicitly supports.
+    source: §Appendix C, Limitation
+    evidence: The model cannot perform speech diarization in zero-shot settings, which the authors attribute to
+      the absence of diarization- or duration-related supervision during training, despite strong zero-shot results
+      on other newly designed tasks
+    confidence: high
+    relevance: low
+  - claim_id: flow_based_diffusion_decoders_used_to_recover_high_fidelity_waveforms_from_discrete_semantic
+    role: complicates
+    claim: Flow-based diffusion decoders used to recover high-fidelity waveforms from discrete semantic/acoustic
+      tokens introduce a multi-step decoding cost that trades off against inference latency.
+    source: §Appendix C, Limitation
+    evidence: The paper states the multi-step decoding procedure in the flow-based decoder increases inference latency
+      for generation, and flags exploring few-step (e.g., two-step) decoding as necessary future work
+    confidence: high
+    relevance: low
+  limitations: []
+  caveats:
+  - For singing, this paper contributes medium-relevance evidence bounded to the ingested version and reported evaluation
+    setting.
+- id: '2601.00217'
+  published_date: '2026-03-13'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - singing
+  architecture:
+  - flow-matching
+  - VAE
+  - GAN
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - architecture_variant
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - vae_singing_latent_systems
+  - gan_singing_conversion_systems
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: latent_space_flow_matching_can_reduce_train_inference_distribution_mismatch_in_vae_based_gen
+    role: supports
+    claim: Latent-space flow matching can reduce train-inference distribution mismatch in VAE-based generative speech
+      models without modifying the decoder.
+    source: §IV.E, Table 2
+    evidence: An ablation isolating the refinement step (FM-Singer vs. VISinger2 NF, identical backbone) shows consistent
+      MOS, MCD, and F0-RMSE improvements attributable specifically to the added flow-matching module.
+    confidence: high
+    relevance: high
+  - claim_id: reducing_the_distance_between_condition_derived_and_posterior_latents_correlates_with_improv
+    role: supports
+    claim: Reducing the distance between condition-derived and posterior latents correlates with improved expressive
+      naturalness in singing voice synthesis.
+    source: §IV.E, Table 4
+    evidence: Direct latent-distance measurements show a roughly 45% mean reduction in distance to posterior latents
+      after refinement, alongside a 0.7-point MOS gain over the same-backbone ablation without refinement.
+    confidence: high
+    relevance: high
+  - claim_id: kl_regularization_alone_is_insufficient_to_align_prior_and_posterior_latent_distributions_in
+    role: complicates
+    claim: KL regularization alone is insufficient to align prior and posterior latent distributions in cVAE-based
+      speech synthesis when the posterior is highly multi-modal.
+    source: §III.A
+    evidence: The paper motivates the added flow-matching module by noting that KL regularization in the base cVAE
+      backbone leaves residual latent mismatch that degrades fine expressive detail, requiring an explicit additional
+      transport mechanism.
+    confidence: high
+    relevance: high
+  - claim_id: cross_system_comparability_of_flow_matching_based_refinement_techniques_for_singing_voice_sy
+    role: complicates
+    claim: Cross-system comparability of flow-matching-based refinement techniques for singing voice synthesis is
+      limited by pipeline-specific conditioning requirements.
+    source: §IV.B
+    evidence: TechSinger, a flow-matching-based technique-controllable SVS system, is excluded from quantitative
+      comparison because its conditioning pipeline cannot be matched to the paper's datasets and evaluation protocol
+      without substantial re-engineering.
+    confidence: high
+    relevance: high
+  limitations:
+  - Korean and Chinese results come from two separately trained models on different datasets rather than a shared
+    multilingual system, so the generalization claim rests on parallel single-language training rather than demonstrated
+    cross-lingual transfer.
+  - No empirical comparison against TechSinger (another flow-matching-based SVS system) or against diffusion-based
+    singing synthesis baselines such as DiffSinger, both discussed only in related work.
+  - The authors themselves note that the refinement uses only a linear interpolation probability path and no explicit
+    technique or style conditioning in the vector field, and flag distillation or other low-step approximations
+    as future work to reduce ODE integration cost.
+  caveats:
+  - For singing, this paper contributes high-relevance evidence bounded to the ingested version and reported evaluation
+    setting.
+- id: '2602.07803'
+  published_date: '2026-03-16'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - singing
+  - VC
+  architecture:
+  - flow-matching
+  relevance: high
+  evidence_role:
+  - core_evidence
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - flow_matching_singing_generation
+  claims:
+  - claim_id: providing_complementary_discrete_score_midi_and_continuous_melody_f0_conditioning_paths_in_a
+    role: supports
+    claim: Providing complementary discrete (score/MIDI) and continuous (melody/F0) conditioning paths in a single
+      singing voice synthesis model yields different controllability trade-offs rather than one path dominating
+      the other.
+    source: §3.3.1, Table 1
+    evidence: Melody-control mode achieves the lowest F0 Frame Error by leveraging continuous acoustic pitch contours,
+      while score-control mode achieves the lowest WER because discrete MIDI timing constraints stabilize pronunciation
+      and rhythm.
+    confidence: high
+    relevance: high
+  - claim_id: scaling_zero_shot_singing_voice_synthesis_training_data_by_an_order_of_magnitude_over_prior
+    role: supports
+    claim: Scaling zero-shot singing voice synthesis training data by an order of magnitude over prior work improves
+      generalization to unseen singers.
+    source: §2.1.2, §3.3.1, §3.3.2, Table 1, Table 2
+    evidence: Trained on 42,000+ hours (versus a few hundred to a few thousand hours for StyleSinger, TCSinger,
+      and YingMusic-Singer), the system outperforms these baselines on speaker similarity and intelligibility for
+      singers unseen during training on both GMO-SVS and SoulX-Singer-Eval.
+    confidence: high
+    relevance: high
+  - claim_id: melody_driven_singing_voice_synthesis_that_conditions_on_an_acoustic_pitch_contour_extracted
+    role: complicates
+    claim: Melody-driven singing voice synthesis that conditions on an acoustic pitch contour extracted from a reference
+      recording is more brittle to lyric edits than score-driven synthesis, because the extracted melody remains
+      entangled with the original lyrics.
+    source: §3.3.1, Table 1
+    evidence: Under the Singing Voice Editing condition (rewritten lyrics), melody-control mode shows a marked WER
+      increase relative to the unedited condition, while score-control mode, which conditions on explicit MIDI rather
+      than the original acoustic melody, better preserves pronunciation accuracy under the same lyric rewrite.
+    confidence: high
+    relevance: high
+  - claim_id: separating_language_dependent_linguistic_content_from_language_independent_timbre_in_the_con
+    role: supports
+    claim: Separating language-dependent linguistic content from language-independent timbre in the conditioning
+      representation supports cross-lingual timbre transfer in singing voice synthesis.
+    source: §3.3.3, Table 3
+    evidence: Using a Mandarin prompt to synthesize English singing, the system reaches WER 0.110 and SIM 0.898,
+      while a melody-driven baseline (Vevosing) degrades to WER 0.717 under the same cross-lingual setting, indicating
+      leakage of prompt-language linguistic patterns into the baseline's output.
+    confidence: high
+    relevance: high
+  - claim_id: adapting_a_score_melody_conditioned_singing_synthesis_backbone_into_a_voice_conversion_syste
+    role: complicates
+    claim: Adapting a score/melody-conditioned singing synthesis backbone into a voice conversion system by replacing
+      explicit symbolic inputs with a frozen pretrained ASR encoder's semantic features trades some intelligibility
+      for annotation-free operation.
+    source: §SoulX-Singer-SVC, Table 4
+    evidence: SoulX-Singer-SVC, which substitutes a frozen Whisper-base encoder for the score and text encoders
+      and fine-tunes the F0 encoder and flow-matching decoder from pretrained SoulX-Singer weights, reports higher
+      WER than the melody-controlled base model on GMO-SVS (0.107 vs. 0.065 Chinese, 0.267 vs. 0.151 English) at
+      comparable speaker similarity.
+    confidence: high
+    relevance: high
+  limitations: []
+  caveats:
+  - For singing, this paper contributes high-relevance evidence bounded to the ingested version and reported evaluation
+    setting.
 claim_clusters:
 - id: shared_speech_singing_training_enables_timbre_transfer
   claim: Joint speech–singing training enables cross-modal timbre transfer from speech references to singing generation.
@@ -1543,11 +1761,13 @@ claim_clusters:
   - '2511.08496'
   - '2512.04779'
   - '2512.04793'
+  - '2602.07803'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2602.07803'
   caveats:
   - Ground-truth signal features may be unavailable or noisy in practical generation settings.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: frequency_decomposition_enables_singing_style_control
   claim: Frequency-domain decomposition of F0 enables localized and continuously adjustable singing-style control.
   status: emerging
@@ -1574,9 +1794,10 @@ claim_clusters:
   - interspeech-2025-1397
   - '2512.04793'
   - '2601.13910'
+  - '2602.07803'
   caveats:
   - The trade-off may shift with disentanglement method and target style.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: ssl_dimension_reduction_reduces_timbre_leakage
   claim: Reducing SSL embedding dimensionality can suppress timbre leakage while preserving phonetic content.
   status: emerging
@@ -1641,9 +1862,10 @@ claim_clusters:
   - '2511.08496'
   - '2512.02523'
   - '2601.13910'
+  - '2601.00217'
   caveats:
   - Small listener panels and single-reference identity tests can obscure metric validity.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: contrastive_regularization_reduces_prompt_attribute_leakage
   claim: Contrastive regularization between acoustic prompts and explicit controls reduces attribute leakage.
   status: emerging
@@ -1685,16 +1907,18 @@ claim_clusters:
     structure differs.
   status: emerging
   confidence: medium
-  supporting_papers: []
+  supporting_papers:
+  - '2602.04683'
   contradicting_papers: []
   refining_papers:
   - '2509.22718'
   - '2510.09016'
   - '2512.04779'
   - '2601.13910'
+  - '2601.00217'
   caveats:
   - The evidence does not imply that shared components are unusable, only that direct transfer is insufficient.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: weak_or_implicit_alignment_can_replace_detailed_singing_annotations
   claim: Weak temporal supervision, constrained attention, or learned melody extraction can replace phoneme-duration
     and MIDI-level annotation in singing synthesis.
@@ -1703,12 +1927,13 @@ claim_clusters:
   supporting_papers:
   - '2510.09016'
   - '2512.04779'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Evidence is currently Mandarin-centered and still depends on character spans, sentence timestamps, or a distilled
     melody teacher.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: factorized_representations_enable_low_resource_and_ood_timbre_transfer
   claim: Factorizing content, pitch, style, and timbre supports low-resource zero-shot singing conversion and transfer
     to acoustically distant target timbres.
@@ -1717,12 +1942,13 @@ claim_clusters:
   supporting_papers:
   - '2511.08496'
   - '2511.21045'
+  - '2602.07803'
   contradicting_papers: []
   refining_papers: []
   caveats:
   - Unified and separate encoders trade intelligibility against identity, while non-human timbre transfer still
     reduces intelligibility and quality.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: robust_training_improves_real_world_singing_conversion
   claim: Pitch perturbation, artifact simulation, and source-timbre suppression improve singing conversion under
     harmony bleed, reverberation, and separation errors.
@@ -1771,14 +1997,17 @@ claim_clusters:
   supporting_papers:
   - '2510.09016'
   - '2601.13910'
+  - '2602.07803'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2602.07803'
   caveats:
   - Synthetic expansion has a non-monotonic quality regime and large private corpora make public scale comparisons
     difficult.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: uncertainty_aware_adversarial_training_improves_singing_synthesis
-  claim: Uncertainty-aware objectives and differentiable discriminator-feature augmentation can improve singing-synthesis fidelity and naturalness, although gains may trade pitch accuracy against spectral fidelity across corpora.
+  claim: Uncertainty-aware objectives and differentiable discriminator-feature augmentation can improve singing-synthesis
+    fidelity and naturalness, although gains may trade pitch accuracy against spectral fidelity across corpora.
   status: emerging
   confidence: medium
   supporting_papers:
@@ -1786,9 +2015,25 @@ claim_clusters:
   contradicting_papers: []
   refining_papers: []
   caveats:
-  - Evidence comes from two single-singer corpora and one VISinger2-based system; multi-singer, multilingual, and architecture-level transfer remain untested.
-  - The smaller Japanese corpus improves several pitch and duration measures while slightly degrading MCD, so the benefit is not uniform across quality dimensions.
+  - Evidence comes from two single-singer corpora and one VISinger2-based system; multi-singer, multilingual, and
+    architecture-level transfer remain untested.
+  - The smaller Japanese corpus improves several pitch and duration measures while slightly degrading MCD, so the
+    benefit is not uniform across quality dimensions.
   last_reviewed: '2026-10-31'
+- id: latent_distribution_alignment_improves_singing_naturalness
+  claim: Explicitly transporting condition-derived latents toward posterior singing latents can reduce cVAE train–inference
+    mismatch and improve expressive naturalness without changing the decoder.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2601.00217'
+  contradicting_papers: []
+  refining_papers:
+  - '2601.00217'
+  caveats:
+  - Evidence comes from one flow-matching refinement study on Korean and Mandarin singing datasets, with limited
+    cross-system comparability.
+  last_reviewed: '2026-11-13'
 method_families:
 - id: diffusion_singing_generation
   name: Diffusion singing generation and conversion
@@ -1813,6 +2058,7 @@ method_families:
   - '2304.09116'
   - interspeech-2025-0347
   - interspeech-2025-1531
+  - '2601.00217'
   open_questions:
   - How can singing latents separate timbre, content, and expressive pitch dynamics without losing reconstruction
     quality?
@@ -1826,6 +2072,7 @@ method_families:
   - interspeech-2025-1531
   - '2511.21045'
   - '2512.03486'
+  - '2601.00217'
   open_questions:
   - Which adversarial objectives improve singing style accuracy without amplifying naturalness trade-offs?
 - id: hybrid_multimodal_singing_systems
@@ -1836,6 +2083,7 @@ method_families:
   - '2509.19883'
   - '2509.22718'
   - '2511.21045'
+  - '2602.04683'
   open_questions:
   - Which external signals add controllability without leaking attributes or destabilizing acoustic training?
 - id: flow_matching_singing_generation
@@ -1847,6 +2095,9 @@ method_families:
   - '2510.21685'
   - '2512.04779'
   - '2512.04793'
+  - '2602.04683'
+  - '2601.00217'
+  - '2602.07803'
   open_questions:
   - Can one flow backbone retain melody, lyrics, timbre, style, and robustness without task-specific post-training?
 reassessment_queue:
@@ -1908,6 +2159,9 @@ open_questions:
   source-separation errors?
 - Can reinforcement-learning rewards improve expressive singing without optimizing ASR, pitch, or aesthetic proxies
   at the expense of listener preference?
+- Does latent transport for singing generalize across languages, score conditions, singers, and non-VAE backbones
+  under matched listener tests?
+- How should zero-shot singing benchmarks separate gains from data scale, factorized conditioning, and decoder architecture?
 trend_notes:
 - Singing generation is moving from same-domain singer conditioning toward speech-prompted and cross-modal identity
   transfer.
@@ -1924,3 +2178,9 @@ trend_notes:
   became central development targets in Q4 2025.
 - Multi-objective reinforcement learning entered both singing synthesis and conversion, but evidence remains limited
   to two related flow-based systems.
+- Q1 2026 singing systems increasingly use flow matching both as a primary generator and as a latent-refinement
+  stage for correcting train–inference mismatch.
+- Large-scale zero-shot singing now combines score, melody, language, and timbre factorization, exposing distinct
+  controllability and lyric-editing trade-offs between symbolic and acoustic conditioning.
+- Unified audio-language models are beginning to include song generation inside shared reasoning and reconstruction
+  token pipelines, but singing-specific evidence remains thinner than speech evidence.
