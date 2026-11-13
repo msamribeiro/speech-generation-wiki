@@ -4,6 +4,24 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-13
+
+- ingest | 2607.03985 | NouveauVoice: Generating Novel Pseudo Speakers for Voice Anonymization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13150 | The Limits of Reference-Free Speech Quality Metrics as Evaluators and Rewards on Modern Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.02633 | GRAFT: Grafted Reference Audio for Fine-grained Pronunciation in Zero-shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.01677 | UniVocal: Unified Speech-Singing Code-Switching Synthesis | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.00407 | Privacy-preserving Prosody Representation Learning | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30965 | ImmersiveTTS: Environment-Aware Text-to-Speech with Multimodal Diffusion Transformer and Domain-Specific Representation Alignment | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31947 | LuxEmo: Expressive Text-to-Speech Corpus for Luxembourgish | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.28618 | Comprehensive Benchmarking of Long-Form Speech Generation in Diverse Scenarios | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.24618 | FC-TTS: Style and Timbre Control in Zero-Shot Text-to-Speech with Disentangled Speech Representations | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.11098 | AffectCodec: Emotion-Preserving Neural Speech Codec for Expressive Speech Modeling | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.22209 | UniSonate: A Unified Model for Speech, Music, and Sound Effect Generation with Text Instructions | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.18159 | FreezeEmpath: Efficient Training for Empathetic Spoken Chatbots with Frozen LLMs | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.17852 | LLM-Codec: Neural Audio Codec Meets Language Model Objectives | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.17358 | Still Between Us? Evaluating and Improving Voice Assistant Robustness to Third-Party Interruptions | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.26146 | Vagdhenu: A Vrutta (Meter) Aware Shloka-to-Chant (TTS) System for Sanskrit | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-12
 
 - ingest | 2604.15710 | VoxMind: An End-to-End Agentic Spoken Dialogue System | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
