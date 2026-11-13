@@ -1,6 +1,6 @@
 concept: transformer-enc-dec-tts
-last_updated: '2026-09-26'
-paper_count: 33
+last_updated: '2026-11-13'
+paper_count: 35
 papers:
 - id: '1703.10135'
   published_date: "2017-03-29"
@@ -2293,6 +2293,135 @@ papers:
   caveats:
   - For subjective evaluation, this paper provides high-relevance evidence; claims primarily concerning other concepts
     remain included but are marked low relevance.
+- id: '2603.11683'
+  published_date: '2026-03-12'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  architecture:
+  - transformer-enc-dec
+  relevance: high
+  evidence_role:
+  - architecture_variant
+  - control_evidence
+  - evaluation_caution
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: explicit_counterfactual_training_constraints_that_penalize_a_direct_conditioning_to_output_p
+    role: supports
+    claim: Explicit counterfactual training constraints that penalize a direct conditioning-to-output pathway can
+      reduce cross-attribute leakage (e.g. emotion bleeding into speaker timbre or content) more effectively than
+      conditioning on the attribute embedding alone.
+    source: §7.3, Table 2
+    evidence: Removing the Indirect Path Constraint (IPC) loss while keeping the emotion-augmented backbone drops
+      emotion-classification accuracy from 94% to about 88% and slightly lowers content-consistency, indicating
+      the suppressed direct pathway reappears once the counterfactual constraint is removed.
+    confidence: high
+    relevance: medium
+  - claim_id: a_prosody_mediator_limited_to_duration_pitch_and_energy_cannot_represent_all_emotion_relevan
+    role: complicates
+    claim: A prosody mediator limited to duration, pitch, and energy cannot represent all emotion-relevant acoustic
+      variation, so causal or disentanglement objectives built solely on these features leave some emotional cues
+      unmodeled.
+    source: §7.5 Error Analysis; §8 Discussion and Limitations
+    evidence: The "disgusted" emotion category is repeatedly confused with anger by both the model and an external
+      emotion classifier, which the authors attribute to voice-quality cues (e.g. creaky voice, spectral tilt) that
+      are not captured by duration, pitch, or energy alone.
+    confidence: high
+    relevance: medium
+  - claim_id: training_time_mechanisms_that_structurally_constrain_how_a_style_or_attribute_signal_reaches
+    role: supports
+    claim: Training-time mechanisms that structurally constrain how a style or attribute signal reaches the output
+      can preserve target-speaker identity better than post-hoc editing of a pretrained model's internal activations.
+    source: §7.1, Table 1
+    evidence: A post-hoc counterfactual-activation-editing baseline (CAE) applied to a pretrained emotion-conditioned
+      FastSpeech2 model shows lower speaker-similarity cosine (0.79) than the causal-mediation model (0.88), and
+      listeners preferred the causal model's speaker match over CAE's in 85% of ABX trials.
+    confidence: high
+    relevance: medium
+  - claim_id: enforcing_counterfactual_consistency_constraints_during_training_carries_a_nontrivial_comput
+    role: complicates
+    claim: Enforcing counterfactual consistency constraints during training carries a nontrivial computational overhead
+      relative to standard conditioned training.
+    source: §4.4 Combined Training Objective; §8 Discussion and Limitations
+    evidence: The extra IPC and CPC forward passes roughly double per-sample computation, and total training time
+      increases by about 1.5x compared to baseline FastSpeech2 training.
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For transformer-enc-dec-tts, this paper contributes high-relevance evidence bounded to the ingested version
+    and reported evaluation setting.
+- id: '2603.21078'
+  published_date: '2026-03-22'
+  entry_date: '2026-11-13'
+  year: 2026
+  venue: arXiv
+  task:
+  - TTS
+  - evaluation
+  architecture: []
+  relevance: medium
+  evidence_role:
+  - evaluation_caution
+  - negative_evidence
+  current_role: active_evidence
+  method_family:
+  - transformer_encoder_decoder_tts
+  claims:
+  - claim_id: a_segmental_level_phonetic_probe_based_on_articulatorily_grounded_acoustic_effects_can_revea
+    role: supports
+    claim: A segmental-level phonetic probe based on articulatorily grounded acoustic effects can reveal whether
+      a TTS system encodes abstract phonological structure or has instead memorized lexically specific acoustic-textual
+      associations.
+    source: §4, Figures 1-2
+    evidence: High-frequency (likely training-seen) words show f0 perturbation patterns matching natural speech
+      in both Tacotron 2 and FastSpeech 2, while low-frequency (likely unseen) words show degraded or absent separation
+      between onset categories for both models.
+    confidence: high
+    relevance: medium
+  - claim_id: fine_grained_segmental_prosodic_generalization_is_not_resolved_by_architectural_choice_alone
+    role: complicates
+    claim: Fine-grained segmental-prosodic generalization is not resolved by architectural choice alone; both autoregressive
+      and non-autoregressive TTS paradigms fail to generalize a local phonetic effect to unseen lexical items despite
+      differing internal mechanisms for temporal and pitch modeling.
+    source: §4, §6
+    evidence: FastSpeech 2 (parallel decoding with an explicit pitch predictor) shows no systematic onset-conditioned
+      f0 difference on low-frequency items, while Tacotron 2 (autoregressive, implicit propagation) shows only partial
+      success, capturing the voiceless-obstruent effect but not the voiced-obstruent/sonorant contrast.
+    confidence: high
+    relevance: medium
+  - claim_id: standard_overall_naturalness_metrics_such_as_mos_do_not_directly_surface_segmental_level_gen
+    role: complicates
+    claim: Standard overall naturalness metrics such as MOS do not directly surface segmental-level generalization
+      failures in synthetic speech, since such metrics aggregate perceptual judgments without isolating local articulatory-acoustic
+      cues.
+    source: §6, Discussion
+    evidence: The paper notes that TTS MOS has improved substantially even as small-scale models such as those tested
+      here plausibly retain the segmental generalization gap identified by the probe, and argues establishing a
+      causal link to perceptual naturalness would require dedicated listening experiments beyond the scope of this
+      study.
+    confidence: high
+    relevance: low
+  - claim_id: lexical_frequency_based_generalization_failures_observed_in_a_controlled_single_speaker_sett
+    role: supports
+    claim: Lexical-frequency-based generalization failures observed in a controlled single-speaker setting can transfer,
+      in attenuated form, to large-scale, multi-speaker, multi-system evaluation settings such as deepfake-detection
+      corpora.
+    source: §5, Figures 4-5
+    evidence: The In-the-Wild dataset (58 speakers, bona-fide and deepfake audio) reproduces the same qualitative
+      high-frequency-versus-low-frequency contrast in onset-conditioned f0 separation seen in the LJSpeech-based
+      Experiment 1, albeit with weaker group-level effects attributed to inter-speaker variability.
+    confidence: high
+    relevance: medium
+  limitations: []
+  caveats:
+  - For transformer-enc-dec-tts, this paper contributes medium-relevance evidence bounded to the ingested version
+    and reported evaluation setting.
 claim_clusters:
 - id: end_to_end_seq2seq_reduces_feature_engineering
   claim: End-to-end sequence-to-sequence TTS can match conventional pipelines without hand-engineered linguistic
@@ -2400,13 +2529,15 @@ claim_clusters:
   supporting_papers:
   - '2006.04558'
   - '2508.12001'
+  - '2603.11683'
   contradicting_papers: []
   refining_papers:
   - '2511.14779'
   - '2512.00937'
+  - '2603.11683'
   caveats:
   - Better variance modeling does not guarantee fine-grained or interpretable control.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: hierarchical_prosody_modeling_improves_expressiveness
   claim: Hierarchical and multi-granular prosody modeling improves expressiveness and supports localized control.
   status: strongly_supported
@@ -2416,12 +2547,14 @@ claim_clusters:
   - '2507.04598'
   - interspeech-2025-1098
   - '2510.01722'
+  - '2603.11683'
   contradicting_papers: []
   refining_papers:
   - '2507.04598'
+  - '2603.11683'
   caveats:
   - Sequential hierarchical prediction can accumulate errors across levels.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: stochastic_prosody_models_increase_diversity
   claim: Stochastic prosody predictors increase acoustic diversity while retaining competitive naturalness.
   status: emerging
@@ -2481,11 +2614,13 @@ claim_clusters:
   - interspeech-2025-2586
   - '2508.17031'
   - '2510.01722'
+  - '2603.11683'
   contradicting_papers: []
-  refining_papers: []
+  refining_papers:
+  - '2603.11683'
   caveats:
   - Auxiliary labels and controlled corpora limit conclusions about broad style generalization.
-  last_reviewed: '2026-09-26'
+  last_reviewed: '2026-11-13'
 - id: adversarial_objectives_restore_acoustic_detail
   claim: Frequency-aware and local adversarial objectives improve acoustic detail beyond reconstruction losses alone.
   status: strongly_supported
@@ -2539,6 +2674,19 @@ claim_clusters:
   - The interventions differ across languages and datasets, and listener validation is limited or absent in two
     studies.
   last_reviewed: '2026-09-26'
+- id: segmental_prosody_generalization_fails_on_unseen_lexical_items
+  claim: Transformer encoder–decoder TTS systems can reproduce local consonant-induced F0 patterns for familiar
+    words yet fail to generalize the same phonetic effect to unseen lexical items.
+  status: emerging
+  confidence: medium
+  supporting_papers:
+  - '2603.21078'
+  contradicting_papers: []
+  refining_papers: []
+  caveats:
+  - Evidence currently covers Tacotron 2 and FastSpeech 2 on English, with lexical frequency used as a proxy for
+    training exposure and no dedicated perceptual test.
+  last_reviewed: '2026-11-13'
 method_families:
 - id: transformer_encoder_decoder_tts
   name: Transformer encoder–decoder TTS
@@ -2573,6 +2721,8 @@ method_families:
   - '2511.14779'
   - '2512.00937'
   - 2025.iwclul-1.3
+  - '2603.11683'
+  - '2603.21078'
   open_questions:
   - Which alignment and conditioning mechanisms remain most reliable for long, expressive, and out-of-domain inputs?
 - id: gan_augmented_encoder_decoder_systems
@@ -2694,6 +2844,10 @@ open_questions:
 - Which automatic segmentation methods preserve prosodic boundaries well enough to replace expert annotation across
   languages and speaking styles?
 - Do cepstral oversmoothing improvements from adversarial acoustic-model training reliably predict listener preference?
+- Which architecture or training signal enables transformer TTS to generalize segmental acoustic rules beyond familiar
+  lexical items?
+- How should causal prosody mediators incorporate voice-quality cues beyond duration, pitch, and energy without
+  reintroducing identity leakage?
 trend_notes:
 - Encoder–decoder TTS has shifted from autoregressive attention toward explicit duration and monotonic alignment
   mechanisms.
@@ -2710,3 +2864,9 @@ trend_notes:
   duration, pitch, and text-normalization modules are operational advantages.
 - Adversarial acoustic losses, consistency tuning, and phoneme-level reference attention extend transformer front
   ends toward sharper, faster, and more expressive generation.
+- Q1 2026 transformer TTS work increasingly treats prosody as a causal mediation problem rather than only a variance-prediction
+  target.
+- Segmental phonetic probes reveal lexical generalization failures that aggregate naturalness and intelligibility
+  scores do not expose.
+- FastSpeech-style parallel systems remain useful controlled backbones for studying attribute leakage, counterfactual
+  constraints, and local prosodic generalization.
