@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-14
 
+- ingest | 2607.04941 | DuplexChat: Constructing Speaker-Separated Full-Duplex Dialogue Speech at Scale for Spoken Dialogue Language Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.02214 | Unlocking Speech-Text Compositional Powers: Instruction-Following Speech Language Models without Instruction Tuning | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.01345 | TurnNat: Automatic Evaluation of Turn-Taking Naturalness in Dyadic Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.04222 | GEPARD - Generative, Prosody-aware, Autoregressive text-to-speech model for Realtime Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - misc | 2602.10934 | MOSS-Audio-Tokenizer: peer-reviewed version (ICML 2026, OpenReview icMRkTnuU7, retitled "Scaling Transformers for End-to-End Discrete Audio Tokenization") linked with an italic note | not in any claim YAML, so re-dated 2026-02-12 -> 2026-07-06 (Q1 -> Q3) with venue ICML; the page still summarizes the arXiv version
 
 ## 2026-11-13

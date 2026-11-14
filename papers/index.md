@@ -1106,3 +1106,7 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2607.02633]] | [GRAFT: Grafted Reference Audio for Fine-grained Pronunc](papers/2607.02633.md) | AGIGO / ETH Zurich / Sapienza University of Rome / University of Zurich | arXiv | 2026 | TTS | autoregressive-LM | 2026-11-13 |
 | [[2609.13150]] | [The Limits of Reference-Free Speech Quality Metrics as ](papers/2609.13150.md) | AGIGO / ETH Zurich / Sapienza University of Rome / University of Zurich | arXiv | 2026 | TTS, evaluation | autoregressive-LM | 2026-11-13 |
 | [[2607.03985]] | [NouveauVoice: Generating Novel Pseudo Speakers for Voic](papers/2607.03985.md) | University of Rochester | arXiv | 2026 | VC | VAE | 2026-11-13 |
+| [[2609.04222]] | [GEPARD - Generative, Prosody-aware, Autoregressive text](papers/2609.04222.md) | nineninesix.ai | arXiv | 2026 | TTS | autoregressive-LM | 2026-11-14 |
+| [[2607.01345]] | [TurnNat: Automatic Evaluation of Turn-Taking Naturalnes](papers/2607.01345.md) | Johns Hopkins University / Amazon | arXiv | 2026 | SCA, evaluation |  | 2026-11-14 |
+| [[2607.02214]] | [Unlocking Speech-Text Compositional Powers: Instruction](papers/2607.02214.md) | University of California, Santa Barbara / MIT-IBM Computing Research Lab, IBM Research | ICML | 2026 | SCA | autoregressive-LM | 2026-11-14 |
+| [[2607.04941]] | [DuplexChat: Constructing Speaker-Separated Full-Duplex ](papers/2607.04941.md) | The University of Tokyo / National Institute of Advanced Industrial Science and Technology | arXiv | 2026 | SCA |  | 2026-11-14 |
