@@ -4,6 +4,10 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-14
+
+- misc | 2602.10934 | MOSS-Audio-Tokenizer: peer-reviewed version (ICML 2026, OpenReview icMRkTnuU7, retitled "Scaling Transformers for End-to-End Discrete Audio Tokenization") linked with an italic note | not in any claim YAML, so re-dated 2026-02-12 -> 2026-07-06 (Q1 -> Q3) with venue ICML; the page still summarizes the arXiv version
+
 ## 2026-11-13
 
 - ingest | 2607.03985 | NouveauVoice: Generating Novel Pseudo Speakers for Voice Anonymization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
