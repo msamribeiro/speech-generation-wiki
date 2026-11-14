@@ -16,7 +16,7 @@ generation:
 
 > [!abstract]
 > A living systematic review and knowledge graph of speech generation research. It brings together
-> 1111 paper summaries across **text-to-speech (TTS)**, **voice conversion (VC)**, **spoken
+> 1115 paper summaries across **text-to-speech (TTS)**, **voice conversion (VC)**, **spoken
 > conversational agents**, and evaluation, and connects them through 23 concept guides. The wiki
 > shows what the current evidence supports, where findings disagree, and how the field changes over
 > time.
@@ -56,11 +56,11 @@ streaming, spoken agents, and evaluation.
 
 ## Browse the papers
 
-The corpus contains 1111 paper pages from arXiv, Interspeech, ACL, EMNLP, NAACL, ICLR, NeurIPS,
+The corpus contains 1115 paper pages from arXiv, Interspeech, ACL, EMNLP, NAACL, ICLR, NeurIPS,
 ASRU, workshops, and industry technical reports. Search by title, author, system, benchmark, venue,
 or paper ID.
 
-→ [[papers/index|Browse all 1111 papers]]
+→ [[papers/index|Browse all 1115 papers]]
 
 ## How to read the dates
 

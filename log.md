@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-14
 
+- ingest | 2607.17900 | Harness TTS: Towards Context-Aware Expressive Speech Synthesis with Harness Layer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.17615 | Re-Sonance: A Dysarthric Asynchronous Real-Time Speech Conversion System Based on a Three-Stage Cascaded ASR-LLM-TTS Architecture | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.17544 | X-Translator: A Real-Time Multilingual Speaker-Aware Speech-to-Speech Translation System | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.18662 | Staged Depth-Pruning Distillation of a Flow-Matching Text-to-Speech Teacher: A Compact Hindi Speech Synthesizer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2607.16870 | Do Speech Tokens Leak Voiceprints? Speaker Inversion Attacks Against End-to-End Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2607.12706 | AutoSIFT: Automatic Style Sifting for Controllable Speech Generation with Arbitrary Style Infilling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2607.06027 | Fréchet Distance Loss on Speech Representations for Text-to-Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
