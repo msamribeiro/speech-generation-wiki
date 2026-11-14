@@ -6,6 +6,10 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-14
 
+- ingest | 2607.16870 | Do Speech Tokens Leak Voiceprints? Speaker Inversion Attacks Against End-to-End Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.12706 | AutoSIFT: Automatic Style Sifting for Controllable Speech Generation with Arbitrary Style Infilling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.06027 | Fréchet Distance Loss on Speech Representations for Text-to-Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.06461 | WordVoice: Explicit and Decoupled Multi-Dimensional Word-Level Control for LLM-Based TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2607.06054 | BlueMagpie-TTS: A Token-Efficient Tokenizer, Language Model, and TTS for Taiwanese-Accent Code-Switching Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | icml-2026-hgKQemfVbS | AgentSteerTTS: A Multi-Agent Closed-Loop Framework for Composite-Instruction Text-to-Speech | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 - ingest | 2607.09134 | ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
