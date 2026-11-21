@@ -1152,3 +1152,18 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2608.11650]] | [Confucius4-TTS: Transcript-Free Cross-Lingual Zero-Shot](papers/2608.11650.md) | NetEase Youdao | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-11-15 |
 | [[2608.11804]] | [MiDashengLM-Gen: Unified Audio Scene Generation via LLM](papers/2608.11804.md) | Xiaomi Inc. / Shanghai Jiao Tong University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-11-15 |
 | [[2608.13613]] | [VoiceDesigner: Text-to-Voice Generation and Editing via](papers/2608.13613.md) | Johns Hopkins University / Adobe Research | arXiv | 2026 | TTS | flow-matching | 2026-11-15 |
+| [[2608.11590]] | [CookVoice: Unified Framework for Style Controllable Mul](papers/2608.11590.md) | UNSW Sydney / Dolby Laboratories | arXiv | 2026 | TTS, singing | flow-matching, GAN | 2026-11-21 |
+| [[2608.12814]] | [FastThaiG2P: Lightning-fast Thai Grapheme-to-phoneme Co](papers/2608.12814.md) | AWS | arXiv | 2026 | TTS | GAN | 2026-11-21 |
+| [[2608.13831]] | [VoiceChat-TTS: A Low-Latency Continuous Speech Synthesi](papers/2608.13831.md) | NVIDIA | arXiv | 2026 | TTS, SCA | autoregressive-LM | 2026-11-21 |
+| [[2608.15690]] | [Adding Voice Cloning to Text-to-Audio-Video Models with](papers/2608.15690.md) | Kandinsky Lab | arXiv | 2026 | TTS | diffusion | 2026-11-21 |
+| [[2608.15910]] | [Iterative Self-Learning for Expressive Text-to-Speech S](papers/2608.15910.md) | University of Edinburgh | arXiv | 2026 | TTS | flow-matching | 2026-11-21 |
+| [[2608.18661]] | [X2Streaming-TTS: Causal Token-Level Text-to-Speech from](papers/2608.18661.md) | X Square Robot | arXiv | 2026 | TTS | autoregressive-LM | 2026-11-21 |
+| [[2605.30748]] | [Chatterbox-Flash: Prior-Calibrated Block Diffusion for ](papers/2605.30748.md) | Resemble AI / Seoul National University / KAIST | arXiv | 2026 | TTS | autoregressive-LM, diffusion, flow-matching | 2026-11-21 |
+| [[2608.17492]] | [FireRedTTS3: Unified Speech Generation and Editing with](papers/2608.17492.md) | Xiaohongshu | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, GAN | 2026-11-21 |
+| [[2608.16053]] | [DuplexGen: Decoupling Content, Timing, and Acoustics fo](papers/2608.16053.md) | Institute of Science Tokyo / Hokkaido University | arXiv | 2026 | SCA, TTS | autoregressive-LM, flow-matching | 2026-11-21 |
+| [[2608.23791]] | [EmoTra-TTS: Smooth Intra-Utterance Emotion Transitions ](papers/2608.23791.md) | LIGHTSPEED / National University of Singapore / Nanyang Technological University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching | 2026-11-21 |
+| [[2608.05727]] | [LILAC: An Idempotent Neural Speech Codec](papers/2608.05727.md) | Seoul National University | arXiv | 2026 | codec | GAN, VAE | 2026-11-21 |
+| [[2608.08638]] | [CuteTTS: Efficient and High-Quality Speech Synthesis vi](papers/2608.08638.md) | Shanghai Innovation Institute / OPPO AI Center / Fudan University | arXiv | 2026 | TTS | autoregressive-LM, flow-matching, VAE, GAN | 2026-11-21 |
+| [[2204.07228]] | [Integrating Human Linguistic Insights into AI: Theory-D](papers/2204.07228.md) | Newcastle University / University of Oxford / Tencent / Shengrurenxin Ltd. | arXiv | 2026 | TTS | transformer-enc-dec | 2026-11-21 |
+| [[2608.24168]] | [FireRedAudio: A General-Purpose Audio Language Model wi](papers/2608.24168.md) | Xiaohongshu | arXiv | 2026 | TTS, SCA | autoregressive-LM, flow-matching, GAN | 2026-11-21 |
+| [[2608.27360]] | [Your Voice Cloning System is Secretly a Voice Anonymize](papers/2608.27360.md) | ZHAW School of Engineering | arXiv | 2026 | VC | autoregressive-LM, GAN | 2026-11-21 |

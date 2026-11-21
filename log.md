@@ -4,6 +4,25 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-21
+
+- ingest | 2608.27360 | Your Voice Cloning System is Secretly a Voice Anonymizer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.24168 | FireRedAudio: A General-Purpose Audio Language Model with Decoupled Continuous Representations for Understanding and Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2204.07228 | Integrating Human Linguistic Insights into AI: Theory-Driven Representation for Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.08638 | CuteTTS: Efficient and High-Quality Speech Synthesis via Autoregressive Modeling of Continuous Latents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.05727 | LILAC: An Idempotent Neural Speech Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.23791 | EmoTra-TTS: Smooth Intra-Utterance Emotion Transitions for Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.16053 | DuplexGen: Decoupling Content, Timing, and Acoustics for Synthetic Dialogue Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.17492 | FireRedTTS3: Unified Speech Generation and Editing with Semantically Enriched Speech Representations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30748 | Chatterbox-Flash: Prior-Calibrated Block Diffusion for Streaming Zero-Shot TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.18661 | X2Streaming-TTS: Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inheritance | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.15910 | Iterative Self-Learning for Expressive Text-to-Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.15690 | Adding Voice Cloning to Text-to-Audio-Video Models with a Single Zero-Initialised Layer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.13831 | VoiceChat-TTS: A Low-Latency Continuous Speech Synthesis Model for Interactive Agents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.12814 | FastThaiG2P: Lightning-fast Thai Grapheme-to-phoneme Conversion for Voice Agent Pipelines | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.11590 | CookVoice: Unified Framework for Style Controllable Multi-Modal Human Voice Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- review | 2608.11593 | Luna-TTS Family Technical Report | arXiv 2026 | linked Chatterbox-Flash 2605.30748 now that its page exists (Wiki Connections prose); no content change
+
 ## 2026-11-15
 
 - ingest | 2608.13613 | VoiceDesigner: Text-to-Voice Generation and Editing via Unified Diffusion Modeling and Data Augmentation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
