@@ -4,6 +4,34 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-24
+
+- ingest | 2205.12446 | FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.09685 | LoRA: Low-Rank Adaptation of Large Language Models | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2104.09494 | NISQA: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets | Interspeech 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2010.15258 | DNSMOS: A Non-Intrusive Perceptual Objective Speech Quality metric to evaluate Noise Suppressors | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2005.08100 | Conformer: Convolution-augmented Transformer for Speech Recognition | Interspeech 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1912.07875 | Libri-Light: A Benchmark for ASR with Limited or No Supervision | arXiv 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1706.03762 | Attention Is All You Need | NeurIPS 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | interspeech-2017-1386 | Montreal Forced Aligner: Trainable Text-Speech Alignment Using Kaldi | Interspeech 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | icassp-2015-librispeech | Librispeech: An ASR corpus based on public domain audio books | ICASSP 2015 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1312.6114 | Auto-Encoding Variational Bayes | ICLR 2014 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2212.09748 | Scalable Diffusion Models with Transformers | ICCV 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2305.18802 | LibriTTS-R: A Restored Multi-Speaker Text-to-Speech Corpus | Interspeech 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2211.12171 | PromptTTS: Controllable Text-to-Speech with Text Descriptions | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2210.15418 | FreeVC: Towards High-Quality Text-Free One-Shot Voice Conversion | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2112.02418 | YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone | ICML 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2110.13900 | WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2109.13821 | Diffusion-Based Voice Conversion with Fast Maximum Likelihood Sampling Scheme | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2105.14762 | Emotional Voice Conversion: Theory, Databases and ESD | Speech Communication 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2107.03312 | SoundStream: An End-to-End Neural Audio Codec | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.07447 | HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.06103 | Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech | ICML 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2006.11239 | Denoising Diffusion Probabilistic Models | NeurIPS 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2006.11477 | wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations | NeurIPS 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1905.09263 | FastSpeech: Fast, Robust and Controllable Text to Speech | NeurIPS 2019 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1711.00937 | Neural Discrete Representation Learning | NeurIPS 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-22
 
 - review | 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv 2025 | task [TTS, SCA] -> [TTS] (script-to-dialogue convention, user 2026-11-22); page and index row; no content change

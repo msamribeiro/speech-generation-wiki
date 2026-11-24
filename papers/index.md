@@ -1187,3 +1187,28 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2605.29948]] | [HoliTok:A Coutinuous Holistic Tokenization with Robust ](papers/2605.29948.md) | Shanghai Jiao Tong University / Xiaohongshu | arXiv | 2026 | codec, TTS | VAE, GAN, autoregressive-LM, flow-matching, hybrid | 2026-11-22 |
 | [[2607.25351]] | [Extracting Voice Styles from Frozen TTS Models via Grad](papers/2607.25351.md) | Hanyang University | arXiv | 2026 | TTS | flow-matching | 2026-11-22 |
 | [[2609.07200]] | [KABURI-TTS: Phoneme-Keyed Activity-conditioned Bi-chann](papers/2609.07200.md) | Nagoya University / National Institute of Informatics / Keio University / Waseda University | arXiv | 2026 | TTS | flow-matching | 2026-11-22 |
+| [[1711.00937]] | [Neural Discrete Representation Learning](papers/1711.00937.md) | DeepMind | NeurIPS | 2017 | codec | VAE, autoregressive-LM | 2026-11-24 |
+| [[1905.09263]] | [FastSpeech: Fast, Robust and Controllable Text to Speec](papers/1905.09263.md) | Zhejiang University / Microsoft Research / Microsoft STC Asia | NeurIPS | 2019 | TTS | transformer-enc-dec | 2026-11-24 |
+| [[2006.11477]] | [wav2vec 2.0: A Framework for Self-Supervised Learning o](papers/2006.11477.md) | Facebook AI | NeurIPS | 2020 |  |  | 2026-11-24 |
+| [[2006.11239]] | [Denoising Diffusion Probabilistic Models](papers/2006.11239.md) | UC Berkeley | NeurIPS | 2020 |  | diffusion | 2026-11-24 |
+| [[2106.06103]] | [Conditional Variational Autoencoder with Adversarial Le](papers/2106.06103.md) | Kakao Enterprise / KAIST | ICML | 2021 | TTS | VAE, GAN | 2026-11-24 |
+| [[2106.07447]] | [HuBERT: Self-Supervised Speech Representation Learning ](papers/2106.07447.md) | Facebook AI | arXiv | 2021 |  |  | 2026-11-24 |
+| [[2107.03312]] | [SoundStream: An End-to-End Neural Audio Codec](papers/2107.03312.md) | Google | arXiv | 2021 | codec | GAN | 2026-11-24 |
+| [[2105.14762]] | [Emotional Voice Conversion: Theory, Databases and ESD](papers/2105.14762.md) | National University of Singapore / Singapore University of Technology and Design / University of Bremen | Speech Communication | 2021 | VC | GAN, VAE | 2026-11-24 |
+| [[2109.13821]] | [Diffusion-Based Voice Conversion with Fast Maximum Like](papers/2109.13821.md) | Huawei Noah's Ark Lab | arXiv | 2022 | VC | diffusion | 2026-11-24 |
+| [[2110.13900]] | [WavLM: Large-Scale Self-Supervised Pre-Training for Ful](papers/2110.13900.md) | Microsoft | arXiv | 2022 |  |  | 2026-11-24 |
+| [[2112.02418]] | [YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-S](papers/2112.02418.md) | Universidade de São Paulo / Coqui / Sopra Banking Software / Defined.ai / Federal University of Technology – Paraná / Mercado Livre | ICML | 2022 | TTS, VC | VAE, GAN | 2026-11-24 |
+| [[2210.15418]] | [FreeVC: Towards High-Quality Text-Free One-Shot Voice C](papers/2210.15418.md) | Wuhan University | arXiv | 2023 | VC | VAE, GAN | 2026-11-24 |
+| [[2211.12171]] | [PromptTTS: Controllable Text-to-Speech with Text Descri](papers/2211.12171.md) | University of Science and Technology of China / Renmin University of China / Microsoft Azure Speech / Microsoft Research Asia | arXiv | 2023 | TTS | transformer-enc-dec | 2026-11-24 |
+| [[2305.18802]] | [LibriTTS-R: A Restored Multi-Speaker Text-to-Speech Cor](papers/2305.18802.md) | Google / Tokyo University of Agriculture & Technology | Interspeech | 2023 | TTS |  | 2026-11-24 |
+| [[2212.09748]] | [Scalable Diffusion Models with Transformers](papers/2212.09748.md) | UC Berkeley / New York University | ICCV | 2023 |  | diffusion | 2026-11-24 |
+| [[1312.6114]] | [Auto-Encoding Variational Bayes](papers/1312.6114.md) | Universiteit van Amsterdam | ICLR | 2014 |  |  | 2026-11-24 |
+| [[icassp-2015-librispeech]] | [Librispeech: An ASR corpus based on public domain audio](papers/icassp-2015-librispeech.md) | Johns Hopkins University | ICASSP | 2015 |  |  | 2026-11-24 |
+| [[interspeech-2017-1386]] | [Montreal Forced Aligner: Trainable Text-Speech Alignmen](papers/interspeech-2017-1386.md) | McGill University / University of Maryland | Interspeech | 2017 |  |  | 2026-11-24 |
+| [[1706.03762]] | [Attention Is All You Need](papers/1706.03762.md) | Google Brain / Google Research / University of Toronto | NeurIPS | 2017 |  |  | 2026-11-24 |
+| [[1912.07875]] | [Libri-Light: A Benchmark for ASR with Limited or No Sup](papers/1912.07875.md) | Facebook AI / EHESS / ENS / PSL University / CNRS / INRIA | arXiv | 2020 |  |  | 2026-11-24 |
+| [[2005.08100]] | [Conformer: Convolution-augmented Transformer for Speech](papers/2005.08100.md) | Google | Interspeech | 2020 |  |  | 2026-11-24 |
+| [[2010.15258]] | [DNSMOS: A Non-Intrusive Perceptual Objective Speech Qua](papers/2010.15258.md) | Microsoft | arXiv | 2021 | evaluation |  | 2026-11-24 |
+| [[2104.09494]] | [NISQA: A Deep CNN-Self-Attention Model for Multidimensi](papers/2104.09494.md) | Technische Universität Berlin / Deutsches Forschungszentrum für Künstliche Intelligenz (DFKI) | Interspeech | 2021 | evaluation |  | 2026-11-24 |
+| [[2106.09685]] | [LoRA: Low-Rank Adaptation of Large Language Models](papers/2106.09685.md) | Microsoft Corporation | arXiv | 2022 |  |  | 2026-11-24 |
+| [[2205.12446]] | [FLEURS: Few-shot Learning Evaluation of Universal Repre](papers/2205.12446.md) | Meta AI Research / Google Research / Carnegie Mellon University | arXiv | 2023 |  |  | 2026-11-24 |
