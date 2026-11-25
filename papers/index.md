@@ -1212,3 +1212,23 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2104.09494]] | [NISQA: A Deep CNN-Self-Attention Model for Multidimensi](papers/2104.09494.md) | Technische Universität Berlin / Deutsches Forschungszentrum für Künstliche Intelligenz (DFKI) | Interspeech | 2021 | evaluation |  | 2026-11-24 |
 | [[2106.09685]] | [LoRA: Low-Rank Adaptation of Large Language Models](papers/2106.09685.md) | Microsoft Corporation | arXiv | 2022 |  |  | 2026-11-24 |
 | [[2205.12446]] | [FLEURS: Few-shot Learning Evaluation of Universal Repre](papers/2205.12446.md) | Meta AI Research / Google Research / Carnegie Mellon University | arXiv | 2023 |  |  | 2026-11-24 |
+| [[2609.08390]] | [Noise Adaptive Streaming Audio-Visual Speech Token Enha](papers/2609.08390.md) | KAIST | arXiv | 2026 | SCA | autoregressive-LM | 2026-11-25 |
+| [[2609.08936]] | [AuK Technical Report: An Open-Source Foundational Model](papers/2609.08936.md) | Tencent Hunyuan / Shanghai Jiao Tong University / Shanghai Innovation Institute | arXiv | 2026 | TTS, codec | flow-matching, VAE, GAN | 2026-11-25 |
+| [[2609.08956]] | [TASTE2: Text-Aligned Speech Modeling and Deployment tow](papers/2609.08956.md) | MediaTek Research / National Taiwan University / NVIDIA | arXiv | 2026 | SCA | autoregressive-LM, flow-matching, hybrid | 2026-11-25 |
+| [[2609.09263]] | [Voice or Stereotype? Disentangling Acoustic and Content](papers/2609.09263.md) | Centific Research / University of Washington | arXiv | 2026 | SCA, evaluation |  | 2026-11-25 |
+| [[2609.09677]] | [X2-NativeCursor: Native-Token Text Progress Tracking fo](papers/2609.09677.md) | X Square Robot | arXiv | 2026 | TTS |  | 2026-11-25 |
+| [[2609.09866]] | [UniStream: Multi-Expert Residual Vector Quantization fo](papers/2609.09866.md) | Tsinghua University | arXiv | 2026 | codec | GAN, VAE | 2026-11-25 |
+| [[2609.09903]] | [SphereVAE: Hyperspherical Latent Autoencoders for Robus](papers/2609.09903.md) | Northwestern Polytechnical University / NetEase | arXiv | 2026 | TTS, codec | VAE, GAN, autoregressive-LM, diffusion | 2026-11-25 |
+| [[2609.09947]] | [SpeechAnnotator: A Context-Aware Multi-Agent Framework ](papers/2609.09947.md) | Northwestern Polytechnical University / Nanjing University / yutuzhineng / Shenzhen Pimei Technology Co., Ltd. | arXiv | 2026 | TTS |  | 2026-11-25 |
+| [[2609.10765]] | [From Metrics to Natural Dialogue: French Full-Duplex Be](papers/2609.10765.md) | Luqia Technologies | arXiv | 2026 | SCA, evaluation |  | 2026-11-25 |
+| [[2609.11545]] | [Complex-Text Robustness Evaluation and Failure Diagnosi](papers/2609.11545.md) | Northwestern Polytechnical University (ASLP@NPU) / iFLYTEK | arXiv | 2026 | TTS, evaluation |  | 2026-11-25 |
+| [[2609.11642]] | [ZipCodec: Ultra-Low-Frame-Rate Streaming Speech Coding](papers/2609.11642.md) | Concordia University / Mila-Quebec AI Institute / Université Laval | arXiv | 2026 | codec | GAN, hybrid | 2026-11-25 |
+| [[2609.11725]] | [Continuous-Time Acoustic Modelling with Neural Controll](papers/2609.11725.md) | University of Sheffield | arXiv | 2026 | TTS | transformer-enc-dec, diffusion, GAN, hybrid | 2026-11-25 |
+| [[2607.05276]] | [ProPS: Prompted Profile Synthesis for Natural Language-](papers/2607.05276.md) | Johns Hopkins University / AMIAD / Universidad Carlos III de Madrid | arXiv | 2026 | TTS |  | 2026-11-25 |
+| [[2609.12432]] | [VoxTubeS: Distributable Speaker-Anonymized Synthetic Sp](papers/2609.12432.md) | National Institute of Informatics / University of Science and Technology of China | arXiv | 2026 | VC, TTS | GAN, flow-matching | 2026-11-25 |
+| [[2609.12563]] | [TokenMapper: A Step Toward Interoperable Speech Token T](papers/2609.12563.md) | Ben-Gurion University of the Negev | arXiv | 2026 | codec | transformer-enc-dec | 2026-11-25 |
+| [[2609.12728]] | [X-Pred MeanFlow for Streaming Token-to-Mel Speech Decod](papers/2609.12728.md) | Northwestern Polytechnical University / Shenzhen Pimei Technology Co., Ltd. | arXiv | 2026 | TTS | flow-matching | 2026-11-25 |
+| [[2609.12855]] | [AlignDPO: Preference-Gated Alignment for Reducing Hallu](papers/2609.12855.md) | ConnexAI | arXiv | 2026 | TTS | autoregressive-LM | 2026-11-25 |
+| [[2609.12918]] | [PhaseGAN: High-Fidelity Vocoder via Decoupled Amplitude](papers/2609.12918.md) | Inner Mongolia University | arXiv | 2026 | TTS | GAN | 2026-11-25 |
+| [[2609.12945]] | [StepAudio 3 Gen Technical Report](papers/2609.12945.md) | StepFun | arXiv | 2026 | TTS | autoregressive-LM | 2026-11-25 |
+| [[2609.13045]] | [Kraken: LLM-based Speech-to-Speech Translation via Low-](papers/2609.13045.md) | Sony Group Corporation / Sony Europe Limited | arXiv | 2026 | SCA | autoregressive-LM, GAN | 2026-11-25 |

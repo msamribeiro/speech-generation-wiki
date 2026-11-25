@@ -4,6 +4,29 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-25
+
+- ingest | 2609.13045 | Kraken: LLM-based Speech-to-Speech Translation via Low-bitrate VQ and Dual-path Source Conditioning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12945 | StepAudio 3 Gen Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12918 | PhaseGAN: High-Fidelity Vocoder via Decoupled Amplitude and GAN-Driven Phase Reconstruction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12855 | AlignDPO: Preference-Gated Alignment for Reducing Hallucination in Decoder-Only TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12728 | X-Pred MeanFlow for Streaming Token-to-Mel Speech Decoding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12563 | TokenMapper: A Step Toward Interoperable Speech Token Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12432 | VoxTubeS: Distributable Speaker-Anonymized Synthetic Speech Corpora and Their Analysis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.05276 | ProPS: Prompted Profile Synthesis for Natural Language-Conditioned Speaker Embedding Distributions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11725 | Continuous-Time Acoustic Modelling with Neural Controlled Differential Equations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11642 | ZipCodec: Ultra-Low-Frame-Rate Streaming Speech Coding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11545 | Complex-Text Robustness Evaluation and Failure Diagnosis for Low-Resource Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.10765 | From Metrics to Natural Dialogue: French Full-Duplex Benchmark for Spoken Dialogue Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09947 | SpeechAnnotator: A Context-Aware Multi-Agent Framework and Benchmark for Multidimensional Speech Annotation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09903 | SphereVAE: Hyperspherical Latent Autoencoders for Robust Autoregressive Speech Representation Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09866 | UniStream: Multi-Expert Residual Vector Quantization for 48 kHz Causal Streaming Audio Coding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09677 | X2-NativeCursor: Native-Token Text Progress Tracking for Incremental-Text Streaming Codec TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09263 | Voice or Stereotype? Disentangling Acoustic and Content-Based Gender in Speech-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08956 | TASTE2: Text-Aligned Speech Modeling and Deployment toward Full-Duplex Voice Interaction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08936 | AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08390 | Noise Adaptive Streaming Audio-Visual Speech Token Enhancement for Robust Full-Duplex Spoken Dialogue Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-24
 
 - ingest | 2205.12446 | FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
