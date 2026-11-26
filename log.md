@@ -4,6 +4,29 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-26
+
+- ingest | 2609.18856 | GrainSpeech: Less Context, More Detail for Compact Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.20124 | Multi-Dimensional Prosody Judgment For Live Streaming Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.25218 | TurnBench: A Multi-Domain Benchmark for Turn-Taking Dynamics in Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.17509 | LACE: Layer-Wise Compression for Dynamic Frame Rate Codecs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16989 | Taming Long-form Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16614 | RoleBreak: Benchmarking Long-Horizon Role-Playing Robustness in Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16514 | The Evolving Bottleneck in Speech Generation: Interface Co-design and Staged Alignment from CosyVoice to Qwen-Audio-3.0-TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13413 | CVSS-X: A Multilingual Speech-to-Speech Translation Corpus for 28 Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31247 | FlexiSLM: A Dynamic and Controllable Frame Rate Spoken Language Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31105 | Attacking UTMOS: Probing the Robustness of a Speech Quality Assessment Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15759 | Enabling Streaming User Transcription in Full-Duplex Speech-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15313 | Reducing the Output-Mode Gap in Speech Language Models via Joint-Output On-Policy Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15184 | Cross-Lingual F5-TTS 2: A Simplified Framework for Language-Agnostic Voice Cloning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.10581 | ParaBridge: Bridging Paralinguistic Perception and Dialogue Behavior in Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14817 | Tone on a Budget: A Reference-Free Metric for Lexical Tone in Massively Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14740 | Bridging Data, Reasoning, and Alignment: A Unified Framework for Context-Aware Instruction-Following TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14231 | Modeling, Scaling, and Decoding: Optimizing Controllable Speech Generation with Nonverbal Vocalizations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.13989 | Mask, Sample, Revise: A Revisable CTMC Inference Stack for Guided Discrete Flow Matching Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13909 | DiTAR+: Dual Optimization for Robust Autoregressive Diffusion Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13792 | The VoiceMOS Challenge 2026: Evaluating Speech Enhancement, Emotional TTS and Accented TTS Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-25
 
 - ingest | 2609.13045 | Kraken: LLM-based Speech-to-Speech Translation via Low-bitrate VQ and Dual-path Source Conditioning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
