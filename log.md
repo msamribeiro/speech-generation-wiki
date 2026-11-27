@@ -4,6 +4,15 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-27
+
+- ingest | 2405.00233 | SemantiCodec: An Ultra Low Bitrate Semantic Audio Codec for General Sound | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2409.15594 | Beyond Turn-Based Interfaces: Synchronous LLMs as Full-Duplex Dialogue Agents | EMNLP 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2309.07405 | FunCodec: A Fundamental, Reproducible and Integrable Open-source Toolkit for Neural Speech Codec | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2309.03199 | Matcha-TTS: A fast TTS architecture with conditional flow matching | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2306.15687 | Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale | NeurIPS 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2306.06546 | High-Fidelity Audio Compression with Improved RVQGAN | NeurIPS 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
 ## 2026-11-26
 
 - ingest | 2609.18856 | GrainSpeech: Less Context, More Detail for Compact Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5

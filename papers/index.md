@@ -1252,3 +1252,9 @@ or use search to find a title, author, system, benchmark, venue, or paper ID.
 | [[2608.25218]] | [TurnBench: A Multi-Domain Benchmark for Turn-Taking Dyn](papers/2608.25218.md) | Sesame AI / Mundo AI / Carnegie Mellon University / National Taiwan University / Academia Sinica / Oto / Brno University of Technology | arXiv | 2026 | SCA, evaluation |  | 2026-11-26 |
 | [[2609.20124]] | [Multi-Dimensional Prosody Judgment For Live Streaming S](papers/2609.20124.md) | The Chinese University of Hong Kong, Shenzhen / Taobao & Tmall Group of Alibaba | arXiv | 2026 | evaluation, TTS | autoregressive-LM | 2026-11-26 |
 | [[2609.18856]] | [GrainSpeech: Less Context, More Detail for Compact Spee](papers/2609.18856.md) | Delft University of Technology | arXiv | 2026 | TTS | transformer-enc-dec | 2026-11-26 |
+| [[2306.06546]] | [High-Fidelity Audio Compression with Improved RVQGAN](papers/2306.06546.md) | Descript | NeurIPS | 2023 | codec | GAN | 2026-11-27 |
+| [[2306.15687]] | [Voicebox: Text-Guided Multilingual Universal Speech Gen](papers/2306.15687.md) | Meta FAIR | NeurIPS | 2023 | TTS | flow-matching | 2026-11-27 |
+| [[2309.03199]] | [Matcha-TTS: A fast TTS architecture with conditional fl](papers/2309.03199.md) | KTH Royal Institute of Technology | arXiv | 2024 | TTS | flow-matching, transformer-enc-dec | 2026-11-27 |
+| [[2309.07405]] | [FunCodec: A Fundamental, Reproducible and Integrable Op](papers/2309.07405.md) | Alibaba Group (DAMO Academy) | arXiv | 2024 | codec | GAN | 2026-11-27 |
+| [[2409.15594]] | [Beyond Turn-Based Interfaces: Synchronous LLMs as Full-](papers/2409.15594.md) | Meta AI / University of Washington | EMNLP | 2024 | SCA | autoregressive-LM | 2026-11-27 |
+| [[2405.00233]] | [SemantiCodec: An Ultra Low Bitrate Semantic Audio Codec](papers/2405.00233.md) | University of Surrey / Shanghai Jiao Tong University | arXiv | 2024 | codec | diffusion | 2026-11-27 |
