@@ -2,14 +2,14 @@
 title: "Speech Generation Wiki"
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "af8eb5e"
 ---
 
 ![Speech Generation Wiki](assets/speech-generation-wiki.png)
@@ -33,7 +33,7 @@ There are four main ways to use the wiki:
 > [!warning]
 > **Coverage and dates.** The wiki includes earlier foundational papers, but its quarter-by-quarter
 > record begins with Q3 2025. The current field overview and concept pages cover research published
-> through Q4 2025. The paper catalog also includes newer publications. They are listed for
+> through Q1 2026. The paper catalog also includes newer publications. They are listed for
 > discovery but are not yet reflected in the current summaries.
 
 ## Start with the field
@@ -43,8 +43,8 @@ speech representations, speed, control, voice transfer, evaluation, and spoken i
 do not need to start with a specific architecture.
 
 To see what changed during the latest completed period, read
-[[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]]. The report separates publication
-activity from changes in the evidence. Its Q4 evidence boundary will not change.
+[[reports/quarterly/2026-Q1|Speech Generation — Q1 2026]]. The report separates publication
+activity from changes in the evidence through March 31, 2026.
 
 ## Explore a concept
 
@@ -65,8 +65,8 @@ or paper ID.
 ## How to read the dates
 
 The field overview is the current synthesis and will change as new research is added. Quarterly
-reports are saved historical views and do not change. The Q4 materials cover evidence published
-through December 31, 2025; the assessment was completed on November 1, 2026.
+reports preserve the evidence at each quarter boundary. The Q1 materials cover evidence published
+through March 31, 2026. The retrospective assessment was completed on November 28, 2026.
 
 Paper counts show coverage and research activity. They do not prove that a finding is strong,
 widely accepted, or widely used.

@@ -10,5 +10,6 @@ included by the end of the quarter.
 
 | Report | Dates | Papers (quarter / total) | Updated |
 |---|---|---:|---|
+| [[reports/quarterly/2026-Q1\|Speech Generation — Q1 2026]] | Jan 1–Mar 31, 2026 | 115 / 783 | Nov 28, 2026 |
 | [[reports/quarterly/2025-Q4\|Speech Generation — Q4 2025]] | Oct 1–Dec 31, 2025 | 171 / 668 | Nov 1, 2026 |
 | [[reports/quarterly/2025-Q3\|Speech Generation — Q3 2025]] | Jul 1–Sep 30, 2025 | 364 / 497 | Nov 1, 2026 |
