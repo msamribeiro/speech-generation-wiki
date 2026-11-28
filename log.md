@@ -4,7 +4,210 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-28
+
+- reconcile | Q1 release merge | MOSS-Audio-Tokenizer (2602.10934) retains its February 12 preprint date in five integrated concepts | later ICML date, venue, and link retained separately | runtime: codex | provider: openai | model: gpt-6.2-sol
+- misc | icassp-2015-librispeech | LibriSpeech: author-hosted free copy linked on the card ([→ Author copy], Daniel Povey's site) under the new `url_author_copy` field (user, 2026-11-28) | no content change
+
+## 2026-11-27
+
+- ingest | 2405.00233 | SemantiCodec: An Ultra Low Bitrate Semantic Audio Codec for General Sound | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2409.15594 | Beyond Turn-Based Interfaces: Synchronous LLMs as Full-Duplex Dialogue Agents | EMNLP 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2309.07405 | FunCodec: A Fundamental, Reproducible and Integrable Open-source Toolkit for Neural Speech Codec | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2309.03199 | Matcha-TTS: A fast TTS architecture with conditional flow matching | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2306.15687 | Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale | NeurIPS 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2306.06546 | High-Fidelity Audio Compression with Improved RVQGAN | NeurIPS 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-26
+
+- ingest | 2609.18856 | GrainSpeech: Less Context, More Detail for Compact Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.20124 | Multi-Dimensional Prosody Judgment For Live Streaming Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.25218 | TurnBench: A Multi-Domain Benchmark for Turn-Taking Dynamics in Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.17509 | LACE: Layer-Wise Compression for Dynamic Frame Rate Codecs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16989 | Taming Long-form Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16614 | RoleBreak: Benchmarking Long-Horizon Role-Playing Robustness in Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.16514 | The Evolving Bottleneck in Speech Generation: Interface Co-design and Staged Alignment from CosyVoice to Qwen-Audio-3.0-TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13413 | CVSS-X: A Multilingual Speech-to-Speech Translation Corpus for 28 Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31247 | FlexiSLM: A Dynamic and Controllable Frame Rate Spoken Language Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31105 | Attacking UTMOS: Probing the Robustness of a Speech Quality Assessment Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15759 | Enabling Streaming User Transcription in Full-Duplex Speech-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15313 | Reducing the Output-Mode Gap in Speech Language Models via Joint-Output On-Policy Distillation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.15184 | Cross-Lingual F5-TTS 2: A Simplified Framework for Language-Agnostic Voice Cloning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.10581 | ParaBridge: Bridging Paralinguistic Perception and Dialogue Behavior in Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14817 | Tone on a Budget: A Reference-Free Metric for Lexical Tone in Massively Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14740 | Bridging Data, Reasoning, and Alignment: A Unified Framework for Context-Aware Instruction-Following TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.14231 | Modeling, Scaling, and Decoding: Optimizing Controllable Speech Generation with Nonverbal Vocalizations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.13989 | Mask, Sample, Revise: A Revisable CTMC Inference Stack for Guided Discrete Flow Matching Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13909 | DiTAR+: Dual Optimization for Robust Autoregressive Diffusion Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13792 | The VoiceMOS Challenge 2026: Evaluating Speech Enhancement, Emotional TTS and Accented TTS Systems | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-25
+
+- ingest | 2609.13045 | Kraken: LLM-based Speech-to-Speech Translation via Low-bitrate VQ and Dual-path Source Conditioning | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12945 | StepAudio 3 Gen Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12918 | PhaseGAN: High-Fidelity Vocoder via Decoupled Amplitude and GAN-Driven Phase Reconstruction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12855 | AlignDPO: Preference-Gated Alignment for Reducing Hallucination in Decoder-Only TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12728 | X-Pred MeanFlow for Streaming Token-to-Mel Speech Decoding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12563 | TokenMapper: A Step Toward Interoperable Speech Token Translation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.12432 | VoxTubeS: Distributable Speaker-Anonymized Synthetic Speech Corpora and Their Analysis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.05276 | ProPS: Prompted Profile Synthesis for Natural Language-Conditioned Speaker Embedding Distributions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11725 | Continuous-Time Acoustic Modelling with Neural Controlled Differential Equations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11642 | ZipCodec: Ultra-Low-Frame-Rate Streaming Speech Coding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.11545 | Complex-Text Robustness Evaluation and Failure Diagnosis for Low-Resource Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.10765 | From Metrics to Natural Dialogue: French Full-Duplex Benchmark for Spoken Dialogue Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09947 | SpeechAnnotator: A Context-Aware Multi-Agent Framework and Benchmark for Multidimensional Speech Annotation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09903 | SphereVAE: Hyperspherical Latent Autoencoders for Robust Autoregressive Speech Representation Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09866 | UniStream: Multi-Expert Residual Vector Quantization for 48 kHz Causal Streaming Audio Coding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09677 | X2-NativeCursor: Native-Token Text Progress Tracking for Incremental-Text Streaming Codec TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.09263 | Voice or Stereotype? Disentangling Acoustic and Content-Based Gender in Speech-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08956 | TASTE2: Text-Aligned Speech Modeling and Deployment toward Full-Duplex Voice Interaction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08936 | AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.08390 | Noise Adaptive Streaming Audio-Visual Speech Token Enhancement for Robust Full-Duplex Spoken Dialogue Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-24
+
+- ingest | 2205.12446 | FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.09685 | LoRA: Low-Rank Adaptation of Large Language Models | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2104.09494 | NISQA: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets | Interspeech 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2010.15258 | DNSMOS: A Non-Intrusive Perceptual Objective Speech Quality metric to evaluate Noise Suppressors | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2005.08100 | Conformer: Convolution-augmented Transformer for Speech Recognition | Interspeech 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1912.07875 | Libri-Light: A Benchmark for ASR with Limited or No Supervision | arXiv 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1706.03762 | Attention Is All You Need | NeurIPS 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | interspeech-2017-1386 | Montreal Forced Aligner: Trainable Text-Speech Alignment Using Kaldi | Interspeech 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | icassp-2015-librispeech | Librispeech: An ASR corpus based on public domain audio books | ICASSP 2015 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1312.6114 | Auto-Encoding Variational Bayes | ICLR 2014 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2212.09748 | Scalable Diffusion Models with Transformers | ICCV 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2305.18802 | LibriTTS-R: A Restored Multi-Speaker Text-to-Speech Corpus | Interspeech 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2211.12171 | PromptTTS: Controllable Text-to-Speech with Text Descriptions | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2210.15418 | FreeVC: Towards High-Quality Text-Free One-Shot Voice Conversion | arXiv 2023 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2112.02418 | YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone | ICML 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2110.13900 | WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2109.13821 | Diffusion-Based Voice Conversion with Fast Maximum Likelihood Sampling Scheme | arXiv 2022 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2105.14762 | Emotional Voice Conversion: Theory, Databases and ESD | Speech Communication 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2107.03312 | SoundStream: An End-to-End Neural Audio Codec | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.07447 | HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units | arXiv 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2106.06103 | Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech | ICML 2021 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2006.11239 | Denoising Diffusion Probabilistic Models | NeurIPS 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2006.11477 | wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations | NeurIPS 2020 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1905.09263 | FastSpeech: Fast, Robust and Controllable Text to Speech | NeurIPS 2019 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 1711.00937 | Neural Discrete Representation Learning | NeurIPS 2017 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-22
+
+- review | 2507.09318 | ZipVoice-Dialog: Non-Autoregressive Spoken Dialogue Generation with Flow Matching | arXiv 2025 | task [TTS, SCA] -> [TTS] (script-to-dialogue convention, user 2026-11-22); page and index row; no content change
+- review | 2608.16053 | DuplexGen: Decoupling Content, Timing, and Acoustics for Synthetic Dialogue Speech | arXiv 2026 | task [SCA, TTS] -> [TTS] (script-to-dialogue convention, user 2026-11-22); page and index row; no content change
+- ingest | 2609.07200 | KABURI-TTS: Phoneme-Keyed Activity-conditioned Bi-channel Utterance Rendering for Interaction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.25351 | Extracting Voice Styles from Frozen TTS Models via Gradient-Based Inverse Optimization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.29948 | HoliTok:A Coutinuous Holistic Tokenization with Robust Dual Capabilities of Speech Generation and Understanding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.03992 | Alignment-Free Text-Audiobox for Voice Dubbing and Full-Duplex Dialogue Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.03502 | Building and Evaluating Fixed-Voice Thai TTS from Synthetic Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.03363 | PACodec: A Low-bitrate Neural Speech Codec with Parallel Additive Vector Quantization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.03283 | Is Semantics Enough for Speech Mean Opinion Score Prediction? | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.02739 | EntangleCodec: A Unified Discrete Audio Tokenizer via Semantic-Acoustic Entanglement | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.01723 | Hearing the Whispers: Black-Box Membership Inference Attacks on Finetuned TTS Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.01246 | Ready to Speak: Aligning LLMs for TTS-Friendly Text Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.01016 | Phrase-Localized Language-Contrastive Guidance: Training-Free Localized Accent Control for Code-Switching Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.13278 | Adapting Diffusion-Based Music Synthesis to Speech and Singing Voice Conversion | DAFx 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.31037 | Language-Statistical Analysis of Neural Audio Codec Tokens Across Architectures, Corpora, and Noise Conditions | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.31035 | When Does Predictor-Based RL Align with Human Perception? A Study of Subjective Rewards in Codec-Based Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.30325 | Sequential Trajectories and Simultaneous Blending: Multi-Emotion Modeling for Instruction-Following TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.19810 | SimulS2ST-Omni: Data-Efficient Streaming Speech-to-Speech Translation via Explicit Trajectory Supervision | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.16417 | Joycent: Diffusion-based Accent TTS without Accented Phone Prediction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.28970 | Diagnose, Then Refine: A Closed-Loop TTS System with AudioLLM-Guided Correction | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.27848 | Is Prosody Lost in Translation? Fine-Grained Cross-Lingual Prosody Similarity Across Languages | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.03253 | CLASVS: Continuous-Latent Autoregression for Melody-Preserving Lyric Editing in Singing Voice Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-21
+
+- ingest | 2608.27360 | Your Voice Cloning System is Secretly a Voice Anonymizer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.24168 | FireRedAudio: A General-Purpose Audio Language Model with Decoupled Continuous Representations for Understanding and Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2204.07228 | Integrating Human Linguistic Insights into AI: Theory-Driven Representation for Multilingual Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.08638 | CuteTTS: Efficient and High-Quality Speech Synthesis via Autoregressive Modeling of Continuous Latents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.05727 | LILAC: An Idempotent Neural Speech Codec | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.23791 | EmoTra-TTS: Smooth Intra-Utterance Emotion Transitions for Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.16053 | DuplexGen: Decoupling Content, Timing, and Acoustics for Synthetic Dialogue Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.17492 | FireRedTTS3: Unified Speech Generation and Editing with Semantically Enriched Speech Representations | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30748 | Chatterbox-Flash: Prior-Calibrated Block Diffusion for Streaming Zero-Shot TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.18661 | X2Streaming-TTS: Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inheritance | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.15910 | Iterative Self-Learning for Expressive Text-to-Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.15690 | Adding Voice Cloning to Text-to-Audio-Video Models with a Single Zero-Initialised Layer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.13831 | VoiceChat-TTS: A Low-Latency Continuous Speech Synthesis Model for Interactive Agents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.12814 | FastThaiG2P: Lightning-fast Thai Grapheme-to-phoneme Conversion for Voice Agent Pipelines | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.11590 | CookVoice: Unified Framework for Style Controllable Multi-Modal Human Voice Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- review | 2608.11593 | Luna-TTS Family Technical Report | arXiv 2026 | linked Chatterbox-Flash 2605.30748 now that its page exists (Wiki Connections prose); no content change
+
+## 2026-11-15
+
+- ingest | 2608.13613 | VoiceDesigner: Text-to-Voice Generation and Editing via Unified Diffusion Modeling and Data Augmentation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.11804 | MiDashengLM-Gen: Unified Audio Scene Generation via LLM-Driven Autoregressive Flow Matching | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.11650 | Confucius4-TTS: Transcript-Free Cross-Lingual Zero-Shot TTS with a Learnable Speaker Encoder | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.11593 | Luna-TTS Family Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.06718 | Do Audio Language Models Use Paralinguistic Evidence? Counterfactual Audits for Response Evaluation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.10606 | ASR-Roundtrip Evaluation Can Mask Context- and Convention-Dependent Reading Errors in Chinese News TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.10405 | Never Stop Speaking: a Denial-of-Service Attack on End-to-End Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- review | 2607.29363 | Stable Autoregressive Speech Generation with Low-Frame-Rate High-Dimensional Continuous Tokens | arXiv 2026 | linked dots.tts 2606.07080 now that its page exists (Key Results prose); no content change
+- ingest | 2606.07080 | dots.tts Technical Report | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.08432 | BAMU: Bitstream-Aware Marginal-Utility Allocation for Frozen Pretrained Neural Speech Codecs | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.08286 | ReLMCodec: Designing Predictable Speech Tokens from Pre-Quantization Phoneme Structure | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.13006 | Emo-LiPO: Listwise Preference Optimization for Fine-Grained Emotion Intensity Control in LLM-based Text-to-Speech | IJCAI 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.14750 | Pixel-TTS: Image based Text Rendering for Robust Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.03215 | GROW: Group-Relative Advantage-Weighted On-Policy Reinforcement Learning of Autoregressive-Diffusion Text-to-Speech model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.03021 | MeloCodec: Harnessing Melodic Priors for High-Fidelity Singing Voice Representation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- review | 2509.14684 | DAIEN-TTS: Disentangled Audio Infilling for Environment-Aware Text-to-Speech Synthesis | arXiv 2025 | cross-link added to the extended journal version 2608.03011 (Wiki Connections bullet, related_papers); no content change
+- ingest | 2608.03011 | Towards Real-world Environment-aware Zero-shot Text-to-speech Synthesis via Disentangled Audio Infilling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.06409 | Separating Decision-Rule Misalignment from Readout-Coverage Limitations in Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.02235 | Domain-Specific Evaluation of Text-to-Speech Systems: A Multi-Metric Benchmarking Study | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.01119 | JoyAI-Talker: Full-Duplex Speech Interactive Large Model Built for Empathetic Voice Agents | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.00722 | Experience-Calibrated Contrastive Decoding for Mitigating Hallucinations in LM-Based Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.00545 | Beyond Prompt Adherence: Auditing Attribute-Level Voice Control in Speech Generation | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.sigdial-1.18 | CrossOracle: An Agentic Framework for Real-Time Expert Personas with Parallelized Acoustic Synthesis | workshop 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.sigdial-1.14 | Ping-Ponder: Concurrent Dual-Agent Spoken Dialogue via Shared Belief State | workshop 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.29363 | Stable Autoregressive Speech Generation with Low-Frame-Rate High-Dimensional Continuous Tokens | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.27768 | VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.26742 | Zero-Shot Face-to-Speech Synthesis via Latent Space Adaptation of a Style-Diffusion TTS Model | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.24323 | Revisiting Vocos: That Phasiness Business in Time-Frequency Neural Vocoding | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.23938 | Qwen-Audio-3.0-TTS: Freely Controllable and Highly Robust Speech Synthesis with Multi-Stage Training Paradigm | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.19859 | StellarTTS: Sparse Temporal Embedding for Low-Latency and Robust Speech Synthesis | arXiv 2025 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.09530 | FreyaTTS: A Compact Tokenizer-Free Flow-Matching Transformer for Turkish-First Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.12940 | Self-Guidance: Enhancing Neural Codecs via Decoder Manifold Alignment | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+
+## 2026-11-14
+
+- ingest | 2607.17900 | Harness TTS: Towards Context-Aware Expressive Speech Synthesis with Harness Layer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.17615 | Re-Sonance: A Dysarthric Asynchronous Real-Time Speech Conversion System Based on a Three-Stage Cascaded ASR-LLM-TTS Architecture | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.17544 | X-Translator: A Real-Time Multilingual Speaker-Aware Speech-to-Speech Translation System | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.18662 | Staged Depth-Pruning Distillation of a Flow-Matching Text-to-Speech Teacher: A Compact Hindi Speech Synthesizer | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.16870 | Do Speech Tokens Leak Voiceprints? Speaker Inversion Attacks Against End-to-End Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.12706 | AutoSIFT: Automatic Style Sifting for Controllable Speech Generation with Arbitrary Style Infilling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.06027 | Fréchet Distance Loss on Speech Representations for Text-to-Speech Synthesis | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.06461 | WordVoice: Explicit and Decoupled Multi-Dimensional Word-Level Control for LLM-Based TTS | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.06054 | BlueMagpie-TTS: A Token-Efficient Tokenizer, Language Model, and TTS for Taiwanese-Accent Code-Switching Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | icml-2026-hgKQemfVbS | AgentSteerTTS: A Multi-Agent Closed-Loop Framework for Composite-Instruction Text-to-Speech | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.09134 | ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.05365 | SPEARBench: A Benchmark for Naturalness Evaluation in Streaming Speech-to-Speech Language Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.04941 | DuplexChat: Constructing Speaker-Separated Full-Duplex Dialogue Speech at Scale for Spoken Dialogue Language Modeling | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.02214 | Unlocking Speech-Text Compositional Powers: Instruction-Following Speech Language Models without Instruction Tuning | ICML 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.01345 | TurnNat: Automatic Evaluation of Turn-Taking Naturalness in Dyadic Spoken Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.04222 | GEPARD - Generative, Prosody-aware, Autoregressive text-to-speech model for Realtime Dialogue | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- misc | 2602.10934 | MOSS-Audio-Tokenizer: peer-reviewed version (ICML 2026, OpenReview icMRkTnuU7, retitled "Scaling Transformers for End-to-End Discrete Audio Tokenization") linked with an italic note | not in any claim YAML, so re-dated 2026-02-12 -> 2026-07-06 (Q1 -> Q3) with venue ICML; the page still summarizes the arXiv version
+
 ## 2026-11-13
+
+- ingest | 2607.03985 | NouveauVoice: Generating Novel Pseudo Speakers for Voice Anonymization | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2609.13150 | The Limits of Reference-Free Speech Quality Metrics as Evaluators and Rewards on Modern Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2607.02633 | GRAFT: Grafted Reference Audio for Fine-grained Pronunciation in Zero-shot Text-to-Speech | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.01677 | UniVocal: Unified Speech-Singing Code-Switching Synthesis | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.00407 | Privacy-preserving Prosody Representation Learning | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.30965 | ImmersiveTTS: Environment-Aware Text-to-Speech with Multimodal Diffusion Transformer and Domain-Specific Representation Alignment | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.31947 | LuxEmo: Expressive Text-to-Speech Corpus for Luxembourgish | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.28618 | Comprehensive Benchmarking of Long-Form Speech Generation in Diverse Scenarios | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.24618 | FC-TTS: Style and Timbre Control in Zero-Shot Text-to-Speech with Disentangled Speech Representations | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2605.11098 | AffectCodec: Emotion-Preserving Neural Speech Codec for Expressive Speech Modeling | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.22209 | UniSonate: A Unified Model for Speech, Music, and Sound Effect Generation with Text Instructions | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.18159 | FreezeEmpath: Efficient Training for Empathetic Spoken Chatbots with Frozen LLMs | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.17852 | LLM-Codec: Neural Audio Codec Meets Language Model Objectives | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.17358 | Still Between Us? Evaluating and Improving Voice Assistant Robustness to Third-Party Interruptions | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2608.26146 | Vagdhenu: A Vrutta (Meter) Aware Shloka-to-Chant (TTS) System for Sanskrit | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 
 - reconcile | 2026-Q1 candidate generation | 23 concepts | 102,520 cross-concept pairs scored | 5,314 deterministic pending candidates emitted across 8 themes | 11 existing broader claims received derived-evidence-only refreshes; propositions, memberships, statuses, rationales, and review labels preserved | evidence cutoff: 2026-03-31 | trigger: quarterly-integration | runtime: codex | provider: openai | model: gpt-5
 - reconcile-review | 2026-Q1 evaluation bundle 1 | 4 human-approved candidates | 3 existing registry targets reaffirmed | 1 new equivalent relationship for conversational evaluation context | reviewed: 2026-11-14 | runtime: codex | provider: openai | model: gpt-5
@@ -82,6 +285,23 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 
 ## 2026-11-12
 
+- ingest | 2604.15710 | VoxMind: An End-to-End Agentic Spoken Dialogue System | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.11096 | Efficient Training for Cross-lingual Speech Language Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2505.22765 | StressTest: Can YOUR Speech LM Handle the Stress? | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2503.23439 | Speculative End-Turn Detector for Efficient Speech Chatbot Assistant | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2503.05085 | S2S-Arena: Evaluating Paralinguistic Instruction Following in Speech-to-Speech Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.940 | Beyond Sentence-level Labels: Integrating Conversational Context and Personal Experience for Natural Emotional Expression | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.740 | Self-EmoQ: Plutchik-Guided Value-based Planning to Drive Streaming Emotional TTS | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.570 | VoiceStar: Robust Zero-Shot Autoregressive TTS with Duration Control and Extrapolation | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.242 | F-Actor: Controllable Conversational Behavior in Full-Duplex Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.199 | Dual-Reasoner: Bridging Interleaved Atomicity and Streaming Latency via Thinking-while-Talking | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.1622 | Hierarchical Representation Alignment Learning of Diffusion Transformers for Neural Audio Codec | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.114 | WavAlign: Enhancing Intelligence and Expressiveness in Spoken Dialogue Models via Adaptive Hybrid Post-Training | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.findings-acl.1004 | S2ST-Omni: Hierarchical Language-Aware SpeechLLM Adaptation for Multilingual Speech-to-Speech Translation | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.acl-long.998 | Rectifying the Emotional Flow: Aligning Priors and Dynamic Guidance for High-Arousal Text-to-Speech | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.acl-long.6 | Dual-Axis Generative Reward Model Toward Semantic and Turn-taking Robustness in Interactive Spoken Dialogue Models | ACL 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- misc | 2512.13251 | DisCo-Speech: peer-reviewed version (ACL 2026, 2026.acl-long.863) linked with an italic note | frozen in 6 claim YAMLs, so venue arXiv and published_date 2025-12-15 unchanged; the page still summarizes the arXiv version
+
 - integrate | phase 2 only | disentanglement (130 papers) | 20 claim clusters (1 new, 19 updated) | 9 method families updated | 5 reassessment items checked, 1 triggered, 2 overdue | Q1 2026 synthesis resolved the GRL quality reassessment by narrowing the claim and changing it from contested to strongly supported, and added a strongly supported causal-subspace intervention cluster; assigned all 14 Q1 papers to 34 reciprocal family memberships; Phase 2 health passed with 0 errors and 16 expected historical method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
 - integrate | 14 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 disentanglement Phase 1 closed at 14/14 through `2604.01247`; all 59 page claims preserved; exact frozen queue closure verified with no missing, extra, or duplicate IDs; canonical peer-reviewed AAAI and EACL metadata used without duplicate preprint entries while retaining ParaMETA's ingested-version evidence boundary; an initial list-indentation parse error was corrected before closure; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
 - integrate | phase 2 only | voice-conversion (132 papers) | 20 claim clusters (1 new, 17 updated, 2 unchanged) | 7 method families updated | 5 reassessment items checked, 0 triggered, 5 overdue | Q1 2026 synthesis added a strongly supported attribute-correlation cluster covering speaker identity, accent, pitch, creak, and emotion disentanglement; assigned 14/15 Q1 papers to 25 reciprocal family memberships, with architecture-unspecified benchmark `2602.00443` retained as an expected outlier; Phase 2 health passed with 0 errors and 15 expected method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
@@ -103,6 +323,15 @@ Append-only chronological log of changes to the wiki. Entry types: `ingest` (new
 - integrate | 20 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 multilingual-tts Phase 1 advanced from 0/24 to 20/24 through `2602.09823`; 75 available page claims preserved and three source pages with empty Claims sections retained as `claims: []`; exact frozen 20-ID prefix verified with no missing, extra, or duplicate IDs; canonical peer-reviewed ACL IDs used without duplicate preprint entries; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
 
 ## 2026-11-11
+
+- ingest | 2607.00946 | A Geometric Perspective on Composable Emotion Steering in Text-to-Speech Models | arXiv 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.27380 | A Survey of Automated Presentation Coaching: Systems, Methods, and Open Challenges | BEA 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2606.07240 | KIT's Submission to Cross-Lingual Voice Cloning in IWSLT 2026 | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2604.26136 | One Voice, Many Tongues: Cross-Lingual Voice Cloning for Scientific Speech | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.iwslt-1.12 | Balancing Linguistic Intelligibility and Speaker Identity in Zero-Shot Cross-Lingual Voice Cloning | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.iwslt-1.11 | HW-TSC’s Submission to the IWSLT 2026 Cross-Lingual Voice Cloning Track | IWSLT 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.dravidianlangtech-1.3 | Cascaded Modular or End-to-End? : An Investigation on Speech-to-Speech Translation Task for Dravidian Languages | DravidianLangTech 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
+- ingest | 2026.americasnlp-6.1 | Neural Text-to-Speech for Myaamia: Speech Synthesis for an Indigenous Algonquian Language | AmericasNLP 2026 2026 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5
 
 - integrate | phase 2 only | speech-to-speech (124 papers) | 20 claim clusters (1 new, 18 updated, 1 unchanged) | 9 method families (2 new) | 6 reassessment items checked, 0 triggered, 3 overdue | Q1 2026 synthesis added a strongly supported conversational-data-structure cluster and explicit dialogue-state-control and masked-diffusion families; assigned 22/30 Q1 papers to 34 reciprocal family memberships; Phase 2 health passed with 0 errors and 36 expected method-family coverage warnings | runtime: codex | provider: openai | model: gpt-5
 - integrate | 10 papers | 1 concept updated | 0 clusters updated | 0 reassessments checked | Q1 2026 speech-to-speech Phase 1 closed at 30/30 through `2603.25750`; all 44 page claims preserved; exact frozen queue closure verified with no missing, extra, or duplicate IDs; concept-scoped Phase 1 health passed with 0 errors and 0 warnings | runtime: codex | provider: openai | model: gpt-5
