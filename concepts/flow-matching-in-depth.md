@@ -2,18 +2,18 @@
 concept: flow-matching
 render_type: in-depth
 title: "Flow Matching: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 125
+source_digest_date: 2026-11-12
+paper_count: 148
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 This page explains what the reviewed flow-matching research supports. For the short version, see
@@ -46,7 +46,7 @@ in `wiki/_claims/flow-matching.yaml`.
 
 ## Scope
 
-The graph contains 125 papers through Q4 2025. It combines foundational generative-modeling theory
+The review covers 148 papers through Q1 2026. The claim graph contains 39 clusters (22 emerging, 17 strongly supported). It combines foundational generative-modeling theory
 with downstream TTS, voice conversion, vocoding, codec refinement, spoken-system components,
 multilingual adaptation, emotion control, and acceleration work.
 
@@ -322,6 +322,8 @@ throughput advantage. The acoustic-model conclusion cannot yet be copied directl
 
 ## How the Field Is Changing
 
+Flow matching retains its speed advantage in several reviewed settings, with solver, target representation, and streaming constraints shaping the usable step budget. [[2602.09041]] and [[2602.11477]] extend evidence for efficient inference. Flow can also restore acoustic detail after quantization, where the quality improvement and the extra decoder cost belong in the same comparison ([[2601.09239]], [[2603.02022]]). A solver result measured offline cannot settle first-packet or chunk-boundary behavior in a causal system.
+
 The trajectory begins with a general continuous-transport objective and quickly moves into
 large-scale speech infilling. Voicebox/Audiobox, E2 TTS, and F5-TTS establish the modern
 non-autoregressive lineage. Subsequent work shifts from proving feasibility toward reducing steps,
@@ -378,7 +380,7 @@ solver, conditioning scheme, and evaluation suite produce the desired behavior.
 ## Structured Source
 
 This page selects and groups findings for human readability. The complete claim graph—including all
-125 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
+148 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
 available in `wiki/_claims/flow-matching.yaml`.
 
 ---

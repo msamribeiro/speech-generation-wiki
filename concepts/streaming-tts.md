@@ -2,28 +2,30 @@
 slug: streaming-tts
 aliases: [incremental TTS, real-time speech generation, full-duplex speech]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: streaming-tts
 render_type: overview
 title: "Streaming Text-to-Speech"
-source_digest_date: 2026-09-26
-paper_count: 75
+source_digest_date: 2026-11-12
+paper_count: 91
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Streaming TTS produces speech incrementally to reduce response delay and support interactive systems. Causal components, compact tokens, parallel decoding, and duplex training make low latency practical, while chunking, lookahead, reasoning, turn-taking, and inconsistent measurement remain central constraints.
 
 ## Current State
+
+First-packet latency measures only one part of responsiveness. Chunking, reasoning, interruption policy, and system orchestration can each determine perceived delay ([[2602.00269]], [[2603.05413]]).
 
 **Incremental acoustic or speech-token generation can substantially reduce first-packet and response latency.** The evidence is strong. Examples include [[2402.08093|BASE TTS: Lessons from building a billion-parameter Text-to-Speech model on 100K hours of data]], [[2409.06666|LLaMA-Omni: Seamless Speech Interaction with Large Language Models]]. Reported latency depends on hardware, buffering policy, network assumptions, and whether upstream processing is included.
 
@@ -69,7 +71,7 @@ Read [[concepts/streaming-tts-in-depth|Streaming Text-to-Speech: In Depth]] for 
 
 ## Scope
 
-This synthesis covers 75 papers through Q4 2025. All 19 clusters are strongly supported within the encoded graph. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols; shared lineages and unmatched speed or quality comparisons retain narrower interpretations.
+The review covers 91 papers through Q1 2026. The claim graph contains 20 clusters (20 strongly supported). Evidence spans multiple architectures, datasets, tasks, and evaluation protocols; shared lineages and unmatched speed or quality comparisons retain narrower interpretations.
 
 ---
 

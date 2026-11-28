@@ -2,28 +2,30 @@
 slug: transformer-enc-dec-tts
 aliases: [sequence-to-sequence TTS, transformer acoustic model, duration-based TTS]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: transformer-enc-dec-tts
 render_type: overview
 title: "Transformer Encoder–Decoder TTS"
-source_digest_date: 2026-09-26
-paper_count: 33
+source_digest_date: 2026-11-13
+paper_count: 35
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Transformer encoder–decoder TTS maps text representations into acoustic or latent sequences through attention, duration, and contextual conditioning. The family remains foundational even as flow, diffusion, GAN, and token decoders replace deterministic mel prediction; alignment, prosody, generalization, and realizable efficiency are its active concerns.
 
 ## Current State
+
+Fine-grained controls remain limited by how the model represents prosody and by lexical coverage at test time ([[2603.11683|Causal prosody mediation]], [[2603.21078]]).
 
 **End-to-end sequence-to-sequence TTS can match conventional pipelines without hand-engineered linguistic features.** This is emerging within the reviewed graph; representative evidence includes [[1703.10135|Tacotron: Towards End-to-End Speech Synthesis]]. Early evidence is concentrated in clean, single-speaker settings.
 
@@ -70,7 +72,7 @@ Read [[concepts/transformer-enc-dec-tts-in-depth|Transformer Encoder–Decoder T
 
 ## Scope
 
-This synthesis covers 33 papers through Q4 2025. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Six clusters are strongly supported and thirteen remain emerging, so shared lineages, infrastructure evidence, and unmatched speed or quality comparisons retain narrower interpretations.
+The review covers 35 papers through Q1 2026. The claim graph contains 20 clusters (14 emerging, 6 strongly supported). Evidence spans multiple architectures, datasets, tasks, and evaluation protocols.
 The graph is unusually frontier-heavy, so historical importance
 and broad architectural reuse should not be mistaken for mature evidence on every modern variant.
 Conclusions are strongest for explicit duration modeling, hierarchical prosody, contextual fusion,

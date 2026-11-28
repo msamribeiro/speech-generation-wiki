@@ -5,19 +5,19 @@ render_type: overview
 title: Zero-Shot Text-to-Speech
 aliases: [voice cloning, zero-shot voice cloning, reference-conditioned TTS, one-shot TTS]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-20
-paper_count: 262
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 303
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -27,6 +27,8 @@ generation:
 > tension between intelligibility, identity, prosody, and speed.
 
 ## Current State
+
+Zero-shot voice cloning increasingly supports style and prosody control, with consistency across languages, references, and identities still uneven ([[2601.01568]], [[2601.16023]]).
 
 **Reference conditioning works, but the reference is part of the system.** Multiple independent
 lineages preserve unseen-speaker identity from short prompts, from [[2301.02111|VALL-E]] and
@@ -118,7 +120,7 @@ generation, and deployment implications.
 
 ## Scope
 
-This assessment covers 262 papers from 2017 through Q4 2025.
+The review covers 303 papers through Q1 2026. The claim graph contains 21 clusters (18 strongly supported, 2 contested, 1 emerging).
 The graph spans TTS, voice conversion, spoken systems, codecs, evaluation, and singing, but is
 weighted toward recent TTS systems and often proprietary large-scale training. Seventeen clusters
 are strongly supported, two are contested, and one is emerging; independence is strongest where findings recur across

@@ -5,19 +5,19 @@ render_type: overview
 title: Self-Supervised Speech Representations
 aliases: [speech SSL, self-supervised speech learning, discrete speech units, pretrained speech representations]
 status: mature-infrastructure
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-26
-paper_count: 176
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-12
+paper_count: 193
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -27,6 +27,8 @@ generation:
 > between content invariance and speaker or prosodic detail remain task-dependent.
 
 ## Current State
+
+Pretrained speech features support generation and low-bitrate coding, while task-matched adaptation remains important for transfer ([[2601.09239]], [[2602.06180]]).
 
 **SSL features are reusable but not neutral.** Masked and contrastive objectives learn phonetic,
 lexical, semantic, speaker, and acoustic information without task labels. Different layers emphasize
@@ -111,9 +113,8 @@ multilingual transfer, robustness, task adaptation, and evaluation.
 
 ## Scope
 
-This synthesis covers 176 papers from 2021 through Q4 2025. It
-spans TTS, VC, spoken systems, codecs, and evaluation. Thirteen clusters are strongly supported,
-two are emerging, and two are contested. Most papers use SSL within a larger pipeline, so downstream
+The review covers 193 papers through Q1 2026. The claim graph contains 17 clusters (15 strongly supported, 1 emerging, 1 contested). It
+spans TTS, VC, spoken systems, codecs, and evaluation. Most papers use SSL within a larger pipeline, so downstream
 success demonstrates utility but rarely isolates the representation from the decoder and training
 recipe. Findings are strongest when the same information pattern recurs across unrelated encoders,
 generators, languages, and evaluation methods. Emerging and contested findings are not promoted by

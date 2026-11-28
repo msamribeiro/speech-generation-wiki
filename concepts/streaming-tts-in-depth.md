@@ -2,18 +2,18 @@
 concept: streaming-tts
 render_type: in-depth
 title: "Streaming Text-to-Speech: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 75
+source_digest_date: 2026-11-12
+paper_count: 91
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/streaming-tts|Streaming Text-to-Speech]]. Complete provenance remains in `wiki/_claims/streaming-tts.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/streaming-tts|Streaming Text-to-Speech]]. C
 
 ## Scope
 
-The graph contains 75 papers through Q4 2025 and 19 synthesized clusters. All 19 are strongly supported with high confidence, and none is contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The review covers 91 papers through Q1 2026. The claim graph contains 20 clusters (20 strongly supported). Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
@@ -112,6 +112,8 @@ The end-to-end reasoning gap is strongly supported, while its magnitude remains 
 Multi-dimensional streaming evaluation is strongly supported, but latency definitions and measurement boundaries remain inconsistent enough to block clean system rankings.
 
 ## How the Field Is Changing
+
+First-packet latency measures only one part of responsiveness. Chunking, reasoning, interruption policy, and system orchestration can each determine perceived delay. The Q1 comparisons span modular and end-to-end streaming designs ([[2602.00269]], [[2603.05413]]). Small chunks can start earlier while producing less context for alignment and turn decisions ([[2603.09180]], [[2603.14877]]). Measure chunk throughput and user-perceived response timing across the whole stack.
 
 Streaming research is moving from component-level causal TTS toward full speech-in/speech-out interactive systems.
 

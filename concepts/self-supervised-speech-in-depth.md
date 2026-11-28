@@ -2,18 +2,18 @@
 concept: self-supervised-speech
 render_type: in-depth
 title: "Self-Supervised Speech Representations: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 176
+source_digest_date: 2026-11-12
+paper_count: 193
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short view, see [[concepts/self-supervised-speech|Self-Supervised Speech Representations]].
@@ -38,7 +38,7 @@ Complete provenance remains in `wiki/_claims/self-supervised-speech.yaml`.
 
 ## Scope
 
-The graph contains 176 papers from 2021 through Q4 2025. Evidence spans
+The review covers 193 papers through Q1 2026. The claim graph contains 17 clusters (15 strongly supported, 1 emerging, 1 contested). Evidence spans
 TTS, voice conversion, spoken conversational agents, codecs, evaluation, and singing. Most entries
 use SSL as a component in a larger architecture rather than studying pretraining objectives in a
 matched experiment. Their results demonstrate adoption and task utility, not independent proof that
@@ -328,6 +328,8 @@ continuous-versus-discrete issue is not a contradiction: continuous features pre
 while tokens optimize modelability and compression.
 
 ## How the Field Is Changing
+
+Pretrained speech features support generation and low-bitrate coding, while task-matched adaptation remains important for transfer. The newer codec studies use learned speech units for compact linguistic representations ([[2601.09239]], [[2602.06180]]). Frozen-backbone speech interfaces illustrate a distinct challenge: training the interface for one conditioning regime can leave it brittle under another ([[2603.09627]]). The useful layer, unit rate, and adaptation method depend on what the task needs to retain.
 
 SSL shifted from recognition-oriented encoders toward core interfaces for generation and
 conversation. Discrete semantic units became common after 2022 as speech language modeling grew.

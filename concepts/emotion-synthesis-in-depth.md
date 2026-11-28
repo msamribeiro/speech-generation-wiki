@@ -2,18 +2,18 @@
 concept: emotion-synthesis
 render_type: in-depth
 title: "Emotional and Expressive Speech Synthesis: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 98
+source_digest_date: 2026-11-12
+paper_count: 119
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short version, see [[concepts/emotion-synthesis|Emotional and Expressive Speech
@@ -35,7 +35,7 @@ the complete record is in `wiki/_claims/emotion-synthesis.yaml`.
 
 ## Scope
 
-The source graph contains 98 papers published through the Q4 2025 evidence window and synthesizes 17 claim clusters: 16 strongly supported and one emerging. It covers emotional TTS, expressive voice conversion, spoken dialogue, multimodal affect, reference and instruction control, paralinguistic events, and preference optimization. The evidence includes listening tests, emotion-recognition measures, acoustic analysis, benchmarks, and automatic judges. Many datasets are acted, categorical, demographically narrow, or automatically labeled; many dialogue studies are single-turn or synthetically constructed. Strong support therefore applies to the encoded control mechanisms and observed trade-offs, not to universal cultural interpretation or long-horizon coherence.
+The review covers 119 papers through Q1 2026. The claim graph contains 19 clusters (16 strongly supported, 3 emerging). It covers emotional TTS, expressive voice conversion, spoken dialogue, multimodal affect, reference and instruction control, paralinguistic events, and preference optimization. The evidence includes listening tests, emotion-recognition measures, acoustic analysis, benchmarks, and automatic judges. Many datasets are acted, categorical, demographically narrow, or automatically labeled; many dialogue studies are single-turn or synthetically constructed. Strong support therefore applies to the encoded control mechanisms and observed trade-offs, not to universal cultural interpretation or long-horizon coherence.
 
 The graph also combines studies with different targets: some synthesize an emotion category, some transfer a reference style, and others judge whether a conversational response is affectively appropriate. These outcomes are related but not interchangeable. Reported gains are interpreted within each task rather than pooled into a common emotional-quality scale.
 
@@ -186,6 +186,8 @@ It reduces interference, but does not erase it. Identity includes habitual expre
 Evidence supports utterance-level and short-context appropriateness. Direct evidence for stable, culturally appropriate affect across long unscripted dialogue remains too sparse for a stronger conclusion, so the graph retains this as emerging.
 
 ## How the Field Is Changing
+
+Conversational context and explicit emotion conditioning help with different parts of the problem. Context guides when an expression fits, and conditioning guides how it sounds. Dialogue evidence strengthens the case for judging emotional fit across turns ([[2026.iwsds-1.9]], [[2601.18281]]). In voice conversion, [[2603.09120|Emotion-Aware Prefix]] improves targeted expression in a two-stage model, with weaker transfer to a more tightly coupled architecture. Judge expressiveness, intelligibility, and identity separately, especially when increasing control strength.
 
 Emotion synthesis is moving from utterance-level categorical labels toward natural-language descriptions, continuous affect axes, localized controls, and compositional attributes. Flow matching and speech language models increasingly separate semantic affect planning from acoustic realization, while retrieval and multimodal context provide alternatives to fixed labels.
 

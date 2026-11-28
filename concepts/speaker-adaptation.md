@@ -2,28 +2,30 @@
 slug: speaker-adaptation
 aliases: [voice adaptation, speaker personalization, voice cloning adaptation]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: speaker-adaptation
 render_type: overview
 title: "Speaker Adaptation"
-source_digest_date: 2026-09-26
-paper_count: 98
+source_digest_date: 2026-11-13
+paper_count: 111
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Speaker adaptation personalizes synthesis or conversion from reference speech, prompts, or speaker-specific updates. Zero- and few-shot conditioning, parameter-efficient tuning, and continuous generators are effective, while prompt quality, cross-lingual coverage, expressive identity, atypical speech, and privacy determine whether adaptation is genuinely useful.
 
 ## Current State
+
+Reference conditioning preserves identity in many settings, with prompt quality and identity–style separation remaining central to adaptation ([[2601.12966]], [[2601.15596]]).
 
 **Multi-speaker training learns shared acoustic structure that improves synthesis and generalization across speakers.** Examples from the reviewed papers include [[1609.03499|WaveNet: A Generative Model for Raw Audio]], [[1904.02882|LibriTTS: A Corpus Derived from LibriSpeech for Text-to-Speech]], [[2025.naacl-short.65|kNN Retrieval for Simple and Effective Zero-Shot Multi-speaker Text-to-Speech]]. Dataset balance, recording quality, and speaker coverage often vary together.
 
@@ -68,7 +70,7 @@ Read [[concepts/speaker-adaptation-in-depth|Speaker Adaptation: In Depth]] for t
 
 ## Scope
 
-This synthesis covers 98 papers represented in the claim graph through Q4 2025. The graph contains 17 strongly supported and 2 emerging clusters. Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse. Strongly supported status applies within the encoded corpus; emerging metric and trajectory-localization findings retain their narrower scope.
+The review covers 111 papers through Q1 2026. The claim graph contains 19 clusters (17 strongly supported, 2 emerging). Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse. Strongly supported status applies within the encoded corpus; emerging metric and trajectory-localization findings retain their narrower scope.
 
 ---
 

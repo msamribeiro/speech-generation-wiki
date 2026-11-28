@@ -2,18 +2,18 @@
 concept: voice-conversion
 render_type: in-depth
 title: "Voice Conversion: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 117
+source_digest_date: 2026-11-12
+paper_count: 132
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short version, see [[concepts/voice-conversion|Voice Conversion]]. This page explains what
@@ -35,7 +35,7 @@ the reviewed research shows. The citations are representative; the complete reco
 
 ## Scope
 
-The source graph contains 117 papers published through the Q4 2025 evidence window and synthesizes 19 claim clusters: 17 strongly supported, one emerging, and one contested. It includes speech and singing conversion, zero-shot and any-to-any transfer, accent and emotion control, anonymization, streaming, synthetic supervision, and reference-free speaker generation. Direct experiments are distinguished from historical or infrastructure roles; numeric scores are not pooled across datasets or protocols. Shared SSL encoders, codecs, speaker-verification models, ASR systems, and benchmarks limit evidence independence. “Strongly supported” therefore describes repeated convergence within the reviewed graph, not proof of statistical independence or universal deployment performance.
+The review covers 132 papers through Q1 2026. The claim graph contains 20 clusters (18 strongly supported, 1 contested, 1 emerging). It includes speech and singing conversion, zero-shot and any-to-any transfer, accent and emotion control, anonymization, streaming, synthetic supervision, and reference-free speaker generation. Direct experiments are distinguished from historical or infrastructure roles; numeric scores are not pooled across datasets or protocols. Shared SSL encoders, codecs, speaker-verification models, ASR systems, and benchmarks limit evidence independence. “Strongly supported” therefore describes repeated convergence within the reviewed graph, not proof of statistical independence or universal deployment performance.
 
 ## Research Landscape
 
@@ -186,6 +186,8 @@ Unseen-speaker feasibility is well supported under common test conditions. Robus
 Lower similarity to the source can improve unlinkability under one verifier while producing unnatural or less intelligible speech, or while remaining vulnerable to a stronger attacker. Privacy and utility must therefore be evaluated jointly and against explicit threat models.
 
 ## How the Field Is Changing
+
+Factorizing prosody and timbre improves targeted control in reviewed systems. Fidelity depends on what the converter preserves at each stage. [[2603.09120|Emotion-Aware Prefix]] locates much of its emotion-control gain in sequence modulation and reports a weaker transfer to an acoustically coupled model. [[2602.14686]] and [[2602.07803]] extend the evidence on factorization across settings. Measure content, target identity, and the transferred attribute together so improvement in one does not hide losses elsewhere.
 
 Voice conversion has moved from paired, speaker-specific mappings toward reference-conditioned any-to-any systems. SSL and codec representations increasingly replace hand-designed acoustic bottlenecks, and the target is now described through timbre, prosody, emotion, rhythm, accent, or generated identity rather than one speaker code.
 

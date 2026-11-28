@@ -2,18 +2,18 @@
 concept: prosody-control
 render_type: in-depth
 title: "Prosody Control: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 115
+source_digest_date: 2026-11-13
+paper_count: 128
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/prosody-control|Prosody Control]]. Complete provenance remains in `wiki/_claims/prosody-control.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/prosody-control|Prosody Control]]. Complete
 
 ## Scope
 
-The graph contains 115 papers through Q4 2025 and 19 synthesized claim clusters. It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
+The review covers 128 papers through Q1 2026. The claim graph contains 20 clusters (18 strongly supported, 2 emerging). It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
 
 The graph records 18 strongly supported, 1 emerging, and 0 contested clusters. These labels describe encoded evidence, not complete field coverage. The remaining emerging cluster concerns reward-guided post-training, where encouraging control gains have not yet been matched across reward definitions and tasks.
 
@@ -166,6 +166,8 @@ Reward-guided post-training provides a complementary route. [[2510.05758|EMORL-T
 **Structured tags, SSML, or numerical vocal plans provide more precise prosodic control than unconstrained free-form generation.** is strongly supported, while the cost of an interpretation layer and the constraint on unanticipated attributes remain design trade-offs.
 
 ## How the Field Is Changing
+
+Duration, pauses, and alignment provide direct rhythm controls, with local precision and attribute leakage remaining difficult. [[2603.07550|Rule-based L2 accent synthesis]] varies timing independently of phoneme substitutions, making the rhythm contribution to perceived accent measurable. [[2603.11683|Causal prosody mediation]] shows that duration, pitch, and energy miss some voice-quality cues. Evaluate the chosen prosody controls at the span where they act and track changes in other attributes.
 
 Prosody control moves from explicit pitch, energy, and duration predictors toward stochastic latent generators and flow matching by 2024–2025.
 

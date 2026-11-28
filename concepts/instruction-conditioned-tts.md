@@ -2,28 +2,30 @@
 slug: instruction-conditioned-tts
 aliases: [prompt-conditioned TTS, instruction-following speech synthesis, descriptive style control]
 status: emerging
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: instruction-conditioned-tts
 render_type: overview
 title: "Instruction-Conditioned Text-to-Speech"
-source_digest_date: 2026-09-26
-paper_count: 57
+source_digest_date: 2026-11-13
+paper_count: 68
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Instruction-conditioned TTS turns natural-language requests into controllable speech attributes such as emotion, accent, rate, prosody, and identity. Rich prompting and modular control plans are effective, while local composition, speaker preservation, synthetic supervision, bias, and judge reliability remain uneven.
 
 ## Current State
+
+Natural-language instructions can steer several attributes, while text-only descriptions leave details of timbre and local timing underdetermined ([[2601.01459]], [[2601.10629]]).
 
 **Natural-language instructions can control multiple speech attributes within one synthesis system, including emotion, accent, speaking rate, prosody, and vocal identity.** The evidence is strong. Examples include [[2402.01912|Natural language guidance of high-fidelity text-to-speech with synthetic annotations]], [[2407.05407|CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens]]. Control accuracy varies sharply by attribute and instruction abstraction; success on emotion or rate does not imply reliable control of age, timbre, non-verbal events, or local emphasis.
 
@@ -70,7 +72,7 @@ Read [[concepts/instruction-conditioned-tts-in-depth|Instruction-Conditioned Tex
 
 ## Scope
 
-This synthesis covers 57 papers through Q4 2025. The graph contains 10 strongly supported, 5 emerging, and 2 contested clusters. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Contested automatic judging and interpreter–renderer conclusions are retained rather than averaged into broader convergence.
+The review covers 68 papers through Q1 2026. The claim graph contains 17 clusters (10 strongly supported, 5 emerging, 2 contested). Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Contested automatic judging and interpreter–renderer conclusions are retained rather than averaged into broader convergence.
 
 ---
 

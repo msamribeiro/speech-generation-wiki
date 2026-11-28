@@ -5,28 +5,30 @@ render_type: overview
 title: Evaluation Metrics
 aliases: [speech quality metrics, TTS evaluation metrics, objective evaluation, automatic evaluation]
 status: mature-infrastructure
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-20
-paper_count: 346
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 396
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
-> Evaluation determines which improvements we can see and which failures remain hidden. Across 346
+> Evaluation determines which improvements we can see and which failures remain hidden. Across 396
 > reviewed papers, the main finding is consistent: no single automatic score measures all aspects
 > of speech quality. A metric is useful only when it matches the target property, domain, level of
 > detail, and intended use.
 
 ## Current State
+
+Multiturn, full-duplex, and multilingual systems need tests that expose failures hidden by aggregate speech scores ([[2026.iwsds-1.10]], [[2601.13742]]).
 
 - **Automatic metrics are useful tools, but they do not replace targeted judgment.** WER and CER
   can disagree with human intelligibility. Speaker embeddings can rank a synthetic voice above its
@@ -100,7 +102,7 @@ benchmarks, and fit-for-purpose test design.
 
 ## Scope
 
-This assessment covers 346 integrated papers through Q4 2025. Many entries are TTS, voice
+The review covers 396 papers through Q1 2026. The claim graph contains 32 clusters (25 strongly supported, 6 emerging, 1 contested). Many entries are TTS, voice
 conversion, codec, or spoken-agent papers that expose one evaluation problem rather than introduce
 a metric. The graph is broad, but it is not a formal meta-analysis. Citations are representative;
 complete evidence remains in `wiki/_claims/evaluation-metrics.yaml`.

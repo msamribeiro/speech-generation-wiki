@@ -2,18 +2,18 @@
 concept: multilingual-tts
 render_type: in-depth
 title: "Multilingual Text-to-Speech: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 105
+source_digest_date: 2026-11-12
+paper_count: 129
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/multilingual-tts|Multilingual Text-to-Speech]]. Complete provenance remains in `wiki/_claims/multilingual-tts.yaml`.
@@ -33,7 +33,7 @@ For the concise view, see [[concepts/multilingual-tts|Multilingual Text-to-Speec
 
 ## Scope
 
-The graph contains 105 papers through Q4 2025 and 19 synthesized clusters, all strongly supported within the encoded evidence. Direct experiments are separated from infrastructure, historical framing, surveys, and downstream adoption. Numeric results are not pooled across unmatched protocols, and strong status does not erase language-pair or listener-population limits.
+The review covers 129 papers through Q1 2026. The claim graph contains 20 clusters (19 strongly supported, 1 emerging). Direct experiments are separated from infrastructure, historical framing, surveys, and downstream adoption. Numeric results are not pooled across unmatched protocols, and strong status does not erase language-pair or listener-population limits.
 
 ## Research Landscape
 
@@ -110,6 +110,8 @@ For emotion and style, [[2510.11124|Perturbation Self-Supervised Representations
 The graph contains no formally contested cluster, but several conclusions remain confidence- or scope-dependent. Language and accent leakage is strongly supported with medium confidence because listener background, reference choice, and dialect continua change the judgment. Code-switching is strongly supported as a joint modeling problem, while available benchmarks still cover few language pairs. Synthetic-data gains depend on teacher quality and are not equivalent to independent recorded evidence.
 
 ## How the Field Is Changing
+
+Shared training helps low-resource synthesis. Script, dialect, and timing still need local treatment and per-language evaluation. The low-resource studies distinguish gains from shared training from limitations of normalization and phonetic front ends ([[2026.abjadnlp-1.6]], [[2026.loreslm-1.54]]). [[2603.07550|Rule-based L2 accent synthesis]] shows that consonant substitutions and duration can make separate contributions to perceived accent. A pooled score can conceal which languages or dialects benefit.
 
 Multilingual TTS has shifted from language-specific models toward shared zero-shot and few-shot foundation systems.
 

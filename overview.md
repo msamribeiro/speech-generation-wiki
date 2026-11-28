@@ -1,25 +1,25 @@
 ---
 title: "Field Overview"
-source_digest_date: "2026-10-31"
-source_registry_date: "2026-10-31"
-source_registry_digest: "sha256:00af235dc7fbbdea84f9e2780696edcaad9a54dd50e7ad1d856c5f5d026ac0e9"
-evidence_cutoff: "2025-12-31"
-assessment_as_of: "2026-11-01"
-paper_count: 668
-concept_membership_count: 2892
-claim_cluster_count: 444
+source_digest_date: "2026-11-13"
+source_registry_date: "2026-11-28"
+source_registry_digest: "sha256:debdc33a28bf4c565c17574bea0b8daa6b3f21ce0502b7e10df712b730c358c5"
+evidence_cutoff: "2026-03-31"
+assessment_as_of: "2026-11-28"
+paper_count: 783
+concept_membership_count: 3345
+claim_cluster_count: 464
 broader_claim_count: 11
 source_concepts: [autoregressive-codec-tts, diffusion-tts, disentanglement, emotion-synthesis, evaluation-metrics, fine-tuning, flow-matching, gan-vocoder, instruction-conditioned-tts, multilingual-tts, neural-codec, prosody-control, rlhf-speech, self-supervised-speech, singing, speaker-adaptation, speech-to-speech, spoken-language-model, streaming-tts, subjective-evaluation, transformer-enc-dec-tts, voice-conversion, zero-shot-tts]
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -29,9 +29,7 @@ generation:
 > another—and where they conflict.
 
 > [!warning]
-> **Current coverage.** This overview uses evidence published through December 31, 2025. The review
-> was completed on November 1, 2026. It will change after later integration cycles. For the saved Q4
-> record, see [[reports/quarterly/2025-Q4|Speech Generation — Q4 2025]].
+> **Current coverage.** This assessment includes evidence through March 31, 2026. The cross-concept review was finalized on November 28, 2026. The [[reports/quarterly/2025-Q4|Q4 2025 report]] provides the previous quarterly view.
 
 ## What Matters Across the Field
 
@@ -237,44 +235,15 @@ not general solutions ([[2509.07038|Phoneme-Level Energy Control]],
 recipe that works on speech may not transfer unchanged to long pitch movements and tightly fixed
 musical timing.
 
-## What Q4 Added
+## What Q1 Added
 
-Q4 expanded the review from 497 to 668 unique papers. Concept memberships rose from 2,226 to 2,892,
-and local claim clusters from 406 to 444. These numbers show coverage, not scientific progress. A
-paper can appear in several concepts, and integration can change cluster boundaries. The shift
-from 280 strongly supported, 112 emerging, and 14 contested clusters in Q3 to 342, 85, and 17 now
-is therefore not a simple promotion count.
+Full-duplex evaluation increasingly measures what happens when a user speaks over the system. Fast replies can make it harder to distinguish a genuine interruption from a backchannel. Test turn transitions and recovery alongside first-response latency ([[2026.iwsds-1.10]], [[2603.14877]]).
 
-The clearest Q4 change is a move from isolated speech components toward complete system behavior.
-Some streaming systems use listening time for reasoning, retrieval, and other work. But a fast
-acoustic decoder does not guarantee a responsive agent. The language model, ASR, retrieval, or
-system orchestration may still dominate the critical path
-([[2510.02066|Chain-of-Thought Reasoning in Streaming Full-Duplex Spoken Dialogue]],
-[[2512.18706|X-Talk]]). Full-duplex evaluation correspondingly extends beyond latency to floor
-holding, interruption recognition, backchannels, and semantic recovery after overlap.
+Codec research increasingly treats token rate and hierarchy as system design choices. A short token sequence reduces language-model work, while the decoder must still reconstruct speaker and prosodic detail. Evaluate the generator and codec together ([[2601.09239]], [[2602.04683]]).
 
-Q4 also makes control failures more concrete. Dedicated semantic, acoustic, speaker, prosody, and
-environment streams make cross-source composition possible, but intervention tests still find
-residual leakage and interference ([[2510.16841|SAC]], [[2511.12074|MF-Speech]]). Instructional
-guidance improves adherence up to a point; stronger guidance can damage naturalness,
-intelligibility, identity, or untargeted content ([[2510.13293|Cross-modal Consistency Guidance]],
-[[2511.03601|Step-Audio-EditX]]). Text-only descriptions can generate plausible voices, but exact
-identity is underdetermined without a reference and can inherit demographic priors.
+Cross-lingual control gains are easier to interpret when evaluations separate accent, identity, and intelligibility. Phoneme substitutions and timing can independently change perceived accent. Stronger emotion control can also interact with identity depending on where it enters the converter ([[2603.07550|Rule-based L2 accent synthesis]], [[2603.09120|Emotion-Aware Prefix]]).
 
-Post-training became more localized and explicitly multi-objective. Token-level preference
-methods direct feedback toward the spans most responsible for a failure, and multi-reward
-optimization can reduce dependence on one proxy ([[2510.05799|Data-efficient Targeted Token-level
-Preference Optimization]], [[2511.21270|Multi-Reward GRPO]]). The boundary remains the same:
-coverage and weighting of the feedback determine which qualities improve, and an optimization
-signal cannot reliably protect what it never observes.
-
-Q4 also strengthens the case for treating data and evaluation as part of the system design.
-Prosodically meaningful segmentation, quality-aware curation, and transparent normalization can
-matter as much as replacing a familiar backbone in spontaneous or low-resource settings
-([[2511.14779|The Impact of Prosodic Segmentation on Speech Synthesis of Spontaneous Speech]],
-[[2512.00937|Arabic TTS with FastPitch]]). The main question is no longer whether a model can
-produce one convincing sample. It is whether the whole system remains controllable, responsive,
-and measurable across speakers, languages, domains, and interaction conditions.
+Speech reward models can guide generation toward listener-preferred output, and their own training needs validation. One naturalness study measured a generation gain with listeners and also found evaluator collapse under a different training reward. The two tests answer different questions about the same feedback loop ([[2602.13891|GSRM]]).
 
 ## The Recurring Trade-offs
 
@@ -337,17 +306,6 @@ and measurable across speakers, languages, domains, and interaction conditions.
 
 ## Scope and Traceability
 
-The 23 concept graphs contain 2,892 paper memberships from 668 unique papers. A paper can inform
-more than one concept. The graphs contain 444 local claim clusters: 342 strongly supported, 85
-emerging, and 17 contested. This overview presents 11 approved broader claims and uses 373 approved
-direct relationships between narrower claims. It does not use the 15 remaining agent proposals as
-evidence.
+The 23 concept graphs contain 3,345 paper memberships from 783 unique papers and 464 local claim clusters (354 strongly supported, 96 emerging, 14 contested). A paper can inform multiple concepts. The overview draws on 11 human-approved broader claims and 643 human-approved direct relationships.
 
-The evidence cutoff is December 31, 2025. The review was completed on November 1, 2026. This page
-shows the current reading of the concept graphs and reviewed links. It does not claim to show what
-researchers knew at the end of Q4. The [[reports/quarterly/2025-Q4|Q4 report]] is the saved
-historical view.
-
-Every conclusion links back to an approved broader claim or local claim cluster, then to papers and
-cited source sections. The citations on this page are examples, not the complete support list. The
-full record is in `wiki/_claims/*.yaml` and `wiki/_claims/_reconciliation/registry.yaml`.
+The evidence window ends March 31, 2026. This living overview reflects the November 28, 2026 assessment. The citations are representative. Trace the full evidence through `wiki/_claims/*.yaml` and `wiki/_claims/_reconciliation/registry.yaml`.

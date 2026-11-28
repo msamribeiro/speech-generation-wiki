@@ -5,25 +5,27 @@ render_type: overview
 title: Subjective Evaluation of Generated Speech
 aliases: [listening tests, perceptual evaluation, MOS evaluation, human evaluation]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-10-31
-paper_count: 255
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 307
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Subjective evaluation measures how listeners perceive generated speech across naturalness, intelligibility, identity, prosody, emotion, interaction, and social suitability. Human judgment remains necessary because these dimensions can move independently and automatic judges remain condition- and attribute-dependent.
 
 ## Current State
+
+Listener tests need to separate the attributes most likely to change, especially when comparing expressive or interactive systems ([[2026.iwsds-1.3]], [[2601.10629]]).
 
 **There is no single perceptual quality axis.** Naturalness, intelligibility, speaker identity, expressiveness, accent, melody, synchronization, and interaction behavior are distinct outcomes. Improvements on one do not guarantee improvements on the others, and aggregate scores can conceal severe dimension-level failures. Q4 evidence strengthens this conclusion across spoken-dialogue benchmarks, codecs, child voice conversion, controllable synthesis, and multimodal speech ([[2025.emnlp-main.1160|C3]], [[2025.emnlp-main.1447|MULTIVOX]], [[2512.12129|Child Voice Conversion Study]]).
 
@@ -72,7 +74,7 @@ Read [[concepts/subjective-evaluation-in-depth|Subjective Evaluation of Generate
 
 ## Scope
 
-This synthesis covers 255 papers published from 2016 through the Q4 2025 evidence window across TTS, voice conversion, spoken agents, codecs, singing, and multimodal generation. Many papers use listening tests to support a system rather than study evaluation itself, so protocol conclusions are weighted most strongly where methods are compared directly. Paper count is not treated as independent replication when studies reuse metrics, benchmarks, listener pools, or system lineages.
+The review covers 307 papers through Q1 2026 across TTS, voice conversion, spoken agents, codecs, singing, and multimodal generation. The claim graph contains 18 clusters (16 strongly supported, 2 contested). Many papers use listening tests to support a system rather than study evaluation itself, so protocol conclusions are weighted most strongly where methods are compared directly. Paper count is not treated as independent replication when studies reuse metrics, benchmarks, listener pools, or system lineages.
 
 ---
 

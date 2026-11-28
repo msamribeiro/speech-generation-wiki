@@ -2,28 +2,30 @@
 slug: singing
 aliases: [singing voice synthesis, SVS, singing voice conversion, SVC, song synthesis]
 status: emerging
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: singing
 render_type: overview
 title: "Singing Voice Synthesis and Conversion"
-source_digest_date: 2026-10-31
-paper_count: 21
+source_digest_date: 2026-11-13
+paper_count: 24
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Singing generation adapts speech synthesis and voice conversion to signals whose pitch range, note timing, sustained vowels, ornamentation, and performance style are unusually explicit. The reviewed evidence favors direct pitch and energy controls, specialized alignment, and factorized representations, but most findings remain emerging because datasets, singer coverage, listening panels, and evaluation protocols are small or inconsistent.
 
 ## Current State
+
+Explicit timing, pitch, and energy remain useful controls. Early weak-alignment results reduce annotation demands in a narrow setting ([[2602.07803]], [[2602.04683]]).
 
 **Explicit signal-derived conditioning is the clearest supported route to controllable singing.** Six studies use pitch, energy, melody, or related trajectories as direct controls rather than asking a model to recover every musical attribute from an undifferentiated latent. [[2509.07038|Controllable Singing Voice Synthesis using Phoneme-Level Energy Sequence]] shows that frame-derived energy can be aggregated into a practical phoneme-level interface, while [[2512.04779|YingMusic-Singer: Zero-shot Singing Voice Synthesis and Editing with Annotation-free Melody Guidance]] extends explicit melody guidance to zero-shot synthesis and editing. These controls can still be noisy or unavailable at inference time.
 
@@ -63,7 +65,7 @@ Read [[concepts/singing-in-depth|Singing Voice Synthesis and Conversion: In Dept
 
 ## Scope
 
-This synthesis covers 21 papers through Q4 2025, plus one late correction incorporated during the Q4 pass. The strongest conclusions concern explicit conditioning, the style–naturalness trade-off, and evaluation limits. Most other clusters are emerging and should be treated as promising design patterns rather than established general results.
+The review covers 24 papers through Q1 2026. The claim graph contains 25 clusters (22 emerging, 3 strongly supported). The strongest conclusions concern explicit conditioning, the style–naturalness trade-off, and evaluation limits. Most other clusters are emerging and should be treated as promising design patterns rather than established general results.
 
 ---
 

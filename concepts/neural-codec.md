@@ -5,19 +5,19 @@ render_type: overview
 title: Neural Audio Codecs
 aliases: [neural speech codec, speech tokenizer, audio tokenizer, codec tokens]
 status: mature-infrastructure
-last_reviewed: 2026-11-07
-source_digest_date: 2026-10-31
-paper_count: 240
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 276
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -27,6 +27,8 @@ generation:
 > perceptual fidelity remain coupled design choices rather than a single quality ladder.
 
 ## Current State
+
+Codecs increasingly serve as interfaces for several speech tasks. Token rate and hierarchy affect downstream sequence cost as well as reconstruction ([[2601.17761]], [[2602.04683]]).
 
 **Low-bitrate learned coding is established, but headline bitrates are not directly comparable.**
 Neural codecs preserve intelligible and perceptually useful speech far below waveform-level data
@@ -119,8 +121,8 @@ and evaluation.
 
 ## Scope
 
-This synthesis covers 240 papers from 2016 through Q4 2025, including codec-focused systems and
-extensive downstream evidence from TTS, spoken systems, VC, and evaluation. All 18
+The review covers 276 papers through Q1 2026, including codec-focused systems and
+extensive downstream evidence from TTS, spoken systems, VC, and evaluation. The claim graph contains 18 clusters (18 strongly supported). All 18
 clusters are strongly supported, but comparisons frequently change codec, decoder, generator, data,
 and metric together. Method families overlap because many systems combine vector quantization,
 semantic supervision, adversarial decoding, and continuous generation.

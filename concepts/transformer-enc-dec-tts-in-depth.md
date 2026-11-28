@@ -2,18 +2,18 @@
 concept: transformer-enc-dec-tts
 render_type: in-depth
 title: "Transformer Encoder–Decoder TTS: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 33
+source_digest_date: 2026-11-13
+paper_count: 35
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/transformer-enc-dec-tts|Transformer Encoder–Decoder TTS]]. Complete provenance remains in `wiki/_claims/transformer-enc-dec-tts.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/transformer-enc-dec-tts|Transformer Encoder
 
 ## Scope
 
-The graph contains 33 papers through Q4 2025 and 19 synthesized clusters: 6 strongly supported, 13 emerging, and 0 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The review covers 35 papers through Q1 2026. The claim graph contains 20 clusters (14 emerging, 6 strongly supported). Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
@@ -134,6 +134,8 @@ Frequency-aware and local adversarial objectives are now strongly supported with
 **Compression and parallel acoustic-token decoding face hardware-realization and quality limits.** remains emerging. Nominal compression and throughput gains may not translate to common integer hardware or low-step decoding. This boundary is retained in both render depths rather than averaged into broader convergence.
 
 ## How the Field Is Changing
+
+Fine-grained controls remain limited by how the model represents prosody and by lexical coverage at test time. [[2603.11683|Causal prosody mediation]] adds evidence for separating prosody and identity with complementary training constraints. Its duration, pitch, and energy representation leaves some emotion cues unmodeled. A separate lexical generalization study identifies an emerging boundary for segmental prosody control on unseen items ([[2603.21078]]).
 
 Encoder–decoder TTS has shifted from autoregressive attention toward explicit duration and monotonic alignment mechanisms.
 

@@ -2,18 +2,18 @@
 concept: neural-codec
 render_type: in-depth
 title: "Neural Audio Codecs: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 240
+source_digest_date: 2026-11-11
+paper_count: 276
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/neural-codec|Neural Audio Codecs]]. This page interprets the
@@ -45,7 +45,7 @@ decision-relevant evidence; the exhaustive graph remains in `wiki/_claims/neural
 
 ## Scope
 
-The graph contains 240 papers from 2016 through Q4 2025. Codec studies supply direct evidence, while TTS, spoken conversational agents,
+The review covers 276 papers through Q1 2026. The claim graph contains 18 clusters (18 strongly supported). Codec studies supply direct evidence, while TTS, spoken conversational agents,
 voice conversion, evaluation, and singing supply downstream evidence about how representations
 behave inside generators. This breadth is a strength for utility claims but complicates causal
 attribution: a downstream failure can originate in the tokenizer, generator, aligner, or decoder.
@@ -316,6 +316,8 @@ whether the task is communication, TTS, VC, dialogue, music, or source-faithful 
 universal codec require evidence across all of those conditions and are not established here.
 
 ## How the Field Is Changing
+
+Codecs increasingly serve as interfaces for several speech tasks. Token rate and hierarchy affect downstream sequence cost as well as reconstruction. New unified systems use the same token interface across understanding and generation settings ([[2601.17761]], [[2602.04683]]). The reviewed hierarchy studies divide semantic structure and acoustic detail across representations ([[2601.09239]], [[2602.06180]]). Compare a codec at matched frame rates in the downstream model as well as through reconstruction tests.
 
 The field moved from waveform-level autoregression toward discrete codec language modeling after
 2022. RVQ remains common, while 2024–2025 work increasingly explores single-codebook, low-frame-rate,

@@ -5,19 +5,19 @@ render_type: overview
 title: Autoregressive Codec Text-to-Speech
 aliases: [codec language model TTS, neural codec language model, speech-token autoregression, VALL-E-style TTS]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-26
-paper_count: 196
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-12
+paper_count: 212
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -27,6 +27,8 @@ generation:
 > sequential latency, and stochastic instability remain its defining constraints.
 
 ## Current State
+
+Codec hierarchies help preserve content and voice in zero-shot generation, but identity and expressive style can still move together ([[2026.abjadnlp-1.6|Arabic dialect TTS evaluation]], [[2601.12480]]).
 
 **Codec language modeling established zero-shot voice cloning.** Systems beginning with
 [[2301.02111|VALL-E]] show that a short acoustic prompt can condition an unseen voice without
@@ -115,8 +117,8 @@ preference optimization, and alternatives to full autoregression.
 
 ## Scope
 
-This synthesis covers 196 papers from 2016 through Q4 2025. The graph spans TTS, spoken agents,
-codecs, VC, and evaluation. Eighteen clusters are strongly supported and one is contested. Results from shared VALL-E,
+The review covers 212 papers through Q1 2026. The claim graph contains 20 clusters (19 strongly supported, 1 contested). The graph spans TTS, spoken agents,
+codecs, VC, and evaluation. Results from shared VALL-E,
 codec, or organizational lineages are not treated as independent replication. System-level gains
 are interpreted separately from infrastructure, historical, and survey evidence.
 

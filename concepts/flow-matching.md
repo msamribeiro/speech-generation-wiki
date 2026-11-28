@@ -5,27 +5,29 @@ render_type: overview
 title: Flow Matching
 aliases: [conditional flow matching, CFM, OT-CFM, rectified flow, flow-based speech generation]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-26
-paper_count: 125
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-12
+paper_count: 148
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Flow matching trains a model to move noise into a speech representation along a continuous
-> path. It is now a main continuous-output method for TTS and voice conversion. Across 125 reviewed
+> path. It is now a main continuous-output method for TTS and voice conversion. Across 148 reviewed
 > papers, it often reaches high quality with fewer sampling steps than conventional diffusion.
 
 ## Current State
+
+Flow matching retains its speed advantage in several reviewed settings, with solver, target representation, and streaming constraints shaping the usable step budget ([[2602.09041]], [[2602.11477]]).
 
 - **Flow matching often reduces sampling cost without reducing speech quality.** This pattern
   appears across TTS, voice conversion, vocoding, and other target representations. The size of
@@ -102,7 +104,7 @@ applications beyond acoustic modeling.
 
 ## Scope
 
-This assessment covers 125 integrated papers through Q4 2025. It combines foundational theory with
+The review covers 148 papers through Q1 2026. The claim graph contains 39 clusters (22 emerging, 17 strongly supported). It combines foundational theory with
 evidence from TTS, voice conversion, vocoders, codecs, control, and adaptation. Several conclusions
 hold across systems, but many newer branches still rely on one paper or one model lineage. The full
 record is in

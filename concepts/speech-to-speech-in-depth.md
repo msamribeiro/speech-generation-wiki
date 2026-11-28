@@ -2,21 +2,21 @@
 concept: speech-to-speech
 render_type: in-depth
 title: "Speech-to-Speech Systems: In Depth"
-source_digest_date: 2026-09-20
-paper_count: 94
+source_digest_date: 2026-11-11
+paper_count: 124
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
-This review asks what the 94 papers currently encoded for speech-to-speech systems collectively
+This review asks what the 124 papers currently encoded for speech-to-speech systems collectively
 show, where independent studies converge, and where comparisons remain too confounded to support a
 firm conclusion. For a concise introduction and practical recommendations, see
 [[concepts/speech-to-speech|Speech-to-Speech Systems]]. For record-level provenance, use
@@ -52,6 +52,8 @@ firm conclusion. For a concise introduction and practical recommendations, see
 
 ## Scope
 
+The review covers 124 papers through Q1 2026. The claim graph contains 20 clusters (17 strongly supported, 2 contested, 1 emerging).
+
 The reviewed corpus covers three related but non-identical tasks: open-domain spoken dialogue,
 full-duplex interaction, and speech-to-speech translation. They share a speech-in/speech-out
 interface, but optimize different outcomes. Dialogue systems emphasize reasoning and response
@@ -65,8 +67,7 @@ claims. Surveys help establish taxonomy but are not independent replications. Kn
 conference versions of the same work are treated as one underlying evidence point even when both
 records remain in the graph.
 
-The current graph contains nineteen clusters: sixteen strongly supported, two contested, and one
-emerging. The emerging cross-lingual voice-preservation result rests on one direct supporting paper
+The emerging cross-lingual voice-preservation result rests on one direct supporting paper
 and several refiners; it is not promoted by the strength of adjacent translation evidence.
 
 ## Research Landscape
@@ -287,6 +288,8 @@ memory. Systems should evaluate those functions separately rather than report a 
 
 ## How the Field Is Changing
 
+Full-duplex systems need to decide when to keep speaking, pause, or yield as well as how quickly to respond. The interaction evidence distinguishes genuine interruptions, listener feedback, and the need to maintain a turn ([[2026.iwsds-1.10]], [[2603.09180]], [[2603.14877]]). Incremental reasoning can move work into listening time, yet premature decisions can create coherence errors. Measure floor control and semantic recovery alongside latency.
+
 The historical trajectory is not simply a shift from cascades to end-to-end models. Early systems
 such as [[2305.11000|SpeechGPT]] and [[2305.15255|Spectron]] established that language-model-style
 decoding could operate over speech representations, but offered limited evaluation or impractical
@@ -354,7 +357,7 @@ This is a curated route through the evidence, not a strength ranking or full inv
 
 ## Limits of This Review
 
-- The 94-paper graph is a reviewed corpus, not proof of complete field coverage.
+- The 124-paper graph is a reviewed corpus, not proof of complete field coverage.
 - Spoken dialogue, full-duplex interaction, and speech translation use different evaluation regimes;
   results are not freely transferable between them.
 - Several comparisons confound architecture with model scale, data, component maturity, or

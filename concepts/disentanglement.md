@@ -5,19 +5,19 @@ render_type: overview
 title: Disentanglement
 aliases: [attribute disentanglement, representation factorization, content-speaker separation, prosody disentanglement]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-26
-paper_count: 116
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-12
+paper_count: 130
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -28,6 +28,8 @@ generation:
 > suggests.
 
 ## Current State
+
+Targeted interventions improve separability, while reconstruction quality and intelligibility constrain how aggressively factors can be split ([[2603.11683|Counterfactual prosody mediation]], [[2601.00303]]).
 
 **Useful speech representations do not separate attributes by default.** Standard codecs and
 self-supervised features retain mixtures of content, speaker, pitch, and other paralinguistic
@@ -132,7 +134,5 @@ and the places where results disagree.
 
 ## Scope
 
-This rendering covers 116 papers represented in the claim graph through Q4 2025,
-across TTS, voice conversion, codecs, emotional and singing-voice generation, and related spoken
-systems. The graph contains 15 strongly supported, 2 contested, and 2 emerging clusters. Conclusions describe this corpus rather than exhaustive field coverage. Full
+The review covers 130 papers through Q1 2026. The claim graph contains 20 clusters (17 strongly supported, 2 emerging, 1 contested). Conclusions describe this corpus rather than exhaustive field coverage. Full
 paper-to-claim provenance is available in `wiki/_claims/disentanglement.yaml`.

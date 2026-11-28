@@ -2,18 +2,18 @@
 concept: disentanglement
 render_type: in-depth
 title: "Disentanglement: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 116
+source_digest_date: 2026-11-12
+paper_count: 130
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 ## Findings at a Glance
@@ -44,8 +44,7 @@ generation:
 
 ## Scope
 
-The claim graph contains 116 papers through Q4 2025 and 19 clusters: 15 strongly supported, 2
-contested, and 2 emerging. It spans neural
+The review covers 130 papers through Q1 2026. The claim graph contains 20 clusters (17 strongly supported, 2 emerging, 1 contested). It spans neural
 speech codecs, TTS, voice conversion, emotional and singing-voice generation, spoken language
 modeling, and several narrower accent or articulation-control settings. The corpus is largest in
 2025, especially Interspeech, and therefore describes a period when disentanglement shifted from
@@ -325,6 +324,8 @@ on different trade-off surfaces.
 
 ## How the Field Is Changing
 
+Targeted interventions improve separability, while reconstruction quality and intelligibility constrain how aggressively factors can be split. [[2603.11683|Counterfactual prosody mediation]] tests a training constraint that changes how emotion reaches the output and finds gains in preserving identity. Its limited set of prosody mediators leaves some emotion cues unexplained. The data-level evidence from [[2601.00303]] and [[2603.22252]] broadens the design space beyond adding a separate network for every attribute.
+
 The early trajectory moved from observing useful separation in SSL units toward deliberately
 structured semantic and acoustic token hierarchies. AudioLM and SpeechTokenizer made codec-layer
 specialization a reusable design pattern. By 2024, systems such as NaturalSpeech 3 treated
@@ -392,7 +393,7 @@ Return to the [[concepts/disentanglement|Disentanglement Overview]] for the comp
 
 ## Structured Source
 
-The complete machine-readable claim graph—including all 116 paper records, support roles, claim
+The complete machine-readable claim graph—including all 130 paper records, support roles, claim
 clusters, method families, caveats, and reassessment triggers—is available at
 `wiki/_claims/disentanglement.yaml`. The citations above are representative selections, not the
 complete evidence inventory.

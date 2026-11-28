@@ -2,18 +2,18 @@
 concept: instruction-conditioned-tts
 render_type: in-depth
 title: "Instruction-Conditioned Text-to-Speech: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 57
+source_digest_date: 2026-11-13
+paper_count: 68
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/instruction-conditioned-tts|Instruction-Conditioned Text-to-Speech]]. Complete provenance remains in `wiki/_claims/instruction-conditioned-tts.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/instruction-conditioned-tts|Instruction-Con
 
 ## Scope
 
-The graph contains 57 papers through Q4 2025 and 17 synthesized clusters: 10 strongly supported, 5 emerging, and 2 contested. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The review covers 68 papers through Q1 2026. The claim graph contains 17 clusters (10 strongly supported, 5 emerging, 2 contested). Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
@@ -120,6 +120,8 @@ Text-only voice control changes the ambiguity rather than eliminating it. [[2511
 **A stronger upstream language model can improve instruction-conditioned synthesis through an explicit control plan without retraining the downstream renderer.** is now contested. Stronger interpretation can help, but a fixed renderer may not express the plan; the strongest positive result also depends on a proprietary external LLM.
 
 ## How the Field Is Changing
+
+Natural-language instructions can steer several attributes, while text-only descriptions leave details of timbre and local timing underdetermined. Q1 evidence extends text-only prompting across voice design and expressive styles ([[2601.01459]], [[2601.10629]], [[2601.12289]]). A description can specify a plausible style without fixing an exact voice. Strong prompt adherence therefore needs separate checks for identity, naturalness, and fine-grained control.
 
 The evidence shifts from broad multimodal instruction tuning in 2023–2024 toward dedicated controllable-TTS datasets, benchmarks, and audits in 2025.
 

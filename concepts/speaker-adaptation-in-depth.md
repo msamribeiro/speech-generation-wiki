@@ -2,18 +2,18 @@
 concept: speaker-adaptation
 render_type: in-depth
 title: "Speaker Adaptation: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 98
+source_digest_date: 2026-11-13
+paper_count: 111
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/speaker-adaptation|Speaker Adaptation]]. Complete provenance remains in `wiki/_claims/speaker-adaptation.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/speaker-adaptation|Speaker Adaptation]]. Co
 
 ## Scope
 
-The graph contains 98 papers through Q4 2025 and 19 synthesized claim clusters. It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
+The review covers 111 papers through Q1 2026. The claim graph contains 19 clusters (17 strongly supported, 2 emerging). It combines direct experiments, architecture variants, controls, evaluation cautions, infrastructure, and historical context. Repeated use of one backbone, dataset, organization, codec, or survey is not treated as fully independent confirmation. Numerical results are not pooled across unmatched protocols.
 
 The graph records 17 strongly supported, 2 emerging, and 0 contested clusters. The emerging findings concern automatic metric validity and the single-paper result on where speaker information resides within a generation trajectory.
 
@@ -148,6 +148,8 @@ Codec-token in-context cloning is now strongly supported within the graph, while
 **Automatic speaker-similarity metrics can diverge from perceptual identity and adaptation suitability judgments.** remains emerging. Embedding metrics reward consistency in their own representation space and may miss identity, style, or assistive suitability. This limitation is retained in both render depths rather than averaged away.
 
 ## How the Field Is Changing
+
+Reference conditioning preserves identity in many settings, with prompt quality and identity–style separation remaining central to adaptation. New reference-conditioned systems broaden the evidence for unseen voices ([[2601.12966]], [[2601.15596]], [[2601.13948]]). Their evidence also highlights dependence on reference conditions and the tension between identity and expressive variation. Compare speaker matching with listener judgments and test whether the requested style transfers without copying unrelated reference attributes.
 
 Speaker adaptation has shifted from speaker-ID lookup and fixed embeddings toward reference-conditioned zero-shot and few-shot generation.
 

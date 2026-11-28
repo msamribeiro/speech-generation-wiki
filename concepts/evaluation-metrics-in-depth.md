@@ -2,18 +2,18 @@
 concept: evaluation-metrics
 render_type: in-depth
 title: "Evaluation Metrics: In Depth"
-source_digest_date: 2026-09-20
-paper_count: 346
+source_digest_date: 2026-11-11
+paper_count: 396
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 This page explains what the reviewed evaluation research supports. For the short version, see
@@ -43,7 +43,7 @@ paper-to-claim graph is in `wiki/_claims/evaluation-metrics.yaml`.
 
 ## Scope
 
-The graph contains 346 papers through Q4 2025. It is the largest integrated concept in the wiki.
+The review covers 396 papers through Q1 2026. The claim graph contains 32 clusters (25 strongly supported, 6 emerging, 1 contested). It is the largest integrated concept in the wiki.
 It covers TTS, voice conversion, neural codecs, vocoders, spoken agents, full-duplex systems,
 clinical and accessibility applications, watermarking, and low-resource languages.
 
@@ -305,6 +305,8 @@ for timing, emotion, fairness, clinical use, or downstream codec performance.
 
 ## How the Field Is Changing
 
+Multiturn, full-duplex, and multilingual systems need tests that expose failures hidden by aggregate speech scores. Multiturn studies score interaction and continuity separately from single-response quality ([[2026.iwsds-1.10]], [[2601.13742]]). The reviewed full-duplex evidence includes automatic timing measurements, with behavioral interpretation still dependent on the test protocol ([[2602.23266]]). Domain and language shifts require separate checks, particularly in underrepresented settings ([[2026.africanlp-main.23]]).
+
 Earlier evaluation centered on acoustic TTS quality: MOS, intelligibility proxies, speaker
 similarity, and signal distortion. These measures remain important. The 2025 corpus adds spoken-
 agent diagnostics, full-duplex timing, multi-turn behavior, fairness, and paralinguistic reasoning.
@@ -359,7 +361,7 @@ improves.
 
 ## Structured Source
 
-This page selects and groups findings for readability. The complete graph contains all 346 paper
+This page selects and groups findings for readability. The complete graph contains all 396 paper
 entries, evidence roles, source sections, caveats, method families, and reassessment state. It is
 available in `wiki/_claims/evaluation-metrics.yaml`.
 

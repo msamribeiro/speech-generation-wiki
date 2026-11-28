@@ -5,28 +5,30 @@ render_type: overview
 title: Speech-to-Speech Systems
 aliases: [speech-to-speech, S2S, spoken dialogue systems, speech language models, end-to-end spoken agents]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-20
-paper_count: 94
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 124
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Speech-to-speech systems accept speech and produce spoken responses, spanning conversational
 > agents, full-duplex interaction, and speech-to-speech translation. Real-time interaction is now
-> practical in several settings. Across 94 reviewed papers, systems still trade reasoning quality
+> practical in several settings. Across 124 reviewed papers, systems still trade reasoning quality
 > against latency, turn-taking, and sensitivity to how something is said.
 
 ## Current State
+
+Full-duplex systems need to decide when to keep speaking, pause, or yield as well as how quickly to respond ([[2026.iwsds-1.10]], [[2603.09180]]).
 
 - **Cascaded ASR–language-model–TTS systems remain the strongest general baseline.** Mature
   components still lead many spoken-instruction, reasoning, and role-playing comparisons
@@ -112,8 +114,8 @@ and retrieval, and a representative reading path.
 
 ## Scope
 
-This assessment covers 94 integrated papers through Q4 2025 and combines spoken dialogue,
-full-duplex interaction, and speech-to-speech translation. These tasks share a speech-in/speech-out
+The review covers 124 papers through Q1 2026 and combines spoken dialogue,
+full-duplex interaction, and speech-to-speech translation. The claim graph contains 20 clusters (17 strongly supported, 2 contested, 1 emerging). These tasks share a speech-in/speech-out
 interface but not always objectives or metrics. Surveys support taxonomy rather than independent
 replication, known duplicate publication records are treated as one evidence point, and several
 frontier systems rely on proprietary data or unmatched commercial comparisons.

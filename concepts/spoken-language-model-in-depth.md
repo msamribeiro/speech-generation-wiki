@@ -2,18 +2,18 @@
 concept: spoken-language-model
 render_type: in-depth
 title: "Spoken Language Models: In Depth"
-source_digest_date: 2026-09-20
-paper_count: 173
+source_digest_date: 2026-11-11
+paper_count: 207
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/spoken-language-model|Spoken Language Models]]. Complete
@@ -43,7 +43,7 @@ paper-to-claim provenance remains in `wiki/_claims/spoken-language-model.yaml`.
 
 ## Scope
 
-The graph contains 173 papers from 2022 through Q4 2025. Spoken-agent
+The review covers 207 papers through Q1 2026. The claim graph contains 19 clusters (18 strongly supported, 1 emerging). Spoken-agent
 papers address spoken conversational agents, while TTS, codecs, evaluation, voice conversion, and
 singing provide adjacent evidence. Forty-one papers play infrastructure roles, and four provide
 historical framing. Adoption inside a system supports viability, not independent proof that a token
@@ -356,6 +356,8 @@ privacy benchmark still does not cover alternate attacks or populations. Fluent 
 not be interpreted as deployment readiness.
 
 ## How the Field Is Changing
+
+Unified speech models are gaining more ways to share representations, while paralinguistic reasoning and long-context behavior still lag simpler semantic tasks. Q1 adds evidence for joint understanding and generation through a shared backbone ([[2601.17761]], [[2602.04683]]). A frozen backbone with trained speech interfaces offers another way to preserve text capabilities ([[2603.09627]]). Multidimensional tests still reveal gaps that successful transcription or text-mediated reasoning can conceal ([[2026.iwsds-1.9]], [[2602.00443]]).
 
 The field progressed from offline codec language modeling in 2022–2023 to streaming, duplex, and
 omnimodal interaction in 2024–2025. Token research targets lower or variable frame rates and clearer

@@ -2,28 +2,30 @@
 slug: diffusion-tts
 aliases: [diffusion speech synthesis, score-based TTS, latent diffusion TTS]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: diffusion-tts
 render_type: overview
 title: "Diffusion Text-to-Speech"
-source_digest_date: 2026-10-31
-paper_count: 58
+source_digest_date: 2026-11-13
+paper_count: 62
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Diffusion TTS generates speech by iteratively refining noise or latent variables under text, speaker, and style conditioning. It is established for high-fidelity, zero-shot, and expressive synthesis, but representation choice, solver cost, acceleration, guidance, and fair comparison with flow or consistency models determine its practical value.
 
 ## Current State
+
+Masked discrete diffusion extends parallel generation to codec tokens. Its length and masking choices remain part of the quality and latency comparison ([[2601.22889]], [[2603.26364]]).
 
 **Iterative diffusion can produce high-fidelity and natural speech across TTS and adjacent speech-generation tasks.** The evidence is strong. Examples include [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]], [[2025.naacl-long.110|WaveFM: A High-Fidelity and Efficient Vocoder Based on Flow Matching]]. Comparisons span different datasets, vocoders, and sampling budgets, so quality gains are not attributable to the diffusion objective alone.
 
@@ -69,7 +71,7 @@ Read [[concepts/diffusion-tts-in-depth|Diffusion Text-to-Speech: In Depth]] for 
 
 ## Scope
 
-This synthesis covers 58 papers through Q4 2025, plus two late papers incorporated during the Q4 correction pass. Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
+The review covers 62 papers through Q1 2026. The claim graph contains 18 clusters (16 strongly supported, 2 emerging). Evidence spans multiple architectures, datasets, tasks, and evaluation protocols. Strong status applies within the encoded graph; shared lineages, infrastructure evidence, emerging findings, and unmatched speed or quality comparisons retain narrower interpretations.
 
 ---
 

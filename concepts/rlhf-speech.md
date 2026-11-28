@@ -5,28 +5,30 @@ render_type: overview
 title: RLHF for Speech
 aliases: [RLAIF speech, preference optimization for TTS, reinforcement learning from human feedback, DPO for speech, direct preference optimization TTS]
 status: emerging
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-26
-paper_count: 49
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-13
+paper_count: 57
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > RLHF for speech uses preferences or reward signals to improve a pretrained TTS, spoken-language,
-> or speech-to-speech model after supervised training. Across 49 reviewed papers, post-training
+> or speech-to-speech model after supervised training. Across 57 reviewed papers, post-training
 > often improves the quality named by the reward. It can also damage prosody, diversity, emotion,
 > or another quality that the reward does not measure.
 
 ## Current State
+
+Speech reward models can improve the targeted attribute, with mixed evidence about training the evaluator itself through reinforcement learning ([[2602.13891|GSRM]]).
 
 - **Preference and reward post-training often improve their target dimensions.** DPO, KTO, GRPO,
   policy-gradient methods, and differentiable reward optimization report gains in intelligibility,
@@ -98,7 +100,7 @@ limits imposed by the base model and downstream pipeline.
 
 ## Scope
 
-This assessment covers 49 integrated papers through Q4 2025. The area is fast-moving but young.
+The review covers 57 papers through Q1 2026. The claim graph contains 22 clusters (15 strongly supported, 6 emerging, 1 contested). The area is fast-moving but young.
 Several strong results come from one backbone or proprietary system. RLHF for spoken dialogue is
 also much less developed than acoustic TTS alignment. The full record is in
 `wiki/_claims/rlhf-speech.yaml`.

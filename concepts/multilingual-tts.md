@@ -2,28 +2,30 @@
 slug: multilingual-tts
 aliases: [cross-lingual TTS, multilingual speech synthesis, low-resource TTS]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: multilingual-tts
 render_type: overview
 title: "Multilingual Text-to-Speech"
-source_digest_date: 2026-09-26
-paper_count: 105
+source_digest_date: 2026-11-12
+paper_count: 129
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Multilingual TTS shares linguistic and acoustic knowledge across languages to improve coverage and low-resource synthesis. Transfer is established, but corpus imbalance, text front ends, accent leakage, speaker identity, and per-language evaluation determine whether a shared model serves languages equitably.
 
 ## Current State
+
+Shared training helps low-resource synthesis. Script, dialect, and timing still need local treatment and per-language evaluation ([[2026.abjadnlp-1.6]], [[2026.loreslm-1.54]]).
 
 **Shared multilingual training improves synthesis for low-resource languages by transferring linguistic and acoustic structure from better-resourced languages.** The evidence is strong. Examples include [[2303.03926|Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling]], [[2025.naacl-short.69|Developing multilingual speech synthesis system for Ojibwe, Mi'kmaq, and Maliseet]]. Transfer depends on linguistic relatedness, data balance, and front-end compatibility.
 
@@ -71,7 +73,7 @@ Read [[concepts/multilingual-tts-in-depth|Multilingual Text-to-Speech: In Depth]
 
 ## Scope
 
-This synthesis covers 105 papers through Q4 2025. All 19 clusters are strongly supported within the encoded graph, but evidence spans unmatched architectures, datasets, languages, and evaluation protocols. Shared organizational lineages, infrastructure reuse, synthetic-data dependence, and language-specific measurements retain narrower interpretations.
+The review covers 129 papers through Q1 2026. The claim graph contains 20 clusters (19 strongly supported, 1 emerging). Shared organizational lineages, infrastructure reuse, synthetic-data dependence, and language-specific measurements retain narrower interpretations.
 
 ---
 

@@ -2,28 +2,30 @@
 slug: emotion-synthesis
 aliases: [emotion TTS, expressive speech synthesis, affective speech generation]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: emotion-synthesis
 render_type: overview
 title: "Emotional and Expressive Speech Synthesis"
-source_digest_date: 2026-10-31
-paper_count: 98
+source_digest_date: 2026-11-12
+paper_count: 119
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Emotion synthesis controls affect, style, intensity, and paralinguistic behavior in generated speech. Explicit conditioning is effective, but the practical frontier has shifted toward compositional control, within-utterance dynamics, contextual appropriateness, reward robustness, and preserving naturalness, intelligibility, and identity together.
 
 ## Current State
+
+Conversational context and explicit emotion conditioning help with different parts of the problem. Context guides when an expression fits, and conditioning guides how it sounds ([[2026.iwsds-1.9]], [[2601.18281]]).
 
 **Explicit emotion conditioning reliably improves recognizability and perceived expression.** Categorical labels, continuous affect dimensions, references, and learned style embeddings all provide useful control ([[2025.findings-naacl.38|Prompt-Guided Emotive TTS]], [[2507.04349|TTS-CtrlNet]]). Results depend on taxonomy, class balance, and the neutral baseline; acted categories do not establish natural emotional behavior in conversation.
 
@@ -71,7 +73,7 @@ Read [[concepts/emotion-synthesis-in-depth|Emotional and Expressive Speech Synth
 
 ## Scope
 
-This synthesis covers 98 reviewed papers published through the Q4 2025 evidence window. It spans TTS, emotional voice conversion, spoken dialogue, multimodal generation, preference alignment, and paralinguistic control. Much of the evidence uses acted or automatically annotated emotion and short utterances, so strong control results do not by themselves establish culturally robust, spontaneous, or long-horizon emotional coherence.
+The review covers 119 papers through Q1 2026. The claim graph contains 19 clusters (16 strongly supported, 3 emerging). It spans TTS, emotional voice conversion, spoken dialogue, multimodal generation, preference alignment, and paralinguistic control. Much of the evidence uses acted or automatically annotated emotion and short utterances, so strong control results do not by themselves establish culturally robust, spontaneous, or long-horizon emotional coherence.
 
 ---
 

@@ -2,18 +2,18 @@
 concept: subjective-evaluation
 render_type: in-depth
 title: "Subjective Evaluation of Generated Speech: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 255
+source_digest_date: 2026-11-11
+paper_count: 307
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short version, see [[concepts/subjective-evaluation|Subjective Evaluation of Generated
@@ -35,7 +35,7 @@ the complete record is in `wiki/_claims/subjective-evaluation.yaml`.
 
 ## Scope
 
-The graph contains 255 papers published from 2016 through the Q4 2025 evidence window and synthesizes 17 claim clusters: 14 strongly supported and three contested. It covers TTS, voice conversion, spoken conversational agents, codecs, vocoders, singing, preference alignment, low-resource languages, and multimodal speech. Evidence includes method-focused evaluation research, benchmarks, system listening tests, metric studies, participatory work, and preference-training experiments. Many papers use a perceptual study as validation rather than investigate the protocol itself; those studies support task-specific conclusions but carry less weight for general claims about evaluation design. Scores are not pooled across unmatched listener groups, datasets, scales, or instructions.
+The review covers 307 papers through Q1 2026. The claim graph contains 18 clusters (16 strongly supported, 2 contested). It covers TTS, voice conversion, spoken conversational agents, codecs, vocoders, singing, preference alignment, low-resource languages, and multimodal speech. Evidence includes method-focused evaluation research, benchmarks, system listening tests, metric studies, participatory work, and preference-training experiments. Many papers use a perceptual study as validation rather than investigate the protocol itself; those studies support task-specific conclusions but carry less weight for general claims about evaluation design. Scores are not pooled across unmatched listener groups, datasets, scales, or instructions.
 
 ## Research Landscape
 
@@ -186,6 +186,8 @@ No. MOS is efficient and interpretable for broad naturalness judgments under a w
 They reduce scale-mapping difficulty and improve discrimination, but remain sensitive to the candidate set, presentation order, question wording, and rated axis. They complement rather than eliminate absolute and multidimensional evaluation.
 
 ## How the Field Is Changing
+
+Listener tests need to separate the attributes most likely to change, especially when comparing expressive or interactive systems. Recent evaluations separate fine-grained prosody and style from general naturalness ([[2026.iwsds-1.3]], [[2601.10629]]). Identity judgments are sensitive to confounds such as the reference and target attribute ([[2601.01568]], [[2603.11683]]). Domain and language coverage matter when a result is used to guide deployment ([[2026.africanlp-main.23]]).
 
 Subjective evaluation has expanded from aggregate naturalness MOS toward multidimensional tests of identity, prosody, emotion, interaction, synchronization, voice quality, accent, and social perception. Pairwise preference and ranking became central both for measurement and for preference-based training during 2024–2025.
 

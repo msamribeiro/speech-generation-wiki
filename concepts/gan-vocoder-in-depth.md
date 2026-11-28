@@ -2,18 +2,18 @@
 concept: gan-vocoder
 render_type: in-depth
 title: "GAN Vocoders: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 82
+source_digest_date: 2026-11-13
+paper_count: 92
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short version, see [[concepts/gan-vocoder|GAN Vocoders]]. This page explains what the
@@ -34,7 +34,7 @@ reviewed research shows. The citations are representative; the complete record i
 
 ## Scope
 
-The source graph contains 82 papers published between 2016 and the end of the Q4 2025 evidence window. It synthesizes 18 claim clusters: 16 strongly supported and two emerging. Evidence includes waveform vocoders, codec and VAE decoders, TTS front-end interactions, voice conversion, streaming, restoration, and several non-standard acoustic domains. The graph separates historical lineage from current support, and it does not pool scores across unmatched datasets, sampling rates, hardware, or listening tests. Surveys and downstream systems inform framing and adoption, while direct matched experiments carry more weight for quality claims. Several papers share benchmarks, upstream models, or organizational lineage, so paper count is not treated as independent replication.
+The review covers 92 papers through Q1 2026. The claim graph contains 18 clusters (16 strongly supported, 2 emerging). Evidence includes waveform vocoders, codec and VAE decoders, TTS front-end interactions, voice conversion, streaming, restoration, and several non-standard acoustic domains. The graph separates historical lineage from current support, and it does not pool scores across unmatched datasets, sampling rates, hardware, or listening tests. Surveys and downstream systems inform framing and adoption, while direct matched experiments carry more weight for quality claims. Several papers share benchmarks, upstream models, or organizational lineage, so paper count is not treated as independent replication.
 
 ## Research Landscape
 
@@ -173,6 +173,8 @@ Broad-domain vocoders usually scale data and architecture together. Their succes
 Metrics agree more reliably on gross degradation than on near-tied systems or representation-specific artifacts. Phase, bandwidth, pitch, and downstream semantic effects can reverse rankings, so automatic scores are useful diagnostics but not universal substitutes for listeners.
 
 ## How the Field Is Changing
+
+Frequency structure and codec-aware decoding matter when the vocoder must recover detail from compressed or limited-bandwidth inputs. The newer codec-decoder studies connect vocoder quality to the input representation and compression regime ([[2601.14960]], [[2602.06180]], [[2603.01476]]). Frequency-structured reconstruction adds a complementary route for restoring high-band detail ([[2603.08574]]). Evaluate artifact patterns and runtime on the intended inputs, since a strong clean-input result leaves compression robustness open.
 
 The historical transition was from sample-autoregressive waveform generation to parallel adversarial decoding. The current transition is from a generic “GAN vocoder” category toward representation-aware synthesis. Critics increasingly encode periodic, harmonic, multi-band, or projected structure; generators increasingly operate in complex spectra, bands, or codec latent spaces.
 

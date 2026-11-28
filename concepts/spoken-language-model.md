@@ -5,19 +5,19 @@ render_type: overview
 title: Spoken Language Models
 aliases: [speech language model, spoken conversational model, speech-native language model, audio language model]
 status: established
-last_reviewed: 2026-11-07
-source_digest_date: 2026-09-20
-paper_count: 173
+last_reviewed: 2026-11-28
+source_digest_date: 2026-11-11
+paper_count: 207
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
@@ -28,6 +28,8 @@ generation:
 > gaps relative to fluent demonstrations.
 
 ## Current State
+
+Unified speech models are gaining more ways to share representations, while paralinguistic reasoning and long-context behavior still lag simpler semantic tasks ([[2601.17761]], [[2602.04683]]).
 
 **Discrete tokens make speech-scale language modeling tractable.** Semantic and codec tokens turn
 waveforms into compact sequences, while low or variable frame rates reduce context and latency.
@@ -115,10 +117,9 @@ evaluation, alignment, and deployment choices.
 
 ## Scope
 
-This synthesis covers 173 papers from 2022 through Q4 2025. Spoken
+The review covers 207 papers through Q1 2026. The claim graph contains 19 clusters (18 strongly supported, 1 emerging). Spoken
 agents provide most direct evidence, with TTS, codecs, and evaluation supplying infrastructure and
-controls. All 18 clusters are strongly supported within the graph, including the Q4 additions on
-incremental reasoning and deployment safety. System comparisons frequently change the base LM, data, tokenizer, and decoder
+controls. System comparisons frequently change the base LM, data, tokenizer, and decoder
 together. Live multilingual and full-duplex evidence remains much narrower than offline benchmark
 coverage, so deployment conclusions require additional qualification. Infrastructure and historical
 papers establish interfaces and lineage, while fluent demonstrations support feasibility rather

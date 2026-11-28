@@ -2,28 +2,30 @@
 slug: voice-conversion
 aliases: [VC, any-to-any voice conversion, zero-shot voice conversion]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: voice-conversion
 render_type: overview
 title: "Voice Conversion"
-source_digest_date: 2026-10-31
-paper_count: 117
+source_digest_date: 2026-11-12
+paper_count: 132
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Voice conversion changes speaker identity or vocal attributes while preserving linguistic content. Zero-shot any-to-any conversion is established in the reviewed evidence, but reliable identity–content separation, reference control, accent handling, robustness, privacy, and perceptually valid evaluation remain active problems.
 
 ## Current State
+
+Factorizing prosody and timbre improves targeted control in reviewed systems. Fidelity depends on what the converter preserves at each stage ([[2603.09120|Emotion-Aware Prefix]], [[2602.14686]]).
 
 **The central representation problem is no longer whether content and identity can be separated, but how selectively they should be separated.** Self-supervised units and factorized codecs provide speaker-reduced content representations that support intelligible conversion ([[2104.00355|Discrete Disentangled Speech Resynthesis]], [[2502.07243|Vevo]], [[2512.13251|DisCo-Speech]]). Perfect independence is neither demonstrated nor always desirable: accent, timing, pitch, and habitual expression jointly encode linguistic and speaker information. Stronger isolation can therefore improve identity transfer while flattening natural prosody or changing intelligibility.
 
@@ -70,7 +72,7 @@ Read [[concepts/voice-conversion-in-depth|Voice Conversion: In Depth]] for the r
 
 ## Scope
 
-This synthesis covers 117 reviewed papers published through the Q4 2025 evidence window. It spans speech and singing conversion, accent and emotion transfer, anonymization, synthetic-data supervision, and reference-free conditioning. Many systems share SSL encoders, codecs, speaker verifiers, ASR models, or benchmarks, so strong support reflects convergent evidence within this graph rather than 117 independent replications.
+The review covers 132 papers through Q1 2026. The claim graph contains 20 clusters (18 strongly supported, 1 contested, 1 emerging). It spans speech and singing conversion, accent and emotion transfer, anonymization, synthetic-data supervision, and reference-free conditioning. Many systems share SSL encoders, codecs, speaker verifiers, ASR models, or benchmarks, so strong support reflects convergent evidence within this graph rather than an equal number of independent replications.
 
 ---
 

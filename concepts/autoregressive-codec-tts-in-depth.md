@@ -2,18 +2,18 @@
 concept: autoregressive-codec-tts
 render_type: in-depth
 title: "Autoregressive Codec Text-to-Speech: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 196
+source_digest_date: 2026-11-12
+paper_count: 212
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/autoregressive-codec-tts|Autoregressive Codec TTS]]. Complete
@@ -43,7 +43,7 @@ paper-to-claim provenance remains in `wiki/_claims/autoregressive-codec-tts.yaml
 
 ## Scope
 
-The graph contains 196 papers published from 2016 through Q4 2025. TTS provides the majority
+The review covers 212 papers through Q1 2026. The claim graph contains 20 clusters (19 strongly supported, 1 contested). TTS provides the majority
 of direct evidence, with spoken conversational agents, codecs, voice conversion, evaluation, and
 singing contributing downstream or infrastructure evidence. This remains a rapidly evolving
 snapshot rather than a settled ranking of systems.
@@ -337,6 +337,8 @@ improve robustness but reduce portability; stochasticity improves diversity whil
 determinism.
 
 ## How the Field Is Changing
+
+Codec hierarchies help preserve content and voice in zero-shot generation, but identity and expressive style can still move together. The Q1 evidence extends codec language modeling to dialect and cross-lingual settings. [[2026.abjadnlp-1.6|Arabic dialect TTS evaluation]] shows why aggregate quality scores need language- and dialect-specific interpretation. Reference-conditioned models including [[2601.12480]] and [[2601.15596]] also inform the separation of semantic planning, timbre, and style. Assess intelligibility, identity, and expression separately when changing token hierarchies or conditioning.
 
 After 2022, the field moved from sample- and frame-level autoregression toward compact semantic and
 codec tokens. VALL-E-style hierarchical AR+NAR generation became a major template. By 2024–2025,

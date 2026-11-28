@@ -2,18 +2,18 @@
 concept: diffusion-tts
 render_type: in-depth
 title: "Diffusion Text-to-Speech: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 58
+source_digest_date: 2026-11-13
+paper_count: 62
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/diffusion-tts|Diffusion Text-to-Speech]]. Complete provenance remains in `wiki/_claims/diffusion-tts.yaml`.
@@ -35,7 +35,7 @@ For the concise view, see [[concepts/diffusion-tts|Diffusion Text-to-Speech]]. C
 
 ## Scope
 
-The graph contains 58 papers through Q4 2025 and 17 synthesized clusters: 15 strongly supported, 2 emerging, and 0 contested. Two late papers were incorporated during the Q4 correction pass. Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
+The review covers 62 papers through Q1 2026. The claim graph contains 18 clusters (16 strongly supported, 2 emerging). Direct experiments are separated from infrastructure, history, surveys, and downstream adoption. Numeric outcomes are not pooled across unmatched hardware, data, decoders, prompts, or perceptual protocols.
 
 ## Research Landscape
 
@@ -102,6 +102,8 @@ Representation choice creates a second boundary. Continuous acoustic or codec la
 Finally, objective families are difficult to compare fairly. Flow matching and consistency methods promise fewer evaluations, while distilled diffusion tries to inherit an iterative teacher's trajectory. Published systems rarely hold backbone, data, target, and solver budget fixed. The practical conclusion is therefore conditional: choose an objective together with its representation and deployment budget, then test the complete system at the intended operating point.
 
 ## How the Field Is Changing
+
+Masked discrete diffusion extends parallel generation to codec tokens. Its length and masking choices remain part of the quality and latency comparison. [[2601.22889]] and [[2603.26364]] extend the reviewed masked discrete generation evidence. They make length handling and the representation being denoised important comparison variables. [[2603.29339]] adds zero-shot evidence for diffusion-based voice transfer. Compare high-fidelity generation, speaker matching, and inference cost under the same representation and timing protocol.
 
 Diffusion TTS moved from iterative score-based acoustic generation in 2021–2022 toward latent, transformer, and hybrid formulations by 2023–2025.
 

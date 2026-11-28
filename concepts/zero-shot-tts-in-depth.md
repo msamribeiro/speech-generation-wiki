@@ -2,18 +2,18 @@
 concept: zero-shot-tts
 render_type: in-depth
 title: "Zero-Shot Text-to-Speech: In Depth"
-source_digest_date: 2026-09-20
-paper_count: 262
+source_digest_date: 2026-11-11
+paper_count: 303
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the short state-of-the-art view, see [[concepts/zero-shot-tts|Zero-Shot Text-to-Speech]]. This
@@ -49,7 +49,7 @@ page synthesizes decision-relevant conclusions; complete paper-to-claim provenan
 
 ## Scope
 
-The claim graph contains 262 papers published from 2017 through Q4 2025. It is strongly
+The review covers 303 papers through Q1 2026. The claim graph contains 21 clusters (18 strongly supported, 2 contested, 1 emerging). It is strongly
 weighted toward recent work. Most entries
 study TTS, while voice conversion, spoken conversational agents, codecs, evaluation, and singing
 provide adjacent evidence. The graph therefore captures both direct zero-shot synthesis and systems
@@ -317,6 +317,8 @@ length, speaker encoder, solver, or semantic/acoustic split. The absence of a si
 property of the evidence, not an invitation to average incomparable numbers.
 
 ## How the Field Is Changing
+
+Zero-shot voice cloning increasingly supports style and prosody control, with consistency across languages, references, and identities still uneven. Q1 work broadens reference-conditioned and hybrid semantic–acoustic generation ([[2601.01568]], [[2601.16023]], [[2601.17761]]). Explicit style controls add flexibility, and the newer evidence reinforces the need to measure whether they preserve identity and intelligibility ([[2601.10629]], [[2601.12480]]). Tests should exercise reference variation and language transfer separately.
 
 From 2023 through Q4 2025, the center shifted from encoder–decoder and GAN-centered cloning toward
 autoregressive speech-token models, flow matching, and hybrid autoregressive-plus-continuous

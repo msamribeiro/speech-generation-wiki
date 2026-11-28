@@ -2,18 +2,18 @@
 concept: rlhf-speech
 render_type: in-depth
 title: "RLHF for Speech: In Depth"
-source_digest_date: 2026-09-26
-paper_count: 49
+source_digest_date: 2026-11-13
+paper_count: 57
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 This page explains what the reviewed speech-alignment research supports. For the short version,
@@ -51,8 +51,7 @@ is in `wiki/_claims/rlhf-speech.yaml`.
 
 ## Scope
 
-The graph contains 49 papers through Q4 2025 and 22 synthesized clusters: 15 strongly supported,
-6 emerging, and 1 contested. The literature reflects rapid experimentation rather than a settled recipe. The
+The review covers 57 papers through Q1 2026. The claim graph contains 22 clusters (15 strongly supported, 6 emerging, 1 contested). The literature reflects rapid experimentation rather than a settled recipe. The
 dominant families are DPO/KTO-style preference optimization on discrete speech tokens and
 policy-gradient RL with explicit rewards. Extensions to continuous flow or diffusion generators,
 differentiable critics, intrinsic rewards, and reward-model infrastructure are newer.
@@ -318,8 +317,10 @@ treated as an important frontier probe, not an established alternative to learne
 
 ## How the Field Is Changing
 
+Speech reward models can improve the targeted attribute, with mixed evidence about training the evaluator itself through reinforcement learning. [[2602.13891|GSRM]] validates naturalness gains with a listener panel. An evaluator trained with a different reward in the same study collapsed to nearly constant predictions. Q1 therefore supports checking the evaluator and the resulting generator separately. A promising reward-model recipe cannot establish that every reward or training setup is stable.
+
 The literature is unusually recent. The first integrated papers appear in mid-2024; by Q4 2025,
-DPO and policy-gradient methods account for most of the 49-paper graph. The field has moved quickly
+DPO and policy-gradient methods account for most of the 57-paper graph. The field has moved quickly
 from demonstrating that preference alignment can improve codec TTS to adapting it across
 flow-matching, diffusion, CTC, spoken-language, and simultaneous-translation systems.
 
@@ -382,7 +383,7 @@ and whether a small human-preference stage can repair proxy-induced degradation.
 ## Structured Source
 
 This page selects and groups findings for human readability. The complete claim graph—including all
-49 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
+57 paper entries, source sections, caveats, method-family memberships, and reassessment state—is
 available in `wiki/_claims/rlhf-speech.yaml`.
 
 ---

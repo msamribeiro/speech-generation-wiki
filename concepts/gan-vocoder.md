@@ -2,28 +2,30 @@
 slug: gan-vocoder
 aliases: [adversarial vocoder, neural waveform generator, GAN waveform decoder]
 status: mature-infrastructure
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: gan-vocoder
 render_type: overview
 title: "GAN Vocoders"
-source_digest_date: 2026-10-31
-paper_count: 82
+source_digest_date: 2026-11-13
+paper_count: 92
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > GAN vocoders reconstruct waveforms from acoustic features or compressed audio representations with predominantly one-pass generation. They are mature speech-generation infrastructure, but their perceptual quality depends as much on discriminator design, conditioning fidelity, data coverage, and evaluation protocol as on the generator itself.
 
 ## Current State
+
+Frequency structure and codec-aware decoding matter when the vocoder must recover detail from compressed or limited-bandwidth inputs ([[2601.14960]], [[2602.06180]]).
 
 **Adversarial generation remains a strong practical default, but its speed advantage is easier to establish than universal perceptual superiority.** HiFi-GAN demonstrated that a compact adversarial generator can approach autoregressive quality at real-time-capable speeds, while later systems broadened the operating range ([[2010.05646|HiFi-GAN]], [[2206.04658|BigVGAN]]). The reviewed evidence still treats the matched quality-versus-latency comparison as emerging because hardware, sampling rate, upstream acoustic generation, and listening protocols are rarely controlled together.
 
@@ -67,7 +69,7 @@ Read [[concepts/gan-vocoder-in-depth|GAN Vocoders: In Depth]] for the research l
 
 ## Scope
 
-This synthesis covers 82 reviewed papers published from 2016 through the Q4 2025 evidence window. The corpus spans TTS, voice conversion, neural codecs, streaming, restoration, and non-standard acoustic domains, but many comparisons reuse common datasets or alter architecture and data together. Strong support therefore describes convergence within the encoded evidence, not a universal ranking of vocoders.
+The review covers 92 papers through Q1 2026. The claim graph contains 18 clusters (16 strongly supported, 2 emerging). The corpus spans TTS, voice conversion, neural codecs, streaming, restoration, and non-standard acoustic domains, but many comparisons reuse common datasets or alter architecture and data together. Strong support therefore describes convergence within the encoded evidence, not a universal ranking of vocoders.
 
 ---
 

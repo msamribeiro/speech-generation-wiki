@@ -2,18 +2,18 @@
 concept: singing
 render_type: in-depth
 title: "Singing Voice Synthesis and Conversion: In Depth"
-source_digest_date: 2026-10-31
-paper_count: 21
+source_digest_date: 2026-11-13
+paper_count: 24
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 For the concise view, see [[concepts/singing|Singing Voice Synthesis and Conversion]]. Complete provenance remains in `wiki/_claims/singing.yaml`.
@@ -30,7 +30,7 @@ For the concise view, see [[concepts/singing|Singing Voice Synthesis and Convers
 
 ## Scope
 
-The graph contains 21 papers through Q4 2025 and 24 synthesized clusters: 3 strongly supported and 21 emerging. One late paper was incorporated during the Q4 correction pass. The corpus spans singing synthesis, singing voice conversion, codec reconstruction, vocoding, multimodal generation, and surveys. Findings from these tasks are not interchangeable: reconstructing a known melody, converting a source performance, and generating a performance from lyrics or score expose different alignment and control problems.
+The review covers 24 papers through Q1 2026. The claim graph contains 25 clusters (22 emerging, 3 strongly supported). The corpus spans singing synthesis, singing voice conversion, codec reconstruction, vocoding, multimodal generation, and surveys. Findings from these tasks are not interchangeable: reconstructing a known melody, converting a source performance, and generating a performance from lyrics or score expose different alignment and control problems.
 
 The evidence base is much smaller than for general TTS. Several papers use single-singer or single-language corpora, private training assets, proprietary test sets, small listener panels, or unmatched baselines. The graph therefore distinguishes recurring design signals from broad claims of superiority. Numeric results are not pooled across different repertoires, vocal ranges, reference conditions, or listener protocols.
 
@@ -107,6 +107,8 @@ There is also no settled architecture ranking. Diffusion, consistency, flow, GAN
 The correct synthesis is conditional. Use explicit musical controls when they are available, select factorization according to the attributes that must remain independent, and evaluate the complete system against its intended reference type and acoustic conditions. Treat emerging results as design hypotheses until they survive matched data, broader languages and singers, and stronger listener studies.
 
 ## How the Field Is Changing
+
+Explicit timing, pitch, and energy remain useful controls. Early weak-alignment results reduce annotation demands in a narrow setting. [[2602.07803]] supplies early evidence for learning timing from coarser supervision. Its language and supervision setting limit conclusions about replacing detailed phoneme-duration and note labels elsewhere. Q1 work on shared speech and singing interfaces also makes it important to test long notes and musical structure explicitly ([[2602.04683]]).
 
 Early work established that speech and singing could share latent spaces and that diffusion could synthesize long, non-autoregressive vocal sequences. The 2025 corpus shifts toward singing-specific pitch pathways, explicit energy or melody control, and cross-modal identity alignment rather than applying speech models unchanged.
 

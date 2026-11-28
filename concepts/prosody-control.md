@@ -2,28 +2,30 @@
 slug: prosody-control
 aliases: [expressive prosody control, pitch and duration control, style transfer]
 status: established
-last_reviewed: 2026-11-07
+last_reviewed: 2026-11-28
 concept: prosody-control
 render_type: overview
 title: "Prosody Control"
-source_digest_date: 2026-09-26
-paper_count: 115
+source_digest_date: 2026-11-13
+paper_count: 128
 generation:
   schema_version: 2
-  date: "2026-11-07"
+  date: "2026-11-28"
   stage: render
-  mode: full
+  mode: light
   runtime: codex
   provider: openai
   agent: speech-generation-render-agent
-  model: "gpt-5"
-  commit: "0e1aff0"
+  model: "gpt-6.2-sol"
+  commit: "bcacb49"
 ---
 
 > [!abstract]
 > Prosody control governs pitch, energy, duration, rhythm, stress, phrasing, and expressive delivery beyond the words themselves. Explicit predictors, stochastic latent models, prompts, and structured plans make speech more editable, but local control, attribute leakage, language specificity, and perceptual evaluation remain unresolved.
 
 ## Current State
+
+Duration, pauses, and alignment provide direct rhythm controls, with local precision and attribute leakage remaining difficult ([[2603.07550|Rule-based L2 accent synthesis]], [[2603.11683|Causal prosody mediation]]).
 
 **Explicit prediction or conditioning of pitch, energy, and duration enables interpretable prosodic control and reduces variation left unresolved by text alone.** Examples from the reviewed papers include [[2006.04558|FastSpeech 2: Fast and High-Quality End-to-End Text to Speech]], [[2104.00355|Speech Resynthesis from Discrete Disentangled Self-Supervised Representations]], [[2025.coling-main.352|DiffStyleTTS: Diffusion-based Hierarchical Prosody Modeling for Text-to-Speech with Diverse and Controllable Styles]]. Evidence spans different acoustic backbones and attribute subsets; improvements in one variable do not guarantee joint control.
 
@@ -67,7 +69,7 @@ Read [[concepts/prosody-control-in-depth|Prosody Control: In Depth]] for the det
 
 ## Scope
 
-This synthesis covers 115 papers represented in the claim graph through Q4 2025. Eighteen clusters are strongly supported and reward-guided post-training remains emerging. Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse.
+The review covers 128 papers through Q1 2026. The claim graph contains 20 clusters (18 strongly supported, 2 emerging). Evidence roles, datasets, architectures, and evaluation protocols vary, so system-level convergence is distinguished from shared lineage and infrastructure reuse.
 
 ---
 
