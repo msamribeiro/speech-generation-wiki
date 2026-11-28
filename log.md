@@ -4,6 +4,10 @@ title: "Changelog"
 
 Append-only chronological log of changes to the wiki. Entry types: `ingest` (new paper page), `review` (quality review of existing paper page), `integrate` (concept YAML updated from paper pages), `reconcile` (cross-concept relationships reviewed), `snapshot` (bounded assessment frozen), `render` (current synthesis regenerated), `report` (snapshot-backed report generated), `query` (research question answered and filed back), `misc` (structural fixes, metadata corrections, and other changes that don't fit the above). Most recent entries are at the top.
 
+## 2026-11-28
+
+- misc | icassp-2015-librispeech | LibriSpeech: author-hosted free copy linked on the card ([→ Author copy], Daniel Povey's site) under the new `url_author_copy` field (user, 2026-11-28) | no content change
+
 ## 2026-11-27
 
 - ingest | 2405.00233 | SemantiCodec: An Ultra Low Bitrate Semantic Audio Codec for General Sound | arXiv 2024 | runtime: claude-code | provider: anthropic | model: claude-opus-5-5

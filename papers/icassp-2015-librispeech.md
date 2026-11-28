@@ -22,6 +22,7 @@ metrics: [WER]
 code_available: true
 demo_available: null
 url: "https://doi.org/10.1109/ICASSP.2015.7178964"
+url_author_copy: "https://www.danielpovey.com/files/2015_icassp_librispeech.pdf"
 related_concepts: []
 related_papers: []
 field_significance:
@@ -38,7 +39,7 @@ generation:
 ---
 
 > [!abstract] ICASSP · 2015 · Conference
-> **Panayotov et al.** (Johns Hopkins University) · [→ Paper](https://doi.org/10.1109/ICASSP.2015.7178964) · Demo: ? · Code: ✓
+> **Panayotov et al.** (Johns Hopkins University) · [→ Paper](https://doi.org/10.1109/ICASSP.2015.7178964) · [→ Author copy](https://www.danielpovey.com/files/2015_icassp_librispeech.pdf) · Demo: ? · Code: ✓
 >
 > LibriSpeech releases about 1000 hours of read English speech at 16 kHz, aligned and segmented from LibriVox public domain audiobooks, with matched language-model resources and Kaldi recipes.
 
